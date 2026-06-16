@@ -1,7 +1,7 @@
 {
   "snapshot": {
-    "runId": "lead-engine-2026-06-16T12-36-49-049Z",
-    "generatedAt": "2026-06-16T12:36:49.049Z",
+    "runId": "lead-engine-2026-06-16T21-30-12-850Z",
+    "generatedAt": "2026-06-16T21:30:12.850Z",
     "markets": [
       {
         "leadId": "market:lehigh",
@@ -13,7 +13,7 @@
         "thesis": "Quarter-acre infill vacant lots with repeat builder demand and standard lot patterns.",
         "priority": 10,
         "rank": 1,
-        "collectedAt": "2026-06-16T12:36:49.049Z"
+        "collectedAt": "2026-06-16T21:30:12.850Z"
       },
       {
         "leadId": "market:cape-coral",
@@ -25,7 +25,7 @@
         "thesis": "Utility and canal-premium lot opportunities, but diligence risk is higher.",
         "priority": 7,
         "rank": 2,
-        "collectedAt": "2026-06-16T12:36:49.049Z"
+        "collectedAt": "2026-06-16T21:30:12.850Z"
       },
       {
         "leadId": "market:ocala",
@@ -37,7 +37,7 @@
         "thesis": "New target area: find builders first, then parcel/seller leads that match local buyer demand.",
         "priority": 6,
         "rank": 3,
-        "collectedAt": "2026-06-16T12:36:49.049Z"
+        "collectedAt": "2026-06-16T21:30:12.850Z"
       }
     ],
     "buyers": [
@@ -76,7 +76,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 1
       },
       {
@@ -99,7 +99,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 2
       },
       {
@@ -122,7 +122,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 1
       }
     ],
@@ -156,7 +156,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 1
       },
       {
@@ -186,7 +186,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 2
       },
       {
@@ -217,7 +217,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 3
       },
       {
@@ -248,7 +248,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T12:36:49.049Z",
+        "collectedAt": "2026-06-16T21:30:12.850Z",
         "sequence": 1
       }
     ],
@@ -548,7 +548,7 @@
     ]
   },
   "briefing": {
-    "markdown": "# Lead Engine Briefing — 2026-06-16\n\nRun: lead-engine-2026-06-16T12-36-49-049Z\n\n- Markets watched: 3\n- Buyer leads: 3\n- Parcel leads: 4\n- Top seller calls: 3\n- Buyer validation tasks: 3\n- Offer-ready deals: 3\n- New-area buyer discovery tasks: 1\n- New-area seller discovery tasks: 1\n- Missing-data blockers: 4\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n\n## New-area discovery tasks\n1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL\n2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
+    "markdown": "# Lead Engine Briefing — 2026-06-16\n\nRun: lead-engine-2026-06-16T21-30-12-850Z\n\n- Markets watched: 3\n- Buyer leads: 3\n- Parcel leads: 4\n- Top seller calls: 3\n- Buyer validation tasks: 3\n- Offer-ready deals: 3\n- New-area buyer discovery tasks: 1\n- New-area seller discovery tasks: 1\n- Missing-data blockers: 4\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n\n## New-area discovery tasks\n1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL\n2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
     "counts": {
       "markets": 3,
       "buyers": 3,
@@ -559,5 +559,5 @@
       "sellerDiscovery": 1
     }
   },
-  "generatedAt": "2026-06-16T12:36:49.049Z"
+  "generatedAt": "2026-06-16T21:30:12.850Z"
 }

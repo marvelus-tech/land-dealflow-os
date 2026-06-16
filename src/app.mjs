@@ -3,7 +3,6 @@ import {
   computeOffer,
   classifyParcelRisk,
   rankBuyers,
-  parseCsvRecords,
   scoreParcelDeal,
   applyCrmUpdate,
   exportWorkspace,
@@ -12,6 +11,10 @@ import {
   getLehighImportTemplate,
   buildTopCallList,
   exportParcelsCsv,
+  normalizeCsvToParcels,
+  findDuplicateParcels,
+  reportMissingData,
+  getDataSourceChecklist,
   formatMoney,
 } from './core.mjs';
 
@@ -186,8 +189,8 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v0.3 Lehigh call-list cockpit</span>
-      <h1>Import Lehigh parcels, enrich contacts, score deals, export the Top 20 call list.</h1>
+      <span class="eyebrow">Land Dealflow OS · v0.4 ingestion quality gate</span>
+      <h1>Normalize messy parcel exports, catch duplicates, expose missing data, then export call-ready work.</h1>
       <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
       <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
@@ -202,16 +205,17 @@ function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">v0.2 Workspace</span>
-      <h2>Import, persist, filter, export</h2>
-      <p>Paste parcel CSV, import a saved JSON workspace, export your current work, or reset to seed data.</p>
+      <span class="eyebrow">v0.4 Workspace</span>
+      <h2>Normalize, validate, import, export</h2>
+      <p>Paste parcel CSV, choose a source preset, check quality gaps, import a workspace, or export action lists.</p>
     </div>
     <div class="workspace-grid">
       <article class="card tool-card">
         <h3>CSV parcel import</h3>
         <p>Headers supported: address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p>
         <textarea id="csv-input" rows="8" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea>
-        <div class="button-row"><button id="load-lehigh-template" type="button">Load Lehigh template</button><button id="import-csv" type="button">Import CSV parcels</button><span id="import-status"></span></div>
+        <label class="preset-row">Source preset<select id="source-preset"><option value="land-dealflow">Land Dealflow template</option><option value="lee-county">Lee County property export</option><option value="propstream">PropStream export</option><option value="landglide">LandGlide export</option></select></label>
+        <div class="button-row"><button id="load-lehigh-template" type="button">Load Lehigh template</button><button id="import-csv" type="button">Import normalized CSV</button><span id="import-status"></span></div>
       </article>
       <article class="card tool-card">
         <h3>Workspace JSON</h3>
@@ -224,6 +228,11 @@ function renderWorkspaceTools() {
         <p>Download the filtered parcel view or generate a ranked Top 20 owner call list with buyer contact handoff fields.</p>
         <div class="button-row"><button id="export-filtered-csv" type="button">Export filtered CSV</button><button id="export-top20-csv" type="button">Export Top 20 Call List</button></div>
         <div id="top-call-list" class="call-list"></div>
+      </article>
+      <article class="card tool-card wide-card">
+        <h3>Data quality gate</h3>
+        <p>Before calling owners: clear duplicate APNs/addresses, missing owner contacts, missing pricing, and incomplete buildability screens.</p>
+        <div id="quality-gate"></div>
       </article>
     </div>`;
 }
@@ -239,6 +248,24 @@ function renderTopCallList() {
   </div>`).join('') : '<p>No callable parcels yet. Import contacts or improve scoring.</p>';
 }
 
+function renderQualityControl() {
+  const target = document.querySelector('#quality-gate');
+  if (!target) return;
+  const duplicates = findDuplicateParcels(workspace.parcels || []);
+  const report = reportMissingData(workspace.parcels || []);
+  const checklist = getDataSourceChecklist('lehigh');
+  const worstRows = report.rows.filter(row => row.severity > 0).slice(0, 6);
+  target.innerHTML = `<div class="quality-grid">
+    <div><b>${duplicates.length}</b><span>duplicate groups</span></div>
+    <div><b>${report.summary.ownerContactMissing}</b><span>missing owner contact</span></div>
+    <div><b>${report.summary.buildabilityMissing}</b><span>missing buildability</span></div>
+    <div><b>${report.summary.pricingMissing}</b><span>missing pricing</span></div>
+  </div>
+  <div class="checklist">${checklist.map(item => `<div class="check-item ${item.blocksCallList ? 'blocks' : ''}"><strong>${h(item.label)}</strong><span>${h(item.detail)}</span></div>`).join('')}</div>
+  <div class="missing-list">${worstRows.length ? worstRows.map(row => `<div><b>${h(row.address || row.id)}</b><span>${row.missing.map(item => badge(item, item === 'ownerContact' || item === 'buildability' ? 'bad' : 'warn')).join('')}</span></div>`).join('') : '<p>Quality gate clear for current records.</p>'}</div>
+  ${duplicates.length ? `<div class="duplicate-list"><strong>Duplicate review:</strong>${duplicates.map(group => `<span>${h(group.reason)}: ${h(group.ids.join(', '))}</span>`).join('')}</div>` : ''}`;
+}
+
 function bindEvents() {
   document.addEventListener('click', (event) => {
     if (event.target.matches('#load-lehigh-template')) {
@@ -250,7 +277,8 @@ function bindEvents() {
     if (event.target.matches('#import-csv')) {
       const input = document.querySelector('#csv-input');
       const status = document.querySelector('#import-status');
-      const records = parseCsvRecords(input.value).map((record, index) => ({
+      const preset = document.querySelector('#source-preset')?.value || 'land-dealflow';
+      const records = normalizeCsvToParcels(input.value, preset).map((record, index) => ({
         ...record,
         id: record.id || record.parcelId || `csv-${Date.now()}-${index + 1}`,
         crmStatus: record.crmStatus || 'New',
@@ -329,6 +357,7 @@ function renderAll() {
   renderFilters();
   renderParcels();
   renderTopCallList();
+  renderQualityControl();
 }
 
 bindEvents();

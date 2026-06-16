@@ -148,10 +148,25 @@ button.danger { background: rgba(239,68,68,.16); color: #fecaca; border-color: r
 .call-row b, .call-row span, .call-row em { display: block; }
 .call-row span { margin-top: 6px; color: var(--soft); font-size: 13px; }
 .call-row em { margin-top: 5px; color: var(--brand-2); font-style: normal; font-size: 12px; }
+.preset-row { display: grid; gap: 7px; margin: 10px 0 14px; color: var(--muted); font-size: 12px; }
+.preset-row select { width: 100%; }
+.wide-card { grid-column: 1 / -1; }
+.quality-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
+.quality-grid div { border: 1px solid var(--line-soft); border-radius: 12px; padding: 12px; background: rgba(255,255,255,.025); }
+.quality-grid b { display: block; font-size: 24px; color: var(--text); }
+.quality-grid span, .check-item span, .missing-list span, .duplicate-list span { color: var(--muted); font-size: 12px; }
+.checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
+.check-item { border: 1px solid var(--line-soft); border-radius: 12px; padding: 11px; }
+.check-item.blocks { border-color: rgba(251,191,36,.28); background: rgba(251,191,36,.055); }
+.check-item strong, .check-item span { display: block; }
+.missing-list, .duplicate-list { display: grid; gap: 8px; margin-top: 12px; }
+.missing-list div, .duplicate-list { border-top: 1px solid var(--line-soft); padding-top: 10px; }
+.missing-list b, .missing-list span, .duplicate-list strong, .duplicate-list span { display: block; }
 footer { max-width: 1220px; margin: 0 auto; padding: 36px 24px 60px; color: var(--muted); border-top: 1px solid var(--line-soft); }
 
 @media (max-width: 1000px) {
-  .command, .grid, .grid.two, .workspace-grid { grid-template-columns: 1fr; }
+  .command, .grid, .grid.two, .workspace-grid, .checklist { grid-template-columns: 1fr; }
+  .quality-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pipeline { grid-template-columns: repeat(2, 1fr); }
   .deal-strip, .deal-strip.five { grid-template-columns: repeat(2, 1fr); }
   .crm-row { grid-template-columns: 1fr; }

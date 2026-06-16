@@ -12,6 +12,10 @@ import {
   getLehighImportTemplate,
   buildTopCallList,
   exportParcelsCsv,
+  normalizeCsvToParcels,
+  findDuplicateParcels,
+  reportMissingData,
+  getDataSourceChecklist,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -210,6 +214,58 @@ function testFilteredCsvExportIncludesHeadersAndEscapesCommas() {
   assert.ok(lines[1].includes('"12, Canal Rd"'));
   assert.ok(lines[1].includes('"seller says, call after 5"'));
 }
+
+function testNormalizationPresetMapsCountyAndPropstreamExports() {
+  const countyCsv = 'Situs Address,Parcel Number,Owner Name,Mailing Address,Just Value\n123 Grant Blvd,30-44-27-L1,Avery Santos,"88 Pine St, Tampa FL",41000';
+  const county = normalizeCsvToParcels(countyCsv, 'lee-county');
+  assert.equal(county[0].address, '123 Grant Blvd');
+  assert.equal(county[0].parcelId, '30-44-27-L1');
+  assert.equal(county[0].ownerName, 'Avery Santos');
+  assert.equal(county[0].market, 'lehigh');
+  assert.equal(county[0].buyerId, 'precision');
+
+  const propstreamCsv = 'Property Address,APN,Owner 1 Full Name,Owner Mailing Address,Estimated Value,Phone 1\n2511 W 9th St,30-44-27-L2,Jordan Estate,"PO Box 44, Fort Myers FL",46500,239-555-0199';
+  const propstream = normalizeCsvToParcels(propstreamCsv, 'propstream');
+  assert.equal(propstream[0].parcelId, '30-44-27-L2');
+  assert.equal(propstream[0].ownerPhone, '239-555-0199');
+  assert.equal(propstream[0].lowestActiveListing, 46500);
+}
+
+function testDuplicateDetectionUsesApnThenNormalizedAddress() {
+  const duplicates = findDuplicateParcels([
+    { id: 'a', parcelId: '30-44-27-L1', address: '123 Grant Blvd, Lehigh Acres FL' },
+    { id: 'b', parcelId: '30-44-27-L1', address: 'Different address' },
+    { id: 'c', parcelId: '', address: '123 grant boulevard lehigh acres fl' },
+    { id: 'd', parcelId: '', address: '999 Clean St' },
+  ]);
+  assert.equal(duplicates.length, 2);
+  assert.deepEqual(duplicates.map(group => group.ids.sort()), [['a', 'b'], ['a', 'c']]);
+}
+
+function testMissingDataReportRanksCriticalGaps() {
+  const report = reportMissingData([
+    { id: 'a', address: 'A St', ownerName: 'Owner', ownerPhone: '', ownerEmail: '', roadAccess: true, utilities: 'nearby', wetlands: 'none', floodZone: false, buyerMaxPrice: 42000, askingPrice: 28000 },
+    { id: 'b', address: 'B St', ownerName: '', ownerPhone: '239-555-0002', roadAccess: '', utilities: 'unknown', wetlands: '', floodZone: '', buyerMaxPrice: '', askingPrice: '' },
+  ]);
+  assert.equal(report.totalParcels, 2);
+  assert.equal(report.rows[0].id, 'b');
+  assert.ok(report.rows[0].missing.includes('ownerName'));
+  assert.ok(report.rows[0].missing.includes('buildability'));
+  assert.ok(report.rows[0].missing.includes('pricing'));
+  assert.equal(report.summary.ownerContactMissing, 1);
+}
+
+function testDataSourceChecklistDefinesMinimumImportGates() {
+  const checklist = getDataSourceChecklist('lehigh');
+  assert.ok(checklist.some(item => item.id === 'county-parcel-export' && item.required));
+  assert.ok(checklist.some(item => item.id === 'owner-contact-enrichment' && item.blocksCallList));
+  assert.ok(checklist.some(item => item.id === 'buildability-screen' && item.blocksCallList));
+}
+
+testNormalizationPresetMapsCountyAndPropstreamExports();
+testDuplicateDetectionUsesApnThenNormalizedAddress();
+testMissingDataReportRanksCriticalGaps();
+testDataSourceChecklistDefinesMinimumImportGates();
 
 testCsvParserHandlesQuotedFieldsAndTypeCoercion();
 testParcelDealScorePrioritizesCleanHighSpreadBuyerFit();

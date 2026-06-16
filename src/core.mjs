@@ -333,6 +333,119 @@ function csvEscape(value) {
   return raw;
 }
 
+export const NORMALIZATION_PRESETS = {
+  'land-dealflow': {},
+  'lee-county': {
+    situsAddress: 'address',
+    parcelNumber: 'parcelId',
+    ownerName: 'ownerName',
+    mailingAddress: 'ownerMailingAddress',
+    justValue: 'lowestActiveListing',
+  },
+  propstream: {
+    propertyAddress: 'address',
+    apn: 'parcelId',
+    owner1FullName: 'ownerName',
+    ownerMailingAddress: 'ownerMailingAddress',
+    estimatedValue: 'lowestActiveListing',
+    phone1: 'ownerPhone',
+    email1: 'ownerEmail',
+  },
+  landglide: {
+    address: 'address',
+    parcelId: 'parcelId',
+    owner: 'ownerName',
+    ownerAddress: 'ownerMailingAddress',
+    assessedValue: 'lowestActiveListing',
+  },
+};
+
+export function normalizeCsvToParcels(csvText, preset = 'land-dealflow', defaults = {}) {
+  const records = parseCsvRecords(csvText);
+  const mapping = NORMALIZATION_PRESETS[preset] || {};
+  return records.map((record, index) => {
+    const normalized = { ...defaults };
+    for (const [key, value] of Object.entries(record)) {
+      normalized[mapping[key] || key] = value;
+    }
+    return {
+      market: 'lehigh',
+      buyerId: 'precision',
+      crmStatus: 'New',
+      notes: '',
+      nextFollowUp: '',
+      ...normalized,
+      id: normalized.id || normalized.parcelId || `normalized-${preset}-${Date.now()}-${index + 1}`,
+    };
+  });
+}
+
+export function findDuplicateParcels(parcels = []) {
+  const groups = [];
+  const seenPairs = new Set();
+  const addGroup = (key, ids, reason) => {
+    const unique = [...new Set(ids)].sort();
+    if (unique.length < 2) return;
+    const pairKey = unique.join('|');
+    if (seenPairs.has(pairKey)) return;
+    seenPairs.add(pairKey);
+    groups.push({ key, reason, ids: unique });
+  };
+  const byParcelId = new Map();
+  const byAddress = new Map();
+  for (const parcel of parcels) {
+    const id = parcel.id || parcel.parcelId || parcel.address;
+    const parcelKey = String(parcel.parcelId || '').trim().toLowerCase();
+    const addressKey = normalizeAddressKey(parcel.address);
+    if (parcelKey) byParcelId.set(parcelKey, [...(byParcelId.get(parcelKey) || []), id]);
+    if (addressKey) byAddress.set(addressKey, [...(byAddress.get(addressKey) || []), id]);
+  }
+  for (const [key, ids] of byParcelId) addGroup(key, ids, 'same parcel/APN');
+  for (const [key, ids] of byAddress) addGroup(key, ids, 'same normalized address');
+  return groups;
+}
+
+function normalizeAddressKey(address = '') {
+  return String(address).toLowerCase()
+    .replace(/\bblvd\b/g, 'boulevard')
+    .replace(/\bst\b/g, 'street')
+    .replace(/\brd\b/g, 'road')
+    .replace(/\bave\b/g, 'avenue')
+    .replace(/[^a-z0-9]/g, '');
+}
+
+export function reportMissingData(parcels = []) {
+  const rows = parcels.map((parcel) => {
+    const missing = [];
+    if (!parcel.address && !parcel.parcelId) missing.push('identity');
+    if (!parcel.ownerName && !parcel.owner) missing.push('ownerName');
+    if (!parcel.ownerPhone && !parcel.ownerEmail) missing.push('ownerContact');
+    if (!parcel.buyerMaxPrice || !parcel.askingPrice) missing.push('pricing');
+    if (!parcel.roadAccess || !parcel.utilities || parcel.utilities === 'unknown' || parcel.wetlands === '' || parcel.wetlands == null || parcel.floodZone === '' || parcel.floodZone == null) missing.push('buildability');
+    return { id: parcel.id || parcel.parcelId || parcel.address, address: parcel.address || '', missing, severity: missing.length };
+  }).sort((a, b) => b.severity - a.severity);
+  return {
+    totalParcels: parcels.length,
+    rows,
+    summary: {
+      ownerContactMissing: rows.filter(row => row.missing.includes('ownerContact')).length,
+      buildabilityMissing: rows.filter(row => row.missing.includes('buildability')).length,
+      pricingMissing: rows.filter(row => row.missing.includes('pricing')).length,
+      identityMissing: rows.filter(row => row.missing.includes('identity')).length,
+    },
+  };
+}
+
+export function getDataSourceChecklist(market = 'lehigh') {
+  return [
+    { id: 'county-parcel-export', label: 'County parcel export loaded', required: true, blocksCallList: false, detail: `${market}: APN, situs address, owner, mailing address, assessed/just value.` },
+    { id: 'market-pricing-export', label: 'Pricing/comps attached', required: true, blocksCallList: false, detail: 'Lowest active listing, buyer max price, or estimated market value.' },
+    { id: 'owner-contact-enrichment', label: 'Owner phone/email enriched', required: true, blocksCallList: true, detail: 'Skip-trace or direct contact field present before call-list export.' },
+    { id: 'buildability-screen', label: 'Buildability screen complete', required: true, blocksCallList: true, detail: 'Wetlands, flood, road access, utilities, slope/wildlife checked.' },
+    { id: 'duplicate-review', label: 'Duplicate APN/address review complete', required: true, blocksCallList: false, detail: 'Resolve duplicate APN/address groups before calling.' },
+  ];
+}
+
 export function formatMoney(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 }

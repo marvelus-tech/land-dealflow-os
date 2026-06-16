@@ -1,5 +1,15 @@
 import assert from 'node:assert/strict';
-import { scoreMarket, computeOffer, classifyParcelRisk, rankBuyers } from '../src/core.mjs';
+import {
+  scoreMarket,
+  computeOffer,
+  classifyParcelRisk,
+  rankBuyers,
+  parseCsvRecords,
+  scoreParcelDeal,
+  applyCrmUpdate,
+  exportWorkspace,
+  importWorkspace,
+} from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
   const market = {
@@ -87,4 +97,80 @@ testScoreMarketKillsThinBuilderMarkets();
 testOfferEngineKeepsSpreadAndSellerNetLogic();
 testParcelRiskClassification();
 testRankBuyersPrioritizesRepeatScatteredLotBuilders();
+
+function testCsvParserHandlesQuotedFieldsAndTypeCoercion() {
+  const csv = 'address,market,buyerMaxPrice,roadAccess,notes\n"12, Canal Rd",lehigh,42000,true,"seller says, call after 5"';
+  const records = parseCsvRecords(csv);
+  assert.equal(records.length, 1);
+  assert.equal(records[0].address, '12, Canal Rd');
+  assert.equal(records[0].buyerMaxPrice, 42000);
+  assert.equal(records[0].roadAccess, true);
+  assert.equal(records[0].notes, 'seller says, call after 5');
+}
+
+function testParcelDealScorePrioritizesCleanHighSpreadBuyerFit() {
+  const buyer = { id: 'precision', market: 'lehigh', maxPrice: 42000, buyBox: '0.25 acre infill paved road', score: 86 };
+  const parcel = {
+    market: 'lehigh',
+    buyerId: 'precision',
+    buyerMaxPrice: 42000,
+    lowestActiveListing: 48000,
+    askingPrice: 28500,
+    paid: 6000,
+    heldYears: 12,
+    owner: 'Absentee owner',
+    wetlands: 'none',
+    floodZone: false,
+    roadAccess: true,
+    utilities: 'nearby',
+    slope: 'flat',
+  };
+  const scored = scoreParcelDeal(parcel, buyer);
+  assert.ok(scored.score >= 80, `expected call-now score, got ${scored.score}`);
+  assert.equal(scored.action, 'Call now');
+  assert.ok(scored.reasons.includes('clean buildability pass'));
+  assert.ok(scored.metrics.spread >= 8000);
+}
+
+function testParcelDealScoreKillsSevereBuildabilityRisk() {
+  const scored = scoreParcelDeal({
+    market: 'lehigh',
+    buyerMaxPrice: 42000,
+    lowestActiveListing: 47000,
+    askingPrice: 35000,
+    paid: 3000,
+    heldYears: 17,
+    owner: 'Inherited owner',
+    wetlands: 'likely',
+    floodZone: true,
+    roadAccess: false,
+    utilities: 'unknown',
+    slope: 'flat',
+    wildlifeFlag: true,
+  });
+  assert.equal(scored.risk.status, 'Kill');
+  assert.equal(scored.action, 'Kill');
+  assert.ok(scored.score <= 35);
+}
+
+function testCrmUpdateAndWorkspaceExportImportRoundTrip() {
+  const workspace = {
+    markets: [],
+    buyers: [],
+    parcels: [{ id: 'p1', address: '123 Grant Blvd', crmStatus: 'New', notes: '' }],
+  };
+  const updated = applyCrmUpdate(workspace, 'p1', { crmStatus: 'Contacted', notes: 'Left voicemail', nextFollowUp: '2026-06-20' });
+  assert.equal(updated.parcels[0].crmStatus, 'Contacted');
+  assert.equal(updated.parcels[0].notes, 'Left voicemail');
+  assert.notEqual(updated, workspace, 'CRM updates should be immutable for predictable localStorage writes');
+
+  const exported = exportWorkspace(updated);
+  const restored = importWorkspace(exported);
+  assert.deepEqual(restored.parcels[0], updated.parcels[0]);
+}
+
+testCsvParserHandlesQuotedFieldsAndTypeCoercion();
+testParcelDealScorePrioritizesCleanHighSpreadBuyerFit();
+testParcelDealScoreKillsSevereBuildabilityRisk();
+testCrmUpdateAndWorkspaceExportImportRoundTrip();
 console.log('scoring tests passed');

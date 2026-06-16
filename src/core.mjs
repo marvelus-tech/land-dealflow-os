@@ -86,6 +86,168 @@ export function rankBuyers(buyers) {
     .sort((a, b) => b.score - a.score);
 }
 
+export const CRM_STATUSES = ['New', 'Researching', 'Owner Found', 'Contacted', 'Negotiating', 'Under Contract', 'Sent to Buyer', 'Assigned/Sold', 'Dead', 'Kill'];
+
+export function parseCsvRecords(csvText) {
+  const text = String(csvText || '').replace(/^\ufeff/, '').trim();
+  if (!text) return [];
+  const rows = [];
+  let row = [];
+  let field = '';
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i += 1) {
+    const char = text[i];
+    const next = text[i + 1];
+    if (char === '"') {
+      if (inQuotes && next === '"') {
+        field += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+    } else if (char === ',' && !inQuotes) {
+      row.push(field);
+      field = '';
+    } else if ((char === '\n' || char === '\r') && !inQuotes) {
+      if (char === '\r' && next === '\n') i += 1;
+      row.push(field);
+      if (row.some(cell => cell.trim() !== '')) rows.push(row);
+      row = [];
+      field = '';
+    } else {
+      field += char;
+    }
+  }
+  row.push(field);
+  if (row.some(cell => cell.trim() !== '')) rows.push(row);
+  if (rows.length < 2) return [];
+
+  const headers = rows[0].map(header => normalizeHeader(header));
+  return rows.slice(1).map((cells, index) => {
+    const record = { id: `import-${Date.now()}-${index + 1}` };
+    headers.forEach((header, cellIndex) => {
+      if (!header) return;
+      record[header] = coerceCsvValue(cells[cellIndex] ?? '');
+    });
+    return record;
+  });
+}
+
+function normalizeHeader(header) {
+  const cleaned = String(header || '').trim();
+  const aliases = {
+    apn: 'parcelId',
+    parcel_id: 'parcelId',
+    parcelid: 'parcelId',
+    buyer_max_price: 'buyerMaxPrice',
+    buyermaxprice: 'buyerMaxPrice',
+    lowest_active_listing: 'lowestActiveListing',
+    lowestactivelisting: 'lowestActiveListing',
+    asking_price: 'askingPrice',
+    askingprice: 'askingPrice',
+    road_access: 'roadAccess',
+    roadaccess: 'roadAccess',
+    flood_zone: 'floodZone',
+    floodzone: 'floodZone',
+    wildlife_flag: 'wildlifeFlag',
+    wildlifeflag: 'wildlifeFlag',
+    held_years: 'heldYears',
+    heldyears: 'heldYears',
+    crm_status: 'crmStatus',
+    crmstatus: 'crmStatus',
+    next_follow_up: 'nextFollowUp',
+    nextfollowup: 'nextFollowUp',
+    buyer_id: 'buyerId',
+    buyerid: 'buyerId',
+    lot_size: 'lotSize',
+    lotsize: 'lotSize',
+  };
+  const snake = cleaned.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '').toLowerCase();
+  if (aliases[snake]) return aliases[snake];
+  return snake.replace(/_([a-z0-9])/g, (_, char) => char.toUpperCase());
+}
+
+function coerceCsvValue(value) {
+  const raw = String(value ?? '').trim();
+  if (raw === '') return '';
+  if (/^(true|yes|y)$/i.test(raw)) return true;
+  if (/^(false|no|n)$/i.test(raw)) return false;
+  const numeric = raw.replace(/^\$/, '').replace(/,/g, '');
+  if (/^-?\d+(\.\d+)?$/.test(numeric)) return Number(numeric);
+  return raw;
+}
+
+export function scoreParcelDeal(parcel, buyer = {}) {
+  const risk = classifyParcelRisk(parcel);
+  const offer = computeOffer({
+    buyerMaxPrice: Number(parcel.buyerMaxPrice || buyer.maxPrice || buyer.buyerMaxPrice || 0),
+    lowestActiveListing: Number(parcel.lowestActiveListing || 0) || null,
+    riskDiscount: risk.status === 'Review' ? 2500 : risk.status === 'Kill' ? 7500 : 0,
+  });
+  const askingPrice = Number(parcel.askingPrice || parcel.sellerAsk || offer.initialSellerOffer || 0);
+  const spread = Math.max(0, offer.buyerPrice - askingPrice);
+  const spreadPct = offer.buyerPrice ? spread / offer.buyerPrice : 0;
+  const reasons = [];
+  const flags = [...risk.flags];
+  let score = 0;
+
+  if (risk.status === 'Pass') { score += 28; reasons.push('clean buildability pass'); }
+  else if (risk.status === 'Review') { score += 12; flags.push('requires manual buildability review'); }
+  else { score -= 20; flags.push('fatal buildability risk'); }
+
+  if (buyer?.id && parcel.buyerId && buyer.id === parcel.buyerId) { score += 14; reasons.push('matched buyer buy box'); }
+  else if (buyer?.market && parcel.market && buyer.market === parcel.market) { score += 8; reasons.push('same-market buyer fit'); }
+  if (Number(buyer?.score || 0) >= 70) { score += 8; reasons.push('strong buyer demand'); }
+
+  if (spreadPct >= 0.2) { score += 25; reasons.push('large spread'); }
+  else if (spreadPct >= 0.12) { score += 18; reasons.push('healthy spread'); }
+  else if (spreadPct >= 0.08) { score += 10; }
+  else flags.push('thin spread');
+
+  if (Number(parcel.heldYears || 0) >= 8) { score += 8; reasons.push('long-held owner'); }
+  if (String(parcel.owner || '').match(/absentee|out-of-state|inherited|multiple/i)) { score += 9; reasons.push('motivated-owner signal'); }
+  if (Number(parcel.paid || 0) > 0 && Number(parcel.paid) <= offer.buyerPrice * 0.45) { score += 8; reasons.push('low basis owner'); }
+
+  if (risk.status === 'Kill') score = Math.min(score, 30);
+  score = Math.round(clamp(score, 0, 100));
+  let action = 'Research more';
+  if (risk.status === 'Kill') action = 'Kill';
+  else if (score >= 78) action = 'Call now';
+  else if (score >= 60) action = 'Mail first';
+
+  return {
+    ...parcel,
+    score,
+    action,
+    risk,
+    offer,
+    reasons,
+    flags,
+    metrics: { spread, spreadPct, askingPrice, buyerPrice: offer.buyerPrice },
+  };
+}
+
+export function applyCrmUpdate(workspace, parcelId, updates) {
+  return {
+    ...workspace,
+    parcels: (workspace.parcels || []).map(parcel => parcel.id === parcelId ? { ...parcel, ...updates, updatedAt: new Date().toISOString() } : parcel),
+  };
+}
+
+export function exportWorkspace(workspace) {
+  return JSON.stringify({ version: 2, exportedAt: new Date().toISOString(), ...workspace }, null, 2);
+}
+
+export function importWorkspace(serialized) {
+  const parsed = typeof serialized === 'string' ? JSON.parse(serialized) : serialized;
+  return {
+    markets: Array.isArray(parsed.markets) ? parsed.markets : [],
+    buyers: Array.isArray(parsed.buyers) ? parsed.buyers : [],
+    parcels: Array.isArray(parsed.parcels) ? parsed.parcels : [],
+  };
+}
+
 export function formatMoney(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 }

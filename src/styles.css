@@ -103,12 +103,53 @@ h3 { font-size: 18px; line-height: 1.2; letter-spacing: -.24px; font-weight: 590
 .mini-grid b, .deal-strip b { display: block; font-size: 18px; letter-spacing: -.3px; }
 .deal-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
 .parcel-card h3 { font-size: 17px; }
+.badge-stack { display: flex; flex-wrap: wrap; gap: 7px; justify-content: flex-end; }
+.workspace-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.tool-card textarea, .crm-row textarea, .crm-row input, .crm-row select {
+  width: 100%;
+  margin-top: 8px;
+  color: var(--text);
+  background: rgba(0,0,0,.22);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 11px 12px;
+  font: 13px/1.45 'JetBrains Mono', ui-monospace, monospace;
+}
+.tool-card textarea { margin-top: 16px; min-height: 170px; resize: vertical; }
+.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; color: var(--muted); font-size: 13px; }
+button {
+  cursor: pointer;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--brand);
+  color: var(--text);
+  padding: 10px 13px;
+  font: 600 13px/1 'Inter', system-ui, sans-serif;
+}
+button:hover { filter: brightness(1.08); }
+button.danger { background: rgba(239,68,68,.16); color: #fecaca; border-color: rgba(239,68,68,.36); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: -4px 0 18px; }
+.filter { background: rgba(255,255,255,.03); color: var(--soft); }
+.filter.active { background: var(--brand); color: white; border-color: rgba(255,255,255,.18); }
+.deal-strip.five { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.crm-row {
+  display: grid;
+  grid-template-columns: .8fr .9fr 2fr auto;
+  align-items: end;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-soft);
+}
+.crm-row label { color: var(--muted); font-size: 12px; }
+.save-crm { min-height: 41px; }
 footer { max-width: 1220px; margin: 0 auto; padding: 36px 24px 60px; color: var(--muted); border-top: 1px solid var(--line-soft); }
 
 @media (max-width: 1000px) {
-  .command, .grid, .grid.two { grid-template-columns: 1fr; }
+  .command, .grid, .grid.two, .workspace-grid { grid-template-columns: 1fr; }
   .pipeline { grid-template-columns: repeat(2, 1fr); }
-  .deal-strip { grid-template-columns: repeat(2, 1fr); }
+  .deal-strip, .deal-strip.five { grid-template-columns: repeat(2, 1fr); }
+  .crm-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .nav { padding: 0 16px; }

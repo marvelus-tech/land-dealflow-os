@@ -63,6 +63,7 @@ const stages = [
 ];
 
 let workspace = loadWorkspace();
+let generatedLeads = null;
 let filter = 'all';
 
 function loadWorkspace() {
@@ -200,8 +201,8 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v0.7 buyer validation pipeline</span>
-      <h1>Validate real buyers with scorecards, call notes, exact buy boxes, fit matrix, and feedback loops.</h1>
+      <span class="eyebrow">Land Dealflow OS · v0.8 lead engine conveyor belt</span>
+      <h1>Generate market, buyer, parcel, seller-call, and offer-ready queues automatically.</h1>
       <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
       <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
@@ -216,11 +217,16 @@ function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">v0.7 Workspace</span>
-      <h2>Normalize, validate buyers, fit deals, write offers, export memos</h2>
-      <p>Import source data, validate buyer truth, capture exact buy boxes, score parcel fit, and close the feedback loop.</p>
+      <span class="eyebrow">v0.8 Workspace</span>
+      <h2>Generated leads, validation, seller calls, offers</h2>
+      <p>The lead engine now writes generated buyer/parcel queues to data/generated. This cockpit presents the conveyor belt output for calls.</p>
     </div>
     <div class="workspace-grid">
+      <article class="card tool-card wide-card">
+        <h3>Lead engine output</h3>
+        <p>Automatically generated conveyor belt: new parcel leads, buyer-validation tasks, top seller calls, offer-ready deals, and blockers.</p>
+        <div id="lead-engine-panel"></div>
+      </article>
       <article class="card tool-card">
         <h3>CSV parcel import</h3>
         <p>Headers supported: address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p>
@@ -275,6 +281,42 @@ function renderTopCallList() {
     <span>${h(call.ownerName || call.owner || 'Owner unknown')} · ${h(call.ownerPhone || call.ownerEmail)} · score ${call.score}</span>
     <em>Buyer: ${h(call.buyerContactName || 'contact missing')} ${h(call.buyerPhone || call.buyerEmail || '')}</em>
   </div>`).join('') : '<p>No callable parcels yet. Import contacts or improve scoring.</p>';
+}
+
+async function loadGeneratedLeads() {
+  try {
+    const response = await fetch('data/generated/latest.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`lead engine ${response.status}`);
+    generatedLeads = await response.json();
+  } catch (error) {
+    generatedLeads = { error: error.message };
+  }
+}
+
+function renderLeadEnginePanel() {
+  const target = document.querySelector('#lead-engine-panel');
+  if (!target) return;
+  if (!generatedLeads) {
+    target.innerHTML = '<p>Loading generated lead-engine output…</p>';
+    return;
+  }
+  if (generatedLeads.error) {
+    target.innerHTML = `<p>Lead engine output not found yet: ${h(generatedLeads.error)}. Run <code>node scripts/lead-engine.mjs</code>.</p>`;
+    return;
+  }
+  const snapshot = generatedLeads.snapshot || {};
+  const queues = generatedLeads.queues || {};
+  const topCalls = queues.topSellerCalls || [];
+  const buyerTasks = queues.buyerValidation || [];
+  const offerReady = queues.offerReady || [];
+  const blockers = queues.missingData || [];
+  target.innerHTML = `<div class="lead-engine-grid">
+    <div class="deal-strip four"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Offer-ready</span><strong>${offerReady.length}</strong></div></div>
+    <div class="engine-column"><h4>Top seller calls</h4>${topCalls.slice(0, 5).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
+    <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 5).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No buyer-validation tasks generated yet.</p>'}</div>
+    <div class="engine-column"><h4>Offer-ready</h4>${offerReady.slice(0, 5).map(item => `<div class="engine-row"><b>${h(item.address)}</b><span>${h(item.ownerName)} · ask ${h(item.askingPrice)} · max ${h(item.buyerMaxPrice)}</span></div>`).join('') || '<p>No offer-ready deals generated yet.</p>'}</div>
+    <div class="engine-column"><h4>Blockers</h4>${blockers.filter(item => item.severity > 0).slice(0, 5).map(item => `<div class="engine-row"><b>${h(item.address || item.parcelId)}</b><span>Missing: ${h(item.missing || 'unknown')}</span></div>`).join('') || '<p>No critical blockers in generated leads.</p>'}</div>
+  </div>`;
 }
 
 function renderQualityControl() {
@@ -473,6 +515,7 @@ function renderAll() {
   renderFilters();
   renderParcels();
   renderTopCallList();
+  renderLeadEnginePanel();
   renderQualityControl();
   renderBuyerValidationPanel();
   renderOutreachPanel();
@@ -481,3 +524,4 @@ function renderAll() {
 
 bindEvents();
 renderAll();
+loadGeneratedLeads().then(renderAll);

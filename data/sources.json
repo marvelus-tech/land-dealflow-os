@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "targetMarkets": [
+    {
+      "id": "lehigh",
+      "name": "Lehigh Acres, FL",
+      "state": "FL",
+      "buyerType": "spec-builder",
+      "thesis": "Quarter-acre infill vacant lots with repeat builder demand and standard lot patterns.",
+      "priority": 10
+    },
+    {
+      "id": "cape-coral",
+      "name": "Cape Coral, FL",
+      "state": "FL",
+      "buyerType": "custom-builder",
+      "thesis": "Utility and canal-premium lot opportunities, but diligence risk is higher.",
+      "priority": 7
+    }
+  ],
+  "buyerSources": [
+    {
+      "id": "lehigh-builders-seed",
+      "market": "lehigh",
+      "type": "seed",
+      "cadence": "weekly",
+      "records": [
+        {
+          "id": "precision",
+          "name": "Precision Gulf Homes",
+          "website": "https://precisiongulf.example",
+          "phone": "239-555-0100",
+          "email": "maya@precisiongulf.example",
+          "contactName": "Maya Chen",
+          "recentBuilds": 18,
+          "closeSpeedDays": 14,
+          "repeatDemand": 9,
+          "maxPrice": 42000,
+          "buyBox": "0.23-0.32 acre Lehigh infill lots, paved road, no wetlands, $42k max",
+          "exactBuyBox": {
+            "targetMarkets": ["lehigh"],
+            "lotSizeMin": 0.23,
+            "lotSizeMax": 0.32,
+            "maxPrice": 42000,
+            "requiredRoadAccess": true,
+            "requiredUtilities": false,
+            "avoidFloodZones": ["AE"],
+            "avoidWetlands": true,
+            "notes": "Paved-road quarter-acre Lehigh infill only."
+          }
+        },
+        {
+          "id": "evergreen",
+          "name": "Evergreen Land Fund",
+          "website": "https://evergreenland.example",
+          "phone": "305-555-0108",
+          "email": "sam@evergreenland.example",
+          "contactName": "Sam Patel",
+          "recentBuilds": 0,
+          "closeSpeedDays": 30,
+          "repeatDemand": 4,
+          "maxPrice": 35000,
+          "buyBox": "Backup buyer; buys only at 60-70% of market value."
+        }
+      ]
+    },
+    {
+      "id": "cape-builders-seed",
+      "market": "cape-coral",
+      "type": "seed",
+      "cadence": "weekly",
+      "records": [
+        {
+          "id": "sunbelt",
+          "name": "Sunbelt Custom Builders",
+          "website": "https://sunbelt.example",
+          "phone": "239-555-0144",
+          "email": "land@sunbelt.example",
+          "contactName": "Andre Wells",
+          "recentBuilds": 11,
+          "closeSpeedDays": 21,
+          "repeatDemand": 7,
+          "maxPrice": 95000,
+          "buyBox": "Cape Coral utility-confirmed quarter-acre residential lots; canal/seawall premium only after verification."
+        }
+      ]
+    }
+  ],
+  "parcelSources": [
+    {
+      "id": "lehigh-parcels-seed",
+      "market": "lehigh",
+      "type": "seed",
+      "cadence": "daily",
+      "records": [
+        {
+          "parcelId": "LEH-001",
+          "address": "123 Grant Blvd, Lehigh Acres, FL",
+          "market": "lehigh",
+          "lotSize": "0.25 ac",
+          "lotSizeAcres": 0.25,
+          "ownerName": "Avery Santos",
+          "ownerPhone": "239-555-0131",
+          "ownerEmail": "avery@example.com",
+          "ownerMailingAddress": "88 Pine St, Tampa FL 33602",
+          "askingPrice": 28500,
+          "lowestActiveListing": 48000,
+          "buyerMaxPrice": 42000,
+          "heldYears": 11,
+          "paid": 6200,
+          "roadAccess": true,
+          "utilities": true,
+          "wetlands": false,
+          "floodZone": "X",
+          "slope": "flat",
+          "wildlifeFlag": false
+        },
+        {
+          "parcelId": "LEH-002",
+          "address": "711 Meadow Rd, Lehigh Acres, FL",
+          "market": "lehigh",
+          "lotSize": "0.25 ac",
+          "lotSizeAcres": 0.25,
+          "ownerName": "River Trust",
+          "ownerMailingAddress": "PO Box 711, Miami FL 33101",
+          "askingPrice": 36000,
+          "lowestActiveListing": 47000,
+          "buyerMaxPrice": 42000,
+          "heldYears": 17,
+          "paid": 3000,
+          "roadAccess": false,
+          "utilities": false,
+          "wetlands": true,
+          "floodZone": "AE",
+          "slope": "flat",
+          "wildlifeFlag": true
+        },
+        {
+          "parcelId": "LEH-003",
+          "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+          "market": "lehigh",
+          "lotSize": "0.24 ac",
+          "lotSizeAcres": 0.24,
+          "ownerName": "D Nolan",
+          "ownerPhone": "239-555-0199",
+          "ownerMailingAddress": "144 Oak Ln, Orlando FL 32801",
+          "askingPrice": 31000,
+          "lowestActiveListing": 46500,
+          "buyerMaxPrice": 42000,
+          "heldYears": 9,
+          "paid": 8400,
+          "roadAccess": true,
+          "utilities": true,
+          "wetlands": false,
+          "floodZone": "X",
+          "slope": "flat",
+          "wildlifeFlag": false
+        }
+      ]
+    },
+    {
+      "id": "cape-parcels-seed",
+      "market": "cape-coral",
+      "type": "seed",
+      "cadence": "daily",
+      "records": [
+        {
+          "parcelId": "CAP-001",
+          "address": "904 SW Canal Ter, Cape Coral, FL",
+          "market": "cape-coral",
+          "lotSize": "0.23 ac",
+          "lotSizeAcres": 0.23,
+          "ownerName": "M Rivera",
+          "ownerPhone": "239-555-0172",
+          "ownerMailingAddress": "21 Bay Dr, Fort Myers FL 33901",
+          "askingPrice": 76000,
+          "lowestActiveListing": 112000,
+          "buyerMaxPrice": 95000,
+          "heldYears": 8,
+          "paid": 21000,
+          "roadAccess": true,
+          "utilities": true,
+          "wetlands": false,
+          "floodZone": "X",
+          "slope": "flat",
+          "wildlifeFlag": false
+        }
+      ]
+    }
+  ]
+}

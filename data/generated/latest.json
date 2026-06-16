@@ -1,0 +1,520 @@
+{
+  "snapshot": {
+    "runId": "lead-engine-2026-06-16T12-03-38-244Z",
+    "generatedAt": "2026-06-16T12:03:38.244Z",
+    "markets": [
+      {
+        "leadId": "market:lehigh",
+        "score": 100,
+        "id": "lehigh",
+        "name": "Lehigh Acres, FL",
+        "state": "FL",
+        "buyerType": "spec-builder",
+        "thesis": "Quarter-acre infill vacant lots with repeat builder demand and standard lot patterns.",
+        "priority": 10,
+        "rank": 1,
+        "collectedAt": "2026-06-16T12:03:38.244Z"
+      },
+      {
+        "leadId": "market:cape-coral",
+        "score": 100,
+        "id": "cape-coral",
+        "name": "Cape Coral, FL",
+        "state": "FL",
+        "buyerType": "custom-builder",
+        "thesis": "Utility and canal-premium lot opportunities, but diligence risk is higher.",
+        "priority": 7,
+        "rank": 2,
+        "collectedAt": "2026-06-16T12:03:38.244Z"
+      }
+    ],
+    "buyers": [
+      {
+        "leadId": "buyer:lehigh:precision-gulf-homes",
+        "validationStatus": "needs-call-confirmation",
+        "confidence": 93,
+        "id": "precision",
+        "name": "Precision Gulf Homes",
+        "website": "https://precisiongulf.example",
+        "phone": "239-555-0100",
+        "email": "maya@precisiongulf.example",
+        "contactName": "Maya Chen",
+        "recentBuilds": 18,
+        "closeSpeedDays": 14,
+        "repeatDemand": 9,
+        "maxPrice": 42000,
+        "buyBox": "0.23-0.32 acre Lehigh infill lots, paved road, no wetlands, $42k max",
+        "exactBuyBox": {
+          "targetMarkets": [
+            "lehigh"
+          ],
+          "lotSizeMin": 0.23,
+          "lotSizeMax": 0.32,
+          "maxPrice": 42000,
+          "requiredRoadAccess": true,
+          "requiredUtilities": false,
+          "avoidFloodZones": [
+            "AE"
+          ],
+          "avoidWetlands": true,
+          "notes": "Paved-road quarter-acre Lehigh infill only."
+        },
+        "market": "lehigh",
+        "sourceId": "lehigh-builders-seed",
+        "sourceType": "buyer",
+        "sourceAdapter": "seed",
+        "cadence": "weekly",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 1
+      },
+      {
+        "leadId": "buyer:lehigh:evergreen-land-fund",
+        "validationStatus": "needs-call-confirmation",
+        "confidence": 55,
+        "id": "evergreen",
+        "name": "Evergreen Land Fund",
+        "website": "https://evergreenland.example",
+        "phone": "305-555-0108",
+        "email": "sam@evergreenland.example",
+        "contactName": "Sam Patel",
+        "recentBuilds": 0,
+        "closeSpeedDays": 30,
+        "repeatDemand": 4,
+        "maxPrice": 35000,
+        "buyBox": "Backup buyer; buys only at 60-70% of market value.",
+        "market": "lehigh",
+        "sourceId": "lehigh-builders-seed",
+        "sourceType": "buyer",
+        "sourceAdapter": "seed",
+        "cadence": "weekly",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 2
+      },
+      {
+        "leadId": "buyer:cape-coral:sunbelt-custom-builders",
+        "validationStatus": "needs-call-confirmation",
+        "confidence": 66,
+        "id": "sunbelt",
+        "name": "Sunbelt Custom Builders",
+        "website": "https://sunbelt.example",
+        "phone": "239-555-0144",
+        "email": "land@sunbelt.example",
+        "contactName": "Andre Wells",
+        "recentBuilds": 11,
+        "closeSpeedDays": 21,
+        "repeatDemand": 7,
+        "maxPrice": 95000,
+        "buyBox": "Cape Coral utility-confirmed quarter-acre residential lots; canal/seawall premium only after verification.",
+        "market": "cape-coral",
+        "sourceId": "cape-builders-seed",
+        "sourceType": "buyer",
+        "sourceAdapter": "seed",
+        "cadence": "weekly",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 1
+      }
+    ],
+    "parcels": [
+      {
+        "leadId": "parcel:lehigh:LEH-001",
+        "crmStatus": "Generated lead",
+        "nextFollowUp": "2026-06-16",
+        "sourceScore": 95,
+        "parcelId": "LEH-001",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "market": "lehigh",
+        "lotSize": "0.25 ac",
+        "lotSizeAcres": 0.25,
+        "ownerName": "Avery Santos",
+        "ownerPhone": "239-555-0131",
+        "ownerEmail": "avery@example.com",
+        "ownerMailingAddress": "88 Pine St, Tampa FL 33602",
+        "askingPrice": 28500,
+        "lowestActiveListing": 48000,
+        "buyerMaxPrice": 42000,
+        "heldYears": 11,
+        "paid": 6200,
+        "roadAccess": true,
+        "utilities": true,
+        "wetlands": false,
+        "floodZone": "X",
+        "slope": "flat",
+        "wildlifeFlag": false,
+        "sourceId": "lehigh-parcels-seed",
+        "sourceType": "parcel",
+        "sourceAdapter": "seed",
+        "cadence": "daily",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 1
+      },
+      {
+        "leadId": "parcel:lehigh:LEH-002",
+        "crmStatus": "Generated lead",
+        "nextFollowUp": "2026-06-16",
+        "sourceScore": 60,
+        "parcelId": "LEH-002",
+        "address": "711 Meadow Rd, Lehigh Acres, FL",
+        "market": "lehigh",
+        "lotSize": "0.25 ac",
+        "lotSizeAcres": 0.25,
+        "ownerName": "River Trust",
+        "ownerMailingAddress": "PO Box 711, Miami FL 33101",
+        "askingPrice": 36000,
+        "lowestActiveListing": 47000,
+        "buyerMaxPrice": 42000,
+        "heldYears": 17,
+        "paid": 3000,
+        "roadAccess": false,
+        "utilities": false,
+        "wetlands": true,
+        "floodZone": "AE",
+        "slope": "flat",
+        "wildlifeFlag": true,
+        "sourceId": "lehigh-parcels-seed",
+        "sourceType": "parcel",
+        "sourceAdapter": "seed",
+        "cadence": "daily",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 2
+      },
+      {
+        "leadId": "parcel:lehigh:LEH-003",
+        "crmStatus": "Generated lead",
+        "nextFollowUp": "2026-06-16",
+        "sourceScore": 95,
+        "parcelId": "LEH-003",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "market": "lehigh",
+        "lotSize": "0.24 ac",
+        "lotSizeAcres": 0.24,
+        "ownerName": "D Nolan",
+        "ownerPhone": "239-555-0199",
+        "ownerMailingAddress": "144 Oak Ln, Orlando FL 32801",
+        "askingPrice": 31000,
+        "lowestActiveListing": 46500,
+        "buyerMaxPrice": 42000,
+        "heldYears": 9,
+        "paid": 8400,
+        "roadAccess": true,
+        "utilities": true,
+        "wetlands": false,
+        "floodZone": "X",
+        "slope": "flat",
+        "wildlifeFlag": false,
+        "sourceId": "lehigh-parcels-seed",
+        "sourceType": "parcel",
+        "sourceAdapter": "seed",
+        "cadence": "daily",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 3
+      },
+      {
+        "leadId": "parcel:cape-coral:CAP-001",
+        "crmStatus": "Generated lead",
+        "nextFollowUp": "2026-06-16",
+        "sourceScore": 95,
+        "parcelId": "CAP-001",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "market": "cape-coral",
+        "lotSize": "0.23 ac",
+        "lotSizeAcres": 0.23,
+        "ownerName": "M Rivera",
+        "ownerPhone": "239-555-0172",
+        "ownerMailingAddress": "21 Bay Dr, Fort Myers FL 33901",
+        "askingPrice": 76000,
+        "lowestActiveListing": 112000,
+        "buyerMaxPrice": 95000,
+        "heldYears": 8,
+        "paid": 21000,
+        "roadAccess": true,
+        "utilities": true,
+        "wetlands": false,
+        "floodZone": "X",
+        "slope": "flat",
+        "wildlifeFlag": false,
+        "sourceId": "cape-parcels-seed",
+        "sourceType": "parcel",
+        "sourceAdapter": "seed",
+        "cadence": "daily",
+        "collectedAt": "2026-06-16T12:03:38.244Z",
+        "sequence": 1
+      }
+    ],
+    "sourceSummary": {
+      "markets": 2,
+      "buyers": 3,
+      "parcels": 4
+    }
+  },
+  "queues": {
+    "topSellerCalls": [
+      {
+        "queue": "top_seller_calls",
+        "callPriority": 1,
+        "parcelId": "LEH-001",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "ownerName": "Avery Santos",
+        "ownerPhone": "239-555-0131",
+        "ownerEmail": "avery@example.com",
+        "score": 53,
+        "action": "Research more",
+        "askingPrice": 28500,
+        "buyerMaxPrice": 42000
+      },
+      {
+        "queue": "top_seller_calls",
+        "callPriority": 2,
+        "parcelId": "LEH-003",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "ownerName": "D Nolan",
+        "ownerPhone": "239-555-0199",
+        "ownerEmail": "",
+        "score": 53,
+        "action": "Research more",
+        "askingPrice": 31000,
+        "buyerMaxPrice": 42000
+      },
+      {
+        "queue": "top_seller_calls",
+        "callPriority": 3,
+        "parcelId": "CAP-001",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "ownerName": "M Rivera",
+        "ownerPhone": "239-555-0172",
+        "ownerEmail": "",
+        "score": 53,
+        "action": "Research more",
+        "askingPrice": 76000,
+        "buyerMaxPrice": 95000
+      }
+    ],
+    "buyerValidation": [
+      {
+        "buyerId": "precision",
+        "name": "Precision Gulf Homes",
+        "market": "lehigh",
+        "phone": "239-555-0100",
+        "website": "https://precisiongulf.example",
+        "task": "validate proof/close speed",
+        "confidence": 93
+      },
+      {
+        "buyerId": "evergreen",
+        "name": "Evergreen Land Fund",
+        "market": "lehigh",
+        "phone": "305-555-0108",
+        "website": "https://evergreenland.example",
+        "task": "capture exact buy box",
+        "confidence": 55
+      },
+      {
+        "buyerId": "sunbelt",
+        "name": "Sunbelt Custom Builders",
+        "market": "cape-coral",
+        "phone": "239-555-0144",
+        "website": "https://sunbelt.example",
+        "task": "capture exact buy box",
+        "confidence": 66
+      }
+    ],
+    "missingData": [
+      {
+        "queue": "missing_data",
+        "id": "LEH-002",
+        "address": "711 Meadow Rd, Lehigh Acres, FL",
+        "missing": "ownerContact|buildability",
+        "severity": 2,
+        "parcelId": "LEH-002"
+      },
+      {
+        "queue": "missing_data",
+        "id": "LEH-001",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "missing": "",
+        "severity": 0,
+        "parcelId": "LEH-001"
+      },
+      {
+        "queue": "missing_data",
+        "id": "LEH-003",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "missing": "",
+        "severity": 0,
+        "parcelId": "LEH-003"
+      },
+      {
+        "queue": "missing_data",
+        "id": "CAP-001",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "missing": "",
+        "severity": 0,
+        "parcelId": "CAP-001"
+      }
+    ],
+    "riskBlocked": [
+      {
+        "parcelId": "LEH-002",
+        "address": "711 Meadow Rd, Lehigh Acres, FL",
+        "reason": "buildability risk",
+        "market": "lehigh"
+      }
+    ],
+    "offerReady": [
+      {
+        "parcelId": "LEH-001",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "ownerName": "Avery Santos",
+        "ownerPhone": "239-555-0131",
+        "askingPrice": 28500,
+        "buyerMaxPrice": 42000,
+        "score": 53
+      },
+      {
+        "parcelId": "LEH-003",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "ownerName": "D Nolan",
+        "ownerPhone": "239-555-0199",
+        "askingPrice": 31000,
+        "buyerMaxPrice": 42000,
+        "score": 53
+      },
+      {
+        "parcelId": "CAP-001",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "ownerName": "M Rivera",
+        "ownerPhone": "239-555-0172",
+        "askingPrice": 76000,
+        "buyerMaxPrice": 95000,
+        "score": 53
+      }
+    ],
+    "fitMatrix": [
+      {
+        "parcelId": "LEH-001",
+        "buyerId": "precision",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "buyerName": "Precision Gulf Homes",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-001",
+        "buyerId": "evergreen",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "buyerName": "Evergreen Land Fund",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-001",
+        "buyerId": "sunbelt",
+        "address": "123 Grant Blvd, Lehigh Acres, FL",
+        "buyerName": "Sunbelt Custom Builders",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-002",
+        "buyerId": "evergreen",
+        "address": "711 Meadow Rd, Lehigh Acres, FL",
+        "buyerName": "Evergreen Land Fund",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-002",
+        "buyerId": "sunbelt",
+        "address": "711 Meadow Rd, Lehigh Acres, FL",
+        "buyerName": "Sunbelt Custom Builders",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-003",
+        "buyerId": "precision",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "buyerName": "Precision Gulf Homes",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-003",
+        "buyerId": "evergreen",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "buyerName": "Evergreen Land Fund",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "LEH-003",
+        "buyerId": "sunbelt",
+        "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
+        "buyerName": "Sunbelt Custom Builders",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "CAP-001",
+        "buyerId": "evergreen",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "buyerName": "Evergreen Land Fund",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "CAP-001",
+        "buyerId": "sunbelt",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "buyerName": "Sunbelt Custom Builders",
+        "score": 100,
+        "fit": "strong",
+        "misses": []
+      },
+      {
+        "parcelId": "CAP-001",
+        "buyerId": "precision",
+        "address": "904 SW Canal Ter, Cape Coral, FL",
+        "buyerName": "Precision Gulf Homes",
+        "score": 55,
+        "fit": "review",
+        "misses": [
+          "market",
+          "price"
+        ]
+      },
+      {
+        "parcelId": "LEH-002",
+        "buyerId": "precision",
+        "address": "711 Meadow Rd, Lehigh Acres, FL",
+        "buyerName": "Precision Gulf Homes",
+        "score": 15,
+        "fit": "weak",
+        "misses": [
+          "road access",
+          "wetlands",
+          "flood zone"
+        ]
+      }
+    ]
+  },
+  "briefing": {
+    "markdown": "# Lead Engine Briefing — 2026-06-16\n\nRun: lead-engine-2026-06-16T12-03-38-244Z\n\n- Markets watched: 2\n- Buyer leads: 3\n- Parcel leads: 4\n- Top seller calls: 3\n- Buyer validation tasks: 3\n- Offer-ready deals: 3\n- Missing-data blockers: 4\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
+    "counts": {
+      "markets": 2,
+      "buyers": 3,
+      "parcels": 4,
+      "topSellerCalls": 3,
+      "offerReady": 3
+    }
+  },
+  "generatedAt": "2026-06-16T12:03:38.244Z"
+}

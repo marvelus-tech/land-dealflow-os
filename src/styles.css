@@ -162,6 +162,13 @@ button.danger { background: rgba(239,68,68,.16); color: #fecaca; border-color: r
 .missing-list, .duplicate-list { display: grid; gap: 8px; margin-top: 12px; }
 .missing-list div, .duplicate-list { border-top: 1px solid var(--line-soft); padding-top: 10px; }
 .missing-list b, .missing-list span, .duplicate-list strong, .duplicate-list span { display: block; }
+.lead-engine-grid { display: grid; gap: 14px; margin-top: 14px; }
+.engine-column { border: 1px solid var(--line-soft); border-radius: 14px; padding: 14px; background: rgba(255,255,255,.025); }
+.engine-column h4 { margin: 0 0 10px; }
+.engine-row { border-top: 1px solid var(--line-soft); padding: 10px 0; }
+.engine-row:first-of-type { border-top: 0; }
+.engine-row b, .engine-row span { display: block; }
+.engine-row span { color: var(--muted); font-size: 12px; margin-top: 4px; }
 .buyer-validation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
 .scorecard-list, .fit-matrix, .feedback-loop, .call-notes { border: 1px solid var(--line-soft); border-radius: 14px; padding: 14px; background: rgba(255,255,255,.025); }
 .scorecard-list h4, .fit-matrix h4, .feedback-loop h4, .call-notes h4 { margin: 0 0 10px; }

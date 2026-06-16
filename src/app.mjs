@@ -201,15 +201,15 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v1.0 source discovery engine</span>
-      <h1>Discover target-area data sources, generate related buyer/seller queues, and publish CSVs to the site.</h1>
-      <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
-      <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
+      <span class="eyebrow">Land Dealflow OS · v1.1 clarity redesign</span>
+      <h1>Know who to call next.</h1>
+      <p>A calm command center for target areas, source discovery, buyer demand, seller calls, and offer-ready land deals.</p>
+      <div class="hero-actions"><a href="#workspace">Review today’s queues</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
-    <div class="side-panel">
-      <div><span>Best market</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100</em></div>
-      <div><span>Top buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100</em></div>
-      <div><span>Call-now parcels</span><b>${callNow}/${parcelScores.length}</b><em>${passParcels} clean pass</em></div>
+    <div class="side-panel" aria-label="Today summary">
+      <div><span>Best target area</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100 market score</em></div>
+      <div><span>Most validated buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100 buyer score</em></div>
+      <div class="priority"><span>Seller calls ready</span><b>${callNow}/${parcelScores.length}</b><em>${passParcels} clean pass</em></div>
     </div>`;
 }
 
@@ -217,9 +217,9 @@ function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">v1.0 Workspace</span>
-      <h2>Source discovery, generated leads, validation, seller calls, offers</h2>
-      <p>The lead engine discovers ArcGIS/Socrata data sources per target area, writes area-linked CSVs to data/generated, and uploads changed outputs to the site.</p>
+      <span class="eyebrow">Today’s operating system</span>
+      <h2>One screen for sources, queues, calls, and offers.</h2>
+      <p>Generated CSVs are published to the site. Your job is to inspect the highest-signal queues and make the buyer/seller calls that move money.</p>
     </div>
     <div class="workspace-grid">
       <article class="card tool-card wide-card">
@@ -314,13 +314,13 @@ function renderLeadEnginePanel() {
   const sourceCandidates = snapshot.sourceCandidates || [];
   const blockers = queues.missingData || [];
   target.innerHTML = `<div class="lead-engine-grid">
-    <div class="deal-strip four"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Offer-ready</span><strong>${offerReady.length}</strong></div></div>
-    <div class="engine-column"><h4>Top seller calls</h4>${topCalls.slice(0, 5).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
-    <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 5).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No buyer-validation tasks generated yet.</p>'}</div>
-    <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 6).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>
-    <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 6).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered yet.</p>'}</div>
-    <div class="engine-column"><h4>Offer-ready</h4>${offerReady.slice(0, 5).map(item => `<div class="engine-row"><b>${h(item.address)}</b><span>${h(item.ownerName)} · ask ${h(item.askingPrice)} · max ${h(item.buyerMaxPrice)}</span></div>`).join('') || '<p>No offer-ready deals generated yet.</p>'}</div>
-    <div class="engine-column"><h4>Blockers</h4>${blockers.filter(item => item.severity > 0).slice(0, 5).map(item => `<div class="engine-row"><b>${h(item.address || item.parcelId)}</b><span>Missing: ${h(item.missing || 'unknown')}</span></div>`).join('') || '<p>No critical blockers in generated leads.</p>'}</div>
+    <div class="deal-strip four hero-metrics"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
+    <div class="engine-column primary-column"><h4>Call these sellers first</h4>${topCalls.slice(0, 3).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
+    <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 4).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered yet.</p>'}</div>
+    <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>
+    <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No buyer-validation tasks generated yet.</p>'}</div>
+    <div class="engine-column"><h4>Offer-ready</h4>${offerReady.slice(0, 4).map(item => `<div class="engine-row"><b>${h(item.address)}</b><span>${h(item.ownerName)} · ask ${h(item.askingPrice)} · max ${h(item.buyerMaxPrice)}</span></div>`).join('') || '<p>No offer-ready deals generated yet.</p>'}</div>
+    <div class="engine-column"><h4>Blockers</h4>${blockers.filter(item => item.severity > 0).slice(0, 4).map(item => `<div class="engine-row"><b>${h(item.address || item.parcelId)}</b><span>Missing: ${h(item.missing || 'unknown')}</span></div>`).join('') || '<p>No critical blockers in generated leads.</p>'}</div>
   </div>`;
 }
 

@@ -516,6 +516,68 @@ export function bulkMarkContacted(workspace = {}, parcelIds = [], { date = new D
   };
 }
 
+export function buildRiskChecklist(parcel = {}) {
+  const flood = String(parcel.floodZone || '').toUpperCase();
+  return [
+    { label: 'Road access', status: parcel.roadAccess === true ? 'clear' : parcel.roadAccess === false ? 'fatal' : 'missing', detail: parcel.roadAccess === true ? 'Road access confirmed.' : 'Confirm legal/physical road access.' },
+    { label: 'Utilities', status: parcel.utilities === true ? 'clear' : parcel.utilities === false ? 'review' : 'missing', detail: parcel.utilities === true ? 'Utilities indicated.' : 'Verify power/water/septic feasibility.' },
+    { label: 'Wetlands', status: parcel.wetlands === true ? 'fatal' : parcel.wetlands === false ? 'clear' : 'missing', detail: parcel.wetlands === true ? 'Wetlands risk present.' : 'Confirm wetlands map/layer.' },
+    { label: 'Flood zone', status: flood && flood !== 'X' ? 'review' : flood === 'X' ? 'clear' : 'missing', detail: flood ? `Flood zone ${flood}.` : 'Verify FEMA flood zone.' },
+    { label: 'Slope/topography', status: parcel.slope ? (String(parcel.slope).toLowerCase().includes('steep') ? 'review' : 'clear') : 'missing', detail: parcel.slope || 'Confirm slope/topography.' },
+    { label: 'Wildlife/environmental', status: parcel.wildlifeFlag === true ? 'review' : parcel.wildlifeFlag === false ? 'clear' : 'missing', detail: parcel.wildlifeFlag === true ? 'Protected species/environmental flag.' : 'Check local environmental constraints.' },
+  ];
+}
+
+export function generateSellerOfferLetter(parcel = {}, packet = {}) {
+  const owner = parcel.ownerName || parcel.owner || 'Property Owner';
+  const address = parcel.address || 'the subject property';
+  const offer = formatMoney(Number(packet.sellerOffer || 0));
+  const closingDays = packet.closingDays || 21;
+  const buyerName = packet.buyerName || packet.buyer?.name || 'our buying entity';
+  return `Dear ${owner},\n\nThank you for discussing ${address}. Based on the information available today, ${buyerName} can offer ${offer} cash for the property, subject to title, access, buildability, and standard due diligence review.\n\nProposed terms:\n- Purchase price: ${offer}\n- Closing timeline: ${closingDays} days after signed agreement and clear title\n- Seller convenience: standard closing costs can be handled through the closing process\n- Due diligence: parcel access, utilities, wetlands/flood zone, zoning, and title review\n\nIf these terms are acceptable, the next step is a simple written purchase agreement and title-company review.\n\nRespectfully,\nLand Dealflow OS`;
+}
+
+export function generateBuyerAssignmentSummary(parcel = {}, buyer = {}, packet = {}) {
+  const riskLines = (packet.riskChecklist || []).map(item => `- ${item.label}: ${item.status} — ${item.detail || ''}`).join('\n');
+  return `Buyer Assignment Summary\n\nBuyer: ${buyer.name || packet.buyerName || 'Unknown buyer'}\nBuy box: ${buyer.buyBox || 'Not captured'}\nParcel: ${parcel.address || packet.address || 'Unknown parcel'}\nLot size: ${parcel.lotSize || 'unknown'}\nAssignment price: ${formatMoney(Number(packet.assignmentPrice || 0))}\nSeller offer: ${formatMoney(Number(packet.sellerOffer || 0))}\nProjected spread: ${formatMoney(Number(packet.projectedSpread || 0))}\n\nRisk checklist:\n${riskLines || '- Risk checklist not available'}\n\nDecision ask: confirm whether this parcel fits your buy box and what diligence item would kill the deal.`;
+}
+
+export function generateOfferPacket(parcel = {}, buyer = {}, options = {}) {
+  const buyerMax = Number(parcel.buyerMaxPrice || buyer.maxPrice || 0);
+  const ask = Number(parcel.askingPrice || 0);
+  const targetMargin = Number(options.targetMargin ?? 0.18);
+  const closingCosts = Number(options.closingCosts ?? 2000);
+  const closingDays = Number(options.closingDays ?? 21);
+  const fallbackOffer = buyerMax ? Math.max(0, Math.round(buyerMax * (1 - targetMargin) - closingCosts)) : ask;
+  const sellerOffer = Math.max(0, Math.round(ask ? Math.min(ask, fallbackOffer) : fallbackOffer));
+  const assignmentPrice = Math.max(0, Math.round(buyerMax ? Math.min(buyerMax, Math.max(sellerOffer + closingCosts + 5000, buyerMax * 0.94)) : sellerOffer + closingCosts));
+  const projectedSpread = Math.max(0, assignmentPrice - sellerOffer - closingCosts);
+  const riskChecklist = buildRiskChecklist(parcel);
+  const packet = {
+    address: parcel.address || 'Unknown parcel',
+    parcelId: parcel.parcelId || parcel.apn || '',
+    ownerName: parcel.ownerName || parcel.owner || '',
+    buyerName: buyer.name || '',
+    sellerOffer,
+    assignmentPrice,
+    projectedSpread,
+    closingCosts,
+    closingDays,
+    riskChecklist,
+    parcel,
+    buyer,
+    summary: `${parcel.address || 'Parcel'} for ${buyer.name || 'buyer'}: offer ${formatMoney(sellerOffer)}, assignment ${formatMoney(assignmentPrice)}, projected spread ${formatMoney(projectedSpread)}.`,
+  };
+  packet.sellerOfferLetter = generateSellerOfferLetter(parcel, packet);
+  packet.buyerAssignmentSummary = generateBuyerAssignmentSummary(parcel, buyer, packet);
+  return packet;
+}
+
+export function exportDealMemoMarkdown(packet = {}) {
+  const risks = (packet.riskChecklist || []).map(item => `- **${item.label}**: ${item.status} — ${item.detail || ''}`).join('\n');
+  return `# Deal Memo — ${packet.address || 'Unknown parcel'}\n\n## Economics\n- Seller offer: ${formatMoney(Number(packet.sellerOffer || 0))}\n- Assignment price: ${formatMoney(Number(packet.assignmentPrice || 0))}\n- Projected spread: ${formatMoney(Number(packet.projectedSpread || 0))}\n- Closing costs estimate: ${formatMoney(Number(packet.closingCosts || 0))}\n\n## Seller Offer Letter\n\n${packet.sellerOfferLetter || ''}\n\n## Buyer Assignment Summary\n\n${packet.buyerAssignmentSummary || ''}\n\n## Risk Checklist\n${risks || '- No risk checklist available'}\n`;
+}
+
 export function formatMoney(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 }

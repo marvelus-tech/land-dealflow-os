@@ -19,6 +19,8 @@ import {
   buildFollowUpQueue,
   exportMailMergeCsv,
   bulkMarkContacted,
+  generateOfferPacket,
+  exportDealMemoMarkdown,
   formatMoney,
 } from './core.mjs';
 
@@ -193,8 +195,8 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v0.5 outreach execution layer</span>
-      <h1>Turn clean parcel data into call scripts, follow-up queues, and mail-merge exports.</h1>
+      <span class="eyebrow">Land Dealflow OS · v0.6 offer packet generator</span>
+      <h1>Move from seller interest to written offer, buyer summary, risk checklist, and deal memo.</h1>
       <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
       <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
@@ -209,9 +211,9 @@ function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">v0.5 Workspace</span>
-      <h2>Normalize, validate, call, follow up, export</h2>
-      <p>Import source data, clear quality gaps, generate outreach scripts, mark contacts, and export mail/dialer work queues.</p>
+      <span class="eyebrow">v0.6 Workspace</span>
+      <h2>Normalize, call, follow up, write offers, export memos</h2>
+      <p>Import source data, clear quality gaps, execute outreach, generate offer packets, and export deal memos.</p>
     </div>
     <div class="workspace-grid">
       <article class="card tool-card">
@@ -243,6 +245,12 @@ function renderWorkspaceTools() {
         <p>Highest-leverage daily view: overdue follow-ups, next calls, seller script, and bulk mark-contacted.</p>
         <div class="button-row"><button id="bulk-contact-callnow" type="button">Mark Call Now as contacted</button><span id="outreach-status"></span></div>
         <div id="outreach-panel"></div>
+      </article>
+      <article class="card tool-card wide-card">
+        <h3>Offer packet generator</h3>
+        <p>Best current deal turned into seller letter, buyer assignment summary, risk checklist, and markdown deal memo.</p>
+        <div class="button-row"><button id="export-deal-memo" type="button">Export Deal Memo</button><span id="deal-memo-status"></span></div>
+        <div id="offer-packet-panel"></div>
       </article>
     </div>`;
 }
@@ -286,6 +294,28 @@ function renderOutreachPanel() {
   target.innerHTML = `<div class="outreach-grid">
     <div class="followup-list"><h4>Follow-up queue</h4>${queue.length ? queue.slice(0, 6).map(item => `<div class="followup-row ${h(item.urgency)}"><b>${h(item.nextFollowUp)} · ${h(item.address)}</b><span>${h(item.ownerName || item.owner || 'owner unknown')} · ${h(item.crmStatus)} · ${h(item.urgency)}</span></div>`).join('') : '<p>No due follow-ups in the next 7 days.</p>'}</div>
     <div class="script-box"><h4>Suggested seller script</h4>${script ? `<p><strong>Opener:</strong> ${h(script.opener)}</p><p><strong>Positioning:</strong> ${h(script.positioning)}</p><p><strong>Price:</strong> ${h(script.priceAnchor)}</p><ul>${script.questions.slice(0, 4).map(q => `<li>${h(q)}</li>`).join('')}</ul><p><strong>Close:</strong> ${h(script.close)}</p>` : '<p>No parcel available for scripting.</p>'}</div>
+  </div>`;
+}
+
+function currentOfferPacket() {
+  const candidate = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 1 })[0] || scoredParcels()[0];
+  if (!candidate) return null;
+  return generateOfferPacket(candidate, getBuyer(candidate));
+}
+
+function renderOfferPacketPanel() {
+  const target = document.querySelector('#offer-packet-panel');
+  if (!target) return;
+  const packet = currentOfferPacket();
+  if (!packet) {
+    target.innerHTML = '<p>No parcel available for offer packet generation.</p>';
+    return;
+  }
+  target.innerHTML = `<div class="packet-grid">
+    <div class="packet-economics"><h4>${h(packet.address)}</h4><div class="deal-strip five"><div><span>Seller offer</span><strong>${formatMoney(packet.sellerOffer)}</strong></div><div><span>Assignment price</span><strong>${formatMoney(packet.assignmentPrice)}</strong></div><div><span>Projected spread</span><strong>${formatMoney(packet.projectedSpread)}</strong></div><div><span>Closing costs</span><strong>${formatMoney(packet.closingCosts)}</strong></div><div><span>Buyer</span><strong>${h(packet.buyerName || 'unknown')}</strong></div></div><p>${h(packet.summary)}</p></div>
+    <div class="risk-checklist"><h4>Risk checklist</h4>${packet.riskChecklist.map(item => `<div class="risk-item ${h(item.status)}"><b>${h(item.label)} · ${h(item.status)}</b><span>${h(item.detail)}</span></div>`).join('')}</div>
+    <div class="memo-preview"><h4>Seller offer letter preview</h4><pre>${h(packet.sellerOfferLetter.slice(0, 900))}</pre></div>
+    <div class="memo-preview"><h4>Buyer assignment summary preview</h4><pre>${h(packet.buyerAssignmentSummary.slice(0, 900))}</pre></div>
   </div>`;
 }
 
@@ -339,6 +369,14 @@ function bindEvents() {
       const status = document.querySelector('#outreach-status');
       if (status) status.textContent = `Marked ${callNowIds.length} parcels contacted.`;
       renderAll();
+    }
+
+    if (event.target.matches('#export-deal-memo')) {
+      const packet = currentOfferPacket();
+      if (!packet) return;
+      downloadText(`land-dealflow-deal-memo-${new Date().toISOString().slice(0, 10)}.md`, exportDealMemoMarkdown(packet), 'text/markdown');
+      const status = document.querySelector('#deal-memo-status');
+      if (status) status.textContent = 'Deal memo exported.';
     }
 
     if (event.target.matches('#import-json')) {
@@ -396,6 +434,7 @@ function renderAll() {
   renderTopCallList();
   renderQualityControl();
   renderOutreachPanel();
+  renderOfferPacketPanel();
 }
 
 bindEvents();

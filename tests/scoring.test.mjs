@@ -20,6 +20,11 @@ import {
   buildFollowUpQueue,
   exportMailMergeCsv,
   bulkMarkContacted,
+  generateOfferPacket,
+  generateSellerOfferLetter,
+  generateBuyerAssignmentSummary,
+  buildRiskChecklist,
+  exportDealMemoMarkdown,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -313,6 +318,61 @@ function testBulkMarkContactedUpdatesSelectedParcelsImmutably() {
   assert.ok(updated.parcels[1].notes.includes('old'));
   assert.ok(updated.parcels[1].notes.includes('left voicemail'));
 }
+
+function testOfferPacketComputesSellerOfferAndAssignmentSpread() {
+  const parcel = { address: '123 Grant Blvd', ownerName: 'Avery Santos', buyerMaxPrice: 42000, askingPrice: 28500, lowestActiveListing: 48000, roadAccess: true, utilities: true, wetlands: false, floodZone: 'X', slope: 'flat', wildlifeFlag: false };
+  const buyer = { name: 'Precision Gulf Homes', maxPrice: 42000, buyBox: 'clean quarter-acre lots', contactName: 'Maya Chen' };
+  const packet = generateOfferPacket(parcel, buyer, { targetMargin: 0.18, closingCosts: 2200 });
+  assert.equal(packet.address, '123 Grant Blvd');
+  assert.ok(packet.sellerOffer <= 28500);
+  assert.ok(packet.assignmentPrice <= 42000);
+  assert.ok(packet.projectedSpread > 5000);
+  assert.ok(packet.summary.includes('Precision Gulf Homes'));
+}
+
+function testSellerOfferLetterIncludesContingenciesAndCloseTerms() {
+  const letter = generateSellerOfferLetter({ address: '123 Grant Blvd', ownerName: 'Avery Santos' }, { sellerOffer: 26000, closingDays: 21, buyerName: 'Precision Gulf Homes' });
+  assert.ok(letter.includes('Avery Santos'));
+  assert.ok(letter.includes('123 Grant Blvd'));
+  assert.ok(letter.includes('$26,000'));
+  assert.ok(letter.includes('due diligence'));
+  assert.ok(letter.includes('21 days'));
+}
+
+function testBuyerAssignmentSummaryShowsRiskAndSpread() {
+  const summary = generateBuyerAssignmentSummary(
+    { address: '123 Grant Blvd', lotSize: '0.25 ac' },
+    { name: 'Precision Gulf Homes', buyBox: 'clean quarter-acre lots' },
+    { assignmentPrice: 39500, sellerOffer: 26000, projectedSpread: 13500, riskChecklist: [{ label: 'Road access', status: 'clear' }] }
+  );
+  assert.ok(summary.includes('Precision Gulf Homes'));
+  assert.ok(summary.includes('$39,500'));
+  assert.ok(summary.includes('$13,500'));
+  assert.ok(summary.includes('Road access'));
+}
+
+function testRiskChecklistFlagsMissingAndFatalItems() {
+  const checklist = buildRiskChecklist({ roadAccess: false, utilities: '', wetlands: true, floodZone: 'AE', slope: '', wildlifeFlag: true });
+  const statuses = checklist.map(item => item.status);
+  assert.ok(statuses.includes('fatal'));
+  assert.ok(statuses.includes('missing'));
+  assert.ok(checklist.some(item => item.label === 'Wetlands' && item.status === 'fatal'));
+}
+
+function testDealMemoMarkdownExportsFullPacket() {
+  const packet = generateOfferPacket({ address: '123 Grant Blvd', ownerName: 'Avery Santos', buyerMaxPrice: 42000, askingPrice: 28500, roadAccess: true, utilities: true }, { name: 'Precision Gulf Homes', maxPrice: 42000 });
+  const memo = exportDealMemoMarkdown(packet);
+  assert.ok(memo.startsWith('# Deal Memo'));
+  assert.ok(memo.includes('## Seller Offer Letter'));
+  assert.ok(memo.includes('## Buyer Assignment Summary'));
+  assert.ok(memo.includes('123 Grant Blvd'));
+}
+
+testOfferPacketComputesSellerOfferAndAssignmentSpread();
+testSellerOfferLetterIncludesContingenciesAndCloseTerms();
+testBuyerAssignmentSummaryShowsRiskAndSpread();
+testRiskChecklistFlagsMissingAndFatalItems();
+testDealMemoMarkdownExportsFullPacket();
 
 testOutreachCallScriptUsesParcelAndBuyerContext();
 testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead();

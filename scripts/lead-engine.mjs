@@ -2,6 +2,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDealFitMatrix, buildTopCallList, exportParcelsCsv, reportMissingData, scoreParcelDeal } from '../src/core.mjs';
+import { discoverSourcesForMarkets } from './adapters/source-discovery.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..');
@@ -116,6 +117,7 @@ export function buildAreaQueueBundles(snapshot, queues) {
       offerReady: asArray(queues.offerReady).filter(item => item.market === market.id),
       missingData: asArray(queues.missingData).filter(item => item.market === market.id),
       riskBlocked: asArray(queues.riskBlocked).filter(item => item.market === market.id),
+      sourceCandidates: asArray(snapshot.sourceCandidates).filter(item => item.market === market.id),
     };
   }
   return bundles;
@@ -147,6 +149,7 @@ export function buildOperatorBriefing(snapshot, queues) {
     `- Offer-ready deals: ${queues.offerReady.length}`,
     `- New-area buyer discovery tasks: ${queues.buyerDiscovery.length}`,
     `- New-area seller discovery tasks: ${queues.sellerDiscovery.length}`,
+    `- Source candidates found: ${asArray(snapshot.sourceCandidates).length}`,
     `- Missing-data blockers: ${queues.missingData.length}`,
     '',
     '## Top seller calls',
@@ -158,10 +161,13 @@ export function buildOperatorBriefing(snapshot, queues) {
     '## New-area discovery tasks',
     ...[...queues.buyerDiscovery, ...queues.sellerDiscovery].slice(0, 10).map((item, index) => `${index + 1}. ${item.areaName || item.market} — ${item.reason} — ${item.task}`),
     '',
+    '## Source candidates',
+    ...asArray(snapshot.sourceCandidates).slice(0, 10).map((item, index) => `${index + 1}. ${item.areaName || item.market} — ${item.platform}/${item.sourceType} — ${item.title} — confidence ${item.confidence}`),
+    '',
     '## Offer-ready deals',
     ...queues.offerReady.slice(0, 10).map((item, index) => `${index + 1}. ${item.address} — ask ${item.askingPrice || 'unknown'} — max ${item.buyerMaxPrice || 'unknown'}`),
   ];
-  return { markdown: `${lines.join('\n')}\n`, counts: { markets: snapshot.markets.length, buyers: snapshot.buyers.length, parcels: snapshot.parcels.length, topSellerCalls: queues.topSellerCalls.length, offerReady: queues.offerReady.length, buyerDiscovery: queues.buyerDiscovery.length, sellerDiscovery: queues.sellerDiscovery.length } };
+  return { markdown: `${lines.join('\n')}\n`, counts: { markets: snapshot.markets.length, buyers: snapshot.buyers.length, parcels: snapshot.parcels.length, topSellerCalls: queues.topSellerCalls.length, offerReady: queues.offerReady.length, buyerDiscovery: queues.buyerDiscovery.length, sellerDiscovery: queues.sellerDiscovery.length, sourceCandidates: asArray(snapshot.sourceCandidates).length } };
 }
 
 export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(repoRoot, 'data', 'generated') }) {
@@ -179,6 +185,8 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
   const areasPath = join(outputDir, 'areas.json');
   const areaBundles = buildAreaQueueBundles(snapshot, queues);
   writeJson(areasPath, areaBundles); files.push(areasPath);
+  const sourceCandidatesCsv = join(outputDir, 'source_candidates.csv');
+  writeFileSync(sourceCandidatesCsv, toQueueRows(asArray(snapshot.sourceCandidates), ['market', 'areaName', 'platform', 'sourceType', 'title', 'url', 'confidence', 'suggestedUse', 'query'])); files.push(sourceCandidatesCsv);
   const topCsv = join(outputDir, 'queues', 'top_seller_calls.csv');
   writeFileSync(topCsv, exportParcelsCsv(queues.topSellerCalls)); files.push(topCsv);
   const buyerCsv = join(outputDir, 'queues', 'buyer_validation.csv');
@@ -203,6 +211,7 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
       ['missing_data.csv', bundle.missingData, ['parcelId', 'market', 'address', 'severity', 'missing', 'reason']],
       ['buyer_discovery.csv', bundle.buyerDiscovery, ['market', 'areaName', 'buyerType', 'task', 'reason', 'priority']],
       ['seller_discovery.csv', bundle.sellerDiscovery, ['market', 'areaName', 'task', 'reason', 'priority']],
+      ['source_candidates.csv', bundle.sourceCandidates, ['market', 'areaName', 'platform', 'sourceType', 'title', 'url', 'confidence', 'suggestedUse', 'query']],
     ];
     for (const [fileName, rows, headers] of paths) {
       const path = join(areaDir, fileName);
@@ -213,8 +222,9 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
   return { outputDir, files, briefing };
 }
 
-export function runLeadEngine({ sourcesPath = resolve(repoRoot, 'data', 'sources.json'), outputDir = resolve(repoRoot, 'data', 'generated'), now = new Date().toISOString(), runId } = {}) {
+export async function runLeadEngine({ sourcesPath = resolve(repoRoot, 'data', 'sources.json'), outputDir = resolve(repoRoot, 'data', 'generated'), now = new Date().toISOString(), runId, discoverSources = false } = {}) {
   const snapshot = generateLeadEngineSnapshot(loadLeadSources(sourcesPath), { now, runId: runId || `lead-engine-${now.replace(/[:.]/g, '-')}` });
+  if (discoverSources) snapshot.sourceCandidates = await discoverSourcesForMarkets(snapshot.markets, { limitPerQuery: 2 });
   const queues = buildLeadQueues(snapshot);
   const manifest = writeLeadEngineOutputs({ snapshot, queues, outputDir });
   return { snapshot, queues, manifest };
@@ -222,6 +232,7 @@ export function runLeadEngine({ sourcesPath = resolve(repoRoot, 'data', 'sources
 
 if (import.meta.url === `file://${process.argv[1]}`) {
   const outputDirArg = process.argv.includes('--output') ? process.argv[process.argv.indexOf('--output') + 1] : undefined;
-  const result = runLeadEngine({ outputDir: outputDirArg ? resolve(outputDirArg) : undefined });
+  const discoverSources = process.argv.includes('--discover-sources');
+  const result = await runLeadEngine({ outputDir: outputDirArg ? resolve(outputDirArg) : undefined, discoverSources });
   console.log(result.manifest.briefing.markdown);
 }

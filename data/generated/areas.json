@@ -38,7 +38,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       },
       {
@@ -61,7 +61,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 2
       }
     ],
@@ -95,7 +95,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       },
       {
@@ -125,7 +125,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 2
       },
       {
@@ -156,7 +156,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 3
       }
     ],
@@ -270,6 +270,20 @@
         "reason": "buildability risk",
         "market": "lehigh"
       }
+    ],
+    "sourceCandidates": [
+      {
+        "market": "lehigh",
+        "areaName": "Lehigh Acres, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Economic Incentive Areas",
+        "url": "https://services2.arcgis.com/LvWGAAhHwbCJ2GMP/arcgis/rest/services/Economic_Incentive_Areas/FeatureServer",
+        "description": "<div style='text-align:Left;'><div><div><p><span>Areas included are:</span></p><ul><li><p><span>Opportunity Zones - Derived from 2018 Census Tracts listed by the Florida Department of Economic Opportunity, January 2019</span></p></li><li><p><span>New Markets Tax Credit Eligible Areas - Derived from 2018 Census Tracts per CDFI Fund CIMS mapping tool, January 2019</span></p></li><li><p><span>HUB Zones - Derived from 2018 Census Tracts per SBA HUBZone Map, February 2019</span></p></li><li><p><span>USDA Rural Development Eligible Areas - Derived from 2020 Census Places with greater than 50,000 inhabitants (Cape Coral, Fort Myers, Lehigh Acres) and adjacent 2020 Census Urban Areas, July 2023</span></p></li><li><p><span>North Fort Myers Redevelopment Area - Derived from designated portions of the Mixed Use Overlay, January 2019</span></p></li><li><p><span>Enterprise Zone - Copied from existing GIS data, January 2019</span></p></li><li><p><span>Community Redevelopment Areas - Copied from City of Cape Coral and City of Fort Myers GIS, February 2019</span></p></li><li><p><span>Brownfield Areas - Copied from FDEP Open Data Portal, March 2019</span></p></li><li><p><span>FPL Service Area - Estimated from FPL Service Areas map (https://www.fplmaps.com/service_map/map.shtml), March 2019 </span></p></li></ul><p><span>Other areas will be added as needed.</span></p></div></div></div>",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Lehigh Acres, FL zoning"
+      }
     ]
   },
   "cape-coral": {
@@ -296,7 +310,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       }
     ],
@@ -329,7 +343,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       }
     ],
@@ -385,7 +399,57 @@
         "parcelId": "CAP-001"
       }
     ],
-    "riskBlocked": []
+    "riskBlocked": [],
+    "sourceCandidates": [
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "FL_CapeCoral_Boatramps_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_Boatramps_WEB/FeatureServer",
+        "description": "Canal Access Points, Vacant parcels",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Cape Coral, FL parcels"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "FL_CapeCoral_CLMilesProgress_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_CLMilesProgress_WEB/FeatureServer",
+        "description": "CL Miles progress layer for Cape Coral FL",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Cape Coral, FL zoning"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "FL_CapeCoralSubZones_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoralSubZones_WEB/FeatureServer",
+        "description": "Debris Sub Zones for the City of Cape Coral FL",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Cape Coral, FL zoning"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "Sum_of_Bedrooms_Cape_Coral",
+        "url": "https://services1.arcgis.com/sQOueNHZBxRJjRN3/arcgis/rest/services/Sum_of_Bedrooms_Cape_Coral/FeatureServer",
+        "description": "Multi-Owner analysis of Cape Coral, FL",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Cape Coral, FL parcels"
+      }
+    ]
   },
   "ocala": {
     "market": "ocala",
@@ -415,6 +479,56 @@
     ],
     "offerReady": [],
     "missingData": [],
-    "riskBlocked": []
+    "riskBlocked": [],
+    "sourceCandidates": [
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Flood Zone",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/Flood/FeatureServer",
+        "description": "Flood Zone data provided by FEMA for Ocala, FL.",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Ocala, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Growth Management",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/GrowthManagement/FeatureServer",
+        "description": "Growth Management Areas in and around the City of Ocala, FL.",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Ocala, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "OcalaMultiFamilyComplexes",
+        "url": "https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/OcalaMultiFamilyComplexes/FeatureServer",
+        "description": "<div style='text-align:Left;'><p>This is a layer of Multi-Family Complexes within Ocala City Limits that have 10 or more units based on Marion County, FL Property Appraiser data. </p><p>This data was derived from the Parcel Polygon layer first and then a centroid was computed based on those polygons identified as Multi-Family Residential complexes with units of 10 or more. </p><p>This data was last updated 2/7/2024</p></div>",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Ocala, FL parcels"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "Property data",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/Property/FeatureServer",
+        "description": "Layers in and around the City of Ocala, FL related to parcels and other layers provided by the Property Appraiser's office.",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Ocala, FL parcels"
+      }
+    ]
   }
 }

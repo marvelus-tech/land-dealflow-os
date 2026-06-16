@@ -2,7 +2,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-node scripts/lead-engine.mjs
+node scripts/lead-engine.mjs --discover-sources
 
 git add data/generated
 if git diff --cached --quiet -- data/generated; then

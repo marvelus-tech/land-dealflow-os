@@ -1,7 +1,7 @@
 {
   "snapshot": {
-    "runId": "lead-engine-2026-06-16T21-30-12-850Z",
-    "generatedAt": "2026-06-16T21:30:12.850Z",
+    "runId": "lead-engine-2026-06-16T21-47-22-765Z",
+    "generatedAt": "2026-06-16T21:47:22.765Z",
     "markets": [
       {
         "leadId": "market:lehigh",
@@ -13,7 +13,7 @@
         "thesis": "Quarter-acre infill vacant lots with repeat builder demand and standard lot patterns.",
         "priority": 10,
         "rank": 1,
-        "collectedAt": "2026-06-16T21:30:12.850Z"
+        "collectedAt": "2026-06-16T21:47:22.765Z"
       },
       {
         "leadId": "market:cape-coral",
@@ -25,7 +25,7 @@
         "thesis": "Utility and canal-premium lot opportunities, but diligence risk is higher.",
         "priority": 7,
         "rank": 2,
-        "collectedAt": "2026-06-16T21:30:12.850Z"
+        "collectedAt": "2026-06-16T21:47:22.765Z"
       },
       {
         "leadId": "market:ocala",
@@ -37,7 +37,7 @@
         "thesis": "New target area: find builders first, then parcel/seller leads that match local buyer demand.",
         "priority": 6,
         "rank": 3,
-        "collectedAt": "2026-06-16T21:30:12.850Z"
+        "collectedAt": "2026-06-16T21:47:22.765Z"
       }
     ],
     "buyers": [
@@ -76,7 +76,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       },
       {
@@ -99,7 +99,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 2
       },
       {
@@ -122,7 +122,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       }
     ],
@@ -156,7 +156,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       },
       {
@@ -186,7 +186,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 2
       },
       {
@@ -217,7 +217,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 3
       },
       {
@@ -248,7 +248,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-16T21:30:12.850Z",
+        "collectedAt": "2026-06-16T21:47:22.765Z",
         "sequence": 1
       }
     ],
@@ -256,7 +256,117 @@
       "markets": 3,
       "buyers": 3,
       "parcels": 4
-    }
+    },
+    "sourceCandidates": [
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "FL_CapeCoral_Boatramps_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_Boatramps_WEB/FeatureServer",
+        "description": "Canal Access Points, Vacant parcels",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Cape Coral, FL parcels"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "FL_CapeCoral_CLMilesProgress_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_CLMilesProgress_WEB/FeatureServer",
+        "description": "CL Miles progress layer for Cape Coral FL",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Cape Coral, FL zoning"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "FL_CapeCoralSubZones_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoralSubZones_WEB/FeatureServer",
+        "description": "Debris Sub Zones for the City of Cape Coral FL",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Cape Coral, FL zoning"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "Sum_of_Bedrooms_Cape_Coral",
+        "url": "https://services1.arcgis.com/sQOueNHZBxRJjRN3/arcgis/rest/services/Sum_of_Bedrooms_Cape_Coral/FeatureServer",
+        "description": "Multi-Owner analysis of Cape Coral, FL",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Cape Coral, FL parcels"
+      },
+      {
+        "market": "lehigh",
+        "areaName": "Lehigh Acres, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Economic Incentive Areas",
+        "url": "https://services2.arcgis.com/LvWGAAhHwbCJ2GMP/arcgis/rest/services/Economic_Incentive_Areas/FeatureServer",
+        "description": "<div style='text-align:Left;'><div><div><p><span>Areas included are:</span></p><ul><li><p><span>Opportunity Zones - Derived from 2018 Census Tracts listed by the Florida Department of Economic Opportunity, January 2019</span></p></li><li><p><span>New Markets Tax Credit Eligible Areas - Derived from 2018 Census Tracts per CDFI Fund CIMS mapping tool, January 2019</span></p></li><li><p><span>HUB Zones - Derived from 2018 Census Tracts per SBA HUBZone Map, February 2019</span></p></li><li><p><span>USDA Rural Development Eligible Areas - Derived from 2020 Census Places with greater than 50,000 inhabitants (Cape Coral, Fort Myers, Lehigh Acres) and adjacent 2020 Census Urban Areas, July 2023</span></p></li><li><p><span>North Fort Myers Redevelopment Area - Derived from designated portions of the Mixed Use Overlay, January 2019</span></p></li><li><p><span>Enterprise Zone - Copied from existing GIS data, January 2019</span></p></li><li><p><span>Community Redevelopment Areas - Copied from City of Cape Coral and City of Fort Myers GIS, February 2019</span></p></li><li><p><span>Brownfield Areas - Copied from FDEP Open Data Portal, March 2019</span></p></li><li><p><span>FPL Service Area - Estimated from FPL Service Areas map (https://www.fplmaps.com/service_map/map.shtml), March 2019 </span></p></li></ul><p><span>Other areas will be added as needed.</span></p></div></div></div>",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Lehigh Acres, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Flood Zone",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/Flood/FeatureServer",
+        "description": "Flood Zone data provided by FEMA for Ocala, FL.",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Ocala, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Growth Management",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/GrowthManagement/FeatureServer",
+        "description": "Growth Management Areas in and around the City of Ocala, FL.",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Ocala, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "OcalaMultiFamilyComplexes",
+        "url": "https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/OcalaMultiFamilyComplexes/FeatureServer",
+        "description": "<div style='text-align:Left;'><p>This is a layer of Multi-Family Complexes within Ocala City Limits that have 10 or more units based on Marion County, FL Property Appraiser data. </p><p>This data was derived from the Parcel Polygon layer first and then a centroid was computed based on those polygons identified as Multi-Family Residential complexes with units of 10 or more. </p><p>This data was last updated 2/7/2024</p></div>",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Ocala, FL parcels"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "Property data",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/Property/FeatureServer",
+        "description": "Layers in and around the City of Ocala, FL related to parcels and other layers provided by the Property Appraiser's office.",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Ocala, FL parcels"
+      }
+    ]
   },
   "queues": {
     "topSellerCalls": [
@@ -548,7 +658,7 @@
     ]
   },
   "briefing": {
-    "markdown": "# Lead Engine Briefing — 2026-06-16\n\nRun: lead-engine-2026-06-16T21-30-12-850Z\n\n- Markets watched: 3\n- Buyer leads: 3\n- Parcel leads: 4\n- Top seller calls: 3\n- Buyer validation tasks: 3\n- Offer-ready deals: 3\n- New-area buyer discovery tasks: 1\n- New-area seller discovery tasks: 1\n- Missing-data blockers: 4\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n\n## New-area discovery tasks\n1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL\n2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
+    "markdown": "# Lead Engine Briefing — 2026-06-16\n\nRun: lead-engine-2026-06-16T21-47-22-765Z\n\n- Markets watched: 3\n- Buyer leads: 3\n- Parcel leads: 4\n- Top seller calls: 3\n- Buyer validation tasks: 3\n- Offer-ready deals: 3\n- New-area buyer discovery tasks: 1\n- New-area seller discovery tasks: 1\n- Source candidates found: 9\n- Missing-data blockers: 4\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n\n## New-area discovery tasks\n1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL\n2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL\n\n## Source candidates\n1. Cape Coral, FL — arcgis/parcel — FL_CapeCoral_Boatramps_WEB — confidence 90\n2. Cape Coral, FL — arcgis/zoning — FL_CapeCoral_CLMilesProgress_WEB — confidence 90\n3. Cape Coral, FL — arcgis/zoning — FL_CapeCoralSubZones_WEB — confidence 90\n4. Cape Coral, FL — arcgis/parcel — Sum_of_Bedrooms_Cape_Coral — confidence 90\n5. Lehigh Acres, FL — arcgis/zoning — Economic Incentive Areas — confidence 90\n6. Ocala, FL — arcgis/zoning — Flood Zone — confidence 90\n7. Ocala, FL — arcgis/zoning — Growth Management — confidence 90\n8. Ocala, FL — arcgis/parcel — OcalaMultiFamilyComplexes — confidence 90\n9. Ocala, FL — arcgis/parcel — Property data — confidence 90\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
     "counts": {
       "markets": 3,
       "buyers": 3,
@@ -556,8 +666,9 @@
       "topSellerCalls": 3,
       "offerReady": 3,
       "buyerDiscovery": 1,
-      "sellerDiscovery": 1
+      "sellerDiscovery": 1,
+      "sourceCandidates": 9
     }
   },
-  "generatedAt": "2026-06-16T21:30:12.850Z"
+  "generatedAt": "2026-06-16T21:47:22.765Z"
 }

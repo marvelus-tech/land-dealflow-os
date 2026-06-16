@@ -1,6 +1,6 @@
 # Lead Engine Briefing — 2026-06-16
 
-Run: lead-engine-2026-06-16T21-30-12-850Z
+Run: lead-engine-2026-06-16T21-47-22-765Z
 
 - Markets watched: 3
 - Buyer leads: 3
@@ -10,6 +10,7 @@ Run: lead-engine-2026-06-16T21-30-12-850Z
 - Offer-ready deals: 3
 - New-area buyer discovery tasks: 1
 - New-area seller discovery tasks: 1
+- Source candidates found: 9
 - Missing-data blockers: 4
 
 ## Top seller calls
@@ -25,6 +26,17 @@ Run: lead-engine-2026-06-16T21-30-12-850Z
 ## New-area discovery tasks
 1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL
 2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL
+
+## Source candidates
+1. Cape Coral, FL — arcgis/parcel — FL_CapeCoral_Boatramps_WEB — confidence 90
+2. Cape Coral, FL — arcgis/zoning — FL_CapeCoral_CLMilesProgress_WEB — confidence 90
+3. Cape Coral, FL — arcgis/zoning — FL_CapeCoralSubZones_WEB — confidence 90
+4. Cape Coral, FL — arcgis/parcel — Sum_of_Bedrooms_Cape_Coral — confidence 90
+5. Lehigh Acres, FL — arcgis/zoning — Economic Incentive Areas — confidence 90
+6. Ocala, FL — arcgis/zoning — Flood Zone — confidence 90
+7. Ocala, FL — arcgis/zoning — Growth Management — confidence 90
+8. Ocala, FL — arcgis/parcel — OcalaMultiFamilyComplexes — confidence 90
+9. Ocala, FL — arcgis/parcel — Property data — confidence 90
 
 ## Offer-ready deals
 1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000

@@ -1,0 +1,2 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+lehigh,"Lehigh Acres, FL",arcgis,zoning,Economic Incentive Areas,https://services2.arcgis.com/LvWGAAhHwbCJ2GMP/arcgis/rest/services/Economic_Incentive_Areas/FeatureServer,90,deal_risk_and_fit_overlay,"Lehigh Acres, FL zoning"

@@ -197,29 +197,49 @@ function renderCommandCenter() {
   const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'None', score: { total: 0 } };
   const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'None', score: 0 };
   const parcelScores = scoredParcels();
+  const topCalls = buildTopCallList({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 3 });
   const callNow = parcelScores.filter(p => p.action === 'Call now').length;
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
+  const heroCall = topCalls[0] || parcelScores[0] || {};
+  const callRows = topCalls.length ? topCalls.map((call, index) => `<article class="call-tile">
+      <span>0${index + 1}</span>
+      <b>${h(call.address || 'No address')}</b>
+      <small>${h(call.ownerName || call.owner || 'owner unknown')} · ${h(call.ownerPhone || call.ownerEmail || 'contact missing')}</small>
+      <em>${h(call.score ?? '')} score · spread ${formatMoney(Number(call.spread || call.metrics?.spread || 0))}</em>
+    </article>`).join('') : '<article class="call-tile"><span>00</span><b>No calls ready</b><small>Import or generate parcels to create the daily callroom.</small><em>Waiting for deal flow</em></article>';
   document.querySelector('#command').innerHTML = `
-    <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v1.1 clarity redesign</span>
-      <h1>Know who to call next.</h1>
-      <p>A calm command center for target areas, source discovery, buyer demand, seller calls, and offer-ready land deals.</p>
-      <div class="hero-actions"><a href="#workspace">Review today’s queues</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
+    <div class="brand-hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Land Dealflow OS · v1.2 The Callroom</span>
+        <h1>Three calls. One spread.</h1>
+        <p>Not another dashboard. A funded land desk that turns public data into the few buyer-backed seller calls worth making today.</p>
+        <div class="hero-actions"><a href="#daily-calls">Enter the callroom</a><a class="secondary" href="#workspace">Inspect the machine</a></div>
+      </div>
+      <aside class="hero-deal-card" aria-label="Top deal today">
+        <span>First call</span>
+        <h2>${h(heroCall.address || 'Generate today’s call list')}</h2>
+        <p>${h(heroCall.ownerName || heroCall.owner || 'Owner unknown')} · ${h(heroCall.ownerPhone || heroCall.ownerEmail || 'contact missing')}</p>
+        <div class="deal-strip two"><div><span>Deal score</span><strong>${h(heroCall.score ?? 0)}</strong></div><div><span>Projected spread</span><strong>${formatMoney(Number(heroCall.spread || heroCall.metrics?.spread || 0))}</strong></div></div>
+      </aside>
     </div>
-    <div class="side-panel" aria-label="Today summary">
-      <div><span>Best target area</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100 market score</em></div>
-      <div><span>Most validated buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100 buyer score</em></div>
-      <div class="priority"><span>Seller calls ready</span><b>${callNow}/${parcelScores.length}</b><em>${passParcels} clean pass</em></div>
-    </div>`;
+    <section id="daily-calls" class="daily-calls" aria-label="Daily call priority">
+      <div class="daily-heading"><span class="eyebrow">Today’s money path</span><h2>Make these calls before touching the plumbing.</h2></div>
+      <div class="call-tile-grid">${callRows}</div>
+      <div class="side-panel" aria-label="Today summary">
+        <div><span>Best target area</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100 market score</em></div>
+        <div><span>Most validated buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100 buyer score</em></div>
+        <div class="priority"><span>Seller calls ready</span><b>${callNow}/${parcelScores.length}</b><em>${passParcels} clean pass</em></div>
+      </div>
+    </section>`;
 }
 
 function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">Today’s operating system</span>
-      <h2>One screen for sources, queues, calls, and offers.</h2>
-      <p>Generated CSVs are published to the site. Your job is to inspect the highest-signal queues and make the buyer/seller calls that move money.</p>
+      <span class="eyebrow">Back office</span>
+      <h2>The machine behind the calls.</h2>
+      <p>Sources, generated CSVs, validation, imports, quality gates, and offer packets live here. Useful, but secondary to the callroom.</p>
     </div>
     <div class="workspace-grid">
       <article class="card tool-card wide-card">

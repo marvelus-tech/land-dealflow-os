@@ -1,0 +1,3 @@
+leadId,market,name,phone,email,website,contactName,buyBox,confidence
+buyer:lehigh:precision-gulf-homes,lehigh,Precision Gulf Homes,239-555-0100,maya@precisiongulf.example,https://precisiongulf.example,Maya Chen,"0.23-0.32 acre Lehigh infill lots, paved road, no wetlands, $42k max",93
+buyer:lehigh:evergreen-land-fund,lehigh,Evergreen Land Fund,305-555-0108,sam@evergreenland.example,https://evergreenland.example,Sam Patel,Backup buyer; buys only at 60-70% of market value.,55

@@ -8,12 +8,15 @@ import {
   buildLeadQueues,
   writeLeadEngineOutputs,
   buildOperatorBriefing,
+  buildAreaQueueBundles,
+  buildSitePublishPlan,
 } from '../scripts/lead-engine.mjs';
 
 const sampleSources = {
   version: 1,
   targetMarkets: [
     { id: 'lehigh', name: 'Lehigh Acres, FL', state: 'FL', buyerType: 'spec-builder', thesis: 'Quarter-acre infill lots with builder demand.', priority: 10 },
+    { id: 'ocala', name: 'Ocala, FL', state: 'FL', buyerType: 'custom-builder', thesis: 'Infill and rural-edge lots for small builders.', priority: 6 },
   ],
   buyerSources: [
     { id: 'lehigh-builders-seed', market: 'lehigh', type: 'seed', cadence: 'weekly', records: [
@@ -30,7 +33,7 @@ const sampleSources = {
 
 function testLoadSourcesValidatesWorkflowInputs() {
   const loaded = loadLeadSources(sampleSources);
-  assert.equal(loaded.targetMarkets.length, 1);
+  assert.equal(loaded.targetMarkets.length, 2);
   assert.equal(loaded.buyerSources[0].records.length, 1);
   assert.equal(loaded.parcelSources[0].records.length, 2);
 }
@@ -38,7 +41,7 @@ function testLoadSourcesValidatesWorkflowInputs() {
 function testSnapshotGeneratesMarketsBuyersParcelsAndMetadata() {
   const snapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'test-run', now: '2026-06-16T09:00:00.000Z' });
   assert.equal(snapshot.runId, 'test-run');
-  assert.equal(snapshot.markets.length, 1);
+  assert.equal(snapshot.markets.length, 2);
   assert.equal(snapshot.buyers[0].sourceId, 'lehigh-builders-seed');
   assert.equal(snapshot.parcels.length, 2);
   assert.equal(snapshot.parcels[0].leadId, 'parcel:lehigh:LEH-001');
@@ -77,10 +80,56 @@ function testWriteOutputsCreatesMachineReadableFilesAndCsvQueues() {
   assert.ok(manifest.files.some(file => file.endsWith('top_seller_calls.csv')));
 }
 
+function testTargetAreasCascadeIntoRelatedBuyerAndSellerDiscoveryTasks() {
+  const snapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'test-run', now: '2026-06-16T09:00:00.000Z' });
+  const queues = buildLeadQueues(snapshot);
+  const ocalaBuyerTasks = queues.buyerDiscovery.filter(item => item.market === 'ocala');
+  const ocalaSellerTasks = queues.sellerDiscovery.filter(item => item.market === 'ocala');
+  assert.equal(ocalaBuyerTasks[0].areaName, 'Ocala, FL');
+  assert.equal(ocalaBuyerTasks[0].reason, 'new target area needs buyer discovery');
+  assert.equal(ocalaSellerTasks[0].reason, 'new target area needs seller/parcel discovery');
+}
+
+function testAreaBundlesKeepBuyersSellersAndQueuesGeographicallyRelated() {
+  const snapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'test-run', now: '2026-06-16T09:00:00.000Z' });
+  const queues = buildLeadQueues(snapshot);
+  const bundles = buildAreaQueueBundles(snapshot, queues);
+  assert.ok(bundles.lehigh.buyers.every(item => item.market === 'lehigh'));
+  assert.ok(bundles.lehigh.parcels.every(item => item.market === 'lehigh'));
+  assert.ok(bundles.lehigh.topSellerCalls.every(item => item.market === 'lehigh'));
+  assert.ok(bundles.ocala.buyerDiscovery.length > 0);
+  assert.ok(bundles.ocala.sellerDiscovery.length > 0);
+}
+
+function testWriteOutputsUploadsAreaCsvBundlesForTheStaticSite() {
+  const snapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'test-run', now: '2026-06-16T09:00:00.000Z' });
+  const queues = buildLeadQueues(snapshot);
+  const dir = mkdtempSync(join(tmpdir(), 'lead-engine-'));
+  const manifest = writeLeadEngineOutputs({ snapshot, queues, outputDir: dir });
+  assert.ok(existsSync(join(dir, 'areas', 'lehigh', 'buyers.csv')));
+  assert.ok(existsSync(join(dir, 'areas', 'lehigh', 'seller_calls.csv')));
+  assert.ok(existsSync(join(dir, 'areas', 'ocala', 'buyer_discovery.csv')));
+  assert.ok(existsSync(join(dir, 'areas', 'ocala', 'seller_discovery.csv')));
+  assert.ok(manifest.files.some(file => file.endsWith('areas/ocala/buyer_discovery.csv')));
+}
+
+function testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged() {
+  const clean = buildSitePublishPlan({ hasChanges: false, branch: 'main' });
+  assert.equal(clean.shouldCommit, false);
+  const dirty = buildSitePublishPlan({ hasChanges: true, branch: 'main' });
+  assert.equal(dirty.shouldCommit, true);
+  assert.ok(dirty.commands.some(command => command.includes('git add data/generated')));
+  assert.ok(dirty.commands.some(command => command.includes('git push')));
+}
+
 testLoadSourcesValidatesWorkflowInputs();
 testSnapshotGeneratesMarketsBuyersParcelsAndMetadata();
 testQueuesPromoteContactableBuyerFitDealsAndBlockRiskyDeals();
 testBriefingSummarizesConveyorBeltActions();
 testWriteOutputsCreatesMachineReadableFilesAndCsvQueues();
+testTargetAreasCascadeIntoRelatedBuyerAndSellerDiscoveryTasks();
+testAreaBundlesKeepBuyersSellersAndQueuesGeographicallyRelated();
+testWriteOutputsUploadsAreaCsvBundlesForTheStaticSite();
+testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged();
 
 console.log('lead engine tests passed');

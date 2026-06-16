@@ -2,6 +2,7 @@
   "topSellerCalls": [
     {
       "queue": "top_seller_calls",
+      "market": "lehigh",
       "callPriority": 1,
       "parcelId": "LEH-001",
       "address": "123 Grant Blvd, Lehigh Acres, FL",
@@ -15,6 +16,7 @@
     },
     {
       "queue": "top_seller_calls",
+      "market": "lehigh",
       "callPriority": 2,
       "parcelId": "LEH-003",
       "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
@@ -28,6 +30,7 @@
     },
     {
       "queue": "top_seller_calls",
+      "market": "cape-coral",
       "callPriority": 3,
       "parcelId": "CAP-001",
       "address": "904 SW Canal Ter, Cape Coral, FL",
@@ -69,6 +72,25 @@
       "confidence": 66
     }
   ],
+  "buyerDiscovery": [
+    {
+      "market": "ocala",
+      "areaName": "Ocala, FL",
+      "buyerType": "custom-builder",
+      "task": "Find active custom-builder in Ocala, FL",
+      "reason": "new target area needs buyer discovery",
+      "priority": 6
+    }
+  ],
+  "sellerDiscovery": [
+    {
+      "market": "ocala",
+      "areaName": "Ocala, FL",
+      "task": "Find owner/seller parcel leads in Ocala, FL",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 6
+    }
+  ],
   "missingData": [
     {
       "queue": "missing_data",
@@ -76,6 +98,7 @@
       "address": "711 Meadow Rd, Lehigh Acres, FL",
       "missing": "ownerContact|buildability",
       "severity": 2,
+      "market": "lehigh",
       "parcelId": "LEH-002"
     },
     {
@@ -84,6 +107,7 @@
       "address": "123 Grant Blvd, Lehigh Acres, FL",
       "missing": "",
       "severity": 0,
+      "market": "lehigh",
       "parcelId": "LEH-001"
     },
     {
@@ -92,6 +116,7 @@
       "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
       "missing": "",
       "severity": 0,
+      "market": "lehigh",
       "parcelId": "LEH-003"
     },
     {
@@ -100,6 +125,7 @@
       "address": "904 SW Canal Ter, Cape Coral, FL",
       "missing": "",
       "severity": 0,
+      "market": "cape-coral",
       "parcelId": "CAP-001"
     }
   ],
@@ -114,6 +140,7 @@
   "offerReady": [
     {
       "parcelId": "LEH-001",
+      "market": "lehigh",
       "address": "123 Grant Blvd, Lehigh Acres, FL",
       "ownerName": "Avery Santos",
       "ownerPhone": "239-555-0131",
@@ -123,6 +150,7 @@
     },
     {
       "parcelId": "LEH-003",
+      "market": "lehigh",
       "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
       "ownerName": "D Nolan",
       "ownerPhone": "239-555-0199",
@@ -132,6 +160,7 @@
     },
     {
       "parcelId": "CAP-001",
+      "market": "cape-coral",
       "address": "904 SW Canal Ter, Cape Coral, FL",
       "ownerName": "M Rivera",
       "ownerPhone": "239-555-0172",

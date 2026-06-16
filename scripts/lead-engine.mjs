@@ -75,21 +75,62 @@ export function buildLeadQueues(snapshot) {
   const buyers = asArray(snapshot.buyers).map(buyer => ({ id: buyer.id || slug(buyer.name), ...buyer }));
   const parcels = asArray(snapshot.parcels).map((parcel, index) => ({ id: parcel.id || parcel.parcelId || `generated-${index}`, buyerId: parcel.buyerId || buyers.find(b => b.market === parcel.market)?.id, ...parcel }));
   const scored = parcels.map(parcel => ({ ...parcel, ...scoreParcelDeal(parcel) }));
-  const builtCalls = buildTopCallList({ parcels: scored, buyers, limit: 25 }).map(item => ({ queue: 'top_seller_calls', ...item }));
+  const builtCalls = buildTopCallList({ parcels: scored, buyers, limit: 25 }).map(item => ({ queue: 'top_seller_calls', market: scored.find(parcel => (parcel.parcelId || parcel.id) === item.parcelId)?.market || item.market, ...item }));
   const fallbackCalls = scored
     .filter(parcel => parcel.ownerName && (parcel.ownerPhone || parcel.ownerEmail) && parcel.risk?.status !== 'Kill')
     .sort((a, b) => (b.score || 0) - (a.score || 0))
     .slice(0, 25)
-    .map((parcel, index) => ({ queue: 'top_seller_calls', callPriority: index + 1, parcelId: parcel.parcelId || parcel.id, address: parcel.address, ownerName: parcel.ownerName, ownerPhone: parcel.ownerPhone || '', ownerEmail: parcel.ownerEmail || '', score: parcel.score, action: parcel.action, askingPrice: parcel.askingPrice, buyerMaxPrice: parcel.buyerMaxPrice }));
+    .map((parcel, index) => ({ queue: 'top_seller_calls', market: parcel.market, callPriority: index + 1, parcelId: parcel.parcelId || parcel.id, address: parcel.address, ownerName: parcel.ownerName, ownerPhone: parcel.ownerPhone || '', ownerEmail: parcel.ownerEmail || '', score: parcel.score, action: parcel.action, askingPrice: parcel.askingPrice, buyerMaxPrice: parcel.buyerMaxPrice }));
   const topSellerCalls = builtCalls.length ? builtCalls : fallbackCalls;
-  const missingData = reportMissingData(scored).rows.map(item => ({ queue: 'missing_data', ...item, parcelId: item.id, missing: item.missing.join('|') }));
+  const missingData = reportMissingData(scored).rows.map(item => {
+    const parcel = scored.find(candidate => (candidate.parcelId || candidate.id || candidate.address) === item.id || candidate.address === item.address) || {};
+    return { queue: 'missing_data', ...item, market: parcel.market || '', parcelId: item.id, missing: item.missing.join('|') };
+  });
   const fitMatrix = buildDealFitMatrix(scored, buyers);
   const buyerValidation = buyers
     .filter(buyer => !buyer.exactBuyBox || !buyer.phone || buyer.validationStatus !== 'validated')
     .map(buyer => ({ buyerId: buyer.id, name: buyer.name, market: buyer.market, phone: buyer.phone || '', website: buyer.website || '', task: buyer.exactBuyBox ? 'validate proof/close speed' : 'capture exact buy box', confidence: buyer.confidence || 0 }));
   const riskBlocked = scored.filter(parcel => parcel.risk?.status === 'Kill' || parcel.roadAccess === false || parcel.wetlands === true).map(parcel => ({ parcelId: parcel.parcelId || parcel.id, address: parcel.address, reason: parcel.risk?.reason || 'buildability risk', market: parcel.market }));
-  const offerReady = scored.filter(parcel => parcel.ownerName && (parcel.ownerPhone || parcel.ownerEmail) && parcel.risk?.status !== 'Kill' && Number(parcel.buyerMaxPrice || 0) > Number(parcel.askingPrice || 0)).map(parcel => ({ parcelId: parcel.parcelId || parcel.id, address: parcel.address, ownerName: parcel.ownerName, ownerPhone: parcel.ownerPhone || '', askingPrice: parcel.askingPrice || '', buyerMaxPrice: parcel.buyerMaxPrice || '', score: parcel.score }));
-  return { topSellerCalls, buyerValidation, missingData, riskBlocked, offerReady, fitMatrix: fitMatrix.slice(0, 50) };
+  const offerReady = scored.filter(parcel => parcel.ownerName && (parcel.ownerPhone || parcel.ownerEmail) && parcel.risk?.status !== 'Kill' && Number(parcel.buyerMaxPrice || 0) > Number(parcel.askingPrice || 0)).map(parcel => ({ parcelId: parcel.parcelId || parcel.id, market: parcel.market, address: parcel.address, ownerName: parcel.ownerName, ownerPhone: parcel.ownerPhone || '', askingPrice: parcel.askingPrice || '', buyerMaxPrice: parcel.buyerMaxPrice || '', score: parcel.score }));
+  const buyerDiscovery = asArray(snapshot.markets)
+    .filter(market => !buyers.some(buyer => buyer.market === market.id))
+    .map(market => ({ market: market.id, areaName: market.name, buyerType: market.buyerType || 'builder', task: `Find active ${market.buyerType || 'land buyers'} in ${market.name}`, reason: 'new target area needs buyer discovery', priority: market.priority || 0 }));
+  const sellerDiscovery = asArray(snapshot.markets)
+    .filter(market => !parcels.some(parcel => parcel.market === market.id))
+    .map(market => ({ market: market.id, areaName: market.name, task: `Find owner/seller parcel leads in ${market.name}`, reason: 'new target area needs seller/parcel discovery', priority: market.priority || 0 }));
+  return { topSellerCalls, buyerValidation, buyerDiscovery, sellerDiscovery, missingData, riskBlocked, offerReady, fitMatrix: fitMatrix.slice(0, 50) };
+}
+
+export function buildAreaQueueBundles(snapshot, queues) {
+  const bundles = {};
+  for (const market of asArray(snapshot.markets)) {
+    bundles[market.id] = {
+      market: market.id,
+      areaName: market.name,
+      buyers: asArray(snapshot.buyers).filter(item => item.market === market.id),
+      parcels: asArray(snapshot.parcels).filter(item => item.market === market.id),
+      topSellerCalls: asArray(queues.topSellerCalls).filter(item => item.market === market.id),
+      buyerValidation: asArray(queues.buyerValidation).filter(item => item.market === market.id),
+      buyerDiscovery: asArray(queues.buyerDiscovery).filter(item => item.market === market.id),
+      sellerDiscovery: asArray(queues.sellerDiscovery).filter(item => item.market === market.id),
+      offerReady: asArray(queues.offerReady).filter(item => item.market === market.id),
+      missingData: asArray(queues.missingData).filter(item => item.market === market.id),
+      riskBlocked: asArray(queues.riskBlocked).filter(item => item.market === market.id),
+    };
+  }
+  return bundles;
+}
+
+export function buildSitePublishPlan({ hasChanges, branch = 'main' } = {}) {
+  if (!hasChanges) return { shouldCommit: false, commands: [] };
+  return {
+    shouldCommit: true,
+    commands: [
+      'git add data/generated',
+      'git commit -m "chore: publish generated lead outputs"',
+      `env -u GITHUB_TOKEN -u GH_TOKEN git push origin ${branch}`,
+    ],
+  };
 }
 
 export function buildOperatorBriefing(snapshot, queues) {
@@ -104,6 +145,8 @@ export function buildOperatorBriefing(snapshot, queues) {
     `- Top seller calls: ${queues.topSellerCalls.length}`,
     `- Buyer validation tasks: ${queues.buyerValidation.length}`,
     `- Offer-ready deals: ${queues.offerReady.length}`,
+    `- New-area buyer discovery tasks: ${queues.buyerDiscovery.length}`,
+    `- New-area seller discovery tasks: ${queues.sellerDiscovery.length}`,
     `- Missing-data blockers: ${queues.missingData.length}`,
     '',
     '## Top seller calls',
@@ -112,10 +155,13 @@ export function buildOperatorBriefing(snapshot, queues) {
     '## Buyer validation tasks',
     ...queues.buyerValidation.slice(0, 10).map((item, index) => `${index + 1}. ${item.name} — ${item.task} — ${item.phone || item.website || 'find contact'}`),
     '',
+    '## New-area discovery tasks',
+    ...[...queues.buyerDiscovery, ...queues.sellerDiscovery].slice(0, 10).map((item, index) => `${index + 1}. ${item.areaName || item.market} — ${item.reason} — ${item.task}`),
+    '',
     '## Offer-ready deals',
     ...queues.offerReady.slice(0, 10).map((item, index) => `${index + 1}. ${item.address} — ask ${item.askingPrice || 'unknown'} — max ${item.buyerMaxPrice || 'unknown'}`),
   ];
-  return { markdown: `${lines.join('\n')}\n`, counts: { markets: snapshot.markets.length, buyers: snapshot.buyers.length, parcels: snapshot.parcels.length, topSellerCalls: queues.topSellerCalls.length, offerReady: queues.offerReady.length } };
+  return { markdown: `${lines.join('\n')}\n`, counts: { markets: snapshot.markets.length, buyers: snapshot.buyers.length, parcels: snapshot.parcels.length, topSellerCalls: queues.topSellerCalls.length, offerReady: queues.offerReady.length, buyerDiscovery: queues.buyerDiscovery.length, sellerDiscovery: queues.sellerDiscovery.length } };
 }
 
 export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(repoRoot, 'data', 'generated') }) {
@@ -130,6 +176,9 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
   writeFileSync(briefingPath, briefing.markdown); files.push(briefingPath);
   const queuesPath = join(outputDir, 'queues.json');
   writeJson(queuesPath, queues); files.push(queuesPath);
+  const areasPath = join(outputDir, 'areas.json');
+  const areaBundles = buildAreaQueueBundles(snapshot, queues);
+  writeJson(areasPath, areaBundles); files.push(areasPath);
   const topCsv = join(outputDir, 'queues', 'top_seller_calls.csv');
   writeFileSync(topCsv, exportParcelsCsv(queues.topSellerCalls)); files.push(topCsv);
   const buyerCsv = join(outputDir, 'queues', 'buyer_validation.csv');
@@ -137,7 +186,30 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
   const offerCsv = join(outputDir, 'queues', 'offer_ready.csv');
   writeFileSync(offerCsv, toQueueRows(queues.offerReady, ['parcelId', 'address', 'ownerName', 'ownerPhone', 'askingPrice', 'buyerMaxPrice', 'score'])); files.push(offerCsv);
   const missingCsv = join(outputDir, 'queues', 'missing_data.csv');
-  writeFileSync(missingCsv, toQueueRows(queues.missingData, ['parcelId', 'address', 'severity', 'missing', 'reason'])); files.push(missingCsv);
+  writeFileSync(missingCsv, toQueueRows(queues.missingData, ['parcelId', 'market', 'address', 'severity', 'missing', 'reason'])); files.push(missingCsv);
+  const buyerDiscoveryCsv = join(outputDir, 'queues', 'buyer_discovery.csv');
+  writeFileSync(buyerDiscoveryCsv, toQueueRows(queues.buyerDiscovery, ['market', 'areaName', 'buyerType', 'task', 'reason', 'priority'])); files.push(buyerDiscoveryCsv);
+  const sellerDiscoveryCsv = join(outputDir, 'queues', 'seller_discovery.csv');
+  writeFileSync(sellerDiscoveryCsv, toQueueRows(queues.sellerDiscovery, ['market', 'areaName', 'task', 'reason', 'priority'])); files.push(sellerDiscoveryCsv);
+  for (const [marketId, bundle] of Object.entries(areaBundles)) {
+    const areaDir = join(outputDir, 'areas', marketId);
+    mkdirSync(areaDir, { recursive: true });
+    const paths = [
+      ['buyers.csv', bundle.buyers, ['leadId', 'market', 'name', 'phone', 'email', 'website', 'contactName', 'buyBox', 'confidence']],
+      ['sellers.csv', bundle.parcels, ['leadId', 'market', 'parcelId', 'address', 'ownerName', 'ownerPhone', 'ownerEmail', 'askingPrice', 'buyerMaxPrice', 'sourceId']],
+      ['seller_calls.csv', bundle.topSellerCalls, ['parcelId', 'market', 'address', 'ownerName', 'ownerPhone', 'ownerEmail', 'score', 'askingPrice', 'buyerMaxPrice']],
+      ['buyer_validation.csv', bundle.buyerValidation, ['buyerId', 'name', 'market', 'phone', 'website', 'task', 'confidence']],
+      ['offer_ready.csv', bundle.offerReady, ['parcelId', 'market', 'address', 'ownerName', 'ownerPhone', 'askingPrice', 'buyerMaxPrice', 'score']],
+      ['missing_data.csv', bundle.missingData, ['parcelId', 'market', 'address', 'severity', 'missing', 'reason']],
+      ['buyer_discovery.csv', bundle.buyerDiscovery, ['market', 'areaName', 'buyerType', 'task', 'reason', 'priority']],
+      ['seller_discovery.csv', bundle.sellerDiscovery, ['market', 'areaName', 'task', 'reason', 'priority']],
+    ];
+    for (const [fileName, rows, headers] of paths) {
+      const path = join(areaDir, fileName);
+      writeFileSync(path, toQueueRows(rows, headers));
+      files.push(path);
+    }
+  }
   return { outputDir, files, briefing };
 }
 

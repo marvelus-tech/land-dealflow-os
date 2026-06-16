@@ -1,0 +1,4 @@
+leadId,market,parcelId,address,ownerName,ownerPhone,ownerEmail,askingPrice,buyerMaxPrice,sourceId
+parcel:lehigh:LEH-001,lehigh,LEH-001,"123 Grant Blvd, Lehigh Acres, FL",Avery Santos,239-555-0131,avery@example.com,28500,42000,lehigh-parcels-seed
+parcel:lehigh:LEH-002,lehigh,LEH-002,"711 Meadow Rd, Lehigh Acres, FL",River Trust,,,36000,42000,lehigh-parcels-seed
+parcel:lehigh:LEH-003,lehigh,LEH-003,"508 Meadowbrook Ave, Lehigh Acres, FL",D Nolan,239-555-0199,,31000,42000,lehigh-parcels-seed

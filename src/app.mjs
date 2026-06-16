@@ -309,11 +309,14 @@ function renderLeadEnginePanel() {
   const topCalls = queues.topSellerCalls || [];
   const buyerTasks = queues.buyerValidation || [];
   const offerReady = queues.offerReady || [];
+  const buyerDiscovery = queues.buyerDiscovery || [];
+  const sellerDiscovery = queues.sellerDiscovery || [];
   const blockers = queues.missingData || [];
   target.innerHTML = `<div class="lead-engine-grid">
     <div class="deal-strip four"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Offer-ready</span><strong>${offerReady.length}</strong></div></div>
     <div class="engine-column"><h4>Top seller calls</h4>${topCalls.slice(0, 5).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
     <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 5).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No buyer-validation tasks generated yet.</p>'}</div>
+    <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 6).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>
     <div class="engine-column"><h4>Offer-ready</h4>${offerReady.slice(0, 5).map(item => `<div class="engine-row"><b>${h(item.address)}</b><span>${h(item.ownerName)} · ask ${h(item.askingPrice)} · max ${h(item.buyerMaxPrice)}</span></div>`).join('') || '<p>No offer-ready deals generated yet.</p>'}</div>
     <div class="engine-column"><h4>Blockers</h4>${blockers.filter(item => item.severity > 0).slice(0, 5).map(item => `<div class="engine-row"><b>${h(item.address || item.parcelId)}</b><span>Missing: ${h(item.missing || 'unknown')}</span></div>`).join('') || '<p>No critical blockers in generated leads.</p>'}</div>
   </div>`;

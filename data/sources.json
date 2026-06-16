@@ -16,6 +16,14 @@
       "buyerType": "custom-builder",
       "thesis": "Utility and canal-premium lot opportunities, but diligence risk is higher.",
       "priority": 7
+    },
+    {
+      "id": "ocala",
+      "name": "Ocala, FL",
+      "state": "FL",
+      "buyerType": "custom-builder",
+      "thesis": "New target area: find builders first, then parcel/seller leads that match local buyer demand.",
+      "priority": 6
     }
   ],
   "buyerSources": [

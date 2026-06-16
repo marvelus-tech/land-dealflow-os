@@ -21,6 +21,11 @@ import {
   bulkMarkContacted,
   generateOfferPacket,
   exportDealMemoMarkdown,
+  calculateBuyerScorecard,
+  captureBuyBox,
+  addBuyerCallNote,
+  buildDealFitMatrix,
+  buildBuyerFeedbackLoop,
   formatMoney,
 } from './core.mjs';
 
@@ -34,7 +39,7 @@ const seedMarkets = [
 ];
 
 const seedBuyers = [
-  { id: 'precision', market: 'lehigh', name: 'Precision Gulf Homes', type: 'Spec Builder', recentBuilds: 18, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 14, repeatDemand: 9, maxPrice: 42000, contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', acquisitionNotes: 'Fastest buyer for clean paved-road Lehigh quarter-acre infill lots.', buyBox: '0.23–0.29 acre infill lots, paved road, no wetlands, $42k max' },
+  { id: 'precision', market: 'lehigh', name: 'Precision Gulf Homes', type: 'Spec Builder', recentBuilds: 18, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 14, repeatDemand: 9, maxPrice: 42000, contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', acquisitionNotes: 'Fastest buyer for clean paved-road Lehigh quarter-acre infill lots.', buyBox: '0.23–0.29 acre infill lots, paved road, no wetlands, $42k max', buyBoxCaptured: true, exactBuyBox: { targetMarkets: ['lehigh'], lotSizeMin: 0.23, lotSizeMax: 0.29, maxPrice: 42000, requiredRoadAccess: true, requiredUtilities: false, avoidFloodZones: ['AE'], avoidWetlands: true, notes: 'Paved-road quarter-acre Lehigh infill only.' }, validation: { calls: 4, answered: 3, buyBoxCaptured: true, proofOfFunds: true, feedbackCount: 3, acceptedDeals: 2, rejectedDeals: 1 }, callNotes: [{ date: '2026-06-16', contact: 'Maya Chen', outcome: 'answered', note: 'Confirmed paved road and no wetlands are non-negotiable.' }], feedback: [{ parcelId: 'parcel-1', decision: 'accept', reason: 'clean infill' }, { parcelId: 'parcel-4', decision: 'reject', reason: 'wetlands/access' }] },
   { id: 'sunbelt', market: 'cape-coral', name: 'Sunbelt Custom Builders', type: 'Custom Builder', recentBuilds: 11, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 21, repeatDemand: 7, maxPrice: 95000, contactName: 'Andre Wells', phone: '239-555-0144', email: 'land@sunbelt.example', website: 'https://sunbelt.example', acquisitionNotes: 'Likes utility-confirmed lots; seawall/canal premium only after verification.', buyBox: 'Quarter-acre residential lots, utilities nearby, seawall premium, $95k max' },
   { id: 'ozark', market: 'bentonville', name: 'Ozark Ridge Homes', type: 'Custom Builder', recentBuilds: 9, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 18, repeatDemand: 6, maxPrice: 65000, contactName: 'Nina Brooks', phone: '479-555-0182', email: 'acquisitions@ozarkridge.example', website: 'https://ozarkridge.example', acquisitionNotes: 'Needs slope/perc viability before soft commitment.', buyBox: '0.4–1.0 acre lots, gentle slope, perc viable, $65k max' },
   { id: 'investor', market: 'lehigh', name: 'Evergreen Land Fund', type: 'Land Investor', recentBuilds: 0, scatteredLots: false, hasBuyBox: true, closeSpeedDays: 30, repeatDemand: 4, maxPrice: 35000, contactName: 'Sam Patel', phone: '305-555-0108', email: 'sam@evergreenland.example', website: 'https://evergreenland.example', acquisitionNotes: 'Backup buyer; only use when builder spread fails.', buyBox: 'Will buy at 60–70% market only; backup buyer' },
@@ -195,8 +200,8 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v0.6 offer packet generator</span>
-      <h1>Move from seller interest to written offer, buyer summary, risk checklist, and deal memo.</h1>
+      <span class="eyebrow">Land Dealflow OS · v0.7 buyer validation pipeline</span>
+      <h1>Validate real buyers with scorecards, call notes, exact buy boxes, fit matrix, and feedback loops.</h1>
       <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
       <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
@@ -211,9 +216,9 @@ function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">v0.6 Workspace</span>
-      <h2>Normalize, call, follow up, write offers, export memos</h2>
-      <p>Import source data, clear quality gaps, execute outreach, generate offer packets, and export deal memos.</p>
+      <span class="eyebrow">v0.7 Workspace</span>
+      <h2>Normalize, validate buyers, fit deals, write offers, export memos</h2>
+      <p>Import source data, validate buyer truth, capture exact buy boxes, score parcel fit, and close the feedback loop.</p>
     </div>
     <div class="workspace-grid">
       <article class="card tool-card">
@@ -239,6 +244,12 @@ function renderWorkspaceTools() {
         <h3>Data quality gate</h3>
         <p>Before calling owners: clear duplicate APNs/addresses, missing owner contacts, missing pricing, and incomplete buildability screens.</p>
         <div id="quality-gate"></div>
+      </article>
+      <article class="card tool-card wide-card">
+        <h3>Buyer validation pipeline</h3>
+        <p>Buyer truth layer: scorecards, exact buy boxes, call notes, deal-fit matrix, and rejection lessons.</p>
+        <div class="button-row"><button id="capture-sample-buybox" type="button">Capture sample buy-box</button><button id="add-sample-buyer-note" type="button">Add buyer call note</button><span id="buyer-validation-status"></span></div>
+        <div id="buyer-validation-panel"></div>
       </article>
       <article class="card tool-card wide-card">
         <h3>Outreach execution</h3>
@@ -282,6 +293,20 @@ function renderQualityControl() {
   <div class="checklist">${checklist.map(item => `<div class="check-item ${item.blocksCallList ? 'blocks' : ''}"><strong>${h(item.label)}</strong><span>${h(item.detail)}</span></div>`).join('')}</div>
   <div class="missing-list">${worstRows.length ? worstRows.map(row => `<div><b>${h(row.address || row.id)}</b><span>${row.missing.map(item => badge(item, item === 'ownerContact' || item === 'buildability' ? 'bad' : 'warn')).join('')}</span></div>`).join('') : '<p>Quality gate clear for current records.</p>'}</div>
   ${duplicates.length ? `<div class="duplicate-list"><strong>Duplicate review:</strong>${duplicates.map(group => `<span>${h(group.reason)}: ${h(group.ids.join(', '))}</span>`).join('')}</div>` : ''}`;
+}
+
+function renderBuyerValidationPanel() {
+  const target = document.querySelector('#buyer-validation-panel');
+  if (!target) return;
+  const scorecards = (workspace.buyers || []).map(calculateBuyerScorecard).sort((a, b) => b.score - a.score);
+  const matrix = buildDealFitMatrix(workspace.parcels || [], workspace.buyers || []).slice(0, 6);
+  const loop = buildBuyerFeedbackLoop(workspace.buyers || []);
+  target.innerHTML = `<div class="buyer-validation-grid">
+    <div class="scorecard-list"><h4>Buyer scorecards</h4>${scorecards.map(card => `<div class="buyer-score-row grade-${h(card.grade)}"><b>${h(card.grade)} · ${h(card.name || 'buyer')} · ${card.score}</b><span>${h(card.signals.join(', ') || 'needs validation')}</span></div>`).join('')}</div>
+    <div class="fit-matrix"><h4>Deal-fit matrix</h4>${matrix.map(row => `<div class="fit-row ${h(row.fit)}"><b>${h(row.fit)} · ${h(row.address || row.parcelId)} → ${h(row.buyerName)}</b><span>${row.score}/100${row.misses.length ? ` · misses: ${h(row.misses.join(', '))}` : ''}</span></div>`).join('') || '<p>No exact buy boxes captured yet.</p>'}</div>
+    <div class="feedback-loop"><h4>Feedback loop</h4><div class="deal-strip"><div><span>Total feedback</span><strong>${loop.totalFeedback}</strong></div><div><span>Accepted</span><strong>${loop.accepted}</strong></div><div><span>Rejected</span><strong>${loop.rejected}</strong></div></div><p>${h(loop.lessons || 'No rejection lessons captured yet.')}</p></div>
+    <div class="call-notes"><h4>Latest call notes</h4>${(workspace.buyers || []).flatMap(b => (b.callNotes || []).map(n => ({ buyer: b.name, ...n }))).slice(0, 5).map(note => `<div class="note-row"><b>${h(note.date || '')} · ${h(note.buyer)}</b><span>${h(note.outcome || '')}: ${h(note.note || '')}</span></div>`).join('') || '<p>No buyer call notes captured yet.</p>'}</div>
+  </div>`;
 }
 
 function renderOutreachPanel() {
@@ -361,6 +386,22 @@ function bindEvents() {
       downloadText(`land-dealflow-mail-merge-${new Date().toISOString().slice(0, 10)}.csv`, exportMailMergeCsv(getVisibleParcels()));
     }
 
+    if (event.target.matches('#capture-sample-buybox')) {
+      workspace = { ...workspace, buyers: (workspace.buyers || []).map((buyer, index) => index === 0 ? captureBuyBox(buyer, { lotSizeMin: 0.23, lotSizeMax: 0.32, maxPrice: buyer.maxPrice || 42000, targetMarkets: [buyer.market || 'lehigh'], requiredRoadAccess: true, requiredUtilities: false, avoidFloodZones: ['AE'], avoidWetlands: true, notes: 'captured from v0.7 buyer validation panel' }) : buyer) };
+      persistWorkspace();
+      const status = document.querySelector('#buyer-validation-status');
+      if (status) status.textContent = 'Sample buy-box captured.';
+      renderAll();
+    }
+
+    if (event.target.matches('#add-sample-buyer-note')) {
+      workspace = { ...workspace, buyers: (workspace.buyers || []).map((buyer, index) => index === 0 ? addBuyerCallNote(buyer, { date: new Date().toISOString().slice(0, 10), contact: buyer.contactName || '', outcome: 'answered', note: 'Validated buyer criteria and captured feedback loop.', dealFeedback: { parcelId: 'parcel-1', decision: 'accept', reason: 'clean infill' } }) : buyer) };
+      persistWorkspace();
+      const status = document.querySelector('#buyer-validation-status');
+      if (status) status.textContent = 'Buyer call note added.';
+      renderAll();
+    }
+
     if (event.target.matches('#bulk-contact-callnow')) {
       const callNowIds = scoredParcels().filter(parcel => parcel.action === 'Call now').map(parcel => parcel.id);
       const followUp = new Date(Date.now() + 3 * 86400000).toISOString().slice(0, 10);
@@ -433,6 +474,7 @@ function renderAll() {
   renderParcels();
   renderTopCallList();
   renderQualityControl();
+  renderBuyerValidationPanel();
   renderOutreachPanel();
   renderOfferPacketPanel();
 }

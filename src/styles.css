@@ -162,6 +162,16 @@ button.danger { background: rgba(239,68,68,.16); color: #fecaca; border-color: r
 .missing-list, .duplicate-list { display: grid; gap: 8px; margin-top: 12px; }
 .missing-list div, .duplicate-list { border-top: 1px solid var(--line-soft); padding-top: 10px; }
 .missing-list b, .missing-list span, .duplicate-list strong, .duplicate-list span { display: block; }
+.buyer-validation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.scorecard-list, .fit-matrix, .feedback-loop, .call-notes { border: 1px solid var(--line-soft); border-radius: 14px; padding: 14px; background: rgba(255,255,255,.025); }
+.scorecard-list h4, .fit-matrix h4, .feedback-loop h4, .call-notes h4 { margin: 0 0 10px; }
+.buyer-score-row, .fit-row, .note-row { border-top: 1px solid var(--line-soft); padding: 10px 0; }
+.buyer-score-row:first-of-type, .fit-row:first-of-type, .note-row:first-of-type { border-top: 0; }
+.buyer-score-row b, .buyer-score-row span, .fit-row b, .fit-row span, .note-row b, .note-row span { display: block; }
+.buyer-score-row span, .fit-row span, .note-row span { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.buyer-score-row.grade-A b, .fit-row.strong b { color: var(--good); }
+.buyer-score-row.grade-B b, .fit-row.review b { color: var(--warn); }
+.buyer-score-row.grade-C b, .buyer-score-row.grade-D b, .fit-row.weak b { color: var(--bad); }
 .outreach-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 14px; margin-top: 14px; }
 .followup-list, .script-box { border: 1px solid var(--line-soft); border-radius: 14px; padding: 14px; background: rgba(255,255,255,.025); }
 .followup-list h4, .script-box h4 { margin: 0 0 10px; }
@@ -187,7 +197,7 @@ button.danger { background: rgba(239,68,68,.16); color: #fecaca; border-color: r
 footer { max-width: 1220px; margin: 0 auto; padding: 36px 24px 60px; color: var(--muted); border-top: 1px solid var(--line-soft); }
 
 @media (max-width: 1000px) {
-  .command, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid { grid-template-columns: 1fr; }
+  .command, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid { grid-template-columns: 1fr; }
   .quality-grid, .risk-checklist { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pipeline { grid-template-columns: repeat(2, 1fr); }
   .deal-strip, .deal-strip.five { grid-template-columns: repeat(2, 1fr); }

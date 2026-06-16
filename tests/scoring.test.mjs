@@ -25,6 +25,11 @@ import {
   generateBuyerAssignmentSummary,
   buildRiskChecklist,
   exportDealMemoMarkdown,
+  calculateBuyerScorecard,
+  captureBuyBox,
+  addBuyerCallNote,
+  buildDealFitMatrix,
+  buildBuyerFeedbackLoop,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -318,6 +323,68 @@ function testBulkMarkContactedUpdatesSelectedParcelsImmutably() {
   assert.ok(updated.parcels[1].notes.includes('old'));
   assert.ok(updated.parcels[1].notes.includes('left voicemail'));
 }
+
+function testBuyerScorecardRewardsProofOfBuyingAndFeedback() {
+  const scorecard = calculateBuyerScorecard({
+    name: 'Precision Gulf Homes', recentBuilds: 18, closeSpeedDays: 14, repeatDemand: 9, maxPrice: 42000,
+    validation: { calls: 4, answered: 3, buyBoxCaptured: true, proofOfFunds: true, feedbackCount: 5, acceptedDeals: 3, rejectedDeals: 1 }
+  });
+  assert.equal(scorecard.grade, 'A');
+  assert.ok(scorecard.score >= 80);
+  assert.ok(scorecard.signals.includes('validated buy box'));
+}
+
+function testCaptureBuyBoxNormalizesExactCriteria() {
+  const buyer = captureBuyBox({ id: 'precision', name: 'Precision Gulf Homes' }, {
+    lotSizeMin: 0.23, lotSizeMax: 0.32, maxPrice: 45000, targetMarkets: ['lehigh'], requiredRoadAccess: true,
+    requiredUtilities: true, avoidFloodZones: ['AE'], avoidWetlands: true, notes: 'quarter acre infill only'
+  });
+  assert.equal(buyer.buyBoxCaptured, true);
+  assert.equal(buyer.maxPrice, 45000);
+  assert.deepEqual(buyer.exactBuyBox.targetMarkets, ['lehigh']);
+  assert.ok(buyer.buyBox.includes('0.23-0.32 ac'));
+}
+
+function testAddBuyerCallNoteUpdatesValidationLoop() {
+  const buyer = addBuyerCallNote({ id: 'p', name: 'Precision', validation: { calls: 1, answered: 0 }, callNotes: [] }, {
+    date: '2026-06-16', contact: 'Maya', outcome: 'answered', note: 'wants paved roads only', dealFeedback: { parcelId: 'parcel-1', decision: 'reject', reason: 'dirt road' }
+  });
+  assert.equal(buyer.validation.calls, 2);
+  assert.equal(buyer.validation.answered, 1);
+  assert.equal(buyer.validation.feedbackCount, 1);
+  assert.equal(buyer.feedback[0].decision, 'reject');
+  assert.ok(buyer.callNotes[0].note.includes('paved roads'));
+}
+
+function testDealFitMatrixScoresBuyerParcelFit() {
+  const matrix = buildDealFitMatrix([
+    { id: 'a', address: 'Fit', market: 'lehigh', lotSizeAcres: 0.25, askingPrice: 30000, roadAccess: true, utilities: true, wetlands: false, floodZone: 'X' },
+    { id: 'b', address: 'Bad', market: 'lehigh', lotSizeAcres: 0.6, askingPrice: 60000, roadAccess: false, utilities: false, wetlands: true, floodZone: 'AE' },
+  ], [{ id: 'precision', name: 'Precision', exactBuyBox: { targetMarkets: ['lehigh'], lotSizeMin: 0.2, lotSizeMax: 0.35, maxPrice: 45000, requiredRoadAccess: true, requiredUtilities: true, avoidWetlands: true, avoidFloodZones: ['AE'] }}]);
+  assert.equal(matrix[0].parcelId, 'a');
+  assert.equal(matrix[0].buyerId, 'precision');
+  assert.equal(matrix[0].fit, 'strong');
+  assert.ok(matrix[0].score > matrix[1].score);
+  assert.ok(matrix[1].misses.includes('wetlands'));
+}
+
+function testBuyerFeedbackLoopRollsUpAcceptedAndRejectedLessons() {
+  const loop = buildBuyerFeedbackLoop([{ name: 'Precision', feedback: [
+    { decision: 'accept', reason: 'clean infill' },
+    { decision: 'reject', reason: 'dirt road' },
+    { decision: 'reject', reason: 'flood zone' },
+  ]}]);
+  assert.equal(loop.totalFeedback, 3);
+  assert.equal(loop.accepted, 1);
+  assert.ok(loop.topRejectReasons[0].reason);
+  assert.ok(loop.lessons.includes('flood zone'));
+}
+
+testBuyerScorecardRewardsProofOfBuyingAndFeedback();
+testCaptureBuyBoxNormalizesExactCriteria();
+testAddBuyerCallNoteUpdatesValidationLoop();
+testDealFitMatrixScoresBuyerParcelFit();
+testBuyerFeedbackLoopRollsUpAcceptedAndRejectedLessons();
 
 function testOfferPacketComputesSellerOfferAndAssignmentSpread() {
   const parcel = { address: '123 Grant Blvd', ownerName: 'Avery Santos', buyerMaxPrice: 42000, askingPrice: 28500, lowestActiveListing: 48000, roadAccess: true, utilities: true, wetlands: false, floodZone: 'X', slope: 'flat', wildlifeFlag: false };

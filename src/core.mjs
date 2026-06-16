@@ -516,6 +516,116 @@ export function bulkMarkContacted(workspace = {}, parcelIds = [], { date = new D
   };
 }
 
+function buyerGrade(score) {
+  if (score >= 80) return 'A';
+  if (score >= 65) return 'B';
+  if (score >= 45) return 'C';
+  return 'D';
+}
+
+export function calculateBuyerScorecard(buyer = {}) {
+  const validation = buyer.validation || {};
+  const answeredRate = validation.calls ? (Number(validation.answered || 0) / Number(validation.calls || 1)) : 0;
+  const acceptanceRate = validation.feedbackCount ? (Number(validation.acceptedDeals || 0) / Number(validation.feedbackCount || 1)) : 0;
+  let score = 0;
+  score += Math.min(18, Number(buyer.recentBuilds || 0));
+  score += Math.max(0, Math.min(14, 18 - Number(buyer.closeSpeedDays || 30) / 2));
+  score += Math.min(12, Number(buyer.repeatDemand || 0) * 1.2);
+  score += buyer.maxPrice ? 8 : 0;
+  score += validation.buyBoxCaptured || buyer.buyBoxCaptured || buyer.exactBuyBox ? 16 : 0;
+  score += validation.proofOfFunds ? 10 : 0;
+  score += Math.min(10, Number(validation.feedbackCount || 0) * 2);
+  score += Math.round(answeredRate * 8);
+  score += Math.round(acceptanceRate * 8);
+  score = Math.max(0, Math.min(100, Math.round(score)));
+  const signals = [];
+  if (validation.buyBoxCaptured || buyer.buyBoxCaptured || buyer.exactBuyBox) signals.push('validated buy box');
+  if (validation.proofOfFunds) signals.push('funding proof');
+  if ((validation.feedbackCount || 0) > 0) signals.push('feedback loop active');
+  if ((validation.acceptedDeals || 0) > (validation.rejectedDeals || 0)) signals.push('accepts matching deals');
+  return { buyerId: buyer.id, name: buyer.name, score, grade: buyerGrade(score), answeredRate, acceptanceRate, signals };
+}
+
+export function captureBuyBox(buyer = {}, criteria = {}) {
+  const exactBuyBox = {
+    targetMarkets: criteria.targetMarkets || buyer.targetMarkets || [],
+    lotSizeMin: Number(criteria.lotSizeMin || 0),
+    lotSizeMax: Number(criteria.lotSizeMax || 0),
+    maxPrice: Number(criteria.maxPrice || buyer.maxPrice || 0),
+    requiredRoadAccess: criteria.requiredRoadAccess ?? true,
+    requiredUtilities: criteria.requiredUtilities ?? false,
+    avoidFloodZones: criteria.avoidFloodZones || [],
+    avoidWetlands: criteria.avoidWetlands ?? true,
+    notes: criteria.notes || '',
+  };
+  const range = exactBuyBox.lotSizeMin && exactBuyBox.lotSizeMax ? `${exactBuyBox.lotSizeMin}-${exactBuyBox.lotSizeMax} ac` : 'any lot size';
+  return {
+    ...buyer,
+    maxPrice: exactBuyBox.maxPrice || buyer.maxPrice,
+    exactBuyBox,
+    buyBoxCaptured: true,
+    buyBox: `${range}; max ${formatMoney(exactBuyBox.maxPrice || 0)}; markets ${(exactBuyBox.targetMarkets || []).join(', ') || 'any'}; ${exactBuyBox.notes}`.trim(),
+    validation: { ...(buyer.validation || {}), buyBoxCaptured: true },
+  };
+}
+
+export function addBuyerCallNote(buyer = {}, note = {}) {
+  const callNotes = [{ date: note.date || new Date().toISOString().slice(0, 10), contact: note.contact || '', outcome: note.outcome || 'unknown', note: note.note || '' }, ...(buyer.callNotes || [])];
+  const feedback = note.dealFeedback ? [{ ...note.dealFeedback, date: note.date || '' }, ...(buyer.feedback || [])] : (buyer.feedback || []);
+  const validation = { ...(buyer.validation || {}) };
+  validation.calls = Number(validation.calls || 0) + 1;
+  if (note.outcome === 'answered') validation.answered = Number(validation.answered || 0) + 1;
+  if (note.dealFeedback) {
+    validation.feedbackCount = Number(validation.feedbackCount || 0) + 1;
+    if (note.dealFeedback.decision === 'accept') validation.acceptedDeals = Number(validation.acceptedDeals || 0) + 1;
+    if (note.dealFeedback.decision === 'reject') validation.rejectedDeals = Number(validation.rejectedDeals || 0) + 1;
+  }
+  return { ...buyer, validation, callNotes, feedback };
+}
+
+function parcelAcres(parcel = {}) {
+  if (parcel.lotSizeAcres !== undefined) return Number(parcel.lotSizeAcres);
+  const match = String(parcel.lotSize || '').match(/[\d.]+/);
+  return match ? Number(match[0]) : 0;
+}
+
+export function buildDealFitMatrix(parcels = [], buyers = []) {
+  const rows = [];
+  for (const parcel of parcels) {
+    for (const buyer of buyers) {
+      const box = buyer.exactBuyBox || {};
+      const misses = [];
+      let score = 100;
+      const acres = parcelAcres(parcel);
+      if ((box.targetMarkets || []).length && !(box.targetMarkets || []).includes(parcel.market)) { misses.push('market'); score -= 25; }
+      if (box.lotSizeMin && acres && acres < box.lotSizeMin) { misses.push('too small'); score -= 15; }
+      if (box.lotSizeMax && acres && acres > box.lotSizeMax) { misses.push('too large'); score -= 15; }
+      if (box.maxPrice && Number(parcel.askingPrice || parcel.buyerMaxPrice || 0) > box.maxPrice) { misses.push('price'); score -= 20; }
+      if (box.requiredRoadAccess && parcel.roadAccess !== true) { misses.push('road access'); score -= 25; }
+      if (box.requiredUtilities && parcel.utilities !== true) { misses.push('utilities'); score -= 10; }
+      if (box.avoidWetlands && parcel.wetlands === true) { misses.push('wetlands'); score -= 35; }
+      if ((box.avoidFloodZones || []).includes(String(parcel.floodZone || '').toUpperCase())) { misses.push('flood zone'); score -= 25; }
+      score = Math.max(0, Math.round(score));
+      rows.push({ parcelId: parcel.id || parcel.parcelId, buyerId: buyer.id, address: parcel.address, buyerName: buyer.name, score, fit: score >= 80 ? 'strong' : score >= 55 ? 'review' : 'weak', misses });
+    }
+  }
+  return rows.sort((a, b) => b.score - a.score);
+}
+
+export function buildBuyerFeedbackLoop(buyers = []) {
+  const all = buyers.flatMap(buyer => (buyer.feedback || []).map(item => ({ buyerName: buyer.name, ...item })));
+  const accepted = all.filter(item => item.decision === 'accept').length;
+  const rejected = all.filter(item => item.decision === 'reject').length;
+  const reasons = new Map();
+  for (const item of all) {
+    const reason = String(item.reason || 'unspecified').toLowerCase();
+    reasons.set(reason, (reasons.get(reason) || 0) + 1);
+  }
+  const topRejectReasons = [...reasons.entries()].map(([reason, count]) => ({ reason, count })).sort((a, b) => b.count - a.count);
+  const lessons = topRejectReasons.map(item => item.reason).join('; ');
+  return { totalFeedback: all.length, accepted, rejected, acceptanceRate: all.length ? accepted / all.length : 0, topRejectReasons, lessons, feedback: all };
+}
+
 export function buildRiskChecklist(parcel = {}) {
   const flood = String(parcel.floodZone || '').toUpperCase();
   return [

@@ -1,0 +1,10 @@
+{
+  "name": "land-dealflow-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/scoring.test.mjs",
+    "serve": "python3 -m http.server 4173"
+  }
+}

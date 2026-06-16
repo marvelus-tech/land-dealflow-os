@@ -162,6 +162,26 @@ function normalizeHeader(header) {
     buyerid: 'buyerId',
     lot_size: 'lotSize',
     lotsize: 'lotSize',
+    owner_name: 'ownerName',
+    ownername: 'ownerName',
+    owner_phone: 'ownerPhone',
+    ownerphone: 'ownerPhone',
+    owner_email: 'ownerEmail',
+    owneremail: 'ownerEmail',
+    owner_mailing_address: 'ownerMailingAddress',
+    ownermailingaddress: 'ownerMailingAddress',
+    skip_trace_confidence: 'skipTraceConfidence',
+    skiptraceconfidence: 'skipTraceConfidence',
+    buyer_contact_name: 'buyerContactName',
+    buyercontactname: 'buyerContactName',
+    buyer_phone: 'buyerPhone',
+    buyerphone: 'buyerPhone',
+    buyer_email: 'buyerEmail',
+    buyeremail: 'buyerEmail',
+    buyer_website: 'buyerWebsite',
+    buyerwebsite: 'buyerWebsite',
+    acquisition_notes: 'acquisitionNotes',
+    acquisitionnotes: 'acquisitionNotes',
   };
   const snake = cleaned.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '').toLowerCase();
   if (aliases[snake]) return aliases[snake];
@@ -246,6 +266,71 @@ export function importWorkspace(serialized) {
     buyers: Array.isArray(parsed.buyers) ? parsed.buyers : [],
     parcels: Array.isArray(parsed.parcels) ? parsed.parcels : [],
   };
+}
+
+export const LEHIGH_IMPORT_HEADERS = [
+  'address', 'market', 'buyerId', 'parcelId', 'lotSize', 'ownerName', 'ownerPhone', 'ownerEmail', 'ownerMailingAddress',
+  'skipTraceConfidence', 'buyerContactName', 'buyerPhone', 'buyerEmail', 'buyerWebsite', 'acquisitionNotes',
+  'buyerMaxPrice', 'lowestActiveListing', 'askingPrice', 'heldYears', 'paid', 'wetlands', 'floodZone', 'roadAccess',
+  'utilities', 'slope', 'wildlifeFlag', 'crmStatus', 'nextFollowUp', 'notes'
+];
+
+export function getLehighImportTemplate() {
+  const rows = [
+    LEHIGH_IMPORT_HEADERS,
+    ['123 Grant Blvd, Lehigh Acres, FL', 'lehigh', 'precision', '30-44-27-L1-01001.0010', '0.25 ac', 'Avery Santos', '239-555-0131', 'avery@example.com', '88 Pine St, Tampa FL 33602', 82, 'Maya Chen', '239-555-0100', 'maya@precisiongulf.example', 'https://precisiongulf.example', 'Buys paved-road quarter-acre infill lots under 42k', 42000, 48000, 28500, 11, 6200, 'none', false, true, 'nearby', 'flat', false, 'New', '', 'Template row: clean call-now candidate'],
+    ['2511 W 9th St, Lehigh Acres, FL', 'lehigh', 'precision', '30-44-27-L2-03021.0000', '0.23 ac', 'Jordan Estate', '239-555-0199', '', 'PO Box 44, Fort Myers FL 33902', 71, 'Maya Chen', '239-555-0100', 'maya@precisiongulf.example', 'https://precisiongulf.example', 'Inherited owner; verify road and utilities', 42000, 46500, 31000, 14, 4500, 'none', false, true, 'unknown', 'flat', false, 'Researching', '', 'Call owner after utility check'],
+    ['711 Meadow Rd, Lehigh Acres, FL', 'lehigh', 'precision', '30-44-27-L3-04041.0000', '0.25 ac', 'Morgan Trust', '239-555-0177', 'trust@example.com', '12 Oak Ave, Naples FL 34102', 64, 'Maya Chen', '239-555-0100', 'maya@precisiongulf.example', 'https://precisiongulf.example', 'Wetlands/access risk; likely kill', 42000, 47000, 35000, 17, 3000, 'likely', true, false, 'unknown', 'flat', true, 'Kill', '', 'Template row: risk kill example'],
+  ];
+  return rows.map(row => row.map(csvEscape).join(',')).join('\n');
+}
+
+export function buildTopCallList({ parcels = [], buyers = [], limit = 20 } = {}) {
+  const rankedBuyers = rankBuyers(buyers);
+  return parcels
+    .map((parcel) => {
+      const buyer = rankedBuyers.find(item => item.id === parcel.buyerId) || rankedBuyers.find(item => item.market === parcel.market) || {};
+      const scored = scoreParcelDeal(parcel, buyer);
+      return {
+        ...scored,
+        ownerName: parcel.ownerName || parcel.owner || '',
+        ownerPhone: parcel.ownerPhone || '',
+        ownerEmail: parcel.ownerEmail || '',
+        ownerMailingAddress: parcel.ownerMailingAddress || '',
+        skipTraceConfidence: parcel.skipTraceConfidence || '',
+        buyerContactName: parcel.buyerContactName || buyer.contactName || '',
+        buyerPhone: parcel.buyerPhone || buyer.phone || '',
+        buyerEmail: parcel.buyerEmail || buyer.email || '',
+        buyerWebsite: parcel.buyerWebsite || buyer.website || '',
+        acquisitionNotes: parcel.acquisitionNotes || buyer.acquisitionNotes || '',
+      };
+    })
+    .filter(parcel => parcel.action === 'Call now' && parcel.risk.status !== 'Kill' && Boolean(parcel.ownerPhone || parcel.ownerEmail))
+    .sort((a, b) => b.score - a.score || b.metrics.spread - a.metrics.spread)
+    .slice(0, limit)
+    .map((parcel, index) => ({ ...parcel, callPriority: index + 1 }));
+}
+
+export function exportParcelsCsv(parcels = [], columns = [
+  'address', 'ownerName', 'ownerPhone', 'ownerEmail', 'ownerMailingAddress', 'skipTraceConfidence',
+  'buyerContactName', 'buyerPhone', 'buyerEmail', 'score', 'action', 'crmStatus', 'nextFollowUp',
+  'buyerMaxPrice', 'askingPrice', 'spread', 'riskStatus', 'notes'
+]) {
+  const rows = [columns];
+  for (const parcel of parcels) {
+    rows.push(columns.map((column) => {
+      if (column === 'spread') return parcel.metrics?.spread ?? parcel.spread ?? '';
+      if (column === 'riskStatus') return parcel.risk?.status ?? parcel.riskStatus ?? '';
+      return parcel[column] ?? '';
+    }));
+  }
+  return rows.map(row => row.map(csvEscape).join(',')).join('\n');
+}
+
+function csvEscape(value) {
+  const raw = String(value ?? '');
+  if (/[",\n\r]/.test(raw)) return `"${raw.replace(/"/g, '""')}"`;
+  return raw;
 }
 
 export function formatMoney(value) {

@@ -143,6 +143,11 @@ button.danger { background: rgba(239,68,68,.16); color: #fecaca; border-color: r
 }
 .crm-row label { color: var(--muted); font-size: 12px; }
 .save-crm { min-height: 41px; }
+.call-list { display: grid; gap: 10px; margin-top: 18px; }
+.call-row { padding: 12px; border: 1px solid var(--line-soft); border-radius: 12px; background: rgba(16,185,129,.055); }
+.call-row b, .call-row span, .call-row em { display: block; }
+.call-row span { margin-top: 6px; color: var(--soft); font-size: 13px; }
+.call-row em { margin-top: 5px; color: var(--brand-2); font-style: normal; font-size: 12px; }
 footer { max-width: 1220px; margin: 0 auto; padding: 36px 24px 60px; color: var(--muted); border-top: 1px solid var(--line-soft); }
 
 @media (max-width: 1000px) {

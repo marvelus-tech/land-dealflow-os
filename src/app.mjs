@@ -9,6 +9,9 @@ import {
   exportWorkspace,
   importWorkspace,
   CRM_STATUSES,
+  getLehighImportTemplate,
+  buildTopCallList,
+  exportParcelsCsv,
   formatMoney,
 } from './core.mjs';
 
@@ -22,14 +25,14 @@ const seedMarkets = [
 ];
 
 const seedBuyers = [
-  { id: 'precision', market: 'lehigh', name: 'Precision Gulf Homes', type: 'Spec Builder', recentBuilds: 18, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 14, repeatDemand: 9, maxPrice: 42000, buyBox: '0.23–0.29 acre infill lots, paved road, no wetlands, $42k max' },
-  { id: 'sunbelt', market: 'cape-coral', name: 'Sunbelt Custom Builders', type: 'Custom Builder', recentBuilds: 11, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 21, repeatDemand: 7, maxPrice: 95000, buyBox: 'Quarter-acre residential lots, utilities nearby, seawall premium, $95k max' },
-  { id: 'ozark', market: 'bentonville', name: 'Ozark Ridge Homes', type: 'Custom Builder', recentBuilds: 9, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 18, repeatDemand: 6, maxPrice: 65000, buyBox: '0.4–1.0 acre lots, gentle slope, perc viable, $65k max' },
-  { id: 'investor', market: 'lehigh', name: 'Evergreen Land Fund', type: 'Land Investor', recentBuilds: 0, scatteredLots: false, hasBuyBox: true, closeSpeedDays: 30, repeatDemand: 4, maxPrice: 35000, buyBox: 'Will buy at 60–70% market only; backup buyer' },
+  { id: 'precision', market: 'lehigh', name: 'Precision Gulf Homes', type: 'Spec Builder', recentBuilds: 18, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 14, repeatDemand: 9, maxPrice: 42000, contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', acquisitionNotes: 'Fastest buyer for clean paved-road Lehigh quarter-acre infill lots.', buyBox: '0.23–0.29 acre infill lots, paved road, no wetlands, $42k max' },
+  { id: 'sunbelt', market: 'cape-coral', name: 'Sunbelt Custom Builders', type: 'Custom Builder', recentBuilds: 11, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 21, repeatDemand: 7, maxPrice: 95000, contactName: 'Andre Wells', phone: '239-555-0144', email: 'land@sunbelt.example', website: 'https://sunbelt.example', acquisitionNotes: 'Likes utility-confirmed lots; seawall/canal premium only after verification.', buyBox: 'Quarter-acre residential lots, utilities nearby, seawall premium, $95k max' },
+  { id: 'ozark', market: 'bentonville', name: 'Ozark Ridge Homes', type: 'Custom Builder', recentBuilds: 9, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 18, repeatDemand: 6, maxPrice: 65000, contactName: 'Nina Brooks', phone: '479-555-0182', email: 'acquisitions@ozarkridge.example', website: 'https://ozarkridge.example', acquisitionNotes: 'Needs slope/perc viability before soft commitment.', buyBox: '0.4–1.0 acre lots, gentle slope, perc viable, $65k max' },
+  { id: 'investor', market: 'lehigh', name: 'Evergreen Land Fund', type: 'Land Investor', recentBuilds: 0, scatteredLots: false, hasBuyBox: true, closeSpeedDays: 30, repeatDemand: 4, maxPrice: 35000, contactName: 'Sam Patel', phone: '305-555-0108', email: 'sam@evergreenland.example', website: 'https://evergreenland.example', acquisitionNotes: 'Backup buyer; only use when builder spread fails.', buyBox: 'Will buy at 60–70% market only; backup buyer' },
 ];
 
 const seedParcels = [
-  { id: 'parcel-1', market: 'lehigh', buyerId: 'precision', address: '123 Grant Blvd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Out-of-state owner', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 28500, crmStatus: 'New', nextFollowUp: '', notes: '', heldYears: 11, paid: 6200, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat', wildlifeFlag: false },
+  { id: 'parcel-1', market: 'lehigh', buyerId: 'precision', address: '123 Grant Blvd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Out-of-state owner', ownerName: 'Avery Santos', ownerPhone: '239-555-0131', ownerEmail: 'avery@example.com', ownerMailingAddress: '88 Pine St, Tampa FL 33602', skipTraceConfidence: 82, buyerContactName: 'Maya Chen', buyerPhone: '239-555-0100', buyerEmail: 'maya@precisiongulf.example', buyerWebsite: 'https://precisiongulf.example', acquisitionNotes: 'Clean Lehigh candidate; call first.', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 28500, crmStatus: 'New', nextFollowUp: '', notes: '', heldYears: 11, paid: 6200, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat', wildlifeFlag: false },
   { id: 'parcel-2', market: 'cape-coral', buyerId: 'sunbelt', address: '904 SW Canal Ter, Cape Coral, FL', lotSize: '0.23 ac', owner: 'Multiple-lot owner', buyerMaxPrice: 95000, lowestActiveListing: 112000, askingPrice: 76000, crmStatus: 'Researching', nextFollowUp: '', notes: 'Verify seawall/utilities premium.', heldYears: 8, paid: 21000, wetlands: 'review', floodZone: false, roadAccess: true, utilities: 'water+sewer', slope: 'flat', wildlifeFlag: false },
   { id: 'parcel-3', market: 'bentonville', buyerId: 'ozark', address: 'Lot 18 Ridge Line Dr, Bella Vista, AR', lotSize: '0.62 ac', owner: 'Absentee owner', buyerMaxPrice: 65000, lowestActiveListing: 74000, askingPrice: 54000, crmStatus: 'Researching', nextFollowUp: '', notes: 'Needs slope/perc review.', heldYears: 6, paid: 12000, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'unknown', slope: 'steep', wildlifeFlag: false },
   { id: 'parcel-4', market: 'lehigh', buyerId: 'precision', address: '711 Meadow Rd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Inherited owner', buyerMaxPrice: 42000, lowestActiveListing: 47000, askingPrice: 35000, crmStatus: 'Kill', nextFollowUp: '', notes: 'Killed by wetlands/access risk.', heldYears: 17, paid: 3000, wetlands: 'likely', floodZone: true, roadAccess: false, utilities: 'unknown', slope: 'flat', wildlifeFlag: true },
@@ -79,6 +82,27 @@ function scoredParcels() {
   return (workspace.parcels || []).map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
 }
 
+function getVisibleParcels() {
+  return scoredParcels().filter(parcel => {
+    if (filter === 'all') return true;
+    if (filter === 'pass') return parcel.risk.status === 'Pass';
+    if (filter === 'review') return parcel.risk.status === 'Review';
+    if (filter === 'call') return parcel.action === 'Call now';
+    if (filter === 'kill') return parcel.action === 'Kill' || parcel.crmStatus === 'Kill';
+    return parcel.crmStatus === filter;
+  });
+}
+
+function downloadText(filename, text, type = 'text/csv') {
+  const blob = new Blob([text], { type });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
 function renderMarkets() {
   const rows = (workspace.markets || []).map((market) => {
     const score = scoreMarket(market);
@@ -104,6 +128,7 @@ function renderBuyers() {
   document.querySelector('#buyers').innerHTML = ranked.map((buyer) => `<article class="card buyer-card">
     <div class="card-top"><h3>${h(buyer.name)}</h3>${badge(`${buyer.score} buyer score`, buyer.score >= 70 ? 'good' : 'warn')}</div>
     <p>${h(buyer.type || 'Buyer')} · ${h(buyer.buyBox || 'No buy box captured yet.')}</p>
+    <p><strong>${h(buyer.contactName || 'No contact')}</strong> · ${h(buyer.phone || 'phone missing')} · ${h(buyer.email || 'email missing')}</p>
     <div class="mini-grid four">
       <div><b>${h(buyer.recentBuilds || 0)}</b><span>recent builds</span></div>
       <div><b>${buyer.scatteredLots ? 'Yes' : 'No'}</b><span>scattered lots</span></div>
@@ -123,22 +148,15 @@ function crmControls(parcel) {
 }
 
 function renderParcels() {
-  const all = scoredParcels();
-  const visible = all.filter(parcel => {
-    if (filter === 'all') return true;
-    if (filter === 'pass') return parcel.risk.status === 'Pass';
-    if (filter === 'review') return parcel.risk.status === 'Review';
-    if (filter === 'call') return parcel.action === 'Call now';
-    if (filter === 'kill') return parcel.action === 'Kill' || parcel.crmStatus === 'Kill';
-    return parcel.crmStatus === filter;
-  });
+  const visible = getVisibleParcels();
 
   document.querySelector('#parcels').innerHTML = visible.map((parcel) => {
     const riskTone = parcel.risk.status === 'Pass' ? 'good' : parcel.risk.status === 'Review' ? 'warn' : 'bad';
     const actionTone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Mail first' ? 'warn' : parcel.action === 'Kill' ? 'bad' : 'neutral';
     return `<article class="card parcel-card">
       <div class="card-top"><h3>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</h3><div class="badge-stack">${badge(`${parcel.score} deal score`, actionTone)}${badge(parcel.action, actionTone)}${badge(parcel.risk.status, riskTone)}</div></div>
-      <p>${h(parcel.lotSize || 'lot size unknown')} · ${h(parcel.owner || 'owner unknown')} · held ${h(parcel.heldYears || 0)} yrs · paid ${formatMoney(Number(parcel.paid || 0))}</p>
+      <p>${h(parcel.lotSize || 'lot size unknown')} · ${h(parcel.ownerName || parcel.owner || 'owner unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || 'contact missing')} · held ${h(parcel.heldYears || 0)} yrs · paid ${formatMoney(Number(parcel.paid || 0))}</p>
+      <p>Buyer contact: ${h(parcel.buyerContactName || getBuyer(parcel).contactName || 'missing')} · ${h(parcel.buyerPhone || getBuyer(parcel).phone || '')} · ${h(parcel.buyerEmail || getBuyer(parcel).email || '')}</p>
       <div class="deal-strip five">
         <div><span>Buyer price</span><b>${formatMoney(parcel.offer.buyerPrice)}</b></div>
         <div><span>Seller ask</span><b>${formatMoney(parcel.metrics.askingPrice)}</b></div>
@@ -168,8 +186,8 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v0.2 operational cockpit</span>
-      <h1>Import parcels, score deals, manage CRM follow-up, export the workspace.</h1>
+      <span class="eyebrow">Land Dealflow OS · v0.3 Lehigh call-list cockpit</span>
+      <h1>Import Lehigh parcels, enrich contacts, score deals, export the Top 20 call list.</h1>
       <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
       <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
@@ -191,9 +209,9 @@ function renderWorkspaceTools() {
     <div class="workspace-grid">
       <article class="card tool-card">
         <h3>CSV parcel import</h3>
-        <p>Headers supported: address, market, buyerId, lotSize, owner, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p>
+        <p>Headers supported: address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p>
         <textarea id="csv-input" rows="8" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea>
-        <div class="button-row"><button id="import-csv" type="button">Import CSV parcels</button><span id="import-status"></span></div>
+        <div class="button-row"><button id="load-lehigh-template" type="button">Load Lehigh template</button><button id="import-csv" type="button">Import CSV parcels</button><span id="import-status"></span></div>
       </article>
       <article class="card tool-card">
         <h3>Workspace JSON</h3>
@@ -201,11 +219,34 @@ function renderWorkspaceTools() {
         <textarea id="json-input" rows="8" placeholder="Paste exported workspace JSON here"></textarea>
         <div class="button-row"><button id="import-json" type="button">Import JSON</button><button id="export-json" type="button">Download export</button><button id="reset-workspace" class="danger" type="button">Reset seed</button></div>
       </article>
+      <article class="card tool-card">
+        <h3>Exports for action</h3>
+        <p>Download the filtered parcel view or generate a ranked Top 20 owner call list with buyer contact handoff fields.</p>
+        <div class="button-row"><button id="export-filtered-csv" type="button">Export filtered CSV</button><button id="export-top20-csv" type="button">Export Top 20 Call List</button></div>
+        <div id="top-call-list" class="call-list"></div>
+      </article>
     </div>`;
+}
+
+function renderTopCallList() {
+  const target = document.querySelector('#top-call-list');
+  if (!target) return;
+  const calls = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 20 });
+  target.innerHTML = calls.length ? calls.slice(0, 5).map(call => `<div class="call-row">
+    <b>#${call.callPriority} · ${h(call.address)}</b>
+    <span>${h(call.ownerName || call.owner || 'Owner unknown')} · ${h(call.ownerPhone || call.ownerEmail)} · score ${call.score}</span>
+    <em>Buyer: ${h(call.buyerContactName || 'contact missing')} ${h(call.buyerPhone || call.buyerEmail || '')}</em>
+  </div>`).join('') : '<p>No callable parcels yet. Import contacts or improve scoring.</p>';
 }
 
 function bindEvents() {
   document.addEventListener('click', (event) => {
+    if (event.target.matches('#load-lehigh-template')) {
+      document.querySelector('#csv-input').value = getLehighImportTemplate();
+      const status = document.querySelector('#import-status');
+      if (status) status.textContent = 'Loaded Lehigh Acres template.';
+    }
+
     if (event.target.matches('#import-csv')) {
       const input = document.querySelector('#csv-input');
       const status = document.querySelector('#import-status');
@@ -223,13 +264,16 @@ function bindEvents() {
     }
 
     if (event.target.matches('#export-json')) {
-      const blob = new Blob([exportWorkspace(workspace)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `land-dealflow-workspace-${new Date().toISOString().slice(0, 10)}.json`;
-      link.click();
-      URL.revokeObjectURL(url);
+      downloadText(`land-dealflow-workspace-${new Date().toISOString().slice(0, 10)}.json`, exportWorkspace(workspace), 'application/json');
+    }
+
+    if (event.target.matches('#export-filtered-csv')) {
+      downloadText(`land-dealflow-filtered-${filter}-${new Date().toISOString().slice(0, 10)}.csv`, exportParcelsCsv(getVisibleParcels()));
+    }
+
+    if (event.target.matches('#export-top20-csv')) {
+      const calls = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 20 });
+      downloadText(`land-dealflow-top20-call-list-${new Date().toISOString().slice(0, 10)}.csv`, exportParcelsCsv(calls));
     }
 
     if (event.target.matches('#import-json')) {
@@ -261,6 +305,7 @@ function bindEvents() {
       filter = event.target.dataset.filter;
       renderFilters();
       renderParcels();
+      renderTopCallList();
     }
   });
 }
@@ -283,6 +328,7 @@ function renderAll() {
   renderBuyers();
   renderFilters();
   renderParcels();
+  renderTopCallList();
 }
 
 bindEvents();

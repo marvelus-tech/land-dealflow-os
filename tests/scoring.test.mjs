@@ -9,6 +9,9 @@ import {
   applyCrmUpdate,
   exportWorkspace,
   importWorkspace,
+  getLehighImportTemplate,
+  buildTopCallList,
+  exportParcelsCsv,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -169,8 +172,50 @@ function testCrmUpdateAndWorkspaceExportImportRoundTrip() {
   assert.deepEqual(restored.parcels[0], updated.parcels[0]);
 }
 
+function testLehighTemplateIncludesContactsAndParsesBack() {
+  const template = getLehighImportTemplate();
+  assert.ok(template.startsWith('address,market,buyerId'));
+  assert.ok(template.includes('ownerName'));
+  assert.ok(template.includes('ownerPhone'));
+  assert.ok(template.includes('buyerContactName'));
+  assert.ok(template.includes('skipTraceConfidence'));
+  const records = parseCsvRecords(template);
+  assert.ok(records.length >= 3);
+  assert.equal(records[0].market, 'lehigh');
+  assert.ok(records[0].ownerPhone);
+  assert.ok(records[0].buyerContactName);
+}
+
+function testTopCallListRanksOnlyCallableParcelsWithContactFields() {
+  const buyers = [{ id: 'precision', market: 'lehigh', maxPrice: 42000, score: 86, contactName: 'Maya', phone: '239-555-0100', email: 'maya@example.com' }];
+  const parcels = [
+    { id: 'a', market: 'lehigh', buyerId: 'precision', address: 'A St', ownerName: 'A Owner', ownerPhone: '239-555-0001', ownerEmail: '', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 26000, heldYears: 12, paid: 5000, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat' },
+    { id: 'b', market: 'lehigh', buyerId: 'precision', address: 'B St', ownerName: 'B Owner', ownerPhone: '', ownerEmail: '', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 24000, heldYears: 12, paid: 5000, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat' },
+    { id: 'c', market: 'lehigh', buyerId: 'precision', address: 'C St', ownerName: 'C Owner', ownerPhone: '239-555-0003', ownerEmail: '', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 35000, heldYears: 2, paid: 30000, wetlands: 'likely', floodZone: true, roadAccess: false, utilities: 'unknown', slope: 'flat' },
+  ];
+  const calls = buildTopCallList({ parcels, buyers, limit: 20 });
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0].address, 'A St');
+  assert.equal(calls[0].ownerPhone, '239-555-0001');
+  assert.equal(calls[0].buyerContactName, 'Maya');
+  assert.equal(calls[0].callPriority, 1);
+}
+
+function testFilteredCsvExportIncludesHeadersAndEscapesCommas() {
+  const csv = exportParcelsCsv([
+    { address: '12, Canal Rd', ownerName: 'A Owner', ownerPhone: '239-555-0001', buyerContactName: 'Maya', score: 91, action: 'Call now', notes: 'seller says, call after 5' },
+  ]);
+  const lines = csv.split('\n');
+  assert.ok(lines[0].includes('address,ownerName,ownerPhone'));
+  assert.ok(lines[1].includes('"12, Canal Rd"'));
+  assert.ok(lines[1].includes('"seller says, call after 5"'));
+}
+
 testCsvParserHandlesQuotedFieldsAndTypeCoercion();
 testParcelDealScorePrioritizesCleanHighSpreadBuyerFit();
 testParcelDealScoreKillsSevereBuildabilityRisk();
 testCrmUpdateAndWorkspaceExportImportRoundTrip();
+testLehighTemplateIncludesContactsAndParsesBack();
+testTopCallListRanksOnlyCallableParcelsWithContactFields();
+testFilteredCsvExportIncludesHeadersAndEscapesCommas();
 console.log('scoring tests passed');

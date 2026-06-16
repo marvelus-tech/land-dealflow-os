@@ -446,6 +446,76 @@ export function getDataSourceChecklist(market = 'lehigh') {
   ];
 }
 
+export function generateOwnerCallScript(parcel = {}, buyer = {}) {
+  const firstName = String(parcel.ownerName || parcel.owner || 'there').split(/\s+/)[0];
+  const address = parcel.address || 'your lot';
+  const buyerContext = buyer.buyBox || 'buildable residential lots in this area';
+  const ask = Number(parcel.askingPrice || 0);
+  const max = Number(parcel.buyerMaxPrice || buyer.maxPrice || 0);
+  return {
+    opener: `Hi ${firstName}, this is a quick call about ${address}. Did I catch you at an okay time?`,
+    positioning: `I work with buyers looking for ${buyerContext}. If the lot is buildable and the numbers are fair, we can make this simple.`,
+    priceAnchor: ask ? `I saw value around ${ask.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}; if we handled closing and made it easy, what price would make sense for you?` : `If you were to sell it as-is, what price would make sense for you?`,
+    maxBuyerContext: max ? `My buyer ceiling appears to be around ${max.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}, so I need room for closing, risk, and a spread.` : 'I need room for closing, risk, and a spread.',
+    questions: [
+      'Are you still the owner?',
+      'Have you thought about selling this parcel?',
+      'What made you keep it until now?',
+      'Do you know if road access, utilities, wetlands, or flood restrictions are clean?',
+      'If we covered normal closing costs, what price would you say yes to?',
+    ],
+    objections: [
+      { objection: 'I want retail price.', reply: 'That may work with a retail buyer. My advantage is speed, certainty, and a simple close without listing friction.' },
+      { objection: 'Send me an offer.', reply: 'I can, but I do not want to waste your time. If I can close quickly and cover normal closing costs, what range would you actually consider?' },
+      { objection: 'I am not interested.', reply: 'Understood. Is that because you want to keep it long-term, or because the number would need to be higher?' },
+    ],
+    close: 'If that works, I will verify the parcel details and send a simple written offer with the next step clearly laid out.',
+  };
+}
+
+export function buildFollowUpQueue(parcels = [], today = new Date().toISOString().slice(0, 10), horizonDays = 7) {
+  const base = Date.parse(`${today}T00:00:00Z`);
+  const terminal = new Set(['Dead', 'Kill', 'Assigned/Sold']);
+  return parcels
+    .filter(parcel => parcel.nextFollowUp && !terminal.has(parcel.crmStatus))
+    .map((parcel) => {
+      const due = Date.parse(`${parcel.nextFollowUp}T00:00:00Z`);
+      const daysUntil = Math.round((due - base) / 86400000);
+      return {
+        ...parcel,
+        daysUntil,
+        urgency: daysUntil < 0 ? 'overdue' : daysUntil <= horizonDays ? 'due soon' : 'later',
+      };
+    })
+    .filter(item => item.urgency !== 'later')
+    .sort((a, b) => a.daysUntil - b.daysUntil || String(a.address || '').localeCompare(String(b.address || '')));
+}
+
+export function exportMailMergeCsv(parcels = []) {
+  const columns = ['ownerName', 'ownerMailingAddress', 'ownerPhone', 'ownerEmail', 'address', 'askingPrice', 'crmStatus', 'nextFollowUp', 'notes'];
+  const contactable = parcels.filter(parcel => parcel.ownerMailingAddress || parcel.ownerPhone || parcel.ownerEmail);
+  return [columns.join(','), ...contactable.map(parcel => columns.map(col => csvEscape(parcel[col])).join(','))].join('\n');
+}
+
+export function bulkMarkContacted(workspace = {}, parcelIds = [], { date = new Date().toISOString().slice(0, 10), channel = 'phone', nextFollowUp = '', note = '' } = {}) {
+  const selected = new Set(parcelIds);
+  return {
+    ...workspace,
+    parcels: (workspace.parcels || []).map((parcel) => {
+      if (!selected.has(parcel.id)) return parcel;
+      const entry = `[${date} ${channel}] ${note || 'contact attempted'}`;
+      return {
+        ...parcel,
+        crmStatus: 'Contacted',
+        lastContacted: date,
+        lastContactChannel: channel,
+        nextFollowUp: nextFollowUp || parcel.nextFollowUp || '',
+        notes: [parcel.notes, entry].filter(Boolean).join('\n'),
+      };
+    }),
+  };
+}
+
 export function formatMoney(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 }

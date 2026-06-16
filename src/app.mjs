@@ -15,6 +15,10 @@ import {
   findDuplicateParcels,
   reportMissingData,
   getDataSourceChecklist,
+  generateOwnerCallScript,
+  buildFollowUpQueue,
+  exportMailMergeCsv,
+  bulkMarkContacted,
   formatMoney,
 } from './core.mjs';
 
@@ -189,8 +193,8 @@ function renderCommandCenter() {
   const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
   document.querySelector('#command').innerHTML = `
     <div class="hero-card">
-      <span class="eyebrow">Land Dealflow OS · v0.4 ingestion quality gate</span>
-      <h1>Normalize messy parcel exports, catch duplicates, expose missing data, then export call-ready work.</h1>
+      <span class="eyebrow">Land Dealflow OS · v0.5 outreach execution layer</span>
+      <h1>Turn clean parcel data into call scripts, follow-up queues, and mail-merge exports.</h1>
       <p>Static local-first prototype. Your data stays in this browser via localStorage until you export or reset it.</p>
       <div class="hero-actions"><a href="#workspace">Import data</a><a class="secondary" href="#parcels-section">Work parcels</a></div>
     </div>
@@ -205,9 +209,9 @@ function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
   existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">v0.4 Workspace</span>
-      <h2>Normalize, validate, import, export</h2>
-      <p>Paste parcel CSV, choose a source preset, check quality gaps, import a workspace, or export action lists.</p>
+      <span class="eyebrow">v0.5 Workspace</span>
+      <h2>Normalize, validate, call, follow up, export</h2>
+      <p>Import source data, clear quality gaps, generate outreach scripts, mark contacts, and export mail/dialer work queues.</p>
     </div>
     <div class="workspace-grid">
       <article class="card tool-card">
@@ -226,13 +230,19 @@ function renderWorkspaceTools() {
       <article class="card tool-card">
         <h3>Exports for action</h3>
         <p>Download the filtered parcel view or generate a ranked Top 20 owner call list with buyer contact handoff fields.</p>
-        <div class="button-row"><button id="export-filtered-csv" type="button">Export filtered CSV</button><button id="export-top20-csv" type="button">Export Top 20 Call List</button></div>
+        <div class="button-row"><button id="export-filtered-csv" type="button">Export filtered CSV</button><button id="export-top20-csv" type="button">Export Top 20 Call List</button><button id="export-mailmerge-csv" type="button">Export Mail Merge</button></div>
         <div id="top-call-list" class="call-list"></div>
       </article>
       <article class="card tool-card wide-card">
         <h3>Data quality gate</h3>
         <p>Before calling owners: clear duplicate APNs/addresses, missing owner contacts, missing pricing, and incomplete buildability screens.</p>
         <div id="quality-gate"></div>
+      </article>
+      <article class="card tool-card wide-card">
+        <h3>Outreach execution</h3>
+        <p>Highest-leverage daily view: overdue follow-ups, next calls, seller script, and bulk mark-contacted.</p>
+        <div class="button-row"><button id="bulk-contact-callnow" type="button">Mark Call Now as contacted</button><span id="outreach-status"></span></div>
+        <div id="outreach-panel"></div>
       </article>
     </div>`;
 }
@@ -264,6 +274,19 @@ function renderQualityControl() {
   <div class="checklist">${checklist.map(item => `<div class="check-item ${item.blocksCallList ? 'blocks' : ''}"><strong>${h(item.label)}</strong><span>${h(item.detail)}</span></div>`).join('')}</div>
   <div class="missing-list">${worstRows.length ? worstRows.map(row => `<div><b>${h(row.address || row.id)}</b><span>${row.missing.map(item => badge(item, item === 'ownerContact' || item === 'buildability' ? 'bad' : 'warn')).join('')}</span></div>`).join('') : '<p>Quality gate clear for current records.</p>'}</div>
   ${duplicates.length ? `<div class="duplicate-list"><strong>Duplicate review:</strong>${duplicates.map(group => `<span>${h(group.reason)}: ${h(group.ids.join(', '))}</span>`).join('')}</div>` : ''}`;
+}
+
+function renderOutreachPanel() {
+  const target = document.querySelector('#outreach-panel');
+  if (!target) return;
+  const queue = buildFollowUpQueue(workspace.parcels || []);
+  const top = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 1 })[0] || scoredParcels()[0];
+  const buyer = top ? getBuyer(top) : {};
+  const script = top ? generateOwnerCallScript(top, buyer) : null;
+  target.innerHTML = `<div class="outreach-grid">
+    <div class="followup-list"><h4>Follow-up queue</h4>${queue.length ? queue.slice(0, 6).map(item => `<div class="followup-row ${h(item.urgency)}"><b>${h(item.nextFollowUp)} · ${h(item.address)}</b><span>${h(item.ownerName || item.owner || 'owner unknown')} · ${h(item.crmStatus)} · ${h(item.urgency)}</span></div>`).join('') : '<p>No due follow-ups in the next 7 days.</p>'}</div>
+    <div class="script-box"><h4>Suggested seller script</h4>${script ? `<p><strong>Opener:</strong> ${h(script.opener)}</p><p><strong>Positioning:</strong> ${h(script.positioning)}</p><p><strong>Price:</strong> ${h(script.priceAnchor)}</p><ul>${script.questions.slice(0, 4).map(q => `<li>${h(q)}</li>`).join('')}</ul><p><strong>Close:</strong> ${h(script.close)}</p>` : '<p>No parcel available for scripting.</p>'}</div>
+  </div>`;
 }
 
 function bindEvents() {
@@ -302,6 +325,20 @@ function bindEvents() {
     if (event.target.matches('#export-top20-csv')) {
       const calls = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 20 });
       downloadText(`land-dealflow-top20-call-list-${new Date().toISOString().slice(0, 10)}.csv`, exportParcelsCsv(calls));
+    }
+
+    if (event.target.matches('#export-mailmerge-csv')) {
+      downloadText(`land-dealflow-mail-merge-${new Date().toISOString().slice(0, 10)}.csv`, exportMailMergeCsv(getVisibleParcels()));
+    }
+
+    if (event.target.matches('#bulk-contact-callnow')) {
+      const callNowIds = scoredParcels().filter(parcel => parcel.action === 'Call now').map(parcel => parcel.id);
+      const followUp = new Date(Date.now() + 3 * 86400000).toISOString().slice(0, 10);
+      workspace = bulkMarkContacted(workspace, callNowIds, { channel: 'phone', nextFollowUp: followUp, note: 'bulk marked from v0.5 outreach panel' });
+      persistWorkspace();
+      const status = document.querySelector('#outreach-status');
+      if (status) status.textContent = `Marked ${callNowIds.length} parcels contacted.`;
+      renderAll();
     }
 
     if (event.target.matches('#import-json')) {
@@ -358,6 +395,7 @@ function renderAll() {
   renderParcels();
   renderTopCallList();
   renderQualityControl();
+  renderOutreachPanel();
 }
 
 bindEvents();

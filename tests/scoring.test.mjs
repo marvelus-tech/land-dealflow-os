@@ -16,6 +16,10 @@ import {
   findDuplicateParcels,
   reportMissingData,
   getDataSourceChecklist,
+  generateOwnerCallScript,
+  buildFollowUpQueue,
+  exportMailMergeCsv,
+  bulkMarkContacted,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -261,6 +265,59 @@ function testDataSourceChecklistDefinesMinimumImportGates() {
   assert.ok(checklist.some(item => item.id === 'owner-contact-enrichment' && item.blocksCallList));
   assert.ok(checklist.some(item => item.id === 'buildability-screen' && item.blocksCallList));
 }
+
+function testOutreachCallScriptUsesParcelAndBuyerContext() {
+  const script = generateOwnerCallScript({
+    address: '123 Grant Blvd', ownerName: 'Avery Santos', askingPrice: 28500, buyerMaxPrice: 42000, notes: 'Seller inherited it', risk: { status: 'Pass' }, action: 'Call now'
+  }, { name: 'Precision Gulf Homes', buyBox: 'clean quarter-acre lots', contactName: 'Maya Chen' });
+  assert.ok(script.opener.includes('Avery'));
+  assert.ok(script.opener.includes('123 Grant Blvd'));
+  assert.ok(script.positioning.includes('clean quarter-acre lots'));
+  assert.ok(script.questions.some(q => q.includes('price')));
+  assert.ok(script.objections.some(o => o.reply.includes('close')));
+}
+
+function testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead() {
+  const queue = buildFollowUpQueue([
+    { id: 'late', address: 'Late St', crmStatus: 'Contacted', nextFollowUp: '2026-06-10', ownerName: 'Late Owner' },
+    { id: 'dead', address: 'Dead St', crmStatus: 'Dead', nextFollowUp: '2026-06-01' },
+    { id: 'soon', address: 'Soon St', crmStatus: 'Negotiating', nextFollowUp: '2026-06-17', ownerName: 'Soon Owner' },
+    { id: 'none', address: 'No Date', crmStatus: 'New', nextFollowUp: '' },
+  ], '2026-06-16');
+  assert.deepEqual(queue.map(item => item.id), ['late', 'soon']);
+  assert.equal(queue[0].urgency, 'overdue');
+  assert.equal(queue[1].urgency, 'due soon');
+}
+
+function testMailMergeExportIncludesOnlyCallableContactRecords() {
+  const csv = exportMailMergeCsv([
+    { address: '123 Grant Blvd', ownerName: 'Avery Santos', ownerMailingAddress: '88 Pine St, Tampa FL', ownerPhone: '239-555-0131', ownerEmail: 'avery@example.com', askingPrice: 28500, crmStatus: 'New' },
+    { address: 'No Contact', ownerName: 'Ghost', ownerMailingAddress: '', ownerPhone: '', ownerEmail: '', crmStatus: 'New' },
+  ]);
+  const lines = csv.split('\n');
+  assert.ok(lines[0].includes('ownerName,ownerMailingAddress,ownerPhone,ownerEmail,address'));
+  assert.equal(lines.length, 2);
+  assert.ok(lines[1].includes('Avery Santos'));
+}
+
+function testBulkMarkContactedUpdatesSelectedParcelsImmutably() {
+  const workspace = { parcels: [
+    { id: 'a', crmStatus: 'New', notes: '' },
+    { id: 'b', crmStatus: 'Researching', notes: 'old' },
+  ]};
+  const updated = bulkMarkContacted(workspace, ['a', 'b'], { date: '2026-06-16', channel: 'phone', nextFollowUp: '2026-06-19', note: 'left voicemail' });
+  assert.notEqual(updated, workspace);
+  assert.equal(updated.parcels[0].crmStatus, 'Contacted');
+  assert.equal(updated.parcels[0].lastContacted, '2026-06-16');
+  assert.equal(updated.parcels[0].nextFollowUp, '2026-06-19');
+  assert.ok(updated.parcels[1].notes.includes('old'));
+  assert.ok(updated.parcels[1].notes.includes('left voicemail'));
+}
+
+testOutreachCallScriptUsesParcelAndBuyerContext();
+testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead();
+testMailMergeExportIncludesOnlyCallableContactRecords();
+testBulkMarkContactedUpdatesSelectedParcelsImmutably();
 
 testNormalizationPresetMapsCountyAndPropstreamExports();
 testDuplicateDetectionUsesApnThenNormalizedAddress();

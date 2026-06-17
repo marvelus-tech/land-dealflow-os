@@ -210,7 +210,7 @@ function renderCommandCenter() {
   document.querySelector('#command').innerHTML = `
     <div class="brand-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.2 The Callroom</span>
+        <span class="eyebrow">Land Dealflow OS · v1.3 Superhuman DESIGN.md test</span>
         <h1>Three calls. One spread.</h1>
         <p>Not another dashboard. A funded land desk that turns public data into the few buyer-backed seller calls worth making today.</p>
         <div class="hero-actions"><a href="#daily-calls">Enter the callroom</a><a class="secondary" href="#workspace">Inspect the machine</a></div>

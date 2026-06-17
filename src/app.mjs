@@ -7,6 +7,9 @@ import {
   applyCrmUpdate,
   applyCallOutcome,
   buildDailyMoneyQueue,
+  buildBuyerContactQueue,
+  applySkipTraceImport,
+  applyBuyerContactImport,
   CALL_OUTCOMES,
   exportDailyCallSheetCsv,
   exportWorkspace,
@@ -219,6 +222,18 @@ function getBuyer(parcel) {
   return ranked.find(buyer => buyer.id === parcel.buyerId) || ranked.find(buyer => buyer.market === parcel.market) || {};
 }
 
+function generatedCandidateParcels() {
+  return asArray(generatedLeads?.snapshot?.parcels).filter(parcel => parcel.sourceId || parcel.publicSource || parcel.crmStatus === 'Needs skip trace');
+}
+
+function generatedCandidateBuyers() {
+  return asArray(generatedLeads?.snapshot?.buyers).filter(buyer => buyer.sourceId === 'lehigh-builder-signals-fdor-2025');
+}
+
+function enrichedBuilderContacts() {
+  return asArray(workspace.buyers).filter(buyer => buyer.contactEnrichedAt || buyer.sourceId === 'lehigh-builder-signals-fdor-2025');
+}
+
 function scoredParcels() {
   return (workspace.parcels || []).map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
 }
@@ -395,8 +410,10 @@ function renderCommandCenter() {
   const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'None', score: { total: 0 } };
   const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'None', score: 0 };
   const parcelScores = scoredParcels();
-  const moneyQueue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 5 });
+  const moneyQueue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 5, requireRealContact: true });
   const moneyCalls = [...moneyQueue.followUps, ...moneyQueue.today];
+  const publicSkipTrace = asArray(generatedLeads?.queues?.skipTrace);
+  const buyerContactQueue = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()]);
   const heroCall = moneyCalls.find(call => call.id === selectedMoneyCallId) || moneyCalls[0] || {};
   selectedMoneyCallId = heroCall.id || '';
   const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="money-call ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
@@ -404,15 +421,15 @@ function renderCommandCenter() {
       <b>${h(call.ownerName || call.owner || 'owner unknown')}</b>
       <small>${h(call.address || 'No address')}</small>
       <em>${h(call.moneyStage)} · ${h(call.score)} score · ${formatMoney(call.projectedSpread)} spread</em>
-    </button>`).join('') : '<article class="money-empty"><b>No seller calls ready.</b><span>Import owner contact data or clear buildability blockers until the app can produce a buyer-backed call queue.</span></article>';
+    </button>`).join('') : '<article class="money-empty"><b>No real seller calls ready yet.</b><span>Import skip-traced owner phones. Public parcel records stay out of Today until a real phone/email matches.</span></article>';
   const outcomeButtons = Object.entries(CALL_OUTCOMES).map(([key, outcome]) => `<button type="button" class="outcome-chip" data-call-outcome="${h(key)}" ${heroCall.id ? '' : 'disabled'}>${h(outcome.label)}</button>`).join('');
   const script = heroCall.callScript || {};
   document.querySelector('#command').innerHTML = `
     <div class="cashflow-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.11 cashflow mode</span>
+        <span class="eyebrow">Land Dealflow OS · v1.13 skip-trace intake</span>
         <h1>Call ${h(heroCall.ownerName || heroCall.owner || 'the right seller')} today.</h1>
-        <p>The app now chooses the seller, gives the words, protects the offer, explains the buyer-backed spread, and records what happened after the call.</p>
+        <p>Airbnb-clean action flow: public leads wait in enrichment, matched phones promote into Today, and only real callable records reach the call board.</p>
         <div class="hero-actions"><a class="button-link" href="${heroCall.ownerPhone ? `tel:${h(heroCall.ownerPhone)}` : '#'}">Call owner</a><button id="export-daily-call-sheet" class="secondary" type="button">Export today’s call sheet</button></div>
       </div>
       <aside class="hero-deal-card cash-card" aria-label="Selected money call">
@@ -431,6 +448,8 @@ function renderCommandCenter() {
           <div><span>Call-ready</span><b>${h(moneyQueue.stats.callReady)}</b></div>
           <div><span>Follow-ups due</span><b>${h(moneyQueue.stats.followUpsDue)}</b></div>
           <div><span>Buyer-backed</span><b>${h(moneyQueue.stats.buyerBacked)}</b></div>
+          <div><span>Need skip trace</span><b>${h(publicSkipTrace.length)}</b></div>
+          <div><span>Buyer contacts</span><b>${h(buyerContactQueue.length)}</b></div>
         </div>
       </div>
       <article class="call-script-panel" aria-label="What to say">
@@ -465,12 +484,20 @@ function renderWorkspaceTools() {
       <p>Imports, exports, quality gates, validation, outreach scripts, and offer packets are now progressive panels instead of one long wall.</p>
     </div>
     <div class="machine-stack">
-      <details class="machine-panel" open>
+      <details class="machine-panel">
         <summary><span>01</span><strong>Generated lead output</strong><em>Review conveyor belt health</em></summary>
         <div id="lead-engine-panel"></div>
       </details>
+      <details class="machine-panel" open>
+        <summary><span>02</span><strong>Skip trace intake</strong><em>Upload matched seller phones</em></summary>
+        <div id="skip-trace-intake-panel"></div>
+      </details>
+      <details class="machine-panel" open>
+        <summary><span>03</span><strong>Buyer contact validation</strong><em>Enrich builder signals into real contacts</em></summary>
+        <div id="buyer-contact-intake-panel"></div>
+      </details>
       <details class="machine-panel">
-        <summary><span>02</span><strong>Import parcel data</strong><em>CSV, county exports, PropStream, LandGlide</em></summary>
+        <summary><span>04</span><strong>Import parcel data</strong><em>CSV, county exports, PropStream, LandGlide</em></summary>
         <p class="helper-copy">Paste only when you need to refresh the local workspace. The app normalizes source-specific headers into one parcel model.</p>
         <details class="mini-disclosure"><summary>Supported CSV fields</summary><p>address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p></details>
         <textarea id="csv-input" rows="7" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea>
@@ -478,32 +505,32 @@ function renderWorkspaceTools() {
         <div class="button-row"><button id="load-lehigh-template" class="secondary" type="button">Use sample Lehigh CSV</button><button id="import-csv" type="button">Import parcel rows</button><span id="import-status"></span></div>
       </details>
       <details class="machine-panel">
-        <summary><span>03</span><strong>Workspace backup</strong><em>Move or restore local state</em></summary>
+        <summary><span>05</span><strong>Workspace backup</strong><em>Move or restore local state</em></summary>
         <textarea id="json-input" rows="7" placeholder="Paste exported workspace JSON here"></textarea>
         <div class="button-row"><button id="import-json" type="button">Restore JSON backup</button><button id="export-json" class="secondary" type="button">Download JSON backup</button><button id="reset-workspace" class="danger" type="button">Reset to seed data</button></div>
       </details>
       <details class="machine-panel">
-        <summary><span>04</span><strong>Exports for action</strong><em>Call list, filtered CSV, mail merge</em></summary>
+        <summary><span>06</span><strong>Exports for action</strong><em>Call list, filtered CSV, mail merge</em></summary>
         <p class="helper-copy">Exports respect the active deal filter. Use the call-list export when you are ready to execute.</p>
         <div class="button-row"><button id="export-top20-csv" type="button">Download Top 20 seller call list</button><button id="export-filtered-csv" class="secondary" type="button">Download current deal view</button><button id="export-mailmerge-csv" class="secondary" type="button">Download mail merge file</button></div>
         <div id="top-call-list" class="call-list"></div>
       </details>
       <details class="machine-panel">
-        <summary><span>05</span><strong>Data quality gate</strong><em>Find blockers before calling</em></summary>
+        <summary><span>07</span><strong>Data quality gate</strong><em>Find blockers before calling</em></summary>
         <div id="quality-gate"></div>
       </details>
       <details class="machine-panel">
-        <summary><span>06</span><strong>Buyer validation</strong><em>Buy boxes, proof, rejection lessons</em></summary>
+        <summary><span>08</span><strong>Buyer validation</strong><em>Buy boxes, proof, rejection lessons</em></summary>
         <div class="button-row"><button id="capture-sample-buybox" type="button">Capture sample buy box</button><button id="add-sample-buyer-note" class="secondary" type="button">Add sample buyer note</button><span id="buyer-validation-status"></span></div>
         <div id="buyer-validation-panel"></div>
       </details>
       <details class="machine-panel">
-        <summary><span>07</span><strong>Outreach execution</strong><em>Follow-ups and seller script</em></summary>
+        <summary><span>09</span><strong>Outreach execution</strong><em>Follow-ups and seller script</em></summary>
         <div class="button-row"><button id="bulk-contact-callnow" type="button">Mark all “Call now” as contacted</button><span id="outreach-status"></span></div>
         <div id="outreach-panel"></div>
       </details>
       <details class="machine-panel">
-        <summary><span>08</span><strong>Offer packet generator</strong><em>Seller letter and buyer assignment memo</em></summary>
+        <summary><span>10</span><strong>Offer packet generator</strong><em>Seller letter and buyer assignment memo</em></summary>
         <div class="button-row"><button id="export-deal-memo" type="button">Download current deal memo</button><span id="deal-memo-status"></span></div>
         <div id="offer-packet-panel"></div>
       </details>
@@ -519,6 +546,41 @@ function renderTopCallList() {
     <span>${h(call.ownerName || call.owner || 'Owner unknown')} · ${h(call.ownerPhone || call.ownerEmail)} · score ${call.score}</span>
     <em>Buyer: ${h(call.buyerContactName || 'contact missing')} ${h(call.buyerPhone || call.buyerEmail || '')}</em>
   </div>`).join('') : '<p>No callable parcels yet. Import contacts or improve scoring.</p>';
+}
+
+function renderSkipTraceIntakePanel() {
+  const target = document.querySelector('#skip-trace-intake-panel');
+  if (!target) return;
+  const skipTrace = asArray(generatedLeads?.queues?.skipTrace);
+  const sample = skipTrace[0];
+  const matchedCount = asArray(workspace.parcels).filter(parcel => parcel.skipTraceImportedAt || parcel.realContact).length;
+  target.innerHTML = `<div class="intake-grid">
+    <section class="intake-card hero-intake"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-traced phones. Matched owners become Today calls.</h3><p>Match by parcelId first, then owner name, then address. We never call public parcel records until a real phone/email is imported.</p><div class="deal-strip three"><div><span>Public leads waiting</span><strong>${h(skipTrace.length)}</strong></div><div><span>Matched in workspace</span><strong>${h(matchedCount)}</strong></div><div><span>First parcel</span><strong>${h(sample?.parcelId || 'none')}</strong></div></div></section>
+    <section class="intake-card"><h4>CSV format</h4><pre>parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${h(sample?.parcelId || '274527L4110560090')},${h(sample?.ownerName || 'MONTEAN PETER & WENDY')},239-555-7722,owner@example.com,91</pre><textarea id="skip-trace-csv" rows="7" placeholder="parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence"></textarea><div class="button-row"><button id="load-skiptrace-template" class="secondary" type="button">Use first real lead</button><button id="import-skiptrace" type="button">Import skip trace</button><span id="skiptrace-status"></span></div></section>
+    <section class="intake-card queue-card"><h4>Next owners to enrich</h4>${skipTrace.slice(0, 6).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.ownerName)}</b><span>${h(item.address)} · ${h(item.ownerMailingAddress)} · confidence ${h(item.confidence)}</span></div>`).join('') || '<p>No generated skip-trace queue found yet.</p>'}</section>
+  </div>`;
+}
+
+function renderBuyerContactIntakePanel() {
+  const target = document.querySelector('#buyer-contact-intake-panel');
+  if (!target) return;
+  const buyerQueue = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()]);
+  const sample = buyerQueue[0];
+  target.innerHTML = `<div class="intake-grid">
+    <section class="intake-card hero-intake"><span class="eyebrow">Buyer validation</span><h3>Turn builder signals into real buyers.</h3><p>Enrich phone, email, website, contact name, max price, and buy box. The app keeps these as validation tasks until contact proof exists.</p><div class="deal-strip three"><div><span>Buyer contacts needed</span><strong>${h(buyerQueue.length)}</strong></div><div><span>Top signal</span><strong>${h(sample?.recentBuilds || 0)}</strong></div><div><span>Market</span><strong>${h(sample?.market || 'lehigh')}</strong></div></div></section>
+    <section class="intake-card"><h4>CSV format</h4><pre>buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice\n${h(sample?.buyerId || 'lehigh-builder-career-financial-corp')},${h(sample?.name || 'CAREER FINANCIAL CORP')},Acquisitions,239-555-8822,deals@example.com,https://example.com,"Lehigh quarter-acre lots under $42k",42000</pre><textarea id="buyer-contact-csv" rows="7" placeholder="buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice"></textarea><div class="button-row"><button id="load-buyer-contact-template" class="secondary" type="button">Use top builder signal</button><button id="import-buyer-contact" type="button">Import buyer contact</button><span id="buyer-contact-status"></span></div></section>
+    <section class="intake-card queue-card"><h4>Top builder signals</h4>${buyerQueue.slice(0, 8).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.name)}</b><span>${h(item.task)} · ${h(item.recentBuilds)} builds/signals · ${h(item.phone || item.website || 'find contact')}</span></div>`).join('') || '<p>All buyer contacts enriched.</p>'}</section>
+  </div>`;
+}
+
+function skipTraceTemplateRow() {
+  const item = asArray(generatedLeads?.queues?.skipTrace)[0] || {};
+  return `parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${item.parcelId || '274527L4110560090'},${item.ownerName || 'MONTEAN PETER & WENDY'},239-555-7722,owner@example.com,91`;
+}
+
+function buyerContactTemplateRow() {
+  const item = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()])[0] || {};
+  return `buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice\n${item.buyerId || 'lehigh-builder-career-financial-corp'},${item.name || 'CAREER FINANCIAL CORP'},Acquisitions,239-555-8822,deals@example.com,https://example.com,"Lehigh quarter-acre lots under $42k",42000`;
 }
 
 async function loadGeneratedLeads() {
@@ -695,6 +757,40 @@ function bindEvents() {
       renderAll();
     }
 
+    if (event.target.matches('#load-skiptrace-template')) {
+      const input = document.querySelector('#skip-trace-csv');
+      if (input) input.value = skipTraceTemplateRow();
+      const status = document.querySelector('#skiptrace-status');
+      if (status) status.textContent = 'Loaded first real skip-trace lead.';
+    }
+
+    if (event.target.matches('#import-skiptrace')) {
+      const input = document.querySelector('#skip-trace-csv');
+      const status = document.querySelector('#skiptrace-status');
+      const result = applySkipTraceImport(workspace, input?.value || '', { candidateParcels: generatedCandidateParcels() });
+      workspace = result.workspace;
+      persistWorkspace();
+      if (status) status.textContent = `Matched ${result.summary.matched}/${result.summary.imported}; Today can now promote real callable records.`;
+      renderAll();
+    }
+
+    if (event.target.matches('#load-buyer-contact-template')) {
+      const input = document.querySelector('#buyer-contact-csv');
+      if (input) input.value = buyerContactTemplateRow();
+      const status = document.querySelector('#buyer-contact-status');
+      if (status) status.textContent = 'Loaded top builder signal.';
+    }
+
+    if (event.target.matches('#import-buyer-contact')) {
+      const input = document.querySelector('#buyer-contact-csv');
+      const status = document.querySelector('#buyer-contact-status');
+      const result = applyBuyerContactImport(workspace, input?.value || '', { candidateBuyers: generatedCandidateBuyers() });
+      workspace = result.workspace;
+      persistWorkspace();
+      if (status) status.textContent = `Enriched ${result.summary.matched}/${result.summary.imported} buyer contacts.`;
+      renderAll();
+    }
+
     if (event.target.matches('#export-json')) {
       downloadText(`land-dealflow-workspace-${new Date().toISOString().slice(0, 10)}.json`, exportWorkspace(workspace), 'application/json');
     }
@@ -709,7 +805,7 @@ function bindEvents() {
     }
 
     if (event.target.matches('#export-daily-call-sheet')) {
-      const queue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 20 });
+      const queue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 20, requireRealContact: true });
       downloadText(`land-dealflow-daily-call-sheet-${new Date().toISOString().slice(0, 10)}.csv`, exportDailyCallSheetCsv([...queue.followUps, ...queue.today]));
     }
 
@@ -814,6 +910,8 @@ function renderFilters() {
 function renderAll() {
   renderCommandCenter();
   renderWorkspaceTools();
+  renderSkipTraceIntakePanel();
+  renderBuyerContactIntakePanel();
   renderPipeline();
   renderMarkets();
   renderBuyers();

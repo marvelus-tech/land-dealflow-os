@@ -4,6 +4,9 @@ import {
   applyCallOutcome,
   buildCallScript,
   buildDailyMoneyQueue,
+  buildBuyerContactQueue,
+  applyBuyerContactImport,
+  applySkipTraceImport,
   exportDailyCallSheetCsv,
 } from '../src/core.mjs';
 
@@ -114,10 +117,56 @@ function testDailyCallSheetExportsMoneyFields() {
   assert.match(csv, /Call now/);
 }
 
+function testSkipTraceImportMatchesRealPublicLeadAndPromotesToToday() {
+  const publicLead = {
+    id: '274527L4110560090',
+    parcelId: '274527L4110560090',
+    address: '1050 BELL BLVD S LEHIGH ACRES, FL',
+    market: 'lehigh',
+    buyerId: 'precision',
+    lotSize: '0.252 ac',
+    lotSizeAcres: 0.252,
+    ownerName: 'MONTEAN PETER & WENDY',
+    ownerMailingAddress: '37 HARWOOD DR, BARRIE CANADA',
+    askingPrice: 12062,
+    lowestActiveListing: 42000,
+    buyerMaxPrice: 42000,
+    heldYears: 20,
+    roadAccess: true,
+    utilities: true,
+    wetlands: 'none',
+    floodZone: '',
+    sourceId: 'lehigh-public-vacant-parcels-fdor-2025',
+    crmStatus: 'Needs skip trace',
+  };
+  const csv = 'parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n274527L4110560090,MONTEAN PETER & WENDY,239-555-7722,owner@example.com,91';
+  const result = applySkipTraceImport({ parcels: [] }, csv, { candidateParcels: [publicLead] });
+  assert.equal(result.summary.matched, 1);
+  assert.equal(result.workspace.parcels[0].ownerPhone, '239-555-7722');
+  assert.equal(result.workspace.parcels[0].crmStatus, 'New');
+  const queue = buildDailyMoneyQueue({ parcels: result.workspace.parcels, buyers, limit: 5, requireRealContact: true });
+  assert.equal(queue.today.length, 1);
+  assert.equal(queue.today[0].parcelId, '274527L4110560090');
+}
+
+function testBuyerContactImportAndValidationQueue() {
+  const publicBuilder = { id: 'lehigh-builder-career-financial-corp', name: 'CAREER FINANCIAL CORP', market: 'lehigh', recentBuilds: 27, maxPrice: 42000, validationStatus: 'needs-call-confirmation' };
+  const before = buildBuyerContactQueue([publicBuilder]);
+  assert.equal(before.length, 1);
+  const csv = 'buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice\nlehigh-builder-career-financial-corp,CAREER FINANCIAL CORP,Acquisitions,239-555-8822,deals@career.example,https://career.example,"Lehigh quarter-acre lots under $42k",42000';
+  const result = applyBuyerContactImport({ buyers: [] }, csv, { candidateBuyers: [publicBuilder] });
+  assert.equal(result.summary.matched, 1);
+  assert.equal(result.workspace.buyers[0].phone, '239-555-8822');
+  assert.equal(result.workspace.buyers[0].validationStatus, 'contact-enriched');
+  assert.equal(buildBuyerContactQueue(result.workspace.buyers).length, 0);
+}
+
 testDailyMoneyQueueRanksCallReadySellersWithScriptsAndBuyerBacking();
 testFollowUpsDueAreSeparatedFromFreshCalls();
 testCallOutcomeUpdatesCrmStatusAndNextFollowUp();
 testCallScriptExplainsWhatToSayAndOffer();
 testDailyCallSheetExportsMoneyFields();
+testSkipTraceImportMatchesRealPublicLeadAndPromotesToToday();
+testBuyerContactImportAndValidationQueue();
 
 console.log('cashflow tests passed');

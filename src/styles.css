@@ -199,6 +199,50 @@ h4 { font-size: 16px; letter-spacing: -.02em; font-weight: 780; color: var(--bla
 .money-stats div { padding: 13px 10px; border-radius: 15px; background: var(--panel-green); border: 1px solid rgba(22,51,0,.10); }
 .money-stats span { display: block; color: var(--muted); font-size: 10px; font-weight: 760; text-transform: uppercase; letter-spacing: .045em; }
 .money-stats b { display: block; margin-top: 5px; color: var(--money-ink); font-size: 25px; line-height: 1; }
+.deal-strip strong { overflow-wrap: anywhere; }
+
+.intake-grid { display: grid; grid-template-columns: minmax(260px, .9fr) minmax(320px, 1.15fr) minmax(260px, .95fr); gap: 16px; align-items: stretch; }
+.intake-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--line-soft);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #fff 0%, #fbfbf8 100%);
+  box-shadow: rgba(24,29,38,.045) 0 8px 24px;
+}
+.hero-intake { background: linear-gradient(145deg, #fff 0%, #fff7f4 54%, #f7fbf2 100%); }
+.intake-card h3, .intake-card h4 { margin: 6px 0 8px; color: var(--black); letter-spacing: -.035em; line-height: 1.02; }
+.intake-card h3 { font-size: clamp(26px, 3.4vw, 42px); }
+.intake-card h4 { font-size: 16px; }
+.intake-card p { color: var(--muted); line-height: 1.55; margin: 0 0 14px; }
+.intake-card pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0 0 12px;
+  padding: 13px;
+  border-radius: 16px;
+  background: #111827;
+  color: #f8fafc;
+  font-size: 12px;
+  line-height: 1.45;
+  overflow: auto;
+}
+.intake-card textarea {
+  width: 100%;
+  min-height: 168px;
+  resize: vertical;
+  color: var(--ink);
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 13px;
+  font: 13px/1.45 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.queue-card { max-height: 560px; overflow: auto; }
+.queue-card .engine-row { padding: 12px 0; border-bottom: 1px solid var(--line-soft); }
+.queue-card .engine-row:last-child { border-bottom: 0; }
+.queue-card .engine-row b { display: block; color: var(--black); font-size: 13px; line-height: 1.25; }
+.queue-card .engine-row span { display: block; color: var(--muted); font-size: 12px; line-height: 1.35; margin-top: 4px; }
 .call-script-panel { padding: clamp(22px, 3vw, 34px); }
 .call-script-panel h2 { margin-top: 12px; font-size: clamp(31px, 4vw, 54px); line-height: 1; letter-spacing: -.062em; }
 .script-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
@@ -378,7 +422,7 @@ button.danger { background: #fff0ee; color: var(--red); border-color: #ffd2cc; }
 .memo-preview pre { white-space: pre-wrap; max-height: 280px; overflow: auto; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 14px; font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border: 1px solid var(--line-soft); }
 footer { max-width: 1180px; margin: 0 auto; padding: 36px 24px 60px; color: var(--muted); border-top: 1px solid var(--line-soft); }
 @media (max-width: 1000px) {
-  .brand-hero, .cashflow-hero, .daily-calls, .cashflow-board, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid, .lead-engine-grid, .deal-workbench { grid-template-columns: 1fr; }
+  .brand-hero, .cashflow-hero, .daily-calls, .cashflow-board, .intake-grid, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid, .lead-engine-grid, .deal-workbench { grid-template-columns: 1fr; }
   .deal-queue, .deal-action { position: static; max-height: none; }
   .queue-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .call-tile-grid { grid-template-columns: 1fr; }
@@ -397,6 +441,8 @@ footer { max-width: 1180px; margin: 0 auto; padding: 36px 24px 60px; color: var(
   h1 { font-size: clamp(50px, 17vw, 76px); }
   .hero-copy p { font-size: 19px; }
   .pipeline, .mini-grid, .mini-grid.four, .deal-strip, .quality-grid, .risk-checklist, .detail-grid, .queue-list, .script-grid, .money-stats { grid-template-columns: 1fr; }
+  .intake-card { border-radius: 20px; padding: 16px; }
+  .intake-card textarea { min-height: 190px; }
   .cashflow-board { gap: 14px; }
   .call-script-panel h2 { font-size: clamp(28px, 9vw, 42px); }
   .outcome-grid { grid-template-columns: 1fr; }

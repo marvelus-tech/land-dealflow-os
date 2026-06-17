@@ -190,6 +190,17 @@ function normalizeHeader(header) {
     buyeremail: 'buyerEmail',
     buyer_website: 'buyerWebsite',
     buyerwebsite: 'buyerWebsite',
+    contact_name: 'buyerContactName',
+    contactname: 'buyerContactName',
+    phone: 'ownerPhone',
+    phone1: 'ownerPhone',
+    email: 'ownerEmail',
+    email1: 'ownerEmail',
+    website: 'buyerWebsite',
+    buy_box: 'buyBox',
+    buybox: 'buyBox',
+    max_price: 'maxPrice',
+    maxprice: 'maxPrice',
     acquisition_notes: 'acquisitionNotes',
     acquisitionnotes: 'acquisitionNotes',
   };
@@ -387,10 +398,14 @@ function enrichMoneyCall(parcel, buyer, index = 0, moneyStage = 'Call now') {
   };
 }
 
-export function buildDailyMoneyQueue({ parcels = [], buyers = [], limit = 5, now = new Date().toISOString() } = {}) {
+export function buildDailyMoneyQueue({ parcels = [], buyers = [], limit = 5, now = new Date().toISOString(), requireRealContact = false } = {}) {
   const rankedBuyers = rankBuyers(buyers);
   const enriched = parcels.map((parcel) => enrichMoneyCall(parcel, buyerForParcel(parcel, rankedBuyers)));
-  const callable = enriched.filter(parcel => parcel.action === 'Call now' && parcel.risk.status !== 'Kill' && Boolean(parcel.ownerPhone || parcel.ownerEmail));
+  const callable = enriched.filter(parcel => {
+    const hasContact = Boolean(parcel.ownerPhone || parcel.ownerEmail);
+    const isReal = !requireRealContact || Boolean(parcel.skipTraceImportedAt || parcel.realContact === true);
+    return parcel.action === 'Call now' && parcel.risk.status !== 'Kill' && hasContact && isReal;
+  });
   const followUps = callable
     .filter(parcel => ['Contacted', 'Negotiating', 'Under Contract'].includes(parcel.crmStatus) && isDue(parcel.nextFollowUp, now))
     .sort((a, b) => b.score - a.score || b.projectedSpread - a.projectedSpread)
@@ -414,6 +429,140 @@ export function buildDailyMoneyQueue({ parcels = [], buyers = [], limit = 5, now
     },
     generatedAt: now,
   };
+}
+
+export function buildBuyerContactQueue(buyers = []) {
+  const unique = new Map();
+  for (const buyer of buyers || []) {
+    const key = normalizeMatchKey(buyer.id || buyer.buyerId || buyer.name);
+    if (!key) continue;
+    unique.set(key, { ...(unique.get(key) || {}), ...buyer });
+  }
+  return [...unique.values()]
+    .filter(buyer => {
+      const needsContact = !(buyer.phone || buyer.email || buyer.website);
+      const needsValidation = buyer.validationStatus === 'needs-call-confirmation' || !(buyer.buyBox || buyer.exactBuyBox);
+      return needsContact || needsValidation;
+    })
+    .map((buyer) => ({
+      id: buyer.id || buyer.buyerId || buyer.name,
+      buyerId: buyer.id || buyer.buyerId || '',
+      name: buyer.name || '',
+      market: buyer.market || '',
+      recentBuilds: Number(buyer.recentBuilds || 0),
+      phone: buyer.phone || '',
+      email: buyer.email || '',
+      website: buyer.website || '',
+      maxPrice: buyer.maxPrice || buyer.buyerMaxPrice || '',
+      validationStatus: buyer.validationStatus || 'needs-contact',
+      task: !(buyer.phone || buyer.email || buyer.website) ? 'find buyer contact' : 'validate buy box',
+      confidence: buyer.confidence || buyer.score || 0,
+      acquisitionNotes: buyer.acquisitionNotes || buyer.buyBox || '',
+    }))
+    .sort((a, b) => b.recentBuilds - a.recentBuilds || b.confidence - a.confidence || String(a.name).localeCompare(String(b.name)));
+}
+
+function normalizeMatchKey(value = '') {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function findParcelMatch(record, parcels = []) {
+  const parcelId = normalizeMatchKey(record.parcelId || record.apn || record.id);
+  const owner = normalizeMatchKey(record.ownerName || record.owner);
+  const address = normalizeMatchKey(record.address);
+  return parcels.find(parcel => parcelId && normalizeMatchKey(parcel.parcelId || parcel.id) === parcelId)
+    || parcels.find(parcel => owner && owner === normalizeMatchKey(parcel.ownerName || parcel.owner))
+    || parcels.find(parcel => address && address === normalizeMatchKey(parcel.address));
+}
+
+function findBuyerMatch(record, buyers = []) {
+  const buyerId = normalizeMatchKey(record.buyerId || record.id);
+  const name = normalizeMatchKey(record.name || record.buyerName);
+  return buyers.find(buyer => buyerId && normalizeMatchKey(buyer.id || buyer.buyerId) === buyerId)
+    || buyers.find(buyer => name && name === normalizeMatchKey(buyer.name));
+}
+
+export function applySkipTraceImport(workspace = {}, csvText = '', { candidateParcels = [], now = new Date().toISOString() } = {}) {
+  const records = parseCsvRecords(csvText);
+  const current = [...(workspace.parcels || [])];
+  const candidates = [...current, ...(candidateParcels || [])];
+  let matched = 0;
+  let created = 0;
+  const unmatched = [];
+
+  for (const record of records) {
+    const phone = record.ownerPhone || record.phone || '';
+    const email = record.ownerEmail || record.email || '';
+    const match = findParcelMatch(record, candidates);
+    if (!match || !(phone || email)) {
+      unmatched.push(record);
+      continue;
+    }
+    const id = match.id || match.parcelId || record.parcelId || `skiptrace-${matched + created + 1}`;
+    const update = {
+      ...match,
+      ...record,
+      id,
+      parcelId: match.parcelId || record.parcelId || match.id || '',
+      ownerName: record.ownerName || match.ownerName || match.owner || '',
+      ownerPhone: phone || match.ownerPhone || '',
+      ownerEmail: email || match.ownerEmail || '',
+      skipTraceConfidence: record.skipTraceConfidence || match.skipTraceConfidence || '',
+      crmStatus: ['Dead', 'Kill'].includes(match.crmStatus) ? match.crmStatus : 'New',
+      nextFollowUp: match.nextFollowUp || '',
+      realContact: true,
+      skipTraceImportedAt: now,
+      notes: [match.notes, record.notes, `Skip trace imported ${now.slice(0, 10)}.`].filter(Boolean).join('\n'),
+    };
+    const existingIndex = current.findIndex(parcel => normalizeMatchKey(parcel.id || parcel.parcelId) === normalizeMatchKey(id) || (update.parcelId && normalizeMatchKey(parcel.parcelId) === normalizeMatchKey(update.parcelId)));
+    if (existingIndex >= 0) current[existingIndex] = { ...current[existingIndex], ...update };
+    else { current.push(update); created += 1; }
+    matched += 1;
+  }
+
+  return { workspace: { ...workspace, parcels: current }, summary: { imported: records.length, matched, created, unmatched: unmatched.length }, unmatched };
+}
+
+export function applyBuyerContactImport(workspace = {}, csvText = '', { candidateBuyers = [], now = new Date().toISOString() } = {}) {
+  const records = parseCsvRecords(csvText);
+  const current = [...(workspace.buyers || [])];
+  const candidates = [...current, ...(candidateBuyers || [])];
+  let matched = 0;
+  let created = 0;
+  const unmatched = [];
+
+  for (const record of records) {
+    const match = findBuyerMatch(record, candidates);
+    if (!match && !(record.name || record.buyerName)) {
+      unmatched.push(record);
+      continue;
+    }
+    const id = match?.id || record.buyerId || normalizeMatchKey(record.name || record.buyerName) || `buyer-${matched + created + 1}`;
+    const phone = record.buyerPhone || record.ownerPhone || match?.phone || '';
+    const email = record.buyerEmail || record.ownerEmail || match?.email || '';
+    const website = record.buyerWebsite || match?.website || '';
+    const update = {
+      ...(match || {}),
+      id,
+      market: record.market || match?.market || 'lehigh',
+      name: record.name || record.buyerName || match?.name || '',
+      contactName: record.buyerContactName || match?.contactName || '',
+      phone,
+      email,
+      website,
+      buyBox: record.buyBox || match?.buyBox || record.acquisitionNotes || match?.acquisitionNotes || '',
+      maxPrice: record.maxPrice || record.buyerMaxPrice || match?.maxPrice || '',
+      acquisitionNotes: record.acquisitionNotes || match?.acquisitionNotes || '',
+      validationStatus: phone || email || website ? 'contact-enriched' : (match?.validationStatus || 'needs-contact'),
+      contactEnrichedAt: now,
+    };
+    const existingIndex = current.findIndex(buyer => normalizeMatchKey(buyer.id) === normalizeMatchKey(id) || normalizeMatchKey(buyer.name) === normalizeMatchKey(update.name));
+    if (existingIndex >= 0) current[existingIndex] = { ...current[existingIndex], ...update };
+    else { current.push(update); created += 1; }
+    matched += 1;
+  }
+
+  return { workspace: { ...workspace, buyers: current }, summary: { imported: records.length, matched, created, unmatched: unmatched.length }, unmatched };
 }
 
 export function applyCallOutcome(workspace, parcelId, outcomeKey, { now = new Date().toISOString(), note = '' } = {}) {

@@ -1,5 +1,1 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
-ocala,"Ocala, FL",arcgis,zoning,Flood Zone,https://gis.ocalafl.org/arcgis/rest/services/Public/Flood/FeatureServer,90,deal_risk_and_fit_overlay,"Ocala, FL zoning"
-ocala,"Ocala, FL",arcgis,zoning,Growth Management,https://gis.ocalafl.org/arcgis/rest/services/Public/GrowthManagement/FeatureServer,90,deal_risk_and_fit_overlay,"Ocala, FL zoning"
-ocala,"Ocala, FL",arcgis,parcel,OcalaMultiFamilyComplexes,https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/OcalaMultiFamilyComplexes/FeatureServer,90,seller_parcel_discovery,"Ocala, FL parcels"
-ocala,"Ocala, FL",arcgis,parcel,Property data,https://gis.ocalafl.org/arcgis/rest/services/Public/Property/FeatureServer,90,seller_parcel_discovery,"Ocala, FL parcels"

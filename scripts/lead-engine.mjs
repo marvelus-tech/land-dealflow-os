@@ -92,6 +92,23 @@ export function buildLeadQueues(snapshot) {
     .filter(buyer => !buyer.exactBuyBox || !buyer.phone || buyer.validationStatus !== 'validated')
     .map(buyer => ({ buyerId: buyer.id, name: buyer.name, market: buyer.market, phone: buyer.phone || '', website: buyer.website || '', task: buyer.exactBuyBox ? 'validate proof/close speed' : 'capture exact buy box', confidence: buyer.confidence || 0 }));
   const riskBlocked = scored.filter(parcel => parcel.risk?.status === 'Kill' || parcel.roadAccess === false || parcel.wetlands === true).map(parcel => ({ parcelId: parcel.parcelId || parcel.id, address: parcel.address, reason: parcel.risk?.reason || 'buildability risk', market: parcel.market }));
+  const skipTrace = scored
+    .filter(parcel => parcel.ownerName && !(parcel.ownerPhone || parcel.ownerEmail) && parcel.risk?.status !== 'Kill')
+    .sort((a, b) => (b.confidence || b.sourceScore || b.score || 0) - (a.confidence || a.sourceScore || a.score || 0))
+    .slice(0, 100)
+    .map(parcel => ({
+      parcelId: parcel.parcelId || parcel.id,
+      market: parcel.market,
+      address: parcel.address,
+      ownerName: parcel.ownerName,
+      ownerMailingAddress: parcel.ownerMailingAddress || '',
+      lotSize: parcel.lotSize || '',
+      assessedLandValue: parcel.assessedLandValue || parcel.askingPrice || '',
+      buyerMaxPrice: parcel.buyerMaxPrice || '',
+      confidence: parcel.confidence || parcel.sourceScore || parcel.score || 0,
+      task: 'skip trace owner phone/email before seller call',
+      sourceId: parcel.sourceId || '',
+    }));
   const offerReady = scored.filter(parcel => parcel.ownerName && (parcel.ownerPhone || parcel.ownerEmail) && parcel.risk?.status !== 'Kill' && Number(parcel.buyerMaxPrice || 0) > Number(parcel.askingPrice || 0)).map(parcel => ({ parcelId: parcel.parcelId || parcel.id, market: parcel.market, address: parcel.address, ownerName: parcel.ownerName, ownerPhone: parcel.ownerPhone || '', askingPrice: parcel.askingPrice || '', buyerMaxPrice: parcel.buyerMaxPrice || '', score: parcel.score }));
   const buyerDiscovery = asArray(snapshot.markets)
     .filter(market => !buyers.some(buyer => buyer.market === market.id))
@@ -99,7 +116,7 @@ export function buildLeadQueues(snapshot) {
   const sellerDiscovery = asArray(snapshot.markets)
     .filter(market => !parcels.some(parcel => parcel.market === market.id))
     .map(market => ({ market: market.id, areaName: market.name, task: `Find owner/seller parcel leads in ${market.name}`, reason: 'new target area needs seller/parcel discovery', priority: market.priority || 0 }));
-  return { topSellerCalls, buyerValidation, buyerDiscovery, sellerDiscovery, missingData, riskBlocked, offerReady, fitMatrix: fitMatrix.slice(0, 50) };
+  return { topSellerCalls, skipTrace, buyerValidation, buyerDiscovery, sellerDiscovery, missingData, riskBlocked, offerReady, fitMatrix: fitMatrix.slice(0, 50) };
 }
 
 export function buildAreaQueueBundles(snapshot, queues) {
@@ -111,6 +128,7 @@ export function buildAreaQueueBundles(snapshot, queues) {
       buyers: asArray(snapshot.buyers).filter(item => item.market === market.id),
       parcels: asArray(snapshot.parcels).filter(item => item.market === market.id),
       topSellerCalls: asArray(queues.topSellerCalls).filter(item => item.market === market.id),
+      skipTrace: asArray(queues.skipTrace).filter(item => item.market === market.id),
       buyerValidation: asArray(queues.buyerValidation).filter(item => item.market === market.id),
       buyerDiscovery: asArray(queues.buyerDiscovery).filter(item => item.market === market.id),
       sellerDiscovery: asArray(queues.sellerDiscovery).filter(item => item.market === market.id),
@@ -145,6 +163,7 @@ export function buildOperatorBriefing(snapshot, queues) {
     `- Buyer leads: ${snapshot.buyers.length}`,
     `- Parcel leads: ${snapshot.parcels.length}`,
     `- Top seller calls: ${queues.topSellerCalls.length}`,
+    `- Real skip-trace leads: ${asArray(queues.skipTrace).length}`,
     `- Buyer validation tasks: ${queues.buyerValidation.length}`,
     `- Offer-ready deals: ${queues.offerReady.length}`,
     `- New-area buyer discovery tasks: ${queues.buyerDiscovery.length}`,
@@ -154,6 +173,9 @@ export function buildOperatorBriefing(snapshot, queues) {
     '',
     '## Top seller calls',
     ...queues.topSellerCalls.slice(0, 10).map((item, index) => `${index + 1}. ${item.address} — ${item.ownerName || 'owner'} — ${item.ownerPhone || item.ownerEmail || 'needs contact'} — score ${item.score}`),
+    '',
+    '## Real skip-trace leads',
+    ...asArray(queues.skipTrace).slice(0, 10).map((item, index) => `${index + 1}. ${item.address} — ${item.ownerName || 'owner'} — ${item.ownerMailingAddress || 'mailing missing'} — confidence ${item.confidence}`),
     '',
     '## Buyer validation tasks',
     ...queues.buyerValidation.slice(0, 10).map((item, index) => `${index + 1}. ${item.name} — ${item.task} — ${item.phone || item.website || 'find contact'}`),
@@ -167,7 +189,7 @@ export function buildOperatorBriefing(snapshot, queues) {
     '## Offer-ready deals',
     ...queues.offerReady.slice(0, 10).map((item, index) => `${index + 1}. ${item.address} — ask ${item.askingPrice || 'unknown'} — max ${item.buyerMaxPrice || 'unknown'}`),
   ];
-  return { markdown: `${lines.join('\n')}\n`, counts: { markets: snapshot.markets.length, buyers: snapshot.buyers.length, parcels: snapshot.parcels.length, topSellerCalls: queues.topSellerCalls.length, offerReady: queues.offerReady.length, buyerDiscovery: queues.buyerDiscovery.length, sellerDiscovery: queues.sellerDiscovery.length, sourceCandidates: asArray(snapshot.sourceCandidates).length } };
+  return { markdown: `${lines.join('\n')}\n`, counts: { markets: snapshot.markets.length, buyers: snapshot.buyers.length, parcels: snapshot.parcels.length, topSellerCalls: queues.topSellerCalls.length, skipTrace: asArray(queues.skipTrace).length, offerReady: queues.offerReady.length, buyerDiscovery: queues.buyerDiscovery.length, sellerDiscovery: queues.sellerDiscovery.length, sourceCandidates: asArray(snapshot.sourceCandidates).length } };
 }
 
 export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(repoRoot, 'data', 'generated') }) {
@@ -191,6 +213,8 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
   writeFileSync(topCsv, exportParcelsCsv(queues.topSellerCalls)); files.push(topCsv);
   const buyerCsv = join(outputDir, 'queues', 'buyer_validation.csv');
   writeFileSync(buyerCsv, toQueueRows(queues.buyerValidation, ['buyerId', 'name', 'market', 'phone', 'website', 'task', 'confidence'])); files.push(buyerCsv);
+  const skipTraceCsv = join(outputDir, 'queues', 'skip_trace.csv');
+  writeFileSync(skipTraceCsv, toQueueRows(asArray(queues.skipTrace), ['parcelId', 'market', 'address', 'ownerName', 'ownerMailingAddress', 'lotSize', 'assessedLandValue', 'buyerMaxPrice', 'confidence', 'task', 'sourceId'])); files.push(skipTraceCsv);
   const offerCsv = join(outputDir, 'queues', 'offer_ready.csv');
   writeFileSync(offerCsv, toQueueRows(queues.offerReady, ['parcelId', 'address', 'ownerName', 'ownerPhone', 'askingPrice', 'buyerMaxPrice', 'score'])); files.push(offerCsv);
   const missingCsv = join(outputDir, 'queues', 'missing_data.csv');
@@ -206,6 +230,7 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
       ['buyers.csv', bundle.buyers, ['leadId', 'market', 'name', 'phone', 'email', 'website', 'contactName', 'buyBox', 'confidence']],
       ['sellers.csv', bundle.parcels, ['leadId', 'market', 'parcelId', 'address', 'ownerName', 'ownerPhone', 'ownerEmail', 'askingPrice', 'buyerMaxPrice', 'sourceId']],
       ['seller_calls.csv', bundle.topSellerCalls, ['parcelId', 'market', 'address', 'ownerName', 'ownerPhone', 'ownerEmail', 'score', 'askingPrice', 'buyerMaxPrice']],
+      ['skip_trace.csv', bundle.skipTrace, ['parcelId', 'market', 'address', 'ownerName', 'ownerMailingAddress', 'lotSize', 'assessedLandValue', 'buyerMaxPrice', 'confidence', 'task', 'sourceId']],
       ['buyer_validation.csv', bundle.buyerValidation, ['buyerId', 'name', 'market', 'phone', 'website', 'task', 'confidence']],
       ['offer_ready.csv', bundle.offerReady, ['parcelId', 'market', 'address', 'ownerName', 'ownerPhone', 'askingPrice', 'buyerMaxPrice', 'score']],
       ['missing_data.csv', bundle.missingData, ['parcelId', 'market', 'address', 'severity', 'missing', 'reason']],

@@ -545,6 +545,7 @@ function renderLeadEnginePanel() {
   const snapshot = generatedLeads.snapshot || {};
   const queues = generatedLeads.queues || {};
   const topCalls = queues.topSellerCalls || [];
+  const skipTrace = queues.skipTrace || [];
   const buyerTasks = queues.buyerValidation || [];
   const offerReady = queues.offerReady || [];
   const buyerDiscovery = queues.buyerDiscovery || [];
@@ -553,13 +554,14 @@ function renderLeadEnginePanel() {
   const blockers = queues.missingData || [];
   const sourceSummary = ['market', 'buyer', 'parcel', 'owner', 'offer', 'risk', 'crm'];
   target.innerHTML = `<div class="lead-engine-grid">
-    <div class="deal-strip four hero-metrics"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
+    <div class="deal-strip five hero-metrics"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Skip trace</span><strong>${skipTrace.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
     <details class="engine-column primary-column source-ledger"><summary><h4>Source ledger</h4><span>Last-sourced provenance by phase</span></summary><p>Every phase now exposes where the data comes from and when the underlying records were last sourced.</p>${sourceSummary.map(type => {
       const blueprint = sourceBlueprint[type];
       const status = getPhaseSourceStatus(type);
       return `<div class="engine-row"><b>${h(blueprint.label)}</b><span>${formatDateTime(status.latest)} · ${h(status.count)} records · ${status.ids.length ? status.ids.map(id => h(id)).join(', ') : 'derived/local'}</span></div>`;
     }).join('')}</details>
     <div class="engine-column primary-column"><h4>Call these sellers first</h4>${topCalls.slice(0, 3).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
+    <div class="engine-column primary-column"><h4>Real leads to skip trace</h4>${skipTrace.slice(0, 5).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerMailingAddress || 'mailing missing')} · confidence ${h(item.confidence ?? '')}</span></div>`).join('') || '<p>No public-owner skip trace queue generated yet.</p>'}</div>
     <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 4).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered yet.</p>'}</div>
     <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>
     <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No buyer-validation tasks generated yet.</p>'}</div>

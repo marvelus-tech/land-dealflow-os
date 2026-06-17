@@ -1,5 +1,1 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
-cape-coral,"Cape Coral, FL",arcgis,parcel,FL_CapeCoral_Boatramps_WEB,https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_Boatramps_WEB/FeatureServer,90,seller_parcel_discovery,"Cape Coral, FL parcels"
-cape-coral,"Cape Coral, FL",arcgis,zoning,FL_CapeCoral_CLMilesProgress_WEB,https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_CLMilesProgress_WEB/FeatureServer,90,deal_risk_and_fit_overlay,"Cape Coral, FL zoning"
-cape-coral,"Cape Coral, FL",arcgis,zoning,FL_CapeCoralSubZones_WEB,https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoralSubZones_WEB/FeatureServer,90,deal_risk_and_fit_overlay,"Cape Coral, FL zoning"
-cape-coral,"Cape Coral, FL",arcgis,parcel,Sum_of_Bedrooms_Cape_Coral,https://services1.arcgis.com/sQOueNHZBxRJjRN3/arcgis/rest/services/Sum_of_Bedrooms_Cape_Coral/FeatureServer,90,seller_parcel_discovery,"Cape Coral, FL parcels"

@@ -52,9 +52,35 @@ function testQueuesPromoteContactableBuyerFitDealsAndBlockRiskyDeals() {
   const queues = buildLeadQueues(snapshot);
   assert.ok(queues.topSellerCalls.length >= 1);
   assert.equal(queues.topSellerCalls[0].parcelId, 'LEH-001');
+  assert.ok(Array.isArray(queues.skipTrace));
   assert.ok(queues.buyerValidation.length >= 1);
   assert.ok(queues.riskBlocked.some(item => item.parcelId === 'LEH-002'));
   assert.ok(queues.offerReady.some(item => item.parcelId === 'LEH-001'));
+}
+
+function testPublicOwnerLeadsWithoutPhoneEnterSkipTraceQueue() {
+  const publicSources = structuredClone(sampleSources);
+  publicSources.parcelSources[0].records.push({
+    parcelId: 'LEH-REAL-001',
+    address: '1050 Bell Blvd S, Lehigh Acres, FL',
+    market: 'lehigh',
+    lotSize: '0.25 ac',
+    lotSizeAcres: 0.25,
+    ownerName: 'Real Absentee Owner',
+    ownerMailingAddress: '37 Harwood Dr, Barrie Canada',
+    askingPrice: 12062,
+    assessedLandValue: 12062,
+    buyerMaxPrice: 42000,
+    roadAccess: true,
+    utilities: 'unknown',
+    wetlands: 'unknown',
+    floodZone: 'unknown',
+    confidence: 96,
+  });
+  const snapshot = generateLeadEngineSnapshot(publicSources, { runId: 'test-run', now: '2026-06-16T09:00:00.000Z' });
+  const queues = buildLeadQueues(snapshot);
+  assert.ok(queues.skipTrace.some(item => item.parcelId === 'LEH-REAL-001'));
+  assert.ok(queues.skipTrace[0].task.includes('skip trace'));
 }
 
 function testBriefingSummarizesConveyorBeltActions() {
@@ -125,6 +151,7 @@ function testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged() {
 testLoadSourcesValidatesWorkflowInputs();
 testSnapshotGeneratesMarketsBuyersParcelsAndMetadata();
 testQueuesPromoteContactableBuyerFitDealsAndBlockRiskyDeals();
+testPublicOwnerLeadsWithoutPhoneEnterSkipTraceQueue();
 testBriefingSummarizesConveyorBeltActions();
 testWriteOutputsCreatesMachineReadableFilesAndCsvQueues();
 testTargetAreasCascadeIntoRelatedBuyerAndSellerDiscoveryTasks();

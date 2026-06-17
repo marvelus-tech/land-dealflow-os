@@ -43,6 +43,658 @@
       "buyerMaxPrice": 95000
     }
   ],
+  "skipTrace": [
+    {
+      "parcelId": "274527L4110560090",
+      "market": "lehigh",
+      "address": "1050 BELL BLVD S LEHIGH ACRES, FL",
+      "ownerName": "MONTEAN PETER & WENDY",
+      "ownerMailingAddress": "37 HARWOOD DR , BARRIE CANADA",
+      "lotSize": "0.252 ac",
+      "assessedLandValue": 12062,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L4050250140",
+      "market": "lehigh",
+      "address": "183 TOWNSEND CT LEHIGH ACRES, FL",
+      "ownerName": "DUNPHY JAMES M",
+      "ownerMailingAddress": "4925 262ND ST , WYOMING MN 55092",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L2120570060",
+      "market": "lehigh",
+      "address": "385 URSULA LN LEHIGH ACRES, FL",
+      "ownerName": "KIRLEW-BARRETT MITZIE",
+      "ownerMailingAddress": "3521 JOHN PAUL JONES , NEW WINDSOR NY 12553",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L4160770060",
+      "market": "lehigh",
+      "address": "415 MURIEL ST LEHIGH ACRES, FL",
+      "ownerName": "2442453 ONTARIO LTD",
+      "ownerMailingAddress": "1-407 CANYON AVE , NORTH YORK CANADA",
+      "lotSize": "0.244 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3241590190",
+      "market": "lehigh",
+      "address": "1923 MILSTEAD AVE LEHIGH ACRES, FL",
+      "ownerName": "SUTHERLAND K D",
+      "ownerMailingAddress": "178 SUNCREST ST , GRAY TN 37615",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3271740210",
+      "market": "lehigh",
+      "address": "1915 OVERLAND AVE LEHIGH ACRES, FL",
+      "ownerName": "HERNANDEZ MAXIMILIANO IRA",
+      "ownerMailingAddress": "667 HEMPSTEAD BLVD , UNIONDALE NY 11553",
+      "lotSize": "0.245 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L4301980040",
+      "market": "lehigh",
+      "address": "553 ROSCOE ST LEHIGH ACRES, FL",
+      "ownerName": "MARTINEZ MARLENE +",
+      "ownerMailingAddress": "2751 W LAWRENCE AVE UNIT 1W , CHICAGO IL 60625",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2190990140",
+      "market": "lehigh",
+      "address": "310 ROSANNA AVE LEHIGH ACRES, FL",
+      "ownerName": "MANZOOR KHALID & MUAZZAM",
+      "ownerMailingAddress": "1919 SHORELINE DR , SEABROOK TX 77586",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L4060280090",
+      "market": "lehigh",
+      "address": "1907 WELLER AVE LEHIGH ACRES, FL",
+      "ownerName": "SWANSON GEORGE A & ANNIE P",
+      "ownerMailingAddress": "8111 S CARPENTER ST , CHICAGO IL 60620",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090410210",
+      "market": "lehigh",
+      "address": "262 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "ownerName": "KNUTSON LEONARD JR &",
+      "ownerMailingAddress": "100 MULLENHILL RD , WATERFORD CT 6385",
+      "lotSize": "0.244 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090440210",
+      "market": "lehigh",
+      "address": "2155 WINNETKA DR LEHIGH ACRES, FL",
+      "ownerName": "CAVAGNARO RICHARD J",
+      "ownerMailingAddress": "PO BOX 10012 , NEW IBERIA LA 70562",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090470160",
+      "market": "lehigh",
+      "address": "280 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "ownerName": "GBEDEY CATHERINE M",
+      "ownerMailingAddress": "10 MALONE ST , GREENVILLE SC 29605",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 96,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "274527L4110560080",
+      "market": "lehigh",
+      "address": "1048 BELL BLVD S LEHIGH ACRES, FL",
+      "ownerName": "EJ + ASSOCIATES PROPERTIES LLC",
+      "ownerMailingAddress": "2733 OAK RIDGE CT #103 , FORT MYERS FL 33901",
+      "lotSize": "0.252 ac",
+      "assessedLandValue": 12062,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3271740140",
+      "market": "lehigh",
+      "address": "500 WOODMAN DR LEHIGH ACRES, FL",
+      "ownerName": "HARROW CHRISTOPHER",
+      "ownerMailingAddress": "997 DUPONT ST NE , PALM BAY FL 32907",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L4050230090",
+      "market": "lehigh",
+      "address": "190 GREENBRIAR BLVD LEHIGH ACRES, FL",
+      "ownerName": "J & L VISION HOMES INC",
+      "ownerMailingAddress": "14910 FELLS LN , ORLANDO FL 32827",
+      "lotSize": "0.229 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090420180",
+      "market": "lehigh",
+      "address": "2136 WINNETKA DR LEHIGH ACRES, FL",
+      "ownerName": "FORTUNE FLORIDA INVESTMENTS",
+      "ownerMailingAddress": "50 BISCAYNE BLVD UNIT 1806 , MIAMI FL 33132",
+      "lotSize": "0.276 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090440050",
+      "market": "lehigh",
+      "address": "2150 VISCOUNT AVE LEHIGH ACRES, FL",
+      "ownerName": "FLEURY JEAN",
+      "ownerMailingAddress": "780 NE 154TH ST , MIAMI FL 33162",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090440160",
+      "market": "lehigh",
+      "address": "2145 WINNETKA DR LEHIGH ACRES, FL",
+      "ownerName": "MILLENNIAN GROUP LLC",
+      "ownerMailingAddress": "1820 W 53RD ST #307 , HIALEAH FL 33012",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L1090440170",
+      "market": "lehigh",
+      "address": "2147 WINNETKA DR LEHIGH ACRES, FL",
+      "ownerName": "FORTIS HOME LLC",
+      "ownerMailingAddress": "121 S ORANGE AVE #1500 , ORLANDO FL 32801",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L2100510060",
+      "market": "lehigh",
+      "address": "331 ROBERTA CT LEHIGH ACRES, FL",
+      "ownerName": "YOUR NEW FLORIDA INC",
+      "ownerMailingAddress": "15800 PINES BLVD #3045 , PEMBROKE PINES FL 33027",
+      "lotSize": "0.257 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L2100510160",
+      "market": "lehigh",
+      "address": "311 NAGLE CT LEHIGH ACRES, FL",
+      "ownerName": "YOUR NEW FLORIDA INC",
+      "ownerMailingAddress": "15800 PINES BLVD #3045 , PEMBROKE PINES FL 33027",
+      "lotSize": "0.246 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L1120570050",
+      "market": "lehigh",
+      "address": "387 URSULA LN LEHIGH ACRES, FL",
+      "ownerName": "YOUR NEW FLORIDA INC",
+      "ownerMailingAddress": "15800 PINES BLVD #3045 , PEMBROKE PINES FL 33027",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L1130630110",
+      "market": "lehigh",
+      "address": "411 MCLEAN CIR LEHIGH ACRES, FL",
+      "ownerName": "KOCH KEVIN",
+      "ownerMailingAddress": "3319 SW 11TH CT , CAPE CORAL FL 33914",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3231480070",
+      "market": "lehigh",
+      "address": "459 WINDERMERE DR LEHIGH ACRES, FL",
+      "ownerName": "VBK LLC",
+      "ownerMailingAddress": "14800 NW 60TH AVE , MIAMI LAKES FL 33014",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L4291960070",
+      "market": "lehigh",
+      "address": "543 MERRYWOOD AVE LEHIGH ACRES, FL",
+      "ownerName": "CAREER FINANCIAL CORP",
+      "ownerMailingAddress": "4501 N BIRCHWOOD PKWY , LABELLE FL 33935",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L4301980050",
+      "market": "lehigh",
+      "address": "551 ROSCOE ST LEHIGH ACRES, FL",
+      "ownerName": "VBK LLC",
+      "ownerMailingAddress": "14800 NW 60TH AVE , MIAMI LAKES FL 33014",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L1312070100",
+      "market": "lehigh",
+      "address": "524 SARGENT ST LEHIGH ACRES, FL",
+      "ownerName": "LOS PILARES INVESTMENTS LLC",
+      "ownerMailingAddress": "10503 NW 57TH ST , CORAL SPRINGS FL 33076",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "084427L1291920020",
+      "market": "lehigh",
+      "address": "1870 MAIDEN ST LEHIGH ACRES, FL",
+      "ownerName": "SINGH NAMITA K TR",
+      "ownerMailingAddress": "19 TIMBERLAND CIR N , FORT MYERS FL 33919",
+      "lotSize": "0.237 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2191000070",
+      "market": "lehigh",
+      "address": "303 ROSANNA AVE LEHIGH ACRES, FL",
+      "ownerName": "THOMAS DORET I +",
+      "ownerMailingAddress": "3589 SW 69TH WAY , MIRAMAR FL 33023",
+      "lotSize": "0.239 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2191040030",
+      "market": "lehigh",
+      "address": "311 JOHANNA AVE LEHIGH ACRES, FL",
+      "ownerName": "DIAZ ROBERTO & LOURDES S",
+      "ownerMailingAddress": "625 E 20TH ST , HIALEAH FL 33013",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2191050150",
+      "market": "lehigh",
+      "address": "312 JOHANNA AVE LEHIGH ACRES, FL",
+      "ownerName": "KOCH KEVIN",
+      "ownerMailingAddress": "3319 SW 11TH CT , CAPE CORAL FL 33914",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2191070030",
+      "market": "lehigh",
+      "address": "311 SPOKANE AVE LEHIGH ACRES, FL",
+      "ownerName": "ANTELO JESUS",
+      "ownerMailingAddress": "8789 MADRID CIR , NAPLES FL 34104",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2201120030",
+      "market": "lehigh",
+      "address": "1854 TULIP ST LEHIGH ACRES, FL",
+      "ownerName": "MEYERS SCOTT A & ROSE ANN U",
+      "ownerMailingAddress": "208 E MARIANA AVE , NORTH FORT MYERS FL 33917",
+      "lotSize": "0.258 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2201120100",
+      "market": "lehigh",
+      "address": "1847 MONTANA ST LEHIGH ACRES, FL",
+      "ownerName": "LAND TRUST PARTNERS OF FLORIDA",
+      "ownerMailingAddress": "750 E COWBOY WAY , LABELLE FL 33935",
+      "lotSize": "0.252 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2201130130",
+      "market": "lehigh",
+      "address": "1853 TULIP ST LEHIGH ACRES, FL",
+      "ownerName": "MARTINEZ DELFIN +",
+      "ownerMailingAddress": "2840 NW 5TH ST , CAPE CORAL FL 33993",
+      "lotSize": "0.244 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2201150140",
+      "market": "lehigh",
+      "address": "334 SAPPHIRE ST LEHIGH ACRES, FL",
+      "ownerName": "TRINITY INVESTMENTS USA LLC",
+      "ownerMailingAddress": "8840 FONTAINEBLEAU BLVD #102 , MIAMI FL 33172",
+      "lotSize": "0.244 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L1211210210",
+      "market": "lehigh",
+      "address": "371 WILKINS ST LEHIGH ACRES, FL",
+      "ownerName": "HERITAGE ENTERPRISES FL LLC",
+      "ownerMailingAddress": "8707 LEELAND ARCHER BLVD , ORLANDO FL 32836",
+      "lotSize": "0.244 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L1221300160",
+      "market": "lehigh",
+      "address": "1825 RICHMOND AVE N LEHIGH ACRES, FL",
+      "ownerName": "TOTH DENNIS J",
+      "ownerMailingAddress": "32078 HIBISCUS DR W , BELLEAIR BEACH FL 33786",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L1221310170",
+      "market": "lehigh",
+      "address": "1827 MARSON ST LEHIGH ACRES, FL",
+      "ownerName": "ODIAS BOLAND",
+      "ownerMailingAddress": "12326 89TH PL N , WEST PALM BEACH FL 33412",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L1221390050",
+      "market": "lehigh",
+      "address": "440 VANETTA DR LEHIGH ACRES, FL",
+      "ownerName": "SALTWATER PROPERTY MANAGEMENT",
+      "ownerMailingAddress": "13650 FIDDLESICKS BLVD #202-387, FORT MYERS FL 33912",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3271700120",
+      "market": "lehigh",
+      "address": "1929 OVERLAND AVE LEHIGH ACRES, FL",
+      "ownerName": "LEHIGH ACRES LAND HOLDINGS 003",
+      "ownerMailingAddress": "5650 STIRLING RD #4 , HOLLYWOOD FL 33021",
+      "lotSize": "0.239 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L3040190200",
+      "market": "lehigh",
+      "address": "2007 WELBY LN LEHIGH ACRES, FL",
+      "ownerName": "GREENBRIAR DEVELOPMENTS LLC",
+      "ownerMailingAddress": "1000 FIFTH ST #200-G10 , MIAMI BEACH FL 33139",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "034427L4040190330",
+      "market": "lehigh",
+      "address": "168 GREENBRIAR BLVD LEHIGH ACRES, FL",
+      "ownerName": "CAPELLI JUAN FRANCISCO",
+      "ownerMailingAddress": "20185 E COUNTRY CLUB DR UNIT 510, AVENTURA FL 33180",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L2120560260",
+      "market": "lehigh",
+      "address": "418 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "ownerName": "SANCHEZ ENTERPRISE INVESTMENTS",
+      "ownerMailingAddress": "6937 EVERGLADES BLVD N , NAPLES FL 34120",
+      "lotSize": "0.228 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L4160770270",
+      "market": "lehigh",
+      "address": "430 WINDERMERE DR LEHIGH ACRES, FL",
+      "ownerName": "ROZIER TAMMY & CALVIN",
+      "ownerMailingAddress": "1011 NW 207TH ST , MIAMI GARDENS FL 33169",
+      "lotSize": "0.284 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L4160780110",
+      "market": "lehigh",
+      "address": "403 YOLANDA ST LEHIGH ACRES, FL",
+      "ownerName": "MATHIAS ISAIE",
+      "ownerMailingAddress": "5340 SW 129TH AVE , MIRAMAR FL 33027",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 87,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "044427L2100510250",
+      "market": "lehigh",
+      "address": "308 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "ownerName": "L & E CAPITAL HOLDINGS LLC",
+      "ownerMailingAddress": "1741 N STATE RD 7 , MARGATE FL 33063",
+      "lotSize": "0.246 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 83,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3231480050",
+      "market": "lehigh",
+      "address": "463 WINDERMERE DR LEHIGH ACRES, FL",
+      "ownerName": "VARONA DAYANA GONZALEZ &",
+      "ownerMailingAddress": "827 DON JEAN LN , ORLANDO FL 32825",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 83,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "054427L3271720040",
+      "market": "lehigh",
+      "address": "1930 MONTERO AVE LEHIGH ACRES, FL",
+      "ownerName": "PEREZ LAZARO MEDEROS",
+      "ownerMailingAddress": "15930 NW 41ST AVE , MIAMI GARDENS FL 33054",
+      "lotSize": "0.244 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 83,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    },
+    {
+      "parcelId": "094427L2191040020",
+      "market": "lehigh",
+      "address": "313 JOHANNA AVE LEHIGH ACRES, FL",
+      "ownerName": "LEHIGH ACRES 313 LLC",
+      "ownerMailingAddress": "3800 S OCEAN DR G5-D , HOLLYWOOD FL 33019",
+      "lotSize": "0.23 ac",
+      "assessedLandValue": 12113,
+      "buyerMaxPrice": 42000,
+      "confidence": 83,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "lehigh-public-vacant-parcels-fdor-2025"
+    }
+  ],
   "buyerValidation": [
     {
       "buyerId": "precision",
@@ -70,6 +722,231 @@
       "website": "https://sunbelt.example",
       "task": "capture exact buy box",
       "confidence": 66
+    },
+    {
+      "buyerId": "lehigh-builder-career-financial-corp",
+      "name": "CAREER FINANCIAL CORP",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "lehigh-builder-land-trust-partners-of-florida",
+      "name": "LAND TRUST PARTNERS OF FLORIDA",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "lehigh-builder-fundvate-wo2-llc",
+      "name": "FUNDVATE WO2 LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "lehigh-builder-florida-holding-gn-llc",
+      "name": "FLORIDA HOLDING GN LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 89
+    },
+    {
+      "buyerId": "lehigh-builder-ic-development-llc",
+      "name": "IC DEVELOPMENT LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 89
+    },
+    {
+      "buyerId": "lehigh-builder-j-l-vision-homes-inc",
+      "name": "J & L VISION HOMES INC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 89
+    },
+    {
+      "buyerId": "lehigh-builder-adams-homes-of-northwest-flori",
+      "name": "ADAMS HOMES OF NORTHWEST FLORI",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 82
+    },
+    {
+      "buyerId": "lehigh-builder-arenosa-group-llc",
+      "name": "ARENOSA GROUP LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 75
+    },
+    {
+      "buyerId": "lehigh-builder-brilliant-funding-llc",
+      "name": "BRILLIANT FUNDING LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 75
+    },
+    {
+      "buyerId": "lehigh-builder-rhino-investment-of-florida-in",
+      "name": "RHINO INVESTMENT OF FLORIDA IN",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 75
+    },
+    {
+      "buyerId": "lehigh-builder-lehigh-investments-2-llc",
+      "name": "LEHIGH INVESTMENTS 2 LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "lehigh-builder-millrose-properties-florida-ll",
+      "name": "MILLROSE PROPERTIES FLORIDA LL",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "lehigh-builder-a5-international-properties-ll",
+      "name": "A5 INTERNATIONAL PROPERTIES LL",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-brangus-cattle-llc",
+      "name": "BRANGUS CATTLE LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-bravo-breeze-investments-llc",
+      "name": "BRAVO BREEZE INVESTMENTS LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-doce-realty-group-llc",
+      "name": "DOCE REALTY GROUP LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-dorada-joint-venture-llc",
+      "name": "DORADA JOINT VENTURE LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-florida-signature-homes-llc",
+      "name": "FLORIDA SIGNATURE HOMES LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-hl-venture-capital-llc",
+      "name": "HL VENTURE CAPITAL LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-holiday-builders-inc",
+      "name": "HOLIDAY BUILDERS INC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-layla-resi-llc",
+      "name": "LAYLA RESI LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-mf-qoz-fund-llc",
+      "name": "MF QOZ FUND LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 61
+    },
+    {
+      "buyerId": "lehigh-builder-1076-sw-158th-way-llc",
+      "name": "1076 SW 158TH WAY LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 54
+    },
+    {
+      "buyerId": "lehigh-builder-aikido-property-group-llc",
+      "name": "AIKIDO PROPERTY GROUP LLC",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 54
+    },
+    {
+      "buyerId": "lehigh-builder-allied-realty-10",
+      "name": "ALLIED REALTY 10",
+      "market": "lehigh",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 54
     }
   ],
   "buyerDiscovery": [
@@ -100,6 +977,456 @@
       "severity": 2,
       "market": "lehigh",
       "parcelId": "LEH-002"
+    },
+    {
+      "queue": "missing_data",
+      "id": "274527L4110560090",
+      "address": "1050 BELL BLVD S LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "274527L4110560090"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L4050250140",
+      "address": "183 TOWNSEND CT LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L4050250140"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L2120570060",
+      "address": "385 URSULA LN LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L2120570060"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L4160770060",
+      "address": "415 MURIEL ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L4160770060"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3241590190",
+      "address": "1923 MILSTEAD AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3241590190"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3271740210",
+      "address": "1915 OVERLAND AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3271740210"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L4301980040",
+      "address": "553 ROSCOE ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L4301980040"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2190990140",
+      "address": "310 ROSANNA AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2190990140"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L4060280090",
+      "address": "1907 WELLER AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L4060280090"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090410210",
+      "address": "262 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090410210"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090440210",
+      "address": "2155 WINNETKA DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090440210"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090470160",
+      "address": "280 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090470160"
+    },
+    {
+      "queue": "missing_data",
+      "id": "274527L4110560080",
+      "address": "1048 BELL BLVD S LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "274527L4110560080"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3271740140",
+      "address": "500 WOODMAN DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3271740140"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L4050230090",
+      "address": "190 GREENBRIAR BLVD LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L4050230090"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090420180",
+      "address": "2136 WINNETKA DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090420180"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090440050",
+      "address": "2150 VISCOUNT AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090440050"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090440160",
+      "address": "2145 WINNETKA DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090440160"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L1090440170",
+      "address": "2147 WINNETKA DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L1090440170"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L2100510060",
+      "address": "331 ROBERTA CT LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L2100510060"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L2100510160",
+      "address": "311 NAGLE CT LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L2100510160"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L1120570050",
+      "address": "387 URSULA LN LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L1120570050"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L1130630110",
+      "address": "411 MCLEAN CIR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L1130630110"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3231480070",
+      "address": "459 WINDERMERE DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3231480070"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L4291960070",
+      "address": "543 MERRYWOOD AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L4291960070"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L4301980050",
+      "address": "551 ROSCOE ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L4301980050"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L1312070100",
+      "address": "524 SARGENT ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L1312070100"
+    },
+    {
+      "queue": "missing_data",
+      "id": "084427L1291920020",
+      "address": "1870 MAIDEN ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "084427L1291920020"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2191000070",
+      "address": "303 ROSANNA AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2191000070"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2191040030",
+      "address": "311 JOHANNA AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2191040030"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2191050150",
+      "address": "312 JOHANNA AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2191050150"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2191070030",
+      "address": "311 SPOKANE AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2191070030"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2201120030",
+      "address": "1854 TULIP ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2201120030"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2201120100",
+      "address": "1847 MONTANA ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2201120100"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2201130130",
+      "address": "1853 TULIP ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2201130130"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2201150140",
+      "address": "334 SAPPHIRE ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2201150140"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L1211210210",
+      "address": "371 WILKINS ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L1211210210"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L1221300160",
+      "address": "1825 RICHMOND AVE N LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L1221300160"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L1221310170",
+      "address": "1827 MARSON ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L1221310170"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L1221390050",
+      "address": "440 VANETTA DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L1221390050"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3271700120",
+      "address": "1929 OVERLAND AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3271700120"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L3040190200",
+      "address": "2007 WELBY LN LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L3040190200"
+    },
+    {
+      "queue": "missing_data",
+      "id": "034427L4040190330",
+      "address": "168 GREENBRIAR BLVD LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "034427L4040190330"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L2120560260",
+      "address": "418 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L2120560260"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L4160770270",
+      "address": "430 WINDERMERE DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L4160770270"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L4160780110",
+      "address": "403 YOLANDA ST LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L4160780110"
+    },
+    {
+      "queue": "missing_data",
+      "id": "044427L2100510250",
+      "address": "308 LAKERIDGE BLVD LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "044427L2100510250"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3231480050",
+      "address": "463 WINDERMERE DR LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3231480050"
+    },
+    {
+      "queue": "missing_data",
+      "id": "054427L3271720040",
+      "address": "1930 MONTERO AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "054427L3271720040"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094427L2191040020",
+      "address": "313 JOHANNA AVE LEHIGH ACRES, FL",
+      "missing": "ownerContact|buildability",
+      "severity": 2,
+      "market": "lehigh",
+      "parcelId": "094427L2191040020"
     },
     {
       "queue": "missing_data",
@@ -198,6 +1525,231 @@
       "misses": []
     },
     {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-career-financial-corp",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "CAREER FINANCIAL CORP",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-land-trust-partners-of-florida",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "LAND TRUST PARTNERS OF FLORIDA",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-fundvate-wo2-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "FUNDVATE WO2 LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-florida-holding-gn-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "FLORIDA HOLDING GN LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-ic-development-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "IC DEVELOPMENT LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-j-l-vision-homes-inc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "J & L VISION HOMES INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-adams-homes-of-northwest-flori",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "ADAMS HOMES OF NORTHWEST FLORI",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-arenosa-group-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "ARENOSA GROUP LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-brilliant-funding-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "BRILLIANT FUNDING LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-rhino-investment-of-florida-in",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "RHINO INVESTMENT OF FLORIDA IN",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-lehigh-investments-2-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "LEHIGH INVESTMENTS 2 LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-millrose-properties-florida-ll",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "MILLROSE PROPERTIES FLORIDA LL",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-a5-international-properties-ll",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "A5 INTERNATIONAL PROPERTIES LL",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-brangus-cattle-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "BRANGUS CATTLE LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-bravo-breeze-investments-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "BRAVO BREEZE INVESTMENTS LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-doce-realty-group-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "DOCE REALTY GROUP LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-dorada-joint-venture-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "DORADA JOINT VENTURE LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-florida-signature-homes-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "FLORIDA SIGNATURE HOMES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-hl-venture-capital-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "HL VENTURE CAPITAL LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-holiday-builders-inc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "HOLIDAY BUILDERS INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-layla-resi-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "LAYLA RESI LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-mf-qoz-fund-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "MF QOZ FUND LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-1076-sw-158th-way-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "1076 SW 158TH WAY LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-aikido-property-group-llc",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "AIKIDO PROPERTY GROUP LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-001",
+      "buyerId": "lehigh-builder-allied-realty-10",
+      "address": "123 Grant Blvd, Lehigh Acres, FL",
+      "buyerName": "ALLIED REALTY 10",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
       "parcelId": "LEH-002",
       "buyerId": "evergreen",
       "address": "711 Meadow Rd, Lehigh Acres, FL",
@@ -216,74 +1768,184 @@
       "misses": []
     },
     {
-      "parcelId": "LEH-003",
-      "buyerId": "precision",
-      "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
-      "buyerName": "Precision Gulf Homes",
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-career-financial-corp",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "CAREER FINANCIAL CORP",
       "score": 100,
       "fit": "strong",
       "misses": []
-    },
-    {
-      "parcelId": "LEH-003",
-      "buyerId": "evergreen",
-      "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
-      "buyerName": "Evergreen Land Fund",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "LEH-003",
-      "buyerId": "sunbelt",
-      "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
-      "buyerName": "Sunbelt Custom Builders",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "CAP-001",
-      "buyerId": "evergreen",
-      "address": "904 SW Canal Ter, Cape Coral, FL",
-      "buyerName": "Evergreen Land Fund",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "CAP-001",
-      "buyerId": "sunbelt",
-      "address": "904 SW Canal Ter, Cape Coral, FL",
-      "buyerName": "Sunbelt Custom Builders",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "CAP-001",
-      "buyerId": "precision",
-      "address": "904 SW Canal Ter, Cape Coral, FL",
-      "buyerName": "Precision Gulf Homes",
-      "score": 55,
-      "fit": "review",
-      "misses": [
-        "market",
-        "price"
-      ]
     },
     {
       "parcelId": "LEH-002",
-      "buyerId": "precision",
+      "buyerId": "lehigh-builder-land-trust-partners-of-florida",
       "address": "711 Meadow Rd, Lehigh Acres, FL",
-      "buyerName": "Precision Gulf Homes",
-      "score": 15,
-      "fit": "weak",
-      "misses": [
-        "road access",
-        "wetlands",
-        "flood zone"
-      ]
+      "buyerName": "LAND TRUST PARTNERS OF FLORIDA",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-fundvate-wo2-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "FUNDVATE WO2 LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-florida-holding-gn-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "FLORIDA HOLDING GN LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-ic-development-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "IC DEVELOPMENT LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-j-l-vision-homes-inc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "J & L VISION HOMES INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-adams-homes-of-northwest-flori",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "ADAMS HOMES OF NORTHWEST FLORI",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-arenosa-group-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "ARENOSA GROUP LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-brilliant-funding-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "BRILLIANT FUNDING LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-rhino-investment-of-florida-in",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "RHINO INVESTMENT OF FLORIDA IN",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-lehigh-investments-2-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "LEHIGH INVESTMENTS 2 LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-millrose-properties-florida-ll",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "MILLROSE PROPERTIES FLORIDA LL",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-a5-international-properties-ll",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "A5 INTERNATIONAL PROPERTIES LL",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-brangus-cattle-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "BRANGUS CATTLE LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-bravo-breeze-investments-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "BRAVO BREEZE INVESTMENTS LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-doce-realty-group-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "DOCE REALTY GROUP LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-dorada-joint-venture-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "DORADA JOINT VENTURE LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-florida-signature-homes-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "FLORIDA SIGNATURE HOMES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-hl-venture-capital-llc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "HL VENTURE CAPITAL LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "LEH-002",
+      "buyerId": "lehigh-builder-holiday-builders-inc",
+      "address": "711 Meadow Rd, Lehigh Acres, FL",
+      "buyerName": "HOLIDAY BUILDERS INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
     }
   ]
 }

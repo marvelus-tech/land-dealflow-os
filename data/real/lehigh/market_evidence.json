@@ -1,0 +1,28 @@
+{
+  "market": "Lehigh Acres, FL",
+  "source": "https://services1.arcgis.com/nRHtyn3uE1kyzoYc/arcgis/rest/services/FDORCadastral_SouthDistrict/FeatureServer/0",
+  "generatedAt": "2026-06-17T07:40:18.146Z",
+  "confidenceSurface": {
+    "totalLehighParcels": 121445,
+    "vacantResidentialParcels": 72387,
+    "standardVacantInfillLots": 48564,
+    "newBuildParcels2023Plus": 6411,
+    "absenteeStandardVacantLots": 41969,
+    "vacantStats": {
+      "n": 72387,
+      "avg_jv": 20740.866274331027,
+      "avg_sqft": 14159.063851244007
+    },
+    "standardVacantStats": {
+      "n": 48564,
+      "avg_jv": 17870.072152211516,
+      "avg_sqft": 11157.943785520138
+    }
+  },
+  "whyChosen": [
+    "Large public inventory of vacant residential Lehigh Acres parcels.",
+    "Highly standardized quarter-acre infill-lot pattern suitable for repeatable filtering.",
+    "Visible 2023+ new-build activity in the same public cadastral source.",
+    "Many absentee owners with public mailing addresses, which creates a practical skip-trace/call workflow."
+  ]
+}

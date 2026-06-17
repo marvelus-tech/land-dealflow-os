@@ -103,6 +103,8 @@ const sourceBlueprint = {
 let workspace = loadWorkspace();
 let generatedLeads = null;
 let filter = 'all';
+let activeView = (location.hash || '#today').replace('#', '') || 'today';
+const validViews = new Set(['today', 'deals', 'sources', 'machine']);
 
 function loadWorkspace() {
   try {
@@ -183,6 +185,24 @@ function sourceDisclosure(type) {
   </details>`;
 }
 
+function setActiveView(view) {
+  activeView = validViews.has(view) ? view : 'today';
+  document.querySelectorAll('.app-panel').forEach(panel => {
+    const isActive = panel.dataset.panel === activeView;
+    panel.hidden = !isActive;
+    panel.classList.toggle('active-panel', isActive);
+  });
+  document.querySelectorAll('.tab-button').forEach(button => {
+    const isActive = button.dataset.view === activeView;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-selected', String(isActive));
+  });
+}
+
+function renderAppShell() {
+  setActiveView(activeView);
+}
+
 function badge(text, tone = 'neutral') {
   return `<span class="badge ${tone}">${h(text)}</span>`;
 }
@@ -199,11 +219,12 @@ function scoredParcels() {
 function getVisibleParcels() {
   return scoredParcels().filter(parcel => {
     if (filter === 'all') return true;
-    if (filter === 'pass') return parcel.risk.status === 'Pass';
-    if (filter === 'review') return parcel.risk.status === 'Review';
-    if (filter === 'call') return parcel.action === 'Call now';
-    if (filter === 'kill') return parcel.action === 'Kill' || parcel.crmStatus === 'Kill';
-    return parcel.crmStatus === filter;
+    if (filter === 'seller-calls') return parcel.action === 'Call now' || parcel.crmStatus === 'New' || parcel.crmStatus === 'Generated lead';
+    if (filter === 'offer-ready') return parcel.risk.status === 'Pass' && Number(parcel.buyerMaxPrice || 0) > Number(parcel.askingPrice || 0);
+    if (filter === 'research') return parcel.action === 'Research more' || parcel.risk.status === 'Review';
+    if (filter === 'blocked') return parcel.action === 'Kill' || parcel.crmStatus === 'Kill' || parcel.risk.status === 'Kill';
+    if (filter === 'follow-up') return ['Contacted', 'Negotiating', 'Under Contract'].includes(parcel.crmStatus);
+    return true;
   });
 }
 
@@ -310,10 +331,10 @@ function renderCommandCenter() {
   document.querySelector('#command').innerHTML = `
     <div class="brand-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.6 source-aware lead engine</span>
+        <span class="eyebrow">Land Dealflow OS · v1.7 Apple-grade workspace</span>
         <h1>Three calls. One spread.</h1>
-        <p>Not another dashboard. A funded land desk that turns public data into the few buyer-backed seller calls worth making today.</p>
-        <div class="hero-actions"><a href="#daily-calls">Enter the callroom</a><a class="secondary" href="#workspace">Inspect the machine</a></div>
+        <p>A quieter, lighter operating system for land wholesale leads: start with today’s calls, then drill into deals, sources, or machine-room controls only when needed.</p>
+        <div class="hero-actions"><button type="button" data-view="deals">Review seller calls</button><button class="secondary" type="button" data-view="sources">Audit data sources</button></div>
       </div>
       <aside class="hero-deal-card" aria-label="Top deal today">
         <span>First call</span>
@@ -336,59 +357,54 @@ function renderCommandCenter() {
 function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
-  existing.innerHTML = `<div class="section-heading">
-      <span class="eyebrow">Back office</span>
-      <h2>The machine behind the calls.</h2>
-      <p>Sources, generated CSVs, validation, imports, quality gates, and offer packets live here. Useful, but secondary to the callroom.</p>
+  existing.innerHTML = `<div class="section-heading compact-heading">
+      <span class="eyebrow">Machine room</span>
+      <h2>Controls stay tucked away until needed.</h2>
+      <p>Imports, exports, quality gates, validation, outreach scripts, and offer packets are now progressive panels instead of one long wall.</p>
     </div>
-    <div class="workspace-grid">
-      <article class="card tool-card wide-card">
-        <h3>Lead engine output</h3>
-        <p>Automatically generated conveyor belt: new parcel leads, buyer-validation tasks, top seller calls, offer-ready deals, and blockers.</p>
+    <div class="machine-stack">
+      <details class="machine-panel" open>
+        <summary><span>01</span><strong>Generated lead output</strong><em>Review conveyor belt health</em></summary>
         <div id="lead-engine-panel"></div>
-      </article>
-      <article class="card tool-card">
-        <h3>CSV parcel import</h3>
-        <p>Headers supported: address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p>
-        <textarea id="csv-input" rows="8" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea>
+      </details>
+      <details class="machine-panel">
+        <summary><span>02</span><strong>Import parcel data</strong><em>CSV, county exports, PropStream, LandGlide</em></summary>
+        <p class="helper-copy">Paste only when you need to refresh the local workspace. The app normalizes source-specific headers into one parcel model.</p>
+        <details class="mini-disclosure"><summary>Supported CSV fields</summary><p>address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p></details>
+        <textarea id="csv-input" rows="7" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea>
         <label class="preset-row">Source preset<select id="source-preset"><option value="land-dealflow">Land Dealflow template</option><option value="lee-county">Lee County property export</option><option value="propstream">PropStream export</option><option value="landglide">LandGlide export</option></select></label>
-        <div class="button-row"><button id="load-lehigh-template" type="button">Load Lehigh template</button><button id="import-csv" type="button">Import normalized CSV</button><span id="import-status"></span></div>
-      </article>
-      <article class="card tool-card">
-        <h3>Workspace JSON</h3>
-        <p>Use this to backup or move the browser-local workspace. Export includes markets, buyers, parcels, CRM status and notes.</p>
-        <textarea id="json-input" rows="8" placeholder="Paste exported workspace JSON here"></textarea>
-        <div class="button-row"><button id="import-json" type="button">Import JSON</button><button id="export-json" type="button">Download export</button><button id="reset-workspace" class="danger" type="button">Reset seed</button></div>
-      </article>
-      <article class="card tool-card">
-        <h3>Exports for action</h3>
-        <p>Download the filtered parcel view or generate a ranked Top 20 owner call list with buyer contact handoff fields.</p>
-        <div class="button-row"><button id="export-filtered-csv" type="button">Export filtered CSV</button><button id="export-top20-csv" type="button">Export Top 20 Call List</button><button id="export-mailmerge-csv" type="button">Export Mail Merge</button></div>
+        <div class="button-row"><button id="load-lehigh-template" class="secondary" type="button">Use sample Lehigh CSV</button><button id="import-csv" type="button">Import parcel rows</button><span id="import-status"></span></div>
+      </details>
+      <details class="machine-panel">
+        <summary><span>03</span><strong>Workspace backup</strong><em>Move or restore local state</em></summary>
+        <textarea id="json-input" rows="7" placeholder="Paste exported workspace JSON here"></textarea>
+        <div class="button-row"><button id="import-json" type="button">Restore JSON backup</button><button id="export-json" class="secondary" type="button">Download JSON backup</button><button id="reset-workspace" class="danger" type="button">Reset to seed data</button></div>
+      </details>
+      <details class="machine-panel">
+        <summary><span>04</span><strong>Exports for action</strong><em>Call list, filtered CSV, mail merge</em></summary>
+        <p class="helper-copy">Exports respect the active deal filter. Use the call-list export when you are ready to execute.</p>
+        <div class="button-row"><button id="export-top20-csv" type="button">Download Top 20 seller call list</button><button id="export-filtered-csv" class="secondary" type="button">Download current deal view</button><button id="export-mailmerge-csv" class="secondary" type="button">Download mail merge file</button></div>
         <div id="top-call-list" class="call-list"></div>
-      </article>
-      <article class="card tool-card wide-card">
-        <h3>Data quality gate</h3>
-        <p>Before calling owners: clear duplicate APNs/addresses, missing owner contacts, missing pricing, and incomplete buildability screens.</p>
+      </details>
+      <details class="machine-panel">
+        <summary><span>05</span><strong>Data quality gate</strong><em>Find blockers before calling</em></summary>
         <div id="quality-gate"></div>
-      </article>
-      <article class="card tool-card wide-card">
-        <h3>Buyer validation pipeline</h3>
-        <p>Buyer truth layer: scorecards, exact buy boxes, call notes, deal-fit matrix, and rejection lessons.</p>
-        <div class="button-row"><button id="capture-sample-buybox" type="button">Capture sample buy-box</button><button id="add-sample-buyer-note" type="button">Add buyer call note</button><span id="buyer-validation-status"></span></div>
+      </details>
+      <details class="machine-panel">
+        <summary><span>06</span><strong>Buyer validation</strong><em>Buy boxes, proof, rejection lessons</em></summary>
+        <div class="button-row"><button id="capture-sample-buybox" type="button">Capture sample buy box</button><button id="add-sample-buyer-note" class="secondary" type="button">Add sample buyer note</button><span id="buyer-validation-status"></span></div>
         <div id="buyer-validation-panel"></div>
-      </article>
-      <article class="card tool-card wide-card">
-        <h3>Outreach execution</h3>
-        <p>Highest-leverage daily view: overdue follow-ups, next calls, seller script, and bulk mark-contacted.</p>
-        <div class="button-row"><button id="bulk-contact-callnow" type="button">Mark Call Now as contacted</button><span id="outreach-status"></span></div>
+      </details>
+      <details class="machine-panel">
+        <summary><span>07</span><strong>Outreach execution</strong><em>Follow-ups and seller script</em></summary>
+        <div class="button-row"><button id="bulk-contact-callnow" type="button">Mark all “Call now” as contacted</button><span id="outreach-status"></span></div>
         <div id="outreach-panel"></div>
-      </article>
-      <article class="card tool-card wide-card">
-        <h3>Offer packet generator</h3>
-        <p>Best current deal turned into seller letter, buyer assignment summary, risk checklist, and markdown deal memo.</p>
-        <div class="button-row"><button id="export-deal-memo" type="button">Export Deal Memo</button><span id="deal-memo-status"></span></div>
+      </details>
+      <details class="machine-panel">
+        <summary><span>08</span><strong>Offer packet generator</strong><em>Seller letter and buyer assignment memo</em></summary>
+        <div class="button-row"><button id="export-deal-memo" type="button">Download current deal memo</button><span id="deal-memo-status"></span></div>
         <div id="offer-packet-panel"></div>
-      </article>
+      </details>
     </div>`;
 }
 
@@ -436,11 +452,11 @@ function renderLeadEnginePanel() {
   const sourceSummary = ['market', 'buyer', 'parcel', 'owner', 'offer', 'risk', 'crm'];
   target.innerHTML = `<div class="lead-engine-grid">
     <div class="deal-strip four hero-metrics"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
-    <div class="engine-column primary-column source-ledger"><h4>Source ledger</h4><p>Every phase now exposes where the data comes from and when the underlying records were last sourced.</p>${sourceSummary.map(type => {
+    <details class="engine-column primary-column source-ledger"><summary><h4>Source ledger</h4><span>Last-sourced provenance by phase</span></summary><p>Every phase now exposes where the data comes from and when the underlying records were last sourced.</p>${sourceSummary.map(type => {
       const blueprint = sourceBlueprint[type];
       const status = getPhaseSourceStatus(type);
       return `<div class="engine-row"><b>${h(blueprint.label)}</b><span>${formatDateTime(status.latest)} · ${h(status.count)} records · ${status.ids.length ? status.ids.map(id => h(id)).join(', ') : 'derived/local'}</span></div>`;
-    }).join('')}</div>
+    }).join('')}</details>
     <div class="engine-column primary-column"><h4>Call these sellers first</h4>${topCalls.slice(0, 3).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
     <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 4).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered yet.</p>'}</div>
     <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>
@@ -519,6 +535,17 @@ function renderOfferPacketPanel() {
 
 function bindEvents() {
   document.addEventListener('click', (event) => {
+    const viewButton = event.target.closest('[data-view]');
+    if (viewButton) {
+      const view = viewButton.dataset.view;
+      if (validViews.has(view)) {
+        event.preventDefault();
+        history.replaceState(null, '', `#${view}`);
+        setActiveView(view);
+      }
+      return;
+    }
+
     if (event.target.matches('#load-lehigh-template')) {
       document.querySelector('#csv-input').value = getLehighImportTemplate();
       const status = document.querySelector('#import-status');
@@ -625,14 +652,22 @@ function bindEvents() {
       renderTopCallList();
     }
   });
+
+  window.addEventListener('hashchange', () => {
+    setActiveView((location.hash || '#today').replace('#', ''));
+  });
 }
 
 function renderFilters() {
   const target = document.querySelector('#parcel-filters');
   if (!target) return;
   const options = [
-    ['all', 'All'], ['call', 'Call now'], ['pass', 'Pass'], ['review', 'Review'], ['kill', 'Kill'],
-    ...CRM_STATUSES.map(status => [status, status]),
+    ['all', 'All deals'],
+    ['seller-calls', 'Seller calls'],
+    ['offer-ready', 'Offer-ready'],
+    ['research', 'Needs research'],
+    ['follow-up', 'Follow-up'],
+    ['blocked', 'Blocked'],
   ];
   target.innerHTML = options.map(([value, label]) => `<button class="filter ${filter === value ? 'active' : ''}" type="button" data-filter="${h(value)}">${h(label)}</button>`).join('');
 }
@@ -651,6 +686,7 @@ function renderAll() {
   renderBuyerValidationPanel();
   renderOutreachPanel();
   renderOfferPacketPanel();
+  renderAppShell();
 }
 
 bindEvents();

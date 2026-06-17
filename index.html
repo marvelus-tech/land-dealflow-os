@@ -3,68 +3,56 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Land Dealflow OS — The Callroom</title>
+  <title>Land Dealflow OS — Call-first Lead Engine</title>
   <link rel="stylesheet" href="./src/styles.css" />
 </head>
 <body>
   <header class="nav">
     <div class="brand"><span class="brand-mark">◇</span> Land Dealflow OS</div>
-    <nav>
-      <a href="#daily-calls">Callroom</a>
-      <a href="#workspace">Machine</a>
-      <a href="#pipeline">Pipeline</a>
-      <a href="#markets">Markets</a>
-      <a href="#buyers">Buyers</a>
-      <a href="#parcels-section">Parcels</a>
+    <nav class="app-tabs" aria-label="Primary workspace">
+      <button class="tab-button" type="button" data-view="today">Today</button>
+      <button class="tab-button" type="button" data-view="deals">Deals</button>
+      <button class="tab-button" type="button" data-view="sources">Sources</button>
+      <button class="tab-button" type="button" data-view="machine">Machine</button>
     </nav>
     <a class="nav-cta" href="./docs/README.md">Docs</a>
   </header>
 
   <main>
-    <section id="command" class="command"></section>
+    <section id="command" class="command app-panel" data-panel="today"></section>
 
-    <section id="workspace" class="section"></section>
-
-    <section class="section">
-      <div class="section-heading">
-        <span class="eyebrow">Operating pipeline</span>
-        <h2 id="pipeline-title">From market signal to title-company handoff</h2>
-        <p>Each module can become a deeper automation layer later. For v0.1, the prototype makes the workflow visible, scoreable, and editable.</p>
+    <section id="parcels-section" class="section app-panel" data-panel="deals">
+      <div class="section-heading compact-heading">
+        <span class="eyebrow">Deal desk</span>
+        <h2>Seller calls, offer math, and outreach status</h2>
+        <p>One focused workbench for the actual money path. Filters are intentionally reduced to the few decisions an operator needs before making calls.</p>
       </div>
-      <div id="pipeline" class="pipeline" aria-labelledby="pipeline-title"></div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <span class="eyebrow">App 1</span>
-        <h2>Market Finder</h2>
-        <p>Ranks candidate locations by new builds, builders, vacant-lot velocity, off-market supply, lot standardization, compliance simplicity and buildability risk.</p>
-      </div>
-      <div id="markets" class="grid"></div>
-    </section>
-
-    <section class="section">
-      <div class="section-heading">
-        <span class="eyebrow">App 2</span>
-        <h2>Buyer Finder</h2>
-        <p>Prioritizes spec/custom/scattered-lot builders with fresh builds, repeat demand, specific buy boxes and fast close ability.</p>
-      </div>
-      <div id="buyers" class="grid two"></div>
-    </section>
-
-    <section id="parcels-section" class="section">
-      <div class="section-heading">
-        <span class="eyebrow">App 3 + 4 + 5 + 7</span>
-        <h2>Land Finder, Owner Finder, Offer Engine, CRM</h2>
-        <p>Matches parcels to buy boxes, estimates offer bands, flags buildability risks, scores deal priority and tracks outreach status.</p>
-      </div>
-      <div id="parcel-filters" class="filters"></div>
+      <div id="parcel-filters" class="filters" aria-label="Deal filters"></div>
       <div id="parcels" class="stack"></div>
     </section>
+
+    <section id="sources-hub" class="section app-panel" data-panel="sources">
+      <div class="section-heading compact-heading">
+        <span class="eyebrow">Source map</span>
+        <h2>Where every phase gets its truth</h2>
+        <p>Progressive disclosure first: open only the phase you are auditing. This is where location data, buyer lists, seller lists, pricing, risk, and CRM provenance belong.</p>
+      </div>
+      <div id="pipeline" class="pipeline" aria-labelledby="pipeline-title"></div>
+      <details class="source-page-section" open>
+        <summary><span>Markets</span><strong>Location candidates and theses</strong></summary>
+        <div id="markets" class="grid"></div>
+      </details>
+      <details class="source-page-section">
+        <summary><span>Buyers</span><strong>Buyer list and buy-box validation</strong></summary>
+        <div id="buyers" class="grid two"></div>
+      </details>
+    </section>
+
+    <section id="workspace" class="section app-panel" data-panel="machine"></section>
   </main>
 
   <footer>
-    <p>Built for Okeito by IriSys. v1.6 source-aware lead engine — phase-level provenance, last-sourced timestamps, light readable workflow.</p>
+    <p>Built for Okeito by IriSys. v1.7 tabbed Apple-grade UX — progressive disclosure, lighter hierarchy, clearer button labels.</p>
   </footer>
   <script type="module" src="./src/app.mjs"></script>
 </body>

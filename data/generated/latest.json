@@ -1,7 +1,7 @@
 {
   "snapshot": {
-    "runId": "lead-engine-2026-06-17T08-30-04-509Z",
-    "generatedAt": "2026-06-17T08:30:04.509Z",
+    "runId": "lead-engine-2026-06-17T21-30-11-591Z",
+    "generatedAt": "2026-06-17T21:30:11.591Z",
     "markets": [
       {
         "leadId": "market:lehigh",
@@ -13,7 +13,7 @@
         "thesis": "Quarter-acre infill vacant lots with repeat builder demand and standard lot patterns.",
         "priority": 10,
         "rank": 1,
-        "collectedAt": "2026-06-17T08:30:04.509Z"
+        "collectedAt": "2026-06-17T21:30:11.591Z"
       },
       {
         "leadId": "market:cape-coral",
@@ -25,7 +25,7 @@
         "thesis": "Utility and canal-premium lot opportunities, but diligence risk is higher.",
         "priority": 7,
         "rank": 2,
-        "collectedAt": "2026-06-17T08:30:04.509Z"
+        "collectedAt": "2026-06-17T21:30:11.591Z"
       },
       {
         "leadId": "market:ocala",
@@ -37,7 +37,7 @@
         "thesis": "New target area: find builders first, then parcel/seller leads that match local buyer demand.",
         "priority": 6,
         "rank": 3,
-        "collectedAt": "2026-06-17T08:30:04.509Z"
+        "collectedAt": "2026-06-17T21:30:11.591Z"
       }
     ],
     "buyers": [
@@ -76,7 +76,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 1
       },
       {
@@ -99,7 +99,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 2
       },
       {
@@ -122,7 +122,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 1
       },
       {
@@ -147,7 +147,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 1
       },
       {
@@ -172,7 +172,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 2
       },
       {
@@ -197,7 +197,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 3
       },
       {
@@ -222,7 +222,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 4
       },
       {
@@ -247,7 +247,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 5
       },
       {
@@ -272,7 +272,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 6
       },
       {
@@ -297,7 +297,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 7
       },
       {
@@ -322,7 +322,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 8
       },
       {
@@ -347,7 +347,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 9
       },
       {
@@ -372,7 +372,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 10
       },
       {
@@ -397,7 +397,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 11
       },
       {
@@ -422,7 +422,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 12
       },
       {
@@ -447,7 +447,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 13
       },
       {
@@ -472,7 +472,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 14
       },
       {
@@ -497,7 +497,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 15
       },
       {
@@ -522,7 +522,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 16
       },
       {
@@ -547,7 +547,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 17
       },
       {
@@ -572,7 +572,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 18
       },
       {
@@ -597,7 +597,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 19
       },
       {
@@ -622,7 +622,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 20
       },
       {
@@ -647,7 +647,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 21
       },
       {
@@ -672,7 +672,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 22
       },
       {
@@ -697,7 +697,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 23
       },
       {
@@ -722,7 +722,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 24
       },
       {
@@ -747,7 +747,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 25
       }
     ],
@@ -781,7 +781,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 1
       },
       {
@@ -811,7 +811,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 2
       },
       {
@@ -842,7 +842,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 3
       },
       {
@@ -873,7 +873,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 1
       },
       {
@@ -910,7 +910,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 1
       },
       {
@@ -947,7 +947,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 2
       },
       {
@@ -984,7 +984,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 3
       },
       {
@@ -1021,7 +1021,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 4
       },
       {
@@ -1058,7 +1058,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 5
       },
       {
@@ -1095,7 +1095,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 6
       },
       {
@@ -1132,7 +1132,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 7
       },
       {
@@ -1169,7 +1169,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 8
       },
       {
@@ -1206,7 +1206,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 9
       },
       {
@@ -1243,7 +1243,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 10
       },
       {
@@ -1280,7 +1280,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 11
       },
       {
@@ -1317,7 +1317,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 12
       },
       {
@@ -1354,7 +1354,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 13
       },
       {
@@ -1391,7 +1391,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 14
       },
       {
@@ -1428,7 +1428,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 15
       },
       {
@@ -1465,7 +1465,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 16
       },
       {
@@ -1502,7 +1502,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 17
       },
       {
@@ -1539,7 +1539,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 18
       },
       {
@@ -1576,7 +1576,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 19
       },
       {
@@ -1613,7 +1613,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 20
       },
       {
@@ -1650,7 +1650,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 21
       },
       {
@@ -1687,7 +1687,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 22
       },
       {
@@ -1724,7 +1724,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 23
       },
       {
@@ -1761,7 +1761,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 24
       },
       {
@@ -1798,7 +1798,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 25
       },
       {
@@ -1835,7 +1835,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 26
       },
       {
@@ -1872,7 +1872,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 27
       },
       {
@@ -1909,7 +1909,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 28
       },
       {
@@ -1946,7 +1946,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 29
       },
       {
@@ -1983,7 +1983,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 30
       },
       {
@@ -2020,7 +2020,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 31
       },
       {
@@ -2057,7 +2057,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 32
       },
       {
@@ -2094,7 +2094,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 33
       },
       {
@@ -2131,7 +2131,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 34
       },
       {
@@ -2168,7 +2168,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 35
       },
       {
@@ -2205,7 +2205,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 36
       },
       {
@@ -2242,7 +2242,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 37
       },
       {
@@ -2279,7 +2279,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 38
       },
       {
@@ -2316,7 +2316,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 39
       },
       {
@@ -2353,7 +2353,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 40
       },
       {
@@ -2390,7 +2390,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 41
       },
       {
@@ -2427,7 +2427,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 42
       },
       {
@@ -2464,7 +2464,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 43
       },
       {
@@ -2501,7 +2501,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 44
       },
       {
@@ -2538,7 +2538,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 45
       },
       {
@@ -2575,7 +2575,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 46
       },
       {
@@ -2612,7 +2612,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 47
       },
       {
@@ -2649,7 +2649,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 48
       },
       {
@@ -2686,7 +2686,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 49
       },
       {
@@ -2723,7 +2723,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T08:30:04.509Z",
+        "collectedAt": "2026-06-17T21:30:11.591Z",
         "sequence": 50
       }
     ],
@@ -2731,7 +2731,117 @@
       "markets": 3,
       "buyers": 28,
       "parcels": 54
-    }
+    },
+    "sourceCandidates": [
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "FL_CapeCoral_Boatramps_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_Boatramps_WEB/FeatureServer",
+        "description": "Canal Access Points, Vacant parcels",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Cape Coral, FL parcels"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "FL_CapeCoral_CLMilesProgress_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_CLMilesProgress_WEB/FeatureServer",
+        "description": "CL Miles progress layer for Cape Coral FL",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Cape Coral, FL zoning"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "FL_CapeCoralSubZones_WEB",
+        "url": "https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoralSubZones_WEB/FeatureServer",
+        "description": "Debris Sub Zones for the City of Cape Coral FL",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Cape Coral, FL zoning"
+      },
+      {
+        "market": "cape-coral",
+        "areaName": "Cape Coral, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "Sum_of_Bedrooms_Cape_Coral",
+        "url": "https://services1.arcgis.com/sQOueNHZBxRJjRN3/arcgis/rest/services/Sum_of_Bedrooms_Cape_Coral/FeatureServer",
+        "description": "Multi-Owner analysis of Cape Coral, FL",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Cape Coral, FL parcels"
+      },
+      {
+        "market": "lehigh",
+        "areaName": "Lehigh Acres, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Economic Incentive Areas",
+        "url": "https://services2.arcgis.com/LvWGAAhHwbCJ2GMP/arcgis/rest/services/Economic_Incentive_Areas/FeatureServer",
+        "description": "<div style='text-align:Left;'><div><div><p><span>Areas included are:</span></p><ul><li><p><span>Opportunity Zones - Derived from 2018 Census Tracts listed by the Florida Department of Economic Opportunity, January 2019</span></p></li><li><p><span>New Markets Tax Credit Eligible Areas - Derived from 2018 Census Tracts per CDFI Fund CIMS mapping tool, January 2019</span></p></li><li><p><span>HUB Zones - Derived from 2018 Census Tracts per SBA HUBZone Map, February 2019</span></p></li><li><p><span>USDA Rural Development Eligible Areas - Derived from 2020 Census Places with greater than 50,000 inhabitants (Cape Coral, Fort Myers, Lehigh Acres) and adjacent 2020 Census Urban Areas, July 2023</span></p></li><li><p><span>North Fort Myers Redevelopment Area - Derived from designated portions of the Mixed Use Overlay, January 2019</span></p></li><li><p><span>Enterprise Zone - Copied from existing GIS data, January 2019</span></p></li><li><p><span>Community Redevelopment Areas - Copied from City of Cape Coral and City of Fort Myers GIS, February 2019</span></p></li><li><p><span>Brownfield Areas - Copied from FDEP Open Data Portal, March 2019</span></p></li><li><p><span>FPL Service Area - Estimated from FPL Service Areas map (https://www.fplmaps.com/service_map/map.shtml), March 2019 </span></p></li></ul><p><span>Other areas will be added as needed.</span></p></div></div></div>",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Lehigh Acres, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Flood Zone",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/Flood/FeatureServer",
+        "description": "Flood Zone data provided by FEMA for Ocala, FL.",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Ocala, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "zoning",
+        "title": "Growth Management",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/GrowthManagement/FeatureServer",
+        "description": "Growth Management Areas in and around the City of Ocala, FL.",
+        "confidence": 90,
+        "suggestedUse": "deal_risk_and_fit_overlay",
+        "query": "Ocala, FL zoning"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "OcalaMultiFamilyComplexes",
+        "url": "https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/OcalaMultiFamilyComplexes/FeatureServer",
+        "description": "<div style='text-align:Left;'><p>This is a layer of Multi-Family Complexes within Ocala City Limits that have 10 or more units based on Marion County, FL Property Appraiser data. </p><p>This data was derived from the Parcel Polygon layer first and then a centroid was computed based on those polygons identified as Multi-Family Residential complexes with units of 10 or more. </p><p>This data was last updated 2/7/2024</p></div>",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Ocala, FL parcels"
+      },
+      {
+        "market": "ocala",
+        "areaName": "Ocala, FL",
+        "platform": "arcgis",
+        "sourceType": "parcel",
+        "title": "Property data",
+        "url": "https://gis.ocalafl.org/arcgis/rest/services/Public/Property/FeatureServer",
+        "description": "Layers in and around the City of Ocala, FL related to parcels and other layers provided by the Property Appraiser's office.",
+        "confidence": 90,
+        "suggestedUse": "seller_parcel_discovery",
+        "query": "Ocala, FL parcels"
+      }
+    ]
   },
   "queues": {
     "topSellerCalls": [
@@ -4685,7 +4795,7 @@
     ]
   },
   "briefing": {
-    "markdown": "# Lead Engine Briefing — 2026-06-17\n\nRun: lead-engine-2026-06-17T08-30-04-509Z\n\n- Markets watched: 3\n- Buyer leads: 28\n- Parcel leads: 54\n- Top seller calls: 3\n- Real skip-trace leads: 50\n- Buyer validation tasks: 28\n- Offer-ready deals: 3\n- New-area buyer discovery tasks: 1\n- New-area seller discovery tasks: 1\n- Source candidates found: 0\n- Missing-data blockers: 54\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Real skip-trace leads\n1. 1050 BELL BLVD S LEHIGH ACRES, FL — MONTEAN PETER & WENDY — 37 HARWOOD DR , BARRIE CANADA — confidence 96\n2. 183 TOWNSEND CT LEHIGH ACRES, FL — DUNPHY JAMES M — 4925 262ND ST , WYOMING MN 55092 — confidence 96\n3. 385 URSULA LN LEHIGH ACRES, FL — KIRLEW-BARRETT MITZIE — 3521 JOHN PAUL JONES , NEW WINDSOR NY 12553 — confidence 96\n4. 415 MURIEL ST LEHIGH ACRES, FL — 2442453 ONTARIO LTD — 1-407 CANYON AVE , NORTH YORK CANADA — confidence 96\n5. 1923 MILSTEAD AVE LEHIGH ACRES, FL — SUTHERLAND K D — 178 SUNCREST ST , GRAY TN 37615 — confidence 96\n6. 1915 OVERLAND AVE LEHIGH ACRES, FL — HERNANDEZ MAXIMILIANO IRA — 667 HEMPSTEAD BLVD , UNIONDALE NY 11553 — confidence 96\n7. 553 ROSCOE ST LEHIGH ACRES, FL — MARTINEZ MARLENE + — 2751 W LAWRENCE AVE UNIT 1W , CHICAGO IL 60625 — confidence 96\n8. 310 ROSANNA AVE LEHIGH ACRES, FL — MANZOOR KHALID & MUAZZAM — 1919 SHORELINE DR , SEABROOK TX 77586 — confidence 96\n9. 1907 WELLER AVE LEHIGH ACRES, FL — SWANSON GEORGE A & ANNIE P — 8111 S CARPENTER ST , CHICAGO IL 60620 — confidence 96\n10. 262 LAKERIDGE BLVD LEHIGH ACRES, FL — KNUTSON LEONARD JR & — 100 MULLENHILL RD , WATERFORD CT 6385 — confidence 96\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n4. CAREER FINANCIAL CORP — capture exact buy box — find contact\n5. LAND TRUST PARTNERS OF FLORIDA — capture exact buy box — find contact\n6. FUNDVATE WO2 LLC — capture exact buy box — find contact\n7. FLORIDA HOLDING GN LLC — capture exact buy box — find contact\n8. IC DEVELOPMENT LLC — capture exact buy box — find contact\n9. J & L VISION HOMES INC — capture exact buy box — find contact\n10. ADAMS HOMES OF NORTHWEST FLORI — capture exact buy box — find contact\n\n## New-area discovery tasks\n1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL\n2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL\n\n## Source candidates\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
+    "markdown": "# Lead Engine Briefing — 2026-06-17\n\nRun: lead-engine-2026-06-17T21-30-11-591Z\n\n- Markets watched: 3\n- Buyer leads: 28\n- Parcel leads: 54\n- Top seller calls: 3\n- Real skip-trace leads: 50\n- Buyer validation tasks: 28\n- Offer-ready deals: 3\n- New-area buyer discovery tasks: 1\n- New-area seller discovery tasks: 1\n- Source candidates found: 9\n- Missing-data blockers: 54\n\n## Top seller calls\n1. 123 Grant Blvd, Lehigh Acres, FL — Avery Santos — 239-555-0131 — score 53\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — D Nolan — 239-555-0199 — score 53\n3. 904 SW Canal Ter, Cape Coral, FL — M Rivera — 239-555-0172 — score 53\n\n## Real skip-trace leads\n1. 1050 BELL BLVD S LEHIGH ACRES, FL — MONTEAN PETER & WENDY — 37 HARWOOD DR , BARRIE CANADA — confidence 96\n2. 183 TOWNSEND CT LEHIGH ACRES, FL — DUNPHY JAMES M — 4925 262ND ST , WYOMING MN 55092 — confidence 96\n3. 385 URSULA LN LEHIGH ACRES, FL — KIRLEW-BARRETT MITZIE — 3521 JOHN PAUL JONES , NEW WINDSOR NY 12553 — confidence 96\n4. 415 MURIEL ST LEHIGH ACRES, FL — 2442453 ONTARIO LTD — 1-407 CANYON AVE , NORTH YORK CANADA — confidence 96\n5. 1923 MILSTEAD AVE LEHIGH ACRES, FL — SUTHERLAND K D — 178 SUNCREST ST , GRAY TN 37615 — confidence 96\n6. 1915 OVERLAND AVE LEHIGH ACRES, FL — HERNANDEZ MAXIMILIANO IRA — 667 HEMPSTEAD BLVD , UNIONDALE NY 11553 — confidence 96\n7. 553 ROSCOE ST LEHIGH ACRES, FL — MARTINEZ MARLENE + — 2751 W LAWRENCE AVE UNIT 1W , CHICAGO IL 60625 — confidence 96\n8. 310 ROSANNA AVE LEHIGH ACRES, FL — MANZOOR KHALID & MUAZZAM — 1919 SHORELINE DR , SEABROOK TX 77586 — confidence 96\n9. 1907 WELLER AVE LEHIGH ACRES, FL — SWANSON GEORGE A & ANNIE P — 8111 S CARPENTER ST , CHICAGO IL 60620 — confidence 96\n10. 262 LAKERIDGE BLVD LEHIGH ACRES, FL — KNUTSON LEONARD JR & — 100 MULLENHILL RD , WATERFORD CT 6385 — confidence 96\n\n## Buyer validation tasks\n1. Precision Gulf Homes — validate proof/close speed — 239-555-0100\n2. Evergreen Land Fund — capture exact buy box — 305-555-0108\n3. Sunbelt Custom Builders — capture exact buy box — 239-555-0144\n4. CAREER FINANCIAL CORP — capture exact buy box — find contact\n5. LAND TRUST PARTNERS OF FLORIDA — capture exact buy box — find contact\n6. FUNDVATE WO2 LLC — capture exact buy box — find contact\n7. FLORIDA HOLDING GN LLC — capture exact buy box — find contact\n8. IC DEVELOPMENT LLC — capture exact buy box — find contact\n9. J & L VISION HOMES INC — capture exact buy box — find contact\n10. ADAMS HOMES OF NORTHWEST FLORI — capture exact buy box — find contact\n\n## New-area discovery tasks\n1. Ocala, FL — new target area needs buyer discovery — Find active custom-builder in Ocala, FL\n2. Ocala, FL — new target area needs seller/parcel discovery — Find owner/seller parcel leads in Ocala, FL\n\n## Source candidates\n1. Cape Coral, FL — arcgis/parcel — FL_CapeCoral_Boatramps_WEB — confidence 90\n2. Cape Coral, FL — arcgis/zoning — FL_CapeCoral_CLMilesProgress_WEB — confidence 90\n3. Cape Coral, FL — arcgis/zoning — FL_CapeCoralSubZones_WEB — confidence 90\n4. Cape Coral, FL — arcgis/parcel — Sum_of_Bedrooms_Cape_Coral — confidence 90\n5. Lehigh Acres, FL — arcgis/zoning — Economic Incentive Areas — confidence 90\n6. Ocala, FL — arcgis/zoning — Flood Zone — confidence 90\n7. Ocala, FL — arcgis/zoning — Growth Management — confidence 90\n8. Ocala, FL — arcgis/parcel — OcalaMultiFamilyComplexes — confidence 90\n9. Ocala, FL — arcgis/parcel — Property data — confidence 90\n\n## Offer-ready deals\n1. 123 Grant Blvd, Lehigh Acres, FL — ask 28500 — max 42000\n2. 508 Meadowbrook Ave, Lehigh Acres, FL — ask 31000 — max 42000\n3. 904 SW Canal Ter, Cape Coral, FL — ask 76000 — max 95000\n",
     "counts": {
       "markets": 3,
       "buyers": 28,
@@ -4695,8 +4805,8 @@
       "offerReady": 3,
       "buyerDiscovery": 1,
       "sellerDiscovery": 1,
-      "sourceCandidates": 0
+      "sourceCandidates": 9
     }
   },
-  "generatedAt": "2026-06-17T08:30:04.509Z"
+  "generatedAt": "2026-06-17T21:30:11.591Z"
 }

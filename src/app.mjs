@@ -104,6 +104,7 @@ let workspace = loadWorkspace();
 let generatedLeads = null;
 let filter = 'all';
 let selectedParcelId = '';
+let selectedSourceType = 'market';
 let activeView = (location.hash || '#today').replace('#', '') || 'today';
 const validViews = new Set(['today', 'deals', 'sources', 'machine']);
 
@@ -168,22 +169,35 @@ function getPhaseSourceStatus(type) {
   return { latest, ids, count };
 }
 
-function sourceDisclosure(type) {
+function sourceSummary(type) {
+  const blueprint = sourceBlueprint[type] || sourceBlueprint.market;
+  const status = getPhaseSourceStatus(type);
+  const active = type === selectedSourceType;
+  return `<button type="button" class="source-chip ${active ? 'active' : ''}" data-source-select="${h(type)}" aria-pressed="${active}">
+    <span>Source</span>
+    <b>${h(blueprint.label)}</b>
+    <em>${h(status.count)} records · ${formatDateTime(status.latest)}</em>
+  </button>`;
+}
+
+function sourceInspector(type = selectedSourceType) {
   const blueprint = sourceBlueprint[type] || sourceBlueprint.market;
   const status = getPhaseSourceStatus(type);
   const sourceText = blueprint.sources.map(item => `<li>${h(item)}</li>`).join('');
   const fieldText = blueprint.fields.map(item => `<li>${h(item)}</li>`).join('');
   const sourceIdText = status.ids.length ? status.ids.map(id => `<code>${h(id)}</code>`).join(' ') : '<span>derived/local</span>';
-  return `<details class="source-disclosure">
-    <summary><span>Source</span><b>${h(blueprint.label)}</b></summary>
-    <div class="source-popover">
-      <div class="source-meta"><span>Last sourced</span><b>${formatDateTime(status.latest)}</b></div>
-      <div class="source-meta"><span>Records visible</span><b>${h(status.count)}</b></div>
-      <div class="source-meta wide"><span>Source IDs</span><b>${sourceIdText}</b></div>
-      <div><strong>Pulls from</strong><ul>${sourceText}</ul></div>
-      <div><strong>Fields used here</strong><ul>${fieldText}</ul></div>
+  return `<aside class="source-inspector" aria-live="polite">
+    <div class="inspector-kicker">Selected source</div>
+    <h3>${h(blueprint.label)}</h3>
+    <p>One clean evidence drawer. No stacked popovers, no mystery clouds, no card collision.</p>
+    <div class="inspector-metrics">
+      <div><span>Last sourced</span><b>${formatDateTime(status.latest)}</b></div>
+      <div><span>Records visible</span><b>${h(status.count)}</b></div>
+      <div class="wide"><span>Source IDs</span><b>${sourceIdText}</b></div>
     </div>
-  </details>`;
+    <details class="source-drawer" open><summary>Pulls from</summary><ul>${sourceText}</ul></details>
+    <details class="source-drawer"><summary>Fields used here</summary><ul>${fieldText}</ul></details>
+  </aside>`;
 }
 
 function setActiveView(view) {
@@ -375,12 +389,19 @@ function renderParcels() {
 }
 
 function renderPipeline() {
-  document.querySelector('#pipeline').innerHTML = stages.map((stage, i) => `<div class="stage">
-    <span>${String(i + 1).padStart(2, '0')}</span>
-    <strong>${h(stage.name)}</strong>
-    <p>${h(stage.desc)}</p>
-    ${sourceDisclosure(stage.sourceType)}
-  </div>`).join('');
+  const target = document.querySelector('#pipeline');
+  if (!target) return;
+  target.innerHTML = `<div class="source-workbench">
+    <div class="phase-board" aria-label="Source pipeline phases">
+      ${stages.map((stage, i) => `<article class="stage ${stage.sourceType === selectedSourceType ? 'active' : ''}">
+        <span>${String(i + 1).padStart(2, '0')}</span>
+        <strong>${h(stage.name)}</strong>
+        <p>${h(stage.desc)}</p>
+        ${sourceSummary(stage.sourceType)}
+      </article>`).join('')}
+    </div>
+    ${sourceInspector(selectedSourceType)}
+  </div>`;
 }
 
 function renderCommandCenter() {
@@ -400,7 +421,7 @@ function renderCommandCenter() {
   document.querySelector('#command').innerHTML = `
     <div class="brand-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.8 split-pane deal desk</span>
+        <span class="eyebrow">Land Dealflow OS · v1.9 source calm system</span>
         <h1>Three calls. One spread.</h1>
         <p>A quieter, lighter operating system for land wholesale leads: start with today’s calls, then drill into deals, sources, or machine-room controls only when needed.</p>
         <div class="hero-actions"><button type="button" data-view="deals">Review seller calls</button><button class="secondary" type="button" data-view="sources">Audit data sources</button></div>
@@ -619,6 +640,13 @@ function bindEvents() {
     if (parcelButton) {
       selectedParcelId = parcelButton.dataset.selectParcel;
       renderParcels();
+      return;
+    }
+
+    const sourceButton = event.target.closest('[data-source-select]');
+    if (sourceButton) {
+      selectedSourceType = sourceButton.dataset.sourceSelect || 'market';
+      renderPipeline();
       return;
     }
 

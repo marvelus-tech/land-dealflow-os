@@ -122,15 +122,90 @@ Verdict: **Not enough as-is** for our model unless paired with explicit assignme
 
 Verdict: **Fallback drafting aid only**, not the operating base.
 
+## Transcript-specific custom additions to investigate
+
+The transcript adds more nuance than just “use an assignable contract.” Exact transcript section around 17:22:
+
+```text
+How do you protect your earnest money? We don't put earnest money up. So we have in our contract a clause that says we have a feasibility study up until the closing date ... our earnest money is actually never due with our contract. So we'll put 250 bucks ... if the seller asks for it, I'll put it to the title company, but it actually is not due till the closing date. And we have a feasibility study. That means we can back out to the day of the closing date with no risk.
+```
+
+Builder assignment contract section:
+
+```text
+And then what we do is we put on the builder's assignment contract, we make sure they have a due date with the earnest money. So they deposit the earnest money that is on the seller contract ... I already have my builder beforehand. I know in ... 24 hours, it's usually 2 hours whether or not the builder's taking it.
+```
+
+Additional risk-control section around 38:07:
+
+```text
+We've never ... lost necessarily because we could just back out because of how you're modeling. So, we can just send a termination email the way that our contract is structured and then back out.
+```
+
+### What this implies on the seller contract
+
+The seller-side contract likely has these custom deal points:
+
+1. **Assignable purchase rights** — buyer can assign/sell the contract rights.
+2. **Feasibility / due-diligence period running to closing** — the inspection/feasibility escape hatch does not expire early.
+3. **Earnest money due at closing, not upfront** — nominal deposit may be stated, e.g. $250, but not actually posted until closing unless seller/title requires it.
+4. **Termination by written notice/email** — if builder/title/survey/wetlands/slope checks fail, buyer can terminate before closing.
+5. **Closing date 30–45 days out** — gives enough contract control to assign, while the actual target is 2–3 weeks or faster.
+6. **Title-company closing** — assignment fee/spread can appear on the settlement statement if title company allows it.
+
+### What this implies on the builder/buyer assignment contract
+
+The buyer-side assignment agreement likely has these custom deal points:
+
+1. **Specific earnest-money due date** — unlike the seller contract, the builder has a real deadline to deposit earnest money.
+2. **Builder deposit covers the seller-contract deposit** — speaker says the builder deposits “the earnest money that is on the seller contract.”
+3. **Assignee accepts obligations** — builder takes over buyer obligations under the seller purchase contract.
+4. **Assignment fee due through closing/title** — fee/spread is paid on settlement statement if title company supports assignments.
+5. **Fast inspection / go-no-go expectation** — builder decides in hours/24 hours, not at day 29.
+6. **Fallback for huge assignment fees** — if a very large assignment fee on the HUD/settlement statement is risky, consider double close or actually buying/reselling.
+
+### Fit with Florida Realtors VAC-14
+
+VAC-14 already contains the needed levers, but they must be filled in deliberately:
+
+- Paragraph 7 Assignability: select one of the **may assign** options.
+- Paragraph 9 Due Diligence: set the Due Diligence Period to run effectively until closing, if Florida counsel confirms this is enforceable and acceptable.
+- Deposit section: structure initial/additional deposit timing so Okeito does not have upfront earnest-money exposure; verify with title company because many title companies/sellers expect a real deposit earlier.
+- Notices section: confirm email/written termination method and recipient details.
+- Closing date: set 30–45 days, while operating for 2–3 weeks.
+
+### Drafting tasks for attorney/title review
+
+Ask Florida counsel/title company to approve or rewrite these concepts:
+
+```text
+Due Diligence Period runs through and including the Closing Date unless Buyer waives it in writing. Buyer may terminate during the Due Diligence Period in Buyer's sole and absolute discretion by written notice to Seller, whereupon the Contract terminates and Buyer has no further obligation except those expressly surviving termination.
+```
+
+```text
+Initial deposit: $250. Deposit to be delivered to Escrow Agent at closing, unless Buyer elects or Escrow Agent requires earlier delivery in writing.
+```
+
+```text
+Buyer may assign this Contract and Buyer's rights under this Contract. Buyer may assign and be released from further liability only if Seller/title company accepts the assignee and assignment in writing; otherwise Buyer remains liable unless released.
+```
+
+```text
+Assignee/Builder must deposit earnest money with Closing Agent by [date/time]. Failure to deposit by that deadline permits Assignor to cancel this Assignment and retain all rights under the Purchase Contract.
+```
+
+These are not final legal clauses; they are the operating intent to take to counsel.
+
 ## Recommended contract stack for our Florida v1
 
 1. Seller contract base: **Florida Realtors VAC-14 Vacant Land Contract**.
 2. Paragraph 7: select **Buyer may assign** option.
-3. Due diligence: use the Due Diligence Period; set long enough to validate builder/title/parcel facts but short enough to be credible.
-4. Addendum A: buyer-as-principal / assignment disclosure.
-5. Addendum B: no brokerage / no representation disclosure.
-6. Buyer-side form: assignment agreement derived from Judicial Title-style assignment, rewritten for Florida vacant land and title-company settlement.
-7. Closing provider: Florida title company or closing attorney that explicitly accepts assignments/double closes.
+3. Due diligence: set the Due Diligence Period to run to closing only if attorney/title company confirms; otherwise create a commercially acceptable long diligence window.
+4. Deposit: attempt transcript-style “deposit due at closing,” but expect negotiation/title-company friction; fallback is small refundable deposit from Okeito or builder-funded deposit after buyer assignment.
+5. Addendum A: buyer-as-principal / assignment disclosure.
+6. Addendum B: no brokerage / no representation disclosure.
+7. Buyer-side form: assignment agreement derived from Judicial Title-style assignment, rewritten for Florida vacant land, builder earnest-money deadline, and title-company settlement.
+8. Closing provider: Florida title company or closing attorney that explicitly accepts assignments/double closes.
 
 ## Missing before live seller calls
 

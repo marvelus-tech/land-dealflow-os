@@ -53,14 +53,52 @@ const seedParcels = [
 ];
 
 const stages = [
-  ['Market Finder', 'Score zip codes/suburbs for new builds, builders, vacant lot velocity and lot standardization.'],
-  ['Buyer Finder', 'Find builders, land acquisition managers and repeat buyers. Capture exact buy boxes.'],
-  ['Land Finder', 'Find vacant parcels matching buyer criteria, then filter for equity and owner motivation.'],
-  ['Owner Contact', 'Find owner phone, email, mailing address and confidence score.'],
-  ['Offer Engine', 'Price initial/max/kill offers from builder demand and seller net logic.'],
-  ['Risk Filter', 'Flag wetlands, flood, slope, utilities, wildlife, access and zoning before contracts.'],
-  ['Outreach CRM', 'Track calls, mailers, contracts, title handoff, seller updates and referrals.'],
+  { id: 'market', name: 'Market Finder', desc: 'Score zip codes/suburbs for new builds, builders, vacant lot velocity and lot standardization.', sourceType: 'market' },
+  { id: 'buyer', name: 'Buyer Finder', desc: 'Find builders, land acquisition managers and repeat buyers. Capture exact buy boxes.', sourceType: 'buyer' },
+  { id: 'parcel', name: 'Land Finder', desc: 'Find vacant parcels matching buyer criteria, then filter for equity and owner motivation.', sourceType: 'parcel' },
+  { id: 'owner', name: 'Owner Contact', desc: 'Find owner phone, email, mailing address and confidence score.', sourceType: 'owner' },
+  { id: 'offer', name: 'Offer Engine', desc: 'Price initial/max/kill offers from builder demand and seller net logic.', sourceType: 'offer' },
+  { id: 'risk', name: 'Risk Filter', desc: 'Flag wetlands, flood, slope, utilities, wildlife, access and zoning before contracts.', sourceType: 'risk' },
+  { id: 'crm', name: 'Outreach CRM', desc: 'Track calls, mailers, contracts, title handoff, seller updates and referrals.', sourceType: 'crm' },
 ];
+
+const sourceBlueprint = {
+  market: {
+    label: 'Location / market data',
+    sources: ['Target-market config in data/sources.json', 'Generated source candidates: county GIS, ArcGIS/Socrata portals, Census/OSM queries', 'New-build, active-builder, vacant-lot velocity fields in the market snapshot'],
+    fields: ['area name', 'state', 'buyer type', 'priority', 'market thesis', 'source candidates'],
+  },
+  buyer: {
+    label: 'Buyer list',
+    sources: ['Buyer source blocks in data/sources.json', 'Builder/buyer discovery queues for target areas with no buyer seed', 'Buyer call notes and exact buy-box validation captured in the workspace'],
+    fields: ['buyer name', 'website', 'phone', 'email', 'contact', 'buy box', 'close speed', 'repeat demand'],
+  },
+  parcel: {
+    label: 'Seller / parcel list',
+    sources: ['Parcel source blocks in data/sources.json', 'County assessor/property-appraiser exports or normalized CSV imports', 'Generated seller-discovery queues for new target areas'],
+    fields: ['parcel ID', 'address', 'lot size', 'owner', 'mailing address', 'asking price', 'held years', 'paid price'],
+  },
+  owner: {
+    label: 'Owner contact data',
+    sources: ['Owner fields carried on parcel records', 'CSV imports from county exports or skip-trace style enrichment', 'Missing-data quality gate flags incomplete owner contact before calling'],
+    fields: ['owner name', 'owner phone', 'owner email', 'mailing address', 'skip-trace confidence'],
+  },
+  offer: {
+    label: 'Pricing / offer math',
+    sources: ['Parcel asking price and lowest active listing', 'Buyer max price and exact buy box', 'Offer engine formulas in src/core.mjs'],
+    fields: ['buyer max price', 'seller ask', 'initial offer', 'max offer', 'projected spread'],
+  },
+  risk: {
+    label: 'Buildability risk',
+    sources: ['Parcel buildability fields from source records/imports', 'Risk filter in src/core.mjs', 'Quality gate for missing wetlands/flood/access/utilities/slope checks'],
+    fields: ['wetlands', 'flood zone', 'road access', 'utilities', 'slope', 'wildlife flag'],
+  },
+  crm: {
+    label: 'Outreach activity',
+    sources: ['Browser-local workspace storage', 'CRM controls on each parcel card', 'Generated follow-up queue from current parcel CRM state'],
+    fields: ['CRM status', 'next follow-up', 'notes', 'buyer feedback', 'call notes'],
+  },
+};
 
 let workspace = loadWorkspace();
 let generatedLeads = null;
@@ -82,6 +120,67 @@ function persistWorkspace() {
 
 function h(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+}
+
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function formatDateTime(value) {
+  if (!value) return 'not sourced yet';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return h(value);
+  return date.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
+}
+
+function latestTimestamp(rows = []) {
+  return asArray(rows)
+    .map(row => row?.collectedAt || row?.generatedAt || row?.updatedAt)
+    .filter(Boolean)
+    .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())[0] || '';
+}
+
+function sourceIds(rows = []) {
+  return [...new Set(asArray(rows).map(row => row?.sourceId || row?.sourceAdapter || row?.sourceType).filter(Boolean))];
+}
+
+function getSourceRows(type) {
+  const snapshot = generatedLeads?.snapshot || {};
+  if (type === 'market') return asArray(snapshot.markets);
+  if (type === 'buyer') return asArray(snapshot.buyers);
+  if (type === 'parcel' || type === 'owner' || type === 'risk' || type === 'offer') return asArray(snapshot.parcels);
+  return [];
+}
+
+function getPhaseSourceStatus(type) {
+  const rows = getSourceRows(type);
+  const snapshotGeneratedAt = generatedLeads?.generatedAt || generatedLeads?.snapshot?.generatedAt || '';
+  const latest = type === 'crm' ? new Date().toISOString() : latestTimestamp(rows) || snapshotGeneratedAt;
+  const ids = sourceIds(rows);
+  const count = type === 'offer'
+    ? asArray(generatedLeads?.queues?.offerReady).length
+    : type === 'crm'
+      ? asArray(workspace.parcels).filter(parcel => parcel.crmStatus || parcel.nextFollowUp || parcel.notes).length
+      : rows.length;
+  return { latest, ids, count };
+}
+
+function sourceDisclosure(type) {
+  const blueprint = sourceBlueprint[type] || sourceBlueprint.market;
+  const status = getPhaseSourceStatus(type);
+  const sourceText = blueprint.sources.map(item => `<li>${h(item)}</li>`).join('');
+  const fieldText = blueprint.fields.map(item => `<li>${h(item)}</li>`).join('');
+  const sourceIdText = status.ids.length ? status.ids.map(id => `<code>${h(id)}</code>`).join(' ') : '<span>derived/local</span>';
+  return `<details class="source-disclosure">
+    <summary><span>Source</span><b>${h(blueprint.label)}</b></summary>
+    <div class="source-popover">
+      <div class="source-meta"><span>Last sourced</span><b>${formatDateTime(status.latest)}</b></div>
+      <div class="source-meta"><span>Records visible</span><b>${h(status.count)}</b></div>
+      <div class="source-meta wide"><span>Source IDs</span><b>${sourceIdText}</b></div>
+      <div><strong>Pulls from</strong><ul>${sourceText}</ul></div>
+      <div><strong>Fields used here</strong><ul>${fieldText}</ul></div>
+    </div>
+  </details>`;
 }
 
 function badge(text, tone = 'neutral') {
@@ -186,10 +285,11 @@ function renderParcels() {
 }
 
 function renderPipeline() {
-  document.querySelector('#pipeline').innerHTML = stages.map(([name, desc], i) => `<div class="stage">
+  document.querySelector('#pipeline').innerHTML = stages.map((stage, i) => `<div class="stage">
     <span>${String(i + 1).padStart(2, '0')}</span>
-    <strong>${h(name)}</strong>
-    <p>${h(desc)}</p>
+    <strong>${h(stage.name)}</strong>
+    <p>${h(stage.desc)}</p>
+    ${sourceDisclosure(stage.sourceType)}
   </div>`).join('');
 }
 
@@ -210,7 +310,7 @@ function renderCommandCenter() {
   document.querySelector('#command').innerHTML = `
     <div class="brand-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.5 light lead engine</span>
+        <span class="eyebrow">Land Dealflow OS · v1.6 source-aware lead engine</span>
         <h1>Three calls. One spread.</h1>
         <p>Not another dashboard. A funded land desk that turns public data into the few buyer-backed seller calls worth making today.</p>
         <div class="hero-actions"><a href="#daily-calls">Enter the callroom</a><a class="secondary" href="#workspace">Inspect the machine</a></div>
@@ -333,8 +433,14 @@ function renderLeadEnginePanel() {
   const sellerDiscovery = queues.sellerDiscovery || [];
   const sourceCandidates = snapshot.sourceCandidates || [];
   const blockers = queues.missingData || [];
+  const sourceSummary = ['market', 'buyer', 'parcel', 'owner', 'offer', 'risk', 'crm'];
   target.innerHTML = `<div class="lead-engine-grid">
     <div class="deal-strip four hero-metrics"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
+    <div class="engine-column primary-column source-ledger"><h4>Source ledger</h4><p>Every phase now exposes where the data comes from and when the underlying records were last sourced.</p>${sourceSummary.map(type => {
+      const blueprint = sourceBlueprint[type];
+      const status = getPhaseSourceStatus(type);
+      return `<div class="engine-row"><b>${h(blueprint.label)}</b><span>${formatDateTime(status.latest)} · ${h(status.count)} records · ${status.ids.length ? status.ids.map(id => h(id)).join(', ') : 'derived/local'}</span></div>`;
+    }).join('')}</div>
     <div class="engine-column primary-column"><h4>Call these sellers first</h4>${topCalls.slice(0, 3).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
     <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 4).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered yet.</p>'}</div>
     <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>

@@ -103,6 +103,7 @@ const sourceBlueprint = {
 let workspace = loadWorkspace();
 let generatedLeads = null;
 let filter = 'all';
+let selectedParcelId = '';
 let activeView = (location.hash || '#today').replace('#', '') || 'today';
 const validViews = new Set(['today', 'deals', 'sources', 'machine']);
 
@@ -228,6 +229,25 @@ function getVisibleParcels() {
   });
 }
 
+function getSelectedParcel(visible = getVisibleParcels()) {
+  if (!visible.length) {
+    selectedParcelId = '';
+    return null;
+  }
+  const selected = visible.find(parcel => parcel.id === selectedParcelId) || visible[0];
+  selectedParcelId = selected.id;
+  return selected;
+}
+
+function getNextAction(parcel) {
+  if (!parcel) return 'Import seller records to begin.';
+  if (parcel.action === 'Call now') return `Call ${parcel.ownerName || parcel.owner || 'the owner'} and anchor at ${formatMoney(parcel.offer.initialSellerOffer)}.`;
+  if (parcel.risk.status === 'Kill') return 'Do not call. Keep as evidence for risk filter tuning.';
+  if (!parcel.ownerPhone && !parcel.ownerEmail) return 'Find owner phone/email before this becomes callable.';
+  if (parcel.risk.status === 'Review') return 'Clear buildability risk before making an offer.';
+  return 'Keep warm: send mail first or add to follow-up queue.';
+}
+
 function downloadText(filename, text, type = 'text/csv') {
   const blob = new Blob([text], { type });
   const url = URL.createObjectURL(blob);
@@ -284,25 +304,74 @@ function crmControls(parcel) {
 
 function renderParcels() {
   const visible = getVisibleParcels();
+  const selected = getSelectedParcel(visible);
+  const target = document.querySelector('#parcels');
+  if (!target) return;
 
-  document.querySelector('#parcels').innerHTML = visible.map((parcel) => {
-    const riskTone = parcel.risk.status === 'Pass' ? 'good' : parcel.risk.status === 'Review' ? 'warn' : 'bad';
-    const actionTone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Mail first' ? 'warn' : parcel.action === 'Kill' ? 'bad' : 'neutral';
-    return `<article class="card parcel-card">
-      <div class="card-top"><h3>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</h3><div class="badge-stack">${badge(`${parcel.score} deal score`, actionTone)}${badge(parcel.action, actionTone)}${badge(parcel.risk.status, riskTone)}</div></div>
-      <p>${h(parcel.lotSize || 'lot size unknown')} · ${h(parcel.ownerName || parcel.owner || 'owner unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || 'contact missing')} · held ${h(parcel.heldYears || 0)} yrs · paid ${formatMoney(Number(parcel.paid || 0))}</p>
-      <p>Buyer contact: ${h(parcel.buyerContactName || getBuyer(parcel).contactName || 'missing')} · ${h(parcel.buyerPhone || getBuyer(parcel).phone || '')} · ${h(parcel.buyerEmail || getBuyer(parcel).email || '')}</p>
-      <div class="deal-strip five">
-        <div><span>Buyer price</span><b>${formatMoney(parcel.offer.buyerPrice)}</b></div>
-        <div><span>Seller ask</span><b>${formatMoney(parcel.metrics.askingPrice)}</b></div>
-        <div><span>Initial offer</span><b>${formatMoney(parcel.offer.initialSellerOffer)}</b></div>
-        <div><span>Max offer</span><b>${formatMoney(parcel.offer.maxSellerOffer)}</b></div>
-        <div><span>Spread</span><b>${formatMoney(parcel.metrics.spread)}</b></div>
+  if (!selected) {
+    target.innerHTML = `<article class="card empty-state"><h3>No parcels match this filter.</h3><p>Import records or change the filter.</p></article>`;
+    return;
+  }
+
+  const buyer = getBuyer(selected);
+  const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
+  const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
+  const fitRows = [
+    ['Buyer fit', buyer.name || 'No matched buyer', `${buyer.score || 0}/100 · ${buyer.buyBox || 'buy box missing'}`],
+    ['Seller contact', selected.ownerName || selected.owner || 'Owner unknown', selected.ownerPhone || selected.ownerEmail || 'Needs skip trace'],
+    ['Buildability', selected.risk.status, selected.flags.length ? selected.flags.join(', ') : 'clean first pass'],
+    ['Next action', selected.action, getNextAction(selected)],
+  ];
+
+  target.innerHTML = `<div class="deal-workbench">
+    <aside class="deal-queue" aria-label="Seller call queue">
+      <div class="queue-header"><span class="eyebrow">Seller queue</span><strong>${visible.length} records</strong></div>
+      <div class="queue-list">${visible.map((parcel, index) => {
+        const isActive = parcel.id === selected.id;
+        const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
+        return `<button type="button" class="queue-item ${isActive ? 'active' : ''}" data-select-parcel="${h(parcel.id)}">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
+          <small>${h(parcel.ownerName || parcel.owner || 'owner unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || 'contact missing')}</small>
+          <em>${h(parcel.score)} score · ${formatMoney(parcel.metrics.spread)} spread · ${h(parcel.action)}</em>
+          ${badge(parcel.risk.status, tone)}
+        </button>`;
+      }).join('')}</div>
+    </aside>
+
+    <article class="deal-detail" aria-label="Selected parcel detail">
+      <div class="detail-hero">
+        <span class="eyebrow">Selected parcel</span>
+        <h2>${h(selected.address || selected.parcelId || 'Untitled parcel')}</h2>
+        <p>${h(selected.lotSize || 'lot size unknown')} · held ${h(selected.heldYears || 0)} yrs · paid ${formatMoney(Number(selected.paid || 0))}</p>
+        <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
-      <div class="tags">${parcel.reasons.map(r => badge(r, 'good')).join('')}${parcel.flags.length ? parcel.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
-      ${crmControls(parcel)}
-    </article>`;
-  }).join('') || `<article class="card"><h3>No parcels match this filter.</h3><p>Import records or change the filter.</p></article>`;
+      <div class="deal-strip five">
+        <div><span>Buyer price</span><b>${formatMoney(selected.offer.buyerPrice)}</b></div>
+        <div><span>Seller ask</span><b>${formatMoney(selected.metrics.askingPrice)}</b></div>
+        <div><span>Initial offer</span><b>${formatMoney(selected.offer.initialSellerOffer)}</b></div>
+        <div><span>Max offer</span><b>${formatMoney(selected.offer.maxSellerOffer)}</b></div>
+        <div><span>Spread</span><b>${formatMoney(selected.metrics.spread)}</b></div>
+      </div>
+      <div class="detail-grid">
+        <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'contact missing')}</p></div>
+        <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
+        <div><span>Risk notes</span><b>${h(selected.risk.status)}</b><p>${h(selected.flags.join(', ') || 'No first-pass risk flags.')}</p></div>
+        <div><span>Source notes</span><b>${h(selected.parcelId || selected.id)}</b><p>${h(selected.acquisitionNotes || selected.notes || 'No notes yet.')}</p></div>
+      </div>
+      <details class="detail-disclosure"><summary>Show CRM fields</summary>${crmControls(selected)}</details>
+    </article>
+
+    <aside class="deal-action" aria-label="Buyer fit and next action">
+      <div class="next-action-card">
+        <span class="eyebrow">Next best action</span>
+        <h3>${h(getNextAction(selected))}</h3>
+        <div class="button-row"><a class="button-link" href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner</a><button type="button" class="secondary" data-view="machine">Open offer packet</button></div>
+      </div>
+      <div class="fit-stack">${fitRows.map(([label, title, detail]) => `<div class="fit-card"><span>${h(label)}</span><b>${h(title)}</b><p>${h(detail)}</p></div>`).join('')}</div>
+      <div class="tags">${selected.reasons.map(r => badge(r, 'good')).join('')}${selected.flags.length ? selected.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
+    </aside>
+  </div>`;
 }
 
 function renderPipeline() {
@@ -331,7 +400,7 @@ function renderCommandCenter() {
   document.querySelector('#command').innerHTML = `
     <div class="brand-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.7 Apple-grade workspace</span>
+        <span class="eyebrow">Land Dealflow OS · v1.8 split-pane deal desk</span>
         <h1>Three calls. One spread.</h1>
         <p>A quieter, lighter operating system for land wholesale leads: start with today’s calls, then drill into deals, sources, or machine-room controls only when needed.</p>
         <div class="hero-actions"><button type="button" data-view="deals">Review seller calls</button><button class="secondary" type="button" data-view="sources">Audit data sources</button></div>
@@ -543,6 +612,13 @@ function bindEvents() {
         history.replaceState(null, '', `#${view}`);
         setActiveView(view);
       }
+      return;
+    }
+
+    const parcelButton = event.target.closest('[data-select-parcel]');
+    if (parcelButton) {
+      selectedParcelId = parcelButton.dataset.selectParcel;
+      renderParcels();
       return;
     }
 

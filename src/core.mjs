@@ -88,6 +88,16 @@ export function rankBuyers(buyers) {
 
 export const CRM_STATUSES = ['New', 'Researching', 'Owner Found', 'Contacted', 'Negotiating', 'Under Contract', 'Sent to Buyer', 'Assigned/Sold', 'Dead', 'Kill'];
 
+export const CALL_OUTCOMES = {
+  call_attempted: { label: 'Call attempted', crmStatus: 'Contacted', followUpDays: 1, note: 'Call attempted.' },
+  no_answer: { label: 'No answer', crmStatus: 'Contacted', followUpDays: 1, note: 'No answer. Try again tomorrow.' },
+  left_voicemail: { label: 'Left voicemail', crmStatus: 'Contacted', followUpDays: 2, note: 'Left voicemail. Follow up in two days.' },
+  seller_interested: { label: 'Seller interested', crmStatus: 'Negotiating', followUpDays: 1, note: 'Seller interested. Prepare/confirm offer terms.' },
+  seller_rejected: { label: 'Seller rejected', crmStatus: 'Dead', followUpDays: null, note: 'Seller rejected the offer.' },
+  needs_follow_up: { label: 'Needs follow-up', crmStatus: 'Contacted', followUpDays: 3, note: 'Needs follow-up. Re-open with buyer-backed proof.' },
+  dead_lead: { label: 'Dead lead', crmStatus: 'Dead', followUpDays: null, note: 'Dead lead. Remove from active call queue.' },
+};
+
 export function parseCsvRecords(csvText) {
   const text = String(csvText || '').replace(/^\ufeff/, '').trim();
   if (!text) return [];
@@ -309,6 +319,143 @@ export function buildTopCallList({ parcels = [], buyers = [], limit = 20 } = {})
     .sort((a, b) => b.score - a.score || b.metrics.spread - a.metrics.spread)
     .slice(0, limit)
     .map((parcel, index) => ({ ...parcel, callPriority: index + 1 }));
+}
+
+function addDays(dateValue, days) {
+  const date = new Date(dateValue || Date.now());
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function isDue(dateValue, now = new Date().toISOString()) {
+  if (!dateValue) return false;
+  return String(dateValue).slice(0, 10) <= new Date(now).toISOString().slice(0, 10);
+}
+
+export function buildCallScript({ parcel = {}, buyer = {} } = {}) {
+  const scored = parcel.offer ? parcel : scoreParcelDeal(parcel, buyer);
+  const ownerFull = scored.ownerName || scored.owner || 'there';
+  const owner = String(ownerFull).split(/\s+/)[0] || ownerFull;
+  const address = scored.address || scored.parcelId || 'your lot';
+  const buyerName = buyer.name || scored.buyerName || 'a local builder buyer';
+  const buyerMax = Number(scored.offer?.buyerPrice || scored.buyerMaxPrice || buyer.maxPrice || 0);
+  const initial = Number(scored.offer?.initialSellerOffer || 0);
+  const max = Number(scored.offer?.maxSellerOffer || initial);
+  const spread = Number(scored.metrics?.spread || Math.max(0, buyerMax - Number(scored.metrics?.askingPrice || scored.askingPrice || 0)));
+  const riskStatus = scored.risk?.status || classifyParcelRisk(scored).status;
+  return {
+    opening: `Hi ${owner}, this is Okeito. I’m calling about the lot at ${address} — would you consider a clean cash offer if we covered closing costs?`,
+    motivationQuestion: 'What would make selling worth it for you right now — speed, certainty, or price?',
+    anchorLine: `I would start around ${formatMoney(initial)} and can stretch toward ${formatMoney(max)} if title, access, and buyer fit stay clean.`,
+    buyerProof: `${buyerName} is the buyer-backstop: max around ${formatMoney(buyerMax)}, ${buyer.buyBox || buyer.acquisitionNotes || 'looking for clean buildable lots in this market'}.`,
+    riskLine: `Current risk read: ${riskStatus}. ${scored.flags?.length ? scored.flags.join(', ') : 'No first-pass buildability blockers.'}`,
+    closeLine: `If ${formatMoney(initial)} net is close, I can confirm terms and move this into an offer packet today.`,
+    objection: `If they ask for more: stay under ${formatMoney(max)} unless buyer price improves; otherwise mark follow-up or dead lead.`,
+    summary: `Open at ${formatMoney(initial)}, do not exceed ${formatMoney(max)}, target spread ${formatMoney(spread)}.`,
+  };
+}
+
+function buyerForParcel(parcel, rankedBuyers) {
+  return rankedBuyers.find(item => item.id === parcel.buyerId) || rankedBuyers.find(item => item.market === parcel.market) || {};
+}
+
+function enrichMoneyCall(parcel, buyer, index = 0, moneyStage = 'Call now') {
+  const scored = scoreParcelDeal(parcel, buyer);
+  const callScript = buildCallScript({ parcel: scored, buyer });
+  const buyerName = buyer.name || scored.buyerContactName || 'buyer missing';
+  return {
+    ...scored,
+    callPriority: index + 1,
+    moneyStage,
+    ownerName: scored.ownerName || scored.owner || '',
+    ownerPhone: scored.ownerPhone || '',
+    ownerEmail: scored.ownerEmail || '',
+    buyerName,
+    buyerContactName: scored.buyerContactName || buyer.contactName || buyer.name || '',
+    buyerPhone: scored.buyerPhone || buyer.phone || '',
+    buyerEmail: scored.buyerEmail || buyer.email || '',
+    offerAnchor: scored.offer.initialSellerOffer,
+    maxOffer: scored.offer.maxSellerOffer,
+    projectedSpread: scored.metrics.spread,
+    callScript,
+    buyerBacking: {
+      name: buyerName,
+      maxPrice: scored.offer.buyerPrice,
+      buyBox: buyer.buyBox || buyer.acquisitionNotes || 'No buy box captured yet.',
+      summary: `${buyerName} can plausibly pay ${formatMoney(scored.offer.buyerPrice)}; call below ${formatMoney(scored.offer.maxSellerOffer)} to protect ${formatMoney(scored.metrics.spread)} spread.`,
+    },
+  };
+}
+
+export function buildDailyMoneyQueue({ parcels = [], buyers = [], limit = 5, now = new Date().toISOString() } = {}) {
+  const rankedBuyers = rankBuyers(buyers);
+  const enriched = parcels.map((parcel) => enrichMoneyCall(parcel, buyerForParcel(parcel, rankedBuyers)));
+  const callable = enriched.filter(parcel => parcel.action === 'Call now' && parcel.risk.status !== 'Kill' && Boolean(parcel.ownerPhone || parcel.ownerEmail));
+  const followUps = callable
+    .filter(parcel => ['Contacted', 'Negotiating', 'Under Contract'].includes(parcel.crmStatus) && isDue(parcel.nextFollowUp, now))
+    .sort((a, b) => b.score - a.score || b.projectedSpread - a.projectedSpread)
+    .slice(0, limit)
+    .map((parcel, index) => ({ ...parcel, callPriority: index + 1, moneyStage: 'Follow-up due' }));
+  const today = callable
+    .filter(parcel => !['Contacted', 'Negotiating', 'Under Contract', 'Dead', 'Kill'].includes(parcel.crmStatus || 'New'))
+    .sort((a, b) => b.score - a.score || b.projectedSpread - a.projectedSpread)
+    .slice(0, limit)
+    .map((parcel, index) => ({ ...parcel, callPriority: index + 1, moneyStage: 'Call now' }));
+  const interested = enriched.filter(parcel => parcel.callOutcome === 'seller_interested' || parcel.crmStatus === 'Negotiating');
+  return {
+    today,
+    followUps,
+    interested,
+    stats: {
+      callReady: today.length,
+      followUpsDue: followUps.length,
+      interested: interested.length,
+      buyerBacked: callable.filter(parcel => parcel.buyerName && parcel.buyerName !== 'buyer missing').length,
+    },
+    generatedAt: now,
+  };
+}
+
+export function applyCallOutcome(workspace, parcelId, outcomeKey, { now = new Date().toISOString(), note = '' } = {}) {
+  const outcome = CALL_OUTCOMES[outcomeKey] || CALL_OUTCOMES.call_attempted;
+  const nextFollowUp = outcome.followUpDays == null ? '' : addDays(now, outcome.followUpDays);
+  return {
+    ...workspace,
+    parcels: (workspace.parcels || []).map((parcel) => {
+      if (parcel.id !== parcelId) return parcel;
+      const notes = [parcel.notes, outcome.note, note].filter(Boolean).join('\n');
+      return {
+        ...parcel,
+        crmStatus: outcome.crmStatus,
+        callOutcome: outcomeKey,
+        lastCallAt: now,
+        nextFollowUp,
+        notes,
+        updatedAt: now,
+      };
+    }),
+  };
+}
+
+export function exportDailyCallSheetCsv(calls = []) {
+  const columns = ['ownerName', 'ownerPhone', 'address', 'initialOffer', 'maxOffer', 'buyerName', 'buyerPhone', 'projectedSpread', 'callScript', 'status', 'nextFollowUp'];
+  const rows = [columns];
+  for (const call of calls) {
+    rows.push([
+      call.ownerName || call.owner || '',
+      call.ownerPhone || '',
+      call.address || '',
+      call.offerAnchor ?? call.offer?.initialSellerOffer ?? '',
+      call.maxOffer ?? call.offer?.maxSellerOffer ?? '',
+      call.buyerName || call.buyerContactName || '',
+      call.buyerPhone || '',
+      call.projectedSpread ?? call.metrics?.spread ?? '',
+      call.callScript?.summary || '',
+      call.action || call.moneyStage || '',
+      call.nextFollowUp || '',
+    ]);
+  }
+  return rows.map(row => row.map(csvEscape).join(',')).join('\n');
 }
 
 export function exportParcelsCsv(parcels = [], columns = [

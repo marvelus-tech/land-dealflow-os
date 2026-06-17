@@ -5,6 +5,10 @@ import {
   rankBuyers,
   scoreParcelDeal,
   applyCrmUpdate,
+  applyCallOutcome,
+  buildDailyMoneyQueue,
+  CALL_OUTCOMES,
+  exportDailyCallSheetCsv,
   exportWorkspace,
   importWorkspace,
   CRM_STATUSES,
@@ -105,6 +109,7 @@ let generatedLeads = null;
 let filter = 'all';
 let selectedParcelId = '';
 let selectedSourceType = 'market';
+let selectedMoneyCallId = '';
 let activeView = (location.hash || '#today').replace('#', '') || 'today';
 const validViews = new Set(['today', 'deals', 'sources', 'machine']);
 
@@ -390,39 +395,64 @@ function renderCommandCenter() {
   const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'None', score: { total: 0 } };
   const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'None', score: 0 };
   const parcelScores = scoredParcels();
-  const topCalls = buildTopCallList({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 3 });
-  const callNow = parcelScores.filter(p => p.action === 'Call now').length;
-  const passParcels = parcelScores.filter(p => p.risk.status === 'Pass').length;
-  const heroCall = topCalls[0] || parcelScores[0] || {};
-  const callRows = topCalls.length ? topCalls.map((call, index) => `<article class="call-tile">
-      <span>0${index + 1}</span>
-      <b>${h(call.address || 'No address')}</b>
-      <small>${h(call.ownerName || call.owner || 'owner unknown')} · ${h(call.ownerPhone || call.ownerEmail || 'contact missing')}</small>
-      <em>${h(call.score ?? '')} score · spread ${formatMoney(Number(call.spread || call.metrics?.spread || 0))}</em>
-    </article>`).join('') : '<article class="call-tile"><span>00</span><b>No calls ready</b><small>Import or generate parcels to create the daily callroom.</small><em>Waiting for deal flow</em></article>';
+  const moneyQueue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 5 });
+  const moneyCalls = [...moneyQueue.followUps, ...moneyQueue.today];
+  const heroCall = moneyCalls.find(call => call.id === selectedMoneyCallId) || moneyCalls[0] || {};
+  selectedMoneyCallId = heroCall.id || '';
+  const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="money-call ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
+      <span>${String(index + 1).padStart(2, '0')}</span>
+      <b>${h(call.ownerName || call.owner || 'owner unknown')}</b>
+      <small>${h(call.address || 'No address')}</small>
+      <em>${h(call.moneyStage)} · ${h(call.score)} score · ${formatMoney(call.projectedSpread)} spread</em>
+    </button>`).join('') : '<article class="money-empty"><b>No seller calls ready.</b><span>Import owner contact data or clear buildability blockers until the app can produce a buyer-backed call queue.</span></article>';
+  const outcomeButtons = Object.entries(CALL_OUTCOMES).map(([key, outcome]) => `<button type="button" class="outcome-chip" data-call-outcome="${h(key)}" ${heroCall.id ? '' : 'disabled'}>${h(outcome.label)}</button>`).join('');
+  const script = heroCall.callScript || {};
   document.querySelector('#command').innerHTML = `
-    <div class="brand-hero">
+    <div class="cashflow-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.10 mobile source popovers</span>
-        <h1>Three calls. One spread.</h1>
-        <p>A quieter, lighter operating system for land wholesale leads: start with today’s calls, then drill into deals, sources, or machine-room controls only when needed.</p>
-        <div class="hero-actions"><button type="button" data-view="deals">Review seller calls</button><button class="secondary" type="button" data-view="sources">Audit data sources</button></div>
+        <span class="eyebrow">Land Dealflow OS · v1.11 cashflow mode</span>
+        <h1>Call ${h(heroCall.ownerName || heroCall.owner || 'the right seller')} today.</h1>
+        <p>The app now chooses the seller, gives the words, protects the offer, explains the buyer-backed spread, and records what happened after the call.</p>
+        <div class="hero-actions"><a class="button-link" href="${heroCall.ownerPhone ? `tel:${h(heroCall.ownerPhone)}` : '#'}">Call owner</a><button id="export-daily-call-sheet" class="secondary" type="button">Export today’s call sheet</button></div>
       </div>
-      <aside class="hero-deal-card" aria-label="Top deal today">
-        <span>First call</span>
-        <h2>${h(heroCall.address || 'Generate today’s call list')}</h2>
-        <p>${h(heroCall.ownerName || heroCall.owner || 'Owner unknown')} · ${h(heroCall.ownerPhone || heroCall.ownerEmail || 'contact missing')}</p>
-        <div class="deal-strip two"><div><span>Deal score</span><strong>${h(heroCall.score ?? 0)}</strong></div><div><span>Projected spread</span><strong>${formatMoney(Number(heroCall.spread || heroCall.metrics?.spread || 0))}</strong></div></div>
+      <aside class="hero-deal-card cash-card" aria-label="Selected money call">
+        <span>${h(heroCall.moneyStage || 'Money queue')}</span>
+        <h2>${h(heroCall.address || 'Generate a call-ready seller')}</h2>
+        <p>${h(heroCall.ownerPhone || heroCall.ownerEmail || 'contact missing')} · Buyer: ${h(heroCall.buyerName || topBuyer.name || 'not matched')}</p>
+        <div class="deal-strip two"><div><span>Start offer</span><strong>${formatMoney(heroCall.offerAnchor || 0)}</strong></div><div><span>Max offer</span><strong>${formatMoney(heroCall.maxOffer || 0)}</strong></div></div>
+        <div class="deal-strip two"><div><span>Buyer-backed exit</span><strong>${formatMoney(heroCall.buyerBacking?.maxPrice || 0)}</strong></div><div><span>Spread</span><strong>${formatMoney(heroCall.projectedSpread || 0)}</strong></div></div>
       </aside>
     </div>
-    <section id="daily-calls" class="daily-calls" aria-label="Daily call priority">
-      <div class="daily-heading"><span class="eyebrow">Today’s money path</span><h2>Make these calls before touching the plumbing.</h2></div>
-      <div class="call-tile-grid">${callRows}</div>
-      <div class="side-panel" aria-label="Today summary">
-        <div><span>Best target area</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100 market score</em></div>
-        <div><span>Most validated buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100 buyer score</em></div>
-        <div class="priority"><span>Seller calls ready</span><b>${callNow}/${parcelScores.length}</b><em>${passParcels} clean pass</em></div>
+    <section id="daily-calls" class="cashflow-board" aria-label="Daily cashflow operating board">
+      <div class="money-queue-panel">
+        <div class="daily-heading"><span class="eyebrow">Today’s calls</span><h2>One queue. No wandering.</h2></div>
+        <div class="money-call-list">${callRows}</div>
+        <div class="money-stats">
+          <div><span>Call-ready</span><b>${h(moneyQueue.stats.callReady)}</b></div>
+          <div><span>Follow-ups due</span><b>${h(moneyQueue.stats.followUpsDue)}</b></div>
+          <div><span>Buyer-backed</span><b>${h(moneyQueue.stats.buyerBacked)}</b></div>
+        </div>
       </div>
+      <article class="call-script-panel" aria-label="What to say">
+        <span class="eyebrow">What to say</span>
+        <h2>${h(script.opening || 'No callable seller selected yet.')}</h2>
+        <div class="script-grid">
+          <div><span>Ask this</span><b>${h(script.motivationQuestion || 'Add seller contact data first.')}</b></div>
+          <div><span>Offer anchor</span><b>${h(script.anchorLine || 'No offer anchor yet.')}</b></div>
+          <div><span>Buyer proof</span><b>${h(script.buyerProof || heroCall.buyerBacking?.summary || 'No buyer proof yet.')}</b></div>
+          <div><span>Risk guardrail</span><b>${h(script.riskLine || 'No risk read yet.')}</b></div>
+        </div>
+      </article>
+      <aside class="outcome-panel" aria-label="What happened after the call">
+        <span class="eyebrow">What happened?</span>
+        <h3>Tap the outcome while the call is fresh.</h3>
+        <div class="outcome-grid">${outcomeButtons}</div>
+        <div class="side-panel compact" aria-label="Today summary">
+          <div><span>Best target area</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100 market score</em></div>
+          <div><span>Most validated buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100 buyer score</em></div>
+          <div class="priority"><span>Clean pass parcels</span><b>${parcelScores.filter(p => p.risk.status === 'Pass').length}/${parcelScores.length}</b><em>fuel for tomorrow</em></div>
+        </div>
+      </aside>
     </section>`;
 }
 
@@ -625,6 +655,21 @@ function bindEvents() {
       return;
     }
 
+    const moneyCallButton = event.target.closest('[data-select-money-call]');
+    if (moneyCallButton) {
+      selectedMoneyCallId = moneyCallButton.dataset.selectMoneyCall;
+      renderCommandCenter();
+      return;
+    }
+
+    const outcomeButton = event.target.closest('[data-call-outcome]');
+    if (outcomeButton && selectedMoneyCallId) {
+      workspace = applyCallOutcome(workspace, selectedMoneyCallId, outcomeButton.dataset.callOutcome);
+      persistWorkspace();
+      renderAll();
+      return;
+    }
+
     if (event.target.matches('#load-lehigh-template')) {
       document.querySelector('#csv-input').value = getLehighImportTemplate();
       const status = document.querySelector('#import-status');
@@ -659,6 +704,11 @@ function bindEvents() {
     if (event.target.matches('#export-top20-csv')) {
       const calls = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 20 });
       downloadText(`land-dealflow-top20-call-list-${new Date().toISOString().slice(0, 10)}.csv`, exportParcelsCsv(calls));
+    }
+
+    if (event.target.matches('#export-daily-call-sheet')) {
+      const queue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 20 });
+      downloadText(`land-dealflow-daily-call-sheet-${new Date().toISOString().slice(0, 10)}.csv`, exportDailyCallSheetCsv([...queue.followUps, ...queue.today]));
     }
 
     if (event.target.matches('#export-mailmerge-csv')) {

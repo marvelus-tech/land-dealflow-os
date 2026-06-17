@@ -5,6 +5,8 @@ import {
   buildCallScript,
   buildDailyMoneyQueue,
   buildBuyerContactQueue,
+  buildBuyerFirstBoard,
+  matchSellerParcelsToBuyerBox,
   applyBuyerContactImport,
   applySkipTraceImport,
   exportDailyCallSheetCsv,
@@ -157,8 +159,49 @@ function testBuyerContactImportAndValidationQueue() {
   const result = applyBuyerContactImport({ buyers: [] }, csv, { candidateBuyers: [publicBuilder] });
   assert.equal(result.summary.matched, 1);
   assert.equal(result.workspace.buyers[0].phone, '239-555-8822');
-  assert.equal(result.workspace.buyers[0].validationStatus, 'contact-enriched');
+  assert.equal(result.workspace.buyers[0].validationStatus, 'buy-box-validated');
   assert.equal(buildBuyerContactQueue(result.workspace.buyers).length, 0);
+}
+
+function testBuyerFirstBoardPrioritizesValidatedBuyBoxBeforeSellerSkipTrace() {
+  const buyer = {
+    ...buyers[0],
+    id: 'career',
+    name: 'CAREER FINANCIAL CORP',
+    phone: '239-555-8822',
+    buyBoxCaptured: true,
+    validationStatus: 'buy-box-validated',
+    maxPrice: 42000,
+    exactBuyBox: { targetMarkets: ['lehigh'], lotSizeMin: 0.23, lotSizeMax: 0.29, maxPrice: 42000, requiredRoadAccess: true, avoidWetlands: true },
+  };
+  const sellerCandidates = [{
+    ...parcels[0],
+    id: 'public-lead-1',
+    parcelId: '274527L4110560090',
+    ownerPhone: '',
+    ownerEmail: '',
+    buyerId: '',
+    askingPrice: 12062,
+    lotSize: '0.252 ac',
+    roadAccess: true,
+    wetlands: 'none',
+  }, {
+    ...parcels[1],
+    id: 'bad-wetland',
+    ownerPhone: '',
+    buyerId: '',
+    lotSize: '0.25 ac',
+    wetlands: 'likely',
+  }];
+  const matches = matchSellerParcelsToBuyerBox(sellerCandidates, buyer);
+  assert.equal(matches.length, 1);
+  assert.equal(matches[0].buyerId, 'career');
+  assert.equal(matches[0].nextAction, 'skip trace this matched seller');
+  const board = buildBuyerFirstBoard({ buyers: [buyer], sellerCandidates });
+  assert.equal(board.validatedBuyers.length, 1);
+  assert.equal(board.sellerMatches.length, 1);
+  assert.equal(board.stats.validatedBuyBoxes, 1);
+  assert.equal(board.stats.matchedSellerParcels, 1);
 }
 
 testDailyMoneyQueueRanksCallReadySellersWithScriptsAndBuyerBacking();
@@ -168,5 +211,6 @@ testCallScriptExplainsWhatToSayAndOffer();
 testDailyCallSheetExportsMoneyFields();
 testSkipTraceImportMatchesRealPublicLeadAndPromotesToToday();
 testBuyerContactImportAndValidationQueue();
+testBuyerFirstBoardPrioritizesValidatedBuyBoxBeforeSellerSkipTrace();
 
 console.log('cashflow tests passed');

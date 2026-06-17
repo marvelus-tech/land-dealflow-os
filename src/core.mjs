@@ -553,7 +553,7 @@ export function applyBuyerContactImport(workspace = {}, csvText = '', { candidat
       buyBox: record.buyBox || match?.buyBox || record.acquisitionNotes || match?.acquisitionNotes || '',
       maxPrice: record.maxPrice || record.buyerMaxPrice || match?.maxPrice || '',
       acquisitionNotes: record.acquisitionNotes || match?.acquisitionNotes || '',
-      validationStatus: phone || email || website ? 'contact-enriched' : (match?.validationStatus || 'needs-contact'),
+      validationStatus: (phone || email || website) && (record.buyBox || record.acquisitionNotes || record.maxPrice || record.buyerMaxPrice) ? 'buy-box-validated' : (phone || email || website ? 'contact-enriched' : (match?.validationStatus || 'needs-contact')),
       contactEnrichedAt: now,
     };
     const existingIndex = current.findIndex(buyer => normalizeMatchKey(buyer.id) === normalizeMatchKey(id) || normalizeMatchKey(buyer.name) === normalizeMatchKey(update.name));
@@ -899,13 +899,70 @@ export function buildDealFitMatrix(parcels = [], buyers = []) {
       if (box.maxPrice && Number(parcel.askingPrice || parcel.buyerMaxPrice || 0) > box.maxPrice) { misses.push('price'); score -= 20; }
       if (box.requiredRoadAccess && parcel.roadAccess !== true) { misses.push('road access'); score -= 25; }
       if (box.requiredUtilities && parcel.utilities !== true) { misses.push('utilities'); score -= 10; }
-      if (box.avoidWetlands && parcel.wetlands === true) { misses.push('wetlands'); score -= 35; }
+      if (box.avoidWetlands && (parcel.wetlands === true || ['true', 'likely', 'yes', 'review'].includes(String(parcel.wetlands || '').toLowerCase()))) { misses.push('wetlands'); score -= 35; }
       if ((box.avoidFloodZones || []).includes(String(parcel.floodZone || '').toUpperCase())) { misses.push('flood zone'); score -= 25; }
       score = Math.max(0, Math.round(score));
       rows.push({ parcelId: parcel.id || parcel.parcelId, buyerId: buyer.id, address: parcel.address, buyerName: buyer.name, score, fit: score >= 80 ? 'strong' : score >= 55 ? 'review' : 'weak', misses });
     }
   }
   return rows.sort((a, b) => b.score - a.score);
+}
+
+export function isBuyerBuyBoxValidated(buyer = {}) {
+  const hasContact = Boolean(buyer.phone || buyer.email || buyer.website);
+  const hasBuyBox = Boolean(buyer.exactBuyBox || buyer.buyBox || buyer.acquisitionNotes);
+  const hasPrice = Boolean(Number(buyer.maxPrice || buyer.buyerMaxPrice || buyer.exactBuyBox?.maxPrice || 0));
+  const status = String(buyer.validationStatus || '').toLowerCase();
+  return hasContact && hasBuyBox && hasPrice && (buyer.buyBoxCaptured || buyer.exactBuyBox || status.includes('validated') || status.includes('enriched'));
+}
+
+export function matchSellerParcelsToBuyerBox(parcels = [], buyer = {}, { limit = 25 } = {}) {
+  if (!isBuyerBuyBoxValidated(buyer)) return [];
+  const rows = buildDealFitMatrix(parcels, [buyer]);
+  return rows
+    .filter(row => row.score >= 70)
+    .slice(0, limit)
+    .map((row, index) => {
+      const parcel = parcels.find(item => (item.id || item.parcelId) === row.parcelId) || {};
+      const enriched = scoreParcelDeal({ ...parcel, buyerId: buyer.id, buyerMaxPrice: buyer.maxPrice || buyer.exactBuyBox?.maxPrice || parcel.buyerMaxPrice }, buyer);
+      return {
+        ...enriched,
+        buyerId: buyer.id,
+        buyerName: buyer.name,
+        buyerPhone: buyer.phone || '',
+        buyerEmail: buyer.email || '',
+        buyBox: buyer.buyBox || buyer.acquisitionNotes || '',
+        fitScore: row.score,
+        fit: row.fit,
+        misses: row.misses,
+        buyerFirstRank: index + 1,
+        nextAction: (parcel.ownerPhone || parcel.ownerEmail || parcel.realContact) ? 'ready for seller call' : 'skip trace this matched seller',
+      };
+    })
+    .sort((a, b) => b.fitScore - a.fitScore || b.score - a.score || b.metrics.spread - a.metrics.spread);
+}
+
+export function buildBuyerFirstBoard({ buyers = [], sellerCandidates = [], limit = 25 } = {}) {
+  const validatedBuyers = rankBuyers(buyers)
+    .filter(isBuyerBuyBoxValidated)
+    .map(buyer => ({ ...buyer, scorecard: calculateBuyerScorecard(buyer) }));
+  const buyerTasks = buildBuyerContactQueue(buyers).slice(0, limit);
+  const sellerMatches = validatedBuyers.flatMap(buyer => matchSellerParcelsToBuyerBox(sellerCandidates, buyer, { limit }))
+    .sort((a, b) => b.fitScore - a.fitScore || b.score - a.score || b.metrics.spread - a.metrics.spread)
+    .slice(0, limit);
+  const skipTraceBatch = sellerMatches.filter(item => item.nextAction === 'skip trace this matched seller');
+  return {
+    validatedBuyers,
+    buyerTasks,
+    sellerMatches,
+    skipTraceBatch,
+    stats: {
+      validatedBuyBoxes: validatedBuyers.length,
+      buyerContactsNeeded: buyerTasks.length,
+      matchedSellerParcels: sellerMatches.length,
+      skipTraceAfterBuyerFit: skipTraceBatch.length,
+    },
+  };
 }
 
 export function buildBuyerFeedbackLoop(buyers = []) {

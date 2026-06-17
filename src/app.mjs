@@ -8,6 +8,7 @@ import {
   applyCallOutcome,
   buildDailyMoneyQueue,
   buildBuyerContactQueue,
+  buildBuyerFirstBoard,
   applySkipTraceImport,
   applyBuyerContactImport,
   CALL_OUTCOMES,
@@ -414,6 +415,10 @@ function renderCommandCenter() {
   const moneyCalls = [...moneyQueue.followUps, ...moneyQueue.today];
   const publicSkipTrace = asArray(generatedLeads?.queues?.skipTrace);
   const buyerContactQueue = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()]);
+  const buyerFirst = buildBuyerFirstBoard({ buyers: [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])], sellerCandidates: [...publicSkipTrace, ...(workspace.parcels || [])], limit: 25 });
+  const leadBuyer = buyerFirst.validatedBuyers[0] || buyerContactQueue[0] || topBuyer;
+  const buyerRows = (buyerFirst.validatedBuyers.length ? buyerFirst.validatedBuyers : buyerContactQueue).slice(0, 5).map((buyer, index) => `<article class="buyer-first-card ${index === 0 ? 'featured' : ''}"><span>${buyerFirst.validatedBuyers.includes(buyer) ? 'Validated buy box' : 'Contact first'}</span><b>${h(buyer.name || 'Buyer unknown')}</b><p>${h(buyer.buyBox || buyer.acquisitionNotes || buyer.task || 'Find contact and ask exact buy box.')}</p><em>${h(buyer.phone || buyer.email || buyer.website || `${buyer.recentBuilds || 0} build signals`)}</em></article>`).join('');
+  const matchedRows = buyerFirst.sellerMatches.slice(0, 6).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.address || item.parcelId)}</b><span>${h(item.buyerName)} · fit ${h(item.fitScore)} · ${h(item.nextAction)} · ${formatMoney(item.offer?.buyerPrice || item.buyerMaxPrice || 0)} buyer ceiling</span></div>`).join('') || '<p>No seller parcels selected yet. Validate at least one buyer buy box, then the seller list becomes precise.</p>';
   const heroCall = moneyCalls.find(call => call.id === selectedMoneyCallId) || moneyCalls[0] || {};
   selectedMoneyCallId = heroCall.id || '';
   const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="money-call ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
@@ -427,19 +432,24 @@ function renderCommandCenter() {
   document.querySelector('#command').innerHTML = `
     <div class="cashflow-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.13 skip-trace intake</span>
-        <h1>Call ${h(heroCall.ownerName || heroCall.owner || 'the right seller')} today.</h1>
-        <p>Airbnb-clean action flow: public leads wait in enrichment, matched phones promote into Today, and only real callable records reach the call board.</p>
-        <div class="hero-actions"><a class="button-link" href="${heroCall.ownerPhone ? `tel:${h(heroCall.ownerPhone)}` : '#'}">Call owner</a><button id="export-daily-call-sheet" class="secondary" type="button">Export today’s call sheet</button></div>
+        <span class="eyebrow">Land Dealflow OS · v1.14 buyer-first validation</span>
+        <h1>Call buyers before sellers.</h1>
+        <p>Validate the buy box first, then select seller parcels that match real demand. Seller skip tracing waits until a buyer says exactly what they want.</p>
+        <div class="hero-actions"><a class="button-link" href="${leadBuyer?.phone ? `tel:${h(leadBuyer.phone)}` : '#daily-calls'}">Call buyer</a><button id="export-daily-call-sheet" class="secondary" type="button">Export matched seller calls</button></div>
       </div>
       <aside class="hero-deal-card cash-card" aria-label="Selected money call">
-        <span>${h(heroCall.moneyStage || 'Money queue')}</span>
-        <h2>${h(heroCall.address || 'Generate a call-ready seller')}</h2>
-        <p>${h(heroCall.ownerPhone || heroCall.ownerEmail || 'contact missing')} · Buyer: ${h(heroCall.buyerName || topBuyer.name || 'not matched')}</p>
-        <div class="deal-strip two"><div><span>Start offer</span><strong>${formatMoney(heroCall.offerAnchor || 0)}</strong></div><div><span>Max offer</span><strong>${formatMoney(heroCall.maxOffer || 0)}</strong></div></div>
-        <div class="deal-strip two"><div><span>Buyer-backed exit</span><strong>${formatMoney(heroCall.buyerBacking?.maxPrice || 0)}</strong></div><div><span>Spread</span><strong>${formatMoney(heroCall.projectedSpread || 0)}</strong></div></div>
+        <span>${h(leadBuyer?.phone || leadBuyer?.website || 'Find buyer contact')}</span>
+        <h2>${h(leadBuyer?.name || 'Validate the first Lehigh buyer')}</h2>
+        <p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || 'Ask what lots they buy, max price, kill criteria, and closing speed.')}</p>
+        <div class="deal-strip two"><div><span>Validated buy boxes</span><strong>${h(buyerFirst.stats.validatedBuyBoxes)}</strong></div><div><span>Buyer contacts needed</span><strong>${h(buyerFirst.stats.buyerContactsNeeded)}</strong></div></div>
+        <div class="deal-strip two"><div><span>Seller matches</span><strong>${h(buyerFirst.stats.matchedSellerParcels)}</strong></div><div><span>Skip-trace batch</span><strong>${h(buyerFirst.stats.skipTraceAfterBuyerFit)}</strong></div></div>
       </aside>
     </div>
+    <section class="buyer-first-board" aria-label="Buyer-first buy box validation">
+      <article class="buyer-first-lane"><span class="eyebrow">Step 1 · Buyer demand</span><h2>Validate a real buy box.</h2><div class="buyer-first-list">${buyerRows}</div></article>
+      <article class="buyer-first-lane"><span class="eyebrow">Step 2 · Seller selection</span><h2>Only then choose parcels.</h2><div class="queue-card">${matchedRows}</div></article>
+      <article class="buyer-first-lane script-card"><span class="eyebrow">Buyer call script</span><h2>“Do you actively buy Lehigh infill lots?”</h2><p>Ask: preferred streets/areas, lot size, max price, road/utilities requirements, flood/wetland kills, closing timeline, and whether they want off-market matches sent weekly.</p></article>
+    </section>
     <section id="daily-calls" class="cashflow-board" aria-label="Daily cashflow operating board">
       <div class="money-queue-panel">
         <div class="daily-heading"><span class="eyebrow">Today’s calls</span><h2>One queue. No wandering.</h2></div>
@@ -489,12 +499,12 @@ function renderWorkspaceTools() {
         <div id="lead-engine-panel"></div>
       </details>
       <details class="machine-panel" open>
-        <summary><span>02</span><strong>Skip trace intake</strong><em>Upload matched seller phones</em></summary>
-        <div id="skip-trace-intake-panel"></div>
+        <summary><span>02</span><strong>Buyer-first buy box validation</strong><em>Call buyers before sellers</em></summary>
+        <div id="buyer-contact-intake-panel"></div>
       </details>
       <details class="machine-panel" open>
-        <summary><span>03</span><strong>Buyer contact validation</strong><em>Enrich builder signals into real contacts</em></summary>
-        <div id="buyer-contact-intake-panel"></div>
+        <summary><span>03</span><strong>Skip trace intake</strong><em>Only after buyer fit</em></summary>
+        <div id="skip-trace-intake-panel"></div>
       </details>
       <details class="machine-panel">
         <summary><span>04</span><strong>Import parcel data</strong><em>CSV, county exports, PropStream, LandGlide</em></summary>
@@ -555,7 +565,7 @@ function renderSkipTraceIntakePanel() {
   const sample = skipTrace[0];
   const matchedCount = asArray(workspace.parcels).filter(parcel => parcel.skipTraceImportedAt || parcel.realContact).length;
   target.innerHTML = `<div class="intake-grid">
-    <section class="intake-card hero-intake"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-traced phones. Matched owners become Today calls.</h3><p>Match by parcelId first, then owner name, then address. We never call public parcel records until a real phone/email is imported.</p><div class="deal-strip three"><div><span>Public leads waiting</span><strong>${h(skipTrace.length)}</strong></div><div><span>Matched in workspace</span><strong>${h(matchedCount)}</strong></div><div><span>First parcel</span><strong>${h(sample?.parcelId || 'none')}</strong></div></div></section>
+    <section class="intake-card hero-intake"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-traced phones only after buyer fit.</h3><p>Match by parcelId first, then owner name, then address. Buyer-first rule: validate demand, export a matched seller batch, then enrich owner contact.</p><details class="provider-tip"><summary>Where to get skip-traced phone numbers</summary><p>Use CSV-in / CSV-out providers: BatchSkipTracing, PropStream, REISkip, Launch Control skip trace, DealMachine skip trace, Skip Genie, DataZapp, or IDI / TLO / Accurint-style providers if you have compliant access.</p></details><div class="deal-strip three"><div><span>Public leads waiting</span><strong>${h(skipTrace.length)}</strong></div><div><span>Matched in workspace</span><strong>${h(matchedCount)}</strong></div><div><span>Example lead</span><strong>${h(sample ? 'ready' : 'none')}</strong></div></div></section>
     <section class="intake-card"><h4>CSV format</h4><pre>parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${h(sample?.parcelId || '274527L4110560090')},${h(sample?.ownerName || 'MONTEAN PETER & WENDY')},239-555-7722,owner@example.com,91</pre><textarea id="skip-trace-csv" rows="7" placeholder="parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence"></textarea><div class="button-row"><button id="load-skiptrace-template" class="secondary" type="button">Use first real lead</button><button id="import-skiptrace" type="button">Import skip trace</button><span id="skiptrace-status"></span></div></section>
     <section class="intake-card queue-card"><h4>Next owners to enrich</h4>${skipTrace.slice(0, 6).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.ownerName)}</b><span>${h(item.address)} · ${h(item.ownerMailingAddress)} · confidence ${h(item.confidence)}</span></div>`).join('') || '<p>No generated skip-trace queue found yet.</p>'}</section>
   </div>`;
@@ -567,7 +577,7 @@ function renderBuyerContactIntakePanel() {
   const buyerQueue = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()]);
   const sample = buyerQueue[0];
   target.innerHTML = `<div class="intake-grid">
-    <section class="intake-card hero-intake"><span class="eyebrow">Buyer validation</span><h3>Turn builder signals into real buyers.</h3><p>Enrich phone, email, website, contact name, max price, and buy box. The app keeps these as validation tasks until contact proof exists.</p><div class="deal-strip three"><div><span>Buyer contacts needed</span><strong>${h(buyerQueue.length)}</strong></div><div><span>Top signal</span><strong>${h(sample?.recentBuilds || 0)}</strong></div><div><span>Market</span><strong>${h(sample?.market || 'lehigh')}</strong></div></div></section>
+    <section class="intake-card hero-intake"><span class="eyebrow">Buyer-first validation</span><h3>Call builders. Capture the buy box. Then touch sellers.</h3><p>Find a real acquisition contact, ask max price and kill criteria, and only send parcels that match confirmed demand.</p><div class="deal-strip three"><div><span>Buyer contacts needed</span><strong>${h(buyerQueue.length)}</strong></div><div><span>Top signal</span><strong>${h(sample?.recentBuilds || 0)}</strong></div><div><span>Market</span><strong>${h(sample?.market || 'lehigh')}</strong></div></div></section>
     <section class="intake-card"><h4>CSV format</h4><pre>buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice\n${h(sample?.buyerId || 'lehigh-builder-career-financial-corp')},${h(sample?.name || 'CAREER FINANCIAL CORP')},Acquisitions,239-555-8822,deals@example.com,https://example.com,"Lehigh quarter-acre lots under $42k",42000</pre><textarea id="buyer-contact-csv" rows="7" placeholder="buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice"></textarea><div class="button-row"><button id="load-buyer-contact-template" class="secondary" type="button">Use top builder signal</button><button id="import-buyer-contact" type="button">Import buyer contact</button><span id="buyer-contact-status"></span></div></section>
     <section class="intake-card queue-card"><h4>Top builder signals</h4>${buyerQueue.slice(0, 8).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.name)}</b><span>${h(item.task)} · ${h(item.recentBuilds)} builds/signals · ${h(item.phone || item.website || 'find contact')}</span></div>`).join('') || '<p>All buyer contacts enriched.</p>'}</section>
   </div>`;

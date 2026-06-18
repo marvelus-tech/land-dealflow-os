@@ -45,6 +45,11 @@ import {
   generateSellerNetOfferScript,
   generateNeighborPrompt,
   buildOperatorChecklist,
+  buildTitleCompanyClosingDesk,
+  buildPermitVerifiedBuilders,
+  generateBuilderCallScript,
+  generateBuilderEmail,
+  getSourceAdapterChecklist,
   formatMoney,
 } from './core.mjs';
 
@@ -64,8 +69,21 @@ const seedBuyers = [
   { id: 'investor', market: 'lehigh', name: 'Evergreen Land Fund', type: 'Land Investor', recentBuilds: 0, scatteredLots: false, hasBuyBox: true, closeSpeedDays: 30, repeatDemand: 4, maxPrice: 35000, contactName: 'Sam Patel', phone: '305-555-0108', email: 'sam@evergreenland.example', website: 'https://evergreenland.example', acquisitionNotes: 'Backup buyer; only use when builder spread fails.', buyBox: 'Will buy at 60–70% market only; backup buyer' },
 ];
 
+
+const seedPermitRecords = [
+  { permitNumber: 'RES-2026-0418', permitStatus: 'Issued', permitType: 'New Single Family Residence', issueDate: '2026-05-27', jurisdiction: 'Lee County / Lehigh Acres', siteAddress: '1112 Grant Blvd, Lehigh Acres, FL', parcelId: '30-44-27-L1-10012.0010', contractorName: 'Precision Gulf Homes LLC', licenseNumber: 'CBC1267101', contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', sourceUrl: 'https://aca-prod.accela.com/LEECO/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'RES-2026-0391', permitStatus: 'Approved', permitType: 'New Residential / SFR', issueDate: '2026-04-30', jurisdiction: 'Lee County / Lehigh Acres', siteAddress: '928 Richmond Ave N, Lehigh Acres, FL', parcelId: '30-44-27-L1-09003.0000', contractorName: 'Precision Gulf Homes LLC', licenseNumber: 'CBC1267101', contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', sourceUrl: 'https://aca-prod.accela.com/LEECO/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'RES-2026-0337', permitStatus: 'Issued', permitType: 'Single Family Dwelling New Construction', issueDate: '2026-03-22', jurisdiction: 'Lee County / Lehigh Acres', siteAddress: '4422 12th St W, Lehigh Acres, FL', parcelId: '30-44-27-L2-21118.0000', contractorName: 'Precision Gulf Homes LLC', licenseNumber: 'CBC1267101', contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', sourceUrl: 'https://aca-prod.accela.com/LEECO/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'PB-2026-1182', permitStatus: 'Issued', permitType: 'New Single Family Residence', issueDate: '2026-05-18', jurisdiction: 'Palm Bay / Brevard County', siteAddress: '745 Jupiter Blvd SE, Palm Bay, FL', parcelId: '29-37-18-GO-00654.0-0012.00', contractorName: 'Holiday Builders Inc', licenseNumber: 'CBC1259874', contactName: 'Builder Acquisitions', phone: '321-555-0188', email: 'land@holiday.example', website: 'https://holidaybuilders.example', sourceUrl: 'https://aca-prod.accela.com/brevard/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'PB-2026-1044', permitStatus: 'Approved', permitType: 'Residential New Construction SFR', issueDate: '2026-04-12', jurisdiction: 'Palm Bay / Brevard County', siteAddress: '152 Emerson Dr NW, Palm Bay, FL', parcelId: '28-37-32-FV-00987.0-0021.00', contractorName: 'Holiday Builders Inc', licenseNumber: 'CBC1259874', contactName: 'Builder Acquisitions', phone: '321-555-0188', email: 'land@holiday.example', website: 'https://holidaybuilders.example', sourceUrl: 'https://aca-prod.accela.com/brevard/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'PB-2026-0889', permitStatus: 'Issued', permitType: 'New Single Family Dwelling', issueDate: '2026-02-20', jurisdiction: 'Palm Bay / Brevard County', siteAddress: '340 Waco Blvd SE, Palm Bay, FL', parcelId: '29-37-08-GR-00420.0-0007.00', contractorName: 'Holiday Builders Inc', licenseNumber: 'CBC1259874', contactName: 'Builder Acquisitions', phone: '321-555-0188', email: 'land@holiday.example', website: 'https://holidaybuilders.example', sourceUrl: 'https://aca-prod.accela.com/brevard/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'ORL-2026-2230', permitStatus: 'Issued', permitType: 'New Single Family Residence', issueDate: '2026-05-03', jurisdiction: 'Orange County / Orlando', siteAddress: '1880 Lake Pickett Rd, Orlando, FL', parcelId: '18-22-32-0000-00-055', contractorName: 'Craft Homes Group LLC', licenseNumber: 'CBC1272214', contactName: 'Lot Acquisitions', phone: '407-555-0122', email: 'acquisitions@crafthomes.example', website: 'https://crafthomes.example', sourceUrl: 'https://fasttrack.ocfl.net/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'ORL-2026-2091', permitStatus: 'Approved', permitType: 'Residential Building New Construction', issueDate: '2026-03-28', jurisdiction: 'Orange County / Orlando', siteAddress: '9205 Moss Preserve Pkwy, Orlando, FL', parcelId: '12-24-30-0000-00-117', contractorName: 'Craft Homes Group LLC', licenseNumber: 'CBC1272214', contactName: 'Lot Acquisitions', phone: '407-555-0122', email: 'acquisitions@crafthomes.example', website: 'https://crafthomes.example', sourceUrl: 'https://fasttrack.ocfl.net/', sourceRetrievedAt: '2026-06-18' },
+  { permitNumber: 'ORL-2026-1862', permitStatus: 'Issued', permitType: 'Single Family Dwelling New', issueDate: '2026-02-11', jurisdiction: 'Orange County / Orlando', siteAddress: '1416 Story Partin Rd, Orlando, FL', parcelId: '20-22-32-0000-00-018', contractorName: 'Craft Homes Group LLC', licenseNumber: 'CBC1272214', contactName: 'Lot Acquisitions', phone: '407-555-0122', email: 'acquisitions@crafthomes.example', website: 'https://crafthomes.example', sourceUrl: 'https://fasttrack.ocfl.net/', sourceRetrievedAt: '2026-06-18' },
+];
+
 const seedParcels = [
-  { id: 'parcel-1', market: 'lehigh', buyerId: 'precision', address: '123 Grant Blvd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Out-of-state owner', ownerName: 'Avery Santos', ownerPhone: '239-555-0131', ownerEmail: 'avery@example.com', ownerMailingAddress: '88 Pine St, Tampa FL 33602', skipTraceConfidence: 82, buyerContactName: 'Maya Chen', buyerPhone: '239-555-0100', buyerEmail: 'maya@precisiongulf.example', buyerWebsite: 'https://precisiongulf.example', acquisitionNotes: 'Clean Lehigh candidate; call first.', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 28500, crmStatus: 'New', nextFollowUp: '', notes: '', heldYears: 11, paid: 6200, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat', wildlifeFlag: false },
+  { id: 'parcel-1', market: 'lehigh', buyerId: 'precision', address: '123 Grant Blvd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Out-of-state owner', ownerName: 'Avery Santos', ownerPhone: '239-555-0131', ownerEmail: 'avery@example.com', titleCompanyName: 'Gulf Coast Title & Escrow', titleOfficer: 'Elena Ruiz', titleCompanyEmail: 'closings@gulfcoasttitle.example', titleFileNumber: 'GC-LEH-2408', assignmentFriendlyTitleCompany: true, sellerContractSigned: true, buyerContractSigned: true, closingCostsPayer: 'buyer', targetClosingDate: '2026-07-02', wireInstructionsStatus: 'secure-channel', hudStatus: 'review', ownerMailingAddress: '88 Pine St, Tampa FL 33602', skipTraceConfidence: 82, buyerContactName: 'Maya Chen', buyerPhone: '239-555-0100', buyerEmail: 'maya@precisiongulf.example', buyerWebsite: 'https://precisiongulf.example', acquisitionNotes: 'Clean Lehigh candidate; call first.', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 28500, crmStatus: 'New', nextFollowUp: '', notes: '', heldYears: 11, paid: 6200, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat', wildlifeFlag: false },
   { id: 'parcel-2', market: 'cape-coral', buyerId: 'sunbelt', address: '904 SW Canal Ter, Cape Coral, FL', lotSize: '0.23 ac', owner: 'Multiple-lot owner', buyerMaxPrice: 95000, lowestActiveListing: 112000, askingPrice: 76000, crmStatus: 'Researching', nextFollowUp: '', notes: 'Verify seawall/utilities premium.', heldYears: 8, paid: 21000, wetlands: 'review', floodZone: false, roadAccess: true, utilities: 'water+sewer', slope: 'flat', wildlifeFlag: false },
   { id: 'parcel-3', market: 'bentonville', buyerId: 'ozark', address: 'Lot 18 Ridge Line Dr, Bella Vista, AR', lotSize: '0.62 ac', owner: 'Absentee owner', buyerMaxPrice: 65000, lowestActiveListing: 74000, askingPrice: 54000, crmStatus: 'Researching', nextFollowUp: '', notes: 'Needs slope/perc review.', heldYears: 6, paid: 12000, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'unknown', slope: 'steep', wildlifeFlag: false },
   { id: 'parcel-4', market: 'lehigh', buyerId: 'precision', address: '711 Meadow Rd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Inherited owner', buyerMaxPrice: 42000, lowestActiveListing: 47000, askingPrice: 35000, crmStatus: 'Kill', nextFollowUp: '', notes: 'Killed by wetlands/access risk.', heldYears: 17, paid: 3000, wetlands: 'likely', floodZone: true, roadAccess: false, utilities: 'unknown', slope: 'flat', wildlifeFlag: true },
@@ -124,10 +142,11 @@ let generatedLeads = null;
 let weeklyMarketScout = null;
 let filter = 'all';
 let selectedParcelId = '';
+let selectedBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let activeView = (location.hash || '#today').replace('#', '') || 'today';
-const validViews = new Set(['today', 'deals', 'sources', 'machine']);
+const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
 function loadWorkspace() {
   try {
@@ -136,7 +155,7 @@ function loadWorkspace() {
   } catch (error) {
     console.warn('Could not load workspace', error);
   }
-  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels };
+  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [] };
 }
 
 function persistWorkspace() {
@@ -353,6 +372,220 @@ function renderOperatorChecklist(checklist, { compact = false } = {}) {
       <p>${h(step.detail)}</p>
     </article>`).join('')}</div>
   </section>`;
+}
+
+function statusTone(status) {
+  if (['closed-funded', 'buyer-funded', 'clear-to-close', 'title-packet-ready', 'file-opened', 'hud-review'].includes(status)) return 'good';
+  if (['blocked', 'assignment-friendly-title-needed'].includes(status)) return 'bad';
+  if (['missing-title-company', 'docs-out-for-signature', 'title-search'].includes(status)) return 'warn';
+  return 'neutral';
+}
+
+function renderTitleClosingDesk(parcel, buyer, options = {}) {
+  const desk = buildTitleCompanyClosingDesk(parcel, buyer);
+  const tone = statusTone(desk.status);
+  const done = desk.items.filter(item => item.status === 'clear').length;
+  const hudItems = [
+    ['Seller cash', desk.math.sellerPrice, 'Promised net to owner'],
+    ['Buyer cash', desk.math.buyerPrice, 'Builder/end-buyer wire amount'],
+    ['Assignment fee', desk.math.assignmentFee, 'Operator spread line on HUD'],
+    ['Closing costs est.', desk.math.closingCostsEstimate, `${desk.math.closingCostsPayer} pays`],
+  ];
+  const emailPreview = `${desk.email.subject}\n\n${desk.email.body}`;
+  return `<section class="title-closing-desk ${options.compact ? 'compact-title-desk' : ''}" aria-label="Title company closing desk">
+    <div class="title-orbital-hero">
+      <div class="title-hero-copy">
+        <span class="eyebrow">Title company closing desk</span>
+        <h2>Neutral escrow. Clean title. Assignment fee protected.</h2>
+        <p>The seller and buyer do not freestyle money movement. The title company holds escrow, clears title/taxes/liens, verifies notarized docs, and pays seller + assignor from the settlement statement.</p>
+        <div class="badge-stack">${badge(desk.label, tone)}${badge(`${desk.readiness}% ready`, tone)}${badge(`${done}/${desk.items.length} gates clear`, tone)}</div>
+      </div>
+      <aside class="title-command-card">
+        <span>Next title action</span>
+        <strong>${h(desk.nextAction)}</strong>
+        <p>${h(desk.titleCompany.name || 'No title company selected yet. Search assignment-friendly title companies near the property.')}</p>
+      </aside>
+    </div>
+
+    <div class="title-metric-strip">
+      ${hudItems.map(([label, value, detail]) => `<article><span>${h(label)}</span><b>${formatMoney(value)}</b><em>${h(detail)}</em></article>`).join('')}
+    </div>
+
+    <div class="title-desk-grid">
+      <article class="title-glass-card checklist-card">
+        <div class="card-kicker"><span>Packet gate</span><b>${h(desk.status)}</b></div>
+        <div class="title-checklist">
+          ${desk.items.map(item => `<div class="title-check ${h(item.status)}"><span>${item.status === 'clear' ? '✓' : item.status === 'review' ? '!' : '–'}</span><div><b>${h(item.label)}</b><p>${h(item.detail)}</p></div></div>`).join('')}
+        </div>
+      </article>
+      <article class="title-glass-card timeline-card">
+        <div class="card-kicker"><span>14-day close path</span><b>virtual-ready</b></div>
+        <div class="closing-timeline">
+          ${desk.timeline.map(step => `<div class="timeline-node"><span>${h(step.day)}</span><b>${h(step.label)}</b><p>${h(step.detail)}</p></div>`).join('')}
+        </div>
+      </article>
+    </div>
+
+    <div class="title-desk-grid lower">
+      <article class="title-glass-card email-card">
+        <div class="card-kicker"><span>Title packet email</span><b>copy-ready</b></div>
+        <div class="email-subject"><span>Subject</span><strong>${h(desk.email.subject)}</strong></div>
+        <pre>${h(emailPreview)}</pre>
+        <div class="button-row"><button type="button" class="secondary copy-title-email" data-copy-title-email>Copy title email</button><span class="title-email-status"></span></div>
+      </article>
+      <article class="title-glass-card title-principles-card">
+        <div class="card-kicker"><span>Seller explanation</span><b>trust script</b></div>
+        <blockquote>“The title company is the neutral closing company. They hold the buyer’s money in escrow, verify the paperwork, make sure title transfers legally, and then pay you at closing.”</blockquote>
+        <ul>
+          <li>Buyer wires title, not seller or assignor directly.</li>
+          <li>HUD must show seller cash, buyer cash, closing costs, and assignment fee correctly.</li>
+          <li>Wire instructions stay sensitive: secure channel + verbal verification.</li>
+          <li>Closed only means closed/funded/disbursed — not merely signed.</li>
+        </ul>
+      </article>
+    </div>
+  </section>`;
+}
+
+
+function getPermitBuilders() {
+  const generated = buildPermitVerifiedBuilders(workspace.permitRecords?.length ? workspace.permitRecords : seedPermitRecords, { minimumPermits: 3 });
+  const saved = new Map(asArray(workspace.permitBuilders).map(builder => [builder.builderId, builder]));
+  return generated.map(builder => ({ ...builder, ...(saved.get(builder.builderId) || {}) }));
+}
+
+function getSelectedBuilder(builders = getPermitBuilders()) {
+  if (selectedBuilderId) {
+    const found = builders.find(builder => builder.builderId === selectedBuilderId);
+    if (found) return found;
+  }
+  const fallback = builders[0];
+  selectedBuilderId = fallback?.builderId || '';
+  return fallback;
+}
+
+function renderBuilderListEnginePanel() {
+  const target = document.querySelector('#builder-list-panel');
+  if (!target) return;
+  const builders = getPermitBuilders();
+  const selected = getSelectedBuilder(builders) || {};
+  const email = generateBuilderEmail(selected);
+  const callScript = generateBuilderCallScript(selected);
+  const permits = asArray(selected.recentPermits).slice(0, 3);
+  const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
+    <span>${h(adapter.name)}</span>
+    <p>${h(adapter.use)}</p>
+    <small>${adapter.fields.map(field => h(field)).join(' · ')}</small>
+  </article>`).join('');
+  const tableRows = builders.map(builder => `<button type="button" class="builder-row ${builder.builderId === selected.builderId ? 'active' : ''}" data-select-builder="${h(builder.builderId)}">
+    <span><b>${h(builder.companyName)}</b><small>${h(builder.sourceJurisdictions?.join(' · ') || 'source pending')}</small></span>
+    <strong>${h(builder.qualifyingPermitCount)} permits</strong>
+    <em>${h(builder.activityTier || 'active')}</em>
+    <i>${h(builder.buyBoxStatus || 'unknown')}</i>
+  </button>`).join('');
+  const evidenceRows = permits.map((permit, index) => `<article class="permit-evidence-card">
+    <span>${String(index + 1).padStart(2, '0')} · ${h(permit.permitStatus)}</span>
+    <h4>${h(permit.permitType)}</h4>
+    <p>${h(permit.siteAddress || 'address hidden')} · ${h(permit.jurisdiction || 'jurisdiction pending')}</p>
+    <small>${h(permit.permitNumber)} · ${h(permit.issueDate)} · ${h(permit.licenseNumber || 'license pending')}</small>
+  </article>`).join('');
+
+  target.innerHTML = `<div class="builder-engine-shell">
+    <section class="builder-hero-panel">
+      <span class="eyebrow">Builder List Engine</span>
+      <h3>Permit-verified builders before seller calls.</h3>
+      <p>Surface builders with three or more recent approved/issued residential permits, then capture a real buy box before the OS promotes them to validated buyers.</p>
+      <div class="title-metric-strip">
+        <div><span>Verified builders</span><strong>${h(builders.length)}</strong></div>
+        <div><span>Evidence threshold</span><strong>3+</strong></div>
+        <div><span>Top score</span><strong>${h(builders[0]?.score || 0)}</strong></div>
+      </div>
+    </section>
+
+    <section class="builder-grid-main">
+      <aside class="builder-table-panel">
+        <div class="panel-kicker"><span>Permit table</span><b>active builder signals</b></div>
+        <div class="builder-table">${tableRows || '<p>No permit-verified builders yet.</p>'}</div>
+      </aside>
+
+      <article class="builder-detail-panel">
+        <div class="panel-kicker"><span>3-permit evidence drawer</span><b>${h(selected.companyName || 'Select builder')}</b></div>
+        <div class="builder-detail-header">
+          <div><h3>${h(selected.companyName || 'No builder selected')}</h3><p>${h(selected.phone || 'phone pending')} · ${h(selected.email || 'email pending')}</p></div>
+          ${badge(`${h(selected.buyBoxStatus || 'permitVerified')}`, selected.buyBoxStatus === 'captured' ? 'good' : 'warn')}
+        </div>
+        <div class="permit-evidence-grid">${evidenceRows}</div>
+      </article>
+    </section>
+
+    <section class="builder-two-col">
+      <article class="builder-form-panel">
+        <div class="panel-kicker"><span>Buy-box capture</span><b>promote only after criteria</b></div>
+        <div class="buybox-form" data-builder-form="${h(selected.builderId || '')}">
+          <label>Zip codes / subdivisions <input class="builder-zip" value="${h(selected.buyBox?.zipCodes?.join(', ') || '')}" placeholder="33971, 33972, Palm Bay NW" /></label>
+          <label>Lot size range <input class="builder-size" value="${h(selected.buyBox?.lotSizeRange || '')}" placeholder="0.23–0.29 ac" /></label>
+          <label>Max price <input class="builder-price" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="42000" /></label>
+          <label>Deal killers <input class="builder-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', '))}" placeholder="wetlands, no road, flood AE" /></label>
+          <label>Close speed / volume <input class="builder-speed" value="${h(selected.buyBox?.closeSpeedDays || '')}" placeholder="14 days / 5 lots month" /></label>
+          <label>Submission method <input class="builder-submit" value="${h(selected.buyBox?.submissionMethod || '')}" placeholder="email Maya with APN + map" /></label>
+          <button type="button" data-save-builder-buybox>Save buy box</button><span class="builder-save-status"></span>
+        </div>
+      </article>
+
+      <article class="builder-script-panel">
+        <div class="panel-kicker"><span>Copied scripts</span><b>call + email</b></div>
+        <h4>Call script</h4><pre>${h(callScript)}</pre>
+        <div class="button-row"><button type="button" class="secondary" data-copy-builder-script>Copy call script</button><span class="builder-script-status"></span></div>
+        <h4>Email</h4><div class="email-subject"><span>Subject</span><strong>${h(email.subject)}</strong></div><pre>${h(email.body)}</pre>
+        <div class="button-row"><button type="button" class="secondary" data-copy-builder-email>Copy email</button><span class="builder-email-status"></span></div>
+      </article>
+    </section>
+
+    <section class="builder-two-col">
+      <article class="builder-vendor-panel">
+        <div class="panel-kicker"><span>Landscaper/vendor sourcing</span><b>site-prep network</b></div>
+        <p>Use vendors as condition-checkers, clearing/grading quote sources, and builder referral nodes.</p>
+        <div class="vendor-chip-grid">
+          ${['land clearing', 'grading', 'excavation', 'forestry mulching', 'tree removal', 'site prep', 'drainage', 'driveway/culvert', 'irrigation'].map(item => `<span>${h(item)}</span>`).join('')}
+        </div>
+        <pre>Hey {{Name}}, this is {{YourName}}. I work with landowners and builders around {{City}}. I’m looking for reliable local people who can help with clearing, grading, site-prep, and quick condition checks on vacant lots. Are you taking on that kind of work, and do you cover {{Area}}?</pre>
+      </article>
+
+      <article class="builder-adapter-panel">
+        <div class="panel-kicker"><span>Source adapters</span><b>permit portals to normalize</b></div>
+        <div class="adapter-grid">${adapterRows}</div>
+      </article>
+    </section>
+  </div>`;
+}
+
+function renderClosingDeskPanel() {
+  const target = document.querySelector('#title-closing-panel');
+  if (!target) return;
+  const visible = getVisibleParcels();
+  const selected = getSelectedParcel(visible);
+  if (!selected) {
+    target.innerHTML = `<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title.</p></article>`;
+    return;
+  }
+  const buyer = getBuyer(selected);
+  const alternatives = scoredParcels().slice(0, 5).map((parcel, index) => {
+    const desk = buildTitleCompanyClosingDesk(parcel, getBuyer(parcel));
+    return `<button type="button" class="queue-item ${parcel.id === selected.id ? 'active' : ''}" data-select-parcel="${h(parcel.id)}">
+      <span>${String(index + 1).padStart(2, '0')}</span>
+      <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
+      <small>${h(desk.titleCompany.name || 'title company missing')} · ${h(desk.status)}</small>
+      <em>${formatMoney(desk.math.assignmentFee)} assignment fee · ${desk.readiness}% ready</em>
+      ${badge(desk.label, statusTone(desk.status))}
+    </button>`;
+  }).join('');
+  target.innerHTML = `<div class="closing-layout">
+    <aside class="deal-queue title-queue" aria-label="Closing file queue">
+      <div class="queue-header"><span class="eyebrow">Closing files</span><strong>${h(scoredParcels().length)} deals</strong></div>
+      <div class="queue-list">${alternatives}</div>
+    </aside>
+    <div>${renderTitleClosingDesk(selected, buyer)}</div>
+  </div>`;
 }
 
 function renderParcels() {
@@ -811,6 +1044,13 @@ function currentBuyerSendMemo() {
   return generateBuyerSendMemo(candidate, buyer, generateOfferPacket(candidate, buyer));
 }
 
+function currentTitleCompanyEmail() {
+  const candidate = currentMemoTarget();
+  if (!candidate) return null;
+  const desk = buildTitleCompanyClosingDesk(candidate, getBuyer(candidate));
+  return `${desk.email.subject}\n\n${desk.email.body}`;
+}
+
 function renderBuyerSendMemoCard(memo, { compact = false } = {}) {
   if (!memo) return '';
   return `<section class="buyer-send-memo ${compact ? 'compact' : ''}" aria-label="Buyer send memo">
@@ -873,6 +1113,15 @@ function bindEvents() {
     if (parcelButton) {
       selectedParcelId = parcelButton.dataset.selectParcel;
       renderParcels();
+      renderClosingDeskPanel();
+      renderBuilderListEnginePanel();
+      return;
+    }
+
+    const builderButton = event.target.closest('[data-select-builder]');
+    if (builderButton) {
+      selectedBuilderId = builderButton.dataset.selectBuilder;
+      renderBuilderListEnginePanel();
       return;
     }
 
@@ -1023,6 +1272,65 @@ function bindEvents() {
       });
     }
 
+    if (event.target.matches('[data-copy-title-email]')) {
+      const email = currentTitleCompanyEmail();
+      if (!email) return;
+      const status = event.target.closest('.title-closing-desk')?.querySelector('.title-email-status');
+      const write = navigator.clipboard?.writeText?.(email) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Title email copied.'; }).catch(() => {
+        downloadText(`land-dealflow-title-company-email-${new Date().toISOString().slice(0, 10)}.txt`, email, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+    }
+
+    if (event.target.matches('[data-save-builder-buybox]')) {
+      const form = event.target.closest('[data-builder-form]');
+      const builderId = form?.dataset.builderForm;
+      const builders = getPermitBuilders();
+      const builder = builders.find(item => item.builderId === builderId);
+      if (!builder) return;
+      const updated = {
+        ...builder,
+        buyBoxStatus: 'captured',
+        buyBox: {
+          zipCodes: String(form.querySelector('.builder-zip')?.value || '').split(',').map(item => item.trim()).filter(Boolean),
+          lotSizeRange: form.querySelector('.builder-size')?.value || '',
+          maxPrice: Number(form.querySelector('.builder-price')?.value || 0) || null,
+          dealKillers: String(form.querySelector('.builder-killers')?.value || '').split(',').map(item => item.trim()).filter(Boolean),
+          closeSpeedDays: form.querySelector('.builder-speed')?.value || '',
+          submissionMethod: form.querySelector('.builder-submit')?.value || '',
+        },
+      };
+      workspace = { ...workspace, permitBuilders: [...asArray(workspace.permitBuilders).filter(item => item.builderId !== builderId), updated] };
+      persistWorkspace();
+      const status = form.querySelector('.builder-save-status');
+      if (status) status.textContent = 'Buy box captured; builder promoted from permitVerified.';
+      renderBuilderListEnginePanel();
+    }
+
+    if (event.target.matches('[data-copy-builder-script]')) {
+      const builder = getSelectedBuilder();
+      const script = generateBuilderCallScript(builder);
+      const status = event.target.closest('.builder-script-panel')?.querySelector('.builder-script-status');
+      const write = navigator.clipboard?.writeText?.(script) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Call script copied.'; }).catch(() => {
+        downloadText(`land-dealflow-builder-call-script-${new Date().toISOString().slice(0, 10)}.txt`, script, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+    }
+
+    if (event.target.matches('[data-copy-builder-email]')) {
+      const builder = getSelectedBuilder();
+      const email = generateBuilderEmail(builder);
+      const payload = `Subject: ${email.subject}\n\n${email.body}`;
+      const status = event.target.closest('.builder-script-panel')?.querySelector('.builder-email-status');
+      const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Email copied.'; }).catch(() => {
+        downloadText(`land-dealflow-builder-email-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+    }
+
     if (event.target.matches('#import-json')) {
       const input = document.querySelector('#json-input');
       workspace = importWorkspace(input.value);
@@ -1031,7 +1339,7 @@ function bindEvents() {
     }
 
     if (event.target.matches('#reset-workspace')) {
-      workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels };
+      workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [] };
       persistWorkspace();
       renderAll();
     }
@@ -1113,6 +1421,8 @@ function renderAll() {
   renderBuyers();
   renderFilters();
   renderParcels();
+  renderClosingDeskPanel();
+  renderBuilderListEnginePanel();
   renderTopCallList();
   renderWeeklyMarketScout();
   renderLeadEnginePanel();

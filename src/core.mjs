@@ -406,6 +406,8 @@ export function importWorkspace(serialized) {
     markets: Array.isArray(parsed.markets) ? parsed.markets : [],
     buyers: Array.isArray(parsed.buyers) ? parsed.buyers : [],
     parcels: Array.isArray(parsed.parcels) ? parsed.parcels : [],
+    permitRecords: Array.isArray(parsed.permitRecords) ? parsed.permitRecords : [],
+    permitBuilders: Array.isArray(parsed.permitBuilders) ? parsed.permitBuilders : [],
   };
 }
 
@@ -1268,6 +1270,261 @@ export function generateOfferPacket(parcel = {}, buyer = {}, options = {}) {
 export function exportDealMemoMarkdown(packet = {}) {
   const risks = (packet.riskChecklist || []).map(item => `- **${item.label}**: ${item.status} — ${item.detail || ''}`).join('\n');
   return `# Deal Memo — ${packet.address || 'Unknown parcel'}\n\n## Economics\n- Seller offer: ${formatMoney(Number(packet.sellerOffer || 0))}\n- Assignment price: ${formatMoney(Number(packet.assignmentPrice || 0))}\n- Projected spread: ${formatMoney(Number(packet.projectedSpread || 0))}\n- Closing costs estimate: ${formatMoney(Number(packet.closingCosts || 0))}\n\n## Seller Offer Letter\n\n${packet.sellerOfferLetter || ''}\n\n## Buyer Assignment Summary\n\n${packet.buyerAssignmentSummary || ''}\n\n## Risk Checklist\n${risks || '- No risk checklist available'}\n`;
+}
+
+export const TITLE_CLOSING_STATUSES = [
+  'missing-title-company',
+  'assignment-friendly-title-needed',
+  'title-packet-ready',
+  'sent-to-title',
+  'receipt-confirmed',
+  'file-opened',
+  'title-search',
+  'clear-to-close',
+  'hud-review',
+  'docs-out-for-signature',
+  'buyer-funded',
+  'closed-funded',
+  'blocked',
+];
+
+function moneyValue(...values) {
+  for (const value of values) {
+    const numeric = Number(value);
+    if (Number.isFinite(numeric) && numeric > 0) return numeric;
+  }
+  return 0;
+}
+
+function truthyStatus(value) {
+  if (value === true) return true;
+  return /^(yes|true|verified|attached|sent|complete|confirmed|secure-channel)$/i.test(String(value || '').trim());
+}
+
+export function calculateAssignmentMath(parcel = {}, buyer = {}, packet = generateOfferPacket(parcel, buyer)) {
+  const sellerPrice = moneyValue(parcel.sellerContractPrice, parcel.cashToSeller, parcel.acceptedSellerPrice, packet.sellerOffer, parcel.askingPrice);
+  const buyerPrice = moneyValue(parcel.buyerContractPrice, parcel.cashFromBuyer, packet.assignmentPrice, parcel.buyerMaxPrice, buyer.maxPrice);
+  const closingCostsEstimate = moneyValue(parcel.closingCostEstimate, packet.closingCosts, buyer.closingCostsEstimate, 700);
+  const assignmentFee = Math.max(0, moneyValue(parcel.assignmentFee, buyerPrice - sellerPrice));
+  const netAfterCosts = Math.max(0, assignmentFee - closingCostsEstimate);
+  return {
+    sellerPrice,
+    buyerPrice,
+    assignmentFee,
+    closingCostsEstimate,
+    netAfterCosts,
+    closingCostsPayer: parcel.closingCostsPayer || buyer.closingCostsPayer || 'buyer',
+    spreadHealthy: assignmentFee >= Math.max(5000, buyerPrice * 0.12),
+  };
+}
+
+export function buildTitleClosingChecklist(parcel = {}, buyer = {}, options = {}) {
+  const packet = options.packet || generateOfferPacket(parcel, buyer);
+  const math = calculateAssignmentMath(parcel, buyer, packet);
+  const titleCompany = parcel.titleCompany || {};
+  const titleCompanyName = parcel.titleCompanyName || titleCompany.name || '';
+  const titleOfficer = parcel.titleOfficer || titleCompany.titleOfficer || '';
+  const titleEmail = parcel.titleCompanyEmail || titleCompany.email || '';
+  const buyerContact = parcel.buyerContactName || buyer.contactName || buyer.name || '';
+  const buyerEmail = parcel.buyerEmail || buyer.email || '';
+  const sellerContact = parcel.ownerName || parcel.owner || '';
+  const sellerPhoneOrEmail = parcel.ownerPhone || parcel.ownerEmail || '';
+  const assignmentFriendly = parcel.assignmentFriendlyTitleCompany ?? titleCompany.assignmentFriendly;
+  const items = [
+    { key: 'seller-contract', label: 'Seller purchase agreement executed', status: truthyStatus(parcel.sellerContractSigned || parcel.sellerContractStatus || parcel.titlePacketStatus) ? 'clear' : 'missing', detail: `${sellerContact || 'Seller'} at ${formatMoney(math.sellerPrice)}.` },
+    { key: 'buyer-contract', label: 'Buyer / assignment agreement executed', status: truthyStatus(parcel.buyerContractSigned || parcel.buyerContractStatus || parcel.titlePacketStatus) ? 'clear' : 'missing', detail: `${buyerContact || 'Buyer'} at ${formatMoney(math.buyerPrice)}.` },
+    { key: 'title-company', label: 'Assignment-friendly title company selected', status: titleCompanyName && assignmentFriendly !== false && String(assignmentFriendly || 'unknown') !== 'no' ? 'clear' : titleCompanyName ? 'review' : 'missing', detail: titleCompanyName ? `${titleCompanyName}${titleOfficer ? ` · ${titleOfficer}` : ''}` : 'Find/call local assignment-friendly title company.' },
+    { key: 'party-info', label: 'Seller, buyer, assignor contact info complete', status: sellerContact && sellerPhoneOrEmail && buyerContact && buyerEmail ? 'clear' : 'missing', detail: `Seller: ${sellerPhoneOrEmail || 'missing'} · Buyer: ${buyerEmail || 'missing'}` },
+    { key: 'closing-costs', label: 'Closing-cost payer captured', status: math.closingCostsPayer && math.closingCostsPayer !== 'unknown' ? 'clear' : 'missing', detail: `${math.closingCostsPayer || 'unknown'} · est. ${formatMoney(math.closingCostsEstimate)}` },
+    { key: 'wire-safety', label: 'Wire/payee process verified safely', status: truthyStatus(parcel.wireInstructionsStatus) ? 'clear' : 'review', detail: parcel.wireInstructionsStatus || 'Use secure title-approved channel + verbal verification.' },
+    { key: 'hud-review', label: 'HUD/settlement numbers ready for review', status: truthyStatus(parcel.hudReviewed || parcel.hudStatus) ? 'clear' : 'review', detail: `Seller ${formatMoney(math.sellerPrice)} · buyer ${formatMoney(math.buyerPrice)} · fee ${formatMoney(math.assignmentFee)}` },
+  ];
+  const clear = items.filter(item => item.status === 'clear').length;
+  const missing = items.filter(item => item.status === 'missing');
+  const review = items.filter(item => item.status === 'review');
+  let status = 'title-packet-ready';
+  if (!titleCompanyName) status = 'missing-title-company';
+  else if (assignmentFriendly === false || String(assignmentFriendly || '').toLowerCase() === 'no') status = 'assignment-friendly-title-needed';
+  else if (missing.length) status = 'assignment-friendly-title-needed';
+  if (truthyStatus(parcel.fileOpened || parcel.titleFileNumber)) status = 'file-opened';
+  if (truthyStatus(parcel.titleSearchStarted)) status = 'title-search';
+  if (truthyStatus(parcel.clearToClose)) status = 'clear-to-close';
+  if (truthyStatus(parcel.hudReviewed || parcel.hudStatus)) status = 'hud-review';
+  if (truthyStatus(parcel.buyerFunded)) status = 'buyer-funded';
+  if (truthyStatus(parcel.closedFunded || parcel.disbursementConfirmed)) status = 'closed-funded';
+  if (truthyStatus(parcel.titleBlocked)) status = 'blocked';
+  return {
+    status,
+    label: status.split('-').map(part => part[0].toUpperCase() + part.slice(1)).join(' '),
+    readiness: Math.round((clear / items.length) * 100),
+    clear,
+    missing: missing.map(item => item.label),
+    review: review.map(item => item.label),
+    items,
+    math,
+    packet,
+    titleCompany: { name: titleCompanyName, titleOfficer, email: titleEmail, fileNumber: parcel.titleFileNumber || titleCompany.fileNumber || '' },
+  };
+}
+
+export function generateTitleCompanyEmail(parcel = {}, buyer = {}, assignor = {}) {
+  const packet = generateOfferPacket(parcel, buyer);
+  const math = calculateAssignmentMath(parcel, buyer, packet);
+  const propertyAddress = parcel.address || packet.address || '<PROPERTY ADDRESS>';
+  const closingDate = parcel.targetClosingDate || parcel.closingDate || '<CLOSING DATE>';
+  const assignorName = assignor.name || parcel.assignorName || '<YOUR NAME>';
+  const assignorCompany = assignor.company || parcel.assignorCompany || 'Land Dealflow OS';
+  const assignorPhone = assignor.phone || parcel.assignorPhone || '<YOUR NUMBER>';
+  const assignorEmail = assignor.email || parcel.assignorEmail || '<YOUR EMAIL>';
+  const subject = `${propertyAddress} - Assignment`;
+  const body = `Hello,\n\nI hope you’re doing well. We are opening an assignment closing for this property. I included the seller, buyer, and assignor information below, along with the purchase/assignment contracts. Please confirm receipt of this email once you receive it. Thank you!\n\nPlease confirm your office can handle this assignment closing, who the assigned title officer is, the expected closing timeline, and when we should expect the preliminary HUD/settlement statement for review.\n\nWire/payee note: we will use your secure title-company-approved process and verbally verify instructions before funds move.\n\nClosing Date: ${closingDate}\nProperty: ${propertyAddress}${parcel.parcelId ? `\nParcel ID: ${parcel.parcelId}` : ''}\n\nSeller:\nName: ${parcel.ownerName || parcel.owner || '<SELLER NAME>'}\nPhone: ${parcel.ownerPhone || '<SELLER PHONE NUMBER>'}\nEmail: ${parcel.ownerEmail || '<SELLER EMAIL ADDRESS>'}\nCash to seller: ${formatMoney(math.sellerPrice)}\n\nAssignor:\nName: ${assignorName}\nCompany: ${assignorCompany}\nPhone: ${assignorPhone}\nEmail: ${assignorEmail}\nAssignment Fee: ${formatMoney(math.assignmentFee)}\n\nBuyer:\nName: ${parcel.buyerContactName || buyer.contactName || buyer.name || '<BUYER NAME>'}\nPhone Number: ${parcel.buyerPhone || buyer.phone || '<BUYER PHONE NUMBER>'}\nEmail: ${parcel.buyerEmail || buyer.email || '<BUYER EMAIL>'}\nCash from Buyer: ${formatMoney(math.buyerPrice)}\nClosing Costs Payer: ${math.closingCostsPayer}\n\nAttachments:\n- Seller purchase agreement\n- Buyer/assignment agreement\n- Any addenda\n- W-9/payee information if required\n\nThank you,\n${assignorName}\n${assignorCompany}`;
+  return { subject, body, math, packet };
+}
+
+export function buildTitleCompanyClosingDesk(parcel = {}, buyer = {}, options = {}) {
+  const checklist = buildTitleClosingChecklist(parcel, buyer, options);
+  const email = generateTitleCompanyEmail(parcel, buyer, options.assignor || {});
+  const timeline = [
+    { day: 'Day 0', label: 'Send packet', detail: 'Seller/buyer contracts + party info emailed to title.' },
+    { day: 'Day 1', label: 'Receipt confirmed', detail: 'File opened, title officer assigned, buyer EMD/funding instructions clarified.' },
+    { day: 'Days 2–7', label: 'Title/lien/tax search', detail: 'Title clears deed, liens, taxes, judgments, and proration.' },
+    { day: 'Days 7–10', label: 'HUD + final docs', detail: 'Review seller cash, buyer cash, closing costs, assignment fee.' },
+    { day: 'Days 10–14', label: 'Sign, fund, close', detail: 'Docs notarized/returned, buyer wires, title disburses.' },
+  ];
+  const nextAction = checklist.status === 'missing-title-company'
+    ? 'Find and call an assignment-friendly title company local to the property.'
+    : checklist.missing.length
+      ? `Complete: ${checklist.missing[0]}.`
+      : checklist.review.length
+        ? `Review: ${checklist.review[0]}.`
+        : checklist.status === 'closed-funded'
+          ? 'Archive the file and record the assignment fee collected.'
+          : 'Send the title packet and request receipt/file number.';
+  return { ...checklist, email, timeline, nextAction };
+}
+
+
+export function normalizeBuilderName(value = '') {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/\b(inc|llc|l\.l\.c|corp|corporation|company|co|builders?|homes?|construction|contractors?)\b/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+}
+
+export function isQualifyingResidentialPermit(record = {}) {
+  const type = String(record.permitType || record.type || record.workClass || record.description || '').toLowerCase();
+  const status = String(record.permitStatus || record.status || '').toLowerCase();
+  const includeType = /(new|single family|sfr|residential|dwelling|1 family)/.test(type)
+    && !/(roof|solar|hvac|mechanical|plumb|electric|pool|fence|shed|remodel|alteration|addition|demo|demolition|repair)/.test(type);
+  const includeStatus = /(approved|issued|final|completed|co issued|certificate)/.test(status)
+    && !/(cancel|expire|denied|void|withdraw|rejected)/.test(status);
+  return includeType && includeStatus;
+}
+
+function recentEnough(dateValue, months = 12, now = new Date()) {
+  const date = new Date(dateValue || 0);
+  if (Number.isNaN(date.getTime())) return false;
+  const cutoff = new Date(now);
+  cutoff.setMonth(cutoff.getMonth() - months);
+  return date >= cutoff;
+}
+
+export function buildPermitVerifiedBuilders(records = [], options = {}) {
+  const months = options.months || 12;
+  const minimumPermits = options.minimumPermits || 3;
+  const now = options.now ? new Date(options.now) : new Date();
+  const groups = new Map();
+
+  for (const record of records || []) {
+    if (!isQualifyingResidentialPermit(record)) continue;
+    const issueDate = record.issueDate || record.approvedDate || record.date || record.permitDate;
+    if (!recentEnough(issueDate, months, now)) continue;
+    const rawName = record.contractorName || record.builderName || record.applicantName || record.companyName || '';
+    const normalizedName = normalizeBuilderName(rawName || record.licenseNumber || 'unknown');
+    if (!normalizedName) continue;
+    const key = `${normalizedName}|${record.licenseNumber || ''}`;
+    const existing = groups.get(key) || {
+      builderId: `builder-${normalizedName.replace(/\s+/g, '-')}`,
+      companyName: rawName,
+      normalizedName,
+      licenseNumber: record.licenseNumber || '',
+      contactName: record.contactName || '',
+      phone: record.phone || '',
+      email: record.email || '',
+      website: record.website || '',
+      sourceJurisdictions: [],
+      recentPermits: [],
+      qualifyingPermitCount: 0,
+      contactConfidence: 0,
+      buyBoxStatus: 'unknown',
+      buyBox: {},
+      nextAction: 'call',
+    };
+    existing.companyName = existing.companyName || rawName;
+    existing.licenseNumber = existing.licenseNumber || record.licenseNumber || '';
+    existing.contactName = existing.contactName || record.contactName || '';
+    existing.phone = existing.phone || record.phone || '';
+    existing.email = existing.email || record.email || '';
+    existing.website = existing.website || record.website || '';
+    if (record.jurisdiction && !existing.sourceJurisdictions.includes(record.jurisdiction)) existing.sourceJurisdictions.push(record.jurisdiction);
+    existing.recentPermits.push({
+      permitNumber: record.permitNumber || record.id || '',
+      permitStatus: record.permitStatus || record.status || '',
+      permitType: record.permitType || record.type || '',
+      issueDate,
+      jurisdiction: record.jurisdiction || '',
+      siteAddress: record.siteAddress || record.address || '',
+      parcelId: record.parcelId || '',
+      contractorName: rawName,
+      licenseNumber: record.licenseNumber || '',
+      sourceUrl: record.sourceUrl || '',
+      sourceRetrievedAt: record.sourceRetrievedAt || '',
+    });
+    existing.qualifyingPermitCount = existing.recentPermits.length;
+    existing.contactConfidence = Math.min(100, (existing.phone ? 35 : 0) + (existing.email ? 35 : 0) + (existing.website ? 15 : 0) + (existing.licenseNumber ? 15 : 0));
+    existing.activityTier = existing.qualifyingPermitCount >= 25 ? 'production_builder' : existing.qualifyingPermitCount >= 6 ? 'local_regional' : 'small_active';
+    groups.set(key, existing);
+  }
+
+  return [...groups.values()]
+    .filter(builder => builder.qualifyingPermitCount >= minimumPermits)
+    .map(builder => ({ ...builder, score: scorePermitVerifiedBuilder(builder) }))
+    .sort((a, b) => b.score - a.score);
+}
+
+export function scorePermitVerifiedBuilder(builder = {}) {
+  const permitScore = Math.min(38, Number(builder.qualifyingPermitCount || 0) * 7);
+  const recencyScore = Math.min(22, (builder.recentPermits || []).filter(row => row.issueDate).length * 5);
+  const contactScore = Math.round((Number(builder.contactConfidence || 0) / 100) * 22);
+  const buyBoxScore = builder.buyBoxStatus === 'captured' ? 18 : builder.buyBoxStatus === 'contacted' ? 8 : 0;
+  return Math.min(100, permitScore + recencyScore + contactScore + buyBoxScore);
+}
+
+export function generateBuilderCallScript(builder = {}) {
+  const city = builder.primaryCity || builder.market || '{{City}}';
+  const name = builder.companyName || '{{CompanyName}}';
+  return `Hey ${builder.contactName || '{{Name}}'}, this is {{YourName}}. I saw ${name} has recent new-construction permits in ${city}. I source off-market residential lots for builders. Are you still buying land there? What zip codes, lot sizes, max price, and deal-breakers are you looking for right now? If I find lots that match your terms below your target price, can I send them over for a quick yes/no?`;
+}
+
+export function generateBuilderEmail(builder = {}) {
+  const city = builder.primaryCity || builder.market || '{{City}}';
+  const company = builder.companyName || '{{CompanyName}}';
+  const contact = builder.contactName || '{{BuilderNameOrContact}}';
+  const subject = `Discounted off-market lots in ${city}`;
+  const body = `Hi ${contact},\n\nI noticed ${company} has recent new-construction activity in ${city}. I work with landowners and source off-market residential lots for builders looking for discounted inventory.\n\nAre you currently buying lots in ${city} or nearby zip codes?\n\nIf yes, I’d like to capture your exact buy box so I only send deals that fit:\n\n- Zip codes / subdivisions you want:\n- Lot size range:\n- Max purchase price:\n- Road access / utility requirements:\n- Flood/wetlands/slope restrictions:\n- Target monthly lot volume:\n- Closing timeline:\n- Best submission contact:\n\nIf I find a lot that matches your terms and comes in below your target price, can I send it over for review?\n\nRegards,\n{{YourName}}\n{{Phone}}\n{{Company}}`;
+  return { subject, body };
+}
+
+export function getSourceAdapterChecklist() {
+  return [
+    { id: 'accela', name: 'Accela', use: 'Florida-style Citizen Access portals; search by record/date/contractor/parcel.', fields: ['record number', 'status', 'permit type', 'issue date', 'contractor license', 'site address'] },
+    { id: 'socrata', name: 'Socrata', use: 'Best-case open-data API; query issued residential permits by date and contractor.', fields: ['dataset id', 'where clause', 'contractor fields', 'API pagination'] },
+    { id: 'energov', name: 'EnerGov / Tyler', use: 'County/city permitting portals with reports or public search.', fields: ['permit type filter', 'status filter', 'date range', 'contractor/applicant'] },
+    { id: 'etrakit', name: 'eTRAKiT', use: 'Municipal permit search; often good for contractor and address lookups.', fields: ['project type', 'issued date', 'contractor', 'parcel/address'] },
+    { id: 'manual-csv', name: 'Manual CSV', use: 'Human/browser export fallback; normalize columns into permit evidence rows.', fields: ['permitNumber', 'permitStatus', 'permitType', 'issueDate', 'contractorName'] },
+  ];
 }
 
 export function formatMoney(value) {

@@ -12,6 +12,8 @@
     <nav class="app-tabs" aria-label="Primary workspace">
       <button class="tab-button" type="button" data-view="today">Today</button>
       <button class="tab-button" type="button" data-view="deals">Deals</button>
+      <button class="tab-button" type="button" data-view="builders">Builders</button>
+      <button class="tab-button" type="button" data-view="closing">Closing</button>
       <button class="tab-button" type="button" data-view="sources">Sources</button>
       <button class="tab-button" type="button" data-view="machine">Machine</button>
     </nav>
@@ -29,6 +31,24 @@
       </div>
       <div id="parcel-filters" class="filters" aria-label="Deal filters"></div>
       <div id="parcels" class="stack"></div>
+    </section>
+
+    <section id="builder-list-section" class="section app-panel" data-panel="builders">
+      <div class="section-heading compact-heading">
+        <span class="eyebrow">Builder list engine</span>
+        <h2>Permit-verified buyer demand before seller calls.</h2>
+        <p>Group recent approved residential permits into builder records, open the three-permit evidence drawer, capture the buy box, then turn scripts into calls and emails.</p>
+      </div>
+      <div id="builder-list-panel" class="stack"></div>
+    </section>
+
+    <section id="closing-section" class="section app-panel" data-panel="closing">
+      <div class="section-heading compact-heading">
+        <span class="eyebrow">Closing desk</span>
+        <h2>Title company packet, HUD gate, and funding timeline.</h2>
+        <p>Convert a buyer-backed seller contract into an assignment-ready escrow file with clean title, safe wire workflow, and settlement numbers visible before funding.</p>
+      </div>
+      <div id="title-closing-panel" class="stack"></div>
     </section>
 
     <section id="sources-hub" class="section app-panel" data-panel="sources">
@@ -53,7 +73,7 @@
   </main>
 
   <footer>
-    <p>Built for Okeito by IriSys. v1.20 weekly market scout — transcript criteria, rotating market candidate, and execution-first research actions.</p>
+    <p>Built for Okeito by IriSys. v1.22 builder list engine — permit-verified builders, buy-box capture, scripts, and source adapters.</p>
   </footer>
   <script type="module" src="./src/app.mjs"></script>
 </body>

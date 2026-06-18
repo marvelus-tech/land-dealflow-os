@@ -1,0 +1,765 @@
+{
+  "version": 1,
+  "generatedAt": "2026-06-18T23:08:37.372Z",
+  "purpose": "Enrich top 10 Knoxville permit-verified builder signals with lawful public business contact info and buyer buy-box capture scripts.",
+  "rules": [
+    "No personal/people-search scraping.",
+    "No guessed phones or emails.",
+    "Public permit activity is a demand signal, not a validated buyer buy box.",
+    "Promote only after geography, lot size, max price, close speed, package recipient, and kill criteria are captured."
+  ],
+  "summary": {
+    "total": 10,
+    "callablePublicBusinessContacts": 9,
+    "humanReview": 2,
+    "totalRecentBuildSignals": 328
+  },
+  "rows": [
+    {
+      "rank": 1,
+      "builderId": "knoxville-builder-ball-homes",
+      "name": "BALL HOMES",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://www.ballhomes.com/Locations/Knoxville/",
+      "phone": "865-862-4774",
+      "email": "customerservice@ballhomes.com",
+      "contactLabel": "Knoxville Area Office / customer service",
+      "contactStatus": "public-office-contact",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://www.ballhomes.com/contact/",
+      "sourceEvidence": "Official contact page lists Knoxville Area Office phone 865.862.4774 and public customer service email.",
+      "confidence": 90,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 74,
+      "topPermit": "25-B1284",
+      "topPermitAddress": "8828 KEENBERG LN",
+      "topPermitIssuedAt": "2025-04-16",
+      "permitEvidence": [
+        {
+          "permitNumber": "25-B1284",
+          "parcelId": "077NE032",
+          "address": "8828 KEENBERG LN",
+          "issuedAt": "2025-04-16",
+          "permitValue": 169125,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1270",
+          "parcelId": "077NE030",
+          "address": "8820 KEENBERG LN",
+          "issuedAt": "2025-04-16",
+          "permitValue": 314410,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1273",
+          "parcelId": "129JA040",
+          "address": "1709 HICKORY MEADOWS DR",
+          "issuedAt": "2025-04-16",
+          "permitValue": 270074,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 74 Knoxville/Knox public building permit rows. Latest sample 25-B1284 at 8828 KEENBERG LN issued 2025-04-16.",
+      "dominantAreas": [
+        "KEENBERG LN",
+        "MEADOWS DR",
+        "HOLLOW DR"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Knoxville Area Office / customer service at BALL HOMES. I track permit-verified land demand around Knoxville and noticed BALL HOMES has 74 recent public KGIS residential build signals, including 25-B1284 near 8828 KEENBERG LN.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit BALL HOMES?",
+        "body": "Hi Knoxville Area Office / customer service,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. BALL HOMES shows 74 recent residential build signals, including 25-B1284 near 8828 KEENBERG LN.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 2,
+      "builderId": "knoxville-builder-smithbilt-homes",
+      "name": "Smithbilt Homes",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://smithbilthomes.com/",
+      "phone": "865-694-8582",
+      "email": "",
+      "contactLabel": "Main office",
+      "contactStatus": "public-office-contact",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://smithbilthomes.com/contact/",
+      "sourceEvidence": "Official contact page lists 4909 Ball Rd, Knoxville TN and phone (865) 694-8582.",
+      "confidence": 92,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 70,
+      "topPermit": "25-B1211",
+      "topPermitAddress": "8362 LAKE VILLAGE CIR",
+      "topPermitIssuedAt": "2025-04-07",
+      "permitEvidence": [
+        {
+          "permitNumber": "25-B1211",
+          "parcelId": "027MB004",
+          "address": "8362 LAKE VILLAGE CIR",
+          "issuedAt": "2025-04-07",
+          "permitValue": 498449,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B0926",
+          "parcelId": "066EG032",
+          "address": "8127 GOLD BELL ST",
+          "issuedAt": "2025-03-31",
+          "permitValue": 362702,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B0997",
+          "parcelId": "066EG036",
+          "address": "4538 PEACE BELL AVE",
+          "issuedAt": "2025-03-21",
+          "permitValue": 446707,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 70 Knoxville/Knox public building permit rows. Latest sample 25-B1211 at 8362 LAKE VILLAGE CIR issued 2025-04-07.",
+      "dominantAreas": [
+        "VILLAGE CIR",
+        "BELL ST",
+        "BELL AVE"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Main office at Smithbilt Homes. I track permit-verified land demand around Knoxville and noticed Smithbilt Homes has 70 recent public KGIS residential build signals, including 25-B1211 near 8362 LAKE VILLAGE CIR.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit Smithbilt Homes?",
+        "body": "Hi Main office,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. Smithbilt Homes shows 70 recent residential build signals, including 25-B1211 near 8362 LAKE VILLAGE CIR.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 3,
+      "builderId": "knoxville-builder-turner-homes-llc",
+      "name": "Turner Homes, LLC",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://www.turnerhomes.com/",
+      "phone": "865-777-1700",
+      "email": "info@turnerhomes.com",
+      "contactLabel": "Knoxville office",
+      "contactStatus": "public-office-contact",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://www.turnerhomes.com/contact-us/",
+      "sourceEvidence": "Official contact page lists Knoxville Office (865)777-1700 and info@turnerhomes.com.",
+      "confidence": 96,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 40,
+      "topPermit": "25-B1291",
+      "topPermitAddress": "8543 TROUTMAN LN",
+      "topPermitIssuedAt": "2025-04-11",
+      "permitEvidence": [
+        {
+          "permitNumber": "25-B1291",
+          "parcelId": "105AJ083",
+          "address": "8543 TROUTMAN LN",
+          "issuedAt": "2025-04-11",
+          "permitValue": 438591,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1293",
+          "parcelId": "090HA023",
+          "address": "3335 SHINING STAR WAY",
+          "issuedAt": "2025-04-11",
+          "permitValue": 255160,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1294",
+          "parcelId": "090HA022",
+          "address": "3339 SHINING STAR WAY",
+          "issuedAt": "2025-04-11",
+          "permitValue": 255160,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 40 Knoxville/Knox public building permit rows. Latest sample 25-B1291 at 8543 TROUTMAN LN issued 2025-04-11.",
+      "dominantAreas": [
+        "TROUTMAN LN",
+        "STAR WAY",
+        "VISTA WAY"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Knoxville office at Turner Homes, LLC. I track permit-verified land demand around Knoxville and noticed Turner Homes, LLC has 40 recent public KGIS residential build signals, including 25-B1291 near 8543 TROUTMAN LN.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit Turner Homes, LLC?",
+        "body": "Hi Knoxville office,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. Turner Homes, LLC shows 40 recent residential build signals, including 25-B1291 near 8543 TROUTMAN LN.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 4,
+      "builderId": "knoxville-builder-cook-bros-homes",
+      "name": "Cook Bros Homes",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://www.cookbroshomes.com/",
+      "phone": "865-325-2500",
+      "email": "juliem@cookbroshomes.com",
+      "contactLabel": "Sales inquiries",
+      "contactStatus": "public-sales-contact",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://cookbroshomes.com/contact.php",
+      "sourceEvidence": "Official contact page lists Sales Inquiries 865-325-2500 and email juliem@cookbroshomes.com.",
+      "confidence": 96,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 30,
+      "topPermit": "25-B1350",
+      "topPermitAddress": "3725 CRIMSON CLOVER LN",
+      "topPermitIssuedAt": "2025-04-17",
+      "permitEvidence": [
+        {
+          "permitNumber": "25-B1350",
+          "parcelId": "050FB068",
+          "address": "3725 CRIMSON CLOVER LN",
+          "issuedAt": "2025-04-17",
+          "permitValue": 188707,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1347",
+          "parcelId": "050FB075",
+          "address": "3718 CRIMSON CLOVER LN",
+          "issuedAt": "2025-04-17",
+          "permitValue": 49713,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1349",
+          "parcelId": "050FB076",
+          "address": "3724 CRIMSON CLOVER LN",
+          "issuedAt": "2025-04-17",
+          "permitValue": 49713,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 30 Knoxville/Knox public building permit rows. Latest sample 25-B1350 at 3725 CRIMSON CLOVER LN issued 2025-04-17.",
+      "dominantAreas": [
+        "CLOVER LN"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Sales inquiries at Cook Bros Homes. I track permit-verified land demand around Knoxville and noticed Cook Bros Homes has 30 recent public KGIS residential build signals, including 25-B1350 near 3725 CRIMSON CLOVER LN.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit Cook Bros Homes?",
+        "body": "Hi Sales inquiries,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. Cook Bros Homes shows 30 recent residential build signals, including 25-B1350 near 3725 CRIMSON CLOVER LN.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 5,
+      "builderId": "knoxville-builder-maggie-watson-of-clayton-properties-group-inc-db",
+      "name": "Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://www.goodallhomes.com/communities/knoxville-area",
+      "phone": "615-989-6223",
+      "email": "",
+      "contactLabel": "Online sales / Knoxville area contact",
+      "contactStatus": "public-office-contact",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://www.goodallhomes.com/contact-us",
+      "sourceEvidence": "Official contact page lists Knoxville, TN area and Call Today 615-989-6223.",
+      "confidence": 90,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 26,
+      "topPermit": "BP-2025-84",
+      "topPermitAddress": "450 IVEY FARMS RD",
+      "topPermitIssuedAt": "2025-03-26",
+      "permitEvidence": [
+        {
+          "permitNumber": "BP-2025-84",
+          "parcelId": "151DD109",
+          "address": "450 IVEY FARMS RD",
+          "issuedAt": "2025-03-26",
+          "permitValue": 566205,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "BP-2025-80",
+          "parcelId": "151DD107",
+          "address": "462 IVEY FARMS RD",
+          "issuedAt": "2025-03-26",
+          "permitValue": 556585,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "BP-2025-79",
+          "parcelId": "151DD040",
+          "address": "429 IVEY FARMS RD",
+          "issuedAt": "2025-03-26",
+          "permitValue": 467644,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 26 Knoxville/Knox public building permit rows. Latest sample BP-2025-84 at 450 IVEY FARMS RD issued 2025-03-26.",
+      "dominantAreas": [
+        "FARMS RD"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Online sales / Knoxville area contact at Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES. I track permit-verified land demand around Knoxville and noticed Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES has 26 recent public KGIS residential build signals, including BP-2025-84 near 450 IVEY FARMS RD.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES?",
+        "body": "Hi Online sales / Knoxville area contact,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES shows 26 recent residential build signals, including BP-2025-84 near 450 IVEY FARMS RD.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 6,
+      "builderId": "knoxville-builder-robert-mohney-of-saddlebrook-properties-llc",
+      "name": "ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://www.saddlebrookproperties.com/",
+      "phone": "865-966-8700",
+      "email": "info@saddlebrookproperties.com",
+      "contactLabel": "Saddlebrook Properties office",
+      "contactStatus": "public-office-contact",
+      "sourceType": "official-business-site-plus-chamber",
+      "sourceUrl": "https://www.saddlebrookproperties.com/",
+      "sourceEvidence": "Public search snippets from official site and Knoxville Chamber list 122 Perimeter Park Road, phone (865) 966-8700, and info@saddlebrookproperties.com.",
+      "confidence": 88,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 26,
+      "topPermit": "BP-2025-266",
+      "topPermitAddress": "1325 WAGON HITCH RD",
+      "topPermitIssuedAt": "2025-05-13",
+      "permitEvidence": [
+        {
+          "permitNumber": "BP-2025-266",
+          "parcelId": "162BG105",
+          "address": "1325 WAGON HITCH RD",
+          "issuedAt": "2025-05-13",
+          "permitValue": 591500,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "BP-2025-267",
+          "parcelId": "162BG106",
+          "address": "1331 WAGON HITCH RD",
+          "issuedAt": "2025-05-08",
+          "permitValue": 608000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "BP-2025-208",
+          "parcelId": "162BF017",
+          "address": "923 SWEATLEAF LN",
+          "issuedAt": "2025-04-24",
+          "permitValue": 552750,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 26 Knoxville/Knox public building permit rows. Latest sample BP-2025-266 at 1325 WAGON HITCH RD issued 2025-05-13.",
+      "dominantAreas": [
+        "HITCH RD",
+        "SWEATLEAF LN",
+        "SAGE DR"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Saddlebrook Properties office at ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC. I track permit-verified land demand around Knoxville and noticed ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC has 26 recent public KGIS residential build signals, including BP-2025-266 near 1325 WAGON HITCH RD.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC?",
+        "body": "Hi Saddlebrook Properties office,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC shows 26 recent residential build signals, including BP-2025-266 near 1325 WAGON HITCH RD.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 7,
+      "builderId": "knoxville-builder-worley-builders-inc",
+      "name": "Worley Builders, Inc.",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://worleybuildersinc.com/",
+      "phone": "865-850-2117",
+      "email": "sales@worleybuildersinc.com",
+      "contactLabel": "Sales line",
+      "contactStatus": "public-sales-contact",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://worleybuildersinc.com/contact-us/",
+      "sourceEvidence": "Official contact page lists Office 865-922-2600, Sales 865-850-2117, info@worleybuildersinc.com, sales@worleybuildersinc.com.",
+      "confidence": 96,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 19,
+      "topPermit": "25-B1312",
+      "topPermitAddress": "3462 SPARKS SCENIC WAY",
+      "topPermitIssuedAt": "2025-04-15",
+      "permitEvidence": [
+        {
+          "permitNumber": "25-B1312",
+          "parcelId": "091GB032",
+          "address": "3462 SPARKS SCENIC WAY",
+          "issuedAt": "2025-04-15",
+          "permitValue": 243898,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1262",
+          "parcelId": "091 077",
+          "address": "6923 BALL RD",
+          "issuedAt": "2025-04-11",
+          "permitValue": 233246,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "25-B1177",
+          "parcelId": "091HF008",
+          "address": "7947 BROWNVUE RD",
+          "issuedAt": "2025-04-03",
+          "permitValue": 348803,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 19 Knoxville/Knox public building permit rows. Latest sample 25-B1312 at 3462 SPARKS SCENIC WAY issued 2025-04-15.",
+      "dominantAreas": [
+        "SCENIC WAY",
+        "BALL RD",
+        "BROWNVUE RD"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Sales line at Worley Builders, Inc.. I track permit-verified land demand around Knoxville and noticed Worley Builders, Inc. has 19 recent public KGIS residential build signals, including 25-B1312 near 3462 SPARKS SCENIC WAY.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit Worley Builders, Inc.?",
+        "body": "Hi Sales line,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. Worley Builders, Inc. shows 19 recent residential build signals, including 25-B1312 near 3462 SPARKS SCENIC WAY.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 8,
+      "builderId": "knoxville-builder-curbed-construction-llc",
+      "name": "CURBED CONSTRUCTION LLC",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "https://www.curbedconstruction.com/",
+      "phone": "423-488-6920",
+      "email": "info@curbedconstruction.com",
+      "contactLabel": "Main office",
+      "contactStatus": "public-office-contact-verify-market",
+      "sourceType": "official-business-site",
+      "sourceUrl": "https://www.curbedconstruction.com/contact",
+      "sourceEvidence": "Official contact page lists phone 423-488-6920 and info@curbedconstruction.com; Knoxville permit evidence suggests active project but office is Chattanooga.",
+      "confidence": 82,
+      "route": "buyerValidation",
+      "callable": true,
+      "recentBuilds": 15,
+      "topPermit": "IRC-NEW-25-0224",
+      "topPermitAddress": "2604 SEVIER AVE APT 101",
+      "topPermitIssuedAt": "2025-03-12",
+      "permitEvidence": [
+        {
+          "permitNumber": "IRC-NEW-25-0224",
+          "parcelId": "109BE001",
+          "address": "2604 SEVIER AVE APT 101",
+          "issuedAt": "2025-03-12",
+          "permitValue": 105000,
+          "workClass": "New",
+          "landUse": "Multifamily Residental",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "IRC-NEW-25-0226",
+          "parcelId": "109BE001",
+          "address": "2604 SEVIER AVE APT 103",
+          "issuedAt": "2025-03-12",
+          "permitValue": 105000,
+          "workClass": "New",
+          "landUse": "Multifamily Residental",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "IRC-NEW-25-0229",
+          "parcelId": "109BE001",
+          "address": "2604 SEVIER AVE APT 106",
+          "issuedAt": "2025-03-12",
+          "permitValue": 105000,
+          "workClass": "New",
+          "landUse": "Multifamily Residental",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 15 Knoxville/Knox public building permit rows. Latest sample IRC-NEW-25-0224 at 2604 SEVIER AVE APT 101 issued 2025-03-12.",
+      "dominantAreas": [
+        "APT 101",
+        "APT 103",
+        "APT 106"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Main office at CURBED CONSTRUCTION LLC. I track permit-verified land demand around Knoxville and noticed CURBED CONSTRUCTION LLC has 15 recent public KGIS residential build signals, including IRC-NEW-25-0224 near 2604 SEVIER AVE APT 101.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit CURBED CONSTRUCTION LLC?",
+        "body": "Hi Main office,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. CURBED CONSTRUCTION LLC shows 15 recent residential build signals, including IRC-NEW-25-0224 near 2604 SEVIER AVE APT 101.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 9,
+      "builderId": "knoxville-builder-davinci-design-and-contracting-llc",
+      "name": "DAVINCI DESIGN AND CONTRACTING LLC",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "",
+      "phone": "865-321-1310",
+      "email": "",
+      "contactLabel": "Directory-listed contractor phone",
+      "contactStatus": "directory-contact-human-review",
+      "sourceType": "contractor-directory",
+      "sourceUrl": "https://www.buildzoom.com/contractor/davinci-design-and-contracting",
+      "sourceEvidence": "BuildZoom contractor profile lists Davinci Design and Contracting in Knoxville and phone (865) 321-1310. No official business site verified in this pass.",
+      "confidence": 62,
+      "route": "humanReview",
+      "callable": true,
+      "recentBuilds": 15,
+      "topPermit": "IRC-NEW-24-0958",
+      "topPermitAddress": "1118 MERCER ST",
+      "topPermitIssuedAt": "2025-04-04",
+      "permitEvidence": [
+        {
+          "permitNumber": "IRC-NEW-24-0958",
+          "parcelId": "094CQ012",
+          "address": "1118 MERCER ST",
+          "issuedAt": "2025-04-04",
+          "permitValue": 175000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "IRC-NEW-25-0293",
+          "parcelId": "082CF017",
+          "address": "3218 LINDEN AVE",
+          "issuedAt": "2025-04-04",
+          "permitValue": 170000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "IRC-NEW-25-0175",
+          "parcelId": "082HD024",
+          "address": "1808 WHITTLE SPRINGS RD",
+          "issuedAt": "2025-03-04",
+          "permitValue": 145000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 15 Knoxville/Knox public building permit rows. Latest sample IRC-NEW-24-0958 at 1118 MERCER ST issued 2025-04-04.",
+      "dominantAreas": [
+        "MERCER ST",
+        "LINDEN AVE",
+        "SPRINGS RD"
+      ],
+      "nextAction": "Call public business contact and capture exact buy box; do not promote to validated buyer until price/geography/lot/kill criteria are captured.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Directory-listed contractor phone at DAVINCI DESIGN AND CONTRACTING LLC. I track permit-verified land demand around Knoxville and noticed DAVINCI DESIGN AND CONTRACTING LLC has 15 recent public KGIS residential build signals, including IRC-NEW-24-0958 near 1118 MERCER ST.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit DAVINCI DESIGN AND CONTRACTING LLC?",
+        "body": "Hi Directory-listed contractor phone,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. DAVINCI DESIGN AND CONTRACTING LLC shows 15 recent residential build signals, including IRC-NEW-24-0958 near 1118 MERCER ST.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    },
+    {
+      "rank": 10,
+      "builderId": "knoxville-builder-definity-construction-llc",
+      "name": "DEFINITY CONSTRUCTION LLC",
+      "market": "knoxville-tn",
+      "state": "TN",
+      "website": "",
+      "phone": "",
+      "email": "",
+      "contactLabel": "Contact not verified",
+      "contactStatus": "find-contact",
+      "sourceType": "permit-plus-directory-no-callable-contact",
+      "sourceUrl": "https://www.buildzoom.com/contractor/definity-construction-llc",
+      "sourceEvidence": "KGIS permits and directory/license pages confirm entity signal, but scrape returned noisy third-party contact ads and no reliable business-facing phone/email. Keep in research.",
+      "confidence": 45,
+      "route": "humanReview",
+      "callable": false,
+      "recentBuilds": 13,
+      "topPermit": "IRC-NEW-25-0170",
+      "topPermitAddress": "1908 AMHERST RD",
+      "topPermitIssuedAt": "2025-03-18",
+      "permitEvidence": [
+        {
+          "permitNumber": "IRC-NEW-25-0170",
+          "parcelId": "092MA01202",
+          "address": "1908 AMHERST RD",
+          "issuedAt": "2025-03-18",
+          "permitValue": 350000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "IRC-NEW-25-0049",
+          "parcelId": "092MA01203",
+          "address": "1904 AMHERST RD",
+          "issuedAt": "2025-02-21",
+          "permitValue": 350000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        },
+        {
+          "permitNumber": "IRC-NEW-25-0023",
+          "parcelId": "094CB025",
+          "address": "808 BELLEAIRE AVE",
+          "issuedAt": "2025-02-17",
+          "permitValue": 200000,
+          "workClass": "New",
+          "landUse": "Single Family Residential",
+          "sourceUrl": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0"
+        }
+      ],
+      "demandSignal": "Appears on 13 Knoxville/Knox public building permit rows. Latest sample IRC-NEW-25-0170 at 1908 AMHERST RD issued 2025-03-18.",
+      "dominantAreas": [
+        "AMHERST RD",
+        "BELLEAIRE AVE",
+        "WOODLAWN PIKE"
+      ],
+      "nextAction": "Find official business-facing contact before calling; keep permit signal in buyer-validation research.",
+      "buyBoxCapture": {
+        "geography": "ASK: exact Knoxville / Knox County zip codes, subdivisions, school zones, and no-go areas.",
+        "lotSize": "ASK: minimum/maximum lot size, frontage, infill vs subdivision lot preference.",
+        "maxPrice": "ASK: max raw lot price and price as % of expected finished-home sale.",
+        "utilitiesAccess": "ASK: sewer/septic, water, electric, road frontage and driveway constraints.",
+        "killCriteria": "ASK: slope, flood, wetlands, zoning, HOA, title, access, utility extension, soil/septic blockers.",
+        "closeSpeed": "ASK: decision-maker, due-diligence period, earnest money norm, and close timeline.",
+        "packageFields": "ASK: APN/parcel ID, map, dimensions, zoning, utilities, asking price, comps, seller terms, photos."
+      },
+      "callScript": "Hi, this is Okeito. I’m calling Contact not verified at DEFINITY CONSTRUCTION LLC. I track permit-verified land demand around Knoxville and noticed DEFINITY CONSTRUCTION LLC has 13 recent public KGIS residential build signals, including IRC-NEW-25-0170 near 1908 AMHERST RD.\nI’m not calling with a random property. I’m trying to understand your exact land buy box so I only send lots that fit.\nQuick questions:\n1. Which Knoxville / Knox County zip codes or subdivisions are you actively buying lots in right now?\n2. What lot size range works — infill, subdivision paper lots, quarter-acre, half-acre, acreage?\n3. What is your max lot price or price-to-finished-home ratio before the deal is dead?\n4. What kills a lot instantly: slope, flood, septic, sewer distance, no road frontage, HOA, title, utility extension, grade?\n5. How fast can you close if title and due diligence are clean?\n6. Who should receive lot packages — name, direct email, phone, and required fields?\nIf I find something matching that, do you want first look before I speak with other builders?",
+      "emailDraft": {
+        "subject": "Knoxville lots that fit DEFINITY CONSTRUCTION LLC?",
+        "body": "Hi Contact not verified,\n\nI’m tracking public KGIS permit-backed builder activity in Knoxville. DEFINITY CONSTRUCTION LLC shows 13 recent residential build signals, including IRC-NEW-25-0170 near 1908 AMHERST RD.\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nThanks,\nOkeito"
+      }
+    }
+  ]
+}

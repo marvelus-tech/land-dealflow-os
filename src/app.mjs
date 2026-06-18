@@ -120,6 +120,7 @@ const sourceBlueprint = {
 let workspace = loadWorkspace();
 let generatedLeads = null;
 let weeklyMarketScout = null;
+let knoxvilleBuyerCallSheet = null;
 let filter = 'all';
 let selectedParcelId = '';
 let selectedBuilderId = '';
@@ -244,7 +245,10 @@ function generatedCandidateParcels() {
 }
 
 function generatedCandidateBuyers() {
-  return asArray(generatedLeads?.snapshot?.buyers).filter(buyer => buyer.sourceId === 'lehigh-builder-signals-fdor-2025');
+  return asArray(generatedLeads?.snapshot?.buyers).filter(buyer => {
+    const source = String(buyer.sourceId || '').toLowerCase();
+    return source === 'lehigh-builder-signals-fdor-2025' || source.includes('builder') || source.includes('kgis') || buyer.evidenceType === 'permitVerified active-builder signal';
+  });
 }
 
 function rowState(row = {}) {
@@ -296,7 +300,7 @@ function zeroFabricationNotice(snapshot = {}, queues = {}) {
 }
 
 function enrichedBuilderContacts() {
-  return asArray(workspace.buyers).filter(buyer => buyer.contactEnrichedAt || buyer.sourceId === 'lehigh-builder-signals-fdor-2025');
+  return asArray(workspace.buyers).filter(buyer => buyer.contactEnrichedAt || buyer.sourceId === 'lehigh-builder-signals-fdor-2025' || buyer.market === 'knoxville-tn');
 }
 
 function scoredParcels() {
@@ -497,10 +501,69 @@ function getSelectedBuilder(builders = getPermitBuilders()) {
   return fallback;
 }
 
+function renderKnoxvilleBuyerCallSheet() {
+  const rows = asArray(knoxvilleBuyerCallSheet?.rows);
+  if (!rows.length) {
+    return `<section class="buyer-war-room loading"><span class="eyebrow">Knoxville Buyer War Room</span><h3>Buyer call sheet loading.</h3><p>Run <code>npm run enrich:knoxville-builders</code> if the generated call sheet is missing.</p></section>`;
+  }
+  const summary = knoxvilleBuyerCallSheet.summary || {};
+  const primary = rows[0] || {};
+  const rowCards = rows.map(row => {
+    const tone = row.route === 'humanReview' ? 'warn' : 'good';
+    const contact = [row.phone, row.email].filter(Boolean).join(' · ') || 'No reliable public contact yet';
+    return `<article class="buyer-call-card ${row.route === 'humanReview' ? 'needs-review' : ''}">
+      <div class="buyer-call-rank"><span>${String(row.rank).padStart(2, '0')}</span><b>${h(row.recentBuilds)}</b><small>permit signals</small></div>
+      <div class="buyer-call-main">
+        <div class="buyer-call-title"><h4>${h(row.name)}</h4>${badge(row.route === 'humanReview' ? 'human review' : 'call to validate', tone)}</div>
+        <p>${h(contact)}</p>
+        <div class="buyer-call-meta">
+          <span>${safeLink(row.sourceUrl, row.sourceType || 'source')}</span>
+          <span>${h(row.contactStatus)}</span>
+          <span>${h(row.confidence)} confidence</span>
+        </div>
+        <details class="call-script-drawer">
+          <summary>Open buy-box script + source proof</summary>
+          <div class="script-grid">
+            <div><h5>Public proof</h5><p>${h(row.sourceEvidence)}</p><p>${h(row.demandSignal)}</p></div>
+            <div><h5>Buy-box questions</h5><ul>${Object.values(row.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('')}</ul></div>
+          </div>
+          <pre>${h(row.callScript)}</pre>
+        </details>
+      </div>
+    </article>`;
+  }).join('');
+
+  return `<section class="buyer-war-room" aria-label="Knoxville buyer call sheet">
+    <div class="war-room-hero">
+      <div>
+        <span class="eyebrow">Knoxville Buyer War Room</span>
+        <h3>Call builders with proof. Capture the buy box. Then touch sellers.</h3>
+        <p>Top 10 KGIS permit-verified builders enriched with lawful public business contacts. Every row stays buyer-validation until exact geography, lot size, max price, close speed, package recipient, and deal killers are captured.</p>
+      </div>
+      <aside>
+        <span>First call</span>
+        <b>${h(primary.name)}</b>
+        <p>${h(primary.phone || primary.email || 'find contact first')} · ${h(primary.recentBuilds || 0)} permit signals</p>
+        ${safeLink('data/real/knoxville/buyer_call_sheet.csv', 'Download CSV', 'war-room-link')}
+      </aside>
+    </div>
+    <div class="war-room-metrics">
+      <div><span>Call sheet rows</span><strong>${h(summary.total || rows.length)}</strong></div>
+      <div><span>Public business contacts</span><strong>${h(summary.callablePublicBusinessContacts || 0)}</strong></div>
+      <div><span>Human review</span><strong>${h(summary.humanReview || 0)}</strong></div>
+      <div><span>Recent build signals</span><strong>${h(summary.totalRecentBuildSignals || 0)}</strong></div>
+    </div>
+    <div class="buyer-call-sheet-list">${rowCards}</div>
+  </section>`;
+}
+
 function renderBuilderListEnginePanel() {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
   const builders = getPermitBuilders();
+  const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
+  const displayedBuilderCount = builders.length || callSheetRows.length;
+  const displayedTopSignal = builders[0]?.score || callSheetRows[0]?.recentBuilds || 0;
   const selected = getSelectedBuilder(builders) || {};
   const email = generateBuilderEmail(selected);
   const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
@@ -550,11 +613,13 @@ function renderBuilderListEnginePanel() {
       <h3>Permit-verified builders before seller calls.</h3>
       <p>Surface builders with three or more recent approved/issued residential permits, then capture a real buy box before the OS promotes them to validated buyers.</p>
       <div class="title-metric-strip">
-        <div><span>Verified builders</span><strong>${h(builders.length)}</strong></div>
+        <div><span>Verified builders</span><strong>${h(displayedBuilderCount)}</strong></div>
         <div><span>Evidence threshold</span><strong>3+</strong></div>
-        <div><span>Top score</span><strong>${h(builders[0]?.score || 0)}</strong></div>
+        <div><span>Top signal</span><strong>${h(displayedTopSignal)}</strong></div>
       </div>
     </section>
+
+    ${renderKnoxvilleBuyerCallSheet()}
 
     <section class="builder-grid-main">
       <aside class="builder-table-panel">
@@ -962,6 +1027,16 @@ async function loadGeneratedLeads() {
     generatedLeads = await response.json();
   } catch (error) {
     generatedLeads = { error: error.message };
+  }
+}
+
+async function loadKnoxvilleBuyerCallSheet() {
+  try {
+    const response = await fetch('data/real/knoxville/buyer_call_sheet.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`knoxville call sheet ${response.status}`);
+    knoxvilleBuyerCallSheet = await response.json();
+  } catch (error) {
+    knoxvilleBuyerCallSheet = { error: error.message, rows: [] };
   }
 }
 
@@ -1524,4 +1599,5 @@ function renderAll() {
 bindEvents();
 renderAll();
 loadGeneratedLeads().then(renderAll);
+loadKnoxvilleBuyerCallSheet().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);

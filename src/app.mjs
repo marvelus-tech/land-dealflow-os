@@ -12,6 +12,7 @@ import {
   applySkipTraceImport,
   applyBuyerContactImport,
   CALL_OUTCOMES,
+  BUYER_FEEDBACK_REASONS,
   exportDailyCallSheetCsv,
   exportWorkspace,
   importWorkspace,
@@ -34,8 +35,10 @@ import {
   calculateBuyerScorecard,
   captureBuyBox,
   addBuyerCallNote,
+  applyBuyerFeedback,
   buildDealFitMatrix,
   buildBuyerFeedbackLoop,
+  recommendNextSellerCallsFromFeedback,
   calculateBuyBoxCompleteness,
   calculateSellerMotivation,
   calculateContractReadiness,
@@ -423,6 +426,7 @@ function renderParcels() {
       </div>
       ${renderOperatorChecklist(operatorChecklist)}
       ${renderBuyerSendMemoCard(buyerMemo)}
+      ${renderBuyerFeedbackCapture(selected, buyer)}
       <div class="detail-grid">
         <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'contact missing')}</p></div>
         <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
@@ -511,6 +515,7 @@ function renderCommandCenter() {
     </section>
     ${todayChecklist ? renderOperatorChecklist(todayChecklist, { compact: true }) : ''}
     ${todayBuyerMemo ? renderBuyerSendMemoCard(todayBuyerMemo, { compact: true }) : ''}
+    ${heroCall.id ? renderBuyerFeedbackCapture(heroCall, getBuyer(heroCall)) : ''}
     <section id="daily-calls" class="cashflow-board" aria-label="Daily cashflow operating board">
       <div class="money-queue-panel">
         <div class="daily-heading"><span class="eyebrow">Today’s calls</span><h2>One queue. No wandering.</h2></div>
@@ -730,7 +735,7 @@ function renderBuyerValidationPanel() {
   target.innerHTML = `<div class="buyer-validation-grid">
     <div class="scorecard-list"><h4>Buyer scorecards</h4>${scorecards.map(card => `<div class="buyer-score-row grade-${h(card.grade)}"><b>${h(card.grade)} · ${h(card.name || 'buyer')} · ${card.score}</b><span>${h(card.signals.join(', ') || 'needs validation')}</span></div>`).join('')}</div>
     <div class="fit-matrix"><h4>Deal-fit matrix</h4>${matrix.map(row => `<div class="fit-row ${h(row.fit)}"><b>${h(row.fit)} · ${h(row.address || row.parcelId)} → ${h(row.buyerName)}</b><span>${row.score}/100${row.misses.length ? ` · misses: ${h(row.misses.join(', '))}` : ''}</span></div>`).join('') || '<p>No exact buy boxes captured yet.</p>'}</div>
-    <div class="feedback-loop"><h4>Feedback loop</h4><div class="deal-strip"><div><span>Total feedback</span><strong>${loop.totalFeedback}</strong></div><div><span>Accepted</span><strong>${loop.accepted}</strong></div><div><span>Rejected</span><strong>${loop.rejected}</strong></div></div><p>${h(loop.lessons || 'No rejection lessons captured yet.')}</p></div>
+    <div class="feedback-loop"><h4>Feedback loop</h4><div class="deal-strip"><div><span>Total feedback</span><strong>${loop.totalFeedback}</strong></div><div><span>Accepted</span><strong>${loop.accepted}</strong></div><div><span>Rejected</span><strong>${loop.rejected}</strong></div><div><span>Maybe</span><strong>${loop.maybe}</strong></div></div><p>${h(loop.lessons || 'No rejection lessons captured yet.')}</p><strong>${h(loop.tightening)}</strong></div>
     <div class="call-notes"><h4>Latest call notes</h4>${(workspace.buyers || []).flatMap(b => (b.callNotes || []).map(n => ({ buyer: b.name, ...n }))).slice(0, 5).map(note => `<div class="note-row"><b>${h(note.date || '')} · ${h(note.buyer)}</b><span>${h(note.outcome || '')}: ${h(note.note || '')}</span></div>`).join('') || '<p>No buyer call notes captured yet.</p>'}</div>
   </div>`;
 }
@@ -773,6 +778,23 @@ function renderBuyerSendMemoCard(memo, { compact = false } = {}) {
     <div class="deal-strip four"><div><span>Assignment fee path</span><strong>${formatMoney(memo.assignmentFee)}</strong></div><div><span>Fit score</span><strong>${h(memo.fit?.score || 0)}/100</strong></div><div><span>Contract gate</span><strong>${h(memo.contract?.label || 'unknown')}</strong></div><div><span>Close probability</span><strong>${h(memo.checklist?.probability || 0)}%</strong></div></div>
     <pre class="buyer-memo-preview">${h(memo.message.slice(0, compact ? 720 : 1400))}</pre>
     <div class="button-row"><button type="button" class="copy-buyer-send-memo">Copy memo</button><button type="button" class="secondary download-buyer-send-memo">Download memo</button><span class="buyer-send-memo-status"></span></div>
+  </section>`;
+}
+
+function renderBuyerFeedbackCapture(parcel, buyer) {
+  const loop = buildBuyerFeedbackLoop(workspace.buyers || []);
+  const recommendations = recommendNextSellerCallsFromFeedback(workspace.parcels || [], workspace.buyers || []).slice(0, 3);
+  return `<section class="buyer-feedback-capture" data-feedback-parcel-id="${h(parcel.id)}" aria-label="Buyer feedback capture">
+    <div class="feedback-head"><span class="eyebrow">Buyer feedback loop</span><h3>Capture the buyer answer. Let rejection rewrite tomorrow’s calls.</h3><p>${h(loop.tightening)}</p></div>
+    <div class="feedback-form-grid">
+      <label>Buyer response<select class="buyer-feedback-decision"><option value="accept">yes / wants it</option><option value="maybe">maybe / needs review</option><option value="reject">no / reject</option></select></label>
+      <label>Reason<select class="buyer-feedback-reason">${BUYER_FEEDBACK_REASONS.map(reason => `<option value="${h(reason)}">${h(reason)}</option>`).join('')}</select></label>
+      <label>Buyer max price<input class="buyer-feedback-max" type="number" min="0" step="500" placeholder="${h(buyer.maxPrice || parcel.buyerMaxPrice || '')}"></label>
+      <label class="feedback-note-label">Exact words / next constraint<textarea class="buyer-feedback-note" rows="2" placeholder="Too much wetland risk; only send paved-road lots under $38k..."></textarea></label>
+      <button class="save-buyer-feedback" type="button">Save buyer feedback</button><span class="buyer-feedback-status"></span>
+    </div>
+    <div class="feedback-summary"><div><span>Total feedback</span><b>${loop.totalFeedback}</b></div><div><span>Accepted</span><b>${loop.accepted}</b></div><div><span>Rejected</span><b>${loop.rejected}</b></div><div><span>Maybe</span><b>${loop.maybe}</b></div></div>
+    <div class="next-call-guidance"><h4>What to call next</h4>${recommendations.map(item => `<div><b>${h(item.address)} · ${h(item.adjustedScore)}/100</b><span>${h(item.nextCallReason)}</span></div>`).join('') || '<p>No recommendations yet.</p>'}</div>
   </section>`;
 }
 
@@ -972,6 +994,22 @@ function bindEvents() {
       workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels };
       persistWorkspace();
       renderAll();
+    }
+
+    if (event.target.matches('.save-buyer-feedback')) {
+      const panel = event.target.closest('.buyer-feedback-capture');
+      const parcelId = panel?.dataset.feedbackParcelId;
+      workspace = applyBuyerFeedback(workspace, parcelId, {
+        decision: panel.querySelector('.buyer-feedback-decision')?.value || 'reject',
+        reason: panel.querySelector('.buyer-feedback-reason')?.value || 'other',
+        maxPrice: panel.querySelector('.buyer-feedback-max')?.value || '',
+        note: panel.querySelector('.buyer-feedback-note')?.value || '',
+      });
+      persistWorkspace();
+      const status = panel.querySelector('.buyer-feedback-status');
+      if (status) status.textContent = 'Buyer feedback saved; next-call guidance recalculated.';
+      renderAll();
+      return;
     }
 
     if (event.target.matches('.save-crm')) {

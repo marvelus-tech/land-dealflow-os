@@ -28,8 +28,10 @@ import {
   calculateBuyerScorecard,
   captureBuyBox,
   addBuyerCallNote,
+  applyBuyerFeedback,
   buildDealFitMatrix,
   buildBuyerFeedbackLoop,
+  recommendNextSellerCallsFromFeedback,
   buildOperatorChecklist,
   generateBuyerSendMemo,
   exportBuyerSendMemoMarkdown,
@@ -498,6 +500,23 @@ function testBuyerSendMemoIncludesDecisionDeadlineAndAssignmentPath() {
   assert.ok(markdown.includes('Close probability'));
 }
 
+function testBuyerFeedbackCaptureTightensNextSellerCalls() {
+  const workspace = {
+    buyers: [{ id: 'precision', name: 'Precision Gulf Homes', maxPrice: 42000, exactBuyBox: { avoidWetlands: true, requiredRoadAccess: true, maxPrice: 42000 }, feedback: [] }],
+    parcels: [
+      { id: 'clean', buyerId: 'precision', address: 'Clean Paved Lot', ownerPhone: '239-555-0100', buyerMaxPrice: 42000, askingPrice: 26000, roadAccess: true, wetlands: 'none', utilities: 'nearby', heldYears: 12, paid: 5000 },
+      { id: 'wet', buyerId: 'precision', address: 'Wetland Lot', ownerPhone: '239-555-0101', buyerMaxPrice: 42000, askingPrice: 26000, roadAccess: true, wetlands: 'likely', utilities: 'nearby', heldYears: 12, paid: 5000 },
+    ],
+  };
+  const updated = applyBuyerFeedback(workspace, 'wet', { decision: 'reject', reason: 'wetlands', note: 'Do not send wetland review lots.' });
+  const loop = buildBuyerFeedbackLoop(updated.buyers);
+  assert.equal(loop.rejected, 1);
+  assert.ok(loop.tightening.includes('wetland'));
+  const recommended = recommendNextSellerCallsFromFeedback(updated.parcels, updated.buyers);
+  assert.equal(recommended[0].id, 'clean');
+  assert.ok(recommended.find(item => item.id === 'wet').feedbackPenalty > 0);
+}
+
 testOfferPacketComputesSellerOfferAndAssignmentSpread();
 testSellerOfferLetterIncludesContingenciesAndCloseTerms();
 testBuyerAssignmentSummaryShowsRiskAndSpread();
@@ -505,6 +524,7 @@ testRiskChecklistFlagsMissingAndFatalItems();
 testDealMemoMarkdownExportsFullPacket();
 testOperatorChecklistTracksCallToCloseFlow();
 testBuyerSendMemoIncludesDecisionDeadlineAndAssignmentPath();
+testBuyerFeedbackCaptureTightensNextSellerCalls();
 
 testOutreachCallScriptUsesParcelAndBuyerContext();
 testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead();

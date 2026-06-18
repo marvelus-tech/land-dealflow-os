@@ -98,6 +98,10 @@ export const CALL_OUTCOMES = {
   dead_lead: { label: 'Dead lead', crmStatus: 'Dead', followUpDays: null, note: 'Dead lead. Remove from active call queue.' },
 };
 
+export const BUYER_FEEDBACK_REASONS = [
+  'price', 'wetlands', 'access', 'utilities', 'street', 'lot-size', 'title', 'timing', 'accepted', 'other'
+];
+
 export function parseCsvRecords(csvText) {
   const text = String(csvText || '').replace(/^\ufeff/, '').trim();
   if (!text) return [];
@@ -983,7 +987,7 @@ export function captureBuyBox(buyer = {}, criteria = {}) {
 
 export function addBuyerCallNote(buyer = {}, note = {}) {
   const callNotes = [{ date: note.date || new Date().toISOString().slice(0, 10), contact: note.contact || '', outcome: note.outcome || 'unknown', note: note.note || '' }, ...(buyer.callNotes || [])];
-  const feedback = note.dealFeedback ? [{ ...note.dealFeedback, date: note.date || '' }, ...(buyer.feedback || [])] : (buyer.feedback || []);
+  const feedback = note.dealFeedback ? [{ ...normalizeBuyerFeedback(note.dealFeedback), date: note.date || new Date().toISOString().slice(0, 10) }, ...(buyer.feedback || [])] : (buyer.feedback || []);
   const validation = { ...(buyer.validation || {}) };
   validation.calls = Number(validation.calls || 0) + 1;
   if (note.outcome === 'answered') validation.answered = Number(validation.answered || 0) + 1;
@@ -993,6 +997,55 @@ export function addBuyerCallNote(buyer = {}, note = {}) {
     if (note.dealFeedback.decision === 'reject') validation.rejectedDeals = Number(validation.rejectedDeals || 0) + 1;
   }
   return { ...buyer, validation, callNotes, feedback };
+}
+
+export function normalizeBuyerFeedback(feedback = {}) {
+  const decision = ['yes', 'accept', 'accepted'].includes(String(feedback.decision || '').toLowerCase()) ? 'accept'
+    : ['maybe', 'review'].includes(String(feedback.decision || '').toLowerCase()) ? 'maybe'
+      : 'reject';
+  const rawReason = String(feedback.reason || (decision === 'accept' ? 'accepted' : 'other')).toLowerCase().trim();
+  const reason = BUYER_FEEDBACK_REASONS.includes(rawReason) ? rawReason : 'other';
+  return {
+    parcelId: feedback.parcelId || feedback.id || '',
+    decision,
+    reason,
+    reasonDetail: rawReason,
+    maxPrice: feedback.maxPrice ? Number(feedback.maxPrice) : undefined,
+    note: feedback.note || '',
+    date: feedback.date || new Date().toISOString().slice(0, 10),
+  };
+}
+
+export function applyBuyerFeedback(workspace = {}, parcelId = '', feedback = {}) {
+  const parcel = (workspace.parcels || []).find(item => item.id === parcelId || item.parcelId === parcelId) || {};
+  const buyerId = feedback.buyerId || parcel.buyerId;
+  const normalized = normalizeBuyerFeedback({ ...feedback, parcelId: parcel.id || parcelId });
+  const nextMemoStatus = normalized.decision === 'accept' ? 'accepted' : feedback.buyerMemoStatus || parcel.buyerMemoStatus || 'sent';
+  return {
+    ...workspace,
+    buyers: (workspace.buyers || []).map(buyer => {
+      if (buyer.id !== buyerId) return buyer;
+      const validation = { ...(buyer.validation || {}) };
+      validation.feedbackCount = Number(validation.feedbackCount || 0) + 1;
+      if (normalized.decision === 'accept') validation.acceptedDeals = Number(validation.acceptedDeals || 0) + 1;
+      if (normalized.decision === 'reject') validation.rejectedDeals = Number(validation.rejectedDeals || 0) + 1;
+      return { ...buyer, validation, feedback: [normalized, ...(buyer.feedback || [])] };
+    }),
+    parcels: (workspace.parcels || []).map(item => {
+      if (item.id !== parcelId && item.parcelId !== parcelId) return item;
+      const feedbackLine = `Buyer feedback: ${normalized.decision}/${normalized.reason}${normalized.maxPrice ? ` max ${formatMoney(normalized.maxPrice)}` : ''}${normalized.note ? ` — ${normalized.note}` : ''}`;
+      return {
+        ...item,
+        buyerFeedbackDecision: normalized.decision,
+        buyerFeedbackReason: normalized.reason,
+        buyerFeedbackMaxPrice: normalized.maxPrice || item.buyerFeedbackMaxPrice,
+        buyerMemoStatus: nextMemoStatus,
+        crmStatus: normalized.decision === 'accept' ? 'Sent to Buyer' : item.crmStatus,
+        notes: [item.notes, feedbackLine].filter(Boolean).join('\n'),
+        updatedAt: new Date().toISOString(),
+      };
+    }),
+  };
 }
 
 function parcelAcres(parcel = {}) {
@@ -1082,17 +1135,49 @@ export function buildBuyerFirstBoard({ buyers = [], sellerCandidates = [], limit
 }
 
 export function buildBuyerFeedbackLoop(buyers = []) {
-  const all = buyers.flatMap(buyer => (buyer.feedback || []).map(item => ({ buyerName: buyer.name, ...item })));
+  const all = buyers.flatMap(buyer => (buyer.feedback || []).map(item => ({ buyerId: buyer.id, buyerName: buyer.name, ...normalizeBuyerFeedback(item) })));
   const accepted = all.filter(item => item.decision === 'accept').length;
   const rejected = all.filter(item => item.decision === 'reject').length;
+  const maybe = all.filter(item => item.decision === 'maybe').length;
   const reasons = new Map();
-  for (const item of all) {
-    const reason = String(item.reason || 'unspecified').toLowerCase();
+  for (const item of all.filter(item => item.decision !== 'accept')) {
+    const reason = String(item.reasonDetail || item.reason || 'other').toLowerCase();
     reasons.set(reason, (reasons.get(reason) || 0) + 1);
   }
   const topRejectReasons = [...reasons.entries()].map(([reason, count]) => ({ reason, count })).sort((a, b) => b.count - a.count);
-  const lessons = topRejectReasons.map(item => item.reason).join('; ');
-  return { totalFeedback: all.length, accepted, rejected, acceptanceRate: all.length ? accepted / all.length : 0, topRejectReasons, lessons, feedback: all };
+  const topReason = topRejectReasons[0]?.reason || '';
+  const lessons = topRejectReasons.map(item => `${item.reason} ×${item.count}`).join('; ');
+  const tightening = {
+    price: 'Lower seller max offer or call cheaper owner basis first.',
+    wetlands: 'Exclude wetland/review flags before seller calls.',
+    access: 'Require legal/physical road access proof before memo.',
+    utilities: 'Prioritize utility-nearby parcels and mark unknown utilities as review.',
+    street: 'Ask buyer for street/area exclusions and stop sending off-street matches.',
+    'lot-size': 'Tighten lot-size min/max in exact buy box.',
+    title: 'Do title preflight before seller negotiation.',
+    timing: 'Send only deals with decision-ready deadline and close-speed match.',
+    other: 'Call buyer for exact rejection language before more seller outreach.',
+  }[topReason] || 'No rejection pattern yet. Keep sending buyer-box-matched deals.';
+  return { totalFeedback: all.length, accepted, rejected, maybe, acceptanceRate: all.length ? accepted / all.length : 0, topRejectReasons, lessons, tightening, feedback: all };
+}
+
+export function recommendNextSellerCallsFromFeedback(parcels = [], buyers = []) {
+  const loop = buildBuyerFeedbackLoop(buyers);
+  const topReason = loop.topRejectReasons[0]?.reason || '';
+  const scored = parcels.map(parcel => {
+    const buyer = buyers.find(item => item.id === parcel.buyerId) || {};
+    const deal = scoreParcelDeal(parcel, buyer);
+    let penalty = 0;
+    if (topReason === 'price' && Number(parcel.askingPrice || 0) > Number(buyer.maxPrice || parcel.buyerMaxPrice || 0) * 0.75) penalty += 18;
+    if (topReason === 'wetlands' && String(parcel.wetlands || '').match(/true|likely|review|yes/i)) penalty += 35;
+    if (topReason === 'access' && parcel.roadAccess !== true) penalty += 30;
+    if (topReason === 'utilities' && !String(parcel.utilities || '').match(/nearby|water|sewer|true/i)) penalty += 14;
+    if (topReason === 'lot-size' && !parcelAcres(parcel)) penalty += 10;
+    if (topReason === 'title' && !['attorney-reviewed', 'title-opened', 'active'].includes(String(parcel.titlePacketStatus || '').toLowerCase())) penalty += 14;
+    const adjustedScore = Math.max(0, deal.score - penalty);
+    return { ...deal, adjustedScore, feedbackPenalty: penalty, feedbackReason: topReason, nextCallReason: penalty ? `Penalty for buyer rejection pattern: ${topReason}` : `Matches current feedback pattern; ${loop.tightening}` };
+  });
+  return scored.sort((a, b) => b.adjustedScore - a.adjustedScore || b.metrics.spread - a.metrics.spread);
 }
 
 export function buildRiskChecklist(parcel = {}) {

@@ -207,15 +207,26 @@ These are not final legal clauses; they are the operating intent to take to coun
 7. Buyer-side form: assignment agreement derived from Judicial Title-style assignment, rewritten for Florida vacant land, builder earnest-money deadline, and title-company settlement.
 8. Closing provider: Florida title company or closing attorney that explicitly accepts assignments/double closes.
 
+## Draft templates created for review
+
+Internal attorney/title-review drafts now live at:
+
+- `docs/templates/SELLER_VACANT_LAND_PURCHASE_CUSTOM_TERMS_FLORIDA.md`
+- `docs/templates/BUILDER_ASSIGNMENT_AGREEMENT_TEMPLATE_FLORIDA.md`
+- `docs/templates/ATTORNEY_TITLE_REVIEW_BRIEF.md`
+- `docs/templates/TERMINATION_NOTICE_TEMPLATE.md`
+
+These are not final contracts. The seller-side file is intentionally a custom-terms/fill strategy for a Florida vacant-land base form such as VAC-14, because reproducing state-association forms directly is not the right path. The builder-side assignment agreement is an original attorney-review draft based on the transcript controls and public assignment-agreement patterns.
+
 ## Missing before live seller calls
 
 - Florida attorney review of final packet.
 - Florida title-company review of assignment fee / double-close preference.
 - Final disclosure language.
 - Final fillable packet:
-  - Seller purchase agreement completion guide.
-  - Assignment addendum.
-  - Buyer assignment agreement.
+  - Seller purchase agreement completion guide/custom terms.
+  - Assignment/disclosure addendum.
+  - Buyer/builder assignment agreement.
   - Title-company intake sheet.
   - Termination notice template.
 

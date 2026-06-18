@@ -1121,6 +1121,34 @@ export function generateBuyerAssignmentSummary(parcel = {}, buyer = {}, packet =
   return `Buyer Assignment Summary\n\nBuyer: ${buyer.name || packet.buyerName || 'Unknown buyer'}\nBuy box: ${buyer.buyBox || 'Not captured'}\nParcel: ${parcel.address || packet.address || 'Unknown parcel'}\nLot size: ${parcel.lotSize || 'unknown'}\nAssignment price: ${formatMoney(Number(packet.assignmentPrice || 0))}\nSeller offer: ${formatMoney(Number(packet.sellerOffer || 0))}\nProjected spread: ${formatMoney(Number(packet.projectedSpread || 0))}\n\nRisk checklist:\n${riskLines || '- Risk checklist not available'}\n\nDecision ask: confirm whether this parcel fits your buy box and what diligence item would kill the deal.`;
 }
 
+export function generateBuyerSendMemo(parcel = {}, buyer = {}, packet = generateOfferPacket(parcel, buyer), options = {}) {
+  const scored = scoreParcelDeal(parcel, buyer);
+  const contract = calculateContractReadiness({ ...scored, ...parcel }, buyer);
+  const checklist = buildOperatorChecklist({ ...scored, ...parcel }, buyer);
+  const deadline = options.deadline || parcel.buyerDecisionDeadline || 'Reply by 5pm today with yes/no and any diligence kill items.';
+  const fit = buildDealFitMatrix([parcel], [buyer])[0] || { score: scored.score || 0, fit: scored.score >= 75 ? 'Strong' : scored.score >= 55 ? 'Review' : 'Weak', misses: [] };
+  const riskLines = (packet.riskChecklist || buildRiskChecklist(parcel)).map(item => `${item.label}: ${item.status}${item.detail ? ` — ${item.detail}` : ''}`);
+  const titleStatus = parcel.titlePacketStatus || (contract.ready ? 'attorney/title gate ready' : 'not ready');
+  const assignmentFee = Math.max(0, Number(packet.assignmentPrice || 0) - Number(packet.sellerOffer || 0));
+  const subject = `${parcel.address || 'Parcel'} — ${formatMoney(Number(packet.assignmentPrice || 0))} buyer memo`;
+  const bullets = [
+    `Parcel: ${parcel.address || packet.address || 'Unknown parcel'}${parcel.parcelId ? ` / APN ${parcel.parcelId}` : ''}`,
+    `Fit: ${fit.fit || 'Review'} (${fit.score || scored.score || 0}/100) for ${buyer.name || packet.buyerName || 'buyer'} buy box`,
+    `Price: seller target ${formatMoney(Number(packet.sellerOffer || 0))}; assignment price ${formatMoney(Number(packet.assignmentPrice || 0))}; estimated gross assignment fee ${formatMoney(assignmentFee)}`,
+    `Spread after estimated closing costs: ${formatMoney(Number(packet.projectedSpread || 0))}`,
+    `Buildability: ${scored.risk?.status || 'Review'}${scored.flags?.length ? ` — ${scored.flags.join(', ')}` : ''}`,
+    `Title/contract gate: ${titleStatus}${contract.blockers?.length ? ` — blockers: ${contract.blockers.join('; ')}` : ''}`,
+    `Decision deadline: ${deadline}`,
+  ];
+  const ask = `Can you confirm yes/no on this parcel, your max assignment price, and any immediate kill criteria (${riskLines.slice(0, 3).join('; ') || 'access/utilities/title'})?`;
+  const message = `Subject: ${subject}\n\n${buyer.contactName ? `${buyer.contactName},` : 'Team,'}\n\nI have a buyer-box-matched parcel for review. Quick facts below.\n\n${bullets.map(item => `- ${item}`).join('\n')}\n\nRisk/detail notes:\n${riskLines.map(item => `- ${item}`).join('\n') || '- Risk checklist not available'}\n\nAsk: ${ask}\n\nIf this is a fit, I will hold the seller path open and coordinate title/assignment mechanics. If not, send the exact miss so I can tighten the next parcel batch.\n\n— Land Dealflow OS`;
+  return { subject, bullets, ask, message, deadline, assignmentFee, fit, riskLines, contract, checklist, packet };
+}
+
+export function exportBuyerSendMemoMarkdown(memo = {}) {
+  return `# Buyer Send Memo\n\n**Subject:** ${memo.subject || ''}\n\n## Send-ready message\n\n${memo.message || ''}\n\n## Operator controls\n- Decision deadline: ${memo.deadline || ''}\n- Assignment fee path: ${formatMoney(Number(memo.assignmentFee || 0))}\n- Contract gate: ${memo.contract?.label || 'unknown'}\n- Close probability: ${memo.checklist?.probability ?? 0}%\n`;
+}
+
 export function generateOfferPacket(parcel = {}, buyer = {}, options = {}) {
   const buyerMax = Number(parcel.buyerMaxPrice || buyer.maxPrice || 0);
   const ask = Number(parcel.askingPrice || 0);

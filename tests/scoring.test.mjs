@@ -31,6 +31,8 @@ import {
   buildDealFitMatrix,
   buildBuyerFeedbackLoop,
   buildOperatorChecklist,
+  generateBuyerSendMemo,
+  exportBuyerSendMemoMarkdown,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -464,12 +466,45 @@ function testOperatorChecklistTracksCallToCloseFlow() {
   assert.equal(checklist.steps.find(step => step.id === 'buyer-send-memo').done, true);
 }
 
+function testBuyerSendMemoIncludesDecisionDeadlineAndAssignmentPath() {
+  const buyer = { id: 'precision', name: 'Precision Gulf Homes', contactName: 'Maya', maxPrice: 42000, phone: '239-555-0100', buyBox: 'Lehigh paved-road quarter-acre lots under $42k' };
+  const parcel = {
+    id: 'parcel-1',
+    buyerId: 'precision',
+    address: '123 Grant Blvd',
+    parcelId: '104527L10010',
+    ownerName: 'Avery Santos',
+    ownerPhone: '239-555-0131',
+    buyerMaxPrice: 42000,
+    lowestActiveListing: 48000,
+    askingPrice: 28500,
+    heldYears: 11,
+    paid: 6200,
+    wetlands: 'none',
+    floodZone: false,
+    roadAccess: true,
+    utilities: 'nearby',
+    slope: 'flat',
+    buyerDecisionDeadline: 'Reply by 4pm Friday.',
+    titlePacketStatus: 'attorney-reviewed',
+  };
+  const memo = generateBuyerSendMemo(parcel, buyer);
+  assert.ok(memo.subject.includes('123 Grant Blvd'));
+  assert.ok(memo.message.includes('Reply by 4pm Friday.'));
+  assert.ok(memo.message.includes('estimated gross assignment fee'));
+  assert.ok(memo.message.includes('Title/contract gate'));
+  const markdown = exportBuyerSendMemoMarkdown(memo);
+  assert.ok(markdown.includes('# Buyer Send Memo'));
+  assert.ok(markdown.includes('Close probability'));
+}
+
 testOfferPacketComputesSellerOfferAndAssignmentSpread();
 testSellerOfferLetterIncludesContingenciesAndCloseTerms();
 testBuyerAssignmentSummaryShowsRiskAndSpread();
 testRiskChecklistFlagsMissingAndFatalItems();
 testDealMemoMarkdownExportsFullPacket();
 testOperatorChecklistTracksCallToCloseFlow();
+testBuyerSendMemoIncludesDecisionDeadlineAndAssignmentPath();
 
 testOutreachCallScriptUsesParcelAndBuyerContext();
 testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead();

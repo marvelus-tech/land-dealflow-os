@@ -29,6 +29,8 @@ import {
   bulkMarkContacted,
   generateOfferPacket,
   exportDealMemoMarkdown,
+  generateBuyerSendMemo,
+  exportBuyerSendMemoMarkdown,
   calculateBuyerScorecard,
   captureBuyBox,
   addBuyerCallNote,
@@ -367,6 +369,7 @@ function renderParcels() {
   const sellerNet = generateSellerNetOfferScript(selected, buyer);
   const neighborPrompt = generateNeighborPrompt(selected);
   const operatorChecklist = buildOperatorChecklist(selected, buyer);
+  const buyerMemo = generateBuyerSendMemo(selected, buyer, generateOfferPacket(selected, buyer));
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const fitRows = [
@@ -419,6 +422,7 @@ function renderParcels() {
         <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
       </div>
       ${renderOperatorChecklist(operatorChecklist)}
+      ${renderBuyerSendMemoCard(buyerMemo)}
       <div class="detail-grid">
         <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'contact missing')}</p></div>
         <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
@@ -477,6 +481,7 @@ function renderCommandCenter() {
   const heroMotivation = heroCall.id ? calculateSellerMotivation(heroCall) : { score: 0, temperature: 'Cold', signals: [] };
   const netScript = heroCall.id ? generateSellerNetOfferScript(heroCall, getBuyer(heroCall)) : null;
   const todayChecklist = heroCall.id ? buildOperatorChecklist(heroCall, getBuyer(heroCall)) : null;
+  const todayBuyerMemo = heroCall.id ? generateBuyerSendMemo(heroCall, getBuyer(heroCall), generateOfferPacket(heroCall, getBuyer(heroCall))) : null;
   document.querySelector('#command').innerHTML = `
     <div class="cashflow-hero editorial-hero">
       <div class="hero-copy">
@@ -505,6 +510,7 @@ function renderCommandCenter() {
       <article class="buyer-first-lane script-card"><span class="eyebrow">Buyer call script</span><h2>“Do you actively buy Lehigh infill lots?”</h2><p>Ask: preferred streets/areas, lot size, max price, road/utilities requirements, flood/wetland kills, closing timeline, and whether they want off-market matches sent weekly.</p></article>
     </section>
     ${todayChecklist ? renderOperatorChecklist(todayChecklist, { compact: true }) : ''}
+    ${todayBuyerMemo ? renderBuyerSendMemoCard(todayBuyerMemo, { compact: true }) : ''}
     <section id="daily-calls" class="cashflow-board" aria-label="Daily cashflow operating board">
       <div class="money-queue-panel">
         <div class="daily-heading"><span class="eyebrow">Today’s calls</span><h2>One queue. No wandering.</h2></div>
@@ -595,8 +601,8 @@ function renderWorkspaceTools() {
         <div id="outreach-panel"></div>
       </details>
       <details class="machine-panel">
-        <summary><span>10</span><strong>Offer packet generator</strong><em>Seller letter and buyer assignment memo</em></summary>
-        <div class="button-row"><button id="export-deal-memo" type="button">Download current deal memo</button><span id="deal-memo-status"></span></div>
+        <summary><span>10</span><strong>Offer packet + buyer memo</strong><em>Seller letter, assignment packet, builder-facing send memo</em></summary>
+        <div class="button-row"><button id="export-deal-memo" type="button">Download current deal memo</button><button id="download-buyer-send-memo" class="secondary" type="button">Download buyer send memo</button><button id="copy-buyer-send-memo" class="secondary" type="button">Copy buyer memo</button><span id="deal-memo-status"></span><span id="buyer-send-memo-status"></span></div>
         <div id="offer-packet-panel"></div>
       </details>
     </div>`;
@@ -742,10 +748,32 @@ function renderOutreachPanel() {
   </div>`;
 }
 
+function currentMemoTarget() {
+  const selected = (workspace.parcels || []).find(parcel => parcel.id === selectedParcelId);
+  return selected || buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 1 })[0] || scoredParcels()[0] || null;
+}
+
 function currentOfferPacket() {
-  const candidate = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 1 })[0] || scoredParcels()[0];
+  const candidate = currentMemoTarget();
   if (!candidate) return null;
   return generateOfferPacket(candidate, getBuyer(candidate));
+}
+
+function currentBuyerSendMemo() {
+  const candidate = currentMemoTarget();
+  if (!candidate) return null;
+  const buyer = getBuyer(candidate);
+  return generateBuyerSendMemo(candidate, buyer, generateOfferPacket(candidate, buyer));
+}
+
+function renderBuyerSendMemoCard(memo, { compact = false } = {}) {
+  if (!memo) return '';
+  return `<section class="buyer-send-memo ${compact ? 'compact' : ''}" aria-label="Buyer send memo">
+    <div class="buyer-memo-head"><span class="eyebrow">Buyer send memo</span><h3>${h(memo.subject)}</h3><p>${h(memo.ask)}</p></div>
+    <div class="deal-strip four"><div><span>Assignment fee path</span><strong>${formatMoney(memo.assignmentFee)}</strong></div><div><span>Fit score</span><strong>${h(memo.fit?.score || 0)}/100</strong></div><div><span>Contract gate</span><strong>${h(memo.contract?.label || 'unknown')}</strong></div><div><span>Close probability</span><strong>${h(memo.checklist?.probability || 0)}%</strong></div></div>
+    <pre class="buyer-memo-preview">${h(memo.message.slice(0, compact ? 720 : 1400))}</pre>
+    <div class="button-row"><button type="button" class="copy-buyer-send-memo">Copy memo</button><button type="button" class="secondary download-buyer-send-memo">Download memo</button><span class="buyer-send-memo-status"></span></div>
+  </section>`;
 }
 
 function renderOfferPacketPanel() {
@@ -756,8 +784,10 @@ function renderOfferPacketPanel() {
     target.innerHTML = '<p>No parcel available for offer packet generation.</p>';
     return;
   }
+  const buyerMemo = currentBuyerSendMemo();
   target.innerHTML = `<div class="packet-grid">
     <div class="packet-economics"><h4>${h(packet.address)}</h4><div class="deal-strip five"><div><span>Seller offer</span><strong>${formatMoney(packet.sellerOffer)}</strong></div><div><span>Assignment price</span><strong>${formatMoney(packet.assignmentPrice)}</strong></div><div><span>Projected spread</span><strong>${formatMoney(packet.projectedSpread)}</strong></div><div><span>Closing costs</span><strong>${formatMoney(packet.closingCosts)}</strong></div><div><span>Buyer</span><strong>${h(packet.buyerName || 'unknown')}</strong></div></div><p>${h(packet.summary)}</p></div>
+    ${renderBuyerSendMemoCard(buyerMemo)}
     <div class="risk-checklist"><h4>Risk checklist</h4>${packet.riskChecklist.map(item => `<div class="risk-item ${h(item.status)}"><b>${h(item.label)} · ${h(item.status)}</b><span>${h(item.detail)}</span></div>`).join('')}</div>
     <div class="memo-preview"><h4>Seller offer letter preview</h4><pre>${h(packet.sellerOfferLetter.slice(0, 900))}</pre></div>
     <div class="memo-preview"><h4>Buyer assignment summary preview</h4><pre>${h(packet.buyerAssignmentSummary.slice(0, 900))}</pre></div>
@@ -910,6 +940,25 @@ function bindEvents() {
       downloadText(`land-dealflow-deal-memo-${new Date().toISOString().slice(0, 10)}.md`, exportDealMemoMarkdown(packet), 'text/markdown');
       const status = document.querySelector('#deal-memo-status');
       if (status) status.textContent = 'Deal memo exported.';
+    }
+
+    if (event.target.matches('#download-buyer-send-memo, .download-buyer-send-memo')) {
+      const memo = currentBuyerSendMemo();
+      if (!memo) return;
+      downloadText(`land-dealflow-buyer-send-memo-${new Date().toISOString().slice(0, 10)}.md`, exportBuyerSendMemoMarkdown(memo), 'text/markdown');
+      const status = event.target.closest('.buyer-send-memo, .machine-panel')?.querySelector('.buyer-send-memo-status, #buyer-send-memo-status');
+      if (status) status.textContent = 'Buyer memo downloaded.';
+    }
+
+    if (event.target.matches('#copy-buyer-send-memo, .copy-buyer-send-memo')) {
+      const memo = currentBuyerSendMemo();
+      if (!memo) return;
+      const status = event.target.closest('.buyer-send-memo, .machine-panel')?.querySelector('.buyer-send-memo-status, #buyer-send-memo-status');
+      const write = navigator.clipboard?.writeText?.(memo.message) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Buyer memo copied.'; }).catch(() => {
+        downloadText(`land-dealflow-buyer-send-memo-${new Date().toISOString().slice(0, 10)}.txt`, memo.message, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
     }
 
     if (event.target.matches('#import-json')) {

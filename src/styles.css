@@ -405,7 +405,7 @@ button.danger { background: #fff0ee; color: var(--red); border-color: #ffd2cc; }
 .call-row em { margin-top: 5px; color: var(--green); font-style: normal; font-size: 12px; font-weight: 750; }
 .preset-row { display: grid; gap: 7px; margin: 10px 0 14px; color: var(--muted); font-size: 12px; }
 .quality-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0; }
-.quality-grid div, .check-item, .scorecard-list, .fit-matrix, .feedback-loop, .call-notes, .followup-list, .script-box, .packet-economics, .risk-checklist, .memo-preview { border-radius: 18px; padding: 14px; background: var(--panel-soft); border: 1px solid var(--line-soft); }
+.quality-grid div, .check-item, .scorecard-list, .fit-matrix, .feedback-loop, .call-notes, .followup-list, .script-box, .packet-economics, .risk-checklist, .memo-preview, .buyer-send-memo { border-radius: 18px; padding: 14px; background: var(--panel-soft); border: 1px solid var(--line-soft); }
 .quality-grid b { display: block; font-size: 26px; color: var(--black); }
 .quality-grid span, .check-item span, .missing-list span, .duplicate-list span { color: var(--muted); font-size: 12px; }
 .checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 12px 0; }
@@ -548,6 +548,18 @@ h3, h4 { letter-spacing: -.035em; }
 .phase-detail-card p, .seller-net-script-card p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.42; }
 .seller-net-script-card { margin-top: 10px; background: linear-gradient(135deg, #fff9ec, #efe2c6); }
 .seller-net-script-card h3 { margin-top: 8px; font-family: Georgia, 'Times New Roman', serif; font-size: 32px; font-weight: 500; letter-spacing: -.055em; }
+.buyer-send-memo { margin-top: 12px; background: linear-gradient(135deg, rgba(23,21,17,.96), rgba(87,66,39,.94)); color: #fff7e8; border-color: rgba(255,255,255,.14); box-shadow: 0 24px 70px rgba(31,24,12,.22); }
+.buyer-send-memo.compact { max-width: 1180px; margin: 0 auto 24px; }
+.buyer-memo-head h3 { margin-top: 8px; color: #fffaf0; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 500; letter-spacing: -.06em; line-height: .95; }
+.buyer-memo-head p { max-width: 880px; margin-top: 10px; color: rgba(255,247,232,.75); font-size: 14px; line-height: 1.5; }
+.buyer-send-memo .deal-strip { margin-top: 16px; background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.1); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.buyer-send-memo .deal-strip div { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.1); }
+.buyer-send-memo .deal-strip span { color: rgba(255,247,232,.62); }
+.buyer-send-memo .deal-strip strong { color: #fffaf0; }
+.buyer-memo-preview { white-space: pre-wrap; max-height: 340px; overflow: auto; margin-top: 14px; padding: 16px; border-radius: 18px; background: rgba(0,0,0,.24); border: 1px solid rgba(255,255,255,.11); color: rgba(255,247,232,.86); font: 12px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.buyer-send-memo .button-row { margin-top: 14px; }
+.buyer-send-memo .secondary, .buyer-send-memo button { border-color: rgba(255,255,255,.18); }
+.buyer-send-memo-status { color: rgba(255,247,232,.72); font-size: 12px; }
 .operator-checklist { margin-top: 12px; padding: 18px; border-radius: 26px; background: rgba(255,252,244,.86); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
 .operator-checklist.compact { margin: 0 0 24px; }
 .operator-checklist-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 18px; align-items: center; }
@@ -591,6 +603,7 @@ h3, h4 { letter-spacing: -.035em; }
   .pipeline, .mini-grid, .mini-grid.four, .deal-strip, .quality-grid, .risk-checklist, .detail-grid, .queue-list, .script-grid, .money-stats { grid-template-columns: 1fr; }
   .operator-checklist-head { grid-template-columns: 1fr; }
   .probability-meter { grid-column: 1; grid-row: auto; width: 132px; }
+  .buyer-send-memo .deal-strip { grid-template-columns: 1fr; }
   .crm-notes-label { grid-column: 1; }
   .intake-card { border-radius: 20px; padding: 16px; }
   .intake-card textarea { min-height: 190px; }

@@ -3,6 +3,7 @@ import {
   buildPermitVerifiedBuilders,
   generateBuilderCallScript,
   generateBuilderEmail,
+  generateBuilderMarketingEmailTemplate,
   getSourceAdapterChecklist,
   isQualifyingResidentialPermit,
   normalizeBuilderName,
@@ -38,6 +39,13 @@ const email = generateBuilderEmail({ companyName: 'Precision Gulf Homes', contac
 assert.match(email.subject, /Lehigh Acres/);
 assert.match(email.body, /exact buy box/);
 assert.match(email.body, /Closing timeline/);
+
+const marketingEmail = generateBuilderMarketingEmailTemplate({ companyName: 'Precision Gulf Homes', contactName: 'Maya' });
+assert.equal(marketingEmail.subject, 'Off-Market Lots for Builders — Let’s Connect');
+assert.match(marketingEmail.body, /assortment of marketing efforts and acquisition avenues/);
+assert.match(marketingEmail.body, /results in just a few weeks/);
+assert.doesNotMatch(marketingEmail.body, /cold calling, SMS, and direct mail/i);
+assert.doesNotMatch(marketingEmail.body, /few days/i);
 
 const adapters = getSourceAdapterChecklist();
 assert.deepEqual(adapters.map(item => item.id), ['accela', 'socrata', 'energov', 'etrakit', 'manual-csv']);

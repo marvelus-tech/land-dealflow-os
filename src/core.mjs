@@ -1517,6 +1517,13 @@ export function generateBuilderEmail(builder = {}) {
   return { subject, body };
 }
 
+export function generateBuilderMarketingEmailTemplate(builder = {}) {
+  const contact = builder.contactName || '{{BuilderNameOrContact}}';
+  const subject = 'Off-Market Lots for Builders — Let’s Connect';
+  const body = `Good morning ${contact},\n\nMy name is {{YourName}}, and I run {{YourCompany}}. We specialize in sourcing off-market lots at a discount for builders.\n\nWe generate leads through an assortment of marketing efforts and acquisition avenues, with results in just a few weeks.\n\nWe typically wholesale but can double-close or purchase outright if needed. We’re currently acquiring lots at a discounted rate and plan to scale up soon.\n\nIf you're interested, let me know the zip codes you’re buying in, your lot criteria, and your closing timeline.\n\nLooking forward to working together!\n\nBest,\n{{YourName}}`;
+  return { subject, body };
+}
+
 export function getSourceAdapterChecklist() {
   return [
     { id: 'accela', name: 'Accela', use: 'Florida-style Citizen Access portals; search by record/date/contractor/parcel.', fields: ['record number', 'status', 'permit type', 'issue date', 'contractor license', 'site address'] },

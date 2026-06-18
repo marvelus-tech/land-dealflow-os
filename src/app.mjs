@@ -49,6 +49,7 @@ import {
   buildPermitVerifiedBuilders,
   generateBuilderCallScript,
   generateBuilderEmail,
+  generateBuilderMarketingEmailTemplate,
   getSourceAdapterChecklist,
   formatMoney,
 } from './core.mjs';
@@ -470,6 +471,7 @@ function renderBuilderListEnginePanel() {
   const builders = getPermitBuilders();
   const selected = getSelectedBuilder(builders) || {};
   const email = generateBuilderEmail(selected);
+  const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
   const callScript = generateBuilderCallScript(selected);
   const permits = asArray(selected.recentPermits).slice(0, 3);
   const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
@@ -536,8 +538,10 @@ function renderBuilderListEnginePanel() {
         <div class="panel-kicker"><span>Copied scripts</span><b>call + email</b></div>
         <h4>Call script</h4><pre>${h(callScript)}</pre>
         <div class="button-row"><button type="button" class="secondary" data-copy-builder-script>Copy call script</button><span class="builder-script-status"></span></div>
-        <h4>Email</h4><div class="email-subject"><span>Subject</span><strong>${h(email.subject)}</strong></div><pre>${h(email.body)}</pre>
-        <div class="button-row"><button type="button" class="secondary" data-copy-builder-email>Copy email</button><span class="builder-email-status"></span></div>
+        <h4>Buy-box capture email</h4><div class="email-subject"><span>Subject</span><strong>${h(email.subject)}</strong></div><pre>${h(email.body)}</pre>
+        <div class="button-row"><button type="button" class="secondary" data-copy-builder-email>Copy buy-box email</button><span class="builder-email-status"></span></div>
+        <h4>Marketing intro email template</h4><div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div><pre>${h(marketingEmail.body)}</pre>
+        <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
       </article>
     </section>
 
@@ -1325,8 +1329,20 @@ function bindEvents() {
       const payload = `Subject: ${email.subject}\n\n${email.body}`;
       const status = event.target.closest('.builder-script-panel')?.querySelector('.builder-email-status');
       const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
-      write.then(() => { if (status) status.textContent = 'Email copied.'; }).catch(() => {
+      write.then(() => { if (status) status.textContent = 'Buy-box email copied.'; }).catch(() => {
         downloadText(`land-dealflow-builder-email-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+    }
+
+    if (event.target.matches('[data-copy-builder-marketing-email]')) {
+      const builder = getSelectedBuilder();
+      const email = generateBuilderMarketingEmailTemplate(builder);
+      const payload = `Subject: ${email.subject}\n\n${email.body}`;
+      const status = event.target.closest('.builder-script-panel')?.querySelector('.builder-marketing-email-status');
+      const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Marketing template copied.'; }).catch(() => {
+        downloadText(`land-dealflow-builder-marketing-template-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
         if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
       });
     }

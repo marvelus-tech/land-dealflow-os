@@ -648,7 +648,7 @@ h3, h4 { letter-spacing: -.035em; }
 .buybox-form label { display: grid; gap: 7px; color: var(--muted); font-size: 12px; font-weight: 750; }
 .buybox-form input { width: 100%; min-height: 42px; border-radius: 13px; border: 1px solid var(--line); padding: 0 12px; color: var(--black); background: #fff; }
 .buybox-form button { width: fit-content; }
-.builder-save-status, .builder-script-status, .builder-email-status { align-self: center; color: var(--green); font-size: 12px; font-weight: 750; }
+.builder-save-status, .builder-script-status, .builder-email-status, .builder-marketing-email-status { align-self: center; color: var(--green); font-size: 12px; font-weight: 750; }
 .builder-script-panel pre, .builder-vendor-panel pre { white-space: pre-wrap; word-break: break-word; padding: 14px; border-radius: 16px; background: var(--panel-soft); border: 1px solid var(--line-soft); color: var(--ink); line-height: 1.45; font-size: 13px; }
 .builder-script-panel h4 { margin: 16px 0 8px; }
 .vendor-chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }

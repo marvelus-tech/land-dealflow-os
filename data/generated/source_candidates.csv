@@ -1,10 +1,18 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
-cape-coral,"Cape Coral, FL",arcgis,parcel,FL_CapeCoral_Boatramps_WEB,https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_Boatramps_WEB/FeatureServer,90,seller_parcel_discovery,"Cape Coral, FL parcels"
-cape-coral,"Cape Coral, FL",arcgis,zoning,FL_CapeCoral_CLMilesProgress_WEB,https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoral_CLMilesProgress_WEB/FeatureServer,90,deal_risk_and_fit_overlay,"Cape Coral, FL zoning"
-cape-coral,"Cape Coral, FL",arcgis,zoning,FL_CapeCoralSubZones_WEB,https://services.arcgis.com/HdtZMT2FmI4wPzTM/arcgis/rest/services/FL_CapeCoralSubZones_WEB/FeatureServer,90,deal_risk_and_fit_overlay,"Cape Coral, FL zoning"
-cape-coral,"Cape Coral, FL",arcgis,parcel,Sum_of_Bedrooms_Cape_Coral,https://services1.arcgis.com/sQOueNHZBxRJjRN3/arcgis/rest/services/Sum_of_Bedrooms_Cape_Coral/FeatureServer,90,seller_parcel_discovery,"Cape Coral, FL parcels"
-lehigh,"Lehigh Acres, FL",arcgis,zoning,Economic Incentive Areas,https://services2.arcgis.com/LvWGAAhHwbCJ2GMP/arcgis/rest/services/Economic_Incentive_Areas/FeatureServer,90,deal_risk_and_fit_overlay,"Lehigh Acres, FL zoning"
-ocala,"Ocala, FL",arcgis,zoning,Flood Zone,https://gis.ocalafl.org/arcgis/rest/services/Public/Flood/FeatureServer,90,deal_risk_and_fit_overlay,"Ocala, FL zoning"
-ocala,"Ocala, FL",arcgis,zoning,Growth Management,https://gis.ocalafl.org/arcgis/rest/services/Public/GrowthManagement/FeatureServer,90,deal_risk_and_fit_overlay,"Ocala, FL zoning"
-ocala,"Ocala, FL",arcgis,parcel,OcalaMultiFamilyComplexes,https://services1.arcgis.com/Xt7esznjGcR11P3w/arcgis/rest/services/OcalaMultiFamilyComplexes/FeatureServer,90,seller_parcel_discovery,"Ocala, FL parcels"
-ocala,"Ocala, FL",arcgis,parcel,Property data,https://gis.ocalafl.org/arcgis/rest/services/Public/Property/FeatureServer,90,seller_parcel_discovery,"Ocala, FL parcels"
+chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Chattanooga Parcels,https://services5.arcgis.com/74bZbbuf05Ctvbzv/arcgis/rest/services/Chattanooga_Parcels/FeatureServer,90,seller_parcel_discovery,"Chattanooga, TN parcels"
+chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Hamilton County Parcel Polygons,https://cagisonline.hamilton-co.org/arcgis/rest/services/HCE/Cadastral/MapServer/0,90,seller_parcel_discovery,Hamilton County parcels
+chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Hamilton County Parcels - Open Data,https://services.arcgis.com/JyZag7oO4NteHGiq/arcgis/rest/services/Open_Data/FeatureServer/51,90,seller_parcel_discovery,Hamilton County parcels
+chattanooga-tn,"Chattanooga, TN",arcgis,permit,Hamilton County Zoning _2_27_2026__WFL1,https://services2.arcgis.com/cclAu9OKhOfjeUdr/arcgis/rest/services/Hamilton_County_Zoning__2_27_2026__WFL1/FeatureServer,90,buyer_builder_discovery,"Chattanooga, TN building permits"
+chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Hamilton County Zoning 4_WFL1,https://services2.arcgis.com/cclAu9OKhOfjeUdr/arcgis/rest/services/Hamilton_County_Zoning_4_WFL1/FeatureServer,90,seller_parcel_discovery,"Chattanooga, TN property parcels"
+knoxville-tn,"Knoxville, TN",arcgis,parcel,Categorical Zoning Changes,https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/Categorical_Zoning_Changes/FeatureServer,90,seller_parcel_discovery,"Knoxville, TN parcels"
+knoxville-tn,"Knoxville, TN",arcgis,permit,Groundbreakers Data,https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer,90,buyer_builder_discovery,Knox County parcels
+knoxville-tn,"Knoxville, TN",arcgis,zoning,Knoxville - Knox County Zoning,https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/KnoxvilleKnoxCountyZoning/FeatureServer,90,deal_risk_and_fit_overlay,"Knoxville, TN zoning"
+chattanooga-tn,"Chattanooga, TN",arcgis,distress,CAD eCitations20240301,,70,seller_motivation_overlay,"Chattanooga, TN code violations"
+chattanooga-tn,"Chattanooga, TN",arcgis,zoning,Do All Chattanooga Residents Have Equal Access to Parks?,https://storymaps.arcgis.com/stories/8dd6e36fd1c24544a749bd7cd95fb6ff,70,deal_risk_and_fit_overlay,"Chattanooga, TN zoning"
+chattanooga-tn,"Chattanooga, TN",arcgis,parcel,TN Property Viewer,https://tnmap.tn.gov/assessment/,70,seller_parcel_discovery,"Chattanooga, TN property parcels"
+knoxville-tn,"Knoxville, TN",arcgis,distress,CAD eCitations20240201,,70,seller_motivation_overlay,"Knoxville, TN code violations"
+knoxville-tn,"Knoxville, TN",arcgis,distress,CAD eCitations20240301,,70,seller_motivation_overlay,"Knoxville, TN code violations"
+knoxville-tn,"Knoxville, TN",arcgis,zoning,Knoxville - Knox County Zoning SHP,,70,deal_risk_and_fit_overlay,"Knoxville, TN zoning"
+knoxville-tn,"Knoxville, TN",arcgis,parcel,TN Property Viewer,https://tnmap.tn.gov/assessment/,70,seller_parcel_discovery,"Knoxville, TN parcels"
+nashville-edge-tn,"Nashville edge, TN",arcgis,parcel,Davidson County - Parcels,https://maps.nashville.gov/arcgis/rest/services/Cadastral/Parcels/MapServer,70,seller_parcel_discovery,Davidson County parcels
+nashville-edge-tn,"Nashville edge, TN",arcgis,zoning,Skai Tornado Workshop Map,,70,deal_risk_and_fit_overlay,"Nashville edge, TN zoning"

@@ -19,12 +19,12 @@ const sampleSources = {
     { id: 'ocala', name: 'Ocala, FL', state: 'FL', buyerType: 'custom-builder', thesis: 'Infill and rural-edge lots for small builders.', priority: 6 },
   ],
   buyerSources: [
-    { id: 'lehigh-builders-seed', market: 'lehigh', type: 'seed', cadence: 'weekly', records: [
+    { id: 'lehigh-builders-public', market: 'lehigh', state: 'FL', type: 'public-record', cadence: 'weekly', sourceUrl: 'https://example.gov/permits', records: [
       { name: 'Precision Gulf Homes', website: 'https://precisiongulf.example', phone: '239-555-0100', contactName: 'Maya Chen', recentBuilds: 18, closeSpeedDays: 14, maxPrice: 42000, exactBuyBox: { targetMarkets: ['lehigh'], lotSizeMin: 0.23, lotSizeMax: 0.32, maxPrice: 42000, requiredRoadAccess: true, avoidWetlands: true } },
     ]},
   ],
   parcelSources: [
-    { id: 'lehigh-parcels-seed', market: 'lehigh', type: 'seed', cadence: 'daily', records: [
+    { id: 'lehigh-parcels-public', market: 'lehigh', state: 'FL', type: 'public-record', cadence: 'daily', sourceUrl: 'https://example.gov/parcels', records: [
       { parcelId: 'LEH-001', address: '123 Grant Blvd, Lehigh Acres, FL', market: 'lehigh', lotSize: '0.25 ac', lotSizeAcres: 0.25, ownerName: 'Avery Santos', ownerPhone: '239-555-0131', ownerMailingAddress: '88 Pine St, Tampa FL', askingPrice: 28500, lowestActiveListing: 48000, buyerMaxPrice: 42000, roadAccess: true, utilities: true, wetlands: false, floodZone: 'X' },
       { parcelId: 'LEH-002', address: '711 Meadow Rd, Lehigh Acres, FL', market: 'lehigh', lotSize: '0.25 ac', lotSizeAcres: 0.25, ownerName: 'River Trust', askingPrice: 36000, lowestActiveListing: 47000, buyerMaxPrice: 42000, roadAccess: false, utilities: false, wetlands: true, floodZone: 'AE' },
     ]},
@@ -42,9 +42,25 @@ function testSnapshotGeneratesMarketsBuyersParcelsAndMetadata() {
   const snapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'test-run', now: '2026-06-16T09:00:00.000Z' });
   assert.equal(snapshot.runId, 'test-run');
   assert.equal(snapshot.markets.length, 2);
-  assert.equal(snapshot.buyers[0].sourceId, 'lehigh-builders-seed');
+  assert.equal(snapshot.buyers[0].sourceId, 'lehigh-builders-public');
   assert.equal(snapshot.parcels.length, 2);
   assert.equal(snapshot.parcels[0].leadId, 'parcel:lehigh:LEH-001');
+}
+
+function testSnapshotBlocksSeedDemoRowsFromActiveLeads() {
+  const seededOnly = {
+    version: 1,
+    targetMarkets: [{ id: 'knoxville-tn', name: 'Knoxville, TN', state: 'TN', buyerType: 'infill-builder', priority: 9 }],
+    buyerSources: [{ id: 'fake-builder-seed', market: 'knoxville-tn', state: 'TN', type: 'seed', records: [{ name: 'Made Up Builder', phone: '555-0000' }] }],
+    parcelSources: [{ id: 'fake-parcel-seed', market: 'knoxville-tn', state: 'TN', type: 'seed', records: [{ parcelId: 'FAKE-001', address: '123 Fiction Rd, Knoxville, TN', ownerName: 'Made Up Owner', ownerPhone: '555-0001' }] }],
+  };
+  const snapshot = generateLeadEngineSnapshot(seededOnly, { runId: 'seed-block-test', now: '2026-06-16T09:00:00.000Z' });
+  const queues = buildLeadQueues(snapshot);
+  assert.equal(snapshot.buyers.length, 0);
+  assert.equal(snapshot.parcels.length, 0);
+  assert.equal(queues.topSellerCalls.length, 0);
+  assert.equal(queues.skipTrace.length, 0);
+  assert.equal(queues.offerReady.length, 0);
 }
 
 function testQueuesPromoteContactableBuyerFitDealsAndBlockRiskyDeals() {
@@ -150,6 +166,7 @@ function testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged() {
 
 testLoadSourcesValidatesWorkflowInputs();
 testSnapshotGeneratesMarketsBuyersParcelsAndMetadata();
+testSnapshotBlocksSeedDemoRowsFromActiveLeads();
 testQueuesPromoteContactableBuyerFitDealsAndBlockRiskyDeals();
 testPublicOwnerLeadsWithoutPhoneEnterSkipTraceQueue();
 testBriefingSummarizesConveyorBeltActions();

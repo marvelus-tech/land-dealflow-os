@@ -1,2 +1,4 @@
 market,areaName,buyerType,task,reason,priority
-ocala,"Ocala, FL",custom-builder,"Find active custom-builder in Ocala, FL",new target area needs buyer discovery,6
+knoxville-tn,"Knoxville, TN",infill-builder,"Find active infill-builder in Knoxville, TN",new target area needs buyer discovery,9
+chattanooga-tn,"Chattanooga, TN",custom-builder,"Find active custom-builder in Chattanooga, TN",new target area needs buyer discovery,8
+nashville-edge-tn,"Nashville edge, TN",production-builder,"Find active production-builder in Nashville edge, TN",new target area needs buyer discovery,7

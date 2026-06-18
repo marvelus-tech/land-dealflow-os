@@ -9,7 +9,7 @@ const DEFAULT_KEYWORDS = [
 ];
 
 function asArray(value) { return Array.isArray(value) ? value : []; }
-function compact(value) { return String(value || '').replace(/\s+/g, ' ').trim(); }
+function compact(value) { return String(value || '').replace(/[\u0000-\u001F\u007F]/g, ' ').replace(/\s+/g, ' ').trim(); }
 function numericConfidence(...parts) { return Math.max(1, Math.min(100, parts.reduce((sum, value) => sum + Number(value || 0), 0))); }
 function sourceTypeFromText(text) {
   const haystack = String(text || '').toLowerCase();
@@ -44,6 +44,26 @@ function dedupeByUrlOrTitle(rows) {
   });
 }
 
+function stateName(code) {
+  return { TN: 'tennessee', FL: 'florida', AR: 'arkansas', TX: 'texas' }[String(code || '').toUpperCase()] || '';
+}
+
+function candidateMatchesMarket(candidate, market) {
+  const text = `${candidate.title || ''} ${candidate.description || ''} ${candidate.url || ''}`.toLowerCase();
+  const terms = [market.city, market.county, market.name, market.state, stateName(market.state)]
+    .filter(Boolean)
+    .map(term => String(term).toLowerCase().replace(/,.*$/, '').trim())
+    .filter(term => term.length >= 2);
+  return terms.some(term => text.includes(term));
+}
+
+function hasObviousWrongState(candidate, market) {
+  const text = `${candidate.title || ''} ${candidate.description || ''} ${candidate.url || ''}`.toLowerCase();
+  const own = String(market.state || '').toLowerCase();
+  const wrongNames = ['indiana', 'florida', 'arkansas', 'texas', 'california', 'ohio', 'georgia', 'alabama', 'kentucky', 'north carolina'].filter(name => name !== stateName(own));
+  return wrongNames.some(name => text.includes(name));
+}
+
 function resultRows(data) {
   if (Array.isArray(data?.results)) return data.results;
   if (Array.isArray(data?.items)) return data.items;
@@ -75,6 +95,7 @@ export function normalizeArcgisHubItem(item, market, query) {
   const sourceType = sourceTypeFromText(text);
   return {
     market: market.id,
+    state: market.state || '',
     areaName: market.name,
     platform: 'arcgis',
     sourceType,
@@ -99,6 +120,7 @@ export function normalizeSocrataCatalogItem(result, market, query) {
   const sourceType = sourceTypeFromText(text);
   return {
     market: market.id,
+    state: market.state || '',
     areaName: market.name,
     platform: 'socrata',
     sourceType,
@@ -136,6 +158,8 @@ export async function discoverAreaSourceCandidates(market, { fetchJson = default
   }
   return dedupeByUrlOrTitle(candidates)
     .filter(item => item.sourceType !== 'error' || item.confidence > 0)
+    .filter(item => !hasObviousWrongState(item, market))
+    .filter(item => candidateMatchesMarket(item, market))
     .sort((a, b) => b.confidence - a.confidence || a.title.localeCompare(b.title));
 }
 

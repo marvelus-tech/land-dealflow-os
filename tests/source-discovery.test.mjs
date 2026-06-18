@@ -31,7 +31,7 @@ async function fakeFetchJson(url) {
         resource: {
           id: 'abcd-1234',
           name: 'Building Permits',
-          description: 'Issued building permit records with contractors',
+          description: 'Marion County issued building permit records with contractors',
           domain: 'data.example.gov',
           type: 'dataset',
         },

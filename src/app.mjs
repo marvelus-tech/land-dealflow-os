@@ -55,41 +55,19 @@ import {
   formatMoney,
 } from './core.mjs';
 
-const STORAGE_KEY = 'land-dealflow-os-v2-workspace';
+const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
 const seedMarkets = [
-  { id: 'lehigh', name: 'Lehigh Acres, FL', thesis: 'High-volume cookie-cutter vacant lots with active builder demand.', newBuilds90d: 84, activeBuilders: 18, vacantLotSales90d: 99, offMarketVacantLots: 2400, lotStandardization: 9, growthSignal: 8, complianceSimplicity: 7, buildabilityRisk: 4 },
-  { id: 'cape-coral', name: 'Cape Coral, FL', thesis: 'Canal/seawall value pockets; strong demand but wetlands/utilities must be checked.', newBuilds90d: 66, activeBuilders: 16, vacantLotSales90d: 76, offMarketVacantLots: 1800, lotStandardization: 8, growthSignal: 8, complianceSimplicity: 7, buildabilityRisk: 5 },
-  { id: 'bentonville', name: 'NW Arkansas / Bentonville', thesis: 'Growth market with slope/setback risk; likely profitable if buildability is filtered.', newBuilds90d: 38, activeBuilders: 11, vacantLotSales90d: 46, offMarketVacantLots: 520, lotStandardization: 6, growthSignal: 9, complianceSimplicity: 8, buildabilityRisk: 6 },
-  { id: 'houston-edge', name: 'Houston outskirts, TX', thesis: 'Mega-neighborhood growth and many builders; non-disclosure/texting caveats.', newBuilds90d: 91, activeBuilders: 22, vacantLotSales90d: 88, offMarketVacantLots: 1500, lotStandardization: 8, growthSignal: 9, complianceSimplicity: 4, buildabilityRisk: 4 },
+  { id: 'knoxville-tn', name: 'Knoxville, TN', state: 'TN', thesis: 'Tennessee public-source pivot: verify builder demand and parcel provenance before outreach.', newBuilds90d: 0, activeBuilders: 0, vacantLotSales90d: 0, offMarketVacantLots: 0, lotStandardization: 0, growthSignal: 0, complianceSimplicity: 0, buildabilityRisk: 0 },
+  { id: 'chattanooga-tn', name: 'Chattanooga, TN', state: 'TN', thesis: 'Hamilton County source discovery first; no seller calls until verified public records exist.', newBuilds90d: 0, activeBuilders: 0, vacantLotSales90d: 0, offMarketVacantLots: 0, lotStandardization: 0, growthSignal: 0, complianceSimplicity: 0, buildabilityRisk: 0 },
+  { id: 'nashville-edge-tn', name: 'Nashville edge, TN', state: 'TN', thesis: 'Metro Nashville perimeter watchlist; promote only source-backed parcels and buyers.', newBuilds90d: 0, activeBuilders: 0, vacantLotSales90d: 0, offMarketVacantLots: 0, lotStandardization: 0, growthSignal: 0, complianceSimplicity: 0, buildabilityRisk: 0 },
 ];
 
-const seedBuyers = [
-  { id: 'precision', market: 'lehigh', name: 'Precision Gulf Homes', type: 'Spec Builder', recentBuilds: 18, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 14, repeatDemand: 9, maxPrice: 42000, contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', acquisitionNotes: 'Fastest buyer for clean paved-road Lehigh quarter-acre infill lots.', buyBox: '0.23–0.29 acre infill lots, paved road, no wetlands, $42k max', buyBoxCaptured: true, exactBuyBox: { targetMarkets: ['lehigh'], lotSizeMin: 0.23, lotSizeMax: 0.29, maxPrice: 42000, requiredRoadAccess: true, requiredUtilities: false, avoidFloodZones: ['AE'], avoidWetlands: true, notes: 'Paved-road quarter-acre Lehigh infill only.' }, validation: { calls: 4, answered: 3, buyBoxCaptured: true, proofOfFunds: true, feedbackCount: 3, acceptedDeals: 2, rejectedDeals: 1 }, callNotes: [{ date: '2026-06-16', contact: 'Maya Chen', outcome: 'answered', note: 'Confirmed paved road and no wetlands are non-negotiable.' }], feedback: [{ parcelId: 'parcel-1', decision: 'accept', reason: 'clean infill' }, { parcelId: 'parcel-4', decision: 'reject', reason: 'wetlands/access' }] },
-  { id: 'sunbelt', market: 'cape-coral', name: 'Sunbelt Custom Builders', type: 'Custom Builder', recentBuilds: 11, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 21, repeatDemand: 7, maxPrice: 95000, contactName: 'Andre Wells', phone: '239-555-0144', email: 'land@sunbelt.example', website: 'https://sunbelt.example', acquisitionNotes: 'Likes utility-confirmed lots; seawall/canal premium only after verification.', buyBox: 'Quarter-acre residential lots, utilities nearby, seawall premium, $95k max' },
-  { id: 'ozark', market: 'bentonville', name: 'Ozark Ridge Homes', type: 'Custom Builder', recentBuilds: 9, scatteredLots: true, hasBuyBox: true, closeSpeedDays: 18, repeatDemand: 6, maxPrice: 65000, contactName: 'Nina Brooks', phone: '479-555-0182', email: 'acquisitions@ozarkridge.example', website: 'https://ozarkridge.example', acquisitionNotes: 'Needs slope/perc viability before soft commitment.', buyBox: '0.4–1.0 acre lots, gentle slope, perc viable, $65k max' },
-  { id: 'investor', market: 'lehigh', name: 'Evergreen Land Fund', type: 'Land Investor', recentBuilds: 0, scatteredLots: false, hasBuyBox: true, closeSpeedDays: 30, repeatDemand: 4, maxPrice: 35000, contactName: 'Sam Patel', phone: '305-555-0108', email: 'sam@evergreenland.example', website: 'https://evergreenland.example', acquisitionNotes: 'Backup buyer; only use when builder spread fails.', buyBox: 'Will buy at 60–70% market only; backup buyer' },
-];
+const seedBuyers = [];
 
+const seedPermitRecords = [];
 
-const seedPermitRecords = [
-  { permitNumber: 'RES-2026-0418', permitStatus: 'Issued', permitType: 'New Single Family Residence', issueDate: '2026-05-27', jurisdiction: 'Lee County / Lehigh Acres', siteAddress: '1112 Grant Blvd, Lehigh Acres, FL', parcelId: '30-44-27-L1-10012.0010', contractorName: 'Precision Gulf Homes LLC', licenseNumber: 'CBC1267101', contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', sourceUrl: 'https://aca-prod.accela.com/LEECO/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'RES-2026-0391', permitStatus: 'Approved', permitType: 'New Residential / SFR', issueDate: '2026-04-30', jurisdiction: 'Lee County / Lehigh Acres', siteAddress: '928 Richmond Ave N, Lehigh Acres, FL', parcelId: '30-44-27-L1-09003.0000', contractorName: 'Precision Gulf Homes LLC', licenseNumber: 'CBC1267101', contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', sourceUrl: 'https://aca-prod.accela.com/LEECO/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'RES-2026-0337', permitStatus: 'Issued', permitType: 'Single Family Dwelling New Construction', issueDate: '2026-03-22', jurisdiction: 'Lee County / Lehigh Acres', siteAddress: '4422 12th St W, Lehigh Acres, FL', parcelId: '30-44-27-L2-21118.0000', contractorName: 'Precision Gulf Homes LLC', licenseNumber: 'CBC1267101', contactName: 'Maya Chen', phone: '239-555-0100', email: 'maya@precisiongulf.example', website: 'https://precisiongulf.example', sourceUrl: 'https://aca-prod.accela.com/LEECO/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'PB-2026-1182', permitStatus: 'Issued', permitType: 'New Single Family Residence', issueDate: '2026-05-18', jurisdiction: 'Palm Bay / Brevard County', siteAddress: '745 Jupiter Blvd SE, Palm Bay, FL', parcelId: '29-37-18-GO-00654.0-0012.00', contractorName: 'Holiday Builders Inc', licenseNumber: 'CBC1259874', contactName: 'Builder Acquisitions', phone: '321-555-0188', email: 'land@holiday.example', website: 'https://holidaybuilders.example', sourceUrl: 'https://aca-prod.accela.com/brevard/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'PB-2026-1044', permitStatus: 'Approved', permitType: 'Residential New Construction SFR', issueDate: '2026-04-12', jurisdiction: 'Palm Bay / Brevard County', siteAddress: '152 Emerson Dr NW, Palm Bay, FL', parcelId: '28-37-32-FV-00987.0-0021.00', contractorName: 'Holiday Builders Inc', licenseNumber: 'CBC1259874', contactName: 'Builder Acquisitions', phone: '321-555-0188', email: 'land@holiday.example', website: 'https://holidaybuilders.example', sourceUrl: 'https://aca-prod.accela.com/brevard/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'PB-2026-0889', permitStatus: 'Issued', permitType: 'New Single Family Dwelling', issueDate: '2026-02-20', jurisdiction: 'Palm Bay / Brevard County', siteAddress: '340 Waco Blvd SE, Palm Bay, FL', parcelId: '29-37-08-GR-00420.0-0007.00', contractorName: 'Holiday Builders Inc', licenseNumber: 'CBC1259874', contactName: 'Builder Acquisitions', phone: '321-555-0188', email: 'land@holiday.example', website: 'https://holidaybuilders.example', sourceUrl: 'https://aca-prod.accela.com/brevard/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'ORL-2026-2230', permitStatus: 'Issued', permitType: 'New Single Family Residence', issueDate: '2026-05-03', jurisdiction: 'Orange County / Orlando', siteAddress: '1880 Lake Pickett Rd, Orlando, FL', parcelId: '18-22-32-0000-00-055', contractorName: 'Craft Homes Group LLC', licenseNumber: 'CBC1272214', contactName: 'Lot Acquisitions', phone: '407-555-0122', email: 'acquisitions@crafthomes.example', website: 'https://crafthomes.example', sourceUrl: 'https://fasttrack.ocfl.net/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'ORL-2026-2091', permitStatus: 'Approved', permitType: 'Residential Building New Construction', issueDate: '2026-03-28', jurisdiction: 'Orange County / Orlando', siteAddress: '9205 Moss Preserve Pkwy, Orlando, FL', parcelId: '12-24-30-0000-00-117', contractorName: 'Craft Homes Group LLC', licenseNumber: 'CBC1272214', contactName: 'Lot Acquisitions', phone: '407-555-0122', email: 'acquisitions@crafthomes.example', website: 'https://crafthomes.example', sourceUrl: 'https://fasttrack.ocfl.net/', sourceRetrievedAt: '2026-06-18' },
-  { permitNumber: 'ORL-2026-1862', permitStatus: 'Issued', permitType: 'Single Family Dwelling New', issueDate: '2026-02-11', jurisdiction: 'Orange County / Orlando', siteAddress: '1416 Story Partin Rd, Orlando, FL', parcelId: '20-22-32-0000-00-018', contractorName: 'Craft Homes Group LLC', licenseNumber: 'CBC1272214', contactName: 'Lot Acquisitions', phone: '407-555-0122', email: 'acquisitions@crafthomes.example', website: 'https://crafthomes.example', sourceUrl: 'https://fasttrack.ocfl.net/', sourceRetrievedAt: '2026-06-18' },
-];
-
-const seedParcels = [
-  { id: 'parcel-1', market: 'lehigh', buyerId: 'precision', address: '123 Grant Blvd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Out-of-state owner', ownerName: 'Avery Santos', ownerPhone: '239-555-0131', ownerEmail: 'avery@example.com', titleCompanyName: 'Gulf Coast Title & Escrow', titleOfficer: 'Elena Ruiz', titleCompanyEmail: 'closings@gulfcoasttitle.example', titleFileNumber: 'GC-LEH-2408', assignmentFriendlyTitleCompany: true, sellerContractSigned: true, buyerContractSigned: true, closingCostsPayer: 'buyer', targetClosingDate: '2026-07-02', wireInstructionsStatus: 'secure-channel', hudStatus: 'review', ownerMailingAddress: '88 Pine St, Tampa FL 33602', skipTraceConfidence: 82, buyerContactName: 'Maya Chen', buyerPhone: '239-555-0100', buyerEmail: 'maya@precisiongulf.example', buyerWebsite: 'https://precisiongulf.example', acquisitionNotes: 'Clean Lehigh candidate; call first.', buyerMaxPrice: 42000, lowestActiveListing: 48000, askingPrice: 28500, crmStatus: 'New', nextFollowUp: '', notes: '', heldYears: 11, paid: 6200, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'nearby', slope: 'flat', wildlifeFlag: false },
-  { id: 'parcel-2', market: 'cape-coral', buyerId: 'sunbelt', address: '904 SW Canal Ter, Cape Coral, FL', lotSize: '0.23 ac', owner: 'Multiple-lot owner', buyerMaxPrice: 95000, lowestActiveListing: 112000, askingPrice: 76000, crmStatus: 'Researching', nextFollowUp: '', notes: 'Verify seawall/utilities premium.', heldYears: 8, paid: 21000, wetlands: 'review', floodZone: false, roadAccess: true, utilities: 'water+sewer', slope: 'flat', wildlifeFlag: false },
-  { id: 'parcel-3', market: 'bentonville', buyerId: 'ozark', address: 'Lot 18 Ridge Line Dr, Bella Vista, AR', lotSize: '0.62 ac', owner: 'Absentee owner', buyerMaxPrice: 65000, lowestActiveListing: 74000, askingPrice: 54000, crmStatus: 'Researching', nextFollowUp: '', notes: 'Needs slope/perc review.', heldYears: 6, paid: 12000, wetlands: 'none', floodZone: false, roadAccess: true, utilities: 'unknown', slope: 'steep', wildlifeFlag: false },
-  { id: 'parcel-4', market: 'lehigh', buyerId: 'precision', address: '711 Meadow Rd, Lehigh Acres, FL', lotSize: '0.25 ac', owner: 'Inherited owner', buyerMaxPrice: 42000, lowestActiveListing: 47000, askingPrice: 35000, crmStatus: 'Kill', nextFollowUp: '', notes: 'Killed by wetlands/access risk.', heldYears: 17, paid: 3000, wetlands: 'likely', floodZone: true, roadAccess: false, utilities: 'unknown', slope: 'flat', wildlifeFlag: true },
-];
+const seedParcels = [];
 
 const stages = [
   { id: 'market', name: 'Market Finder', desc: 'Score zip codes/suburbs for new builds, builders, vacant lot velocity and lot standardization.', sourceType: 'market' },
@@ -147,6 +125,7 @@ let selectedParcelId = '';
 let selectedBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
+let leadEngineStateFilter = 'all';
 let activeView = (location.hash || '#today').replace('#', '') || 'today';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
@@ -266,6 +245,54 @@ function generatedCandidateParcels() {
 
 function generatedCandidateBuyers() {
   return asArray(generatedLeads?.snapshot?.buyers).filter(buyer => buyer.sourceId === 'lehigh-builder-signals-fdor-2025');
+}
+
+function rowState(row = {}) {
+  const explicit = String(row.state || row.propertyState || '').trim().toUpperCase();
+  if (explicit) return explicit;
+  const text = `${row.market || ''} ${row.areaName || ''} ${row.address || ''}`.toLowerCase();
+  if (/\btn\b|tennessee|knoxville|chattanooga|nashville/.test(text)) return 'TN';
+  if (/\bfl\b|florida|lehigh|cape-coral|ocala|palm bay|orlando/.test(text)) return 'FL';
+  if (/\bar\b|arkansas|bentonville|bella vista/.test(text)) return 'AR';
+  if (/\btx\b|texas|houston/.test(text)) return 'TX';
+  return 'UNKNOWN';
+}
+
+function matchesLeadEngineState(row = {}) {
+  return leadEngineStateFilter === 'all' || rowState(row) === leadEngineStateFilter;
+}
+
+function availableLeadEngineStates(snapshot = {}, queues = {}) {
+  const rows = [
+    ...asArray(snapshot.markets),
+    ...asArray(snapshot.buyers),
+    ...asArray(snapshot.parcels),
+    ...asArray(snapshot.sourceCandidates),
+    ...Object.values(queues).flatMap(value => asArray(value)),
+  ];
+  const states = [...new Set(rows.map(rowState).filter(state => state && state !== 'UNKNOWN'))].sort();
+  return states.length ? states : ['TN'];
+}
+
+function filteredRows(rows = []) {
+  return asArray(rows).filter(matchesLeadEngineState);
+}
+
+function provenancePill(row = {}) {
+  const adapter = row.sourceAdapter || row.type || row.platform || 'source pending';
+  const sourceId = row.sourceId || row.id || row.sourceType || 'unverified';
+  const tone = /seed|fake|sample|demo/i.test(`${adapter} ${sourceId}`) ? 'bad' : row.sourceUrl || row.url || row.platform ? 'good' : 'warn';
+  const label = tone === 'bad' ? 'blocked: fabricated' : tone === 'good' ? 'public-source' : 'source pending';
+  return `${badge(label, tone)} ${badge(rowState(row), 'neutral')} <code>${h(sourceId)}</code>`;
+}
+
+function zeroFabricationNotice(snapshot = {}, queues = {}) {
+  const activeLeadCount = asArray(queues.topSellerCalls).length + asArray(queues.offerReady).length + asArray(queues.skipTrace).length;
+  const candidateCount = asArray(snapshot.sourceCandidates).length;
+  return `<section class="fabrication-guard">
+    <div><span class="eyebrow">Zero-fabrication mode</span><h3>No made-up leads are allowed in the money queue.</h3><p>Seed/demo records are blocked at generation time. Tennessee is currently a public-source watchlist: the app can show source candidates now, but seller calls stay empty until verified county/city records are ingested.</p></div>
+    <div class="guard-stats"><strong>${h(activeLeadCount)}</strong><span>active source-backed lead rows</span><strong>${h(candidateCount)}</strong><span>source candidates discovered</span></div>
+  </section>`;
 }
 
 function enrichedBuilderContacts() {
@@ -990,29 +1017,36 @@ function renderLeadEnginePanel() {
   }
   const snapshot = generatedLeads.snapshot || {};
   const queues = generatedLeads.queues || {};
-  const topCalls = queues.topSellerCalls || [];
-  const skipTrace = queues.skipTrace || [];
-  const buyerTasks = queues.buyerValidation || [];
-  const offerReady = queues.offerReady || [];
-  const buyerDiscovery = queues.buyerDiscovery || [];
-  const sellerDiscovery = queues.sellerDiscovery || [];
-  const sourceCandidates = snapshot.sourceCandidates || [];
-  const blockers = queues.missingData || [];
+  const states = availableLeadEngineStates(snapshot, queues);
+  if (leadEngineStateFilter !== 'all' && !states.includes(leadEngineStateFilter)) leadEngineStateFilter = 'all';
+  const topCalls = filteredRows(queues.topSellerCalls || []);
+  const skipTrace = filteredRows(queues.skipTrace || []);
+  const buyerTasks = filteredRows(queues.buyerValidation || []);
+  const offerReady = filteredRows(queues.offerReady || []);
+  const buyerDiscovery = filteredRows(queues.buyerDiscovery || []);
+  const sellerDiscovery = filteredRows(queues.sellerDiscovery || []);
+  const sourceCandidates = filteredRows(snapshot.sourceCandidates || []);
+  const parcels = filteredRows(snapshot.parcels || []);
+  const buyers = filteredRows(snapshot.buyers || []);
+  const blockers = filteredRows(queues.missingData || []).filter(item => item.severity > 0);
   const sourceSummary = ['market', 'buyer', 'parcel', 'owner', 'offer', 'risk', 'crm'];
+  const stateButtons = ['all', ...states].map(state => `<button type="button" class="state-filter ${state === leadEngineStateFilter ? 'active' : ''}" data-lead-state="${h(state)}">${state === 'all' ? 'All states' : h(state)}</button>`).join('');
   target.innerHTML = `<div class="lead-engine-grid">
-    <div class="deal-strip five hero-metrics"><div><span>Parcel leads</span><strong>${snapshot.parcels?.length || 0}</strong></div><div><span>Buyer leads</span><strong>${snapshot.buyers?.length || 0}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Skip trace</span><strong>${skipTrace.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
-    <details class="engine-column primary-column source-ledger"><summary><h4>Source ledger</h4><span>Last-sourced provenance by phase</span></summary><p>Every phase now exposes where the data comes from and when the underlying records were last sourced.</p>${sourceSummary.map(type => {
+    ${zeroFabricationNotice(snapshot, queues)}
+    <div class="lead-state-toolbar"><div><span class="eyebrow">State filter</span><h4>Show only the markets you can actually execute.</h4></div><div class="state-filter-group">${stateButtons}</div></div>
+    <div class="deal-strip five hero-metrics"><div><span>Parcel leads</span><strong>${parcels.length}</strong></div><div><span>Buyer leads</span><strong>${buyers.length}</strong></div><div><span>Seller calls</span><strong>${topCalls.length}</strong></div><div><span>Skip trace</span><strong>${skipTrace.length}</strong></div><div><span>Source candidates</span><strong>${sourceCandidates.length}</strong></div></div>
+    <details class="engine-column primary-column source-ledger" open><summary><h4>Source ledger</h4><span>Last-sourced provenance by phase</span></summary><p>Every row must name its public source. Seed/demo rows are not eligible for seller calls.</p>${sourceSummary.map(type => {
       const blueprint = sourceBlueprint[type];
       const status = getPhaseSourceStatus(type);
       return `<div class="engine-row"><b>${h(blueprint.label)}</b><span>${formatDateTime(status.latest)} · ${h(status.count)} records · ${status.ids.length ? status.ids.map(id => h(id)).join(', ') : 'derived/local'}</span></div>`;
     }).join('')}</details>
-    <div class="engine-column primary-column"><h4>Call these sellers first</h4>${topCalls.slice(0, 3).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No seller calls generated yet.</p>'}</div>
-    <div class="engine-column primary-column"><h4>Real leads to skip trace</h4>${skipTrace.slice(0, 5).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${h(item.ownerName || 'owner')} · ${h(item.ownerMailingAddress || 'mailing missing')} · confidence ${h(item.confidence ?? '')}</span></div>`).join('') || '<p>No public-owner skip trace queue generated yet.</p>'}</div>
-    <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 4).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered yet.</p>'}</div>
-    <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All target areas have buyer and seller seed data.</p>'}</div>
-    <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No buyer-validation tasks generated yet.</p>'}</div>
-    <div class="engine-column"><h4>Offer-ready</h4>${offerReady.slice(0, 4).map(item => `<div class="engine-row"><b>${h(item.address)}</b><span>${h(item.ownerName)} · ask ${h(item.askingPrice)} · max ${h(item.buyerMaxPrice)}</span></div>`).join('') || '<p>No offer-ready deals generated yet.</p>'}</div>
-    <div class="engine-column"><h4>Blockers</h4>${blockers.filter(item => item.severity > 0).slice(0, 4).map(item => `<div class="engine-row"><b>${h(item.address || item.parcelId)}</b><span>Missing: ${h(item.missing || 'unknown')}</span></div>`).join('') || '<p>No critical blockers in generated leads.</p>'}</div>
+    <div class="engine-column primary-column"><h4>Call these sellers first</h4>${topCalls.slice(0, 3).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${provenancePill(item)}</span><span>${h(item.ownerName || 'owner')} · ${h(item.ownerPhone || item.ownerEmail || 'needs verified contact')} · score ${h(item.score ?? '')}</span></div>`).join('') || '<p>No verified seller calls for this state yet. Correct state: wait for public owner + buyer-demand evidence before calling.</p>'}</div>
+    <div class="engine-column primary-column"><h4>Public-owner leads to skip trace</h4>${skipTrace.slice(0, 5).map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item.address)}</b><span>${provenancePill(item)}</span><span>${h(item.ownerName || 'owner')} · ${h(item.ownerMailingAddress || 'mailing missing')} · confidence ${h(item.confidence ?? '')}</span></div>`).join('') || '<p>No verified public-owner skip trace queue for this state yet.</p>'}</div>
+    <div class="engine-column"><h4>Source candidates</h4>${sourceCandidates.slice(0, 8).map(source => `<div class="engine-row"><b>${h(source.areaName || source.market)} · ${h(source.platform)} · ${h(source.sourceType)}</b><span>${provenancePill(source)}</span><span>${source.url ? safeLink(source.url, source.title || 'Open source') : h(source.title)} · confidence ${h(source.confidence ?? '')}</span></div>`).join('') || '<p>No external source candidates discovered for this state yet.</p>'}</div>
+    <div class="engine-column"><h4>New-area discovery</h4>${[...buyerDiscovery, ...sellerDiscovery].slice(0, 6).map(task => `<div class="engine-row"><b>${h(task.areaName || task.market)}</b><span>${provenancePill(task)}</span><span>${h(task.reason)} · ${h(task.task)}</span></div>`).join('') || '<p>All selected-state areas have source records or no discovery tasks.</p>'}</div>
+    <div class="engine-column"><h4>Buyer validation</h4>${buyerTasks.slice(0, 4).map(task => `<div class="engine-row"><b>${h(task.name)}</b><span>${provenancePill(task)}</span><span>${h(task.task)} · ${h(task.phone || task.website || 'find contact')}</span></div>`).join('') || '<p>No verified buyer-validation tasks for this state yet.</p>'}</div>
+    <div class="engine-column"><h4>Offer-ready</h4>${offerReady.slice(0, 4).map(item => `<div class="engine-row"><b>${h(item.address)}</b><span>${provenancePill(item)}</span><span>${h(item.ownerName)} · ask ${h(item.askingPrice)} · max ${h(item.buyerMaxPrice)}</span></div>`).join('') || '<p>No offer-ready deals for this state yet.</p>'}</div>
+    <div class="engine-column"><h4>Blockers</h4>${blockers.slice(0, 4).map(item => `<div class="engine-row"><b>${h(item.address || item.parcelId || item.market)}</b><span>${provenancePill(item)}</span><span>Missing: ${h(item.missing || 'unknown')}</span></div>`).join('') || '<p>No critical blockers in generated leads for this state.</p>'}</div>
   </div>`;
 }
 
@@ -1141,6 +1175,13 @@ function bindEvents() {
         history.replaceState(null, '', `#${view}`);
         setActiveView(view);
       }
+      return;
+    }
+
+    const stateButton = event.target.closest('[data-lead-state]');
+    if (stateButton) {
+      leadEngineStateFilter = stateButton.dataset.leadState || 'all';
+      renderLeadEnginePanel();
       return;
     }
 

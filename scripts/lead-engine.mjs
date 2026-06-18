@@ -30,17 +30,21 @@ export function loadLeadSources(input = resolve(repoRoot, 'data', 'sources.json'
   return loaded;
 }
 
-function collectSeedRecords(sources, sourceType, now) {
-  return sources.flatMap(source => asArray(source.records).map((record, index) => ({
-    ...record,
-    market: record.market || source.market,
-    sourceId: source.id,
-    sourceType,
-    sourceAdapter: source.type || 'seed',
-    cadence: source.cadence || 'manual',
-    collectedAt: now,
-    sequence: index + 1,
-  })));
+function collectVerifiedRecords(sources, sourceType, now) {
+  return sources
+    .filter(source => source.type !== 'seed')
+    .flatMap(source => asArray(source.records).map((record, index) => ({
+      ...record,
+      market: record.market || source.market,
+      state: record.state || source.state,
+      sourceId: source.id,
+      sourceType,
+      sourceAdapter: source.type || 'public-record',
+      sourceUrl: record.sourceUrl || source.sourceUrl || source.portalUrl || '',
+      cadence: source.cadence || 'manual',
+      collectedAt: now,
+      sequence: index + 1,
+    })));
 }
 
 export function generateLeadEngineSnapshot(inputSources, { runId = `lead-engine-${Date.now()}`, now = new Date().toISOString() } = {}) {
@@ -52,13 +56,13 @@ export function generateLeadEngineSnapshot(inputSources, { runId = `lead-engine-
     rank: index + 1,
     collectedAt: now,
   }));
-  const buyers = collectSeedRecords(sources.buyerSources, 'buyer', now).map((buyer, index) => ({
+  const buyers = collectVerifiedRecords(sources.buyerSources, 'buyer', now).map((buyer, index) => ({
     leadId: `buyer:${buyer.market || 'any'}:${slug(buyer.name || index)}`,
     validationStatus: buyer.validationStatus || (buyer.exactBuyBox || buyer.buyBox ? 'needs-call-confirmation' : 'new'),
     confidence: Math.min(100, 35 + Number(buyer.recentBuilds || 0) + (buyer.phone ? 10 : 0) + (buyer.website ? 10 : 0) + (buyer.exactBuyBox ? 20 : 0)),
     ...buyer,
   }));
-  const parcels = collectSeedRecords(sources.parcelSources, 'parcel', now).map((parcel, index) => ({
+  const parcels = collectVerifiedRecords(sources.parcelSources, 'parcel', now).map((parcel, index) => ({
     leadId: `parcel:${parcel.market || 'any'}:${parcel.parcelId || slug(parcel.address || index)}`,
     crmStatus: parcel.crmStatus || 'Generated lead',
     nextFollowUp: parcel.nextFollowUp || todayStamp(now),

@@ -1,0 +1,3 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+nashville-edge-tn,"Nashville edge, TN",arcgis,parcel,Davidson County - Parcels,https://maps.nashville.gov/arcgis/rest/services/Cadastral/Parcels/MapServer,70,seller_parcel_discovery,Davidson County parcels
+nashville-edge-tn,"Nashville edge, TN",arcgis,zoning,Skai Tornado Workshop Map,,70,deal_risk_and_fit_overlay,"Nashville edge, TN zoning"

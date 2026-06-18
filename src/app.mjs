@@ -121,6 +121,7 @@ const sourceBlueprint = {
 
 let workspace = loadWorkspace();
 let generatedLeads = null;
+let weeklyMarketScout = null;
 let filter = 'all';
 let selectedParcelId = '';
 let selectedSourceType = 'market';
@@ -669,6 +670,45 @@ async function loadGeneratedLeads() {
   }
 }
 
+async function loadWeeklyMarketScout() {
+  try {
+    const response = await fetch('data/generated/weekly-market/latest.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`weekly market ${response.status}`);
+    weeklyMarketScout = await response.json();
+  } catch (error) {
+    weeklyMarketScout = { error: error.message };
+  }
+}
+
+function renderWeeklyMarketScout() {
+  const target = document.querySelector('#weekly-market-scout');
+  if (!target) return;
+  if (!weeklyMarketScout) {
+    target.innerHTML = '<p>Loading weekly market scout…</p>';
+    return;
+  }
+  if (weeklyMarketScout.error) {
+    target.innerHTML = `<section class="weekly-market-card"><span class="eyebrow">Market Expansion Engine</span><h3>Weekly scout not generated yet.</h3><p>Run <code>node scripts/weekly-market-scout.mjs</code> to publish this week’s market candidate.</p></section>`;
+    return;
+  }
+  const market = weeklyMarketScout.recommendedMarket || {};
+  const criteria = asArray(market.criteria);
+  const actions = asArray(market.firstActions);
+  const caveats = asArray(market.caveats);
+  target.innerHTML = `<section class="weekly-market-card">
+    <div class="weekly-market-head">
+      <div><span class="eyebrow">Market Expansion Engine · week ${h(weeklyMarketScout.week || '')}</span><h3>${h(market.name || 'No market selected')}</h3><p>${h(market.thesis || 'No thesis generated yet.')}</p></div>
+      <div class="market-grade"><span>Score</span><strong>${h(market.score ?? 0)}</strong><em>Grade ${h(market.grade || '—')}</em></div>
+    </div>
+    <div class="deal-strip four"><div><span>State</span><strong>${h(market.state || '—')}</strong></div><div><span>Status</span><strong>${h(market.nextStatus || market.status || 'research')}</strong></div><div><span>Mentioned as</span><strong>${h(market.mentionedAs || 'transcript market')}</strong></div><div><span>Generated</span><strong>${formatDateTime(weeklyMarketScout.generatedAt)}</strong></div></div>
+    <div class="weekly-market-grid">
+      <div><h4>Transcript criteria</h4>${criteria.map(item => `<div class="criterion-row"><b>${h(item.label)}</b><span>${h(item.score)}/10 · ${h(item.points)} pts · ${h(item.threshold)}</span></div>`).join('')}</div>
+      <div><h4>First execution moves</h4>${actions.map((item, index) => `<div class="engine-row priority-row"><b>${index + 1}. ${h(item)}</b><span>${index === 0 ? 'recent-build visual evidence' : index === 1 ? 'source provenance ledger' : index === 2 ? 'buyer-first validation' : 'seller work waits for buyer proof'}</span></div>`).join('')}</div>
+      <div><h4>Risks / caveats</h4>${caveats.map(item => badge(item, 'warn')).join('') || '<p>No caveats captured.</p>'}<p>${asArray(market.flags).length ? `Flags: ${h(market.flags.join(', '))}` : 'No hard filter flags on this candidate.'}</p></div>
+    </div>
+  </section>`;
+}
+
 function renderLeadEnginePanel() {
   const target = document.querySelector('#lead-engine-panel');
   if (!target) return;
@@ -1074,6 +1114,7 @@ function renderAll() {
   renderFilters();
   renderParcels();
   renderTopCallList();
+  renderWeeklyMarketScout();
   renderLeadEnginePanel();
   renderQualityControl();
   renderBuyerValidationPanel();
@@ -1085,3 +1126,4 @@ function renderAll() {
 bindEvents();
 renderAll();
 loadGeneratedLeads().then(renderAll);
+loadWeeklyMarketScout().then(renderAll);

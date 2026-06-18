@@ -1,0 +1,211 @@
+{
+  "version": 1,
+  "source": {
+    "title": "Land Wholesaling / Builder-First Land Arbitrage Model — YouTube Extraction",
+    "path": "/root/Documents/Business Ideas Vault/Ideas/Land Wholesaling Builder-First Model - YouTube Extraction.md",
+    "youtubeUrl": "https://youtu.be/_1DziIwKyGk",
+    "extractedSection": "Market selection criteria",
+    "notes": "Transcript-mentioned states and markets plus deterministic seed scores for v1 weekly market scouting. Scores are research-prior inputs, not live proof."
+  },
+  "criteria": [
+    { "id": "newBuildSignal", "label": "New construction happening", "weight": 20, "threshold": "At least five new builds in target ZIP / visible recent specs" },
+    { "id": "builderDiscoverability", "label": "More than five active builders nearby", "weight": 20, "threshold": "Builders/listing agents/companies visible and callable" },
+    { "id": "vacantLotSupply", "label": "Vacant/off-market lot supply", "weight": 15, "threshold": "Enough unused residential lots to create seller call volume" },
+    { "id": "lotStandardization", "label": "Cookie-cutter repeatability", "weight": 15, "threshold": "Similar lot sizes, conditions, roads/utilities, and pricing" },
+    { "id": "growthSignal", "label": "Growth / hot-market pressure", "weight": 10, "threshold": "Population/economic/home-value pressure; not stagnant" },
+    { "id": "metroEdgeFit", "label": "30–45 minute major-metro edge", "weight": 8, "threshold": "Not fully built-out core, not isolated rural" },
+    { "id": "buildabilitySimplicity", "label": "Manageable buildability risk", "weight": 7, "threshold": "Wetlands/flood/access/slope/zoning risk can be filtered" },
+    { "id": "complianceSimplicity", "label": "Compliance / closing simplicity", "weight": 5, "threshold": "Assignable-contract/title path plausible; legal/texting caveats known" }
+  ],
+  "hardFilters": [
+    "No visible new-build activity → reject",
+    "Fewer than five active builders nearby → reject or hold",
+    "No repeatable vacant-lot supply → reject",
+    "Every parcel is unique / heavy diligence → hold",
+    "Fully built-out core metros like Miami → avoid",
+    "Very rural markets without builders/buyers → avoid",
+    "Heavy compliance/texting constraints → hold until compliant workflow exists"
+  ],
+  "markets": [
+    {
+      "id": "lehigh-acres-fl",
+      "name": "Lehigh Acres, FL",
+      "state": "FL",
+      "mentionedAs": "direct market example",
+      "status": "active",
+      "scores": { "newBuildSignal": 9, "builderDiscoverability": 8, "vacantLotSupply": 10, "lotStandardization": 9, "growthSignal": 8, "metroEdgeFit": 8, "buildabilitySimplicity": 6, "complianceSimplicity": 7 },
+      "thesis": "High-volume quarter-acre infill vacant lots with repeat builder demand and standardized seller targeting.",
+      "caveats": ["wetlands/access must be filtered", "buyer validation still required per builder"]
+    },
+    {
+      "id": "cape-coral-fl",
+      "name": "Cape Coral, FL",
+      "state": "FL",
+      "mentionedAs": "direct market example",
+      "status": "active",
+      "scores": { "newBuildSignal": 8, "builderDiscoverability": 8, "vacantLotSupply": 8, "lotStandardization": 8, "growthSignal": 8, "metroEdgeFit": 7, "buildabilitySimplicity": 5, "complianceSimplicity": 7 },
+      "thesis": "Visible builder demand with canal/seawall and utility-confirmed lot premiums, but diligence is more complex than clean inland infill.",
+      "caveats": ["utility/seawall premiums require verification", "flood and waterfront diligence can slow deals"]
+    },
+    {
+      "id": "bonita-springs-fl",
+      "name": "Bonita Springs, FL",
+      "state": "FL",
+      "mentionedAs": "direct market example",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 5, "lotStandardization": 5, "growthSignal": 8, "metroEdgeFit": 6, "buildabilitySimplicity": 4, "complianceSimplicity": 7 },
+      "thesis": "Southwest Florida builder demand signal, but likely more expensive and diligence-heavy than Lehigh/Cape Coral.",
+      "caveats": ["higher land prices may compress spread", "wetlands/flood/coastal diligence"]
+    },
+    {
+      "id": "jacksonville-fl",
+      "name": "Jacksonville, FL",
+      "state": "FL",
+      "mentionedAs": "large-deal example",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 8, "builderDiscoverability": 8, "vacantLotSupply": 7, "lotStandardization": 6, "growthSignal": 8, "metroEdgeFit": 8, "buildabilitySimplicity": 6, "complianceSimplicity": 7 },
+      "thesis": "Transcript cited a multi-lot Jacksonville spread; broad metro edge may have builders and repeatable pockets.",
+      "caveats": ["must narrow to specific ZIP/subdivision", "avoid core fully-developed pockets"]
+    },
+    {
+      "id": "orlando-edge-fl",
+      "name": "Orlando outskirts, FL",
+      "state": "FL",
+      "mentionedAs": "direct market example",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 8, "builderDiscoverability": 8, "vacantLotSupply": 6, "lotStandardization": 6, "growthSignal": 9, "metroEdgeFit": 8, "buildabilitySimplicity": 5, "complianceSimplicity": 7 },
+      "thesis": "Strong Central Florida growth and builder base; needs suburb/ZIP selection outside the built-out core.",
+      "caveats": ["competition likely high", "must find repeatable lot pockets"]
+    },
+    {
+      "id": "wilmington-nc",
+      "name": "Wilmington, NC",
+      "state": "NC",
+      "mentionedAs": "direct market example",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 6, "lotStandardization": 6, "growthSignal": 8, "metroEdgeFit": 7, "buildabilitySimplicity": 5, "complianceSimplicity": 6 },
+      "thesis": "Coastal Carolina growth market with likely scattered-lot builders; validate flood/wetlands and exact buyer pockets first.",
+      "caveats": ["coastal flood/stormwater risk", "must confirm standardized lots"]
+    },
+    {
+      "id": "north-carolina-growth-belts",
+      "name": "North Carolina growth belts",
+      "state": "NC",
+      "mentionedAs": "state mentioned broadly",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 6, "lotStandardization": 6, "growthSignal": 8, "metroEdgeFit": 8, "buildabilitySimplicity": 6, "complianceSimplicity": 6 },
+      "thesis": "Transcript mentioned NC broadly; likely target is metro-edge builder growth around defined ZIPs, not generic rural acreage.",
+      "caveats": ["needs specific city/ZIP selection", "buyer signals required before sellers"]
+    },
+    {
+      "id": "south-carolina-growth-belts",
+      "name": "South Carolina growth belts",
+      "state": "SC",
+      "mentionedAs": "state mentioned broadly",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 7, "lotStandardization": 6, "growthSignal": 8, "metroEdgeFit": 8, "buildabilitySimplicity": 6, "complianceSimplicity": 6 },
+      "thesis": "Likely metro-edge new-build pockets near growing Carolina metros; good candidate for weekly research once narrowed.",
+      "caveats": ["needs county/ZIP narrowing", "verify title/assignment workflow"]
+    },
+    {
+      "id": "georgia-growth-belts",
+      "name": "Georgia growth belts",
+      "state": "GA",
+      "mentionedAs": "state mentioned broadly",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 8, "builderDiscoverability": 8, "vacantLotSupply": 7, "lotStandardization": 6, "growthSignal": 8, "metroEdgeFit": 8, "buildabilitySimplicity": 6, "complianceSimplicity": 6 },
+      "thesis": "Strong Southeast growth and builder discoverability; target outer-metro ZIPs with repeatable residential lots.",
+      "caveats": ["avoid overbuilt Atlanta core", "must confirm local assignment/title acceptance"]
+    },
+    {
+      "id": "tennessee-growth-belts",
+      "name": "Tennessee growth belts",
+      "state": "TN",
+      "mentionedAs": "state mentioned broadly",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 8, "builderDiscoverability": 8, "vacantLotSupply": 6, "lotStandardization": 5, "growthSignal": 9, "metroEdgeFit": 8, "buildabilitySimplicity": 5, "complianceSimplicity": 6 },
+      "thesis": "Growth pressure around Tennessee metros can create builder demand, but terrain/slope and parcel variability need filtering.",
+      "caveats": ["slope/perc risk", "cookie-cutter lot pattern must be proven"]
+    },
+    {
+      "id": "bentonville-nw-arkansas",
+      "name": "Bentonville / Northwest Arkansas",
+      "state": "AR",
+      "mentionedAs": "direct market example",
+      "status": "active",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 6, "lotStandardization": 5, "growthSignal": 9, "metroEdgeFit": 7, "buildabilitySimplicity": 4, "complianceSimplicity": 8 },
+      "thesis": "Strong economic growth and builder activity, but slope/perc/buildability can reduce clean repeatability.",
+      "caveats": ["slope/perc viability", "lot uniqueness risk"]
+    },
+    {
+      "id": "houston-outskirts-tx",
+      "name": "Houston outskirts, TX",
+      "state": "TX",
+      "mentionedAs": "direct market example with caveats",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 10, "builderDiscoverability": 9, "vacantLotSupply": 8, "lotStandardization": 8, "growthSignal": 9, "metroEdgeFit": 9, "buildabilitySimplicity": 6, "complianceSimplicity": 3 },
+      "thesis": "Huge builder market and outer-subdivision growth; only proceed with compliant texting/assignment/title workflow.",
+      "caveats": ["Texas legal/texting caveats", "non-disclosure pricing friction", "compliance gate required"]
+    },
+    {
+      "id": "fort-worth-outskirts-tx",
+      "name": "Fort Worth outskirts, TX",
+      "state": "TX",
+      "mentionedAs": "direct market example with caveats",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 9, "builderDiscoverability": 8, "vacantLotSupply": 7, "lotStandardization": 7, "growthSignal": 9, "metroEdgeFit": 9, "buildabilitySimplicity": 6, "complianceSimplicity": 3 },
+      "thesis": "DFW edge growth may fit the transcript model if compliance/title path is locked down first.",
+      "caveats": ["Texas compliance gate", "must identify specific outer ZIPs"]
+    },
+    {
+      "id": "austin-outskirts-tx",
+      "name": "Austin outskirts, TX",
+      "state": "TX",
+      "mentionedAs": "direct market example with caveats",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 9, "builderDiscoverability": 8, "vacantLotSupply": 6, "lotStandardization": 6, "growthSignal": 9, "metroEdgeFit": 8, "buildabilitySimplicity": 5, "complianceSimplicity": 3 },
+      "thesis": "Austin-edge demand is strong but prices/competition/compliance may compress beginner spreads.",
+      "caveats": ["Texas compliance gate", "competition/pricing risk"]
+    },
+    {
+      "id": "nevada-growth-belts",
+      "name": "Nevada growth belts",
+      "state": "NV",
+      "mentionedAs": "state mentioned broadly",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 6, "lotStandardization": 6, "growthSignal": 7, "metroEdgeFit": 7, "buildabilitySimplicity": 6, "complianceSimplicity": 5 },
+      "thesis": "Transcript mentions Nevada; likely requires narrowing to active new-build pockets with enough vacant residential lots.",
+      "caveats": ["water/utility constraints may matter", "specific ZIP selection required"]
+    },
+    {
+      "id": "arizona-lot-packages",
+      "name": "Arizona lot-package markets",
+      "state": "AZ",
+      "mentionedAs": "22-lot package example",
+      "status": "candidate",
+      "scores": { "newBuildSignal": 7, "builderDiscoverability": 7, "vacantLotSupply": 7, "lotStandardization": 7, "growthSignal": 8, "metroEdgeFit": 7, "buildabilitySimplicity": 6, "complianceSimplicity": 5 },
+      "thesis": "Transcript cited a 22-lot Arizona package; packageable subdivisions may work if water/utilities/builders validate.",
+      "caveats": ["water/utility due diligence", "package buyer validation needed"]
+    },
+    {
+      "id": "washington-growth-belts",
+      "name": "Washington growth belts",
+      "state": "WA",
+      "mentionedAs": "state mentioned broadly",
+      "status": "watchlist",
+      "scores": { "newBuildSignal": 6, "builderDiscoverability": 6, "vacantLotSupply": 5, "lotStandardization": 4, "growthSignal": 7, "metroEdgeFit": 7, "buildabilitySimplicity": 3, "complianceSimplicity": 4 },
+      "thesis": "Growth exists, but entitlement/buildability/regulatory complexity likely makes this a later-stage market.",
+      "caveats": ["regulatory/buildability complexity", "wetlands/slope/tree restrictions likely"]
+    },
+    {
+      "id": "hawaii-growth-belts",
+      "name": "Hawaii growth belts",
+      "state": "HI",
+      "mentionedAs": "state mentioned broadly",
+      "status": "watchlist",
+      "scores": { "newBuildSignal": 5, "builderDiscoverability": 5, "vacantLotSupply": 4, "lotStandardization": 3, "growthSignal": 7, "metroEdgeFit": 4, "buildabilitySimplicity": 2, "complianceSimplicity": 3 },
+      "thesis": "Mentioned in transcript, but high complexity and island-specific constraints make it a watchlist market, not v1 execution target.",
+      "caveats": ["high legal/buildability/cost complexity", "not suitable for first operating loop"]
+    }
+  ]
+}

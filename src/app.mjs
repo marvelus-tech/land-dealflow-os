@@ -34,6 +34,11 @@ import {
   addBuyerCallNote,
   buildDealFitMatrix,
   buildBuyerFeedbackLoop,
+  calculateBuyBoxCompleteness,
+  calculateSellerMotivation,
+  calculateContractReadiness,
+  generateSellerNetOfferScript,
+  generateNeighborPrompt,
   formatMoney,
 } from './core.mjs';
 
@@ -336,6 +341,11 @@ function renderParcels() {
   }
 
   const buyer = getBuyer(selected);
+  const buyBox = calculateBuyBoxCompleteness(buyer);
+  const motivation = calculateSellerMotivation(selected);
+  const contractGate = calculateContractReadiness(selected, buyer);
+  const sellerNet = generateSellerNetOfferScript(selected, buyer);
+  const neighborPrompt = generateNeighborPrompt(selected);
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const fitRows = [
@@ -374,6 +384,18 @@ function renderParcels() {
         <div><span>Initial offer</span><b>${formatMoney(selected.offer.initialSellerOffer)}</b></div>
         <div><span>Max offer</span><b>${formatMoney(selected.offer.maxSellerOffer)}</b></div>
         <div><span>Spread</span><b>${formatMoney(selected.metrics.spread)}</b></div>
+      </div>
+      <div class="phase-one-detail-grid">
+        <article class="phase-detail-card"><span>Buy box completeness</span><b>${h(buyBox.percent)}%</b><p>${h(buyBox.missing.slice(0, 2).join(' · ') || 'Buyer criteria complete enough for seller matching.')}</p></article>
+        <article class="phase-detail-card"><span>Seller motivation</span><b>${h(motivation.score)} · ${h(motivation.temperature)}</b><p>${h(motivation.signals.slice(0, 3).join(' · ') || 'No strong motivation signal yet.')}</p></article>
+        <article class="phase-detail-card"><span>Contract gate</span><b>${h(contractGate.score)}%</b><p>${h(contractGate.blockers.slice(0, 2).join(' · ') || contractGate.label)}</p></article>
+      </div>
+      <div class="seller-net-script-card">
+        <span class="eyebrow">Seller net offer script</span>
+        <h3>${h(sellerNet.headline)}</h3>
+        <p>${h(sellerNet.netLine)}</p>
+        <p><strong>Ask:</strong> ${h(sellerNet.ask)}</p>
+        <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
       </div>
       <div class="detail-grid">
         <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'contact missing')}</p></div>
@@ -429,22 +451,31 @@ function renderCommandCenter() {
     </button>`).join('') : '<article class="money-empty"><b>No real seller calls ready yet.</b><span>Import skip-traced owner phones. Public parcel records stay out of Today until a real phone/email matches.</span></article>';
   const outcomeButtons = Object.entries(CALL_OUTCOMES).map(([key, outcome]) => `<button type="button" class="outcome-chip" data-call-outcome="${h(key)}" ${heroCall.id ? '' : 'disabled'}>${h(outcome.label)}</button>`).join('');
   const script = heroCall.callScript || {};
+  const boxMeter = calculateBuyBoxCompleteness(leadBuyer || {});
+  const heroMotivation = heroCall.id ? calculateSellerMotivation(heroCall) : { score: 0, temperature: 'Cold', signals: [] };
+  const netScript = heroCall.id ? generateSellerNetOfferScript(heroCall, getBuyer(heroCall)) : null;
   document.querySelector('#command').innerHTML = `
-    <div class="cashflow-hero">
+    <div class="cashflow-hero editorial-hero">
       <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · v1.14 buyer-first validation</span>
-        <h1>Call buyers before sellers.</h1>
-        <p>Validate the buy box first, then select seller parcels that match real demand. Seller skip tracing waits until a buyer says exactly what they want.</p>
+        <span class="eyebrow">Land Dealflow OS · phase 1 infusion</span>
+        <h1>Buyer proof before seller pressure.</h1>
+        <p>A premium call-first operating desk: validate the builder buy box, surface seller motivation, speak in net-cash terms, and only send contracts through an attorney/title-ready gate.</p>
         <div class="hero-actions"><a class="button-link" href="${leadBuyer?.phone ? `tel:${h(leadBuyer.phone)}` : '#daily-calls'}">Call buyer</a><button id="export-daily-call-sheet" class="secondary" type="button">Export matched seller calls</button></div>
       </div>
-      <aside class="hero-deal-card cash-card" aria-label="Selected money call">
+      <aside class="hero-deal-card cash-card buybox-meter-card" aria-label="Buy box completeness meter">
         <span>${h(leadBuyer?.phone || leadBuyer?.website || 'Find buyer contact')}</span>
         <h2>${h(leadBuyer?.name || 'Validate the first Lehigh buyer')}</h2>
         <p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || 'Ask what lots they buy, max price, kill criteria, and closing speed.')}</p>
-        <div class="deal-strip two"><div><span>Validated buy boxes</span><strong>${h(buyerFirst.stats.validatedBuyBoxes)}</strong></div><div><span>Buyer contacts needed</span><strong>${h(buyerFirst.stats.buyerContactsNeeded)}</strong></div></div>
-        <div class="deal-strip two"><div><span>Seller matches</span><strong>${h(buyerFirst.stats.matchedSellerParcels)}</strong></div><div><span>Skip-trace batch</span><strong>${h(buyerFirst.stats.skipTraceAfterBuyerFit)}</strong></div></div>
+        <div class="radial-meter" style="--score:${boxMeter.percent}"><strong>${boxMeter.percent}%</strong><span>buy box</span></div>
+        <div class="deal-strip two"><div><span>Grade</span><strong>${h(boxMeter.grade)}</strong></div><div><span>Missing</span><strong>${h(boxMeter.missing.length || '0')}</strong></div></div>
+        <p class="microcopy">${h(boxMeter.missing.slice(0, 2).join(' · ') || 'Complete enough to match seller parcels.')}</p>
       </aside>
     </div>
+    <section class="phase-one-strip" aria-label="Phase one infusion controls">
+      <article class="infusion-card land-photo-card"><img src="./assets/land-imagery/lehigh-golden-lot.png" alt="Dreamy DSLR view of a Lehigh vacant lot"><span class="eyebrow">Chapter I</span><h3>Buy box completeness</h3><p>${h(boxMeter.met)}/${h(boxMeter.total)} buyer facts captured before seller outreach.</p></article>
+      <article class="infusion-card"><span class="eyebrow">Chapter II</span><h3>Seller motivation score</h3><div class="large-score">${h(heroMotivation.score)}<em>${h(heroMotivation.temperature)}</em></div><p>${h(heroMotivation.signals.slice(0, 2).join(' · ') || 'Select a callable seller to reveal motivation signals.')}</p></article>
+      <article class="infusion-card land-photo-card"><img src="./assets/land-imagery/builder-edge-market.png" alt="Dreamy DSLR builder lots on a suburban edge market"><span class="eyebrow">Chapter III</span><h3>Seller net script</h3><p>${h(netScript?.headline || 'Choose a seller call to generate the net-cash opener.')}</p></article>
+    </section>
     <section class="buyer-first-board" aria-label="Buyer-first buy box validation">
       <article class="buyer-first-lane"><span class="eyebrow">Step 1 · Buyer demand</span><h2>Validate a real buy box.</h2><div class="buyer-first-list">${buyerRows}</div></article>
       <article class="buyer-first-lane"><span class="eyebrow">Step 2 · Seller selection</span><h2>Only then choose parcels.</h2><div class="queue-card">${matchedRows}</div></article>
@@ -464,12 +495,12 @@ function renderCommandCenter() {
       </div>
       <article class="call-script-panel" aria-label="What to say">
         <span class="eyebrow">What to say</span>
-        <h2>${h(script.opening || 'No callable seller selected yet.')}</h2>
+        <h2>${h(netScript?.opening || script.opening || 'No callable seller selected yet.')}</h2>
         <div class="script-grid">
-          <div><span>Ask this</span><b>${h(script.motivationQuestion || 'Add seller contact data first.')}</b></div>
-          <div><span>Offer anchor</span><b>${h(script.anchorLine || 'No offer anchor yet.')}</b></div>
-          <div><span>Buyer proof</span><b>${h(script.buyerProof || heroCall.buyerBacking?.summary || 'No buyer proof yet.')}</b></div>
-          <div><span>Risk guardrail</span><b>${h(script.riskLine || 'No risk read yet.')}</b></div>
+          <div><span>Seller net line</span><b>${h(netScript?.netLine || script.anchorLine || 'No offer anchor yet.')}</b></div>
+          <div><span>Motivation question</span><b>${h(netScript?.ask || script.motivationQuestion || 'Add seller contact data first.')}</b></div>
+          <div><span>Buyer proof</span><b>${h(netScript?.buyerProof || script.buyerProof || heroCall.buyerBacking?.summary || 'No buyer proof yet.')}</b></div>
+          <div><span>Risk / close</span><b>${h(netScript?.close || script.riskLine || 'No risk read yet.')}</b></div>
         </div>
       </article>
       <aside class="outcome-panel" aria-label="What happened after the call">

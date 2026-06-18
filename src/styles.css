@@ -454,8 +454,104 @@ button.danger { background: #fff0ee; color: var(--red); border-color: #ffd2cc; }
 .risk-item.fatal { background: #fff0ee; }
 .memo-preview pre { white-space: pre-wrap; max-height: 280px; overflow: auto; color: var(--ink); background: var(--panel); border-radius: 14px; padding: 14px; font: 12px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; border: 1px solid var(--line-soft); }
 footer { max-width: 1180px; margin: 0 auto; padding: 36px 24px 60px; color: var(--muted); border-top: 1px solid var(--line-soft); }
+
+/* v1.16 editorial land-dealflow redesign: cofounder-style restraint + W+K campaign polish */
+:root {
+  --bg: #eee8da;
+  --page: #fbf7ed;
+  --panel: rgba(255,252,244,.92);
+  --panel-soft: rgba(246,240,226,.72);
+  --panel-warm: #fbf3e3;
+  --panel-green: #eef0dd;
+  --ink: #191713;
+  --muted: #6f675a;
+  --soft: #9a907f;
+  --line: rgba(43,38,29,.145);
+  --line-soft: rgba(43,38,29,.09);
+  --black: #171511;
+  --brand: #725b35;
+  --brand-dark: #3f3320;
+  --money: #d9c18a;
+  --money-ink: #2b2517;
+  --coral: #9b5138;
+  --green: #4d6a3e;
+  --amber: #956829;
+  --red: #9b342b;
+  --shadow: rgba(38,32,22,.16) 0 28px 90px;
+  --shadow-soft: rgba(38,32,22,.09) 0 16px 48px;
+}
+body {
+  background:
+    linear-gradient(rgba(62,51,33,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62,51,33,.035) 1px, transparent 1px),
+    radial-gradient(circle at 18% 0%, rgba(255,255,255,.9), transparent 22rem),
+    radial-gradient(circle at 84% 11%, rgba(181,143,83,.25), transparent 26rem),
+    linear-gradient(180deg, #f8f2e5 0%, #efe7d5 42%, #e9e1d0 100%);
+  background-size: 42px 42px, 42px 42px, auto, auto, auto;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% -20%, rgba(255,255,255,.58), transparent 34rem); z-index: -1; }
+.nav { min-height: 68px; max-width: 1180px; margin: 14px auto 0; border-radius: 999px; padding: 0 16px 0 22px; border: 1px solid rgba(43,38,29,.13); background: rgba(251,247,237,.78); box-shadow: rgba(38,32,22,.08) 0 12px 34px; }
+.brand { font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 500; letter-spacing: -.04em; }
+.brand-mark { background: #171511; color: #f6e8c8; border-radius: 50%; font-size: 12px; }
+.app-tabs { background: rgba(255,255,255,.44); border-color: rgba(43,38,29,.10); }
+.tab-button { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .08em; font-size: 10px; }
+.tab-button.active { background: #171511; color: #fbf7ed; box-shadow: rgba(23,21,17,.18) 0 9px 25px; }
+.nav-cta, .button-link, .hero-actions a, .hero-actions button, button { border-radius: 999px; background: linear-gradient(180deg, #27231c, #11100d); box-shadow: inset 0 1px 0 rgba(255,255,255,.16), rgba(38,32,22,.18) 0 14px 30px; }
+button.secondary, .hero-actions .secondary, .filter, .hero-actions .secondary { background: rgba(255,252,244,.86); color: var(--black); border-color: var(--line); box-shadow: inset 0 1px 0 rgba(255,255,255,.82); }
+main { max-width: 1220px; padding-top: 32px; }
+.eyebrow { color: var(--brand-dark); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-weight: 760; letter-spacing: .16em; }
+h1, h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -.07em; }
+h1 { font-size: clamp(58px, 8.6vw, 116px); line-height: .86; max-width: 860px; }
+h2 { letter-spacing: -.06em; }
+h3, h4 { letter-spacing: -.035em; }
+.cashflow-hero.editorial-hero {
+  position: relative;
+  min-height: 620px;
+  border-radius: 42px;
+  padding: clamp(34px, 5.8vw, 72px);
+  background:
+    linear-gradient(90deg, rgba(22,20,16,.18), rgba(22,20,16,.02) 52%, rgba(22,20,16,.12)),
+    url('./../assets/land-imagery/lehigh-golden-lot.png') center/cover no-repeat;
+  color: #fff7e8;
+  border: 1px solid rgba(255,255,255,.32);
+  box-shadow: rgba(38,32,22,.22) 0 42px 120px;
+}
+.cashflow-hero.editorial-hero::after { content: ''; position: absolute; inset: 16px; border-radius: 30px; border: 1px solid rgba(255,255,255,.20); pointer-events: none; }
+.editorial-hero .hero-copy, .editorial-hero .hero-deal-card { position: relative; z-index: 1; }
+.editorial-hero .eyebrow, .editorial-hero h1, .editorial-hero .hero-copy p { color: #fff8ec; text-shadow: rgba(0,0,0,.18) 0 2px 20px; }
+.editorial-hero .hero-copy p { max-width: 720px; color: rgba(255,248,236,.86); font-size: clamp(19px, 2vw, 26px); }
+.buybox-meter-card { align-self: stretch; display: grid; align-content: start; background: rgba(255,250,239,.72); color: var(--ink); border-color: rgba(255,255,255,.42); box-shadow: rgba(0,0,0,.16) 0 28px 80px; }
+.radial-meter { --score: 0; width: 176px; aspect-ratio: 1; margin: 22px auto 8px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: conic-gradient(#171511 calc(var(--score) * 1%), rgba(43,38,29,.12) 0); position: relative; }
+.radial-meter::before { content: ''; position: absolute; inset: 13px; border-radius: inherit; background: #fbf7ed; box-shadow: inset rgba(43,38,29,.08) 0 0 0 1px; }
+.radial-meter strong, .radial-meter span { position: relative; z-index: 1; display: block; text-align: center; }
+.radial-meter strong { font-family: Georgia, 'Times New Roman', serif; font-size: 46px; line-height: .9; font-weight: 500; letter-spacing: -.07em; }
+.radial-meter span { margin-top: 10px; color: var(--muted); font: 760 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .12em; }
+.microcopy { font-size: 13px !important; color: var(--muted) !important; }
+.phase-one-strip { display: grid; grid-template-columns: 1.08fr .74fr 1.08fr; gap: 16px; margin: 18px 0 24px; }
+.infusion-card { min-height: 250px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; border-radius: 30px; border: 1px solid var(--line); background: rgba(255,252,244,.78); box-shadow: var(--shadow-soft); }
+.infusion-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; filter: saturate(.94) contrast(.98); }
+.land-photo-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(23,21,17,.04), rgba(23,21,17,.68)); z-index: 1; }
+.infusion-card > *:not(img) { position: relative; z-index: 2; }
+.land-photo-card .eyebrow, .land-photo-card h3, .land-photo-card p { color: #fff8ec; }
+.infusion-card h3 { margin: 10px 0 8px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(28px, 3vw, 42px); font-weight: 500; letter-spacing: -.06em; line-height: .94; }
+.infusion-card p { color: var(--muted); line-height: 1.44; }
+.large-score { margin-top: 18px; font-family: Georgia, 'Times New Roman', serif; font-size: 74px; line-height: .86; letter-spacing: -.08em; }
+.large-score em { display: block; margin-top: 8px; color: var(--coral); font: 760 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace; text-transform: uppercase; letter-spacing: .14em; }
+.buyer-first-lane, .money-queue-panel, .call-script-panel, .outcome-panel, .deal-queue, .deal-detail, .deal-action, .source-page-section, .machine-panel, .card, .stage { background: rgba(255,252,244,.82); backdrop-filter: blur(18px); border-color: var(--line); box-shadow: var(--shadow-soft); }
+.buyer-first-lane, .deal-queue, .deal-detail, .deal-action { border-radius: 30px; }
+.phase-one-detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.phase-detail-card, .seller-net-script-card { padding: 16px; border-radius: 22px; background: #f5eddb; border: 1px solid var(--line-soft); }
+.phase-detail-card span { display: block; color: var(--muted); font: 760 10px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .12em; text-transform: uppercase; }
+.phase-detail-card b { display: block; margin-top: 10px; color: var(--black); font-size: 25px; letter-spacing: -.04em; }
+.phase-detail-card p, .seller-net-script-card p { margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.42; }
+.seller-net-script-card { margin-top: 10px; background: linear-gradient(135deg, #fff9ec, #efe2c6); }
+.seller-net-script-card h3 { margin-top: 8px; font-family: Georgia, 'Times New Roman', serif; font-size: 32px; font-weight: 500; letter-spacing: -.055em; }
+.queue-item.active, .money-call.active { border-color: rgba(114,91,53,.42); box-shadow: 0 0 0 4px rgba(114,91,53,.07); }
+.meter span { background: linear-gradient(90deg, #171511, #a88748); }
+
 @media (max-width: 1000px) {
-  .brand-hero, .cashflow-hero, .daily-calls, .cashflow-board, .buyer-first-board, .intake-grid, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid, .lead-engine-grid, .deal-workbench { grid-template-columns: 1fr; }
+  .brand-hero, .cashflow-hero, .daily-calls, .cashflow-board, .buyer-first-board, .phase-one-strip, .phase-one-detail-grid, .intake-grid, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid, .lead-engine-grid, .deal-workbench { grid-template-columns: 1fr; }
   .deal-queue, .deal-action { position: static; max-height: none; }
   .queue-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .call-tile-grid { grid-template-columns: 1fr; }

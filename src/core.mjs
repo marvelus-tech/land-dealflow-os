@@ -269,6 +269,87 @@ export function scoreParcelDeal(parcel, buyer = {}) {
   };
 }
 
+export function calculateBuyBoxCompleteness(buyer = {}) {
+  const box = buyer.exactBuyBox || {};
+  const checks = [
+    { id: 'market', label: 'Target market named', met: Boolean((box.targetMarkets || []).length || buyer.market) },
+    { id: 'lot-size', label: 'Lot size band', met: Boolean((box.lotSizeMin && box.lotSizeMax) || String(buyer.buyBox || '').match(/acre|ac|sf|lot/i)) },
+    { id: 'price', label: 'Max buy price', met: Boolean(box.maxPrice || buyer.maxPrice || buyer.buyerMaxPrice) },
+    { id: 'road', label: 'Road / access rule', met: box.requiredRoadAccess !== undefined || /road|access|paved/i.test(String(buyer.buyBox || buyer.acquisitionNotes || '')) },
+    { id: 'risk', label: 'Wetland / flood kills', met: Boolean((box.avoidFloodZones || []).length || box.avoidWetlands !== undefined || /wetland|flood|kill/i.test(String(buyer.buyBox || buyer.acquisitionNotes || ''))) },
+    { id: 'speed', label: 'Close speed', met: Boolean(buyer.closeSpeedDays) },
+    { id: 'contact', label: 'Decision-maker contact', met: Boolean(buyer.phone || buyer.email || buyer.buyerPhone || buyer.buyerEmail || buyer.contactName || buyer.buyerContactName) },
+    { id: 'proof', label: 'Funding / feedback proof', met: Boolean(buyer.validation?.proofOfFunds || buyer.validation?.feedbackCount || (buyer.feedback || []).length) },
+  ];
+  const met = checks.filter(check => check.met).length;
+  const percent = Math.round((met / checks.length) * 100);
+  const missing = checks.filter(check => !check.met).map(check => check.label);
+  const grade = percent >= 88 ? 'A' : percent >= 70 ? 'B' : percent >= 50 ? 'C' : 'D';
+  return { percent, grade, met, total: checks.length, checks, missing };
+}
+
+export function calculateSellerMotivation(parcel = {}) {
+  const signals = [];
+  let score = 0;
+  const ownerText = `${parcel.owner || ''} ${parcel.ownerName || ''} ${parcel.ownerMailingAddress || ''}`;
+  const heldYears = Number(parcel.heldYears || 0);
+  const paid = Number(parcel.paid || 0);
+  const ask = Number(parcel.askingPrice || parcel.sellerAsk || 0);
+
+  if (/out-of-state|absentee/i.test(ownerText)) { score += 18; signals.push('absentee / out-of-area owner'); }
+  if (/inherited|estate|heir|probate/i.test(ownerText)) { score += 16; signals.push('inherited / estate language'); }
+  if (/multiple|llc|corp|trust/i.test(ownerText)) { score += 10; signals.push('portfolio-style owner'); }
+  if (heldYears >= 15) { score += 18; signals.push('held 15+ years'); }
+  else if (heldYears >= 8) { score += 12; signals.push('long-held parcel'); }
+  if (paid > 0 && ask > 0 && paid <= ask * 0.35) { score += 14; signals.push('low basis vs current ask'); }
+  else if (paid > 0 && Number(parcel.buyerMaxPrice || 0) && paid <= Number(parcel.buyerMaxPrice) * 0.45) { score += 12; signals.push('low basis vs buyer ceiling'); }
+  if (parcel.ownerPhone || parcel.ownerEmail) { score += 10; signals.push('real owner contact found'); }
+  if (Number(parcel.skipTraceConfidence || 0) >= 80) { score += 8; signals.push('high skip-trace confidence'); }
+  if (/tax|vacant|unused|sell|motivated/i.test(String(parcel.notes || ''))) { score += 8; signals.push('motivation note'); }
+  if (String(parcel.crmStatus || '').match(/Negotiating|Contacted/i)) { score += 8; signals.push('conversation already open'); }
+
+  score = Math.round(clamp(score, 0, 100));
+  const temperature = score >= 75 ? 'Hot' : score >= 55 ? 'Warm' : score >= 35 ? 'Watch' : 'Cold';
+  return { score, temperature, signals };
+}
+
+export function calculateContractReadiness(parcel = {}, buyer = {}) {
+  const risk = classifyParcelRisk(parcel);
+  const blockers = [];
+  if (risk.status !== 'Pass') blockers.push('buildability still needs review');
+  if (!(parcel.ownerPhone || parcel.ownerEmail)) blockers.push('real seller contact missing');
+  if (!(buyer.phone || buyer.email || buyer.buyerPhone || buyer.buyerEmail)) blockers.push('buyer contact missing');
+  if (!Number(parcel.buyerMaxPrice || buyer.maxPrice || buyer.buyerMaxPrice || 0)) blockers.push('buyer ceiling missing');
+  if (!Number(parcel.askingPrice || parcel.sellerAsk || 0)) blockers.push('seller ask / offer anchor missing');
+  const ready = blockers.length === 0;
+  const score = Math.round(clamp(100 - blockers.length * 18, 0, 100));
+  return { ready, score, label: ready ? 'Attorney/title packet ready' : 'Ops gate not ready', blockers };
+}
+
+export function generateSellerNetOfferScript(parcel = {}, buyer = {}) {
+  const offer = computeOffer({
+    buyerMaxPrice: Number(parcel.buyerMaxPrice || buyer.maxPrice || buyer.buyerMaxPrice || 0),
+    lowestActiveListing: Number(parcel.lowestActiveListing || 0) || null,
+    riskDiscount: classifyParcelRisk(parcel).status === 'Review' ? 2500 : 0,
+  });
+  const sellerNet = Math.max(0, offer.initialSellerOffer);
+  const ownerName = String(parcel.ownerName || parcel.owner || 'there').split(/\s+/)[0];
+  const buyerProof = buyer.name ? `${buyer.name} is buying this exact kind of lot when road/access and buildability are clean.` : 'I only move forward when a real buyer already wants this kind of lot.';
+  return {
+    headline: `${formatMoney(sellerNet)} estimated net-style opening offer`,
+    opening: `Hi ${ownerName}, I am calling about ${parcel.address || 'your lot'}. I work buyer-first, so I only call owners when the parcel appears to match real demand.`,
+    netLine: `If title and buildability check out, my clean opening would be around ${formatMoney(sellerNet)} with normal seller closing costs handled through title, not a drawn-out listing process.`,
+    buyerProof,
+    ask: 'If that were simple, what number would make you say yes instead of keeping it another year?',
+    close: 'If the range is close, I will verify title/buildability and send a simple written offer for attorney/title review.',
+  };
+}
+
+export function generateNeighborPrompt(parcel = {}) {
+  const street = String(parcel.address || 'this street').split(',')[0];
+  return `After this call, search adjacent parcels around ${street}. Ask: “Do you know any neighbors on this block who also own unused land and might want a clean cash exit?”`;
+}
+
 export function applyCrmUpdate(workspace, parcelId, updates) {
   return {
     ...workspace,

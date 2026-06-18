@@ -658,6 +658,30 @@ h3, h4 { letter-spacing: -.035em; }
 .adapter-card span { color: var(--black); font-weight: 850; }
 .adapter-card p { margin-top: 7px; color: var(--muted); line-height: 1.35; font-size: 13px; }
 .adapter-card small { display: block; margin-top: 8px; color: var(--soft); line-height: 1.35; }
+.wide-permit-panel { grid-column: 1 / -1; }
+.permit-landscape-summary { margin: -4px 0 16px; color: var(--muted); line-height: 1.45; max-width: 980px; }
+.builder-adapter-panel h4 { margin: 18px 0 10px; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--brand-dark); }
+.permit-state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.permit-state-card { padding: 16px; border: 1px solid var(--line-soft); border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,229,.8)); }
+.permit-state-head { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
+.permit-state-head span { color: var(--black); font-size: 17px; font-weight: 900; }
+.permit-state-head p { margin-top: 5px; color: var(--muted); line-height: 1.35; font-size: 13px; }
+.permit-state-head strong { white-space: nowrap; padding: 6px 9px; border-radius: 999px; background: var(--panel-green); color: var(--money-ink); font-size: 11px; }
+.permit-platform-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0; }
+.permit-platform-tags em { font-style: normal; padding: 6px 8px; border-radius: 999px; background: #fff; border: 1px solid var(--line-soft); color: var(--soft); font-size: 11px; font-weight: 800; }
+.portal-link-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.portal-link-list a { display: grid; gap: 2px; min-height: 74px; padding: 10px; border-radius: 14px; border: 1px solid var(--line-soft); background: rgba(255,255,255,.8); color: inherit; text-decoration: none; transition: transform .16s ease, border-color .16s ease; }
+.portal-link-list a:hover { transform: translateY(-1px); border-color: rgba(47,95,33,.35); }
+.portal-link-list b { color: var(--brand-dark); font-size: 13px; }
+.portal-link-list span { color: var(--black); font-size: 12px; font-weight: 750; }
+.portal-link-list small { color: var(--soft); line-height: 1.25; font-size: 11px; }
+.permit-strategy { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line-soft); color: var(--muted); line-height: 1.45; font-size: 13px; }
+.normalization-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.normalization-tier { padding: 15px; border-radius: 18px; border: 1px solid var(--line-soft); background: var(--panel-soft); }
+.normalization-tier h4 { margin-top: 0; }
+.normalization-tier p { margin-top: 10px; color: var(--muted); line-height: 1.35; font-size: 13px; }
+.normalization-tier a { color: var(--brand-dark); font-weight: 900; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.normalization-tier span { display: block; margin-top: 2px; }
 
 .closing-layout { display: grid; grid-template-columns: minmax(240px, .34fr) minmax(0, 1fr); gap: 18px; align-items: start; }
 .title-queue { position: sticky; top: 76px; }
@@ -740,7 +764,7 @@ h3, h4 { letter-spacing: -.035em; }
   .brand-hero, .cashflow-hero { min-height: auto; padding: 34px 26px; border-radius: 28px; }
   h1 { font-size: clamp(50px, 17vw, 76px); }
   .hero-copy p { font-size: 19px; }
-  .pipeline, .mini-grid, .mini-grid.four, .deal-strip, .quality-grid, .risk-checklist, .detail-grid, .queue-list, .script-grid, .money-stats, .title-metric-strip, .permit-evidence-grid, .buybox-form, .adapter-grid { grid-template-columns: 1fr; }
+  .pipeline, .mini-grid, .mini-grid.four, .deal-strip, .quality-grid, .risk-checklist, .detail-grid, .queue-list, .script-grid, .money-stats, .title-metric-strip, .permit-evidence-grid, .buybox-form, .adapter-grid, .permit-state-grid, .portal-link-list, .normalization-grid { grid-template-columns: 1fr; }
   .title-orbital-hero { min-height: auto; padding: 28px 22px; border-radius: 28px; }
   .builder-detail-header { flex-direction: column; }
   .builder-script-panel pre, .builder-vendor-panel pre { overflow: auto; }

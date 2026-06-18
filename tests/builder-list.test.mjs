@@ -5,6 +5,7 @@ import {
   generateBuilderEmail,
   generateBuilderMarketingEmailTemplate,
   getSourceAdapterChecklist,
+  getPermitPortalLandscape,
   isQualifyingResidentialPermit,
   normalizeBuilderName,
 } from '../src/core.mjs';
@@ -49,5 +50,13 @@ assert.doesNotMatch(marketingEmail.body, /few days/i);
 
 const adapters = getSourceAdapterChecklist();
 assert.deepEqual(adapters.map(item => item.id), ['accela', 'socrata', 'energov', 'etrakit', 'manual-csv']);
+
+const landscape = getPermitPortalLandscape();
+assert.match(landscape.summary, /No target state has a unified statewide building-permit database/);
+assert.deepEqual(landscape.states.map(item => item.id), ['tn', 'fl', 'az', 'nc', 'tx']);
+assert.equal(landscape.states.every(state => state.portals.every(portal => /^https:\/\//.test(portal.url))), true);
+assert.ok(landscape.states.find(state => state.id === 'tx').portals.some(portal => portal.url.includes('permitvector.com')));
+assert.ok(landscape.states.find(state => state.id === 'tn').portals.some(portal => portal.url.includes('buildchek.com')));
+assert.ok(landscape.tiers.flatMap(tier => tier.items).some(item => item.label === 'U.S. Census Building Permits Survey'));
 
 console.log('builder list tests passed');

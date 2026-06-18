@@ -51,6 +51,7 @@ import {
   generateBuilderEmail,
   generateBuilderMarketingEmailTemplate,
   getSourceAdapterChecklist,
+  getPermitPortalLandscape,
   formatMoney,
 } from './core.mjs';
 
@@ -165,6 +166,10 @@ function persistWorkspace() {
 
 function h(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+}
+
+function safeLink(url, label, className = '') {
+  return `<a ${className ? `class="${h(className)}" ` : ''}href="${h(url)}" target="_blank" rel="noopener noreferrer">${h(label)}</a>`;
 }
 
 function asArray(value) {
@@ -474,10 +479,30 @@ function renderBuilderListEnginePanel() {
   const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
   const callScript = generateBuilderCallScript(selected);
   const permits = asArray(selected.recentPermits).slice(0, 3);
+  const permitLandscape = getPermitPortalLandscape();
   const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
     <span>${h(adapter.name)}</span>
     <p>${h(adapter.use)}</p>
     <small>${adapter.fields.map(field => h(field)).join(' · ')}</small>
+  </article>`).join('');
+  const statePortalRows = permitLandscape.states.map(state => `<article class="permit-state-card">
+    <div class="permit-state-head">
+      <div><span>${h(state.state)}</span><p>${h(state.reality)}</p></div>
+      <strong>${h(state.platforms.length)} platforms</strong>
+    </div>
+    <div class="permit-platform-tags">${state.platforms.map(platform => `<em>${h(platform)}</em>`).join('')}</div>
+    <div class="portal-link-list">
+      ${state.portals.map(portal => `<a href="${h(portal.url)}" target="_blank" rel="noopener noreferrer">
+        <b>${h(portal.market)}</b>
+        <span>${h(portal.jurisdiction)}</span>
+        <small>${h(portal.system)}</small>
+      </a>`).join('')}
+    </div>
+    <p class="permit-strategy">${h(state.strategy)}</p>
+  </article>`).join('');
+  const tierRows = permitLandscape.tiers.map(tier => `<article class="normalization-tier">
+    <h4>${h(tier.name)}</h4>
+    ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
   </article>`).join('');
   const tableRows = builders.map(builder => `<button type="button" class="builder-row ${builder.builderId === selected.builderId ? 'active' : ''}" data-select-builder="${h(builder.builderId)}">
     <span><b>${h(builder.companyName)}</b><small>${h(builder.sourceJurisdictions?.join(' · ') || 'source pending')}</small></span>
@@ -555,9 +580,15 @@ function renderBuilderListEnginePanel() {
         <pre>Hey {{Name}}, this is {{YourName}}. I work with landowners and builders around {{City}}. I’m looking for reliable local people who can help with clearing, grading, site-prep, and quick condition checks on vacant lots. Are you taking on that kind of work, and do you cover {{Area}}?</pre>
       </article>
 
-      <article class="builder-adapter-panel">
-        <div class="panel-kicker"><span>Source adapters</span><b>permit portals to normalize</b></div>
+      <article class="builder-adapter-panel wide-permit-panel">
+        <div class="panel-kicker"><span>Permit portal landscape</span><b>five-state normalization map</b></div>
+        <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>
+        <h4>Source adapter checklist</h4>
         <div class="adapter-grid">${adapterRows}</div>
+        <h4>Target-state portals to monitor</h4>
+        <div class="permit-state-grid">${statePortalRows}</div>
+        <h4>Normalization playbook</h4>
+        <div class="normalization-grid">${tierRows}</div>
       </article>
     </section>
   </div>`;

@@ -1534,6 +1534,125 @@ export function getSourceAdapterChecklist() {
   ];
 }
 
+
+export function getPermitPortalLandscape() {
+  return {
+    summary: 'No target state has a unified statewide building-permit database. Normalize by platform first, then monitor the county/city portals that control your target markets.',
+    states: [
+      {
+        id: 'tn',
+        state: 'Tennessee',
+        reality: 'No statewide portal. Counties and cities run independent systems.',
+        platforms: ['CivicPlus / CivicGov', 'IDT Plans / GeoCivix', 'Buildchek', 'Tyler Permitting Pro'],
+        portals: [
+          { market: 'Nashville', jurisdiction: 'Davidson County / Metro Nashville', system: 'Buildchek + Metro Nashville Codes', url: 'https://www.buildchek.com/' },
+          { market: 'Nashville Codes', jurisdiction: 'Metro Nashville', system: 'Codes Administration', url: 'https://www.nashville.gov/departments/codes' },
+          { market: 'Memphis', jurisdiction: 'Shelby County', system: 'Buildchek + Shelby County portal', url: 'https://shelbycountytn.gov/2175/Code-Enforcement' },
+          { market: 'Knoxville', jurisdiction: 'Knox County / City of Knoxville', system: 'Buildchek + Knoxville portal', url: 'https://www.knoxvilletn.gov/government/city_departments_offices/plans_review_inspections' },
+          { market: 'Chattanooga', jurisdiction: 'Hamilton County', system: 'Buildchek + county inspection office', url: 'https://www.hamiltontn.gov/BuildingInspection' },
+          { market: 'Clarksville', jurisdiction: 'Montgomery County', system: 'Buildchek + county building/codes', url: 'https://mcgtn.org/building-codes' },
+          { market: 'Murfreesboro', jurisdiction: 'Rutherford County / City of Murfreesboro', system: 'CivicPlus / CivicGov Citizen Portal', url: 'https://www.murfreesborotn.gov/175/Building-Codes' },
+          { market: 'Franklin', jurisdiction: 'Williamson County', system: 'IDT Plans / GeoCivix electronic plan review', url: 'https://williamson.geocivix.com/secure/' },
+          { market: 'Jackson', jurisdiction: 'Madison County', system: 'CivicGov Citizen Portal / Building + Zoning', url: 'https://www.madisoncountytn.gov/191/Building-Zoning' },
+        ],
+        strategy: 'Use Buildchek as the single first pass across major metros. For real-time builder sprawl, bookmark Rutherford, Williamson, Montgomery, Davidson, Shelby, Knox, and Hamilton direct portals.'
+      },
+      {
+        id: 'fl',
+        state: 'Florida — inland markets',
+        reality: 'No statewide building-permit portal. MyFloridaMarketPlace is state procurement, not building permits.',
+        platforms: ['Accela Citizen Access', 'Tyler EnerGov', 'TRAKiT / CentralSquare', 'Munis', 'Civic Access / CivicPlus'],
+        portals: [
+          { market: 'Orlando', jurisdiction: 'Orange County', system: 'Fast Track / permit services', url: 'https://fasttrack.ocfl.net/OnlineServices/' },
+          { market: 'Orlando city', jurisdiction: 'City of Orlando', system: 'Citizen Access permit portal', url: 'https://permits.cityoforlando.net/CitizenAccess/Default.aspx' },
+          { market: 'Lakeland', jurisdiction: 'Polk County / City of Lakeland', system: 'Custom / Accela-style local permitting', url: 'https://www.lakelandgov.net/departments/community-economic-development/building-inspection/' },
+          { market: 'Ocala', jurisdiction: 'Marion County', system: 'Civic Access / Building Safety', url: 'https://www.marionfl.org/agencies-departments/departments-facilities-offices/building-safety' },
+          { market: 'Jacksonville', jurisdiction: 'Duval County / City of Jacksonville', system: 'Jacksonville permit/inspection services', url: 'https://jaxepics.coj.net/' },
+          { market: 'Gainesville', jurisdiction: 'Alachua County', system: 'Permit tracking / Accela-style portal', url: 'https://growth-management.alachuacounty.us/Building/PermitTracking' },
+          { market: 'St. Lucie', jurisdiction: 'St. Lucie County', system: 'Tyler EnerGov self service', url: 'https://energovweb.stlucieco.gov/EnerGovProd/SelfService#/home' },
+          { market: 'Homestead', jurisdiction: 'City of Homestead', system: 'Tyler EnerGov self service', url: 'https://energov.cityofhomestead.com/EnerGovProd/SelfService#/home' },
+          { market: 'Clermont', jurisdiction: 'City of Clermont', system: 'TRAKiT / CentralSquare legacy + migration', url: 'https://www.clermontfl.gov/186/Building-Services' },
+        ],
+        strategy: 'Florida is the most fragmented. Learn Accela first, then monitor inland growth counties: Polk, Marion, Lake, Sumter, Alachua, St. Lucie, and Orange. Inland markets avoid some coastal insurance friction while keeping builder demand.'
+      },
+      {
+        id: 'az',
+        state: 'Arizona',
+        reality: 'No statewide building-permit database. The state has 100+ building-regulating jurisdictions with local codes, fees, and portals.',
+        platforms: ['Accela', 'Custom / Socrata open data', 'Maricopa County weekly reports', 'Self-certification city programs'],
+        portals: [
+          { market: 'Phoenix', jurisdiction: 'City of Phoenix', system: 'Planning & Development / online services', url: 'https://www.phoenix.gov/pdd/onlineservices' },
+          { market: 'Mesa', jurisdiction: 'City of Mesa', system: 'Accela Citizen Access', url: 'https://aca-prod.accela.com/MESA/Default.aspx' },
+          { market: 'Scottsdale', jurisdiction: 'City of Scottsdale', system: 'Accela Citizen Access', url: 'https://aca-prod.accela.com/SCOTTSDALE/Default.aspx' },
+          { market: 'Phoenix metro', jurisdiction: 'Maricopa County', system: 'Weekly permit activity / planning development', url: 'https://www.maricopa.gov/797/Planning-Development' },
+          { market: 'Tucson', jurisdiction: 'City of Tucson', system: 'Development Services / Accela-style portal', url: 'https://www.tucsonaz.gov/Departments/Planning-Development-Services' },
+          { market: 'Tucson / Pima', jurisdiction: 'Pima County', system: 'Development Services', url: 'https://www.pima.gov/1389/Development-Services' },
+          { market: 'Buckeye', jurisdiction: 'City of Buckeye', system: 'Custom development services', url: 'https://www.buckeyeaz.gov/business/development-services' },
+          { market: 'Casa Grande', jurisdiction: 'City of Casa Grande', system: 'Custom development services', url: 'https://casagrandeaz.gov/development-services/' },
+        ],
+        strategy: 'Maricopa weekly reports are the Phoenix-metro normalization goldmine. Then use Accela-heavy cities and self-certification markets — Phoenix, Scottsdale, Mesa, Tempe — as velocity markets.'
+      },
+      {
+        id: 'nc',
+        state: 'North Carolina',
+        reality: 'No statewide portal. Counties operate independent permit stacks.',
+        platforms: ['Accela', 'Buildchek', 'Power BI / Open Data', 'ArcGIS Open Data'],
+        portals: [
+          { market: 'Charlotte', jurisdiction: 'Mecklenburg County', system: 'Accela + daily permit dashboards', url: 'https://aca-prod.accela.com/Charlotte/Default.aspx' },
+          { market: 'Raleigh-Durham', jurisdiction: 'Wake County', system: 'Permit portal + data reports', url: 'https://permitportal.wakegov.com/' },
+          { market: 'Wake data', jurisdiction: 'Wake County', system: 'Building permit data / reports', url: 'https://www.wake.gov/departments-government/planning-development-inspections/development-permits/building-permit-data' },
+          { market: 'Raleigh', jurisdiction: 'City of Raleigh', system: 'Accela Citizen Access', url: 'https://aca-prod.accela.com/RALEIGH/Default.aspx' },
+          { market: 'Greensboro', jurisdiction: 'Guilford County', system: 'County planning/development services', url: 'https://www.guilfordcountync.gov/our-county/planning-development' },
+          { market: 'Wilmington', jurisdiction: 'New Hanover County', system: 'Buildchek + county permitting', url: 'https://www.buildchek.com/' },
+          { market: 'Asheville', jurisdiction: 'Buncombe County', system: 'Buildchek + county permits', url: 'https://www.buncombecounty.org/governing/depts/permits/' },
+          { market: 'Concord', jurisdiction: 'Cabarrus County', system: 'ArcGIS Open Data + Accela-style records', url: 'https://data-cabarrus.opendata.arcgis.com/' },
+          { market: 'Fayetteville', jurisdiction: 'Cumberland County', system: 'Buildchek + local permitting', url: 'https://www.cumberlandcountync.gov/departments/planning-group/planning-and-inspections' },
+        ],
+        strategy: 'Use Buildchek for broad NC metro coverage. For direct research, prioritize Mecklenburg Power BI/daily data, Wake spreadsheets, and Cabarrus ArcGIS. The Mecklenburg → Wake → Guilford Piedmont corridor is the land-flipping sweet spot.'
+      },
+      {
+        id: 'tx',
+        state: 'Texas',
+        reality: 'No statewide building-permit portal. TDLR/TABS is ADA architectural-barriers compliance, not normal building permits.',
+        platforms: ['Accela', 'Socrata / Open Data', 'Hansen legacy', 'Custom / open records', 'PermitVector'],
+        portals: [
+          { market: 'Austin', jurisdiction: 'City of Austin', system: 'Socrata Open Data / BLDS-style records', url: 'https://data.austintexas.gov/' },
+          { market: 'San Antonio', jurisdiction: 'City of San Antonio', system: 'Open Data SA / Hansen + Accela migration', url: 'https://data.sanantonio.gov/' },
+          { market: 'Houston', jurisdiction: 'City of Houston', system: 'Houston Permitting Center / fragmented departments', url: 'https://www.houstonpermittingcenter.org/' },
+          { market: 'Houston county layer', jurisdiction: 'Harris County', system: 'ePermits / county records', url: 'https://epermits.harriscountytx.gov/' },
+          { market: 'DFW Plano', jurisdiction: 'City of Plano', system: 'Accela phased implementation', url: 'https://aca-prod.accela.com/PLANO/Default.aspx' },
+          { market: 'DFW Collin', jurisdiction: 'Collin County', system: 'County permits / custom', url: 'https://www.collincountytx.gov/Services/Permits' },
+          { market: 'DFW Denton', jurisdiction: 'Denton County', system: 'Development permits', url: 'https://developmentpermits.dentoncounty.gov/' },
+          { market: 'Dallas', jurisdiction: 'City of Dallas', system: 'Permit Center / open records', url: 'https://dallascityhall.com/departments/sustainabledevelopment/buildinginspection/Pages/permit_center.aspx' },
+          { market: 'McAllen', jurisdiction: 'City of McAllen', system: 'Accela Citizen Access', url: 'https://aca-prod.accela.com/MCALLEN/Default.aspx' },
+          { market: 'Travis County', jurisdiction: 'Travis County', system: 'Permitting Center + open records', url: 'https://www.traviscountytx.gov/tnr/development-services/permits' },
+          { market: 'Texas aggregator', jurisdiction: 'Multiple Texas markets', system: 'PermitVector daily refresh', url: 'https://permitvector.com/' },
+        ],
+        strategy: 'Texas has the most volume and the worst fragmentation. Use PermitVector first for normalized market coverage. DIY: Austin and San Antonio Socrata are clean; Houston and Dallas proper require county-by-county work or aggregator coverage.'
+      }
+    ],
+    tiers: [
+      { name: 'Tier 1 — Aggregators first', items: [
+        { label: 'Buildchek', url: 'https://www.buildchek.com/', note: 'Best first pass for Tennessee and North Carolina; partial Florida coverage.' },
+        { label: 'PermitVector', url: 'https://permitvector.com/', note: 'Texas multi-market daily permit normalization; note Dallas/Houston proper gaps.' },
+        { label: 'Mercator.ai', url: 'https://www.mercator.ai/', note: 'National construction intelligence layer for Texas, Florida, and expansion markets.' },
+      ]},
+      { name: 'Tier 2 — Direct county/city portals', items: [
+        { label: 'Accela Citizen Access', url: 'https://www.accela.com/civic-apps/', note: 'Closest thing to a universal key across the five states.' },
+        { label: 'Tyler EnerGov', url: 'https://www.tylertech.com/products/enterprise-permitting-licensing', note: 'Florida and smaller jurisdictions; self-service permit searches.' },
+        { label: 'Socrata developer API', url: 'https://dev.socrata.com/', note: 'Programmatic API access for Austin, San Antonio, and other open data feeds.' },
+        { label: 'ArcGIS Hub', url: 'https://hub.arcgis.com/', note: 'County GIS/open-data permit layers, especially Cabarrus-style sources.' },
+        { label: 'Maricopa County Planning & Development', url: 'https://www.maricopa.gov/797/Planning-Development', note: 'Weekly Phoenix-metro permit activity normalization source.' },
+      ]},
+      { name: 'Tier 3 — Macro permit data', items: [
+        { label: 'U.S. Census Building Permits Survey', url: 'https://www.census.gov/construction/bps/', note: 'County/metro annual and monthly permit context for market selection.' },
+        { label: 'NAHB Housing Economics / Permits', url: 'https://www.nahb.org/news-and-economics/housing-economics/indices/housing-permits', note: 'Industry-facing permit trend context.' },
+        { label: 'FRED housing permits series', url: 'https://fred.stlouisfed.org/searchresults/?search_type=series&search=housing+permits', note: 'State/metro time-series for macro trend checks.' },
+      ]}
+    ]
+  };
+}
+
 export function formatMoney(value) {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
 }

@@ -1,0 +1,23 @@
+{
+  "market": "Knoxville, TN",
+  "generatedAt": "2026-06-18T22:31:24.920Z",
+  "sources": {
+    "buildingPermits": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0",
+    "developmentProjects": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
+    "categoricalParcels": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/Categorical_Zoning_Changes/FeatureServer/0",
+    "zoning": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/KnoxvilleKnoxCountyZoning/FeatureServer/2"
+  },
+  "confidenceSurface": {
+    "singleFamilyNewPermitRowsSampled": 1000,
+    "activeBuilderSignals": 30,
+    "categoricalParcelRows": 81,
+    "developmentProjectRows": 100,
+    "publicPermitRowCount": 9305,
+    "publicCategoricalParcelCount": 1870
+  },
+  "operatingRules": [
+    "Permit contractors are buyer-validation candidates, not validated buyers, until buy box/contact is confirmed.",
+    "Categorical zoning parcel records are skip-trace/research candidates only; they do not enter seller calls without phone/email and buildability checks.",
+    "No KGIS row is fabricated; all normalized rows carry sourceUrl/publicSource provenance."
+  ]
+}

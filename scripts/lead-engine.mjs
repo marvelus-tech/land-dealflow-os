@@ -97,7 +97,7 @@ export function buildLeadQueues(snapshot) {
     .map(buyer => ({ buyerId: buyer.id, name: buyer.name, market: buyer.market, phone: buyer.phone || '', website: buyer.website || '', task: buyer.exactBuyBox ? 'validate proof/close speed' : 'capture exact buy box', confidence: buyer.confidence || 0 }));
   const riskBlocked = scored.filter(parcel => parcel.risk?.status === 'Kill' || parcel.roadAccess === false || parcel.wetlands === true).map(parcel => ({ parcelId: parcel.parcelId || parcel.id, address: parcel.address, reason: parcel.risk?.reason || 'buildability risk', market: parcel.market }));
   const skipTrace = scored
-    .filter(parcel => parcel.ownerName && !(parcel.ownerPhone || parcel.ownerEmail) && parcel.risk?.status !== 'Kill')
+    .filter(parcel => parcel.ownerName && !(parcel.ownerPhone || parcel.ownerEmail) && parcel.roadAccess !== false && parcel.wetlands !== true)
     .sort((a, b) => (b.confidence || b.sourceScore || b.score || 0) - (a.confidence || a.sourceScore || a.score || 0))
     .slice(0, 100)
     .map(parcel => ({

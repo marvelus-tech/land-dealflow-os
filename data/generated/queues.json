@@ -1,16 +1,1333 @@
 {
   "topSellerCalls": [],
-  "skipTrace": [],
-  "buyerValidation": [],
-  "buyerDiscovery": [
+  "skipTrace": [
     {
+      "parcelId": "118 17701",
       "market": "knoxville-tn",
-      "areaName": "Knoxville, TN",
-      "buyerType": "infill-builder",
-      "task": "Find active infill-builder in Knoxville, TN",
-      "reason": "new target area needs buyer discovery",
-      "priority": 9
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "ownerName": "CENTURY PARK BUILDING III",
+      "ownerMailingAddress": "1225 E WEISGARBER RD, KNOXVILLE TN 37909",
+      "lotSize": "0.101 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
     },
+    {
+      "parcelId": "071PA021",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "ownerName": "CARTER LETONIA M",
+      "ownerMailingAddress": "148 YANKEE ST, KNOXVILLE TN 37914",
+      "lotSize": "0.101 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "108AD014",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 108AD014, Knoxville, TN",
+      "ownerName": "MULLINS BILLY Jr & MULLINS JOSEPH & MULLINS ANNA C",
+      "ownerMailingAddress": "2607 SUTHERLAND AVE, KNOXVILLE TN 37919",
+      "lotSize": "0.101 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FB034",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FB034, Knoxville, TN",
+      "ownerName": "ALLEN TIMOTHY G",
+      "ownerMailingAddress": "3701 NEAL DR, KNOXVILLE TN 37918",
+      "lotSize": "0.101 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA013",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA013, Knoxville, TN",
+      "ownerName": "LEMENSE MARY THOMAS",
+      "ownerMailingAddress": "1650 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.102 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA055",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA055, Knoxville, TN",
+      "ownerName": "MOOSS SUNEETHA (TRUSTEE)",
+      "ownerMailingAddress": "1663 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.102 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082PE024",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082PE024, Knoxville, TN",
+      "ownerName": "HASSENBOEHLER CHARLES B Jr",
+      "ownerMailingAddress": "1532 JEFFERSON AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.102 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA064",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA064, Knoxville, TN",
+      "ownerName": "MCKINLEY LINDA S",
+      "ownerMailingAddress": "9547 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.102 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081MR018",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081MR018, Knoxville, TN",
+      "ownerName": "KOOL HAUS PROPERTIES LLC",
+      "ownerMailingAddress": "4625 NEWCOM AVE, KNOXVILLE TN 37919",
+      "lotSize": "0.102 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081MW001",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081MW001, Knoxville, TN",
+      "ownerName": "WALKER RICK A",
+      "ownerMailingAddress": "146 W BAXTER AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.102 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081NP013",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081NP013, Knoxville, TN",
+      "ownerName": "EPPERLY DON MARSHALL",
+      "ownerMailingAddress": "3839 RIVER VISTA WAY, LOUISVILLE TN 37777",
+      "lotSize": "0.103 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DJ013",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DJ013, Knoxville, TN",
+      "ownerName": "MONDAY WILLIAM E III",
+      "ownerMailingAddress": "625 N CENTRAL, KNOXVILLE TN 37917",
+      "lotSize": "0.103 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IG019",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IG019, Knoxville, TN",
+      "ownerName": "CHEEK LESLEY",
+      "ownerMailingAddress": "1909 WHEELER ST, KNOXVILLE TN 37917",
+      "lotSize": "0.103 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IG017",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IG017, Knoxville, TN",
+      "ownerName": "SHIFLET GLEN E",
+      "ownerMailingAddress": "2315 SARPSBURG RD, KNOXVILLE TN 37917",
+      "lotSize": "0.103 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081MW003",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081MW003, Knoxville, TN",
+      "ownerName": "ELEVATE PARTNERS LLC",
+      "ownerMailingAddress": "4700 SEMINOLE RD, KNOXVILLE TN 37918",
+      "lotSize": "0.104 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA063",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA063, Knoxville, TN",
+      "ownerName": "STEVENS GEORGE H & DEBORAH C",
+      "ownerMailingAddress": "9551 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.104 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "108AD004",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 108AD004, Knoxville, TN",
+      "ownerName": "GIBSON, SHIRLEY M TRUSTEE",
+      "ownerMailingAddress": "PO BOX 11124, KNOXVILLE TN 37939",
+      "lotSize": "0.104 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA03601",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA03601, Knoxville, TN",
+      "ownerName": "KIMMONS PATRICK",
+      "ownerMailingAddress": "1539 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.104 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IG020",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IG020, Knoxville, TN",
+      "ownerName": "GLOBAL PROPERTY MANAGEMENT LLC",
+      "ownerMailingAddress": "1016 TEXAS AVE, KNOXVILLE TN 37921",
+      "lotSize": "0.105 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094CE007",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094CE007, Knoxville, TN",
+      "ownerName": "DUTHEY GREGORY",
+      "ownerMailingAddress": "3310 MOUNT VERNON, KNOXVILLE TN 37920",
+      "lotSize": "0.105 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094EN011",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094EN011, Knoxville, TN",
+      "ownerName": "THE SALVATION ARMY",
+      "ownerMailingAddress": "409 N BROADWAY ST, KNOXVILLE TN 37917",
+      "lotSize": "0.106 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081NJ011",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081NJ011, Knoxville, TN",
+      "ownerName": "LOVEDAY RAYMOND & SHEILA E",
+      "ownerMailingAddress": "122 W ANDERSON STREET, KNOXVILLE TN 37917",
+      "lotSize": "0.106 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081NP010",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081NP010, Knoxville, TN",
+      "ownerName": "MONDAY WILLIAM EUGENE III",
+      "ownerMailingAddress": "625 N CENTRAL AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.106 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082HL019",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082HL019, Knoxville, TN",
+      "ownerName": "PRINCE CHRISTOPHER K & PRINCE MEREDITH M",
+      "ownerMailingAddress": "4608 SIMONA RD, KNOXVILLE TN 37918",
+      "lotSize": "0.107 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA067",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA067, Knoxville, TN",
+      "ownerName": "GAO ZHIMING LIN QI",
+      "ownerMailingAddress": "9535 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.107 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FF010",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FF010, Knoxville, TN",
+      "ownerName": "CONCANNON JEFFREY E & CONCANNON MARIA DOLAN",
+      "ownerMailingAddress": "1520 KENSINGTON DR, KNOXVILLE TN 37922",
+      "lotSize": "0.108 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA04201",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA04201, Knoxville, TN",
+      "ownerName": "COULSON YVONNE L",
+      "ownerMailingAddress": "1623 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.108 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA04001",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA04001, Knoxville, TN",
+      "ownerName": "THE CHARLTON FAMILY REVOCABLE LIVING TRUST",
+      "ownerMailingAddress": "11132 OUTLET DR, KNOXVILLE TN 37932",
+      "lotSize": "0.108 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA03901",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA03901, Knoxville, TN",
+      "ownerName": "BENNER SUSAN M & BENNER R DAVID",
+      "ownerMailingAddress": "1607 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.108 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA04101",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA04101, Knoxville, TN",
+      "ownerName": "DONNELL WILLIAM CARROLL & DONNELL ELIZABETH JANE",
+      "ownerMailingAddress": "1615 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.108 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "108AC013",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 108AC013, Knoxville, TN",
+      "ownerName": "MULLINS BILLY Jr & MULLINS JOSEPH & MULLINS ANNA C",
+      "ownerMailingAddress": "2607 SUTHERLAND AVE, KNOXVILLE TN 37919",
+      "lotSize": "0.109 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA059",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA059, Knoxville, TN",
+      "ownerName": "KENNETH LELAND LAWSON AND LINDA WATTS LAWSON REVOCABLE TRUST",
+      "ownerMailingAddress": "9609 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.109 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IG018",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IG018, Knoxville, TN",
+      "ownerName": "BUTLER LEONARD & WILLIE",
+      "ownerMailingAddress": "1915 WHEELER ST, KNOXVILLE TN 37917",
+      "lotSize": "0.109 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081OR011",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081OR011, Knoxville, TN",
+      "ownerName": "WEBB ADAM",
+      "ownerMailingAddress": "1508 TENNESSEE AVE, KNOXVILLE TN 37921",
+      "lotSize": "0.109 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081OR010",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081OR010, Knoxville, TN",
+      "ownerName": "MCCLAIN RAYMOND E & DALLAS L",
+      "ownerMailingAddress": "1516 TENNESSEE AV, KNOXVILLE TN 37921",
+      "lotSize": "0.109 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081OR009",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081OR009, Knoxville, TN",
+      "ownerName": "MCCLAIN RAYMOND E & DALLAS L",
+      "ownerMailingAddress": "1516 TENNESSEE AV, KNOXVILLE TN 37921",
+      "lotSize": "0.109 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DF010",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DF010, Knoxville, TN",
+      "ownerName": "WOOD SCOTT & WOOD ANGELA",
+      "ownerMailingAddress": "9300 PORTWORD LN, POWELL TN 37849",
+      "lotSize": "0.11 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DH019",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DH019, Knoxville, TN",
+      "ownerName": "NICHOLS LYNN & NICHOLS DAWN",
+      "ownerMailingAddress": "617 DEERY ST, KNOXVILLE TN 37917",
+      "lotSize": "0.11 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082PE030",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082PE030, Knoxville, TN",
+      "ownerName": "THE EXT LLC",
+      "ownerMailingAddress": "200 W FIFTH AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.11 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081MW002",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081MW002, Knoxville, TN",
+      "ownerName": "HINDS-CANADA ANGELA",
+      "ownerMailingAddress": "142 W BAXTER AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.11 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081NJ012",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081NJ012, Knoxville, TN",
+      "ownerName": "WATSON RANDALL LEON",
+      "ownerMailingAddress": "114 W ANDERSON AV, KNOXVILLE TN 37917",
+      "lotSize": "0.11 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IG016",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IG016, Knoxville, TN",
+      "ownerName": "SHIFLET GLEN E",
+      "ownerMailingAddress": "2315 SHARPSBURG RD, KNOXVILLE TN 37917",
+      "lotSize": "0.111 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094EJ007",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094EJ007, Knoxville, TN",
+      "ownerName": "SANDERS JOHN L & PACE BRANDON F",
+      "ownerMailingAddress": "514 W JACKSON AVE STE 102, KNOXVILLE TN 37902",
+      "lotSize": "0.112 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082HL023",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082HL023, Knoxville, TN",
+      "ownerName": "RIGHT ON TIME LLC",
+      "ownerMailingAddress": "1604 N 6TH AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.112 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FF015",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FF015, Knoxville, TN",
+      "ownerName": "MITCHELL ELLEN CHASE",
+      "ownerMailingAddress": "9745 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.112 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DA023",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DA023, Knoxville, TN",
+      "ownerName": "MAY WILLIAM",
+      "ownerMailingAddress": "PO BOX 3441, KNOXVILLE TN 37927",
+      "lotSize": "0.113 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA060",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA060, Knoxville, TN",
+      "ownerName": "GLAFENHEIN WIL D & GLAFENHEIN DEVON M",
+      "ownerMailingAddress": "9605 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.113 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FB035",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FB035, Knoxville, TN",
+      "ownerName": "PINKSTAFF CHELSEY R",
+      "ownerMailingAddress": "1514 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.113 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082PB011",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082PB011, Knoxville, TN",
+      "ownerName": "LIBBY KENNETH E & COOPER BETH E",
+      "ownerMailingAddress": "223 E EMERALD RD, KNOXVILLE TN 37917",
+      "lotSize": "0.114 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094CE015",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094CE015, Knoxville, TN",
+      "ownerName": "BAVOLAR JENNIFER L",
+      "ownerMailingAddress": "216 CAMPUS LN, KNOXVILLE TN 37918",
+      "lotSize": "0.114 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094CE010",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094CE010, Knoxville, TN",
+      "ownerName": "JOHNSON JEREMIAH J & JOHNSON JENNIFER A",
+      "ownerMailingAddress": "6455 BURNETT CREEK, KNOXVILLE TN 37920",
+      "lotSize": "0.114 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081MS01601",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081MS01601, Knoxville, TN",
+      "ownerName": "PHILLIPS H DENNIS SR & KATHY W",
+      "ownerMailingAddress": "1100 WHATELY WAY, KNOXVILLE TN 37923",
+      "lotSize": "0.114 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081OD033",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081OD033, Knoxville, TN",
+      "ownerName": "SUTTON DOROTHY G % AIR COMFORT CO",
+      "ownerMailingAddress": "2317 JOHNSTON ST, KNOXVILLE TN 37921",
+      "lotSize": "0.114 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA03801",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA03801, Knoxville, TN",
+      "ownerName": "NEWTON KENNETH & NEWTON MELINDA",
+      "ownerMailingAddress": "1601 MYSTIC ST, KNOXVILLE TN 37922",
+      "lotSize": "0.115 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "108AK001",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 108AK001, Knoxville, TN",
+      "ownerName": "MULLINS JOSEPH LYNN & BILLY ALLEN JR",
+      "ownerMailingAddress": "4323 CROSBY DR, KNOXVILLE TN 37909",
+      "lotSize": "0.115 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "107EL023",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 107EL023, Knoxville, TN",
+      "ownerName": "HM PROPERTIES GP",
+      "ownerMailingAddress": "2099 THUNDERHEAD RD, KNOXVILLE TN 37920",
+      "lotSize": "0.116 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082HL008",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082HL008, Knoxville, TN",
+      "ownerName": "CUSAAC JOSEPH PATRICK W",
+      "ownerMailingAddress": "1706 GILLESPIE AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.116 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094CE005",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094CE005, Knoxville, TN",
+      "ownerName": "KINSER CHRISTOPHER RANDALL & KINSER DONNA",
+      "ownerMailingAddress": "214 HINTON AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.116 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA033",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA033, Knoxville, TN",
+      "ownerName": "BRIDENBAUGH JULIE P & BRIDENBAUGH GARY R",
+      "ownerMailingAddress": "9787 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.116 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081MS008",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081MS008, Knoxville, TN",
+      "ownerName": "LEE BUG PROPERTIES LLP",
+      "ownerMailingAddress": "2011 FLAGLER RD, KNOXVILLE TN 37912",
+      "lotSize": "0.116 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DH020",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DH020, Knoxville, TN",
+      "ownerName": "NICHOLS LYNN & NICHOLS DAWN",
+      "ownerMailingAddress": "617 DEERY ST, KNOXVILLE TN 37917",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082PE031",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082PE031, Knoxville, TN",
+      "ownerName": "KNIGHT DAVID E",
+      "ownerMailingAddress": "PO BOX 27124, KNOXVILLE TN 37927",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094CE012",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094CE012, Knoxville, TN",
+      "ownerName": "JOHNSON JEREMIAH J & JOHNSON JENNIFER A",
+      "ownerMailingAddress": "6455 BURNETT CREEK, KNOXVILLE TN 37920",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094CE014",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094CE014, Knoxville, TN",
+      "ownerName": "JOHNSON JEREMIAH J & JOHNSON JENNIFER A",
+      "ownerMailingAddress": "6455 BURNETT CREEK, KNOXVILLE TN 37920",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082HL009",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082HL009, Knoxville, TN",
+      "ownerName": "SPARKS JAMES L",
+      "ownerMailingAddress": "1708 GILLESPIE AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081KM035",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081KM035, Knoxville, TN",
+      "ownerName": "ALLEN PERRY M",
+      "ownerMailingAddress": "309 CANTON HOLLOW RD, KNOXVILLE TN 37934",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IG021",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IG021, Knoxville, TN",
+      "ownerName": "HICKMAN LENA",
+      "ownerMailingAddress": "1304 NINTH AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.117 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FB036",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FB036, Knoxville, TN",
+      "ownerName": "JANSEN GRACE A",
+      "ownerMailingAddress": "9507 CHALKSTONE WAY, KNOXVILLE TN 37922",
+      "lotSize": "0.118 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081KM037",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081KM037, Knoxville, TN",
+      "ownerName": "COWARD CHARLES P & MARY A",
+      "ownerMailingAddress": "100 WARREN AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.118 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FB030",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FB030, Knoxville, TN",
+      "ownerName": "SCHUPP CRAIG A & SCHUPP CHANTAL D",
+      "ownerMailingAddress": "1116 LONG BRANCH DR, KNOXVILLE TN 37922",
+      "lotSize": "0.118 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "107EL024",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 107EL024, Knoxville, TN",
+      "ownerName": "HM PROPERTIES GP",
+      "ownerMailingAddress": "2099 THUNDERHEAD RD, KNOXVILLE TN 37920",
+      "lotSize": "0.118 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA062",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA062, Knoxville, TN",
+      "ownerName": "PATTERSON ANNA LEE",
+      "ownerMailingAddress": "9555 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.118 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "154FA061",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 154FA061, Knoxville, TN",
+      "ownerName": "ODONNELL MICHAEL (CO TRUSTEE) & ODONNELL EMMA REBECCA (CO TRUSTEE)",
+      "ownerMailingAddress": "9601 CLINGMANS DOME DR, KNOXVILLE TN 37922",
+      "lotSize": "0.119 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IB004",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IB004, Knoxville, TN",
+      "ownerName": "SINGH KAVITA & BHAJAN",
+      "ownerMailingAddress": "1607 N SIXTH AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.119 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "108AD017",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 108AD017, Knoxville, TN",
+      "ownerName": "MULLINS BILLY Jr & MULLINS JOSEPH & MULLINS ANNA C",
+      "ownerMailingAddress": "2607 SUTHERLAND AVE, KNOXVILLE TN 37919",
+      "lotSize": "0.119 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "082IB003",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 082IB003, Knoxville, TN",
+      "ownerName": "CLARK DOUGLAS WAYNE % BILL'S MARKET",
+      "ownerMailingAddress": "4310 BUFFET MILL RD, KNOXVILLE TN 37914",
+      "lotSize": "0.12 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DJ006",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DJ006, Knoxville, TN",
+      "ownerName": "SCHMIDT JOAKIM S",
+      "ownerMailingAddress": "600 HIAWASSEE AVE, KNOXVILLE TN 37917",
+      "lotSize": "0.12 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "107EL018",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 107EL018, Knoxville, TN",
+      "ownerName": "ALONZO EULALIA PASCUAL",
+      "ownerMailingAddress": "712 WASHBURN RD, KNOXVILLE TN 37919",
+      "lotSize": "0.121 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "069LH031",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 069LH031, Knoxville, TN",
+      "ownerName": "SHOCKLEY CHRISTINA M",
+      "ownerMailingAddress": "2833 ITHACA DR, KNOXVILLE TN 37918",
+      "lotSize": "0.121 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "094DA022",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 094DA022, Knoxville, TN",
+      "ownerName": "MCPHERSON SCOTT",
+      "ownerMailingAddress": "PO BOX 32930, KNOXVILLE TN 37930",
+      "lotSize": "0.121 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    },
+    {
+      "parcelId": "081EG021",
+      "market": "knoxville-tn",
+      "address": "KGIS parcel 081EG021, Knoxville, TN",
+      "ownerName": "HEADRICK BARBARA",
+      "ownerMailingAddress": "8011 SWAGGERTY RD, KNOXVILLE TN 37920",
+      "lotSize": "0.121 ac",
+      "assessedLandValue": "",
+      "buyerMaxPrice": "",
+      "confidence": 90,
+      "task": "skip trace owner phone/email before seller call",
+      "sourceId": "knoxville-kgis-categorical-parcel-research-2026"
+    }
+  ],
+  "buyerValidation": [
+    {
+      "buyerId": "knoxville-builder-ball-homes",
+      "name": "BALL HOMES",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-smithbilt-homes",
+      "name": "Smithbilt Homes",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-turner-homes-llc",
+      "name": "Turner Homes, LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-cook-bros-homes",
+      "name": "Cook Bros Homes",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-maggie-watson-of-clayton-properties-group-inc-db",
+      "name": "Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-robert-mohney-of-saddlebrook-properties-llc",
+      "name": "ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-worley-builders-inc",
+      "name": "Worley Builders, Inc.",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-curbed-construction-llc",
+      "name": "CURBED CONSTRUCTION LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-davinci-design-and-contracting-llc",
+      "name": "DAVINCI DESIGN AND CONTRACTING LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-definity-construction-llc",
+      "name": "DEFINITY CONSTRUCTION LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-oakwood-homes",
+      "name": "oakwood homes",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-cress-company-inc",
+      "name": "CRESS COMPANY INC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-oakland-llc",
+      "name": "Oakland LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-clayton-homes",
+      "name": "Clayton Homes",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-hmh-construction-inc",
+      "name": "HMH Construction Inc",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-northshore-construction-llc",
+      "name": "Northshore Construction LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-rock-creek-construction-inc",
+      "name": "ROCK CREEK CONSTRUCTION, INC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-saddlebrook-properties-llc",
+      "name": "Saddlebrook Properties LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-bartholomew-development-inc",
+      "name": "BARTHOLOMEW DEVELOPMENT INC.",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-cmh-homes-inc-dba-oakwood-homes-373",
+      "name": "CMH HOMES, INC. DBA OAKWOOD HOMES #373",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-harrigan-construction-company-llc",
+      "name": "HARRIGAN CONSTRUCTION COMPANY, LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-healy-homes",
+      "name": "Healy Homes",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-stanley-homes-llc",
+      "name": "STANLEY HOMES LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-rp-homes-llc",
+      "name": "RP Homes, LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-anderson-builders",
+      "name": "ANDERSON BUILDERS",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-j-a-fielden-co-inc",
+      "name": "J.A. FIELDEN CO., INC.",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-jay-s-construction-and-remodeling",
+      "name": "JAY'S CONSTRUCTION AND REMODELING",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-monolith-construction-llc",
+      "name": "MONOLITH CONSTRUCTION LLC",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-summit-contracting-group-inc",
+      "name": "SUMMIT CONTRACTING GROUP INC.",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "knoxville-builder-aurora-inc",
+      "name": "Aurora Inc",
+      "market": "knoxville-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    }
+  ],
+  "buyerDiscovery": [
     {
       "market": "chattanooga-tn",
       "areaName": "Chattanooga, TN",
@@ -30,13 +1347,6 @@
   ],
   "sellerDiscovery": [
     {
-      "market": "knoxville-tn",
-      "areaName": "Knoxville, TN",
-      "task": "Find owner/seller parcel leads in Knoxville, TN",
-      "reason": "new target area needs seller/parcel discovery",
-      "priority": 9
-    },
-    {
       "market": "chattanooga-tn",
       "areaName": "Chattanooga, TN",
       "task": "Find owner/seller parcel leads in Chattanooga, TN",
@@ -51,8 +1361,1676 @@
       "priority": 7
     }
   ],
-  "missingData": [],
-  "riskBlocked": [],
+  "missingData": [
+    {
+      "queue": "missing_data",
+      "id": "118 17701",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "118 17701"
+    },
+    {
+      "queue": "missing_data",
+      "id": "071PA021",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "071PA021"
+    },
+    {
+      "queue": "missing_data",
+      "id": "108AD014",
+      "address": "KGIS parcel 108AD014, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "108AD014"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FB034",
+      "address": "KGIS parcel 154FB034, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FB034"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA013",
+      "address": "KGIS parcel 154FA013, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA013"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA055",
+      "address": "KGIS parcel 154FA055, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA055"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082PE024",
+      "address": "KGIS parcel 082PE024, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082PE024"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA064",
+      "address": "KGIS parcel 154FA064, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA064"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081MR018",
+      "address": "KGIS parcel 081MR018, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081MR018"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081MW001",
+      "address": "KGIS parcel 081MW001, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081MW001"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081NP013",
+      "address": "KGIS parcel 081NP013, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081NP013"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DJ013",
+      "address": "KGIS parcel 094DJ013, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DJ013"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IG019",
+      "address": "KGIS parcel 082IG019, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IG019"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IG017",
+      "address": "KGIS parcel 082IG017, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IG017"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081MW003",
+      "address": "KGIS parcel 081MW003, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081MW003"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA063",
+      "address": "KGIS parcel 154FA063, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA063"
+    },
+    {
+      "queue": "missing_data",
+      "id": "108AD004",
+      "address": "KGIS parcel 108AD004, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "108AD004"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA03601",
+      "address": "KGIS parcel 154FA03601, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA03601"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IG020",
+      "address": "KGIS parcel 082IG020, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IG020"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094CE007",
+      "address": "KGIS parcel 094CE007, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094CE007"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094EN011",
+      "address": "KGIS parcel 094EN011, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094EN011"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081NJ011",
+      "address": "KGIS parcel 081NJ011, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081NJ011"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081NP010",
+      "address": "KGIS parcel 081NP010, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081NP010"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082HL019",
+      "address": "KGIS parcel 082HL019, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082HL019"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA067",
+      "address": "KGIS parcel 154FA067, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA067"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FF010",
+      "address": "KGIS parcel 154FF010, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FF010"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA04201",
+      "address": "KGIS parcel 154FA04201, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA04201"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA04001",
+      "address": "KGIS parcel 154FA04001, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA04001"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA03901",
+      "address": "KGIS parcel 154FA03901, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA03901"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA04101",
+      "address": "KGIS parcel 154FA04101, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA04101"
+    },
+    {
+      "queue": "missing_data",
+      "id": "108AC013",
+      "address": "KGIS parcel 108AC013, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "108AC013"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA059",
+      "address": "KGIS parcel 154FA059, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA059"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IG018",
+      "address": "KGIS parcel 082IG018, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IG018"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081OR011",
+      "address": "KGIS parcel 081OR011, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081OR011"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081OR010",
+      "address": "KGIS parcel 081OR010, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081OR010"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081OR009",
+      "address": "KGIS parcel 081OR009, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081OR009"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DF010",
+      "address": "KGIS parcel 094DF010, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DF010"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DH019",
+      "address": "KGIS parcel 094DH019, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DH019"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082PE030",
+      "address": "KGIS parcel 082PE030, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082PE030"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081MW002",
+      "address": "KGIS parcel 081MW002, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081MW002"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081NJ012",
+      "address": "KGIS parcel 081NJ012, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081NJ012"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IG016",
+      "address": "KGIS parcel 082IG016, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IG016"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094EJ007",
+      "address": "KGIS parcel 094EJ007, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094EJ007"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082HL023",
+      "address": "KGIS parcel 082HL023, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082HL023"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FF015",
+      "address": "KGIS parcel 154FF015, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FF015"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DA023",
+      "address": "KGIS parcel 094DA023, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DA023"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA060",
+      "address": "KGIS parcel 154FA060, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA060"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FB035",
+      "address": "KGIS parcel 154FB035, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FB035"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082PB011",
+      "address": "KGIS parcel 082PB011, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082PB011"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094CE015",
+      "address": "KGIS parcel 094CE015, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094CE015"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094CE010",
+      "address": "KGIS parcel 094CE010, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094CE010"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081MS01601",
+      "address": "KGIS parcel 081MS01601, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081MS01601"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081OD033",
+      "address": "KGIS parcel 081OD033, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081OD033"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA03801",
+      "address": "KGIS parcel 154FA03801, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA03801"
+    },
+    {
+      "queue": "missing_data",
+      "id": "108AK001",
+      "address": "KGIS parcel 108AK001, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "108AK001"
+    },
+    {
+      "queue": "missing_data",
+      "id": "107EL023",
+      "address": "KGIS parcel 107EL023, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "107EL023"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082HL008",
+      "address": "KGIS parcel 082HL008, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082HL008"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094CE005",
+      "address": "KGIS parcel 094CE005, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094CE005"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA033",
+      "address": "KGIS parcel 154FA033, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA033"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081MS008",
+      "address": "KGIS parcel 081MS008, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081MS008"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DH020",
+      "address": "KGIS parcel 094DH020, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DH020"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082PE031",
+      "address": "KGIS parcel 082PE031, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082PE031"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094CE012",
+      "address": "KGIS parcel 094CE012, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094CE012"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094CE014",
+      "address": "KGIS parcel 094CE014, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094CE014"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082HL009",
+      "address": "KGIS parcel 082HL009, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082HL009"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081KM035",
+      "address": "KGIS parcel 081KM035, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081KM035"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IG021",
+      "address": "KGIS parcel 082IG021, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IG021"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FB036",
+      "address": "KGIS parcel 154FB036, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FB036"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081KM037",
+      "address": "KGIS parcel 081KM037, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081KM037"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FB030",
+      "address": "KGIS parcel 154FB030, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FB030"
+    },
+    {
+      "queue": "missing_data",
+      "id": "107EL024",
+      "address": "KGIS parcel 107EL024, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "107EL024"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA062",
+      "address": "KGIS parcel 154FA062, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA062"
+    },
+    {
+      "queue": "missing_data",
+      "id": "154FA061",
+      "address": "KGIS parcel 154FA061, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "154FA061"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IB004",
+      "address": "KGIS parcel 082IB004, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IB004"
+    },
+    {
+      "queue": "missing_data",
+      "id": "108AD017",
+      "address": "KGIS parcel 108AD017, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "108AD017"
+    },
+    {
+      "queue": "missing_data",
+      "id": "082IB003",
+      "address": "KGIS parcel 082IB003, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "082IB003"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DJ006",
+      "address": "KGIS parcel 094DJ006, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DJ006"
+    },
+    {
+      "queue": "missing_data",
+      "id": "107EL018",
+      "address": "KGIS parcel 107EL018, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "107EL018"
+    },
+    {
+      "queue": "missing_data",
+      "id": "069LH031",
+      "address": "KGIS parcel 069LH031, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "069LH031"
+    },
+    {
+      "queue": "missing_data",
+      "id": "094DA022",
+      "address": "KGIS parcel 094DA022, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "094DA022"
+    },
+    {
+      "queue": "missing_data",
+      "id": "081EG021",
+      "address": "KGIS parcel 081EG021, Knoxville, TN",
+      "missing": "ownerContact|pricing|buildability",
+      "severity": 3,
+      "market": "knoxville-tn",
+      "parcelId": "081EG021"
+    }
+  ],
+  "riskBlocked": [
+    {
+      "parcelId": "118 17701",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "071PA021",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "108AD014",
+      "address": "KGIS parcel 108AD014, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FB034",
+      "address": "KGIS parcel 154FB034, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA013",
+      "address": "KGIS parcel 154FA013, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA055",
+      "address": "KGIS parcel 154FA055, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082PE024",
+      "address": "KGIS parcel 082PE024, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA064",
+      "address": "KGIS parcel 154FA064, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081MR018",
+      "address": "KGIS parcel 081MR018, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081MW001",
+      "address": "KGIS parcel 081MW001, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081NP013",
+      "address": "KGIS parcel 081NP013, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DJ013",
+      "address": "KGIS parcel 094DJ013, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IG019",
+      "address": "KGIS parcel 082IG019, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IG017",
+      "address": "KGIS parcel 082IG017, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081MW003",
+      "address": "KGIS parcel 081MW003, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA063",
+      "address": "KGIS parcel 154FA063, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "108AD004",
+      "address": "KGIS parcel 108AD004, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA03601",
+      "address": "KGIS parcel 154FA03601, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IG020",
+      "address": "KGIS parcel 082IG020, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094CE007",
+      "address": "KGIS parcel 094CE007, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094EN011",
+      "address": "KGIS parcel 094EN011, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081NJ011",
+      "address": "KGIS parcel 081NJ011, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081NP010",
+      "address": "KGIS parcel 081NP010, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082HL019",
+      "address": "KGIS parcel 082HL019, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA067",
+      "address": "KGIS parcel 154FA067, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FF010",
+      "address": "KGIS parcel 154FF010, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA04201",
+      "address": "KGIS parcel 154FA04201, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA04001",
+      "address": "KGIS parcel 154FA04001, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA03901",
+      "address": "KGIS parcel 154FA03901, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA04101",
+      "address": "KGIS parcel 154FA04101, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "108AC013",
+      "address": "KGIS parcel 108AC013, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA059",
+      "address": "KGIS parcel 154FA059, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IG018",
+      "address": "KGIS parcel 082IG018, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081OR011",
+      "address": "KGIS parcel 081OR011, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081OR010",
+      "address": "KGIS parcel 081OR010, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081OR009",
+      "address": "KGIS parcel 081OR009, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DF010",
+      "address": "KGIS parcel 094DF010, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DH019",
+      "address": "KGIS parcel 094DH019, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082PE030",
+      "address": "KGIS parcel 082PE030, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081MW002",
+      "address": "KGIS parcel 081MW002, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081NJ012",
+      "address": "KGIS parcel 081NJ012, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IG016",
+      "address": "KGIS parcel 082IG016, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094EJ007",
+      "address": "KGIS parcel 094EJ007, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082HL023",
+      "address": "KGIS parcel 082HL023, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FF015",
+      "address": "KGIS parcel 154FF015, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DA023",
+      "address": "KGIS parcel 094DA023, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA060",
+      "address": "KGIS parcel 154FA060, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FB035",
+      "address": "KGIS parcel 154FB035, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082PB011",
+      "address": "KGIS parcel 082PB011, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094CE015",
+      "address": "KGIS parcel 094CE015, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094CE010",
+      "address": "KGIS parcel 094CE010, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081MS01601",
+      "address": "KGIS parcel 081MS01601, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081OD033",
+      "address": "KGIS parcel 081OD033, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA03801",
+      "address": "KGIS parcel 154FA03801, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "108AK001",
+      "address": "KGIS parcel 108AK001, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "107EL023",
+      "address": "KGIS parcel 107EL023, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082HL008",
+      "address": "KGIS parcel 082HL008, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094CE005",
+      "address": "KGIS parcel 094CE005, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA033",
+      "address": "KGIS parcel 154FA033, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081MS008",
+      "address": "KGIS parcel 081MS008, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DH020",
+      "address": "KGIS parcel 094DH020, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082PE031",
+      "address": "KGIS parcel 082PE031, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094CE012",
+      "address": "KGIS parcel 094CE012, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094CE014",
+      "address": "KGIS parcel 094CE014, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082HL009",
+      "address": "KGIS parcel 082HL009, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081KM035",
+      "address": "KGIS parcel 081KM035, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IG021",
+      "address": "KGIS parcel 082IG021, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FB036",
+      "address": "KGIS parcel 154FB036, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081KM037",
+      "address": "KGIS parcel 081KM037, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FB030",
+      "address": "KGIS parcel 154FB030, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "107EL024",
+      "address": "KGIS parcel 107EL024, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA062",
+      "address": "KGIS parcel 154FA062, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "154FA061",
+      "address": "KGIS parcel 154FA061, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IB004",
+      "address": "KGIS parcel 082IB004, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "108AD017",
+      "address": "KGIS parcel 108AD017, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "082IB003",
+      "address": "KGIS parcel 082IB003, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DJ006",
+      "address": "KGIS parcel 094DJ006, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "107EL018",
+      "address": "KGIS parcel 107EL018, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "069LH031",
+      "address": "KGIS parcel 069LH031, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "094DA022",
+      "address": "KGIS parcel 094DA022, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    },
+    {
+      "parcelId": "081EG021",
+      "address": "KGIS parcel 081EG021, Knoxville, TN",
+      "reason": "buildability risk",
+      "market": "knoxville-tn"
+    }
+  ],
   "offerReady": [],
-  "fitMatrix": []
+  "fitMatrix": [
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-ball-homes",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "BALL HOMES",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-smithbilt-homes",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Smithbilt Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-turner-homes-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Turner Homes, LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-cook-bros-homes",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Cook Bros Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-maggie-watson-of-clayton-properties-group-inc-db",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-robert-mohney-of-saddlebrook-properties-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-worley-builders-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Worley Builders, Inc.",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-curbed-construction-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "CURBED CONSTRUCTION LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-davinci-design-and-contracting-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "DAVINCI DESIGN AND CONTRACTING LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-definity-construction-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "DEFINITY CONSTRUCTION LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-oakwood-homes",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "oakwood homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-cress-company-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "CRESS COMPANY INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-oakland-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Oakland LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-clayton-homes",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Clayton Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-hmh-construction-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "HMH Construction Inc",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-northshore-construction-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Northshore Construction LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-rock-creek-construction-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "ROCK CREEK CONSTRUCTION, INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-saddlebrook-properties-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Saddlebrook Properties LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-bartholomew-development-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "BARTHOLOMEW DEVELOPMENT INC.",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-cmh-homes-inc-dba-oakwood-homes-373",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "CMH HOMES, INC. DBA OAKWOOD HOMES #373",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-harrigan-construction-company-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "HARRIGAN CONSTRUCTION COMPANY, LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-healy-homes",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Healy Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-stanley-homes-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "STANLEY HOMES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-rp-homes-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "RP Homes, LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-anderson-builders",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "ANDERSON BUILDERS",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-j-a-fielden-co-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "J.A. FIELDEN CO., INC.",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-jay-s-construction-and-remodeling",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "JAY'S CONSTRUCTION AND REMODELING",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-monolith-construction-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "MONOLITH CONSTRUCTION LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-summit-contracting-group-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "SUMMIT CONTRACTING GROUP INC.",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "knoxville-builder-aurora-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "Aurora Inc",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-ball-homes",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "BALL HOMES",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-smithbilt-homes",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Smithbilt Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-turner-homes-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Turner Homes, LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-cook-bros-homes",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Cook Bros Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-maggie-watson-of-clayton-properties-group-inc-db",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Maggie Watson of CLAYTON PROPERTIES GROUP, INC DBA GOODALL HOMES",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-robert-mohney-of-saddlebrook-properties-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "ROBERT MOHNEY of SADDLEBROOK PROPERTIES, LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-worley-builders-inc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Worley Builders, Inc.",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-curbed-construction-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "CURBED CONSTRUCTION LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-davinci-design-and-contracting-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "DAVINCI DESIGN AND CONTRACTING LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-definity-construction-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "DEFINITY CONSTRUCTION LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-oakwood-homes",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "oakwood homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-cress-company-inc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "CRESS COMPANY INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-oakland-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Oakland LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-clayton-homes",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Clayton Homes",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-hmh-construction-inc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "HMH Construction Inc",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-northshore-construction-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Northshore Construction LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-rock-creek-construction-inc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "ROCK CREEK CONSTRUCTION, INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-saddlebrook-properties-llc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "Saddlebrook Properties LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-bartholomew-development-inc",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "BARTHOLOMEW DEVELOPMENT INC.",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "071PA021",
+      "buyerId": "knoxville-builder-cmh-homes-inc-dba-oakwood-homes-373",
+      "address": "KGIS parcel 071PA021, Knoxville, TN",
+      "buyerName": "CMH HOMES, INC. DBA OAKWOOD HOMES #373",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    }
+  ]
 }

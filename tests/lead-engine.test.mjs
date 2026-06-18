@@ -11,6 +11,7 @@ import {
   buildAreaQueueBundles,
   buildSitePublishPlan,
 } from '../scripts/lead-engine.mjs';
+import { normalizeCategoricalParcel, normalizePermitBuilder } from '../scripts/adapters/knoxville-kgis-public-leads.mjs';
 
 const sampleSources = {
   version: 1,
@@ -164,6 +165,42 @@ function testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged() {
   assert.ok(dirty.commands.some(command => command.includes('git push')));
 }
 
+function testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues() {
+  const builder = normalizePermitBuilder('Summit Homes LLC', [
+    { PERMITNUMBER: 'IRC-NEW-24-0001', PARCELID: '058FA03001', PERMITVALUE: 125000, DESCRIPTION: 'Dwelling - Single Family', PERMITTYPE: 'SFR', CLASSWORK: 'New', LANDUSE: 'Single Family Residential', ADDRESS: '2544 BERNHURST DR', DATEISSUED: 1703030400000 },
+    { PERMITNUMBER: 'IRC-NEW-24-0002', PARCELID: '058FA03002', PERMITVALUE: 150000, DESCRIPTION: 'Dwelling - Single Family', PERMITTYPE: 'SFR', CLASSWORK: 'New', LANDUSE: 'Single Family Residential', ADDRESS: '2550 BERNHURST DR', DATEISSUED: 1703116800000 },
+  ]);
+  const parcel = normalizeCategoricalParcel({
+    PARCELID: '057  068',
+    PreUnionAcres: 0.8003693731541254,
+    Zone2019: 'OS-1',
+    Zone2020: 'C-H-1',
+    MAIL_HOUSE_NUMBER: '2917',
+    MAIL_STREET_NAME: 'EDONIA DR',
+    MAIL_CITY: 'KNOXVILLE',
+    MAIL_STATE: 'TN',
+    MAIL_ZIP_CODE: '37918',
+    OWNER: 'REAGAN E B & CHRLOTEE RYALL',
+  });
+  const kgisSources = {
+    version: 2,
+    targetMarkets: [{ id: 'knoxville-tn', name: 'Knoxville, TN', state: 'TN', buyerType: 'infill-builder', priority: 9 }],
+    buyerSources: [{ id: 'knoxville-kgis-permit-builder-signals-test', market: 'knoxville-tn', state: 'TN', type: 'public-permit-builder-signal', sourceUrl: builder.sourceUrl, records: [builder] }],
+    parcelSources: [{ id: 'knoxville-kgis-categorical-parcel-research-test', market: 'knoxville-tn', state: 'TN', type: 'public-parcel-research', sourceUrl: parcel.sourceUrl, records: [parcel] }],
+  };
+  const snapshot = generateLeadEngineSnapshot(kgisSources, { runId: 'kgis-test', now: '2026-06-18T09:00:00.000Z' });
+  const queues = buildLeadQueues(snapshot);
+  assert.equal(snapshot.buyers.length, 1);
+  assert.equal(snapshot.parcels.length, 1);
+  assert.equal(queues.buyerValidation.length, 1);
+  assert.equal(queues.skipTrace.length, 1);
+  assert.equal(queues.topSellerCalls.length, 0);
+  assert.equal(queues.offerReady.length, 0);
+  assert.equal(snapshot.buyers[0].validationStatus, 'needs-call-confirmation');
+  assert.equal(snapshot.parcels[0].ownerPhone, '');
+  assert.match(snapshot.parcels[0].publicSource, /KGIS/);
+}
+
 testLoadSourcesValidatesWorkflowInputs();
 testSnapshotGeneratesMarketsBuyersParcelsAndMetadata();
 testSnapshotBlocksSeedDemoRowsFromActiveLeads();
@@ -175,5 +212,6 @@ testTargetAreasCascadeIntoRelatedBuyerAndSellerDiscoveryTasks();
 testAreaBundlesKeepBuyersSellersAndQueuesGeographicallyRelated();
 testWriteOutputsUploadsAreaCsvBundlesForTheStaticSite();
 testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged();
+testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues();
 
 console.log('lead engine tests passed');

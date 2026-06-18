@@ -39,6 +39,7 @@ import {
   calculateContractReadiness,
   generateSellerNetOfferScript,
   generateNeighborPrompt,
+  buildOperatorChecklist,
   formatMoney,
 } from './core.mjs';
 
@@ -324,9 +325,28 @@ function crmControls(parcel) {
   return `<div class="crm-row" data-parcel-id="${h(parcel.id)}">
     <label>Status<select class="crm-status">${CRM_STATUSES.map(status => `<option value="${h(status)}" ${parcel.crmStatus === status ? 'selected' : ''}>${h(status)}</option>`).join('')}</select></label>
     <label>Next follow-up<input class="crm-followup" type="date" value="${h(parcel.nextFollowUp || '')}"></label>
-    <label>Notes<textarea class="crm-notes" rows="2" placeholder="Call notes, seller ask, buyer feedback...">${h(parcel.notes || '')}</textarea></label>
+    <label>Negotiated range<input class="crm-negotiated-range" type="text" value="${h(parcel.negotiatedSellerRange || '')}" placeholder="$28k–$32k or seller counter"></label>
+    <label>Title packet<select class="crm-title-status">${['missing', 'draft', 'attorney-reviewed', 'title-opened', 'active'].map(status => `<option value="${h(status)}" ${(parcel.titlePacketStatus || 'missing') === status ? 'selected' : ''}>${h(status)}</option>`).join('')}</select></label>
+    <label>Buyer memo<select class="crm-buyer-memo-status">${['missing', 'drafted', 'sent', 'accepted'].map(status => `<option value="${h(status)}" ${(parcel.buyerMemoStatus || 'missing') === status ? 'selected' : ''}>${h(status)}</option>`).join('')}</select></label>
+    <label>Assignment<select class="crm-assignment-status">${['not-started', 'accepted', 'signed', 'deposited', 'closed'].map(status => `<option value="${h(status)}" ${(parcel.assignmentStatus || 'not-started') === status ? 'selected' : ''}>${h(status)}</option>`).join('')}</select></label>
+    <label class="crm-notes-label">Notes<textarea class="crm-notes" rows="2" placeholder="Call notes, seller ask, buyer feedback...">${h(parcel.notes || '')}</textarea></label>
     <button class="save-crm" type="button">Save CRM</button>
   </div>`;
+}
+
+function renderOperatorChecklist(checklist, { compact = false } = {}) {
+  return `<section class="operator-checklist ${compact ? 'compact' : ''}" aria-label="Call-to-close checklist">
+    <div class="operator-checklist-head">
+      <span class="eyebrow">Call → Close Control</span>
+      <h3>${h(checklist.next.label)}</h3>
+      <div class="probability-meter" style="--score:${h(checklist.probability)}"><strong>${h(checklist.probability)}%</strong><span>assignment close probability</span></div>
+    </div>
+    <div class="operator-steps">${checklist.steps.map((step, index) => `<article class="operator-step ${step.done ? 'done' : 'todo'}">
+      <span>${String(index + 1).padStart(2, '0')}</span>
+      <b>${h(step.label)}</b>
+      <p>${h(step.detail)}</p>
+    </article>`).join('')}</div>
+  </section>`;
 }
 
 function renderParcels() {
@@ -346,6 +366,7 @@ function renderParcels() {
   const contractGate = calculateContractReadiness(selected, buyer);
   const sellerNet = generateSellerNetOfferScript(selected, buyer);
   const neighborPrompt = generateNeighborPrompt(selected);
+  const operatorChecklist = buildOperatorChecklist(selected, buyer);
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const fitRows = [
@@ -397,6 +418,7 @@ function renderParcels() {
         <p><strong>Ask:</strong> ${h(sellerNet.ask)}</p>
         <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
       </div>
+      ${renderOperatorChecklist(operatorChecklist)}
       <div class="detail-grid">
         <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'contact missing')}</p></div>
         <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
@@ -454,6 +476,7 @@ function renderCommandCenter() {
   const boxMeter = calculateBuyBoxCompleteness(leadBuyer || {});
   const heroMotivation = heroCall.id ? calculateSellerMotivation(heroCall) : { score: 0, temperature: 'Cold', signals: [] };
   const netScript = heroCall.id ? generateSellerNetOfferScript(heroCall, getBuyer(heroCall)) : null;
+  const todayChecklist = heroCall.id ? buildOperatorChecklist(heroCall, getBuyer(heroCall)) : null;
   document.querySelector('#command').innerHTML = `
     <div class="cashflow-hero editorial-hero">
       <div class="hero-copy">
@@ -481,6 +504,7 @@ function renderCommandCenter() {
       <article class="buyer-first-lane"><span class="eyebrow">Step 2 · Seller selection</span><h2>Only then choose parcels.</h2><div class="queue-card">${matchedRows}</div></article>
       <article class="buyer-first-lane script-card"><span class="eyebrow">Buyer call script</span><h2>“Do you actively buy Lehigh infill lots?”</h2><p>Ask: preferred streets/areas, lot size, max price, road/utilities requirements, flood/wetland kills, closing timeline, and whether they want off-market matches sent weekly.</p></article>
     </section>
+    ${todayChecklist ? renderOperatorChecklist(todayChecklist, { compact: true }) : ''}
     <section id="daily-calls" class="cashflow-board" aria-label="Daily cashflow operating board">
       <div class="money-queue-panel">
         <div class="daily-heading"><span class="eyebrow">Today’s calls</span><h2>One queue. No wandering.</h2></div>
@@ -907,6 +931,10 @@ function bindEvents() {
       workspace = applyCrmUpdate(workspace, parcelId, {
         crmStatus: row.querySelector('.crm-status').value,
         nextFollowUp: row.querySelector('.crm-followup').value,
+        negotiatedSellerRange: row.querySelector('.crm-negotiated-range')?.value || '',
+        titlePacketStatus: row.querySelector('.crm-title-status')?.value || 'missing',
+        buyerMemoStatus: row.querySelector('.crm-buyer-memo-status')?.value || 'missing',
+        assignmentStatus: row.querySelector('.crm-assignment-status')?.value || 'not-started',
         notes: row.querySelector('.crm-notes').value,
       });
       persistWorkspace();

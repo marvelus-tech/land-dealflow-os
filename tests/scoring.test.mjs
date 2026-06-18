@@ -30,6 +30,7 @@ import {
   addBuyerCallNote,
   buildDealFitMatrix,
   buildBuyerFeedbackLoop,
+  buildOperatorChecklist,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -435,11 +436,40 @@ function testDealMemoMarkdownExportsFullPacket() {
   assert.ok(memo.includes('123 Grant Blvd'));
 }
 
+function testOperatorChecklistTracksCallToCloseFlow() {
+  const buyer = { name: 'Precision Gulf Homes', maxPrice: 42000, phone: '239-555-0100' };
+  const parcel = {
+    address: '123 Grant Blvd',
+    ownerName: 'Avery Santos',
+    ownerPhone: '239-555-0131',
+    buyerMaxPrice: 42000,
+    lowestActiveListing: 48000,
+    askingPrice: 28500,
+    heldYears: 11,
+    paid: 6200,
+    wetlands: 'none',
+    floodZone: false,
+    roadAccess: true,
+    utilities: 'nearby',
+    slope: 'flat',
+    crmStatus: 'Negotiating',
+    negotiatedSellerRange: '$28k-$31k',
+    titlePacketStatus: 'attorney-reviewed',
+    buyerMemoStatus: 'sent',
+  };
+  const checklist = buildOperatorChecklist(parcel, buyer);
+  assert.equal(checklist.total, 5);
+  assert.ok(checklist.complete >= 4, `expected checklist progress, got ${checklist.complete}`);
+  assert.ok(checklist.probability >= 70, `expected strong close probability, got ${checklist.probability}`);
+  assert.equal(checklist.steps.find(step => step.id === 'buyer-send-memo').done, true);
+}
+
 testOfferPacketComputesSellerOfferAndAssignmentSpread();
 testSellerOfferLetterIncludesContingenciesAndCloseTerms();
 testBuyerAssignmentSummaryShowsRiskAndSpread();
 testRiskChecklistFlagsMissingAndFatalItems();
 testDealMemoMarkdownExportsFullPacket();
+testOperatorChecklistTracksCallToCloseFlow();
 
 testOutreachCallScriptUsesParcelAndBuyerContext();
 testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead();

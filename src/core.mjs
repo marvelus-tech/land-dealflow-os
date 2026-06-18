@@ -350,6 +350,41 @@ export function generateNeighborPrompt(parcel = {}) {
   return `After this call, search adjacent parcels around ${street}. Ask: “Do you know any neighbors on this block who also own unused land and might want a clean cash exit?”`;
 }
 
+export function buildOperatorChecklist(parcel = {}, buyer = {}) {
+  const scored = parcel.offer ? parcel : scoreParcelDeal(parcel, buyer);
+  const contract = calculateContractReadiness(scored, buyer);
+  const motivation = calculateSellerMotivation(scored);
+  const buyerContact = Boolean(scored.buyerPhone || scored.buyerEmail || buyer.phone || buyer.email);
+  const negotiated = Number(scored.negotiatedSellerMin || scored.negotiatedSellerMax || scored.negotiatedSellerPrice || 0) > 0
+    || /negotiat|seller interested|range|counter|accepted|offer/i.test(String(scored.notes || ''))
+    || scored.callOutcome === 'seller_interested'
+    || String(scored.crmStatus || '').match(/Negotiating|Under Contract|Sent to Buyer|Assigned/i);
+  const titleStatus = String(scored.titlePacketStatus || '').toLowerCase();
+  const titleReady = contract.ready || ['draft', 'attorney-reviewed', 'title-opened', 'active'].includes(titleStatus);
+  const buyerMemoReady = ['drafted', 'sent', 'accepted'].includes(String(scored.buyerMemoStatus || '').toLowerCase())
+    || String(scored.crmStatus || '').match(/Sent to Buyer|Assigned/i);
+  const assignmentReady = ['accepted', 'signed', 'deposited', 'closed'].includes(String(scored.assignmentStatus || '').toLowerCase())
+    || String(scored.crmStatus || '').match(/Assigned|Sold/i);
+  const steps = [
+    { id: 'call-outcome', label: 'Seller call outcome captured', done: Boolean(scored.callOutcome || ['Contacted', 'Negotiating', 'Under Contract', 'Sent to Buyer', 'Assigned/Sold', 'Dead'].includes(scored.crmStatus)), detail: scored.callOutcome || scored.crmStatus || 'Tap a call outcome while the call is fresh.' },
+    { id: 'negotiated-range', label: 'Negotiated seller range', done: negotiated, detail: negotiated ? 'Range captured or seller is in negotiation.' : `Anchor between ${formatMoney(scored.offer?.initialSellerOffer || 0)} and ${formatMoney(scored.offer?.maxSellerOffer || 0)}.` },
+    { id: 'title-packet', label: 'Attorney/title packet gate', done: titleReady, detail: titleReady ? (scored.titlePacketStatus || contract.label) : contract.blockers.join(' · ') || 'Needs attorney/title packet status.' },
+    { id: 'buyer-send-memo', label: 'Buyer-send memo ready', done: buyerMemoReady, detail: buyerMemoReady ? (scored.buyerMemoStatus || 'Memo moved to buyer.') : `${buyer.name || 'Buyer'} needs price, risk, title status, and deadline.` },
+    { id: 'assignment-close', label: 'Assignment close path', done: assignmentReady, detail: assignmentReady ? (scored.assignmentStatus || 'Assignment path active.') : 'Get buyer go/no-go, earnest money timing, assignment fee/title confirmation.' },
+  ];
+  const complete = steps.filter(step => step.done).length;
+  let probability = 8;
+  probability += complete * 14;
+  probability += contract.ready ? 10 : 0;
+  probability += motivation.score >= 65 ? 8 : motivation.score >= 45 ? 4 : 0;
+  probability += buyerContact ? 8 : 0;
+  probability += Number(scored.metrics?.spread || 0) >= 10000 ? 8 : 0;
+  probability -= scored.risk?.status === 'Review' ? 8 : scored.risk?.status === 'Kill' ? 35 : 0;
+  probability = Math.round(clamp(probability, 0, 95));
+  const next = steps.find(step => !step.done) || { id: 'closed', label: 'Close and collect assignment fee', detail: 'All checklist gates complete.' };
+  return { steps, complete, total: steps.length, probability, next, contract, motivation };
+}
+
 export function applyCrmUpdate(workspace, parcelId, updates) {
   return {
     ...workspace,

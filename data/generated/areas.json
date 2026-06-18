@@ -38,7 +38,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 1
       },
       {
@@ -61,7 +61,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 2
       },
       {
@@ -86,7 +86,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 1
       },
       {
@@ -111,7 +111,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 2
       },
       {
@@ -136,7 +136,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 3
       },
       {
@@ -161,7 +161,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 4
       },
       {
@@ -186,7 +186,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 5
       },
       {
@@ -211,7 +211,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 6
       },
       {
@@ -236,7 +236,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 7
       },
       {
@@ -261,7 +261,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 8
       },
       {
@@ -286,7 +286,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 9
       },
       {
@@ -311,7 +311,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 10
       },
       {
@@ -336,7 +336,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 11
       },
       {
@@ -361,7 +361,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 12
       },
       {
@@ -386,7 +386,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 13
       },
       {
@@ -411,7 +411,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 14
       },
       {
@@ -436,7 +436,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 15
       },
       {
@@ -461,7 +461,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 16
       },
       {
@@ -486,7 +486,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 17
       },
       {
@@ -511,7 +511,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 18
       },
       {
@@ -536,7 +536,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 19
       },
       {
@@ -561,7 +561,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 20
       },
       {
@@ -586,7 +586,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 21
       },
       {
@@ -611,7 +611,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 22
       },
       {
@@ -636,7 +636,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 23
       },
       {
@@ -661,7 +661,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 24
       },
       {
@@ -686,7 +686,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "public-cadastral-builder-signal",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 25
       }
     ],
@@ -694,7 +694,7 @@
       {
         "leadId": "parcel:lehigh:LEH-001",
         "crmStatus": "Generated lead",
-        "nextFollowUp": "2026-06-17",
+        "nextFollowUp": "2026-06-18",
         "sourceScore": 95,
         "parcelId": "LEH-001",
         "address": "123 Grant Blvd, Lehigh Acres, FL",
@@ -720,13 +720,13 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 1
       },
       {
         "leadId": "parcel:lehigh:LEH-002",
         "crmStatus": "Generated lead",
-        "nextFollowUp": "2026-06-17",
+        "nextFollowUp": "2026-06-18",
         "sourceScore": 60,
         "parcelId": "LEH-002",
         "address": "711 Meadow Rd, Lehigh Acres, FL",
@@ -750,13 +750,13 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 2
       },
       {
         "leadId": "parcel:lehigh:LEH-003",
         "crmStatus": "Generated lead",
-        "nextFollowUp": "2026-06-17",
+        "nextFollowUp": "2026-06-18",
         "sourceScore": 95,
         "parcelId": "LEH-003",
         "address": "508 Meadowbrook Ave, Lehigh Acres, FL",
@@ -781,7 +781,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 3
       },
       {
@@ -818,7 +818,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 1
       },
       {
@@ -855,7 +855,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 2
       },
       {
@@ -892,7 +892,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 3
       },
       {
@@ -929,7 +929,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 4
       },
       {
@@ -966,7 +966,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 5
       },
       {
@@ -1003,7 +1003,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 6
       },
       {
@@ -1040,7 +1040,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 7
       },
       {
@@ -1077,7 +1077,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 8
       },
       {
@@ -1114,7 +1114,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 9
       },
       {
@@ -1151,7 +1151,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 10
       },
       {
@@ -1188,7 +1188,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 11
       },
       {
@@ -1225,7 +1225,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 12
       },
       {
@@ -1262,7 +1262,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 13
       },
       {
@@ -1299,7 +1299,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 14
       },
       {
@@ -1336,7 +1336,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 15
       },
       {
@@ -1373,7 +1373,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 16
       },
       {
@@ -1410,7 +1410,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 17
       },
       {
@@ -1447,7 +1447,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 18
       },
       {
@@ -1484,7 +1484,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 19
       },
       {
@@ -1521,7 +1521,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 20
       },
       {
@@ -1558,7 +1558,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 21
       },
       {
@@ -1595,7 +1595,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 22
       },
       {
@@ -1632,7 +1632,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 23
       },
       {
@@ -1669,7 +1669,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 24
       },
       {
@@ -1706,7 +1706,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 25
       },
       {
@@ -1743,7 +1743,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 26
       },
       {
@@ -1780,7 +1780,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 27
       },
       {
@@ -1817,7 +1817,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 28
       },
       {
@@ -1854,7 +1854,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 29
       },
       {
@@ -1891,7 +1891,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 30
       },
       {
@@ -1928,7 +1928,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 31
       },
       {
@@ -1965,7 +1965,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 32
       },
       {
@@ -2002,7 +2002,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 33
       },
       {
@@ -2039,7 +2039,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 34
       },
       {
@@ -2076,7 +2076,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 35
       },
       {
@@ -2113,7 +2113,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 36
       },
       {
@@ -2150,7 +2150,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 37
       },
       {
@@ -2187,7 +2187,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 38
       },
       {
@@ -2224,7 +2224,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 39
       },
       {
@@ -2261,7 +2261,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 40
       },
       {
@@ -2298,7 +2298,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 41
       },
       {
@@ -2335,7 +2335,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 42
       },
       {
@@ -2372,7 +2372,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 43
       },
       {
@@ -2409,7 +2409,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 44
       },
       {
@@ -2446,7 +2446,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 45
       },
       {
@@ -2483,7 +2483,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 46
       },
       {
@@ -2520,7 +2520,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 47
       },
       {
@@ -2557,7 +2557,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 48
       },
       {
@@ -2594,7 +2594,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 49
       },
       {
@@ -2631,7 +2631,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "public-cadastral",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 50
       }
     ],
@@ -4112,7 +4112,7 @@
         "sourceType": "buyer",
         "sourceAdapter": "seed",
         "cadence": "weekly",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 1
       }
     ],
@@ -4120,7 +4120,7 @@
       {
         "leadId": "parcel:cape-coral:CAP-001",
         "crmStatus": "Generated lead",
-        "nextFollowUp": "2026-06-17",
+        "nextFollowUp": "2026-06-18",
         "sourceScore": 95,
         "parcelId": "CAP-001",
         "address": "904 SW Canal Ter, Cape Coral, FL",
@@ -4145,7 +4145,7 @@
         "sourceType": "parcel",
         "sourceAdapter": "seed",
         "cadence": "daily",
-        "collectedAt": "2026-06-17T21:30:11.591Z",
+        "collectedAt": "2026-06-18T21:30:27.129Z",
         "sequence": 1
       }
     ],

@@ -276,6 +276,33 @@ function navigateToView(view) {
   setActiveView(view, { scrollToTop: true });
 }
 
+function captureBuilderInteractionViewport() {
+  const queue = document.querySelector('#buyer-validation-command .validation-queue');
+  return {
+    scrollX: window.scrollX,
+    scrollY: window.scrollY,
+    queueScrollTop: queue?.scrollTop || 0,
+    selectedValidationBuilderId,
+  };
+}
+
+function restoreBuilderInteractionViewport(viewport = {}) {
+  const restore = () => {
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(viewport.scrollX || 0, viewport.scrollY || 0);
+    const queue = document.querySelector('#buyer-validation-command .validation-queue');
+    if (queue) queue.scrollTop = viewport.queueScrollTop || 0;
+    const selectedButton = [...document.querySelectorAll('[data-select-validation-builder]')]
+      .find(button => button.dataset.selectValidationBuilder === viewport.selectedValidationBuilderId);
+    selectedButton?.focus?.({ preventScroll: true });
+    root.style.scrollBehavior = previousScrollBehavior;
+  };
+  restore();
+  requestAnimationFrame(restore);
+}
+
 function renderAppShell() {
   setActiveView(activeView);
 }
@@ -1004,9 +1031,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   </section>`;
 }
 
-function renderBuilderListEnginePanel() {
+function renderBuilderListEnginePanel(options = {}) {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
+  const preservedViewport = options.preserveViewport ? captureBuilderInteractionViewport() : null;
   const fallbackTnBuilders = getPermitBuilders();
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
@@ -1122,6 +1150,7 @@ function renderBuilderListEnginePanel() {
       </article>
     </section>
   </div>`;
+  if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
 }
 
 function renderClosingDeskPanel() {
@@ -1798,12 +1827,13 @@ function bindEvents() {
 
     const builderMarketButton = event.target.closest('[data-builder-market-state]');
     if (builderMarketButton) {
+      event.preventDefault();
       const stateCode = builderMarketButton.dataset.builderMarketState;
       if (stateCode) {
         selectedBuilderMarketState = stateCode;
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
-        renderBuilderListEnginePanel();
+        renderBuilderListEnginePanel({ preserveViewport: true });
       }
       return;
     }
@@ -1826,13 +1856,15 @@ function bindEvents() {
 
     const builderButton = event.target.closest('[data-select-builder]');
     if (builderButton) {
+      event.preventDefault();
       selectedBuilderId = builderButton.dataset.selectBuilder;
-      renderBuilderListEnginePanel();
+      renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }
 
     const validationContactButton = event.target.closest('[data-toggle-validation-contact]');
     if (validationContactButton) {
+      event.preventDefault();
       const builderId = validationContactButton.dataset.builderId || selectedValidationBuilderId;
       const channel = validationContactButton.dataset.toggleValidationContact;
       if (!builderId || !['phone', 'email'].includes(channel)) return;
@@ -1855,14 +1887,15 @@ function bindEvents() {
       upsertBuyerValidation(updated);
       selectedValidationBuilderId = builderId;
       persistWorkspace();
-      renderBuilderListEnginePanel();
+      renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }
 
     const validationBuilderButton = event.target.closest('[data-select-validation-builder]');
     if (validationBuilderButton) {
+      event.preventDefault();
       selectedValidationBuilderId = validationBuilderButton.dataset.selectValidationBuilder;
-      renderBuilderListEnginePanel();
+      renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }
 
@@ -2070,6 +2103,7 @@ ${body}`;
     }
 
     if (event.target.matches('[data-save-buyer-validation]')) {
+      event.preventDefault();
       const form = event.target.closest('[data-validation-form]');
       const builderId = form?.dataset.validationForm;
       const sourceRow = findLoadedBuilderRow(builderId);
@@ -2094,11 +2128,12 @@ ${body}`;
       persistWorkspace();
       const status = form.querySelector('.validation-save-status');
       if (status) status.textContent = updated.callStatus === 'validated_buy_box' ? 'Validation saved; seller gate will unlock if required fields are complete.' : 'Validation saved.';
-      renderBuilderListEnginePanel();
+      renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }
 
     if (event.target.matches('[data-save-builder-buybox]')) {
+      event.preventDefault();
       const form = event.target.closest('[data-builder-form]');
       const builderId = form?.dataset.builderForm;
       const builders = getPermitBuilders();
@@ -2120,7 +2155,7 @@ ${body}`;
       persistWorkspace();
       const status = form.querySelector('.builder-save-status');
       if (status) status.textContent = 'Buy box captured; builder promoted from permitVerified.';
-      renderBuilderListEnginePanel();
+      renderBuilderListEnginePanel({ preserveViewport: true });
     }
 
     if (event.target.matches('[data-copy-builder-script]')) {

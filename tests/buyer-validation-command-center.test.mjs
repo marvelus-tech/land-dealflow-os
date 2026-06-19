@@ -75,6 +75,11 @@ assert.equal(lockedSearch.eligible, false, 'complete fields still require explic
 assert.match(appSource, /let selectedValidationBuilderId = '';/, 'validation queue must not share the permit-builder selection state');
 assert.match(appSource, /data-select-validation-builder/, 'validation queue rows need their own click target');
 assert.match(appSource, /dataset\.selectValidationBuilder/, 'validation queue click handler must persist the selected validation row');
+assert.match(appSource, /function captureBuilderInteractionViewport\(\)[\s\S]{0,260}queueScrollTop: queue\?\.scrollTop \|\| 0/, 'selecting a builder must capture the current page and queue scroll position');
+assert.match(appSource, /function restoreBuilderInteractionViewport\(viewport = \{\}\)[\s\S]{0,420}window\.scrollTo\(viewport\.scrollX \|\| 0, viewport\.scrollY \|\| 0\)[\s\S]{0,220}queue\.scrollTop = viewport\.queueScrollTop \|\| 0/, 'selecting a builder must restore the operator viewport instead of snapping to the top');
+assert.match(appSource, /selectedButton\?\.focus\?\.\(\{ preventScroll: true \}\)/, 'selected validation row focus should be restored without causing browser auto-scroll');
+assert.match(appSource, /renderBuilderListEnginePanel\(\{ preserveViewport: true \}\);/, 'builder queue interactions should rerender in place with viewport preservation');
+assert.match(appSource, /event\.preventDefault\(\);[\s\S]{0,120}selectedValidationBuilderId = validationBuilderButton\.dataset\.selectValidationBuilder/, 'builder row selection should be an in-place state update, not browser navigation');
 assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-select-builder=/, 'validation rows must not use the permit-builder selector or they reset to the top row');
 assert.match(appSource, /data-copy-validation-email/, 'validation focus card must expose a Copy email action next to Draft email');
 assert.match(appSource, /<a href="#" class="copy-builder-email-address"/, 'selected builder email copy control must render as an inline anchor, not a button');

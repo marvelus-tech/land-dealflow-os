@@ -9,7 +9,8 @@
     "pull:san-antonio-builders": "node scripts/adapters/san-antonio-ckan-permit-builders.mjs",
     "pull:raleigh-builders": "node scripts/adapters/raleigh-arcgis-permit-builders.mjs",
     "pull:polk-builders": "python3 scripts/adapters/polk-accela-permit-builders.py",
-    "test": "node tests/scoring.test.mjs && node tests/cashflow.test.mjs && node tests/lead-engine.test.mjs && node tests/source-discovery.test.mjs && node tests/weekly-market-scout.test.mjs && node tests/title-company.test.mjs && node tests/closing-desk-research-ui.test.mjs && node tests/builder-list.test.mjs && node tests/knoxville-builder-call-sheet.test.mjs && node tests/austin-permit-builders.test.mjs && node tests/san-antonio-permit-builders.test.mjs && node tests/raleigh-permit-builders.test.mjs && node tests/polk-permit-builders.test.mjs && node tests/buyer-validation-command-center.test.mjs && node tests/permit-portal-landscape.test.mjs && node tests/sources-page-ui.test.mjs",
+    "pull:maricopa-builders": "python3 scripts/adapters/maricopa-xlsx-permit-builders.py",
+    "test": "node tests/scoring.test.mjs && node tests/cashflow.test.mjs && node tests/lead-engine.test.mjs && node tests/source-discovery.test.mjs && node tests/weekly-market-scout.test.mjs && node tests/title-company.test.mjs && node tests/closing-desk-research-ui.test.mjs && node tests/builder-list.test.mjs && node tests/knoxville-builder-call-sheet.test.mjs && node tests/austin-permit-builders.test.mjs && node tests/san-antonio-permit-builders.test.mjs && node tests/raleigh-permit-builders.test.mjs && node tests/polk-permit-builders.test.mjs && node tests/maricopa-permit-builders.test.mjs && node tests/buyer-validation-command-center.test.mjs && node tests/permit-portal-landscape.test.mjs && node tests/sources-page-ui.test.mjs",
     "serve": "python3 -m http.server 4173"
   }
 }

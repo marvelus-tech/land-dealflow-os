@@ -1,0 +1,207 @@
+{
+  "market": "Phoenix / Maricopa County, AZ",
+  "marketId": "phoenix-maricopa-az",
+  "state": "AZ",
+  "generatedAt": "2026-06-19T10:38:10Z",
+  "source": {
+    "name": "Maricopa County Planning & Development \u2014 Weekly Permit Activity Reports",
+    "sourceUrl": "https://www.maricopa.gov/Archive.aspx?AMID=128",
+    "reportsInspected": 30,
+    "sourceFormat": "XLSX workbooks from Archive Center"
+  },
+  "summary": {
+    "permitRowsSampled": 5595,
+    "targetPermitRows": 67,
+    "uniqueBuilders": 30,
+    "minimumUniqueBuilders": 20,
+    "totalRecentBuildSignals": 66,
+    "filter": "Building (Residential) BLDR permit rows from Maricopa weekly XLSX reports with single-family/new residence descriptions; trade/accessory work excluded."
+  },
+  "reports": [
+    {
+      "label": "Weekly Permit Activity Report June 15, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6533",
+      "rows": 180,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report June 8, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6532",
+      "rows": 200,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report June 1, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6530",
+      "rows": 148,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report May 25, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6529",
+      "rows": 197,
+      "targetRows": 4
+    },
+    {
+      "label": "Weekly Permit Activity Report May 18, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6526",
+      "rows": 190,
+      "targetRows": 3
+    },
+    {
+      "label": "Weekly Permit Activity Report May 11, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6525",
+      "rows": 189,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report May 4, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6511",
+      "rows": 184,
+      "targetRows": 5
+    },
+    {
+      "label": "Weekly Permit Activity Report April 27, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6509",
+      "rows": 191,
+      "targetRows": 4
+    },
+    {
+      "label": "Weekly Permit Activity Report April 20, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6508",
+      "rows": 191,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report April 13, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6507",
+      "rows": 179,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report April 6, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6505",
+      "rows": 171,
+      "targetRows": 5
+    },
+    {
+      "label": "Weekly Permit Activity Report March 30, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6495",
+      "rows": 181,
+      "targetRows": 6
+    },
+    {
+      "label": "Weekly Permit Activity Report March 23, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6490",
+      "rows": 179,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report March 16, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6491",
+      "rows": 172,
+      "targetRows": 1
+    },
+    {
+      "label": "Weekly Permit Activity Report March 9, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6433",
+      "rows": 253,
+      "targetRows": 3
+    },
+    {
+      "label": "Weekly Permit Activity Report March 2, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6432",
+      "rows": 179,
+      "targetRows": 3
+    },
+    {
+      "label": "Weekly Permit Activity Report February 23, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6375",
+      "rows": 156,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report February 16, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6372",
+      "rows": 179,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report February 9, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6371",
+      "rows": 251,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report February 2, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6370",
+      "rows": 169,
+      "targetRows": 1
+    },
+    {
+      "label": "Weekly Permit Activity Report January 26, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6364",
+      "rows": 152,
+      "targetRows": 4
+    },
+    {
+      "label": "Weekly Permit Activity Report January 19, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6362",
+      "rows": 214,
+      "targetRows": 4
+    },
+    {
+      "label": "Weekly Permit Activity Report January 12, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6361",
+      "rows": 217,
+      "targetRows": 3
+    },
+    {
+      "label": "Weekly Permit Activity Report January 5, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6360",
+      "rows": 133,
+      "targetRows": 0
+    },
+    {
+      "label": "Weekly Permit Activity Report December 29, 2025",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6359",
+      "rows": 135,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report December 22, 2025",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6358",
+      "rows": 212,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report December 15, 2025",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6355",
+      "rows": 229,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report December 8, 2025",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6349",
+      "rows": 242,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report December 1, 2025",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6347",
+      "rows": 135,
+      "targetRows": 2
+    },
+    {
+      "label": "Weekly Permit Activity Report November 24, 2025",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6346",
+      "rows": 187,
+      "targetRows": 3
+    }
+  ],
+  "operatingRules": [
+    "Contractor rows are permit-backed active-builder signals, not validated buyer demand until buy-box outreach is complete.",
+    "Only Building (Residential) BLDR rows with single-family/new residence descriptions count toward the floor.",
+    "No Maricopa seller sourcing until builder geography, max price, parcel criteria, close speed, and deal killers are captured."
+  ]
+}

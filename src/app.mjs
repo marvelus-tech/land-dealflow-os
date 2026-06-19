@@ -943,6 +943,58 @@ function renderPipeline() {
   </article>`).join('');
 }
 
+
+function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipTrace, buyerContactQueue, heroMotivation, netScript }) {
+  const permitLandscape = getPermitPortalLandscape();
+  const leading = asArray(permitLandscape.leadingMarkets).slice(0, 5);
+  const builderRows = asArray(knoxvilleBuyerCallSheet?.rows);
+  const totalBuilderSignals = knoxvilleBuyerCallSheet?.summary?.totalRecentBuildSignals || builderRows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0);
+  const callableBuilders = knoxvilleBuyerCallSheet?.summary?.callablePublicBusinessContacts || builderRows.filter(row => row.phone || row.email).length;
+  const missionRows = leading.map((market, index) => `<button type="button" class="mission-market ${index === 0 ? 'active' : ''}" data-view="builders">
+      <span>${String(index + 1).padStart(2, '0')}</span>
+      <b>${h(market.market)}</b>
+      <small>${h(market.state)} · ${h(market.reason)}</small>
+    </button>`).join('');
+  const nextActions = [
+    { label: 'Call buyer', value: leadBuyer?.name || 'Select permit-active builder', detail: leadBuyer?.phone || leadBuyer?.email || 'Capture max price, geography, close speed, deal killers.' },
+    { label: 'Protect seller queue', value: `${publicSkipTrace.length} skip-trace records`, detail: 'Public records stay out of call-ready until a real phone/email is enriched.' },
+    { label: 'Open title gate', value: netScript?.headline || 'Contract/title after buyer proof', detail: 'Seller call → net range → title packet → buyer-send memo.' },
+  ].map(item => `<article><span>${h(item.label)}</span><b>${h(item.value)}</b><p>${h(item.detail)}</p></article>`).join('');
+
+  return `<section class="vision-hero" aria-label="Land Dealflow operating vision">
+    <div class="vision-copy">
+      <span class="eyebrow">Land Dealflow OS · permit-market command center</span>
+      <h1>Stop browsing. Start operating the market.</h1>
+      <p>Form follows function: Tennessee permit evidence picks the builders, builder buy boxes pick the sellers, and the UI only promotes calls that can become assignment-fee cash.</p>
+      <div class="vision-actions">
+        <a class="button-link" href="#builders" data-view="builders">Open buyer war room</a>
+        <a class="button-link secondary" href="#daily-calls">Seller calls with proof</a>
+      </div>
+      <div class="vision-proof-strip">
+        <div><span>Permit market</span><strong>Knoxville, TN</strong><em>HQ/contact may be regional</em></div>
+        <div><span>Builder signals</span><strong>${h(totalBuilderSignals)}</strong><em>${h(callableBuilders)} callable contacts</em></div>
+        <div><span>Buy box</span><strong>${h(boxMeter.percent)}%</strong><em>${h(boxMeter.grade)} confidence</em></div>
+        <div><span>Call-ready</span><strong>${h(moneyQueue.stats.callReady)}</strong><em>${h(buyerContactQueue.length)} buyer contacts</em></div>
+      </div>
+    </div>
+    <aside class="mission-console" aria-label="Market mission console">
+      <div class="mission-topbar"><span></span><span></span><span></span><b>MARKET OPS</b></div>
+      <div class="mission-map">
+        <div class="map-glow"></div>
+        <div class="map-route r1"></div><div class="map-route r2"></div><div class="map-route r3"></div>
+        <button class="map-pin hot" data-view="builders" style="--x:63%;--y:37%"><b>TN</b><em>Knoxville</em></button>
+        <button class="map-pin" data-view="builders" style="--x:52%;--y:51%"><b>TN</b><em>Rutherford</em></button>
+        <button class="map-pin" data-view="builders" style="--x:45%;--y:30%"><b>NC</b><em>Piedmont</em></button>
+        <button class="map-pin" data-view="builders" style="--x:25%;--y:66%"><b>TX</b><em>Open data</em></button>
+      </div>
+      <div class="mission-grid">
+        <div class="mission-column"><span class="eyebrow">Priority markets</span>${missionRows}</div>
+        <div class="mission-next"><span class="eyebrow">Next money actions</span>${nextActions}</div>
+      </div>
+    </aside>
+  </section>`;
+}
+
 function renderCommandCenter() {
   const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'None', score: { total: 0 } };
   const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'None', score: 0 };
@@ -971,22 +1023,7 @@ function renderCommandCenter() {
   const todayChecklist = heroCall.id ? buildOperatorChecklist(heroCall, getBuyer(heroCall)) : null;
   const todayBuyerMemo = heroCall.id ? generateBuyerSendMemo(heroCall, getBuyer(heroCall), generateOfferPacket(heroCall, getBuyer(heroCall))) : null;
   document.querySelector('#command').innerHTML = `
-    <div class="cashflow-hero editorial-hero">
-      <div class="hero-copy">
-        <span class="eyebrow">Land Dealflow OS · phase 1 infusion</span>
-        <h1>Buyer proof before seller pressure.</h1>
-        <p>A premium call-first operating desk: validate the builder buy box, surface seller motivation, speak in net-cash terms, and only send contracts through an attorney/title-ready gate.</p>
-        <div class="hero-actions"><a class="button-link" href="${leadBuyer?.phone ? `tel:${h(leadBuyer.phone)}` : '#daily-calls'}">Call buyer</a><button id="export-daily-call-sheet" class="secondary" type="button">Export matched seller calls</button></div>
-      </div>
-      <aside class="hero-deal-card cash-card buybox-meter-card" aria-label="Buy box completeness meter">
-        <span>${h(leadBuyer?.phone || leadBuyer?.website || 'Find buyer contact')}</span>
-        <h2>${h(leadBuyer?.name || 'Validate the first Lehigh buyer')}</h2>
-        <p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || 'Ask what lots they buy, max price, kill criteria, and closing speed.')}</p>
-        <div class="radial-meter" style="--score:${boxMeter.percent}"><strong>${boxMeter.percent}%</strong><span>buy box</span></div>
-        <div class="deal-strip two"><div><span>Grade</span><strong>${h(boxMeter.grade)}</strong></div><div><span>Missing</span><strong>${h(boxMeter.missing.length || '0')}</strong></div></div>
-        <p class="microcopy">${h(boxMeter.missing.slice(0, 2).join(' · ') || 'Complete enough to match seller parcels.')}</p>
-      </aside>
-    </div>
+    ${renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipTrace, buyerContactQueue, heroMotivation, netScript })}
     <section class="phase-one-strip" aria-label="Phase one infusion controls">
       <article class="infusion-card land-photo-card"><img src="./assets/land-imagery/lehigh-golden-lot.png" alt="Dreamy DSLR view of a Lehigh vacant lot"><span class="eyebrow">Chapter I</span><h3>Buy box completeness</h3><p>${h(boxMeter.met)}/${h(boxMeter.total)} buyer facts captured before seller outreach.</p></article>
       <article class="infusion-card"><span class="eyebrow">Chapter II</span><h3>Seller motivation score</h3><div class="large-score">${h(heroMotivation.score)}<em>${h(heroMotivation.temperature)}</em></div><p>${h(heroMotivation.signals.slice(0, 2).join(' · ') || 'Select a callable seller to reveal motivation signals.')}</p></article>

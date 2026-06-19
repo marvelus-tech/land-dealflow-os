@@ -23,9 +23,10 @@ if [[ -z "${DELTA_BRIEFING//[[:space:]]/}" ]]; then
   exit 0
 fi
 
-rm -rf data/generated
-mkdir -p data
-cp -R "$NEXT_DIR" data/generated
+mkdir -p data/generated
+rm -rf data/generated/areas data/generated/queues
+rm -f data/generated/latest.json data/generated/briefing.md data/generated/queues.json data/generated/areas.json data/generated/source_candidates.csv
+cp -R "$NEXT_DIR"/. data/generated/
 
 git add data/generated
 if git diff --cached --quiet -- data/generated; then
@@ -34,7 +35,7 @@ if git diff --cached --quiet -- data/generated; then
   exit 0
 fi
 
-git commit -m "chore: publish generated lead deltas"
-env -u GITHUB_TOKEN -u GH_TOKEN git push origin main
+git commit -m "chore: publish generated lead deltas" >&2
+env -u GITHUB_TOKEN -u GH_TOKEN git push origin main >&2
 
 printf '%s\n' "$DELTA_BRIEFING"

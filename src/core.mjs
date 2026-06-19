@@ -1687,14 +1687,14 @@ export function getPermitPortalLandscape() {
   return {
     summary: 'No target state has a unified statewide building-permit database. Normalize by platform first, then monitor the county/city portals that control your target markets.',
     leadingMarkets: [
-      { rank: 1, state: 'TN', market: 'Knoxville / Knox County', reason: 'Current live permit-backed builder queue; Buildchek + Knoxville/KGIS-style public records; validate buyer buy boxes first.' },
-      { rank: 2, state: 'TN', market: 'Murfreesboro / Rutherford County', reason: 'CivicPlus/CivicGov sprawl market near Nashville edge; direct portal monitoring priority.' },
-      { rank: 3, state: 'TN', market: 'Franklin / Williamson County', reason: 'IDT Plans/GeoCivix electronic plan review; high builder demand, higher land-price discipline required.' },
-      { rank: 4, state: 'TN', market: 'Clarksville / Montgomery County', reason: 'Buildchek + county portal; growth corridor with simpler seller-search expansion than Nashville proper.' },
-      { rank: 5, state: 'NC', market: 'Charlotte / Mecklenburg → Cabarrus corridor', reason: 'Buildchek + Accela + Power BI/ArcGIS data; strong Piedmont land-flipping corridor.' },
-      { rank: 6, state: 'TX', market: 'Austin / San Antonio open-data corridor', reason: 'Socrata/open data gives programmatic permit intake before fragmented Houston/Dallas work.' },
-      { rank: 7, state: 'FL', market: 'Polk / Marion / Lake / Alachua inland Florida', reason: 'Accela/Civic Access-heavy inland growth; avoids some coastal insurance friction.' },
-      { rank: 8, state: 'AZ', market: 'Maricopa velocity markets', reason: 'Weekly reports + Accela/self-certification cities: Phoenix, Mesa, Scottsdale, Tempe, Buckeye.' },
+      { rank: 1, state: 'TN', market: 'Knoxville / Knox County', reason: 'Current live permit-backed builder queue; Buildchek + Knoxville/KGIS-style public records; validate buyer buy boxes first.', zillowUrl: 'https://www.zillow.com/knoxville-tn/' },
+      { rank: 2, state: 'TN', market: 'Murfreesboro / Rutherford County', reason: 'CivicPlus/CivicGov sprawl market near Nashville edge; direct portal monitoring priority.', zillowUrl: 'https://www.zillow.com/murfreesboro-tn/' },
+      { rank: 3, state: 'TN', market: 'Franklin / Williamson County', reason: 'IDT Plans/GeoCivix electronic plan review; high builder demand, higher land-price discipline required.', zillowUrl: 'https://www.zillow.com/franklin-tn/' },
+      { rank: 4, state: 'TN', market: 'Clarksville / Montgomery County', reason: 'Buildchek + county portal; growth corridor with simpler seller-search expansion than Nashville proper.', zillowUrl: 'https://www.zillow.com/clarksville-tn/' },
+      { rank: 5, state: 'NC', market: 'Charlotte / Mecklenburg → Cabarrus corridor', reason: 'Buildchek + Accela + Power BI/ArcGIS data; strong Piedmont land-flipping corridor.', zillowUrl: 'https://www.zillow.com/charlotte-nc/' },
+      { rank: 6, state: 'TX', market: 'Austin / San Antonio open-data corridor', reason: 'Socrata/open data gives programmatic permit intake before fragmented Houston/Dallas work.', zillowUrl: 'https://www.zillow.com/austin-tx/' },
+      { rank: 7, state: 'FL', market: 'Polk / Marion / Lake / Alachua inland Florida', reason: 'Accela/Civic Access-heavy inland growth; avoids some coastal insurance friction.', zillowUrl: 'https://www.zillow.com/polk-county-fl/' },
+      { rank: 8, state: 'AZ', market: 'Maricopa velocity markets', reason: 'Weekly reports + Accela/self-certification cities: Phoenix, Mesa, Scottsdale, Tempe, Buckeye.', zillowUrl: 'https://www.zillow.com/maricopa-county-az/' },
     ],
     states: [
       {

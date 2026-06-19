@@ -10,6 +10,7 @@ import {
 const callSheet = JSON.parse(fs.readFileSync('data/real/knoxville/buyer_call_sheet.json', 'utf8'));
 const rows = callSheet.rows;
 const appSource = fs.readFileSync('src/app.mjs', 'utf8');
+const coreSource = fs.readFileSync('src/core.mjs', 'utf8');
 const stylesSource = fs.readFileSync('src/styles.css', 'utf8');
 
 const center = buildBuyerValidationCommandCenter(rows, []);
@@ -120,7 +121,12 @@ assert.match(appSource, /Permit-builder pipeline/, 'selected state lane should e
 assert.match(appSource, /state-pipeline-list/, 'selected state lane should render source/action/output pipeline steps');
 assert.match(appSource, /pipeline-unlock/, 'selected state lane should show the unlock condition before seller sourcing');
 assert.match(appSource, /market-state-\$\{h\(state\.stateCode\.toLowerCase\(\)\)\}/, 'state lanes must generate addressable anchors from state codes');
-assert.match(appSource, /state-market-list/, 'each state lane should carry its own priority market list');
+assert.match(appSource, /state-market-list/, 'each state lane should render its priority markets');
+assert.match(appSource, /zillow-market-link/, 'priority markets should expose Zillow context links separate from permit evidence');
+assert.match(appSource, /Zillow market view/, 'Zillow market links should be labeled as market views, not evidence');
+assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/knoxville-tn\//, 'Knoxville market should include a Zillow context link');
+assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/austin-tx\//, 'Texas market should include a Zillow context link');
+assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/polk-county-fl\//, 'Florida market should include a Zillow context link');
 assert.match(appSource, /renderBuyerValidationCommandCenter\(activeState\)/, 'selected market state must drive the call queue, not just the hero');
 assert.match(appSource, /if \(!activeState\.isLive\)/, 'non-live resource wells must render an empty call queue state');
 assert.match(appSource, /No Tennessee builders are shown here/, 'resource-well empty state must explicitly prevent cross-state builder leakage');

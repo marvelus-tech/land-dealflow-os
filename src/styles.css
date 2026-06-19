@@ -5447,3 +5447,20 @@ body .validation-focus-card .selected-outreach-state button.contact-state-toggle
 }
 .builder-ops-header .market-toggle:not(.active) em { color: #7b8491 !important; }
 .builder-ops-header .market-toggle:not(.active) span { color: #525a66 !important; }
+
+/* v1.34 - Zillow market context links */
+.zillow-market-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(18, 84, 46, .18);
+  background: rgba(31, 118, 74, .07);
+  color: #12542e;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: -.01em;
+  text-decoration: none;
+}
+.zillow-market-link:hover { background: rgba(31, 118, 74, .13); transform: translateY(-1px); }

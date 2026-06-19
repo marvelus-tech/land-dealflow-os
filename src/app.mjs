@@ -881,7 +881,7 @@ function renderBuilderListEnginePanel() {
   </article>`).join('');
   const statePortalRows = [activeState].map(state => {
     const stateMeta = state.stateMeta || {};
-    const markets = asArray(state.markets).map(item => `<li><b>#${h(item.rank)} · ${h(item.market)}</b><span>${h(item.reason)}</span></li>`).join('');
+    const markets = asArray(state.markets).map(item => `<li><b>#${h(item.rank)} · ${h(item.market)}</b><span>${h(item.reason)}</span>${item.zillowUrl ? `<a class="zillow-market-link" href="${h(item.zillowUrl)}" target="_blank" rel="noopener noreferrer">Zillow market view</a>` : ''}</li>`).join('');
     const portals = asArray(stateMeta.portals).map(portal => `<a href="${h(portal.url)}" target="_blank" rel="noopener noreferrer">
         <b>${h(portal.market)}</b>
         <span>${h(portal.jurisdiction)}</span>

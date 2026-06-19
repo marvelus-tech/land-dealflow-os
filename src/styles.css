@@ -2572,3 +2572,478 @@ footer, footer p, footer a {
   .validation-brief-copy h3 { font-size: clamp(30px, 10vw, 42px) !important; }
   .validation-next-card { min-height: 112px !important; }
 }
+
+/* v1.29 — product-wide restraint layer: every route joins the new paradigm */
+:root {
+  --bg: #f7f7f4;
+  --page: #fbfbf8;
+  --panel: #ffffff;
+  --panel-soft: #fafaf7;
+  --panel-warm: #fafaf7;
+  --panel-green: #f4f4ef;
+  --ink: #111315;
+  --black: #111315;
+  --muted: #626a70;
+  --soft: #8a9298;
+  --line: rgba(17,19,21,.115);
+  --line-soft: rgba(17,19,21,.075);
+  --brand: #253247;
+  --brand-dark: #253247;
+  --money: #e3e6dc;
+  --money-ink: #30342e;
+  --coral: #5f666d;
+  --green: #515b4d;
+  --amber: #6d665b;
+  --red: #6f4a45;
+  --space-ink: #111315;
+  --space-muted: #626a70;
+  --space-line: rgba(17,19,21,.10);
+  --shadow: none;
+  --shadow-soft: none;
+}
+
+/* universal surface discipline */
+main :where(
+  section, article, aside, details,
+  .brand-hero, .cashflow-hero, .editorial-hero,
+  .hero-deal-card, .daily-heading, .call-tile-grid, .side-panel, .side-panel div,
+  .card, .stage, .call-tile, .cash-card,
+  .money-queue-panel, .call-script-panel, .outcome-panel,
+  .intake-card, .buyer-first-lane, .buyer-first-card, .script-card, .provider-tip,
+  .script-grid div, .money-empty, .money-stats div,
+  .source-page-section, .machine-panel, .mini-disclosure,
+  .deal-queue, .deal-detail, .deal-action, .queue-item,
+  .detail-section, .detail-hero, .deal-strip div, .mini-grid div,
+  .title-orbital-hero, .title-command-card, .title-glass-card, .title-check,
+  .timeline-node, .title-metric-strip article, .title-queue, .title-detail,
+  .operator-checklist, .operator-step, .seller-net-script-card,
+  .feedback-summary div, .next-call-guidance div, .buyer-feedback-capture,
+  .weekly-market-card, .weekly-market-scout, .weekly-market-grid article,
+  .phase-detail-card, .buyer-send-memo, .email-subject,
+  .portal-link-list a, .permit-state-card, .normalization-tier, .priority-market-card,
+  .source-popover, .adapter-card, .permit-evidence-card,
+  .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel,
+  .builder-vendor-panel, .builder-adapter-panel, .compact-call-sheet, .buyer-call-card,
+  .war-room-metrics div, .validation-metrics div
+) {
+  background: #fff !important;
+  background-image: none !important;
+  border-color: rgba(17,19,21,.085) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  border-radius: 6px !important;
+}
+
+/* flatten inner blocks so pages stop feeling like boxes nested inside boxes */
+main :where(
+  .call-tile, .side-panel div, .buyer-first-card, .script-grid div,
+  .money-stats div, .deal-strip div, .mini-grid div,
+  .title-metric-strip article, .operator-step, .feedback-summary div,
+  .next-call-guidance div, .weekly-market-grid article,
+  .phase-detail-card, .email-subject, .priority-market-card,
+  .permit-state-card, .normalization-tier, .adapter-card, .permit-evidence-card,
+  .war-room-metrics div, .validation-metrics div, .buyer-call-card,
+  .source-meta, .engine-row, .timeline-node, .title-check
+) {
+  background: #fafaf7 !important;
+  border: 1px solid rgba(17,19,21,.07) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+/* kill decorative gradients, glows, fake depth, and ornamental pseudo-shapes */
+main :where(
+  .brand-hero, .cashflow-hero, .editorial-hero, .hero-intake,
+  .script-card, .builder-hero-panel, .title-orbital-hero,
+  .weekly-market-card, .war-room-hero, .mission-console, .mission-map
+) { background: #fff !important; background-image: none !important; }
+main :where(
+  .cashflow-hero, .brand-hero, .title-orbital-hero, .war-room-hero,
+  .weekly-market-card, .builder-ops-header, .validation-command
+)::before,
+main :where(
+  .cashflow-hero, .brand-hero, .title-orbital-hero, .war-room-hero,
+  .weekly-market-card, .builder-ops-header, .validation-command
+)::after,
+.map-glow, .map-route, .map-pin::before, .timeline-node::before, .stage::before,
+.cashflow-hero.editorial-hero::after { display: none !important; }
+
+/* route hero hierarchy: calm, rectangular, professional */
+.brand-hero, .cashflow-hero, .title-orbital-hero, .weekly-market-card {
+  min-height: auto !important;
+  padding: clamp(26px, 4vw, 48px) !important;
+  border: 1px solid rgba(17,19,21,.10) !important;
+  color: #111315 !important;
+}
+.hero-deal-card, .cash-card, .title-command-card {
+  background: #fafaf7 !important;
+  border: 1px solid rgba(17,19,21,.08) !important;
+  padding: 20px !important;
+}
+.hero-copy p, .vision-copy p, .editorial-hero .hero-copy p,
+.title-hero-copy p, .weekly-market-head p {
+  color: #626a70 !important;
+  text-shadow: none !important;
+}
+
+/* typography: one confident system, no fighting serif/mono label mix */
+main :where(h1, h2, h3, h4, strong, b) {
+  color: #111315 !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+main :where(h1, h2, h3, h4) {
+  font-weight: 760 !important;
+  letter-spacing: -.04em !important;
+}
+main :where(p, li, small, em) { color: #626a70 !important; }
+main :where(.eyebrow, .panel-kicker span, .panel-kicker b, .card-kicker span,
+  .source-disclosure summary span, .source-page-section > summary span,
+  .machine-panel > summary span, .builder-ops-metrics span,
+  .title-metric-strip span, .money-stats span, .mini-grid span, .deal-strip span,
+  .side-panel span, .call-tile span, .weekly-market-card span,
+  .timeline-node span, .validation-next-card span, label) {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  color: #626a70 !important;
+  font-weight: 720 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase;
+}
+
+/* buttons and chips: rectangular controls except nav tabs */
+main :where(button, .button-link, .hero-actions a, .hero-actions button, .outcome-chip,
+  .filter, .war-room-link, .builder-ops-jump a, .validation-call-button) {
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  background: #111315 !important;
+  color: #fff !important;
+  border: 1px solid #111315 !important;
+}
+main :where(button.secondary, .button-link.secondary, .hero-actions .secondary,
+  .filter, .validation-call-button.secondary, .builder-ops-jump a:not(:first-child)) {
+  background: #fff !important;
+  color: #111315 !important;
+  border-color: rgba(17,19,21,.16) !important;
+}
+main :where(button:hover, .button-link:hover, .hero-actions a:hover, .outcome-chip:hover,
+  .filter:hover, .war-room-link:hover, .builder-ops-jump a:hover) {
+  transform: none !important;
+  box-shadow: none !important;
+}
+main :where(.badge, .tags span, .badge-stack span, .source-meta code,
+  .vendor-chip-grid span, .permit-platform-tags em, .buyer-call-meta span,
+  .buyer-call-meta a, .source-page-section > summary span, .machine-panel > summary span) {
+  border-radius: 3px !important;
+  background: #f1f1ed !important;
+  color: #34383d !important;
+  border: 1px solid rgba(17,19,21,.07) !important;
+  box-shadow: none !important;
+}
+main :where(.badge.good, .badge.warn, .badge.bad) {
+  color: #34383d !important;
+  background: #f1f1ed !important;
+  border-color: rgba(17,19,21,.07) !important;
+}
+
+/* queues and selected states across Deals / Today / Closing / Machine */
+main :where(.queue-item, .money-call, .validation-queue-item, .builder-row, .buyer-call-card,
+  .title-queue-item, .source-disclosure summary) {
+  border-radius: 4px !important;
+  background: #fff !important;
+  border: 1px solid rgba(17,19,21,.085) !important;
+  box-shadow: none !important;
+  color: #111315 !important;
+}
+main :where(.queue-item:hover, .money-call:hover, .validation-queue-item:hover,
+  .builder-row:hover, .source-disclosure summary:hover) {
+  background: #fafaf7 !important;
+  border-color: rgba(17,19,21,.18) !important;
+  transform: none !important;
+}
+main :where(.queue-item.active, .money-call.active, .validation-queue-item.active,
+  .builder-row.active, .title-queue-item.active, .source-disclosure[open] summary) {
+  background: #f7f7f2 !important;
+  border-color: rgba(17,19,21,.25) !important;
+  box-shadow: inset 3px 0 0 #111315 !important;
+}
+.queue-item > span, .money-call span, .validation-queue-item > span:first-child,
+.buyer-call-rank span, .operator-step span {
+  background: transparent !important;
+  color: #111315 !important;
+  border: 1px solid rgba(17,19,21,.16) !important;
+  border-radius: 3px !important;
+}
+
+/* source popovers/details: stop glass cards */
+.source-popover {
+  position: static !important;
+  width: auto !important;
+  margin-top: 10px !important;
+  background: #fafaf7 !important;
+  border: 1px solid rgba(17,19,21,.08) !important;
+  box-shadow: none !important;
+}
+.source-disclosure[open] summary { margin-bottom: 0 !important; }
+
+/* forms and code should be serious, not toy-like */
+main :where(input, textarea, select, pre, code) {
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+main :where(pre) {
+  background: #111315 !important;
+  color: #f6f6f2 !important;
+  border: 1px solid #111315 !important;
+}
+main :where(input, textarea, select) {
+  background: #fff !important;
+  border: 1px solid rgba(17,19,21,.18) !important;
+  color: #111315 !important;
+}
+
+/* progress / meters */
+main :where(.meter, .validation-progress, .progress-bar, .radial-meter, .probability-meter) {
+  background: #e6e6df !important;
+  border-radius: 3px !important;
+  box-shadow: none !important;
+}
+main :where(.meter span, .validation-progress span, .progress-bar span) {
+  background: #111315 !important;
+  border-radius: 3px !important;
+}
+.radial-meter, .probability-meter { border-radius: 6px !important; aspect-ratio: auto !important; min-height: 112px; }
+.radial-meter::before, .probability-meter::before { display: none !important; }
+
+/* page-specific old accents */
+.side-panel div.priority, .buyer-first-card.featured, .provider-tip,
+.hero-deal-card .deal-strip div, .money-stats div, .market-grade,
+.validation-next-card, .builder-ops-metrics article:first-child {
+  background: #f4f4ef !important;
+  color: #111315 !important;
+  border-color: rgba(17,19,21,.10) !important;
+}
+.side-panel div.priority *, .buyer-first-card.featured *, .provider-tip *,
+.market-grade *, .validation-next-card *, .builder-ops-metrics article:first-child * {
+  color: inherit !important;
+}
+
+@media (max-width: 760px) {
+  main :where(section, article, aside, details, .brand-hero, .cashflow-hero, .title-orbital-hero,
+    .daily-heading, .card, .stage, .deal-queue, .deal-detail, .deal-action,
+    .source-page-section, .machine-panel) { border-radius: 6px !important; }
+  .brand-hero, .cashflow-hero, .title-orbital-hero, .weekly-market-card {
+    padding: 22px !important;
+  }
+  .hero-actions { display: grid !important; grid-template-columns: 1fr; }
+}
+
+/* v1.30 — route-specific cleanup after full-page visual QA */
+/* Sources: remove the last dark hero / invisible weekly-market remnants. */
+#sources-hub > .section-heading,
+#sources-hub .compact-heading,
+#sources-hub .weekly-market-card,
+#sources-hub .weekly-market-grid > div {
+  background: #fff !important;
+  background-image: none !important;
+  color: #111315 !important;
+  border: 1px solid rgba(17,19,21,.085) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+#sources-hub > .section-heading,
+#sources-hub .compact-heading {
+  padding: clamp(26px, 4vw, 46px) !important;
+  margin-bottom: 18px !important;
+}
+#sources-hub > .section-heading *,
+#sources-hub .compact-heading *,
+#sources-hub .weekly-market-card *,
+#sources-hub .weekly-market-grid > div *,
+#sources-hub .criterion-row *,
+#sources-hub .engine-row * {
+  color: inherit !important;
+  text-shadow: none !important;
+}
+#sources-hub > .section-heading p,
+#sources-hub .compact-heading p,
+#sources-hub .weekly-market-head p,
+#sources-hub .criterion-row span,
+#sources-hub .weekly-market-grid p,
+#sources-hub .engine-row span {
+  color: #626a70 !important;
+}
+#sources-hub .weekly-market-grid > div,
+#sources-hub .criterion-row,
+#sources-hub .weekly-market-grid .engine-row {
+  background: #fafaf7 !important;
+  border-color: rgba(17,19,21,.075) !important;
+}
+#sources-hub .weekly-market-head {
+  grid-template-columns: minmax(0, 1fr) 112px !important;
+}
+#sources-hub .market-grade {
+  width: 112px !important;
+  aspect-ratio: auto !important;
+  min-height: 112px !important;
+  background: #f4f4ef !important;
+  color: #111315 !important;
+}
+#sources-hub .weekly-market-grid {
+  grid-template-columns: minmax(0, .95fr) minmax(280px, 1.05fr) minmax(260px, .8fr) !important;
+  align-items: start !important;
+}
+
+/* Machine: stop metric cards from becoming narrow vertical word stacks. */
+#workspace .intake-grid {
+  grid-template-columns: minmax(280px, .82fr) minmax(360px, 1fr) minmax(300px, .86fr) !important;
+  align-items: start !important;
+}
+#workspace .intake-card .mini-grid,
+#workspace .mini-grid.four {
+  grid-template-columns: repeat(auto-fit, minmax(154px, 1fr)) !important;
+  gap: 10px !important;
+}
+#workspace .mini-grid div {
+  min-width: 0 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+#workspace .mini-grid b,
+#workspace .deal-strip b,
+#workspace .deal-strip strong {
+  font-size: clamp(22px, 2vw, 28px) !important;
+  line-height: 1.02 !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+#workspace .mini-grid span {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+#workspace pre {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+}
+
+/* Keep all empty/simple route shells restrained and less card-like. */
+#parcels-section,
+#closing-section,
+#sources-hub,
+#workspace {
+  background: transparent !important;
+}
+#parcels-section > .section-heading,
+#closing-section > .section-heading,
+#workspace > .section-heading,
+#sources-hub > .section-heading {
+  border: 1px solid rgba(17,19,21,.085) !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 1000px) {
+  #sources-hub .weekly-market-head,
+  #sources-hub .weekly-market-grid,
+  #workspace .intake-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 760px) {
+  #sources-hub .market-grade { width: 100% !important; min-height: 88px !important; }
+  #workspace .intake-card .mini-grid,
+  #workspace .mini-grid.four { grid-template-columns: 1fr !important; }
+}
+
+/* v1.31 — Machine metric readability: no narrow metric word-stacks */
+#workspace .intake-card:first-child .mini-grid,
+#workspace .intake-card:first-child .mini-grid.four {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+}
+#workspace .intake-card:first-child .mini-grid div {
+  display: grid !important;
+  grid-template-columns: minmax(120px, auto) 1fr !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+}
+#workspace .intake-card:first-child .mini-grid span {
+  margin: 0 !important;
+  white-space: normal !important;
+}
+#workspace .intake-card:first-child .mini-grid b {
+  margin: 0 !important;
+  font-size: 24px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+@media (max-width: 760px) {
+  #workspace .intake-card:first-child .mini-grid div {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}
+
+/* v1.32 — Machine hero intake metric strip uses deal-strip, not mini-grid */
+#workspace .hero-intake .deal-strip,
+#workspace .hero-intake .deal-strip.three {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  margin-top: 18px !important;
+}
+#workspace .hero-intake .deal-strip div {
+  display: grid !important;
+  grid-template-columns: minmax(128px, auto) minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  padding: 12px 14px !important;
+}
+#workspace .hero-intake .deal-strip span {
+  margin: 0 !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  white-space: normal !important;
+}
+#workspace .hero-intake .deal-strip b,
+#workspace .hero-intake .deal-strip strong {
+  margin: 0 !important;
+  font-size: 24px !important;
+  line-height: 1.04 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+@media (max-width: 760px) {
+  #workspace .hero-intake .deal-strip div {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+}
+
+/* v1.34 — compact market value must read as a label, not art */
+#workspace .hero-intake .deal-strip div {
+  grid-template-columns: minmax(112px, auto) minmax(0, 1fr) !important;
+}
+#workspace .hero-intake .deal-strip b,
+#workspace .hero-intake .deal-strip strong {
+  font-size: 22px !important;
+  letter-spacing: -.035em !important;
+}
+
+/* v1.35 — restore mobile single-column metric layout after compact desktop override */
+@media (max-width: 760px) {
+  #workspace .hero-intake .deal-strip div {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+  }
+  #workspace .hero-intake .deal-strip b,
+  #workspace .hero-intake .deal-strip strong {
+    font-size: 24px !important;
+  }
+}

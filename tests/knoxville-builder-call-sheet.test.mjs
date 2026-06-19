@@ -7,10 +7,13 @@ execFileSync('node', ['scripts/enrich-knoxville-builder-call-sheet.mjs'], { stdi
 const callSheet = JSON.parse(fs.readFileSync('data/real/knoxville/buyer_call_sheet.json', 'utf8'));
 const csv = fs.readFileSync('data/real/knoxville/buyer_call_sheet.csv', 'utf8');
 
-assert.equal(callSheet.rows.length, 10);
-assert.equal(callSheet.summary.total, 10);
+assert.ok(callSheet.rows.length >= 20, 'builder call sheet must never regress below a 20-builder pull');
+assert.ok(callSheet.summary.total >= 20, 'summary must report at least 20 builders');
+assert.equal(callSheet.summary.minimumUniqueBuilders, 20);
+assert.equal(callSheet.summary.uniqueBuilders, callSheet.rows.length);
+assert.equal(new Set(callSheet.rows.map(row => row.builderId)).size, callSheet.rows.length, 'call sheet must contain unique builders only');
 assert.equal(callSheet.summary.callablePublicBusinessContacts, 9);
-assert.ok(callSheet.summary.totalRecentBuildSignals >= 300);
+assert.ok(callSheet.summary.totalRecentBuildSignals >= 450);
 
 for (const row of callSheet.rows) {
   assert.ok(row.builderId.startsWith('knoxville-builder-'));

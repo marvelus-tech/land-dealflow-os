@@ -5,6 +5,7 @@ const ROOT = process.cwd();
 const INPUT = path.join(ROOT, 'data/real/knoxville/builder_signals.json');
 const OUT_JSON = path.join(ROOT, 'data/real/knoxville/buyer_call_sheet.json');
 const OUT_CSV = path.join(ROOT, 'data/real/knoxville/buyer_call_sheet.csv');
+const MINIMUM_UNIQUE_BUILDERS = 20;
 
 const capturedAt = new Date().toISOString();
 
@@ -178,7 +179,21 @@ function toCsv(rows) {
   return [columns.join(','), ...rows.map(row => columns.map(col => esc(row[col])).join(','))].join('\n');
 }
 
-const builders = JSON.parse(fs.readFileSync(INPUT, 'utf8')).slice(0, 10);
+function uniqueBuilders(builders = []) {
+  const seen = new Set();
+  return builders.filter(builder => {
+    const key = h(builder.id || builder.name).toLowerCase();
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+const sourceBuilders = uniqueBuilders(JSON.parse(fs.readFileSync(INPUT, 'utf8')));
+if (sourceBuilders.length < MINIMUM_UNIQUE_BUILDERS) {
+  throw new Error(`Knoxville builder call sheet requires at least ${MINIMUM_UNIQUE_BUILDERS} unique builders; found ${sourceBuilders.length}. Expand permit-source collection before rendering the buyer-validation queue.`);
+}
+const builders = sourceBuilders.slice(0, Math.max(MINIMUM_UNIQUE_BUILDERS, sourceBuilders.length));
 const rows = builders.map((builder, index) => {
   const key = slugFromId(builder.id);
   const contact = CONTACT_LEDGER[key] || {
@@ -226,15 +241,18 @@ const rows = builders.map((builder, index) => {
 const callSheet = {
   version: 1,
   generatedAt: capturedAt,
-  purpose: 'Enrich top 10 Knoxville permit-verified builder signals with lawful public business contact info and buyer buy-box capture scripts.',
+  purpose: `Enrich at least ${MINIMUM_UNIQUE_BUILDERS} unique Knoxville permit-verified builder signals with lawful public business contact info and buyer buy-box capture scripts.`,
   rules: [
     'No personal/people-search scraping.',
     'No guessed phones or emails.',
+    `Every pull must include at least ${MINIMUM_UNIQUE_BUILDERS} unique builders before the Builders page is considered usable.`,
     'Public permit activity is a demand signal, not a validated buyer buy box.',
     'Promote only after geography, lot size, max price, close speed, package recipient, and kill criteria are captured.',
   ],
   summary: {
     total: rows.length,
+    minimumUniqueBuilders: MINIMUM_UNIQUE_BUILDERS,
+    uniqueBuilders: new Set(rows.map(row => row.builderId)).size,
     callablePublicBusinessContacts: rows.filter(r => r.callable).length,
     humanReview: rows.filter(r => r.route === 'humanReview').length,
     totalRecentBuildSignals: rows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0),

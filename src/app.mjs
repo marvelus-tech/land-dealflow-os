@@ -733,7 +733,7 @@ Okeito`;
       <div class="validation-brief-copy">
         <span class="eyebrow">Buyer Validation Command Center</span>
         <h3>Call queue first. Seller search second.</h3>
-        <p>One enriched builder surface for Knoxville: call order, public-source proof, scripts, outreach state, and buy-box capture now live together. Seller sourcing only unlocks after the buyer tells us what they will buy.</p>
+        <p>One enriched builder surface for Knoxville: call order, public-source proof, scripts, outreach state, and buy-box capture now live together. The intake floor is 20 unique builders per pull, so seller sourcing is fed by a real buyer sample, not a thin demo list.</p>
       </div>
       <aside class="validation-next-card">
         <span>Next money action</span>
@@ -809,6 +809,7 @@ function renderBuilderListEnginePanel() {
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const displayedBuilderCount = builders.length || callSheetRows.length;
   const displayedTopSignal = builders[0]?.score || callSheetRows[0]?.recentBuilds || 0;
+  const displayedBatchFloor = knoxvilleBuyerCallSheet?.summary?.minimumUniqueBuilders || 20;
   const selected = getSelectedBuilder(builders) || {};
   const email = generateBuilderEmail(selected);
   const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
@@ -866,7 +867,7 @@ function renderBuilderListEnginePanel() {
       </div>
       <div class="builder-ops-metrics">
         <article><span>Market</span><strong>Knoxville, TN</strong><em>seller geography follows permits</em></article>
-        <article><span>Builders</span><strong>${h(displayedBuilderCount)}</strong><em>permit-verified signals</em></article>
+        <article><span>Builders</span><strong>${h(displayedBuilderCount)}</strong><em>${h(displayedBatchFloor)} minimum per pull</em></article>
         <article><span>Top signal</span><strong>${h(displayedTopSignal)}</strong><em>recent permits/builds</em></article>
         <article><span>Gate</span><strong>Buy box</strong><em>no criteria, no seller calls</em></article>
       </div>

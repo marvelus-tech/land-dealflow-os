@@ -13,7 +13,7 @@ const appSource = fs.readFileSync('src/app.mjs', 'utf8');
 const stylesSource = fs.readFileSync('src/styles.css', 'utf8');
 
 const center = buildBuyerValidationCommandCenter(rows, []);
-assert.equal(center.summary.total, 10);
+assert.ok(center.summary.total >= 20, 'buyer validation command center should render at least a 20-builder batch');
 assert.equal(center.summary.validated, 0, 'permit signals alone must not validate a buyer');
 assert.equal(center.summary.callReady, 8, 'human-review rows stay out of the call-ready count');
 assert.ok(center.summary.averageCompleteness < 20, 'empty buy boxes should be visibly incomplete');
@@ -99,6 +99,10 @@ assert.doesNotMatch(stylesSource, /vendor-chip-grid|builder-vendor-panel/, 'dele
 assert.doesNotMatch(appSource, /renderKnoxvilleBuyerCallSheet|Source-backed call sheet|buyer-call-sheet-list/, 'duplicate source-backed call sheet section must be removed after consolidation');
 assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');
+assert.match(appSource, /20 unique builders per pull/, 'Builders UX should explain the 20-builder minimum pull');
+assert.match(appSource, /minimum per pull/, 'Builders metric should expose the batch floor');
+assert.doesNotMatch(appSource, /top-10 demo list|top 10 Knoxville/, 'Builders pipeline must not frame itself as a top-10 pull');
+
 assert.match(appSource, /mailto:\$\{h\(selected\.email\)\}\?subject=\$\{encodeURIComponent\(validationEmailSubject\)\}&body=\$\{encodeURIComponent\(validationEmailBody\)\}/, 'Draft email mailto must prefill subject and body');
 
 console.log('buyer validation command center tests passed');

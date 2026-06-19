@@ -4856,3 +4856,215 @@ aside.validation-queue {
 @media (max-width: 760px) {
   #sources-hub { overflow-x: clip !important; }
 }
+
+/* v1.48 — Closing Desk intelligence layer */
+.closing-page-stack {
+  display: grid;
+  gap: clamp(22px, 4vw, 42px);
+}
+.closing-intelligence-deck {
+  display: grid;
+  gap: clamp(18px, 3vw, 30px);
+}
+.closing-intel-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 62px);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(43, 123, 255, .16), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.98), rgba(246,248,252,.92));
+  border: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, .10);
+}
+.closing-intel-hero h2 {
+  max-width: 880px;
+  margin: 10px 0 12px;
+  font-size: clamp(40px, 6vw, 86px);
+  line-height: .86;
+  letter-spacing: -.075em;
+}
+.closing-intel-hero p {
+  max-width: 760px;
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: clamp(15px, 1.35vw, 19px);
+  line-height: 1.55;
+}
+.closing-intel-grid,
+.contract-template-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.contract-template-grid {
+  grid-template-columns: minmax(0, .82fr) minmax(0, .82fr) minmax(320px, 1.25fr);
+}
+.transcript-insight-card ul,
+.closing-rule-card ul,
+.contract-template-card ul {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.transcript-insight-card li,
+.closing-rule-card li,
+.contract-template-card li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--text);
+  line-height: 1.42;
+}
+.transcript-insight-card li::before,
+.closing-rule-card li::before,
+.contract-template-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(43, 123, 255, .10);
+}
+.contract-template-card h3,
+.title-email-template-card h3,
+.title-company-candidate-board h3 {
+  margin: 12px 0 8px;
+  font-size: clamp(24px, 2.5vw, 38px);
+  line-height: .95;
+  letter-spacing: -.05em;
+}
+.contract-template-card p,
+.title-company-candidate-board p {
+  color: var(--muted);
+  line-height: 1.48;
+}
+.title-email-template-card pre {
+  max-height: 420px;
+  overflow: auto;
+  white-space: pre-wrap;
+  border-radius: 22px;
+  padding: 18px;
+  margin: 16px 0;
+  background: #07111f;
+  color: #e7efff;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid rgba(255,255,255,.10);
+}
+.title-company-candidate-board {
+  padding: clamp(22px, 3vw, 34px) !important;
+}
+.title-market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+.title-market-card {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+  padding: 16px;
+  border-radius: 24px;
+  background: rgba(248, 250, 252, .86);
+  border: 1px solid rgba(15, 23, 42, .08);
+}
+.title-market-card span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-size: 10px;
+  font-weight: 900;
+}
+.title-market-card strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+.candidate-stack {
+  display: grid;
+  gap: 8px;
+}
+.candidate-stack a {
+  display: grid;
+  gap: 4px;
+  padding: 11px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.82);
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid rgba(15, 23, 42, .06);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.candidate-stack a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(43, 123, 255, .28);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, .10);
+}
+.candidate-stack b {
+  font-size: 13px;
+  letter-spacing: -.015em;
+}
+.candidate-stack small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+@media (max-width: 1180px) {
+  .contract-template-grid,
+  .title-market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .closing-intel-hero { border-radius: 26px; padding: 26px 20px; }
+  .closing-intel-hero h2 { font-size: clamp(38px, 12vw, 56px); }
+  .closing-intel-grid,
+  .contract-template-grid,
+  .title-market-grid { grid-template-columns: 1fr; }
+  .title-email-template-card pre { max-height: 340px; font-size: 11px; }
+  .title-market-card { padding: 14px; }
+}
+
+/* v1.48b — Closing Desk accessible accent blue */
+.closing-intelligence-deck,
+.title-closing-desk {
+  --closing-accent: #155bd8;
+}
+.closing-intelligence-deck .eyebrow,
+.closing-intelligence-deck .title-market-card span,
+.closing-intelligence-deck .card-kicker span {
+  color: var(--closing-accent) !important;
+}
+.closing-intelligence-deck .transcript-insight-card li::before,
+.closing-intelligence-deck .closing-rule-card li::before,
+.closing-intelligence-deck .contract-template-card li::before {
+  background: var(--closing-accent) !important;
+  box-shadow: 0 0 0 4px rgba(21, 91, 216, .12) !important;
+}
+.closing-intelligence-deck .candidate-stack a:hover {
+  border-color: rgba(21, 91, 216, .36) !important;
+}
+
+/* v1.48c — Closing Desk mobile headline no-clip */
+@media (max-width: 760px) {
+  .closing-intel-hero {
+    overflow: visible !important;
+  }
+  .closing-intel-hero h2 {
+    font-size: clamp(34px, 11vw, 48px) !important;
+    line-height: .92 !important;
+    letter-spacing: -.06em !important;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+  .closing-intel-hero p {
+    font-size: 15px !important;
+  }
+}

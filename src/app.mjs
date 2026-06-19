@@ -119,10 +119,15 @@ const sourceBlueprint = {
   },
 };
 
+const titleCompanyProcessFallback = {"source":{"videoUrl":"https://youtu.be/9VzFaSU4saw?si=SnerM_fgd9JMNYSZ","videoTitle":"Title Companies Explained (Land Wholesaling Basics)","creator":"Wiener Bros / Carson","capturedWith":"youtube-transcript-api free transcript fetch","capturedAt":"2026-06-19","localTranscriptPath":"research/title-company-video/transcript_youtube_transcript_api.txt","captionRows":420,"characters":16083},"transcriptDerivedInsights":["Title company is the neutral escrow/closing party: contracts and party information go to title, buyer funds go to title, not directly to seller or assignor.","Title coordinates legal title transfer, runs title/lien/tax/deed checks, collects final signed and notarized documents, and prepares the settlement/HUD.","Assignment example: seller contract at $30,000, buyer/assignment contract at $40,000, title disburses seller proceeds and the $10,000 assignment fee after closing conditions clear.","Seller trust script should explain title as neutral protection: title holds funds, verifies paperwork/title, and pays the seller at closing.","Closing packet email needs seller, buyer, assignor, contract prices, assignment fee, closing date, and attached contracts; wire instructions must be handled securely, not casually exposed.","Typical timeline is about 7\u201321 days, with 10\u201314 days as a practical planning range; a known efficient title company can be faster, but speed should not be promised.","Closing costs may be buyer-paid, split, or assignor-paid; transcript examples mention about $700 on a $20k land deal and roughly 2% on expensive properties."],"operatorRules":["Do not mark a deal title-ready until seller contract, buyer/assignment agreement, party contacts, title company, closing-cost payer, and settlement-number review are present.","Do not mark closed merely because documents are signed; closed means buyer funded, title cleared, HUD/settlement approved, and disbursement confirmed.","Never display raw wire instructions in the app; track secure-portal/verbal-verification status instead.","Assignment-friendly status must be verified by call/email for each title company; public title/escrow service pages are not proof they handle assignments."],"templates":{"titlePacketEmail":{"subject":"<PROPERTY ADDRESS> \u2014 Assignment closing packet","body":"Hello <TITLE OFFICER>,\n\nWe are opening an assignment file for <PROPERTY ADDRESS>. Attached are the seller purchase agreement, buyer assignment agreement, and supporting parcel information. Please confirm receipt and whether your office can close this as an assignment with the assignment fee shown on the settlement statement.\n\nTarget closing date: <CLOSING DATE>\n\nSeller\nName: <SELLER NAME>\nPhone: <SELLER PHONE>\nEmail: <SELLER EMAIL>\nCash to seller: $<SELLER CONTRACT PRICE>\n\nAssignor\nName/company: <ASSIGNOR NAME / COMPANY>\nPhone: <ASSIGNOR PHONE>\nEmail: <ASSIGNOR EMAIL>\nAssignment fee: $<ASSIGNMENT FEE>\n\nBuyer / Assignee\nName/company: <BUYER NAME / COMPANY>\nPhone: <BUYER PHONE>\nEmail: <BUYER EMAIL>\nCash from buyer: $<BUYER CONTRACT PRICE>\n\nPlease also confirm: title search timing, closing-cost payer, earnest-money handling, remote online notarization options, and secure wire-instruction process.\n\nImportant: we will only exchange wire instructions through your approved secure channel and will verbally verify instructions using a known office number.\n\nThank you,\n<YOUR NAME>"},"sellerPurchaseAgreementChecklist":["Vacant-land purchase agreement for the property state","Buyer may assign clause selected / included","Due-diligence or feasibility period included","Title/escrow closing language included","Seller price, parcel/APN, closing date, and seller contact complete","Attorney/title review before active use"],"buyerAssignmentAgreementChecklist":["Identifies original seller contract and parcel","Assigns buyer rights to assignee/builder","States assignment fee or buyer contract price path","Assignee assumes obligations after assignment","Earnest money/funding timing captured","Title company can show assignment fee on settlement statement or flags double-close requirement"]}};
+const titleCompanyMarketsFallback = {"generatedAt":"2026-06-19","sourceMethod":"Firecrawl public web search plus representative direct-site scrapes; assignment-friendly status remains unverified until operator call/email.","markets":[{"state":"TN","market":"Knoxville / Knox County","priority":1,"candidates":[{"name":"Realty Title","url":"https://realtytitle.com/","publicEvidence":"Public site says Realty Title is a full-service real estate title and escrow company conducting residential and commercial closings; representative scrape captured Prepare for Closing and 40+ locations copy.","serviceSignals":["title","escrow","closings","residential","commercial"],"assignmentFriendly":"unknown"},{"name":"LeConte Title","url":"https://lecontetitle.com/","publicEvidence":"Public site describes an attorney-owned Knoxville title company providing residential and commercial real estate closings, title insurance, escrow services, and title searches in Knoxville/East Tennessee.","serviceSignals":["attorney-owned","title insurance","escrow","title searches","closings"],"assignmentFriendly":"unknown"},{"name":"Southeast Title and Escrow","url":"https://www.setitle.net/","publicEvidence":"Search result describes a locally owned, full-service Knoxville title and escrow company.","serviceSignals":["title","escrow","full-service"],"assignmentFriendly":"unknown"}]},{"state":"TN","market":"Murfreesboro / Rutherford County","priority":2,"candidates":[{"name":"Magnolia Title & Escrow","url":"https://magnoliatitle.com/","publicEvidence":"Public site says Magnolia provides attorney-staffed title and escrow services across Middle Tennessee with locations including Murfreesboro and Franklin.","serviceSignals":["attorney-staffed","title","escrow","Middle Tennessee"],"assignmentFriendly":"unknown"},{"name":"Realty Title \u2014 Murfreesboro","url":"https://www.realtytitle.com/realty-title/locations/office-details.php?oid=212200212","publicEvidence":"Search result shows a Murfreesboro office for Realty Title with office phone and address.","serviceSignals":["local office","title","escrow","closing"],"assignmentFriendly":"unknown"},{"name":"Tri Star Title and Escrow","url":"https://www.tristartitleandescrow.com/services/settlement-services","publicEvidence":"Search result says Tri Star provides title insurance, escrow, and closing services for residential and commercial settlements in Murfreesboro and Rutherford County.","serviceSignals":["title insurance","escrow","settlement","commercial"],"assignmentFriendly":"unknown"}]},{"state":"TN","market":"Franklin / Williamson County","priority":3,"candidates":[{"name":"Wagon Wheel Title","url":"https://wagonwheeltitle.com/","publicEvidence":"Search result says Wagon Wheel Title offers real estate title and escrow services to buyers, sellers, developers, investors, and lenders in Davidson/Williamson County areas.","serviceSignals":["title","escrow","developers","investors"],"assignmentFriendly":"unknown"},{"name":"Magnolia Title & Escrow \u2014 Franklin","url":"https://magnoliatitle.com/","publicEvidence":"Public site lists Franklin among Middle Tennessee locations for attorney-staffed title and escrow services.","serviceSignals":["Franklin location","attorney-staffed","title","escrow"],"assignmentFriendly":"unknown"},{"name":"Vanderpool Law \u2014 Franklin title company services","url":"https://vanderpoollaw.com/title-company-franklin-tn","publicEvidence":"Search result describes Franklin TN title company services with attorney review and title-company closing support.","serviceSignals":["attorney review","title company services","closing"],"assignmentFriendly":"unknown"}]},{"state":"TN","market":"Clarksville / Montgomery County","priority":4,"candidates":[{"name":"Bankers Title \u2014 Clarksville","url":"https://www.banktitle.com/clarksville-tn-title-escrow","publicEvidence":"Search result says Bankers Title Clarksville provides complete closing and escrow service and title escrow support for buyers, sellers, and agents.","serviceSignals":["closing","escrow","title escrow"],"assignmentFriendly":"unknown"},{"name":"Stewart Title \u2014 Clarksville","url":"https://www.stewart.com/en/markets/clarksville","publicEvidence":"Search result says Stewart Title offers title insurance and escrow services in Clarksville.","serviceSignals":["title insurance","escrow","national underwriter"],"assignmentFriendly":"unknown"},{"name":"Clarksville Title & Escrow","url":"https://clarksvilletitle.com/about-us/","publicEvidence":"Search result describes Clarksville Title & Escrow as having over 50 years combined law/real-estate knowledge and specializing in residential title/escrow.","serviceSignals":["title","escrow","local"],"assignmentFriendly":"unknown"}]},{"state":"NC","market":"Charlotte / Mecklenburg + Cabarrus corridor","priority":5,"candidates":[{"name":"Allied Title & Escrow \u2014 Charlotte","url":"https://www.alliedtitleandescrow.com/charlotte-nc","publicEvidence":"Public Charlotte page lists Allied Title & Escrow office address/phone and describes decades of underwriting/title experience.","serviceSignals":["title","escrow","Charlotte office"],"assignmentFriendly":"unknown"},{"name":"Stewart Title \u2014 Charlotte commercial services","url":"https://www.stewart.com/en/customer-type/commercial-title-closing-services/find-an-office/north-carolina/charlotte","publicEvidence":"Search result shows Stewart Title Charlotte national commercial services for title/closing transactions.","serviceSignals":["commercial","title","closing","national"],"assignmentFriendly":"unknown"}]},{"state":"TX","market":"Austin / San Antonio corridor","priority":6,"candidates":[{"name":"Independence Title","url":"https://www.independencetitle.com/","publicEvidence":"Public site says Independence Title has 70+ locations across Texas metros and provides locations/services for title and escrow closings.","serviceSignals":["Texas metros","title","escrow","many offices"],"assignmentFriendly":"unknown"},{"name":"Alamo Title \u2014 San Antonio","url":"https://alamotitlesa.com/home","publicEvidence":"Public site advertises title underwriting/exam capabilities, escrow and closing services, and 1031 property exchanges.","serviceSignals":["title underwriting","escrow","closing","1031"],"assignmentFriendly":"unknown"},{"name":"N Title","url":"https://ntitle.com/","publicEvidence":"Search result describes a title company serving Houston, San Antonio, Dallas, and Austin with Texas real estate transaction expertise.","serviceSignals":["Austin","San Antonio","title","Texas"],"assignmentFriendly":"unknown"}]},{"state":"FL","market":"Ocala / Marion + inland Florida","priority":7,"candidates":[{"name":"Marion Title & Escrow Company","url":"https://www.mariontitlefl.com/","publicEvidence":"Public site says Marion Title & Escrow offers flexible real estate and escrow closing services throughout Florida, including mobile notary, online notarization, and secure wire-instruction portal via Closinglock.","serviceSignals":["escrow","closing","mobile notary","online notarization","secure wire portal"],"assignmentFriendly":"unknown"},{"name":"Stewart Title \u2014 Ocala","url":"https://www.stewart.com/en/markets/ocala","publicEvidence":"Search result says Stewart Title Ocala offers title insurance, closing, and escrow services for residential and commercial transactions.","serviceSignals":["title insurance","closing","escrow","commercial"],"assignmentFriendly":"unknown"},{"name":"Ocala Land Title","url":"https://ocalalandtitle.com/","publicEvidence":"Search result describes a locally owned title insurance and real estate closing agency founded in 1995.","serviceSignals":["title insurance","real estate closing","local"],"assignmentFriendly":"unknown"}]},{"state":"AZ","market":"Phoenix / Mesa / Maricopa County","priority":8,"candidates":[{"name":"Equity Title of Arizona","url":"https://eta-az.com/","publicEvidence":"Search result says Equity Title of Arizona has locations throughout Maricopa County and escrow officers focused on service.","serviceSignals":["Maricopa County","title","escrow"],"assignmentFriendly":"unknown"},{"name":"Clear Title Agency of Arizona","url":"https://cleartitleaz.com/","publicEvidence":"Search result says Clear Title Agency provides title and escrow services for residential and commercial real estate transactions.","serviceSignals":["title","escrow","residential","commercial"],"assignmentFriendly":"unknown"},{"name":"Title & Escrow Company \u2014 metro Phoenix","url":"https://www.arizonatitleandescrowcompany.com/","publicEvidence":"Search result describes a greater metro Phoenix independent title and escrow company.","serviceSignals":["Phoenix metro","title","escrow"],"assignmentFriendly":"unknown"}]}]};
+
 let workspace = loadWorkspace();
 let generatedLeads = null;
 let weeklyMarketScout = null;
 let knoxvilleBuyerCallSheet = null;
+let titleCompanyProcess = titleCompanyProcessFallback;
+let titleCompanyMarkets = titleCompanyMarketsFallback;
 let filter = 'all';
 let selectedParcelId = '';
 let selectedBuilderId = '';
@@ -418,6 +423,71 @@ function statusTone(status) {
   if (['blocked', 'assignment-friendly-title-needed'].includes(status)) return 'bad';
   if (['missing-title-company', 'docs-out-for-signature', 'title-search'].includes(status)) return 'warn';
   return 'neutral';
+}
+
+function titleCompanyCandidateMarkets() {
+  return asArray(titleCompanyMarkets?.markets).slice(0, 8);
+}
+
+function renderClosingDeskResearchDeck() {
+  const process = titleCompanyProcess || {};
+  const insights = asArray(process.transcriptDerivedInsights).slice(0, 5);
+  const rules = asArray(process.operatorRules).slice(0, 4);
+  const template = process.templates?.titlePacketEmail || {};
+  const sellerChecklist = asArray(process.templates?.sellerPurchaseAgreementChecklist).slice(0, 6);
+  const assignmentChecklist = asArray(process.templates?.buyerAssignmentAgreementChecklist).slice(0, 6);
+  const markets = titleCompanyCandidateMarkets();
+  const marketRows = markets.map(market => {
+    const candidates = asArray(market.candidates).slice(0, 3);
+    return `<article class="title-market-card">
+      <div><span>${h(market.state)} · Priority ${h(market.priority)}</span><strong>${h(market.market)}</strong></div>
+      <div class="candidate-stack">${candidates.map(candidate => `<a href="${h(candidate.url)}" target="_blank" rel="noopener noreferrer"><b>${h(candidate.name)}</b><small>${h(candidate.assignmentFriendly || 'unknown')} assignment status · ${h(asArray(candidate.serviceSignals).slice(0, 3).join(' / '))}</small></a>`).join('')}</div>
+    </article>`;
+  }).join('');
+  return `<section class="closing-intelligence-deck" aria-label="Closing desk operating system">
+    <div class="closing-intel-hero">
+      <span class="eyebrow">Closing desk operating system</span>
+      <h2>Contracts, title, escrow, HUD — paid cleanly.</h2>
+      <p>Transcript-derived process from the title-company video, reinforced with public title-company candidates in our priority markets. The app does not pretend assignment-friendly status is verified; it forces the call.</p>
+      <div class="badge-stack">${badge('transcript captured', 'good')}${badge('public title candidates', 'neutral')}${badge('assignment status must be verified', 'warn')}</div>
+    </div>
+    <div class="closing-intel-grid">
+      <article class="title-glass-card transcript-insight-card">
+        <div class="card-kicker"><span>Video insight</span><b>${h(process.source?.capturedWith || 'transcript')}</b></div>
+        <ul>${insights.map(item => `<li>${h(item)}</li>`).join('')}</ul>
+      </article>
+      <article class="title-glass-card closing-rule-card">
+        <div class="card-kicker"><span>Non-negotiables</span><b>operator rules</b></div>
+        <ul>${rules.map(item => `<li>${h(item)}</li>`).join('')}</ul>
+      </article>
+    </div>
+    <div class="contract-template-grid">
+      <article class="title-glass-card contract-template-card">
+        <div class="card-kicker"><span>Seller contract template</span><b>checklist</b></div>
+        <h3>Vacant-land purchase agreement</h3>
+        <p>Use a state-specific attorney/title-reviewed form. The app should track readiness, not generate fake legal documents.</p>
+        <ul>${sellerChecklist.map(item => `<li>${h(item)}</li>`).join('')}</ul>
+      </article>
+      <article class="title-glass-card contract-template-card">
+        <div class="card-kicker"><span>Buyer contract template</span><b>assignment</b></div>
+        <h3>Assignment / assignee agreement</h3>
+        <p>Use when the builder takes over the buyer position. If title rejects assignment mechanics, escalate to double-close/legal review.</p>
+        <ul>${assignmentChecklist.map(item => `<li>${h(item)}</li>`).join('')}</ul>
+      </article>
+      <article class="title-glass-card title-email-template-card">
+        <div class="card-kicker"><span>Title packet email</span><b>copy framework</b></div>
+        <h3>${h(template.subject || 'Assignment closing packet')}</h3>
+        <pre>${h(template.body || 'Loading title packet email template…')}</pre>
+        <button type="button" class="secondary copy-research-title-email" data-copy-research-title-email>Copy template framework</button><span class="research-title-email-status"></span>
+      </article>
+    </div>
+    <article class="title-glass-card title-company-candidate-board">
+      <div class="card-kicker"><span>Real title-company candidates</span><b>${h(markets.length)} markets</b></div>
+      <h3>Start here, then verify assignments by call.</h3>
+      <p>These are public web candidates in the priority geography. Public title/escrow service pages prove relevance, not assignment-friendliness.</p>
+      <div class="title-market-grid">${marketRows || '<p>Title-company market candidates loading…</p>'}</div>
+    </article>
+  </section>`;
 }
 
 function renderTitleClosingDesk(parcel, buyer, options = {}) {
@@ -873,7 +943,7 @@ function renderClosingDeskPanel() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
   if (!selected) {
-    target.innerHTML = `<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title.</p></article>`;
+    target.innerHTML = `<div class="closing-page-stack">${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays ready with templates, title-company candidates, and verification rules.</p></article></div>`;
     return;
   }
   const buyer = getBuyer(selected);
@@ -887,12 +957,15 @@ function renderClosingDeskPanel() {
       ${badge(desk.label, statusTone(desk.status))}
     </button>`;
   }).join('');
-  target.innerHTML = `<div class="closing-layout">
-    <aside class="deal-queue title-queue" aria-label="Closing file queue">
-      <div class="queue-header"><span class="eyebrow">Closing files</span><strong>${h(scoredParcels().length)} deals</strong></div>
-      <div class="queue-list">${alternatives}</div>
-    </aside>
-    <div>${renderTitleClosingDesk(selected, buyer)}</div>
+  target.innerHTML = `<div class="closing-page-stack">
+    ${renderClosingDeskResearchDeck()}
+    <div class="closing-layout">
+      <aside class="deal-queue title-queue" aria-label="Closing file queue">
+        <div class="queue-header"><span class="eyebrow">Closing files</span><strong>${h(scoredParcels().length)} deals</strong></div>
+        <div class="queue-list">${alternatives}</div>
+      </aside>
+      <div>${renderTitleClosingDesk(selected, buyer)}</div>
+    </div>
   </div>`;
 }
 
@@ -1293,6 +1366,22 @@ async function loadWeeklyMarketScout() {
     weeklyMarketScout = await response.json();
   } catch (error) {
     weeklyMarketScout = { error: error.message };
+  }
+}
+
+async function loadTitleCompanyResearch() {
+  try {
+    const [processResponse, marketsResponse] = await Promise.all([
+      fetch('data/title-company/title_company_process.json', { cache: 'no-store' }),
+      fetch('data/title-company/title_company_market_candidates.json', { cache: 'no-store' }),
+    ]);
+    if (!processResponse.ok) throw new Error(`title process ${processResponse.status}`);
+    if (!marketsResponse.ok) throw new Error(`title markets ${marketsResponse.status}`);
+    titleCompanyProcess = await processResponse.json();
+    titleCompanyMarkets = await marketsResponse.json();
+  } catch (error) {
+    titleCompanyProcess = { error: error.message, transcriptDerivedInsights: [], templates: {} };
+    titleCompanyMarkets = { error: error.message, markets: [] };
   }
 }
 
@@ -1719,6 +1808,17 @@ function bindEvents() {
       });
     }
 
+    if (event.target.matches('[data-copy-research-title-email]')) {
+      const template = titleCompanyProcess?.templates?.titlePacketEmail || {};
+      const payload = `Subject: ${template.subject || '<PROPERTY ADDRESS> — Assignment closing packet'}\n\n${template.body || ''}`;
+      const status = event.target.closest('.title-email-template-card')?.querySelector('.research-title-email-status');
+      const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Template copied.'; }).catch(() => {
+        downloadText(`land-dealflow-title-packet-template-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+    }
+
 
     if (event.target.matches('[data-copy-validation-email]')) {
       const center = buildBuyerValidationCommandCenter(asArray(knoxvilleBuyerCallSheet?.rows), workspace.buyerValidations || []);
@@ -1943,3 +2043,4 @@ renderAll();
 loadGeneratedLeads().then(renderAll);
 loadKnoxvilleBuyerCallSheet().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);
+loadTitleCompanyResearch().then(renderAll);

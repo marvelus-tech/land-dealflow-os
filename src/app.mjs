@@ -549,7 +549,7 @@ What zip codes/subdivisions, lot sizes, max lot price, utility/access requiremen
 Regards,
 Okeito`;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
-  return `<section class="validation-command" aria-label="Buyer Validation Command Center">
+  return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
     <div class="validation-hero">
       <div>
         <span class="eyebrow">Buyer Validation Command Center</span>
@@ -727,14 +727,29 @@ function renderBuilderListEnginePanel() {
   </article>`).join('');
 
   target.innerHTML = `<div class="builder-engine-shell">
-    <section class="builder-hero-panel">
-      <span class="eyebrow">Builder List Engine</span>
-      <h3>Permit-verified builders before seller calls.</h3>
-      <p>Surface builders with three or more recent approved/issued residential permits, then capture a real buy box before the OS promotes them to validated buyers.</p>
-      <div class="title-metric-strip">
-        <div><span>Verified builders</span><strong>${h(displayedBuilderCount)}</strong></div>
-        <div><span>Evidence threshold</span><strong>3+</strong></div>
-        <div><span>Top signal</span><strong>${h(displayedTopSignal)}</strong></div>
+    <section class="builder-hero-panel command-surface" aria-label="Builder war room mission brief">
+      <div class="builder-hero-copy">
+        <span class="eyebrow">Builder War Room · Tennessee-first</span>
+        <h3>Permit velocity. Buyer calls.</h3>
+        <p>Do not confuse headquarters with demand. The operating market is Knoxville, Tennessee: permits prove active build intent, calls capture the buy box, and only validated criteria unlock seller search.</p>
+        <div class="hero-actions builder-hero-actions">
+          <a href="#buyer-validation-command">Validate buy boxes</a>
+          <a class="secondary" href="#permit-landscape">Open permit markets</a>
+        </div>
+      </div>
+      <aside class="builder-mission-card">
+        <div class="mission-topbar mini"><span></span><span></span><span></span><b>BUYER OPS</b></div>
+        <div class="builder-mission-body">
+          <span>Next operating move</span>
+          <strong>${h(selected.companyName || callSheetRows[0]?.name || 'Select permit-active builder')}</strong>
+          <p>Call with source proof. Capture geography, lot size, max price, close speed, utilities/access rules, and deal killers before seller outreach.</p>
+        </div>
+      </aside>
+      <div class="title-metric-strip command-metrics">
+        <div><span>Permit market</span><strong>Knoxville, TN</strong><em>seller geography follows permits</em></div>
+        <div><span>Verified builders</span><strong>${h(displayedBuilderCount)}</strong><em>3+ residential signals</em></div>
+        <div><span>Top signal</span><strong>${h(displayedTopSignal)}</strong><em>recent permits/builds</em></div>
+        <div><span>Promotion gate</span><strong>Buy box</strong><em>no criteria, no seller calls</em></div>
       </div>
     </section>
 
@@ -793,7 +808,7 @@ function renderBuilderListEnginePanel() {
         <pre>Hey {{Name}}, this is {{YourName}}. I work with landowners and builders around {{City}}. I’m looking for reliable local people who can help with clearing, grading, site-prep, and quick condition checks on vacant lots. Are you taking on that kind of work, and do you cover {{Area}}?</pre>
       </article>
 
-      <article class="builder-adapter-panel wide-permit-panel">
+      <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
         <div class="panel-kicker"><span>Permit portal landscape</span><b>five-state normalization map</b></div>
         <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>
         <h4>Lead-generation priority stack</h4>

@@ -5595,3 +5595,303 @@ body .validation-focus-card .selected-outreach-state button.contact-state-toggle
   .builder-ops-header .market-toggle-grid { grid-template-columns: repeat(5, minmax(72px, 1fr)) !important; }
   .builder-ops-header .market-toggle strong { display: none !important; }
 }
+
+/* v1.36 - Apple-grade mobile canvas: remove stacked gutters across every route */
+@media (max-width: 760px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .nav {
+    margin: 0 !important;
+    padding: 12px max(10px, env(safe-area-inset-left)) 10px max(10px, env(safe-area-inset-right)) !important;
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, .08) !important;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px !important;
+  }
+
+  .brand-mark,
+  .nav-cta {
+    display: none !important;
+  }
+
+  .app-tabs {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .tab-button {
+    min-width: 0 !important;
+    min-height: 42px !important;
+    padding: 0 3px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    color: #7a8492 !important;
+    font-size: clamp(11px, 3.1vw, 13px) !important;
+    line-height: 1 !important;
+    white-space: nowrap;
+  }
+
+  .tab-button.active {
+    color: #0f172a !important;
+    background: transparent !important;
+    box-shadow: inset 0 -2px 0 #155eef !important;
+  }
+
+  main {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 max(6px, env(safe-area-inset-left)) 34px max(6px, env(safe-area-inset-right)) !important;
+  }
+
+  .section {
+    padding-top: 14px !important;
+  }
+
+  .section.app-panel:not([data-panel="today"]),
+  .section.app-panel[data-panel="today"] {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 8px 0 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .section-heading,
+  #sources-hub .section-heading,
+  .builder-ops-header,
+  .validation-command,
+  .compact-call-sheet,
+  .builder-table-panel,
+  .builder-detail-panel,
+  .builder-form-panel,
+  .builder-script-panel,
+  .builder-adapter-panel,
+  .validation-queue,
+  .validation-focus-card,
+  .seller-unlock-card,
+  .deal-queue,
+  .deal-detail,
+  .deal-action,
+  .source-page-section,
+  .machine-panel,
+  .card,
+  .closing-intel-hero,
+  .title-company-candidate-board,
+  .operator-checklist,
+  .buyer-feedback-capture,
+  .weekly-market-card,
+  .buyer-send-memo,
+  .vision-hero,
+  .daily-heading,
+  .call-tile-grid,
+  .side-panel,
+  .money-queue-panel,
+  .call-script-panel,
+  .outcome-panel {
+    width: 100% !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: clamp(14px, 4vw, 18px) !important;
+    padding-right: clamp(14px, 4vw, 18px) !important;
+  }
+
+  .builder-engine-shell,
+  .cashflow-board,
+  .buyer-first-board,
+  .grid,
+  .lead-engine-grid,
+  .builder-grid-main,
+  .builder-two-col,
+  .validation-grid-main,
+  .pipeline,
+  .permit-state-grid,
+  .normalization-grid,
+  .priority-market-grid,
+  .title-market-grid,
+  .contract-template-grid,
+  .closing-intel-grid,
+  .weekly-market-grid,
+  .phase-one-strip,
+  .operator-steps,
+  .feedback-summary,
+  .feedback-form-grid,
+  .risk-checklist,
+  .portal-link-list,
+  .permit-evidence-grid,
+  .adapter-grid,
+  .empty-source-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  .mini-grid,
+  .mini-grid.four,
+  .deal-strip,
+  .deal-strip.five,
+  .money-stats,
+  .quality-grid,
+  .validation-metrics,
+  .validation-metrics.compact,
+  .war-room-metrics,
+  .war-room-metrics.compact,
+  .title-metric-strip,
+  .command-metrics,
+  .builder-ops-metrics,
+  .vision-proof-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .builder-ops-header {
+    gap: 14px !important;
+    padding-top: 18px !important;
+    padding-bottom: 16px !important;
+    border-radius: 0 !important;
+  }
+
+  .builder-ops-title h3,
+  .section-heading h2,
+  .validation-brief-copy h3,
+  .closing-intel-hero h2 {
+    max-width: none !important;
+    text-wrap: balance;
+  }
+
+  .builder-ops-title h3 {
+    font-size: clamp(42px, 12.6vw, 56px) !important;
+    line-height: .93 !important;
+    letter-spacing: -.07em !important;
+  }
+
+  .builder-ops-title p,
+  .section-heading p,
+  .validation-brief-copy p {
+    max-width: none !important;
+    font-size: 16px !important;
+    line-height: 1.42 !important;
+  }
+
+  .builder-ops-header .market-toggle-grid {
+    width: 100% !important;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+    gap: 1px !important;
+    padding: 3px !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+  }
+
+  .builder-ops-header .market-toggle,
+  .builder-ops-header .market-toggle:not(.active) {
+    min-width: 0 !important;
+    min-height: 52px !important;
+    padding: 8px 2px 7px !important;
+    justify-items: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    border-radius: 9px !important;
+  }
+
+  .builder-ops-header .market-toggle strong {
+    display: none !important;
+  }
+
+  .builder-ops-header .market-toggle span {
+    font-size: 10px !important;
+    letter-spacing: .12em !important;
+  }
+
+  .builder-ops-header .market-toggle em {
+    max-width: 100% !important;
+    margin-top: 4px !important;
+    font-size: 10px !important;
+    line-height: 1.05 !important;
+    white-space: nowrap !important;
+  }
+
+  .builder-ops-header .active-market-summary {
+    padding: 14px !important;
+    border-radius: 0 !important;
+  }
+
+  .builder-ops-header .active-market-summary strong {
+    font-size: clamp(31px, 9.6vw, 42px) !important;
+    line-height: .94 !important;
+  }
+
+  .builder-ops-header .active-market-summary ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .builder-ops-header .active-market-summary li,
+  .mini-grid div,
+  .deal-strip div,
+  .money-stats div,
+  .validation-metrics div,
+  .war-room-metrics div,
+  .title-metric-strip article,
+  .builder-ops-metrics article {
+    min-width: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .builder-ops-jump,
+  .builder-mission-card,
+  .builder-hero-panel {
+    display: none !important;
+  }
+}
+
+@media (max-width: 390px) {
+  main {
+    padding-left: max(4px, env(safe-area-inset-left)) !important;
+    padding-right: max(4px, env(safe-area-inset-right)) !important;
+  }
+
+  .builder-ops-header,
+  .validation-command,
+  .compact-call-sheet,
+  .builder-table-panel,
+  .builder-detail-panel,
+  .builder-form-panel,
+  .builder-script-panel,
+  .builder-adapter-panel,
+  .validation-queue,
+  .validation-focus-card,
+  .seller-unlock-card,
+  .deal-queue,
+  .deal-detail,
+  .deal-action,
+  .source-page-section,
+  .machine-panel,
+  .card,
+  .closing-intel-hero,
+  .section-heading {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .tab-button { font-size: 11px !important; }
+  .builder-ops-title h3 { font-size: clamp(38px, 12vw, 48px) !important; }
+}

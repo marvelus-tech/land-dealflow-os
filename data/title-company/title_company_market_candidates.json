@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-06-19",
-  "sourceMethod": "Public web search plus representative direct-site checks; assignment-friendly status remains unverified until operator call/email.",
-  "verificationScript": "Do you close vacant-land assignments in <market>? Can the assignment fee appear on the settlement statement, or do you require double close? Can you handle remote seller/buyer notarization and secure wire instructions? What do you need to open a file?",
+  "sourceMethod": "Public web search plus representative direct site checks; assignment friendly status remains unverified until operator call/email.",
+  "verificationScript": "Do you close vacant land assignments in <market>? Can the assignment fee appear on the settlement statement, or do you require double close? Can you handle remote seller/buyer notarization and secure wire instructions? What do you need to open a file?",
   "markets": [
     {
       "state": "TN",
@@ -11,7 +11,7 @@
         {
           "name": "Realty Title",
           "url": "https://realtytitle.com/",
-          "publicEvidence": "Public site says Realty Title is a full-service real estate title and escrow company conducting residential and commercial closings; representative scrape captured Prepare for Closing and 40+ locations copy.",
+          "publicEvidence": "Public site says Realty Title is a full service real estate title and escrow company conducting residential and commercial closings; representative scrape captured Prepare for Closing and 40+ locations copy.",
           "serviceSignals": [
             "title",
             "escrow",
@@ -24,9 +24,9 @@
         {
           "name": "LeConte Title",
           "url": "https://lecontetitle.com/",
-          "publicEvidence": "Public site describes an attorney-owned Knoxville title company providing residential and commercial real estate closings, title insurance, escrow services, and title searches in Knoxville/East Tennessee.",
+          "publicEvidence": "Public site describes an attorney owned Knoxville title company providing residential and commercial real estate closings, title insurance, escrow services, and title searches in Knoxville/East Tennessee.",
           "serviceSignals": [
-            "attorney-owned",
+            "attorney owned",
             "title insurance",
             "escrow",
             "title searches",
@@ -37,11 +37,11 @@
         {
           "name": "Southeast Title and Escrow",
           "url": "https://www.setitle.net/",
-          "publicEvidence": "Search result describes a locally owned, full-service Knoxville title and escrow company.",
+          "publicEvidence": "Search result describes a locally owned, full service Knoxville title and escrow company.",
           "serviceSignals": [
             "title",
             "escrow",
-            "full-service"
+            "full service"
           ],
           "assignmentFriendly": "unknown"
         }
@@ -55,9 +55,9 @@
         {
           "name": "Magnolia Title & Escrow",
           "url": "https://magnoliatitle.com/",
-          "publicEvidence": "Public site says Magnolia provides attorney-staffed title and escrow services across Middle Tennessee with locations including Murfreesboro and Franklin.",
+          "publicEvidence": "Public site says Magnolia provides attorney staffed title and escrow services across Middle Tennessee with locations including Murfreesboro and Franklin.",
           "serviceSignals": [
-            "attorney-staffed",
+            "attorney staffed",
             "title",
             "escrow",
             "Middle Tennessee"
@@ -65,8 +65,8 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Realty Title - Murfreesboro",
-          "url": "https://www.realtytitle.com/realty-title/locations/office-details.php?oid=212200212",
+          "name": "Realty Title, Murfreesboro",
+          "url": "https://www.realtytitle.com/realty title/locations/office details.php?oid=212200212",
           "publicEvidence": "Search result shows a Murfreesboro office for Realty Title with office phone and address.",
           "serviceSignals": [
             "local office",
@@ -78,7 +78,7 @@
         },
         {
           "name": "Tri Star Title and Escrow",
-          "url": "https://www.tristartitleandescrow.com/services/settlement-services",
+          "url": "https://www.tristartitleandescrow.com/services/settlement services",
           "publicEvidence": "Search result says Tri Star provides title insurance, escrow, and closing services for residential and commercial settlements in Murfreesboro and Rutherford County.",
           "serviceSignals": [
             "title insurance",
@@ -108,21 +108,21 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Magnolia Title & Escrow - Franklin",
+          "name": "Magnolia Title & Escrow, Franklin",
           "url": "https://magnoliatitle.com/",
-          "publicEvidence": "Public site lists Franklin among Middle Tennessee locations for attorney-staffed title and escrow services.",
+          "publicEvidence": "Public site lists Franklin among Middle Tennessee locations for attorney staffed title and escrow services.",
           "serviceSignals": [
             "Franklin location",
-            "attorney-staffed",
+            "attorney staffed",
             "title",
             "escrow"
           ],
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Vanderpool Law - Franklin title company services",
-          "url": "https://vanderpoollaw.com/title-company-franklin-tn",
-          "publicEvidence": "Search result describes Franklin TN title company services with attorney review and title-company closing support.",
+          "name": "Vanderpool Law, Franklin title company services",
+          "url": "https://vanderpoollaw.com/title company-franklin tn",
+          "publicEvidence": "Search result describes Franklin TN title company services with attorney review and title company closing support.",
           "serviceSignals": [
             "attorney review",
             "title company services",
@@ -138,8 +138,8 @@
       "priority": 4,
       "candidates": [
         {
-          "name": "Bankers Title - Clarksville",
-          "url": "https://www.banktitle.com/clarksville-tn-title-escrow",
+          "name": "Bankers Title, Clarksville",
+          "url": "https://www.banktitle.com/clarksville tn-title escrow",
           "publicEvidence": "Search result says Bankers Title Clarksville provides complete closing and escrow service and title escrow support for buyers, sellers, and agents.",
           "serviceSignals": [
             "closing",
@@ -149,7 +149,7 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Stewart Title - Clarksville",
+          "name": "Stewart Title, Clarksville",
           "url": "https://www.stewart.com/en/markets/clarksville",
           "publicEvidence": "Search result says Stewart Title offers title insurance and escrow services in Clarksville.",
           "serviceSignals": [
@@ -161,8 +161,8 @@
         },
         {
           "name": "Clarksville Title & Escrow",
-          "url": "https://clarksvilletitle.com/about-us/",
-          "publicEvidence": "Search result describes Clarksville Title & Escrow as having over 50 years combined law/real-estate knowledge and specializing in residential title/escrow.",
+          "url": "https://clarksvilletitle.com/about us/",
+          "publicEvidence": "Search result describes Clarksville Title & Escrow as having over 50 years combined law/real estate knowledge and specializing in residential title/escrow.",
           "serviceSignals": [
             "title",
             "escrow",
@@ -178,8 +178,8 @@
       "priority": 5,
       "candidates": [
         {
-          "name": "Allied Title & Escrow - Charlotte",
-          "url": "https://www.alliedtitleandescrow.com/charlotte-nc",
+          "name": "Allied Title & Escrow, Charlotte",
+          "url": "https://www.alliedtitleandescrow.com/charlotte nc",
           "publicEvidence": "Public Charlotte page lists Allied Title & Escrow office address/phone and describes decades of underwriting/title experience.",
           "serviceSignals": [
             "title",
@@ -189,8 +189,8 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Stewart Title - Charlotte commercial services",
-          "url": "https://www.stewart.com/en/customer-type/commercial-title-closing-services/find-an-office/north-carolina/charlotte",
+          "name": "Stewart Title, Charlotte commercial services",
+          "url": "https://www.stewart.com/en/customer type/commercial title-closing services/find an-office/north carolina/charlotte",
           "publicEvidence": "Search result shows Stewart Title Charlotte national commercial services for title/closing transactions.",
           "serviceSignals": [
             "commercial",
@@ -220,7 +220,7 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Alamo Title - San Antonio",
+          "name": "Alamo Title, San Antonio",
           "url": "https://alamotitlesa.com/home",
           "publicEvidence": "Public site advertises title underwriting/exam capabilities, escrow and closing services, and 1031 property exchanges.",
           "serviceSignals": [
@@ -253,7 +253,7 @@
         {
           "name": "Marion Title & Escrow Company",
           "url": "https://www.mariontitlefl.com/",
-          "publicEvidence": "Public site says Marion Title & Escrow offers flexible real estate and escrow closing services throughout Florida, including mobile notary, online notarization, and secure wire-instruction portal via Closinglock.",
+          "publicEvidence": "Public site says Marion Title & Escrow offers flexible real estate and escrow closing services throughout Florida, including mobile notary, online notarization, and secure wire instruction portal via Closinglock.",
           "serviceSignals": [
             "escrow",
             "closing",
@@ -264,7 +264,7 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Stewart Title - Ocala",
+          "name": "Stewart Title, Ocala",
           "url": "https://www.stewart.com/en/markets/ocala",
           "publicEvidence": "Search result says Stewart Title Ocala offers title insurance, closing, and escrow services for residential and commercial transactions.",
           "serviceSignals": [
@@ -295,7 +295,7 @@
       "candidates": [
         {
           "name": "Equity Title of Arizona",
-          "url": "https://eta-az.com/",
+          "url": "https://eta az.com/",
           "publicEvidence": "Search result says Equity Title of Arizona has locations throughout Maricopa County and escrow officers focused on service.",
           "serviceSignals": [
             "Maricopa County",
@@ -317,7 +317,7 @@
           "assignmentFriendly": "unknown"
         },
         {
-          "name": "Title & Escrow Company - metro Phoenix",
+          "name": "Title & Escrow Company, metro Phoenix",
           "url": "https://www.arizonatitleandescrowcompany.com/",
           "publicEvidence": "Search result describes a greater metro Phoenix independent title and escrow company.",
           "serviceSignals": [

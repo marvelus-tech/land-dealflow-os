@@ -964,12 +964,12 @@ function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipT
 
   return `<section class="vision-hero" aria-label="Land Dealflow operating vision">
     <div class="vision-copy">
-      <span class="eyebrow">Land Dealflow OS · permit-market command center</span>
-      <h1>Stop browsing. Start operating the market.</h1>
-      <p>Form follows function: Tennessee permit evidence picks the builders, builder buy boxes pick the sellers, and the UI only promotes calls that can become assignment-fee cash.</p>
+      <span class="eyebrow">Land Dealflow OS · clear path to more deals</span>
+      <h1>Turn land deals into a simple daily flow.</h1>
+      <p>A light operating system for an old industry: permit evidence finds active builders, builder buy boxes focus the seller search, and every screen points to the next deal-making action.</p>
       <div class="vision-actions">
-        <a class="button-link" href="#builders" data-view="builders">Open buyer war room</a>
-        <a class="button-link secondary" href="#daily-calls">Seller calls with proof</a>
+        <a class="button-link" href="#builders" data-view="builders">Find active buyers</a>
+        <a class="button-link secondary" href="#daily-calls">See today’s money flow</a>
       </div>
       <div class="vision-proof-strip">
         <div><span>Permit market</span><strong>Knoxville, TN</strong><em>HQ/contact may be regional</em></div>
@@ -979,7 +979,7 @@ function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipT
       </div>
     </div>
     <aside class="mission-console" aria-label="Market mission console">
-      <div class="mission-topbar"><span></span><span></span><span></span><b>MARKET OPS</b></div>
+      <div class="mission-topbar"><span></span><span></span><span></span><b>DEAL FLOW</b></div>
       <div class="mission-map">
         <div class="map-glow"></div>
         <div class="map-route r1"></div><div class="map-route r2"></div><div class="map-route r3"></div>

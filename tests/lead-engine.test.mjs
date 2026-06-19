@@ -13,6 +13,7 @@ import {
 } from '../scripts/lead-engine.mjs';
 import { normalizeCategoricalParcel, normalizePermitBuilder } from '../scripts/adapters/knoxville-kgis-public-leads.mjs';
 import { buildDeltaBriefing, buildLeadEngineDelta, leadEngineFingerprint } from '../scripts/lead-engine-delta.mjs';
+import { PERMIT_STATE_PRIORITY } from '../scripts/priority-permit-markets.mjs';
 
 const sampleSources = {
   version: 1,
@@ -242,6 +243,20 @@ function testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues(
   assert.match(snapshot.parcels[0].publicSource, /KGIS/);
 }
 
+function testPriorityPermitModeExpandsAndJudgesLeadingMarketStack() {
+  const repo = new URL('..', import.meta.url).pathname;
+  const snapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'priority-stack-test', now: '2026-06-18T09:00:00.000Z', priorityPermitMarkets: true, repoRoot: repo });
+  assert.deepEqual(snapshot.permitMarketJudgement.statePriority, PERMIT_STATE_PRIORITY);
+  const markets = snapshot.permitMarketJudgement.markets;
+  assert.ok(markets.length >= 15);
+  assert.equal(markets[0].state, 'TN');
+  assert.ok(markets.find(item => item.market === 'polk-fl'));
+  assert.ok(markets.find(item => item.market === 'maricopa-az'));
+  assert.ok(markets.find(item => item.market === 'raleigh-nc'));
+  assert.ok(markets.find(item => item.market === 'austin-tx'));
+  assert.ok(markets.every(item => item.state !== 'KY'));
+}
+
 testLoadSourcesValidatesWorkflowInputs();
 testSnapshotGeneratesMarketsBuyersParcelsAndMetadata();
 testSnapshotBlocksSeedDemoRowsFromActiveLeads();
@@ -256,5 +271,6 @@ testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged();
 testLeadEngineDeltaIgnoresTimestampOnlyChurn();
 testLeadEngineDeltaReportsOnlyNewRows();
 testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues();
+testPriorityPermitModeExpandsAndJudgesLeadingMarketStack();
 
 console.log('lead engine tests passed');

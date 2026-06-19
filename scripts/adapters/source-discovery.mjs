@@ -45,7 +45,7 @@ function dedupeByUrlOrTitle(rows) {
 }
 
 function stateName(code) {
-  return { TN: 'tennessee', FL: 'florida', AR: 'arkansas', TX: 'texas' }[String(code || '').toUpperCase()] || '';
+  return { TN: 'tennessee', FL: 'florida', AZ: 'arizona', NC: 'north carolina', TX: 'texas' }[String(code || '').toUpperCase()] || '';
 }
 
 function candidateMatchesMarket(candidate, market) {

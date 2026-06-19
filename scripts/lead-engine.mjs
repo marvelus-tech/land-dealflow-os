@@ -3,6 +3,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDealFitMatrix, buildTopCallList, exportParcelsCsv, reportMissingData, scoreParcelDeal } from '../src/core.mjs';
 import { discoverSourcesForMarkets } from './adapters/source-discovery.mjs';
+import { buildPermitMarketJudgement, enhanceSourcesWithPriorityPermitMarkets, prioritySourceCandidates } from './priority-permit-markets.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, '..');
@@ -47,8 +48,9 @@ function collectVerifiedRecords(sources, sourceType, now) {
     })));
 }
 
-export function generateLeadEngineSnapshot(inputSources, { runId = `lead-engine-${Date.now()}`, now = new Date().toISOString() } = {}) {
-  const sources = loadLeadSources(inputSources);
+export function generateLeadEngineSnapshot(inputSources, { runId = `lead-engine-${Date.now()}`, now = new Date().toISOString(), priorityPermitMarkets = false, repoRoot: root = repoRoot } = {}) {
+  const loadedSources = loadLeadSources(inputSources);
+  const sources = priorityPermitMarkets ? enhanceSourcesWithPriorityPermitMarkets(loadedSources, { repoRoot: root }) : loadedSources;
   const markets = sources.targetMarkets.map((market, index) => ({
     leadId: `market:${market.id || slug(market.name)}`,
     score: Math.min(100, 50 + Number(market.priority || 0) * 5 + (market.thesis ? 8 : 0) + (market.buyerType ? 7 : 0)),
@@ -69,7 +71,9 @@ export function generateLeadEngineSnapshot(inputSources, { runId = `lead-engine-
     sourceScore: Math.min(100, 40 + (parcel.ownerPhone || parcel.ownerEmail ? 15 : 0) + (parcel.roadAccess === true ? 10 : 0) + (parcel.wetlands === false ? 10 : 0) + (parcel.askingPrice ? 10 : 0) + (parcel.lowestActiveListing ? 10 : 0)),
     ...parcel,
   }));
-  return { runId, generatedAt: now, markets, buyers, parcels, sourceSummary: { markets: markets.length, buyers: buyers.length, parcels: parcels.length } };
+  const snapshot = { runId, generatedAt: now, markets, buyers, parcels, sourceSummary: { markets: markets.length, buyers: buyers.length, parcels: parcels.length } };
+  if (priorityPermitMarkets) snapshot.permitMarketJudgement = buildPermitMarketJudgement(snapshot, { repoRoot: root });
+  return snapshot;
 }
 
 function toQueueRows(rows, headers) {
@@ -158,6 +162,7 @@ export function buildSitePublishPlan({ hasChanges, branch = 'main' } = {}) {
 }
 
 export function buildOperatorBriefing(snapshot, queues) {
+  const permitMarkets = asArray(snapshot.permitMarketJudgement?.markets);
   const lines = [
     `# Lead Engine Briefing — ${todayStamp(snapshot.generatedAt)}`,
     '',
@@ -174,6 +179,8 @@ export function buildOperatorBriefing(snapshot, queues) {
     `- New-area seller discovery tasks: ${queues.sellerDiscovery.length}`,
     `- Source candidates found: ${asArray(snapshot.sourceCandidates).length}`,
     `- Missing-data blockers: ${queues.missingData.length}`,
+    ...(permitMarkets.length ? [`- Priority permit markets judged: ${permitMarkets.length}`, `- Permit priority stack: ${(snapshot.permitMarketJudgement.statePriority || []).join(' → ')}`] : []),
+    ...(permitMarkets.length ? ['', '## Priority permit market judgement', ...permitMarkets.slice(0, 12).map((item, index) => `${index + 1}. ${item.areaName} — ${item.adapterStatus}; ${item.activeBuilderSignals} builder signals; ${item.buyerFirstGate}; next: ${item.nextAction}`)] : []),
     '',
     '## Top seller calls',
     ...queues.topSellerCalls.slice(0, 10).map((item, index) => `${index + 1}. ${item.address} — ${item.ownerName || 'owner'} — ${item.ownerPhone || item.ownerEmail || 'needs contact'} — score ${item.score}`),
@@ -251,9 +258,14 @@ export function writeLeadEngineOutputs({ snapshot, queues, outputDir = resolve(r
   return { outputDir, files, briefing };
 }
 
-export async function runLeadEngine({ sourcesPath = resolve(repoRoot, 'data', 'sources.json'), outputDir = resolve(repoRoot, 'data', 'generated'), now = new Date().toISOString(), runId, discoverSources = false } = {}) {
-  const snapshot = generateLeadEngineSnapshot(loadLeadSources(sourcesPath), { now, runId: runId || `lead-engine-${now.replace(/[:.]/g, '-')}` });
-  if (discoverSources) snapshot.sourceCandidates = await discoverSourcesForMarkets(snapshot.markets, { limitPerQuery: 2 });
+export async function runLeadEngine({ sourcesPath = resolve(repoRoot, 'data', 'sources.json'), outputDir = resolve(repoRoot, 'data', 'generated'), now = new Date().toISOString(), runId, discoverSources = false, priorityPermitMarkets = false } = {}) {
+  const snapshot = generateLeadEngineSnapshot(loadLeadSources(sourcesPath), { now, runId: runId || `lead-engine-${now.replace(/[:.]/g, '-')}`, priorityPermitMarkets, repoRoot });
+  if (discoverSources) {
+    const discovered = await discoverSourcesForMarkets(snapshot.markets, { limitPerQuery: priorityPermitMarkets ? 4 : 2 });
+    snapshot.sourceCandidates = priorityPermitMarkets ? [...prioritySourceCandidates(), ...discovered] : discovered;
+  } else if (priorityPermitMarkets) {
+    snapshot.sourceCandidates = prioritySourceCandidates();
+  }
   const queues = buildLeadQueues(snapshot);
   const manifest = writeLeadEngineOutputs({ snapshot, queues, outputDir });
   return { snapshot, queues, manifest };
@@ -262,6 +274,7 @@ export async function runLeadEngine({ sourcesPath = resolve(repoRoot, 'data', 's
 if (import.meta.url === `file://${process.argv[1]}`) {
   const outputDirArg = process.argv.includes('--output') ? process.argv[process.argv.indexOf('--output') + 1] : undefined;
   const discoverSources = process.argv.includes('--discover-sources');
-  const result = await runLeadEngine({ outputDir: outputDirArg ? resolve(outputDirArg) : undefined, discoverSources });
+  const priorityPermitMarkets = process.argv.includes('--priority-permit-markets');
+  const result = await runLeadEngine({ outputDir: outputDirArg ? resolve(outputDirArg) : undefined, discoverSources, priorityPermitMarkets });
   console.log(result.manifest.briefing.markdown);
 }

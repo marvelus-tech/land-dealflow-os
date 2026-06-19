@@ -12,7 +12,8 @@ mkdir -p "$NEXT_DIR"
 # Generate into a temp directory first. The lead engine prints a full backlog
 # briefing by default; keep that out of cron stdout so Telegram only receives
 # true deltas.
-node scripts/lead-engine.mjs --discover-sources --output "$NEXT_DIR" > "$TMP_DIR/full-briefing.md"
+./scripts/pull-priority-permit-markets.sh > "$TMP_DIR/priority-permit-pulls.log" 2>&1 || true
+node scripts/lead-engine.mjs --priority-permit-markets --discover-sources --output "$NEXT_DIR" > "$TMP_DIR/full-briefing.md"
 
 DELTA_BRIEFING="$(node scripts/lead-engine-delta.mjs data/generated/latest.json "$NEXT_DIR/latest.json")"
 

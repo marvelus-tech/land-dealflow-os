@@ -443,7 +443,7 @@
     "phone": "(919) 256-3390",
     "email": "craig@eyccompanies.com",
     "contactName": "Front Street Construction Services, LLC",
-    "recentBuilds": 21,
+    "recentBuilds": 22,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -519,7 +519,7 @@
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-016946-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 21 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-020524-2026 at 5347 Timberfield Way issued 2026-06-03."
+    "acquisitionNotes": "Appears on 22 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-020524-2026 at 5347 Timberfield Way issued 2026-06-03."
   },
   {
     "id": "raleigh-builder-m-i-homes-of-raleigh",
@@ -1042,6 +1042,93 @@
       }
     ],
     "acquisitionNotes": "Appears on 8 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-007646-2026 at 2406 Grant Ave issued 2026-05-28."
+  },
+  {
+    "id": "raleigh-builder-haven-build",
+    "name": "Haven Build",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "(603) 440-5971",
+    "email": "craigwright@havendesignbuild.org",
+    "contactName": "Haven Build",
+    "recentBuilds": 6,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 86,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-046688-2025",
+        "address": "6311 Azurest Way, Raleigh, NC 27606",
+        "issuedAt": "2026-06-17",
+        "permitValue": 168659.2,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Red Grove Place Townhomes, 3 units, 2 stories, VB Construction, R3 Occupancy. SPR-0209-2024; Buildi",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-046688-2025"
+      },
+      {
+        "permitNumber": "BLDR-045324-2025",
+        "address": "6315 Azurest Way, Raleigh, NC 27606",
+        "issuedAt": "2026-06-17",
+        "permitValue": 168659.2,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Red Grove Place Townhomes, 3 units, 2 stories, VB Construction, R3 Occupancy. SPR-0209-2024; Buildi",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-045324-2025"
+      },
+      {
+        "permitNumber": "BLDR-046687-2025",
+        "address": "6313 Azurest Way, Raleigh, NC 27606",
+        "issuedAt": "2026-06-17",
+        "permitValue": 172991.2,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Red Grove Place Townhomes, 3 units, 2 stories, VB Construction, R3 Occupancy. SPR-0209-2024; Buildi",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-046687-2025"
+      },
+      {
+        "permitNumber": "BLDR-046226-2025",
+        "address": "6319 Azurest Way, Raleigh, NC 27606",
+        "issuedAt": "2026-06-03",
+        "permitValue": 168659.2,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Red Grove Place Townhomes, 2 units, 2 stories, VB Construction, R3 Occupancy, each unit 1206sf. Appr",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-046226-2025"
+      },
+      {
+        "permitNumber": "BLDR-045319-2025",
+        "address": "6321 Azurest Way, Raleigh, NC 27606",
+        "issuedAt": "2026-06-03",
+        "permitValue": 172413.6,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Red Grove Place Townhomes, 2 units, 2 stories, VB Construction, R3 Occupancy, each unit 1206sf. Appr",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-045319-2025"
+      }
+    ],
+    "acquisitionNotes": "Appears on 6 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-046688-2025 at 6311 Azurest Way issued 2026-06-17."
   },
   {
     "id": "raleigh-builder-homes-by-thadd",
@@ -1721,67 +1808,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-006519-2026 at 6905 North Ridge Dr issued 2026-04-09."
-  },
-  {
-    "id": "raleigh-builder-haven-build",
-    "name": "Haven Build",
-    "market": "raleigh-nc",
-    "state": "NC",
-    "website": "",
-    "phone": "(603) 440-5971",
-    "email": "craigwright@havendesignbuild.org",
-    "contactName": "Haven Build",
-    "recentBuilds": 3,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 71,
-    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
-    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BLDR-046226-2025",
-        "address": "6319 Azurest Way, Raleigh, NC 27606",
-        "issuedAt": "2026-06-03",
-        "permitValue": 168659.2,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Red Grove Place Townhomes, 2 units, 2 stories, VB Construction, R3 Occupancy, each unit 1206sf. Appr",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-046226-2025"
-      },
-      {
-        "permitNumber": "BLDR-045319-2025",
-        "address": "6321 Azurest Way, Raleigh, NC 27606",
-        "issuedAt": "2026-06-03",
-        "permitValue": 172413.6,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Red Grove Place Townhomes, 2 units, 2 stories, VB Construction, R3 Occupancy, each unit 1206sf. Appr",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-045319-2025"
-      },
-      {
-        "permitNumber": "BLDR-046744-2025",
-        "address": "705 Selavy Ct, Raleigh, NC 27606",
-        "issuedAt": "2026-05-22",
-        "permitValue": 168948,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Red Grove Place Townhomes, 2 units, 2 stories, VB Construction, R3 Occupancy, each unit 1170sf. Appr",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-046744-2025"
-      }
-    ],
-    "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-046226-2025 at 6319 Azurest Way issued 2026-06-03."
   },
   {
     "id": "raleigh-builder-m-i-homes",

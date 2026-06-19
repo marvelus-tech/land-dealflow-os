@@ -10,6 +10,7 @@ import {
 const callSheet = JSON.parse(fs.readFileSync('data/real/knoxville/buyer_call_sheet.json', 'utf8'));
 const rows = callSheet.rows;
 const appSource = fs.readFileSync('src/app.mjs', 'utf8');
+const stylesSource = fs.readFileSync('src/styles.css', 'utf8');
 
 const center = buildBuyerValidationCommandCenter(rows, []);
 assert.equal(center.summary.total, 10);
@@ -94,6 +95,7 @@ assert.match(appSource, /aria-label="Draft email"/, 'draft email action should r
 assert.match(appSource, /<span>Call<\/span>/, 'phone CTA should be a concise icon plus Call button');
 assert.match(appSource, /<span>Website<\/span>/, 'source URL action should be labelled as a website link, not source proof');
 assert.doesNotMatch(appSource, /Landscaper\/vendor sourcing|site-prep network|vendor-chip-grid|builder-vendor-panel/, 'landscaper/vendor sourcing typo section must stay removed');
+assert.doesNotMatch(stylesSource, /vendor-chip-grid|builder-vendor-panel/, 'deleted landscaper/vendor surface must not leave dead CSS selectors behind');
 assert.doesNotMatch(appSource, /renderKnoxvilleBuyerCallSheet|Source-backed call sheet|buyer-call-sheet-list/, 'duplicate source-backed call sheet section must be removed after consolidation');
 assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');

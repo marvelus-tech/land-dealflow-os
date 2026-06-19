@@ -631,7 +631,7 @@ h3, h4 { letter-spacing: -.035em; }
 .weekly-market-grid .engine-row span { color: rgba(255,247,232,.62); }
 
 .builder-engine-shell { display: grid; gap: 18px; }
-.builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel, .builder-vendor-panel, .builder-adapter-panel { padding: 22px; border-radius: 26px; background: rgba(255,255,255,.92); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+.builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel, .builder-adapter-panel { padding: 22px; border-radius: 26px; background: rgba(255,255,255,.92); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
 .builder-hero-panel { background: radial-gradient(circle at 86% 12%, rgba(159,232,112,.34), transparent 18rem), linear-gradient(135deg, #fff 0%, #f5fbef 100%); }
 .builder-hero-panel h3 { margin-top: 10px; font-size: clamp(34px, 4.8vw, 62px); line-height: .96; letter-spacing: -.065em; max-width: 820px; }
 .builder-hero-panel p { margin-top: 14px; color: var(--muted); max-width: 760px; font-size: 18px; line-height: 1.45; }
@@ -662,10 +662,8 @@ h3, h4 { letter-spacing: -.035em; }
 .buybox-form input { width: 100%; min-height: 42px; border-radius: 13px; border: 1px solid var(--line); padding: 0 12px; color: var(--black); background: #fff; }
 .buybox-form button { width: fit-content; }
 .builder-save-status, .builder-script-status, .builder-email-status, .builder-marketing-email-status { align-self: center; color: var(--green); font-size: 12px; font-weight: 750; }
-.builder-script-panel pre, .builder-vendor-panel pre { white-space: pre-wrap; word-break: break-word; padding: 14px; border-radius: 16px; background: var(--panel-soft); border: 1px solid var(--line-soft); color: var(--ink); line-height: 1.45; font-size: 13px; }
+.builder-script-panel pre { white-space: pre-wrap; word-break: break-word; padding: 14px; border-radius: 16px; background: var(--panel-soft); border: 1px solid var(--line-soft); color: var(--ink); line-height: 1.45; font-size: 13px; }
 .builder-script-panel h4 { margin: 16px 0 8px; }
-.vendor-chip-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
-.vendor-chip-grid span { padding: 7px 10px; border-radius: 999px; background: var(--panel-green); color: var(--money-ink); font-size: 12px; font-weight: 800; }
 .adapter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .adapter-card { padding: 14px; border: 1px solid var(--line-soft); border-radius: 16px; background: var(--panel-soft); }
 .adapter-card span { color: var(--black); font-weight: 850; }
@@ -781,7 +779,7 @@ h3, h4 { letter-spacing: -.035em; }
   .pipeline, .mini-grid, .mini-grid.four, .deal-strip, .quality-grid, .risk-checklist, .detail-grid, .queue-list, .script-grid, .money-stats, .title-metric-strip, .permit-evidence-grid, .buybox-form, .adapter-grid, .permit-state-grid, .portal-link-list, .normalization-grid { grid-template-columns: 1fr; }
   .title-orbital-hero { min-height: auto; padding: 28px 22px; border-radius: 28px; }
   .builder-detail-header { flex-direction: column; }
-  .builder-script-panel pre, .builder-vendor-panel pre { overflow: auto; }
+  .builder-script-panel pre { overflow: auto; }
   .builder-row { grid-template-columns: 1fr; }
   .builder-row strong { justify-self: start; }
   .title-command-card { min-height: 190px; }
@@ -1272,7 +1270,7 @@ body::before {
 .panel-kicker span, .card-kicker span, .title-metric-strip span, .email-subject span {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
-.builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel, .builder-vendor-panel, .builder-adapter-panel,
+.builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel, .builder-adapter-panel,
 .validation-queue, .validation-focus-card, .seller-unlock-card,
 .deal-queue, .deal-detail, .deal-action, .title-glass-card, .source-page-section, .machine-panel, .card {
   background: rgba(255,255,255,.82) !important;
@@ -1366,7 +1364,7 @@ body::before {
 .builder-detail-header h3 { font-size: clamp(30px, 3.4vw, 48px); line-height: .96; letter-spacing: -.065em; }
 .permit-evidence-card { background: linear-gradient(180deg, #fff 0%, #f6f9fc 100%); }
 .builder-form-panel, .builder-script-panel { min-height: 100%; }
-.builder-script-panel pre, .builder-vendor-panel pre, .call-script-drawer pre, .validation-script-drawer pre, .email-card pre {
+.builder-script-panel pre, .call-script-drawer pre, .validation-script-drawer pre, .email-card pre {
   background: #07111f !important;
   color: rgba(235,244,255,.88) !important;
   border-color: rgba(226,232,240,.12) !important;
@@ -1823,7 +1821,7 @@ input:focus, textarea:focus, select:focus {
 .buyer-first-lane, .money-queue-panel, .call-script-panel, .outcome-panel,
 .deal-queue, .deal-detail, .deal-action, .source-page-section, .machine-panel,
 .builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel,
-.builder-script-panel, .builder-vendor-panel, .builder-adapter-panel,
+.builder-script-panel, .builder-adapter-panel,
 .builder-ops-header, .validation-command, .compact-call-sheet,
 .operator-checklist, .buyer-feedback-capture, .title-glass-card, .intake-card {
   background: rgba(255,255,255,.78) !important;
@@ -1978,7 +1976,7 @@ main :where(
   .buyer-first-lane, .buyer-first-card, .money-queue-panel, .call-script-panel, .outcome-panel,
   .deal-queue, .deal-detail, .deal-action, .source-page-section, .machine-panel,
   .builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel,
-  .builder-script-panel, .builder-vendor-panel, .builder-adapter-panel,
+  .builder-script-panel, .builder-adapter-panel,
   .builder-ops-header, .validation-command, .validation-queue, .validation-focus-card, .seller-unlock-card,
   .compact-call-sheet, .operator-checklist, .buyer-feedback-capture, .title-glass-card, .intake-card,
   .builder-row, .validation-builder-row, .validation-queue-item, .money-call, .queue-item,
@@ -1998,7 +1996,7 @@ main :where(.button-link, button, .validation-call-button, .outcome-chip, .filte
 /* Preserve intentionally rounded navigation only. */
 .nav, .app-tabs, .tab-button, .nav-cta, .brand-mark { border-radius: 999px !important; }
 
-main :where(.badge, .vendor-chip-grid span, .permit-platform-tags em, .source-meta code) {
+main :where(.badge, .permit-platform-tags em, .source-meta code) {
   border-radius: 6px !important;
 }
 
@@ -2237,7 +2235,7 @@ main :where(
   .buyer-first-lane, .buyer-first-card, .money-queue-panel, .call-script-panel, .outcome-panel,
   .deal-queue, .deal-detail, .deal-action, .source-page-section, .machine-panel,
   .builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel,
-  .builder-script-panel, .builder-vendor-panel, .builder-adapter-panel,
+  .builder-script-panel, .builder-adapter-panel,
   .builder-ops-header, .validation-command, .validation-queue, .validation-focus-card, .seller-unlock-card,
   .compact-call-sheet, .operator-checklist, .buyer-feedback-capture, .title-glass-card, .intake-card,
   .weekly-market-card, .buyer-send-memo, .title-orbital-hero
@@ -2303,7 +2301,7 @@ button.secondary, .button-link.secondary, .validation-call-button.secondary, .fi
 }
 button:hover, .button-link:hover, .nav-cta:hover { transform: none !important; box-shadow: none !important; }
 
-.badge, .vendor-chip-grid span, .permit-platform-tags em,
+.badge, .permit-platform-tags em,
 .builder-row em, .builder-row i, .buyer-call-meta span, .buyer-call-meta a,
 .source-page-section > summary span, .machine-panel > summary span,
 .mission-market span, .validation-queue-item > span:first-child, .money-call span,
@@ -2623,7 +2621,7 @@ main :where(
   .portal-link-list a, .permit-state-card, .normalization-tier, .priority-market-card,
   .source-popover, .adapter-card, .permit-evidence-card,
   .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel,
-  .builder-vendor-panel, .builder-adapter-panel, .compact-call-sheet, .buyer-call-card,
+  .builder-adapter-panel, .compact-call-sheet, .buyer-call-card,
   .war-room-metrics div, .validation-metrics div
 ) {
   background: #fff !important;
@@ -2730,7 +2728,7 @@ main :where(button:hover, .button-link:hover, .hero-actions a:hover, .outcome-ch
   box-shadow: none !important;
 }
 main :where(.badge, .tags span, .badge-stack span, .source-meta code,
-  .vendor-chip-grid span, .permit-platform-tags em, .buyer-call-meta span,
+  .permit-platform-tags em, .buyer-call-meta span,
   .buyer-call-meta a, .source-page-section > summary span, .machine-panel > summary span) {
   border-radius: 3px !important;
   background: #f1f1ed !important;
@@ -3268,7 +3266,7 @@ main :where(.daily-heading, .call-tile-grid, .side-panel, .card, .stage,
   .source-page-section, .machine-panel,
   .buyer-first-lane, .money-queue-panel, .call-script-panel, .outcome-panel,
   .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel,
-  .builder-vendor-panel, .builder-adapter-panel, .validation-command, .validation-focus-card,
+  .builder-adapter-panel, .validation-command, .validation-focus-card,
   .seller-unlock-card, .title-glass-card, .title-queue, .title-detail, .title-action,
   .intake-card, .engine-column, .weekly-market-card) {
   background: #fff !important;

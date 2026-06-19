@@ -36,17 +36,29 @@ assert.match(script, /off-market residential lots/i);
 assert.match(script, /zip codes/i);
 assert.match(script, /max price/i);
 
-const email = generateBuilderEmail({ companyName: 'Precision Gulf Homes', contactName: 'Maya', primaryCity: 'Lehigh Acres' });
-assert.match(email.subject, /Lehigh Acres/);
-assert.match(email.body, /exact buy box/);
-assert.match(email.body, /Closing timeline/);
+const email = generateBuilderEmail({
+  companyName: 'Smithbilt Homes',
+  name: 'Smithbilt Homes',
+  marketName: 'Knoxville',
+  sourceType: 'KGIS',
+  recentBuilds: 70,
+  topPermit: '25-B1211',
+  topPermitAddress: '8362 LAKE VILLAGE CIR',
+});
+assert.equal(email.subject, 'Off-Market Lots for Builders - Let’s Connect');
+assert.match(email.body, /My name is Okeito, and I run MarvelUs Intel LLC/);
+assert.match(email.body, /public KGIS permit-backed builder activity in Knoxville/);
+assert.match(email.body, /Smithbilt Homes shows 70 recent residential build signals, including 25-B1211 near 8362 LAKE VILLAGE CIR/);
+assert.match(email.body, /actual buy box/);
+assert.match(email.body, /zip codes\/subdivisions, lot sizes, max lot price, utility\/access requirements, and deal killers/);
+assert.match(email.body, /better land\/acquisitions contact/);
+assert.match(email.body, /Okeito S\.\nMarvelUs Intel LLC/);
 
-const marketingEmail = generateBuilderMarketingEmailTemplate({ companyName: 'Precision Gulf Homes', contactName: 'Maya' });
-assert.equal(marketingEmail.subject, 'Off-Market Lots for Builders — Let’s Connect');
-assert.match(marketingEmail.body, /assortment of marketing efforts and acquisition avenues/);
-assert.match(marketingEmail.body, /results in just a few weeks/);
-assert.doesNotMatch(marketingEmail.body, /cold calling, SMS, and direct mail/i);
-assert.doesNotMatch(marketingEmail.body, /few days/i);
+const marketingEmail = generateBuilderMarketingEmailTemplate({ companyName: 'Precision Gulf Homes', contactName: 'Maya', primaryCity: 'Lehigh Acres' });
+assert.equal(marketingEmail.subject, 'Off-Market Lots for Builders - Let’s Connect');
+assert.match(marketingEmail.body, /MarvelUs Intel LLC/);
+assert.doesNotMatch(marketingEmail.body, /assortment of marketing efforts and acquisition avenues/);
+assert.doesNotMatch(marketingEmail.body, /few weeks|few days/i);
 
 const adapters = getSourceAdapterChecklist();
 assert.deepEqual(adapters.map(item => item.id), ['accela', 'socrata', 'energov', 'etrakit', 'manual-csv']);

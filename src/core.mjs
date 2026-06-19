@@ -1656,20 +1656,38 @@ export function generateBuilderCallScript(builder = {}) {
   return `Hey ${builder.contactName || '{{Name}}'}, this is {{YourName}}. I saw ${name} has recent new-construction permits in ${city}. I source off-market residential lots for builders. Are you still buying land there? What zip codes, lot sizes, max price, and deal-breakers are you looking for right now? If I find lots that match your terms below your target price, can I send them over for a quick yes/no?`;
 }
 
+function getBuilderTopPermitEvidence(builder = {}) {
+  const permit = (builder.permitEvidence || builder.recentPermits || [])[0] || {};
+  const permitNumber = builder.topPermit || permit.permitNumber || permit.id || '';
+  const permitAddress = builder.topPermitAddress || permit.address || permit.siteAddress || '';
+  return { permitNumber, permitAddress };
+}
+
+function getPermitSourcePhrase(builder = {}) {
+  const source = `${builder.sourceType || ''} ${builder.sourceEvidence || ''} ${builder.marketName || ''} ${builder.market || ''}`.toLowerCase();
+  if (source.includes('kgis') || source.includes('knoxville')) return 'public KGIS permit-backed';
+  if (source.includes('socrata')) return 'public open-data permit-backed';
+  if (source.includes('accela')) return 'public Accela permit-backed';
+  if (source.includes('arcgis')) return 'public ArcGIS permit-backed';
+  return 'public permit-backed';
+}
+
 export function generateBuilderEmail(builder = {}) {
-  const city = builder.primaryCity || builder.market || '{{City}}';
-  const company = builder.companyName || '{{CompanyName}}';
-  const contact = builder.contactName || '{{BuilderNameOrContact}}';
-  const subject = `Discounted off-market lots in ${city}`;
-  const body = `Hi ${contact},\n\nI noticed ${company} has recent new-construction activity in ${city}. I work with landowners and source off-market residential lots for builders looking for discounted inventory.\n\nAre you currently buying lots in ${city} or nearby zip codes?\n\nIf yes, I’d like to capture your exact buy box so I only send deals that fit:\n\n- Zip codes / subdivisions you want:\n- Lot size range:\n- Max purchase price:\n- Road access / utility requirements:\n- Flood/wetlands/slope restrictions:\n- Target monthly lot volume:\n- Closing timeline:\n- Best submission contact:\n\nIf I find a lot that matches your terms and comes in below your target price, can I send it over for review?\n\nRegards,\n{{YourName}}\n{{Phone}}\n{{Company}}`;
+  const market = builder.marketName || builder.primaryCity || builder.market || '{{Market}}';
+  const company = builder.name || builder.companyName || '{{CompanyName}}';
+  const recentBuilds = Number(builder.recentBuilds || builder.qualifyingPermitCount || 0);
+  const { permitNumber, permitAddress } = getBuilderTopPermitEvidence(builder);
+  const sourcePhrase = getPermitSourcePhrase(builder);
+  const proofClause = recentBuilds
+    ? `${company} shows ${recentBuilds} recent residential build signals${permitNumber || permitAddress ? `, including ${permitNumber || 'a recent permit'} near ${permitAddress || market}` : ''}.`
+    : `${company} shows recent residential permit/build activity in ${market}.`;
+  const subject = 'Off-Market Lots for Builders - Let’s Connect';
+  const body = `Good morning,\n\nMy name is Okeito, and I run MarvelUs Intel LLC. We specialize in sourcing off-market lots at a discount for builders.\n\nI’m tracking ${sourcePhrase} builder activity in ${market}. ${proofClause}\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nLooking forward to working together!\n\nOkeito S.\nMarvelUs Intel LLC`;
   return { subject, body };
 }
 
 export function generateBuilderMarketingEmailTemplate(builder = {}) {
-  const contact = builder.contactName || '{{BuilderNameOrContact}}';
-  const subject = 'Off-Market Lots for Builders — Let’s Connect';
-  const body = `Good morning ${contact},\n\nMy name is {{YourName}}, and I run {{YourCompany}}. We specialize in sourcing off-market lots at a discount for builders.\n\nWe generate leads through an assortment of marketing efforts and acquisition avenues, with results in just a few weeks.\n\nWe typically wholesale but can double-close or purchase outright if needed. We’re currently acquiring lots at a discounted rate and plan to scale up soon.\n\nIf you're interested, let me know the zip codes you’re buying in, your lot criteria, and your closing timeline.\n\nLooking forward to working together!\n\nBest,\n{{YourName}}`;
-  return { subject, body };
+  return generateBuilderEmail(builder);
 }
 
 export function getSourceAdapterChecklist() {

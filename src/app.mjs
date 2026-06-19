@@ -631,7 +631,7 @@ function normalizeBuilderSignal(row = {}, source = {}) {
   const email = row.email || permits.find(permit => permit.contractorEmail)?.contractorEmail || '';
   const sourceUrl = row.sourceUrl || permits.find(permit => permit.sourceUrl)?.sourceUrl || source.evidenceUrl || source.signalsUrl || '';
   const marketLabel = source.marketName || row.market || source.state || 'Permit market';
-  return {
+  const normalized = {
     ...row,
     builderId: row.builderId || row.id || `${source.key || 'builder'}-${slugify(row.name || row.companyName || 'unknown')}`,
     companyName: row.companyName || row.name || 'Unnamed builder',
@@ -677,6 +677,10 @@ function normalizeBuilderSignal(row = {}, source = {}) {
       closeSpeedDays: row.closeSpeedDays || '',
       submissionMethod: '',
     },
+  };
+  return {
+    ...normalized,
+    emailDraft: generateBuilderEmail(normalized),
   };
 }
 
@@ -908,15 +912,9 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const marketLabel = selected.marketName || activeState.marketLabel || activeState.label || 'your market';
   const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
   const validationEmail = selected.emailDraft || {};
-  const validationEmailSubject = validationEmail.subject || `${marketLabel} lots that fit ${selected.name || 'your team'}?`;
-  const validationEmailBody = validationEmail.body || `Hi ${selected.contactName || selected.name || 'there'},
-
-I’m tracking public permit-backed builder activity in ${marketLabel} and want to only send lots that fit your exact buy box.
-
-What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, closing timeline, monthly lot appetite, and deal killers should I screen for before sending anything?
-
-Regards,
-Okeito`;
+  const fallbackEmail = generateBuilderEmail(selected);
+  const validationEmailSubject = validationEmail.subject || fallbackEmail.subject;
+  const validationEmailBody = validationEmail.body || fallbackEmail.body;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
     <div class="validation-grid-main">
@@ -2016,16 +2014,9 @@ function bindEvents() {
       const center = buildBuyerValidationCommandCenter(getActiveValidationRows(), workspace.buyerValidations || []);
       const builder = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
       const email = builder.emailDraft || {};
-      const marketLabel = builder.marketName || selectedBuilderMarketState || 'your permit market';
-      const subject = email.subject || `${marketLabel} lots that fit ${builder.name || 'your team'}?`;
-      const body = email.body || `Hi ${builder.contactName || builder.name || 'there'},
-
-I’m tracking public permit-backed builder activity in ${marketLabel} and want to only send lots that fit your exact buy box.
-
-What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, closing timeline, monthly lot appetite, and deal killers should I screen for before sending anything?
-
-Regards,
-Okeito`;
+      const fallbackEmail = generateBuilderEmail(builder);
+      const subject = email.subject || fallbackEmail.subject;
+      const body = email.body || fallbackEmail.body;
       const payload = `Subject: ${subject}
 
 ${body}`;

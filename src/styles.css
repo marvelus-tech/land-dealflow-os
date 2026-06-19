@@ -857,3 +857,83 @@ h3, h4 { letter-spacing: -.035em; }
   .buyer-call-card { grid-template-columns: 1fr; }
   .buyer-call-rank { min-height: auto; grid-template-columns: auto auto auto; justify-content: start; gap: 8px; padding: 12px; }
 }
+
+
+/* Buyer Validation Command Center */
+.validation-command {
+  margin: 18px 0 24px;
+  padding: clamp(22px, 3.4vw, 36px);
+  border-radius: 34px;
+  border: 1px solid rgba(17,24,39,.10);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(37,99,235,.16), transparent 22rem),
+    radial-gradient(circle at 92% 16%, rgba(159,232,112,.40), transparent 20rem),
+    linear-gradient(135deg, #ffffff 0%, #f8fbf4 48%, #edf6e8 100%);
+  box-shadow: rgba(24,29,38,.13) 0 28px 80px;
+  overflow: hidden;
+}
+.validation-command.loading { background: #fff; }
+.validation-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, .42fr); gap: 22px; align-items: stretch; }
+.validation-hero h3 { max-width: 880px; margin-top: 10px; font-size: clamp(42px, 5.8vw, 78px); line-height: .90; letter-spacing: -.074em; }
+.validation-hero p { max-width: 780px; margin-top: 16px; color: var(--muted); font-size: 18px; line-height: 1.43; letter-spacing: -.025em; }
+.validation-orb { min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; border-radius: 28px; color: #fff; background: linear-gradient(145deg, #111827 0%, #1d293a 62%, #26351f 100%); box-shadow: rgba(17,24,39,.20) 0 18px 44px; }
+.validation-orb span, .validation-metrics span, .validation-score span, .unlock-price span { display: block; color: var(--muted); font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .075em; }
+.validation-orb span { color: rgba(255,255,255,.62); }
+.validation-orb strong { display: block; color: #fff; font-size: 30px; line-height: .98; letter-spacing: -.045em; }
+.validation-orb p { margin: 12px 0 0; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.5; }
+.validation-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 24px 0; }
+.validation-metrics div { padding: 18px; border-radius: 20px; background: rgba(255,255,255,.80); border: 1px solid var(--line-soft); box-shadow: rgba(24,29,38,.045) 0 8px 22px; }
+.validation-metrics strong { display: block; margin-top: 8px; color: var(--black); font-size: 34px; line-height: .95; letter-spacing: -.055em; }
+.validation-grid-main { display: grid; grid-template-columns: minmax(250px, .68fr) minmax(0, 1.45fr) minmax(260px, .72fr); gap: 14px; align-items: start; }
+.validation-queue, .validation-focus-card, .seller-unlock-card { min-width: 0; padding: 18px; border-radius: 26px; background: rgba(255,255,255,.92); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+.validation-queue { display: grid; gap: 10px; }
+.validation-queue-item { width: 100%; min-height: 104px; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 5px 12px; align-items: start; padding: 14px; border-radius: 18px; border: 1px solid var(--line-soft); background: var(--panel-soft); color: var(--ink); text-align: left; box-shadow: none; }
+.validation-queue-item:hover { transform: none; background: #fff; border-color: rgba(37,99,235,.22); }
+.validation-queue-item.active { background: #f3f8ff; border-color: rgba(37,99,235,.40); box-shadow: inset 0 0 0 1px rgba(37,99,235,.08); }
+.validation-queue-item > span:first-child { grid-row: 1 / 4; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 999px; background: var(--money); color: var(--money-ink); font-size: 12px; font-weight: 900; }
+.validation-queue-item b { min-width: 0; color: var(--black); font-size: 15px; line-height: 1.12; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.validation-queue-item small { min-width: 0; color: var(--muted); font-size: 12px; line-height: 1.35; overflow-wrap: anywhere; }
+.validation-queue-item .badge { grid-column: 2; width: fit-content; max-width: 100%; white-space: normal; line-height: 1.15; padding: 5px 9px; }
+.validation-focus-head { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.validation-focus-head h3 { margin-top: 8px; font-size: clamp(28px, 3.4vw, 44px); line-height: .96; letter-spacing: -.06em; }
+.validation-focus-head p { margin-top: 9px; color: var(--muted); font-weight: 680; }
+.validation-score { flex: 0 0 auto; min-width: 108px; padding: 16px; border-radius: 22px; text-align: center; background: #111827; color: #fff; }
+.validation-score strong { display: block; font-size: 42px; line-height: .9; letter-spacing: -.055em; }
+.validation-score span { margin-top: 7px; color: rgba(255,255,255,.62); }
+.validation-actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 18px 0 14px; }
+.validation-call-button { min-height: 38px; display: inline-flex; align-items: center; justify-content: center; padding: 10px 14px; border-radius: 999px; background: var(--black); color: #fff; font-size: 13px; font-weight: 820; }
+.validation-call-button.secondary { background: #fff; color: var(--black); border: 1px solid var(--line); }
+.validation-call-button.disabled { opacity: .42; pointer-events: none; }
+.validation-progress { height: 10px; overflow: hidden; border-radius: 999px; background: rgba(17,24,39,.08); }
+.validation-progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--money) 0%, #35c36b 100%); }
+.validation-next-action { margin: 10px 0 16px; color: var(--green); font-size: 13px; font-weight: 780; }
+.validation-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.validation-form label { display: grid; gap: 6px; color: var(--muted); font-size: 11px; font-weight: 840; text-transform: uppercase; letter-spacing: .055em; }
+.validation-form input, .validation-form select, .validation-form textarea { width: 100%; min-width: 0; color: var(--ink); background: var(--panel-soft); border: 1px solid var(--line); border-radius: 14px; padding: 11px 12px; font: 650 13px/1.35 Inter, system-ui, sans-serif; text-transform: none; letter-spacing: -.01em; }
+.validation-form textarea { min-height: 104px; resize: vertical; }
+.validation-form .wide { grid-column: 1 / -1; }
+.validation-save-row { grid-column: 1 / -1; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.validation-save-status { color: var(--green); font-size: 13px; font-weight: 800; }
+.seller-unlock-card { background: linear-gradient(180deg, #fff 0%, #fbfbf6 100%); }
+.seller-unlock-card.unlocked { background: linear-gradient(180deg, #f5ffed 0%, #fff 100%); border-color: rgba(31,122,59,.20); }
+.seller-unlock-card h4 { margin-top: 10px; font-size: 22px; line-height: 1.05; letter-spacing: -.04em; }
+.seller-unlock-card ul { margin: 14px 0; padding-left: 18px; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.seller-unlock-card p { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.unlock-price { margin: 14px 0; padding: 16px; border-radius: 18px; background: var(--money); color: var(--money-ink); }
+.unlock-price span { color: rgba(22,51,0,.66); }
+.unlock-price strong { display: block; margin-top: 7px; font-size: 32px; line-height: .95; letter-spacing: -.055em; }
+.validation-script-drawer { margin-top: 14px; padding: 16px; border-radius: 22px; background: rgba(255,255,255,.70); border: 1px solid var(--line-soft); }
+.validation-script-drawer summary { cursor: pointer; color: var(--brand-dark); font-size: 13px; font-weight: 860; }
+.validation-script-drawer pre { max-height: 360px; overflow: auto; padding: 16px; border-radius: 16px; background: #0f172a; color: #e5eefc; white-space: pre-wrap; font-size: 12px; line-height: 1.55; }
+@media (max-width: 1000px) {
+  .validation-hero, .validation-grid-main { grid-template-columns: 1fr; }
+  .validation-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .validation-command { border-radius: 26px; padding: 18px; }
+  .validation-hero h3 { font-size: clamp(34px, 12vw, 52px); }
+  .validation-metrics { grid-template-columns: repeat(2, 1fr); }
+  .validation-form { grid-template-columns: 1fr; }
+  .validation-focus-head { flex-direction: column; }
+  .validation-score { width: 100%; }
+}

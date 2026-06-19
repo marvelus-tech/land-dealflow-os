@@ -396,6 +396,135 @@ export function applyCrmUpdate(workspace, parcelId, updates) {
   };
 }
 
+
+export const BUYER_VALIDATION_STATUSES = [
+  'not_called',
+  'left_voicemail',
+  'spoke_to_gatekeeper',
+  'spoke_to_decision_maker',
+  'validated_buy_box',
+  'not_a_buyer',
+  'follow_up',
+];
+
+export const BUY_BOX_REQUIRED_FIELDS = [
+  { id: 'geography', label: 'Target geography' },
+  { id: 'lotSize', label: 'Lot-size band' },
+  { id: 'maxPrice', label: 'Max acquisition price' },
+  { id: 'closeSpeed', label: 'Close speed' },
+  { id: 'packageRecipient', label: 'Package recipient' },
+  { id: 'dealKillers', label: 'Deal-killer criteria' },
+];
+
+function valuePresent(value) {
+  if (Array.isArray(value)) return value.some(valuePresent);
+  if (typeof value === 'number') return Number.isFinite(value) && value > 0;
+  if (typeof value === 'boolean') return true;
+  return String(value ?? '').trim().length > 0;
+}
+
+export function evaluateBuilderBuyBox(buyBox = {}) {
+  const checks = BUY_BOX_REQUIRED_FIELDS.map(field => ({
+    ...field,
+    met: valuePresent(buyBox[field.id]),
+    value: buyBox[field.id] ?? '',
+  }));
+  const met = checks.filter(check => check.met).length;
+  const percent = Math.round((met / checks.length) * 100);
+  const missing = checks.filter(check => !check.met).map(check => check.label);
+  const complete = missing.length === 0;
+  return { complete, percent, met, total: checks.length, checks, missing };
+}
+
+export function scoreBuyerValidation(row = {}) {
+  const buyBox = evaluateBuilderBuyBox(row.buyBox || {});
+  let score = 0;
+  score += Math.min(30, Math.round(Number(row.recentBuilds || 0) / 3));
+  if (row.callable) score += 14;
+  if (row.phone) score += 6;
+  if (row.email) score += 4;
+  score += Math.round(buyBox.percent * 0.34);
+  if (row.callStatus === 'spoke_to_decision_maker') score += 8;
+  if (row.callStatus === 'validated_buy_box' && buyBox.complete) score += 12;
+  if (row.route === 'humanReview' || !row.callable) score -= 12;
+  score = Math.round(clamp(score, 0, 100));
+  const tier = buyBox.complete && row.callStatus === 'validated_buy_box'
+    ? 'Tier 1 · seller search eligible'
+    : buyBox.percent >= 67 || row.callStatus === 'spoke_to_decision_maker'
+      ? 'Tier 2 · follow-up to finish buy box'
+      : 'Tier 3 · call queue only';
+  const sellerEligible = buyBox.complete && row.callStatus === 'validated_buy_box';
+  const nextAction = sellerEligible
+    ? 'Generate seller parcel search criteria and start buyer-backed seller sourcing.'
+    : row.route === 'humanReview' || !row.callable
+      ? 'Resolve public business contact before calling.'
+      : row.callStatus === 'left_voicemail'
+        ? 'Follow up with the exact buy-box email and call again.'
+        : row.callStatus === 'spoke_to_gatekeeper'
+          ? 'Ask for land/acquisitions decision-maker and package recipient.'
+          : 'Call and capture geography, lot size, max price, close speed, recipient, and deal killers.';
+  return { score, tier, sellerEligible, buyBox, nextAction };
+}
+
+export function buildSellerSearchInstructions(row = {}) {
+  const box = row.buyBox || {};
+  const validation = scoreBuyerValidation(row);
+  if (!validation.sellerEligible) {
+    return {
+      eligible: false,
+      headline: 'Seller search locked until buy box is complete.',
+      criteria: [],
+      blockers: validation.buyBox.missing,
+    };
+  }
+  const criteria = [
+    `Market/geography: ${box.geography}`,
+    `Lot-size band: ${box.lotSize}`,
+    `Max acquisition price: ${formatMoney(Number(box.maxPrice || 0))}`,
+    `Close speed: ${box.closeSpeed}`,
+    `Avoid/kill: ${Array.isArray(box.dealKillers) ? box.dealKillers.join(', ') : box.dealKillers}`,
+    `Submit package to: ${box.packageRecipient}`,
+  ];
+  if (box.utilitiesAccess) criteria.push(`Utilities/access: ${box.utilitiesAccess}`);
+  if (box.productType) criteria.push(`Finished product: ${box.productType}`);
+  return {
+    eligible: true,
+    headline: `Find seller parcels for ${row.name || 'validated builder'} under ${formatMoney(Number(box.maxPrice || 0))}.`,
+    criteria,
+    offerCeiling: Math.max(0, Math.round(Number(box.maxPrice || 0) * 0.82)),
+    sellerAngle: `I am calling because a permit-active Knoxville builder is looking for lots matching ${box.geography} / ${box.lotSize}; if title and access are clean, I can move quickly.`,
+  };
+}
+
+export function buildBuyerValidationCommandCenter(rows = [], savedRows = []) {
+  const saved = new Map((savedRows || []).map(row => [row.builderId, row]));
+  const items = (rows || []).map(row => {
+    const savedRow = saved.get(row.builderId) || {};
+    const merged = {
+      ...row,
+      ...savedRow,
+      buyBox: { ...(row.buyBox || {}), ...(savedRow.buyBox || {}) },
+      callStatus: savedRow.callStatus || row.callStatus || 'not_called',
+      lastContacted: savedRow.lastContacted || row.lastContacted || '',
+      callbackDate: savedRow.callbackDate || row.callbackDate || '',
+      callNotes: savedRow.callNotes || row.callNotes || '',
+    };
+    const validation = scoreBuyerValidation(merged);
+    const sellerSearch = buildSellerSearchInstructions(merged);
+    return { ...merged, validation, sellerSearch };
+  }).sort((a, b) => b.validation.score - a.validation.score || Number(b.recentBuilds || 0) - Number(a.recentBuilds || 0));
+  const summary = {
+    total: items.length,
+    callReady: items.filter(item => item.callable && item.route !== 'humanReview').length,
+    validated: items.filter(item => item.validation.sellerEligible).length,
+    followUp: items.filter(item => ['left_voicemail', 'spoke_to_gatekeeper', 'spoke_to_decision_maker', 'follow_up'].includes(item.callStatus)).length,
+    locked: items.filter(item => !item.validation.sellerEligible).length,
+    averageCompleteness: items.length ? Math.round(items.reduce((sum, item) => sum + item.validation.buyBox.percent, 0) / items.length) : 0,
+  };
+  const next = items.find(item => item.callable && item.route !== 'humanReview' && item.callStatus === 'not_called') || items[0] || null;
+  return { summary, items, next };
+}
+
 export function exportWorkspace(workspace) {
   return JSON.stringify({ version: 2, exportedAt: new Date().toISOString(), ...workspace }, null, 2);
 }
@@ -408,6 +537,7 @@ export function importWorkspace(serialized) {
     parcels: Array.isArray(parsed.parcels) ? parsed.parcels : [],
     permitRecords: Array.isArray(parsed.permitRecords) ? parsed.permitRecords : [],
     permitBuilders: Array.isArray(parsed.permitBuilders) ? parsed.permitBuilders : [],
+    buyerValidations: Array.isArray(parsed.buyerValidations) ? parsed.buyerValidations : [],
   };
 }
 

@@ -47,6 +47,8 @@ import {
   buildOperatorChecklist,
   buildTitleCompanyClosingDesk,
   buildPermitVerifiedBuilders,
+  buildBuyerValidationCommandCenter,
+  BUYER_VALIDATION_STATUSES,
   generateBuilderCallScript,
   generateBuilderEmail,
   generateBuilderMarketingEmailTemplate,
@@ -137,7 +139,7 @@ function loadWorkspace() {
   } catch (error) {
     console.warn('Could not load workspace', error);
   }
-  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [] };
+  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [] };
 }
 
 function persistWorkspace() {
@@ -501,6 +503,105 @@ function getSelectedBuilder(builders = getPermitBuilders()) {
   return fallback;
 }
 
+
+function callStatusLabel(status) {
+  return String(status || 'not_called').replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
+}
+
+function parseListInput(value) {
+  return String(value || '').split(',').map(item => item.trim()).filter(Boolean);
+}
+
+function renderBuyerValidationCommandCenter() {
+  const rows = asArray(knoxvilleBuyerCallSheet?.rows);
+  if (!rows.length) {
+    return `<section class="validation-command loading"><span class="eyebrow">Buyer Validation Command Center</span><h3>Waiting on Knoxville call sheet.</h3><p>Run <code>npm run enrich:knoxville-builders</code> to load the permit-backed builder queue.</p></section>`;
+  }
+  const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
+  const selected = center.items.find(item => item.builderId === selectedBuilderId) || center.next || center.items[0] || {};
+  selectedBuilderId = selected.builderId || selectedBuilderId;
+  const sellerCriteria = selected.sellerSearch?.eligible
+    ? selected.sellerSearch.criteria.map(item => `<li>${h(item)}</li>`).join('')
+    : selected.sellerSearch?.blockers?.map(item => `<li>${h(item)}</li>`).join('') || '<li>Complete buy-box fields to unlock seller search.</li>';
+  const statusOptions = BUYER_VALIDATION_STATUSES.map(status => `<option value="${h(status)}" ${selected.callStatus === status ? 'selected' : ''}>${h(callStatusLabel(status))}</option>`).join('');
+  const queue = center.items.map((item, index) => {
+    const active = item.builderId === selected.builderId;
+    const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : item.validation.buyBox.percent >= 67 ? 'warn' : 'neutral';
+    return `<button type="button" class="validation-queue-item ${active ? 'active' : ''}" data-select-builder="${h(item.builderId)}">
+      <span>${String(index + 1).padStart(2, '0')}</span>
+      <b>${h(item.name)}</b>
+      <small>${h(callStatusLabel(item.callStatus))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small>
+      ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'validation locked', tone)}
+    </button>`;
+  }).join('');
+  const contact = [selected.phone, selected.email].filter(Boolean).join(' · ') || 'Public business contact unresolved';
+  const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
+  const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
+  const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(selected.emailDraft?.subject || `Knoxville lots that fit ${selected.name || 'your team'}?`)}` : '#';
+  return `<section class="validation-command" aria-label="Buyer Validation Command Center">
+    <div class="validation-hero">
+      <div>
+        <span class="eyebrow">Buyer Validation Command Center</span>
+        <h3>Turn permit activity into buyer truth.</h3>
+        <p>An Apple-clean call cockpit for Knoxville builders: one active queue, one focused decision-maker form, and a hard gate that refuses seller sourcing until the buy box is real.</p>
+      </div>
+      <aside class="validation-orb">
+        <span>Next money action</span>
+        <strong>${h(center.next?.name || 'Call queue empty')}</strong>
+        <p>${h(center.next?.validation?.nextAction || 'Load buyer rows.')}</p>
+      </aside>
+    </div>
+    <div class="validation-metrics">
+      <div><span>Builders</span><strong>${h(center.summary.total)}</strong></div>
+      <div><span>Call-ready</span><strong>${h(center.summary.callReady)}</strong></div>
+      <div><span>Validated</span><strong>${h(center.summary.validated)}</strong></div>
+      <div><span>Avg buy box</span><strong>${h(center.summary.averageCompleteness)}%</strong></div>
+    </div>
+    <div class="validation-grid-main">
+      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue</span><b>ranked by validation leverage</b></div>${queue}</aside>
+      <article class="validation-focus-card">
+        <div class="validation-focus-head">
+          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p>${h(contact)} · ${h(selected.recentBuilds || 0)} permit signals</p></div>
+          <div class="validation-score"><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></div>
+        </div>
+        <div class="validation-actions">
+          <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">Call office</a>
+          <a class="validation-call-button secondary ${selected.email ? '' : 'disabled'}" href="${mailHref}">Draft email</a>
+          ${selected.sourceUrl ? safeLink(selected.sourceUrl, 'Source proof', 'validation-call-button secondary') : ''}
+        </div>
+        <div class="validation-progress"><span style="width:${h(selected.validation?.buyBox?.percent || 0)}%"></span></div>
+        <p class="validation-next-action">${h(selected.validation?.nextAction || '')}</p>
+        <div class="validation-form" data-validation-form="${h(selected.builderId || '')}">
+          <label>Call status <select class="validation-status">${statusOptions}</select></label>
+          <label>Last contacted <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
+          <label>Callback date <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
+          <label>Target geography <input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
+          <label>Lot-size band <input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25–1.0 ac, infill/subdivision lots" /></label>
+          <label>Max acquisition price <input class="validation-price" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
+          <label>Close speed / monthly appetite <input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14–30 days / 2 lots per month" /></label>
+          <label>Package recipient <input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
+          <label>Utilities / access rules <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
+          <label>Finished product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
+          <label>Deal killers <input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
+          <label class="wide">Exact buyer language <textarea class="validation-notes" placeholder="Paste what they actually said. No interpretation, no fabrication.">${h(selected.callNotes || '')}</textarea></label>
+          <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status"></span></div>
+        </div>
+      </article>
+      <aside class="seller-unlock-card ${selected.sellerSearch?.eligible ? 'unlocked' : ''}">
+        <div class="panel-kicker"><span>Seller search gate</span><b>${selected.sellerSearch?.eligible ? 'unlocked' : 'locked'}</b></div>
+        <h4>${h(selected.sellerSearch?.headline || 'Seller search locked.')}</h4>
+        <ul>${sellerCriteria}</ul>
+        ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Suggested seller offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p>` : '<p>Permit volume is only a demand signal. Seller calls wait until buyer criteria are captured.</p>'}
+      </aside>
+    </div>
+    <details class="validation-script-drawer">
+      <summary>Open exact buy-box questions + call script</summary>
+      <div class="script-grid"><div><h5>Ask these fields</h5><ul>${scriptQuestions}</ul></div><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p></div></div>
+      <pre>${h(selected.callScript || '')}</pre>
+    </details>
+  </section>`;
+}
+
 function renderKnoxvilleBuyerCallSheet() {
   const rows = asArray(knoxvilleBuyerCallSheet?.rows);
   if (!rows.length) {
@@ -618,6 +719,8 @@ function renderBuilderListEnginePanel() {
         <div><span>Top signal</span><strong>${h(displayedTopSignal)}</strong></div>
       </div>
     </section>
+
+    ${renderBuyerValidationCommandCenter()}
 
     ${renderKnoxvilleBuyerCallSheet()}
 
@@ -1434,6 +1537,45 @@ function bindEvents() {
       });
     }
 
+
+    if (event.target.matches('[data-save-buyer-validation]')) {
+      const form = event.target.closest('[data-validation-form]');
+      const builderId = form?.dataset.validationForm;
+      const rows = asArray(knoxvilleBuyerCallSheet?.rows);
+      const sourceRow = rows.find(item => item.builderId === builderId) || {};
+      if (!builderId) return;
+      const updated = {
+        builderId,
+        name: sourceRow.name || '',
+        phone: sourceRow.phone || '',
+        email: sourceRow.email || '',
+        callable: sourceRow.callable || false,
+        route: sourceRow.route || 'buyerValidation',
+        recentBuilds: sourceRow.recentBuilds || 0,
+        callStatus: form.querySelector('.validation-status')?.value || 'not_called',
+        lastContacted: form.querySelector('.validation-last')?.value || '',
+        callbackDate: form.querySelector('.validation-callback')?.value || '',
+        callNotes: form.querySelector('.validation-notes')?.value || '',
+        buyBox: {
+          geography: form.querySelector('.validation-geography')?.value || '',
+          lotSize: form.querySelector('.validation-lot')?.value || '',
+          maxPrice: Number(form.querySelector('.validation-price')?.value || 0) || '',
+          closeSpeed: form.querySelector('.validation-speed')?.value || '',
+          packageRecipient: form.querySelector('.validation-recipient')?.value || '',
+          utilitiesAccess: form.querySelector('.validation-utilities')?.value || '',
+          productType: form.querySelector('.validation-product')?.value || '',
+          dealKillers: parseListInput(form.querySelector('.validation-killers')?.value || ''),
+        },
+        updatedAt: new Date().toISOString(),
+      };
+      workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== builderId), updated] };
+      persistWorkspace();
+      const status = form.querySelector('.validation-save-status');
+      if (status) status.textContent = updated.callStatus === 'validated_buy_box' ? 'Validation saved; seller gate will unlock if required fields are complete.' : 'Validation saved.';
+      renderBuilderListEnginePanel();
+      return;
+    }
+
     if (event.target.matches('[data-save-builder-buybox]')) {
       const form = event.target.closest('[data-builder-form]');
       const builderId = form?.dataset.builderForm;
@@ -1502,7 +1644,7 @@ function bindEvents() {
     }
 
     if (event.target.matches('#reset-workspace')) {
-      workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [] };
+      workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [] };
       persistWorkspace();
       renderAll();
     }

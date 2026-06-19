@@ -87,6 +87,13 @@ assert.match(appSource, /queue-source-link/, 'call queue rows must carry source-
 assert.match(appSource, /queue-csv-link[\s\S]{0,160}buyer_call_sheet\.csv/, 'call queue header must preserve call-sheet CSV export');
 assert.match(appSource, /validation-source-proof/, 'selected builder card must preserve source type, contact status, confidence, and top permit proof');
 assert.match(appSource, /selected-permit-proof/, 'selected builder proof drawer must preserve permit evidence rows');
+assert.doesNotMatch(appSource, /class="queue-rank"/, 'call queue must not show duplicate number ranks because sort order already follows validation score');
+assert.doesNotMatch(appSource, /Phone not logged|Email not logged/, 'selected outreach labels should not repeat channel names beside channel icons');
+assert.doesNotMatch(appSource, /Call office|>Draft email<|Copy email|Source proof/, 'selected builder actions should use restrained icon-led labels and Website for source URL');
+assert.match(appSource, /aria-label="Draft email"/, 'draft email action should remain accessible when visually icon-only');
+assert.match(appSource, /<span>Call<\/span>/, 'phone CTA should be a concise icon plus Call button');
+assert.match(appSource, /<span>Website<\/span>/, 'source URL action should be labelled as a website link, not source proof');
+assert.doesNotMatch(appSource, /Landscaper\/vendor sourcing|site-prep network|vendor-chip-grid|builder-vendor-panel/, 'landscaper/vendor sourcing typo section must stay removed');
 assert.doesNotMatch(appSource, /renderKnoxvilleBuyerCallSheet|Source-backed call sheet|buyer-call-sheet-list/, 'duplicate source-backed call sheet section must be removed after consolidation');
 assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');

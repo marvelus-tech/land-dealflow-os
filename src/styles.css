@@ -4440,6 +4440,92 @@ aside.validation-queue {
   .selected-permit-proof li { grid-template-columns: 1fr; gap: 4px; }
 }
 
+/* v1.49 - Apple/W+K builder action pass: no numeric ranks, icon-led contact actions */
+.validation-queue button.validation-row-main,
+.validation-queue .validation-row-main {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  padding-left: 22px !important;
+}
+.validation-queue .queue-rank { display: none !important; }
+.validation-queue .queue-proof-line {
+  padding-left: 22px !important;
+}
+.validation-queue .queue-state-row {
+  padding-left: 22px !important;
+}
+.validation-queue .validation-queue-item.active::before {
+  top: 12px !important;
+  bottom: 12px !important;
+}
+.validation-actions {
+  gap: 8px !important;
+  align-items: center !important;
+}
+.validation-call-button {
+  gap: 8px !important;
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  border-radius: 12px !important;
+  letter-spacing: -.01em !important;
+}
+.validation-call-button.icon-only {
+  width: 42px !important;
+  min-width: 42px !important;
+  padding: 0 !important;
+  background: #101214 !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+.validation-call-button.secondary,
+.validation-call-button.website-link {
+  background: #fff !important;
+  color: #101214 !important;
+  border-color: rgba(16,18,20,.13) !important;
+  box-shadow: none !important;
+}
+.validation-call-button.website-link {
+  color: rgba(16,18,20,.72) !important;
+}
+.action-svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  display: block;
+}
+.copy-email-button .action-svg { color: #1f5bff; }
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle:hover,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle:focus,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle.is-on,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle.is-on:hover,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle.is-on:focus {
+  gap: 7px !important;
+}
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle:not(.is-on) {
+  color: rgba(16,18,20,.46) !important;
+}
+#permit-landscape.wide-permit-panel {
+  grid-column: 1 / -1 !important;
+}
+@media (max-width: 520px) {
+  .validation-queue button.validation-row-main,
+  .validation-queue .validation-row-main {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    padding-left: 18px !important;
+  }
+  .validation-queue .queue-proof-line,
+  .validation-queue .queue-state-row {
+    padding-left: 18px !important;
+  }
+  .validation-actions {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr) !important;
+  }
+  .validation-call-button.website-link {
+    grid-column: 1 / -1;
+  }
+}
+
 /* v1.47 - Sources evidence room: priority map + floating source inspector */
 #sources-hub > .section-heading {
   max-width: 1040px !important;

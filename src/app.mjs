@@ -605,8 +605,8 @@ function validationOutreachLabel(row = {}) {
 }
 
 function outreachToggleLabel(channel, active, at = '') {
-  if (channel === 'phone') return active ? `Called${at ? ` ${at}` : ''}` : 'Phone not logged';
-  return active ? `Email sent${at ? ` ${at}` : ''}` : 'Email not logged';
+  if (channel === 'phone') return active ? `Called${at ? ` ${at}` : ''}` : 'Not logged';
+  return active ? `Email sent${at ? ` ${at}` : ''}` : 'Not logged';
 }
 
 function outreachIcon(channel) {
@@ -614,6 +614,16 @@ function outreachIcon(channel) {
     return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 4.5A3 3 0 0 1 4.5 1.5h1.37c.86 0 1.61.58 1.82 1.41l.72 2.88a3 3 0 0 1-.8 2.82l-.74.74a14.25 14.25 0 0 0 7.78 7.78l.74-.74a3 3 0 0 1 2.82-.8l2.88.72a1.88 1.88 0 0 1 1.41 1.82v1.37a3 3 0 0 1-3 3h-1.13C9.05 22.5 1.5 14.95 1.5 5.63V4.5Z"/></svg>`;
   }
   return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.5a3 3 0 0 1-3.14 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.58 0l9.71-5.98Z"/></svg>`;
+}
+
+function actionIcon(kind) {
+  if (kind === 'copy') {
+    return `<svg class="action-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.25 3A3.25 3.25 0 0 1 11.5-.25h6A3.25 3.25 0 0 1 20.75 3v9A3.25 3.25 0 0 1 17.5 15.25h-6A3.25 3.25 0 0 1 8.25 12V3Zm3.25-.75a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75h6c.41 0 .75-.34.75-.75V3a.75.75 0 0 0-.75-.75h-6Z" transform="translate(0 1)"/><path fill="currentColor" d="M3.25 8A3.25 3.25 0 0 1 6.5 4.75h.75v2.5H6.5a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75h6c.41 0 .75-.34.75-.75v-.75h2.5V17A3.25 3.25 0 0 1 12.5 20.25h-6A3.25 3.25 0 0 1 3.25 17V8Z" transform="translate(0 1)"/></svg>`;
+  }
+  if (kind === 'website') {
+    return `<svg class="action-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.25a9.75 9.75 0 1 0 0 19.5 9.75 9.75 0 0 0 0-19.5Zm6.93 8.5h-3.06a15.1 15.1 0 0 0-1.18-5.04 7.28 7.28 0 0 1 4.24 5.04Zm-6.93-6c.52.74 1.16 2.55 1.37 6h-2.74c.21-3.45.85-5.26 1.37-6Zm-2.69.96a15.1 15.1 0 0 0-1.18 5.04H5.07a7.28 7.28 0 0 1 4.24-5.04Zm-4.24 7.54h3.06c.16 2.12.58 3.84 1.18 5.04a7.28 7.28 0 0 1-4.24-5.04Zm6.93 6c-.52-.74-1.16-2.55-1.37-6h2.74c-.21 3.45-.85 5.26-1.37 6Zm2.69-.96c.6-1.2 1.02-2.92 1.18-5.04h3.06a7.28 7.28 0 0 1-4.24 5.04Z"/></svg>`;
+  }
+  return outreachIcon(kind);
 }
 
 function scoreBreakdownText(row = {}) {
@@ -669,7 +679,7 @@ function renderBuyerValidationCommandCenter() {
     ? selected.sellerSearch.criteria.map(item => `<li>${h(item)}</li>`).join('')
     : selected.sellerSearch?.blockers?.map(item => `<li>${h(item)}</li>`).join('') || '<li>Complete buy-box fields to unlock seller search.</li>';
   const statusOptions = BUYER_VALIDATION_STATUSES.map(status => `<option value="${h(status)}" ${selected.callStatus === status ? 'selected' : ''}>${h(callStatusLabel(status))}</option>`).join('');
-  const queue = center.items.map((item, index) => {
+  const queue = center.items.map((item) => {
     const active = item.builderId === selected.builderId;
     const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : item.validation.buyBox.percent >= 67 ? 'warn' : 'neutral';
     const outreach = validationOutreach(item);
@@ -683,14 +693,13 @@ function renderBuyerValidationCommandCenter() {
     ].join(' · ');
     return `<article class="validation-queue-item ${active ? 'active' : ''}" data-validation-row="${h(item.builderId)}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
-        <span class="queue-rank">${String(index + 1).padStart(2, '0')}</span>
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
       </button>
       <div class="queue-proof-line">${proofBits}</div>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
-        <button type="button" class="contact-icon-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Phone not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span></button>
-        <button type="button" class="contact-icon-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Email not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span></button>
+        <button type="button" class="contact-icon-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span></button>
+        <button type="button" class="contact-icon-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span></button>
         ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'validation locked', tone)}
       </div>
     </article>`;
@@ -754,10 +763,10 @@ Okeito`;
           <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
         </div>
         <div class="validation-actions">
-          <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">Call office</a>
-          <a class="validation-call-button secondary ${selected.email ? '' : 'disabled'}" href="${mailHref}">Draft email</a>
-          <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>Copy email</button>
-          ${selected.sourceUrl ? safeLink(selected.sourceUrl, 'Source proof', 'validation-call-button secondary') : ''}
+          <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
+          <a class="validation-call-button icon-only ${selected.email ? '' : 'disabled'}" href="${mailHref}" aria-label="Draft email" title="Draft email">${actionIcon('email')}</a>
+          <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>${actionIcon('copy')}<span>Draft</span></button>
+          ${selected.sourceUrl ? `<a class="validation-call-button secondary website-link" href="${h(selected.sourceUrl)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
         <div class="validation-progress"><span style="width:${h(selected.validation?.buyBox?.percent || 0)}%"></span></div>
@@ -912,15 +921,6 @@ function renderBuilderListEnginePanel() {
     </section>
 
     <section class="builder-two-col">
-      <article class="builder-vendor-panel">
-        <div class="panel-kicker"><span>Landscaper/vendor sourcing</span><b>site-prep network</b></div>
-        <p>Use vendors as condition-checkers, clearing/grading quote sources, and builder referral nodes.</p>
-        <div class="vendor-chip-grid">
-          ${['land clearing', 'grading', 'excavation', 'forestry mulching', 'tree removal', 'site prep', 'drainage', 'driveway/culvert', 'irrigation'].map(item => `<span>${h(item)}</span>`).join('')}
-        </div>
-        <pre>Hey {{Name}}, this is {{YourName}}. I work with landowners and builders around {{City}}. I’m looking for reliable local people who can help with clearing, grading, site-prep, and quick condition checks on vacant lots. Are you taking on that kind of work, and do you cover {{Area}}?</pre>
-      </article>
-
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
         <div class="panel-kicker"><span>Permit portal landscape</span><b>five-state normalization map</b></div>
         <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>

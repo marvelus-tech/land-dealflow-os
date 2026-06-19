@@ -79,6 +79,7 @@ assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-val
 assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'selected builder email state badge must be the toggle');
 assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="phone"/, 'queue phone state must be a compact icon toggle');
 assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'queue email state must be a compact icon toggle');
+assert.match(appSource, /<svg class="outreach-svg"[\s\S]{0,220}<path fill="currentColor"/, 'outreach controls should use solid currentColor SVG icons, not text glyphs or bordered icon boxes');
 assert.doesNotMatch(appSource, /contact-action/, 'selected builder must not duplicate outreach state with separate logged buttons');
 assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'outreach controls should be compressed into state badges/icons');
 assert.match(appSource, /scoreBreakdownRows/, 'validation score must expose progressive-disclosure breakdown rows');

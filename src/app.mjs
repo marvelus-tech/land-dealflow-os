@@ -541,7 +541,10 @@ function outreachToggleLabel(channel, active, at = '') {
 }
 
 function outreachIcon(channel) {
-  return channel === 'phone' ? '☎' : '✉';
+  if (channel === 'phone') {
+    return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 4.5A3 3 0 0 1 4.5 1.5h1.37c.86 0 1.61.58 1.82 1.41l.72 2.88a3 3 0 0 1-.8 2.82l-.74.74a14.25 14.25 0 0 0 7.78 7.78l.74-.74a3 3 0 0 1 2.82-.8l2.88.72a1.88 1.88 0 0 1 1.41 1.82v1.37a3 3 0 0 1-3 3h-1.13C9.05 22.5 1.5 14.95 1.5 5.63V4.5Z"/></svg>`;
+  }
+  return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.5a3 3 0 0 1-3.14 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.58 0l9.71-5.98Z"/></svg>`;
 }
 
 function scoreBreakdownText(row = {}) {

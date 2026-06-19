@@ -538,7 +538,17 @@ function renderBuyerValidationCommandCenter() {
   const contact = [selected.phone, selected.email].filter(Boolean).join(' · ') || 'Public business contact unresolved';
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
-  const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(selected.emailDraft?.subject || `Knoxville lots that fit ${selected.name || 'your team'}?`)}` : '#';
+  const validationEmail = selected.emailDraft || {};
+  const validationEmailSubject = validationEmail.subject || `Knoxville lots that fit ${selected.name || 'your team'}?`;
+  const validationEmailBody = validationEmail.body || `Hi ${selected.contactName || selected.name || 'there'},
+
+I’m tracking public permit-backed builder activity in Knoxville and want to only send lots that fit your exact buy box.
+
+What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, closing timeline, monthly lot appetite, and deal killers should I screen for before sending anything?
+
+Regards,
+Okeito`;
+  const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   return `<section class="validation-command" aria-label="Buyer Validation Command Center">
     <div class="validation-hero">
       <div>
@@ -568,7 +578,9 @@ function renderBuyerValidationCommandCenter() {
         <div class="validation-actions">
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">Call office</a>
           <a class="validation-call-button secondary ${selected.email ? '' : 'disabled'}" href="${mailHref}">Draft email</a>
+          <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>Copy email</button>
           ${selected.sourceUrl ? safeLink(selected.sourceUrl, 'Source proof', 'validation-call-button secondary') : ''}
+          <span class="validation-email-status" aria-live="polite"></span>
         </div>
         <div class="validation-progress"><span style="width:${h(selected.validation?.buyBox?.percent || 0)}%"></span></div>
         <p class="validation-next-action">${h(selected.validation?.nextAction || '')}</p>
@@ -1552,6 +1564,31 @@ function bindEvents() {
       });
     }
 
+
+    if (event.target.matches('[data-copy-validation-email]')) {
+      const center = buildBuyerValidationCommandCenter(asArray(knoxvilleBuyerCallSheet?.rows), workspace.buyerValidations || []);
+      const builder = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
+      const email = builder.emailDraft || {};
+      const subject = email.subject || `Knoxville lots that fit ${builder.name || 'your team'}?`;
+      const body = email.body || `Hi ${builder.contactName || builder.name || 'there'},
+
+I’m tracking public permit-backed builder activity in Knoxville and want to only send lots that fit your exact buy box.
+
+What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, closing timeline, monthly lot appetite, and deal killers should I screen for before sending anything?
+
+Regards,
+Okeito`;
+      const payload = `Subject: ${subject}
+
+${body}`;
+      const status = event.target.closest('.validation-actions')?.querySelector('.validation-email-status');
+      const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Buy-box email copied.'; }).catch(() => {
+        downloadText(`land-dealflow-validation-email-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+      return;
+    }
 
     if (event.target.matches('[data-save-buyer-validation]')) {
       const form = event.target.closest('[data-validation-form]');

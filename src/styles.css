@@ -1479,29 +1479,40 @@ body::before {
 }
 .market-toggle-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(5, minmax(96px, 1fr));
+  gap: 1px;
+  padding: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,.09);
+  border-radius: 16px;
+  background: rgba(17,24,39,.06);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.76);
 }
 .market-toggle {
   min-width: 0;
-  min-height: 82px;
-  padding: 11px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 16px;
+  min-height: 62px;
+  padding: 10px 12px 9px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
+  border-radius: 12px;
   color: var(--black);
-  background: rgba(255,255,255,.76);
-  border: 1px solid var(--line-soft);
+  background: rgba(255,255,255,.72);
+  border: 1px solid transparent;
+  text-align: left;
   text-decoration: none;
-  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+  box-shadow: none;
+  transition: border-color .16s ease, background .16s ease, box-shadow .16s ease;
 }
-.market-toggle:hover { transform: translateY(-1px); border-color: rgba(37,99,235,.24); }
+.market-toggle:hover {
+  background: rgba(255,255,255,.95);
+  border-color: rgba(17,24,39,.12);
+}
 .market-toggle.active {
-  background: #111827;
-  color: #fffaf0;
-  border-color: #111827;
-  box-shadow: rgba(17,24,39,.16) 0 14px 32px;
+  background: #fff;
+  color: #0b1220;
+  border-color: rgba(17,24,39,.22);
+  box-shadow: inset 0 -2px 0 #111827, 0 1px 2px rgba(17,24,39,.06);
 }
 .market-toggle span,
 .active-market-summary span,
@@ -1513,22 +1524,25 @@ body::before {
   letter-spacing: .11em;
 }
 .market-toggle.active span,
-.market-toggle.active em { color: rgba(255,250,240,.7); }
+.market-toggle.active em { color: #667085; }
 .market-toggle strong {
   display: block;
-  margin-top: 8px;
+  margin-top: 5px;
+  max-width: 100%;
+  overflow: visible;
   color: currentColor;
-  font-size: clamp(15px, 1.25vw, 20px);
-  line-height: .98;
-  letter-spacing: -.04em;
+  font-size: clamp(13px, .95vw, 15px);
+  line-height: 1.08;
+  letter-spacing: -.025em;
+  white-space: normal;
 }
 .market-toggle em {
   display: block;
-  margin-top: 8px;
-  color: var(--green);
+  margin-top: 5px;
+  color: #667085;
   font-style: normal;
   font-size: 11px;
-  font-weight: 760;
+  font-weight: 720;
   line-height: 1.2;
 }
 .active-market-summary {
@@ -5463,3 +5477,87 @@ body .validation-focus-card .selected-outreach-state button.contact-state-toggle
   text-decoration: none;
 }
 .zillow-market-link:hover { background: rgba(31, 118, 74, .11); }
+
+/* v1.35 - Market selector: premium segmented rail, no pill soup */
+.builder-ops-header .market-toggle-grid {
+  grid-template-columns: repeat(5, minmax(98px, 1fr)) !important;
+  gap: 1px !important;
+  padding: 4px !important;
+  overflow: hidden !important;
+  border-radius: 15px !important;
+  background: rgba(17,24,39,.055) !important;
+  border: 1px solid rgba(17,24,39,.09) !important;
+}
+.builder-ops-header .market-toggle,
+.builder-ops-header .market-toggle:not(.active) {
+  min-height: 62px !important;
+  padding: 10px 12px 9px !important;
+  border-radius: 11px !important;
+  justify-items: start !important;
+  align-items: start !important;
+  text-align: left !important;
+  background: rgba(255,255,255,.74) !important;
+  color: #475467 !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+.builder-ops-header .market-toggle:hover {
+  background: #fff !important;
+  border-color: rgba(17,24,39,.14) !important;
+}
+.builder-ops-header .market-toggle.active {
+  background: #fff !important;
+  color: #101828 !important;
+  border-color: rgba(17,24,39,.20) !important;
+  box-shadow: inset 0 -2px 0 #101828, 0 1px 2px rgba(17,24,39,.055) !important;
+}
+.builder-ops-header .market-toggle span,
+.builder-ops-header .market-toggle:not(.active) span,
+.builder-ops-header .market-toggle.active span {
+  color: #98a2b3 !important;
+  opacity: 1 !important;
+  font: 820 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  letter-spacing: .14em !important;
+}
+.builder-ops-header .market-toggle strong {
+  display: block !important;
+  margin: 5px 0 0 !important;
+  max-width: none !important;
+  color: currentColor !important;
+  font-size: clamp(12px, .88vw, 14px) !important;
+  font-weight: 790 !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.025em !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+.builder-ops-header .market-toggle em,
+.builder-ops-header .market-toggle:not(.active) em,
+.builder-ops-header .market-toggle.active em {
+  margin: 5px 0 0 !important;
+  color: #667085 !important;
+  font-size: 10.5px !important;
+  font-weight: 760 !important;
+  letter-spacing: .005em !important;
+}
+@media (max-width: 720px) {
+  .builder-ops-header .market-toggle-grid {
+    grid-template-columns: repeat(5, minmax(76px, 1fr)) !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  .builder-ops-header .market-toggle {
+    min-height: 54px !important;
+    padding: 8px 9px !important;
+  }
+  .builder-ops-header .market-toggle strong {
+    display: block !important;
+    font-size: 11px !important;
+  }
+  .builder-ops-header .market-toggle em { font-size: 10px !important; }
+}
+@media (max-width: 430px) {
+  .builder-ops-header .market-toggle-grid { grid-template-columns: repeat(5, minmax(72px, 1fr)) !important; }
+  .builder-ops-header .market-toggle strong { display: none !important; }
+}

@@ -135,8 +135,14 @@ let selectedValidationBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
-let activeView = (location.hash || '#today').replace('#', '') || 'today';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
+
+function hashToView(hash = location.hash) {
+  const view = String(hash || '#today').replace('#', '');
+  return validViews.has(view) ? view : '';
+}
+
+let activeView = hashToView() || 'today';
 
 function loadWorkspace() {
   try {
@@ -220,7 +226,19 @@ function sourceDisclosure(type) {
   </details>`;
 }
 
-function setActiveView(view) {
+function scrollToPageTop() {
+  requestAnimationFrame(() => {
+    const root = document.documentElement;
+    const previousScrollBehavior = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    root.scrollTop = 0;
+    document.body.scrollTop = 0;
+    root.style.scrollBehavior = previousScrollBehavior;
+  });
+}
+
+function setActiveView(view, options = {}) {
   activeView = validViews.has(view) ? view : 'today';
   document.querySelectorAll('.app-panel').forEach(panel => {
     const isActive = panel.dataset.panel === activeView;
@@ -232,6 +250,13 @@ function setActiveView(view) {
     button.classList.toggle('active', isActive);
     button.setAttribute('aria-selected', String(isActive));
   });
+  if (options.scrollToTop) scrollToPageTop();
+}
+
+function navigateToView(view) {
+  if (!validViews.has(view)) return;
+  history.replaceState(null, '', `#${view}`);
+  setActiveView(view, { scrollToTop: true });
 }
 
 function renderAppShell() {
@@ -729,24 +754,6 @@ Regards,
 Okeito`;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
-    <div class="validation-brief">
-      <div class="validation-brief-copy">
-        <span class="eyebrow">Buyer Validation Command Center</span>
-        <h3>Call queue first. Seller search second.</h3>
-        <p>One enriched builder surface for Knoxville: call order, public-source proof, scripts, outreach state, and buy-box capture now live together. The intake floor is 20 unique builders per pull, so seller sourcing is fed by a real buyer sample, not a thin demo list.</p>
-      </div>
-      <aside class="validation-next-card">
-        <span>Next money action</span>
-        <strong>${h(center.next?.name || 'Call queue empty')}</strong>
-        <p>${h(center.next?.validation?.nextAction || 'Load buyer rows.')}</p>
-      </aside>
-      <div class="validation-metrics compact">
-        <div><span>Builders</span><strong>${h(center.summary.total)}</strong></div>
-        <div><span>Callable</span><strong>${h(summary.callablePublicBusinessContacts ?? center.summary.callReady)}</strong></div>
-        <div><span>Review</span><strong>${h(summary.humanReview ?? 0)}</strong></div>
-        <div><span>Signals</span><strong>${h(summary.totalRecentBuildSignals ?? 0)}</strong></div>
-      </div>
-    </div>
     <div class="validation-grid-main">
       <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>proof inline</b><a class="queue-csv-link" href="data/real/knoxville/buyer_call_sheet.csv">CSV</a></div>${queue}</aside>
       <article class="validation-focus-card">
@@ -807,8 +814,8 @@ function renderBuilderListEnginePanel() {
   if (!target) return;
   const builders = getPermitBuilders();
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
+  const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
   const displayedBuilderCount = builders.length || callSheetRows.length;
-  const displayedTopSignal = builders[0]?.score || callSheetRows[0]?.recentBuilds || 0;
   const displayedBatchFloor = knoxvilleBuyerCallSheet?.summary?.minimumUniqueBuilders || 20;
   const selected = getSelectedBuilder(builders) || {};
   const email = generateBuilderEmail(selected);
@@ -816,31 +823,58 @@ function renderBuilderListEnginePanel() {
   const callScript = generateBuilderCallScript(selected);
   const permits = asArray(selected.recentPermits).slice(0, 3);
   const permitLandscape = getPermitPortalLandscape();
+  const stateOrder = ['TN', 'NC', 'TX', 'FL', 'AZ'];
+  const stateLabels = { TN: 'Tennessee', NC: 'North Carolina', TX: 'Texas', FL: 'Florida', AZ: 'Arizona' };
+  const stateSummaries = stateOrder.map((stateCode) => {
+    const markets = asArray(permitLandscape.leadingMarkets).filter(item => item.state === stateCode);
+    const stateMeta = asArray(permitLandscape.states).find(item => item.id === stateCode.toLowerCase()) || {};
+    const isActive = stateCode === 'TN';
+    const builderCount = isActive ? displayedBuilderCount : 0;
+    const status = isActive ? `${displayedBuilderCount} live builders` : 'source setup';
+    const marketLabel = markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
+    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, isActive, builderCount, status, marketLabel };
+  });
+  const stateSwitcher = stateSummaries.map((state) => `<a class="market-toggle ${state.isActive ? 'active' : ''}" href="#market-state-${h(state.stateCode.toLowerCase())}" aria-current="${state.isActive ? 'true' : 'false'}">
+    <span>${h(state.stateCode)}</span>
+    <strong>${h(state.label)}</strong>
+    <em>${h(state.status)}</em>
+  </a>`).join('');
+  const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
+  const marketSummary = `<div class="active-market-summary">
+    <span>Active market</span>
+    <strong>Knoxville / Knox County</strong>
+    <p>${h(activeState?.marketLabel || 'Tennessee')} · 20 unique builders per pull minimum before seller sourcing unlocks.</p>
+    <ul>
+      <li>${h(displayedBuilderCount)} builders</li>
+      <li>${h(displayedBatchFloor)} minimum per pull</li>
+      <li>${h(callSheetSummary.callablePublicBusinessContacts ?? 0)} callable now</li>
+      <li>${h(callSheetSummary.humanReview ?? 0)} contact-research rows</li>
+    </ul>
+  </div>`;
   const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
     <span>${h(adapter.name)}</span>
     <p>${h(adapter.use)}</p>
     <small>${adapter.fields.map(field => h(field)).join(' · ')}</small>
   </article>`).join('');
-  const leadingMarketRows = asArray(permitLandscape.leadingMarkets).map(item => `<article class="priority-market-card">
-    <strong>#${h(item.rank)} · ${h(item.state)}</strong>
-    <b>${h(item.market)}</b>
-    <p>${h(item.reason)}</p>
-  </article>`).join('');
-  const statePortalRows = permitLandscape.states.map(state => `<article class="permit-state-card">
-    <div class="permit-state-head">
-      <div><span>${h(state.state)}</span><p>${h(state.reality)}</p></div>
-      <strong>${h(state.platforms.length)} platforms</strong>
-    </div>
-    <div class="permit-platform-tags">${state.platforms.map(platform => `<em>${h(platform)}</em>`).join('')}</div>
-    <div class="portal-link-list">
-      ${state.portals.map(portal => `<a href="${h(portal.url)}" target="_blank" rel="noopener noreferrer">
+  const statePortalRows = stateSummaries.map(state => {
+    const stateMeta = state.stateMeta || {};
+    const markets = asArray(state.markets).map(item => `<li><b>#${h(item.rank)} · ${h(item.market)}</b><span>${h(item.reason)}</span></li>`).join('');
+    const portals = asArray(stateMeta.portals).map(portal => `<a href="${h(portal.url)}" target="_blank" rel="noopener noreferrer">
         <b>${h(portal.market)}</b>
         <span>${h(portal.jurisdiction)}</span>
         <small>${h(portal.system)}</small>
-      </a>`).join('')}
-    </div>
-    <p class="permit-strategy">${h(state.strategy)}</p>
-  </article>`).join('');
+      </a>`).join('');
+    return `<article id="market-state-${h(state.stateCode.toLowerCase())}" class="permit-state-card target-market-lane ${state.isActive ? 'active' : ''}">
+      <div class="permit-state-head">
+        <div><span>${h(state.label)}</span><p>${h(stateMeta.reality || 'Source lane pending.')}</p></div>
+        <strong>${state.isActive ? `${h(displayedBuilderCount)} builders` : 'next lane'}</strong>
+      </div>
+      <ul class="state-market-list">${markets || '<li><b>Market list pending</b><span>Collect permit-source priority before pulling builders.</span></li>'}</ul>
+      <div class="permit-platform-tags">${asArray(stateMeta.platforms).map(platform => `<em>${h(platform)}</em>`).join('')}</div>
+      <div class="portal-link-list">${portals}</div>
+      <p class="permit-strategy">${h(stateMeta.strategy || '')}</p>
+    </article>`;
+  }).join('');
   const tierRows = permitLandscape.tiers.map(tier => `<article class="normalization-tier">
     <h4>${h(tier.name)}</h4>
     ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
@@ -861,20 +895,18 @@ function renderBuilderListEnginePanel() {
   target.innerHTML = `<div class="builder-engine-shell">
     <section class="builder-ops-header" aria-label="Builder operations summary">
       <div class="builder-ops-title">
-        <span class="eyebrow">Builders · Tennessee-first</span>
-        <h3>Validate the buyers worth calling.</h3>
-        <p><b>Permit market: Knoxville, Tennessee.</b> HQ/contact context is secondary. The operator's job is to turn permit activity into exact buy-box criteria before any seller queue is opened.</p>
+        <span class="eyebrow">Builders · market workbench</span>
+        <h3>Choose the market. Validate the builders.</h3>
+        <p><b>Tennessee is live.</b> Other priority states stay visible as source lanes until their builder batches are collected. Seller geography follows permit evidence and validated buy boxes, not company HQ.</p>
       </div>
-      <div class="builder-ops-metrics">
-        <article><span>Market</span><strong>Knoxville, TN</strong><em>seller geography follows permits</em></article>
-        <article><span>Builders</span><strong>${h(displayedBuilderCount)}</strong><em>${h(displayedBatchFloor)} minimum per pull</em></article>
-        <article><span>Top signal</span><strong>${h(displayedTopSignal)}</strong><em>recent permits/builds</em></article>
-        <article><span>Gate</span><strong>Buy box</strong><em>no criteria, no seller calls</em></article>
+      <div class="builder-market-workbench" aria-label="Prioritized target markets">
+        <div class="market-toggle-grid">${stateSwitcher}</div>
+        ${marketSummary}
       </div>
       <nav class="builder-ops-jump" aria-label="Builder page sections">
-        <a href="#buyer-validation-command">Call queue</a>
+        <a href="#buyer-validation-command">Builder queue</a>
+        <a href="#market-state-tn">State lanes</a>
         ${builders.length ? '<a href="#builder-evidence-desk">Permit evidence</a>' : ''}
-        <a href="#permit-landscape">Market sources</a>
       </nav>
     </section>
 
@@ -925,12 +957,10 @@ function renderBuilderListEnginePanel() {
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
         <div class="panel-kicker"><span>Permit portal landscape</span><b>five-state normalization map</b></div>
         <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>
-        <h4>Lead-generation priority stack</h4>
-        <div class="priority-market-grid">${leadingMarketRows}</div>
+        <h4>Target-state lanes</h4>
+        <div class="permit-state-grid market-lane-grid">${statePortalRows}</div>
         <h4>Source adapter checklist</h4>
         <div class="adapter-grid">${adapterRows}</div>
-        <h4>Target-state portals to monitor</h4>
-        <div class="permit-state-grid">${statePortalRows}</div>
         <h4>Normalization playbook</h4>
         <div class="normalization-grid">${tierRows}</div>
       </article>
@@ -1587,8 +1617,7 @@ function bindEvents() {
       const view = viewButton.dataset.view;
       if (validViews.has(view)) {
         event.preventDefault();
-        history.replaceState(null, '', `#${view}`);
-        setActiveView(view);
+        navigateToView(view);
       }
       return;
     }
@@ -1998,7 +2027,8 @@ ${body}`;
   }, true);
 
   window.addEventListener('hashchange', () => {
-    setActiveView((location.hash || '#today').replace('#', ''));
+    const view = hashToView();
+    if (view) setActiveView(view, { scrollToTop: true });
   });
 }
 

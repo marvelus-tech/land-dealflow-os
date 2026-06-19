@@ -673,7 +673,12 @@ h3, h4 { letter-spacing: -.035em; }
 .permit-landscape-summary { margin: -4px 0 16px; color: var(--muted); line-height: 1.45; max-width: 980px; }
 .builder-adapter-panel h4 { margin: 18px 0 10px; font-size: 14px; letter-spacing: .02em; text-transform: uppercase; color: var(--brand-dark); }
 .permit-state-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-.permit-state-card { padding: 16px; border: 1px solid var(--line-soft); border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,229,.8)); }
+.permit-state-card { padding: 16px; border: 1px solid var(--line-soft); border-radius: 20px; background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,242,229,.8)); scroll-margin-top: 96px; }
+.permit-state-card.target-market-lane.active { border-color: rgba(37,99,235,.24); background: linear-gradient(180deg, #fff 0%, #f4f8ff 100%); box-shadow: rgba(37,99,235,.08) 0 18px 44px; }
+.state-market-list { display: grid; gap: 8px; margin: 14px 0 12px; padding: 0; list-style: none; }
+.state-market-list li { padding: 10px; border-radius: 14px; background: rgba(255,255,255,.74); border: 1px solid var(--line-soft); }
+.state-market-list b { display: block; color: var(--black); font-size: 13px; line-height: 1.2; }
+.state-market-list span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.35; }
 .permit-state-head { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
 .permit-state-head span { color: var(--black); font-size: 17px; font-weight: 900; }
 .permit-state-head p { margin-top: 5px; color: var(--muted); line-height: 1.35; font-size: 13px; }
@@ -1467,21 +1472,39 @@ body::before {
   letter-spacing: -.025em;
 }
 .builder-ops-title p b { color: var(--black); }
-.builder-ops-metrics {
+.builder-market-workbench {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-}
-.builder-ops-metrics article {
+  gap: 10px;
   min-width: 0;
-  min-height: 110px;
-  padding: 14px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, #fff 0%, #f7f2e8 100%);
-  border: 1px solid var(--line-soft);
 }
-.builder-ops-metrics span,
-.validation-next-card span,
+.market-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+}
+.market-toggle {
+  min-width: 0;
+  min-height: 82px;
+  padding: 11px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+  color: var(--black);
+  background: rgba(255,255,255,.76);
+  border: 1px solid var(--line-soft);
+  text-decoration: none;
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+.market-toggle:hover { transform: translateY(-1px); border-color: rgba(37,99,235,.24); }
+.market-toggle.active {
+  background: #111827;
+  color: #fffaf0;
+  border-color: #111827;
+  box-shadow: rgba(17,24,39,.16) 0 14px 32px;
+}
+.market-toggle span,
+.active-market-summary span,
 .compact-call-sheet summary span {
   display: block;
   color: var(--muted);
@@ -1489,23 +1512,42 @@ body::before {
   text-transform: uppercase;
   letter-spacing: .11em;
 }
-.builder-ops-metrics strong {
+.market-toggle.active span,
+.market-toggle.active em { color: rgba(255,250,240,.7); }
+.market-toggle strong {
   display: block;
   margin-top: 8px;
-  color: var(--black);
-  font-size: clamp(18px, 1.8vw, 26px);
-  line-height: .96;
-  letter-spacing: -.045em;
+  color: currentColor;
+  font-size: clamp(15px, 1.25vw, 20px);
+  line-height: .98;
+  letter-spacing: -.04em;
 }
-.builder-ops-metrics em {
+.market-toggle em {
   display: block;
-  margin-top: 9px;
+  margin-top: 8px;
   color: var(--green);
   font-style: normal;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 760;
-  line-height: 1.25;
+  line-height: 1.2;
 }
+.active-market-summary {
+  padding: 14px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(247,250,255,.9));
+  border: 1px solid rgba(37,99,235,.14);
+}
+.active-market-summary strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--black);
+  font-size: clamp(22px, 2.3vw, 32px);
+  line-height: .96;
+  letter-spacing: -.055em;
+}
+.active-market-summary p { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.34; }
+.active-market-summary ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+.active-market-summary li { padding: 6px 8px; border-radius: 999px; background: rgba(37,99,235,.08); color: var(--brand-dark); font-size: 11px; font-weight: 820; }
 .builder-ops-jump {
   grid-column: 1 / -1;
   display: flex;
@@ -1652,26 +1694,21 @@ body::before {
 .builder-support-tools { opacity: .96; }
 
 @media (max-width: 1100px) {
-  .builder-ops-header, .validation-brief, .validation-grid-main { grid-template-columns: 1fr; }
-  .builder-ops-metrics, .validation-metrics.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .builder-ops-header, .validation-grid-main { grid-template-columns: 1fr; }
+  .market-toggle-grid { grid-template-columns: repeat(5, minmax(88px, 1fr)); overflow-x: auto; padding-bottom: 2px; }
 }
 @media (max-width: 720px) {
   .builder-ops-header { padding: 18px; border-radius: 24px; }
   .builder-ops-title h3 { font-size: clamp(34px, 12vw, 48px); }
-  .builder-ops-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .builder-ops-metrics article { min-height: 96px; padding: 12px; }
+  .market-toggle { min-height: 78px; }
   .builder-ops-jump a { flex: 1 1 auto; }
-  .validation-command { padding: 14px; border-radius: 24px; }
-  .validation-brief-copy h3 { font-size: clamp(32px, 11vw, 44px); }
-  .validation-next-card { min-height: 132px; }
-  .validation-metrics.compact, .war-room-metrics.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .validation-command { padding: 10px; border-radius: 24px; }
   .validation-form { grid-template-columns: 1fr; }
   .compact-call-sheet summary { grid-template-columns: 1fr; }
   .compact-call-sheet summary em { grid-column: 1; grid-row: auto; margin-left: 38px; }
 }
 @media (max-width: 430px) {
-  .builder-ops-metrics { grid-template-columns: 1fr; }
-  .validation-metrics.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .market-toggle-grid { grid-template-columns: repeat(5, minmax(96px, 1fr)); }
 }
 
 

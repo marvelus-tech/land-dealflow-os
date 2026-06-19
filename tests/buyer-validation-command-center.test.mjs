@@ -99,8 +99,21 @@ assert.doesNotMatch(stylesSource, /vendor-chip-grid|builder-vendor-panel/, 'dele
 assert.doesNotMatch(appSource, /renderKnoxvilleBuyerCallSheet|Source-backed call sheet|buyer-call-sheet-list/, 'duplicate source-backed call sheet section must be removed after consolidation');
 assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');
+assert.match(appSource, /function hashToView\(hash = location\.hash\)/, 'router should parse only valid app-route hashes');
+assert.match(appSource, /function scrollToPageTop\(\)[\s\S]{0,260}root\.style\.scrollBehavior = 'auto';[\s\S]{0,180}window\.scrollTo\(0, 0\)/, 'page transitions should reset visitors immediately to the top of the destination page');
+assert.match(appSource, /function navigateToView\(view\)[\s\S]{0,180}setActiveView\(view, \{ scrollToTop: true \}\)/, 'data-view navigation should centralize top-scroll behavior');
+assert.match(appSource, /const view = hashToView\(\);\n    if \(view\) setActiveView\(view, \{ scrollToTop: true \}\);/, 'hashchange should only switch panels for valid app routes and leave same-page anchors alone');
+assert.match(appSource, /navigateToView\(view\)/, 'clicking app navigation should use the scroll-safe route helper');
 assert.match(appSource, /20 unique builders per pull/, 'Builders UX should explain the 20-builder minimum pull');
-assert.match(appSource, /minimum per pull/, 'Builders metric should expose the batch floor');
+assert.match(appSource, /minimum per pull/, 'Builders market summary should expose the batch floor without a duplicate stat band');
+assert.doesNotMatch(appSource, />Next money action<|NEXT MONEY ACTION/, 'Builders page must not repeat selected-builder guidance in a separate Next Money Action card');
+assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action card component should stay removed');
+assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'second hero headline should stay removed; the page needs one top command header');
+assert.match(appSource, /builder-market-workbench/, 'top Builders IA should be a market workbench, not a static metric strip');
+assert.match(appSource, /market-toggle-grid/, 'priority states should be exposed as top-level market toggles');
+assert.match(appSource, /stateOrder = \['TN', 'NC', 'TX', 'FL', 'AZ'\]/, 'market toggles should expose all prioritized states in order');
+assert.match(appSource, /market-state-\$\{h\(state\.stateCode\.toLowerCase\(\)\)\}/, 'state lanes must generate addressable anchors from state codes');
+assert.match(appSource, /state-market-list/, 'each state lane should carry its own priority market list');
 assert.doesNotMatch(appSource, /top-10 demo list|top 10 Knoxville/, 'Builders pipeline must not frame itself as a top-10 pull');
 
 assert.match(appSource, /mailto:\$\{h\(selected\.email\)\}\?subject=\$\{encodeURIComponent\(validationEmailSubject\)\}&body=\$\{encodeURIComponent\(validationEmailBody\)\}/, 'Draft email mailto must prefill subject and body');

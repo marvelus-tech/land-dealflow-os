@@ -75,8 +75,12 @@ assert.match(appSource, /data-select-validation-builder/, 'validation queue rows
 assert.match(appSource, /dataset\.selectValidationBuilder/, 'validation queue click handler must persist the selected validation row');
 assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-select-builder=/, 'validation rows must not use the permit-builder selector or they reset to the top row');
 assert.match(appSource, /data-copy-validation-email/, 'validation focus card must expose a Copy email action next to Draft email');
-assert.match(appSource, /data-toggle-validation-contact="phone"/, 'validation rows must expose a called/not-called contact state toggle');
-assert.match(appSource, /data-toggle-validation-contact="email"/, 'validation rows must expose an emailed/not-emailed contact state toggle');
+assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-validation-contact="phone"/, 'selected builder phone state badge must be the toggle');
+assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'selected builder email state badge must be the toggle');
+assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="phone"/, 'queue phone state must be a compact icon toggle');
+assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'queue email state must be a compact icon toggle');
+assert.doesNotMatch(appSource, /contact-action/, 'selected builder must not duplicate outreach state with separate logged buttons');
+assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'outreach controls should be compressed into state badges/icons');
 assert.match(appSource, /scoreBreakdownRows/, 'validation score must expose progressive-disclosure breakdown rows');
 assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');

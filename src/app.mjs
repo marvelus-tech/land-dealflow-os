@@ -529,10 +529,19 @@ function validationOutreach(row = {}) {
 
 function validationOutreachLabel(row = {}) {
   const state = validationOutreach(row);
-  if (state.phone && state.email) return 'Called + emailed';
+  if (state.phone && state.email) return 'Contacted';
   if (state.phone) return 'Called';
-  if (state.email) return 'Email sent';
-  return 'To call';
+  if (state.email) return 'Emailed';
+  return 'Not contacted';
+}
+
+function outreachToggleLabel(channel, active, at = '') {
+  if (channel === 'phone') return active ? `Called${at ? ` ${at}` : ''}` : 'Phone not logged';
+  return active ? `Email sent${at ? ` ${at}` : ''}` : 'Email not logged';
+}
+
+function outreachIcon(channel) {
+  return channel === 'phone' ? '☎' : '✉';
 }
 
 function scoreBreakdownText(row = {}) {
@@ -599,8 +608,8 @@ function renderBuyerValidationCommandCenter() {
         <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
       </button>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
-        <button type="button" class="contact-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}">${outreach.phone ? 'Called' : 'Mark called'}</button>
-        <button type="button" class="contact-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}">${outreach.email ? 'Email sent' : 'Mark emailed'}</button>
+        <button type="button" class="contact-icon-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Phone not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span></button>
+        <button type="button" class="contact-icon-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Email not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span></button>
         ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'validation locked', tone)}
       </div>
     </article>`;
@@ -652,15 +661,13 @@ Okeito`;
           </details>
         </div>
         <div class="selected-outreach-state" aria-label="Selected builder outreach state">
-          <span class="contact-state ${selectedOutreach.phone ? 'is-on' : ''}">${selectedOutreach.phone ? `Called ${h(selectedOutreach.phoneAt || '')}` : 'Phone not logged'}</span>
-          <span class="contact-state ${selectedOutreach.email ? 'is-on' : ''}">${selectedOutreach.email ? `Email sent ${h(selectedOutreach.emailAt || '')}` : 'Email not logged'}</span>
+          <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('phone')}</span>${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}</button>
+          <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
         </div>
         <div class="validation-actions">
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">Call office</a>
           <a class="validation-call-button secondary ${selected.email ? '' : 'disabled'}" href="${mailHref}">Draft email</a>
           <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>Copy email</button>
-          <button type="button" class="validation-call-button contact-action ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}">${selectedOutreach.phone ? 'Called logged' : 'I called them'}</button>
-          <button type="button" class="validation-call-button contact-action ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}">${selectedOutreach.email ? 'Email logged' : 'I contacted them by email'}</button>
           ${selected.sourceUrl ? safeLink(selected.sourceUrl, 'Source proof', 'validation-call-button secondary') : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>

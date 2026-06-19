@@ -3930,3 +3930,147 @@ section.app-panel[hidden],
     padding-left: 0 !important;
   }
 }
+
+/* v1.42 — ruthless outreach compression: badge-as-button + icon-only queue state */
+.selected-outreach-state {
+  gap: 8px !important;
+  margin-top: 12px !important;
+}
+.contact-state-toggle {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  min-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 0 13px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(16,18,20,.14) !important;
+  background: #fff !important;
+  background-image: none !important;
+  color: #2f3740 !important;
+  font-size: 12px !important;
+  font-weight: 820 !important;
+  letter-spacing: .01em !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+.contact-state-toggle:hover {
+  transform: none !important;
+  border-color: rgba(31,91,255,.42) !important;
+  color: #1f5bff !important;
+}
+.contact-state-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(31,91,255,.14) !important;
+}
+.contact-state-toggle.is-on {
+  background: rgba(31,91,255,.09) !important;
+  border-color: rgba(31,91,255,.38) !important;
+  color: #1748d8 !important;
+}
+.contact-state-toggle span,
+.contact-icon-toggle span {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  line-height: 1 !important;
+}
+.validation-actions {
+  margin-top: 14px !important;
+}
+.validation-queue .queue-state-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 5px !important;
+  padding-left: 42px !important;
+  min-height: 26px !important;
+}
+.validation-queue button.contact-icon-toggle {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  min-height: 26px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(16,18,20,.12) !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #8b949f !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  cursor: pointer !important;
+}
+.validation-queue button.contact-icon-toggle:hover {
+  transform: none !important;
+  color: #1f5bff !important;
+  border-color: rgba(31,91,255,.42) !important;
+}
+.validation-queue button.contact-icon-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(31,91,255,.14) !important;
+}
+.validation-queue button.contact-icon-toggle.is-on {
+  background: #1f5bff !important;
+  background-color: #1f5bff !important;
+  background-image: none !important;
+  border-color: #1f5bff !important;
+  color: #fff !important;
+}
+.validation-queue .queue-state-row .badge {
+  min-height: 24px !important;
+  padding: 5px 7px !important;
+  font-size: 9px !important;
+  letter-spacing: .055em !important;
+}
+@media (max-width: 520px) {
+  .selected-outreach-state {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .contact-state-toggle {
+    width: 100% !important;
+    padding: 0 10px !important;
+    font-size: 11px !important;
+  }
+  .validation-queue .queue-state-row {
+    justify-content: center !important;
+    padding-left: 0 !important;
+  }
+}
+
+/* v1.43 — selected outreach badges must not inherit primary CTA button styling */
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle:visited,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle:hover,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle:focus {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  min-height: 36px !important;
+  padding: 0 13px !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(16,18,20,.14) !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #2f3740 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle.is-on,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle.is-on:hover,
+body .validation-focus-card .selected-outreach-state button.contact-state-toggle.is-on:focus {
+  background: rgba(31,91,255,.09) !important;
+  background-color: rgba(31,91,255,.09) !important;
+  background-image: none !important;
+  border-color: rgba(31,91,255,.38) !important;
+  color: #1748d8 !important;
+  box-shadow: none !important;
+}

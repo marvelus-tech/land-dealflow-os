@@ -4439,3 +4439,420 @@ aside.validation-queue {
   .queue-proof-line { padding-left: 62px; padding-right: 10px; }
   .selected-permit-proof li { grid-template-columns: 1fr; gap: 4px; }
 }
+
+/* v1.47 — Sources evidence room: priority map + floating source inspector */
+#sources-hub > .section-heading {
+  max-width: 1040px !important;
+  padding: clamp(26px, 4vw, 44px) 0 18px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#sources-hub > .section-heading .eyebrow { color: #1f5bff !important; }
+#sources-hub > .section-heading h2 {
+  max-width: 760px !important;
+  color: #101418 !important;
+  font-size: clamp(42px, 6vw, 76px) !important;
+  letter-spacing: -.07em !important;
+  line-height: .9 !important;
+}
+#sources-hub > .section-heading p {
+  max-width: 620px !important;
+  color: rgba(16,20,24,.58) !important;
+  font-size: clamp(16px, 1.5vw, 19px) !important;
+  line-height: 1.45 !important;
+}
+.source-market-priority {
+  margin: 10px 0 26px;
+  padding: clamp(22px, 3vw, 34px) 0;
+  border-top: 1px solid rgba(16,20,24,.09);
+  border-bottom: 1px solid rgba(16,20,24,.09);
+}
+.source-priority-head {
+  display: grid;
+  grid-template-columns: minmax(280px, .8fr) minmax(320px, 1fr);
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+.source-priority-head .eyebrow { color: #1f5bff !important; grid-column: 1 / -1; }
+.source-priority-head h3 {
+  margin: 0;
+  max-width: 520px;
+  color: #101418;
+  font-size: clamp(28px, 3.2vw, 48px);
+  line-height: .96;
+  letter-spacing: -.055em;
+}
+.source-priority-head p {
+  margin: 0;
+  color: rgba(16,20,24,.58);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.source-priority-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, .95fr) minmax(320px, 1.25fr) minmax(240px, .7fr);
+  gap: 18px;
+  align-items: start;
+}
+.priority-lane,
+.priority-stack {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.priority-lane > span,
+.priority-stack > span {
+  color: rgba(16,20,24,.42);
+  font: 820 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.priority-market {
+  padding: 14px 0;
+  border-top: 1px solid rgba(16,20,24,.085);
+}
+.priority-market:first-of-type { border-top-color: rgba(31,91,255,.22); }
+.priority-market span {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(16,20,24,.45);
+  font: 760 11px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.priority-market.is-primary span { color: #1f5bff; }
+.priority-market b {
+  display: block;
+  color: #101418;
+  font-size: 17px;
+  line-height: 1.1;
+  letter-spacing: -.025em;
+}
+.priority-market p {
+  margin: 7px 0 0;
+  color: rgba(16,20,24,.56);
+  font-size: 13px;
+  line-height: 1.38;
+}
+.priority-stack article {
+  display: grid;
+  gap: 8px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(16,20,24,.085);
+}
+.priority-stack article > span {
+  color: #101418;
+  font: 820 12px/1.1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.priority-source-link {
+  color: rgba(16,20,24,.74);
+  text-decoration: none;
+  font-weight: 760;
+  font-size: 14px;
+}
+.priority-source-link:hover { color: #1f5bff; text-decoration: underline; }
+#sources-hub .pipeline {
+  grid-template-columns: repeat(7, minmax(142px, 1fr)) !important;
+  gap: 0 !important;
+  margin-top: 10px;
+  overflow: visible !important;
+}
+#sources-hub .stage {
+  min-height: 188px !important;
+  padding: 20px 16px 18px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  border-left: 1px solid rgba(16,20,24,.08) !important;
+}
+#sources-hub .stage:first-child { border-left: 0 !important; }
+#sources-hub .stage > span {
+  color: rgba(16,20,24,.45) !important;
+  font: 820 12px/1 ui-monospace, SFMono-Regular, Menlo, monospace !important;
+  letter-spacing: .12em !important;
+}
+#sources-hub .stage strong {
+  margin-top: 26px !important;
+  color: #101418 !important;
+  font-size: clamp(22px, 2vw, 32px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.055em !important;
+}
+#sources-hub .stage p {
+  margin-top: 12px !important;
+  min-height: 0 !important;
+  color: rgba(16,20,24,.56) !important;
+  font-size: 14px !important;
+  line-height: 1.35 !important;
+}
+#sources-hub .source-disclosure {
+  position: relative !important;
+  margin-top: 20px !important;
+  overflow: visible !important;
+}
+#sources-hub .source-disclosure summary {
+  min-height: 54px !important;
+  display: grid !important;
+  grid-template-columns: 30px minmax(0, 1fr) auto !important;
+  gap: 10px !important;
+  align-items: center !important;
+  padding: 10px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(16,20,24,.11) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#sources-hub .source-disclosure summary::-webkit-details-marker { display: none; }
+#sources-hub .source-disclosure summary::before {
+  content: '⌄';
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(31,91,255,.08);
+  color: #1f5bff;
+  font-weight: 900;
+}
+#sources-hub .source-disclosure[open] summary::before { transform: rotate(180deg); }
+#sources-hub .source-disclosure summary span {
+  display: none !important;
+}
+#sources-hub .source-disclosure summary b {
+  grid-column: 2 !important;
+  color: #101418 !important;
+  font-size: 14px !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.02em !important;
+}
+#sources-hub .source-disclosure summary em {
+  grid-column: 3 !important;
+  justify-self: end !important;
+  color: rgba(16,20,24,.48) !important;
+  font-size: 13px !important;
+}
+#sources-hub .source-disclosure[open] summary {
+  border-color: rgba(31,91,255,.36) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#sources-hub .source-popover {
+  position: absolute !important;
+  z-index: 60 !important;
+  left: 50% !important;
+  top: auto !important;
+  bottom: calc(100% + 12px) !important;
+  transform: translateX(-50%) !important;
+  width: min(340px, 84vw) !important;
+  margin: 0 !important;
+  display: grid !important;
+  gap: 12px !important;
+  padding: 14px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(16,20,24,.12) !important;
+  background: rgba(255,255,255,.98) !important;
+  box-shadow: 0 22px 60px rgba(16,20,24,.16) !important;
+  color: #101418 !important;
+}
+#sources-hub .source-popover::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -7px;
+  width: 12px;
+  height: 12px;
+  transform: translateX(-50%) rotate(45deg);
+  background: rgba(255,255,255,.98);
+  border-right: 1px solid rgba(16,20,24,.12);
+  border-bottom: 1px solid rgba(16,20,24,.12);
+}
+#sources-hub .stage:nth-child(n + 5) .source-popover {
+  left: auto !important;
+  right: 0 !important;
+  transform: none !important;
+}
+#sources-hub .stage:nth-child(n + 5) .source-popover::after { left: auto; right: 24px; }
+.source-popover-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(16,20,24,.08);
+}
+.source-popover-head span,
+.source-id-foot span {
+  color: #1f5bff;
+  font: 820 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.source-popover-head b {
+  color: rgba(16,20,24,.78);
+  font-size: 12px;
+}
+#sources-hub .source-popover strong {
+  margin: 0 0 6px !important;
+  color: #101418 !important;
+  font-size: 13px !important;
+  letter-spacing: -.01em;
+}
+#sources-hub .source-popover ul {
+  margin-left: 16px !important;
+  color: rgba(16,20,24,.60) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+#sources-hub .source-popover p {
+  margin: 0 !important;
+  color: rgba(16,20,24,.60) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+.source-id-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  align-items: baseline;
+  padding-top: 10px;
+  border-top: 1px solid rgba(16,20,24,.08);
+  color: rgba(16,20,24,.48);
+  font-size: 11px;
+}
+.source-id-foot code {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: rgba(16,20,24,.52) !important;
+  font-size: 11px !important;
+  overflow-wrap: anywhere;
+}
+#sources-hub .source-page-section > summary strong { letter-spacing: -.02em; }
+@media (max-width: 1120px) {
+  .source-priority-head,
+  .source-priority-grid { grid-template-columns: 1fr !important; }
+  #sources-hub .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  #sources-hub .stage:nth-child(odd) { border-left: 0 !important; }
+}
+@media (max-width: 760px) {
+  #sources-hub > .section-heading h2 { font-size: clamp(38px, 13vw, 58px) !important; }
+  #sources-hub .pipeline { grid-template-columns: 1fr !important; }
+  #sources-hub .stage { min-height: auto !important; border-left: 0 !important; border-top: 1px solid rgba(16,20,24,.08) !important; }
+  #sources-hub .source-popover {
+    position: static !important;
+    transform: none !important;
+    width: auto !important;
+    margin-top: 10px !important;
+    box-shadow: 0 12px 34px rgba(16,20,24,.12) !important;
+  }
+  #sources-hub .source-popover::after { display: none !important; }
+}
+
+/* v1.47b — Sources mobile overflow fix after visual QA */
+#sources-hub,
+#sources-hub * {
+  box-sizing: border-box;
+}
+#sources-hub {
+  overflow-x: clip !important;
+}
+#sources-hub .weekly-market-scout,
+#sources-hub .weekly-market-card,
+#sources-hub .weekly-market-head,
+#sources-hub .weekly-market-grid,
+#sources-hub .weekly-market-grid > div,
+#sources-hub .criterion-row,
+#sources-hub .engine-row,
+#sources-hub .source-market-priority,
+#sources-hub .source-priority-grid,
+#sources-hub .priority-lane,
+#sources-hub .priority-stack,
+#sources-hub .priority-market,
+#sources-hub .pipeline,
+#sources-hub .stage {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+#sources-hub :where(.weekly-market-card, .weekly-market-grid > div, .criterion-row, .engine-row, .priority-market, .stage) {
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+#sources-hub .weekly-market-card {
+  overflow: hidden !important;
+}
+#sources-hub .weekly-market-grid {
+  width: 100% !important;
+}
+#sources-hub .weekly-market-grid > div {
+  width: 100% !important;
+}
+#sources-hub .criterion-row span,
+#sources-hub .engine-row span,
+#sources-hub .weekly-market-grid p {
+  white-space: normal !important;
+}
+@media (max-width: 760px) {
+  #sources-hub .weekly-market-scout { margin-top: 18px !important; }
+  #sources-hub .weekly-market-card {
+    padding: 20px !important;
+    border-radius: 10px !important;
+  }
+  #sources-hub .weekly-market-head,
+  #sources-hub .weekly-market-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 12px !important;
+  }
+  #sources-hub .weekly-market-head h3 {
+    font-size: clamp(26px, 8vw, 34px) !important;
+    line-height: 1.02 !important;
+  }
+  #sources-hub .weekly-market-head p {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
+  #sources-hub .weekly-market-grid > div {
+    padding: 14px !important;
+    border-radius: 8px !important;
+  }
+  #sources-hub .weekly-market-grid h4 {
+    font-size: 16px !important;
+  }
+  #sources-hub .engine-row b {
+    font-size: 17px !important;
+    line-height: 1.08 !important;
+  }
+  #sources-hub .criterion-row b {
+    font-size: 13px !important;
+  }
+  #sources-hub .criterion-row span,
+  #sources-hub .engine-row span {
+    font-size: 11px !important;
+    letter-spacing: .08em !important;
+  }
+}
+
+/* v1.47c — keep desktop source inspectors unclipped; tighten pipeline labels */
+#sources-hub {
+  overflow-x: visible !important;
+}
+#sources-hub .pipeline {
+  overflow: visible !important;
+}
+#sources-hub .stage strong {
+  font-size: clamp(20px, 1.65vw, 28px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.05em !important;
+}
+@media (max-width: 760px) {
+  #sources-hub { overflow-x: clip !important; }
+}

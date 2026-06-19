@@ -72,13 +72,13 @@ const seedPermitRecords = [];
 const seedParcels = [];
 
 const stages = [
-  { id: 'market', name: 'Market Finder', desc: 'Score zip codes/suburbs for new builds, builders, vacant lot velocity and lot standardization.', sourceType: 'market' },
-  { id: 'buyer', name: 'Buyer Finder', desc: 'Find builders, land acquisition managers and repeat buyers. Capture exact buy boxes.', sourceType: 'buyer' },
-  { id: 'parcel', name: 'Land Finder', desc: 'Find vacant parcels matching buyer criteria, then filter for equity and owner motivation.', sourceType: 'parcel' },
-  { id: 'owner', name: 'Owner Contact', desc: 'Find owner phone, email, mailing address and confidence score.', sourceType: 'owner' },
-  { id: 'offer', name: 'Offer Engine', desc: 'Price initial/max/kill offers from builder demand and seller net logic.', sourceType: 'offer' },
-  { id: 'risk', name: 'Risk Filter', desc: 'Flag wetlands, flood, slope, utilities, wildlife, access and zoning before contracts.', sourceType: 'risk' },
-  { id: 'crm', name: 'Outreach CRM', desc: 'Track calls, mailers, contracts, title handoff, seller updates and referrals.', sourceType: 'crm' },
+  { id: 'market', name: 'Market Finder', desc: 'Where to hunt first.', sourceType: 'market' },
+  { id: 'buyer', name: 'Buyer Finder', desc: 'Who is actively building.', sourceType: 'buyer' },
+  { id: 'parcel', name: 'Land Finder', desc: 'Lots matching demand.', sourceType: 'parcel' },
+  { id: 'owner', name: 'Owner Contact', desc: 'Reachable seller proof.', sourceType: 'owner' },
+  { id: 'offer', name: 'Offer Engine', desc: 'Price, spread, kill line.', sourceType: 'offer' },
+  { id: 'risk', name: 'Risk Filter', desc: 'Buildability blockers.', sourceType: 'risk' },
+  { id: 'crm', name: 'Outreach CRM', desc: 'Calls and follow-up.', sourceType: 'crm' },
 ];
 
 const sourceBlueprint = {
@@ -201,17 +201,16 @@ function getPhaseSourceStatus(type) {
 function sourceDisclosure(type) {
   const blueprint = sourceBlueprint[type] || sourceBlueprint.market;
   const status = getPhaseSourceStatus(type);
-  const sourceText = blueprint.sources.map(item => `<li>${h(item)}</li>`).join('');
-  const fieldText = blueprint.fields.map(item => `<li>${h(item)}</li>`).join('');
-  const sourceIdText = status.ids.length ? status.ids.map(id => `<code>${h(id)}</code>`).join(' ') : '<span>derived/local</span>';
+  const sourceText = blueprint.sources.slice(0, 2).map(item => `<li>${h(item)}</li>`).join('');
+  const fieldText = blueprint.fields.slice(0, 5).join(' · ');
+  const sourceIdText = status.ids.length ? status.ids.slice(0, 2).map(id => `<code>${h(id)}</code>`).join(' ') : '<span>derived/local</span>';
   return `<details class="source-disclosure" data-source-type="${h(type)}">
-    <summary><span>Source</span><b>${h(blueprint.label)}</b><em>${h(status.count)} records</em></summary>
-    <div class="source-popover">
-      <div class="source-meta"><span>Last sourced</span><b>${formatDateTime(status.latest)}</b></div>
-      <div class="source-meta"><span>Records visible</span><b>${h(status.count)}</b></div>
-      <div class="source-meta wide"><span>Source IDs</span><b>${sourceIdText}</b></div>
+    <summary><span>Source</span><b>${h(blueprint.label)}</b><em>${h(status.count)}</em></summary>
+    <div class="source-popover" role="note">
+      <div class="source-popover-head"><span>${h(status.count)} records</span><b>${formatDateTime(status.latest)}</b></div>
       <div><strong>Pulls from</strong><ul>${sourceText}</ul></div>
-      <div><strong>Fields used here</strong><ul>${fieldText}</ul></div>
+      <div><strong>Fields</strong><p>${h(fieldText)}</p></div>
+      <div class="source-id-foot"><span>IDs</span>${sourceIdText}</div>
     </div>
   </details>`;
 }
@@ -989,6 +988,33 @@ function renderParcels() {
       <div class="tags">${selected.reasons.map(r => badge(r, 'good')).join('')}${selected.flags.length ? selected.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
     </aside>
   </div>`;
+}
+
+function renderSourcePriorityBoard() {
+  const target = document.querySelector('#source-priority-board');
+  if (!target) return;
+  const landscape = getPermitPortalLandscape();
+  const leading = asArray(landscape.leadingMarkets).slice(0, 8);
+  const tnMarkets = leading.filter(item => item.state === 'TN');
+  const nextMarkets = leading.filter(item => item.state !== 'TN');
+  const tierRows = asArray(landscape.tiers).slice(0, 2).map(tier => `<article><span>${h(tier.name.replace(/^Tier \d+ — /, ''))}</span>${asArray(tier.items).slice(0, 3).map(item => safeLink(item.url, item.label, 'priority-source-link')).join('')}</article>`).join('');
+  const marketCard = item => `<article class="priority-market ${item.state === 'TN' ? 'is-primary' : ''}">
+    <span>${String(item.rank).padStart(2, '0')} · ${h(item.state)}</span>
+    <b>${h(item.market)}</b>
+    <p>${h(item.reason)}</p>
+  </article>`;
+  target.innerHTML = `<section class="source-market-priority" aria-label="Priority permit portal markets">
+    <div class="source-priority-head">
+      <span class="eyebrow">Permit-source priority</span>
+      <h3>TN first. Then NC, TX, inland FL, AZ.</h3>
+      <p>No statewide permit database exists in these states. Lead generation follows the portal stack: aggregator first, direct county/city second, macro data last.</p>
+    </div>
+    <div class="source-priority-grid">
+      <div class="priority-lane primary"><span>Now</span>${tnMarkets.map(marketCard).join('')}</div>
+      <div class="priority-lane"><span>Next</span>${nextMarkets.map(marketCard).join('')}</div>
+      <div class="priority-stack"><span>Normalize with</span>${tierRows}</div>
+    </div>
+  </section>`;
 }
 
 function renderPipeline() {
@@ -1894,6 +1920,7 @@ function renderAll() {
   renderWorkspaceTools();
   renderSkipTraceIntakePanel();
   renderBuyerContactIntakePanel();
+  renderSourcePriorityBoard();
   renderPipeline();
   renderMarkets();
   renderBuyers();

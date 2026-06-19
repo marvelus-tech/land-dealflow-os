@@ -920,7 +920,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   }).join('');
   const contactParts = [
     selected.phone ? h(selected.phone) : '',
-    selected.email ? `<button type="button" class="copy-builder-email-address" data-copy-builder-email-address="${h(selected.email)}" title="Copy ${h(selected.email)}">${h(selected.email)}</button>` : '',
+    selected.email ? `<a href="#" class="copy-builder-email-address" data-copy-builder-email-address="${h(selected.email)}" title="Copy ${h(selected.email)}">${h(selected.email)}</a>` : '',
   ].filter(Boolean);
   const contact = contactParts.join(' · ') || 'Public business contact unresolved';
   const selectedOutreach = validationOutreach(selected);
@@ -2038,6 +2038,7 @@ function bindEvents() {
 
     const copyBuilderEmailAddressButton = event.target.closest('[data-copy-builder-email-address]');
     if (copyBuilderEmailAddressButton) {
+      event.preventDefault();
       const email = copyBuilderEmailAddressButton.dataset.copyBuilderEmailAddress || '';
       if (!email) return;
       const status = copyBuilderEmailAddressButton.closest('.validation-focus-card')?.querySelector('.validation-email-status');

@@ -77,7 +77,9 @@ assert.match(appSource, /data-select-validation-builder/, 'validation queue rows
 assert.match(appSource, /dataset\.selectValidationBuilder/, 'validation queue click handler must persist the selected validation row');
 assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-select-builder=/, 'validation rows must not use the permit-builder selector or they reset to the top row');
 assert.match(appSource, /data-copy-validation-email/, 'validation focus card must expose a Copy email action next to Draft email');
-assert.match(appSource, /data-copy-builder-email-address/, 'selected builder email address should be clickable and copy only the address');
+assert.match(appSource, /<a href="#" class="copy-builder-email-address"/, 'selected builder email copy control must render as an inline anchor, not a button');
+assert.doesNotMatch(appSource, /<button[^>]+class="copy-builder-email-address"/, 'selected builder email copy control must not be a button because global button CSS adds pill chrome');
+assert.match(appSource, /event\.preventDefault\(\);[\s\S]{0,180}dataset\.copyBuilderEmailAddress/, 'copyable email anchor should not jump the page when clicked');
 assert.match(appSource, /Email address copied\./, 'clicking selected builder email address should confirm clipboard copy');
 assert.match(stylesSource, /main \.copy-builder-email-address[\s\S]{0,360}border-radius: 0 !important;[\s\S]{0,220}background: transparent !important;[\s\S]{0,220}color: #1f5bff !important;[\s\S]{0,220}cursor: copy !important;/, 'copyable email address should look like accent inline copy text, not a pill button');
 assert.match(stylesSource, /main \.copy-builder-email-address:hover \{ color: var\(--black\) !important; \}/, 'copyable email address should turn black on hover');

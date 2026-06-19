@@ -3558,3 +3558,375 @@ section.app-panel[hidden],
   .nav { justify-content: start !important; gap: 7px !important; }
   .app-tabs { max-width: 100% !important; }
 }
+
+/* v1.39 — buyer validation queue: contact-state chips, progressive disclosure, lower radius */
+.validation-grid-main {
+  grid-template-columns: minmax(280px, .78fr) minmax(0, 1.42fr) minmax(260px, .68fr) !important;
+}
+.validation-queue,
+.validation-focus-card,
+.seller-unlock-card {
+  border-radius: 14px !important;
+}
+.validation-queue {
+  gap: 8px !important;
+  padding: 14px !important;
+}
+.panel-kicker .info-dot,
+.info-dot {
+  width: 18px !important;
+  height: 18px !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  margin-left: 5px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(31,91,255,.32) !important;
+  background: rgba(31,91,255,.07) !important;
+  color: #1f5bff !important;
+  font: 800 11px/1 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  box-shadow: none !important;
+  vertical-align: 1px;
+}
+.validation-queue-item {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  padding: 12px !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(16,18,20,.10) !important;
+  background: rgba(255,255,255,.78) !important;
+  box-shadow: none !important;
+}
+.validation-queue-item.active {
+  background: #fff !important;
+  border-color: rgba(31,91,255,.55) !important;
+  box-shadow: inset 3px 0 0 #1f5bff !important;
+}
+.validation-row-main {
+  width: 100% !important;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 32px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #101214 !important;
+  text-align: left !important;
+  box-shadow: none !important;
+}
+.validation-row-main:hover {
+  transform: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.queue-rank {
+  width: 28px !important;
+  height: 28px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 7px !important;
+  background: rgba(16,18,20,.045) !important;
+  border: 1px solid rgba(16,18,20,.09) !important;
+  color: rgba(16,18,20,.72) !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  letter-spacing: -.01em !important;
+}
+.queue-copy { min-width: 0; }
+.queue-copy b {
+  display: block !important;
+  color: #101214 !important;
+  font-size: 14px !important;
+  line-height: 1.13 !important;
+  letter-spacing: -.025em !important;
+  overflow-wrap: anywhere !important;
+}
+.queue-copy small {
+  display: block !important;
+  margin-top: 4px !important;
+  color: #5d646d !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+.queue-score {
+  min-width: 34px;
+  height: 28px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #f1f4f8;
+  color: #26303b;
+  border: 1px solid rgba(16,18,20,.08);
+  font-size: 13px;
+  font-weight: 780;
+  letter-spacing: -.02em;
+}
+.queue-state-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding-left: 42px;
+}
+.contact-toggle,
+.contact-state {
+  min-height: 28px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  padding: 0 10px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(16,18,20,.11) !important;
+  background: #fff !important;
+  color: #3f4751 !important;
+  font-size: 11px !important;
+  font-weight: 760 !important;
+  letter-spacing: .015em !important;
+  box-shadow: none !important;
+  text-transform: none !important;
+}
+.contact-toggle:hover {
+  transform: none !important;
+  border-color: rgba(31,91,255,.42) !important;
+  color: #1f5bff !important;
+}
+.contact-toggle.is-on,
+.contact-state.is-on,
+.validation-call-button.contact-action.is-on {
+  background: rgba(31,91,255,.09) !important;
+  border-color: rgba(31,91,255,.38) !important;
+  color: #1748d8 !important;
+}
+.validation-queue-item .badge {
+  grid-column: auto !important;
+  margin: 0 !important;
+  border-radius: 8px !important;
+  padding: 6px 8px !important;
+  color: #424a54 !important;
+  background: rgba(16,18,20,.045) !important;
+  border-color: rgba(16,18,20,.08) !important;
+}
+.validation-focus-head {
+  align-items: start !important;
+  gap: 14px !important;
+}
+.validation-score {
+  position: relative;
+  flex: 0 0 96px !important;
+  min-width: 96px !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+  background: #f8fafc !important;
+  border: 1px solid rgba(16,18,20,.10) !important;
+  color: #101214 !important;
+  text-align: left !important;
+  box-shadow: none !important;
+}
+.validation-score summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 12px !important;
+}
+.validation-score summary::-webkit-details-marker { display: none; }
+.validation-score strong {
+  display: block !important;
+  font-size: 24px !important;
+  line-height: 1 !important;
+  letter-spacing: -.045em !important;
+  color: #101214 !important;
+}
+.validation-score span {
+  display: block !important;
+  margin-top: 4px !important;
+  color: #66707a !important;
+  font-size: 9px !important;
+  font-weight: 820 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .09em !important;
+}
+.score-breakdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+  width: min(360px, 78vw);
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(16,18,20,.12);
+  background: #fff;
+  box-shadow: 0 18px 46px rgba(16,18,20,.14);
+}
+.score-breakdown div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 3px 10px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(16,18,20,.07);
+}
+.score-breakdown div:last-child { border-bottom: 0; padding-bottom: 0; }
+.score-breakdown b {
+  color: #101214;
+  font-size: 12px;
+}
+.score-breakdown em {
+  grid-column: 1 / -1;
+  color: #5d646d;
+  font-size: 11px;
+  font-style: normal;
+  line-height: 1.35;
+}
+.selected-outreach-state {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 14px;
+}
+.validation-call-button.contact-action {
+  background: #fff !important;
+  color: #101214 !important;
+  border-color: rgba(16,18,20,.13) !important;
+}
+.validation-progress {
+  margin-top: 4px;
+  background: rgba(16,18,20,.08) !important;
+}
+.validation-progress span {
+  background: #1f5bff !important;
+}
+@media (max-width: 980px) {
+  .validation-grid-main { grid-template-columns: 1fr !important; }
+  .validation-score { width: auto !important; }
+}
+@media (max-width: 520px) {
+  .validation-row-main { grid-template-columns: 30px minmax(0, 1fr) 34px !important; }
+  .queue-state-row { padding-left: 40px; }
+  .validation-focus-head { grid-template-columns: 1fr !important; }
+  .validation-score { width: 100% !important; max-width: none !important; }
+  .score-breakdown { left: 0; right: auto; width: min(330px, calc(100vw - 48px)); }
+}
+
+/* v1.40 — hard reset validation queue buttons away from global pill buttons */
+.validation-queue .validation-row-main,
+.validation-queue button.validation-row-main,
+.validation-queue .contact-toggle,
+.validation-focus-card .contact-action {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.validation-queue button.validation-row-main {
+  min-height: unset !important;
+  height: auto !important;
+  border-radius: 8px !important;
+  color: #101214 !important;
+}
+.validation-queue button.validation-row-main,
+.validation-queue button.validation-row-main:visited,
+.validation-queue button.validation-row-main:hover,
+.validation-queue button.validation-row-main:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #101214 !important;
+}
+.validation-queue .validation-row-main > *,
+.validation-queue .validation-row-main b,
+.validation-queue .validation-row-main small {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
+.validation-queue .queue-copy b {
+  color: #101214 !important;
+}
+.validation-queue .queue-copy small {
+  color: #5d646d !important;
+}
+.validation-queue .queue-rank,
+.validation-queue .queue-score {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+.validation-queue .queue-rank {
+  background-color: rgba(16,18,20,.045) !important;
+  color: rgba(16,18,20,.72) !important;
+}
+.validation-queue .queue-score {
+  background-color: #f1f4f8 !important;
+  color: #26303b !important;
+}
+.validation-queue button.contact-toggle {
+  min-height: 28px !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #3f4751 !important;
+  border-color: rgba(16,18,20,.11) !important;
+}
+.validation-queue button.contact-toggle.is-on {
+  background: rgba(31,91,255,.09) !important;
+  background-color: rgba(31,91,255,.09) !important;
+  color: #1748d8 !important;
+  border-color: rgba(31,91,255,.38) !important;
+}
+.validation-focus-card .validation-call-button.contact-action {
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #101214 !important;
+  box-shadow: none !important;
+}
+.validation-focus-card .validation-call-button.contact-action.is-on {
+  background: rgba(31,91,255,.09) !important;
+  background-color: rgba(31,91,255,.09) !important;
+  color: #1748d8 !important;
+}
+
+/* v1.41 — soften validation row selector outlines after mobile QA */
+.validation-queue button.validation-row-main,
+.validation-queue button.validation-row-main:hover,
+.validation-queue button.validation-row-main:focus {
+  padding: 8px !important;
+  border: 1px solid rgba(16,18,20,.10) !important;
+  outline: none !important;
+  border-radius: 10px !important;
+  background: #fbfcfd !important;
+  background-color: #fbfcfd !important;
+  background-image: none !important;
+}
+.validation-queue button.validation-row-main:focus-visible {
+  border-color: rgba(31,91,255,.55) !important;
+  box-shadow: 0 0 0 3px rgba(31,91,255,.12) !important;
+}
+.validation-queue-item.active button.validation-row-main {
+  border-color: rgba(31,91,255,.22) !important;
+  background: #fff !important;
+  background-color: #fff !important;
+}
+.validation-queue .queue-state-row {
+  padding-left: 42px !important;
+  margin-top: -1px !important;
+}
+@media (max-width: 520px) {
+  .validation-queue button.validation-row-main {
+    grid-template-columns: 31px minmax(0, 1fr) 38px !important;
+    gap: 8px !important;
+  }
+  .validation-queue .queue-state-row {
+    justify-content: center !important;
+    padding-left: 0 !important;
+  }
+}

@@ -513,6 +513,68 @@ function parseListInput(value) {
   return String(value || '').split(',').map(item => item.trim()).filter(Boolean);
 }
 
+function todayIsoDate() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function validationOutreach(row = {}) {
+  const outreach = row.outreach || {};
+  return {
+    phone: Boolean(outreach.phone?.contacted || row.contactedByPhone),
+    email: Boolean(outreach.email?.contacted || row.contactedByEmail),
+    phoneAt: outreach.phone?.at || '',
+    emailAt: outreach.email?.at || '',
+  };
+}
+
+function validationOutreachLabel(row = {}) {
+  const state = validationOutreach(row);
+  if (state.phone && state.email) return 'Called + emailed';
+  if (state.phone) return 'Called';
+  if (state.email) return 'Email sent';
+  return 'To call';
+}
+
+function scoreBreakdownText(row = {}) {
+  return asArray(row.validation?.breakdown)
+    .map(item => `${item.label}: ${item.value >= 0 ? '+' : ''}${item.value} — ${item.detail}`)
+    .join('\n');
+}
+
+function scoreBreakdownRows(row = {}) {
+  return asArray(row.validation?.breakdown)
+    .map(item => `<div><span>${h(item.label)}</span><b>${item.value >= 0 ? '+' : ''}${h(item.value)}</b><em>${h(item.detail)}</em></div>`)
+    .join('');
+}
+
+function mergeBuyerValidationPatch(builderId, patch = {}) {
+  const rows = asArray(knoxvilleBuyerCallSheet?.rows);
+  const sourceRow = rows.find(item => item.builderId === builderId) || {};
+  const existing = asArray(workspace.buyerValidations).find(item => item.builderId === builderId) || {};
+  return {
+    ...existing,
+    builderId,
+    name: sourceRow.name || existing.name || '',
+    phone: sourceRow.phone || existing.phone || '',
+    email: sourceRow.email || existing.email || '',
+    callable: sourceRow.callable ?? existing.callable ?? false,
+    route: sourceRow.route || existing.route || 'buyerValidation',
+    recentBuilds: sourceRow.recentBuilds || existing.recentBuilds || 0,
+    callStatus: existing.callStatus || sourceRow.callStatus || 'not_called',
+    lastContacted: existing.lastContacted || sourceRow.lastContacted || '',
+    callbackDate: existing.callbackDate || sourceRow.callbackDate || '',
+    callNotes: existing.callNotes || sourceRow.callNotes || '',
+    buyBox: { ...(sourceRow.buyBox || {}), ...(existing.buyBox || {}) },
+    outreach: { ...(sourceRow.outreach || {}), ...(existing.outreach || {}) },
+    ...patch,
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+function upsertBuyerValidation(row) {
+  workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== row.builderId), row] };
+}
+
 function renderBuyerValidationCommandCenter() {
   const rows = asArray(knoxvilleBuyerCallSheet?.rows);
   if (!rows.length) {
@@ -528,14 +590,25 @@ function renderBuyerValidationCommandCenter() {
   const queue = center.items.map((item, index) => {
     const active = item.builderId === selected.builderId;
     const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : item.validation.buyBox.percent >= 67 ? 'warn' : 'neutral';
-    return `<button type="button" class="validation-queue-item ${active ? 'active' : ''}" data-select-validation-builder="${h(item.builderId)}">
-      <span>${String(index + 1).padStart(2, '0')}</span>
-      <b>${h(item.name)}</b>
-      <small>${h(callStatusLabel(item.callStatus))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small>
-      ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'validation locked', tone)}
-    </button>`;
+    const outreach = validationOutreach(item);
+    const scoreTitle = scoreBreakdownText(item);
+    return `<article class="validation-queue-item ${active ? 'active' : ''}" data-validation-row="${h(item.builderId)}">
+      <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
+        <span class="queue-rank">${String(index + 1).padStart(2, '0')}</span>
+        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small></span>
+        <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
+      </button>
+      <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
+        <button type="button" class="contact-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}">${outreach.phone ? 'Called' : 'Mark called'}</button>
+        <button type="button" class="contact-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}">${outreach.email ? 'Email sent' : 'Mark emailed'}</button>
+        ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'validation locked', tone)}
+      </div>
+    </article>`;
   }).join('');
   const contact = [selected.phone, selected.email].filter(Boolean).join(' · ') || 'Public business contact unresolved';
+  const selectedOutreach = validationOutreach(selected);
+  const selectedScoreTitle = scoreBreakdownText(selected);
+  const selectedScoreRows = scoreBreakdownRows(selected);
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
   const validationEmail = selected.emailDraft || {};
@@ -569,16 +642,25 @@ Okeito`;
       </div>
     </div>
     <div class="validation-grid-main">
-      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue</span><b>ranked by validation leverage</b></div>${queue}</aside>
+      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>ranked by validation leverage</b></div>${queue}</aside>
       <article class="validation-focus-card">
         <div class="validation-focus-head">
           <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: Knoxville, Tennessee.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${h(contact)}</p></div>
-          <div class="validation-score"><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></div>
+          <details class="validation-score" title="${h(selectedScoreTitle)}">
+            <summary><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></summary>
+            <div class="score-breakdown">${selectedScoreRows}</div>
+          </details>
+        </div>
+        <div class="selected-outreach-state" aria-label="Selected builder outreach state">
+          <span class="contact-state ${selectedOutreach.phone ? 'is-on' : ''}">${selectedOutreach.phone ? `Called ${h(selectedOutreach.phoneAt || '')}` : 'Phone not logged'}</span>
+          <span class="contact-state ${selectedOutreach.email ? 'is-on' : ''}">${selectedOutreach.email ? `Email sent ${h(selectedOutreach.emailAt || '')}` : 'Email not logged'}</span>
         </div>
         <div class="validation-actions">
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">Call office</a>
           <a class="validation-call-button secondary ${selected.email ? '' : 'disabled'}" href="${mailHref}">Draft email</a>
           <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>Copy email</button>
+          <button type="button" class="validation-call-button contact-action ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}">${selectedOutreach.phone ? 'Called logged' : 'I called them'}</button>
+          <button type="button" class="validation-call-button contact-action ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}">${selectedOutreach.email ? 'Email logged' : 'I contacted them by email'}</button>
           ${selected.sourceUrl ? safeLink(selected.sourceUrl, 'Source proof', 'validation-call-button secondary') : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
@@ -1442,6 +1524,34 @@ function bindEvents() {
       return;
     }
 
+    const validationContactButton = event.target.closest('[data-toggle-validation-contact]');
+    if (validationContactButton) {
+      const builderId = validationContactButton.dataset.builderId || selectedValidationBuilderId;
+      const channel = validationContactButton.dataset.toggleValidationContact;
+      if (!builderId || !['phone', 'email'].includes(channel)) return;
+      const current = asArray(workspace.buyerValidations).find(item => item.builderId === builderId) || {};
+      const currentOutreach = current.outreach || {};
+      const currentChannel = currentOutreach[channel] || {};
+      const nextContacted = !currentChannel.contacted;
+      const today = todayIsoDate();
+      const nextOutreach = {
+        ...currentOutreach,
+        [channel]: {
+          contacted: nextContacted,
+          at: nextContacted ? today : '',
+        },
+      };
+      const updated = mergeBuyerValidationPatch(builderId, {
+        outreach: nextOutreach,
+        lastContacted: nextContacted ? today : (current.lastContacted || ''),
+      });
+      upsertBuyerValidation(updated);
+      selectedValidationBuilderId = builderId;
+      persistWorkspace();
+      renderBuilderListEnginePanel();
+      return;
+    }
+
     const validationBuilderButton = event.target.closest('[data-select-validation-builder]');
     if (validationBuilderButton) {
       selectedValidationBuilderId = validationBuilderButton.dataset.selectValidationBuilder;
@@ -1639,14 +1749,7 @@ ${body}`;
       const rows = asArray(knoxvilleBuyerCallSheet?.rows);
       const sourceRow = rows.find(item => item.builderId === builderId) || {};
       if (!builderId) return;
-      const updated = {
-        builderId,
-        name: sourceRow.name || '',
-        phone: sourceRow.phone || '',
-        email: sourceRow.email || '',
-        callable: sourceRow.callable || false,
-        route: sourceRow.route || 'buyerValidation',
-        recentBuilds: sourceRow.recentBuilds || 0,
+      const updated = mergeBuyerValidationPatch(builderId, {
         callStatus: form.querySelector('.validation-status')?.value || 'not_called',
         lastContacted: form.querySelector('.validation-last')?.value || '',
         callbackDate: form.querySelector('.validation-callback')?.value || '',
@@ -1661,9 +1764,8 @@ ${body}`;
           productType: form.querySelector('.validation-product')?.value || '',
           dealKillers: parseListInput(form.querySelector('.validation-killers')?.value || ''),
         },
-        updatedAt: new Date().toISOString(),
-      };
-      workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== builderId), updated] };
+      });
+      upsertBuyerValidation(updated);
       persistWorkspace();
       const status = form.querySelector('.validation-save-status');
       if (status) status.textContent = updated.callStatus === 'validated_buy_box' ? 'Validation saved; seller gate will unlock if required fields are complete.' : 'Validation saved.';

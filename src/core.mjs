@@ -438,16 +438,28 @@ export function evaluateBuilderBuyBox(buyBox = {}) {
 
 export function scoreBuyerValidation(row = {}) {
   const buyBox = evaluateBuilderBuyBox(row.buyBox || {});
-  let score = 0;
-  score += Math.min(30, Math.round(Number(row.recentBuilds || 0) / 3));
-  if (row.callable) score += 14;
-  if (row.phone) score += 6;
-  if (row.email) score += 4;
-  score += Math.round(buyBox.percent * 0.34);
-  if (row.callStatus === 'spoke_to_decision_maker') score += 8;
-  if (row.callStatus === 'validated_buy_box' && buyBox.complete) score += 12;
-  if (row.route === 'humanReview' || !row.callable) score -= 12;
+  const outreach = row.outreach || {};
+  const phoneContacted = Boolean(outreach.phone?.contacted || row.contactedByPhone);
+  const emailContacted = Boolean(outreach.email?.contacted || row.contactedByEmail);
+  const permitPoints = Math.min(30, Math.round(Number(row.recentBuilds || 0) / 3));
+  const callablePoints = row.callable ? 14 : 0;
+  const phonePoints = row.phone ? 6 : 0;
+  const emailPoints = row.email ? 4 : 0;
+  const buyBoxPoints = Math.round(buyBox.percent * 0.34);
+  const decisionMakerPoints = row.callStatus === 'spoke_to_decision_maker' ? 8 : 0;
+  const validatedPoints = row.callStatus === 'validated_buy_box' && buyBox.complete ? 12 : 0;
+  const outreachPoints = (phoneContacted ? 2 : 0) + (emailContacted ? 2 : 0);
+  const reviewPenalty = row.route === 'humanReview' || !row.callable ? -12 : 0;
+  let score = permitPoints + callablePoints + phonePoints + emailPoints + buyBoxPoints + decisionMakerPoints + validatedPoints + outreachPoints + reviewPenalty;
   score = Math.round(clamp(score, 0, 100));
+  const breakdown = [
+    { label: 'Permit leverage', value: permitPoints, detail: `${Number(row.recentBuilds || 0)} recent permit signals, capped at 30` },
+    { label: 'Callable public contact', value: callablePoints + phonePoints + emailPoints, detail: `${row.callable ? 'call-ready' : 'not call-ready'} · ${row.phone ? 'phone found' : 'phone missing'} · ${row.email ? 'email found' : 'email missing'}` },
+    { label: 'Buy-box completeness', value: buyBoxPoints, detail: `${buyBox.met}/${buyBox.total} required fields captured` },
+    { label: 'Decision-maker progress', value: decisionMakerPoints + validatedPoints, detail: row.callStatus || 'not_called' },
+    { label: 'Outreach logged', value: outreachPoints, detail: `${phoneContacted ? 'called' : 'not called'} · ${emailContacted ? 'emailed' : 'not emailed'}` },
+    { label: 'Human-review penalty', value: reviewPenalty, detail: reviewPenalty ? 'contact/source needs review before promotion' : 'none' },
+  ];
   const tier = buyBox.complete && row.callStatus === 'validated_buy_box'
     ? 'Tier 1 · seller search eligible'
     : buyBox.percent >= 67 || row.callStatus === 'spoke_to_decision_maker'
@@ -458,12 +470,14 @@ export function scoreBuyerValidation(row = {}) {
     ? 'Generate seller parcel search criteria and start buyer-backed seller sourcing.'
     : row.route === 'humanReview' || !row.callable
       ? 'Resolve public business contact before calling.'
-      : row.callStatus === 'left_voicemail'
-        ? 'Follow up with the exact buy-box email and call again.'
-        : row.callStatus === 'spoke_to_gatekeeper'
-          ? 'Ask for land/acquisitions decision-maker and package recipient.'
-          : 'Call and capture geography, lot size, max price, close speed, recipient, and deal killers.';
-  return { score, tier, sellerEligible, buyBox, nextAction };
+      : phoneContacted || emailContacted
+        ? 'Contact logged. Buy box still missing — follow up until geography, price, speed, recipient, and deal killers are captured.'
+        : row.callStatus === 'left_voicemail'
+          ? 'Follow up with the exact buy-box email and call again.'
+          : row.callStatus === 'spoke_to_gatekeeper'
+            ? 'Ask for land/acquisitions decision-maker and package recipient.'
+            : 'Call and capture geography, lot size, max price, close speed, recipient, and deal killers.';
+  return { score, tier, sellerEligible, buyBox, nextAction, breakdown };
 }
 
 export function buildSellerSearchInstructions(row = {}) {
@@ -508,6 +522,10 @@ export function buildBuyerValidationCommandCenter(rows = [], savedRows = []) {
       lastContacted: savedRow.lastContacted || row.lastContacted || '',
       callbackDate: savedRow.callbackDate || row.callbackDate || '',
       callNotes: savedRow.callNotes || row.callNotes || '',
+      outreach: {
+        ...(row.outreach || {}),
+        ...(savedRow.outreach || {}),
+      },
     };
     const validation = scoreBuyerValidation(merged);
     const sellerSearch = buildSellerSearchInstructions(merged);

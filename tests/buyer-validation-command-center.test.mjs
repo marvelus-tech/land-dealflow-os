@@ -38,6 +38,10 @@ const saved = [{
   builderId: ball.builderId,
   callStatus: 'validated_buy_box',
   lastContacted: '2026-06-18',
+  outreach: {
+    phone: { contacted: true, at: '2026-06-18' },
+    email: { contacted: true, at: '2026-06-18' },
+  },
   buyBox: {
     geography: 'West Knoxville / Karns / Hardin Valley',
     lotSize: '0.25–1.0 acres',
@@ -54,6 +58,9 @@ assert.equal(validated.summary.validated, 1);
 const validatedBall = validated.items.find(item => item.builderId === ball.builderId);
 assert.equal(validatedBall.validation.sellerEligible, true);
 assert.equal(validatedBall.validation.buyBox.complete, true);
+assert.equal(validatedBall.outreach.phone.contacted, true, 'phone outreach state should persist independently from buy-box validation');
+assert.equal(validatedBall.outreach.email.contacted, true, 'email outreach state should persist independently from buy-box validation');
+assert.ok(validatedBall.validation.breakdown.some(item => item.label === 'Outreach logged' && item.value === 4), 'validation score tooltip needs outreach math');
 assert.match(validatedBall.validation.tier, /Tier 1/);
 assert.equal(validatedBall.sellerSearch.eligible, true);
 assert.ok(validatedBall.sellerSearch.criteria.some(item => item.includes('West Knoxville')));
@@ -68,6 +75,10 @@ assert.match(appSource, /data-select-validation-builder/, 'validation queue rows
 assert.match(appSource, /dataset\.selectValidationBuilder/, 'validation queue click handler must persist the selected validation row');
 assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-select-builder=/, 'validation rows must not use the permit-builder selector or they reset to the top row');
 assert.match(appSource, /data-copy-validation-email/, 'validation focus card must expose a Copy email action next to Draft email');
+assert.match(appSource, /data-toggle-validation-contact="phone"/, 'validation rows must expose a called/not-called contact state toggle');
+assert.match(appSource, /data-toggle-validation-contact="email"/, 'validation rows must expose an emailed/not-emailed contact state toggle');
+assert.match(appSource, /scoreBreakdownRows/, 'validation score must expose progressive-disclosure breakdown rows');
+assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');
 assert.match(appSource, /mailto:\$\{h\(selected\.email\)\}\?subject=\$\{encodeURIComponent\(validationEmailSubject\)\}&body=\$\{encodeURIComponent\(validationEmailBody\)\}/, 'Draft email mailto must prefill subject and body');
 

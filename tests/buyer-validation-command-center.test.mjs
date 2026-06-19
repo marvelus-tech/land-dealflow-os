@@ -86,7 +86,7 @@ assert.doesNotMatch(appSource, /contact-action/, 'selected builder must not dupl
 assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'outreach controls should be compressed into state badges/icons');
 assert.match(appSource, /scoreBreakdownRows/, 'validation score must expose progressive-disclosure breakdown rows');
 assert.match(appSource, /queue-source-link/, 'call queue rows must carry source-proof links from the old call-sheet list');
-assert.match(appSource, /queue-csv-link[\s\S]{0,160}buyer_call_sheet\.csv/, 'call queue header must preserve call-sheet CSV export');
+assert.match(appSource, /queue-csv-link[\s\S]{0,220}activeState\.summary\.entries\[0\]\.csvUrl/, 'call queue header must preserve the active market CSV export');
 assert.match(appSource, /validation-source-proof/, 'selected builder card must preserve source type, contact status, confidence, and top permit proof');
 assert.match(appSource, /selected-permit-proof/, 'selected builder proof drawer must preserve permit evidence rows');
 assert.doesNotMatch(appSource, /class="queue-rank"/, 'call queue must not show duplicate number ranks because sort order already follows validation score');
@@ -113,7 +113,7 @@ assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'sec
 assert.match(appSource, /builder-market-workbench/, 'top Builders IA should be a market workbench, not a static metric strip');
 assert.match(appSource, /market-toggle-grid/, 'priority states should be exposed as top-level market toggles');
 assert.match(appSource, /stateOrder = \['TN', 'TX', 'NC', 'FL', 'AZ'\]/, 'market toggles should expose all prioritized states as resource wells');
-assert.match(appSource, /ready resource wells/, 'Builders header should frame non-live states as selectable resource wells');
+assert.match(appSource, /All six deployed market lanes are live/, 'Builders header should frame deployed states as live selectable market lanes');
 assert.match(appSource, /data-builder-market-state/, 'state toggles should be interactive controls that swap the displayed state data');
 assert.match(appSource, /selectedBuilderMarketState = stateCode/, 'clicking a state toggle should change the selected Builders market state');
 assert.match(appSource, /\[activeState\]\.map\(state =>/, 'the state detail panel should render only the selected state below the toggles');
@@ -127,11 +127,11 @@ assert.match(appSource, /Zillow market view/, 'Zillow market links should be lab
 assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/knoxville-tn\//, 'Knoxville market should include a Zillow context link');
 assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/austin-tx\//, 'Texas market should include a Zillow context link');
 assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/polk-county-fl\//, 'Florida market should include a Zillow context link');
-assert.match(appSource, /renderBuyerValidationCommandCenter\(activeState\)/, 'selected market state must drive the call queue, not just the hero');
-assert.match(appSource, /if \(!activeState\.isLive\)/, 'non-live resource wells must render an empty call queue state');
-assert.match(appSource, /No Tennessee builders are shown here/, 'resource-well empty state must explicitly prevent cross-state builder leakage');
-assert.match(appSource, /const activeBuilders = activeState\.isLive \? tnBuilders : \[\]/, 'only Tennessee should currently receive the live Knoxville builder list');
-assert.match(appSource, /builder-empty-evidence/, 'non-live markets need an intentional empty evidence section');
+assert.match(appSource, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'selected market state must drive the call queue with active rows, not just the hero');
+assert.match(appSource, /if \(!rows\.length\)/, 'states with no data must still render an intentional empty call queue state');
+assert.match(appSource, /getStateBuilderRows\(stateCode\)/, 'all loaded states should receive live builder rows');
+assert.doesNotMatch(appSource, /const isLive = stateCode === 'TN'/, 'the UI must not hard-code Tennessee as the only live state');
+assert.match(appSource, /builder-empty-evidence/, 'markets without loaded rows still need an intentional empty evidence section');
 assert.match(stylesSource, /v1\.32 - Builders mobile resource-well selector and empty states/, 'final mobile selector override should live after global button styles');
 assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}border-radius: 13px/, 'market toggles should be compact rounded rectangles, not circular pucks');
 assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}aspect-ratio: auto/, 'market toggles must not use square/circular aspect ratios on mobile');

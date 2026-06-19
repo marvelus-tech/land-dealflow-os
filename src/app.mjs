@@ -71,6 +71,17 @@ const seedPermitRecords = [];
 
 const seedParcels = [];
 
+const builderMarketSources = [
+  { key: 'knoxville', state: 'TN', marketName: 'Knoxville / Knox County, TN', csvUrl: 'data/real/knoxville/buyer_call_sheet.csv', signalsUrl: 'data/real/knoxville/builder_signals.json', evidenceUrl: 'data/real/knoxville/market_evidence.json' },
+  { key: 'austin', state: 'TX', marketName: 'Austin, TX', csvUrl: 'data/real/austin/builder_validation_queue.csv', signalsUrl: 'data/real/austin/builder_signals.json', evidenceUrl: 'data/real/austin/market_evidence.json' },
+  { key: 'san-antonio', state: 'TX', marketName: 'San Antonio, TX', csvUrl: 'data/real/san-antonio/builder_validation_queue.csv', signalsUrl: 'data/real/san-antonio/builder_signals.json', evidenceUrl: 'data/real/san-antonio/market_evidence.json' },
+  { key: 'raleigh', state: 'NC', marketName: 'Raleigh / Wake County, NC', csvUrl: 'data/real/raleigh/builder_validation_queue.csv', signalsUrl: 'data/real/raleigh/builder_signals.json', evidenceUrl: 'data/real/raleigh/market_evidence.json' },
+  { key: 'polk', state: 'FL', marketName: 'Polk / Lakeland, FL', csvUrl: 'data/real/polk/builder_validation_queue.csv', signalsUrl: 'data/real/polk/builder_signals.json', evidenceUrl: 'data/real/polk/market_evidence.json' },
+  { key: 'maricopa', state: 'AZ', marketName: 'Phoenix / Maricopa County, AZ', csvUrl: 'data/real/maricopa/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa/builder_signals.json', evidenceUrl: 'data/real/maricopa/market_evidence.json' },
+];
+
+const builderMarketSourceByKey = new Map(builderMarketSources.map(source => [source.key, source]));
+
 const stages = [
   { id: 'market', name: 'Market Finder', desc: 'Where to hunt first.', sourceType: 'market' },
   { id: 'buyer', name: 'Buyer Finder', desc: 'Who is actively building.', sourceType: 'buyer' },
@@ -126,6 +137,7 @@ let workspace = loadWorkspace();
 let generatedLeads = null;
 let weeklyMarketScout = null;
 let knoxvilleBuyerCallSheet = null;
+let builderMarketData = { markets: {}, loaded: false, error: '' };
 let titleCompanyProcess = titleCompanyProcessFallback;
 let titleCompanyMarkets = titleCompanyMarketsFallback;
 let filter = 'all';
@@ -161,6 +173,10 @@ function persistWorkspace() {
 
 function h(value) {
   return String(value ?? '').replace(/[&<>'"]/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+}
+
+function slugify(value) {
+  return String(value || 'item').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item';
 }
 
 function safeLink(url, label, className = '') {
@@ -589,6 +605,143 @@ function getPermitBuilders() {
   return generated.map(builder => ({ ...builder, ...(saved.get(builder.builderId) || {}) }));
 }
 
+function sourceJurisdictionForPermit(permit = {}, source = {}) {
+  return permit.city || permit.jurisdiction || permit.sourceReport || source.marketName || source.state || 'official permit source';
+}
+
+function normalizePermitEvidence(permit = {}, source = {}) {
+  return {
+    ...permit,
+    permitNumber: permit.permitNumber || permit.recordId || permit.id || 'permit pending',
+    permitStatus: permit.permitStatus || permit.status || 'issued',
+    permitType: permit.permitType || permit.recordType || permit.workClass || 'Residential permit',
+    siteAddress: permit.siteAddress || permit.address || permit.parcelNumber || 'address pending',
+    issueDate: permit.issueDate || permit.issuedAt || permit.date || '',
+    jurisdiction: sourceJurisdictionForPermit(permit, source),
+    licenseNumber: permit.licenseNumber || permit.contractorLicense || permit.contractorName || '',
+    sourceUrl: permit.sourceUrl || source.evidenceUrl || source.signalsUrl || '',
+  };
+}
+
+function normalizeBuilderSignal(row = {}, source = {}) {
+  const permits = asArray(row.recentPermits).map(permit => normalizePermitEvidence(permit, source));
+  const sourceJurisdictions = [...new Set(permits.map(permit => permit.jurisdiction).filter(Boolean))].slice(0, 3);
+  const recentBuilds = Number(row.recentBuilds || permits.length || 0);
+  const phone = row.phone || permits.find(permit => permit.contractorPhone)?.contractorPhone || '';
+  const email = row.email || permits.find(permit => permit.contractorEmail)?.contractorEmail || '';
+  const sourceUrl = row.sourceUrl || permits.find(permit => permit.sourceUrl)?.sourceUrl || source.evidenceUrl || source.signalsUrl || '';
+  const marketLabel = source.marketName || row.market || source.state || 'Permit market';
+  return {
+    ...row,
+    builderId: row.builderId || row.id || `${source.key || 'builder'}-${slugify(row.name || row.companyName || 'unknown')}`,
+    companyName: row.companyName || row.name || 'Unnamed builder',
+    name: row.name || row.companyName || 'Unnamed builder',
+    marketName: marketLabel,
+    state: row.state || source.state || '',
+    phone,
+    email,
+    recentBuilds,
+    qualifyingPermitCount: Number(row.qualifyingPermitCount || recentBuilds || permits.length || 0),
+    recentPermits: permits,
+    sourceJurisdictions,
+    sourceUrl,
+    sourceType: row.sourceType || source.marketName || 'Official permit source',
+    topPermit: row.topPermit || permits[0]?.permitNumber || '',
+    confidence: row.confidence ?? (permits.length ? 100 : 80),
+    activityTier: row.activityTier || (recentBuilds >= 10 ? 'high velocity' : recentBuilds >= 3 ? 'active' : 'verified'),
+    buyBoxStatus: row.buyBoxStatus || 'needs call',
+    callable: row.callable ?? Boolean(phone || email),
+    route: row.route || (phone || email ? 'buyerValidation' : 'humanReview'),
+    contactStatus: row.contactStatus || (phone || email ? 'public contact loaded' : 'public contact unresolved'),
+    sourceEvidence: row.sourceEvidence || row.publicSource || `${marketLabel} official permit-backed builder signal.`,
+    demandSignal: row.demandSignal || `${recentBuilds} recent permit-backed build signals in ${marketLabel}.`,
+    buyBoxCapture: row.buyBoxCapture || {
+      geography: `Which ${marketLabel} submarkets, zip codes, subdivisions, or jurisdictions are you actively buying lots in?`,
+      lotSize: 'What lot-size band, frontage, slope, utilities, road access, and finished-product constraints matter?',
+      maxPrice: 'What is the maximum lot acquisition price before the deal no longer works?',
+      closeSpeed: 'How fast can you close and how many lots can you absorb per month?',
+      packageRecipient: 'Who should receive parcel packages and what exact fields must be included?',
+      dealKillers: 'What instantly kills a lot for you: flood, slope, wetlands, no sewer, title, access, HOA, impact fees?',
+    },
+    buyBox: typeof row.buyBox === 'object' ? row.buyBox : {
+      geography: '',
+      lotSize: '',
+      maxPrice: row.maxPrice || '',
+      closeSpeed: row.closeSpeedDays || '',
+      packageRecipient: '',
+      utilitiesAccess: '',
+      productType: '',
+      dealKillers: [],
+      zipCodes: [],
+      lotSizeRange: '',
+      closeSpeedDays: row.closeSpeedDays || '',
+      submissionMethod: '',
+    },
+  };
+}
+
+function getLoadedBuilderMarkets() {
+  const markets = Object.fromEntries(Object.entries(builderMarketData.markets || {}).map(([key, data]) => {
+    const source = builderMarketSourceByKey.get(key) || {};
+    return [key, {
+      ...source,
+      ...data,
+      rows: asArray(data.rows).map(row => normalizeBuilderSignal(row, source)),
+    }];
+  }));
+  if (knoxvilleBuyerCallSheet?.rows?.length) {
+    delete markets.knoxville;
+    const source = builderMarketSourceByKey.get('knoxville') || {};
+    markets.knoxvilleCallSheet = {
+      ...source,
+      key: 'knoxvilleCallSheet',
+      state: 'TN',
+      marketName: 'Knoxville / Knox County, TN',
+      csvUrl: 'data/real/knoxville/buyer_call_sheet.csv',
+      evidence: knoxvilleBuyerCallSheet,
+      rows: asArray(knoxvilleBuyerCallSheet.rows).map(row => normalizeBuilderSignal({ ...row, id: row.builderId || row.id, name: row.name || row.companyName }, source)),
+    };
+  }
+  return markets;
+}
+
+function getBuilderMarketEntriesForState(stateCode) {
+  const markets = getLoadedBuilderMarkets();
+  return Object.values(markets).filter(market => market.state === stateCode && asArray(market.rows).length);
+}
+
+function getStateBuilderRows(stateCode) {
+  return getBuilderMarketEntriesForState(stateCode)
+    .flatMap(market => asArray(market.rows).map(row => ({ ...row, marketKey: market.key, marketName: market.marketName, csvUrl: market.csvUrl })))
+    .sort((a, b) => Number(b.recentBuilds || 0) - Number(a.recentBuilds || 0));
+}
+
+function getActiveValidationRows() {
+  return getStateBuilderRows(selectedBuilderMarketState);
+}
+
+function findLoadedBuilderRow(builderId) {
+  return Object.values(getLoadedBuilderMarkets())
+    .flatMap(market => asArray(market.rows).map(row => ({ ...row, marketKey: market.key, marketName: market.marketName, csvUrl: market.csvUrl })))
+    .find(row => row.builderId === builderId) || {};
+}
+
+function getStateBuilderSummary(stateCode) {
+  const entries = getBuilderMarketEntriesForState(stateCode);
+  const rows = getStateBuilderRows(stateCode);
+  const totalRecentBuildSignals = rows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0);
+  const callable = rows.filter(row => row.phone || row.email).length;
+  const minimums = entries.map(entry => Number(entry.evidence?.summary?.minimumUniqueBuilders || entry.evidence?.minimumUniqueBuilders || 20)).filter(Boolean);
+  return {
+    entries,
+    rows,
+    uniqueBuilders: rows.length,
+    totalRecentBuildSignals,
+    callable,
+    minimumUniqueBuilders: minimums.length ? Math.min(...minimums) : 20,
+  };
+}
+
 function getSelectedBuilder(builders = getPermitBuilders()) {
   if (selectedBuilderId) {
     const found = builders.find(builder => builder.builderId === selectedBuilderId);
@@ -665,8 +818,7 @@ function scoreBreakdownRows(row = {}) {
 }
 
 function mergeBuyerValidationPatch(builderId, patch = {}) {
-  const rows = asArray(knoxvilleBuyerCallSheet?.rows);
-  const sourceRow = rows.find(item => item.builderId === builderId) || {};
+  const sourceRow = findLoadedBuilderRow(builderId);
   const existing = asArray(workspace.buyerValidations).find(item => item.builderId === builderId) || {};
   return {
     ...existing,
@@ -692,14 +844,14 @@ function upsertBuyerValidation(row) {
   workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== row.builderId), row] };
 }
 
-function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', label: 'Tennessee', isLive: true, markets: [], stateMeta: {} }) {
-  if (!activeState.isLive) {
+function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', label: 'Tennessee', isLive: true, markets: [], stateMeta: {} }, rows = [], summary = {}) {
+  if (!rows.length) {
     const portals = asArray(activeState.stateMeta?.portals).slice(0, 3).map(portal => `<li><b>${h(portal.market)}</b><span>${h(portal.system)} · ${h(portal.jurisdiction)}</span></li>`).join('');
     return `<section id="buyer-validation-command" class="validation-command builder-empty-command" aria-label="Builder queue empty for ${h(activeState.label)}">
       <div class="builder-empty-state">
         <span class="eyebrow">${h(activeState.label)} builder queue</span>
         <h3>No permit-active builders loaded yet.</h3>
-        <p>This resource well is scaffolded, but it should stay empty until we pull real permit activity, dedupe builders, and verify public business contacts. No Tennessee builders are shown here.</p>
+        <p>This state lane is waiting on a real permit pull. The queue stays blank until public permit activity is collected, companies are deduped, and public business contact provenance is verified.</p>
         <div class="empty-state-actions">
           <a href="#market-state-${h(activeState.stateCode.toLowerCase())}">Open ${h(activeState.stateCode)} pipeline</a>
           <span>${h(asArray(activeState.stateMeta?.pipeline).length)} source steps ready</span>
@@ -708,12 +860,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       </div>
     </section>`;
   }
-  const rows = asArray(knoxvilleBuyerCallSheet?.rows);
-  if (!rows.length) {
-    return `<section class="validation-command loading"><span class="eyebrow">Buyer Validation Command Center</span><h3>Waiting on Knoxville call sheet.</h3><p>Run <code>npm run enrich:knoxville-builders</code> to load the permit-backed builder queue.</p></section>`;
-  }
   const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
-  const summary = knoxvilleBuyerCallSheet.summary || {};
   const selected = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
   selectedValidationBuilderId = selected.builderId || selectedValidationBuilderId;
   const sellerCriteria = selected.sellerSearch?.eligible
@@ -750,7 +897,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const selectedScoreTitle = scoreBreakdownText(selected);
   const selectedScoreRows = scoreBreakdownRows(selected);
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
-  const selectedPermitProof = asArray(selected.permitEvidence).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || 'address pending')} · ${h(permit.issuedAt || 'date pending')} · ${formatMoney(permit.permitValue || 0)}</span>${permit.sourceUrl ? safeLink(permit.sourceUrl, 'ArcGIS', 'proof-inline-link') : ''}</li>`).join('');
+  const selectedPermitProof = asArray(selected.permitEvidence || selected.recentPermits).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</span>${permit.sourceUrl ? safeLink(permit.sourceUrl, 'source', 'proof-inline-link') : ''}</li>`).join('');
   const sourceProof = `<div class="validation-source-proof" aria-label="Selected builder source proof">
     <div><span>Source</span><strong>${selected.sourceUrl ? safeLink(selected.sourceUrl, selected.sourceType || 'Official source') : h(selected.sourceType || 'source pending')}</strong></div>
     <div><span>Contact status</span><strong>${h(selected.contactStatus || 'contact pending')}</strong></div>
@@ -758,11 +905,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     <div><span>Top permit</span><strong>${h(selected.topPermit || '-')}</strong></div>
   </div>`;
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
+  const marketLabel = selected.marketName || activeState.marketLabel || activeState.label || 'your permit market';
   const validationEmail = selected.emailDraft || {};
-  const validationEmailSubject = validationEmail.subject || `Knoxville lots that fit ${selected.name || 'your team'}?`;
+  const validationEmailSubject = validationEmail.subject || `${marketLabel} lots that fit ${selected.name || 'your team'}?`;
   const validationEmailBody = validationEmail.body || `Hi ${selected.contactName || selected.name || 'there'},
 
-I’m tracking public permit-backed builder activity in Knoxville and want to only send lots that fit your exact buy box.
+I’m tracking public permit-backed builder activity in ${marketLabel} and want to only send lots that fit your exact buy box.
 
 What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, closing timeline, monthly lot appetite, and deal killers should I screen for before sending anything?
 
@@ -771,10 +919,10 @@ Okeito`;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
     <div class="validation-grid-main">
-      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>proof inline</b><a class="queue-csv-link" href="data/real/knoxville/buyer_call_sheet.csv">CSV</a></div>${queue}</aside>
+      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>proof inline</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>${queue}</aside>
       <article class="validation-focus-card">
         <div class="validation-focus-head">
-          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: Knoxville, Tennessee.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${h(contact)}</p></div>
+          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${h(contact)}</p></div>
           <details class="validation-score" title="${h(selectedScoreTitle)}">
             <summary><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></summary>
             <div class="score-breakdown">${selectedScoreRows}</div>
@@ -828,32 +976,34 @@ Okeito`;
 function renderBuilderListEnginePanel() {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
-  const tnBuilders = getPermitBuilders();
+  const fallbackTnBuilders = getPermitBuilders();
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
-  const displayedBuilderCount = tnBuilders.length || callSheetRows.length;
-  const displayedBatchFloor = knoxvilleBuyerCallSheet?.summary?.minimumUniqueBuilders || 20;
   const permitLandscape = getPermitPortalLandscape();
   const stateOrder = ['TN', 'TX', 'NC', 'FL', 'AZ'];
   const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona' };
   const stateSummaries = stateOrder.map((stateCode) => {
+    const marketSummary = getStateBuilderSummary(stateCode);
+    const fallbackRows = stateCode === 'TN' && !marketSummary.rows.length ? fallbackTnBuilders : [];
+    const rows = marketSummary.rows.length ? marketSummary.rows : fallbackRows;
     const markets = asArray(permitLandscape.leadingMarkets).filter(item => item.state === stateCode);
     const stateMeta = asArray(permitLandscape.states).find(item => item.id === stateCode.toLowerCase()) || {};
     const sequence = stateMeta.sequence || {};
-    const isLive = stateCode === 'TN';
+    const isLive = rows.length > 0;
     const isActive = stateCode === selectedBuilderMarketState;
-    const builderCount = isLive ? displayedBuilderCount : 0;
-    const status = isLive ? `${displayedBuilderCount} live builders` : (sequence.label || 'resource well');
-    const marketLabel = markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
-    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, status, marketLabel };
+    const builderCount = rows.length;
+    const status = isLive ? `${builderCount} live builders` : (sequence.label || 'resource well');
+    const marketLabel = marketSummary.entries.map(item => item.marketName).join(' · ') || markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
+    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, status, marketLabel, rows, summary: marketSummary };
   });
   const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span>${h(state.stateCode)}</span>
     <strong>${h(state.label)}</strong>
-    <em>${h(state.isLive ? 'Live' : 'Ready')}</em>
+    <em>${h(state.isLive ? `${state.builderCount} live` : 'Ready')}</em>
   </button>`).join('');
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
-  const activeBuilders = activeState.isLive ? tnBuilders : [];
+  const activeBuilders = asArray(activeState.rows);
+  const activeSummary = activeState.summary || getStateBuilderSummary(activeState.stateCode);
   const selected = getSelectedBuilder(activeBuilders) || {};
   const email = generateBuilderEmail(selected);
   const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
@@ -861,14 +1011,14 @@ function renderBuilderListEnginePanel() {
   const permits = asArray(selected.recentPermits).slice(0, 3);
   const activeBuilderEmpty = !activeBuilders.length;
   const marketSummary = `<div class="active-market-summary">
-    <span>${activeState.isLive ? 'Live market' : 'Selected resource well'}</span>
-    <strong>${h(activeState.isLive ? 'Knoxville / Knox County' : activeState.label)}</strong>
-    <p>${h(activeState.isLive ? 'Knoxville live builder queue. Switch states to inspect each resource well; non-live states stay empty until real permit pulls are loaded.' : `${activeState.marketLabel || activeState.label}. Source pipeline is ready; builder queue stays empty until permit-active companies are collected.`)}</p>
+    <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
+    <strong>${h(activeState.marketLabel || activeState.label)}</strong>
+    <p>${h(activeState.isLive ? `${activeState.label} has ${activeBuilders.length} live permit-backed builders loaded from ${activeSummary.entries.length || 1} public source lane${(activeSummary.entries.length || 1) === 1 ? '' : 's'}. Switch states to inspect each deployed builder queue.` : `${activeState.marketLabel || activeState.label}. Source pipeline is ready; builder queue stays empty until permit-active companies are collected.`)}</p>
     <ul>
-      ${activeState.isLive ? `<li>${h(displayedBuilderCount)} builders</li>
-      <li>${h(displayedBatchFloor)} minimum per pull</li>
-      <li>${h(callSheetSummary.callablePublicBusinessContacts ?? 0)} callable now</li>
-      <li>${h(callSheetSummary.humanReview ?? 0)} contact-research rows</li>` : `<li>${h(activeState.markets.length)} priority markets</li>
+      ${activeState.isLive ? `<li>${h(activeBuilders.length)} builders</li>
+      <li>${h(activeSummary.minimumUniqueBuilders || 20)} minimum per pull</li>
+      <li>${h(activeSummary.callable ?? 0)} callable now</li>
+      <li>${h(activeSummary.totalRecentBuildSignals ?? 0)} permit signals</li>` : `<li>${h(activeState.markets.length)} priority markets</li>
       <li>${h(asArray(activeState.stateMeta.portals).length)} portal targets</li>
       <li>${h(asArray(activeState.stateMeta.pipeline).length)} pipeline steps</li>
       <li>buyer-first gate</li>`}
@@ -899,7 +1049,7 @@ function renderBuilderListEnginePanel() {
     return `<article id="market-state-${h(state.stateCode.toLowerCase())}" class="permit-state-card target-market-lane ${state.isActive ? 'active' : ''} ${h(state.sequence.status || 'staged')}">
       <div class="permit-state-head">
         <div><span>${h(state.label)}</span><p>${h(stateMeta.reality || 'Source lane pending.')}</p></div>
-        <strong>${state.isLive ? `${h(displayedBuilderCount)} builders` : h(state.status)}</strong>
+        <strong>${state.isLive ? `${h(state.builderCount)} builders` : h(state.status)}</strong>
       </div>
       <div class="pipeline-unlock"><b>${h(state.sequence.label || 'Pipeline')}</b><span>${h(state.sequence.unlock || 'Collect permit-source priority before pulling builders.')}</span></div>
       <ul class="state-market-list">${markets || '<li><b>Market list pending</b><span>Collect permit-source priority before pulling builders.</span></li>'}</ul>
@@ -932,7 +1082,7 @@ function renderBuilderListEnginePanel() {
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose market. Validate builders.</h3>
-        <p><b>Tennessee is live.</b> Other states are ready resource wells. Tap a state to swap portals, pipeline, and the builder workspace below.</p>
+        <p><b>All six deployed market lanes are live.</b> Tap a state to swap portals, pipeline, builder queue, scripts, and permit evidence below.</p>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -945,7 +1095,7 @@ function renderBuilderListEnginePanel() {
       </nav>
     </section>
 
-    ${renderBuyerValidationCommandCenter(activeState)}
+    ${renderBuyerValidationCommandCenter(activeState, activeBuilders, activeSummary)}
 
     ${activeBuilderEmpty ? `<section id="builder-evidence-desk" class="builder-grid-main builder-empty-evidence">
       <article class="builder-empty-state wide">
@@ -1436,6 +1586,24 @@ async function loadKnoxvilleBuyerCallSheet() {
   }
 }
 
+async function loadBuilderMarketData() {
+  const entries = await Promise.all(builderMarketSources.map(async (source) => {
+    try {
+      const [signalsResponse, evidenceResponse] = await Promise.all([
+        fetch(source.signalsUrl, { cache: 'no-store' }),
+        fetch(source.evidenceUrl, { cache: 'no-store' }),
+      ]);
+      if (!signalsResponse.ok) throw new Error(`${source.key} builders ${signalsResponse.status}`);
+      const rows = await signalsResponse.json();
+      const evidence = evidenceResponse.ok ? await evidenceResponse.json() : { error: `${source.key} evidence ${evidenceResponse.status}` };
+      return [source.key, { ...source, rows, evidence }];
+    } catch (error) {
+      return [source.key, { ...source, rows: [], evidence: { error: error.message }, error: error.message }];
+    }
+  }));
+  builderMarketData = { loaded: true, error: '', markets: Object.fromEntries(entries) };
+}
+
 async function loadWeeklyMarketScout() {
   try {
     const response = await fetch('data/generated/weekly-market/latest.json', { cache: 'no-store' });
@@ -1673,6 +1841,8 @@ function bindEvents() {
       const stateCode = builderMarketButton.dataset.builderMarketState;
       if (stateCode) {
         selectedBuilderMarketState = stateCode;
+        selectedBuilderId = '';
+        selectedValidationBuilderId = '';
         renderBuilderListEnginePanel();
       }
       return;
@@ -1907,13 +2077,14 @@ function bindEvents() {
 
 
     if (event.target.matches('[data-copy-validation-email]')) {
-      const center = buildBuyerValidationCommandCenter(asArray(knoxvilleBuyerCallSheet?.rows), workspace.buyerValidations || []);
+      const center = buildBuyerValidationCommandCenter(getActiveValidationRows(), workspace.buyerValidations || []);
       const builder = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
       const email = builder.emailDraft || {};
-      const subject = email.subject || `Knoxville lots that fit ${builder.name || 'your team'}?`;
+      const marketLabel = builder.marketName || selectedBuilderMarketState || 'your permit market';
+      const subject = email.subject || `${marketLabel} lots that fit ${builder.name || 'your team'}?`;
       const body = email.body || `Hi ${builder.contactName || builder.name || 'there'},
 
-I’m tracking public permit-backed builder activity in Knoxville and want to only send lots that fit your exact buy box.
+I’m tracking public permit-backed builder activity in ${marketLabel} and want to only send lots that fit your exact buy box.
 
 What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, closing timeline, monthly lot appetite, and deal killers should I screen for before sending anything?
 
@@ -1934,8 +2105,7 @@ ${body}`;
     if (event.target.matches('[data-save-buyer-validation]')) {
       const form = event.target.closest('[data-validation-form]');
       const builderId = form?.dataset.validationForm;
-      const rows = asArray(knoxvilleBuyerCallSheet?.rows);
-      const sourceRow = rows.find(item => item.builderId === builderId) || {};
+      const sourceRow = findLoadedBuilderRow(builderId);
       if (!builderId) return;
       const updated = mergeBuyerValidationPatch(builderId, {
         callStatus: form.querySelector('.validation-status')?.value || 'not_called',
@@ -2129,5 +2299,6 @@ bindEvents();
 renderAll();
 loadGeneratedLeads().then(renderAll);
 loadKnoxvilleBuyerCallSheet().then(renderAll);
+loadBuilderMarketData().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);
 loadTitleCompanyResearch().then(renderAll);

@@ -12,6 +12,7 @@ import {
   buildSitePublishPlan,
 } from '../scripts/lead-engine.mjs';
 import { normalizeCategoricalParcel, normalizePermitBuilder } from '../scripts/adapters/knoxville-kgis-public-leads.mjs';
+import { buildDeltaBriefing, buildLeadEngineDelta, leadEngineFingerprint } from '../scripts/lead-engine-delta.mjs';
 
 const sampleSources = {
   version: 1,
@@ -165,6 +166,46 @@ function testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged() {
   assert.ok(dirty.commands.some(command => command.includes('git push')));
 }
 
+function testLeadEngineDeltaIgnoresTimestampOnlyChurn() {
+  const firstSnapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'run-one', now: '2026-06-16T09:00:00.000Z' });
+  const secondSnapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'run-two', now: '2026-06-17T09:00:00.000Z' });
+  const firstLatest = { snapshot: firstSnapshot, queues: buildLeadQueues(firstSnapshot), generatedAt: firstSnapshot.generatedAt };
+  const secondLatest = { snapshot: secondSnapshot, queues: buildLeadQueues(secondSnapshot), generatedAt: secondSnapshot.generatedAt };
+  assert.equal(leadEngineFingerprint(firstLatest), leadEngineFingerprint(secondLatest));
+  const delta = buildLeadEngineDelta(firstLatest, secondLatest);
+  assert.equal(delta.unchanged, true);
+  assert.equal(buildDeltaBriefing(firstLatest, secondLatest), '');
+}
+
+function testLeadEngineDeltaReportsOnlyNewRows() {
+  const firstSnapshot = generateLeadEngineSnapshot(sampleSources, { runId: 'run-one', now: '2026-06-16T09:00:00.000Z' });
+  const expandedSources = structuredClone(sampleSources);
+  expandedSources.parcelSources[0].records.push({
+    parcelId: 'LEH-NEW-003',
+    address: '221 New Owner Rd, Lehigh Acres, FL',
+    market: 'lehigh',
+    lotSize: '0.25 ac',
+    lotSizeAcres: 0.25,
+    ownerName: 'New Public Owner',
+    ownerMailingAddress: 'PO Box 221, Tampa FL',
+    assessedLandValue: 11000,
+    buyerMaxPrice: 42000,
+    roadAccess: true,
+    wetlands: false,
+    confidence: 93,
+  });
+  const secondSnapshot = generateLeadEngineSnapshot(expandedSources, { runId: 'run-two', now: '2026-06-17T09:00:00.000Z' });
+  const firstLatest = { snapshot: firstSnapshot, queues: buildLeadQueues(firstSnapshot), generatedAt: firstSnapshot.generatedAt };
+  const secondLatest = { snapshot: secondSnapshot, queues: buildLeadQueues(secondSnapshot), generatedAt: secondSnapshot.generatedAt };
+  const delta = buildLeadEngineDelta(firstLatest, secondLatest);
+  assert.equal(delta.unchanged, false);
+  assert.equal(delta.deltas.skipTrace.length, 1);
+  const briefing = buildDeltaBriefing(firstLatest, secondLatest);
+  assert.match(briefing, /Lead Engine Delta/);
+  assert.match(briefing, /221 New Owner Rd/);
+  assert.doesNotMatch(briefing, /711 Meadow Rd/);
+}
+
 function testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues() {
   const builder = normalizePermitBuilder('Summit Homes LLC', [
     { PERMITNUMBER: 'IRC-NEW-24-0001', PARCELID: '058FA03001', PERMITVALUE: 125000, DESCRIPTION: 'Dwelling - Single Family', PERMITTYPE: 'SFR', CLASSWORK: 'New', LANDUSE: 'Single Family Residential', ADDRESS: '2544 BERNHURST DR', DATEISSUED: 1703030400000 },
@@ -212,6 +253,8 @@ testTargetAreasCascadeIntoRelatedBuyerAndSellerDiscoveryTasks();
 testAreaBundlesKeepBuyersSellersAndQueuesGeographicallyRelated();
 testWriteOutputsUploadsAreaCsvBundlesForTheStaticSite();
 testSitePublishPlanCommitsGeneratedCsvsOnlyWhenOutputsChanged();
+testLeadEngineDeltaIgnoresTimestampOnlyChurn();
+testLeadEngineDeltaReportsOnlyNewRows();
 testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues();
 
 console.log('lead engine tests passed');

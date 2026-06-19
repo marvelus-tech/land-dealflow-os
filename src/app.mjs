@@ -550,23 +550,23 @@ Regards,
 Okeito`;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
-    <div class="validation-hero">
-      <div>
+    <div class="validation-brief">
+      <div class="validation-brief-copy">
         <span class="eyebrow">Buyer Validation Command Center</span>
-        <h3>Turn permit activity into buyer truth.</h3>
-        <p>An Apple-clean call cockpit for Knoxville builders: one active queue, one focused decision-maker form, and a hard gate that refuses seller sourcing until the buy box is real.</p>
+        <h3>Call queue first. Seller search second.</h3>
+        <p>One operator surface for Knoxville builders: select a builder, call or email, capture exact buy-box criteria, then unlock seller sourcing only when the buyer has told us what they will buy.</p>
       </div>
-      <aside class="validation-orb">
+      <aside class="validation-next-card">
         <span>Next money action</span>
         <strong>${h(center.next?.name || 'Call queue empty')}</strong>
         <p>${h(center.next?.validation?.nextAction || 'Load buyer rows.')}</p>
       </aside>
-    </div>
-    <div class="validation-metrics">
-      <div><span>Builders</span><strong>${h(center.summary.total)}</strong></div>
-      <div><span>Call-ready</span><strong>${h(center.summary.callReady)}</strong></div>
-      <div><span>Validated</span><strong>${h(center.summary.validated)}</strong></div>
-      <div><span>Avg buy box</span><strong>${h(center.summary.averageCompleteness)}%</strong></div>
+      <div class="validation-metrics compact">
+        <div><span>Builders</span><strong>${h(center.summary.total)}</strong></div>
+        <div><span>Call-ready</span><strong>${h(center.summary.callReady)}</strong></div>
+        <div><span>Validated</span><strong>${h(center.summary.validated)}</strong></div>
+        <div><span>Avg buy box</span><strong>${h(center.summary.averageCompleteness)}%</strong></div>
+      </div>
     </div>
     <div class="validation-grid-main">
       <aside class="validation-queue"><div class="panel-kicker"><span>Call queue</span><b>ranked by validation leverage</b></div>${queue}</aside>
@@ -647,28 +647,21 @@ function renderKnoxvilleBuyerCallSheet() {
     </article>`;
   }).join('');
 
-  return `<section class="buyer-war-room" aria-label="Knoxville buyer call sheet">
-    <div class="war-room-hero">
-      <div>
-        <span class="eyebrow">Knoxville Buyer War Room</span>
-        <h3>Call builders with proof. Capture the buy box. Then touch sellers.</h3>
-        <p>Top 10 KGIS permit-verified builders enriched with lawful public business contacts. Every row stays buyer-validation until exact geography, lot size, max price, close speed, package recipient, and deal killers are captured.</p>
-      </div>
-      <aside>
-        <span>First call</span>
-        <b>${h(primary.name)}</b>
-        <p>${h(primary.phone || primary.email || 'find contact first')} · ${h(primary.recentBuilds || 0)} permit signals</p>
-        ${safeLink('data/real/knoxville/buyer_call_sheet.csv', 'Download CSV', 'war-room-link')}
-      </aside>
+  return `<details class="buyer-war-room compact-call-sheet" aria-label="Knoxville buyer call sheet">
+    <summary>
+      <span class="eyebrow">Source-backed call sheet</span>
+      <strong>10 Knoxville builders from KGIS permit evidence</strong>
+      <em>Open proof rows + scripts</em>
+    </summary>
+    <div class="war-room-metrics compact">
+      <div><span>Rows</span><strong>${h(summary.total || rows.length)}</strong></div>
+      <div><span>Callable</span><strong>${h(summary.callablePublicBusinessContacts || 0)}</strong></div>
+      <div><span>Review</span><strong>${h(summary.humanReview || 0)}</strong></div>
+      <div><span>Signals</span><strong>${h(summary.totalRecentBuildSignals || 0)}</strong></div>
     </div>
-    <div class="war-room-metrics">
-      <div><span>Call sheet rows</span><strong>${h(summary.total || rows.length)}</strong></div>
-      <div><span>Public business contacts</span><strong>${h(summary.callablePublicBusinessContacts || 0)}</strong></div>
-      <div><span>Human review</span><strong>${h(summary.humanReview || 0)}</strong></div>
-      <div><span>Recent build signals</span><strong>${h(summary.totalRecentBuildSignals || 0)}</strong></div>
-    </div>
+    <div class="call-sheet-actions">${safeLink('data/real/knoxville/buyer_call_sheet.csv', 'Download CSV', 'war-room-link')}</div>
     <div class="buyer-call-sheet-list">${rowCards}</div>
-  </section>`;
+  </details>`;
 }
 
 function renderBuilderListEnginePanel() {
@@ -727,37 +720,28 @@ function renderBuilderListEnginePanel() {
   </article>`).join('');
 
   target.innerHTML = `<div class="builder-engine-shell">
-    <section class="builder-hero-panel command-surface" aria-label="Builder war room mission brief">
-      <div class="builder-hero-copy">
-        <span class="eyebrow">Builder War Room · Tennessee-first</span>
-        <h3>Permit velocity. Buyer calls.</h3>
-        <p>Do not confuse headquarters with demand. The operating market is Knoxville, Tennessee: permits prove active build intent, calls capture the buy box, and only validated criteria unlock seller search.</p>
-        <div class="hero-actions builder-hero-actions">
-          <a href="#buyer-validation-command">Validate buy boxes</a>
-          <a class="secondary" href="#permit-landscape">Open permit markets</a>
-        </div>
+    <section class="builder-ops-header" aria-label="Builder operations summary">
+      <div class="builder-ops-title">
+        <span class="eyebrow">Builders · Tennessee-first</span>
+        <h3>Validate the buyers worth calling.</h3>
+        <p><b>Permit market: Knoxville, Tennessee.</b> HQ/contact context is secondary. The operator's job is to turn permit activity into exact buy-box criteria before any seller queue is opened.</p>
       </div>
-      <aside class="builder-mission-card">
-        <div class="mission-topbar mini"><span></span><span></span><span></span><b>BUYER OPS</b></div>
-        <div class="builder-mission-body">
-          <span>Next operating move</span>
-          <strong>${h(selected.companyName || callSheetRows[0]?.name || 'Select permit-active builder')}</strong>
-          <p>Call with source proof. Capture geography, lot size, max price, close speed, utilities/access rules, and deal killers before seller outreach.</p>
-        </div>
-      </aside>
-      <div class="title-metric-strip command-metrics">
-        <div><span>Permit market</span><strong>Knoxville, TN</strong><em>seller geography follows permits</em></div>
-        <div><span>Verified builders</span><strong>${h(displayedBuilderCount)}</strong><em>3+ residential signals</em></div>
-        <div><span>Top signal</span><strong>${h(displayedTopSignal)}</strong><em>recent permits/builds</em></div>
-        <div><span>Promotion gate</span><strong>Buy box</strong><em>no criteria, no seller calls</em></div>
+      <div class="builder-ops-metrics">
+        <article><span>Market</span><strong>Knoxville, TN</strong><em>seller geography follows permits</em></article>
+        <article><span>Builders</span><strong>${h(displayedBuilderCount)}</strong><em>permit-verified signals</em></article>
+        <article><span>Top signal</span><strong>${h(displayedTopSignal)}</strong><em>recent permits/builds</em></article>
+        <article><span>Gate</span><strong>Buy box</strong><em>no criteria, no seller calls</em></article>
       </div>
+      <nav class="builder-ops-jump" aria-label="Builder page sections">
+        <a href="#buyer-validation-command">Call queue</a>
+        ${builders.length ? '<a href="#builder-evidence-desk">Permit evidence</a>' : ''}
+        <a href="#permit-landscape">Market sources</a>
+      </nav>
     </section>
 
     ${renderBuyerValidationCommandCenter()}
 
-    ${renderKnoxvilleBuyerCallSheet()}
-
-    <section class="builder-grid-main">
+    <section id="builder-evidence-desk" class="builder-grid-main ${builders.length ? '' : 'is-empty'}">
       <aside class="builder-table-panel">
         <div class="panel-kicker"><span>Permit table</span><b>active builder signals</b></div>
         <div class="builder-table">${tableRows || '<p>No permit-verified builders yet.</p>'}</div>
@@ -773,7 +757,9 @@ function renderBuilderListEnginePanel() {
       </article>
     </section>
 
-    <section class="builder-two-col">
+    ${renderKnoxvilleBuyerCallSheet()}
+
+    <section class="builder-two-col builder-support-tools ${builders.length ? '' : 'is-empty'}">
       <article class="builder-form-panel">
         <div class="panel-kicker"><span>Buy-box capture</span><b>promote only after criteria</b></div>
         <div class="buybox-form" data-builder-form="${h(selected.builderId || '')}">

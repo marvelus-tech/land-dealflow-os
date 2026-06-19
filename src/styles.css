@@ -3047,3 +3047,514 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
     font-size: 24px !important;
   }
 }
+
+/* v1.36 — Apple/W+K cadence: hierarchy, open canvas, single accent, anchored footer */
+:root {
+  --bg: #f6f5ef;
+  --page: #fbfaf6;
+  --panel: #ffffff;
+  --panel-soft: #f4f3ed;
+  --panel-warm: #f8f6ee;
+  --ink: #101214;
+  --black: #101214;
+  --muted: #626a70;
+  --soft: #8a8f94;
+  --line: rgba(16,18,20,.12);
+  --line-soft: rgba(16,18,20,.075);
+  --brand: #2458ff;
+  --brand-dark: #173fd1;
+  --accent: #2458ff;
+  --accent-soft: #edf1ff;
+  --accent-line: rgba(36,88,255,.26);
+  --money: #2458ff;
+  --money-ink: #101214;
+  --green: #2458ff;
+  --amber: #9b6415;
+  --coral: #2458ff;
+  --shadow: none;
+  --shadow-soft: none;
+}
+html { min-height: 100%; background: var(--page); }
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--page) !important;
+  color: var(--ink);
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  letter-spacing: -.011em;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 420px;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(36,88,255,.055), rgba(36,88,255,0) 66%),
+    radial-gradient(circle at 80px 0, rgba(16,18,20,.045), transparent 300px);
+  z-index: -1;
+}
+main {
+  width: 100%;
+  max-width: 1360px !important;
+  flex: 1 0 auto;
+  margin: 0 auto !important;
+  padding: clamp(26px, 4vw, 58px) clamp(18px, 4vw, 56px) clamp(56px, 7vw, 96px) !important;
+}
+footer {
+  flex-shrink: 0;
+  width: 100%;
+  margin: auto 0 0 !important;
+  padding: 18px clamp(18px, 4vw, 56px) 24px !important;
+  color: rgba(16,18,20,.46) !important;
+  font-size: 11px !important;
+  line-height: 1.45;
+  border-top: 1px solid rgba(16,18,20,.07) !important;
+  background: transparent !important;
+  text-align: center;
+}
+footer a { color: rgba(16,18,20,.72) !important; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Navigation becomes a quiet product rail, not a slab. */
+.nav {
+  min-height: 52px !important;
+  padding: 0 clamp(18px, 4vw, 42px) !important;
+  background: rgba(251,250,246,.86) !important;
+  backdrop-filter: saturate(180%) blur(16px) !important;
+  border-bottom: 1px solid rgba(16,18,20,.08) !important;
+  box-shadow: none !important;
+}
+.brand {
+  color: #101214 !important;
+  font-size: 12px !important;
+  font-weight: 760 !important;
+  letter-spacing: -.015em !important;
+  white-space: nowrap;
+}
+.app-tabs {
+  max-width: min(74vw, 720px);
+  overflow-x: auto;
+  scrollbar-width: none;
+  display: inline-flex !important;
+  gap: 2px !important;
+  padding: 2px !important;
+  background: rgba(16,18,20,.045) !important;
+  border: 1px solid rgba(16,18,20,.065) !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+.app-tabs::-webkit-scrollbar { display: none; }
+.tab-button {
+  min-height: 28px !important;
+  padding: 0 12px !important;
+  border-radius: 999px !important;
+  color: rgba(16,18,20,.58) !important;
+  font-size: 11px !important;
+  font-weight: 680 !important;
+  letter-spacing: -.005em !important;
+  white-space: nowrap;
+}
+.tab-button.active {
+  background: #fff !important;
+  color: #101214 !important;
+  border: 0 !important;
+  box-shadow: 0 1px 0 rgba(16,18,20,.06), 0 6px 18px rgba(16,18,20,.055) !important;
+}
+
+/* Type: display can be heroic; dense data must be readable. */
+h1, h2, h3, h4 { color: #101214 !important; text-wrap: balance; }
+h1 {
+  max-width: 980px !important;
+  font-size: clamp(50px, 8vw, 112px) !important;
+  line-height: .9 !important;
+  letter-spacing: -.075em !important;
+  font-weight: 860 !important;
+}
+h2 {
+  max-width: 980px;
+  font-size: clamp(34px, 5vw, 72px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.067em !important;
+  font-weight: 840 !important;
+}
+h3 { font-size: clamp(20px, 2.15vw, 31px) !important; line-height: 1.05 !important; letter-spacing: -.045em !important; font-weight: 790 !important; }
+h4 { font-size: 15px !important; line-height: 1.18 !important; letter-spacing: -.025em !important; font-weight: 760 !important; }
+p, li, small, textarea, input, select { font-size-adjust: none; }
+main :where(p, li, small, label, input, textarea, select, .helper-copy) {
+  color: var(--muted) !important;
+  line-height: 1.55 !important;
+}
+.eyebrow,
+main :where(.badge, .queue-item > span, .source-disclosure summary span, .mini-grid span, .deal-strip span, .side-panel span, .source-meta span, .quality-grid span) {
+  color: var(--accent) !important;
+  font-size: 10px !important;
+  font-weight: 760 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+
+/* Page shells: remove wasted outer page boxes and let content breathe. */
+.app-panel,
+.section,
+#command,
+#parcels-section,
+#builder-list-section,
+#closing-section,
+#sources-hub,
+#workspace {
+  padding-top: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+.section-heading,
+.compact-heading,
+#parcels-section > .section-heading,
+#builder-list-section > .section-heading,
+#closing-section > .section-heading,
+#sources-hub > .section-heading,
+#workspace > .section-heading {
+  width: min(100%, 1060px) !important;
+  max-width: 1060px !important;
+  margin: 0 0 clamp(28px, 4vw, 54px) !important;
+  padding: 0 0 clamp(22px, 3vw, 38px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(16,18,20,.10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.section-heading p,
+.compact-heading p {
+  max-width: 780px !important;
+  margin-top: 18px !important;
+  font-size: clamp(17px, 1.65vw, 22px) !important;
+  line-height: 1.42 !important;
+  letter-spacing: -.026em !important;
+  color: rgba(16,18,20,.62) !important;
+}
+
+/* Open hero treatment: elevated, but not boxed inside another box. */
+.brand-hero,
+.cashflow-hero,
+.title-orbital-hero {
+  min-height: auto !important;
+  padding: clamp(34px, 6vw, 78px) 0 clamp(30px, 5vw, 62px) !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(16,18,20,.10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+.hero-deal-card,
+.cash-card {
+  align-self: center;
+  background: #fff !important;
+  border: 1px solid rgba(16,18,20,.09) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Composition: modules group by rhythm and rules, not boxes within boxes. */
+.stack,
+.machine-stack,
+.builder-engine-shell { gap: clamp(18px, 2.6vw, 32px) !important; }
+main :where(.daily-heading, .call-tile-grid, .side-panel, .card, .stage,
+  .deal-queue, .deal-detail, .deal-action,
+  .source-page-section, .machine-panel,
+  .buyer-first-lane, .money-queue-panel, .call-script-panel, .outcome-panel,
+  .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel,
+  .builder-vendor-panel, .builder-adapter-panel, .validation-command, .validation-focus-card,
+  .seller-unlock-card, .title-glass-card, .title-queue, .title-detail, .title-action,
+  .intake-card, .engine-column, .weekly-market-card) {
+  background: #fff !important;
+  background-image: none !important;
+  border: 1px solid rgba(16,18,20,.085) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  color: #101214 !important;
+}
+main :where(.daily-heading, .call-script-panel, .deal-detail, .validation-focus-card, .title-detail) {
+  padding: clamp(22px, 3.5vw, 42px) !important;
+}
+main :where(.source-page-section, .machine-panel) {
+  margin-top: 0 !important;
+  overflow: clip !important;
+}
+.source-page-section > summary,
+.machine-panel > summary {
+  min-height: 62px !important;
+  padding: 18px clamp(18px, 2.4vw, 28px) !important;
+  grid-template-columns: 38px minmax(0, 1fr) auto !important;
+  background: #fff !important;
+  border-bottom: 1px solid transparent !important;
+}
+.source-page-section[open] > summary,
+.machine-panel[open] > summary { border-bottom-color: rgba(16,18,20,.085) !important; }
+.source-page-section > summary span,
+.machine-panel > summary span {
+  min-width: 26px !important;
+  width: 26px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  border-radius: 999px !important;
+  background: var(--accent-soft) !important;
+  border: 1px solid var(--accent-line) !important;
+  color: var(--accent) !important;
+  font-size: 10px !important;
+  letter-spacing: -.01em !important;
+}
+.source-page-section > summary strong,
+.machine-panel > summary strong { font-size: 16px !important; letter-spacing: -.025em !important; }
+.source-page-section > summary em,
+.machine-panel > summary em { color: rgba(16,18,20,.48) !important; font-size: 12px !important; }
+.machine-panel > :not(summary) { margin: clamp(18px, 2.6vw, 30px) !important; }
+.source-page-section .grid { padding: clamp(18px, 2.5vw, 28px) !important; }
+
+/* Inner items: reduce visual mess; use separators and subtle bands. */
+main :where(.call-tile, .side-panel div, .mini-grid div, .deal-strip div,
+  .detail-grid div, .next-action-card, .fit-card, .quality-grid div, .check-item,
+  .scorecard-list, .fit-matrix, .feedback-loop, .call-notes, .followup-list,
+  .script-box, .packet-economics, .risk-checklist, .memo-preview, .buyer-send-memo,
+  .buyer-first-card, .script-grid div, .engine-row, .criterion-row,
+  .title-metric-strip article, .builder-ops-metrics article, .builder-stat, .permit-evidence-card) {
+  background: #f7f6f0 !important;
+  background-image: none !important;
+  border: 1px solid rgba(16,18,20,.065) !important;
+  border-radius: 7px !important;
+  box-shadow: none !important;
+}
+.engine-row,
+.criterion-row,
+.queue-card .engine-row {
+  border-width: 0 0 1px 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 13px 0 !important;
+}
+.engine-row:last-child,
+.criterion-row:last-child { border-bottom: 0 !important; }
+
+/* Accent: one signal-blue language for action/selection/progress. */
+button:not(.tab-button),
+.button-link,
+.hero-actions a:not(.secondary),
+.hero-actions button:not(.secondary) {
+  background: #101214 !important;
+  color: #fff !important;
+  border: 1px solid #101214 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+button.secondary,
+.hero-actions .secondary,
+.filter,
+.state-filter {
+  background: transparent !important;
+  color: #101214 !important;
+  border: 1px solid rgba(16,18,20,.16) !important;
+}
+.filter.active,
+.state-filter.active,
+.queue-item.active,
+.money-call.active,
+.builder-row.active,
+.title-row.active {
+  background: var(--accent-soft) !important;
+  border-color: var(--accent-line) !important;
+  box-shadow: inset 3px 0 0 var(--accent) !important;
+  color: #101214 !important;
+}
+.badge.good,
+.badge.warn,
+.badge.bad,
+.badge {
+  border-radius: 999px !important;
+  background: #fff !important;
+  color: rgba(16,18,20,.62) !important;
+  border: 1px solid rgba(16,18,20,.10) !important;
+}
+.meter span,
+.validation-progress span,
+.progress-bar span { background: var(--accent) !important; }
+
+/* Builders: fix orphan-looking disclosure rhythm and relationship. */
+#builder-list-section .source-disclosure,
+.builder-source-disclosure,
+.source-disclosure {
+  margin-top: 16px !important;
+}
+.source-disclosure summary {
+  min-height: 58px !important;
+  padding: 14px 16px !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(16,18,20,.09) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  align-items: center !important;
+}
+.source-disclosure summary::before {
+  content: '⌄';
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  grid-row: 1 / span 2;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1px solid var(--accent-line);
+  font-size: 13px;
+}
+.source-disclosure summary { grid-template-columns: 26px 1fr auto !important; }
+.source-disclosure summary span { grid-column: 2 / 4 !important; }
+.source-disclosure summary b { grid-column: 2 !important; }
+.source-disclosure summary em { grid-column: 3 !important; }
+.source-popover {
+  margin: 12px 0 0 42px !important;
+  border-radius: 8px !important;
+}
+
+/* Closing short-page rhythm: content should feel anchored, not abandoned. */
+#closing-section {
+  min-height: min(720px, calc(100dvh - 150px)) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#closing-section .stack { flex: 1 1 auto; align-content: start; }
+#title-closing-panel:empty::before,
+#title-closing-panel .empty-state {
+  min-height: 220px;
+}
+
+/* Mobile: nav must not cover the first content line. */
+@media (max-width: 760px) {
+  .nav {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 7px !important;
+    align-items: start !important;
+    min-height: 82px !important;
+    padding: 10px 14px 8px !important;
+  }
+  .brand { font-size: 11px !important; }
+  .app-tabs {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: flex-start !important;
+  }
+  .tab-button { min-height: 27px !important; padding: 0 10px !important; font-size: 10.5px !important; }
+  main { padding: 26px 16px 56px !important; }
+  h1 { font-size: clamp(48px, 16vw, 72px) !important; letter-spacing: -.07em !important; }
+  h2 { font-size: clamp(36px, 12vw, 58px) !important; letter-spacing: -.065em !important; }
+  .section-heading,
+  .compact-heading,
+  #parcels-section > .section-heading,
+  #builder-list-section > .section-heading,
+  #closing-section > .section-heading,
+  #sources-hub > .section-heading,
+  #workspace > .section-heading {
+    margin-bottom: 24px !important;
+    padding-bottom: 22px !important;
+  }
+  .source-page-section > summary,
+  .machine-panel > summary {
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    gap: 10px !important;
+  }
+  .source-page-section > summary em,
+  .machine-panel > summary em { grid-column: 2 !important; text-align: left !important; }
+  .source-disclosure summary { grid-template-columns: 26px 1fr !important; }
+  .source-disclosure summary span,
+  .source-disclosure summary b,
+  .source-disclosure summary em { grid-column: 2 !important; justify-self: start !important; text-align: left !important; }
+  .source-popover { margin-left: 0 !important; }
+  footer { padding-bottom: 18px !important; }
+}
+
+/* v1.37 — hard route isolation + calmer mobile nav */
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}
+.nav {
+  border-radius: 0 !important;
+}
+.tab-button,
+.tab-button:hover,
+.tab-button.active {
+  border: 0 !important;
+  outline: 0 !important;
+}
+@media (max-width: 760px) {
+  .nav {
+    border-radius: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+    background: rgba(251,250,246,.94) !important;
+  }
+  .app-tabs {
+    border-radius: 0 !important;
+    border: 0 !important;
+    border-top: 1px solid rgba(16,18,20,.07) !important;
+    background: transparent !important;
+    padding: 7px 0 0 !important;
+    gap: 0 !important;
+  }
+  .tab-button {
+    flex: 0 0 auto !important;
+    min-height: 30px !important;
+    border-radius: 0 !important;
+    padding: 0 12px !important;
+    background: transparent !important;
+    color: rgba(16,18,20,.50) !important;
+    box-shadow: none !important;
+  }
+  .tab-button.active {
+    color: #101214 !important;
+    background: transparent !important;
+    box-shadow: inset 0 -2px 0 var(--accent) !important;
+  }
+}
+
+/* v1.38 — desktop nav must be a platform rail, not a centered widget */
+.nav {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  justify-content: center !important;
+  gap: clamp(18px, 3vw, 34px) !important;
+}
+.nav .brand { margin-right: 0 !important; }
+.app-tabs { max-width: min(76vw, 760px) !important; }
+#sources-hub .weekly-market-card {
+  padding: clamp(28px, 3.5vw, 48px) !important;
+}
+#sources-hub .weekly-market-grid h4 {
+  margin-bottom: 18px !important;
+}
+#sources-hub .criterion-row b,
+#sources-hub .engine-row b {
+  letter-spacing: -.02em !important;
+}
+#sources-hub .criterion-row span,
+#sources-hub .engine-row span {
+  letter-spacing: .08em !important;
+}
+@media (max-width: 760px) {
+  .nav { justify-content: start !important; gap: 7px !important; }
+  .app-tabs { max-width: 100% !important; }
+}

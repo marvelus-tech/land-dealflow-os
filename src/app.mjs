@@ -905,7 +905,8 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     <div><span>Top permit</span><strong>${h(selected.topPermit || '-')}</strong></div>
   </div>`;
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
-  const marketLabel = selected.marketName || activeState.marketLabel || activeState.label || 'your permit market';
+  const marketLabel = selected.marketName || activeState.marketLabel || activeState.label || 'your market';
+  const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
   const validationEmail = selected.emailDraft || {};
   const validationEmailSubject = validationEmail.subject || `${marketLabel} lots that fit ${selected.name || 'your team'}?`;
   const validationEmailBody = validationEmail.body || `Hi ${selected.contactName || selected.name || 'there'},
@@ -970,6 +971,12 @@ Okeito`;
       <div class="script-grid"><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p><ul class="selected-permit-proof">${selectedPermitProof || '<li><span>No permit proof rows loaded.</span></li>'}</ul></div><div><h5>Buy-box questions</h5><ul>${scriptQuestions}</ul></div></div>
       <pre>${h(selected.callScript || '')}</pre>
     </details>
+    <details class="validation-script-drawer marketing-drawer">
+      <summary>Optional marketing intro email</summary>
+      <div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div>
+      <pre>${h(marketingEmail.body)}</pre>
+      <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
+    </details>
   </section>`;
 }
 
@@ -1005,11 +1012,6 @@ function renderBuilderListEnginePanel() {
   const activeBuilders = asArray(activeState.rows);
   const activeSummary = activeState.summary || getStateBuilderSummary(activeState.stateCode);
   const selected = getSelectedBuilder(activeBuilders) || {};
-  const email = generateBuilderEmail(selected);
-  const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
-  const callScript = activeBuilders.length ? generateBuilderCallScript(selected) : `No ${activeState.label} builders are loaded yet. Pull permit-active builders from the selected portals first, then generate call scripts from verified public business contacts only.`;
-  const permits = asArray(selected.recentPermits).slice(0, 3);
-  const activeBuilderEmpty = !activeBuilders.length;
   const marketSummary = `<div class="active-market-summary">
     <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
     <strong>${h(activeState.marketLabel || activeState.label)}</strong>
@@ -1064,25 +1066,12 @@ function renderBuilderListEnginePanel() {
     <h4>${h(tier.name)}</h4>
     ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
   </article>`).join('');
-  const tableRows = activeBuilders.map(builder => `<button type="button" class="builder-row ${builder.builderId === selected.builderId ? 'active' : ''}" data-select-builder="${h(builder.builderId)}">
-    <span><b>${h(builder.companyName)}</b><small>${h(builder.sourceJurisdictions?.join(' · ') || 'source pending')}</small></span>
-    <strong>${h(builder.qualifyingPermitCount)} permits</strong>
-    <em>${h(builder.activityTier || 'active')}</em>
-    <i>${h(builder.buyBoxStatus || 'unknown')}</i>
-  </button>`).join('');
-  const evidenceRows = permits.map((permit, index) => `<article class="permit-evidence-card">
-    <span>${String(index + 1).padStart(2, '0')} · ${h(permit.permitStatus)}</span>
-    <h4>${h(permit.permitType)}</h4>
-    <p>${h(permit.siteAddress || 'address hidden')} · ${h(permit.jurisdiction || 'jurisdiction pending')}</p>
-    <small>${h(permit.permitNumber)} · ${h(permit.issueDate)} · ${h(permit.licenseNumber || 'license pending')}</small>
-  </article>`).join('');
-
   target.innerHTML = `<div class="builder-engine-shell">
     <section class="builder-ops-header" aria-label="Builder operations summary">
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose market. Validate builders.</h3>
-        <p><b>All six deployed market lanes are live.</b> Tap a state to swap portals, pipeline, builder queue, scripts, and permit evidence below.</p>
+        <p><b>All six deployed market lanes are live.</b> Tap a state to swap the builder queue, validation form, source map, and permit-proof context.</p>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -1090,64 +1079,11 @@ function renderBuilderListEnginePanel() {
       </div>
       <nav class="builder-ops-jump" aria-label="Builder page sections">
         <a href="#buyer-validation-command">Builder queue</a>
-        <a href="#market-state-tn">State lanes</a>
-        ${activeBuilders.length ? '<a href="#builder-evidence-desk">Permit evidence</a>' : ''}
+        <a href="#permit-landscape">Permit sources</a>
       </nav>
     </section>
 
     ${renderBuyerValidationCommandCenter(activeState, activeBuilders, activeSummary)}
-
-    ${activeBuilderEmpty ? `<section id="builder-evidence-desk" class="builder-grid-main builder-empty-evidence">
-      <article class="builder-empty-state wide">
-        <span class="eyebrow">${h(activeState.label)} permit evidence</span>
-        <h3>Builder evidence will appear after a real permit pull.</h3>
-        <p>The queue, selected builder, call scripts, and buy-box form are intentionally blank for ${h(activeState.label)}. First pull recent permit activity from the source pipeline below, dedupe companies, and verify public business contact provenance.</p>
-        <ul class="empty-source-list">
-          <li><b>1. Pull permits</b><span>${h(asArray(activeState.stateMeta?.pipeline)[0]?.source || 'Selected county/city portals')}</span></li>
-          <li><b>2. Dedupe builders</b><span>Company name + license + permit address clusters.</span></li>
-          <li><b>3. Promote only verified contacts</b><span>No scraped/demo contacts. Public provenance required.</span></li>
-        </ul>
-      </article>
-    </section>` : `<section id="builder-evidence-desk" class="builder-grid-main">
-      <aside class="builder-table-panel">
-        <div class="panel-kicker"><span>Permit table</span><b>active builder signals</b></div>
-        <div class="builder-table">${tableRows}</div>
-      </aside>
-
-      <article class="builder-detail-panel">
-        <div class="panel-kicker"><span>3-permit evidence drawer</span><b>${h(selected.companyName || 'Select builder')}</b></div>
-        <div class="builder-detail-header">
-          <div><h3>${h(selected.companyName || 'No builder selected')}</h3><p>${h(selected.phone || 'phone pending')} · ${h(selected.email || 'email pending')}</p></div>
-          ${badge(`${h(selected.buyBoxStatus || 'permitVerified')}`, selected.buyBoxStatus === 'captured' ? 'good' : 'warn')}
-        </div>
-        <div class="permit-evidence-grid">${evidenceRows}</div>
-      </article>
-    </section>
-
-    <section class="builder-two-col builder-support-tools">
-      <article class="builder-form-panel">
-        <div class="panel-kicker"><span>Buy-box capture</span><b>promote only after criteria</b></div>
-        <div class="buybox-form" data-builder-form="${h(selected.builderId || '')}">
-          <label>Zip codes / subdivisions <input class="builder-zip" value="${h(selected.buyBox?.zipCodes?.join(', ') || '')}" placeholder="33971, 33972, Palm Bay NW" /></label>
-          <label>Lot size range <input class="builder-size" value="${h(selected.buyBox?.lotSizeRange || '')}" placeholder="0.23-0.29 ac" /></label>
-          <label>Max price <input class="builder-price" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="42000" /></label>
-          <label>Deal killers <input class="builder-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', '))}" placeholder="wetlands, no road, flood AE" /></label>
-          <label>Close speed / volume <input class="builder-speed" value="${h(selected.buyBox?.closeSpeedDays || '')}" placeholder="14 days / 5 lots month" /></label>
-          <label>Submission method <input class="builder-submit" value="${h(selected.buyBox?.submissionMethod || '')}" placeholder="email Maya with APN + map" /></label>
-          <button type="button" data-save-builder-buybox>Save buy box</button><span class="builder-save-status"></span>
-        </div>
-      </article>
-
-      <article class="builder-script-panel">
-        <div class="panel-kicker"><span>Copied scripts</span><b>call + email</b></div>
-        <h4>Call script</h4><pre>${h(callScript)}</pre>
-        <div class="button-row"><button type="button" class="secondary" data-copy-builder-script>Copy call script</button><span class="builder-script-status"></span></div>
-        <h4>Buy-box capture email</h4><div class="email-subject"><span>Subject</span><strong>${h(email.subject)}</strong></div><pre>${h(email.body)}</pre>
-        <div class="button-row"><button type="button" class="secondary" data-copy-builder-email>Copy buy-box email</button><span class="builder-email-status"></span></div>
-        <h4>Marketing intro email template</h4><div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div><pre>${h(marketingEmail.body)}</pre>
-        <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
-      </article>
-    </section>`}
 
     <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">

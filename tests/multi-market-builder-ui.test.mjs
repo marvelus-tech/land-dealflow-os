@@ -19,6 +19,11 @@ assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilde
 assert.match(app, /All six deployed market lanes are live/, 'Visitor copy should disclose all deployed markets are live');
 assert.doesNotMatch(app, /const isLive = stateCode === 'TN'/, 'UI must not hard-code only Tennessee as live');
 assert.doesNotMatch(app, /non-live states stay empty until real permit pulls are loaded/, 'UI must not tell visitors deployed markets are empty');
+assert.doesNotMatch(app, /id="builder-evidence-desk"/, 'legacy duplicate evidence desk must not render');
+assert.doesNotMatch(app, /class="builder-two-col builder-support-tools"/, 'legacy support-tools block must not render');
+assert.doesNotMatch(app, /class="builder-table-panel"/, 'duplicate builder table panel must not render');
+assert.doesNotMatch(app, /class="builder-script-panel"/, 'duplicate script panel must not render');
+assert.match(app, /Optional marketing intro email/, 'unique marketing template should be retained inside the main command center');
 
 for (const [key, state, url] of markets) {
   assert.ok(app.includes(`key: '${key}'`), `missing builder source key ${key}`);

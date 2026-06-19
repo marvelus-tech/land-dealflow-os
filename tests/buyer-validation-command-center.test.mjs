@@ -79,7 +79,8 @@ assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-se
 assert.match(appSource, /data-copy-validation-email/, 'validation focus card must expose a Copy email action next to Draft email');
 assert.match(appSource, /data-copy-builder-email-address/, 'selected builder email address should be clickable and copy only the address');
 assert.match(appSource, /Email address copied\./, 'clicking selected builder email address should confirm clipboard copy');
-assert.match(stylesSource, /\.copy-builder-email-address[\s\S]{0,260}cursor: copy/, 'copyable email address should look like inline copy text, not a giant button');
+assert.match(stylesSource, /main \.copy-builder-email-address[\s\S]{0,360}border-radius: 0 !important;[\s\S]{0,220}background: transparent !important;[\s\S]{0,220}color: #1f5bff !important;[\s\S]{0,220}cursor: copy !important;/, 'copyable email address should look like accent inline copy text, not a pill button');
+assert.match(stylesSource, /main \.copy-builder-email-address:hover \{ color: var\(--black\) !important; \}/, 'copyable email address should turn black on hover');
 assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-validation-contact="phone"/, 'selected builder phone state badge must be the toggle');
 assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'selected builder email state badge must be the toggle');
 assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="phone"/, 'queue phone state must be a compact icon toggle');

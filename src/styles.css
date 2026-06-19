@@ -2839,6 +2839,25 @@ main :where(button:hover, .button-link:hover, .hero-actions a:hover, .outcome-ch
   transform: none !important;
   box-shadow: none !important;
 }
+
+main .copy-builder-email-address,
+main .copy-builder-email-address:hover,
+main .copy-builder-email-address:focus-visible {
+  display: inline !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #1f5bff !important;
+  font: inherit !important;
+  font-weight: 780 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+  cursor: copy !important;
+}
+main .copy-builder-email-address:hover { color: var(--black) !important; }
 main :where(.badge, .tags span, .badge-stack span, .source-meta code,
   .permit-platform-tags em, .buyer-call-meta span,
   .buyer-call-meta a, .source-page-section > summary span, .machine-panel > summary span) {

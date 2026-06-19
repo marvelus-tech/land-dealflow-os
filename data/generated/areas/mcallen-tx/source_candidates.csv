@@ -1,0 +1,8 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+mcallen-tx,"McAllen, TX",Accela,permit,"McAllen, TX — Accela",https://aca-prod.accela.com/MCALLEN/Default.aspx,55,source_review_then_adapter_build,"McAllen, TX Accela building permits"
+mcallen-tx,"McAllen, TX",arcgis,parcel,HC_Parcel,https://services3.arcgis.com/NIAfqIRrUGOfwOtZ/arcgis/rest/services/HC_Parcel/FeatureServer,90,seller_parcel_discovery,Hidalgo County parcels
+mcallen-tx,"McAllen, TX",arcgis,parcel,Hidalgo Co OWTF Data Collection Map_WFL1,https://services2.arcgis.com/StPxaQgNkHR75lJU/arcgis/rest/services/Hidalgo_Co_OWTF_Data_Collection_Map_WFL1/FeatureServer,90,seller_parcel_discovery,Hidalgo County parcels
+mcallen-tx,"McAllen, TX",arcgis,parcel,Hidalgo County ESD Map,https://services2.arcgis.com/HZn9sYWTEUxVRQW9/arcgis/rest/services/Hidalgo_County_ESD_Map/FeatureServer,90,seller_parcel_discovery,Hidalgo County parcels
+mcallen-tx,"McAllen, TX",arcgis,parcel,Hidalgo Co OWTF Data Collection Map,,70,seller_parcel_discovery,Hidalgo County parcels
+mcallen-tx,"McAllen, TX",arcgis,zoning,TNRIS Texas NAIP Aerial Imagery 2018 (0.6 Meter),https://imagery.tnris.org/server/rest/services/NAIP/NAIP18_NCCIR_60cm/ImageServer,70,deal_risk_and_fit_overlay,"McAllen, TX zoning"
+mcallen-tx,"McAllen, TX",arcgis,zoning,TNRIS Texas NAIP Aerial Imagery 2018 CIR,https://imagery.tnris.org/server/rest/services/NAIP/NAIP18_NCCIR_60cm/ImageServer,70,deal_risk_and_fit_overlay,"McAllen, TX zoning"

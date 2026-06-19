@@ -1,0 +1,2 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+cabarrus-nc,"Concord / Cabarrus County, NC",ArcGIS Open Data + Accela,permit,"Concord / Cabarrus County, NC — ArcGIS Open Data + Accela",https://data-cabarrus.opendata.arcgis.com/,55,source_review_then_adapter_build,"Concord / Cabarrus County, NC ArcGIS Open Data + Accela building permits"

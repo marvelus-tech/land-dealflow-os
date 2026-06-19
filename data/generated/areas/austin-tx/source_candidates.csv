@@ -1,0 +1,25 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+austin-tx,"Austin, TX",Socrata Open Data / BLDS,permit,"Austin, TX — Socrata Open Data / BLDS",https://data.austintexas.gov/,96,run_direct_permit_builder_adapter,"Austin, TX Socrata Open Data / BLDS building permits"
+austin-tx,"Austin, TX",arcgis,permit,ATC CWPP Travis County BCP Parcels,https://services1.arcgis.com/ypdMhhEhrtBXLtQv/arcgis/rest/services/ATC_CWPP_Travis_County_BCP_Parcels/FeatureServer,90,buyer_builder_discovery,Travis County parcels
+austin-tx,"Austin, TX",arcgis,parcel,Austin Area Possible Planting Space_WFL1,https://services1.arcgis.com/M68M8H7oABBFs1Pf/arcgis/rest/services/Austin_Area_Possible_Planting_Space_WFL1/FeatureServer,90,seller_parcel_discovery,"Austin, TX property parcels"
+austin-tx,"Austin, TX",arcgis,permit,BCP_Parcels_COA,https://services1.arcgis.com/HGcSYZ5bvjRswoCb/arcgis/rest/services/BCP_Parcels_COA/FeatureServer,90,buyer_builder_discovery,Travis County parcels
+austin-tx,"Austin, TX",arcgis,parcel,EXTERNAL_tcad_parcel,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/EXTERNAL_tcad_parcel/FeatureServer,90,seller_parcel_discovery,Travis County parcels
+austin-tx,"Austin, TX",arcgis,zoning,navigation_control_zones,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/navigation_control_zones/FeatureServer,90,deal_risk_and_fit_overlay,"Austin, TX zoning"
+austin-tx,"Austin, TX",arcgis,zoning,School Zone Beacons,https://services.arcgis.com/0L95CJ0VTaxqcmED/arcgis/rest/services/School_Zone_Beacons/FeatureServer,90,deal_risk_and_fit_overlay,"Austin, TX zoning"
+austin-tx,"Austin, TX",arcgis,parcel,STATE HIGHWAY 130 PROJECT PLANNING FEATURE LAYER,https://services.arcgis.com/KTcxiTD9dsQw4r7Z/arcgis/rest/services/SH130/FeatureServer,90,seller_parcel_discovery,Travis County parcels
+austin-tx,"Austin, TX",arcgis,zoning,TTC_Mow_Zone_2022_06_13,https://services5.arcgis.com/IhpxXpZSktiy5PJn/arcgis/rest/services/TTF_Mow_Zone_2022_06_13/FeatureServer,90,deal_risk_and_fit_overlay,"Austin, TX zoning"
+austin-tx,"Austin, TX",arcgis,sales,July Layers layers,https://services7.arcgis.com/RtX7tFjxuxerbFfd/arcgis/rest/services/zizo_vunguvungu_streamgis_July_Layers_layers/FeatureServer,80,buyer_and_market_comps,"Austin, TX property sales"
+austin-tx,"Austin, TX",arcgis,parcel,"Austin, Texas",,70,seller_parcel_discovery,"Austin, TX parcels"
+austin-tx,"Austin, TX",arcgis,parcel,City of Austin - Urban Rail Pilot Visualization,,70,seller_parcel_discovery,"Austin, TX parcels"
+austin-tx,"Austin, TX",arcgis,permit,Emerging Projects Austin - Land-use Layer,,70,buyer_builder_discovery,"Austin, TX building permits"
+austin-tx,"Austin, TX",arcgis,permit,Emerging Projects Austin - Status Layer,,70,buyer_builder_discovery,"Austin, TX building permits"
+austin-tx,"Austin, TX",arcgis,permit,Emerging Projects Austin-Copy-Copy,,70,buyer_builder_discovery,"Austin, TX building permits"
+austin-tx,"Austin, TX",arcgis,permit,Emerging Projects Travis County & SE Austin,,70,buyer_builder_discovery,"Austin, TX building permits"
+austin-tx,"Austin, TX",arcgis,parcel,"Large Trees in Austin, TX",https://storymaps.arcgis.com/stories/49b92be1746c4f1e8b3d612fa6c108c1,70,seller_parcel_discovery,"Austin, TX property parcels"
+austin-tx,"Austin, TX",arcgis,permit,Real Property Asset Map,,70,buyer_builder_discovery,"Austin, TX property parcels"
+austin-tx,"Austin, TX",arcgis,permit,Real Property Asset Map (TxDOTCONNECT DEV),,70,buyer_builder_discovery,"Austin, TX property parcels"
+austin-tx,"Austin, TX",arcgis,parcel,"The City of Austin, Texas",,70,seller_parcel_discovery,"Austin, TX parcels"
+austin-tx,"Austin, TX",arcgis,parcel,"The City of Austin, Texas-Copy",,70,seller_parcel_discovery,"Austin, TX parcels"
+austin-tx,"Austin, TX",arcgis,sales,Airbnb's contribution to an affordable housing crisis in tx,https://storymaps.arcgis.com/stories/786b071e76714f0199d7fa3d6706915e,60,buyer_and_market_comps,"Austin, TX property sales"
+austin-tx,"Austin, TX",arcgis,sales,HCT Project Connect - Pilot Viewer,,60,buyer_and_market_comps,"Austin, TX property sales"
+austin-tx,"Austin, TX",arcgis,sales,Tale of Two Sides - Austin,https://storymaps.arcgis.com/stories/526cfc92490e48f49534d4b1ae1103db,60,buyer_and_market_comps,"Austin, TX property sales"

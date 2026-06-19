@@ -1,8 +1,2 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
-knoxville-tn,"Knoxville, TN",arcgis,parcel,Categorical Zoning Changes,https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/Categorical_Zoning_Changes/FeatureServer,90,seller_parcel_discovery,"Knoxville, TN parcels"
-knoxville-tn,"Knoxville, TN",arcgis,permit,Groundbreakers Data,https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer,90,buyer_builder_discovery,Knox County parcels
-knoxville-tn,"Knoxville, TN",arcgis,zoning,Knoxville - Knox County Zoning,https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/KnoxvilleKnoxCountyZoning/FeatureServer,90,deal_risk_and_fit_overlay,"Knoxville, TN zoning"
-knoxville-tn,"Knoxville, TN",arcgis,distress,CAD eCitations20240201,,70,seller_motivation_overlay,"Knoxville, TN code violations"
-knoxville-tn,"Knoxville, TN",arcgis,distress,CAD eCitations20240301,,70,seller_motivation_overlay,"Knoxville, TN code violations"
-knoxville-tn,"Knoxville, TN",arcgis,zoning,Knoxville - Knox County Zoning SHP,,70,deal_risk_and_fit_overlay,"Knoxville, TN zoning"
-knoxville-tn,"Knoxville, TN",arcgis,parcel,TN Property Viewer,https://tnmap.tn.gov/assessment/,70,seller_parcel_discovery,"Knoxville, TN parcels"
+knoxville-tn,"Knoxville / Knox County, TN",KGIS ArcGIS + Buildchek coverage,permit,"Knoxville / Knox County, TN — KGIS ArcGIS + Buildchek coverage",https://www.kgis.org/,96,run_direct_permit_builder_adapter,"Knoxville / Knox County, TN KGIS ArcGIS + Buildchek coverage building permits"

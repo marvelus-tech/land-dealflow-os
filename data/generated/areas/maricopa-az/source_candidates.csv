@@ -1,0 +1,2 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+maricopa-az,"Maricopa County / Phoenix-Mesa, AZ",Maricopa weekly permit reports + Accela cities,permit,"Maricopa County / Phoenix-Mesa, AZ — Maricopa weekly permit reports + Accela cities",https://www.maricopa.gov/Archive.aspx?AMID=128,96,run_direct_permit_builder_adapter,"Maricopa County / Phoenix-Mesa, AZ Maricopa weekly permit reports + Accela cities building permits"

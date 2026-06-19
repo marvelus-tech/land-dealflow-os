@@ -1,0 +1,13 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+buckeye-az,"Buckeye, AZ",City custom permit portal,permit,"Buckeye, AZ — City custom permit portal",https://www.buckeyeaz.gov/,55,source_review_then_adapter_build,"Buckeye, AZ City custom permit portal building permits"
+buckeye-az,"Buckeye, AZ",arcgis,parcel,AZ Select Cities and Zoning Self Storage_WFL1,https://services2.arcgis.com/82iS1Pc7dgs3LFZv/arcgis/rest/services/AZ_Select_Cities_and_Zoning_Self_Storage_WFL1/FeatureServer,90,seller_parcel_discovery,"Buckeye, AZ parcels"
+buckeye-az,"Buckeye, AZ",arcgis,parcel,AZOwnershipParcels,https://services8.arcgis.com/BqqKfe5Sy3Aybg55/arcgis/rest/services/AZOwnershipParcels/FeatureServer,90,seller_parcel_discovery,"Buckeye, AZ parcels"
+buckeye-az,"Buckeye, AZ",arcgis,parcel,EV_GIS_Visual_Toolkit,https://services.arcgis.com/ykpntM6e3tHvzKRJ/arcgis/rest/services/EV_GIS_Visual_Toolkit/FeatureServer,90,seller_parcel_discovery,"Buckeye, AZ parcels"
+buckeye-az,"Buckeye, AZ",arcgis,zoning,MunicipalPlanArea,https://services7.arcgis.com/iEkS6Qv6dYmOkqot/arcgis/rest/services/MunicipalPlanArea/FeatureServer,90,deal_risk_and_fit_overlay,"Buckeye, AZ zoning"
+buckeye-az,"Buckeye, AZ",arcgis,parcel,"Parcels - Maricopa County, Arizona (2016)",https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/services/parcels_maricnty_2016/FeatureServer,90,seller_parcel_discovery,Maricopa County parcels
+buckeye-az,"Buckeye, AZ",arcgis,parcel,"Parcels - Maricopa County, Arizona (2018)",https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/services/parcels_maricnty_2018/FeatureServer,90,seller_parcel_discovery,Maricopa County parcels
+buckeye-az,"Buckeye, AZ",arcgis,parcel,"Parcels - Maricopa County, Arizona (2020)",https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/services/parcels_maricnty_2020/FeatureServer,90,seller_parcel_discovery,Maricopa County parcels
+buckeye-az,"Buckeye, AZ",arcgis,parcel,"Parcels - Maricopa County, Arizona (2021)",https://services3.arcgis.com/0OPQIK59PJJqLK0A/arcgis/rest/services/Parcels_-_Maricopa_County_Arizona_(2021)/FeatureServer,90,seller_parcel_discovery,Maricopa County parcels
+buckeye-az,"Buckeye, AZ",arcgis,zoning,A Connectivity Vision,https://storymaps.arcgis.com/stories/20e1c3b11d23423a8071d6b635ed3fa2,70,deal_risk_and_fit_overlay,"Buckeye, AZ zoning"
+buckeye-az,"Buckeye, AZ",arcgis,zoning,Booming Cities,https://storymaps.arcgis.com/stories/cb0b3c56304745ad8afda0cd7ec1d1b0,70,deal_risk_and_fit_overlay,"Buckeye, AZ zoning"
+buckeye-az,"Buckeye, AZ",arcgis,zoning,White Tank Mountains Regional Connectivity Initiative,https://storymaps.arcgis.com/collections/6af114926f624c03a5ae89dfc69b9579,70,deal_risk_and_fit_overlay,"Buckeye, AZ zoning"

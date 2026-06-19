@@ -1,9 +1,2 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
-chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Chattanooga Parcels,https://services5.arcgis.com/74bZbbuf05Ctvbzv/arcgis/rest/services/Chattanooga_Parcels/FeatureServer,90,seller_parcel_discovery,"Chattanooga, TN parcels"
-chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Hamilton County Parcel Polygons,https://cagisonline.hamilton-co.org/arcgis/rest/services/HCE/Cadastral/MapServer/0,90,seller_parcel_discovery,Hamilton County parcels
-chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Hamilton County Parcels - Open Data,https://services.arcgis.com/JyZag7oO4NteHGiq/arcgis/rest/services/Open_Data/FeatureServer/51,90,seller_parcel_discovery,Hamilton County parcels
-chattanooga-tn,"Chattanooga, TN",arcgis,permit,Hamilton County Zoning _2_27_2026__WFL1,https://services2.arcgis.com/cclAu9OKhOfjeUdr/arcgis/rest/services/Hamilton_County_Zoning__2_27_2026__WFL1/FeatureServer,90,buyer_builder_discovery,"Chattanooga, TN building permits"
-chattanooga-tn,"Chattanooga, TN",arcgis,parcel,Hamilton County Zoning 4_WFL1,https://services2.arcgis.com/cclAu9OKhOfjeUdr/arcgis/rest/services/Hamilton_County_Zoning_4_WFL1/FeatureServer,90,seller_parcel_discovery,"Chattanooga, TN property parcels"
-chattanooga-tn,"Chattanooga, TN",arcgis,distress,CAD eCitations20240301,,70,seller_motivation_overlay,"Chattanooga, TN code violations"
-chattanooga-tn,"Chattanooga, TN",arcgis,zoning,Do All Chattanooga Residents Have Equal Access to Parks?,https://storymaps.arcgis.com/stories/8dd6e36fd1c24544a749bd7cd95fb6ff,70,deal_risk_and_fit_overlay,"Chattanooga, TN zoning"
-chattanooga-tn,"Chattanooga, TN",arcgis,parcel,TN Property Viewer,https://tnmap.tn.gov/assessment/,70,seller_parcel_discovery,"Chattanooga, TN property parcels"
+chattanooga-tn,"Chattanooga / Hamilton County, TN",Buildchek + Hamilton County GIS,permit,"Chattanooga / Hamilton County, TN — Buildchek + Hamilton County GIS",https://gis.hamiltontn.gov/,78,source_review_then_adapter_build,"Chattanooga / Hamilton County, TN Buildchek + Hamilton County GIS building permits"

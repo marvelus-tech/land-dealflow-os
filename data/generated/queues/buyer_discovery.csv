@@ -1,3 +1,15 @@
 market,areaName,buyerType,task,reason,priority
-chattanooga-tn,"Chattanooga, TN",custom-builder,"Find active custom-builder in Chattanooga, TN",new target area needs buyer discovery,8
-nashville-edge-tn,"Nashville edge, TN",production-builder,"Find active production-builder in Nashville edge, TN",new target area needs buyer discovery,7
+nashville-edge-tn,"Nashville / Davidson County, TN",production-builder,"Find active production-builder in Nashville / Davidson County, TN",new target area needs buyer discovery,96
+chattanooga-tn,"Chattanooga / Hamilton County, TN",custom-builder,"Find active custom-builder in Chattanooga / Hamilton County, TN",new target area needs buyer discovery,92
+murfreesboro-tn,"Murfreesboro / Rutherford County, TN",production-builder,"Find active production-builder in Murfreesboro / Rutherford County, TN",new target area needs buyer discovery,90
+franklin-tn,"Franklin / Williamson County, TN",custom-builder,"Find active custom-builder in Franklin / Williamson County, TN",new target area needs buyer discovery,88
+ocala-fl,"Ocala / Marion County, FL",custom-builder,"Find active custom-builder in Ocala / Marion County, FL",new target area needs buyer discovery,80
+clermont-fl,"Clermont / Lake County, FL",spec-builder,"Find active spec-builder in Clermont / Lake County, FL",new target area needs buyer discovery,78
+alachua-fl,"Gainesville / Alachua County, FL",custom-builder,"Find active custom-builder in Gainesville / Alachua County, FL",new target area needs buyer discovery,74
+tucson-az,"Tucson / Pima County, AZ",custom-builder,"Find active custom-builder in Tucson / Pima County, AZ",new target area needs buyer discovery,66
+buckeye-az,"Buckeye, AZ",production-builder,"Find active production-builder in Buckeye, AZ",new target area needs buyer discovery,64
+charlotte-nc,"Charlotte / Mecklenburg County, NC",production-builder,"Find active production-builder in Charlotte / Mecklenburg County, NC",new target area needs buyer discovery,56
+greensboro-nc,"Greensboro / Guilford County, NC",custom-builder,"Find active custom-builder in Greensboro / Guilford County, NC",new target area needs buyer discovery,52
+cabarrus-nc,"Concord / Cabarrus County, NC",custom-builder,"Find active custom-builder in Concord / Cabarrus County, NC",new target area needs buyer discovery,50
+plano-tx,"Plano / Collin County, TX",production-builder,"Find active production-builder in Plano / Collin County, TX",new target area needs buyer discovery,38
+mcallen-tx,"McAllen, TX",spec-builder,"Find active spec-builder in McAllen, TX",new target area needs buyer discovery,34

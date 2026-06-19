@@ -14,6 +14,7 @@ import {
 import { normalizeCategoricalParcel, normalizePermitBuilder } from '../scripts/adapters/knoxville-kgis-public-leads.mjs';
 import { buildDeltaBriefing, buildLeadEngineDelta, leadEngineFingerprint } from '../scripts/lead-engine-delta.mjs';
 import { PERMIT_STATE_PRIORITY } from '../scripts/priority-permit-markets.mjs';
+import { selectNextAdapterTarget } from '../scripts/select-next-adapter-target.mjs';
 
 const sampleSources = {
   version: 1,
@@ -257,6 +258,15 @@ function testPriorityPermitModeExpandsAndJudgesLeadingMarketStack() {
   assert.ok(markets.every(item => item.state !== 'KY'));
 }
 
+function testFridayAdapterTargetUsesRotatingPriorityCursor() {
+  const selected = selectNextAdapterTarget({ advance: false, now: '2026-06-19T09:00:00.000Z' });
+  assert.equal(selected.state, 'TN');
+  assert.equal(selected.nextState, 'FL');
+  assert.equal(selected.target.id, 'nashville-edge-tn');
+  assert.equal(selected.target.activeBuilderSignals, 0);
+  assert.match(selected.target.nextAction, /build a direct adapter|Fix\/run/);
+}
+
 testLoadSourcesValidatesWorkflowInputs();
 testSnapshotGeneratesMarketsBuyersParcelsAndMetadata();
 testSnapshotBlocksSeedDemoRowsFromActiveLeads();
@@ -272,5 +282,6 @@ testLeadEngineDeltaIgnoresTimestampOnlyChurn();
 testLeadEngineDeltaReportsOnlyNewRows();
 testKnoxvilleKgisNormalizersKeepPermitSignalsOutOfCallableSellerQueues();
 testPriorityPermitModeExpandsAndJudgesLeadingMarketStack();
+testFridayAdapterTargetUsesRotatingPriorityCursor();
 
 console.log('lead engine tests passed');

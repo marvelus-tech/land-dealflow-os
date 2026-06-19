@@ -9,6 +9,7 @@ import {
 
 const callSheet = JSON.parse(fs.readFileSync('data/real/knoxville/buyer_call_sheet.json', 'utf8'));
 const rows = callSheet.rows;
+const appSource = fs.readFileSync('src/app.mjs', 'utf8');
 
 const center = buildBuyerValidationCommandCenter(rows, []);
 assert.equal(center.summary.total, 10);
@@ -61,5 +62,10 @@ assert.equal(validatedBall.sellerSearch.offerCeiling, 53300);
 
 const lockedSearch = buildSellerSearchInstructions({ ...ball, buyBox: saved[0].buyBox, callStatus: 'spoke_to_decision_maker' });
 assert.equal(lockedSearch.eligible, false, 'complete fields still require explicit validated_buy_box call status');
+
+assert.match(appSource, /let selectedValidationBuilderId = '';/, 'validation queue must not share the permit-builder selection state');
+assert.match(appSource, /data-select-validation-builder/, 'validation queue rows need their own click target');
+assert.match(appSource, /dataset\.selectValidationBuilder/, 'validation queue click handler must persist the selected validation row');
+assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-select-builder=/, 'validation rows must not use the permit-builder selector or they reset to the top row');
 
 console.log('buyer validation command center tests passed');

@@ -126,6 +126,7 @@ let knoxvilleBuyerCallSheet = null;
 let filter = 'all';
 let selectedParcelId = '';
 let selectedBuilderId = '';
+let selectedValidationBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
@@ -518,8 +519,8 @@ function renderBuyerValidationCommandCenter() {
     return `<section class="validation-command loading"><span class="eyebrow">Buyer Validation Command Center</span><h3>Waiting on Knoxville call sheet.</h3><p>Run <code>npm run enrich:knoxville-builders</code> to load the permit-backed builder queue.</p></section>`;
   }
   const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
-  const selected = center.items.find(item => item.builderId === selectedBuilderId) || center.next || center.items[0] || {};
-  selectedBuilderId = selected.builderId || selectedBuilderId;
+  const selected = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
+  selectedValidationBuilderId = selected.builderId || selectedValidationBuilderId;
   const sellerCriteria = selected.sellerSearch?.eligible
     ? selected.sellerSearch.criteria.map(item => `<li>${h(item)}</li>`).join('')
     : selected.sellerSearch?.blockers?.map(item => `<li>${h(item)}</li>`).join('') || '<li>Complete buy-box fields to unlock seller search.</li>';
@@ -527,7 +528,7 @@ function renderBuyerValidationCommandCenter() {
   const queue = center.items.map((item, index) => {
     const active = item.builderId === selected.builderId;
     const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : item.validation.buyBox.percent >= 67 ? 'warn' : 'neutral';
-    return `<button type="button" class="validation-queue-item ${active ? 'active' : ''}" data-select-builder="${h(item.builderId)}">
+    return `<button type="button" class="validation-queue-item ${active ? 'active' : ''}" data-select-validation-builder="${h(item.builderId)}">
       <span>${String(index + 1).padStart(2, '0')}</span>
       <b>${h(item.name)}</b>
       <small>${h(callStatusLabel(item.callStatus))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small>
@@ -1375,6 +1376,13 @@ function bindEvents() {
     const builderButton = event.target.closest('[data-select-builder]');
     if (builderButton) {
       selectedBuilderId = builderButton.dataset.selectBuilder;
+      renderBuilderListEnginePanel();
+      return;
+    }
+
+    const validationBuilderButton = event.target.closest('[data-select-validation-builder]');
+    if (validationBuilderButton) {
+      selectedValidationBuilderId = validationBuilderButton.dataset.selectValidationBuilder;
       renderBuilderListEnginePanel();
       return;
     }

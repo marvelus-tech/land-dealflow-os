@@ -900,6 +900,21 @@ h3, h4 { letter-spacing: -.035em; }
 .validation-focus-head { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
 .validation-focus-head h3 { margin-top: 8px; font-size: clamp(28px, 3.4vw, 44px); line-height: .96; letter-spacing: -.06em; }
 .validation-focus-head p { margin-top: 9px; color: var(--muted); font-weight: 680; }
+.copy-builder-email-address {
+  display: inline;
+  padding: 0;
+  min-height: 0;
+  border: 0 !important;
+  background: transparent !important;
+  color: #1f5bff !important;
+  font: inherit;
+  font-weight: 780;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: copy;
+  box-shadow: none !important;
+}
+.copy-builder-email-address:hover { color: #1748d8 !important; }
 .validation-score { flex: 0 0 auto; min-width: 108px; padding: 16px; border-radius: 22px; text-align: center; background: #111827; color: #fff; }
 .validation-score strong { display: block; font-size: 42px; line-height: .9; letter-spacing: -.055em; }
 .validation-score span { margin-top: 7px; color: rgba(255,255,255,.62); }

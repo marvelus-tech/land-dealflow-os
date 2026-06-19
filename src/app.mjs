@@ -918,7 +918,11 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       </div>
     </article>`;
   }).join('');
-  const contact = [selected.phone, selected.email].filter(Boolean).join(' · ') || 'Public business contact unresolved';
+  const contactParts = [
+    selected.phone ? h(selected.phone) : '',
+    selected.email ? `<button type="button" class="copy-builder-email-address" data-copy-builder-email-address="${h(selected.email)}" title="Copy ${h(selected.email)}">${h(selected.email)}</button>` : '',
+  ].filter(Boolean);
+  const contact = contactParts.join(' · ') || 'Public business contact unresolved';
   const selectedOutreach = validationOutreach(selected);
   const selectedScoreTitle = scoreBreakdownText(selected);
   const selectedScoreRows = scoreBreakdownRows(selected);
@@ -943,7 +947,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>proof inline</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>${queue}</aside>
       <article class="validation-focus-card">
         <div class="validation-focus-head">
-          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${h(contact)}</p></div>
+          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${contact}</p></div>
           <details class="validation-score" title="${h(selectedScoreTitle)}">
             <summary><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></summary>
             <div class="score-breakdown">${selectedScoreRows}</div>
@@ -2031,6 +2035,19 @@ function bindEvents() {
       });
     }
 
+
+    const copyBuilderEmailAddressButton = event.target.closest('[data-copy-builder-email-address]');
+    if (copyBuilderEmailAddressButton) {
+      const email = copyBuilderEmailAddressButton.dataset.copyBuilderEmailAddress || '';
+      if (!email) return;
+      const status = copyBuilderEmailAddressButton.closest('.validation-focus-card')?.querySelector('.validation-email-status');
+      const write = navigator.clipboard?.writeText?.(email) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'Email address copied.'; }).catch(() => {
+        downloadText(`land-dealflow-builder-email-address-${new Date().toISOString().slice(0, 10)}.txt`, email, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded address instead.';
+      });
+      return;
+    }
 
     if (event.target.matches('[data-copy-validation-email]')) {
       const center = buildBuyerValidationCommandCenter(getActiveValidationRows(), workspace.buyerValidations || []);

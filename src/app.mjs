@@ -562,7 +562,7 @@ function renderBuyerValidationCommandCenter() {
       <aside class="validation-queue"><div class="panel-kicker"><span>Call queue</span><b>ranked by validation leverage</b></div>${queue}</aside>
       <article class="validation-focus-card">
         <div class="validation-focus-head">
-          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p>${h(contact)} · ${h(selected.recentBuilds || 0)} permit signals</p></div>
+          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: Knoxville, Tennessee.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${h(contact)}</p></div>
           <div class="validation-score"><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></div>
         </div>
         <div class="validation-actions">
@@ -677,6 +677,11 @@ function renderBuilderListEnginePanel() {
     <p>${h(adapter.use)}</p>
     <small>${adapter.fields.map(field => h(field)).join(' · ')}</small>
   </article>`).join('');
+  const leadingMarketRows = asArray(permitLandscape.leadingMarkets).map(item => `<article class="priority-market-card">
+    <strong>#${h(item.rank)} · ${h(item.state)}</strong>
+    <b>${h(item.market)}</b>
+    <p>${h(item.reason)}</p>
+  </article>`).join('');
   const statePortalRows = permitLandscape.states.map(state => `<article class="permit-state-card">
     <div class="permit-state-head">
       <div><span>${h(state.state)}</span><p>${h(state.reality)}</p></div>
@@ -779,6 +784,8 @@ function renderBuilderListEnginePanel() {
       <article class="builder-adapter-panel wide-permit-panel">
         <div class="panel-kicker"><span>Permit portal landscape</span><b>five-state normalization map</b></div>
         <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>
+        <h4>Lead-generation priority stack</h4>
+        <div class="priority-market-grid">${leadingMarketRows}</div>
         <h4>Source adapter checklist</h4>
         <div class="adapter-grid">${adapterRows}</div>
         <h4>Target-state portals to monitor</h4>

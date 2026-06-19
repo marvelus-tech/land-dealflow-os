@@ -937,3 +937,12 @@ h3, h4 { letter-spacing: -.035em; }
   .validation-focus-head { flex-direction: column; }
   .validation-score { width: 100%; }
 }
+
+
+.priority-market-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 10px 0 18px; }
+.priority-market-card { min-width: 0; padding: 16px; border-radius: 18px; border: 1px solid var(--line-soft); background: linear-gradient(180deg, #fff 0%, #f8fafc 100%); }
+.priority-market-card strong { display: block; color: var(--green); font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .075em; }
+.priority-market-card b { display: block; margin-top: 7px; color: var(--black); font-size: 15px; line-height: 1.1; letter-spacing: -.025em; }
+.priority-market-card p { margin-top: 8px; color: var(--muted); font-size: 12px; line-height: 1.42; }
+@media (max-width: 1000px) { .priority-market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .priority-market-grid { grid-template-columns: 1fr; } }

@@ -1969,3 +1969,165 @@ footer { color: #6b778a; }
   h1 { font-size: clamp(43px, 14vw, 64px); }
   .button-link, button { min-height: 44px; }
 }
+
+/* v1.26 — remove distracting pill radii; rebuild forms as serious modern controls */
+main :where(
+  .vision-hero, .mission-console, .mission-map,
+  .daily-heading, .call-tile-grid, .side-panel, .side-panel div,
+  .card, .stage, .call-tile,
+  .buyer-first-lane, .buyer-first-card, .money-queue-panel, .call-script-panel, .outcome-panel,
+  .deal-queue, .deal-detail, .deal-action, .source-page-section, .machine-panel,
+  .builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel,
+  .builder-script-panel, .builder-vendor-panel, .builder-adapter-panel,
+  .builder-ops-header, .validation-command, .validation-queue, .validation-focus-card, .seller-unlock-card,
+  .compact-call-sheet, .operator-checklist, .buyer-feedback-capture, .title-glass-card, .intake-card,
+  .builder-row, .validation-builder-row, .validation-queue-item, .money-call, .queue-item,
+  .permit-evidence-card, .adapter-card, .normalization-tier, .permit-state-card,
+  .portal-link-list a, .source-disclosure summary, .source-popover,
+  .deal-strip div, .mini-grid div, .money-stats div, .feedback-summary div, .next-call-guidance div,
+  .title-metric-strip article, .builder-ops-metrics article, .validation-metrics.compact div,
+  .war-room-metrics.compact div, .phase-detail-card, .seller-net-script-card, .operator-step,
+  .weekly-market-card, .buyer-send-memo, .title-orbital-hero,
+  .email-subject, pre, textarea, select, input
+) { border-radius: 10px !important; }
+
+main :where(.button-link, button, .validation-call-button, .outcome-chip, .filter) {
+  border-radius: 8px !important;
+}
+
+/* Preserve intentionally rounded navigation only. */
+.nav, .app-tabs, .tab-button, .nav-cta, .brand-mark { border-radius: 999px !important; }
+
+main :where(.badge, .vendor-chip-grid span, .permit-platform-tags em, .source-meta code) {
+  border-radius: 6px !important;
+}
+
+.validation-focus-card {
+  padding: clamp(18px, 2.2vw, 26px) !important;
+}
+.validation-actions {
+  align-items: center;
+  gap: 8px;
+  margin: 18px 0 18px;
+}
+.validation-call-button {
+  min-height: 42px;
+  padding: 0 15px;
+  text-decoration: none;
+  letter-spacing: -.01em;
+}
+.validation-call-button.secondary {
+  background: #fff !important;
+  color: #111827 !important;
+  border-color: #d8e0ea !important;
+  box-shadow: none !important;
+}
+.validation-progress {
+  height: 6px;
+  border-radius: 3px !important;
+  background: #e6ebf2;
+}
+.validation-progress span { border-radius: 3px !important; }
+.validation-next-action {
+  margin: 14px 0 20px;
+  padding: 14px 16px;
+  border-left: 3px solid #12945a;
+  background: #f3fbf6;
+  color: #14532d;
+  font-size: 15px;
+  line-height: 1.35;
+  font-weight: 760;
+}
+.validation-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)) !important;
+  gap: 18px 14px !important;
+  padding-top: 4px;
+}
+.validation-form label,
+.buybox-form label,
+.feedback-form-grid label,
+.preset-row {
+  display: grid;
+  gap: 8px;
+  color: #263445 !important;
+  font-size: 11px !important;
+  font-weight: 860 !important;
+  text-transform: uppercase;
+  letter-spacing: .105em !important;
+}
+.validation-form input,
+.validation-form select,
+.validation-form textarea,
+.buybox-form input,
+.feedback-form-grid input,
+.feedback-form-grid select,
+.feedback-form-grid textarea,
+.tool-card textarea, .crm-row textarea, .crm-row input, .crm-row select, .preset-row select,
+#csv-input, #json-input, #skip-trace-csv, #buyer-contact-csv {
+  min-height: 48px !important;
+  padding: 12px 13px !important;
+  border-radius: 6px !important;
+  border: 1px solid #cfd8e3 !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  box-shadow: none !important;
+  font: 650 15px/1.35 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  letter-spacing: -.015em !important;
+}
+.validation-form select,
+.preset-row select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, #334155 50%), linear-gradient(135deg, #334155 50%, transparent 50%) !important;
+  background-position: calc(100% - 18px) 21px, calc(100% - 13px) 21px !important;
+  background-size: 5px 5px, 5px 5px !important;
+  background-repeat: no-repeat !important;
+  padding-right: 34px !important;
+}
+.validation-form textarea,
+.feedback-form-grid textarea,
+#csv-input, #json-input, #skip-trace-csv, #buyer-contact-csv {
+  min-height: 158px !important;
+  resize: vertical;
+  line-height: 1.52 !important;
+}
+.validation-form input:focus,
+.validation-form select:focus,
+.validation-form textarea:focus,
+.buybox-form input:focus,
+.feedback-form-grid input:focus,
+.feedback-form-grid select:focus,
+.feedback-form-grid textarea:focus,
+.tool-card textarea:focus, .crm-row textarea:focus, .crm-row input:focus, .crm-row select:focus,
+#csv-input:focus, #json-input:focus, #skip-trace-csv:focus, #buyer-contact-csv:focus {
+  outline: 2px solid rgba(37,99,235,.24) !important;
+  outline-offset: 2px;
+  border-color: #2563eb !important;
+  background: #fff !important;
+}
+.validation-form .wide { grid-column: 1 / -1; }
+.validation-save-row {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 2px;
+}
+.validation-save-row button,
+button[data-save-buyer-validation] {
+  min-height: 46px !important;
+  padding: 0 18px !important;
+  border-radius: 8px !important;
+  background: #0f172a !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(15,23,42,.14) !important;
+}
+
+@media (max-width: 760px) {
+  main :where(.vision-hero, .validation-command, .validation-focus-card, .builder-ops-header, .compact-call-sheet) {
+    border-radius: 10px !important;
+  }
+  .validation-form { grid-template-columns: 1fr !important; gap: 15px !important; }
+  .validation-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .validation-actions .validation-email-status { grid-column: 1 / -1; }
+}

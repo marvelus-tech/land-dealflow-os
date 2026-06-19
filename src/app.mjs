@@ -692,7 +692,22 @@ function upsertBuyerValidation(row) {
   workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== row.builderId), row] };
 }
 
-function renderBuyerValidationCommandCenter() {
+function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', label: 'Tennessee', isLive: true, markets: [], stateMeta: {} }) {
+  if (!activeState.isLive) {
+    const portals = asArray(activeState.stateMeta?.portals).slice(0, 3).map(portal => `<li><b>${h(portal.market)}</b><span>${h(portal.system)} · ${h(portal.jurisdiction)}</span></li>`).join('');
+    return `<section id="buyer-validation-command" class="validation-command builder-empty-command" aria-label="Builder queue empty for ${h(activeState.label)}">
+      <div class="builder-empty-state">
+        <span class="eyebrow">${h(activeState.label)} builder queue</span>
+        <h3>No permit-active builders loaded yet.</h3>
+        <p>This resource well is scaffolded, but it should stay empty until we pull real permit activity, dedupe builders, and verify public business contacts. No Tennessee builders are shown here.</p>
+        <div class="empty-state-actions">
+          <a href="#market-state-${h(activeState.stateCode.toLowerCase())}">Open ${h(activeState.stateCode)} pipeline</a>
+          <span>${h(asArray(activeState.stateMeta?.pipeline).length)} source steps ready</span>
+        </div>
+        <ul class="empty-source-list">${portals || '<li><b>Portal list pending</b><span>Add direct county/city sources before loading builders.</span></li>'}</ul>
+      </div>
+    </section>`;
+  }
   const rows = asArray(knoxvilleBuyerCallSheet?.rows);
   if (!rows.length) {
     return `<section class="validation-command loading"><span class="eyebrow">Buyer Validation Command Center</span><h3>Waiting on Knoxville call sheet.</h3><p>Run <code>npm run enrich:knoxville-builders</code> to load the permit-backed builder queue.</p></section>`;
@@ -813,16 +828,11 @@ Okeito`;
 function renderBuilderListEnginePanel() {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
-  const builders = getPermitBuilders();
+  const tnBuilders = getPermitBuilders();
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
-  const displayedBuilderCount = builders.length || callSheetRows.length;
+  const displayedBuilderCount = tnBuilders.length || callSheetRows.length;
   const displayedBatchFloor = knoxvilleBuyerCallSheet?.summary?.minimumUniqueBuilders || 20;
-  const selected = getSelectedBuilder(builders) || {};
-  const email = generateBuilderEmail(selected);
-  const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
-  const callScript = generateBuilderCallScript(selected);
-  const permits = asArray(selected.recentPermits).slice(0, 3);
   const permitLandscape = getPermitPortalLandscape();
   const stateOrder = ['TN', 'TX', 'NC', 'FL', 'AZ'];
   const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona' };
@@ -840,13 +850,20 @@ function renderBuilderListEnginePanel() {
   const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span>${h(state.stateCode)}</span>
     <strong>${h(state.label)}</strong>
-    <em>${h(state.status)}</em>
+    <em>${h(state.isLive ? 'Live' : 'Ready')}</em>
   </button>`).join('');
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
+  const activeBuilders = activeState.isLive ? tnBuilders : [];
+  const selected = getSelectedBuilder(activeBuilders) || {};
+  const email = generateBuilderEmail(selected);
+  const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
+  const callScript = activeBuilders.length ? generateBuilderCallScript(selected) : `No ${activeState.label} builders are loaded yet. Pull permit-active builders from the selected portals first, then generate call scripts from verified public business contacts only.`;
+  const permits = asArray(selected.recentPermits).slice(0, 3);
+  const activeBuilderEmpty = !activeBuilders.length;
   const marketSummary = `<div class="active-market-summary">
     <span>${activeState.isLive ? 'Live market' : 'Selected resource well'}</span>
     <strong>${h(activeState.isLive ? 'Knoxville / Knox County' : activeState.label)}</strong>
-    <p>${h(activeState.marketLabel || activeState.label)} · ${activeState.isLive ? '20 unique builders per pull minimum before seller sourcing unlocks.' : 'Pipeline is ready to pull when this state becomes the strongest opportunity.'}</p>
+    <p>${h(activeState.isLive ? 'Knoxville live builder queue. Switch states to inspect each resource well; non-live states stay empty until real permit pulls are loaded.' : `${activeState.marketLabel || activeState.label}. Source pipeline is ready; builder queue stays empty until permit-active companies are collected.`)}</p>
     <ul>
       ${activeState.isLive ? `<li>${h(displayedBuilderCount)} builders</li>
       <li>${h(displayedBatchFloor)} minimum per pull</li>
@@ -897,7 +914,7 @@ function renderBuilderListEnginePanel() {
     <h4>${h(tier.name)}</h4>
     ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
   </article>`).join('');
-  const tableRows = builders.map(builder => `<button type="button" class="builder-row ${builder.builderId === selected.builderId ? 'active' : ''}" data-select-builder="${h(builder.builderId)}">
+  const tableRows = activeBuilders.map(builder => `<button type="button" class="builder-row ${builder.builderId === selected.builderId ? 'active' : ''}" data-select-builder="${h(builder.builderId)}">
     <span><b>${h(builder.companyName)}</b><small>${h(builder.sourceJurisdictions?.join(' · ') || 'source pending')}</small></span>
     <strong>${h(builder.qualifyingPermitCount)} permits</strong>
     <em>${h(builder.activityTier || 'active')}</em>
@@ -914,8 +931,8 @@ function renderBuilderListEnginePanel() {
     <section class="builder-ops-header" aria-label="Builder operations summary">
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
-        <h3>Choose the market. Validate the builders.</h3>
-        <p><b>Tennessee is live; every other target state is a resource well.</b> Use the toggles to swap the market data below: priority markets, portals, permit-builder pipeline, and buyer-first unlock rules for that state.</p>
+        <h3>Choose market. Validate builders.</h3>
+        <p><b>Tennessee is live.</b> Other states are ready resource wells. Tap a state to swap portals, pipeline, and the builder workspace below.</p>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -924,16 +941,27 @@ function renderBuilderListEnginePanel() {
       <nav class="builder-ops-jump" aria-label="Builder page sections">
         <a href="#buyer-validation-command">Builder queue</a>
         <a href="#market-state-tn">State lanes</a>
-        ${builders.length ? '<a href="#builder-evidence-desk">Permit evidence</a>' : ''}
+        ${activeBuilders.length ? '<a href="#builder-evidence-desk">Permit evidence</a>' : ''}
       </nav>
     </section>
 
-    ${renderBuyerValidationCommandCenter()}
+    ${renderBuyerValidationCommandCenter(activeState)}
 
-    <section id="builder-evidence-desk" class="builder-grid-main ${builders.length ? '' : 'is-empty'}">
+    ${activeBuilderEmpty ? `<section id="builder-evidence-desk" class="builder-grid-main builder-empty-evidence">
+      <article class="builder-empty-state wide">
+        <span class="eyebrow">${h(activeState.label)} permit evidence</span>
+        <h3>Builder evidence will appear after a real permit pull.</h3>
+        <p>The queue, selected builder, call scripts, and buy-box form are intentionally blank for ${h(activeState.label)}. First pull recent permit activity from the source pipeline below, dedupe companies, and verify public business contact provenance.</p>
+        <ul class="empty-source-list">
+          <li><b>1. Pull permits</b><span>${h(asArray(activeState.stateMeta?.pipeline)[0]?.source || 'Selected county/city portals')}</span></li>
+          <li><b>2. Dedupe builders</b><span>Company name + license + permit address clusters.</span></li>
+          <li><b>3. Promote only verified contacts</b><span>No scraped/demo contacts. Public provenance required.</span></li>
+        </ul>
+      </article>
+    </section>` : `<section id="builder-evidence-desk" class="builder-grid-main">
       <aside class="builder-table-panel">
         <div class="panel-kicker"><span>Permit table</span><b>active builder signals</b></div>
-        <div class="builder-table">${tableRows || '<p>No permit-verified builders yet.</p>'}</div>
+        <div class="builder-table">${tableRows}</div>
       </aside>
 
       <article class="builder-detail-panel">
@@ -946,7 +974,7 @@ function renderBuilderListEnginePanel() {
       </article>
     </section>
 
-    <section class="builder-two-col builder-support-tools ${builders.length ? '' : 'is-empty'}">
+    <section class="builder-two-col builder-support-tools">
       <article class="builder-form-panel">
         <div class="panel-kicker"><span>Buy-box capture</span><b>promote only after criteria</b></div>
         <div class="buybox-form" data-builder-form="${h(selected.builderId || '')}">
@@ -969,7 +997,7 @@ function renderBuilderListEnginePanel() {
         <h4>Marketing intro email template</h4><div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div><pre>${h(marketingEmail.body)}</pre>
         <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
       </article>
-    </section>
+    </section>`}
 
     <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">

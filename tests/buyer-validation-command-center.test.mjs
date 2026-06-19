@@ -104,7 +104,7 @@ assert.match(appSource, /function scrollToPageTop\(\)[\s\S]{0,260}root\.style\.s
 assert.match(appSource, /function navigateToView\(view\)[\s\S]{0,180}setActiveView\(view, \{ scrollToTop: true \}\)/, 'data-view navigation should centralize top-scroll behavior');
 assert.match(appSource, /const view = hashToView\(\);\n    if \(view\) setActiveView\(view, \{ scrollToTop: true \}\);/, 'hashchange should only switch panels for valid app routes and leave same-page anchors alone');
 assert.match(appSource, /navigateToView\(view\)/, 'clicking app navigation should use the scroll-safe route helper');
-assert.match(appSource, /20 unique builders per pull/, 'Builders UX should explain the 20-builder minimum pull');
+assert.match(appSource, /minimum per pull/, 'Builders UX should explain the builder batch floor');
 assert.match(appSource, /minimum per pull/, 'Builders market summary should expose the batch floor without a duplicate stat band');
 assert.doesNotMatch(appSource, />Next money action<|NEXT MONEY ACTION/, 'Builders page must not repeat selected-builder guidance in a separate Next Money Action card');
 assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action card component should stay removed');
@@ -112,7 +112,7 @@ assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'sec
 assert.match(appSource, /builder-market-workbench/, 'top Builders IA should be a market workbench, not a static metric strip');
 assert.match(appSource, /market-toggle-grid/, 'priority states should be exposed as top-level market toggles');
 assert.match(appSource, /stateOrder = \['TN', 'TX', 'NC', 'FL', 'AZ'\]/, 'market toggles should expose all prioritized states as resource wells');
-assert.match(appSource, /every other target state is a resource well/, 'Builders header should frame non-live states as selectable resource wells');
+assert.match(appSource, /ready resource wells/, 'Builders header should frame non-live states as selectable resource wells');
 assert.match(appSource, /data-builder-market-state/, 'state toggles should be interactive controls that swap the displayed state data');
 assert.match(appSource, /selectedBuilderMarketState = stateCode/, 'clicking a state toggle should change the selected Builders market state');
 assert.match(appSource, /\[activeState\]\.map\(state =>/, 'the state detail panel should render only the selected state below the toggles');
@@ -121,6 +121,15 @@ assert.match(appSource, /state-pipeline-list/, 'selected state lane should rende
 assert.match(appSource, /pipeline-unlock/, 'selected state lane should show the unlock condition before seller sourcing');
 assert.match(appSource, /market-state-\$\{h\(state\.stateCode\.toLowerCase\(\)\)\}/, 'state lanes must generate addressable anchors from state codes');
 assert.match(appSource, /state-market-list/, 'each state lane should carry its own priority market list');
+assert.match(appSource, /renderBuyerValidationCommandCenter\(activeState\)/, 'selected market state must drive the call queue, not just the hero');
+assert.match(appSource, /if \(!activeState\.isLive\)/, 'non-live resource wells must render an empty call queue state');
+assert.match(appSource, /No Tennessee builders are shown here/, 'resource-well empty state must explicitly prevent cross-state builder leakage');
+assert.match(appSource, /const activeBuilders = activeState\.isLive \? tnBuilders : \[\]/, 'only Tennessee should currently receive the live Knoxville builder list');
+assert.match(appSource, /builder-empty-evidence/, 'non-live markets need an intentional empty evidence section');
+assert.match(stylesSource, /v1\.32 - Builders mobile resource-well selector and empty states/, 'final mobile selector override should live after global button styles');
+assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}border-radius: 13px/, 'market toggles should be compact rounded rectangles, not circular pucks');
+assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}aspect-ratio: auto/, 'market toggles must not use square/circular aspect ratios on mobile');
+assert.match(stylesSource, /\.builder-empty-state/, 'empty builder states need first-class styling');
 assert.doesNotMatch(appSource, /top-10 demo list|top 10 Knoxville/, 'Builders pipeline must not frame itself as a top-10 pull');
 
 assert.match(appSource, /mailto:\$\{h\(selected\.email\)\}\?subject=\$\{encodeURIComponent\(validationEmailSubject\)\}&body=\$\{encodeURIComponent\(validationEmailBody\)\}/, 'Draft email mailto must prefill subject and body');

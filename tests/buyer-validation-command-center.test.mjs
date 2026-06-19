@@ -89,6 +89,9 @@ assert.match(appSource, /queue-source-link/, 'call queue rows must carry source-
 assert.match(appSource, /queue-csv-link[\s\S]{0,220}activeState\.summary\.entries\[0\]\.csvUrl/, 'call queue header must preserve the active market CSV export');
 assert.match(appSource, /validation-source-proof/, 'selected builder card must preserve source type, contact status, confidence, and top permit proof');
 assert.match(appSource, /selected-permit-proof/, 'selected builder proof drawer must preserve permit evidence rows');
+assert.match(appSource, /permitVerificationUrl/, 'permit proof rows should build direct source-verification URLs');
+assert.match(appSource, /PERMITNUMBER = '\$\{String\(permitNumber\)/, 'ArcGIS permit proof links should pre-filter by permit number');
+assert.match(appSource, /Verify permit/, 'permit proof links should be labeled for operator verification, not generic source');
 assert.doesNotMatch(appSource, /class="queue-rank"/, 'call queue must not show duplicate number ranks because sort order already follows validation score');
 assert.doesNotMatch(appSource, /Phone not logged|Email not logged/, 'selected outreach labels should not repeat channel names beside channel icons');
 assert.doesNotMatch(appSource, /Call office|>Draft email<|Copy email|Source proof/, 'selected builder actions should use restrained icon-led labels and Website for source URL');

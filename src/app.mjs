@@ -623,6 +623,28 @@ function normalizePermitEvidence(permit = {}, source = {}) {
   };
 }
 
+function permitVerificationUrl(permit = {}) {
+  const sourceUrl = permit.sourceUrl || '';
+  const permitNumber = permit.permitNumber || permit.topPermit || permit.id || '';
+  if (!sourceUrl || !permitNumber) return sourceUrl;
+  if (/arcgis\/rest\/services\/.+\/FeatureServer\/\d+/i.test(sourceUrl)) {
+    const [layerUrl] = sourceUrl.split('?');
+    const params = new URLSearchParams({
+      f: 'json',
+      where: `PERMITNUMBER = '${String(permitNumber).replace(/'/g, "''")}'`,
+      outFields: 'PERMITNUMBER,ADDRESS,DATEISSUED,CONTRACTOR,PARCELID,PERMITVALUE,PERMITTYPE',
+      returnGeometry: 'false',
+    });
+    return `${layerUrl.replace(/\/$/, '')}/query?${params.toString()}`;
+  }
+  return sourceUrl;
+}
+
+function permitVerificationLink(permit = {}) {
+  const url = permitVerificationUrl(permit);
+  return url ? safeLink(url, 'Verify permit', 'proof-inline-link verify-permit-link') : '';
+}
+
 function normalizeBuilderSignal(row = {}, source = {}) {
   const permits = asArray(row.recentPermits).map(permit => normalizePermitEvidence(permit, source));
   const sourceJurisdictions = [...new Set(permits.map(permit => permit.jurisdiction).filter(Boolean))].slice(0, 3);
@@ -901,7 +923,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const selectedScoreTitle = scoreBreakdownText(selected);
   const selectedScoreRows = scoreBreakdownRows(selected);
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
-  const selectedPermitProof = asArray(selected.permitEvidence || selected.recentPermits).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</span>${permit.sourceUrl ? safeLink(permit.sourceUrl, 'source', 'proof-inline-link') : ''}</li>`).join('');
+  const selectedPermitProof = asArray(selected.permitEvidence || selected.recentPermits).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</span>${permitVerificationLink(permit)}</li>`).join('');
   const sourceProof = `<div class="validation-source-proof" aria-label="Selected builder source proof">
     <div><span>Source</span><strong>${selected.sourceUrl ? safeLink(selected.sourceUrl, selected.sourceType || 'Official source') : h(selected.sourceType || 'source pending')}</strong></div>
     <div><span>Contact status</span><strong>${h(selected.contactStatus || 'contact pending')}</strong></div>

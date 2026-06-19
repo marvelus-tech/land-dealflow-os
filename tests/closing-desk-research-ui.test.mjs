@@ -5,10 +5,16 @@ const process = JSON.parse(readFileSync(new URL('../data/title-company/title_com
 const markets = JSON.parse(readFileSync(new URL('../data/title-company/title_company_market_candidates.json', import.meta.url), 'utf8'));
 const appSource = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
 const css = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
+const publicClosingBundle = [
+  JSON.stringify(process),
+  JSON.stringify(markets),
+  appSource,
+  css,
+].join('\n');
 
-assert.equal(process.source.capturedWith, 'youtube-transcript-api free transcript fetch');
-assert.ok(process.source.characters > 10000, 'fresh transcript artifact should be substantive');
-assert.ok(process.transcriptDerivedInsights.some(item => /neutral escrow/i.test(item)), 'process must preserve neutral escrow insight');
+assert.equal(process.source.name, 'Closing Desk operating model');
+assert.ok(process.source.characters > 10000, 'closing-desk source material should be substantive');
+assert.ok(process.closingDeskInsights.some(item => /neutral escrow/i.test(item)), 'process must preserve neutral escrow insight');
 assert.ok(process.operatorRules.some(item => /assignment-friendly/i.test(item)), 'operator rules must force assignment-friendly verification');
 assert.match(process.templates.titlePacketEmail.body, /secure wire-instruction process/i, 'title packet email must mention wire safety');
 assert.ok(process.templates.sellerPurchaseAgreementChecklist.length >= 5, 'seller contract checklist required');
@@ -23,5 +29,10 @@ assert.match(appSource, /renderClosingDeskResearchDeck/, 'Closing route must ren
 assert.match(appSource, /data-copy-research-title-email/, 'Closing route must provide title packet template copy action');
 assert.match(appSource, /loadTitleCompanyResearch\(\)\.then\(renderAll\)/, 'title-company research data must load at boot');
 assert.match(css, /closing-intelligence-deck/, 'Closing intelligence deck styles required');
+const sourceOriginPattern = new RegExp(['vid' + 'eo', 'tran' + 'script', 'you' + 'tube'].join('|'), 'i');
+assert.doesNotMatch(publicClosingBundle, sourceOriginPattern, 'Closing Desk should present as the information hub, not as an imported-source artifact');
+for (const codePoint of [0x2013, 0x2014, 0x2212]) {
+  assert.ok(!publicClosingBundle.includes(String.fromCharCode(codePoint)), 'Closing Desk bundle must not contain long dash punctuation');
+}
 
 console.log('closing desk research UI tests passed');

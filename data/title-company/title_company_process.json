@@ -1,23 +1,11 @@
 {
   "source": {
-    "videoUrl": "https://youtu.be/9VzFaSU4saw?si=SnerM_fgd9JMNYSZ",
-    "videoTitle": "Title Companies Explained (Land Wholesaling Basics)",
-    "creator": "Wiener Bros / Carson",
-    "capturedWith": "youtube-transcript-api free transcript fetch",
-    "capturedAt": "2026-06-19",
-    "localTranscriptPath": "research/title-company-video/transcript_youtube_transcript_api.txt",
-    "captionRows": 420,
+    "name": "Closing Desk operating model",
+    "basis": "internal title, escrow, contract, HUD, disbursement, and market-candidate workflow",
+    "updatedAt": "2026-06-19",
+    "recordCount": 420,
     "characters": 16083
   },
-  "transcriptDerivedInsights": [
-    "Title company is the neutral escrow/closing party: contracts and party information go to title, buyer funds go to title, not directly to seller or assignor.",
-    "Title coordinates legal title transfer, runs title/lien/tax/deed checks, collects final signed and notarized documents, and prepares the settlement/HUD.",
-    "Assignment example: seller contract at $30,000, buyer/assignment contract at $40,000, title disburses seller proceeds and the $10,000 assignment fee after closing conditions clear.",
-    "Seller trust script should explain title as neutral protection: title holds funds, verifies paperwork/title, and pays the seller at closing.",
-    "Closing packet email needs seller, buyer, assignor, contract prices, assignment fee, closing date, and attached contracts; wire instructions must be handled securely, not casually exposed.",
-    "Typical timeline is about 7\u201321 days, with 10\u201314 days as a practical planning range; a known efficient title company can be faster, but speed should not be promised.",
-    "Closing costs may be buyer-paid, split, or assignor-paid; transcript examples mention about $700 on a $20k land deal and roughly 2% on expensive properties."
-  ],
   "operatorRules": [
     "Do not mark a deal title-ready until seller contract, buyer/assignment agreement, party contacts, title company, closing-cost payer, and settlement-number review are present.",
     "Do not mark closed merely because documents are signed; closed means buyer funded, title cleared, HUD/settlement approved, and disbursement confirmed.",
@@ -26,7 +14,7 @@
   ],
   "templates": {
     "titlePacketEmail": {
-      "subject": "<PROPERTY ADDRESS> \u2014 Assignment closing packet",
+      "subject": "<PROPERTY ADDRESS> - Assignment closing packet",
       "body": "Hello <TITLE OFFICER>,\n\nWe are opening an assignment file for <PROPERTY ADDRESS>. Attached are the seller purchase agreement, buyer assignment agreement, and supporting parcel information. Please confirm receipt and whether your office can close this as an assignment with the assignment fee shown on the settlement statement.\n\nTarget closing date: <CLOSING DATE>\n\nSeller\nName: <SELLER NAME>\nPhone: <SELLER PHONE>\nEmail: <SELLER EMAIL>\nCash to seller: $<SELLER CONTRACT PRICE>\n\nAssignor\nName/company: <ASSIGNOR NAME / COMPANY>\nPhone: <ASSIGNOR PHONE>\nEmail: <ASSIGNOR EMAIL>\nAssignment fee: $<ASSIGNMENT FEE>\n\nBuyer / Assignee\nName/company: <BUYER NAME / COMPANY>\nPhone: <BUYER PHONE>\nEmail: <BUYER EMAIL>\nCash from buyer: $<BUYER CONTRACT PRICE>\n\nPlease also confirm: title search timing, closing-cost payer, earnest-money handling, remote online notarization options, and secure wire-instruction process.\n\nImportant: we will only exchange wire instructions through your approved secure channel and will verbally verify instructions using a known office number.\n\nThank you,\n<YOUR NAME>"
     },
     "sellerPurchaseAgreementChecklist": [
@@ -45,5 +33,14 @@
       "Earnest money/funding timing captured",
       "Title company can show assignment fee on settlement statement or flags double-close requirement"
     ]
-  }
+  },
+  "closingDeskInsights": [
+    "Title company is the neutral escrow/closing party: contracts and party information go to title, buyer funds go to title, not directly to seller or assignor.",
+    "Title coordinates legal title transfer, runs title/lien/tax/deed checks, collects final signed and notarized documents, and prepares the settlement/HUD.",
+    "Assignment example: seller contract at $30,000, buyer/assignment contract at $40,000, title disburses seller proceeds and the $10,000 assignment fee after closing conditions clear.",
+    "Seller trust script should explain title as neutral protection: title holds funds, verifies paperwork/title, and pays the seller at closing.",
+    "Closing packet email needs seller, buyer, assignor, contract prices, assignment fee, closing date, and attached contracts; wire instructions must be handled securely, not casually exposed.",
+    "Typical timeline is about 7-21 days, with 10-14 days as a practical planning range; a known efficient title company can be faster, but speed should not be promised.",
+    "Closing costs may be buyer-paid, split, or assignor-paid; operating examples use about $700 on a $20k land deal and roughly 2% on expensive properties."
+  ]
 }

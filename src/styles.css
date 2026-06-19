@@ -1180,7 +1180,7 @@ h3, h4 { letter-spacing: -.035em; }
 }
 
 
-/* v1.23 — shared command-center design language applied across pages */
+/* v1.23 - shared command-center design language applied across pages */
 :root {
   --ops-bg: #07111f;
   --ops-bg-2: #101827;
@@ -1294,7 +1294,7 @@ body::before {
   box-shadow: 0 0 0 4px rgba(37,99,235,.075) !important;
 }
 
-/* Builders page — transform from loose forms into a buyer-war-room */
+/* Builders page - transform from loose forms into a buyer-war-room */
 #builder-list-section .section-heading { display: none; }
 .builder-engine-shell { gap: 22px; }
 .builder-hero-panel {
@@ -1376,7 +1376,7 @@ body::before {
 .priority-market-grid { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
 .normalization-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
-/* Sources page — carry the same telemetry language without copying hero chrome */
+/* Sources page - carry the same telemetry language without copying hero chrome */
 #sources-hub .section-heading {
   margin-bottom: 24px;
   padding: clamp(22px, 3.8vw, 42px);
@@ -1416,7 +1416,7 @@ body::before {
 }
 
 
-/* v1.23 visual QA fixes — prevent Builders hero clipping */
+/* v1.23 visual QA fixes - prevent Builders hero clipping */
 .builder-hero-panel h3 {
   max-width: 680px;
   font-size: clamp(48px, 5.8vw, 86px);
@@ -1437,7 +1437,7 @@ body::before {
 }
 
 
-/* v1.24 — Builders page information architecture correction */
+/* v1.24 - Builders page information architecture correction */
 #builder-list-section .section-heading { display: none; }
 .builder-engine-shell { gap: 16px; }
 .builder-ops-header {
@@ -1677,7 +1677,7 @@ body::before {
 }
 
 
-/* v1.24 QA tightening — remove dead legacy desks when only the real call sheet is loaded */
+/* v1.24 QA tightening - remove dead legacy desks when only the real call sheet is loaded */
 .builder-grid-main.is-empty,
 .builder-support-tools.is-empty { display: none !important; }
 .validation-queue { max-height: 720px; overflow: auto; }
@@ -1686,7 +1686,7 @@ body::before {
   .validation-queue { max-height: none; overflow: visible; }
 }
 
-/* v1.25 — light future interface: clarity for an old industry */
+/* v1.25 - light future interface: clarity for an old industry */
 :root {
   --bg: #f6faff;
   --page: #ffffff;
@@ -1970,7 +1970,7 @@ footer { color: #6b778a; }
   .button-link, button { min-height: 44px; }
 }
 
-/* v1.26 — remove distracting pill radii; rebuild forms as serious modern controls */
+/* v1.26 - remove distracting pill radii; rebuild forms as serious modern controls */
 main :where(
   .vision-hero, .mission-console, .mission-map,
   .daily-heading, .call-tile-grid, .side-panel, .side-panel div,
@@ -2132,7 +2132,7 @@ button[data-save-buyer-validation] {
   .validation-actions .validation-email-status { grid-column: 1 / -1; }
 }
 
-/* v1.27 — W+K restraint: fewer shapes, fewer colors, quieter confidence */
+/* v1.27 - W+K restraint: fewer shapes, fewer colors, quieter confidence */
 :root {
   --bg: #f7f7f4;
   --page: #fbfbf8;
@@ -2405,7 +2405,7 @@ footer a { color: #626a70; text-decoration: underline; text-underline-offset: 3p
   .vision-proof-strip { grid-template-columns: 1fr 1fr; }
 }
 
-/* v1.28 — final restraint pass: remove fragrance, flatten queues, standardize typography */
+/* v1.28 - final restraint pass: remove fragrance, flatten queues, standardize typography */
 .vision-hero,
 .builder-ops-header,
 .validation-command,
@@ -2426,7 +2426,7 @@ footer a { color: #626a70; text-decoration: underline; text-underline-offset: 3p
 .stage::before,
 .timeline-node::before { display: none !important; }
 
-/* No more black slabs inside work areas — selection is shown with a quiet rule, not another poster shape. */
+/* No more black slabs inside work areas - selection is shown with a quiet rule, not another poster shape. */
 .validation-next-card,
 .market-grade,
 .builder-ops-metrics article:first-child,
@@ -2573,7 +2573,7 @@ footer, footer p, footer a {
   .validation-next-card { min-height: 112px !important; }
 }
 
-/* v1.29 — product-wide restraint layer: every route joins the new paradigm */
+/* v1.29 - product-wide restraint layer: every route joins the new paradigm */
 :root {
   --bg: #f7f7f4;
   --page: #fbfbf8;
@@ -2836,7 +2836,7 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
   .hero-actions { display: grid !important; grid-template-columns: 1fr; }
 }
 
-/* v1.30 — route-specific cleanup after full-page visual QA */
+/* v1.30 - route-specific cleanup after full-page visual QA */
 /* Sources: remove the last dark hero / invisible weekly-market remnants. */
 #sources-hub > .section-heading,
 #sources-hub .compact-heading,
@@ -2956,7 +2956,7 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
   #workspace .mini-grid.four { grid-template-columns: 1fr !important; }
 }
 
-/* v1.31 — Machine metric readability: no narrow metric word-stacks */
+/* v1.31 - Machine metric readability: no narrow metric word-stacks */
 #workspace .intake-card:first-child .mini-grid,
 #workspace .intake-card:first-child .mini-grid.four {
   grid-template-columns: 1fr !important;
@@ -2988,7 +2988,7 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
   }
 }
 
-/* v1.32 — Machine hero intake metric strip uses deal-strip, not mini-grid */
+/* v1.32 - Machine hero intake metric strip uses deal-strip, not mini-grid */
 #workspace .hero-intake .deal-strip,
 #workspace .hero-intake .deal-strip.three {
   display: grid !important;
@@ -3026,7 +3026,7 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
   }
 }
 
-/* v1.34 — compact market value must read as a label, not art */
+/* v1.34 - compact market value must read as a label, not art */
 #workspace .hero-intake .deal-strip div {
   grid-template-columns: minmax(112px, auto) minmax(0, 1fr) !important;
 }
@@ -3036,7 +3036,7 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
   letter-spacing: -.035em !important;
 }
 
-/* v1.35 — restore mobile single-column metric layout after compact desktop override */
+/* v1.35 - restore mobile single-column metric layout after compact desktop override */
 @media (max-width: 760px) {
   #workspace .hero-intake .deal-strip div {
     grid-template-columns: 1fr !important;
@@ -3048,7 +3048,7 @@ main :where(.meter span, .validation-progress span, .progress-bar span) {
   }
 }
 
-/* v1.36 — Apple/W+K cadence: hierarchy, open canvas, single accent, anchored footer */
+/* v1.36 - Apple/W+K cadence: hierarchy, open canvas, single accent, anchored footer */
 :root {
   --bg: #f6f5ef;
   --page: #fbfaf6;
@@ -3477,7 +3477,7 @@ button.secondary,
   footer { padding-bottom: 18px !important; }
 }
 
-/* v1.37 — hard route isolation + calmer mobile nav */
+/* v1.37 - hard route isolation + calmer mobile nav */
 .app-panel[hidden],
 section.app-panel[hidden],
 #command[hidden],
@@ -3529,7 +3529,7 @@ section.app-panel[hidden],
   }
 }
 
-/* v1.38 — desktop nav must be a platform rail, not a centered widget */
+/* v1.38 - desktop nav must be a platform rail, not a centered widget */
 .nav {
   width: 100% !important;
   max-width: none !important;
@@ -3559,7 +3559,7 @@ section.app-panel[hidden],
   .app-tabs { max-width: 100% !important; }
 }
 
-/* v1.39 — buyer validation queue: contact-state chips, progressive disclosure, lower radius */
+/* v1.39 - buyer validation queue: contact-state chips, progressive disclosure, lower radius */
 .validation-grid-main {
   grid-template-columns: minmax(280px, .78fr) minmax(0, 1.42fr) minmax(260px, .68fr) !important;
 }
@@ -3812,7 +3812,7 @@ section.app-panel[hidden],
   .score-breakdown { left: 0; right: auto; width: min(330px, calc(100vw - 48px)); }
 }
 
-/* v1.40 — hard reset validation queue buttons away from global pill buttons */
+/* v1.40 - hard reset validation queue buttons away from global pill buttons */
 .validation-queue .validation-row-main,
 .validation-queue button.validation-row-main,
 .validation-queue .contact-toggle,
@@ -3895,7 +3895,7 @@ section.app-panel[hidden],
   color: #1748d8 !important;
 }
 
-/* v1.41 — soften validation row selector outlines after mobile QA */
+/* v1.41 - soften validation row selector outlines after mobile QA */
 .validation-queue button.validation-row-main,
 .validation-queue button.validation-row-main:hover,
 .validation-queue button.validation-row-main:focus {
@@ -3931,7 +3931,7 @@ section.app-panel[hidden],
   }
 }
 
-/* v1.42 — ruthless outreach compression: badge-as-button + icon-only queue state */
+/* v1.42 - ruthless outreach compression: badge-as-button + icon-only queue state */
 .selected-outreach-state {
   gap: 8px !important;
   margin-top: 12px !important;
@@ -4046,7 +4046,7 @@ section.app-panel[hidden],
   }
 }
 
-/* v1.43 — selected outreach badges must not inherit primary CTA button styling */
+/* v1.43 - selected outreach badges must not inherit primary CTA button styling */
 body .validation-focus-card .selected-outreach-state button.contact-state-toggle,
 body .validation-focus-card .selected-outreach-state button.contact-state-toggle:visited,
 body .validation-focus-card .selected-outreach-state button.contact-state-toggle:hover,
@@ -4075,7 +4075,7 @@ body .validation-focus-card .selected-outreach-state button.contact-state-toggle
   box-shadow: none !important;
 }
 
-/* v1.44 — Apple queue reduction: no boxes inside boxes, solid icon color states */
+/* v1.44 - Apple queue reduction: no boxes inside boxes, solid icon color states */
 .validation-queue {
   background: rgba(255,255,255,.70) !important;
   border-color: rgba(16,18,20,.07) !important;
@@ -4240,7 +4240,7 @@ body .validation-focus-card .selected-outreach-state .outreach-svg {
   }
 }
 
-/* v1.45 — final Apple queue: list, not cards inside cards */
+/* v1.45 - final Apple queue: list, not cards inside cards */
 .validation-queue,
 aside.validation-queue {
   border: 0 !important;
@@ -4341,7 +4341,7 @@ aside.validation-queue {
   }
 }
 
-/* v1.46 — consolidate source-backed call sheet into enriched validation queue */
+/* v1.46 - consolidate source-backed call sheet into enriched validation queue */
 .validation-queue .panel-kicker {
   grid-template-columns: 1fr auto;
   align-items: baseline;
@@ -4440,7 +4440,7 @@ aside.validation-queue {
   .selected-permit-proof li { grid-template-columns: 1fr; gap: 4px; }
 }
 
-/* v1.47 — Sources evidence room: priority map + floating source inspector */
+/* v1.47 - Sources evidence room: priority map + floating source inspector */
 #sources-hub > .section-heading {
   max-width: 1040px !important;
   padding: clamp(26px, 4vw, 44px) 0 18px !important;
@@ -4757,7 +4757,7 @@ aside.validation-queue {
   #sources-hub .source-popover::after { display: none !important; }
 }
 
-/* v1.47b — Sources mobile overflow fix after visual QA */
+/* v1.47b - Sources mobile overflow fix after visual QA */
 #sources-hub,
 #sources-hub * {
   box-sizing: border-box;
@@ -4841,7 +4841,7 @@ aside.validation-queue {
   }
 }
 
-/* v1.47c — keep desktop source inspectors unclipped; tighten pipeline labels */
+/* v1.47c - keep desktop source inspectors unclipped; tighten pipeline labels */
 #sources-hub {
   overflow-x: visible !important;
 }
@@ -4857,7 +4857,7 @@ aside.validation-queue {
   #sources-hub { overflow-x: clip !important; }
 }
 
-/* v1.48 — Closing Desk intelligence layer */
+/* v1.48 - Closing Desk intelligence layer */
 .closing-page-stack {
   display: grid;
   gap: clamp(22px, 4vw, 42px);
@@ -4900,7 +4900,7 @@ aside.validation-queue {
 .contract-template-grid {
   grid-template-columns: minmax(0, .82fr) minmax(0, .82fr) minmax(320px, 1.25fr);
 }
-.transcript-insight-card ul,
+.operating-insight-card ul,
 .closing-rule-card ul,
 .contract-template-card ul {
   display: grid;
@@ -4909,7 +4909,7 @@ aside.validation-queue {
   padding: 0;
   list-style: none;
 }
-.transcript-insight-card li,
+.operating-insight-card li,
 .closing-rule-card li,
 .contract-template-card li {
   position: relative;
@@ -4917,7 +4917,7 @@ aside.validation-queue {
   color: var(--text);
   line-height: 1.42;
 }
-.transcript-insight-card li::before,
+.operating-insight-card li::before,
 .closing-rule-card li::before,
 .contract-template-card li::before {
   content: '';
@@ -5032,7 +5032,7 @@ aside.validation-queue {
   .title-market-card { padding: 14px; }
 }
 
-/* v1.48b — Closing Desk accessible accent blue */
+/* v1.48b - Closing Desk accessible accent blue */
 .closing-intelligence-deck,
 .title-closing-desk {
   --closing-accent: #155bd8;
@@ -5042,7 +5042,7 @@ aside.validation-queue {
 .closing-intelligence-deck .card-kicker span {
   color: var(--closing-accent) !important;
 }
-.closing-intelligence-deck .transcript-insight-card li::before,
+.closing-intelligence-deck .operating-insight-card li::before,
 .closing-intelligence-deck .closing-rule-card li::before,
 .closing-intelligence-deck .contract-template-card li::before {
   background: var(--closing-accent) !important;
@@ -5052,7 +5052,7 @@ aside.validation-queue {
   border-color: rgba(21, 91, 216, .36) !important;
 }
 
-/* v1.48c — Closing Desk mobile headline no-clip */
+/* v1.48c - Closing Desk mobile headline no-clip */
 @media (max-width: 760px) {
   .closing-intel-hero {
     overflow: visible !important;

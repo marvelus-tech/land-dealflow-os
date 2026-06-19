@@ -593,6 +593,7 @@ function renderBuyerValidationCommandCenter() {
     return `<section class="validation-command loading"><span class="eyebrow">Buyer Validation Command Center</span><h3>Waiting on Knoxville call sheet.</h3><p>Run <code>npm run enrich:knoxville-builders</code> to load the permit-backed builder queue.</p></section>`;
   }
   const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
+  const summary = knoxvilleBuyerCallSheet.summary || {};
   const selected = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
   selectedValidationBuilderId = selected.builderId || selectedValidationBuilderId;
   const sellerCriteria = selected.sellerSearch?.eligible
@@ -604,12 +605,20 @@ function renderBuyerValidationCommandCenter() {
     const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : item.validation.buyBox.percent >= 67 ? 'warn' : 'neutral';
     const outreach = validationOutreach(item);
     const scoreTitle = scoreBreakdownText(item);
+    const sourceLabel = 'source';
+    const evidenceCount = asArray(item.permitEvidence).length;
+    const proofBits = [
+      item.sourceUrl ? safeLink(item.sourceUrl, sourceLabel, 'queue-source-link') : h(sourceLabel),
+      `${h(item.confidence || '—')} conf`,
+      `${h(evidenceCount || item.recentBuilds || 0)} proofs`,
+    ].join(' · ');
     return `<article class="validation-queue-item ${active ? 'active' : ''}" data-validation-row="${h(item.builderId)}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
         <span class="queue-rank">${String(index + 1).padStart(2, '0')}</span>
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
       </button>
+      <div class="queue-proof-line">${proofBits}</div>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
         <button type="button" class="contact-icon-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Phone not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span></button>
         <button type="button" class="contact-icon-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Email not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span></button>
@@ -622,6 +631,13 @@ function renderBuyerValidationCommandCenter() {
   const selectedScoreTitle = scoreBreakdownText(selected);
   const selectedScoreRows = scoreBreakdownRows(selected);
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
+  const selectedPermitProof = asArray(selected.permitEvidence).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || 'address pending')} · ${h(permit.issuedAt || 'date pending')} · ${formatMoney(permit.permitValue || 0)}</span>${permit.sourceUrl ? safeLink(permit.sourceUrl, 'ArcGIS', 'proof-inline-link') : ''}</li>`).join('');
+  const sourceProof = `<div class="validation-source-proof" aria-label="Selected builder source proof">
+    <div><span>Source</span><strong>${selected.sourceUrl ? safeLink(selected.sourceUrl, selected.sourceType || 'Official source') : h(selected.sourceType || 'source pending')}</strong></div>
+    <div><span>Contact status</span><strong>${h(selected.contactStatus || 'contact pending')}</strong></div>
+    <div><span>Confidence</span><strong>${h(selected.confidence || '—')}</strong></div>
+    <div><span>Top permit</span><strong>${h(selected.topPermit || '—')}</strong></div>
+  </div>`;
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
   const validationEmail = selected.emailDraft || {};
   const validationEmailSubject = validationEmail.subject || `Knoxville lots that fit ${selected.name || 'your team'}?`;
@@ -639,7 +655,7 @@ Okeito`;
       <div class="validation-brief-copy">
         <span class="eyebrow">Buyer Validation Command Center</span>
         <h3>Call queue first. Seller search second.</h3>
-        <p>One operator surface for Knoxville builders: select a builder, call or email, capture exact buy-box criteria, then unlock seller sourcing only when the buyer has told us what they will buy.</p>
+        <p>One enriched builder surface for Knoxville: call order, public-source proof, scripts, outreach state, and buy-box capture now live together. Seller sourcing only unlocks after the buyer tells us what they will buy.</p>
       </div>
       <aside class="validation-next-card">
         <span>Next money action</span>
@@ -648,13 +664,13 @@ Okeito`;
       </aside>
       <div class="validation-metrics compact">
         <div><span>Builders</span><strong>${h(center.summary.total)}</strong></div>
-        <div><span>Call-ready</span><strong>${h(center.summary.callReady)}</strong></div>
-        <div><span>Validated</span><strong>${h(center.summary.validated)}</strong></div>
-        <div><span>Avg buy box</span><strong>${h(center.summary.averageCompleteness)}%</strong></div>
+        <div><span>Callable</span><strong>${h(summary.callablePublicBusinessContacts ?? center.summary.callReady)}</strong></div>
+        <div><span>Review</span><strong>${h(summary.humanReview ?? 0)}</strong></div>
+        <div><span>Signals</span><strong>${h(summary.totalRecentBuildSignals ?? 0)}</strong></div>
       </div>
     </div>
     <div class="validation-grid-main">
-      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>ranked by validation leverage</b></div>${queue}</aside>
+      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>proof inline</b><a class="queue-csv-link" href="data/real/knoxville/buyer_call_sheet.csv">CSV</a></div>${queue}</aside>
       <article class="validation-focus-card">
         <div class="validation-focus-head">
           <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: Knoxville, Tennessee.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${h(contact)}</p></div>
@@ -663,6 +679,7 @@ Okeito`;
             <div class="score-breakdown">${selectedScoreRows}</div>
           </details>
         </div>
+        ${sourceProof}
         <div class="selected-outreach-state" aria-label="Selected builder outreach state">
           <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('phone')}</span>${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}</button>
           <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
@@ -701,59 +718,10 @@ Okeito`;
     </div>
     <details class="validation-script-drawer">
       <summary>Open exact buy-box questions + call script</summary>
-      <div class="script-grid"><div><h5>Ask these fields</h5><ul>${scriptQuestions}</ul></div><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p></div></div>
+      <div class="script-grid"><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p><ul class="selected-permit-proof">${selectedPermitProof || '<li><span>No permit proof rows loaded.</span></li>'}</ul></div><div><h5>Buy-box questions</h5><ul>${scriptQuestions}</ul></div></div>
       <pre>${h(selected.callScript || '')}</pre>
     </details>
   </section>`;
-}
-
-function renderKnoxvilleBuyerCallSheet() {
-  const rows = asArray(knoxvilleBuyerCallSheet?.rows);
-  if (!rows.length) {
-    return `<section class="buyer-war-room loading"><span class="eyebrow">Knoxville Buyer War Room</span><h3>Buyer call sheet loading.</h3><p>Run <code>npm run enrich:knoxville-builders</code> if the generated call sheet is missing.</p></section>`;
-  }
-  const summary = knoxvilleBuyerCallSheet.summary || {};
-  const primary = rows[0] || {};
-  const rowCards = rows.map(row => {
-    const tone = row.route === 'humanReview' ? 'warn' : 'good';
-    const contact = [row.phone, row.email].filter(Boolean).join(' · ') || 'No reliable public contact yet';
-    return `<article class="buyer-call-card ${row.route === 'humanReview' ? 'needs-review' : ''}">
-      <div class="buyer-call-rank"><span>${String(row.rank).padStart(2, '0')}</span><b>${h(row.recentBuilds)}</b><small>permit signals</small></div>
-      <div class="buyer-call-main">
-        <div class="buyer-call-title"><h4>${h(row.name)}</h4>${badge(row.route === 'humanReview' ? 'human review' : 'call to validate', tone)}</div>
-        <p>${h(contact)}</p>
-        <div class="buyer-call-meta">
-          <span>${safeLink(row.sourceUrl, row.sourceType || 'source')}</span>
-          <span>${h(row.contactStatus)}</span>
-          <span>${h(row.confidence)} confidence</span>
-        </div>
-        <details class="call-script-drawer">
-          <summary>Open buy-box script + source proof</summary>
-          <div class="script-grid">
-            <div><h5>Public proof</h5><p>${h(row.sourceEvidence)}</p><p>${h(row.demandSignal)}</p></div>
-            <div><h5>Buy-box questions</h5><ul>${Object.values(row.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('')}</ul></div>
-          </div>
-          <pre>${h(row.callScript)}</pre>
-        </details>
-      </div>
-    </article>`;
-  }).join('');
-
-  return `<details class="buyer-war-room compact-call-sheet" aria-label="Knoxville buyer call sheet">
-    <summary>
-      <span class="eyebrow">Source-backed call sheet</span>
-      <strong>10 Knoxville builders from KGIS permit evidence</strong>
-      <em>Open proof rows + scripts</em>
-    </summary>
-    <div class="war-room-metrics compact">
-      <div><span>Rows</span><strong>${h(summary.total || rows.length)}</strong></div>
-      <div><span>Callable</span><strong>${h(summary.callablePublicBusinessContacts || 0)}</strong></div>
-      <div><span>Review</span><strong>${h(summary.humanReview || 0)}</strong></div>
-      <div><span>Signals</span><strong>${h(summary.totalRecentBuildSignals || 0)}</strong></div>
-    </div>
-    <div class="call-sheet-actions">${safeLink('data/real/knoxville/buyer_call_sheet.csv', 'Download CSV', 'war-room-link')}</div>
-    <div class="buyer-call-sheet-list">${rowCards}</div>
-  </details>`;
 }
 
 function renderBuilderListEnginePanel() {
@@ -848,8 +816,6 @@ function renderBuilderListEnginePanel() {
         <div class="permit-evidence-grid">${evidenceRows}</div>
       </article>
     </section>
-
-    ${renderKnoxvilleBuyerCallSheet()}
 
     <section class="builder-two-col builder-support-tools ${builders.length ? '' : 'is-empty'}">
       <article class="builder-form-panel">

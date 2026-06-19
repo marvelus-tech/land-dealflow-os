@@ -135,6 +135,7 @@ let selectedValidationBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
+let selectedBuilderMarketState = 'TN';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
 function hashToView(hash = location.hash) {
@@ -823,32 +824,37 @@ function renderBuilderListEnginePanel() {
   const callScript = generateBuilderCallScript(selected);
   const permits = asArray(selected.recentPermits).slice(0, 3);
   const permitLandscape = getPermitPortalLandscape();
-  const stateOrder = ['TN', 'NC', 'TX', 'FL', 'AZ'];
-  const stateLabels = { TN: 'Tennessee', NC: 'North Carolina', TX: 'Texas', FL: 'Florida', AZ: 'Arizona' };
+  const stateOrder = ['TN', 'TX', 'NC', 'FL', 'AZ'];
+  const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona' };
   const stateSummaries = stateOrder.map((stateCode) => {
     const markets = asArray(permitLandscape.leadingMarkets).filter(item => item.state === stateCode);
     const stateMeta = asArray(permitLandscape.states).find(item => item.id === stateCode.toLowerCase()) || {};
-    const isActive = stateCode === 'TN';
-    const builderCount = isActive ? displayedBuilderCount : 0;
-    const status = isActive ? `${displayedBuilderCount} live builders` : 'source setup';
+    const sequence = stateMeta.sequence || {};
+    const isLive = stateCode === 'TN';
+    const isActive = stateCode === selectedBuilderMarketState;
+    const builderCount = isLive ? displayedBuilderCount : 0;
+    const status = isLive ? `${displayedBuilderCount} live builders` : (sequence.label || 'resource well');
     const marketLabel = markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
-    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, isActive, builderCount, status, marketLabel };
+    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, status, marketLabel };
   });
-  const stateSwitcher = stateSummaries.map((state) => `<a class="market-toggle ${state.isActive ? 'active' : ''}" href="#market-state-${h(state.stateCode.toLowerCase())}" aria-current="${state.isActive ? 'true' : 'false'}">
+  const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span>${h(state.stateCode)}</span>
     <strong>${h(state.label)}</strong>
     <em>${h(state.status)}</em>
-  </a>`).join('');
+  </button>`).join('');
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
   const marketSummary = `<div class="active-market-summary">
-    <span>Active market</span>
-    <strong>Knoxville / Knox County</strong>
-    <p>${h(activeState?.marketLabel || 'Tennessee')} · 20 unique builders per pull minimum before seller sourcing unlocks.</p>
+    <span>${activeState.isLive ? 'Live market' : 'Selected resource well'}</span>
+    <strong>${h(activeState.isLive ? 'Knoxville / Knox County' : activeState.label)}</strong>
+    <p>${h(activeState.marketLabel || activeState.label)} · ${activeState.isLive ? '20 unique builders per pull minimum before seller sourcing unlocks.' : 'Pipeline is ready to pull when this state becomes the strongest opportunity.'}</p>
     <ul>
-      <li>${h(displayedBuilderCount)} builders</li>
+      ${activeState.isLive ? `<li>${h(displayedBuilderCount)} builders</li>
       <li>${h(displayedBatchFloor)} minimum per pull</li>
       <li>${h(callSheetSummary.callablePublicBusinessContacts ?? 0)} callable now</li>
-      <li>${h(callSheetSummary.humanReview ?? 0)} contact-research rows</li>
+      <li>${h(callSheetSummary.humanReview ?? 0)} contact-research rows</li>` : `<li>${h(activeState.markets.length)} priority markets</li>
+      <li>${h(asArray(activeState.stateMeta.portals).length)} portal targets</li>
+      <li>${h(asArray(activeState.stateMeta.pipeline).length)} pipeline steps</li>
+      <li>buyer-first gate</li>`}
     </ul>
   </div>`;
   const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
@@ -856,7 +862,7 @@ function renderBuilderListEnginePanel() {
     <p>${h(adapter.use)}</p>
     <small>${adapter.fields.map(field => h(field)).join(' · ')}</small>
   </article>`).join('');
-  const statePortalRows = stateSummaries.map(state => {
+  const statePortalRows = [activeState].map(state => {
     const stateMeta = state.stateMeta || {};
     const markets = asArray(state.markets).map(item => `<li><b>#${h(item.rank)} · ${h(item.market)}</b><span>${h(item.reason)}</span></li>`).join('');
     const portals = asArray(stateMeta.portals).map(portal => `<a href="${h(portal.url)}" target="_blank" rel="noopener noreferrer">
@@ -864,13 +870,25 @@ function renderBuilderListEnginePanel() {
         <span>${h(portal.jurisdiction)}</span>
         <small>${h(portal.system)}</small>
       </a>`).join('');
-    return `<article id="market-state-${h(state.stateCode.toLowerCase())}" class="permit-state-card target-market-lane ${state.isActive ? 'active' : ''}">
+    const pipeline = asArray(stateMeta.pipeline).map(step => `<li>
+      <span>${h(step.step)}</span>
+      <div>
+        <b>${h(step.title)}</b>
+        <small>${h(step.source)}</small>
+        <p>${h(step.action)}</p>
+        <em>${h(step.output)}</em>
+      </div>
+    </li>`).join('');
+    return `<article id="market-state-${h(state.stateCode.toLowerCase())}" class="permit-state-card target-market-lane ${state.isActive ? 'active' : ''} ${h(state.sequence.status || 'staged')}">
       <div class="permit-state-head">
         <div><span>${h(state.label)}</span><p>${h(stateMeta.reality || 'Source lane pending.')}</p></div>
-        <strong>${state.isActive ? `${h(displayedBuilderCount)} builders` : 'next lane'}</strong>
+        <strong>${state.isLive ? `${h(displayedBuilderCount)} builders` : h(state.status)}</strong>
       </div>
+      <div class="pipeline-unlock"><b>${h(state.sequence.label || 'Pipeline')}</b><span>${h(state.sequence.unlock || 'Collect permit-source priority before pulling builders.')}</span></div>
       <ul class="state-market-list">${markets || '<li><b>Market list pending</b><span>Collect permit-source priority before pulling builders.</span></li>'}</ul>
       <div class="permit-platform-tags">${asArray(stateMeta.platforms).map(platform => `<em>${h(platform)}</em>`).join('')}</div>
+      <h5>Permit-builder pipeline</h5>
+      <ol class="state-pipeline-list">${pipeline}</ol>
       <div class="portal-link-list">${portals}</div>
       <p class="permit-strategy">${h(stateMeta.strategy || '')}</p>
     </article>`;
@@ -897,7 +915,7 @@ function renderBuilderListEnginePanel() {
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose the market. Validate the builders.</h3>
-        <p><b>Tennessee is live.</b> Other priority states stay visible as source lanes until their builder batches are collected. Seller geography follows permit evidence and validated buy boxes, not company HQ.</p>
+        <p><b>Tennessee is live; every other target state is a resource well.</b> Use the toggles to swap the market data below: priority markets, portals, permit-builder pipeline, and buyer-first unlock rules for that state.</p>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -1618,6 +1636,16 @@ function bindEvents() {
       if (validViews.has(view)) {
         event.preventDefault();
         navigateToView(view);
+      }
+      return;
+    }
+
+    const builderMarketButton = event.target.closest('[data-builder-market-state]');
+    if (builderMarketButton) {
+      const stateCode = builderMarketButton.dataset.builderMarketState;
+      if (stateCode) {
+        selectedBuilderMarketState = stateCode;
+        renderBuilderListEnginePanel();
       }
       return;
     }

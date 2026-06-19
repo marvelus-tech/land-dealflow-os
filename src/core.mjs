@@ -1713,7 +1713,14 @@ export function getPermitPortalLandscape() {
           { market: 'Franklin', jurisdiction: 'Williamson County', system: 'IDT Plans / GeoCivix electronic plan review', url: 'https://williamson.geocivix.com/secure/' },
           { market: 'Jackson', jurisdiction: 'Madison County', system: 'CivicGov Citizen Portal / Building + Zoning', url: 'https://www.madisoncountytn.gov/191/Building-Zoning' },
         ],
-        strategy: 'Use Buildchek as the single first pass across major metros. For real-time builder sprawl, bookmark Rutherford, Williamson, Montgomery, Davidson, Shelby, Knox, and Hamilton direct portals.'
+        strategy: 'Use Buildchek as the single first pass across major metros. For real-time builder sprawl, bookmark Rutherford, Williamson, Montgomery, Davidson, Shelby, Knox, and Hamilton direct portals.',
+        sequence: { status: 'live', label: 'Live resource well', unlock: 'Keep Knoxville at 20+ unique builders and expand Tennessee county lanes before seller sourcing.' },
+        pipeline: [
+          { step: '01', title: 'Aggregate recent permits', source: 'Buildchek + Knox/Metro/direct county portals', action: 'Pull issued/approved residential permits from Knoxville first, then Rutherford, Williamson, Montgomery, Davidson, Shelby, Knox, and Hamilton.', output: '20+ unique permit-active builders with jurisdiction and recent-permit proof.' },
+          { step: '02', title: 'Deduplicate builder entities', source: 'Company name, license number, permit applicant, public business records', action: 'Merge regional/HQ variants while preserving permit-market geography.', output: 'One builder row per operating company, not one row per office address.' },
+          { step: '03', title: 'Enrich public contact path', source: 'Official website, state/county contractor/business pages, public company contact pages', action: 'Attach lawful public phone/email/contact page only; route weak contacts to human review.', output: 'Buyer-validation queue with callable/public-contact confidence.' },
+          { step: '04', title: 'Capture buy box', source: 'Phone/email outreach scripts', action: 'Ask geography, lot size, max price, close speed, utilities/access, and deal killers before any seller pull.', output: 'Validated buy boxes that unlock Tennessee seller matching.' }
+        ]
       },
       {
         id: 'fl',
@@ -1731,7 +1738,14 @@ export function getPermitPortalLandscape() {
           { market: 'Homestead', jurisdiction: 'City of Homestead', system: 'Tyler EnerGov self service', url: 'https://energov.cityofhomestead.com/EnerGovProd/SelfService#/home' },
           { market: 'Clermont', jurisdiction: 'City of Clermont', system: 'TRAKiT / CentralSquare legacy + migration', url: 'https://www.clermontfl.gov/186/Building-Services' },
         ],
-        strategy: 'Florida is the most fragmented. Learn Accela first, then monitor inland growth counties: Polk, Marion, Lake, Sumter, Alachua, St. Lucie, and Orange. Inland markets avoid some coastal insurance friction while keeping builder demand.'
+        strategy: 'Florida is the most fragmented. Learn Accela first, then monitor inland growth counties: Polk, Marion, Lake, Sumter, Alachua, St. Lucie, and Orange. Inland markets avoid some coastal insurance friction while keeping builder demand.',
+        sequence: { status: 'resource', label: 'Resource well', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
+        pipeline: [
+          { step: '01', title: 'Stand up Accela/EnerGov search pattern', source: 'Polk, Marion, Lake, Sumter, Alachua, Orange, St. Lucie direct portals', action: 'Search recent issued residential/new-construction permits and normalize applicant/contractor names.', output: 'Inland Florida permit candidate sheet by county and portal type.' },
+          { step: '02', title: 'Separate inland growth from coastal friction', source: 'Permit jurisdiction + county risk context', action: 'Prioritize Polk/Marion/Lake/Sumter/Alachua before coastal-heavy markets.', output: 'Builder batch limited to markets with cleaner seller-call economics.' },
+          { step: '03', title: 'Enrich builder contact path', source: 'Public company websites, Sunbiz/business pages, permit applicant metadata', action: 'Attach only public business contact channels and mark weak rows human-review.', output: '20+ inland Florida builder-validation candidates.' },
+          { step: '04', title: 'Gate seller search by buy box', source: 'Buyer-validation calls/emails', action: 'Capture price, parcel size, utilities/access, flood/wetland deal killers, and close timeline before seller pulls.', output: 'Florida seller-geography rules ready for later skip-trace.' }
+        ]
       },
       {
         id: 'az',
@@ -1748,7 +1762,14 @@ export function getPermitPortalLandscape() {
           { market: 'Buckeye', jurisdiction: 'City of Buckeye', system: 'Custom development services', url: 'https://www.buckeyeaz.gov/business/development-services' },
           { market: 'Casa Grande', jurisdiction: 'City of Casa Grande', system: 'Custom development services', url: 'https://casagrandeaz.gov/development-services/' },
         ],
-        strategy: 'Maricopa weekly reports are the Phoenix-metro normalization goldmine. Then use Accela-heavy cities and self-certification markets — Phoenix, Scottsdale, Mesa, Tempe — as velocity markets.'
+        strategy: 'Maricopa weekly reports are the Phoenix-metro normalization goldmine. Then use Accela-heavy cities and self-certification markets — Phoenix, Scottsdale, Mesa, Tempe — as velocity markets.',
+        sequence: { status: 'resource', label: 'Resource well', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
+        pipeline: [
+          { step: '01', title: 'Normalize weekly permit drops', source: 'Maricopa County weekly permit activity + Phoenix/Mesa/Scottsdale Accela-style portals', action: 'Pull new residential permits and self-certification activity, then map applicant/contractor names to permit-market jurisdictions.', output: 'Phoenix-metro recent-permit builder candidate sheet.' },
+          { step: '02', title: 'Prioritize velocity cities', source: 'Phoenix, Scottsdale, Mesa, Tempe, Buckeye, Casa Grande', action: 'Rank jurisdictions by recency, permit volume, and ease of portal access.', output: 'AZ market order for the first 20-builder pull.' },
+          { step: '03', title: 'Public contact enrichment', source: 'Arizona contractor/business records and builder websites', action: 'Attach public company contacts; hold rows with weak proof for human review.', output: '20+ Arizona builder-validation candidates.' },
+          { step: '04', title: 'Buy-box capture before parcels', source: 'Phone/email outreach', action: 'Capture zip/subdivision appetite, lot size, max price, utilities/access, slope/flood constraints, and close speed.', output: 'Arizona seller-search gates ready only after buyer demand is validated.' }
+        ]
       },
       {
         id: 'nc',
@@ -1766,7 +1787,14 @@ export function getPermitPortalLandscape() {
           { market: 'Concord', jurisdiction: 'Cabarrus County', system: 'ArcGIS Open Data + Accela-style records', url: 'https://data-cabarrus.opendata.arcgis.com/' },
           { market: 'Fayetteville', jurisdiction: 'Cumberland County', system: 'Buildchek + local permitting', url: 'https://www.cumberlandcountync.gov/departments/planning-group/planning-and-inspections' },
         ],
-        strategy: 'Use Buildchek for broad NC metro coverage. For direct research, prioritize Mecklenburg Power BI/daily data, Wake spreadsheets, and Cabarrus ArcGIS. The Mecklenburg → Wake → Guilford Piedmont corridor is the land-flipping sweet spot.'
+        strategy: 'Use Buildchek for broad NC metro coverage. For direct research, prioritize Mecklenburg Power BI/daily data, Wake spreadsheets, and Cabarrus ArcGIS. The Mecklenburg → Wake → Guilford Piedmont corridor is the land-flipping sweet spot.',
+        sequence: { status: 'resource', label: 'Resource well', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
+        pipeline: [
+          { step: '01', title: 'Pull Piedmont permit sources', source: 'Buildchek, Mecklenburg daily permits, Wake reports, Cabarrus ArcGIS, Raleigh Accela', action: 'Collect recent issued/approved residential permit rows across Mecklenburg → Wake → Guilford/Cabarrus.', output: 'NC Piedmont candidate sheet with source URL and jurisdiction proof.' },
+          { step: '02', title: 'Normalize builder names', source: 'Applicant/contractor fields + public builder websites', action: 'Deduplicate subsidiaries, LLC variants, and regional office names while keeping permit-market geography.', output: '20+ unique NC builder entities, not duplicate permit rows.' },
+          { step: '03', title: 'Rank by buyer-validation leverage', source: 'Permit frequency, callable public contact, market concentration, recent activity', action: 'Score builders for who to call first and route missing contacts to review.', output: 'NC buyer-validation queue ordered by permit-backed demand.' },
+          { step: '04', title: 'Capture Piedmont buy boxes', source: 'Builder outreach', action: 'Ask target counties/subdivisions, lot size, max price, utilities/access, close speed, and deal killers.', output: 'NC seller-search map unlocked only for validated buy boxes.' }
+        ]
       },
       {
         id: 'tx',
@@ -1786,7 +1814,14 @@ export function getPermitPortalLandscape() {
           { market: 'Travis County', jurisdiction: 'Travis County', system: 'Permitting Center + open records', url: 'https://www.traviscountytx.gov/tnr/development-services/permits' },
           { market: 'Texas aggregator', jurisdiction: 'Multiple Texas markets', system: 'PermitVector daily refresh', url: 'https://permitvector.com/' },
         ],
-        strategy: 'Texas has the most volume and the worst fragmentation. Use PermitVector first for normalized market coverage. DIY: Austin and San Antonio Socrata are clean; Houston and Dallas proper require county-by-county work or aggregator coverage.'
+        strategy: 'Texas has the most volume and the worst fragmentation. Use PermitVector first for normalized market coverage. DIY: Austin and San Antonio Socrata are clean; Houston and Dallas proper require county-by-county work or aggregator coverage.',
+        sequence: { status: 'resource', label: 'Resource well', unlock: 'Texas is fully scaffolded as a resource well; pull Austin/San Antonio open data first when you choose to activate it.' },
+        pipeline: [
+          { step: '01', title: 'Start with normalized Texas coverage', source: 'PermitVector + Austin Socrata + San Antonio Open Data', action: 'Pull recent residential permits from Austin and San Antonio first, then compare against PermitVector-covered Texas markets.', output: 'Texas recent-permit candidate sheet with source, jurisdiction, permit date, and applicant/builder fields.' },
+          { step: '02', title: 'Avoid black-hole markets first', source: 'Austin/San Antonio open data before Houston/Dallas proper', action: 'Defer Houston and Dallas proper until county-by-county or aggregator coverage is ready; do not let fragmented portals block the Texas launch.', output: 'Execution order: Austin → San Antonio → Travis/Plano/Collin/Denton/McAllen → Houston/Dallas later.' },
+          { step: '03', title: 'Deduplicate and qualify builders', source: 'Permit applicant/contractor names, Accela/Socrata metadata, public business records', action: 'Deduplicate LLC/name variants and require recent issued/approved residential activity before buyer-validation promotion.', output: '20+ unique Texas permit-active builders for the call queue.' },
+          { step: '04', title: 'Enrich public contact + validate buy box', source: 'Official builder websites, public company contacts, phone/email outreach', action: 'Attach lawful public contact channels and capture target counties, lot size, max price, utilities/access, close speed, and deal killers.', output: 'Texas buyer-validation queue ready to unlock seller parcels only after buy boxes are captured.' }
+        ]
       }
     ],
     tiers: [

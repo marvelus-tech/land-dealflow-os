@@ -111,7 +111,14 @@ assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action ca
 assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'second hero headline should stay removed; the page needs one top command header');
 assert.match(appSource, /builder-market-workbench/, 'top Builders IA should be a market workbench, not a static metric strip');
 assert.match(appSource, /market-toggle-grid/, 'priority states should be exposed as top-level market toggles');
-assert.match(appSource, /stateOrder = \['TN', 'NC', 'TX', 'FL', 'AZ'\]/, 'market toggles should expose all prioritized states in order');
+assert.match(appSource, /stateOrder = \['TN', 'TX', 'NC', 'FL', 'AZ'\]/, 'market toggles should expose all prioritized states as resource wells');
+assert.match(appSource, /every other target state is a resource well/, 'Builders header should frame non-live states as selectable resource wells');
+assert.match(appSource, /data-builder-market-state/, 'state toggles should be interactive controls that swap the displayed state data');
+assert.match(appSource, /selectedBuilderMarketState = stateCode/, 'clicking a state toggle should change the selected Builders market state');
+assert.match(appSource, /\[activeState\]\.map\(state =>/, 'the state detail panel should render only the selected state below the toggles');
+assert.match(appSource, /Permit-builder pipeline/, 'selected state lane should expose its permit-builder pipeline');
+assert.match(appSource, /state-pipeline-list/, 'selected state lane should render source/action/output pipeline steps');
+assert.match(appSource, /pipeline-unlock/, 'selected state lane should show the unlock condition before seller sourcing');
 assert.match(appSource, /market-state-\$\{h\(state\.stateCode\.toLowerCase\(\)\)\}/, 'state lanes must generate addressable anchors from state codes');
 assert.match(appSource, /state-market-list/, 'each state lane should carry its own priority market list');
 assert.doesNotMatch(appSource, /top-10 demo list|top 10 Knoxville/, 'Builders pipeline must not frame itself as a top-10 pull');

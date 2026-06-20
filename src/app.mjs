@@ -8,6 +8,8 @@ import {
   applyCallOutcome,
   buildDailyMoneyQueue,
   buildSellerSearchControlLayer,
+  buildExecutionConveyor,
+  exportMatchedSellerBatchCsv,
   buildBuyerContactQueue,
   buildBuyerFirstBoard,
   applySkipTraceImport,
@@ -1158,12 +1160,21 @@ function renderBuilderListEnginePanel(options = {}) {
   const activeBuilders = asArray(activeState.rows);
   const activeSummary = activeState.summary || getStateBuilderSummary(activeState.stateCode);
   const selected = getSelectedBuilder(activeBuilders) || {};
+  const buyerPool = [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])];
+  const sellerPool = [...publicSkipTrace, ...(workspace.parcels || [])];
+  const titlePool = titleCompanyCandidateMarkets();
   const sellerControl = buildSellerSearchControlLayer({
-    buyers: [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])],
-    sellerCandidates: [...publicSkipTrace, ...(workspace.parcels || [])],
-    titleCandidates: titleCompanyCandidateMarkets(),
+    buyers: buyerPool,
+    sellerCandidates: sellerPool,
+    titleCandidates: titlePool,
     state: activeState.stateCode,
     limit: 6,
+  });
+  const executionConveyor = buildExecutionConveyor({
+    buyers: buyerPool.filter(row => !activeState.stateCode || String(row.state || row.marketState || row.market || '').toUpperCase().includes(activeState.stateCode)),
+    sellerCandidates: sellerPool.filter(row => !activeState.stateCode || String(row.state || row.marketState || row.market || row.address || '').toUpperCase().includes(activeState.stateCode)),
+    titleCandidates: titlePool,
+    limit: 8,
   });
   const marketSummary = `<div class="active-market-summary">
     <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
@@ -1238,6 +1249,7 @@ function renderBuilderListEnginePanel(options = {}) {
 
     ${renderBuyerValidationCommandCenter(activeState, activeBuilders, activeSummary)}
     ${renderSellerSearchControlLayer(sellerControl)}
+    ${renderExecutionConveyor(executionConveyor)}
 
     <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
@@ -1284,6 +1296,47 @@ function renderSellerSearchControlLayer(control = {}) {
       <article><div class="panel-kicker"><span>Buyer gates</span><b>capture before seller search</b></div>${buyerRows || '<p>No buyer candidates for this state yet. Pull permit-active builders first.</p>'}</article>
       <article><div class="panel-kicker"><span>Seller gates</span><b>public records stay held back until enriched</b></div>${sellerRows || '<p>No seller candidates for this state yet. Pull owner parcels only after buyer proof.</p>'}</article>
     </div>
+  </section>`;
+}
+
+function renderExecutionConveyor(conveyor = {}) {
+  const stages = asArray(conveyor.stageRows).map(stage => `<article class="execution-stage ${h(stage.status)}"><span>${h(stage.label)}</span><b>${h(stage.status)}</b><p>${h(stage.detail)}</p></article>`).join('');
+  const batchRows = asArray(conveyor.matchedSellerBatch).slice(0, 5).map((row, index) => `<div class="execution-row">
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <div><b>${h(row.address || row.parcelId)}</b><small>${h(row.buyerName)} · ${h(row.ownerName || 'public owner')} · ${h(row.lotSize || 'lot size pending')}</small></div>
+    <em>${h(row.nextAction || 'skip trace')}</em>
+  </div>`).join('');
+  const callRows = asArray(conveyor.callReadySellers).slice(0, 4).map((row, index) => `<article class="execution-call-card ${row.readyForSellerCall ? 'ready' : 'blocked'}">
+    <div><span>${String(index + 1).padStart(2, '0')} seller cockpit</span><b>${h(row.ownerName || 'owner')} · ${h(row.address || row.parcelId)}</b><p>${h(row.nextAction)}</p></div>
+    <ul>
+      <li><b>Opener</b><span>${h(row.ownerCallScript?.opener || row.ownerCallScript?.summary || 'Confirm interest and seller timeline.')}</span></li>
+      <li><b>Net offer</b><span>${h(row.sellerNetOfferScript?.headline || row.sellerNetOfferScript?.summary || 'Calculate seller net before promise.')}</span></li>
+      <li><b>Memo</b><span>${h(row.memo?.subject || 'buyer memo waits for seller range')}</span></li>
+      <li><b>Title</b><span>${h(row.contract?.label || 'contract/title gate pending')}</span></li>
+    </ul>
+  </article>`).join('');
+  const feedbackRows = asArray(conveyor.feedbackRecommendations).slice(0, 3).map(row => `<div class="execution-row quiet">
+    <span>↻</span><div><b>${h(row.address || row.parcelId)}</b><small>${h(row.nextCallReason || 'No feedback penalty yet.')}</small></div><em>${h(row.adjustedScore || row.score || 0)}/100</em>
+  </div>`).join('');
+  return `<section id="execution-conveyor" class="execution-conveyor-panel" aria-label="Buyer to seller execution conveyor">
+    <div class="execution-conveyor-head">
+      <span class="eyebrow">Phase 4 · execution conveyor</span>
+      <h3>One buyer proof path. One seller batch. One call/memo/feedback loop.</h3>
+      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')}</p>
+      <div class="execution-metrics">
+        <div><b>${h(conveyor.stats?.validatedBuyers || 0)}</b><span>validated buyers</span></div>
+        <div><b>${h(conveyor.stats?.matchedSellerBatch || 0)}</b><span>matched seller export</span></div>
+        <div><b>${h(conveyor.stats?.promotedSellerCalls || 0)}</b><span>seller call cockpit</span></div>
+        <div><b>${h(conveyor.stats?.memoReady || 0)}</b><span>memo/title ready</span></div>
+      </div>
+    </div>
+    <div class="execution-stages">${stages}</div>
+    <div class="execution-grid">
+      <article><div class="panel-kicker"><span>Matched seller batch</span><b>export before skip trace</b></div>${batchRows || '<p>No buyer-box-matched seller batch yet. Buyer proof still leads.</p>'}<button id="export-matched-seller-batch" class="secondary compact-action" type="button">Download matched seller CSV</button><span id="matched-seller-export-status"></span></article>
+      <article><div class="panel-kicker"><span>Skip-trace return gate</span><b>phone/email promotes, never fabricates</b></div><p>Import returns in Machine → Skip trace intake. Rows promote only when owner contact exists and still survive buyer fit, buildability, spread, and contract/title gates.</p></article>
+    </div>
+    <div class="execution-call-grid">${callRows || '<article class="execution-call-card blocked"><b>No seller call cockpit is armed.</b><p>Public records stay held for skip trace until real phone/email and title/contract readiness exist.</p></article>'}</div>
+    <article class="execution-feedback-card"><div class="panel-kicker"><span>Feedback rewrite</span><b>${h(conveyor.feedbackLoop?.totalFeedback || 0)} buyer answers captured</b></div><p>${h(conveyor.feedbackLoop?.tightening || 'Buyer yes/no/maybe will rewrite tomorrow’s seller-call order.')}</p>${feedbackRows}</article>
   </section>`;
 }
 
@@ -2180,6 +2233,16 @@ function bindEvents() {
     if (event.target.matches('#export-top20-csv')) {
       const calls = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 20 });
       downloadText(`land-dealflow-top20-call-list-${new Date().toISOString().slice(0, 10)}.csv`, exportParcelsCsv(calls));
+    }
+
+    if (event.target.matches('#export-matched-seller-batch')) {
+      const stateCode = selectedBuilderState || 'TN';
+      const buyers = [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])].filter(row => String(row.state || row.marketState || row.market || '').toUpperCase().includes(stateCode));
+      const sellers = [...generatedCandidateParcels(), ...(workspace.parcels || [])].filter(row => String(row.state || row.marketState || row.market || row.address || '').toUpperCase().includes(stateCode));
+      const conveyor = buildExecutionConveyor({ buyers, sellerCandidates: sellers, limit: 50 });
+      downloadText(`land-dealflow-matched-seller-batch-${stateCode.toLowerCase()}-${new Date().toISOString().slice(0, 10)}.csv`, exportMatchedSellerBatchCsv(conveyor.matchedSellerBatch));
+      const status = document.querySelector('#matched-seller-export-status');
+      if (status) status.textContent = `Exported ${conveyor.matchedSellerBatch.length} buyer-box-matched sellers.`;
     }
 
     if (event.target.matches('#export-daily-call-sheet')) {

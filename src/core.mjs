@@ -1379,6 +1379,91 @@ export function buildBuyerFirstBoard({ buyers = [], sellerCandidates = [], limit
   };
 }
 
+export function exportMatchedSellerBatchCsv(matches = []) {
+  const columns = [
+    'buyerName', 'buyerId', 'market', 'parcelId', 'ownerName', 'ownerMailingAddress',
+    'parcelAddress', 'lotSize', 'riskFlags', 'sourceId', 'sourceUrl', 'skipTraceStatus', 'nextAction',
+  ];
+  const rows = [columns];
+  for (const match of matches) {
+    rows.push([
+      match.buyerName || '',
+      match.buyerId || '',
+      match.market || match.marketName || '',
+      match.parcelId || match.id || '',
+      match.ownerName || match.owner || '',
+      match.ownerMailingAddress || '',
+      match.address || '',
+      match.lotSize || match.acres || '',
+      [...(match.flags || []), ...(match.risk?.flags || []), ...(match.misses || [])].filter(Boolean).join('; '),
+      match.sourceId || match.source || '',
+      match.sourceUrl || match.publicRecordUrl || match.assessorUrl || '',
+      match.ownerPhone || match.ownerEmail || match.realContact ? 'contact-enriched' : 'needs-skip-trace',
+      match.nextAction || 'skip trace this matched seller',
+    ]);
+  }
+  return rows.map(row => row.map(csvEscape).join(',')).join('\n');
+}
+
+export function buildExecutionConveyor({ buyers = [], sellerCandidates = [], titleCandidates = [], limit = 12 } = {}) {
+  const board = buildBuyerFirstBoard({ buyers, sellerCandidates, limit });
+  const callReadySellers = board.sellerMatches
+    .filter(match => match.ownerPhone || match.ownerEmail || match.realContact)
+    .map(match => {
+      const buyer = buyers.find(item => String(item.id || item.buyerId) === String(match.buyerId)) || {};
+      const contract = calculateContractReadiness(match, buyer);
+      const offerPacket = generateOfferPacket(match, buyer);
+      const memo = generateBuyerSendMemo(match, buyer, offerPacket);
+      const checklist = buildOperatorChecklist(match, buyer);
+      return {
+        ...match,
+        buyer,
+        contract,
+        offerPacket,
+        memo,
+        checklist,
+        ownerCallScript: generateOwnerCallScript(match, buyer),
+        sellerNetOfferScript: generateSellerNetOfferScript(match, buyer),
+        neighborPrompt: generateNeighborPrompt(match),
+        readyForSellerCall: contract.ready && match.risk?.status !== 'Kill',
+        nextAction: contract.ready ? 'call seller with net offer range' : `clear ${contract.blockers?.[0] || 'contract/title gate'}`,
+      };
+    })
+    .sort((a, b) => Number(b.readyForSellerCall) - Number(a.readyForSellerCall) || b.score - a.score || b.metrics.spread - a.metrics.spread)
+    .slice(0, limit);
+  const feedbackLoop = buildBuyerFeedbackLoop(buyers);
+  const feedbackRecommendations = recommendNextSellerCallsFromFeedback(callReadySellers.length ? callReadySellers : board.sellerMatches, buyers).slice(0, Math.min(5, limit));
+  const stageRows = [
+    { id: 'buyer-call-capture', label: 'Buyer call capture', status: board.validatedBuyers.length ? 'clear' : 'locked', detail: board.validatedBuyers.length ? `${board.validatedBuyers.length} buy boxes can drive seller search` : 'capture geography, lot size, max price, close speed, package recipient, and deal killers' },
+    { id: 'matched-seller-export', label: 'Matched seller batch', status: board.skipTraceBatch.length ? 'ready' : 'locked', detail: board.skipTraceBatch.length ? `${board.skipTraceBatch.length} public owner rows ready for skip-trace export` : 'no buyer-box-matched public owner batch yet' },
+    { id: 'skiptrace-return', label: 'Skip-trace return', status: callReadySellers.length ? 'review' : 'locked', detail: callReadySellers.length ? `${callReadySellers.length} enriched rows need call/title gating` : 'import phone/email before seller calls' },
+    { id: 'seller-call-cockpit', label: 'Seller call cockpit', status: callReadySellers.some(row => row.readyForSellerCall) ? 'ready' : 'review', detail: callReadySellers.some(row => row.readyForSellerCall) ? 'seller opener, net-offer range, neighbor prompt and outcome controls are armed' : 'seller calls wait for contact + contract/title clearance' },
+    { id: 'buyer-memo-title', label: 'Buyer memo / title packet', status: callReadySellers.some(row => row.memo) ? 'armed' : 'locked', detail: 'memo, title email, contract blockers and assignment math travel with each seller row' },
+    { id: 'feedback-rewrite', label: 'Feedback rewrite', status: feedbackLoop.totalFeedback ? 'armed' : 'listening', detail: feedbackLoop.totalFeedback ? feedbackLoop.tightening : 'capture buyer yes/no/maybe to rewrite tomorrow’s seller queue' },
+  ];
+  return {
+    board,
+    stageRows,
+    matchedSellerBatch: board.skipTraceBatch,
+    matchedSellerBatchCsv: exportMatchedSellerBatchCsv(board.skipTraceBatch),
+    callReadySellers,
+    feedbackLoop,
+    feedbackRecommendations,
+    stats: {
+      validatedBuyers: board.stats.validatedBuyBoxes,
+      matchedSellerBatch: board.skipTraceBatch.length,
+      promotedSellerCalls: callReadySellers.length,
+      memoReady: callReadySellers.filter(row => row.memo && row.contract?.ready).length,
+      feedbackEvents: feedbackLoop.totalFeedback,
+    },
+    nextAction: !board.validatedBuyers.length
+      ? 'Capture one complete buyer buy box before pulling sellers.'
+      : board.skipTraceBatch.length
+        ? 'Download the matched seller batch, skip trace owner contact, then import the return CSV.'
+        : callReadySellers.find(row => row.readyForSellerCall)?.nextAction || 'Import skip-trace returns and clear title/contract blockers before seller calls.',
+  };
+}
+
 export function buildBuyerFeedbackLoop(buyers = []) {
   const all = buyers.flatMap(buyer => (buyer.feedback || []).map(item => ({ buyerId: buyer.id, buyerName: buyer.name, ...normalizeBuyerFeedback(item) })));
   const accepted = all.filter(item => item.decision === 'accept').length;

@@ -6,6 +6,8 @@ import {
   buildDailyMoneyQueue,
   buildBuyerContactQueue,
   buildBuyerFirstBoard,
+  buildExecutionConveyor,
+  exportMatchedSellerBatchCsv,
   matchSellerParcelsToBuyerBox,
   applyBuyerContactImport,
   applySkipTraceImport,
@@ -165,7 +167,6 @@ function testBuyerContactImportAndValidationQueue() {
 
 function testBuyerFirstBoardPrioritizesValidatedBuyBoxBeforeSellerSkipTrace() {
   const buyer = {
-    ...buyers[0],
     id: 'career',
     name: 'CAREER FINANCIAL CORP',
     phone: '239-555-8822',
@@ -204,6 +205,52 @@ function testBuyerFirstBoardPrioritizesValidatedBuyBoxBeforeSellerSkipTrace() {
   assert.equal(board.stats.matchedSellerParcels, 1);
 }
 
+function testExecutionConveyorExportsSkipTraceBatchThenPromotesReturns() {
+  const buyer = {
+    id: 'career',
+    name: 'CAREER FINANCIAL CORP',
+    phone: '239-555-8822',
+    email: 'acq@career.example',
+    buyBoxCaptured: true,
+    validationStatus: 'buy-box-validated',
+    maxPrice: 42000,
+    closeSpeedDays: 14,
+    packageRecipient: 'Acquisitions desk',
+    exactBuyBox: { targetMarkets: ['lehigh'], lotSizeMin: 0.23, lotSizeMax: 0.29, maxPrice: 42000, requiredRoadAccess: true, avoidWetlands: true },
+  };
+  const publicRecord = {
+    id: 'public-lead-1',
+    parcelId: '274527L4110560090',
+    address: '101 Buyer Fit Ave, Lehigh Acres, FL',
+    market: 'lehigh',
+    ownerName: 'Public Owner',
+    ownerMailingAddress: 'PO Box 1, Fort Myers, FL',
+    ownerPhone: '',
+    ownerEmail: '',
+    askingPrice: 12062,
+    lotSize: '0.252 ac',
+    roadAccess: true,
+    wetlands: false,
+    utilities: true,
+    sourceId: 'county-public-record',
+    sourceUrl: 'https://county.example/record/274527L4110560090',
+    contractStatus: 'attorney-reviewed',
+    titlePacketStatus: 'title-opened',
+  };
+  const initial = buildExecutionConveyor({ buyers: [buyer], sellerCandidates: [publicRecord] });
+  assert.equal(initial.stats.validatedBuyers, 1);
+  assert.equal(initial.stats.matchedSellerBatch, 1);
+  assert.equal(initial.stats.promotedSellerCalls, 0, 'public owner records cannot enter the seller cockpit before real contact exists');
+  const csv = exportMatchedSellerBatchCsv(initial.matchedSellerBatch);
+  assert.match(csv, /buyerName,buyerId,market,parcelId,ownerName/);
+  assert.match(csv, /needs-skip-trace/);
+  const imported = applySkipTraceImport({ parcels: [] }, 'parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n274527L4110560090,Public Owner,239-555-7711,owner@example.com,94', { candidateParcels: [publicRecord], now: '2026-06-20T00:00:00.000Z' });
+  const promoted = buildExecutionConveyor({ buyers: [buyer], sellerCandidates: imported.workspace.parcels });
+  assert.equal(promoted.stats.promotedSellerCalls, 1);
+  assert.ok(promoted.callReadySellers[0].ownerCallScript);
+  assert.ok(promoted.callReadySellers[0].memo.subject.includes('Buyer Fit Ave'));
+}
+
 testDailyMoneyQueueRanksCallReadySellersWithScriptsAndBuyerBacking();
 testFollowUpsDueAreSeparatedFromFreshCalls();
 testCallOutcomeUpdatesCrmStatusAndNextFollowUp();
@@ -212,5 +259,6 @@ testDailyCallSheetExportsMoneyFields();
 testSkipTraceImportMatchesRealPublicLeadAndPromotesToToday();
 testBuyerContactImportAndValidationQueue();
 testBuyerFirstBoardPrioritizesValidatedBuyBoxBeforeSellerSkipTrace();
+testExecutionConveyorExportsSkipTraceBatchThenPromotesReturns();
 
 console.log('cashflow tests passed');

@@ -1370,80 +1370,127 @@ function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipT
 }
 
 function renderCommandCenter() {
-  const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'None', score: { total: 0 } };
-  const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'None', score: 0 };
-  const parcelScores = scoredParcels();
-  const moneyQueue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 5, requireRealContact: true });
-  const moneyCalls = [...moneyQueue.followUps, ...moneyQueue.today];
+  const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'Knoxville, TN', score: { total: 0 } };
+  const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'Permit-active builder', score: 0 };
   const publicSkipTrace = asArray(generatedLeads?.queues?.skipTrace);
   const buyerContactQueue = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()]);
   const buyerFirst = buildBuyerFirstBoard({ buyers: [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])], sellerCandidates: [...publicSkipTrace, ...(workspace.parcels || [])], limit: 25 });
   const leadBuyer = buyerFirst.validatedBuyers[0] || buyerContactQueue[0] || topBuyer;
-  const buyerRows = (buyerFirst.validatedBuyers.length ? buyerFirst.validatedBuyers : buyerContactQueue).slice(0, 5).map((buyer, index) => `<article class="buyer-first-card ${index === 0 ? 'featured' : ''}"><span>${buyerFirst.validatedBuyers.includes(buyer) ? 'Validated buy box' : 'Contact first'}</span><b>${h(buyer.name || 'Buyer unknown')}</b><p>${h(buyer.buyBox || buyer.acquisitionNotes || buyer.task || 'Find contact and ask exact buy box.')}</p><em>${h(buyer.phone || buyer.email || buyer.website || `${buyer.recentBuilds || 0} build signals`)}</em></article>`).join('');
-  const matchedRows = buyerFirst.sellerMatches.slice(0, 6).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.address || item.parcelId)}</b><span>${h(item.buyerName)} · fit ${h(item.fitScore)} · ${h(item.nextAction)} · ${formatMoney(item.offer?.buyerPrice || item.buyerMaxPrice || 0)} buyer ceiling</span></div>`).join('') || '<p>No seller parcels selected yet. Validate at least one buyer buy box, then the seller list becomes precise.</p>';
+  const moneyQueue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 5, requireRealContact: true });
+  const moneyCalls = [...moneyQueue.followUps, ...moneyQueue.today];
   const heroCall = moneyCalls.find(call => call.id === selectedMoneyCallId) || moneyCalls[0] || {};
   selectedMoneyCallId = heroCall.id || '';
-  const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="money-call ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
-      <span>${String(index + 1).padStart(2, '0')}</span>
-      <b>${h(call.ownerName || call.owner || 'owner unknown')}</b>
-      <small>${h(call.address || 'No address')}</small>
-      <em>${h(call.moneyStage)} · ${h(call.score)} score · ${formatMoney(call.projectedSpread)} spread</em>
-    </button>`).join('') : '<article class="money-empty"><b>No real seller calls ready yet.</b><span>Import skip-traced owner phones. Public parcel records stay out of Today until a real phone/email matches.</span></article>';
-  const outcomeButtons = Object.entries(CALL_OUTCOMES).map(([key, outcome]) => `<button type="button" class="outcome-chip" data-call-outcome="${h(key)}" ${heroCall.id ? '' : 'disabled'}>${h(outcome.label)}</button>`).join('');
-  const script = heroCall.callScript || {};
   const boxMeter = calculateBuyBoxCompleteness(leadBuyer || {});
   const heroMotivation = heroCall.id ? calculateSellerMotivation(heroCall) : { score: 0, temperature: 'Cold', signals: [] };
   const netScript = heroCall.id ? generateSellerNetOfferScript(heroCall, getBuyer(heroCall)) : null;
-  const todayChecklist = heroCall.id ? buildOperatorChecklist(heroCall, getBuyer(heroCall)) : null;
-  const todayBuyerMemo = heroCall.id ? generateBuyerSendMemo(heroCall, getBuyer(heroCall), generateOfferPacket(heroCall, getBuyer(heroCall))) : null;
+  const permitLandscape = getPermitPortalLandscape();
+  const leadingMarkets = asArray(permitLandscape.leadingMarkets).slice(0, 5);
+  const tnMarket = leadingMarkets.find(market => market.state === 'TN') || leadingMarkets[0] || { market: 'Knoxville / Knox County', state: 'TN', reason: 'Live-first permit source.' };
+  const builderRows = asArray(knoxvilleBuyerCallSheet?.rows);
+  const totalBuilderSignals = knoxvilleBuyerCallSheet?.summary?.totalRecentBuildSignals || builderRows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0) || 'TN';
+  const callableBuilders = knoxvilleBuyerCallSheet?.summary?.callablePublicBusinessContacts || builderRows.filter(row => row.phone || row.email).length || buyerContactQueue.length || 'pending';
+  const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="wk-call-row ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
+      <span>${String(index + 1).padStart(2, '0')}</span>
+      <b>${h(call.ownerName || call.owner || 'owner unknown')}</b>
+      <small>${h(call.address || 'No address')} · ${h(call.moneyStage)} · ${formatMoney(call.projectedSpread)} spread</small>
+    </button>`).join('') : '<article class="wk-empty"><b>No seller call earns the room yet.</b><span>Buyer proof comes first. Public owner records stay in skip-trace until real phone/email enrichment.</span></article>';
+  const marketRows = leadingMarkets.map((market, index) => `<a class="wk-market-node ${market.state === 'TN' ? 'hot' : ''}" href="#builders" data-view="builders" style="--i:${index}">
+      <span>${String(index + 1).padStart(2, '0')} / ${h(market.state)}</span>
+      <b>${h(market.market)}</b>
+      <em>${h(market.reason)}</em>
+    </a>`).join('');
+  const proofRows = [
+    ['Permit market', tnMarket.market, 'Where the build evidence lives - not where HQ is registered.'],
+    ['Builder signals', `${totalBuilderSignals}`, `${callableBuilders} callable public business contacts.`],
+    ['Buy-box certainty', `${boxMeter.percent}%`, `${boxMeter.grade} confidence until acquisition criteria are captured.`],
+    ['Call-ready sellers', `${moneyQueue.stats.callReady}`, `${publicSkipTrace.length} public records held back for enrichment.`],
+  ].map(([label, value, detail]) => `<article class="wk-proof-card"><span>${h(label)}</span><strong>${h(value)}</strong><p>${h(detail)}</p></article>`).join('');
+  const protocolRows = [
+    ['01', 'Prove demand', 'Find permit-active builders, then ask price, geography, close speed and kill criteria.'],
+    ['02', 'Constrain the land', 'Only seller parcels matching verified buy boxes enter the money queue.'],
+    ['03', 'Protect the close', 'Contract/title gates surface before the buyer-send memo, not after optimism.'],
+  ].map(([num, title, detail]) => `<article class="wk-protocol-card"><span>${h(num)}</span><h3>${h(title)}</h3><p>${h(detail)}</p></article>`).join('');
+  const auditRows = [
+    ['Kept', 'permit-backed buyer signal', 'It is the strongest content: proof before persuasion.'],
+    ['Kept', 'zero-fabrication gate', 'The product earns trust by refusing fake call-ready rows.'],
+    ['Kept', 'buyer-first money loop', 'It explains the business model in one sentence.'],
+    ['Killed', 'dashboard sprawl', 'Old metric blocks that did not trigger a call.'],
+    ['Killed', 'HQ leakage', 'Kentucky/regional office geography masquerading as permit market.'],
+    ['Reborn', 'source proof', 'Every CTA now points to a verifiable permit, buy box or closing gate.'],
+  ].map(([verb, title, detail]) => `<li><span>${h(verb)}</span><b>${h(title)}</b><em>${h(detail)}</em></li>`).join('');
+
   document.querySelector('#command').innerHTML = `
-    ${renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipTrace, buyerContactQueue, heroMotivation, netScript })}
-    <section class="phase-one-strip" aria-label="Phase one infusion controls">
-      <article class="infusion-card land-photo-card"><img src="./assets/land-imagery/lehigh-golden-lot.png" alt="Dreamy DSLR view of a Lehigh vacant lot"><span class="eyebrow">Chapter I</span><h3>Buy box completeness</h3><p>${h(boxMeter.met)}/${h(boxMeter.total)} buyer facts captured before seller outreach.</p></article>
-      <article class="infusion-card"><span class="eyebrow">Chapter II</span><h3>Seller motivation score</h3><div class="large-score">${h(heroMotivation.score)}<em>${h(heroMotivation.temperature)}</em></div><p>${h(heroMotivation.signals.slice(0, 2).join(' · ') || 'Select a callable seller to reveal motivation signals.')}</p></article>
-      <article class="infusion-card land-photo-card"><img src="./assets/land-imagery/builder-edge-market.png" alt="Dreamy DSLR builder lots on a suburban edge market"><span class="eyebrow">Chapter III</span><h3>Seller net script</h3><p>${h(netScript?.headline || 'Choose a seller call to generate the net-cash opener.')}</p></article>
-    </section>
-    <section class="buyer-first-board" aria-label="Buyer-first buy box validation">
-      <article class="buyer-first-lane"><span class="eyebrow">Step 1 · Buyer demand</span><h2>Validate a real buy box.</h2><div class="buyer-first-list">${buyerRows}</div></article>
-      <article class="buyer-first-lane"><span class="eyebrow">Step 2 · Seller selection</span><h2>Only then choose parcels.</h2><div class="queue-card">${matchedRows}</div></article>
-      <article class="buyer-first-lane script-card"><span class="eyebrow">Buyer call script</span><h2>“Do you actively buy Lehigh infill lots?”</h2><p>Ask: preferred streets/areas, lot size, max price, road/utilities requirements, flood/wetland kills, closing timeline, and whether they want off-market matches sent weekly.</p></article>
-    </section>
-    ${todayChecklist ? renderOperatorChecklist(todayChecklist, { compact: true }) : ''}
-    ${todayBuyerMemo ? renderBuyerSendMemoCard(todayBuyerMemo, { compact: true }) : ''}
-    ${heroCall.id ? renderBuyerFeedbackCapture(heroCall, getBuyer(heroCall)) : ''}
-    <section id="daily-calls" class="cashflow-board" aria-label="Daily cashflow operating board">
-      <div class="money-queue-panel">
-        <div class="daily-heading"><span class="eyebrow">Today’s calls</span><h2>One queue. No wandering.</h2></div>
-        <div class="money-call-list">${callRows}</div>
-        <div class="money-stats">
-          <div><span>Call-ready</span><b>${h(moneyQueue.stats.callReady)}</b></div>
-          <div><span>Follow-ups due</span><b>${h(moneyQueue.stats.followUpsDue)}</b></div>
-          <div><span>Buyer-backed</span><b>${h(moneyQueue.stats.buyerBacked)}</b></div>
-          <div><span>Need skip trace</span><b>${h(publicSkipTrace.length)}</b></div>
-          <div><span>Buyer contacts</span><b>${h(buyerContactQueue.length)}</b></div>
+    <div class="wk-progress" aria-hidden="true"><span></span></div>
+    <nav class="wk-rail" aria-label="Today page map">
+      <a href="#wk-brief">Brief</a><a href="#wk-map">Markets</a><a href="#wk-work">Work</a><a href="#wk-gates">Gates</a>
+    </nav>
+    <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS creative command">
+      <div class="wk-hero-copy">
+        <span class="wk-kicker">Buyer-first land intelligence / Tennessee live-first</span>
+        <h1>Stop hunting land. Start routing demand.</h1>
+        <p>Land Dealflow OS turns fragmented permit evidence into one daily operating ritual: prove the builder, capture the buy box, then call only the sellers that can become a close.</p>
+        <div class="wk-actions">
+          <a href="#builders" data-view="builders">Open builder command</a>
+          <a href="#wk-work">See today’s sequence</a>
         </div>
       </div>
-      <article class="call-script-panel" aria-label="What to say">
-        <span class="eyebrow">What to say</span>
-        <h2>${h(netScript?.opening || script.opening || 'No callable seller selected yet.')}</h2>
-        <div class="script-grid">
-          <div><span>Seller net line</span><b>${h(netScript?.netLine || script.anchorLine || 'No offer anchor yet.')}</b></div>
-          <div><span>Motivation question</span><b>${h(netScript?.ask || script.motivationQuestion || 'Add seller contact data first.')}</b></div>
-          <div><span>Buyer proof</span><b>${h(netScript?.buyerProof || script.buyerProof || heroCall.buyerBacking?.summary || 'No buyer proof yet.')}</b></div>
-          <div><span>Risk / close</span><b>${h(netScript?.close || script.riskLine || 'No risk read yet.')}</b></div>
-        </div>
-      </article>
-      <aside class="outcome-panel" aria-label="What happened after the call">
-        <span class="eyebrow">What happened?</span>
-        <h3>Tap the outcome while the call is fresh.</h3>
-        <div class="outcome-grid">${outcomeButtons}</div>
-        <div class="side-panel compact" aria-label="Today summary">
-          <div><span>Best target area</span><b>${h(bestMarket.name)}</b><em>${bestMarket.score.total}/100 market score</em></div>
-          <div><span>Most validated buyer</span><b>${h(topBuyer.name)}</b><em>${topBuyer.score}/100 buyer score</em></div>
-          <div class="priority"><span>Clean pass parcels</span><b>${parcelScores.filter(p => p.risk.status === 'Pass').length}/${parcelScores.length}</b><em>fuel for tomorrow</em></div>
-        </div>
+      <aside class="wk-artifact" aria-label="Permit evidence visual metaphor">
+        <div class="wk-core-sample"><span>TN</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
+        <div class="wk-contour c1"></div><div class="wk-contour c2"></div><div class="wk-contour c3"></div>
+        <p>Permit evidence is the terrain. Buyer demand is the route.</p>
       </aside>
+    </section>
+    <section class="wk-audit wk-reveal" aria-label="Audit decisions">
+      <div><span class="wk-kicker">Audit</span><h2>Three strengths kept. Three leaks killed.</h2></div>
+      <ul>${auditRows}</ul>
+    </section>
+    <section id="wk-map" class="wk-market-map wk-reveal" aria-label="Priority permit market map">
+      <div class="wk-section-head"><span class="wk-kicker">Spatial map</span><h2>TN is the live room. FL, AZ, NC and TX are resource wells.</h2><p>No statewide permit database. The navigation becomes a source map: where evidence lives, which portals matter, and what unlocks buyer validation.</p></div>
+      <div class="wk-node-grid">${marketRows}</div>
+    </section>
+    <section id="wk-work" class="wk-workbench wk-reveal" aria-label="Daily money workbench">
+      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Today's job is not browsing. It is choosing the next defensible action.</h2></div>
+      <div class="wk-proof-grid">${proofRows}</div>
+      <div class="wk-work-grid">
+        <article class="wk-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>
+        <div class="wk-call-stack"><span class="wk-kicker">Seller queue</span>${callRows}</div>
+        <article class="wk-script-card"><span class="wk-kicker">If a seller earns the call</span><h3>${h(netScript?.opening || 'Lead with net cash, not a pitch.')}</h3><p>${h(netScript?.netLine || heroMotivation.signals.slice(0, 2).join(' · ') || 'No seller call is promoted until buyer proof and reachable contact data exist.')}</p></article>
+      </div>
+    </section>
+    <section id="wk-gates" class="wk-protocol wk-reveal" aria-label="Conversion protocol">
+      <div class="wk-section-head"><span class="wk-kicker">Conversion architecture</span><h2>The product is a gate system, not a dashboard.</h2></div>
+      <div class="wk-protocol-grid">${protocolRows}</div>
     </section>`;
+  initializeEditorialMotion();
+}
+
+function initializeEditorialMotion() {
+  const root = document.querySelector('#command');
+  if (!root) return;
+  const progress = root.querySelector('.wk-progress span');
+  const revealables = [...root.querySelectorAll('.wk-reveal')];
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.18 });
+    revealables.forEach(node => observer.observe(node));
+  } else {
+    revealables.forEach(node => node.classList.add('is-visible'));
+  }
+  const update = () => {
+    if (!progress) return;
+    const rect = root.getBoundingClientRect();
+    const distance = Math.max(1, rect.height - window.innerHeight);
+    const amount = Math.min(1, Math.max(0, -rect.top / distance));
+    progress.style.transform = `scaleX(${amount})`;
+  };
+  window.removeEventListener('scroll', window.__landDealflowProgress || (() => {}));
+  window.__landDealflowProgress = update;
+  window.addEventListener('scroll', update, { passive: true });
+  update();
 }
 
 function renderWorkspaceTools() {

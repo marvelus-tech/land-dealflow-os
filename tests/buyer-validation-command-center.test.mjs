@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {
+  applySkipTraceImport,
   buildBuyerValidationCommandCenter,
+  buildExecutionConveyor,
   buildSellerSearchInstructions,
   evaluateBuilderBuyBox,
+  exportMatchedSellerBatchCsv,
   scoreBuyerValidation,
 } from '../src/core.mjs';
 
@@ -162,7 +165,55 @@ assert.match(appSource, /const buyerPool = buyerPoolForState\(activeState\.state
 assert.match(appSource, /const stateCode = selectedBuilderMarketState \|\| 'TN'/, 'matched seller export must use the active Builders state, not an undefined legacy state variable');
 assert.match(appSource, /sellerPoolForState\(stateCode\)/, 'matched seller export should use the same state-scoped seller pool as the execution conveyor');
 assert.match(appSource, /selected builder is now the buyer object for seller matching and CSV export/, 'save feedback should explain persistence into the buyer-to-seller conveyor');
-assert.match(appSource, /Phase 5 · saved buyer-call conveyor/, 'execution conveyor headline should reflect Phase 5 buyer-call persistence while preserving Phase 4 gates');
-assert.match(appSource, /skip-trace → seller-call → memo\/title → feedback path/, 'Phase 5 copy should retain the full downstream conveyor detail');
+assert.match(appSource, /Phase 6 · skip-trace return import/, 'execution conveyor headline should reflect Phase 6 inline skip-trace import while preserving saved buyer persistence');
+assert.match(appSource, /saved builder buy box → matched seller CSV → inline skip-trace return → seller-call cockpit → memo\/title → buyer feedback/, 'Phase 6 copy should retain the full downstream conveyor detail');
+assert.match(appSource, /id="builder-skip-trace-csv"/, 'Builders execution conveyor should expose inline skip-trace return CSV import');
+assert.match(appSource, /#builder-import-skiptrace[\s\S]{0,520}applySkipTraceImport\(workspace, input\?\.value \|\| '', \{ candidateParcels: sellerPoolForState\(stateCode\) \}\)/, 'Builders skip-trace import must reuse the existing applySkipTraceImport path with the state-scoped seller pool');
+assert.match(appSource, /Import return \+ recompute cockpit/, 'inline skip-trace import should visibly recompute the seller cockpit after import');
+
+const conveyorBuyer = {
+  id: 'buyer-phase-6',
+  name: 'Phase Six Homes',
+  phone: '865-555-0100',
+  email: 'land@phasesix.example',
+  market: 'knoxville-tn',
+  state: 'TN',
+  maxPrice: 65000,
+  buyBoxCaptured: true,
+  validationStatus: 'validated_buy_box',
+  buyBox: 'Knoxville 0.25–1 acre buildable residential lots under $65k; paved road; avoid flood/wetlands.',
+  exactBuyBox: { targetMarkets: ['knoxville-tn'], lotSizeMin: 0.25, lotSizeMax: 1, maxPrice: 65000, requiredRoadAccess: true, avoidWetlands: true, avoidFloodZones: ['AE'] },
+};
+const publicSeller = {
+  id: 'parcel-phase-6',
+  parcelId: 'KGIS-P6-001',
+  address: '440 Phase Loop, Knoxville, TN',
+  market: 'knoxville-tn',
+  state: 'TN',
+  lotSize: '0.5 ac',
+  lotSizeAcres: 0.5,
+  ownerName: 'Public Owner Phase',
+  ownerMailingAddress: 'PO Box 440, Knoxville TN',
+  askingPrice: 42000,
+  lowestActiveListing: 76000,
+  roadAccess: true,
+  utilities: true,
+  wetlands: false,
+  floodZone: 'X',
+  sourceId: 'kgis-public-test',
+  sourceUrl: 'https://example.gov/kgis',
+};
+const beforeImport = buildExecutionConveyor({ buyers: [conveyorBuyer], sellerCandidates: [publicSeller], limit: 10 });
+assert.equal(beforeImport.stats.validatedBuyers, 1);
+assert.equal(beforeImport.stats.matchedSellerBatch, 1);
+assert.equal(beforeImport.callReadySellers.length, 0, 'matched public owner rows without phone/email must not enter seller cockpit');
+assert.match(exportMatchedSellerBatchCsv(beforeImport.matchedSellerBatch), /needs-skip-trace/, 'matched CSV should label the row as needs-skip-trace before import');
+const imported = applySkipTraceImport({ buyers: [conveyorBuyer], parcels: [] }, 'parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\nKGIS-P6-001,Public Owner Phase,865-555-0198,owner@example.com,91', { candidateParcels: [publicSeller], now: '2026-06-20T00:00:00.000Z' });
+assert.equal(imported.summary.matched, 1);
+assert.equal(imported.workspace.parcels[0].realContact, true, 'skip-trace import should mark only matched contact-bearing rows as real contact');
+const afterImport = buildExecutionConveyor({ buyers: [conveyorBuyer], sellerCandidates: imported.workspace.parcels, limit: 10 });
+assert.equal(afterImport.stats.contactEnrichedRows, 1);
+assert.equal(afterImport.callReadySellers.length, 1, 'imported owner phone/email should promote the row into seller cockpit review');
+assert.match(afterImport.stageRows.find(row => row.id === 'skiptrace-return').status, /contact-enriched/);
 
 console.log('buyer validation command center tests passed');

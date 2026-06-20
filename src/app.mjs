@@ -151,6 +151,7 @@ let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
 let selectedBuilderMarketState = 'TN';
+let lastBuilderSkipTraceImportStatus = '';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
 function hashToView(hash = location.hash) {
@@ -1428,11 +1429,17 @@ function renderExecutionConveyor(conveyor = {}) {
   const feedbackRows = asArray(conveyor.feedbackRecommendations).slice(0, 3).map(row => `<div class="execution-row quiet">
     <span>↻</span><div><b>${h(row.address || row.parcelId)}</b><small>${h(row.nextCallReason || 'No feedback penalty yet.')}</small></div><em>${h(row.adjustedScore || row.score || 0)}/100</em>
   </div>`).join('');
+  const firstSkipTraceRow = asArray(conveyor.matchedSellerBatch)[0] || asArray(conveyor.board?.sellerMatches).find(row => !(row.ownerPhone || row.ownerEmail || row.realContact)) || {};
+  const enrichedCount = asArray(conveyor.callReadySellers).length;
+  const skipTraceGateCopy = enrichedCount
+    ? `${enrichedCount} imported owner contacts are now flowing into seller cockpit review. Keep title/contract gates honest before promising terms.`
+    : 'Paste the provider return here after exporting the matched seller CSV. Phone/email promotes the row; missing contact stays in needs-skip-trace.';
+  const importStatus = lastBuilderSkipTraceImportStatus || (firstSkipTraceRow.parcelId ? 'Waiting for skip-trace return CSV from the matched seller batch.' : 'No matched seller rows available to enrich yet.');
   return `<section id="execution-conveyor" class="execution-conveyor-panel" aria-label="Buyer to seller execution conveyor">
     <div class="execution-conveyor-head">
-      <span class="eyebrow">Phase 5 · saved buyer-call conveyor</span>
-      <h3>Save the selected builder buy box, then export the matched seller batch from that real buyer object.</h3>
-      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')} Saved six-field builder calls now persist into the buyer pool, recalculate seller-search unlocks, drive CSV export, and preserve the skip-trace → seller-call → memo/title → feedback path.</p>
+      <span class="eyebrow">Phase 6 · skip-trace return import</span>
+      <h3>Import returned owner contact here, then let the seller-call cockpit unlock in place.</h3>
+      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')} The chain is now one surface: saved builder buy box → matched seller CSV → inline skip-trace return → seller-call cockpit → memo/title → buyer feedback.</p>
       <div class="execution-metrics">
         <div><b>${h(conveyor.stats?.validatedBuyers || 0)}</b><span>validated buyers</span></div>
         <div><b>${h(conveyor.stats?.matchedSellerBatch || 0)}</b><span>matched seller export</span></div>
@@ -1443,7 +1450,7 @@ function renderExecutionConveyor(conveyor = {}) {
     <div class="execution-stages">${stages}</div>
     <div class="execution-grid">
       <article><div class="panel-kicker"><span>Matched seller batch</span><b>export before skip trace</b></div>${batchRows || '<p>No buyer-box-matched seller batch yet. Buyer proof still leads.</p>'}<button id="export-matched-seller-batch" class="secondary compact-action" type="button">Download matched seller CSV</button><span id="matched-seller-export-status"></span></article>
-      <article><div class="panel-kicker"><span>Skip-trace return gate</span><b>phone/email promotes, never fabricates</b></div><p>Import returns in Machine → Skip trace intake. Rows promote only when owner contact exists and still survive buyer fit, buildability, spread, and contract/title gates.</p></article>
+      <article class="skiptrace-return-card"><div class="panel-kicker"><span>Skip-trace return gate</span><b>phone/email promotes, never fabricates</b></div><p>${h(skipTraceGateCopy)}</p><pre class="skiptrace-format">parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${h(firstSkipTraceRow.parcelId || 'parcel-id')},${h(firstSkipTraceRow.ownerName || 'Public Owner')},865-555-0198,owner@example.com,91</pre><textarea id="builder-skip-trace-csv" rows="5" placeholder="parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence"></textarea><div class="skiptrace-actions"><button id="builder-load-skiptrace-template" class="secondary compact-action" type="button">Use first matched row</button><button id="builder-import-skiptrace" class="compact-action" type="button">Import return + recompute cockpit</button></div><span id="builder-skiptrace-status">${h(importStatus)}</span></article>
     </div>
     <div class="execution-call-grid">${callRows || '<article class="execution-call-card blocked"><b>No seller call cockpit is armed.</b><p>Public records stay held for skip trace until real phone/email and title/contract readiness exist.</p></article>'}</div>
     <article class="execution-feedback-card"><div class="panel-kicker"><span>Feedback rewrite</span><b>${h(conveyor.feedbackLoop?.totalFeedback || 0)} buyer answers captured</b></div><p>${h(conveyor.feedbackLoop?.tightening || 'Buyer yes/no/maybe will rewrite tomorrow’s seller-call order.')}</p>${feedbackRows}</article>
@@ -1904,6 +1911,12 @@ function skipTraceTemplateRow() {
   return `parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${item.parcelId || '274527L4110560090'},${item.ownerName || 'MONTEAN PETER & WENDY'},239-555-7722,owner@example.com,91`;
 }
 
+function builderSkipTraceTemplateRow(stateCode = selectedBuilderMarketState) {
+  const conveyor = buildExecutionConveyor({ buyers: buyerPoolForState(stateCode || 'TN'), sellerCandidates: sellerPoolForState(stateCode || 'TN'), limit: 50 });
+  const item = asArray(conveyor.matchedSellerBatch)[0] || asArray(conveyor.board?.sellerMatches).find(row => !(row.ownerPhone || row.ownerEmail || row.realContact)) || {};
+  return `parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${item.parcelId || item.id || 'parcel-id'},${item.ownerName || item.owner || 'Public Owner'},865-555-0198,owner@example.com,91`;
+}
+
 function buyerContactTemplateRow() {
   const item = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()])[0] || {};
   return `buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice\n${item.buyerId || 'lehigh-builder-career-financial-corp'},${item.name || 'CAREER FINANCIAL CORP'},Acquisitions,239-555-8822,deals@example.com,https://example.com,"Lehigh quarter-acre lots under $42k",42000`;
@@ -2312,6 +2325,27 @@ function bindEvents() {
       workspace = result.workspace;
       persistWorkspace();
       if (status) status.textContent = `Matched ${result.summary.matched}/${result.summary.imported}; Today can now promote real callable records.`;
+      renderAll();
+    }
+
+    if (event.target.matches('#builder-load-skiptrace-template')) {
+      const input = document.querySelector('#builder-skip-trace-csv');
+      if (input) input.value = builderSkipTraceTemplateRow(selectedBuilderMarketState || 'TN');
+      lastBuilderSkipTraceImportStatus = 'Loaded first buyer-box-matched seller row for the active state.';
+      const status = document.querySelector('#builder-skiptrace-status');
+      if (status) status.textContent = lastBuilderSkipTraceImportStatus;
+    }
+
+    if (event.target.matches('#builder-import-skiptrace')) {
+      const input = document.querySelector('#builder-skip-trace-csv');
+      const stateCode = selectedBuilderMarketState || 'TN';
+      const result = applySkipTraceImport(workspace, input?.value || '', { candidateParcels: sellerPoolForState(stateCode) });
+      workspace = result.workspace;
+      persistWorkspace();
+      const buyers = buyerPoolForState(stateCode);
+      const sellers = sellerPoolForState(stateCode);
+      const conveyor = buildExecutionConveyor({ buyers, sellerCandidates: sellers, limit: 50 });
+      lastBuilderSkipTraceImportStatus = `Imported ${result.summary.matched}/${result.summary.imported} skip-trace rows; ${conveyor.callReadySellers.length} now sit in seller cockpit review for ${stateCode}.`;
       renderAll();
     }
 

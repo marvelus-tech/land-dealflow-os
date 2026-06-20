@@ -1433,12 +1433,14 @@ export function buildExecutionConveyor({ buyers = [], sellerCandidates = [], tit
     .slice(0, limit);
   const feedbackLoop = buildBuyerFeedbackLoop(buyers);
   const feedbackRecommendations = recommendNextSellerCallsFromFeedback(callReadySellers.length ? callReadySellers : board.sellerMatches, buyers).slice(0, Math.min(5, limit));
+  const contactEnrichedCount = callReadySellers.length;
+  const sellerCallReadyCount = callReadySellers.filter(row => row.readyForSellerCall).length;
   const stageRows = [
     { id: 'buyer-call-capture', label: 'Buyer call capture', status: board.validatedBuyers.length ? 'clear' : 'locked', detail: board.validatedBuyers.length ? `${board.validatedBuyers.length} buy boxes can drive seller search` : 'capture geography, lot size, max price, close speed, package recipient, and deal killers' },
-    { id: 'matched-seller-export', label: 'Matched seller batch', status: board.skipTraceBatch.length ? 'ready' : 'locked', detail: board.skipTraceBatch.length ? `${board.skipTraceBatch.length} public owner rows ready for skip-trace export` : 'no buyer-box-matched public owner batch yet' },
-    { id: 'skiptrace-return', label: 'Skip-trace return', status: callReadySellers.length ? 'review' : 'locked', detail: callReadySellers.length ? `${callReadySellers.length} enriched rows need call/title gating` : 'import phone/email before seller calls' },
-    { id: 'seller-call-cockpit', label: 'Seller call cockpit', status: callReadySellers.some(row => row.readyForSellerCall) ? 'ready' : 'review', detail: callReadySellers.some(row => row.readyForSellerCall) ? 'seller opener, net-offer range, neighbor prompt and outcome controls are armed' : 'seller calls wait for contact + contract/title clearance' },
-    { id: 'buyer-memo-title', label: 'Buyer memo / title packet', status: callReadySellers.some(row => row.memo) ? 'armed' : 'locked', detail: 'memo, title email, contract blockers and assignment math travel with each seller row' },
+    { id: 'matched-seller-export', label: 'Matched seller CSV', status: board.skipTraceBatch.length ? 'ready' : 'locked', detail: board.skipTraceBatch.length ? `${board.skipTraceBatch.length} public owner rows ready for skip-trace export` : 'no buyer-box-matched public owner batch yet' },
+    { id: 'skiptrace-return', label: 'Skip-trace return', status: contactEnrichedCount ? 'contact-enriched' : 'needs-skip-trace', detail: contactEnrichedCount ? `${contactEnrichedCount} owner contact rows imported; review seller-call gates` : 'import phone/email before seller calls' },
+    { id: 'seller-call-cockpit', label: 'Seller cockpit review', status: sellerCallReadyCount ? 'ready' : (contactEnrichedCount ? 'review' : 'locked'), detail: sellerCallReadyCount ? 'seller opener, net-offer range, neighbor prompt and outcome controls are armed' : 'seller calls wait for contact + contract/title clearance' },
+    { id: 'buyer-memo-title', label: 'Contract/title gate', status: callReadySellers.some(row => row.memo) ? 'armed' : 'locked', detail: 'memo, title email, contract blockers and assignment math travel with each seller row' },
     { id: 'feedback-rewrite', label: 'Feedback rewrite', status: feedbackLoop.totalFeedback ? 'armed' : 'listening', detail: feedbackLoop.totalFeedback ? feedbackLoop.tightening : 'capture buyer yes/no/maybe to rewrite tomorrow’s seller queue' },
   ];
   return {
@@ -1453,14 +1455,18 @@ export function buildExecutionConveyor({ buyers = [], sellerCandidates = [], tit
       validatedBuyers: board.stats.validatedBuyBoxes,
       matchedSellerBatch: board.skipTraceBatch.length,
       promotedSellerCalls: callReadySellers.length,
+      contactEnrichedRows: contactEnrichedCount,
+      sellerCallReady: sellerCallReadyCount,
       memoReady: callReadySellers.filter(row => row.memo && row.contract?.ready).length,
       feedbackEvents: feedbackLoop.totalFeedback,
     },
     nextAction: !board.validatedBuyers.length
       ? 'Capture one complete buyer buy box before pulling sellers.'
-      : board.skipTraceBatch.length
-        ? 'Download the matched seller batch, skip trace owner contact, then import the return CSV.'
-        : callReadySellers.find(row => row.readyForSellerCall)?.nextAction || 'Import skip-trace returns and clear title/contract blockers before seller calls.',
+      : callReadySellers.length
+        ? 'Review imported owner contacts in the seller cockpit, clear contract/title blockers, then call.'
+        : board.skipTraceBatch.length
+          ? 'Download the matched seller batch, skip trace owner contact, then import the return CSV.'
+          : 'Import skip-trace returns and clear title/contract blockers before seller calls.',
   };
 }
 

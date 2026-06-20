@@ -7592,3 +7592,31 @@ body[data-active-view="builders"] .validation-form label {
     line-height: 1.5 !important;
   }
 }
+
+
+/* v1.36 - production empty-lane polish: long resource-well names stay elegant */
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .active-market-summary strong {
+    font-size: clamp(24px, 6.6vw, 30px) !important;
+    line-height: 1.06 !important;
+    letter-spacing: -.038em !important;
+  }
+  body[data-active-view="builders"] .active-market-summary p {
+    font-size: 13px !important;
+    line-height: 1.46 !important;
+  }
+  body[data-active-view="builders"] .active-market-summary ul {
+    gap: 7px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary li {
+    min-height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  body[data-active-view="builders"] .builder-table-panel.is-empty,
+  body[data-active-view="builders"] .validation-command.is-empty,
+  body[data-active-view="builders"] .empty-state {
+    border-radius: 0 !important;
+  }
+}

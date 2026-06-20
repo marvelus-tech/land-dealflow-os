@@ -155,5 +155,14 @@ assert.match(stylesSource, /\.builder-empty-state/, 'empty builder states need f
 assert.doesNotMatch(appSource, /top-10 demo list|top 10 Knoxville/, 'Builders pipeline must not frame itself as a top-10 pull');
 
 assert.match(appSource, /mailto:\$\{h\(selected\.email\)\}\?subject=\$\{encodeURIComponent\(validationEmailSubject\)\}&body=\$\{encodeURIComponent\(validationEmailBody\)\}/, 'Draft email mailto must prefill subject and body');
+assert.match(appSource, /function buyerFromValidationRow\(row = \{\}\)/, 'saved selected-builder buy boxes should convert into first-class buyer objects');
+assert.match(appSource, /evidenceType: 'validated buyer buy-box from selected builder cockpit'/, 'promoted builder buyers need explicit provenance');
+assert.match(appSource, /upsertBuyerFromValidation\(centerRow\)/, 'saving a complete selected-builder validation should upsert the workspace buyer object');
+assert.match(appSource, /const buyerPool = buyerPoolForState\(activeState\.stateCode\)/, 'Builders downstream seller gate should use state-scoped saved selected-builder buyers');
+assert.match(appSource, /const stateCode = selectedBuilderMarketState \|\| 'TN'/, 'matched seller export must use the active Builders state, not an undefined legacy state variable');
+assert.match(appSource, /sellerPoolForState\(stateCode\)/, 'matched seller export should use the same state-scoped seller pool as the execution conveyor');
+assert.match(appSource, /selected builder is now the buyer object for seller matching and CSV export/, 'save feedback should explain persistence into the buyer-to-seller conveyor');
+assert.match(appSource, /Phase 5 · saved buyer-call conveyor/, 'execution conveyor headline should reflect Phase 5 buyer-call persistence while preserving Phase 4 gates');
+assert.match(appSource, /skip-trace → seller-call → memo\/title → feedback path/, 'Phase 5 copy should retain the full downstream conveyor detail');
 
 console.log('buyer validation command center tests passed');

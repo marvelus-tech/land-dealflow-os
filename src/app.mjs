@@ -383,6 +383,116 @@ function enrichedBuilderContacts() {
   return asArray(workspace.buyers).filter(buyer => buyer.contactEnrichedAt || buyer.sourceId === 'lehigh-builder-signals-fdor-2025' || buyer.market === 'knoxville-tn');
 }
 
+function parseLotSizeRange(value = '') {
+  const numbers = String(value || '').match(/\d+(?:\.\d+)?/g)?.map(Number).filter(number => Number.isFinite(number)) || [];
+  if (!numbers.length) return { lotSizeMin: 0, lotSizeMax: 0 };
+  if (numbers.length === 1) return { lotSizeMin: numbers[0], lotSizeMax: numbers[0] };
+  return { lotSizeMin: Math.min(...numbers), lotSizeMax: Math.max(...numbers) };
+}
+
+function stateFromBuilderRow(row = {}) {
+  const explicit = String(row.state || row.marketState || row.stateCode || '').trim().toUpperCase();
+  if (explicit) return explicit;
+  const market = String(row.marketName || row.market || row.sourceMarket || '').toLowerCase();
+  if (/tennessee|knoxville|nashville|chattanooga|murfreesboro|franklin/.test(market)) return 'TN';
+  if (/florida|polk|lakeland|ocala|orlando|jacksonville/.test(market)) return 'FL';
+  if (/arizona|phoenix|maricopa|mesa|tucson/.test(market)) return 'AZ';
+  if (/north carolina|raleigh|wake|charlotte|mecklenburg|greensboro/.test(market)) return 'NC';
+  if (/texas|austin|san antonio|travis|bexar|dfw|plano/.test(market)) return 'TX';
+  return selectedBuilderMarketState || 'TN';
+}
+
+function buyerFromValidationRow(row = {}) {
+  const buyBox = row.buyBox || {};
+  const validation = row.validation || {};
+  const lotRange = parseLotSizeRange(buyBox.lotSize || buyBox.lotSizeRange || '');
+  const state = stateFromBuilderRow(row);
+  const market = row.marketName || row.market || (buyBox.geography ? `${buyBox.geography}, ${state}` : state);
+  const maxPrice = Number(buyBox.maxPrice || row.maxPrice || row.buyerMaxPrice || 0) || 0;
+  const targetMarkets = [buyBox.geography, row.market, row.marketKey, market, state].filter(Boolean);
+  const buyerId = `builder-buyer-${slugify(row.builderId || row.id || row.name || 'validated-builder')}`;
+  return {
+    id: buyerId,
+    builderId: row.builderId || row.id || '',
+    name: row.name || row.companyName || 'Validated builder buyer',
+    phone: row.phone || '',
+    email: row.email || buyBox.packageRecipient || '',
+    website: row.website || row.sourceUrl || '',
+    contactName: row.contactName || buyBox.packageRecipient || '',
+    sourceId: row.sourceId || row.builderId || 'buyer-validation-command-center',
+    sourceUrl: row.sourceUrl || row.publicSourceUrl || '',
+    sourceType: row.sourceType || 'permit-backed builder validation',
+    evidenceType: 'validated buyer buy-box from selected builder cockpit',
+    market,
+    state,
+    marketState: state,
+    recentBuilds: Number(row.recentBuilds || 0),
+    maxPrice,
+    closeSpeedDays: Number(String(buyBox.closeSpeed || '').match(/\d+/)?.[0] || 0) || undefined,
+    repeatDemand: Number(String(buyBox.closeSpeed || '').match(/(\d+)\s*(?:lots?|parcels?)/i)?.[1] || 0) || 1,
+    buyBoxCaptured: validation.sellerEligible || row.callStatus === 'validated_buy_box',
+    validationStatus: row.callStatus === 'validated_buy_box' ? 'validated buy box' : row.callStatus || 'buyer validation',
+    buyBox: `${buyBox.geography || market}; ${buyBox.lotSize || 'lot size pending'}; max ${formatMoney(maxPrice)}; close ${buyBox.closeSpeed || 'speed pending'}; package ${buyBox.packageRecipient || 'recipient pending'}; avoid ${asArray(buyBox.dealKillers).join(', ') || buyBox.dealKillers || 'deal killers pending'}`,
+    exactBuyBox: {
+      targetMarkets,
+      lotSizeMin: lotRange.lotSizeMin,
+      lotSizeMax: lotRange.lotSizeMax,
+      maxPrice,
+      requiredRoadAccess: true,
+      requiredUtilities: /utility|utilities|sewer|water|electric/i.test(String(buyBox.utilitiesAccess || '')),
+      avoidFloodZones: /flood/i.test(String(asArray(buyBox.dealKillers).join(' ') || buyBox.dealKillers || '')) ? ['AE', 'A'] : [],
+      avoidWetlands: /wetland/i.test(String(asArray(buyBox.dealKillers).join(' ') || buyBox.dealKillers || '')),
+      notes: row.callNotes || '',
+    },
+    acquisitionNotes: row.callNotes || '',
+    validation: {
+      buyBoxCaptured: validation.sellerEligible || row.callStatus === 'validated_buy_box',
+      calls: row.outreach?.phone?.contacted ? 1 : 0,
+      answered: row.callStatus === 'validated_buy_box' || row.callStatus === 'spoke_to_decision_maker' ? 1 : 0,
+      proofOfFunds: false,
+    },
+    feedback: row.feedback || [],
+    updatedAt: row.updatedAt || new Date().toISOString(),
+  };
+}
+
+function validatedBuilderBuyersForState(stateCode = selectedBuilderMarketState) {
+  const activeRows = stateCode === selectedBuilderMarketState ? getActiveValidationRows() : getStateBuilderRows(stateCode);
+  const center = buildBuyerValidationCommandCenter(activeRows, workspace.buyerValidations || []);
+  return center.items.filter(item => item.validation?.sellerEligible).map(buyerFromValidationRow);
+}
+
+function upsertBuyerFromValidation(row = {}) {
+  const buyer = buyerFromValidationRow(row);
+  workspace = { ...workspace, buyers: [...asArray(workspace.buyers).filter(item => item.id !== buyer.id && item.builderId !== buyer.builderId), buyer] };
+  return buyer;
+}
+
+function uniqueRowsById(rows = [], keyFn = item => item.id || item.buyerId || item.builderId || item.parcelId || item.name) {
+  const seen = new Set();
+  return rows.filter((row) => {
+    const key = String(keyFn(row) || '').toLowerCase();
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function buyerPoolForState(stateCode = selectedBuilderMarketState) {
+  const buyers = [
+    ...validatedBuilderBuyersForState(stateCode),
+    ...generatedCandidateBuyers(),
+    ...enrichedBuilderContacts(),
+    ...asArray(workspace.buyers),
+  ];
+  return uniqueRowsById(buyers).filter(row => !stateCode || String(row.state || row.marketState || row.market || '').toUpperCase().includes(stateCode));
+}
+
+function sellerPoolForState(stateCode = selectedBuilderMarketState) {
+  const sellers = [...generatedCandidateParcels(), ...asArray(generatedLeads?.queues?.skipTrace), ...asArray(workspace.parcels)];
+  return uniqueRowsById(sellers, item => item.id || item.parcelId || item.address).filter(row => !stateCode || String(row.state || row.marketState || row.market || row.address || '').toUpperCase().includes(stateCode));
+}
+
 function scoredParcels() {
   return (workspace.parcels || []).map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
 }
@@ -1160,8 +1270,8 @@ function renderBuilderListEnginePanel(options = {}) {
   const activeBuilders = asArray(activeState.rows);
   const activeSummary = activeState.summary || getStateBuilderSummary(activeState.stateCode);
   const selected = getSelectedBuilder(activeBuilders) || {};
-  const buyerPool = [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])];
-  const sellerPool = [...publicSkipTrace, ...(workspace.parcels || [])];
+  const buyerPool = buyerPoolForState(activeState.stateCode);
+  const sellerPool = sellerPoolForState(activeState.stateCode);
   const titlePool = titleCompanyCandidateMarkets();
   const sellerControl = buildSellerSearchControlLayer({
     buyers: buyerPool,
@@ -1171,8 +1281,8 @@ function renderBuilderListEnginePanel(options = {}) {
     limit: 6,
   });
   const executionConveyor = buildExecutionConveyor({
-    buyers: buyerPool.filter(row => !activeState.stateCode || String(row.state || row.marketState || row.market || '').toUpperCase().includes(activeState.stateCode)),
-    sellerCandidates: sellerPool.filter(row => !activeState.stateCode || String(row.state || row.marketState || row.market || row.address || '').toUpperCase().includes(activeState.stateCode)),
+    buyers: buyerPool,
+    sellerCandidates: sellerPool,
     titleCandidates: titlePool,
     limit: 8,
   });
@@ -1320,9 +1430,9 @@ function renderExecutionConveyor(conveyor = {}) {
   </div>`).join('');
   return `<section id="execution-conveyor" class="execution-conveyor-panel" aria-label="Buyer to seller execution conveyor">
     <div class="execution-conveyor-head">
-      <span class="eyebrow">Phase 4 · execution conveyor</span>
-      <h3>One buyer proof path. One seller batch. One call/memo/feedback loop.</h3>
-      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')}</p>
+      <span class="eyebrow">Phase 5 · saved buyer-call conveyor</span>
+      <h3>Save the selected builder buy box, then export the matched seller batch from that real buyer object.</h3>
+      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')} Saved six-field builder calls now persist into the buyer pool, recalculate seller-search unlocks, drive CSV export, and preserve the skip-trace → seller-call → memo/title → feedback path.</p>
       <div class="execution-metrics">
         <div><b>${h(conveyor.stats?.validatedBuyers || 0)}</b><span>validated buyers</span></div>
         <div><b>${h(conveyor.stats?.matchedSellerBatch || 0)}</b><span>matched seller export</span></div>
@@ -2236,13 +2346,13 @@ function bindEvents() {
     }
 
     if (event.target.matches('#export-matched-seller-batch')) {
-      const stateCode = selectedBuilderState || 'TN';
-      const buyers = [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])].filter(row => String(row.state || row.marketState || row.market || '').toUpperCase().includes(stateCode));
-      const sellers = [...generatedCandidateParcels(), ...(workspace.parcels || [])].filter(row => String(row.state || row.marketState || row.market || row.address || '').toUpperCase().includes(stateCode));
+      const stateCode = selectedBuilderMarketState || 'TN';
+      const buyers = buyerPoolForState(stateCode);
+      const sellers = sellerPoolForState(stateCode);
       const conveyor = buildExecutionConveyor({ buyers, sellerCandidates: sellers, limit: 50 });
       downloadText(`land-dealflow-matched-seller-batch-${stateCode.toLowerCase()}-${new Date().toISOString().slice(0, 10)}.csv`, exportMatchedSellerBatchCsv(conveyor.matchedSellerBatch));
       const status = document.querySelector('#matched-seller-export-status');
-      if (status) status.textContent = `Exported ${conveyor.matchedSellerBatch.length} buyer-box-matched sellers.`;
+      if (status) status.textContent = `Exported ${conveyor.matchedSellerBatch.length} buyer-box-matched sellers from saved selected-builder buy boxes.`;
     }
 
     if (event.target.matches('#export-daily-call-sheet')) {
@@ -2385,10 +2495,12 @@ ${body}`;
           dealKillers: parseListInput(form.querySelector('.validation-killers')?.value || ''),
         },
       });
+      const centerRow = buildBuyerValidationCommandCenter([sourceRow], [updated]).items[0] || updated;
       upsertBuyerValidation(updated);
+      const promotedBuyer = centerRow.validation?.sellerEligible ? upsertBuyerFromValidation(centerRow) : null;
       persistWorkspace();
       const status = form.querySelector('.validation-save-status');
-      if (status) status.textContent = updated.callStatus === 'validated_buy_box' ? 'Validation saved; seller gate will unlock if required fields are complete.' : 'Validation saved.';
+      if (status) status.textContent = promotedBuyer ? 'Validation saved; selected builder is now the buyer object for seller matching and CSV export.' : 'Validation saved. Complete the six-field buy box and set validated status to unlock seller matching.';
       renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }

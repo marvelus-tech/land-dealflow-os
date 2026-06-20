@@ -133,5 +133,21 @@ assert.doesNotMatch(todaySource, /wk-artifact|wk-scanline|wk-horizon|wk-contour|
 assert.doesNotMatch(appSource, /one long wall/i, 'Product copy should not describe dense surfaces as a wall');
 assert.doesNotMatch(appSource + html, /source map|independent wells|resource wells|first resource well|velocity well|Piedmont well|high-volume well/i, 'Phase 24 should replace map/well signage with calm source-lane language');
 assert.match(appSource + html, /Source lanes|Queued lanes|source lane/, 'Phase 24 should use source-lane language consistently');
+assert.match(css, /v1\.57 - Phase 25 Apple design review pass: calm ledger hierarchy, serious solid icons, tooltip depth/, 'Phase 25 Apple design-review marker required');
+assert.match(css, /--phase25-review-rule: apple-calm-ledger-one-primary-scent-secondary-depth-in-tooltips/, 'Phase 25 should encode calm hierarchy and tooltip-depth rule');
+assert.match(css, /--phase25-forest: #124d35/, 'Phase 25 should define an accessible forest primary accent');
+assert.match(css, /--phase25-gold: #8f6819/, 'Phase 25 should define a contrast-safe gold metric accent');
+assert.match(appSource, /function solidIndustryIcon\(kind\)[\s\S]{0,1800}class="solid-industry-icon"/, 'Phase 25 should introduce serious solid industry icons instead of decorative indicators');
+assert.match(appSource, /queue-proof-line" title="\$\{h\(proofTooltip\)\}"/, 'Builder queue should hide secondary proof depth inside native tooltips');
+assert.match(appSource, /queue-score[\s\S]{0,180}solidIndustryIcon\('score'\)/, 'Builder score should use the solid icon language');
+assert.match(appSource, /contact-call[\s\S]{0,420}solidIndustryIcon\('phone'\)/, 'Call toggle should use serious solid phone icon');
+assert.match(appSource, /contact-email[\s\S]{0,420}solidIndustryIcon\('email'\)/, 'Email toggle should use serious solid email icon');
+assert.match(appSource, /validation-script-drawer[\s\S]{0,180}solidIndustryIcon\('chevron'\)/, 'Disclosure drawers should use a restrained solid chevron icon');
+assert.match(css, /\.validation-script-drawer:not\(\[open\]\) > :not\(summary\)[\s\S]{0,80}display: none !important/, 'Phase 25 should keep secondary scripts hidden until requested');
+const builderCommandSource = appSource.slice(appSource.indexOf('function renderBuyerValidationCommand'), appSource.indexOf('function renderBuilderMarketWorkbench'));
+assert.doesNotMatch(builderCommandSource, /Selected resource well|resource well|permit signals/i, 'Visible builder command copy should remove resource-well/signaling relics');
+assert.match(css, /Final route isolation guard after Phase 25 Apple design review pass/, 'Phase 25 should preserve route isolation after late visual overrides');
+assert.match(css, /v1\.57\.1 - Phase 25 screenshot correction: queue controls are icon-only, no cramped CALL\/EMAIL text/, 'Phase 25 screenshot correction should prevent cramped queue contact labels');
+assert.match(css, /\.validation-queue \.contact-icon-toggle em[\s\S]{0,220}clip: rect\(0 0 0 0\) !important/, 'Queue contact text should be visually hidden while aria labels carry meaning');
 
 console.log('global typography tests passed');

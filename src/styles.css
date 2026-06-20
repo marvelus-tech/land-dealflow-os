@@ -13427,3 +13427,368 @@ section.app-panel[hidden],
 #workspace[hidden] {
   display: none !important;
 }
+
+/* v1.57 - Phase 25 Apple design review pass: calm ledger hierarchy, serious solid icons, tooltip depth */
+:root {
+  --phase25-canvas: #fbfaf4;
+  --phase25-surface: rgba(255,255,250,.78);
+  --phase25-paper: #f5f3ea;
+  --phase25-ink: #101612;
+  --phase25-body: #33413a;
+  --phase25-muted: #66736b;
+  --phase25-soft: #8d9891;
+  --phase25-rule: rgba(16,22,18,.105);
+  --phase25-rule-strong: rgba(16,22,18,.18);
+  --phase25-forest: #124d35;
+  --phase25-forest-strong: #0a3022;
+  --phase25-forest-soft: rgba(18,77,53,.082);
+  --phase25-gold: #8f6819;
+  --phase25-gold-soft: rgba(143,104,25,.108);
+  --phase25-danger: #8b2e23;
+  --phase25-measure: 64ch;
+  --phase25-review-rule: apple-calm-ledger-one-primary-scent-secondary-depth-in-tooltips;
+}
+body {
+  background:
+    radial-gradient(circle at 82% 0%, rgba(18,77,53,.075), transparent 30rem),
+    linear-gradient(180deg, var(--phase25-canvas), var(--phase25-paper)) !important;
+  color: var(--phase25-body) !important;
+}
+main :where(p, li, small, input, select, textarea, button, a) {
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+main :where(p, li, small) {
+  max-width: var(--phase25-measure);
+  color: var(--phase25-body) !important;
+  line-height: 1.52 !important;
+}
+main :where(h1, h2, h3, h4) {
+  color: var(--phase25-ink) !important;
+  text-wrap: balance !important;
+}
+main :where(.eyebrow, .panel-kicker span, .metric-label, th, label > span, .field-label-text, .queue-proof-line, .completion-state-legend span) {
+  color: var(--phase25-forest) !important;
+  font-family: var(--font-mono, "SF Mono", ui-monospace, monospace) !important;
+  letter-spacing: .105em !important;
+  text-transform: uppercase !important;
+}
+.solid-industry-icon {
+  width: 15px !important;
+  height: 15px !important;
+  flex: 0 0 15px !important;
+  color: currentColor !important;
+  display: inline-block !important;
+  vertical-align: -2px !important;
+}
+main :where(.validation-command, .validation-focus-card, .seller-unlock-card, .builder-market-workbench, .closing-research-card, .machine-panel, .source-priority-card, .deal-card) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+main :where(.validation-grid-main, .builder-ops-shell, .source-hub-grid, .closing-grid, .workspace-grid) {
+  gap: clamp(18px, 2.8vw, 34px) !important;
+}
+.validation-queue,
+.validation-focus-card,
+.seller-unlock-card {
+  background: var(--phase25-surface) !important;
+  border: 1px solid var(--phase25-rule) !important;
+  box-shadow: none !important;
+}
+.validation-queue .panel-kicker,
+.validation-focus-head,
+.seller-unlock-card .panel-kicker {
+  border-bottom: 1px solid var(--phase25-rule) !important;
+  padding-bottom: 14px !important;
+}
+.queue-filter-row {
+  display: none !important;
+}
+.validation-queue-item {
+  padding: 13px 0 !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--phase25-rule) !important;
+  background: transparent !important;
+}
+.validation-queue-item.active {
+  background: linear-gradient(90deg, var(--phase25-forest-soft), transparent 72%) !important;
+  box-shadow: inset 3px 0 0 var(--phase25-forest) !important;
+  padding-left: 12px !important;
+}
+.validation-row-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: center !important;
+  min-height: 0 !important;
+}
+.queue-copy b {
+  display: block !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: var(--phase25-ink) !important;
+  font-size: 14.5px !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.025em !important;
+}
+.queue-copy small {
+  display: block !important;
+  max-width: 100% !important;
+  margin-top: 3px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: var(--phase25-muted) !important;
+  font-size: 11.5px !important;
+  line-height: 1.25 !important;
+}
+.queue-score {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  min-width: 50px !important;
+  justify-content: flex-end !important;
+  color: var(--phase25-gold) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+}
+.queue-score b {
+  color: inherit !important;
+  font-size: 20px !important;
+  font-weight: 760 !important;
+  letter-spacing: -.045em !important;
+}
+.queue-proof-line {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+  margin-top: 7px !important;
+  color: var(--phase25-soft) !important;
+  font-size: 9.5px !important;
+  line-height: 1.3 !important;
+  cursor: help !important;
+}
+.queue-proof-line span {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.queue-source-link {
+  color: var(--phase25-forest) !important;
+  font-size: 10px !important;
+  text-transform: none !important;
+  letter-spacing: -.01em !important;
+}
+.queue-state-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  margin-top: 10px !important;
+  padding-top: 0 !important;
+}
+.contact-icon-toggle,
+.contact-state-toggle {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  min-height: 30px !important;
+  padding: 0 10px !important;
+  border: 1px solid var(--phase25-rule) !important;
+  background: transparent !important;
+  color: var(--phase25-muted) !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  font-weight: 680 !important;
+  letter-spacing: -.006em !important;
+}
+.contact-icon-toggle.is-on,
+.contact-state-toggle.is-on {
+  border-color: rgba(18,77,53,.22) !important;
+  background: var(--phase25-forest-soft) !important;
+  color: var(--phase25-forest-strong) !important;
+}
+.contact-icon-toggle.contact-email.is-on,
+.contact-state-toggle:nth-child(2).is-on {
+  border-color: rgba(143,104,25,.24) !important;
+  background: var(--phase25-gold-soft) !important;
+  color: var(--phase25-gold) !important;
+}
+.validation-focus-head h3 {
+  max-width: 13ch !important;
+  font-size: clamp(34px, 5vw, 64px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.064em !important;
+}
+.validation-focus-head p {
+  max-width: 60ch !important;
+  color: var(--phase25-muted) !important;
+  font-size: 14.5px !important;
+  line-height: 1.48 !important;
+}
+.validation-score summary {
+  display: grid !important;
+  grid-template-columns: auto auto !important;
+  grid-template-areas: "icon value" "label label" !important;
+  align-items: center !important;
+  justify-content: end !important;
+  gap: 2px 6px !important;
+  cursor: pointer !important;
+  color: var(--phase25-gold) !important;
+  list-style: none !important;
+}
+.validation-score summary::-webkit-details-marker { display: none !important; }
+.validation-score summary .solid-industry-icon { grid-area: icon; width: 16px !important; height: 16px !important; }
+.validation-score summary strong { grid-area: value; color: var(--phase25-gold) !important; font-size: clamp(34px, 4vw, 50px) !important; line-height: .9 !important; letter-spacing: -.06em !important; }
+.validation-score summary span { grid-area: label; color: var(--phase25-muted) !important; font-size: 10px !important; letter-spacing: .08em !important; text-transform: uppercase !important; }
+.validation-source-proof {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--phase25-rule) !important;
+  border-bottom: 1px solid var(--phase25-rule) !important;
+}
+.validation-source-proof > div {
+  padding: 13px 14px !important;
+  border-right: 1px solid var(--phase25-rule) !important;
+  background: transparent !important;
+}
+.validation-source-proof > div:last-child { border-right: 0 !important; }
+.validation-script-drawer {
+  margin-top: 18px !important;
+  border: 1px solid var(--phase25-rule) !important;
+  background: rgba(255,255,250,.64) !important;
+  box-shadow: none !important;
+}
+.validation-script-drawer summary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 14px !important;
+  min-height: 48px !important;
+  padding: 0 16px !important;
+  color: var(--phase25-ink) !important;
+  font-size: 13px !important;
+  font-weight: 720 !important;
+  letter-spacing: -.012em !important;
+  cursor: pointer !important;
+  list-style: none !important;
+}
+.validation-script-drawer summary::-webkit-details-marker { display: none !important; }
+.validation-script-drawer summary .solid-industry-icon {
+  color: var(--phase25-forest) !important;
+  transition: transform .18s ease !important;
+}
+.validation-script-drawer[open] summary .solid-industry-icon { transform: rotate(180deg) !important; }
+.validation-script-drawer:not([open]) > :not(summary) { display: none !important; }
+.validation-script-drawer pre,
+.marketing-drawer pre {
+  max-height: 260px !important;
+  overflow: auto !important;
+  background: #f1efe6 !important;
+  color: #25312c !important;
+  border: 1px solid var(--phase25-rule) !important;
+  line-height: 1.48 !important;
+}
+.active-market-summary {
+  border: 1px solid var(--phase25-rule) !important;
+  background: rgba(255,255,250,.62) !important;
+  box-shadow: none !important;
+}
+.active-market-summary strong {
+  color: var(--phase25-ink) !important;
+  font-size: clamp(28px, 4vw, 54px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.055em !important;
+}
+.active-market-summary li {
+  color: var(--phase25-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.32 !important;
+}
+.info-dot {
+  width: 18px !important;
+  height: 18px !important;
+  padding: 0 !important;
+  border: 1px solid var(--phase25-rule) !important;
+  background: transparent !important;
+  color: var(--phase25-muted) !important;
+  font: 700 10px/1 var(--font-mono, ui-monospace, monospace) !important;
+  cursor: help !important;
+}
+@media (max-width: 980px) {
+  .validation-source-proof { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .validation-source-proof > div:nth-child(2n) { border-right: 0 !important; }
+}
+@media (max-width: 760px) {
+  main { padding-inline: 14px !important; }
+  .validation-queue,
+  .validation-focus-card,
+  .seller-unlock-card {
+    padding: 16px !important;
+  }
+  .validation-focus-head {
+    gap: 18px !important;
+  }
+  .validation-focus-head h3 {
+    max-width: 11.5ch !important;
+    font-size: clamp(36px, 11vw, 48px) !important;
+  }
+  .queue-copy small,
+  .queue-proof-line span {
+    white-space: nowrap !important;
+  }
+  .queue-state-row {
+    flex-wrap: wrap !important;
+  }
+  .validation-source-proof {
+    grid-template-columns: 1fr !important;
+  }
+  .validation-source-proof > div {
+    border-right: 0 !important;
+    padding-inline: 0 !important;
+  }
+}
+
+/* Final route isolation guard after Phase 25 Apple design review pass */
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}
+
+/* v1.57.1 - Phase 25 screenshot correction: queue controls are icon-only, no cramped CALL/EMAIL text */
+.validation-queue .contact-icon-toggle {
+  width: 31px !important;
+  min-width: 31px !important;
+  height: 31px !important;
+  min-height: 31px !important;
+  justify-content: center !important;
+  padding: 0 !important;
+}
+.validation-queue .contact-icon-toggle em {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+}
+.validation-queue .contact-icon-toggle .solid-industry-icon {
+  width: 14px !important;
+  height: 14px !important;
+  flex-basis: 14px !important;
+}
+.validation-queue .info-dot {
+  background: var(--phase25-forest-soft) !important;
+  color: var(--phase25-forest-strong) !important;
+  border-color: rgba(18,77,53,.18) !important;
+}

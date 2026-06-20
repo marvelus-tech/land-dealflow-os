@@ -1162,6 +1162,17 @@ function outreachIcon(channel) {
   return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.5a3 3 0 0 1-3.14 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.58 0l9.71-5.98Z"/></svg>`;
 }
 
+function solidIndustryIcon(kind) {
+  const paths = {
+    phone: '<path fill="currentColor" d="M6.42 2.75c.98-.3 2.02.22 2.4 1.17l1.1 2.75c.31.78.09 1.67-.55 2.2l-.86.72a12.85 12.85 0 0 0 5.9 5.9l.72-.86c.53-.64 1.42-.86 2.2-.55l2.75 1.1c.95.38 1.47 1.42 1.17 2.4l-.52 1.69A2.55 2.55 0 0 1 18.3 21H17C9.27 21 3 14.73 3 7V5.7c0-1.12.72-2.1 1.79-2.43l1.63-.52Z"/>',
+    email: '<path fill="currentColor" d="M4.75 5h14.5A2.75 2.75 0 0 1 22 7.75v8.5A2.75 2.75 0 0 1 19.25 19H4.75A2.75 2.75 0 0 1 2 16.25v-8.5A2.75 2.75 0 0 1 4.75 5Zm.02 2.2 6.15 4.02c.66.43 1.5.43 2.16 0l6.15-4.02H4.77Z"/>',
+    score: '<path fill="currentColor" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 3.25a1.15 1.15 0 0 1 1.15 1.15v5.3a1.15 1.15 0 1 1-2.3 0V6.9A1.15 1.15 0 0 1 12 5.75Zm0 10.1a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7Z"/>',
+    chevron: '<path fill="currentColor" d="M12 15.8c-.38 0-.74-.15-1.01-.42L5.8 10.2a1.43 1.43 0 0 1 2.02-2.02L12 12.36l4.18-4.18a1.43 1.43 0 0 1 2.02 2.02l-5.19 5.18c-.27.27-.63.42-1.01.42Z"/>',
+    proof: '<path fill="currentColor" d="M6.75 2.75h7.4c.6 0 1.18.24 1.6.66l2.84 2.84c.42.42.66 1 .66 1.6v9.4A4.25 4.25 0 0 1 15 21.5H6.75a4.25 4.25 0 0 1-4.25-4.25V7a4.25 4.25 0 0 1 4.25-4.25Zm6.5 1.95v3.05c0 .55.45 1 1 1h3.05l-4.05-4.05ZM7 11.25a1 1 0 1 0 0 2h8.5a1 1 0 1 0 0-2H7Zm0 4a1 1 0 1 0 0 2h5.25a1 1 0 1 0 0-2H7Z"/>',
+  };
+  return `<svg class="solid-industry-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[kind] || paths.proof}</svg>`;
+}
+
 function productIcon(kind) {
   const paths = {
     target: '<circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" r="2"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>',
@@ -1337,10 +1348,16 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     const scoreTitle = scoreBreakdownText(item);
     const evidenceCount = asArray(item.permitEvidence).length;
     const proofBits = [
-      item.sourceUrl ? safeLink(item.sourceUrl, 'source', 'queue-source-link') : 'source pending',
+      item.sourceUrl ? 'source verified' : 'source pending',
       `${h(evidenceCount || item.recentBuilds || 0)} permit proofs`,
       `${h(item.confidence || '-')} confidence`,
     ].join(' · ');
+    const proofTooltip = [
+      item.sourceUrl ? `Source: ${item.sourceUrl}` : 'Source pending',
+      `${evidenceCount || item.recentBuilds || 0} permit proofs`,
+      `${item.confidence || '-'} confidence`,
+      scoreTitle ? `Score: ${scoreTitle}` : '',
+    ].filter(Boolean).join('\n');
     const completionStateClass = [
       active ? 'active' : '',
       outreach.email ? 'is-emailed' : 'needs-email',
@@ -1350,12 +1367,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
-        <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
+        <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
       </button>
-      <div class="queue-proof-line">${proofBits}</div>
+      <div class="queue-proof-line" title="${h(proofTooltip)}"><span>${h(proofBits)}</span>${item.sourceUrl ? safeLink(item.sourceUrl, 'source', 'queue-source-link') : ''}</div>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
-        <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span><em>${outreach.phone ? 'Called' : 'Call'}</em></button>
-        <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span><em>${outreach.email ? 'Emailed' : 'Email'}</em></button>
+        <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span><em>${outreach.phone ? 'Called' : 'Call'}</em></button>
+        <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span><em>${outreach.email ? 'Emailed' : 'Email'}</em></button>
         ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'needs buy box', tone)}
       </div>
     </article>`;
@@ -1394,9 +1411,9 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>Proof attached</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div><div class="queue-filter-row" aria-label="Queue filters"><button type="button" disabled>Callable</button><button type="button" disabled>Needs buy box</button><button type="button" disabled>Highest permits</button></div>${queue}</aside>
       <article class="validation-focus-card" id="selected-builder-card">
         <div class="validation-focus-head">
-          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${contact}</p></div>
+          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit proofs. Contact/HQ may be regional: ${contact}</p></div>
           <details class="validation-score" title="${h(selectedScoreTitle)}">
-            <summary><strong>${h(selected.validation?.score || 0)}</strong><span>validation score</span></summary>
+            <summary>${solidIndustryIcon('score')}<strong>${h(selected.validation?.score || 0)}</strong><span>score detail</span></summary>
             <div class="score-breakdown">${selectedScoreRows}</div>
           </details>
         </div>
@@ -1404,8 +1421,8 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         ${sourceProof}
         ${renderEvidenceStack(selected)}
         <div class="selected-outreach-state" aria-label="Selected builder outreach state">
-          <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('phone')}</span>${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}</button>
-          <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
+          <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span>${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}</button>
+          <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
         </div>
         <div class="validation-actions">
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
@@ -1441,12 +1458,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     </div>
     ${renderSelectedBuilderDock(selected)}
     <details class="validation-script-drawer">
-      <summary>Open exact buy-box questions + call script</summary>
+      <summary><span>Exact buy-box questions + call script</span>${solidIndustryIcon('chevron')}</summary>
       <div class="script-grid"><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p><ul class="selected-permit-proof">${selectedPermitProof || '<li><span>No permit proof rows loaded.</span></li>'}</ul></div><div><h5>Buy-box questions</h5><ul>${scriptQuestions}</ul></div></div>
       <pre>${h(selected.callScript || '')}</pre>
     </details>
     <details class="validation-script-drawer marketing-drawer">
-      <summary>Optional marketing intro email template</summary>
+      <summary><span>Optional marketing intro email template</span>${solidIndustryIcon('chevron')}</summary>
       <div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div>
       <pre>${h(marketingEmail.body)}</pre>
       <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
@@ -1476,7 +1493,7 @@ function renderBuilderListEnginePanel(options = {}) {
     const isActive = stateCode === selectedBuilderMarketState;
     const builderCount = rows.length;
     const contactLedger = builderContactLedgerForRows(rows);
-    const status = isLive ? `${builderCount} live builders` : (sequence.label || 'resource well');
+    const status = isLive ? `${builderCount} live builders` : (sequence.label || 'source lane');
     const marketLabel = marketSummary.entries.map(item => item.marketName).join(' · ') || markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
     return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, contactLedger, status, marketLabel, rows, summary: marketSummary };
   });
@@ -1508,14 +1525,14 @@ function renderBuilderListEnginePanel(options = {}) {
     limit: 8,
   });
   const marketSummary = `<div class="active-market-summary">
-    <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
-    <strong>${h(activeState.isLive ? (activeState.marketLabel || activeState.label) : `${activeState.label} resource well`)}</strong>
+    <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected source lane'}</span>
+    <strong>${h(activeState.isLive ? (activeState.marketLabel || activeState.label) : `${activeState.label} source lane`)}</strong>
     <p>${h(activeState.isLive ? `${activeBuilders.length} permit-backed builders. Capture buy box before seller work.` : `${activeState.marketLabel || activeState.label}. Source lane ready; builder queue waits for permit-active companies.`)}</p>
     <ul>
       ${activeState.isLive ? `<li>${h(activeBuilders.length)} builders</li>
       <li>${h(activeSummary.minimumUniqueBuilders || 20)} minimum per pull</li>
       <li>${h(activeSummary.callable ?? 0)} callable now</li>
-      <li>${h(activeSummary.totalRecentBuildSignals ?? 0)} permit signals</li>` : `<li>${h(activeState.markets.length)} priority markets</li>
+      <li>${h(activeSummary.totalRecentBuildSignals ?? 0)} permit proofs</li>` : `<li>${h(activeState.markets.length)} priority markets</li>
       <li>${h(asArray(activeState.stateMeta.portals).length)} portal targets</li>
       <li>${h(asArray(activeState.stateMeta.pipeline).length)} pipeline steps</li>
       <li>buyer-first gate</li>`}
@@ -1603,7 +1620,7 @@ function renderSellerSearchControlLayer(control = {}) {
   const stageRows = asArray(control.stageRows).map(stage => `<article class="seller-control-stage ${h(stage.status)}"><span>${h(stage.label)}</span><b>${h(stage.status)}</b><p>${h(stage.detail)}</p></article>`).join('');
   const buyerRows = asArray(control.buyerRows).map((buyer, index) => `<div class="seller-control-row buyer-gate-row">
     <span>${String(index + 1).padStart(2, '0')}</span>
-    <div><b>${h(buyer.name)}</b><small>${h(buyer.market || 'market pending')} · ${h(buyer.recentBuilds)} permit signals · ${h(buyer.contact || 'contact to find')}</small></div>
+    <div><b>${h(buyer.name)}</b><small>${h(buyer.market || 'market pending')} · ${h(buyer.recentBuilds)} permit proofs · ${h(buyer.contact || 'contact to find')}</small></div>
     <em>${buyer.gate?.unlocked ? 'unlocked' : `missing ${h(asArray(buyer.gate?.missing).slice(0, 2).join(' + ') || 'buy-box field')}`}</em>
   </div>`).join('');
   const sellerRows = asArray(control.sellerRows).map((seller, index) => `<div class="seller-control-row seller-gate-row ${seller.locked ? 'locked' : 'ready'}">

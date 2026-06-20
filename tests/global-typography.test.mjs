@@ -118,5 +118,20 @@ assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /
 assert.match(css, /v1\.55\.1 - Phase 23 screenshot correction: single-row mobile nav and no Today terrain relics/, 'Phase 23 screenshot correction marker required');
 assert.match(css, /\.app-tabs,[\s\S]{0,220}flex-wrap: nowrap !important/, 'Mobile nav tabs should remain single-row and horizontally scroll instead of forcing a tall grid');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Terrain intelligence \/ Tennessee live-first|TN terrain|builder demand, parcel constraint/, 'Today route should not keep old terrain/campaign wording relics');
+assert.match(css, /v1\.56 - Phase 24 Apple product-system Today rebuild: forest\/gold calm hierarchy, no wall\/sign relics/, 'Phase 24 marker required for the Apple product-system Today rebuild');
+assert.match(css, /--phase24-forest: #164d36/, 'Phase 24 should define an accessible forest primary accent');
+assert.match(css, /--phase24-gold: #9c741f/, 'Phase 24 should define a restrained gold metric highlight');
+assert.match(css, /--phase24-rule: every-pixel-earns-place-one-primary-action-calm-evidence-after/, 'Phase 24 should encode the hierarchy rule');
+assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-rail,\.wk-progress,\.wk-artifact,\.wk-scanline,\.wk-horizon,\.wk-contour\)[\s\S]{0,90}display: none !important/, 'Phase 24 should hard-remove Today rail/artifact/sign relic chrome');
+assert.match(css, /body\[data-active-view="today"\] #command \.phase24-snapshot div[\s\S]{0,260}border-bottom: 1px solid var\(--phase24-line\)/, 'Today snapshot should be a ledger, not another boxed dashboard tile');
+assert.match(css, /Final route isolation guard after Phase 24 Today rebuilding/, 'Phase 24 should preserve route isolation after late Today overrides');
+const appSource = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
+const todaySource = appSource.slice(appSource.indexOf('function renderCommandCenter'), appSource.indexOf('function initializeEditorialMotion'));
+assert.match(todaySource, /phase24-today-hero[\s\S]{0,240}Make the clearest next move\./, 'Today should render the new Phase 24 operating hero');
+assert.match(todaySource, /phase24-snapshot[\s\S]{0,260}Builder proof/, 'Today should replace decorative artifact chrome with a proof snapshot');
+assert.doesNotMatch(todaySource, /wk-artifact|wk-scanline|wk-horizon|wk-contour|Today page map|Signal system|Market terrain|terrain intelligence|\bwells\b|\bwall\b/i, 'Today render path must not keep old wall/sign/terrain relics');
+assert.doesNotMatch(appSource, /one long wall/i, 'Product copy should not describe dense surfaces as a wall');
+assert.doesNotMatch(appSource + html, /source map|independent wells|resource wells|first resource well|velocity well|Piedmont well|high-volume well/i, 'Phase 24 should replace map/well signage with calm source-lane language');
+assert.match(appSource + html, /Source lanes|Queued lanes|source lane/, 'Phase 24 should use source-lane language consistently');
 
 console.log('global typography tests passed');

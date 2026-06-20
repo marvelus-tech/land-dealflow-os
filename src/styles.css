@@ -13068,3 +13068,362 @@ body[data-active-view="today"] #command .wk-core-sample b {
   font-size: clamp(38px, 10vw, 64px) !important;
   line-height: .92 !important;
 }
+
+
+/* v1.56 - Phase 24 Apple product-system Today rebuild: forest/gold calm hierarchy, no wall/sign relics */
+:root {
+  --phase24-cream: #fbfaf5;
+  --phase24-paper: #f6f5ee;
+  --phase24-ink: #111713;
+  --phase24-muted: #58635c;
+  --phase24-soft: #8a938d;
+  --phase24-line: rgba(17,23,19,.105);
+  --phase24-line-strong: rgba(17,23,19,.16);
+  --phase24-forest: #164d36;
+  --phase24-forest-strong: #0e3326;
+  --phase24-forest-soft: rgba(22,77,54,.085);
+  --phase24-gold: #9c741f;
+  --phase24-gold-soft: rgba(156,116,31,.105);
+  --phase24-measure: 66ch;
+  --phase24-rule: every-pixel-earns-place-one-primary-action-calm-evidence-after;
+}
+body {
+  background:
+    radial-gradient(circle at 84% 2%, rgba(22,77,54,.09), transparent 32rem),
+    radial-gradient(circle at 8% 74%, rgba(156,116,31,.075), transparent 34rem),
+    linear-gradient(180deg, var(--phase24-cream) 0%, var(--phase24-paper) 100%) !important;
+  color: var(--phase24-ink) !important;
+}
+body[data-active-view="today"] #command {
+  max-width: min(1188px, calc(100vw - 40px)) !important;
+  padding-bottom: 72px !important;
+}
+body[data-active-view="today"] #command :where(.wk-rail,.wk-progress,.wk-artifact,.wk-scanline,.wk-horizon,.wk-contour) {
+  display: none !important;
+}
+body[data-active-view="today"] #command .phase24-today-hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(288px, 384px) !important;
+  align-items: end !important;
+  gap: clamp(28px, 5vw, 76px) !important;
+  min-height: auto !important;
+  padding: clamp(40px, 7vw, 96px) 0 clamp(28px, 4vw, 54px) !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase24-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .phase24-today-hero::before,
+body[data-active-view="today"] #command .phase24-today-hero::after {
+  display: none !important;
+}
+body[data-active-view="today"] #command .phase24-hero-copy {
+  max-width: 760px !important;
+}
+body[data-active-view="today"] #command .wk-kicker,
+body[data-active-view="today"] #command .phase24-snapshot span,
+body[data-active-view="today"] #command .phase24-proof-card span,
+body[data-active-view="today"] #command .phase24-market-row span,
+body[data-active-view="today"] #command .phase24-protocol-card span {
+  color: var(--phase24-forest) !important;
+  font-family: var(--font-mono, "SF Mono", ui-monospace, monospace) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .115em !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .phase24-today-hero h1 {
+  max-width: 10.4ch !important;
+  margin-top: 16px !important;
+  color: var(--phase24-ink) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif) !important;
+  font-size: clamp(48px, 7.2vw, 96px) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.068em !important;
+  line-height: .96 !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .phase24-today-hero p {
+  max-width: var(--phase24-measure) !important;
+  margin-top: 22px !important;
+  color: var(--phase24-muted) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+  font-size: clamp(16px, 1.35vw, 20px) !important;
+  font-weight: 480 !important;
+  line-height: 1.55 !important;
+  letter-spacing: -.015em !important;
+}
+body[data-active-view="today"] #command .phase24-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+  margin-top: 28px !important;
+}
+body[data-active-view="today"] #command .phase24-actions a,
+body[data-active-view="today"] #command .phase24-focus-card a {
+  min-height: 42px !important;
+  padding: 0 15px !important;
+  background: var(--phase24-forest) !important;
+  border: 1px solid var(--phase24-forest) !important;
+  border-radius: 0 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+  font-size: 13px !important;
+  font-weight: 720 !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+}
+body[data-active-view="today"] #command .phase24-actions a + a {
+  background: transparent !important;
+  border-color: var(--phase24-line-strong) !important;
+  color: var(--phase24-forest-strong) !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  border-top: 1px solid var(--phase24-line-strong) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div {
+  display: grid !important;
+  grid-template-columns: minmax(94px, .36fr) minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 14px !important;
+  min-height: 64px !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid var(--phase24-line) !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot b {
+  min-width: 0 !important;
+  color: var(--phase24-ink) !important;
+  font-size: clamp(20px, 2.1vw, 30px) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.045em !important;
+  line-height: 1.02 !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot em {
+  color: var(--phase24-gold) !important;
+  font-family: var(--font-mono, "SF Mono", ui-monospace, monospace) !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command :where(.phase24-operating-rules,.phase24-market-board,.phase24-work-surface,.phase24-protocol) {
+  margin-top: clamp(30px, 5vw, 64px) !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command :where(.wk-section-head h2,.phase24-operating-rules h2,.phase24-protocol h2) {
+  max-width: 780px !important;
+  color: var(--phase24-ink) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif) !important;
+  font-size: clamp(32px, 4.2vw, 62px) !important;
+  font-weight: 720 !important;
+  letter-spacing: -.052em !important;
+  line-height: 1.02 !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .wk-section-head p {
+  max-width: var(--phase24-measure) !important;
+  color: var(--phase24-muted) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+  font-size: 15px !important;
+  line-height: 1.52 !important;
+}
+body[data-active-view="today"] #command .phase24-operating-rules {
+  display: grid !important;
+  grid-template-columns: minmax(240px, .44fr) minmax(0, 1fr) !important;
+  gap: clamp(24px, 4vw, 56px) !important;
+  padding-top: clamp(22px, 3vw, 34px) !important;
+  border-top: 1px solid var(--phase24-line) !important;
+}
+body[data-active-view="today"] #command .phase24-operating-rules ul,
+body[data-active-view="today"] #command .phase24-proof-grid,
+body[data-active-view="today"] #command .phase24-market-list,
+body[data-active-view="today"] #command .phase24-protocol-grid,
+body[data-active-view="today"] #command .phase24-work-grid {
+  display: grid !important;
+  gap: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+body[data-active-view="today"] #command .phase24-operating-rules ul,
+body[data-active-view="today"] #command .phase24-proof-grid,
+body[data-active-view="today"] #command .phase24-protocol-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  border-top: 1px solid var(--phase24-line) !important;
+}
+body[data-active-view="today"] #command .phase24-market-list {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  margin-top: 28px !important;
+  border-top: 1px solid var(--phase24-line) !important;
+}
+body[data-active-view="today"] #command .phase24-work-grid {
+  grid-template-columns: .9fr .95fr 1fr !important;
+  margin-top: 28px !important;
+  border-top: 1px solid var(--phase24-line) !important;
+}
+body[data-active-view="today"] #command :where(.phase24-operating-rules li,.phase24-proof-card,.phase24-market-row,.phase24-protocol-card,.phase24-focus-card,.phase24-call-stack,.phase24-script-card) {
+  min-height: 0 !important;
+  padding: 18px 18px 20px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase24-line) !important;
+  border-bottom: 1px solid var(--phase24-line) !important;
+  box-shadow: none !important;
+  color: var(--phase24-ink) !important;
+}
+body[data-active-view="today"] #command :where(.phase24-operating-rules li:nth-child(4n),.phase24-proof-card:nth-child(4n),.phase24-protocol-card:nth-child(4n),.phase24-market-row:nth-child(5n),.phase24-script-card) {
+  border-right: 0 !important;
+}
+body[data-active-view="today"] #command :where(.phase24-operating-rules li b,.phase24-market-row b,.phase24-focus-card h3,.phase24-script-card h3,.phase24-protocol-card h3) {
+  display: block !important;
+  margin-top: 18px !important;
+  color: var(--phase24-ink) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif) !important;
+  font-size: clamp(20px, 2vw, 30px) !important;
+  font-weight: 720 !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.05 !important;
+  text-transform: none !important;
+}
+body[data-active-view="today"] #command .phase24-proof-card strong {
+  display: block !important;
+  margin-top: 20px !important;
+  color: var(--phase24-ink) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif) !important;
+  font-size: clamp(28px, 3.5vw, 54px) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.055em !important;
+  line-height: .96 !important;
+}
+body[data-active-view="today"] #command :where(.phase24-operating-rules li em,.phase24-market-row em,.phase24-proof-card p,.phase24-focus-card p,.phase24-script-card p,.phase24-protocol-card p) {
+  display: block !important;
+  margin-top: 10px !important;
+  color: var(--phase24-muted) !important;
+  font-family: var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+  font-size: 13px !important;
+  font-style: normal !important;
+  line-height: 1.45 !important;
+  letter-spacing: -.006em !important;
+}
+body[data-active-view="today"] #command .phase24-market-row.hot {
+  background: linear-gradient(180deg, rgba(22,77,54,.055), transparent 72%) !important;
+  box-shadow: inset 0 -3px 0 var(--phase24-forest) !important;
+}
+body[data-active-view="today"] #command .today-primary-action {
+  margin-top: 24px !important;
+  border-top: 1px solid rgba(22,77,54,.22) !important;
+  border-bottom: 1px solid rgba(22,77,54,.16) !important;
+  background: linear-gradient(90deg, var(--phase24-forest-soft), transparent) !important;
+}
+body[data-active-view="today"] #command .phase24-queue-row,
+body[data-active-view="today"] #command .phase24-empty {
+  min-height: 70px !important;
+  padding: 13px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase24-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--phase24-ink) !important;
+}
+body[data-active-view="today"] #command .phase24-queue-row.active {
+  background: linear-gradient(90deg, var(--phase24-forest-soft), transparent) !important;
+  box-shadow: inset 3px 0 0 var(--phase24-forest) !important;
+  padding-left: 12px !important;
+}
+body[data-active-view="today"] #command .phase24-queue-row b,
+body[data-active-view="today"] #command .phase24-empty b {
+  color: var(--phase24-ink) !important;
+  font-size: 15px !important;
+  font-weight: 720 !important;
+  letter-spacing: -.02em !important;
+}
+body[data-active-view="today"] #command .phase24-queue-row small,
+body[data-active-view="today"] #command .phase24-empty span {
+  color: var(--phase24-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.38 !important;
+}
+@media (max-width: 980px) {
+  body[data-active-view="today"] #command .phase24-today-hero,
+  body[data-active-view="today"] #command .phase24-operating-rules,
+  body[data-active-view="today"] #command .phase24-work-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="today"] #command .phase24-operating-rules ul,
+  body[data-active-view="today"] #command .phase24-proof-grid,
+  body[data-active-view="today"] #command .phase24-market-list,
+  body[data-active-view="today"] #command .phase24-protocol-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="today"] #command :where(.phase24-market-row:nth-child(5n),.phase24-script-card) {
+    border-right: 1px solid var(--phase24-line) !important;
+  }
+  body[data-active-view="today"] #command :where(.phase24-operating-rules li:nth-child(2n),.phase24-proof-card:nth-child(2n),.phase24-protocol-card:nth-child(2n),.phase24-market-row:nth-child(2n)) {
+    border-right: 0 !important;
+  }
+}
+@media (max-width: 760px) {
+  body[data-active-view="today"] #command {
+    max-width: calc(100vw - 28px) !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero {
+    padding-top: 28px !important;
+    gap: 24px !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero h1 {
+    font-size: clamp(40px, 12vw, 54px) !important;
+    letter-spacing: -.052em !important;
+    line-height: 1.0 !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+  body[data-active-view="today"] #command .phase24-snapshot div {
+    grid-template-columns: 1fr auto !important;
+    gap: 6px 12px !important;
+  }
+  body[data-active-view="today"] #command .phase24-snapshot span {
+    grid-column: 1 / -1 !important;
+  }
+  body[data-active-view="today"] #command .phase24-operating-rules ul,
+  body[data-active-view="today"] #command .phase24-proof-grid,
+  body[data-active-view="today"] #command .phase24-market-list,
+  body[data-active-view="today"] #command .phase24-protocol-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="today"] #command :where(.phase24-operating-rules li,.phase24-proof-card,.phase24-market-row,.phase24-protocol-card,.phase24-focus-card,.phase24-call-stack,.phase24-script-card) {
+    border-right: 0 !important;
+    padding-inline: 0 !important;
+  }
+  body[data-active-view="today"] #command .phase24-actions {
+    display: grid !important;
+  }
+  body[data-active-view="today"] #command .phase24-actions a {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* Final route isolation guard after Phase 24 Today rebuilding */
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}

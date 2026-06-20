@@ -1566,7 +1566,7 @@ function renderBuilderListEnginePanel(options = {}) {
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose market. Validate builder.</h3>
-        <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> State tabs swap the queue, validation form, source map, and permit proof.</p>
+        <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> State tabs swap the queue, validation form, source lane, and permit proof.</p>
         <div class="primary-action-strip builders-primary-action"><span>${productIcon('target')} Do first</span><b>Call the top permit-active builder. Capture the missing buy-box fields.</b><a href="#buyer-validation-command">Start queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
@@ -1839,10 +1839,10 @@ function renderSourcePriorityBoard() {
   const tierRows = asArray(landscape.tiers).slice(0, 2).map(tier => `<article><span>${h(tier.name.replace(/^Tier \d+ - /, ''))}</span>${asArray(tier.items).slice(0, 3).map(item => safeLink(item.url, item.label, 'priority-source-link')).join('')}</article>`).join('');
   const stackOrder = [
     { code: 'TN', label: 'Tennessee', stance: 'live first', platform: 'Buildchek + direct portals' },
-    { code: 'FL', label: 'Inland Florida', stance: 'first resource well', platform: 'Accela / EnerGov / Civic Access' },
-    { code: 'AZ', label: 'Arizona', stance: 'velocity well', platform: 'Maricopa weekly + Accela cities' },
-    { code: 'NC', label: 'North Carolina', stance: 'Piedmont well', platform: 'Buildchek + Mecklenburg/Wake direct data' },
-    { code: 'TX', label: 'Texas', stance: 'fragmented high-volume well', platform: 'PermitVector + Austin/San Antonio open data' },
+    { code: 'FL', label: 'Inland Florida', stance: 'queued resource lane', platform: 'Accela / EnerGov / Civic Access' },
+    { code: 'AZ', label: 'Arizona', stance: 'queued velocity lane', platform: 'Maricopa weekly + Accela cities' },
+    { code: 'NC', label: 'North Carolina', stance: 'Piedmont lane', platform: 'Buildchek + Mecklenburg/Wake direct data' },
+    { code: 'TX', label: 'Texas', stance: 'fragmented high-volume lane', platform: 'PermitVector + Austin/San Antonio open data' },
   ];
   const stackRows = stackOrder.map((item, index) => `<article class="priority-stack-step ${index === 0 ? 'active' : ''}"><span>${String(index + 1).padStart(2, '0')}</span><b>${h(item.code)} · ${h(item.label)}</b><small>${h(item.stance)} · ${h(item.platform)}</small></article>`).join('');
   const marketCard = item => `<article class="priority-market ${item.state === 'TN' ? 'is-primary' : ''}">
@@ -1854,14 +1854,14 @@ function renderSourcePriorityBoard() {
     <div class="source-priority-head">
       <span class="eyebrow">Permit-source priority</span>
       <h3>TN first. Then inland FL, AZ, NC, TX.</h3>
-      <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent wells.</p>
+      <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent lanes.</p>
       <div class="primary-action-strip sources-primary-action"><span>${productIcon('source')} Do first</span><b>Verify the Tennessee source lane before promoting any seller lead.</b><a href="#permit-landscape" data-view="builders">Open lane ${productIcon('arrow')}</a></div>
     </div>
     <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
     <div class="source-guardrail"><b>Kentucky guardrail</b><span>If Kentucky records appear, treat them as target-state/HQ leakage unless they carry verified Tennessee permit evidence.</span></div>
     <div class="source-priority-grid">
       <div class="priority-lane primary"><span>Now</span>${tnMarkets.map(marketCard).join('')}</div>
-      <div class="priority-lane"><span>Resource wells</span>${nextMarkets.map(marketCard).join('')}</div>
+      <div class="priority-lane"><span>Queued lanes</span>${nextMarkets.map(marketCard).join('')}</div>
       <div class="priority-stack"><span>Normalize with</span>${tierRows}</div>
     </div>
   </section>`;
@@ -1985,78 +1985,73 @@ function renderCommandCenter() {
   const builderRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const totalBuilderSignals = knoxvilleBuyerCallSheet?.summary?.totalRecentBuildSignals || builderRows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0) || 0;
   const callableBuilders = knoxvilleBuyerCallSheet?.summary?.callablePublicBusinessContacts || builderRows.filter(row => row.phone || row.email).length || buyerContactQueue.length || 'pending';
-  const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="wk-call-row ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
+  const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="wk-call-row phase24-queue-row ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
       <span>${String(index + 1).padStart(2, '0')}</span>
       <b>${h(call.ownerName || call.owner || 'owner unknown')}</b>
       <small>${h(call.address || 'No address')} · ${h(call.moneyStage)} · ${formatMoney(call.projectedSpread)} spread</small>
-    </button>`).join('') : '<article class="wk-empty"><b>No seller call earns the room yet.</b><span>Buyer proof comes first. Public owner records stay in skip-trace until real phone/email enrichment.</span></article>';
-  const marketRows = leadingMarkets.map((market, index) => `<a class="wk-market-node ${market.state === 'TN' ? 'hot' : ''}" href="#builders" data-view="builders" style="--i:${index}">
-      <span>${String(index + 1).padStart(2, '0')} / ${h(market.state)}</span>
+    </button>`).join('') : '<article class="wk-empty phase24-empty"><b>No seller call earns attention yet.</b><span>Buyer proof comes first. Public owner records stay in skip-trace until real phone/email enrichment.</span></article>';
+  const marketRows = leadingMarkets.map((market, index) => `<a class="wk-market-node phase24-market-row ${market.state === 'TN' ? 'hot' : ''}" href="#builders" data-view="builders" style="--i:${index}">
+      <span>${String(index + 1).padStart(2, '0')} · ${h(market.state)}</span>
       <b>${h(market.market)}</b>
       <em>${h(market.reason)}</em>
     </a>`).join('');
   const proofRows = [
-    ['Permit market', tnMarket.market, 'Where the build evidence lives - not where HQ is registered.'],
-    ['Builder signals', `${totalBuilderSignals}`, `${callableBuilders} callable public business contacts.`],
+    ['Active market', tnMarket.market, 'Build evidence is treated by jurisdiction, not corporate headquarters.'],
+    ['Builder proof', `${totalBuilderSignals}`, `${callableBuilders} callable public business contacts.`],
     ['Buy-box certainty', `${boxMeter.percent}%`, `${boxMeter.grade} confidence until acquisition criteria are captured.`],
-    ['Call-ready sellers', `${moneyQueue.stats.callReady}`, `${publicSkipTrace.length} public records held back for enrichment.`],
-  ].map(([label, value, detail]) => `<article class="wk-proof-card"><span>${h(label)}</span><strong>${h(value)}</strong><p>${h(detail)}</p></article>`).join('');
+    ['Seller calls', `${moneyQueue.stats.callReady}`, `${publicSkipTrace.length} public records held back for enrichment.`],
+  ].map(([label, value, detail]) => `<article class="wk-proof-card phase24-proof-card"><span>${h(label)}</span><strong>${h(value)}</strong><p>${h(detail)}</p></article>`).join('');
   const protocolRows = [
-    ['01', 'Prove demand', 'Find permit-active builders, then ask price, geography, close speed and kill criteria.'],
-    ['02', 'Constrain the land', 'Only seller parcels matching verified buy boxes enter the money queue.'],
-    ['03', 'Protect the close', 'Contract/title gates surface before the buyer-send memo, not after optimism.'],
-  ].map(([num, title, detail]) => `<article class="wk-protocol-card"><span>${h(num)}</span><h3>${h(title)}</h3><p>${h(detail)}</p></article>`).join('');
+    ['01', 'Prove demand', 'Call permit-active builders and capture price, geography, close speed, and kill criteria.'],
+    ['02', 'Constrain supply', 'Only seller parcels matching verified buy boxes enter the money queue.'],
+    ['03', 'Protect closing', 'Contract/title gates surface before the buyer-send memo, not after optimism.'],
+  ].map(([num, title, detail]) => `<article class="wk-protocol-card phase24-protocol-card"><span>${h(num)}</span><h3>${h(title)}</h3><p>${h(detail)}</p></article>`).join('');
   const operatingRows = [
     ['Buyer proof', 'Permit-backed builder demand', 'Start with builders already pulling permits in the target market.'],
-    ['Geography gate', 'Permit market beats HQ location', 'Tennessee evidence stays Tennessee even when a regional office sits elsewhere.'],
+    ['Jurisdiction', 'Market evidence beats office address', 'Tennessee evidence stays Tennessee even when a regional office sits elsewhere.'],
     ['Truth gate', 'No fabricated money rows', 'Public owner records remain skip-trace until phone or email is actually enriched.'],
-    ['Action gate', 'One defensible next move', 'Every path resolves to builder validation, seller call, source proof, or closing control.'],
+    ['Next action', 'One defensible move', 'Every path resolves to builder validation, seller call, source proof, or closing control.'],
   ].map(([verb, title, detail]) => `<li><span>${h(verb)}</span><b>${h(title)}</b><em>${h(detail)}</em></li>`).join('');
 
   document.querySelector('#command').innerHTML = `
-    <div class="wk-progress" aria-hidden="true"><span></span></div>
-    <nav class="wk-rail" aria-label="Today page map">
-      <a href="#wk-brief">Brief</a><a href="#wk-map">Markets</a><a href="#wk-work">Work</a><a href="#wk-gates">Gates</a>
-    </nav>
-    <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS terrain intelligence command">
-      <div class="wk-hero-copy">
-        <span class="wk-kicker">Buyer demand / Tennessee live-first</span>
-        <h1>Call the buyer. Then move the deal.</h1>
-        <p>Today has one job: prove demand, protect the seller queue, and advance the next defensible action.</p>
-        <div class="wk-actions">
+    <section id="wk-brief" class="wk-hero phase24-today-hero wk-reveal" aria-label="Today buyer-first operating view">
+      <div class="wk-hero-copy phase24-hero-copy">
+        <span class="wk-kicker">Today / buyer-first operating view</span>
+        <h1>Make the clearest next move.</h1>
+        <p>A calm, high-confidence surface for proving demand, protecting seller attention, and moving only the deals that deserve a call.</p>
+        <div class="wk-actions phase24-actions">
           <a class="primary-command" href="#builders" data-view="builders">${productIcon('phone')} Call builder queue</a>
-          <a href="#wk-work">View next action</a>
+          <a href="#wk-work">Review today’s action</a>
         </div>
       </div>
-      <aside class="wk-artifact" aria-label="Permit and landscape intelligence model">
-        <div class="wk-scanline" aria-hidden="true"></div>
-        <div class="wk-horizon" aria-hidden="true"></div>
-        <div class="wk-core-sample"><span>TN demand</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
-        <div class="wk-contour c1"></div><div class="wk-contour c2"></div><div class="wk-contour c3"></div>
-        <p>Permit velocity, buyer demand, parcel fit, next action.</p>
+      <aside class="phase24-snapshot" aria-label="Today proof snapshot">
+        <div><span>Active market</span><b>${h(tnMarket.market)}</b><em>${h(tnMarket.state || 'TN')}</em></div>
+        <div><span>Builder proof</span><b>${h(totalBuilderSignals)}</b><em>permit-backed rows</em></div>
+        <div><span>Buy-box clarity</span><b>${h(boxMeter.percent)}%</b><em>${h(boxMeter.grade)} confidence</em></div>
+        <div><span>Seller calls</span><b>${h(moneyQueue.stats.callReady)}</b><em>with reachable contact</em></div>
       </aside>
     </section>
     ${renderOperatorSessionMode(operatorSession)}
-    <section class="wk-audit wk-reveal" aria-label="Operating principles">
-      <div><span class="wk-kicker">Signal system</span><h2>Demand, seller fit, and risk collapse into one map.</h2></div>
+    <section class="wk-audit phase24-operating-rules wk-reveal" aria-label="Operating principles">
+      <div><span class="wk-kicker">Clarity system</span><h2>A calm queue beats a crowded dashboard.</h2></div>
       <ul>${operatingRows}</ul>
     </section>
-    <section id="wk-map" class="wk-market-map wk-reveal" aria-label="Priority permit market map">
-      <div class="wk-section-head"><span class="wk-kicker">Market terrain</span><h2>TN is live. FL, AZ, NC and TX wait as wells.</h2><p>Show where evidence lives, which portal matters, and what unlocks buyer validation.</p></div>
-      <div class="wk-node-grid">${marketRows}</div>
+    <section id="wk-map" class="wk-market-map phase24-market-board wk-reveal" aria-label="Priority permit markets">
+      <div class="wk-section-head"><span class="wk-kicker">Market readiness</span><h2>Tennessee is active. Other states stay queued until buyer proof improves.</h2><p>Show the source of evidence, the next validation path, and the reason to act - nothing decorative.</p></div>
+      <div class="wk-node-grid phase24-market-list">${marketRows}</div>
     </section>
-    <section id="wk-work" class="wk-workbench wk-reveal" aria-label="Daily money workbench">
-      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Choose the next defensible action.</h2><div class="primary-action-strip today-primary-action"><span>${productIcon('target')} Do first</span><b>Validate the current buyer before touching a seller record.</b><a href="#builders" data-view="builders">Validate buyer ${productIcon('arrow')}</a></div></div>
-      <div class="wk-proof-grid">${proofRows}</div>
-      <div class="wk-work-grid">
-        <article class="wk-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>
-        <div class="wk-call-stack"><span class="wk-kicker">Seller queue</span>${callRows}</div>
-        <article class="wk-script-card"><span class="wk-kicker">If a seller earns the call</span><h3>${h(netScript?.opening || 'Lead with net cash, not a pitch.')}</h3><p>${h(netScript?.netLine || heroMotivation.signals.slice(0, 2).join(' · ') || 'No seller call is promoted until buyer proof and reachable contact data exist.')}</p></article>
+    <section id="wk-work" class="wk-workbench phase24-work-surface wk-reveal" aria-label="Daily money workbench">
+      <div class="wk-section-head"><span class="wk-kicker">One job today</span><h2>Choose the next defensible action.</h2><div class="primary-action-strip today-primary-action"><span>${productIcon('target')} Do first</span><b>Validate the current buyer before touching a seller record.</b><a href="#builders" data-view="builders">Validate buyer ${productIcon('arrow')}</a></div></div>
+      <div class="wk-proof-grid phase24-proof-grid">${proofRows}</div>
+      <div class="wk-work-grid phase24-work-grid">
+        <article class="wk-focus-card phase24-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>
+        <div class="wk-call-stack phase24-call-stack"><span class="wk-kicker">Seller queue</span>${callRows}</div>
+        <article class="wk-script-card phase24-script-card"><span class="wk-kicker">If a seller earns the call</span><h3>${h(netScript?.opening || 'Lead with net cash, not a pitch.')}</h3><p>${h(netScript?.netLine || heroMotivation.signals.slice(0, 2).join(' · ') || 'No seller call is promoted until buyer proof and reachable contact data exist.')}</p></article>
       </div>
     </section>
-    <section id="wk-gates" class="wk-protocol wk-reveal" aria-label="Conversion protocol">
+    <section id="wk-gates" class="wk-protocol phase24-protocol wk-reveal" aria-label="Conversion protocol">
       <div class="wk-section-head"><span class="wk-kicker">Conversion architecture</span><h2>Gate the deal. Do not decorate the dashboard.</h2></div>
-      <div class="wk-protocol-grid">${protocolRows}</div>
+      <div class="wk-protocol-grid phase24-protocol-grid">${protocolRows}</div>
     </section>`;
   initializeEditorialMotion();
 }
@@ -2096,7 +2091,7 @@ function renderWorkspaceTools() {
   existing.innerHTML = `<div class="section-heading compact-heading">
       <span class="eyebrow">Machine room</span>
       <h2>Controls stay tucked away until needed.</h2>
-      <p>Imports, exports, quality gates, validation, outreach scripts, and offer packets are now progressive panels instead of one long wall.</p>
+      <p>Imports, exports, quality gates, validation, outreach scripts, and offer packets are now progressive panels instead of one dense ledger.</p>
     </div>
     <div class="machine-stack">
       <details class="machine-panel">

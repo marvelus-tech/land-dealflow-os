@@ -257,6 +257,7 @@ function scrollToPageTop() {
 
 function setActiveView(view, options = {}) {
   activeView = validViews.has(view) ? view : 'today';
+  document.body.dataset.activeView = activeView;
   document.querySelectorAll('.app-panel').forEach(panel => {
     const isActive = panel.dataset.panel === activeView;
     panel.hidden = !isActive;
@@ -1410,13 +1411,11 @@ function renderCommandCenter() {
     ['02', 'Constrain the land', 'Only seller parcels matching verified buy boxes enter the money queue.'],
     ['03', 'Protect the close', 'Contract/title gates surface before the buyer-send memo, not after optimism.'],
   ].map(([num, title, detail]) => `<article class="wk-protocol-card"><span>${h(num)}</span><h3>${h(title)}</h3><p>${h(detail)}</p></article>`).join('');
-  const auditRows = [
-    ['Kept', 'permit-backed buyer signal', 'It is the strongest content: proof before persuasion.'],
-    ['Kept', 'zero-fabrication gate', 'The product earns trust by refusing fake call-ready rows.'],
-    ['Kept', 'buyer-first money loop', 'It explains the business model in one sentence.'],
-    ['Killed', 'dashboard sprawl', 'Old metric blocks that did not trigger a call.'],
-    ['Killed', 'HQ leakage', 'Kentucky/regional office geography masquerading as permit market.'],
-    ['Reborn', 'source proof', 'Every CTA now points to a verifiable permit, buy box or closing gate.'],
+  const operatingRows = [
+    ['Buyer proof', 'Permit-backed builder demand', 'Start with builders already pulling permits in the target market.'],
+    ['Geography gate', 'Permit market beats HQ location', 'Tennessee evidence stays Tennessee even when a regional office sits elsewhere.'],
+    ['Truth gate', 'No fabricated money rows', 'Public owner records remain skip-trace until phone or email is actually enriched.'],
+    ['Action gate', 'One defensible next move', 'Every path resolves to builder validation, seller call, source proof, or closing control.'],
   ].map(([verb, title, detail]) => `<li><span>${h(verb)}</span><b>${h(title)}</b><em>${h(detail)}</em></li>`).join('');
 
   document.querySelector('#command').innerHTML = `
@@ -1440,9 +1439,9 @@ function renderCommandCenter() {
         <p>Builder-grade intelligence on warm paper: permits, buy boxes, and one next action.</p>
       </aside>
     </section>
-    <section class="wk-audit wk-reveal" aria-label="Audit decisions">
-      <div><span class="wk-kicker">Audit</span><h2>Three strengths kept. Three leaks killed.</h2></div>
-      <ul>${auditRows}</ul>
+    <section class="wk-audit wk-reveal" aria-label="Operating principles">
+      <div><span class="wk-kicker">Operating system</span><h2>The promise becomes gates, not a marketing audit.</h2></div>
+      <ul>${operatingRows}</ul>
     </section>
     <section id="wk-map" class="wk-market-map wk-reveal" aria-label="Priority permit market map">
       <div class="wk-section-head"><span class="wk-kicker">Spatial map</span><h2>TN is the live room. FL, AZ, NC and TX are resource wells.</h2><p>No statewide permit database. The navigation becomes a source map: where evidence lives, which portals matter, and what unlocks buyer validation.</p></div>

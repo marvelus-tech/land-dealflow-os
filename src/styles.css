@@ -6646,3 +6646,81 @@ body {
   color: var(--wk-ink) !important;
   border-color: rgba(23,19,13,.28) !important;
 }
+
+
+/* v1.28 - completion pass: Today page is one coherent warm-light editorial system */
+body[data-active-view="today"] footer { display: none; }
+body[data-active-view="today"] .nav {
+  position: sticky;
+  top: 12px;
+  z-index: 60;
+}
+body[data-active-view="today"] #command .wk-reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+body[data-active-view="today"] #command :where(.wk-hero, .wk-audit, .wk-market-map, .wk-workbench, .wk-protocol) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .wk-audit,
+body[data-active-view="today"] #command .wk-market-map,
+body[data-active-view="today"] #command .wk-workbench,
+body[data-active-view="today"] #command .wk-protocol {
+  background:
+    linear-gradient(rgba(23,19,13,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,19,13,.026) 1px, transparent 1px),
+    rgba(250,244,233,.74) !important;
+  background-size: 44px 44px, 44px 44px, auto !important;
+}
+body[data-active-view="today"] #command :where(.wk-audit li, .wk-market-node, .wk-proof-card, .wk-focus-card, .wk-call-stack, .wk-script-card, .wk-protocol-card) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .wk-hero {
+  min-height: clamp(620px, 78vh, 860px) !important;
+}
+body[data-active-view="today"] #command .wk-rail {
+  box-shadow: none !important;
+}
+@media (max-width: 680px) {
+  body[data-active-view="today"] .nav { position: relative; top: auto; }
+  body[data-active-view="today"] #command .wk-hero { min-height: auto !important; }
+  body[data-active-view="today"] #command .wk-audit,
+  body[data-active-view="today"] #command .wk-market-map,
+  body[data-active-view="today"] #command .wk-workbench,
+  body[data-active-view="today"] #command .wk-protocol { padding: 30px 20px !important; }
+}
+
+
+/* v1.29 - section typography legibility pass after screenshot QA */
+body[data-active-view="today"] #command :where(.wk-audit h2, .wk-section-head h2, .wk-protocol h2) {
+  letter-spacing: -.045em !important;
+  line-height: .92 !important;
+  word-spacing: .04em !important;
+  max-width: 1100px !important;
+}
+body[data-active-view="today"] #command .wk-audit h2 {
+  max-width: 7.6ch !important;
+}
+body[data-active-view="today"] #command .wk-section-head h2 {
+  font-size: clamp(40px, 5vw, 82px) !important;
+}
+@media (max-width: 680px) {
+  body[data-active-view="today"] #command .wk-hero h1 {
+    font-size: clamp(52px, 15vw, 72px) !important;
+    letter-spacing: -.07em !important;
+    line-height: .88 !important;
+  }
+  body[data-active-view="today"] #command :where(.wk-audit h2, .wk-section-head h2, .wk-protocol h2) {
+    font-size: clamp(42px, 11vw, 56px) !important;
+    letter-spacing: -.035em !important;
+    line-height: .94 !important;
+    word-spacing: .08em !important;
+    max-width: 100% !important;
+  }
+  body[data-active-view="today"] #command .wk-audit h2 {
+    max-width: 8.6ch !important;
+  }
+}

@@ -16,5 +16,15 @@ assert.match(css, /--type-accent: #23d7c3/, 'Light-mode translation should retai
 assert.match(css, /@media print[\s\S]{0,420}font-family: var\(--font-grotesk\) !important/, 'Print/PDF surfaces should be pulled into the same type system');
 assert.match(css, /#operator-session-mode\.os8-session[\s\S]{0,520}linear-gradient\(135deg, rgba\(255,255,255,\.96\)/, 'Today operator session should be converted from dark panel to light base');
 assert.match(css, /#sources-hub \.section-heading[\s\S]{0,420}linear-gradient\(135deg, rgba\(255,255,255,\.98\)/, 'Sources heading should use light base instead of legacy dark hero');
+assert.match(css, /v1\.45 - Phase 14 unified light color, compact hierarchy, square buttons/, 'Phase 14 unified light color + square button pass required');
+assert.match(css, /v1\.45\.1 - Phase 14 strict cleanup: Today graphic lightening, source color collapse, no rounded CTAs/, 'Strict follow-up cleanup should target Today, Sources, and residual rounded CTAs');
+assert.match(css, /v1\.45\.2 - Phase 14 Today artifact final light-mode override/, 'Today artifact final override should remove dark graphic slab behavior');
+assert.match(css, /v1\.45\.3 - Phase 14 body-active Today overrides beat legacy terrain CSS/, 'Today body-active legacy terrain CSS must be overridden');
+assert.match(css, /--ui-accent: #13b9aa/, 'Unified palette should collapse accents to one restrained cyan signal');
+assert.match(css, /\.wk-hero \{ min-height: clamp\(480px, 68vh, 660px\)/, 'Today hero should be compacted from billboard scale');
+assert.match(css, /button, \.button-link,[\s\S]{0,520}border-radius: 0 !important/, 'Visible buttons and button-like CTAs must be square');
+const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]
+  .filter(match => !/border-radius:\s*0\s*!important/.test(match[2]));
+assert.deepEqual(roundedButtonRules.map(match => match[1].trim()).slice(0, 5), [], 'No button selector may retain rounded corner radius');
 
 console.log('global typography tests passed');

@@ -240,13 +240,18 @@ function sourceDisclosure(type) {
   const sourceText = blueprint.sources.slice(0, 2).map(item => `<li>${h(item)}</li>`).join('');
   const fieldText = blueprint.fields.slice(0, 5).join(' · ');
   const sourceIdText = status.ids.length ? status.ids.slice(0, 2).map(id => `<code>${h(id)}</code>`).join(' ') : '<span>derived/local</span>';
+  const freshness = status.latest ? formatDateTime(status.latest) : 'Source pending';
   return `<details class="source-disclosure" data-source-type="${h(type)}">
-    <summary><span>Source</span><b>${h(blueprint.label)}</b><em>${h(status.count)}</em></summary>
+    <summary aria-label="Inspect ${h(blueprint.label)} source layer">
+      <span>Source layer</span>
+      <b>${h(blueprint.label)}</b>
+      <em><strong>${h(status.count)}</strong><small>records</small></em>
+    </summary>
     <div class="source-popover" role="note">
-      <div class="source-popover-head"><span>${h(status.count)} records</span><b>${formatDateTime(status.latest)}</b></div>
-      <div><strong>Pulls from</strong><ul>${sourceText}</ul></div>
-      <div><strong>Fields</strong><p>${h(fieldText)}</p></div>
-      <div class="source-id-foot"><span>IDs</span>${sourceIdText}</div>
+      <div class="source-popover-head"><span>${h(status.count)} records</span><b>${freshness}</b></div>
+      <div class="source-popover-section"><strong>Origin</strong><ul>${sourceText}</ul></div>
+      <div class="source-popover-section"><strong>Field shape</strong><p class="source-field-strip">${h(fieldText)}</p></div>
+      <div class="source-id-foot"><span>Source IDs</span>${sourceIdText}</div>
     </div>
   </details>`;
 }
@@ -1940,7 +1945,7 @@ function renderCommandCenter() {
   const leadingMarkets = asArray(permitLandscape.leadingMarkets).slice(0, 5);
   const tnMarket = leadingMarkets.find(market => market.state === 'TN') || leadingMarkets[0] || { market: 'Knoxville / Knox County', state: 'TN', reason: 'Live-first permit source.' };
   const builderRows = asArray(knoxvilleBuyerCallSheet?.rows);
-  const totalBuilderSignals = knoxvilleBuyerCallSheet?.summary?.totalRecentBuildSignals || builderRows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0) || 'TN';
+  const totalBuilderSignals = knoxvilleBuyerCallSheet?.summary?.totalRecentBuildSignals || builderRows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0) || 0;
   const callableBuilders = knoxvilleBuyerCallSheet?.summary?.callablePublicBusinessContacts || builderRows.filter(row => row.phone || row.email).length || buyerContactQueue.length || 'pending';
   const callRows = moneyCalls.length ? moneyCalls.map((call, index) => `<button type="button" class="wk-call-row ${call.id === selectedMoneyCallId ? 'active' : ''}" data-select-money-call="${h(call.id)}">
       <span>${String(index + 1).padStart(2, '0')}</span>

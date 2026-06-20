@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 const css = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
+const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
 assert.match(css, /fonts\.googleapis\.com\/css2\?family=DM\+Mono[\s\S]*family=Space\+Grotesk/, 'Grotesk + DM Mono webfont import should lead the CSS');
 assert.match(css, /v1\.44 - Phase 13 Apple-grade Grotesk\/DM Mono typography system/, 'Phase 13 global typography system marker required');
@@ -9,6 +10,7 @@ assert.match(css, /v1\.44\.1 - Phase 13 light-base typography bleed cleanup/, 'P
 assert.match(css, /v1\.44\.2 - Phase 13 nav typography specificity fix/, 'Phase 13 nav typography fix should prevent dark button leakage into tabs');
 assert.match(css, /--font-grotesk: 'Space Grotesk', 'Grotesk'/, 'Grotesk token should use Space Grotesk with Grotesk fallback');
 assert.match(css, /--font-mono: 'DM Mono'/, 'Mono token should use DM Mono');
+assert.match(css, /family=Inter:wght@400;500;600;700;800/, 'Dense body typography should have a readable sans text engine');
 assert.match(css, /body, button, input, textarea, select[\s\S]{0,110}font-family: var\(--font-grotesk\) !important/, 'Core UI controls should inherit the Grotesk system');
 assert.match(css, /\.eyebrow,[\s\S]{0,460}font-family: var\(--font-mono\) !important/, 'Labels, badges, and microcopy should use DM Mono');
 assert.match(css, /:is\(h1,h2,h3,h4\)[\s\S]{0,760}letter-spacing: -\.055em !important/, 'Headings should have unified tight Grotesk hierarchy');
@@ -20,6 +22,12 @@ assert.match(css, /v1\.45 - Phase 14 unified light color, compact hierarchy, squ
 assert.match(css, /v1\.45\.1 - Phase 14 strict cleanup: Today graphic lightening, source color collapse, no rounded CTAs/, 'Strict follow-up cleanup should target Today, Sources, and residual rounded CTAs');
 assert.match(css, /v1\.45\.2 - Phase 14 Today artifact final light-mode override/, 'Today artifact final override should remove dark graphic slab behavior');
 assert.match(css, /v1\.45\.3 - Phase 14 body-active Today overrides beat legacy terrain CSS/, 'Today body-active legacy terrain CSS must be overridden');
+assert.match(css, /v1\.46 - Phase 15 rectilinear Swiss Apple information hierarchy/, 'Phase 15 rectilinear hierarchy layer required');
+assert.match(css, /v1\.46\.1 - Phase 15 high-specificity rectilinear cascade lock/, 'Phase 15 must beat older high-specificity rounded !important rules');
+assert.match(html, /<main id="app">/, 'Phase 15 cascade lock requires main#app wrapper so high-specificity rectilinear rules apply');
+assert.match(css, /--font-readable: 'Inter'/, 'Phase 15 should use a readable sans for dense paragraph sections');
+assert.match(css, /\*,\n\*::before,\n\*::after \{\n  border-radius: 0 !important;/, 'Phase 15 should globally zero all visible corner radius');
+assert.match(css, /--hierarchy-page-title: clamp\(36px, 5\.4vw, 72px\)/, 'Phase 15 hierarchy title scale token required');
 assert.match(css, /--ui-accent: #13b9aa/, 'Unified palette should collapse accents to one restrained cyan signal');
 assert.match(css, /\.wk-hero \{ min-height: clamp\(480px, 68vh, 660px\)/, 'Today hero should be compacted from billboard scale');
 assert.match(css, /button, \.button-link,[\s\S]{0,520}border-radius: 0 !important/, 'Visible buttons and button-like CTAs must be square');

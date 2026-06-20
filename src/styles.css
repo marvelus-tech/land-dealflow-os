@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 :root {
   /* v1.5 light lead-engine system: Airtable structure + Wise money clarity + Apple readability */
   --bg: #f6f8f4;
@@ -10092,4 +10092,244 @@ body[data-active-view="today"] #command .wk-artifact p {
   body[data-active-view="today"] #command .wk-hero h1 { font-size: clamp(38px, 10vw, 48px) !important; line-height: 1.02 !important; }
   body[data-active-view="today"] #command .wk-artifact { min-height: 250px !important; gap: 14px !important; padding: 16px !important; }
   body[data-active-view="today"] #command .wk-core-sample { width: min(190px, 56vw) !important; height: min(190px, 56vw) !important; }
+}
+
+/* v1.46 - Phase 15 rectilinear Swiss Apple information hierarchy */
+:root {
+  --font-readable: 'Inter', 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+  --hierarchy-page-title: clamp(36px, 5.4vw, 72px);
+  --hierarchy-section-title: clamp(25px, 3vw, 42px);
+  --hierarchy-card-title: clamp(17px, 1.5vw, 22px);
+  --hierarchy-body: clamp(14px, .98vw, 16px);
+  --hierarchy-small: 12px;
+  --hierarchy-label: 10px;
+  --industrial-line: rgba(15, 23, 42, .125);
+  --industrial-line-strong: rgba(15, 23, 42, .24);
+  --industrial-column: rgba(19,185,170,.095);
+}
+
+/* Apple would not accept soft rounded-card soup in an information-dense operator product. */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+html,
+body,
+#app {
+  font-family: var(--font-readable) !important;
+  color: var(--ui-ink) !important;
+  background: var(--ui-bg) !important;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+main,
+.app-shell,
+.app-panel,
+.section,
+.source-page-section,
+.machine-panel,
+.builder-ops-panel,
+.validation-command,
+.contract-composer-panel,
+.contract-flow-workspace,
+#contract-composer,
+#execution-conveyor,
+#operator-session-mode {
+  border-color: var(--industrial-line) !important;
+  box-shadow: none !important;
+}
+
+body :where(p, li, dd, td, textarea, input, select, .body-copy, .hero-copy p, .section-heading p, .wk-kicker, .wk-hero p, .source-page-section p, .closing-flow-card p, .contract-field p, .active-market-summary p, .builder-context p, .validation-detail p) {
+  font-family: var(--font-readable) !important;
+  font-size: var(--hierarchy-body) !important;
+  line-height: 1.46 !important;
+  letter-spacing: -.011em !important;
+  color: var(--ui-body) !important;
+}
+
+body :where(h1,h2,h3,h4,.section-heading h1,.section-heading h2,.wk-hero h1,.wk-audit h2,.wk-section-head h2,.builder-ops-title h1,.active-market-summary strong,.selected-builder-card h3,.contract-document-title) {
+  font-family: var(--font-grotesk) !important;
+  color: var(--ui-ink) !important;
+  text-wrap: balance;
+  max-width: 16ch;
+}
+
+body :where(h1,.section-heading h1,.wk-hero h1,.builder-ops-title h1) {
+  font-size: var(--hierarchy-page-title) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+  font-weight: 680 !important;
+}
+
+body :where(h2,.section-heading h2,.wk-audit h2,.wk-section-head h2,.source-page-section h2,.contract-composer-panel h2) {
+  font-size: var(--hierarchy-section-title) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -.035em !important;
+  font-weight: 660 !important;
+}
+
+body :where(h3,h4,.card-title,.source-page-section h3,.builder-row b,.validation-builder-row b,.wk-call-row b,.closing-flow-card strong,.contract-field strong) {
+  font-size: var(--hierarchy-card-title) !important;
+  line-height: 1.16 !important;
+  letter-spacing: -.022em !important;
+  font-weight: 650 !important;
+}
+
+body :where(.eyebrow,.badge,.pill,.chip,.source-pill,.source-tag,.source-meta,.source-phase,.phase-label,.queue-score,.market-grade,.metric-label,.source-step span,.source-disclosure summary span,.wk-actions a,.wk-focus-card a,.tab-button,.state-filter,.market-toggle,.validation-status,.contract-step,.contract-meta,.print-meta,.label) {
+  font-family: var(--font-mono) !important;
+  font-size: var(--hierarchy-label) !important;
+  line-height: 1.15 !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: var(--ui-muted) !important;
+}
+
+body :where(strong,b,.metric-value,.mini-grid b,.deal-strip b,.vision-proof-strip strong,.money-stats strong,.builder-ops-metrics strong,.validation-metrics strong,.war-room-metrics strong,.title-metric-strip strong,.detail-grid strong) {
+  font-family: var(--font-grotesk) !important;
+  color: var(--ui-ink) !important;
+  letter-spacing: -.028em !important;
+  font-weight: 650 !important;
+}
+
+/* Replace card-within-card softness with industrial rules, bands, and data ledgers. */
+body :where(.card,.hero-deal-card,.call-tile,.side-panel div,.money-queue-panel,.call-script-panel,.outcome-panel,.money-call,.money-empty,.money-stats div,.intake-card,.buyer-first-lane,.buyer-first-card,.provider-tip,.script-grid div,.source-disclosure summary,.source-popover,.source-page-section,.machine-panel,.mini-disclosure,.mini-grid div,.deal-strip div,.deal-queue,.deal-detail,.deal-action,.queue-item,.detail-grid div,.next-action-card,.fit-card,.detail-disclosure,.call-row,.quality-grid div,.check-item,.scorecard-list,.fit-matrix,.feedback-loop,.call-notes,.followup-list,.script-box,.packet-economics,.risk-checklist,.memo-preview,.buyer-send-memo,.fabrication-guard,.lead-state-toolbar,.guard-stats,.engine-column,.risk-item,.weekly-market-card,.chapter-card,.infusion-card,.phase-detail-card,.seller-net-script-card,.buyer-feedback-capture,.operator-checklist,.operator-step,.builder-ops-header,.active-market-summary,.validation-next-card,.validation-focus-card,.seller-unlock-card,.builder-table-panel,.validation-builder-row,.buyer-call-card,.skiptrace-return-card,.execution-metrics div,.execution-stage,.execution-grid article,.execution-feedback-card,.execution-call-card,.phase7-capture-grid,.os8-next-card,.os8-metric,.os8-sprint-card,.os8-packet-card,.os8-step,.os8-gate,.contract-research-rail article,.contract-field input,.contract-field textarea,.contract-page-preview,.contract-document-experience,.title-packet-experience,.closing-flow-card,.title-card,.title-market-card,.source-priority-card,.normalization-tier,.permit-state-card) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border-color: var(--industrial-line) !important;
+  background-image: none !important;
+}
+
+body :where(.metric-card,.money-stats div,.builder-ops-metrics article,.builder-ops-metrics div,.validation-metrics article,.validation-metrics div,.war-room-metrics article,.war-room-metrics div,.vision-proof-strip div,.hero-metrics article,.deal-strip article,.title-metric-strip div,.detail-grid div,.execution-metrics div,.os8-metric) {
+  display: grid !important;
+  align-content: start !important;
+  gap: 5px !important;
+  min-height: 0 !important;
+  padding: 12px 13px !important;
+  border-left: 2px solid var(--industrial-column) !important;
+}
+
+body :where(.metric-card span,.money-stats span,.builder-ops-metrics span,.validation-metrics span,.war-room-metrics span,.vision-proof-strip span,.hero-metrics span,.deal-strip span,.title-metric-strip span,.detail-grid span,.execution-metrics span,.os8-metric span) {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  line-height: 1.1 !important;
+  letter-spacing: .08em !important;
+  color: var(--ui-muted) !important;
+  text-transform: uppercase !important;
+}
+
+body :where(.metric-card strong,.money-stats strong,.builder-ops-metrics strong,.validation-metrics strong,.war-room-metrics strong,.vision-proof-strip strong,.hero-metrics strong,.deal-strip strong,.title-metric-strip strong,.detail-grid strong,.execution-metrics strong,.os8-metric strong) {
+  font-size: clamp(20px, 2.15vw, 31px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.042em !important;
+}
+
+body :where(button,[type="button"],[type="submit"],.button,.button-link,a.button-link,.nav-cta,.tab-button,.filter,.state-filter,.outcome-chip,.market-toggle,.validation-call-button,.contact-icon-toggle,.builder-empty-state a,.compact-call-sheet a,.call-list a,.email-action,.copy-builder-email-address,.wk-actions a,.wk-focus-card a,[data-view],[data-select-money-call],[data-select-validation-builder],[data-toggle-validation-contact],[data-print-contract-packet],[data-contract-action]) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-height: 38px !important;
+  font-family: var(--font-grotesk) !important;
+  font-weight: 650 !important;
+  letter-spacing: -.006em !important;
+}
+
+/* Route cadence: no page gets a poster treatment unless it is actually the landing story. */
+body[data-active-view="today"] #command .wk-hero,
+body[data-active-view="builders"] .builder-ops-header,
+body[data-active-view="sources"] #sources-hub .section-heading,
+body[data-active-view="closing"] #closing-section .section-heading {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--industrial-line) !important;
+}
+
+body[data-active-view="today"] #command .wk-hero h1 {
+  max-width: 12ch !important;
+  font-size: clamp(36px, 6.2vw, 64px) !important;
+}
+body[data-active-view="today"] #command .wk-artifact {
+  border-left: 2px solid var(--ui-accent) !important;
+}
+body[data-active-view="builders"] :where(.builder-row,.validation-builder-row,.wk-call-row) {
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  border-left: 2px solid transparent !important;
+}
+body[data-active-view="builders"] :where(.builder-row.active,.validation-builder-row.active,.wk-call-row.active) {
+  border-left-color: var(--ui-accent) !important;
+  background: var(--ui-paper-soft) !important;
+}
+body[data-active-view="sources"] #sources-hub :where(.source-priority-card,.source-step,.source-row,.source-card,.priority-row,.source-list article) {
+  border-left: 2px solid var(--industrial-column) !important;
+}
+body[data-active-view="closing"] #closing-section :where(.closing-flow-card,.title-card,.contract-field,.contract-page-preview,.contract-document-experience,.title-packet-experience) {
+  border-left: 2px solid var(--industrial-column) !important;
+}
+
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 720px) {
+  :root {
+    --hierarchy-page-title: clamp(32px, 9.2vw, 44px);
+    --hierarchy-section-title: clamp(24px, 6.8vw, 32px);
+    --hierarchy-card-title: clamp(16px, 4.4vw, 20px);
+    --hierarchy-body: 14px;
+  }
+  main, .app-shell { padding-inline: 10px !important; }
+  body :where(.app-panel,.section,.builder-ops-header,.source-page-section,.machine-panel,.contract-composer-panel,.contract-flow-workspace,#operator-session-mode) {
+    padding-inline: 14px !important;
+  }
+  body :where(h1,.section-heading h1,.wk-hero h1,.builder-ops-title h1) {
+    max-width: 13ch !important;
+    letter-spacing: -.038em !important;
+  }
+  body :where(.metric-card,.money-stats div,.builder-ops-metrics article,.builder-ops-metrics div,.validation-metrics article,.validation-metrics div,.war-room-metrics article,.war-room-metrics div,.vision-proof-strip div,.hero-metrics article,.deal-strip article,.title-metric-strip div,.detail-grid div,.execution-metrics div,.os8-metric) {
+    padding: 10px 11px !important;
+  }
+  body :where(.eyebrow,.badge,.pill,.chip,.source-pill,.source-tag,.source-meta,.source-phase,.phase-label,.queue-score,.market-grade,.metric-label,.source-step span,.source-disclosure summary span,.tab-button,.state-filter,.market-toggle) {
+    letter-spacing: .055em !important;
+  }
+}
+
+/* v1.46.1 - Phase 15 high-specificity rectilinear cascade lock */
+#app,
+#app *,
+#app *::before,
+#app *::after,
+#app .nav,
+#app .nav *,
+#app #command,
+#app #command *,
+#app #command *::before,
+#app #command *::after,
+#app #parcels-section,
+#app #parcels-section *,
+#app #builder-list-section,
+#app #builder-list-section *,
+#app #closing-section,
+#app #closing-section *,
+#app #sources-hub,
+#app #sources-hub *,
+#app #workspace,
+#app #workspace * {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.os8-session,.os8-next-card,.os8-metric,.os8-sprint-card,.os8-packet-card,.contract-flow-workspace,.contract-document-experience,.title-packet-experience,.source-disclosure summary,.source-popover,.builder-ops-header,.market-toggle-grid,.market-toggle,.active-market-summary,.validation-command,.builder-table-panel,.validation-builder-row,.buyer-call-card,.execution-conveyor-panel,.execution-stage,.execution-grid article,.execution-call-card,.execution-feedback-card) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.radial-meter,.probability-meter,.recipient-dot,.title-check > span,.timeline-node::before,.operator-step span,.brand-mark) {
+  border-radius: 0 !important;
 }

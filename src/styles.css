@@ -12386,3 +12386,132 @@ header.nav nav.app-tabs button.tab-button.active {
     display: none !important;
   }
 }
+
+/* v1.53 - Phase 21 builder contact ledger rail */
+.builder-ops-header .market-toggle {
+  align-content: start !important;
+  gap: 5px !important;
+  min-height: 116px !important;
+  padding: 12px 10px 11px !important;
+  overflow: hidden !important;
+}
+.builder-ops-header .market-toggle.active {
+  background: rgba(15,95,68,.082) !important;
+  border-color: rgba(15,95,68,.18) !important;
+  color: var(--phase20-apple-ink, #101715) !important;
+}
+.builder-ops-header .market-toggle .market-builder-total {
+  margin-top: 6px !important;
+  color: var(--phase20-apple-ink, #101715) !important;
+  font: 760 12px/1.12 var(--font-heavy-text, var(--font-grotesk)) !important;
+  letter-spacing: -.022em !important;
+  opacity: 1 !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy {
+  display: flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  min-width: 0 !important;
+  margin-top: 1px !important;
+  color: var(--phase20-apple-muted, #68736f) !important;
+  font: 720 10px/1.1 var(--font-heavy-text, var(--font-grotesk)) !important;
+  letter-spacing: -.012em !important;
+  text-transform: none !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy b {
+  min-width: 0 !important;
+  color: inherit !important;
+  font: inherit !important;
+  white-space: nowrap !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy b:first-child {
+  color: var(--phase20-forest, #0f5f44) !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy i {
+  color: rgba(16,23,21,.24) !important;
+  font-style: normal !important;
+}
+.builder-ops-header .market-toggle .market-contact-rail {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: 3px !important;
+  margin-top: auto !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background: rgba(16,23,21,.105) !important;
+  box-shadow: none !important;
+}
+.builder-ops-header .market-toggle .market-contact-rail i {
+  position: absolute !important;
+  inset: 0 auto 0 0 !important;
+  display: block !important;
+  width: var(--contact-progress, 0%) !important;
+  min-width: 0 !important;
+  border-radius: inherit !important;
+  background: linear-gradient(90deg, var(--phase20-forest, #0f5f44), #174134) !important;
+}
+.builder-ops-header .market-toggle:not(.active) .market-contact-rail i {
+  background: rgba(16,23,21,.58) !important;
+}
+@media (max-width: 760px) {
+  .builder-ops-header .market-toggle {
+    min-height: 92px !important;
+    padding: 9px 6px 8px !important;
+    text-align: left !important;
+  }
+  .builder-ops-header .market-toggle .market-builder-total {
+    margin-top: 4px !important;
+    font-size: 10.5px !important;
+  }
+  .builder-ops-header .market-toggle .market-contact-copy {
+    display: grid !important;
+    gap: 2px !important;
+    font-size: 9.25px !important;
+    line-height: 1.08 !important;
+  }
+  .builder-ops-header .market-toggle .market-contact-copy i { display: none !important; }
+  .builder-ops-header .market-toggle .market-contact-rail {
+    height: 2px !important;
+    margin-top: 7px !important;
+  }
+}
+
+/* v1.53.1 - Phase 21 screenshot correction: readable two-line ledger cards */
+.builder-ops-header .market-toggle .market-contact-copy {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 2px !important;
+  align-items: start !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy i {
+  display: none !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy b {
+  display: block !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+.builder-ops-header .market-toggle .market-contact-copy b:last-child {
+  color: var(--phase20-apple-body, #39423f) !important;
+}
+@media (max-width: 760px) {
+  #app :where(.market-toggle-grid),
+  .builder-ops-header .market-toggle-grid {
+    grid-template-columns: repeat(5, minmax(112px, 1fr)) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x proximity !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .builder-ops-header .market-toggle {
+    scroll-snap-align: start !important;
+    min-height: 104px !important;
+    padding: 10px 9px 8px !important;
+  }
+  .builder-ops-header .market-toggle .market-contact-copy b {
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+}

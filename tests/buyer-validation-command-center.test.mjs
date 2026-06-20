@@ -180,7 +180,13 @@ assert.match(appSource, /class="phase7-ask"/, 'Phase 7 seller cockpit should cap
 assert.match(appSource, /class="phase7-language"/, 'Phase 7 seller cockpit should preserve exact seller language');
 assert.match(appSource, /data-download-execution-memo/, 'Phase 7 seller cockpit should export the selected seller buyer-send memo');
 assert.match(stylesSource, /v1\.37 - Phase 7 award-grade seller call-to-close cockpit/, 'Phase 7 award-grade visual system should be appended after older conveyor styles');
-assert.match(coreSource, /export function buildOperatorSessionMode/, 'Phase 8 should expose a deterministic operator session builder');
+assert.match(appSource, /data-builder-market-state/, 'Builders state selector should keep state-specific queue switching');
+assert.match(appSource, /function builderContactLedgerForRows\(rows = \[\]\)/, 'Builders state cards need a contact ledger helper');
+assert.match(appSource, /const reached = center\.items\.filter[\s\S]{0,360}outreach\.phone \|\| outreach\.email \|\| row\.lastContacted/, 'contact ledger should count any logged call, email, or last-contact attempt as reached');
+assert.match(appSource, /market-builder-total[\s\S]{0,180}\$\{state\.contactLedger\.total\} builders/, 'state card should preserve total builder supply as a builders count');
+assert.match(appSource, /market-contact-copy[\s\S]{0,160}\$\{h\(state\.contactLedger\.reached\)\} reached[\s\S]{0,140}\$\{h\(state\.contactLedger\.open\)\} open/, 'state card should expose reached/open contact inventory');
+assert.match(appSource, /class="market-contact-rail" role="progressbar"[\s\S]{0,260}--contact-progress:\$\{h\(state\.contactLedger\.percent\)\}%/, 'state card should include a semantic contact ledger rail with safe percent fill');
+assert.match(appSource, /aria-label="\$\{h\(`\$\{state\.contactLedger\.reached\} of \$\{state\.contactLedger\.total\}/, 'contact rail should carry accessible reached fraction copy');
 assert.match(appSource, /Operator session/, 'Today page should surface the operator sprint without implementation-phase residue');
 assert.doesNotMatch(appSource, /Phase 8 · real operator session mode/, 'Today page should not expose implementation-phase residue in visible copy');
 assert.match(appSource, /Deal packet assembly gate/, 'Phase 8 should keep deal packet readiness visible in the operator sprint');

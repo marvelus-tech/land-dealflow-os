@@ -1096,6 +1096,19 @@ function getStateBuilderSummary(stateCode) {
   };
 }
 
+function builderContactLedgerForRows(rows = []) {
+  const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
+  const total = center.items.length;
+  const reached = center.items.filter(row => {
+    const outreach = validationOutreach(row);
+    const status = String(row.callStatus || '').toLowerCase();
+    return Boolean(outreach.phone || outreach.email || row.lastContacted || (status && status !== 'not_called'));
+  }).length;
+  const open = Math.max(0, total - reached);
+  const percent = total ? Math.round((reached / total) * 100) : 0;
+  return { total, reached, open, percent };
+}
+
 function getSelectedBuilder(builders = getPermitBuilders()) {
   if (selectedBuilderId) {
     const found = builders.find(builder => builder.builderId === selectedBuilderId);
@@ -1462,14 +1475,17 @@ function renderBuilderListEnginePanel(options = {}) {
     const isLive = rows.length > 0;
     const isActive = stateCode === selectedBuilderMarketState;
     const builderCount = rows.length;
+    const contactLedger = builderContactLedgerForRows(rows);
     const status = isLive ? `${builderCount} live builders` : (sequence.label || 'resource well');
     const marketLabel = marketSummary.entries.map(item => item.marketName).join(' · ') || markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
-    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, status, marketLabel, rows, summary: marketSummary };
+    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, contactLedger, status, marketLabel, rows, summary: marketSummary };
   });
   const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span>${h(state.stateCode)}</span>
     <strong>${h(state.label)}</strong>
-    <em>${h(state.isLive ? `${state.builderCount} live` : 'Ready')}</em>
+    <em class="market-builder-total">${h(state.isLive ? `${state.contactLedger.total} builders` : 'Ready')}</em>
+    ${state.isLive ? `<small class="market-contact-copy"><b>${h(state.contactLedger.reached)} reached</b><i>·</i><b>${h(state.contactLedger.open)} open</b></small>
+    <span class="market-contact-rail" role="progressbar" aria-label="${h(`${state.contactLedger.reached} of ${state.contactLedger.total} ${state.label} builders reached`)}" aria-valuemin="0" aria-valuemax="${h(state.contactLedger.total)}" aria-valuenow="${h(state.contactLedger.reached)}" style="--contact-progress:${h(state.contactLedger.percent)}%"><i></i></span>` : ''}
   </button>`).join('');
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
   const activeBuilders = asArray(activeState.rows);

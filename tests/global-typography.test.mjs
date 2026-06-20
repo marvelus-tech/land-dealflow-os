@@ -53,6 +53,10 @@ assert.match(css, /v1\.51\.3 - Phase 19 call\/email contact indicators/, 'Phase 
 assert.match(css, /v1\.52 - Phase 20 pure Apple-aesthetic hierarchy refinement/, 'Phase 20 pure Apple-aesthetic refinement marker required');
 assert.match(css, /v1\.52\.1 - Phase 20 screenshot correction: no active-tab slabs, no dark sticky dock/, 'Phase 20 should correct screenshot-found nav slabs and dark mobile dock');
 assert.match(css, /v1\.52\.2 - Phase 20 mobile chrome hardening/, 'Phase 20 should harden mobile chrome after screenshot QA');
+assert.match(css, /v1\.53 - Phase 21 builder contact ledger rail/, 'Phase 21 should add the Builders state contact ledger rail styling');
+assert.match(css, /v1\.53\.1 - Phase 21 screenshot correction: readable two-line ledger cards/, 'Phase 21 should keep ledger-card copy readable after screenshot QA');
+assert.match(css, /\.builder-ops-header \.market-toggle \.market-contact-rail[\s\S]{0,260}background: rgba\(16,23,21,\.105\)/, 'contact rail should use a quiet open segment instead of a busy progress bar');
+assert.match(css, /\.builder-ops-header \.market-toggle \.market-contact-rail i[\s\S]{0,260}width: var\(--contact-progress, 0%\)/, 'contact rail fill should be driven by state-specific progress percentage');
 assert.match(css, /--apple-review-rule-phase20: pure-apple-canvas-no-slabs-no-decorative-boxes/, 'Phase 20 should encode the Apple review rule against slabs and decorative boxes');
 assert.match(css, /--phase20-measure: 62ch/, 'Phase 20 should tighten dense reading measure for sensor-friendly long sessions');
 assert.match(css, /navigation is orientation, never a competing control slab/, 'Phase 20 should quiet nav into orientation rather than a control slab');

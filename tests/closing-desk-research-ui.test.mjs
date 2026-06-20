@@ -41,11 +41,16 @@ for (const phrase of ['assignment-friendly', 'title-ready', 'wire-instruction', 
   assert.ok(!visibleClosingData.includes(phrase), `Closing Desk visible copy should not use hyphenated phrase: ${phrase}`);
 }
 assert.match(publicClosingBundle, /Closing Desk is the information hub/, 'Closing Desk must frame the page as the hub itself');
-assert.match(appSource, /Phase 9 · contract packet composer/, 'Closing route should include Phase 9 contract packet composer');
+assert.match(appSource, /Send Contract/, 'Contract composer should resemble a send-contract preparation flow');
+assert.match(appSource, /Review & Fill Contract Fields/, 'Contract composer should expose a document-fill review strip');
+assert.match(appSource, /\['Prepare', 'active'\]/, 'Contract composer should include active prepare stepper state');
+assert.match(appSource, /class="doc-fill/, 'Contract composer should place inputs inline on the document canvas');
+assert.match(appSource, /Thumbnails/, 'Contract composer should include a document thumbnail rail');
 assert.match(appSource, /id="contract-packet-form"/, 'Contract composer should expose structured input fields');
 assert.match(appSource, /id="export-contract-packet"/, 'Contract packet should be exportable on demand');
 assert.match(appSource, /contractPackets/, 'Contract packet should be stored in workspace local storage');
-assert.match(css, /v1\.39 - Phase 9 contract packet composer/, 'Phase 9 composer styles required');
+assert.match(css, /v1\.39 - Phase 9 contract packet composer/, 'Phase 9 composer base styles required');
+assert.match(css, /v1\.40 - Phase 9 fillable document send UX/, 'Phase 9 fillable document send UX styles required');
 const packet = buildContractPacketDraft({ propertyState: 'TN', propertyAddress: '137 Rogers Lane', sellerName: 'Seller', buyerName: 'MarvelUs Intel LLC', purchasePrice: '65000' });
 assert.equal(packet.status, 'draft-needs-attorney-review', 'Packet must not claim attorney review without reviewer/date');
 assert.equal(packet.sellerAgreement.title, 'Vacant Land Purchase Agreement');

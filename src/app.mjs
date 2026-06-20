@@ -665,42 +665,79 @@ function currentContractDraftInputs(parcel = {}) {
 function renderContractComposer(parcel = {}) {
   const inputs = currentContractDraftInputs(parcel);
   const packet = buildContractPacketDraft(inputs);
-  const fieldGroups = [
-    ['effectiveDate', 'Effective date'], ['buyerName', 'Buyer / assignor'], ['sellerName', 'Seller'], ['assigneeName', 'Builder / assignee'],
-    ['propertyAddress', 'Property address'], ['city', 'City'], ['county', 'County'], ['propertyState', 'State'], ['zip', 'ZIP'], ['parcelId', 'Parcel ID'],
-    ['legalDescription', 'Legal description'], ['purchasePrice', 'Seller purchase price'], ['earnestMoney', 'Seller earnest money'], ['closingAgent', 'Closing agent'],
-    ['feasibilityDeadline', 'Feasibility deadline'], ['closingDate', 'Closing date'], ['closingCostsPayer', 'Closing costs payer'], ['assignability', 'Assignability language'],
-    ['originalPurchasePrice', 'Original purchase price'], ['assignmentFee', 'Assignment fee'], ['assigneePurchasePrice', 'Assignee purchase price'], ['earnestMoneyDue', 'Assignee earnest money'],
-    ['earnestMoneyDeadline', 'Earnest money deadline'], ['titleCompany', 'Title company'], ['settlementStatementApproval', 'Settlement statement rule'],
-    ['additionalTerms', 'Additional terms'], ['attorneyReviewer', 'Attorney reviewer'], ['attorneyReviewDate', 'Attorney review date'],
-  ];
-  const fields = fieldGroups.map(([name, label]) => {
-    const value = inputs[name] || '';
-    const isLong = ['legalDescription', 'additionalTerms', 'settlementStatementApproval', 'feasibilityDeadline', 'assignability'].includes(name);
-    return `<label class="contract-field ${isLong ? 'wide' : ''}"><span>${h(label)}</span>${isLong ? `<textarea name="${h(name)}" rows="3">${h(value)}</textarea>` : `<input name="${h(name)}" value="${h(value)}">`}</label>`;
-  }).join('');
-  const sellerPreview = renderContractDocumentText(packet.sellerAgreement, packet.inputs).split('\n').slice(0, 24).join('\n');
-  const buyerPreview = renderContractDocumentText(packet.buyerAssignment, packet.inputs).split('\n').slice(0, 24).join('\n');
-  return `<section id="contract-composer" class="contract-composer-panel" aria-label="Buyer and seller contract composer">
-    <div class="contract-composer-hero">
-      <span class="eyebrow">Phase 9 · contract packet composer</span>
-      <h2>One page seller contract. One page buyer assignment. Stored, exportable, gated by counsel.</h2>
-      <p>The screenshot deciphers into the same operating spine: parties, property, price, as is condition, feasibility/title escape, closing office, assignability, additional terms, signatures. We recreate that as structured fields, but the app will not pretend one form is lawyer verified for all 50 states.</p>
-      <div class="badge-stack">${badge(packet.status, packet.attorneyReviewed ? 'good' : 'warn')}${badge(`${packet.completion}% filled`, 'neutral')}${badge(packet.stateMode, 'warn')}</div>
-    </div>
-    <div class="contract-research-rail">
-      <article><b>Deciphered from image</b><p>Left form: Land Sale Agreement with date, buyer, seller, property, purchase price, as is condition, feasibility study, closing agent, earnest money, taxes, closing date, title free of liens, additional terms, signatures. Right form: Offer to Purchase and Contract - Vacant Lot/Land with seller, buyer, property/address/PIN, purchase price line items, financing/loan style checkboxes, seller concessions, due diligence fee, settlement date, broker/association form markers.</p></article>
-      <article><b>Research guardrail</b><p>Public forms and examples support the field architecture, not universal legal sufficiency. The contract status stays draft until a property state attorney and the closing/title provider approve the exact wording.</p></article>
-    </div>
-    <form id="contract-packet-form" class="contract-form-grid">
-      ${fields}
-      <div class="contract-action-row"><button type="button" id="save-contract-packet">Save packet</button><button type="button" class="secondary" id="export-contract-packet">Export Markdown</button><button type="button" class="secondary" id="load-selected-contract-deal">Load selected deal</button><span id="contract-packet-status">${h((workspace.contractPackets || []).length)} saved packet(s)</span></div>
+  const inline = (name, label, className = '') => `<label class="doc-fill ${className}" title="${h(label)}"><span>${h(label)}</span><input name="${h(name)}" value="${h(inputs[name] || '')}" placeholder="${h(label)}"></label>`;
+  const area = (name, label, className = '') => `<label class="doc-fill doc-fill-area ${className}" title="${h(label)}"><span>${h(label)}</span><textarea name="${h(name)}" rows="2" placeholder="${h(label)}">${h(inputs[name] || '')}</textarea></label>`;
+  const hiddenCarry = ['city','county','zip','legalDescription','includedRights','earnestMoneyHolder','taxProration','deedType','underlyingSellerName','earnestMoneyDue','earnestMoneyDeadline','inspectionAcknowledgement','sellerSignature','buyerSignature','assignorSignature','assigneeSignature'].map(name => `<input type="hidden" name="${h(name)}" value="${h(inputs[name] || '')}">`).join('');
+  const toolbarItems = ['Text','Initial','Signature','Date','Checkbox','Radio','Image','Attach','Calendar','Card'];
+  const stepItems = [
+    ['Details', 'complete'],
+    ['Prepare', 'active'],
+    ['Preview & Send', 'locked'],
+  ].map(([label, state], index) => `<span class="contract-step ${state}">${state === 'complete' ? '✓' : index + 1}<b>${h(label)}</b></span>`).join('<i></i>');
+  const completionMissing = ['propertyAddress','sellerName','buyerName','purchasePrice','propertyState','attorneyReviewer','attorneyReviewDate'].filter(name => !String(inputs[name] || '').trim());
+  return `<section id="contract-composer" class="contract-composer-panel contract-send-workspace" aria-label="Buyer and seller contract composer">
+    <form id="contract-packet-form" class="contract-send-form">
+      ${hiddenCarry}
+      <div class="contract-send-topbar">
+        <div class="contract-backline"><span aria-hidden="true">←</span><b>Send Contract</b></div>
+        <button type="button" class="contract-close-ghost" aria-label="Close contract composer">×</button>
+      </div>
+      <div class="contract-stepper" aria-label="Contract send progress">${stepItems}</div>
+      <div class="contract-review-strip"><span>Review & Fill Contract Fields</span><a href="#contract-composer">Open in new tab</a></div>
+      <div class="contract-document-shell">
+        <div class="contract-document-head">
+          <div><span>‹</span><b>${h(inputs.propertyAddress || 'Selected land deal')} - Seller contract</b><em>(Step 2/3)</em></div>
+          <button type="button" class="secondary" id="load-selected-contract-deal">Load selected deal</button>
+        </div>
+        <label class="recipient-select"><span class="recipient-dot"></span><select name="activeRecipient"><option>${h(inputs.sellerName || 'Seller')}</option><option>${h(inputs.buyerName || 'Buyer / Assignor')}</option><option>${h(inputs.assigneeName || 'Builder / Assignee')}</option></select></label>
+        <div class="contract-stage">
+          <aside class="contract-page-rail" aria-label="Contract thumbnails"><button type="button" class="active">Seller<br>01</button><button type="button">Buyer<br>02</button><button type="button">Letter<br>03</button></aside>
+          <div class="contract-doc-scroll">
+            <article class="contract-paper seller-paper" aria-label="Fillable seller land sale agreement">
+              <h3>Land Sale Agreement</h3>
+              <p class="doc-line">This Contract dated ${inline('effectiveDate', 'MM/dd/yyyy', 'date-field')} in which Buyer: ${inline('buyerName', 'Buyer name', 'long-field')} and/or assigns, offers to purchase from Seller(s): ${inline('sellerName', 'Seller name', 'medium-field')} the following described real estate, together with all appurtenant rights, located at:</p>
+              ${inline('propertyAddress', 'Property address', 'address-field')}
+              <p class="doc-kicker">Seller agrees:</p>
+              <ol class="contract-clauses">
+                <li>The purchase price is to be $ ${inline('purchasePrice', 'Purchase price', 'money-field')} paid in full to the seller at closing.</li>
+                <li>The conditions of this purchase are as follows:
+                  <ol type="a">
+                    <li>Property is sold in <b>AS IS</b> condition with no warranties made by seller, subject to buyer feasibility, title, survey, access, utilities and buildability review.</li>
+                    <li>If buyer is unable to complete purchase because feasibility or title is not acceptable before the review deadline, buyer may cancel by written notice, subject to property state attorney approval.</li>
+                    <li>Buyer will open closing with ${inline('closingAgent', 'Closing agent', 'medium-field')} and deposit earnest money of $ ${inline('earnestMoney', 'Earnest money', 'money-field')} as approved by title/attorney.</li>
+                  </ol>
+                </li>
+                <li>Closing will occur on or before ${inline('closingDate', 'Closing date', 'date-field')} and closing costs will be paid by ${inline('closingCostsPayer', 'Closing costs payer', 'medium-field')}.</li>
+                <li>Assignability: ${inline('assignability', 'Assignability language', 'wide-inline')}.</li>
+              </ol>
+              ${area('additionalTerms', 'Additional terms / attorney edits', 'full-line')}
+            </article>
+            <article class="contract-paper buyer-paper" aria-label="Fillable buyer assignment agreement">
+              <h3>Assignment of Vacant Land Purchase Agreement</h3>
+              <p class="doc-line">Assignor ${inline('assignorName', 'Assignor', 'medium-field')} assigns the buyer position to Assignee ${inline('assigneeName', 'Builder / assignee', 'medium-field')} for parcel ${inline('parcelId', 'Parcel ID', 'medium-field')} in ${inline('propertyState', 'State', 'state-field')}.</p>
+              <ol class="contract-clauses">
+                <li>Original seller contract price: $ ${inline('originalPurchasePrice', 'Original price', 'money-field')}.</li>
+                <li>Assignment fee: $ ${inline('assignmentFee', 'Assignment fee', 'money-field')} payable only through the closing statement unless counsel/title approves otherwise.</li>
+                <li>Assignee total purchase price: $ ${inline('assigneePurchasePrice', 'Assignee price', 'money-field')}.</li>
+                <li>Title company: ${inline('titleCompany', 'Title company', 'long-field')}.</li>
+                <li>Settlement statement rule: ${inline('settlementStatementApproval', 'Settlement rule', 'wide-inline')}.</li>
+              </ol>
+              <div class="attorney-gate-inline">
+                ${inline('attorneyReviewer', 'Attorney reviewer', 'medium-field')}
+                ${inline('attorneyReviewDate', 'Review date', 'date-field')}
+              </div>
+            </article>
+          </div>
+          <aside class="thumbnail-tab"><span>▣</span><b>Thumbnails</b></aside>
+        </div>
+        <div class="contract-fill-toolbar" aria-label="Field tools">${toolbarItems.map(item => `<button type="button">${h(item)}</button>`).join('')}</div>
+      </div>
+      <div class="contract-send-footer">
+        <span>Step 2 of 3 · ${completionMissing.length ? `${completionMissing.length} required gate(s) left` : 'ready for preview'}</span>
+        <div><button type="button" id="save-contract-packet">Save packet</button><button type="button" id="export-contract-packet">Next / Export</button></div>
+        <strong id="contract-packet-status">${h((workspace.contractPackets || []).length)} saved packet(s) · ${h(packet.status)}</strong>
+      </div>
     </form>
-    <div class="contract-preview-grid">
-      <article class="contract-page-preview"><span>Review letter</span><pre>${h(`Subject: ${packet.coverLetter.subject}\n\n${packet.coverLetter.body}`)}</pre></article>
-      <article class="contract-page-preview"><span>Seller one page</span><pre>${h(sellerPreview)}</pre></article>
-      <article class="contract-page-preview"><span>Buyer one page</span><pre>${h(buyerPreview)}</pre></article>
-    </div>
   </section>`;
 }
 

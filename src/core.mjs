@@ -2084,7 +2084,14 @@ export function generateBuilderEmail(builder = {}) {
     ? `${company} shows ${recentBuilds} recent residential build signals${permitNumber || permitAddress ? `, including ${permitNumber || 'a recent permit'} near ${permitAddress || market}` : ''}.`
     : `${company} shows recent residential permit/build activity in ${market}.`;
   const subject = 'Off-Market Lots for Builders - Let’s Connect';
-  const body = `Good morning,\n\nMy name is Okeito, and I run MarvelUs Intel LLC. We specialize in sourcing off-market lots at a discount for builders.\n\nI’m tracking ${sourcePhrase} builder activity in ${market}. ${proofClause}\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. What zip codes/subdivisions, lot sizes, max lot price, utility/access requirements, and deal killers should I screen for before sending anything?\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nLooking forward to working together!\n\nOkeito S.\nMarvelUs Intel LLC`;
+  const buyBoxQuestions = [
+    'What zip codes/subdivisions?',
+    'Lot sizes?',
+    'Max lot price?',
+    'Utility/access requirements?',
+    'Any deal killers I should screen for before sending anything?',
+  ].map(question => `- ${question}`).join('\n');
+  const body = `Good morning,\n\nMy name is Okeito, and I run MarvelUs Intel LLC. We specialize in sourcing off-market lots at a discount for builders.\n\nI’m tracking ${sourcePhrase} builder activity in ${market}. ${proofClause}\n\nI’m building a small list of off-market lots and only want to send properties that fit your actual buy box. Could you send me your criteria on these?\n\n${buyBoxQuestions}\n\nIf there is a better land/acquisitions contact, who should I send parcel packages to?\n\nLooking forward to working together!\n\nOkeito S.\nMarvelUs Intel LLC`;
   return { subject, body };
 }
 

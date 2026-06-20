@@ -50,7 +50,8 @@ assert.match(email.body, /My name is Okeito, and I run MarvelUs Intel LLC/);
 assert.match(email.body, /public KGIS permit-backed builder activity in Knoxville/);
 assert.match(email.body, /Smithbilt Homes shows 70 recent residential build signals, including 25-B1211 near 8362 LAKE VILLAGE CIR/);
 assert.match(email.body, /actual buy box/);
-assert.match(email.body, /zip codes\/subdivisions, lot sizes, max lot price, utility\/access requirements, and deal killers/);
+assert.match(email.body, /Could you send me your criteria on these\?/);
+assert.match(email.body, /- What zip codes\/subdivisions\?\n- Lot sizes\?\n- Max lot price\?\n- Utility\/access requirements\?\n- Any deal killers I should screen for before sending anything\?/);
 assert.match(email.body, /better land\/acquisitions contact/);
 assert.match(email.body, /Okeito S\.\nMarvelUs Intel LLC/);
 

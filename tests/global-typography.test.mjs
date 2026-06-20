@@ -50,6 +50,15 @@ assert.match(css, /v1\.51 - Phase 19 premium forest\/gold calm system and border
 assert.match(css, /v1\.51\.1 - Phase 19 screenshot correction: no dark control slabs, no clipped decision labels/, 'Phase 19 should correct screenshot-found dark controls and clipped decision labels');
 assert.match(css, /v1\.51\.2 - Phase 19 mobile remove rail collisions and source-row rule noise/, 'Phase 19 should remove mobile rail collisions and excess source row rules after screenshot QA');
 assert.match(css, /v1\.51\.3 - Phase 19 call\/email contact indicators/, 'Phase 19 should style call/email and called/emailed indicators as readable state chips');
+assert.match(css, /v1\.52 - Phase 20 pure Apple-aesthetic hierarchy refinement/, 'Phase 20 pure Apple-aesthetic refinement marker required');
+assert.match(css, /v1\.52\.1 - Phase 20 screenshot correction: no active-tab slabs, no dark sticky dock/, 'Phase 20 should correct screenshot-found nav slabs and dark mobile dock');
+assert.match(css, /v1\.52\.2 - Phase 20 mobile chrome hardening/, 'Phase 20 should harden mobile chrome after screenshot QA');
+assert.match(css, /--apple-review-rule-phase20: pure-apple-canvas-no-slabs-no-decorative-boxes/, 'Phase 20 should encode the Apple review rule against slabs and decorative boxes');
+assert.match(css, /--phase20-measure: 62ch/, 'Phase 20 should tighten dense reading measure for sensor-friendly long sessions');
+assert.match(css, /navigation is orientation, never a competing control slab/, 'Phase 20 should quiet nav into orientation rather than a control slab');
+assert.match(css, /#app :where\(\.wk-hero,[\s\S]{0,480}background: transparent !important;[\s\S]{0,280}box-shadow: none !important/, 'Phase 20 should remove decorative section slabs from the Apple canvas');
+assert.match(css, /body\[data-active-view="today"\] #command \.wk-actions[\s\S]{0,420}border-top: 1px solid rgba\(15,95,68,\.22\)/, 'Phase 20 should turn Today actions into quiet native rows');
+assert.match(css, /Final route isolation guard after Phase 20 product-wide layout overrides/, 'Phase 20 should preserve route isolation after product-wide overrides');
 assert.match(css, /--brand-forest-900: #0d3328/, 'Phase 19 should define a deep accessible forest primary brand color');
 assert.match(css, /--brand-gold-700: #7c5311/, 'Phase 19 should define a contrast-safe gold highlight color');
 assert.match(css, /--purposeful-boundaries-only: true/, 'Phase 19 should encode the no-purposeless-borders rule');

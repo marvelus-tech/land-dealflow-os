@@ -6724,3 +6724,330 @@ body[data-active-view="today"] #command .wk-section-head h2 {
     max-width: 8.6ch !important;
   }
 }
+
+
+/* v1.30 - tech landscape pivot: not editorial, a terrain intelligence system */
+:root {
+  --terrain-bg: #eaf0e5;
+  --terrain-ink: #101817;
+  --terrain-muted: #52645d;
+  --terrain-line: rgba(16,24,23,.16);
+  --terrain-glow: #8bff70;
+  --terrain-blue: #3cc7ff;
+  --terrain-olive: #446b32;
+  --terrain-sand: #d8c9ab;
+}
+body[data-active-view="today"] {
+  background:
+    radial-gradient(circle at 82% 10%, rgba(60,199,255,.22), transparent 28rem),
+    radial-gradient(circle at 14% 78%, rgba(139,255,112,.18), transparent 28rem),
+    linear-gradient(rgba(16,24,23,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,24,23,.04) 1px, transparent 1px),
+    linear-gradient(180deg, #f7f7ef 0%, var(--terrain-bg) 58%, #d8ddcf 100%) !important;
+  background-size: auto, auto, 40px 40px, 40px 40px, auto !important;
+}
+body[data-active-view="today"] .nav {
+  background: rgba(245,247,239,.78) !important;
+  border-color: rgba(16,24,23,.16) !important;
+}
+body[data-active-view="today"] .tab-button.active {
+  background: #dff5c9 !important;
+  color: var(--terrain-ink) !important;
+  box-shadow: inset 0 -3px 0 var(--terrain-olive) !important;
+}
+body[data-active-view="today"] #command .wk-hero {
+  grid-template-columns: minmax(0, .96fr) minmax(410px, .88fr) !important;
+  min-height: clamp(640px, 80vh, 900px) !important;
+  background:
+    linear-gradient(110deg, rgba(246,248,238,.95) 0%, rgba(234,240,229,.92) 50%, rgba(212,224,205,.82) 100%),
+    radial-gradient(circle at 78% 28%, rgba(60,199,255,.18), transparent 26rem),
+    radial-gradient(circle at 74% 70%, rgba(139,255,112,.18), transparent 24rem) !important;
+  color: var(--terrain-ink) !important;
+  border-color: rgba(16,24,23,.18) !important;
+}
+body[data-active-view="today"] #command .wk-hero::before {
+  inset: 18px !important;
+  border-color: rgba(16,24,23,.14) !important;
+  background:
+    linear-gradient(90deg, rgba(16,24,23,.06) 1px, transparent 1px),
+    linear-gradient(rgba(16,24,23,.055) 1px, transparent 1px),
+    repeating-linear-gradient(155deg, transparent 0 44px, rgba(68,107,50,.08) 45px, transparent 48px) !important;
+  background-size: 72px 72px, 72px 72px, auto !important;
+}
+body[data-active-view="today"] #command .wk-hero::after {
+  opacity: .75 !important;
+  background-image:
+    linear-gradient(168deg, transparent 0 52%, rgba(68,107,50,.24) 52.1% 52.35%, transparent 52.7% 100%),
+    linear-gradient(12deg, transparent 0 63%, rgba(60,199,255,.20) 63.1% 63.32%, transparent 63.7% 100%) !important;
+}
+body[data-active-view="today"] #command .wk-kicker {
+  color: var(--terrain-olive) !important;
+  font-family: var(--wk-meta) !important;
+  letter-spacing: .18em !important;
+}
+body[data-active-view="today"] #command .wk-hero h1 {
+  max-width: 12.5ch !important;
+  color: var(--terrain-ink) !important;
+  font-family: var(--wk-sans) !important;
+  font-weight: 900 !important;
+  letter-spacing: -.07em !important;
+  line-height: .86 !important;
+  text-transform: none !important;
+}
+body[data-active-view="today"] #command .wk-hero p {
+  max-width: 680px !important;
+  color: var(--terrain-muted) !important;
+}
+body[data-active-view="today"] #command .wk-actions a,
+body[data-active-view="today"] #command .wk-focus-card a {
+  background: var(--terrain-ink) !important;
+  color: #f7fff1 !important;
+  border-color: rgba(16,24,23,.55) !important;
+  box-shadow: 0 0 0 1px rgba(139,255,112,.2), 0 18px 34px rgba(16,24,23,.12) !important;
+}
+body[data-active-view="today"] #command .wk-actions a + a {
+  background: rgba(255,255,255,.42) !important;
+  color: var(--terrain-ink) !important;
+  border-color: rgba(16,24,23,.2) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .wk-actions a:hover,
+body[data-active-view="today"] #command .wk-actions a + a:hover,
+body[data-active-view="today"] #command .wk-focus-card a:hover {
+  background: var(--terrain-glow) !important;
+  color: #10200f !important;
+  border-color: rgba(68,107,50,.52) !important;
+}
+body[data-active-view="today"] #command .wk-artifact {
+  min-height: 560px !important;
+  background:
+    linear-gradient(180deg, rgba(8,18,18,.80), rgba(16,28,24,.70)),
+    radial-gradient(circle at 42% 36%, rgba(60,199,255,.30), transparent 17rem),
+    linear-gradient(155deg, rgba(139,255,112,.12), rgba(232,221,190,.08)) !important;
+  border-color: rgba(16,24,23,.28) !important;
+  box-shadow: 0 34px 90px rgba(16,24,23,.18), inset 0 0 0 1px rgba(255,255,255,.10) !important;
+  overflow: hidden !important;
+}
+body[data-active-view="today"] #command .wk-artifact::before {
+  opacity: .42 !important;
+  background:
+    repeating-radial-gradient(ellipse at 54% 58%, transparent 0 34px, rgba(139,255,112,.34) 35px 36px, transparent 37px 68px) !important;
+  animation: none !important;
+}
+body[data-active-view="today"] #command .wk-horizon {
+  position: absolute;
+  inset: auto -8% 13% -8%;
+  height: 44%;
+  z-index: 1;
+  clip-path: polygon(0 72%, 12% 58%, 22% 64%, 35% 34%, 49% 56%, 61% 26%, 76% 61%, 88% 42%, 100% 70%, 100% 100%, 0 100%);
+  background: linear-gradient(180deg, rgba(139,255,112,.18), rgba(216,201,171,.38));
+  border-top: 1px solid rgba(139,255,112,.42);
+}
+body[data-active-view="today"] #command .wk-scanline {
+  position: absolute;
+  inset: -30% auto auto 47%;
+  width: 2px;
+  height: 150%;
+  z-index: 3;
+  background: linear-gradient(180deg, transparent, rgba(139,255,112,.82), transparent);
+  box-shadow: 0 0 28px rgba(139,255,112,.52);
+  transform: rotate(23deg);
+}
+body[data-active-view="today"] #command .wk-core-sample {
+  z-index: 4 !important;
+  background: rgba(238,248,230,.92) !important;
+  color: var(--terrain-ink) !important;
+  border: 1px solid rgba(139,255,112,.46) !important;
+  box-shadow: 0 0 0 9px rgba(139,255,112,.09), 0 32px 78px rgba(0,0,0,.28) !important;
+}
+body[data-active-view="today"] #command .wk-core-sample span,
+body[data-active-view="today"] #command .wk-core-sample em { color: var(--terrain-olive) !important; }
+body[data-active-view="today"] #command .wk-core-sample b { color: var(--terrain-ink) !important; }
+body[data-active-view="today"] #command .wk-contour { border-color: rgba(139,255,112,.24) !important; z-index: 2 !important; }
+body[data-active-view="today"] #command .wk-artifact p {
+  z-index: 4 !important;
+  color: rgba(238,248,230,.84) !important;
+  background: rgba(8,18,18,.36) !important;
+  border: 1px solid rgba(139,255,112,.18) !important;
+  padding: 12px 14px !important;
+}
+body[data-active-view="today"] #command .wk-audit,
+body[data-active-view="today"] #command .wk-market-map,
+body[data-active-view="today"] #command .wk-workbench,
+body[data-active-view="today"] #command .wk-protocol {
+  background:
+    radial-gradient(circle at 94% 0%, rgba(60,199,255,.08), transparent 24rem),
+    linear-gradient(rgba(16,24,23,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16,24,23,.032) 1px, transparent 1px),
+    rgba(247,247,239,.72) !important;
+  background-size: auto, 40px 40px, 40px 40px, auto !important;
+}
+body[data-active-view="today"] #command :where(.wk-audit h2, .wk-section-head h2, .wk-protocol h2, .wk-focus-card h3, .wk-script-card h3, .wk-protocol-card h3) {
+  font-family: var(--wk-sans) !important;
+  font-weight: 900 !important;
+  letter-spacing: -.065em !important;
+  line-height: .9 !important;
+  color: var(--terrain-ink) !important;
+}
+body[data-active-view="today"] #command .wk-audit h2 { max-width: 11ch !important; }
+body[data-active-view="today"] #command :where(.wk-audit li, .wk-market-node, .wk-proof-card, .wk-focus-card, .wk-call-stack, .wk-script-card, .wk-protocol-card) {
+  background: rgba(244,248,236,.82) !important;
+  border-color: rgba(16,24,23,.14) !important;
+}
+body[data-active-view="today"] #command .wk-market-node.hot {
+  background: linear-gradient(180deg, rgba(223,245,201,.94), rgba(244,248,236,.92)) !important;
+  box-shadow: inset 0 -5px 0 var(--terrain-olive) !important;
+}
+@media (max-width: 680px) {
+  body[data-active-view="today"] #command .wk-hero {
+    grid-template-columns: 1fr !important;
+    padding: 22px 20px !important;
+  }
+  body[data-active-view="today"] #command .wk-hero h1 {
+    font-size: clamp(46px, 14.5vw, 62px) !important;
+    line-height: .9 !important;
+    letter-spacing: -.065em !important;
+  }
+  body[data-active-view="today"] #command .wk-artifact { min-height: 380px !important; }
+  body[data-active-view="today"] #command .wk-core-sample { width: min(238px, 67vw) !important; }
+  body[data-active-view="today"] #command :where(.wk-audit h2, .wk-section-head h2, .wk-protocol h2) {
+    font-size: clamp(38px, 10.5vw, 54px) !important;
+    line-height: .95 !important;
+  }
+}
+
+
+/* v1.31 - ease/elegance correction: technology, landscape, not loud editorial type */
+body[data-active-view="today"] #command .wk-hero {
+  grid-template-columns: minmax(0, .92fr) minmax(420px, .78fr) !important;
+  align-items: center !important;
+  min-height: clamp(600px, 76vh, 820px) !important;
+}
+body[data-active-view="today"] #command .wk-hero-copy {
+  max-width: 720px !important;
+}
+body[data-active-view="today"] #command .wk-hero h1 {
+  max-width: 11.5ch !important;
+  font-size: clamp(68px, 7.8vw, 126px) !important;
+  font-weight: 780 !important;
+  letter-spacing: -.055em !important;
+  line-height: .94 !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .wk-hero p {
+  max-width: 610px !important;
+  font-size: clamp(19px, 1.55vw, 25px) !important;
+  line-height: 1.48 !important;
+  font-weight: 560 !important;
+  color: rgba(47,64,58,.86) !important;
+}
+body[data-active-view="today"] #command .wk-artifact {
+  min-height: 500px !important;
+}
+body[data-active-view="today"] #command :where(.wk-audit h2, .wk-section-head h2, .wk-protocol h2) {
+  font-size: clamp(42px, 4.4vw, 76px) !important;
+  font-weight: 780 !important;
+  letter-spacing: -.05em !important;
+  line-height: 1.02 !important;
+  max-width: 860px !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .wk-audit {
+  grid-template-columns: minmax(280px, .74fr) minmax(0, 1.26fr) !important;
+  align-items: start !important;
+}
+body[data-active-view="today"] #command .wk-audit h2 {
+  max-width: 9.7ch !important;
+}
+body[data-active-view="today"] #command :where(.wk-audit li b, .wk-market-node b, .wk-proof-card strong, .wk-protocol-card h3, .wk-focus-card h3, .wk-script-card h3) {
+  letter-spacing: -.025em !important;
+  line-height: 1.02 !important;
+}
+body[data-active-view="today"] #command .wk-audit li b {
+  font-size: clamp(24px, 2.05vw, 38px) !important;
+  font-weight: 760 !important;
+}
+body[data-active-view="today"] #command .wk-market-node b {
+  font-weight: 760 !important;
+}
+body[data-active-view="today"] #command .wk-rail {
+  background: rgba(245,247,239,.70) !important;
+  backdrop-filter: blur(16px) !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="today"] #command .wk-hero {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 680px) {
+  body[data-active-view="today"] #command .wk-hero {
+    min-height: auto !important;
+    padding: 26px 20px 28px !important;
+    gap: 28px !important;
+  }
+  body[data-active-view="today"] #command .wk-hero h1 {
+    font-size: clamp(42px, 11.2vw, 56px) !important;
+    line-height: 1.0 !important;
+    letter-spacing: -.045em !important;
+    max-width: 11ch !important;
+  }
+  body[data-active-view="today"] #command .wk-hero p {
+    font-size: 17px !important;
+    line-height: 1.48 !important;
+  }
+  body[data-active-view="today"] #command .wk-artifact {
+    min-height: 330px !important;
+  }
+  body[data-active-view="today"] #command :where(.wk-audit h2, .wk-section-head h2, .wk-protocol h2) {
+    font-size: clamp(32px, 8.6vw, 42px) !important;
+    line-height: 1.04 !important;
+    letter-spacing: -.035em !important;
+  }
+  body[data-active-view="today"] #command .wk-audit h2 {
+    max-width: 12ch !important;
+  }
+}
+
+
+/* v1.32 - mobile integrity: no sideways cards, readable terrain caption */
+body[data-active-view="today"] #command .wk-artifact p {
+  color: rgba(246,255,238,.96) !important;
+  background: rgba(8,18,18,.68) !important;
+  border-color: rgba(139,255,112,.28) !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,.22) !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="today"] #command .wk-audit,
+  body[data-active-view="today"] #command .wk-work-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="today"] #command .wk-audit ul,
+  body[data-active-view="today"] #command .wk-node-grid,
+  body[data-active-view="today"] #command .wk-proof-grid,
+  body[data-active-view="today"] #command .wk-protocol-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+  }
+}
+@media (max-width: 680px) {
+  body[data-active-view="today"] #command .wk-audit,
+  body[data-active-view="today"] #command .wk-market-map,
+  body[data-active-view="today"] #command .wk-workbench,
+  body[data-active-view="today"] #command .wk-protocol {
+    overflow: hidden !important;
+  }
+  body[data-active-view="today"] #command .wk-audit li,
+  body[data-active-view="today"] #command .wk-market-node,
+  body[data-active-view="today"] #command .wk-proof-card,
+  body[data-active-view="today"] #command .wk-protocol-card {
+    min-width: 0 !important;
+  }
+  body[data-active-view="today"] #command .wk-artifact p {
+    position: relative !important;
+    inset: auto !important;
+    margin-top: 14px !important;
+    max-width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+  }
+}

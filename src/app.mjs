@@ -1423,28 +1423,30 @@ function renderCommandCenter() {
     <nav class="wk-rail" aria-label="Today page map">
       <a href="#wk-brief">Brief</a><a href="#wk-map">Markets</a><a href="#wk-work">Work</a><a href="#wk-gates">Gates</a>
     </nav>
-    <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS creative command">
+    <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS terrain intelligence command">
       <div class="wk-hero-copy">
-        <span class="wk-kicker">Buyer-first land intelligence / Tennessee live-first</span>
-        <h1>Builder demand, made visible.</h1>
-        <p>Land Dealflow OS reads permit fragments like field notes, validates the builder first, then turns the right seller into the only call worth making.</p>
+        <span class="wk-kicker">Terrain intelligence / Tennessee live-first</span>
+        <h1>Modern land intelligence, ready to act.</h1>
+        <p>Land Dealflow OS turns slow permit, parcel, terrain and buyer data into a calm command layer: readable, actionable and built for decisions instead of data walls.</p>
         <div class="wk-actions">
-          <a href="#builders" data-view="builders">Open builder command</a>
-          <a href="#wk-work">See today’s sequence</a>
+          <a href="#builders" data-view="builders">Open builder radar</a>
+          <a href="#wk-work">Trace the signal path</a>
         </div>
       </div>
-      <aside class="wk-artifact" aria-label="Permit evidence visual metaphor">
-        <div class="wk-core-sample"><span>TN</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
+      <aside class="wk-artifact" aria-label="Permit and landscape intelligence model">
+        <div class="wk-scanline" aria-hidden="true"></div>
+        <div class="wk-horizon" aria-hidden="true"></div>
+        <div class="wk-core-sample"><span>TN terrain</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
         <div class="wk-contour c1"></div><div class="wk-contour c2"></div><div class="wk-contour c3"></div>
-        <p>Builder-grade intelligence on warm paper: permits, buy boxes, and one next action.</p>
+        <p>Live terrain stack: permit velocity, builder demand, parcel constraints and one next action.</p>
       </aside>
     </section>
     <section class="wk-audit wk-reveal" aria-label="Operating principles">
-      <div><span class="wk-kicker">Operating system</span><h2>The promise becomes gates, not a marketing audit.</h2></div>
+      <div><span class="wk-kicker">Signal system</span><h2>Landscape, demand and risk collapse into one operating map.</h2></div>
       <ul>${operatingRows}</ul>
     </section>
     <section id="wk-map" class="wk-market-map wk-reveal" aria-label="Priority permit market map">
-      <div class="wk-section-head"><span class="wk-kicker">Spatial map</span><h2>TN is the live room. FL, AZ, NC and TX are resource wells.</h2><p>No statewide permit database. The navigation becomes a source map: where evidence lives, which portals matter, and what unlocks buyer validation.</p></div>
+      <div class="wk-section-head"><span class="wk-kicker">Market terrain</span><h2>TN is live terrain. FL, AZ, NC and TX are resource wells.</h2><p>No statewide permit database. The product behaves like a source radar: where evidence lives, which portal stack matters, and what unlocks buyer validation.</p></div>
       <div class="wk-node-grid">${marketRows}</div>
     </section>
     <section id="wk-work" class="wk-workbench wk-reveal" aria-label="Daily money workbench">

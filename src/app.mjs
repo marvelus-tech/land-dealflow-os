@@ -871,6 +871,87 @@ function scoreBreakdownRows(row = {}) {
     .join('');
 }
 
+
+const BUYBOX_UNLOCK_FIELDS = [
+  { key: 'geography', label: 'Geography', selector: '.validation-geography', question: 'Which submarkets are you actively buying in?' },
+  { key: 'lotSize', label: 'Lot size', selector: '.validation-lot', question: 'What lot-size band is worth reviewing?' },
+  { key: 'maxPrice', label: 'Max price', selector: '.validation-price', question: 'What is your maximum acquisition price before feasibility?' },
+  { key: 'closeSpeed', label: 'Close speed', selector: '.validation-speed', question: 'How quickly can you close, and how many lots per month can you absorb?' },
+  { key: 'packageRecipient', label: 'Recipient', selector: '.validation-recipient', question: 'Who should receive parcel packages and at what direct email?' },
+  { key: 'dealKillers', label: 'Deal killers', selector: '.validation-killers', question: 'What kills a parcel immediately: slope, flood, wetlands, frontage, utilities, title?' },
+];
+
+function buyBoxFieldValue(buyBox = {}, key = '') {
+  const value = buyBox?.[key];
+  if (Array.isArray(value)) return value.filter(Boolean).join(', ');
+  return value ?? '';
+}
+
+function isBuyBoxFieldComplete(buyBox = {}, key = '') {
+  const value = buyBoxFieldValue(buyBox, key);
+  if (typeof value === 'number') return Number.isFinite(value) && value > 0;
+  return String(value || '').trim().length > 0;
+}
+
+function buyBoxCompletion(row = {}) {
+  const buyBox = row.buyBox || {};
+  const fields = BUYBOX_UNLOCK_FIELDS.map(field => ({ ...field, complete: isBuyBoxFieldComplete(buyBox, field.key) }));
+  const complete = fields.filter(field => field.complete).length;
+  const missing = fields.filter(field => !field.complete);
+  return { fields, complete, total: fields.length, percent: fields.length ? Math.round((complete / fields.length) * 100) : 0, missing, next: missing[0] || fields[0] };
+}
+
+function renderBuyBoxCompletion(row = {}) {
+  const state = buyBoxCompletion(row);
+  const chips = state.fields.map(field => `<span class="completion-chip ${field.complete ? 'done' : 'missing'}"><span aria-hidden="true">${field.complete ? '✓' : '○'}</span>${h(field.label)}</span>`).join('');
+  return `<section class="buybox-completion" aria-label="Buy box completion">
+    <div class="completion-head"><span>Buy box completion</span><strong>${h(state.complete)}/${h(state.total)}</strong></div>
+    <div class="completion-rail" aria-hidden="true"><span style="width:${h(state.percent)}%"></span></div>
+    <div class="completion-chips">${chips}</div>
+  </section>`;
+}
+
+function fieldStateClass(row = {}, key = '') {
+  return isBuyBoxFieldComplete(row.buyBox || {}, key) ? 'is-complete' : 'is-required';
+}
+
+function fieldLabel(label, row = {}, key = '') {
+  const complete = isBuyBoxFieldComplete(row.buyBox || {}, key);
+  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true">${complete ? '✓' : 'required'}</em></span>`;
+}
+
+function renderAskNext(row = {}) {
+  const state = buyBoxCompletion(row);
+  const next = state.next || BUYBOX_UNLOCK_FIELDS[0];
+  return `<aside class="ask-next-card" aria-label="Next buy-box question">
+    <span>Ask this next</span>
+    <strong>${h(next.question)}</strong>
+    <small>${state.complete}/${state.total} captured · seller search unlocks when the buying rules are specific enough to protect outreach.</small>
+  </aside>`;
+}
+
+function renderEvidenceStack(row = {}) {
+  const permits = asArray(row.permitEvidence || row.recentPermits).slice(0, 3);
+  const proofRows = permits.map((permit, index) => `<li>
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <div><b>${h(permit.permitNumber || 'permit')}</b><small>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</small></div>
+    ${permitVerificationLink(permit)}
+  </li>`).join('');
+  return `<section class="evidence-stack" aria-label="Top permit evidence">
+    <div class="evidence-stack-head"><span>Top permit evidence</span><b>${h(permits.length || row.recentBuilds || 0)} proofs</b></div>
+    <ul>${proofRows || '<li><div><b>No permit proof rows loaded.</b><small>Open the source drawer for public evidence context.</small></div></li>'}</ul>
+  </section>`;
+}
+
+function renderSelectedBuilderDock(row = {}) {
+  if (!row.builderId) return '';
+  const completion = buyBoxCompletion(row);
+  return `<button type="button" class="selected-builder-dock" data-scroll-selected-builder aria-label="View selected builder ${h(row.name || '')}">
+    <span><small>Selected</small><strong>${h(row.name || 'Builder')}</strong></span>
+    <em>${h(completion.complete)}/${h(completion.total)} buy box</em>
+  </button>`;
+}
+
 function mergeBuyerValidationPatch(builderId, patch = {}) {
   const sourceRow = findLoadedBuilderRow(builderId);
   const existing = asArray(workspace.buyerValidations).find(item => item.builderId === builderId) || {};
@@ -905,7 +986,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       <div class="builder-empty-state">
         <span class="eyebrow">${h(activeState.label)} builder queue</span>
         <h3>No permit-active builders loaded yet.</h3>
-        <p>This state lane is waiting on a real permit pull. The queue stays blank until public permit activity is collected, companies are deduped, and public business contact provenance is verified.</p>
+        <p>This state lane stays intentionally blank until public permit activity is collected, companies are deduped, and public business contact provenance is verified.</p>
         <div class="empty-state-actions">
           <a href="#market-state-${h(activeState.stateCode.toLowerCase())}">Open ${h(activeState.stateCode)} pipeline</a>
           <span>${h(asArray(activeState.stateMeta?.pipeline).length)} source steps ready</span>
@@ -917,32 +998,35 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
   const selected = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
   selectedValidationBuilderId = selected.builderId || selectedValidationBuilderId;
+  const completion = buyBoxCompletion(selected);
+  const missingList = completion.missing.map(field => `<li><span aria-hidden="true">○</span>${h(field.label)}</li>`).join('');
+  const unlockedList = BUYBOX_UNLOCK_FIELDS.map(field => `<li><span aria-hidden="true">✓</span>${h(field.label)}</li>`).join('');
   const sellerCriteria = selected.sellerSearch?.eligible
-    ? selected.sellerSearch.criteria.map(item => `<li>${h(item)}</li>`).join('')
-    : selected.sellerSearch?.blockers?.map(item => `<li>${h(item)}</li>`).join('') || '<li>Complete buy-box fields to unlock seller search.</li>';
+    ? (selected.sellerSearch.criteria.map(item => `<li><span aria-hidden="true">✓</span>${h(item)}</li>`).join('') || unlockedList)
+    : (missingList || '<li><span aria-hidden="true">○</span>Complete buy-box fields to unlock seller search.</li>');
   const statusOptions = BUYER_VALIDATION_STATUSES.map(status => `<option value="${h(status)}" ${selected.callStatus === status ? 'selected' : ''}>${h(callStatusLabel(status))}</option>`).join('');
   const queue = center.items.map((item) => {
     const active = item.builderId === selected.builderId;
-    const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : item.validation.buyBox.percent >= 67 ? 'warn' : 'neutral';
+    const itemCompletion = buyBoxCompletion(item);
+    const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : itemCompletion.percent >= 67 ? 'warn' : 'neutral';
     const outreach = validationOutreach(item);
     const scoreTitle = scoreBreakdownText(item);
-    const sourceLabel = 'source';
     const evidenceCount = asArray(item.permitEvidence).length;
     const proofBits = [
-      item.sourceUrl ? safeLink(item.sourceUrl, sourceLabel, 'queue-source-link') : h(sourceLabel),
-      `${h(item.confidence || '-')} conf`,
-      `${h(evidenceCount || item.recentBuilds || 0)} proofs`,
+      item.sourceUrl ? safeLink(item.sourceUrl, 'source', 'queue-source-link') : 'source pending',
+      `${h(evidenceCount || item.recentBuilds || 0)} permit proofs`,
+      `${h(item.confidence || '-')} confidence`,
     ].join(' · ');
     return `<article class="validation-queue-item ${active ? 'active' : ''}" data-validation-row="${h(item.builderId)}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
-        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(item.validation.buyBox.percent)}% buy box</small></span>
+        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
       </button>
       <div class="queue-proof-line">${proofBits}</div>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
         <button type="button" class="contact-icon-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span></button>
         <button type="button" class="contact-icon-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span></button>
-        ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'validation locked', tone)}
+        ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'needs buy box', tone)}
       </div>
     </article>`;
   }).join('');
@@ -970,10 +1054,14 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const validationEmailSubject = validationEmail.subject || fallbackEmail.subject;
   const validationEmailBody = validationEmail.body || fallbackEmail.body;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
+  const nextActionCopy = selected.sellerSearch?.eligible
+    ? 'Buy box captured. Find parcels matching this builder before seller outreach starts.'
+    : `Call once. Capture the exact buy box. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
   return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
+    <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
     <div class="validation-grid-main">
-      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>proof inline</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>${queue}</aside>
-      <article class="validation-focus-card">
+      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>Proof attached</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div><div class="queue-filter-row" aria-label="Queue filters"><button type="button" disabled>Callable</button><button type="button" disabled>Needs buy box</button><button type="button" disabled>Highest permits</button></div>${queue}</aside>
+      <article class="validation-focus-card" id="selected-builder-card">
         <div class="validation-focus-head">
           <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit signals. Contact/HQ may be regional: ${contact}</p></div>
           <details class="validation-score" title="${h(selectedScoreTitle)}">
@@ -981,7 +1069,9 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
             <div class="score-breakdown">${selectedScoreRows}</div>
           </details>
         </div>
+        <div class="next-best-action"><span>Next best action</span><strong>${h(nextActionCopy)}</strong></div>
         ${sourceProof}
+        ${renderEvidenceStack(selected)}
         <div class="selected-outreach-state" aria-label="Selected builder outreach state">
           <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('phone')}</span>${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}</button>
           <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${outreachIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
@@ -993,38 +1083,39 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           ${selected.sourceUrl ? `<a class="validation-call-button secondary website-link" href="${h(selected.sourceUrl)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
-        <div class="validation-progress"><span style="width:${h(selected.validation?.buyBox?.percent || 0)}%"></span></div>
-        <p class="validation-next-action">${h(selected.validation?.nextAction || '')}</p>
+        ${renderBuyBoxCompletion(selected)}
+        ${renderAskNext(selected)}
         <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
           <label class="form-field field-status">Call status <select class="validation-status">${statusOptions}</select></label>
           <label class="form-field field-last">Last contacted <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
           <label class="form-field field-callback">Callback date <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
-          <label class="form-field field-geography">Target geography <input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
-          <label class="form-field field-lot">Lot-size band <input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
-          <label class="form-field field-price">Max acquisition price <input class="validation-price" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
-          <label class="form-field field-speed">Close speed / monthly appetite <input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
-          <label class="form-field field-recipient">Package recipient <input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
+          <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Target geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /><small class="field-helper">Required to unlock seller search.</small></label>
+          <label class="form-field field-lot ${fieldStateClass(selected, 'lotSize')}">${fieldLabel('Lot-size band', selected, 'lotSize')}<input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
+          <label class="form-field field-price ${fieldStateClass(selected, 'maxPrice')}">${fieldLabel('Max acquisition price', selected, 'maxPrice')}<input class="validation-price" inputmode="numeric" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
+          <label class="form-field field-speed ${fieldStateClass(selected, 'closeSpeed')}">${fieldLabel('Close speed / monthly appetite', selected, 'closeSpeed')}<input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
+          <label class="form-field field-recipient ${fieldStateClass(selected, 'packageRecipient')}">${fieldLabel('Package recipient', selected, 'packageRecipient')}<input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
           <label class="form-field field-utilities">Utilities / access rules <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
           <label class="form-field field-product">Finished product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
-          <label class="form-field field-killers">Deal killers <input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
+          <label class="form-field field-killers ${fieldStateClass(selected, 'dealKillers')}">${fieldLabel('Deal killers', selected, 'dealKillers')}<input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
           <label class="form-field field-notes wide">Exact buyer language <textarea class="validation-notes" placeholder="Paste what they actually said. No interpretation, no fabrication.">${h(selected.callNotes || '')}</textarea></label>
-          <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status"></span></div>
+          <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status" aria-live="polite"></span></div>
         </div>
       </article>
       <aside class="seller-unlock-card ${selected.sellerSearch?.eligible ? 'unlocked' : ''}">
-        <div class="panel-kicker"><span>Seller search gate</span><b>${selected.sellerSearch?.eligible ? 'unlocked' : 'locked'}</b></div>
-        <h4>${h(selected.sellerSearch?.headline || 'Seller search locked.')}</h4>
+        <div class="panel-kicker"><span>Seller search gate</span><b>${selected.sellerSearch?.eligible ? 'unlocked' : `${completion.complete}/${completion.total}`}</b></div>
+        <h4>${selected.sellerSearch?.eligible ? h(selected.sellerSearch?.headline || 'Seller search unlocked.') : 'Seller search is locked until the builder’s buying rules are specific enough to protect outreach.'}</h4>
         <ul>${sellerCriteria}</ul>
-        ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Suggested seller offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p>` : '<p>Permit volume is only a demand signal. Seller calls wait until buyer criteria are captured.</p>'}
+        ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Suggested seller offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p><a class="seller-unlock-cta" href="#top-calls">Find seller parcels</a>` : '<p>Permit volume is only a demand signal. Capture the buy box first; then seller calls can match real demand instead of guessing.</p>'}
       </aside>
     </div>
+    ${renderSelectedBuilderDock(selected)}
     <details class="validation-script-drawer">
       <summary>Open exact buy-box questions + call script</summary>
       <div class="script-grid"><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p><ul class="selected-permit-proof">${selectedPermitProof || '<li><span>No permit proof rows loaded.</span></li>'}</ul></div><div><h5>Buy-box questions</h5><ul>${scriptQuestions}</ul></div></div>
       <pre>${h(selected.callScript || '')}</pre>
     </details>
     <details class="validation-script-drawer marketing-drawer">
-      <summary>Optional marketing intro email</summary>
+      <summary>Optional marketing intro email template</summary>
       <div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div>
       <pre>${h(marketingEmail.body)}</pre>
       <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
@@ -1939,6 +2030,13 @@ function bindEvents() {
       return;
     }
 
+    const selectedBuilderDock = event.target.closest('[data-scroll-selected-builder]');
+    if (selectedBuilderDock) {
+      event.preventDefault();
+      document.querySelector('#selected-builder-card')?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+
     const validationBuilderButton = event.target.closest('[data-select-validation-builder]');
     if (validationBuilderButton) {
       event.preventDefault();
@@ -2292,6 +2390,22 @@ ${body}`;
       renderParcels();
       renderTopCallList();
     }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (document.body?.dataset?.activeView !== 'builders') return;
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+    const tag = event.target?.tagName?.toLowerCase();
+    if (['input', 'textarea', 'select'].includes(tag)) return;
+    const rows = [...document.querySelectorAll('[data-select-validation-builder]')];
+    if (!rows.length || !['j', 'k'].includes(event.key.toLowerCase())) return;
+    event.preventDefault();
+    const currentIndex = Math.max(0, rows.findIndex(row => row.dataset.selectValidationBuilder === selectedValidationBuilderId));
+    const nextIndex = event.key.toLowerCase() === 'j' ? Math.min(rows.length - 1, currentIndex + 1) : Math.max(0, currentIndex - 1);
+    const nextId = rows[nextIndex]?.dataset.selectValidationBuilder;
+    if (!nextId || nextId === selectedValidationBuilderId) return;
+    selectedValidationBuilderId = nextId;
+    renderBuilderListEnginePanel({ preserveViewport: true });
   });
 
   document.addEventListener('toggle', (event) => {

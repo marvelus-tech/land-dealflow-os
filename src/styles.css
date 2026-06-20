@@ -8433,3 +8433,106 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
   .phase7-capture-grid { padding: 10px; gap: 8px; }
   .phase7-gate-rail div { padding: 10px; }
 }
+
+/* v1.38 - Phase 8 Clay-level operator session mode */
+.os8-session {
+  position: relative;
+  overflow: hidden;
+  margin: clamp(28px, 5vw, 72px) auto;
+  padding: clamp(22px, 4vw, 52px);
+  border-radius: clamp(28px, 4vw, 48px);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(159,232,112,.28), transparent 24rem),
+    radial-gradient(circle at 86% 16%, rgba(37,99,235,.20), transparent 22rem),
+    linear-gradient(135deg, #07111f 0%, #0b1729 48%, #102313 100%);
+  color: #f8fbff;
+  box-shadow: rgba(7,17,31,.22) 0 38px 90px;
+  isolation: isolate;
+}
+.os8-ambient { position:absolute; inset:0; pointer-events:none; opacity:.5; background-image: linear-gradient(rgba(255,255,255,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(180deg, #000, transparent 74%); }
+.os8-session .wk-kicker { color: #9fe870; }
+.os8-hero { position:relative; display:grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr); gap: clamp(18px, 3vw, 38px); align-items:end; }
+.os8-hero h2 { margin: 10px 0 12px; max-width: 980px; color:#fff; font-size: clamp(38px, 7vw, 92px); line-height:.88; letter-spacing:-.075em; }
+.os8-hero p { max-width: 720px; margin:0; color: rgba(248,251,255,.72); font-size: clamp(15px, 1.7vw, 19px); line-height:1.62; }
+.os8-next-card { display:grid; gap:8px; padding:22px; border:1px solid rgba(255,255,255,.13); border-radius:26px; background: rgba(255,255,255,.085); backdrop-filter: blur(18px); box-shadow: inset 0 1px rgba(255,255,255,.18); }
+.os8-next-card small, .os8-metric span, .os8-card-head span { text-transform:uppercase; letter-spacing:.16em; font-size:10px; font-weight:900; color:#9fe870; }
+.os8-next-card b { color:#fff; font-size: clamp(20px, 2.6vw, 31px); letter-spacing:-.035em; line-height:1; }
+.os8-next-card span { color: rgba(248,251,255,.66); line-height:1.45; }
+.os8-metrics { position:relative; display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:10px; margin: clamp(20px, 4vw, 38px) 0; }
+.os8-metric { padding:17px 18px; border-radius:22px; background: rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.10); }
+.os8-metric b { display:block; margin: 5px 0 1px; color:#fff; font-size: clamp(28px, 4vw, 52px); letter-spacing:-.06em; }
+.os8-metric em { color: rgba(248,251,255,.56); font-style:normal; font-size:12px; }
+.os8-flow { position:relative; display:grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr); gap:16px; }
+.os8-sprint-card, .os8-packet-card { padding:16px; border:1px solid rgba(255,255,255,.12); border-radius:30px; background: rgba(255,255,255,.08); backdrop-filter: blur(18px); }
+.os8-card-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.os8-card-head b { color:rgba(248,251,255,.75); font-size:12px; }
+.os8-step { display:grid; grid-template-columns: 44px minmax(0,1fr) auto; gap:14px; align-items:center; padding:15px; margin:8px 0; text-decoration:none; color:inherit; border-radius:22px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); transition: transform .18s ease, background .18s ease, border-color .18s ease; }
+.os8-step:hover { transform: translateY(-2px); background: rgba(255,255,255,.10); border-color: rgba(159,232,112,.38); }
+.os8-step > span { display:grid; place-items:center; width:42px; height:42px; border-radius:15px; background: rgba(159,232,112,.13); color:#9fe870; font-weight:950; }
+.os8-step b { display:block; color:#fff; font-size:14px; }
+.os8-step strong { display:block; margin:3px 0; color:rgba(255,255,255,.84); font-size:18px; letter-spacing:-.03em; }
+.os8-step p { margin:0; color:rgba(248,251,255,.56); font-size:13px; line-height:1.42; }
+.os8-step em, .os8-gate em { justify-self:end; padding:7px 9px; border-radius:999px; background: rgba(255,255,255,.08); color:rgba(248,251,255,.68); font-size:10px; font-style:normal; font-weight:900; text-transform:uppercase; letter-spacing:.08em; }
+.os8-step.active { background: linear-gradient(135deg, rgba(159,232,112,.20), rgba(37,99,235,.10)); border-color: rgba(159,232,112,.42); }
+.os8-step.clear > span, .os8-gate.clear > span { background:#9fe870; color:#07111f; }
+.os8-step.locked { opacity:.58; }
+.os8-gate { display:grid; grid-template-columns: 16px minmax(0,1fr) auto; gap:12px; align-items:start; padding:14px 4px; border-bottom:1px solid rgba(255,255,255,.09); }
+.os8-gate > span { width:12px; height:12px; margin-top:4px; border-radius:50%; background: rgba(255,255,255,.22); box-shadow: 0 0 0 6px rgba(255,255,255,.04); }
+.os8-gate b { color:#fff; font-size:14px; }
+.os8-gate p { margin:3px 0 0; color:rgba(248,251,255,.56); font-size:13px; line-height:1.42; }
+.os8-gate.review > span { background:#fbbf24; }
+.os8-packet-note { margin-top:16px; padding:18px; border-radius:22px; background: linear-gradient(135deg, rgba(159,232,112,.15), rgba(255,255,255,.07)); border:1px solid rgba(159,232,112,.24); }
+.os8-packet-note b { color:#fff; }
+.os8-packet-note p { margin:6px 0 0; color:rgba(248,251,255,.64); font-size:13px; line-height:1.52; }
+@media (max-width: 920px) { .os8-hero, .os8-flow { grid-template-columns: 1fr; } .os8-metrics { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 620px) { .os8-session { border-radius:28px; padding:20px; margin-left:-6px; margin-right:-6px; } .os8-hero h2 { font-size: clamp(42px, 16vw, 66px); } .os8-metrics { grid-template-columns: 1fr 1fr; } .os8-step { grid-template-columns: 38px minmax(0,1fr); } .os8-step em { grid-column: 2; justify-self:start; } .os8-gate { grid-template-columns: 14px minmax(0,1fr); } .os8-gate em { grid-column: 2; justify-self:start; } }
+
+/* v1.38.1 - Phase 8 surface override after legacy universal flattening */
+#operator-session-mode.os8-session {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(159,232,112,.28), transparent 24rem),
+    radial-gradient(circle at 86% 16%, rgba(37,99,235,.20), transparent 22rem),
+    linear-gradient(135deg, #07111f 0%, #0b1729 48%, #102313 100%) !important;
+  background-image:
+    radial-gradient(circle at 12% 0%, rgba(159,232,112,.28), transparent 24rem),
+    radial-gradient(circle at 86% 16%, rgba(37,99,235,.20), transparent 22rem),
+    linear-gradient(135deg, #07111f 0%, #0b1729 48%, #102313 100%) !important;
+  color: #f8fbff !important;
+  border-color: rgba(255,255,255,.12) !important;
+  border-radius: clamp(28px, 4vw, 48px) !important;
+  box-shadow: rgba(7,17,31,.22) 0 38px 90px !important;
+}
+#operator-session-mode.os8-session .os8-hero h2,
+#operator-session-mode.os8-session .os8-next-card b,
+#operator-session-mode.os8-session .os8-metric b,
+#operator-session-mode.os8-session .os8-step b,
+#operator-session-mode.os8-session .os8-step strong,
+#operator-session-mode.os8-session .os8-gate b,
+#operator-session-mode.os8-session .os8-packet-note b { color:#fff !important; }
+#operator-session-mode.os8-session .os8-hero p { color: rgba(248,251,255,.72) !important; }
+#operator-session-mode.os8-session .os8-next-card,
+#operator-session-mode.os8-session .os8-metric,
+#operator-session-mode.os8-session .os8-sprint-card,
+#operator-session-mode.os8-session .os8-packet-card,
+#operator-session-mode.os8-session .os8-step,
+#operator-session-mode.os8-session .os8-packet-note {
+  background: rgba(255,255,255,.075) !important;
+  background-image: none !important;
+  border-color: rgba(255,255,255,.12) !important;
+  border-radius: 26px !important;
+  box-shadow: inset 0 1px rgba(255,255,255,.10) !important;
+  backdrop-filter: blur(18px) !important;
+}
+#operator-session-mode.os8-session .os8-step.active {
+  background: linear-gradient(135deg, rgba(159,232,112,.20), rgba(37,99,235,.10)) !important;
+  border-color: rgba(159,232,112,.42) !important;
+}
+#operator-session-mode.os8-session .os8-step p,
+#operator-session-mode.os8-session .os8-gate p,
+#operator-session-mode.os8-session .os8-packet-note p,
+#operator-session-mode.os8-session .os8-next-card span { color: rgba(248,251,255,.62) !important; }
+#operator-session-mode.os8-session .os8-metric em,
+#operator-session-mode.os8-session .os8-card-head b,
+#operator-session-mode.os8-session .os8-step em,
+#operator-session-mode.os8-session .os8-gate em { color: rgba(248,251,255,.68) !important; }
+#operator-session-mode.os8-session .os8-ambient { display:block !important; }

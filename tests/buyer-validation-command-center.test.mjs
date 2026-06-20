@@ -5,6 +5,7 @@ import {
   applySkipTraceImport,
   buildBuyerValidationCommandCenter,
   buildExecutionConveyor,
+  buildOperatorSessionMode,
   buildSellerSearchInstructions,
   evaluateBuilderBuyBox,
   exportMatchedSellerBatchCsv,
@@ -177,6 +178,10 @@ assert.match(appSource, /class="phase7-ask"/, 'Phase 7 seller cockpit should cap
 assert.match(appSource, /class="phase7-language"/, 'Phase 7 seller cockpit should preserve exact seller language');
 assert.match(appSource, /data-download-execution-memo/, 'Phase 7 seller cockpit should export the selected seller buyer-send memo');
 assert.match(stylesSource, /v1\.37 - Phase 7 award-grade seller call-to-close cockpit/, 'Phase 7 award-grade visual system should be appended after older conveyor styles');
+assert.match(coreSource, /export function buildOperatorSessionMode/, 'Phase 8 should expose a deterministic operator session builder');
+assert.match(appSource, /Phase 8 · real operator session mode/, 'Today page should surface the Phase 8 operator sprint');
+assert.match(appSource, /Deal packet assembly gate/, 'Phase 8 should keep deal packet readiness visible in the operator sprint');
+assert.match(stylesSource, /v1\.38 - Phase 8 Clay-level operator session mode/, 'Phase 8 should include the premium Clay-level visual system');
 
 const conveyorBuyer = {
   id: 'buyer-phase-6',
@@ -240,5 +245,11 @@ assert.match(outcomeParcel.notes, /thirty nine/, 'exact seller language should b
 const afterOutcomeConveyor = buildExecutionConveyor({ buyers: [conveyorBuyer], sellerCandidates: afterSellerOutcome.parcels, limit: 10 });
 assert.equal(afterOutcomeConveyor.callReadySellers[0].callOutcome, 'seller_interested');
 assert.ok(afterOutcomeConveyor.callReadySellers[0].memo?.message.includes('buyer-box-matched'), 'Phase 7 cockpit should carry a buyer-send memo with the seller row');
+const phase8Session = buildOperatorSessionMode({ executionConveyor: afterOutcomeConveyor, moneyQueue: { followUps: [], today: [] }, buyerContactQueue: [] });
+assert.equal(phase8Session.title, 'Today’s Call Sprint');
+assert.match(phase8Session.subtitle, /buyer proof → seller export → skip-trace return → seller outcome → deal packet → feedback rewrite/, 'Phase 8 session should retain the full operating chain');
+assert.ok(phase8Session.sprintSteps.some(step => step.id === 'deal-packet' && /Package must carry parcel facts/.test(step.detail)), 'Phase 8 should make deal packet assembly explicit');
+assert.ok(phase8Session.packetGate.some(gate => gate.label === 'Buyer memo' && gate.status === 'clear'), 'Phase 8 packet gate should see generated buyer memo readiness');
+assert.equal(phase8Session.metrics.contacts, 1, 'Phase 8 metrics should count enriched contact rows from Phase 7 conveyor');
 
 console.log('buyer validation command center tests passed');

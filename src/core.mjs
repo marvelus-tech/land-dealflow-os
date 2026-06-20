@@ -1491,6 +1491,97 @@ export function buildExecutionConveyor({ buyers = [], sellerCandidates = [], tit
   };
 }
 
+export function buildOperatorSessionMode({ buyerContactQueue = [], executionConveyor = {}, moneyQueue = {}, now = new Date().toISOString() } = {}) {
+  const board = executionConveyor.board || {};
+  const stages = executionConveyor.stageRows || [];
+  const firstBuyer = board.validatedBuyers?.[0] || buyerContactQueue?.[0] || {};
+  const firstSeller = executionConveyor.callReadySellers?.[0] || moneyQueue.followUps?.[0] || moneyQueue.today?.[0] || {};
+  const matchedBatch = executionConveyor.matchedSellerBatch || [];
+  const feedbackLoop = executionConveyor.feedbackLoop || { totalFeedback: 0, tightening: 'Buyer feedback has not rewritten the next seller queue yet.' };
+  const dealPacketReady = Boolean(firstSeller.contract?.ready && firstSeller.memo && (firstSeller.callOutcome === 'seller_interested' || firstSeller.crmStatus === 'Negotiating'));
+  const sprintSteps = [
+    {
+      id: 'buyer-call',
+      label: '01',
+      title: 'Call the buyer first',
+      status: board.validatedBuyers?.length ? 'clear' : 'active',
+      action: firstBuyer.name ? `Call ${firstBuyer.name}` : 'Select one permit-active builder',
+      detail: firstBuyer.phone || firstBuyer.email || 'Capture geography, lot size, max price, close speed, package recipient, utilities/access, and deal killers.',
+      href: '#builders',
+    },
+    {
+      id: 'seller-export',
+      label: '02',
+      title: 'Export matched sellers',
+      status: matchedBatch.length ? 'active' : 'locked',
+      action: matchedBatch.length ? `${matchedBatch.length} public owner rows match buyer demand` : 'Seller batch waits for buyer proof',
+      detail: 'Export only buyer-box-matched public records; no seed/demo leads enter the call queue.',
+      href: '#builders',
+    },
+    {
+      id: 'skiptrace-return',
+      label: '03',
+      title: 'Import skip-trace return',
+      status: executionConveyor.stats?.contactEnrichedRows ? 'clear' : matchedBatch.length ? 'active' : 'locked',
+      action: executionConveyor.stats?.contactEnrichedRows ? `${executionConveyor.stats.contactEnrichedRows} owner contact rows enriched` : 'Paste returned phone/email CSV',
+      detail: 'Phone/email promotes the row; missing or fake contact keeps it out of seller calls.',
+      href: '#builders',
+    },
+    {
+      id: 'seller-call',
+      label: '04',
+      title: 'Run seller call cockpit',
+      status: executionConveyor.callReadySellers?.length ? 'active' : 'locked',
+      action: firstSeller.ownerName ? `${firstSeller.ownerName} · ${firstSeller.address || firstSeller.parcelId}` : 'No seller call armed yet',
+      detail: firstSeller.nextAction || 'Capture outcome, ask, timeline, motivation, access/buildability, and exact seller language.',
+      href: '#builders',
+    },
+    {
+      id: 'deal-packet',
+      label: '05',
+      title: 'Assemble deal packet gate',
+      status: dealPacketReady ? 'clear' : executionConveyor.callReadySellers?.length ? 'active' : 'locked',
+      action: dealPacketReady ? 'Buyer memo + title gate are sendable' : firstSeller.contract?.blockers?.[0] ? `Clear ${firstSeller.contract.blockers[0]}` : 'Wait for interested seller + title gate',
+      detail: 'Package must carry parcel facts, buyer fit, seller range, assignment math, risk notes, title gate, and yes/no deadline.',
+      href: '#builders',
+    },
+    {
+      id: 'feedback-rewrite',
+      label: '06',
+      title: 'Rewrite tomorrow from buyer feedback',
+      status: feedbackLoop.totalFeedback ? 'clear' : dealPacketReady ? 'active' : 'locked',
+      action: feedbackLoop.totalFeedback ? feedbackLoop.tightening : 'Capture accept / maybe / reject after memo send',
+      detail: 'Buyer response becomes the next seller-call filter instead of dead notes.',
+      href: '#builders',
+    },
+  ];
+  const activeStep = sprintSteps.find(step => step.status === 'active') || sprintSteps.find(step => step.status === 'locked') || sprintSteps.at(-1);
+  const packetGate = [
+    { label: 'Buyer demand', status: board.validatedBuyers?.length ? 'clear' : 'locked', detail: board.validatedBuyers?.length ? `${board.validatedBuyers.length} validated buy box row(s)` : 'No seller motion before complete buy box.' },
+    { label: 'Seller outcome', status: firstSeller.callOutcome ? 'clear' : 'locked', detail: firstSeller.callOutcome ? (firstSeller.sellerCallOutcome || firstSeller.callOutcome) : 'Needs interested/maybe seller outcome.' },
+    { label: 'Title/contract', status: firstSeller.contract?.ready ? 'clear' : 'review', detail: firstSeller.contract?.ready ? 'Gate clear enough for packet review.' : (firstSeller.contract?.blockers || ['contract/title packet pending']).join(' · ') },
+    { label: 'Buyer memo', status: firstSeller.memo ? 'clear' : 'locked', detail: firstSeller.memo?.subject || 'Memo waits for seller range and gate clarity.' },
+    { label: 'Feedback capture', status: feedbackLoop.totalFeedback ? 'clear' : 'review', detail: feedbackLoop.totalFeedback ? `${feedbackLoop.totalFeedback} buyer answer(s) captured.` : 'Add accept/maybe/reject after buyer send.' },
+  ];
+  const metrics = {
+    buyers: executionConveyor.stats?.validatedBuyers || 0,
+    sellers: executionConveyor.stats?.matchedSellerBatch || 0,
+    contacts: executionConveyor.stats?.contactEnrichedRows || 0,
+    packetReady: dealPacketReady ? 1 : 0,
+  };
+  return {
+    generatedAt: now,
+    title: 'Today’s Call Sprint',
+    subtitle: 'One complete operator session: buyer proof → seller export → skip-trace return → seller outcome → deal packet → feedback rewrite.',
+    activeStep,
+    sprintSteps,
+    packetGate,
+    dealPacketReady,
+    metrics,
+    stages,
+  };
+}
+
 export function buildBuyerFeedbackLoop(buyers = []) {
   const all = buyers.flatMap(buyer => (buyer.feedback || []).map(item => ({ buyerId: buyer.id, buyerName: buyer.name, ...normalizeBuyerFeedback(item) })));
   const accepted = all.filter(item => item.decision === 'accept').length;

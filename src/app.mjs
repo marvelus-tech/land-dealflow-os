@@ -9,6 +9,7 @@ import {
   buildDailyMoneyQueue,
   buildSellerSearchControlLayer,
   buildExecutionConveyor,
+  buildOperatorSessionMode,
   exportMatchedSellerBatchCsv,
   buildBuyerContactQueue,
   buildBuyerFirstBoard,
@@ -1705,6 +1706,39 @@ function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipT
   </section>`;
 }
 
+function renderOperatorSessionMode(session = {}) {
+  const metricRows = [
+    ['Validated buyers', session.metrics?.buyers || 0, 'demand proof'],
+    ['Matched sellers', session.metrics?.sellers || 0, 'buyer-box export'],
+    ['Enriched contacts', session.metrics?.contacts || 0, 'call unlocked'],
+    ['Packet ready', session.metrics?.packetReady || 0, 'sendable now'],
+  ].map(([label, value, detail]) => `<article class="os8-metric"><span>${h(label)}</span><b>${h(value)}</b><em>${h(detail)}</em></article>`).join('');
+  const stepRows = asArray(session.sprintSteps).map((step) => `<a class="os8-step ${h(step.status)}" href="${h(step.href || '#builders')}" data-view="builders">
+    <span>${h(step.label)}</span>
+    <div><b>${h(step.title)}</b><strong>${h(step.action)}</strong><p>${h(step.detail)}</p></div>
+    <em>${h(step.status)}</em>
+  </a>`).join('');
+  const gateRows = asArray(session.packetGate).map(gate => `<div class="os8-gate ${h(gate.status)}"><span></span><div><b>${h(gate.label)}</b><p>${h(gate.detail)}</p></div><em>${h(gate.status)}</em></div>`).join('');
+  return `<section id="operator-session-mode" class="os8-session wk-reveal" aria-label="Phase 8 operator session mode">
+    <div class="os8-ambient" aria-hidden="true"></div>
+    <div class="os8-hero">
+      <span class="wk-kicker">Phase 8 · real operator session mode</span>
+      <h2>${h(session.title || 'Today’s Call Sprint')}</h2>
+      <p>${h(session.subtitle || 'One complete operator session from buyer proof to feedback rewrite.')}</p>
+      <div class="os8-next-card">
+        <small>Next defensible action</small>
+        <b>${h(session.activeStep?.action || 'Open the builder queue')}</b>
+        <span>${h(session.activeStep?.detail || 'Do not advance sellers until the next gate is true.')}</span>
+      </div>
+    </div>
+    <div class="os8-metrics">${metricRows}</div>
+    <div class="os8-flow">
+      <article class="os8-sprint-card"><div class="os8-card-head"><span>Guided sprint</span><b>not browsing, executing</b></div>${stepRows}</article>
+      <article class="os8-packet-card"><div class="os8-card-head"><span>Deal packet assembly gate</span><b>${session.dealPacketReady ? 'sendable' : 'guarded'}</b></div>${gateRows}<div class="os8-packet-note"><b>Packet promise</b><p>Every buyer-send package must carry parcel facts, buyer fit, seller range, assignment math, risk notes, title gate, deadline, and exact language. No missing context, no fabricated certainty.</p></div></article>
+    </div>
+  </section>`;
+}
+
 function renderCommandCenter() {
   const bestMarket = (workspace.markets || []).map(m => ({ ...m, score: scoreMarket(m) })).sort((a, b) => b.score.total - a.score.total)[0] || { name: 'Knoxville, TN', score: { total: 0 } };
   const topBuyer = rankBuyers(workspace.buyers || [])[0] || { name: 'Permit-active builder', score: 0 };
@@ -1713,6 +1747,8 @@ function renderCommandCenter() {
   const buyerFirst = buildBuyerFirstBoard({ buyers: [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])], sellerCandidates: [...publicSkipTrace, ...(workspace.parcels || [])], limit: 25 });
   const leadBuyer = buyerFirst.validatedBuyers[0] || buyerContactQueue[0] || topBuyer;
   const moneyQueue = buildDailyMoneyQueue({ parcels: workspace.parcels || [], buyers: workspace.buyers || [], limit: 5, requireRealContact: true });
+  const operatorExecutionConveyor = buildExecutionConveyor({ buyers: buyerPoolForState('TN'), sellerCandidates: sellerPoolForState('TN'), limit: 8 });
+  const operatorSession = buildOperatorSessionMode({ buyerContactQueue, executionConveyor: operatorExecutionConveyor, moneyQueue });
   const moneyCalls = [...moneyQueue.followUps, ...moneyQueue.today];
   const heroCall = moneyCalls.find(call => call.id === selectedMoneyCallId) || moneyCalls[0] || {};
   selectedMoneyCallId = heroCall.id || '';
@@ -1776,6 +1812,7 @@ function renderCommandCenter() {
         <p>Live terrain stack: permit velocity, builder demand, parcel constraints and one next action.</p>
       </aside>
     </section>
+    ${renderOperatorSessionMode(operatorSession)}
     <section class="wk-audit wk-reveal" aria-label="Operating principles">
       <div><span class="wk-kicker">Signal system</span><h2>Landscape, demand and risk collapse into one operating map.</h2></div>
       <ul>${operatingRows}</ul>

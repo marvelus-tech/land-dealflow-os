@@ -42,6 +42,14 @@ assert.match(css, /v1\.49 - Phase 17B Apple-industrial information hierarchy ref
 assert.match(css, /v1\.49\.1 - Phase 17B closing de-nesting and proof-row quieting/, 'Phase 17B should include closing de-nesting after screenshot QA');
 assert.match(css, /v1\.49\.2 - Phase 17B operational completion color system/, 'Phase 17B should restore at-a-glance done\/todo color states');
 assert.match(css, /\.validation-queue-item\.is-emailed[\s\S]{0,260}border-left-color: var\(--done-accent\)/, 'Emailed builder rows need an immediate visual completion rail');
+assert.match(css, /v1\.50 - Phase 18 decision-spine readability refinement/, 'Phase 18 decision-spine marker required');
+assert.match(css, /v1\.50\.1 - Phase 18 mobile decision spine correction/, 'Phase 18 should correct mobile decision-spine alignment after screenshot QA');
+assert.match(css, /v1\.50\.2 - Phase 18 mobile icon discipline/, 'Phase 18 should remove decorative primary-strip icons on mobile when they compete with scan clarity');
+assert.match(css, /v1\.50\.3 - Phase 18 mobile action label safe inset/, 'Phase 18 should keep mobile primary-action labels clear of the decision rail');
+assert.match(css, /--phase18-reading-measure: 68ch/, 'Phase 18 should constrain dense body copy to a sensor-friendly reading measure');
+assert.match(css, /Apple review rule: one decision spine per screen, evidence below, optional depth last/, 'Phase 18 should encode the decision-spine hierarchy rule');
+assert.match(css, /completion-state-legend[\s\S]{0,260}legend-done/, 'Phase 18 should include a calm state legend for done, working, and todo');
+assert.match(css, /#app :where\(\.validation-source-proof,\.wk-proof-grid,\.builder-ops-metrics[\s\S]{0,300}border-top: 1px solid var\(--phase18-hairline\)/, 'Phase 18 should turn dense evidence grids into hairline ledgers');
 assert.match(css, /Apple review rule: one obvious action, then quiet evidence, then optional depth/, 'Phase 17B should encode the Apple review hierarchy rule');
 assert.match(css, /#app \.primary-action-strip[\s\S]{0,520}grid-template-columns: minmax\(104px, \.26fr\) minmax\(0, 1fr\) auto !important/, 'Phase 17B should tighten the primary action strip into a calmer Swiss ledger');
 assert.match(css, /\.product-icon[\s\S]{0,420}stroke-width: var\(--icon-stroke\)/, 'Phase 17 should use restrained stroke icons, not decorative icon boxes');
@@ -57,6 +65,7 @@ assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,220}Call the top permit-active builder/, 'Builders should expose one primary action before secondary evidence');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /completion-state-legend[\s\S]{0,160}legend-working[\s\S]{0,120}legend-todo/, 'Builder command center should explain done, in-progress, and todo state colors');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip closing-primary-action[\s\S]{0,260}Clear the title packet/, 'Closing should expose one primary action before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Phase 12 · Print detail finish/, 'Closing document packet should not expose implementation-phase residue');
 const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]

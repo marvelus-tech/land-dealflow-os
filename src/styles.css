@@ -11195,3 +11195,272 @@ body[data-active-view="closing"] #app .closing-flow-card p {
   border-color: var(--done-accent) !important;
   background: var(--done-fill) !important;
 }
+
+/* v1.50 - Phase 18 decision-spine readability refinement */
+:root {
+  --phase18-ink: #0b1117;
+  --phase18-body: #303843;
+  --phase18-muted: #68717d;
+  --phase18-soft: #f7f8f5;
+  --phase18-line: rgba(11,17,23,.115);
+  --phase18-hairline: rgba(11,17,23,.075);
+  --phase18-done: #007f73;
+  --phase18-working: #255ad6;
+  --phase18-todo: #7a8492;
+  --phase18-reading-measure: 68ch;
+}
+
+/* Apple review rule: one decision spine per screen, evidence below, optional depth last. */
+#app :where(.primary-action-strip) {
+  isolation: isolate;
+  position: relative !important;
+  grid-template-columns: minmax(88px, .18fr) minmax(0, 1fr) auto !important;
+  gap: clamp(12px, 2vw, 24px) !important;
+  align-items: center !important;
+  padding: clamp(14px, 2vw, 22px) clamp(16px, 2.5vw, 30px) !important;
+  margin: clamp(16px, 2.6vw, 28px) 0 clamp(22px, 3.2vw, 38px) !important;
+  background: #fff !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase18-line) !important;
+  border-bottom: 1px solid var(--phase18-line) !important;
+  box-shadow: none !important;
+}
+#app :where(.primary-action-strip)::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--phase18-working);
+}
+#app :where(.primary-action-strip > span) {
+  color: var(--phase18-working) !important;
+  font: 790 10px/1.1 var(--font-mono) !important;
+  letter-spacing: .15em !important;
+  text-transform: uppercase !important;
+}
+#app :where(.primary-action-strip > b) {
+  max-width: var(--phase18-reading-measure);
+  color: var(--phase18-ink) !important;
+  font-size: clamp(18px, 2vw, 26px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.04em !important;
+}
+#app :where(.primary-action-strip > a) {
+  min-height: 38px !important;
+  padding: 0 16px !important;
+  border-radius: 0 !important;
+  background: var(--phase18-ink) !important;
+  color: #fff !important;
+  border: 1px solid var(--phase18-ink) !important;
+  font: 780 12px/1 var(--font-mono) !important;
+  letter-spacing: .04em !important;
+  text-transform: none !important;
+}
+
+/* Replace boxed density with reading rhythm. */
+#app :where(.validation-focus-card p,.seller-unlock-card p,.source-page-section p,.machine-panel p,.permit-landscape-summary,.wk-section-head p,.section-heading p,.compact-heading p,.closing-flow-intro p) {
+  max-width: var(--phase18-reading-measure) !important;
+  color: var(--phase18-body) !important;
+  font-size: clamp(14px, 1.15vw, 16px) !important;
+  line-height: 1.58 !important;
+  letter-spacing: -.01em !important;
+}
+#app :where(.panel-kicker,.queue-header,.wk-kicker,.eyebrow) {
+  color: var(--phase18-muted) !important;
+  letter-spacing: .14em !important;
+}
+#app :where(.panel-kicker b,.queue-header strong) {
+  color: var(--phase18-ink) !important;
+  letter-spacing: -.02em !important;
+}
+
+/* Dense rows become ledgers: hairline separation, no mini-card fatigue. */
+#app :where(.validation-queue-item,.queue-item,.money-call,.builder-row,.title-row,.source-stack-card,.priority-market-card,.permit-state-card,.portal-link-list a,.engine-row,.criterion-row) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.validation-queue-item,.queue-item,.money-call,.builder-row,.title-row,.source-stack-card,.priority-market-card,.permit-state-card,.portal-link-list a) {
+  border-color: var(--phase18-hairline) !important;
+  background: rgba(255,255,255,.72) !important;
+}
+#app :where(.engine-row,.criterion-row,.queue-proof-line) {
+  color: var(--phase18-muted) !important;
+  line-height: 1.45 !important;
+}
+#app :where(.queue-copy b,.engine-row b,.criterion-row b,.money-call b,.queue-item b,.source-stack-card b) {
+  color: var(--phase18-ink) !important;
+  font-weight: 780 !important;
+  letter-spacing: -.025em !important;
+}
+#app :where(.queue-copy small,.engine-row span,.criterion-row span,.money-call span,.queue-item span) {
+  color: var(--phase18-muted) !important;
+  font-weight: 560 !important;
+  line-height: 1.42 !important;
+}
+
+/* Completion state legend: color is a job-state language, not decoration. */
+.completion-state-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: -12px 0 14px;
+  color: var(--phase18-muted);
+  font: 740 10px/1 var(--font-mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.completion-state-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.completion-state-legend span::before {
+  content: '';
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+}
+.completion-state-legend .legend-done { color: var(--phase18-done); }
+.completion-state-legend .legend-working { color: var(--phase18-working); }
+.completion-state-legend .legend-todo { color: var(--phase18-todo); }
+#app .validation-queue-item.is-emailed,
+#app .validation-queue-item.is-done,
+#app :where(.queue-item.done,.money-call.done,.title-row.done) {
+  border-left: 3px solid var(--phase18-done) !important;
+  background: linear-gradient(90deg, rgba(0,127,115,.085), rgba(255,255,255,.78) 52%) !important;
+}
+#app .validation-queue-item.is-called:not(.is-emailed) {
+  border-left: 3px solid var(--phase18-working) !important;
+  background: linear-gradient(90deg, rgba(37,90,214,.07), rgba(255,255,255,.78) 52%) !important;
+}
+#app .validation-queue-item.needs-email:not(.is-emailed) {
+  border-left: 3px solid rgba(122,132,146,.45) !important;
+}
+
+/* Icon discipline: keep line icons quiet and same optical weight. */
+#app :where(.product-icon,.action-icon,.contact-icon-toggle svg,.contact-state-toggle svg) {
+  stroke-width: 1.65 !important;
+  vector-effect: non-scaling-stroke;
+}
+#app :where(.product-icon) {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+/* Reduce fatigue on evidence grids: table feeling over card feeling. */
+#app :where(.validation-source-proof,.wk-proof-grid,.builder-ops-metrics,.title-metric-strip,.money-stats,.mini-grid,.deal-strip) {
+  gap: 0 !important;
+  border-top: 1px solid var(--phase18-hairline) !important;
+  border-bottom: 1px solid var(--phase18-hairline) !important;
+}
+#app :where(.validation-source-proof > div,.wk-proof-grid > article,.builder-ops-metrics > article,.title-metric-strip > article,.money-stats > div,.mini-grid > div,.deal-strip > div) {
+  border-width: 0 0 0 1px !important;
+  border-color: var(--phase18-hairline) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: clamp(12px, 1.8vw, 18px) !important;
+}
+#app :where(.validation-source-proof > div:first-child,.wk-proof-grid > article:first-child,.builder-ops-metrics > article:first-child,.title-metric-strip > article:first-child,.money-stats > div:first-child,.mini-grid > div:first-child,.deal-strip > div:first-child) {
+  border-left: 0 !important;
+}
+
+/* Accessibility contrast lock for small operational labels. */
+#app :where(small,.badge,.queue-proof-line,.source-page-section > summary em,.machine-panel > summary em,.validation-email-status) {
+  color: #59636f !important;
+}
+#app :where(a:not(.validation-call-button):not(.button-link):not(.tab-button)) {
+  color: #084f96;
+  text-decoration-thickness: .08em;
+  text-underline-offset: .18em;
+}
+
+@media (max-width: 760px) {
+  #app :where(.primary-action-strip) {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 16px 0 18px 14px !important;
+    margin: 18px 0 28px !important;
+  }
+  #app :where(.primary-action-strip > a) {
+    width: fit-content !important;
+  }
+  .completion-state-legend {
+    justify-content: flex-start;
+    margin: -6px 0 12px;
+  }
+  #app :where(.validation-source-proof,.wk-proof-grid,.builder-ops-metrics,.title-metric-strip,.money-stats,.mini-grid,.deal-strip) {
+    border: 0 !important;
+  }
+  #app :where(.validation-source-proof > div,.wk-proof-grid > article,.builder-ops-metrics > article,.title-metric-strip > article,.money-stats > div,.mini-grid > div,.deal-strip > div) {
+    border-left: 3px solid var(--phase18-hairline) !important;
+    border-bottom: 1px solid var(--phase18-hairline) !important;
+    padding: 13px 0 13px 12px !important;
+  }
+}
+
+/* v1.50.1 - Phase 18 mobile decision spine correction */
+@media (max-width: 760px) {
+  #app :where(.primary-action-strip) {
+    padding: 16px 14px 18px 20px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: hidden !important;
+  }
+  #app :where(.primary-action-strip)::before {
+    width: 2px !important;
+  }
+  #app :where(.primary-action-strip > span) {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+  }
+  #app :where(.primary-action-strip > b) {
+    font-size: clamp(18px, 6vw, 23px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.045em !important;
+    overflow-wrap: anywhere !important;
+  }
+  #app :where(.primary-action-strip > a) {
+    min-height: 34px !important;
+    padding: 0 12px !important;
+  }
+  body[data-active-view="today"] #command .wk-hero {
+    min-height: auto !important;
+    padding: 28px 20px 24px !important;
+    background-image: linear-gradient(180deg, rgba(238,246,236,.84), rgba(248,248,243,.94)) !important;
+  }
+  body[data-active-view="today"] #command .wk-hero::before,
+  body[data-active-view="today"] #command .wk-hero::after {
+    opacity: .08 !important;
+  }
+  body[data-active-view="today"] #command .wk-hero h1 {
+    font-size: clamp(43px, 13.6vw, 61px) !important;
+    line-height: .94 !important;
+  }
+  body[data-active-view="today"] #command .wk-hero p {
+    font-size: 18px !important;
+    line-height: 1.34 !important;
+  }
+}
+
+/* v1.50.2 - Phase 18 mobile icon discipline */
+@media (max-width: 760px) {
+  #app :where(.primary-action-strip > span .product-icon) {
+    display: none !important;
+  }
+  #app :where(.primary-action-strip > span) {
+    padding-left: 0 !important;
+  }
+}
+
+/* v1.50.3 - Phase 18 mobile action label safe inset */
+@media (max-width: 760px) {
+  #app :where(.primary-action-strip > span,
+              .primary-action-strip > b,
+              .primary-action-strip > a) {
+    margin-left: 8px !important;
+  }
+}

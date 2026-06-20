@@ -6482,3 +6482,167 @@ main { max-width: 100% !important; padding: clamp(16px, 2vw, 28px) clamp(10px, 2
 #command .wk-artifact { background: linear-gradient(180deg, rgba(255,246,232,.10), rgba(255,246,232,.035)) !important; }
 #command .wk-core-sample b { color: #fff6e8 !important; }
 #command .wk-artifact p { color: rgba(255,246,232,.72) !important; }
+
+
+/* Light editorial rebuild - no dark-theme first impression */
+:root {
+  --wk-paper: #f4eddf;
+  --wk-ink: #17130d;
+  --wk-ink-2: #2c261c;
+  --wk-muted: #756d5d;
+  --wk-line: rgba(23,19,13,.15);
+  --wk-accent: #5c7f2f;
+  --wk-accent-soft: #dfe9be;
+  --wk-copper: #9a673c;
+  --wk-field: #fbf6eb;
+  --wk-clay: #d8c9ad;
+}
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255,255,255,.92), transparent 34rem),
+    radial-gradient(circle at 90% 8%, rgba(223,233,190,.48), transparent 30rem),
+    linear-gradient(rgba(23,19,13,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23,19,13,.032) 1px, transparent 1px),
+    linear-gradient(180deg, #fbf6eb 0%, var(--wk-paper) 52%, #e7ddc9 100%) !important;
+  background-size: auto, auto, 44px 44px, 44px 44px, auto !important;
+}
+#command .wk-hero {
+  min-height: clamp(660px, 84vh, 900px) !important;
+  background:
+    linear-gradient(115deg, rgba(251,246,235,.98) 0%, rgba(244,237,223,.96) 54%, rgba(223,233,190,.64) 100%),
+    radial-gradient(circle at 82% 18%, rgba(92,127,47,.16), transparent 24rem) !important;
+  color: var(--wk-ink) !important;
+  box-shadow: 0 44px 110px rgba(75,58,31,.13) !important;
+}
+#command .wk-hero::before {
+  border-color: rgba(23,19,13,.14) !important;
+  background:
+    linear-gradient(90deg, rgba(23,19,13,.055) 1px, transparent 1px),
+    linear-gradient(rgba(23,19,13,.05) 1px, transparent 1px) !important;
+  background-size: 72px 72px !important;
+}
+#command .wk-hero::after {
+  opacity: .34 !important;
+  background-image:
+    linear-gradient(115deg, transparent 0 43%, rgba(92,127,47,.22) 43.2% 43.45%, transparent 43.8% 100%),
+    radial-gradient(circle at 74% 34%, rgba(154,103,60,.13), transparent 18rem) !important;
+}
+#command .wk-hero .wk-kicker { color: var(--wk-accent) !important; }
+#command .wk-hero h1 {
+  max-width: 10.8ch !important;
+  color: var(--wk-ink) !important;
+  text-shadow: none !important;
+}
+#command .wk-hero p {
+  max-width: 760px !important;
+  color: rgba(23,19,13,.68) !important;
+}
+#command .wk-actions a {
+  background: var(--wk-ink) !important;
+  color: #fff8eb !important;
+  border-color: var(--wk-ink) !important;
+  box-shadow: 0 14px 28px rgba(23,19,13,.13) !important;
+}
+#command .wk-actions a + a {
+  background: rgba(255,255,255,.38) !important;
+  color: var(--wk-ink) !important;
+  border-color: rgba(23,19,13,.2) !important;
+  box-shadow: none !important;
+}
+#command .wk-actions a:hover,
+#command .wk-actions a + a:hover,
+#command .wk-focus-card a:hover {
+  background: var(--wk-accent-soft) !important;
+  color: var(--wk-ink) !important;
+  border-color: rgba(92,127,47,.42) !important;
+}
+#command .wk-artifact {
+  border-color: rgba(23,19,13,.14) !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.48), rgba(244,237,223,.72)),
+    radial-gradient(circle at 48% 42%, rgba(223,233,190,.75), transparent 17rem) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.34), 0 30px 70px rgba(75,58,31,.10) !important;
+}
+#command .wk-artifact::before {
+  opacity: .72 !important;
+  background:
+    conic-gradient(from 100deg, transparent, rgba(92,127,47,.16), transparent, rgba(154,103,60,.14), transparent) !important;
+}
+#command .wk-core-sample {
+  background: rgba(251,246,235,.86) !important;
+  color: var(--wk-ink) !important;
+  border-color: rgba(23,19,13,.18) !important;
+  box-shadow: 0 30px 80px rgba(75,58,31,.14), inset 0 0 0 10px rgba(255,255,255,.28) !important;
+}
+#command .wk-core-sample b { color: var(--wk-ink) !important; }
+#command .wk-core-sample span,
+#command .wk-core-sample em { color: var(--wk-accent) !important; }
+#command .wk-contour { border-color: rgba(23,19,13,.16) !important; }
+#command .wk-artifact p { color: rgba(23,19,13,.6) !important; }
+#command .wk-market-node.hot {
+  background: #eef1d7 !important;
+  color: var(--wk-ink) !important;
+  box-shadow: inset 0 -6px 0 var(--wk-accent) !important;
+}
+#command .wk-progress span {
+  background: var(--wk-accent) !important;
+  box-shadow: none !important;
+}
+#command .wk-rail {
+  background: rgba(251,246,235,.84) !important;
+  border-color: rgba(23,19,13,.13) !important;
+}
+@media (max-width: 680px) {
+  #command .wk-hero { min-height: 720px !important; }
+  #command .wk-hero h1 { font-size: clamp(58px, 17vw, 82px) !important; }
+}
+
+
+/* Light editorial mobile artifact correction */
+@media (max-width: 680px) {
+  #command .wk-artifact {
+    align-content: center !important;
+    gap: 22px !important;
+    padding: 28px 22px !important;
+  }
+  #command .wk-artifact p {
+    position: relative !important;
+    left: auto !important;
+    bottom: auto !important;
+    z-index: 3 !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 12px 14px !important;
+    background: rgba(251,246,235,.72) !important;
+    border: 1px solid rgba(23,19,13,.12) !important;
+  }
+  #command .wk-core-sample { width: min(250px, 70vw) !important; }
+}
+
+
+/* Light editorial no-black-slab correction */
+.tab-button.active {
+  background: var(--wk-accent-soft) !important;
+  color: var(--wk-ink) !important;
+  box-shadow: inset 0 -3px 0 var(--wk-accent) !important;
+}
+#command .wk-actions a,
+#command .wk-focus-card a {
+  background: var(--wk-accent-soft) !important;
+  color: var(--wk-ink) !important;
+  border-color: rgba(92,127,47,.48) !important;
+  box-shadow: 0 12px 24px rgba(92,127,47,.12) !important;
+}
+#command .wk-actions a + a {
+  background: rgba(255,255,255,.46) !important;
+  color: var(--wk-ink) !important;
+  border-color: rgba(23,19,13,.18) !important;
+  box-shadow: none !important;
+}
+#command .wk-actions a:hover,
+#command .wk-actions a + a:hover,
+#command .wk-focus-card a:hover {
+  background: #f7f0df !important;
+  color: var(--wk-ink) !important;
+  border-color: rgba(23,19,13,.28) !important;
+}

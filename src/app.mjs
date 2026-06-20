@@ -1427,8 +1427,8 @@ function renderCommandCenter() {
     <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS creative command">
       <div class="wk-hero-copy">
         <span class="wk-kicker">Buyer-first land intelligence / Tennessee live-first</span>
-        <h1>Stop hunting land. Start routing demand.</h1>
-        <p>Land Dealflow OS turns fragmented permit evidence into one daily operating ritual: prove the builder, capture the buy box, then call only the sellers that can become a close.</p>
+        <h1>Builder demand, made visible.</h1>
+        <p>Land Dealflow OS reads permit fragments like field notes, validates the builder first, then turns the right seller into the only call worth making.</p>
         <div class="wk-actions">
           <a href="#builders" data-view="builders">Open builder command</a>
           <a href="#wk-work">See today’s sequence</a>
@@ -1437,7 +1437,7 @@ function renderCommandCenter() {
       <aside class="wk-artifact" aria-label="Permit evidence visual metaphor">
         <div class="wk-core-sample"><span>TN</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
         <div class="wk-contour c1"></div><div class="wk-contour c2"></div><div class="wk-contour c3"></div>
-        <p>Permit evidence is the terrain. Buyer demand is the route.</p>
+        <p>Builder-grade intelligence on warm paper: permits, buy boxes, and one next action.</p>
       </aside>
     </section>
     <section class="wk-audit wk-reveal" aria-label="Audit decisions">

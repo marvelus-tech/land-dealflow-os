@@ -35,6 +35,7 @@ import {
   buildOperatorChecklist,
   generateBuyerSendMemo,
   exportBuyerSendMemoMarkdown,
+  buildSellerSearchControlLayer,
 } from '../src/core.mjs';
 
 function testScoreMarketRewardsBuilderDemandAndStandardizedLots() {
@@ -523,8 +524,26 @@ testBuyerAssignmentSummaryShowsRiskAndSpread();
 testRiskChecklistFlagsMissingAndFatalItems();
 testDealMemoMarkdownExportsFullPacket();
 testOperatorChecklistTracksCallToCloseFlow();
+function testSellerSearchControlLayerLocksSellersUntilBuyerAndContactGatesClear() {
+  const buyers = [
+    { id: 'b1', name: 'Half Known Builder', market: 'knoxville-tn', recentBuilds: 9, buyBox: 'Knox County quarter-acre paved-road lots under $45k' },
+    { id: 'b2', name: 'Exact Builder', market: 'knoxville-tn', recentBuilds: 6, phone: '865-555-0100', email: 'buy@example.com', closeSpeedDays: 14, exactBuyBox: { targetMarkets: ['Knox County'], lotSizeMin: 0.2, lotSizeMax: 0.5, maxPrice: 45000, requiredRoadAccess: true, avoidWetlands: true } },
+  ];
+  const sellers = [
+    { id: 's1', address: '101 Ridge Rd, Knoxville, TN', market: 'knoxville-tn', ownerName: 'Avery Owner', ownerPhone: '865-555-0111', buyerMaxPrice: 45000, askingPrice: 28000, roadAccess: true, wetlands: 'none', floodZone: false, utilities: 'nearby', slope: 'flat', heldYears: 18, paid: 5000 },
+    { id: 's2', address: '202 Skip Trace Ln, Knoxville, TN', market: 'knoxville-tn', ownerName: 'Public Owner', buyerMaxPrice: 45000, askingPrice: 25000, roadAccess: true, wetlands: 'none', floodZone: false, utilities: 'nearby', slope: 'flat' },
+  ];
+  const control = buildSellerSearchControlLayer({ buyers, sellerCandidates: sellers, state: 'TN' });
+  assert.equal(control.status, 'seller-call-ready');
+  assert.equal(control.stats.unlockedBuyers, 1);
+  assert.equal(control.stats.callReady, 1);
+  assert.ok(control.sellerRows.find(row => row.id === 's2').lockedReasons.includes('owner phone/email missing'));
+  assert.ok(control.stageRows.find(row => row.id === 'buyer-proof').detail.includes('buyer buy box ready'));
+}
+
 testBuyerSendMemoIncludesDecisionDeadlineAndAssignmentPath();
 testBuyerFeedbackCaptureTightensNextSellerCalls();
+testSellerSearchControlLayerLocksSellersUntilBuyerAndContactGatesClear();
 
 testOutreachCallScriptUsesParcelAndBuyerContext();
 testFollowUpQueueSortsOverdueThenDueSoonAndSkipsDead();

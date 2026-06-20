@@ -7,6 +7,7 @@ import {
   applyCrmUpdate,
   applyCallOutcome,
   buildDailyMoneyQueue,
+  buildSellerSearchControlLayer,
   buildBuyerContactQueue,
   buildBuyerFirstBoard,
   applySkipTraceImport,
@@ -1131,6 +1132,7 @@ function renderBuilderListEnginePanel(options = {}) {
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
   const permitLandscape = getPermitPortalLandscape();
+  const publicSkipTrace = asArray(generatedLeads?.queues?.skipTrace);
   const stateOrder = ['TN', 'FL', 'AZ', 'NC', 'TX'];
   const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona' };
   const stateSummaries = stateOrder.map((stateCode) => {
@@ -1156,6 +1158,13 @@ function renderBuilderListEnginePanel(options = {}) {
   const activeBuilders = asArray(activeState.rows);
   const activeSummary = activeState.summary || getStateBuilderSummary(activeState.stateCode);
   const selected = getSelectedBuilder(activeBuilders) || {};
+  const sellerControl = buildSellerSearchControlLayer({
+    buyers: [...generatedCandidateBuyers(), ...enrichedBuilderContacts(), ...(workspace.buyers || [])],
+    sellerCandidates: [...publicSkipTrace, ...(workspace.parcels || [])],
+    titleCandidates: titleCompanyCandidateMarkets(),
+    state: activeState.stateCode,
+    limit: 6,
+  });
   const marketSummary = `<div class="active-market-summary">
     <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
     <strong>${h(activeState.marketLabel || activeState.label)}</strong>
@@ -1228,6 +1237,7 @@ function renderBuilderListEnginePanel(options = {}) {
     </section>
 
     ${renderBuyerValidationCommandCenter(activeState, activeBuilders, activeSummary)}
+    ${renderSellerSearchControlLayer(sellerControl)}
 
     <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
@@ -1243,6 +1253,38 @@ function renderBuilderListEnginePanel(options = {}) {
     </section>
   </div>`;
   if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
+}
+
+function renderSellerSearchControlLayer(control = {}) {
+  const stageRows = asArray(control.stageRows).map(stage => `<article class="seller-control-stage ${h(stage.status)}"><span>${h(stage.label)}</span><b>${h(stage.status)}</b><p>${h(stage.detail)}</p></article>`).join('');
+  const buyerRows = asArray(control.buyerRows).map((buyer, index) => `<div class="seller-control-row buyer-gate-row">
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <div><b>${h(buyer.name)}</b><small>${h(buyer.market || 'market pending')} · ${h(buyer.recentBuilds)} permit signals · ${h(buyer.contact || 'contact to find')}</small></div>
+    <em>${buyer.gate?.unlocked ? 'unlocked' : `missing ${h(asArray(buyer.gate?.missing).slice(0, 2).join(' + ') || 'buy-box field')}`}</em>
+  </div>`).join('');
+  const sellerRows = asArray(control.sellerRows).map((seller, index) => `<div class="seller-control-row seller-gate-row ${seller.locked ? 'locked' : 'ready'}">
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <div><b>${h(seller.address)}</b><small>${h(seller.ownerName)} · ${h(seller.market || control.state)} · ${h(seller.motivation?.temperature || 'Watch')} seller motivation</small></div>
+    <em>${h(seller.nextAction)}</em>
+  </div>`).join('');
+  return `<section id="seller-search-control" class="seller-control-panel" aria-label="Buyer-first seller search control layer">
+    <div class="seller-control-hero">
+      <span class="eyebrow">Seller search control layer · ${h(control.state || 'TN')}</span>
+      <h3>Do not chase sellers until the buyer demand can survive six gates.</h3>
+      <p>${h(control.nextAction || 'Validate buyer demand first, then unlock skip trace, seller calls, contract/title, buyer memo and feedback loop in order.')}</p>
+      <div class="seller-control-metrics">
+        <div><b>${h(control.stats?.buyers || 0)}</b><span>buyer candidates</span></div>
+        <div><b>${h(control.stats?.unlockedBuyers || 0)}</b><span>buy boxes unlocked</span></div>
+        <div><b>${h(control.stats?.sellerCandidates || 0)}</b><span>public seller records</span></div>
+        <div><b>${h(control.stats?.callReady || 0)}</b><span>seller-call ready</span></div>
+      </div>
+    </div>
+    <div class="seller-control-stages">${stageRows}</div>
+    <div class="seller-control-grid">
+      <article><div class="panel-kicker"><span>Buyer gates</span><b>capture before seller search</b></div>${buyerRows || '<p>No buyer candidates for this state yet. Pull permit-active builders first.</p>'}</article>
+      <article><div class="panel-kicker"><span>Seller gates</span><b>public records stay held back until enriched</b></div>${sellerRows || '<p>No seller candidates for this state yet. Pull owner parcels only after buyer proof.</p>'}</article>
+    </div>
+  </section>`;
 }
 
 function renderClosingDeskPanel() {

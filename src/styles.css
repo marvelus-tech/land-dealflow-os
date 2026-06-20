@@ -631,7 +631,25 @@ h3, h4 { letter-spacing: -.035em; }
 .weekly-market-grid .engine-row span { color: rgba(255,247,232,.62); }
 
 .builder-engine-shell { display: grid; gap: 18px; }
-.builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel, .builder-adapter-panel { padding: 22px; border-radius: 26px; background: rgba(255,255,255,.92); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+.builder-hero-panel, .builder-table-panel, .builder-detail-panel, .builder-form-panel, .builder-script-panel, .builder-adapter-panel, .seller-control-panel { padding: 22px; border-radius: 26px; background: rgba(255,255,255,.92); border: 1px solid var(--line); box-shadow: var(--shadow-soft); }
+.seller-control-panel { display: grid; gap: 16px; background: radial-gradient(circle at 92% 5%, rgba(255,56,92,.16), transparent 18rem), linear-gradient(135deg, #fff 0%, #fff9ec 100%); }
+.seller-control-hero h3 { margin-top: 10px; max-width: 900px; font-size: clamp(30px, 4vw, 54px); line-height: .96; letter-spacing: -.065em; }
+.seller-control-hero p { margin-top: 12px; max-width: 820px; color: var(--muted); font-size: 17px; line-height: 1.45; }
+.seller-control-metrics, .seller-control-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 16px; }
+.seller-control-metrics div, .seller-control-stage, .seller-control-grid article { padding: 14px; border-radius: 18px; background: rgba(255,252,244,.84); border: 1px solid var(--line-soft); }
+.seller-control-metrics b { display: block; color: var(--black); font-size: 28px; letter-spacing: -.04em; }
+.seller-control-metrics span, .seller-control-stage span { color: var(--muted); font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .07em; }
+.seller-control-stage b { display: block; margin-top: 8px; color: var(--black); text-transform: capitalize; }
+.seller-control-stage p { margin-top: 6px; color: var(--muted); font-size: 12px; line-height: 1.35; }
+.seller-control-stage.clear { background: var(--panel-green); border-color: rgba(15,118,75,.16); }
+.seller-control-stage.locked { background: #fff7ed; border-color: rgba(217,119,6,.18); }
+.seller-control-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.seller-control-row { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line-soft); }
+.seller-control-row > span { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 999px; background: #fff; color: var(--brand-dark); font-size: 11px; font-weight: 850; }
+.seller-control-row b { display: block; color: var(--black); font-size: 14px; }
+.seller-control-row small { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; line-height: 1.32; }
+.seller-control-row em { max-width: 210px; padding: 6px 9px; border-radius: 999px; background: var(--panel-green); color: var(--green); font-style: normal; font-size: 11px; font-weight: 850; text-align: right; }
+.seller-control-row.locked em, .buyer-gate-row em { background: #fff7ed; color: var(--amber); }
 .builder-hero-panel { background: radial-gradient(circle at 86% 12%, rgba(159,232,112,.34), transparent 18rem), linear-gradient(135deg, #fff 0%, #f5fbef 100%); }
 .builder-hero-panel h3 { margin-top: 10px; font-size: clamp(34px, 4.8vw, 62px); line-height: .96; letter-spacing: -.065em; max-width: 820px; }
 .builder-hero-panel p { margin-top: 14px; color: var(--muted); max-width: 760px; font-size: 18px; line-height: 1.45; }
@@ -762,7 +780,7 @@ h3, h4 { letter-spacing: -.035em; }
 .title-principles-card ul { margin: 18px 0 0; padding-left: 18px; color: var(--muted); line-height: 1.55; }
 
 @media (max-width: 1000px) {
-  .brand-hero, .cashflow-hero, .daily-calls, .cashflow-board, .buyer-first-board, .phase-one-strip, .phase-one-detail-grid, .operator-steps, .intake-grid, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid, .lead-engine-grid, .deal-workbench, .weekly-market-head, .weekly-market-grid, .closing-layout, .title-orbital-hero, .title-desk-grid, .title-desk-grid.lower, .builder-grid-main, .builder-two-col { grid-template-columns: 1fr; }
+  .brand-hero, .cashflow-hero, .daily-calls, .cashflow-board, .buyer-first-board, .phase-one-strip, .phase-one-detail-grid, .operator-steps, .intake-grid, .grid, .grid.two, .workspace-grid, .checklist, .outreach-grid, .buyer-validation-grid, .lead-engine-grid, .deal-workbench, .weekly-market-head, .weekly-market-grid, .closing-layout, .title-orbital-hero, .title-desk-grid, .title-desk-grid.lower, .builder-grid-main, .builder-two-col, .seller-control-grid, .seller-control-stages, .seller-control-metrics { grid-template-columns: 1fr; }
   .deal-queue, .deal-action, .title-queue { position: static; max-height: none; }
   .queue-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .call-tile-grid { grid-template-columns: 1fr; }

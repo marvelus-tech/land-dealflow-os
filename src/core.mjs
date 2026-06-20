@@ -701,6 +701,101 @@ export function buildDailyMoneyQueue({ parcels = [], buyers = [], limit = 5, now
   };
 }
 
+export function buildSellerSearchControlLayer({ buyers = [], sellerCandidates = [], titleCandidates = [], state = 'TN', limit = 6 } = {}) {
+  const targetState = String(state || '').toUpperCase();
+  const stateMatches = row => !targetState || targetState === 'ALL' || String(row.state || row.marketState || row.stateCode || '').toUpperCase() === targetState || String(row.market || row.marketName || '').toUpperCase().includes(`-${targetState}`) || String(row.address || '').toUpperCase().includes(`, ${targetState}`);
+  const relevantBuyers = (buyers || []).filter(stateMatches);
+  const relevantSellers = (sellerCandidates || []).filter(stateMatches);
+  const exactGate = (buyer = {}) => {
+    const box = buyer.exactBuyBox || {};
+    const text = `${buyer.buyBox || ''} ${buyer.acquisitionNotes || ''} ${buyer.task || ''}`;
+    const checks = [
+      { id: 'geography', label: 'Geography', met: Boolean((box.targetMarkets || []).length || buyer.market || /county|market|subdivision|zip|tn|fl|az|nc|tx/i.test(text)) },
+      { id: 'lot-size', label: 'Lot size', met: Boolean((box.lotSizeMin && box.lotSizeMax) || /acre|ac|sf|lot|quarter/i.test(text)) },
+      { id: 'max-price', label: 'Max price', met: Boolean(box.maxPrice || buyer.maxPrice || buyer.buyerMaxPrice || /\$|price|under|max/i.test(text)) },
+      { id: 'close-speed', label: 'Close speed', met: Boolean(buyer.closeSpeedDays || buyer.closeSpeed || /close|days|cash|fast/i.test(text)) },
+      { id: 'package-recipient', label: 'Package recipient', met: Boolean(buyer.packageRecipient || buyer.contactName || buyer.buyerContactName || buyer.email || buyer.buyerEmail) },
+      { id: 'deal-killers', label: 'Deal killers', met: Boolean((box.avoidFloodZones || []).length || box.avoidWetlands !== undefined || box.requiredRoadAccess !== undefined || /wetland|flood|road|access|utility|slope|kill/i.test(text)) },
+    ];
+    const complete = checks.filter(check => check.met).length;
+    return { checks, complete, total: checks.length, missing: checks.filter(check => !check.met).map(check => check.label), unlocked: complete === checks.length };
+  };
+  const buyerRows = relevantBuyers.map(buyer => {
+    const broad = calculateBuyBoxCompleteness(buyer);
+    const gate = exactGate(buyer);
+    const recentBuilds = Number(buyer.recentBuilds || buyer.recentPermits || buyer.permitCount || buyer.qualifyingPermitCount || 0);
+    return {
+      id: buyer.id || buyer.buyerId || buyer.builderId || buyer.name,
+      name: buyer.name || buyer.companyName || 'Permit-active builder',
+      market: buyer.market || buyer.marketName || '',
+      recentBuilds,
+      contact: buyer.phone || buyer.email || buyer.website || buyer.contactName || '',
+      broadCompletion: broad,
+      gate,
+      nextAction: gate.unlocked ? 'Pull matching seller parcels' : `Capture ${gate.missing[0] || 'buyer rule'}`,
+      sourceUrl: buyer.sourceUrl || buyer.website || buyer.permitUrl || '',
+    };
+  }).sort((a, b) => Number(b.gate.unlocked) - Number(a.gate.unlocked) || b.gate.complete - a.gate.complete || b.recentBuilds - a.recentBuilds || String(a.name).localeCompare(String(b.name)));
+  const unlockedBuyers = buyerRows.filter(row => row.gate.unlocked);
+  const unlockedBuyerIds = new Set(unlockedBuyers.map(row => String(row.id || '')));
+  const contractBuyer = relevantBuyers.find(buyer => unlockedBuyerIds.has(String(buyer.id || buyer.buyerId || buyer.builderId || buyer.name || ''))) || relevantBuyers[0] || {};
+  const sellerRows = relevantSellers.map(seller => {
+    const hasContact = Boolean(seller.ownerPhone || seller.ownerEmail || seller.phone || seller.email || seller.realContact);
+    const contract = calculateContractReadiness(seller, contractBuyer);
+    const motivation = calculateSellerMotivation(seller);
+    const risk = classifyParcelRisk(seller);
+    const lockedReasons = [];
+    if (!unlockedBuyers.length) lockedReasons.push('buyer buy box missing');
+    if (!hasContact) lockedReasons.push('owner phone/email missing');
+    if (risk.status === 'Kill') lockedReasons.push('buildability kill flag');
+    if (!contract.ready) lockedReasons.push('contract/title gate incomplete');
+    return {
+      id: seller.id || seller.leadId || seller.parcelId || seller.address,
+      address: seller.address || seller.parcelId || 'Public owner record',
+      ownerName: seller.ownerName || seller.owner || 'owner unknown',
+      market: seller.market || seller.marketName || '',
+      hasContact,
+      riskStatus: risk.status,
+      motivation,
+      contract,
+      locked: lockedReasons.length > 0,
+      lockedReasons,
+      nextAction: !unlockedBuyers.length ? 'finish buyer buy-box validation first' : !hasContact ? 'skip trace public owner contact' : !contract.ready ? `clear ${contract.blockers[0] || 'title/contract gate'}` : 'seller call ready',
+    };
+  }).sort((a, b) => Number(a.locked) - Number(b.locked) || b.motivation.score - a.motivation.score).slice(0, limit);
+  const titleReady = titleCandidates.filter(candidate => String(candidate.state || candidate.market || '').toUpperCase().includes(targetState) && candidate.assignmentFriendly !== true).length;
+  const stageRows = [
+    { id: 'buyer-proof', label: 'Buyer proof', status: unlockedBuyers.length ? 'clear' : 'locked', detail: unlockedBuyers.length ? `${unlockedBuyers.length} buyer buy box ready` : `${buyerRows.length} builders still need six-field buy-box capture` },
+    { id: 'seller-match', label: 'Seller match', status: unlockedBuyers.length && relevantSellers.length ? 'review' : 'locked', detail: relevantSellers.length ? `${relevantSellers.length} public owner records available` : 'pull seller parcels only after buyer proof' },
+    { id: 'contact-enrichment', label: 'Contact enrichment', status: sellerRows.some(row => row.hasContact) ? 'review' : 'locked', detail: sellerRows.some(row => row.hasContact) ? 'owner contact exists on at least one row' : 'public records stay skip-trace until enriched' },
+    { id: 'contract-title', label: 'Contract/title', status: sellerRows.some(row => row.contract.ready) ? 'review' : 'locked', detail: titleReady ? 'title candidates need assignment verification' : 'state packet/title provider must be ready before serious calls' },
+    { id: 'buyer-memo', label: 'Buyer memo', status: sellerRows.some(row => !row.locked) ? 'review' : 'locked', detail: 'memo unlocks only after seller range and title packet are defensible' },
+    { id: 'feedback-loop', label: 'Feedback loop', status: 'armed', detail: 'buyer yes/no rewrites tomorrow’s seller-call queue' },
+  ];
+  const nextAction = !unlockedBuyers.length
+    ? `Call ${buyerRows[0]?.name || 'permit-active builder'} and capture: ${buyerRows[0]?.gate.missing.slice(0, 2).join(' + ') || 'geography + max price'}.`
+    : !sellerRows.length
+      ? 'Pull public owner parcel candidates matching the unlocked buy box.'
+      : sellerRows.every(row => !row.hasContact)
+        ? 'Export the matched public-owner batch for skip tracing; do not call yet.'
+        : sellerRows.find(row => !row.locked)?.nextAction || sellerRows[0].nextAction;
+  return {
+    state: targetState,
+    status: unlockedBuyers.length && sellerRows.some(row => !row.locked) ? 'seller-call-ready' : unlockedBuyers.length ? 'skip-trace-ready' : 'buyer-validation-first',
+    nextAction,
+    stats: {
+      buyers: buyerRows.length,
+      unlockedBuyers: unlockedBuyers.length,
+      sellerCandidates: relevantSellers.length,
+      callReady: sellerRows.filter(row => !row.locked).length,
+      skipTrace: sellerRows.filter(row => row.locked && row.lockedReasons.includes('owner phone/email missing')).length,
+    },
+    buyerRows: buyerRows.slice(0, limit),
+    sellerRows,
+    stageRows,
+  };
+}
+
 export function buildBuyerContactQueue(buyers = []) {
   const unique = new Map();
   for (const buyer of buyers || []) {

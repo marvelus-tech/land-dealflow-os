@@ -9,7 +9,8 @@ const coreSource = readFileSync(new URL('../src/core.mjs', import.meta.url), 'ut
 
 assert.match(html, /id="source-priority-board"/, 'Sources page must reserve a priority permit-market board');
 assert.match(appSource, /function renderSourcePriorityBoard/, 'Sources page must render the priority market board from permit landscape data');
-assert.match(appSource, /TN first\. Then NC, TX, inland FL, AZ\./, 'Sources page must reflect the user-supplied target-state priority stack');
+assert.match(appSource, /TN first\. Then inland FL, AZ, NC, TX\./, 'Sources page must reflect the user-supplied target-state priority stack');
+assert.match(appSource, /const stateOrder = \['TN', 'FL', 'AZ', 'NC', 'TX'\]/, 'Builders state rail must follow TN -> inland FL -> AZ -> NC -> TX');
 assert.match(appSource, /getPermitPortalLandscape\(\)/, 'Sources priority board must render from tested permit landscape data');
 assert.match(coreSource, /Buildchek|PermitVector/, 'Permit landscape data must preserve aggregator/platform references');
 assert.match(appSource, /renderSourcePriorityBoard\(\)/, 'Sources priority board must be part of the render loop');

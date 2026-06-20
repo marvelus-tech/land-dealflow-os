@@ -1709,10 +1709,10 @@ export function getPermitPortalLandscape() {
       { rank: 2, state: 'TN', market: 'Murfreesboro / Rutherford County', reason: 'CivicPlus/CivicGov sprawl market near Nashville edge; direct portal monitoring priority.', zillowUrl: 'https://www.zillow.com/murfreesboro-tn/' },
       { rank: 3, state: 'TN', market: 'Franklin / Williamson County', reason: 'IDT Plans/GeoCivix electronic plan review; high builder demand, higher land-price discipline required.', zillowUrl: 'https://www.zillow.com/franklin-tn/' },
       { rank: 4, state: 'TN', market: 'Clarksville / Montgomery County', reason: 'Buildchek + county portal; growth corridor with simpler seller-search expansion than Nashville proper.', zillowUrl: 'https://www.zillow.com/clarksville-tn/' },
-      { rank: 5, state: 'NC', market: 'Charlotte / Mecklenburg → Cabarrus corridor', reason: 'Buildchek + Accela + Power BI/ArcGIS data; strong Piedmont land-flipping corridor.', zillowUrl: 'https://www.zillow.com/charlotte-nc/' },
-      { rank: 6, state: 'TX', market: 'Austin / San Antonio open-data corridor', reason: 'Socrata/open data gives programmatic permit intake before fragmented Houston/Dallas work.', zillowUrl: 'https://www.zillow.com/austin-tx/' },
-      { rank: 7, state: 'FL', market: 'Polk / Marion / Lake / Alachua inland Florida', reason: 'Accela/Civic Access-heavy inland growth; avoids some coastal insurance friction.', zillowUrl: 'https://www.zillow.com/polk-county-fl/' },
-      { rank: 8, state: 'AZ', market: 'Maricopa velocity markets', reason: 'Weekly reports + Accela/self-certification cities: Phoenix, Mesa, Scottsdale, Tempe, Buckeye.', zillowUrl: 'https://www.zillow.com/maricopa-county-az/' },
+      { rank: 5, state: 'FL', market: 'Polk / Marion / Lake / Alachua inland Florida', reason: 'Accela/Civic Access-heavy inland growth; avoids coastal insurance-friction bias while keeping builder demand.', zillowUrl: 'https://www.zillow.com/polk-county-fl/' },
+      { rank: 6, state: 'AZ', market: 'Maricopa velocity markets', reason: 'Weekly reports + Accela/self-certification cities: Phoenix, Mesa, Scottsdale, Tempe, Buckeye.', zillowUrl: 'https://www.zillow.com/maricopa-county-az/' },
+      { rank: 7, state: 'NC', market: 'Charlotte / Mecklenburg → Wake → Guilford corridor', reason: 'Buildchek + Accela + Power BI/ArcGIS data; strong Piedmont land-flipping corridor.', zillowUrl: 'https://www.zillow.com/charlotte-nc/' },
+      { rank: 8, state: 'TX', market: 'Austin / San Antonio open-data corridor', reason: 'Socrata/open data gives programmatic permit intake before fragmented Houston/Dallas work; PermitVector covers normalized paid expansion.', zillowUrl: 'https://www.zillow.com/austin-tx/' },
     ],
     states: [
       {

@@ -126,8 +126,8 @@ assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action ca
 assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'second hero headline should stay removed; the page needs one top command header');
 assert.match(appSource, /builder-market-workbench/, 'top Builders IA should be a market workbench, not a static metric strip');
 assert.match(appSource, /market-toggle-grid/, 'priority states should be exposed as top-level market toggles');
-assert.match(appSource, /stateOrder = \['TN', 'TX', 'NC', 'FL', 'AZ'\]/, 'market toggles should expose all prioritized states as resource wells');
-assert.match(appSource, /All six deployed market lanes are live/, 'Builders header should frame deployed states as live selectable market lanes');
+assert.match(appSource, /stateOrder = \['TN', 'FL', 'AZ', 'NC', 'TX'\]/, 'market toggles should expose all prioritized states in the user-supplied TN -> inland FL -> AZ -> NC -> TX order');
+assert.match(appSource, /Priority is TN → inland FL → AZ → NC → TX/, 'Builders header should frame deployed states by the target priority stack, not as a forced sequence');
 assert.match(appSource, /data-builder-market-state/, 'state toggles should be interactive controls that swap the displayed state data');
 assert.match(appSource, /selectedBuilderMarketState = stateCode/, 'clicking a state toggle should change the selected Builders market state');
 assert.match(appSource, /\[activeState\]\.map\(state =>/, 'the state detail panel should render only the selected state below the toggles');

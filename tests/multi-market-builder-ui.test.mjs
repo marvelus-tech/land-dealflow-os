@@ -16,7 +16,7 @@ assert.match(app, /async function loadBuilderMarketData\(\)/, 'UI must load mult
 assert.match(app, /loadBuilderMarketData\(\)\.then\(renderAll\)/, 'UI must render after multi-market data loads');
 assert.match(app, /getStateBuilderRows\(stateCode\)/, 'UI must select builders by active state');
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
-assert.match(app, /All six deployed market lanes are live/, 'Visitor copy should disclose all deployed markets are live');
+assert.match(app, /Priority is TN → inland FL → AZ → NC → TX/, 'Visitor copy should disclose the user-supplied target-state priority stack');
 assert.doesNotMatch(app, /const isLive = stateCode === 'TN'/, 'UI must not hard-code only Tennessee as live');
 assert.doesNotMatch(app, /non-live states stay empty until real permit pulls are loaded/, 'UI must not tell visitors deployed markets are empty');
 assert.doesNotMatch(app, /id="builder-evidence-desk"/, 'legacy duplicate evidence desk must not render');
@@ -33,8 +33,8 @@ for (const [key, state, url] of markets) {
   assert.ok(rows.length >= 20, `${key} must have at least 20 deployed builder rows`);
 }
 
-for (const state of ['TN', 'TX', 'NC', 'FL', 'AZ']) {
-  assert.match(app, new RegExp(`\\['TN', 'TX', 'NC', 'FL', 'AZ'\\]`), 'state switcher should include all target states');
+for (const state of ['TN', 'FL', 'AZ', 'NC', 'TX']) {
+  assert.match(app, new RegExp(`\\['TN', 'FL', 'AZ', 'NC', 'TX'\\]`), 'state switcher should follow the target-state priority stack');
   assert.ok(app.includes(`data-builder-market-state`), `state switcher missing for ${state}`);
 }
 

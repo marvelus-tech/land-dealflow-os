@@ -5,6 +5,11 @@ const landscape = getPermitPortalLandscape();
 
 assert.equal(landscape.leadingMarkets[0].state, 'TN');
 assert.match(landscape.leadingMarkets[0].market, /Knoxville/);
+assert.equal(landscape.leadingMarkets[4].state, 'FL', 'inland Florida must be first resource well after Tennessee');
+assert.equal(landscape.leadingMarkets[5].state, 'AZ', 'Arizona must follow inland Florida in the priority stack');
+assert.equal(landscape.leadingMarkets[6].state, 'NC', 'North Carolina must follow Arizona in the priority stack');
+assert.equal(landscape.leadingMarkets[7].state, 'TX', 'Texas must remain the final resource well because DIY coverage is fragmented');
+assert.ok(!JSON.stringify(landscape).match(/Kentucky|\bKY\b/), 'Kentucky must not appear in the priority permit landscape');
 assert.ok(landscape.leadingMarkets.some(item => item.state === 'NC'));
 assert.ok(landscape.leadingMarkets.some(item => item.state === 'TX'));
 assert.ok(landscape.leadingMarkets.some(item => item.state === 'FL'));

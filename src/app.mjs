@@ -1131,7 +1131,7 @@ function renderBuilderListEnginePanel(options = {}) {
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
   const permitLandscape = getPermitPortalLandscape();
-  const stateOrder = ['TN', 'TX', 'NC', 'FL', 'AZ'];
+  const stateOrder = ['TN', 'FL', 'AZ', 'NC', 'TX'];
   const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona' };
   const stateSummaries = stateOrder.map((stateCode) => {
     const marketSummary = getStateBuilderSummary(stateCode);
@@ -1215,7 +1215,7 @@ function renderBuilderListEnginePanel(options = {}) {
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose market. Validate builders.</h3>
-        <p><b>All six deployed market lanes are live.</b> Tap a state to swap the builder queue, validation form, source map, and permit-proof context.</p>
+        <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> Tap a state to swap the builder queue, validation form, source map, and permit-proof context. Resource wells are independent, not a forced sequence.</p>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -1379,6 +1379,14 @@ function renderSourcePriorityBoard() {
   const tnMarkets = leading.filter(item => item.state === 'TN');
   const nextMarkets = leading.filter(item => item.state !== 'TN');
   const tierRows = asArray(landscape.tiers).slice(0, 2).map(tier => `<article><span>${h(tier.name.replace(/^Tier \d+ - /, ''))}</span>${asArray(tier.items).slice(0, 3).map(item => safeLink(item.url, item.label, 'priority-source-link')).join('')}</article>`).join('');
+  const stackOrder = [
+    { code: 'TN', label: 'Tennessee', stance: 'live first', platform: 'Buildchek + direct portals' },
+    { code: 'FL', label: 'Inland Florida', stance: 'first resource well', platform: 'Accela / EnerGov / Civic Access' },
+    { code: 'AZ', label: 'Arizona', stance: 'velocity well', platform: 'Maricopa weekly + Accela cities' },
+    { code: 'NC', label: 'North Carolina', stance: 'Piedmont well', platform: 'Buildchek + Mecklenburg/Wake direct data' },
+    { code: 'TX', label: 'Texas', stance: 'fragmented high-volume well', platform: 'PermitVector + Austin/San Antonio open data' },
+  ];
+  const stackRows = stackOrder.map((item, index) => `<article class="priority-stack-step ${index === 0 ? 'active' : ''}"><span>${String(index + 1).padStart(2, '0')}</span><b>${h(item.code)} · ${h(item.label)}</b><small>${h(item.stance)} · ${h(item.platform)}</small></article>`).join('');
   const marketCard = item => `<article class="priority-market ${item.state === 'TN' ? 'is-primary' : ''}">
     <span>${String(item.rank).padStart(2, '0')} · ${h(item.state)}</span>
     <b>${h(item.market)}</b>
@@ -1387,12 +1395,14 @@ function renderSourcePriorityBoard() {
   target.innerHTML = `<section class="source-market-priority" aria-label="Priority permit portal markets">
     <div class="source-priority-head">
       <span class="eyebrow">Permit-source priority</span>
-      <h3>TN first. Then NC, TX, inland FL, AZ.</h3>
-      <p>No statewide permit database exists in these states. Lead generation follows the portal stack: aggregator first, direct county/city second, macro data last.</p>
+      <h3>TN first. Then inland FL, AZ, NC, TX.</h3>
+      <p>No statewide permit database exists in these states. Lead generation follows the target-state order: Tennessee first, then inland Florida, Arizona, North Carolina, and Texas, using aggregator-first and direct-portal paths without Kentucky leakage.</p>
     </div>
+    <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
+    <div class="source-guardrail"><b>Kentucky guardrail</b><span>If Kentucky records appear, treat them as target-state/HQ leakage unless they carry verified Tennessee permit evidence.</span></div>
     <div class="source-priority-grid">
       <div class="priority-lane primary"><span>Now</span>${tnMarkets.map(marketCard).join('')}</div>
-      <div class="priority-lane"><span>Next</span>${nextMarkets.map(marketCard).join('')}</div>
+      <div class="priority-lane"><span>Resource wells</span>${nextMarkets.map(marketCard).join('')}</div>
       <div class="priority-stack"><span>Normalize with</span>${tierRows}</div>
     </div>
   </section>`;

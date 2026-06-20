@@ -41,8 +41,8 @@ for (const phrase of ['assignment-friendly', 'title-ready', 'wire-instruction', 
   assert.ok(!visibleClosingData.includes(phrase), `Closing Desk visible copy should not use hyphenated phrase: ${phrase}`);
 }
 assert.match(publicClosingBundle, /Closing Desk is the information hub/, 'Closing Desk must frame the page as the hub itself');
-assert.match(appSource, /Phase 10 · PDF contract pipeline/, 'Closing route should include Phase 10 PDF contract pipeline');
-assert.match(appSource, /Seller agreement first\. Assignment second\. Title packet last\./, 'Closing route should separate contract stages by real deal sequence');
+assert.match(appSource, /Phase 11 · PDF export finish/, 'Closing route should include Phase 11 PDF export finish');
+assert.match(appSource, /Print clean contracts\. Keep the deal sequence simple\./, 'Closing route should present a simple PDF-first contract pipeline');
 assert.match(appSource, /id="seller-agreement-experience"/, 'Seller Agreement should be its own fill experience');
 assert.match(appSource, /id="assignment-agreement-experience"/, 'Assignment Agreement should be its own fill experience');
 assert.match(appSource, /Assignment unlocks after seller agreement is marked signed/, 'Assignment should be visibly locked until seller agreement is signed');
@@ -54,6 +54,12 @@ assert.match(appSource, /id="export-contract-packet"/, 'Title packet should rema
 assert.match(appSource, /contractStageStatus/, 'Contract stages should persist separate status values');
 assert.match(appSource, /contractPackets/, 'Contract packet should be stored in workspace local storage');
 assert.match(css, /v1\.41 - Phase 10 separate PDF contract pipeline/, 'Phase 10 separate contract pipeline styles required');
+assert.match(css, /v1\.42 - Phase 11 Apple-grade PDF export surfaces/, 'Phase 11 Apple-grade PDF export styles required');
+assert.match(css, /@page \{ size: letter; margin: \.42in; \}/, 'PDF output should define clean letter page sizing');
+assert.match(appSource, /print-packet-cover/, 'PDF output should include print-only cover page');
+assert.match(appSource, /print-document-meta/, 'PDF output should include property metadata on printed documents');
+assert.match(appSource, /print-legal-footer/, 'PDF output should include legal guardrail footer');
+assert.match(appSource, /title-review-paper/, 'PDF output should include attorney and title review page');
 assert.match(css, /@media print/, 'PDF print preview stylesheet required');
 const packet = buildContractPacketDraft({ propertyState: 'TN', propertyAddress: '137 Rogers Lane', sellerName: 'Seller', buyerName: 'MarvelUs Intel LLC', purchasePrice: '65000' });
 assert.equal(packet.status, 'draft-needs-attorney-review', 'Packet must not claim attorney review without reviewer/date');

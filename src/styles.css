@@ -8828,3 +8828,176 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
   .signature-grid { grid-template-columns: 1fr; }
   .title-packet-actions { display: grid; grid-template-columns: 1fr; }
 }
+
+/* v1.42 - Phase 11 Apple-grade PDF export surfaces */
+.print-only { display: none; }
+.print-document-meta {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 30px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(17, 24, 39, .14);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  color: #111827;
+}
+.print-document-meta span {
+  color: #667085;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.print-document-meta b {
+  font-size: clamp(18px, 2.6vw, 28px);
+  line-height: 1.05;
+  letter-spacing: -.035em;
+}
+.print-document-meta em {
+  color: #667085;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 750;
+}
+.apple-signature-grid span {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 84px;
+  align-items: end;
+  gap: 18px;
+  min-height: 58px;
+}
+.apple-signature-grid span em {
+  color: #667085;
+  font-style: normal;
+  text-align: right;
+}
+.print-legal-footer {
+  display: grid;
+  gap: 4px;
+  margin-top: 34px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(17, 24, 39, .16);
+  color: #667085;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+.print-legal-footer b { color: #111827; letter-spacing: .04em; text-transform: uppercase; }
+.contract-flow-workspace .contract-paper {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,253,248,.94)),
+    radial-gradient(circle at 12% 0%, rgba(232, 238, 228, .48), transparent 34%);
+}
+.contract-flow-workspace .contract-paper h3 {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+  font-size: clamp(25px, 3.1vw, 34px);
+  letter-spacing: -.045em;
+}
+@page { size: letter; margin: .42in; }
+@media print {
+  html, body { width: 100% !important; background: #fff !important; }
+  .print-only { display: block !important; }
+  .print-packet-cover {
+    visibility: visible !important;
+    min-height: 10in !important;
+    padding: .72in !important;
+    page-break-after: always;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+    color: #111827 !important;
+    background: #fff !important;
+  }
+  .print-packet-cover span {
+    color: #667085 !important;
+    font-size: 11px !important;
+    font-weight: 900 !important;
+    letter-spacing: .18em !important;
+    text-transform: uppercase !important;
+  }
+  .print-packet-cover h1 {
+    max-width: 7.3in;
+    margin: .22in 0 .18in !important;
+    font-size: 58px !important;
+    line-height: .94 !important;
+    letter-spacing: -.07em !important;
+    color: #111827 !important;
+  }
+  .print-packet-cover p {
+    max-width: 5.8in;
+    margin: 0 0 .52in !important;
+    color: #475467 !important;
+    font-size: 15px !important;
+    line-height: 1.52 !important;
+  }
+  .print-packet-cover dl {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0 !important;
+  }
+  .print-packet-cover div {
+    padding: 18px 0;
+    border-top: 1px solid #d0d5dd;
+  }
+  .print-packet-cover dt {
+    color: #667085 !important;
+    font-size: 10px !important;
+    font-weight: 900 !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase !important;
+  }
+  .print-packet-cover dd {
+    margin: 6px 0 0 !important;
+    color: #111827 !important;
+    font-size: 18px !important;
+    font-weight: 850 !important;
+  }
+  .printable-paper {
+    width: 7.72in !important;
+    min-height: 10in !important;
+    margin: 0 auto !important;
+    padding: .46in .52in !important;
+    page-break-after: always;
+    background: #fff !important;
+    color: #111827 !important;
+    font-family: Georgia, 'Times New Roman', serif !important;
+    box-shadow: none !important;
+  }
+  .printable-paper h3 {
+    margin: 0 0 .24in !important;
+    color: #111827 !important;
+    font: 850 24px/1.08 Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif !important;
+    letter-spacing: -.035em !important;
+    text-align: left !important;
+  }
+  .printable-paper p, .printable-paper li {
+    color: #111827 !important;
+    font-size: 11.2pt !important;
+    line-height: 1.48 !important;
+  }
+  .contract-clauses { margin: .12in 0 0 !important; padding-left: .22in !important; }
+  .contract-clauses li { margin-bottom: .05in !important; }
+  .print-document-meta { display: grid !important; break-inside: avoid; }
+  .print-document-meta b { color: #111827 !important; font-size: 18px !important; }
+  .print-document-meta span, .print-document-meta em { color: #667085 !important; }
+  .doc-fill { margin: 0 2px !important; min-width: auto !important; }
+  .doc-fill span { display: none !important; }
+  .doc-fill input, .doc-fill textarea {
+    min-height: auto !important;
+    padding: 0 3px 1px !important;
+    border: 0 !important;
+    border-bottom: 1px solid #111827 !important;
+    background: transparent !important;
+    color: #111827 !important;
+    font: 700 10.5pt/1.25 Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif !important;
+  }
+  .doc-fill textarea { min-height: .48in !important; }
+  .address-field { width: 100% !important; display: block !important; margin: .1in 0 .05in !important; }
+  .wide-inline { min-width: 2.65in !important; }
+  .long-field { min-width: 2in !important; }
+  .medium-field { min-width: 1.4in !important; }
+  .money-field, .date-field { min-width: .9in !important; }
+  .apple-signature-grid { gap: .44in !important; margin-top: .56in !important; break-inside: avoid; }
+  .apple-signature-grid span { color: #111827 !important; border-top: 1.4px solid #111827 !important; }
+  .apple-signature-grid span b, .apple-signature-grid span em { color: #111827 !important; }
+  .print-legal-footer { display: grid !important; break-inside: avoid; color: #667085 !important; }
+  .title-review-paper { page-break-after: auto !important; }
+}

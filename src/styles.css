@@ -7620,3 +7620,131 @@ body[data-active-view="builders"] .validation-form label {
     border-radius: 0 !important;
   }
 }
+
+
+/* v1.37 - compact builder buy-box form: grouped rows for faster scanning */
+body[data-active-view="builders"] .validation-form.validation-buybox-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 12px 10px !important;
+  align-items: end !important;
+  padding-top: 2px !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .form-field {
+  min-width: 0 !important;
+  gap: 6px !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .field-status,
+body[data-active-view="builders"] .validation-buybox-grid .field-last,
+body[data-active-view="builders"] .validation-buybox-grid .field-callback { grid-column: span 4 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-geography { grid-column: span 6 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-lot,
+body[data-active-view="builders"] .validation-buybox-grid .field-price { grid-column: span 3 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-speed,
+body[data-active-view="builders"] .validation-buybox-grid .field-recipient,
+body[data-active-view="builders"] .validation-buybox-grid .field-utilities { grid-column: span 4 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-product,
+body[data-active-view="builders"] .validation-buybox-grid .field-killers { grid-column: span 6 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-notes,
+body[data-active-view="builders"] .validation-buybox-grid .validation-save-row { grid-column: 1 / -1 !important; }
+body[data-active-view="builders"] .validation-buybox-grid input,
+body[data-active-view="builders"] .validation-buybox-grid select {
+  min-height: 42px !important;
+  padding: 10px 11px !important;
+  font-size: 14px !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid textarea {
+  min-height: 112px !important;
+  padding: 11px 12px !important;
+  font-size: 14px !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid label {
+  font-size: 10px !important;
+  letter-spacing: .095em !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .validation-save-row {
+  margin-top: 2px !important;
+  padding-top: 4px !important;
+}
+@media (max-width: 1180px) {
+  body[data-active-view="builders"] .validation-form.validation-buybox-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] .validation-buybox-grid .field-status,
+  body[data-active-view="builders"] .validation-buybox-grid .field-last,
+  body[data-active-view="builders"] .validation-buybox-grid .field-callback,
+  body[data-active-view="builders"] .validation-buybox-grid .field-lot,
+  body[data-active-view="builders"] .validation-buybox-grid .field-price,
+  body[data-active-view="builders"] .validation-buybox-grid .field-speed,
+  body[data-active-view="builders"] .validation-buybox-grid .field-recipient,
+  body[data-active-view="builders"] .validation-buybox-grid .field-utilities,
+  body[data-active-view="builders"] .validation-buybox-grid .field-product,
+  body[data-active-view="builders"] .validation-buybox-grid .field-killers { grid-column: span 3 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid .field-geography { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .validation-form.validation-buybox-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 11px 8px !important;
+  }
+  body[data-active-view="builders"] .validation-buybox-grid .field-status,
+  body[data-active-view="builders"] .validation-buybox-grid .field-geography,
+  body[data-active-view="builders"] .validation-buybox-grid .field-speed,
+  body[data-active-view="builders"] .validation-buybox-grid .field-recipient,
+  body[data-active-view="builders"] .validation-buybox-grid .field-utilities,
+  body[data-active-view="builders"] .validation-buybox-grid .field-product,
+  body[data-active-view="builders"] .validation-buybox-grid .field-killers,
+  body[data-active-view="builders"] .validation-buybox-grid .field-notes,
+  body[data-active-view="builders"] .validation-buybox-grid .validation-save-row { grid-column: 1 / -1 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid .field-last,
+  body[data-active-view="builders"] .validation-buybox-grid .field-callback,
+  body[data-active-view="builders"] .validation-buybox-grid .field-lot,
+  body[data-active-view="builders"] .validation-buybox-grid .field-price { grid-column: span 1 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid input,
+  body[data-active-view="builders"] .validation-buybox-grid select { min-height: 42px !important; font-size: 13px !important; }
+  body[data-active-view="builders"] .validation-buybox-grid textarea { min-height: 104px !important; font-size: 13px !important; }
+}
+
+
+/* v1.38 - buy-box label legibility pass */
+body[data-active-view="builders"] .validation-buybox-grid .field-geography { grid-column: span 5 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-lot { grid-column: span 3 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-price { grid-column: span 4 !important; }
+body[data-active-view="builders"] .validation-buybox-grid label {
+  letter-spacing: .082em !important;
+  line-height: 1.22 !important;
+}
+@media (max-width: 1180px) {
+  body[data-active-view="builders"] .validation-buybox-grid .field-geography { grid-column: 1 / -1 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid .field-lot,
+  body[data-active-view="builders"] .validation-buybox-grid .field-price { grid-column: span 3 !important; }
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .validation-buybox-grid .field-geography,
+  body[data-active-view="builders"] .validation-buybox-grid .field-price { grid-column: 1 / -1 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid label { letter-spacing: .075em !important; }
+}
+
+
+/* v1.39 - mobile buy-box rhythm: only natural pairs share a row */
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .validation-form.validation-buybox-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] .validation-buybox-grid .field-status,
+  body[data-active-view="builders"] .validation-buybox-grid .field-geography,
+  body[data-active-view="builders"] .validation-buybox-grid .field-speed,
+  body[data-active-view="builders"] .validation-buybox-grid .field-recipient,
+  body[data-active-view="builders"] .validation-buybox-grid .field-utilities,
+  body[data-active-view="builders"] .validation-buybox-grid .field-product,
+  body[data-active-view="builders"] .validation-buybox-grid .field-killers,
+  body[data-active-view="builders"] .validation-buybox-grid .field-notes,
+  body[data-active-view="builders"] .validation-buybox-grid .validation-save-row {
+    grid-column: 1 / -1 !important;
+  }
+  body[data-active-view="builders"] .validation-buybox-grid .field-last,
+  body[data-active-view="builders"] .validation-buybox-grid .field-callback,
+  body[data-active-view="builders"] .validation-buybox-grid .field-lot,
+  body[data-active-view="builders"] .validation-buybox-grid .field-price {
+    grid-column: span 1 !important;
+  }
+}

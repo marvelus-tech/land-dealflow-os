@@ -995,19 +995,19 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         </div>
         <div class="validation-progress"><span style="width:${h(selected.validation?.buyBox?.percent || 0)}%"></span></div>
         <p class="validation-next-action">${h(selected.validation?.nextAction || '')}</p>
-        <div class="validation-form" data-validation-form="${h(selected.builderId || '')}">
-          <label>Call status <select class="validation-status">${statusOptions}</select></label>
-          <label>Last contacted <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
-          <label>Callback date <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
-          <label>Target geography <input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
-          <label>Lot-size band <input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
-          <label>Max acquisition price <input class="validation-price" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
-          <label>Close speed / monthly appetite <input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
-          <label>Package recipient <input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
-          <label>Utilities / access rules <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
-          <label>Finished product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
-          <label>Deal killers <input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
-          <label class="wide">Exact buyer language <textarea class="validation-notes" placeholder="Paste what they actually said. No interpretation, no fabrication.">${h(selected.callNotes || '')}</textarea></label>
+        <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
+          <label class="form-field field-status">Call status <select class="validation-status">${statusOptions}</select></label>
+          <label class="form-field field-last">Last contacted <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
+          <label class="form-field field-callback">Callback date <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
+          <label class="form-field field-geography">Target geography <input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
+          <label class="form-field field-lot">Lot-size band <input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
+          <label class="form-field field-price">Max acquisition price <input class="validation-price" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
+          <label class="form-field field-speed">Close speed / monthly appetite <input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
+          <label class="form-field field-recipient">Package recipient <input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
+          <label class="form-field field-utilities">Utilities / access rules <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
+          <label class="form-field field-product">Finished product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
+          <label class="form-field field-killers">Deal killers <input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
+          <label class="form-field field-notes wide">Exact buyer language <textarea class="validation-notes" placeholder="Paste what they actually said. No interpretation, no fabrication.">${h(selected.callNotes || '')}</textarea></label>
           <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status"></span></div>
         </div>
       </article>

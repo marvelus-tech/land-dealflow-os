@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { buildContractPacketDraft, exportContractPacketMarkdown } from '../src/core.mjs';
 
 const process = JSON.parse(readFileSync(new URL('../data/title-company/title_company_process.json', import.meta.url), 'utf8'));
 const markets = JSON.parse(readFileSync(new URL('../data/title-company/title_company_market_candidates.json', import.meta.url), 'utf8'));
@@ -40,5 +41,20 @@ for (const phrase of ['assignment-friendly', 'title-ready', 'wire-instruction', 
   assert.ok(!visibleClosingData.includes(phrase), `Closing Desk visible copy should not use hyphenated phrase: ${phrase}`);
 }
 assert.match(publicClosingBundle, /Closing Desk is the information hub/, 'Closing Desk must frame the page as the hub itself');
+assert.match(appSource, /Phase 9 · contract packet composer/, 'Closing route should include Phase 9 contract packet composer');
+assert.match(appSource, /id="contract-packet-form"/, 'Contract composer should expose structured input fields');
+assert.match(appSource, /id="export-contract-packet"/, 'Contract packet should be exportable on demand');
+assert.match(appSource, /contractPackets/, 'Contract packet should be stored in workspace local storage');
+assert.match(css, /v1\.39 - Phase 9 contract packet composer/, 'Phase 9 composer styles required');
+const packet = buildContractPacketDraft({ propertyState: 'TN', propertyAddress: '137 Rogers Lane', sellerName: 'Seller', buyerName: 'MarvelUs Intel LLC', purchasePrice: '65000' });
+assert.equal(packet.status, 'draft-needs-attorney-review', 'Packet must not claim attorney review without reviewer/date');
+assert.equal(packet.sellerAgreement.title, 'Vacant Land Purchase Agreement');
+assert.equal(packet.buyerAssignment.title, 'Assignment of Vacant Land Purchase Agreement');
+assert.match(packet.coverLetter.body, /Please review the attached seller purchase agreement and buyer assignment packet/, 'Review letter should be generated and stored with packet');
+const exportedPacket = exportContractPacketMarkdown(packet);
+assert.match(exportedPacket, /Attorney And Title Review Letter/, 'Export should include review letter');
+assert.match(exportedPacket, /Seller One Page Contract/, 'Export should include seller one page');
+assert.match(exportedPacket, /Buyer Assignment One Page Contract/, 'Export should include buyer one page');
+assert.match(exportedPacket, /Drafting aid only/, 'Export should preserve legal guardrail');
 
 console.log('closing desk research UI tests passed');

@@ -1827,6 +1827,110 @@ export function generateTitleCompanyEmail(parcel = {}, buyer = {}, assignor = {}
   return { subject, body, math, packet };
 }
 
+export const CONTRACT_PACKET_RESEARCH_NOTES = [
+  'Public template research shows reusable business terms: parties, property, purchase price, earnest money, due diligence, title, closing, assignability, and signatures.',
+  'Public bar and template forms still warn users to consult counsel before signing; this app cannot mark wording lawyer verified until a licensed attorney for the property state approves it.',
+  'Use state adapted vacant land forms and title company instructions. Keep a 50 state baseline as a drafting checklist, not as legal approval.',
+];
+
+export function buildContractPacketDraft(inputs = {}) {
+  const propertyState = String(inputs.propertyState || inputs.state || '').toUpperCase();
+  const stateMode = propertyState ? `${propertyState} attorney review required` : 'property state required';
+  const sellerAgreement = {
+    title: 'Vacant Land Purchase Agreement',
+    role: 'seller',
+    fields: [
+      'effectiveDate', 'buyerName', 'sellerName', 'propertyAddress', 'city', 'county', 'propertyState', 'zip', 'parcelId',
+      'legalDescription', 'includedRights', 'purchasePrice', 'earnestMoney', 'earnestMoneyHolder', 'closingAgent',
+      'feasibilityDeadline', 'closingDate', 'closingCostsPayer', 'taxProration', 'deedType', 'assignability',
+      'additionalTerms', 'sellerSignature', 'buyerSignature', 'attorneyReviewer', 'attorneyReviewDate'
+    ],
+    clauses: [
+      'Buyer offers to purchase and Seller agrees to sell the described vacant land, together with appurtenant rights stated in this packet.',
+      'Property is sold as is, subject to Buyer feasibility, title, survey, access, utilities, zoning, environmental, flood, wetland, and buildability review.',
+      'If Buyer disapproves title or feasibility before the stated deadline, Buyer may cancel by written notice and recover refundable earnest money unless state counsel changes this clause.',
+      'Buyer may assign this agreement only if assignability is permitted by the property state, the title company, and the attorney reviewed version of this packet.',
+      'Closing occurs through a licensed title, escrow, closing, or attorney office authorized for the property state. No party relies on this app as legal advice.',
+    ],
+  };
+  const buyerAssignment = {
+    title: 'Assignment of Vacant Land Purchase Agreement',
+    role: 'buyer',
+    fields: [
+      'effectiveDate', 'assignorName', 'assigneeName', 'underlyingSellerName', 'propertyAddress', 'parcelId',
+      'propertyState', 'originalPurchasePrice', 'assignmentFee', 'assigneePurchasePrice', 'earnestMoneyDue',
+      'earnestMoneyDeadline', 'inspectionAcknowledgement', 'titleCompany', 'settlementStatementApproval',
+      'additionalTerms', 'assignorSignature', 'assigneeSignature', 'attorneyReviewer', 'attorneyReviewDate'
+    ],
+    clauses: [
+      'Assignor assigns to Assignee the assignable buyer rights in the underlying purchase agreement for the property identified in this packet.',
+      'Assignee accepts the assigned buyer position and agrees to perform the buyer obligations that survive assignment, subject to title company and attorney approval.',
+      'The assignment fee is payable only through the closing or settlement statement unless state counsel and the title company approve another written method.',
+      'Assignee must deliver required earnest money by the stated deadline and confirm title company opening requirements before the operator marks the packet active.',
+      'This assignment is not usable until the underlying seller contract, property state requirements, title company instructions, and attorney review gate are clear.',
+    ],
+  };
+  const required = [...sellerAgreement.fields, ...buyerAssignment.fields];
+  const filled = required.filter(field => String(inputs[field] ?? '').trim()).length;
+  const attorneyReviewed = Boolean(inputs.attorneyReviewer && inputs.attorneyReviewDate && inputs.propertyState);
+  const status = attorneyReviewed ? 'attorney-reviewed' : propertyState ? 'draft-needs-attorney-review' : 'missing-property-state';
+  return {
+    id: inputs.id || `contract-packet-${Date.now()}`,
+    generatedAt: inputs.generatedAt || new Date().toISOString(),
+    status,
+    stateMode,
+    attorneyReviewed,
+    completion: Math.round((filled / required.length) * 100),
+    inputs: { ...inputs, propertyState },
+    sellerAgreement,
+    buyerAssignment,
+    coverLetter: {
+      title: 'Attorney and title company contract review letter',
+      subject: `Contract review request - ${inputs.propertyAddress || 'vacant land packet'}`,
+      body: `Please review the attached seller purchase agreement and buyer assignment packet for ${inputs.propertyAddress || 'the vacant land property'} in ${propertyState || '<STATE>'}. Confirm state specific wording, assignability, feasibility/title contingencies, earnest money timing, closing/title instructions, settlement statement treatment of any assignment fee, and any required disclosures or addenda before this packet is used for signature.`,
+    },
+    researchNotes: CONTRACT_PACKET_RESEARCH_NOTES,
+    legalGuardrail: 'Drafting aid only. Do not use for signature until reviewed by a licensed attorney for the property state and accepted by the closing/title provider.',
+  };
+}
+
+export function renderContractDocumentText(document = {}, inputs = {}) {
+  const lines = [
+    document.title || 'Contract Document',
+    '',
+    `Effective Date: ${inputs.effectiveDate || '__________'}`,
+    `Property: ${inputs.propertyAddress || '__________'}, ${inputs.city || ''} ${inputs.propertyState || ''} ${inputs.zip || ''}`.trim(),
+    `County: ${inputs.county || '__________'}`,
+    `Parcel ID: ${inputs.parcelId || '__________'}`,
+    `Legal Description: ${inputs.legalDescription || 'see attached exhibit / to be verified by title'}`,
+    '',
+    'Business Terms',
+    `Purchase Price: ${inputs.purchasePrice || inputs.originalPurchasePrice || '__________'}`,
+    `Earnest Money: ${inputs.earnestMoney || inputs.earnestMoneyDue || '__________'}`,
+    `Closing Agent / Title Company: ${inputs.closingAgent || inputs.titleCompany || '__________'}`,
+    `Closing Date: ${inputs.closingDate || '__________'}`,
+    '',
+    'Draft Clauses Requiring State Attorney Review',
+    ...(document.clauses || []).map((clause, index) => `${index + 1}. ${clause}`),
+    '',
+    'Additional Terms',
+    inputs.additionalTerms || '____________________________________________________________',
+    '',
+    'Attorney Review Gate',
+    `Reviewer: ${inputs.attorneyReviewer || 'NOT REVIEWED'}`,
+    `Review Date: ${inputs.attorneyReviewDate || 'NOT REVIEWED'}`,
+    '',
+    'Signatures',
+    `Seller / Assignor: ${inputs.sellerSignature || inputs.assignorSignature || '____________________________'}`,
+    `Buyer / Assignee: ${inputs.buyerSignature || inputs.assigneeSignature || '____________________________'}`,
+  ];
+  return lines.join('\n');
+}
+
+export function exportContractPacketMarkdown(packet = {}) {
+  return `# ${packet.inputs?.propertyAddress || 'Vacant Land Contract Packet'}\n\n**Status:** ${packet.status || 'draft'}\n\n**Legal guardrail:** ${packet.legalGuardrail || ''}\n\n## Attorney And Title Review Letter\n\n**Subject:** ${packet.coverLetter?.subject || ''}\n\n${packet.coverLetter?.body || ''}\n\n## Seller One Page Contract\n\n${renderContractDocumentText(packet.sellerAgreement, packet.inputs)}\n\n## Buyer Assignment One Page Contract\n\n${renderContractDocumentText(packet.buyerAssignment, packet.inputs)}\n\n## Research Notes\n${(packet.researchNotes || []).map(note => `- ${note}`).join('\n')}\n`;
+}
+
 export function buildTitleCompanyClosingDesk(parcel = {}, buyer = {}, options = {}) {
   const checklist = buildTitleClosingChecklist(parcel, buyer, options);
   const email = generateTitleCompanyEmail(parcel, buyer, options.assignor || {});

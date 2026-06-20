@@ -50,6 +50,9 @@ import {
   generateNeighborPrompt,
   buildOperatorChecklist,
   buildTitleCompanyClosingDesk,
+  buildContractPacketDraft,
+  exportContractPacketMarkdown,
+  renderContractDocumentText,
   buildPermitVerifiedBuilders,
   buildBuyerValidationCommandCenter,
   BUYER_VALIDATION_STATUSES,
@@ -612,6 +615,93 @@ function statusTone(status) {
 
 function titleCompanyCandidateMarkets() {
   return asArray(titleCompanyMarkets?.markets).slice(0, 8);
+}
+
+function currentContractDraftInputs(parcel = {}) {
+  const saved = workspace.contractDraft || {};
+  return {
+    effectiveDate: saved.effectiveDate || new Date().toISOString().slice(0, 10),
+    buyerName: saved.buyerName || 'MarvelUs Intel LLC or assigns',
+    sellerName: saved.sellerName || parcel.ownerName || parcel.owner || '',
+    propertyAddress: saved.propertyAddress || parcel.address || '',
+    city: saved.city || parcel.city || '',
+    county: saved.county || parcel.county || '',
+    propertyState: saved.propertyState || parcel.state || 'TN',
+    zip: saved.zip || parcel.zip || '',
+    parcelId: saved.parcelId || parcel.parcelId || parcel.id || '',
+    legalDescription: saved.legalDescription || parcel.legalDescription || '',
+    includedRights: saved.includedRights || 'all appurtenant rights stated in the state approved contract',
+    purchasePrice: saved.purchasePrice || parcel.sellerAskingPrice || parcel.askingPrice || parcel.offer?.initialSellerOffer || '',
+    earnestMoney: saved.earnestMoney || '10.00',
+    earnestMoneyHolder: saved.earnestMoneyHolder || parcel.titleCompany?.name || '',
+    closingAgent: saved.closingAgent || parcel.titleCompany?.name || '',
+    feasibilityDeadline: saved.feasibilityDeadline || 'through closing unless state counsel changes this term',
+    closingDate: saved.closingDate || parcel.closingDate || '',
+    closingCostsPayer: saved.closingCostsPayer || 'Buyer unless title/attorney changes allocation',
+    taxProration: saved.taxProration || 'prorated as of closing',
+    deedType: saved.deedType || 'warranty, special warranty, or state appropriate deed approved by closing office',
+    assignability: saved.assignability || 'assignable only after attorney/title approval',
+    assignorName: saved.assignorName || 'MarvelUs Intel LLC',
+    assigneeName: saved.assigneeName || parcel.buyerContactName || '',
+    underlyingSellerName: saved.underlyingSellerName || parcel.ownerName || parcel.owner || '',
+    originalPurchasePrice: saved.originalPurchasePrice || parcel.sellerAskingPrice || parcel.offer?.initialSellerOffer || '',
+    assignmentFee: saved.assignmentFee || parcel.assignmentFee || parcel.offer?.targetSpread || '',
+    assigneePurchasePrice: saved.assigneePurchasePrice || parcel.buyerPrice || parcel.offer?.buyerPrice || '',
+    earnestMoneyDue: saved.earnestMoneyDue || '',
+    earnestMoneyDeadline: saved.earnestMoneyDeadline || '',
+    inspectionAcknowledgement: saved.inspectionAcknowledgement || 'assignee accepts buyer position subject to reviewed documents and title instructions',
+    titleCompany: saved.titleCompany || parcel.titleCompany?.name || '',
+    settlementStatementApproval: saved.settlementStatementApproval || 'assignment fee must appear on closing statement or written title instructions',
+    additionalTerms: saved.additionalTerms || '',
+    sellerSignature: saved.sellerSignature || '',
+    buyerSignature: saved.buyerSignature || '',
+    assignorSignature: saved.assignorSignature || '',
+    assigneeSignature: saved.assigneeSignature || '',
+    attorneyReviewer: saved.attorneyReviewer || '',
+    attorneyReviewDate: saved.attorneyReviewDate || '',
+  };
+}
+
+function renderContractComposer(parcel = {}) {
+  const inputs = currentContractDraftInputs(parcel);
+  const packet = buildContractPacketDraft(inputs);
+  const fieldGroups = [
+    ['effectiveDate', 'Effective date'], ['buyerName', 'Buyer / assignor'], ['sellerName', 'Seller'], ['assigneeName', 'Builder / assignee'],
+    ['propertyAddress', 'Property address'], ['city', 'City'], ['county', 'County'], ['propertyState', 'State'], ['zip', 'ZIP'], ['parcelId', 'Parcel ID'],
+    ['legalDescription', 'Legal description'], ['purchasePrice', 'Seller purchase price'], ['earnestMoney', 'Seller earnest money'], ['closingAgent', 'Closing agent'],
+    ['feasibilityDeadline', 'Feasibility deadline'], ['closingDate', 'Closing date'], ['closingCostsPayer', 'Closing costs payer'], ['assignability', 'Assignability language'],
+    ['originalPurchasePrice', 'Original purchase price'], ['assignmentFee', 'Assignment fee'], ['assigneePurchasePrice', 'Assignee purchase price'], ['earnestMoneyDue', 'Assignee earnest money'],
+    ['earnestMoneyDeadline', 'Earnest money deadline'], ['titleCompany', 'Title company'], ['settlementStatementApproval', 'Settlement statement rule'],
+    ['additionalTerms', 'Additional terms'], ['attorneyReviewer', 'Attorney reviewer'], ['attorneyReviewDate', 'Attorney review date'],
+  ];
+  const fields = fieldGroups.map(([name, label]) => {
+    const value = inputs[name] || '';
+    const isLong = ['legalDescription', 'additionalTerms', 'settlementStatementApproval', 'feasibilityDeadline', 'assignability'].includes(name);
+    return `<label class="contract-field ${isLong ? 'wide' : ''}"><span>${h(label)}</span>${isLong ? `<textarea name="${h(name)}" rows="3">${h(value)}</textarea>` : `<input name="${h(name)}" value="${h(value)}">`}</label>`;
+  }).join('');
+  const sellerPreview = renderContractDocumentText(packet.sellerAgreement, packet.inputs).split('\n').slice(0, 24).join('\n');
+  const buyerPreview = renderContractDocumentText(packet.buyerAssignment, packet.inputs).split('\n').slice(0, 24).join('\n');
+  return `<section id="contract-composer" class="contract-composer-panel" aria-label="Buyer and seller contract composer">
+    <div class="contract-composer-hero">
+      <span class="eyebrow">Phase 9 · contract packet composer</span>
+      <h2>One page seller contract. One page buyer assignment. Stored, exportable, gated by counsel.</h2>
+      <p>The screenshot deciphers into the same operating spine: parties, property, price, as is condition, feasibility/title escape, closing office, assignability, additional terms, signatures. We recreate that as structured fields, but the app will not pretend one form is lawyer verified for all 50 states.</p>
+      <div class="badge-stack">${badge(packet.status, packet.attorneyReviewed ? 'good' : 'warn')}${badge(`${packet.completion}% filled`, 'neutral')}${badge(packet.stateMode, 'warn')}</div>
+    </div>
+    <div class="contract-research-rail">
+      <article><b>Deciphered from image</b><p>Left form: Land Sale Agreement with date, buyer, seller, property, purchase price, as is condition, feasibility study, closing agent, earnest money, taxes, closing date, title free of liens, additional terms, signatures. Right form: Offer to Purchase and Contract - Vacant Lot/Land with seller, buyer, property/address/PIN, purchase price line items, financing/loan style checkboxes, seller concessions, due diligence fee, settlement date, broker/association form markers.</p></article>
+      <article><b>Research guardrail</b><p>Public forms and examples support the field architecture, not universal legal sufficiency. The contract status stays draft until a property state attorney and the closing/title provider approve the exact wording.</p></article>
+    </div>
+    <form id="contract-packet-form" class="contract-form-grid">
+      ${fields}
+      <div class="contract-action-row"><button type="button" id="save-contract-packet">Save packet</button><button type="button" class="secondary" id="export-contract-packet">Export Markdown</button><button type="button" class="secondary" id="load-selected-contract-deal">Load selected deal</button><span id="contract-packet-status">${h((workspace.contractPackets || []).length)} saved packet(s)</span></div>
+    </form>
+    <div class="contract-preview-grid">
+      <article class="contract-page-preview"><span>Review letter</span><pre>${h(`Subject: ${packet.coverLetter.subject}\n\n${packet.coverLetter.body}`)}</pre></article>
+      <article class="contract-page-preview"><span>Seller one page</span><pre>${h(sellerPreview)}</pre></article>
+      <article class="contract-page-preview"><span>Buyer one page</span><pre>${h(buyerPreview)}</pre></article>
+    </div>
+  </section>`;
 }
 
 function renderClosingDeskResearchDeck() {
@@ -1486,7 +1576,7 @@ function renderClosingDeskPanel() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
   if (!selected) {
-    target.innerHTML = `<div class="closing-page-stack">${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays ready with templates, title-company candidates, and verification rules.</p></article></div>`;
+    target.innerHTML = `<div class="closing-page-stack">${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays ready with templates, title-company candidates, and verification rules.</p></article></div>`;
     return;
   }
   const buyer = getBuyer(selected);
@@ -1501,6 +1591,7 @@ function renderClosingDeskPanel() {
     </button>`;
   }).join('');
   target.innerHTML = `<div class="closing-page-stack">
+    ${renderContractComposer(selected)}
     ${renderClosingDeskResearchDeck()}
     <div class="closing-layout">
       <aside class="deal-queue title-queue" aria-label="Closing file queue">
@@ -2427,6 +2518,36 @@ function bindEvents() {
 
     if (event.target.matches('#export-json')) {
       downloadText(`land-dealflow-workspace-${new Date().toISOString().slice(0, 10)}.json`, exportWorkspace(workspace), 'application/json');
+    }
+
+    if (event.target.matches('#load-selected-contract-deal')) {
+      const selected = getSelectedParcel(getVisibleParcels()) || {};
+      workspace = { ...workspace, contractDraft: currentContractDraftInputs(selected) };
+      persistWorkspace();
+      renderClosingDeskPanel();
+      return;
+    }
+
+    if (event.target.matches('#save-contract-packet')) {
+      const form = document.querySelector('#contract-packet-form');
+      const values = Object.fromEntries(new FormData(form).entries());
+      const packet = buildContractPacketDraft(values);
+      workspace = { ...workspace, contractDraft: values, contractPackets: [packet, ...asArray(workspace.contractPackets).filter(item => item.id !== packet.id)].slice(0, 12) };
+      persistWorkspace();
+      const status = document.querySelector('#contract-packet-status');
+      if (status) status.textContent = `${packet.status}; packet stored locally.`;
+      renderClosingDeskPanel();
+      return;
+    }
+
+    if (event.target.matches('#export-contract-packet')) {
+      const form = document.querySelector('#contract-packet-form');
+      const values = Object.fromEntries(new FormData(form).entries());
+      const packet = buildContractPacketDraft(values);
+      downloadText(`land-dealflow-contract-packet-${slugify(values.propertyAddress || values.parcelId || 'draft')}-${new Date().toISOString().slice(0, 10)}.md`, exportContractPacketMarkdown(packet), 'text/markdown');
+      const status = document.querySelector('#contract-packet-status');
+      if (status) status.textContent = 'Contract packet exported with review letter, seller one page, and buyer assignment.';
+      return;
     }
 
     if (event.target.matches('#export-filtered-csv')) {

@@ -12515,3 +12515,219 @@ header.nav nav.app-tabs button.tab-button.active {
     text-overflow: clip !important;
   }
 }
+
+/* v1.54 - Phase 22 Apple review scan hierarchy and fatigue reduction */
+:root {
+  --phase22-paper: #fbfbf8;
+  --phase22-field: #f4f4ef;
+  --phase22-ink: #111815;
+  --phase22-body: #3f4844;
+  --phase22-muted: #707a75;
+  --phase22-hairline: rgba(17,24,21,.118);
+  --phase22-forest: #0d6044;
+  --phase22-forest-soft: rgba(13,96,68,.086);
+  --phase22-gold: #8c6513;
+  --phase22-gold-soft: rgba(140,101,19,.118);
+  --phase22-scan-rule: calm-open-canvas-ledger-density-no-dark-code-slabs;
+}
+
+html { background: var(--phase22-paper) !important; }
+body {
+  background:
+    linear-gradient(180deg, rgba(13,96,68,.018), transparent 280px),
+    var(--phase22-paper) !important;
+  color: var(--phase22-body) !important;
+  font-size: 15px !important;
+  line-height: 1.54 !important;
+  text-rendering: optimizeLegibility !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+main,
+.app-shell,
+.app-panel {
+  background: transparent !important;
+}
+
+/* Page frame: the brand should orient, not consume the operator's first viewport. */
+.app-header,
+header.nav {
+  background: rgba(251,251,248,.94) !important;
+  border-bottom: 1px solid rgba(17,24,21,.09) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(16px) saturate(1.08) !important;
+}
+.app-header h1,
+header.nav h1,
+.logo,
+.brand-title {
+  color: var(--phase22-ink) !important;
+  letter-spacing: -.035em !important;
+}
+.nav .tab-button,
+header.nav .tab-button,
+.app-tabs .tab-button {
+  color: #34413c !important;
+  min-height: 38px !important;
+  letter-spacing: .018em !important;
+}
+.nav .tab-button.active,
+header.nav .tab-button.active,
+.app-tabs .tab-button.active {
+  color: var(--phase22-ink) !important;
+}
+
+/* Universal reading cadence: dense operator text should feel like a native settings pane, not SaaS copy. */
+main :where(p, li, small, textarea, input, select) {
+  color: var(--phase22-body) !important;
+  line-height: 1.52 !important;
+}
+main :where(h1, h2, h3) {
+  color: var(--phase22-ink) !important;
+  letter-spacing: -.058em !important;
+  text-wrap: balance !important;
+}
+main :where(h4, h5, h6, strong) {
+  color: var(--phase22-ink) !important;
+}
+main :where(.eyebrow, label, th, .metric-label, .section-kicker, .phase7-label, .queue-stage-legend, .market-contact-copy) {
+  letter-spacing: .14em !important;
+}
+
+/* Cards/panels: erase leftover boxed-dashboard language and keep only purposeful ledger surfaces. */
+main :where(article, aside, section, .card, .panel, .metric-card, .stat-card, .adapter-card, .permit-state-card, .validation-stage-card, .normalization-tier) {
+  box-shadow: none !important;
+}
+main :where(.operator-session-panel, .builder-market-workbench, .machine-panel, .machine-card, .source-priority-card, .closing-research-card, .deal-card, .validation-command, .buyer-validation-shell) {
+  background: rgba(255,255,252,.62) !important;
+  border-color: var(--phase22-hairline) !important;
+  box-shadow: none !important;
+}
+main :where(.metric-card, .stat-card, .summary-stat, .signal-stat, .validation-stat, .market-stat) {
+  background: transparent !important;
+  border-color: rgba(17,24,21,.11) !important;
+}
+
+/* Buttons and chips: quiet system controls, with forest for action and gold for value. */
+main :where(button, .button-link, .primary-action-strip a, .validation-action, .source-chip, .filter-chip, .outcome-chip) {
+  box-shadow: none !important;
+}
+main :where(.primary-action-strip, .builders-primary-action) {
+  border-color: rgba(13,96,68,.24) !important;
+  background: linear-gradient(180deg, rgba(13,96,68,.026), transparent) !important;
+}
+main :where(.primary-action-strip a, .builders-primary-action a, a.cta, .submit-button, button[type="submit"]) {
+  color: var(--phase22-forest) !important;
+}
+main :where(.score, .metric-value, .signal-value, .gold-value, .permit-signal-value) {
+  color: var(--phase22-gold) !important;
+}
+
+/* Builders state cards: ledger rail stays useful without becoming a carousel billboard. */
+#app .builder-ops-header .market-toggle-grid {
+  scrollbar-width: none !important;
+  border-color: rgba(17,24,21,.095) !important;
+}
+#app .builder-ops-header .market-toggle-grid::-webkit-scrollbar { display: none !important; }
+#app .builder-ops-header .market-toggle {
+  border-color: rgba(17,24,21,.092) !important;
+  background: rgba(255,255,252,.48) !important;
+}
+#app .builder-ops-header .market-toggle.active {
+  background: var(--phase22-forest-soft) !important;
+  border-color: rgba(13,96,68,.2) !important;
+}
+#app .builder-ops-header .market-toggle .market-contact-rail {
+  background: rgba(17,24,21,.095) !important;
+}
+#app .builder-ops-header .market-toggle .market-contact-rail i {
+  background: linear-gradient(90deg, var(--phase22-forest), #173f34) !important;
+}
+
+/* Machine/code surfaces: black slabs are fatigue generators in a light Apple workbench. */
+body[data-active-view="machine"] main :where(pre, code, .code-block, .csv-preview, .template-preview, .import-preview) {
+  background: #f2f2ed !important;
+  color: #26312d !important;
+  border: 1px solid rgba(17,24,21,.12) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="machine"] main pre,
+body[data-active-view="machine"] main .csv-preview,
+body[data-active-view="machine"] main .template-preview {
+  padding: 14px !important;
+  border-radius: 0 !important;
+  line-height: 1.46 !important;
+  overflow: auto !important;
+}
+body[data-active-view="machine"] main :where(.machine-panel, .machine-detail, .import-card) {
+  background: rgba(255,255,252,.72) !important;
+  border-color: rgba(17,24,21,.12) !important;
+}
+
+/* Tables and dense rows: use ledger rows, not miniature cards. */
+main :where(table, .data-table, .validation-table) {
+  border-collapse: collapse !important;
+  background: transparent !important;
+}
+main :where(th, td) {
+  border-color: rgba(17,24,21,.105) !important;
+}
+main :where(th) {
+  color: #5d6964 !important;
+  background: rgba(17,24,21,.018) !important;
+}
+
+/* Mobile: reduce fatigue by shortening brand chrome, preserving measure, and avoiding horizontal scrollbars. */
+@media (max-width: 760px) {
+  body { font-size: 14.5px !important; }
+  main :where(h1) { font-size: clamp(44px, 12.2vw, 54px) !important; line-height: .96 !important; }
+  main :where(h2, h3) { line-height: 1 !important; }
+  .app-header,
+  header.nav { padding-bottom: 10px !important; }
+  .app-tabs,
+  header.nav nav.app-tabs { row-gap: 2px !important; }
+  .nav .tab-button,
+  header.nav .tab-button { min-height: 32px !important; }
+  main :where(.operator-session-panel, .builder-market-workbench, .machine-panel, .source-priority-card, .closing-research-card) {
+    padding-inline: 18px !important;
+  }
+  body[data-active-view="machine"] main :where(pre, .csv-preview, .template-preview) {
+    max-height: 220px !important;
+    color: #2f3935 !important;
+  }
+}
+
+/* Route isolation must always win after late visual system overrides. */
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}
+
+/* v1.54.1 - Phase 22 screenshot correction: unclipped builder state grid */
+@media (max-width: 760px) {
+  #app .builder-ops-header .market-toggle-grid,
+  .builder-ops-header .market-toggle-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    gap: 0 !important;
+  }
+  #app .builder-ops-header .market-toggle {
+    min-width: 0 !important;
+    min-height: 102px !important;
+  }
+  #app .builder-ops-header .market-toggle :where(span, strong, em, small, b) {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  #app .builder-ops-title h3,
+  #app .builder-ops-header h3 {
+    line-height: 1.02 !important;
+    letter-spacing: -.062em !important;
+  }
+}

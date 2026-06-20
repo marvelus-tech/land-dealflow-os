@@ -57,6 +57,14 @@ assert.match(css, /v1\.53 - Phase 21 builder contact ledger rail/, 'Phase 21 sho
 assert.match(css, /v1\.53\.1 - Phase 21 screenshot correction: readable two-line ledger cards/, 'Phase 21 should keep ledger-card copy readable after screenshot QA');
 assert.match(css, /\.builder-ops-header \.market-toggle \.market-contact-rail[\s\S]{0,260}background: rgba\(16,23,21,\.105\)/, 'contact rail should use a quiet open segment instead of a busy progress bar');
 assert.match(css, /\.builder-ops-header \.market-toggle \.market-contact-rail i[\s\S]{0,260}width: var\(--contact-progress, 0%\)/, 'contact rail fill should be driven by state-specific progress percentage');
+assert.match(css, /v1\.54 - Phase 22 Apple review scan hierarchy and fatigue reduction/, 'Phase 22 Apple review scan hierarchy marker required');
+assert.match(css, /v1\.54\.1 - Phase 22 screenshot correction: unclipped builder state grid/, 'Phase 22 should correct screenshot-found builder state clipping');
+assert.match(css, /--phase22-scan-rule: calm-open-canvas-ledger-density-no-dark-code-slabs/, 'Phase 22 should encode the design rule: no dark code slabs, no card-dashboard density');
+assert.match(css, /--phase22-forest: #0d6044/, 'Phase 22 should refine forest accent token');
+assert.match(css, /--phase22-gold: #8c6513/, 'Phase 22 should refine gold metric token');
+assert.match(css, /body\[data-active-view="machine"\] main :where\(pre, code, \.code-block, \.csv-preview, \.template-preview, \.import-preview\)[\s\S]{0,220}background: #f2f2ed !important;/, 'Machine code/import surfaces should be light ledger surfaces, not black fatigue slabs');
+assert.match(css, /#app \.builder-ops-header \.market-toggle-grid::-webkit-scrollbar \{ display: none !important; \}/, 'Builders mobile ledger carousel should hide native scrollbars');
+assert.match(css, /\.app-panel\[hidden\],[\s\S]{0,320}#workspace\[hidden\][\s\S]{0,80}display: none !important;/, 'Phase 22 route isolation guard must stay last after late visual overrides');
 assert.match(css, /--apple-review-rule-phase20: pure-apple-canvas-no-slabs-no-decorative-boxes/, 'Phase 20 should encode the Apple review rule against slabs and decorative boxes');
 assert.match(css, /--phase20-measure: 62ch/, 'Phase 20 should tighten dense reading measure for sensor-friendly long sessions');
 assert.match(css, /navigation is orientation, never a competing control slab/, 'Phase 20 should quiet nav into orientation rather than a control slab');

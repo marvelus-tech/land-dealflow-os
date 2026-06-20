@@ -675,11 +675,12 @@ function renderContractComposer(parcel = {}) {
   const savedCount = asArray(workspace.contractPackets).length;
   const generatedDate = new Date().toISOString().slice(0, 10);
   const printValue = (value, fallback = '__________') => h(String(value || '').trim() || fallback);
-  const printMeta = (type) => `<div class="print-document-meta"><span>${h(type)}</span><b>${printValue(inputs.propertyAddress, 'Property address pending')}</b><em>Parcel ${printValue(inputs.parcelId, 'pending')} · ${printValue(inputs.county, 'county pending')}, ${printValue(inputs.propertyState, 'state')} · Generated ${h(generatedDate)}</em></div>`;
+  const preparedBy = inputs.preparedBy || inputs.buyerName || 'MarvelUs Intel LLC';
+  const printMeta = (type) => `<div class="print-document-meta"><span>${h(type)}</span><b>${printValue(inputs.propertyAddress, 'Property address pending')}</b><em>Parcel ${printValue(inputs.parcelId, 'pending')} · ${printValue(inputs.county, 'county pending')}, ${printValue(inputs.propertyState, 'state')} · Prepared by ${printValue(preparedBy, 'operator pending')} · Generated ${h(generatedDate)}</em></div>`;
   const printFooter = `<footer class="print-legal-footer"><b>Drafting aid only.</b><span>Use for PDF preview and attorney/title review. Do not use for signature until reviewed by licensed counsel for the property state and accepted by the closing/title provider.</span></footer>`;
-  const inline = (name, label, className = '') => `<label class="doc-fill ${className}" title="${h(label)}"><span>${h(label)}</span><input name="${h(name)}" value="${h(inputs[name] || '')}" placeholder="${h(label)}"></label>`;
-  const area = (name, label, className = '') => `<label class="doc-fill doc-fill-area ${className}" title="${h(label)}"><span>${h(label)}</span><textarea name="${h(name)}" rows="2" placeholder="${h(label)}">${h(inputs[name] || '')}</textarea></label>`;
-  const carryNames = ['city','county','zip','legalDescription','includedRights','earnestMoneyHolder','taxProration','deedType','underlyingSellerName','earnestMoneyDue','earnestMoneyDeadline','inspectionAcknowledgement','sellerSignature','buyerSignature','assignorSignature','assigneeSignature','feasibilityDeadline'];
+  const inline = (name, label, className = '') => `<label class="doc-fill ${className}" title="${h(label)}"><span>${h(label)}</span><input name="${h(name)}" value="${h(inputs[name] || '')}" placeholder="${h(label)}"><strong class="print-field-value" data-print-value-for="${h(name)}">${printValue(inputs[name], label)}</strong></label>`;
+  const area = (name, label, className = '') => `<label class="doc-fill doc-fill-area ${className}" title="${h(label)}"><span>${h(label)}</span><textarea name="${h(name)}" rows="2" placeholder="${h(label)}">${h(inputs[name] || '')}</textarea><strong class="print-field-value" data-print-value-for="${h(name)}">${printValue(inputs[name], label)}</strong></label>`;
+  const carryNames = ['city','county','zip','legalDescription','includedRights','earnestMoneyHolder','taxProration','deedType','underlyingSellerName','earnestMoneyDue','earnestMoneyDeadline','inspectionAcknowledgement','sellerSignature','buyerSignature','assignorSignature','assigneeSignature','feasibilityDeadline','preparedBy'];
   const hiddenCarry = carryNames.map(name => `<input type="hidden" name="${h(name)}" value="${h(inputs[name] || '')}">`).join('') + `<input type="hidden" name="sellerAgreementStatus" value="${h(sellerStatus)}"><input type="hidden" name="assignmentAgreementStatus" value="${h(assignmentStatus)}"><input type="hidden" name="titlePacketStatus" value="${h(titleStatus)}">`;
   const docStepper = (active) => ['Details','Prepare','Preview PDF'].map((label, index) => `<span class="contract-step ${label === active ? 'active' : index < ['Details','Prepare','Preview PDF'].indexOf(active) ? 'complete' : 'locked'}">${index + 1}<b>${h(label)}</b></span>`).join('<i></i>');
   const stageCards = [
@@ -692,10 +693,10 @@ function renderContractComposer(parcel = {}) {
   const requiredAssignmentMissing = ['assigneeName','assignmentFee','assigneePurchasePrice','titleCompany'].filter(name => !String(inputs[name] || '').trim());
   return `<section id="contract-composer" class="contract-composer-panel contract-flow-workspace" aria-label="Closing contract pipeline">
     <div class="contract-flow-hero">
-      <span class="eyebrow">Phase 11 · PDF export finish</span>
-      <h2>Print clean contracts. Keep the deal sequence simple.</h2>
-      <p>Seller agreement first. Assignment second. Title packet last. The workspace stays simple, but print mode now outputs calm, attorney-ready PDF surfaces with metadata, signature blocks, and legal guardrails.</p>
-      <div class="contract-flow-actions"><button type="button" id="load-selected-contract-deal">Load selected deal</button><button type="button" class="secondary" id="save-contract-packet">Save draft</button><button type="button" class="secondary" id="print-contract-packet">Preview clean PDF</button></div>
+      <span class="eyebrow">Phase 12 · Print detail finish</span>
+      <h2>Print the exact packet you need.</h2>
+      <p>Seller only, assignment only, or the full title packet - still no backend, no DocuSign, no ceremony. Print fields now resolve as quiet document text with prepared-by metadata and tighter page breaks.</p>
+      <div class="contract-flow-actions"><button type="button" id="load-selected-contract-deal">Load selected deal</button><button type="button" class="secondary" id="save-contract-packet">Save draft</button><button type="button" class="secondary" id="print-contract-packet" data-print-contract-packet="packet">Preview full packet</button></div>
     </div>
     <div class="closing-flow-pipeline" aria-label="Contract stage pipeline">${pipeline}</div>
     <form id="contract-packet-form" class="contract-send-form contract-separated-form">
@@ -704,7 +705,7 @@ function renderContractComposer(parcel = {}) {
         <span>Land Dealflow OS</span>
         <h1>Closing Contract Packet</h1>
         <p>Seller agreement, assignment agreement, and title review cover prepared for attorney/title validation before signature.</p>
-        <dl><div><dt>Property</dt><dd>${printValue(inputs.propertyAddress, 'Property address pending')}</dd></div><div><dt>Parcel</dt><dd>${printValue(inputs.parcelId, 'pending')}</dd></div><div><dt>State</dt><dd>${printValue(inputs.propertyState, 'pending')}</dd></div><div><dt>Generated</dt><dd>${h(generatedDate)}</dd></div></dl>
+        <dl><div><dt>Property</dt><dd>${printValue(inputs.propertyAddress, 'Property address pending')}</dd></div><div><dt>Parcel</dt><dd>${printValue(inputs.parcelId, 'pending')}</dd></div><div><dt>State</dt><dd>${printValue(inputs.propertyState, 'pending')}</dd></div><div><dt>Generated</dt><dd>${h(generatedDate)}</dd></div><div><dt>Prepared by</dt><dd>${printValue(preparedBy, 'operator pending')}</dd></div></dl>
       </div>
       <section id="seller-agreement-experience" class="contract-document-experience seller-experience" aria-label="Seller Agreement fill experience">
         <div class="contract-send-topbar"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em>Step 1 - Control the property</em></div>${badge(sellerStatus, 'good')}</div>
@@ -739,7 +740,7 @@ function renderContractComposer(parcel = {}) {
           </div>
           <div class="contract-fill-toolbar" aria-label="Seller field tools"><button type="button">Text</button><button type="button">Initial</button><button type="button">Signature</button><button type="button">Date</button><button type="button">Checkbox</button></div>
         </div>
-        <div class="contract-send-footer"><span>Seller flow · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} required gate(s) left` : 'ready to export as PDF'}</span><div><button type="button" data-contract-status="seller-signed">Mark seller signed</button><button type="button" id="export-seller-contract" class="secondary">Export seller packet</button></div><strong id="contract-packet-status">${h(savedCount)} saved packet(s) · ${h(packet.status)}</strong></div>
+        <div class="contract-send-footer"><span>Seller flow · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} required gate(s) left` : 'ready to export as PDF'}</span><div><button type="button" data-contract-status="seller-signed">Mark seller signed</button><button type="button" data-print-contract-packet="seller" class="secondary">Print seller only</button><button type="button" id="export-seller-contract" class="secondary">Export seller packet</button></div><strong id="contract-packet-status">${h(savedCount)} saved packet(s) · ${h(packet.status)}</strong></div>
       </section>
 
       <section id="assignment-agreement-experience" class="contract-document-experience assignment-experience ${assignmentUnlocked ? '' : 'locked-experience'}" aria-label="Assignment Agreement fill experience">
@@ -773,12 +774,12 @@ function renderContractComposer(parcel = {}) {
           </div>
           <div class="contract-fill-toolbar" aria-label="Assignment field tools"><button type="button">Text</button><button type="button">Initial</button><button type="button">Signature</button><button type="button">Date</button><button type="button">Attach</button></div>
         </div>
-        <div class="contract-send-footer"><span>Assignment flow · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer gate(s) left` : 'ready to export as PDF') : 'locked until seller signed'}</span><div><button type="button" data-contract-status="buyer-signed" ${assignmentUnlocked ? '' : 'disabled'}>Mark buyer signed</button><button type="button" id="export-assignment-contract" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Export assignment packet</button></div><strong>${h(assignmentUnlocked ? assignmentStatus : 'locked')}</strong></div>
+        <div class="contract-send-footer"><span>Assignment flow · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer gate(s) left` : 'ready to export as PDF') : 'locked until seller signed'}</span><div><button type="button" data-contract-status="buyer-signed" ${assignmentUnlocked ? '' : 'disabled'}>Mark buyer signed</button><button type="button" data-print-contract-packet="assignment" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Print assignment only</button><button type="button" id="export-assignment-contract" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Export assignment packet</button></div><strong>${h(assignmentUnlocked ? assignmentStatus : 'locked')}</strong></div>
       </section>
 
       <section id="title-packet-experience" class="title-packet-experience" aria-label="Title packet export experience">
         <div><span class="eyebrow">Step 3 - Close cleanly</span><h3>Title packet bundle</h3><p>Once the seller agreement is controlled and the assignment is ready, export the combined packet for title: seller agreement, assignment agreement, and attorney/title review letter.</p></div>
-        <div class="title-packet-actions"><button type="button" id="export-contract-packet">Export title packet Markdown</button><button type="button" data-print-contract-packet class="secondary">Preview clean PDF</button><button type="button" data-contract-status="title-opened" class="secondary">Mark title opened</button></div>
+        <div class="title-packet-actions"><button type="button" id="export-contract-packet">Export title packet Markdown</button><button type="button" data-print-contract-packet="title" class="secondary">Print title packet</button><button type="button" data-contract-status="title-opened" class="secondary">Mark title opened</button></div>
       </section>
       <article class="contract-paper printable-paper title-review-paper print-only" data-print-doc="title-review" aria-hidden="true">
         ${printMeta('Attorney and title review')}
@@ -786,6 +787,7 @@ function renderContractComposer(parcel = {}) {
         <p>Please review the attached seller agreement and assignment agreement before any signature. Confirm state-specific wording, assignability, feasibility/title contingencies, earnest money timing, required addenda, closing/title instructions, and settlement statement treatment of the assignment fee.</p>
         <p><b>Title company:</b> ${printValue(inputs.titleCompany, 'title company pending')}</p>
         <p><b>Attorney reviewer:</b> ${printValue(inputs.attorneyReviewer, 'reviewer pending')} · <b>Review date:</b> ${printValue(inputs.attorneyReviewDate, 'date pending')}</p>
+        <p><b>Prepared by:</b> ${printValue(preparedBy, 'operator pending')}</p>
         ${printFooter}
       </article>
     </form>
@@ -2648,7 +2650,7 @@ function bindEvents() {
       const form = document.querySelector('#contract-packet-form');
       if (form) workspace = { ...workspace, contractDraft: Object.fromEntries(new FormData(form).entries()) };
       persistWorkspace();
-      window.print();
+      triggerContractPrint(event.target.dataset.printContractPacket || 'packet');
       return;
     }
 

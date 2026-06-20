@@ -9001,3 +9001,66 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
   .print-legal-footer { display: grid !important; break-inside: avoid; color: #667085 !important; }
   .title-review-paper { page-break-after: auto !important; }
 }
+
+/* v1.43 - Phase 12 precise print modes and plain document fields */
+.print-field-value { display: none; }
+.contract-send-footer div { flex-wrap: wrap; }
+@media print {
+  body[data-contract-print-mode="seller"] .print-packet-cover,
+  body[data-contract-print-mode="seller"] .assignment-experience,
+  body[data-contract-print-mode="seller"] .title-review-paper { display: none !important; }
+  body[data-contract-print-mode="assignment"] .print-packet-cover,
+  body[data-contract-print-mode="assignment"] .seller-experience,
+  body[data-contract-print-mode="assignment"] .title-review-paper { display: none !important; }
+  body[data-contract-print-mode="title"] .assignment-experience.locked-experience { display: none !important; }
+  body[data-contract-print-mode="title"] .print-packet-cover,
+  body[data-contract-print-mode="packet"] .print-packet-cover { min-height: 9.7in !important; }
+  body[data-contract-print-mode="seller"] .seller-paper,
+  body[data-contract-print-mode="assignment"] .buyer-paper { page-break-after: auto !important; }
+  .printable-paper {
+    min-height: 9.72in !important;
+    padding: .42in .50in !important;
+    break-inside: avoid;
+  }
+  .printable-paper p, .printable-paper li {
+    font-size: 10.8pt !important;
+    line-height: 1.42 !important;
+  }
+  .print-document-meta {
+    margin-bottom: .22in !important;
+    padding-bottom: .13in !important;
+  }
+  .doc-fill input,
+  .doc-fill textarea { display: none !important; }
+  .doc-fill {
+    display: inline !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+  }
+  .doc-fill-area { display: block !important; margin: .1in 0 !important; }
+  .print-field-value {
+    display: inline !important;
+    min-width: .72in;
+    padding: 0 .03in .01in;
+    border-bottom: 1px solid #111827;
+    color: #111827 !important;
+    font: 750 10.6pt/1.22 Inter, -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif !important;
+    white-space: pre-wrap;
+  }
+  .doc-fill-area .print-field-value {
+    display: block !important;
+    min-height: .42in;
+    padding-top: .05in;
+  }
+  .address-field .print-field-value { display: block !important; width: 100% !important; }
+  .contract-clauses { margin-top: .08in !important; }
+  .contract-clauses li { margin-bottom: .035in !important; }
+  .attorney-gate-inline { margin-top: .18in !important; padding-top: .13in !important; }
+  .apple-signature-grid { margin-top: .42in !important; gap: .36in !important; }
+  .apple-signature-grid span { min-height: .44in !important; }
+  .print-legal-footer { margin-top: .26in !important; padding-top: .1in !important; }
+  .title-review-paper { min-height: auto !important; }
+}
+@media (max-width: 720px) {
+  .contract-send-footer div { grid-template-columns: 1fr; }
+}

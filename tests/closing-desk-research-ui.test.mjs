@@ -41,8 +41,8 @@ for (const phrase of ['assignment-friendly', 'title-ready', 'wire-instruction', 
   assert.ok(!visibleClosingData.includes(phrase), `Closing Desk visible copy should not use hyphenated phrase: ${phrase}`);
 }
 assert.match(publicClosingBundle, /Closing Desk is the information hub/, 'Closing Desk must frame the page as the hub itself');
-assert.match(appSource, /Phase 11 · PDF export finish/, 'Closing route should include Phase 11 PDF export finish');
-assert.match(appSource, /Print clean contracts\. Keep the deal sequence simple\./, 'Closing route should present a simple PDF-first contract pipeline');
+assert.match(appSource, /Phase 12 · Print detail finish/, 'Closing route should include Phase 12 print detail finish');
+assert.match(appSource, /Print the exact packet you need\./, 'Closing route should present focused print packet modes');
 assert.match(appSource, /id="seller-agreement-experience"/, 'Seller Agreement should be its own fill experience');
 assert.match(appSource, /id="assignment-agreement-experience"/, 'Assignment Agreement should be its own fill experience');
 assert.match(appSource, /Assignment unlocks after seller agreement is marked signed/, 'Assignment should be visibly locked until seller agreement is signed');
@@ -55,6 +55,16 @@ assert.match(appSource, /contractStageStatus/, 'Contract stages should persist s
 assert.match(appSource, /contractPackets/, 'Contract packet should be stored in workspace local storage');
 assert.match(css, /v1\.41 - Phase 10 separate PDF contract pipeline/, 'Phase 10 separate contract pipeline styles required');
 assert.match(css, /v1\.42 - Phase 11 Apple-grade PDF export surfaces/, 'Phase 11 Apple-grade PDF export styles required');
+assert.match(css, /v1\.43 - Phase 12 precise print modes and plain document fields/, 'Phase 12 precise print mode styles required');
+assert.match(appSource, /data-print-contract-packet="seller"/, 'Seller Agreement should have a seller-only print mode');
+assert.match(appSource, /data-print-contract-packet="assignment"/, 'Assignment Agreement should have an assignment-only print mode');
+assert.match(appSource, /data-print-contract-packet="title"/, 'Title packet should have a title packet print mode');
+assert.match(appSource, /preparedBy/, 'PDF metadata should include prepared-by operator/company line');
+assert.match(appSource, /print-field-value/, 'Printed fields should have a plain-text print value layer');
+assert.match(appSource, /triggerContractPrint/, 'Print buttons should route through explicit print-mode handler');
+assert.match(css, /body\[data-contract-print-mode="seller"\]/, 'Print CSS should isolate seller-only output');
+assert.match(css, /body\[data-contract-print-mode="assignment"\]/, 'Print CSS should isolate assignment-only output');
+assert.match(css, /\.doc-fill input,\n  \.doc-fill textarea \{ display: none !important; \}/, 'Print CSS should hide form controls and show plain values');
 assert.match(css, /@page \{ size: letter; margin: \.42in; \}/, 'PDF output should define clean letter page sizing');
 assert.match(appSource, /print-packet-cover/, 'PDF output should include print-only cover page');
 assert.match(appSource, /print-document-meta/, 'PDF output should include property metadata on printed documents');

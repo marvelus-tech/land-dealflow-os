@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 :root {
   /* v1.5 light lead-engine system: Airtable structure + Wise money clarity + Apple readability */
   --bg: #f6f8f4;
@@ -9063,4 +9064,309 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
 }
 @media (max-width: 720px) {
   .contract-send-footer div { grid-template-columns: 1fr; }
+}
+
+/* v1.44 - Phase 13 Apple-grade Grotesk/DM Mono typography system */
+:root {
+  --font-grotesk: 'Space Grotesk', 'Grotesk', 'Satoshi', 'Neue Haas Grotesk Text', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'DM Mono', 'SFMono-Regular', 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+  --type-ink: #080b10;
+  --type-body: #29323d;
+  --type-muted: #66717f;
+  --type-faint: #8b95a3;
+  --type-line: rgba(8, 11, 16, .105);
+  --type-accent: #23d7c3;
+  --type-accent-deep: #05877f;
+  --type-wash: #f7f9f8;
+  --type-panel: #ffffff;
+}
+html {
+  font-family: var(--font-grotesk);
+  font-size: 16px;
+  letter-spacing: -.011em;
+}
+body {
+  background:
+    radial-gradient(circle at 92% -8%, rgba(35, 215, 195, .18), transparent 30rem),
+    radial-gradient(circle at 4% 18%, rgba(8, 11, 16, .055), transparent 22rem),
+    linear-gradient(180deg, #ffffff 0%, #fbfcfb 330px, #f5f7f5 100%) !important;
+  color: var(--type-body) !important;
+  font-family: var(--font-grotesk) !important;
+  font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv01' 1, 'kern' 1;
+  font-kerning: normal;
+}
+body, button, input, textarea, select {
+  font-family: var(--font-grotesk) !important;
+}
+main {
+  letter-spacing: -.012em;
+}
+:is(h1,h2,h3,h4),
+:is(.brand, .nav-cta, .tab-button),
+:is(.brand-hero, .cashflow-hero, .builder-ops-header, .sources-hero, .closing-hero, .contract-flow-hero) :is(h1,h2,h3),
+:is(.daily-heading, .card, .stage, .side-panel, .metric-card, .builder-cockpit, .source-command-room, .closing-intelligence-deck, .contract-document-experience) :is(h2,h3,h4,b,strong) {
+  color: var(--type-ink) !important;
+  font-family: var(--font-grotesk) !important;
+  font-weight: 650 !important;
+  letter-spacing: -.055em !important;
+  text-wrap: balance;
+}
+h1 {
+  font-size: clamp(52px, 7vw, 94px) !important;
+  line-height: .91 !important;
+  font-weight: 640 !important;
+  letter-spacing: -.082em !important;
+}
+h2 {
+  font-size: clamp(30px, 3.9vw, 52px) !important;
+  line-height: .985 !important;
+  font-weight: 620 !important;
+  letter-spacing: -.07em !important;
+}
+h3 {
+  font-size: clamp(18px, 1.5vw, 24px) !important;
+  line-height: 1.08 !important;
+  font-weight: 620 !important;
+  letter-spacing: -.047em !important;
+}
+h4 {
+  font-size: 15px !important;
+  line-height: 1.12 !important;
+  font-weight: 650 !important;
+  letter-spacing: -.03em !important;
+}
+p, li, dd, .doc-line, .contract-clauses li,
+:is(.hero-copy, .hero-deal-card, .daily-heading, .card, .stage, .side-panel, .builder-cockpit, .source-command-room, .closing-intelligence-deck, .contract-flow-hero, .contract-paper) p {
+  color: var(--type-body) !important;
+  font-family: var(--font-grotesk) !important;
+  font-weight: 420 !important;
+  letter-spacing: -.019em !important;
+}
+p, li, dd { line-height: 1.48 !important; }
+.hero-copy p,
+:is(.brand-hero, .cashflow-hero, .builder-ops-header, .sources-hero, .closing-hero, .contract-flow-hero) p {
+  max-width: 760px;
+  color: #3d4753 !important;
+  font-size: clamp(17px, 1.65vw, 23px) !important;
+  line-height: 1.28 !important;
+  font-weight: 430 !important;
+  letter-spacing: -.036em !important;
+}
+.eyebrow,
+:is(.side-panel, .deal-strip, .mini-grid, .call-tile, .hero-deal-card, .metric-card, .stage, .card) span,
+:is(.badge, .score-badge, .market-toggle, .filter, .state-chip, .source-pill, .resource-state-pill),
+:is(.contract-step, .contract-review-strip, .contract-backline, .recipient-select, .print-document-meta),
+:is(label > span, summary span, small, .queue-meta, .proof-meta, .builder-flow-rail span) {
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.012em !important;
+  text-transform: none !important;
+}
+.eyebrow {
+  align-items: center;
+  gap: 8px;
+  color: var(--type-accent-deep) !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  letter-spacing: .015em !important;
+}
+.eyebrow::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  background: var(--type-accent);
+  box-shadow: 10px 0 0 rgba(35, 215, 195, .50), 20px 0 0 rgba(35, 215, 195, .22);
+}
+:is(.badge, .score-badge, .state-chip, .source-pill, .resource-state-pill),
+.call-tile span, .side-panel span, .deal-strip span, .mini-grid span,
+.contract-step b, .contract-backline em, .contract-review-strip span {
+  color: var(--type-muted) !important;
+  font-size: 11px !important;
+  line-height: 1.15 !important;
+}
+:is(.brand-hero, .cashflow-hero, .builder-ops-header, .sources-hero, .closing-hero, .contract-flow-hero),
+:is(.daily-heading, .card, .stage, .side-panel, .call-tile-grid, .hero-deal-card, .builder-cockpit, .source-command-room, .closing-intelligence-deck, .contract-flow-workspace) {
+  background-color: rgba(255,255,255,.92) !important;
+  border-color: var(--type-line) !important;
+}
+:is(button, .hero-actions a, .nav-cta, .tab-button, .filter) {
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.015em !important;
+}
+button:not(.secondary), .hero-actions a:not(.secondary), .nav-cta {
+  background: var(--type-ink) !important;
+  color: #fff !important;
+}
+button.secondary, .hero-actions .secondary, .filter {
+  background: #fff !important;
+  color: var(--type-ink) !important;
+  border-color: var(--type-line) !important;
+}
+input, textarea, select {
+  color: var(--type-ink) !important;
+  font-size: 14px !important;
+  line-height: 1.32 !important;
+  letter-spacing: -.018em !important;
+}
+input::placeholder, textarea::placeholder { color: var(--type-faint) !important; }
+:is(code, pre, kbd, .mono, .amount, .metric-value, .stat-value, .deal-strip strong, .mini-grid strong, .call-tile em, .call-tile small, .source-data, .pipeline, .contract-packet-status) {
+  font-family: var(--font-mono) !important;
+  letter-spacing: -.02em !important;
+}
+:is(.metric-card strong, .deal-strip strong, .mini-grid strong, .side-panel b, .call-tile b, .resource-state-card strong) {
+  color: var(--type-ink) !important;
+  font-family: var(--font-grotesk) !important;
+  font-weight: 620 !important;
+  letter-spacing: -.055em !important;
+}
+.contract-paper,
+.printable-paper,
+.title-review-paper {
+  font-family: var(--font-grotesk) !important;
+}
+.contract-paper h3,
+.printable-paper h3 {
+  font-family: var(--font-grotesk) !important;
+  font-weight: 620 !important;
+}
+.print-legal-footer,
+.print-document-meta em,
+.print-field-value {
+  font-family: var(--font-mono) !important;
+}
+@media (max-width: 720px) {
+  h1 { font-size: clamp(42px, 12.3vw, 60px) !important; line-height: .94 !important; letter-spacing: -.072em !important; }
+  h2 { font-size: clamp(28px, 9vw, 42px) !important; line-height: 1 !important; letter-spacing: -.064em !important; }
+  h3 { font-size: 20px !important; letter-spacing: -.044em !important; }
+  .hero-copy p,
+  :is(.brand-hero, .cashflow-hero, .builder-ops-header, .sources-hero, .closing-hero, .contract-flow-hero) p {
+    font-size: 16px !important;
+    line-height: 1.34 !important;
+    letter-spacing: -.024em !important;
+  }
+}
+@media print {
+  body, button, input, textarea, select, .printable-paper, .contract-paper, .print-packet-cover {
+    font-family: var(--font-grotesk) !important;
+  }
+  .print-document-meta span,
+  .print-document-meta em,
+  .print-legal-footer,
+  .print-field-value {
+    font-family: var(--font-mono) !important;
+  }
+}
+
+/* v1.44.1 - Phase 13 light-base typography bleed cleanup */
+.nav {
+  background: rgba(255,255,255,.88) !important;
+  border-color: rgba(8,11,16,.10) !important;
+  box-shadow: 0 18px 50px rgba(8,11,16,.055) !important;
+}
+.app-tabs {
+  background: rgba(8,11,16,.035) !important;
+  border-color: rgba(8,11,16,.08) !important;
+}
+.tab-button {
+  background: transparent !important;
+  color: #26313d !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+}
+.tab-button.active {
+  background: rgba(225,255,243,.92) !important;
+  color: var(--type-ink) !important;
+  box-shadow: inset 0 -2px 0 rgba(5,135,127,.72), 0 8px 20px rgba(8,11,16,.055) !important;
+}
+.tab-button::before,
+.tab-button::after,
+.app-tabs::before,
+.app-tabs::after { display: none !important; content: none !important; }
+#operator-session-mode.os8-session {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(35,215,195,.16), transparent 24rem),
+    radial-gradient(circle at 90% 12%, rgba(159,232,112,.18), transparent 20rem),
+    linear-gradient(135deg, rgba(255,255,255,.96) 0%, rgba(248,252,250,.94) 58%, rgba(240,247,242,.95) 100%) !important;
+  color: var(--type-ink) !important;
+  border-color: rgba(8,11,16,.10) !important;
+  box-shadow: 0 30px 90px rgba(8,11,16,.09) !important;
+}
+#operator-session-mode.os8-session .os8-hero h2,
+#operator-session-mode.os8-session .os8-next-card b,
+#operator-session-mode.os8-session .os8-metric b,
+#operator-session-mode.os8-session .os8-step b,
+#operator-session-mode.os8-session .os8-step strong,
+#operator-session-mode.os8-session .os8-gate b,
+#operator-session-mode.os8-session .os8-packet-note b {
+  color: var(--type-ink) !important;
+}
+#operator-session-mode.os8-session .os8-hero p,
+#operator-session-mode.os8-session .os8-step p,
+#operator-session-mode.os8-session .os8-gate p,
+#operator-session-mode.os8-session .os8-packet-note p,
+#operator-session-mode.os8-session .os8-next-card span {
+  color: var(--type-body) !important;
+}
+#operator-session-mode.os8-session .os8-next-card,
+#operator-session-mode.os8-session .os8-metric,
+#operator-session-mode.os8-session .os8-sprint-card,
+#operator-session-mode.os8-session .os8-packet-card,
+#operator-session-mode.os8-session .os8-step,
+#operator-session-mode.os8-session .os8-packet-note {
+  background: rgba(255,255,255,.78) !important;
+  color: var(--type-ink) !important;
+  border-color: rgba(8,11,16,.10) !important;
+  box-shadow: 0 12px 34px rgba(8,11,16,.055) !important;
+}
+#operator-session-mode.os8-session .os8-step.active {
+  background: linear-gradient(135deg, rgba(225,255,243,.92), rgba(255,255,255,.88)) !important;
+  border-color: rgba(5,135,127,.24) !important;
+}
+#operator-session-mode.os8-session .os8-metric em,
+#operator-session-mode.os8-session .os8-card-head b,
+#operator-session-mode.os8-session .os8-step em,
+#operator-session-mode.os8-session .os8-gate em,
+#operator-session-mode.os8-session .eyebrow {
+  color: var(--type-accent-deep) !important;
+}
+#sources-hub .section-heading,
+.sources-hero,
+.source-command-room {
+  background:
+    radial-gradient(circle at 82% 10%, rgba(35,215,195,.14), transparent 22rem),
+    linear-gradient(135deg, rgba(255,255,255,.98), rgba(248,252,250,.95)) !important;
+  color: var(--type-ink) !important;
+  border-color: rgba(8,11,16,.10) !important;
+  box-shadow: 0 22px 70px rgba(8,11,16,.07) !important;
+}
+#sources-hub .section-heading h2,
+#sources-hub .section-heading p,
+#sources-hub .section-heading .eyebrow {
+  color: inherit !important;
+  text-shadow: none !important;
+}
+#sources-hub .section-heading .eyebrow { color: var(--type-accent-deep) !important; }
+@media (max-width: 720px) {
+  .nav { margin: 0 !important; border-radius: 0 !important; padding: 10px 22px !important; }
+  .app-tabs { gap: 1px !important; padding: 1px !important; border-radius: 12px !important; }
+  .tab-button { min-height: 36px !important; flex-basis: 31% !important; font-size: 10px !important; }
+  #operator-session-mode.os8-session { border-radius: 26px !important; }
+}
+
+/* v1.44.2 - Phase 13 nav typography specificity fix */
+.nav .app-tabs .tab-button,
+.nav .app-tabs button.tab-button {
+  background: transparent !important;
+  color: #26313d !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+}
+.nav .app-tabs .tab-button.active,
+.nav .app-tabs button.tab-button.active {
+  background: rgba(225,255,243,.96) !important;
+  color: var(--type-ink) !important;
+  border-color: rgba(5,135,127,.16) !important;
+  box-shadow: inset 0 -2px 0 rgba(5,135,127,.72), 0 8px 20px rgba(8,11,16,.055) !important;
 }

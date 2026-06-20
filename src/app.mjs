@@ -1470,7 +1470,7 @@ function renderBuilderListEnginePanel(options = {}) {
   });
   const marketSummary = `<div class="active-market-summary">
     <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
-    <strong>${h(activeState.marketLabel || activeState.label)}</strong>
+    <strong>${h(activeState.isLive ? (activeState.marketLabel || activeState.label) : `${activeState.label} resource well`)}</strong>
     <p>${h(activeState.isLive ? `${activeState.label} has ${activeBuilders.length} live permit-backed builders loaded from ${activeSummary.entries.length || 1} public source lane${(activeSummary.entries.length || 1) === 1 ? '' : 's'}. Switch states to inspect each deployed builder queue.` : `${activeState.marketLabel || activeState.label}. Source pipeline is ready; builder queue stays empty until permit-active companies are collected.`)}</p>
     <ul>
       ${activeState.isLive ? `<li>${h(activeBuilders.length)} builders</li>

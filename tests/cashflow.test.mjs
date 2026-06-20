@@ -101,7 +101,7 @@ function testCallOutcomeUpdatesCrmStatusAndNextFollowUp() {
   assert.equal(parcel.callOutcome, 'seller_interested');
   assert.equal(parcel.nextFollowUp, '2026-06-18');
   assert.match(parcel.notes, /Seller interested/);
-  assert.equal(CALL_OUTCOMES.seller_interested.label, 'Seller interested');
+  assert.equal(CALL_OUTCOMES.seller_interested.label, 'Interested');
 }
 
 function testCallScriptExplainsWhatToSayAndOffer() {

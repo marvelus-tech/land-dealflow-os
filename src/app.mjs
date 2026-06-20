@@ -1417,15 +1417,37 @@ function renderExecutionConveyor(conveyor = {}) {
     <div><b>${h(row.address || row.parcelId)}</b><small>${h(row.buyerName)} · ${h(row.ownerName || 'public owner')} · ${h(row.lotSize || 'lot size pending')}</small></div>
     <em>${h(row.nextAction || 'skip trace')}</em>
   </div>`).join('');
-  const callRows = asArray(conveyor.callReadySellers).slice(0, 4).map((row, index) => `<article class="execution-call-card ${row.readyForSellerCall ? 'ready' : 'blocked'}">
-    <div><span>${String(index + 1).padStart(2, '0')} seller cockpit</span><b>${h(row.ownerName || 'owner')} · ${h(row.address || row.parcelId)}</b><p>${h(row.nextAction)}</p></div>
-    <ul>
-      <li><b>Opener</b><span>${h(row.ownerCallScript?.opener || row.ownerCallScript?.summary || 'Confirm interest and seller timeline.')}</span></li>
-      <li><b>Net offer</b><span>${h(row.sellerNetOfferScript?.headline || row.sellerNetOfferScript?.summary || 'Calculate seller net before promise.')}</span></li>
-      <li><b>Memo</b><span>${h(row.memo?.subject || 'buyer memo waits for seller range')}</span></li>
-      <li><b>Title</b><span>${h(row.contract?.label || 'contract/title gate pending')}</span></li>
-    </ul>
-  </article>`).join('');
+  const callRows = asArray(conveyor.callReadySellers).slice(0, 4).map((row, index) => {
+    const parcelKey = h(row.id || row.parcelId || '');
+    const outcomeOptions = [
+      ['seller_interested', 'Interested'], ['seller_maybe', 'Maybe'], ['seller_rejected', 'No'], ['bad_number', 'Bad number'],
+      ['wrong_owner', 'Wrong owner'], ['price_too_high', 'Price too high'], ['title_issue', 'Title issue'], ['needs_callback', 'Needs callback'],
+    ];
+    const outcomeButtons = outcomeOptions.map(([key, label]) => `<button type="button" class="execution-outcome ${row.callOutcome === key ? 'active' : ''}" data-execution-call-outcome="${key}" data-parcel-id="${parcelKey}">${label}</button>`).join('');
+    return `<article class="execution-call-card ${row.readyForSellerCall ? 'ready' : 'blocked'}" data-phase7-seller-card="${parcelKey}">
+      <div class="execution-card-top"><span>${String(index + 1).padStart(2, '0')} seller cockpit</span><b>${h(row.ownerName || 'owner')} · ${h(row.address || row.parcelId)}</b><p>${h(row.nextAction)}</p></div>
+      <div class="execution-outcomes" aria-label="Seller call outcomes">${outcomeButtons}</div>
+      <div class="phase7-capture-grid" data-execution-capture="${parcelKey}">
+        <label>Seller ask<input class="phase7-ask" value="${h(row.sellerAskingPrice || row.askingPrice || '')}" placeholder="$42,000 or counter"></label>
+        <label>Timeline<input class="phase7-timeline" value="${h(row.sellerTimeline || '')}" placeholder="now / 30 days / after probate"></label>
+        <label>Callback date<input class="phase7-callback" type="date" value="${h(row.nextFollowUp || '')}"></label>
+        <label>Motivation<textarea class="phase7-motivation" rows="2" placeholder="tax fatigue, unused lot, inherited, moving...">${h(row.sellerMotivation || row.sellerCallCapture?.motivation || '')}</textarea></label>
+        <label>Access + buildability<textarea class="phase7-access" rows="2" placeholder="road, utilities, slope, wetland language from seller">${h(row.accessBuildabilityNotes || row.sellerCallCapture?.accessBuildability || '')}</textarea></label>
+        <label>Exact seller language<textarea class="phase7-language" rows="2" placeholder="quote the owner; do not invent">${h(row.exactSellerLanguage || row.sellerCallCapture?.exactLanguage || '')}</textarea></label>
+      </div>
+      <div class="phase7-gate-rail">
+        <div><span>Contract/title gate</span><b>${h(row.contract?.label || 'not ready')}</b><small>${h(row.contract?.blockers?.join(' · ') || 'owner/contact/source/buyer fit/title path clear enough to prepare packet')}</small></div>
+        <div><span>Buyer memo</span><b>${h(row.memo?.subject || 'memo waits')}</b><small>${h(row.memo?.ask || 'Capture seller outcome and price before sending buyer packet.')}</small></div>
+        <div><span>Close probability</span><b>${h(row.checklist?.probability || 0)}%</b><small>${h(row.checklist?.next?.label || 'clear next gate')}</small></div>
+      </div>
+      <div class="phase7-actions"><button type="button" class="secondary compact-action" data-download-execution-memo="${parcelKey}">Download buyer memo</button><span class="phase7-save-status">${h(row.callOutcome ? `Saved: ${row.sellerCallOutcome || row.callOutcome}` : 'Outcome not captured yet')}</span></div>
+      <ul>
+        <li><b>Opener</b><span>${h(row.ownerCallScript?.opener || row.ownerCallScript?.summary || 'Confirm interest and seller timeline.')}</span></li>
+        <li><b>Net offer</b><span>${h(row.sellerNetOfferScript?.headline || row.sellerNetOfferScript?.summary || 'Calculate seller net before promise.')}</span></li>
+        <li><b>Title</b><span>${h(row.contract?.label || 'contract/title gate pending')}</span></li>
+      </ul>
+    </article>`;
+  }).join('');
   const feedbackRows = asArray(conveyor.feedbackRecommendations).slice(0, 3).map(row => `<div class="execution-row quiet">
     <span>↻</span><div><b>${h(row.address || row.parcelId)}</b><small>${h(row.nextCallReason || 'No feedback penalty yet.')}</small></div><em>${h(row.adjustedScore || row.score || 0)}/100</em>
   </div>`).join('');
@@ -1437,9 +1459,9 @@ function renderExecutionConveyor(conveyor = {}) {
   const importStatus = lastBuilderSkipTraceImportStatus || (firstSkipTraceRow.parcelId ? 'Waiting for skip-trace return CSV from the matched seller batch.' : 'No matched seller rows available to enrich yet.');
   return `<section id="execution-conveyor" class="execution-conveyor-panel" aria-label="Buyer to seller execution conveyor">
     <div class="execution-conveyor-head">
-      <span class="eyebrow">Phase 6 · skip-trace return import</span>
-      <h3>Import returned owner contact here, then let the seller-call cockpit unlock in place.</h3>
-      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')} The chain is now one surface: saved builder buy box → matched seller CSV → inline skip-trace return → seller-call cockpit → memo/title → buyer feedback.</p>
+      <span class="eyebrow">Phase 7 · call-to-close control loop</span>
+      <h3>Turn imported seller contact into outcome, title gate, buyer memo, and feedback in one luminous cockpit.</h3>
+      <p>${h(conveyor.nextAction || 'Capture a complete buyer call before creating seller motion.')} The chain is now one surface: saved builder buy box → matched seller CSV → inline skip-trace return → seller-call outcome → contract/title gate → buyer-send memo → buyer feedback rewrite.</p>
       <div class="execution-metrics">
         <div><b>${h(conveyor.stats?.validatedBuyers || 0)}</b><span>validated buyers</span></div>
         <div><b>${h(conveyor.stats?.matchedSellerBatch || 0)}</b><span>matched seller export</span></div>
@@ -2387,6 +2409,46 @@ function bindEvents() {
       downloadText(`land-dealflow-matched-seller-batch-${stateCode.toLowerCase()}-${new Date().toISOString().slice(0, 10)}.csv`, exportMatchedSellerBatchCsv(conveyor.matchedSellerBatch));
       const status = document.querySelector('#matched-seller-export-status');
       if (status) status.textContent = `Exported ${conveyor.matchedSellerBatch.length} buyer-box-matched sellers from saved selected-builder buy boxes.`;
+    }
+
+    const executionOutcomeButton = event.target.closest('[data-execution-call-outcome]');
+    if (executionOutcomeButton) {
+      event.preventDefault();
+      const card = executionOutcomeButton.closest('[data-phase7-seller-card]');
+      const capture = card?.querySelector('[data-execution-capture]');
+      const parcelId = executionOutcomeButton.dataset.parcelId || card?.dataset.phase7SellerCard || '';
+      workspace = applyCallOutcome(workspace, parcelId, executionOutcomeButton.dataset.executionCallOutcome, {
+        updates: {
+          sellerAskingPrice: capture?.querySelector('.phase7-ask')?.value || '',
+          askingPrice: capture?.querySelector('.phase7-ask')?.value || '',
+          sellerTimeline: capture?.querySelector('.phase7-timeline')?.value || '',
+          nextFollowUp: capture?.querySelector('.phase7-callback')?.value || '',
+          sellerMotivation: capture?.querySelector('.phase7-motivation')?.value || '',
+          accessBuildabilityNotes: capture?.querySelector('.phase7-access')?.value || '',
+          exactSellerLanguage: capture?.querySelector('.phase7-language')?.value || '',
+        },
+      });
+      persistWorkspace();
+      lastBuilderSkipTraceImportStatus = 'Seller outcome captured; contract/title gate, buyer memo, and feedback rewrite recomputed.';
+      renderAll();
+      return;
+    }
+
+    const executionMemoButton = event.target.closest('[data-download-execution-memo]');
+    if (executionMemoButton) {
+      event.preventDefault();
+      const parcelId = executionMemoButton.dataset.downloadExecutionMemo;
+      const stateCode = selectedBuilderMarketState || 'TN';
+      const sellers = sellerPoolForState(stateCode);
+      const buyers = buyerPoolForState(stateCode);
+      const parcel = sellers.find(item => String(item.id || '') === String(parcelId) || String(item.parcelId || '') === String(parcelId));
+      const buyer = buyers.find(item => String(item.id || item.buyerId || '') === String(parcel?.buyerId || parcel?.buyer?.id || '')) || buyers[0] || {};
+      if (!parcel) return;
+      const memo = generateBuyerSendMemo(parcel, buyer, generateOfferPacket(parcel, buyer));
+      downloadText(`land-dealflow-buyer-send-memo-${stateCode.toLowerCase()}-${new Date().toISOString().slice(0, 10)}.md`, exportBuyerSendMemoMarkdown(memo), 'text/markdown');
+      const status = executionMemoButton.closest('[data-phase7-seller-card]')?.querySelector('.phase7-save-status');
+      if (status) status.textContent = 'Buyer memo downloaded for this seller row.';
+      return;
     }
 
     if (event.target.matches('#export-daily-call-sheet')) {

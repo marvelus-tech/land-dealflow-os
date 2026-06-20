@@ -92,8 +92,14 @@ export const CALL_OUTCOMES = {
   call_attempted: { label: 'Call attempted', crmStatus: 'Contacted', followUpDays: 1, note: 'Call attempted.' },
   no_answer: { label: 'No answer', crmStatus: 'Contacted', followUpDays: 1, note: 'No answer. Try again tomorrow.' },
   left_voicemail: { label: 'Left voicemail', crmStatus: 'Contacted', followUpDays: 2, note: 'Left voicemail. Follow up in two days.' },
-  seller_interested: { label: 'Seller interested', crmStatus: 'Negotiating', followUpDays: 1, note: 'Seller interested. Prepare/confirm offer terms.' },
-  seller_rejected: { label: 'Seller rejected', crmStatus: 'Dead', followUpDays: null, note: 'Seller rejected the offer.' },
+  seller_interested: { label: 'Interested', crmStatus: 'Negotiating', followUpDays: 1, note: 'Seller interested. Capture ask, timeline, motivation, and clear title gate.' },
+  seller_maybe: { label: 'Maybe', crmStatus: 'Contacted', followUpDays: 2, note: 'Seller may consider. Schedule callback and keep exact language.' },
+  seller_rejected: { label: 'No', crmStatus: 'Dead', followUpDays: null, note: 'Seller rejected the offer.' },
+  bad_number: { label: 'Bad number', crmStatus: 'Researching', followUpDays: null, note: 'Bad number. Send back to enrichment before another call.' },
+  wrong_owner: { label: 'Wrong owner', crmStatus: 'Researching', followUpDays: null, note: 'Wrong owner. Verify assessor ownership and skip-trace artifact.' },
+  price_too_high: { label: 'Price too high', crmStatus: 'Dead', followUpDays: null, note: 'Seller price too high for buyer-backed max. Preserve counter for pricing feedback.' },
+  title_issue: { label: 'Title issue', crmStatus: 'Researching', followUpDays: 3, note: 'Title issue surfaced. Hold seller/buyer memo behind title preflight.' },
+  needs_callback: { label: 'Needs callback', crmStatus: 'Contacted', followUpDays: 3, note: 'Seller requested callback. Set callback date and exact callback context.' },
   needs_follow_up: { label: 'Needs follow-up', crmStatus: 'Contacted', followUpDays: 3, note: 'Needs follow-up. Re-open with buyer-backed proof.' },
   dead_lead: { label: 'Dead lead', crmStatus: 'Dead', followUpDays: null, note: 'Dead lead. Remove from active call queue.' },
 };
@@ -390,9 +396,10 @@ export function buildOperatorChecklist(parcel = {}, buyer = {}) {
 }
 
 export function applyCrmUpdate(workspace, parcelId, updates) {
+  const key = String(parcelId || '');
   return {
     ...workspace,
-    parcels: (workspace.parcels || []).map(parcel => parcel.id === parcelId ? { ...parcel, ...updates, updatedAt: new Date().toISOString() } : parcel),
+    parcels: (workspace.parcels || []).map(parcel => (String(parcel.id || '') === key || String(parcel.parcelId || '') === key) ? { ...parcel, ...updates, updatedAt: new Date().toISOString() } : parcel),
   };
 }
 
@@ -930,18 +937,32 @@ export function applyBuyerContactImport(workspace = {}, csvText = '', { candidat
   return { workspace: { ...workspace, buyers: current }, summary: { imported: records.length, matched, created, unmatched: unmatched.length }, unmatched };
 }
 
-export function applyCallOutcome(workspace, parcelId, outcomeKey, { now = new Date().toISOString(), note = '' } = {}) {
+export function applyCallOutcome(workspace, parcelId, outcomeKey, { now = new Date().toISOString(), note = '', updates = {} } = {}) {
   const outcome = CALL_OUTCOMES[outcomeKey] || CALL_OUTCOMES.call_attempted;
-  const nextFollowUp = outcome.followUpDays == null ? '' : addDays(now, outcome.followUpDays);
+  const nextFollowUp = updates.nextFollowUp || (outcome.followUpDays == null ? '' : addDays(now, outcome.followUpDays));
+  const key = String(parcelId || '');
   return {
     ...workspace,
     parcels: (workspace.parcels || []).map((parcel) => {
-      if (parcel.id !== parcelId) return parcel;
-      const notes = [parcel.notes, outcome.note, note].filter(Boolean).join('\n');
+      if (String(parcel.id || '') !== key && String(parcel.parcelId || '') !== key) return parcel;
+      const callCapture = {
+        askingPrice: updates.sellerAskingPrice || updates.askingPrice || parcel.sellerAskingPrice || parcel.askingPrice || '',
+        motivation: updates.sellerMotivation || parcel.sellerMotivation || '',
+        timeline: updates.sellerTimeline || parcel.sellerTimeline || '',
+        accessBuildability: updates.accessBuildabilityNotes || parcel.accessBuildabilityNotes || '',
+        titleConcerns: updates.titleConcerns || parcel.titleConcerns || '',
+        sentiment: updates.ownerSentiment || parcel.ownerSentiment || '',
+        exactLanguage: updates.exactSellerLanguage || parcel.exactSellerLanguage || '',
+        capturedAt: now,
+      };
+      const notes = [parcel.notes, outcome.note, note, callCapture.exactLanguage ? `Seller exact language: ${callCapture.exactLanguage}` : ''].filter(Boolean).join('\n');
       return {
         ...parcel,
-        crmStatus: outcome.crmStatus,
+        ...updates,
+        crmStatus: updates.crmStatus || outcome.crmStatus,
         callOutcome: outcomeKey,
+        sellerCallOutcome: outcome.label,
+        sellerCallCapture: callCapture,
         lastCallAt: now,
         nextFollowUp,
         notes,

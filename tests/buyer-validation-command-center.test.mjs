@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {
+  applyCallOutcome,
   applySkipTraceImport,
   buildBuyerValidationCommandCenter,
   buildExecutionConveyor,
@@ -165,11 +166,17 @@ assert.match(appSource, /const buyerPool = buyerPoolForState\(activeState\.state
 assert.match(appSource, /const stateCode = selectedBuilderMarketState \|\| 'TN'/, 'matched seller export must use the active Builders state, not an undefined legacy state variable');
 assert.match(appSource, /sellerPoolForState\(stateCode\)/, 'matched seller export should use the same state-scoped seller pool as the execution conveyor');
 assert.match(appSource, /selected builder is now the buyer object for seller matching and CSV export/, 'save feedback should explain persistence into the buyer-to-seller conveyor');
-assert.match(appSource, /Phase 6 · skip-trace return import/, 'execution conveyor headline should reflect Phase 6 inline skip-trace import while preserving saved buyer persistence');
-assert.match(appSource, /saved builder buy box → matched seller CSV → inline skip-trace return → seller-call cockpit → memo\/title → buyer feedback/, 'Phase 6 copy should retain the full downstream conveyor detail');
+assert.match(appSource, /Phase 7 · call-to-close control loop/, 'execution conveyor headline should advance to Phase 7 call-to-close loop while preserving inline skip-trace import');
+assert.match(appSource, /saved builder buy box → matched seller CSV → inline skip-trace return → seller-call outcome → contract\/title gate → buyer-send memo → buyer feedback rewrite/, 'Phase 7 copy should retain the full downstream conveyor detail');
 assert.match(appSource, /id="builder-skip-trace-csv"/, 'Builders execution conveyor should expose inline skip-trace return CSV import');
 assert.match(appSource, /#builder-import-skiptrace[\s\S]{0,520}applySkipTraceImport\(workspace, input\?\.value \|\| '', \{ candidateParcels: sellerPoolForState\(stateCode\) \}\)/, 'Builders skip-trace import must reuse the existing applySkipTraceImport path with the state-scoped seller pool');
 assert.match(appSource, /Import return \+ recompute cockpit/, 'inline skip-trace import should visibly recompute the seller cockpit after import');
+assert.match(appSource, /\['seller_interested', 'Interested'\]/, 'Phase 7 seller cockpit should expose Interested outcome control');
+assert.match(appSource, /\['bad_number', 'Bad number'\]/, 'Phase 7 seller cockpit should expose bad-number enrichment rollback control');
+assert.match(appSource, /class="phase7-ask"/, 'Phase 7 seller cockpit should capture seller asking price');
+assert.match(appSource, /class="phase7-language"/, 'Phase 7 seller cockpit should preserve exact seller language');
+assert.match(appSource, /data-download-execution-memo/, 'Phase 7 seller cockpit should export the selected seller buyer-send memo');
+assert.match(stylesSource, /v1\.37 - Phase 7 award-grade seller call-to-close cockpit/, 'Phase 7 award-grade visual system should be appended after older conveyor styles');
 
 const conveyorBuyer = {
   id: 'buyer-phase-6',
@@ -215,5 +222,23 @@ const afterImport = buildExecutionConveyor({ buyers: [conveyorBuyer], sellerCand
 assert.equal(afterImport.stats.contactEnrichedRows, 1);
 assert.equal(afterImport.callReadySellers.length, 1, 'imported owner phone/email should promote the row into seller cockpit review');
 assert.match(afterImport.stageRows.find(row => row.id === 'skiptrace-return').status, /contact-enriched/);
+const afterSellerOutcome = applyCallOutcome(imported.workspace, 'KGIS-P6-001', 'seller_interested', {
+  now: '2026-06-20T12:00:00.000Z',
+  updates: {
+    sellerAskingPrice: 39000,
+    sellerTimeline: 'can close this month',
+    sellerMotivation: 'inherited lot and wants clean cash exit',
+    accessBuildabilityNotes: 'seller says paved road frontage and power nearby',
+    exactSellerLanguage: 'If you cover closing costs, I can look at thirty nine.',
+  },
+});
+const outcomeParcel = afterSellerOutcome.parcels.find(item => item.parcelId === 'KGIS-P6-001');
+assert.equal(outcomeParcel.callOutcome, 'seller_interested', 'Phase 7 should persist seller outcome against parcelId, not only internal id');
+assert.equal(outcomeParcel.crmStatus, 'Negotiating');
+assert.equal(outcomeParcel.sellerCallCapture.askingPrice, 39000);
+assert.match(outcomeParcel.notes, /thirty nine/, 'exact seller language should be retained for zero-fabrication memo review');
+const afterOutcomeConveyor = buildExecutionConveyor({ buyers: [conveyorBuyer], sellerCandidates: afterSellerOutcome.parcels, limit: 10 });
+assert.equal(afterOutcomeConveyor.callReadySellers[0].callOutcome, 'seller_interested');
+assert.ok(afterOutcomeConveyor.callReadySellers[0].memo?.message.includes('buyer-box-matched'), 'Phase 7 cockpit should carry a buyer-send memo with the seller row');
 
 console.log('buyer validation command center tests passed');

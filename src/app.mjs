@@ -712,8 +712,8 @@ function renderContractComposer(parcel = {}) {
         <p>Seller agreement, assignment agreement, and title review cover prepared for attorney/title validation before signature.</p>
         <dl><div><dt>Property</dt><dd>${printValue(inputs.propertyAddress, 'Property address pending')}</dd></div><div><dt>Parcel</dt><dd>${printValue(inputs.parcelId, 'pending')}</dd></div><div><dt>State</dt><dd>${printValue(inputs.propertyState, 'pending')}</dd></div><div><dt>Generated</dt><dd>${h(generatedDate)}</dd></div><div><dt>Prepared by</dt><dd>${printValue(preparedBy, 'operator pending')}</dd></div></dl>
       </div>
-      <section id="seller-agreement-experience" class="contract-document-experience seller-experience" aria-label="Seller Agreement fill experience">
-        <div class="contract-send-topbar"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em>Step 1 - Control the property</em></div>${badge(sellerStatus, 'good')}</div>
+      <details id="seller-agreement-experience" class="contract-document-experience contract-disclosure-experience seller-experience" aria-label="Seller Agreement fill experience">
+        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em>Step 1 - Control the property · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} required field(s) left` : 'ready for seller PDF'}</em></div>${badge(sellerStatus, 'good')}<small>Open</small></summary>
         <div class="contract-stepper" aria-label="Seller agreement progress">${docStepper('Prepare')}</div>
         <div class="contract-review-strip"><span>Review & Fill Seller Agreement Fields</span><a href="#seller-agreement-experience">Land Sale Agreement</a></div>
         <div class="contract-document-shell">
@@ -746,10 +746,10 @@ function renderContractComposer(parcel = {}) {
           <div class="contract-fill-toolbar" aria-label="Seller field tools"><button type="button">Text</button><button type="button">Initial</button><button type="button">Signature</button><button type="button">Date</button><button type="button">Checkbox</button></div>
         </div>
         <div class="contract-send-footer"><span>Seller flow · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} required gate(s) left` : 'ready to export as PDF'}</span><div><button type="button" data-contract-status="seller-signed">Mark seller signed</button><button type="button" data-print-contract-packet="seller" class="secondary">Print seller only</button><button type="button" id="export-seller-contract" class="secondary">Export seller packet</button></div><strong id="contract-packet-status">${h(savedCount)} saved packet(s) · ${h(packet.status)}</strong></div>
-      </section>
+      </details>
 
-      <section id="assignment-agreement-experience" class="contract-document-experience assignment-experience ${assignmentUnlocked ? '' : 'locked-experience'}" aria-label="Assignment Agreement fill experience">
-        <div class="contract-send-topbar"><div class="contract-backline"><span aria-hidden="true">02</span><b>Assignment Agreement</b><em>Step 2 - Assign to builder buyer</em></div>${badge(assignmentUnlocked ? assignmentStatus : 'locked', assignmentUnlocked ? 'good' : 'warn')}</div>
+      <details id="assignment-agreement-experience" class="contract-document-experience contract-disclosure-experience assignment-experience ${assignmentUnlocked ? '' : 'locked-experience'}" aria-label="Assignment Agreement fill experience">
+        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">02</span><b>Assignment Agreement</b><em>Step 2 - Assign to builder buyer · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer field(s) left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div>${badge(assignmentUnlocked ? assignmentStatus : 'locked', assignmentUnlocked ? 'good' : 'warn')}<small>Open</small></summary>
         ${assignmentUnlocked ? `<div class="contract-stepper" aria-label="Assignment agreement progress">${docStepper('Prepare')}</div>` : '<div class="assignment-lock-banner"><b>Assignment unlocks after seller agreement is marked signed.</b><p>Do not prepare buyer assignment paperwork before the deal is under seller control and title/closing can review assignment handling.</p></div>'}
         <div class="contract-review-strip"><span>Review & Fill Assignment Fields</span><a href="#assignment-agreement-experience">Assignment of Vacant Land Purchase Agreement</a></div>
         <div class="contract-document-shell">
@@ -780,7 +780,7 @@ function renderContractComposer(parcel = {}) {
           <div class="contract-fill-toolbar" aria-label="Assignment field tools"><button type="button">Text</button><button type="button">Initial</button><button type="button">Signature</button><button type="button">Date</button><button type="button">Attach</button></div>
         </div>
         <div class="contract-send-footer"><span>Assignment flow · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer gate(s) left` : 'ready to export as PDF') : 'locked until seller signed'}</span><div><button type="button" data-contract-status="buyer-signed" ${assignmentUnlocked ? '' : 'disabled'}>Mark buyer signed</button><button type="button" data-print-contract-packet="assignment" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Print assignment only</button><button type="button" id="export-assignment-contract" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Export assignment packet</button></div><strong>${h(assignmentUnlocked ? assignmentStatus : 'locked')}</strong></div>
-      </section>
+      </details>
 
       <section id="title-packet-experience" class="title-packet-experience" aria-label="Title packet export experience">
         <div><span class="eyebrow">Step 3 - Close cleanly</span><h3>Title packet bundle</h3><p>Once the seller agreement is controlled and the assignment is ready, export the combined packet for title: seller agreement, assignment agreement, and attorney/title review letter.</p></div>
@@ -2020,7 +2020,7 @@ function renderCommandCenter() {
     </nav>
     <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS terrain intelligence command">
       <div class="wk-hero-copy">
-        <span class="wk-kicker">Terrain intelligence / Tennessee live-first</span>
+        <span class="wk-kicker">Buyer demand / Tennessee live-first</span>
         <h1>Call the buyer. Then move the deal.</h1>
         <p>Today has one job: prove demand, protect the seller queue, and advance the next defensible action.</p>
         <div class="wk-actions">
@@ -2031,9 +2031,9 @@ function renderCommandCenter() {
       <aside class="wk-artifact" aria-label="Permit and landscape intelligence model">
         <div class="wk-scanline" aria-hidden="true"></div>
         <div class="wk-horizon" aria-hidden="true"></div>
-        <div class="wk-core-sample"><span>TN terrain</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
+        <div class="wk-core-sample"><span>TN demand</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
         <div class="wk-contour c1"></div><div class="wk-contour c2"></div><div class="wk-contour c3"></div>
-        <p>Permit velocity, builder demand, parcel constraint, next action.</p>
+        <p>Permit velocity, buyer demand, parcel fit, next action.</p>
       </aside>
     </section>
     ${renderOperatorSessionMode(operatorSession)}

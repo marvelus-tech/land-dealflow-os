@@ -12731,3 +12731,340 @@ section.app-panel[hidden],
     letter-spacing: -.062em !important;
   }
 }
+
+/* v1.55 - Phase 23 Apple hierarchy correction: compact chrome, Today cleanup, buy-box form, closing disclosure */
+:root {
+  --brand-forest: #194d36;
+  --brand-forest-strong: #0f3324;
+  --brand-forest-soft: #edf5ef;
+  --brand-forest-line: rgba(25,77,54,.18);
+  --brand-gold: #b68a2c;
+  --brand-gold-soft: #fbf5e5;
+  --brand-ink: #101512;
+  --brand-muted: #5f6b64;
+  --brand-canvas: #fbfbf7;
+}
+
+/* Navigation: it was too tall because mobile overrides forced a two-row grid and 82px min-height. */
+.nav,
+header.nav {
+  min-height: 44px !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 5px clamp(14px, 3vw, 28px) !important;
+  gap: 10px !important;
+  align-items: center !important;
+  background: rgba(251,251,247,.86) !important;
+  border-bottom: 1px solid rgba(16,21,18,.08) !important;
+  box-shadow: none !important;
+}
+.brand { color: var(--brand-ink) !important; font-weight: 760 !important; letter-spacing: -.025em !important; }
+.app-tabs,
+header.nav nav.app-tabs {
+  min-height: 32px !important;
+  padding: 2px !important;
+  gap: 1px !important;
+  background: rgba(16,21,18,.045) !important;
+  border: 1px solid rgba(16,21,18,.075) !important;
+}
+.nav .tab-button,
+header.nav .tab-button {
+  min-height: 28px !important;
+  padding: 0 10px !important;
+  color: rgba(16,21,18,.58) !important;
+  font-size: 10.5px !important;
+  font-weight: 720 !important;
+}
+.nav .tab-button.active,
+header.nav .tab-button.active {
+  background: #fff !important;
+  color: var(--brand-forest-strong) !important;
+  box-shadow: 0 1px 0 rgba(16,21,18,.05), 0 4px 12px rgba(16,21,18,.055) !important;
+}
+
+/* Today: remove old campaign/terrain relics and bring it back into the product system. */
+body[data-active-view="today"] footer { display: block !important; }
+body[data-active-view="today"] #command {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  color: var(--brand-ink) !important;
+}
+body[data-active-view="today"] #command :where(.wk-hero, .wk-audit, .wk-market-map, .wk-workbench, .wk-protocol) {
+  min-height: auto !important;
+  background: transparent !important;
+  background-image: none !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--brand-ink) !important;
+}
+body[data-active-view="today"] #command .wk-hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px) !important;
+  gap: clamp(24px, 5vw, 64px) !important;
+  padding: clamp(34px, 7vw, 82px) 0 clamp(28px, 5vw, 56px) !important;
+  border-bottom: 1px solid rgba(16,21,18,.10) !important;
+}
+body[data-active-view="today"] #command .wk-hero::before,
+body[data-active-view="today"] #command .wk-hero::after,
+body[data-active-view="today"] #command :where(.wk-contour, .wk-progress) {
+  display: none !important;
+}
+body[data-active-view="today"] #command .wk-hero :where(h1, p, b, span, em) { color: inherit !important; text-shadow: none !important; }
+body[data-active-view="today"] #command .wk-hero h1 {
+  max-width: 12ch !important;
+  font-size: clamp(46px, 8vw, 92px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.075em !important;
+}
+body[data-active-view="today"] #command .wk-hero p {
+  max-width: 680px !important;
+  color: var(--brand-muted) !important;
+  font-size: clamp(17px, 1.7vw, 22px) !important;
+  line-height: 1.42 !important;
+}
+body[data-active-view="today"] #command :where(.wk-kicker, .wk-card-kicker, .wk-stat span) {
+  color: var(--brand-forest) !important;
+  letter-spacing: .12em !important;
+}
+body[data-active-view="today"] #command :where(.wk-artifact, .wk-core-sample, .wk-focus-card, .wk-stat, .wk-market-node, .wk-rail) {
+  background: rgba(255,255,252,.82) !important;
+  border: 1px solid rgba(16,21,18,.10) !important;
+  box-shadow: none !important;
+  color: var(--brand-ink) !important;
+}
+body[data-active-view="today"] #command :where(.wk-actions a, .wk-focus-card a) {
+  background: var(--brand-forest) !important;
+  border-color: var(--brand-forest) !important;
+  color: #fff !important;
+}
+body[data-active-view="today"] #command .wk-actions a + a {
+  background: transparent !important;
+  border-color: rgba(16,21,18,.16) !important;
+  color: var(--brand-forest-strong) !important;
+}
+
+/* Buy-box form: rebuild it as a calm Apple settings sheet instead of a raw HTML grid. */
+.validation-buybox-grid,
+.validation-form.validation-buybox-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin-top: 20px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: rgba(255,255,252,.84) !important;
+  border: 1px solid rgba(16,21,18,.10) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 16px 50px rgba(16,21,18,.055) !important;
+}
+.validation-buybox-grid .form-field {
+  grid-column: span 4 !important;
+  min-height: 92px !important;
+  padding: 16px 18px !important;
+  gap: 8px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(16,21,18,.075) !important;
+  border-bottom: 1px solid rgba(16,21,18,.075) !important;
+  background: transparent !important;
+}
+.validation-buybox-grid :where(.field-geography, .field-speed, .field-recipient, .field-killers, .field-notes) { grid-column: span 6 !important; }
+.validation-buybox-grid :where(.field-status, .field-last, .field-callback, .field-lot, .field-price) { grid-column: span 4 !important; }
+.validation-buybox-grid .field-notes { grid-column: 1 / -1 !important; min-height: 150px !important; }
+.validation-buybox-grid .field-label-text,
+.validation-buybox-grid label {
+  color: var(--brand-ink) !important;
+  font-size: 12px !important;
+  font-weight: 760 !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+}
+.validation-buybox-grid .field-label-text { display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 12px !important; }
+.validation-buybox-grid .field-label-text em {
+  color: var(--brand-forest) !important;
+  font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace) !important;
+  font-size: 9px !important;
+  font-style: normal !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+.validation-buybox-grid :where(input, select, textarea) {
+  min-height: 34px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  color: var(--brand-ink) !important;
+  font: 650 14px/1.38 var(--font-grotesk, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+}
+.validation-buybox-grid :where(input, select, textarea)::placeholder { color: rgba(16,21,18,.36) !important; }
+.validation-buybox-grid :where(input, select, textarea):focus { outline: 0 !important; box-shadow: inset 0 -2px 0 var(--brand-forest) !important; }
+.validation-buybox-grid .field-helper,
+.validation-buybox-grid small { color: var(--brand-muted) !important; font-size: 11px !important; line-height: 1.35 !important; }
+.validation-buybox-grid .is-required { background: linear-gradient(180deg, rgba(251,245,229,.54), rgba(255,255,252,.58)) !important; }
+.validation-buybox-grid .is-complete { background: linear-gradient(180deg, rgba(237,245,239,.56), rgba(255,255,252,.58)) !important; }
+.validation-save-row {
+  grid-column: 1 / -1 !important;
+  padding: 14px 18px !important;
+  background: rgba(25,77,54,.035) !important;
+  border-top: 1px solid rgba(16,21,18,.08) !important;
+}
+.validation-save-row button { background: var(--brand-forest) !important; border-color: var(--brand-forest) !important; }
+.ask-next-card { border-color: var(--brand-forest-line) !important; background: var(--brand-forest-soft) !important; }
+.ask-next-card span,
+.next-best-action span { color: var(--brand-forest) !important; }
+.next-best-action strong { color: var(--brand-ink) !important; }
+.buybox-completion .completion-rail span { background: linear-gradient(90deg, var(--brand-forest), var(--brand-gold)) !important; }
+.completion-chip.done { border-color: var(--brand-forest-line) !important; color: var(--brand-forest-strong) !important; background: var(--brand-forest-soft) !important; }
+.completion-chip.missing { border-color: rgba(182,138,44,.24) !important; color: #7b5a17 !important; background: var(--brand-gold-soft) !important; }
+
+/* Closing documents: progressive disclosure. Dense legal surfaces are closed until the operator asks for them. */
+.contract-disclosure-experience {
+  display: block !important;
+  overflow: clip !important;
+  background: rgba(255,255,252,.86) !important;
+  border: 1px solid rgba(16,21,18,.105) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+}
+.contract-disclosure-summary {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+  min-height: 74px !important;
+  padding: 18px 20px !important;
+  cursor: pointer !important;
+  list-style: none !important;
+  background: #fff !important;
+}
+.contract-disclosure-summary::-webkit-details-marker { display: none !important; }
+.contract-disclosure-summary::after {
+  content: "⌄";
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--brand-forest-soft);
+  color: var(--brand-forest);
+  border: 1px solid var(--brand-forest-line);
+  transition: transform .18s ease;
+}
+.contract-disclosure-experience[open] .contract-disclosure-summary::after { transform: rotate(180deg); }
+.contract-disclosure-summary .contract-backline span {
+  display: grid !important;
+  place-items: center !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 999px !important;
+  background: var(--brand-forest-soft) !important;
+  color: var(--brand-forest) !important;
+  font-size: 10px !important;
+}
+.contract-disclosure-summary .contract-backline b { color: var(--brand-ink) !important; font-size: 16px !important; letter-spacing: -.025em !important; }
+.contract-disclosure-summary .contract-backline em { color: var(--brand-muted) !important; font-size: 12px !important; }
+.contract-disclosure-summary small { color: var(--brand-forest) !important; font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace) !important; font-size: 10px !important; letter-spacing: .10em !important; text-transform: uppercase !important; }
+.contract-disclosure-experience:not([open]) > :not(summary) { display: none !important; }
+.contract-disclosure-experience[open] { box-shadow: 0 18px 60px rgba(16,21,18,.06) !important; }
+.contract-disclosure-experience[open] > :not(summary) { margin-inline: 18px !important; }
+.contract-disclosure-experience[open] > :last-child { margin-bottom: 18px !important; }
+.contract-document-shell { border-radius: 14px !important; }
+.contract-paper { box-shadow: none !important; }
+
+@media (max-width: 760px) {
+  .nav,
+  header.nav {
+    display: flex !important;
+    min-height: 46px !important;
+    padding: 6px 10px !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+  .brand { width: auto !important; justify-content: flex-start !important; font-size: 10.5px !important; }
+  .app-tabs,
+  header.nav nav.app-tabs {
+    width: auto !important;
+    max-width: none !important;
+    flex: 1 0 auto !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+  }
+  .nav .tab-button,
+  header.nav .tab-button { flex: 0 0 auto !important; min-height: 28px !important; padding: 0 9px !important; font-size: 10px !important; }
+  main { padding-top: 18px !important; }
+  body[data-active-view="today"] #command .wk-hero { grid-template-columns: 1fr !important; padding-top: 26px !important; }
+  body[data-active-view="today"] #command .wk-hero h1 { font-size: clamp(44px, 13vw, 58px) !important; }
+  .validation-buybox-grid,
+  .validation-form.validation-buybox-grid { border-radius: 14px !important; }
+  .validation-buybox-grid .form-field,
+  .validation-buybox-grid :where(.field-geography, .field-speed, .field-recipient, .field-killers, .field-notes, .field-status, .field-last, .field-callback, .field-lot, .field-price) {
+    grid-column: 1 / -1 !important;
+    min-height: auto !important;
+    border-right: 0 !important;
+    padding: 14px 16px !important;
+  }
+  .contract-disclosure-summary { grid-template-columns: minmax(0, 1fr) auto !important; min-height: 66px !important; padding: 15px 16px !important; }
+  .contract-disclosure-summary small { display: none !important; }
+  .contract-disclosure-experience[open] > :not(summary) { margin-inline: 10px !important; }
+}
+
+/* v1.55.1 - Phase 23 screenshot correction: single-row mobile nav and no Today terrain relics */
+@media (max-width: 760px) {
+  .nav,
+  header.nav {
+    flex-wrap: nowrap !important;
+    min-height: 42px !important;
+    padding: 5px 8px !important;
+    gap: 8px !important;
+  }
+  .brand {
+    flex: 0 0 auto !important;
+    max-width: 112px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  .app-tabs,
+  header.nav nav.app-tabs {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: calc(100vw - 136px) !important;
+    min-width: 0 !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+  }
+  .app-tabs > *,
+  header.nav nav.app-tabs > *,
+  .nav .tab-button,
+  header.nav .tab-button {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+}
+body[data-active-view="today"] #command :where(.wk-scanline, .wk-horizon, .wk-contour) {
+  display: none !important;
+}
+body[data-active-view="today"] #command .wk-artifact {
+  min-height: 0 !important;
+  padding: clamp(18px, 4vw, 28px) !important;
+  background: rgba(255,255,252,.86) !important;
+}
+body[data-active-view="today"] #command .wk-core-sample {
+  position: static !important;
+  transform: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  text-align: left !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .wk-core-sample b {
+  font-size: clamp(38px, 10vw, 64px) !important;
+  line-height: .92 !important;
+}

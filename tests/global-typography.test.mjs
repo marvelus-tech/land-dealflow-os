@@ -104,5 +104,19 @@ assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'ut
 const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]
   .filter(match => !/border-radius:\s*0\s*!important/.test(match[2]));
 assert.deepEqual(roundedButtonRules.map(match => match[1].trim()).slice(0, 5), [], 'No button selector may retain rounded corner radius');
+assert.match(css, /v1\.55 - Phase 23 Apple hierarchy correction: compact chrome, Today cleanup, buy-box form, closing disclosure/, 'Phase 23 marker required for the Apple hierarchy correction pass');
+assert.match(css, /--brand-forest: #194d36/, 'Phase 23 should define the premium forest primary accent');
+assert.match(css, /--brand-gold: #b68a2c/, 'Phase 23 should define the restrained gold metric highlight');
+assert.match(css, /header\.nav[\s\S]{0,180}min-height: 44px !important/, 'Phase 23 should correct excessive desktop nav height');
+assert.match(css, /@media \(max-width: 760px\)[\s\S]{0,220}min-height: 46px !important/, 'Phase 23 should override the old tall mobile nav grid');
+assert.match(css, /body\[data-active-view="today"\] #command \.wk-hero::before,[\s\S]{0,180}display: none !important/, 'Phase 23 should remove Today legacy terrain/artifact chrome');
+assert.match(css, /\.validation-form\.validation-buybox-grid[\s\S]{0,260}grid-template-columns: repeat\(12, minmax\(0, 1fr\)\)/, 'Phase 23 should rebuild the buy-box form as a structured settings sheet');
+assert.match(css, /\.validation-buybox-grid :where\(input, select, textarea\)[\s\S]{0,360}background: transparent !important;[\s\S]{0,160}border: 0 !important/, 'Buy-box fields should not look like raw 90s HTML input boxes');
+assert.match(css, /\.contract-disclosure-experience:not\(\[open\]\) > :not\(summary\)[\s\S]{0,80}display: none !important/, 'Closing seller/buyer documents should use progressive disclosure');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details id="seller-agreement-experience"[\s\S]{0,220}contract-disclosure-summary/, 'Seller Agreement should render as a collapsible disclosure');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details id="assignment-agreement-experience"[\s\S]{0,220}contract-disclosure-summary/, 'Assignment Agreement should render as a collapsible disclosure');
+assert.match(css, /v1\.55\.1 - Phase 23 screenshot correction: single-row mobile nav and no Today terrain relics/, 'Phase 23 screenshot correction marker required');
+assert.match(css, /\.app-tabs,[\s\S]{0,220}flex-wrap: nowrap !important/, 'Mobile nav tabs should remain single-row and horizontally scroll instead of forcing a tall grid');
+assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Terrain intelligence \/ Tennessee live-first|TN terrain|builder demand, parcel constraint/, 'Today route should not keep old terrain/campaign wording relics');
 
 console.log('global typography tests passed');

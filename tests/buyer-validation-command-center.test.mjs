@@ -181,7 +181,8 @@ assert.match(appSource, /class="phase7-language"/, 'Phase 7 seller cockpit shoul
 assert.match(appSource, /data-download-execution-memo/, 'Phase 7 seller cockpit should export the selected seller buyer-send memo');
 assert.match(stylesSource, /v1\.37 - Phase 7 award-grade seller call-to-close cockpit/, 'Phase 7 award-grade visual system should be appended after older conveyor styles');
 assert.match(coreSource, /export function buildOperatorSessionMode/, 'Phase 8 should expose a deterministic operator session builder');
-assert.match(appSource, /Phase 8 · real operator session mode/, 'Today page should surface the Phase 8 operator sprint');
+assert.match(appSource, /Operator session/, 'Today page should surface the operator sprint without implementation-phase residue');
+assert.doesNotMatch(appSource, /Phase 8 · real operator session mode/, 'Today page should not expose implementation-phase residue in visible copy');
 assert.match(appSource, /Deal packet assembly gate/, 'Phase 8 should keep deal packet readiness visible in the operator sprint');
 assert.match(stylesSource, /v1\.38 - Phase 8 Clay-level operator session mode/, 'Phase 8 should include the premium Clay-level visual system');
 

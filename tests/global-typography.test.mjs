@@ -46,6 +46,16 @@ assert.match(css, /v1\.50 - Phase 18 decision-spine readability refinement/, 'Ph
 assert.match(css, /v1\.50\.1 - Phase 18 mobile decision spine correction/, 'Phase 18 should correct mobile decision-spine alignment after screenshot QA');
 assert.match(css, /v1\.50\.2 - Phase 18 mobile icon discipline/, 'Phase 18 should remove decorative primary-strip icons on mobile when they compete with scan clarity');
 assert.match(css, /v1\.50\.3 - Phase 18 mobile action label safe inset/, 'Phase 18 should keep mobile primary-action labels clear of the decision rail');
+assert.match(css, /v1\.51 - Phase 19 premium forest\/gold calm system and border reduction/, 'Phase 19 premium forest/gold border-reduction marker required');
+assert.match(css, /v1\.51\.1 - Phase 19 screenshot correction: no dark control slabs, no clipped decision labels/, 'Phase 19 should correct screenshot-found dark controls and clipped decision labels');
+assert.match(css, /v1\.51\.2 - Phase 19 mobile remove rail collisions and source-row rule noise/, 'Phase 19 should remove mobile rail collisions and excess source row rules after screenshot QA');
+assert.match(css, /v1\.51\.3 - Phase 19 call\/email contact indicators/, 'Phase 19 should style call/email and called/emailed indicators as readable state chips');
+assert.match(css, /--brand-forest-900: #0d3328/, 'Phase 19 should define a deep accessible forest primary brand color');
+assert.match(css, /--brand-gold-700: #7c5311/, 'Phase 19 should define a contrast-safe gold highlight color');
+assert.match(css, /--purposeful-boundaries-only: true/, 'Phase 19 should encode the no-purposeless-borders rule');
+assert.match(css, /Remove purposeless rule stacks[\s\S]{0,420}border-bottom: 0 !important/, 'Phase 19 should remove decorative stacked horizontal rules from section starts');
+assert.match(css, /Legend becomes dots, not another set of rules/, 'Phase 19 should simplify status legends from line bars to calm dots');
+assert.match(css, /Final route isolation guard after display\/layout overrides/, 'Phase 19 should keep hash-route isolation after late layout overrides');
 assert.match(css, /--phase18-reading-measure: 68ch/, 'Phase 18 should constrain dense body copy to a sensor-friendly reading measure');
 assert.match(css, /Apple review rule: one decision spine per screen, evidence below, optional depth last/, 'Phase 18 should encode the decision-spine hierarchy rule');
 assert.match(css, /completion-state-legend[\s\S]{0,260}legend-done/, 'Phase 18 should include a calm state legend for done, working, and todo');
@@ -66,8 +76,10 @@ assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /completion-state-legend[\s\S]{0,160}legend-working[\s\S]{0,120}legend-todo/, 'Builder command center should explain done, in-progress, and todo state colors');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /contact-call[\s\S]*Called[\s\S]*contact-email[\s\S]*Emailed/, 'Builder queue should expose readable call/email and called/emailed indicators');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip closing-primary-action[\s\S]{0,260}Clear the title packet/, 'Closing should expose one primary action before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Phase 12 · Print detail finish/, 'Closing document packet should not expose implementation-phase residue');
+assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Phase 8 · real operator session mode/, 'Today route should not expose implementation-phase residue');
 const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]
   .filter(match => !/border-radius:\s*0\s*!important/.test(match[2]));
 assert.deepEqual(roundedButtonRules.map(match => match[1].trim()).slice(0, 5), [], 'No button selector may retain rounded corner radius');

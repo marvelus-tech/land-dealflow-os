@@ -11464,3 +11464,437 @@ body[data-active-view="closing"] #app .closing-flow-card p {
     margin-left: 8px !important;
   }
 }
+
+/* v1.51 - Phase 19 premium forest/gold calm system and border reduction */
+:root {
+  --brand-forest-950: #09251d;
+  --brand-forest-900: #0d3328;
+  --brand-forest-800: #124734;
+  --brand-forest-700: #176345;
+  --brand-forest-100: #e7f0ea;
+  --brand-forest-050: #f4f8f3;
+  --brand-gold-700: #7c5311;
+  --brand-gold-600: #94680f;
+  --brand-gold-300: #d7b46a;
+  --brand-gold-100: #f5ead0;
+  --calm-canvas: #fbfaf6;
+  --calm-surface: rgba(255,255,255,.72);
+  --calm-ink: #0b1110;
+  --calm-body: #35423d;
+  --calm-muted: #66736e;
+  --calm-rule: rgba(9,37,29,.10);
+  --calm-rule-soft: rgba(9,37,29,.055);
+  --calm-shadow: 0 18px 60px rgba(9,37,29,.055);
+  --purposeful-boundaries-only: true;
+}
+
+html,
+body {
+  background: var(--calm-canvas) !important;
+  color: var(--calm-ink) !important;
+}
+body {
+  --accent: var(--brand-forest-700) !important;
+  --accent-soft: var(--brand-forest-100) !important;
+  --accent-line: rgba(23,99,69,.22) !important;
+  --done-accent: var(--brand-forest-700) !important;
+  --done-fill: rgba(23,99,69,.08) !important;
+  --work-accent: var(--brand-gold-700) !important;
+  --work-fill: rgba(148,104,15,.10) !important;
+  --phase18-working: var(--brand-forest-700) !important;
+  --phase18-done: var(--brand-forest-800) !important;
+  --phase18-todo: #7a827f !important;
+}
+
+/* Remove purposeless rule stacks. Group by whitespace, type, and a single accent plane. */
+#app :where(.section-heading,.compact-heading,.wk-section-head,#parcels-section > .section-heading,#builder-list-section > .section-heading,#closing-section > .section-heading,#sources-hub > .section-heading,#workspace > .section-heading,.daily-heading,.validation-focus-head,.detail-hero,.builder-detail-header,.queue-header) {
+  border: 0 !important;
+  border-bottom: 0 !important;
+  padding-bottom: clamp(12px, 2vw, 22px) !important;
+}
+#app :where(.section-heading + *, .compact-heading + *, .wk-section-head + *) {
+  margin-top: clamp(12px, 2.2vw, 26px) !important;
+}
+#app :where(.source-page-section,.machine-panel,.card,.weekly-market-card,.call-script-panel,.deal-detail,.validation-focus-card,.seller-unlock-card,.deal-queue,.builder-adapter-panel,.wide-permit-panel,.closing-page-stack > article,.contract-composer-panel,.contract-flow-workspace,.source-map-card,.market-stack-card) {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: var(--calm-surface) !important;
+}
+#app :where(.source-page-section,.machine-panel,.validation-focus-card,.seller-unlock-card,.deal-detail,.call-script-panel,.contract-composer-panel,.source-map-card,.market-stack-card) {
+  box-shadow: var(--calm-shadow) !important;
+}
+
+/* Primary decision spine: remove top/bottom rails; forest as the only action mark, gold reserved for value/highlight. */
+#app :where(.primary-action-strip) {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  background: linear-gradient(90deg, rgba(23,99,69,.075), rgba(255,255,255,.72) 48%, rgba(245,234,208,.34)) !important;
+  box-shadow: none !important;
+  padding: clamp(17px, 2.4vw, 26px) clamp(18px, 3vw, 34px) !important;
+}
+#app :where(.primary-action-strip)::before {
+  width: 3px !important;
+  background: var(--brand-forest-700) !important;
+}
+#app :where(.primary-action-strip > span) {
+  color: var(--brand-forest-700) !important;
+}
+#app :where(.primary-action-strip > b) {
+  color: var(--calm-ink) !important;
+}
+#app :where(.primary-action-strip > a,.primary-command,.button-link,button:not(.tab-button):not(.contact-toggle):not(.contact-state-toggle):not(.state-filter):not(.filter)) {
+  background: var(--brand-forest-900) !important;
+  color: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.primary-action-strip > a:hover,.primary-command:hover,.button-link:hover) {
+  background: var(--brand-forest-800) !important;
+}
+
+/* Navigation: no box-within-box. Active state is a quiet forest wash, not a border cage. */
+.nav {
+  background: rgba(251,250,246,.92) !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+.app-tabs {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.tab-button {
+  color: #33423d !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.tab-button.active {
+  color: var(--brand-forest-900) !important;
+  background: rgba(23,99,69,.09) !important;
+  box-shadow: inset 0 -2px 0 var(--brand-forest-700) !important;
+}
+
+/* Data density: rows are separated by air; only active/completed rows keep purposeful state color. */
+#app :where(.engine-row,.criterion-row,.queue-proof-line,.seller-control-row,.execution-row,.buyer-score-row,.fit-row,.note-row,.followup-row,.state-pipeline-list li,.source-stack-card,.priority-market-card,.permit-state-card,.portal-link-list a,.validation-queue-item,.queue-item,.money-call,.builder-row,.title-row,.contact-toggle,.contact-state,.state-filter,.filter,.queue-filter-row button) {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.engine-row,.criterion-row,.seller-control-row,.execution-row,.buyer-score-row,.fit-row,.note-row,.followup-row,.state-pipeline-list li) {
+  padding-top: 13px !important;
+  padding-bottom: 13px !important;
+}
+#app :where(.engine-row + .engine-row,.criterion-row + .criterion-row,.seller-control-row + .seller-control-row,.execution-row + .execution-row,.buyer-score-row + .buyer-score-row,.fit-row + .fit-row,.note-row + .note-row,.followup-row + .followup-row,.state-pipeline-list li + li) {
+  border-top: 1px solid var(--calm-rule-soft) !important;
+}
+#app :where(.validation-queue-item,.queue-item,.money-call,.builder-row,.title-row,.source-stack-card,.priority-market-card,.permit-state-card,.portal-link-list a) {
+  background: transparent !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+#app :where(.validation-queue-item + .validation-queue-item,.queue-item + .queue-item,.money-call + .money-call,.builder-row + .builder-row,.title-row + .title-row,.source-stack-card + .source-stack-card,.priority-market-card + .priority-market-card,.permit-state-card + .permit-state-card) {
+  border-top: 1px solid var(--calm-rule-soft) !important;
+}
+#app :where(.validation-queue-item.active,.queue-item.active,.money-call.active,.builder-row.active,.title-row.active,.state-filter.active,.filter.active) {
+  background: rgba(23,99,69,.065) !important;
+  border: 0 !important;
+  box-shadow: inset 3px 0 0 var(--brand-forest-700) !important;
+}
+#app .validation-queue-item.is-emailed,
+#app .validation-queue-item.is-done,
+#app :where(.queue-item.done,.money-call.done,.title-row.done) {
+  background: rgba(23,99,69,.055) !important;
+  border-left: 3px solid var(--brand-forest-700) !important;
+}
+#app .validation-queue-item.is-called:not(.is-emailed) {
+  background: rgba(148,104,15,.075) !important;
+  border-left: 3px solid var(--brand-gold-600) !important;
+}
+#app .validation-queue-item.needs-email:not(.is-emailed) {
+  border-left: 0 !important;
+}
+
+/* Metrics: gold is for money/signal, not decoration. No grid cages. */
+#app :where(.validation-source-proof,.wk-proof-grid,.builder-ops-metrics,.title-metric-strip,.money-stats,.mini-grid,.deal-strip,.builder-market-workbench,.source-stack-rail,.operator-flow-pulse,.completion-state-legend) {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.validation-source-proof > div,.wk-proof-grid > article,.builder-ops-metrics > article,.title-metric-strip > article,.money-stats > div,.mini-grid > div,.deal-strip > div) {
+  border: 0 !important;
+  background: transparent !important;
+}
+#app :where(.wk-proof-grid,.builder-ops-metrics,.title-metric-strip,.money-stats,.mini-grid,.deal-strip) {
+  row-gap: clamp(8px, 1.4vw, 14px) !important;
+  column-gap: clamp(18px, 2.8vw, 34px) !important;
+}
+#app :where(.wk-proof-card strong,.builder-ops-metrics strong,.title-metric-strip strong,.money-stats b,.mini-grid b,.deal-strip b,.queue-score) {
+  color: var(--brand-gold-700) !important;
+}
+#app :where(.queue-score) {
+  background: rgba(245,234,208,.68) !important;
+  border: 0 !important;
+}
+
+/* Legend becomes dots, not another set of rules. */
+.completion-state-legend {
+  justify-content: flex-start !important;
+  gap: 14px !important;
+  margin: 0 0 18px !important;
+  color: var(--calm-muted) !important;
+}
+.completion-state-legend span::before {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 999px !important;
+}
+.completion-state-legend .legend-done { color: var(--brand-forest-700) !important; }
+.completion-state-legend .legend-working { color: var(--brand-gold-700) !important; }
+.completion-state-legend .legend-todo { color: #7a827f !important; }
+
+/* Text contrast and typography cadence. */
+#app :where(p,li,small,.queue-copy small,.engine-row span,.criterion-row span,.money-call span,.queue-item span,.permit-landscape-summary) {
+  color: var(--calm-body) !important;
+}
+#app :where(.wk-kicker,.eyebrow,.panel-kicker span,.queue-header span,.source-page-section > summary em,.machine-panel > summary em,.badge) {
+  color: var(--calm-muted) !important;
+}
+#app :where(h1,h2,h3,h4,.queue-copy b,.engine-row b,.criterion-row b,.money-call b,.queue-item b,.source-stack-card b) {
+  color: var(--calm-ink) !important;
+}
+#app :where(a:not(.tab-button):not(.primary-command):not(.button-link):not(.primary-action-strip > a)) {
+  color: var(--brand-forest-700) !important;
+}
+
+/* Today: remove residual decorative scanning lines and keep terrain quiet. */
+body[data-active-view="today"] #command .wk-hero,
+body[data-active-view="today"] #command .wk-artifact,
+.os8-session,
+.os8-next-card,
+.os8-sprint-card,
+.os8-packet-card,
+.wk-focus-card,
+.wk-script-card,
+.wk-audit,
+.wk-protocol-card,
+.wk-node-card {
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.wk-scanline,
+.wk-horizon,
+.wk-contour,
+.os8-ambient {
+  display: none !important;
+}
+body[data-active-view="today"] #command .wk-hero {
+  background: linear-gradient(135deg, rgba(231,240,234,.74), rgba(255,255,255,.58)) !important;
+}
+body[data-active-view="today"] #command .wk-artifact {
+  background: rgba(255,255,255,.48) !important;
+}
+.wk-actions a:not(.primary-command) {
+  background: transparent !important;
+  border: 0 !important;
+  color: var(--brand-forest-700) !important;
+}
+
+/* Final route isolation guard after display/layout overrides. */
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  main { padding-top: 22px !important; }
+  .nav { padding-top: 12px !important; }
+  .app-tabs { gap: 2px !important; }
+  .tab-button.active { background: rgba(23,99,69,.075) !important; }
+  #app :where(.section-heading,.compact-heading,.wk-section-head) {
+    padding-bottom: 14px !important;
+  }
+  #app :where(.primary-action-strip) {
+    margin: 16px 0 24px !important;
+    padding: 17px 16px 18px 22px !important;
+    background: linear-gradient(90deg, rgba(23,99,69,.085), rgba(255,255,255,.64) 58%) !important;
+  }
+  #app :where(.primary-action-strip > span,.primary-action-strip > b,.primary-action-strip > a) {
+    margin-left: 0 !important;
+  }
+  #app :where(.wk-proof-grid,.builder-ops-metrics,.title-metric-strip,.money-stats,.mini-grid,.deal-strip) {
+    gap: 8px !important;
+  }
+  #app :where(.validation-source-proof > div,.wk-proof-grid > article,.builder-ops-metrics > article,.title-metric-strip > article,.money-stats > div,.mini-grid > div,.deal-strip > div) {
+    border: 0 !important;
+    padding: 10px 0 !important;
+  }
+}
+
+/* v1.51.1 - Phase 19 screenshot correction: no dark control slabs, no clipped decision labels */
+#app :where(.market-toggle,.market-tab,.builder-state-button,.state-tab,.queue-filter-row button,.validation-row-main,.contact-toggle,.contact-state,.filter,.state-filter,.tab-button) {
+  background: transparent !important;
+  color: var(--calm-ink) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.market-toggle.active,.market-tab.active,.builder-state-button.active,.state-tab.active,.state-filter.active,.filter.active) {
+  background: rgba(23,99,69,.075) !important;
+  color: var(--brand-forest-900) !important;
+  box-shadow: inset 0 -2px 0 var(--brand-forest-700) !important;
+}
+.builder-market-workbench,
+.market-toggle-row,
+.state-toggle-row,
+.queue-filter-row {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.queue-filter-row {
+  gap: 8px !important;
+}
+.queue-filter-row button {
+  min-height: 30px !important;
+  padding: 0 10px !important;
+  color: var(--calm-muted) !important;
+  font: 720 10px/1 var(--font-mono) !important;
+  letter-spacing: .08em !important;
+}
+.validation-row-main {
+  color: var(--calm-ink) !important;
+  text-align: left !important;
+}
+.validation-queue-item.active .validation-row-main,
+.validation-queue-item.is-emailed .validation-row-main,
+.validation-queue-item.is-called .validation-row-main {
+  background: transparent !important;
+  color: var(--calm-ink) !important;
+}
+.validation-queue-item.active :where(.queue-copy b,.queue-copy small),
+.validation-queue-item.is-emailed :where(.queue-copy b,.queue-copy small),
+.validation-queue-item.is-called :where(.queue-copy b,.queue-copy small) {
+  color: var(--calm-ink) !important;
+}
+.validation-queue-item.active .queue-score,
+.validation-queue-item.is-emailed .queue-score,
+.validation-queue-item.is-called .queue-score {
+  color: var(--brand-gold-700) !important;
+  background: rgba(245,234,208,.72) !important;
+}
+.wk-actions,
+.wk-actions a,
+.os8-next-card,
+.wk-artifact p {
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+@media (max-width: 760px) {
+  #app :where(.primary-action-strip) {
+    padding-left: 34px !important;
+  }
+  #app :where(.primary-action-strip)::before {
+    left: 14px !important;
+    width: 3px !important;
+  }
+  #app :where(.primary-action-strip > span,.primary-action-strip > b,.primary-action-strip > a) {
+    margin-left: 0 !important;
+  }
+}
+
+/* v1.51.2 - Phase 19 mobile remove rail collisions and source-row rule noise */
+@media (max-width: 760px) {
+  #app :where(.primary-action-strip) {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  #app :where(.primary-action-strip)::before {
+    display: none !important;
+  }
+  #app :where(.primary-action-strip > span,.primary-action-strip > b,.primary-action-strip > a) {
+    transform: none !important;
+    margin-left: 0 !important;
+    max-width: 100% !important;
+  }
+  #app :where(.source-stack-card + .source-stack-card,
+              .priority-market-card + .priority-market-card,
+              .permit-state-card + .permit-state-card,
+              .validation-queue-item + .validation-queue-item) {
+    border-top: 0 !important;
+  }
+  #app :where(.source-stack-rail,.builder-market-workbench,.validation-queue) {
+    gap: 10px !important;
+  }
+  #app :where(.source-stack-card,.priority-market-card,.permit-state-card,.validation-queue-item) {
+    padding-top: 13px !important;
+    padding-bottom: 13px !important;
+  }
+  body[data-active-view="today"] #command :where(.wk-actions,.wk-artifact p,.os8-next-card,.os8-metrics article) {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* v1.51.3 - Phase 19 call/email contact indicators */
+.contact-icon-toggle {
+  min-height: 30px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  padding: 0 10px !important;
+  background: rgba(9,37,29,.035) !important;
+  color: var(--calm-muted) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font: 740 10px/1 var(--font-mono) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+.contact-icon-toggle span {
+  width: 13px !important;
+  height: 13px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+}
+.contact-icon-toggle .outreach-svg {
+  width: 13px !important;
+  height: 13px !important;
+}
+.contact-icon-toggle em {
+  font-style: normal !important;
+  color: currentColor !important;
+}
+.contact-icon-toggle.contact-call.is-on {
+  background: rgba(23,99,69,.12) !important;
+  color: var(--brand-forest-800) !important;
+}
+.contact-icon-toggle.contact-email.is-on {
+  background: rgba(148,104,15,.14) !important;
+  color: var(--brand-gold-700) !important;
+}
+.contact-icon-toggle:not(.is-on) {
+  opacity: .78;
+}
+.validation-queue-item.is-emailed .contact-email,
+.validation-queue-item.is-called .contact-call {
+  opacity: 1;
+}
+@media (max-width: 760px) {
+  .queue-state-row {
+    padding-left: 0 !important;
+    gap: 8px !important;
+  }
+  .contact-icon-toggle {
+    min-height: 32px !important;
+    padding: 0 9px !important;
+  }
+}

@@ -1341,8 +1341,8 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       </button>
       <div class="queue-proof-line">${proofBits}</div>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
-        <button type="button" class="contact-icon-toggle ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span></button>
-        <button type="button" class="contact-icon-toggle ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span></button>
+        <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${outreachIcon('phone')}</span><em>${outreach.phone ? 'Called' : 'Call'}</em></button>
+        <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${outreachIcon('email')}</span><em>${outreach.email ? 'Emailed' : 'Email'}</em></button>
         ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'needs buy box', tone)}
       </div>
     </article>`;
@@ -1927,10 +1927,10 @@ function renderOperatorSessionMode(session = {}) {
     <em>${h(step.status)}</em>
   </a>`).join('');
   const gateRows = asArray(session.packetGate).map(gate => `<div class="os8-gate ${h(gate.status)}"><span></span><div><b>${h(gate.label)}</b><p>${h(gate.detail)}</p></div><em>${h(gate.status)}</em></div>`).join('');
-  return `<section id="operator-session-mode" class="os8-session wk-reveal" aria-label="Phase 8 operator session mode">
+  return `<section id="operator-session-mode" class="os8-session wk-reveal" aria-label="Operator session mode">
     <div class="os8-ambient" aria-hidden="true"></div>
     <div class="os8-hero">
-      <span class="wk-kicker">Phase 8 · real operator session mode</span>
+      <span class="wk-kicker">Operator session</span>
       <h2>${h(session.title || 'Today’s Call Sprint')}</h2>
       <p>${h(session.subtitle || 'One complete operator session from buyer proof to feedback rewrite.')}</p>
       <div class="os8-next-card">
@@ -2009,7 +2009,7 @@ function renderCommandCenter() {
         <p>Today has one job: prove demand, protect the seller queue, and advance the next defensible action.</p>
         <div class="wk-actions">
           <a class="primary-command" href="#builders" data-view="builders">${productIcon('phone')} Call builder queue</a>
-          <a href="#wk-work">Trace signal path</a>
+          <a href="#wk-work">View next action</a>
         </div>
       </div>
       <aside class="wk-artifact" aria-label="Permit and landscape intelligence model">

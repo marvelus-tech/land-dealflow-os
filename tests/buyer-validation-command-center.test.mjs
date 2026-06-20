@@ -119,6 +119,8 @@ assert.doesNotMatch(stylesSource, /vendor-chip-grid|builder-vendor-panel/, 'dele
 assert.doesNotMatch(appSource, /renderKnoxvilleBuyerCallSheet|Source-backed call sheet|buyer-call-sheet-list/, 'duplicate source-backed call sheet section must be removed after consolidation');
 assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');
+assert.match(appSource, /const validationEmailBody = fallbackEmail\.body;/, 'Draft email mailto should use the generated bullet-list body rather than stale row emailDraft body');
+assert.match(appSource, /const body = fallbackEmail\.body;/, 'Copy draft should always copy the generated bullet-list buy-box questions');
 assert.match(appSource, /function hashToView\(hash = location\.hash\)/, 'router should parse only valid app-route hashes');
 assert.match(appSource, /function scrollToPageTop\(\)[\s\S]{0,260}root\.style\.scrollBehavior = 'auto';[\s\S]{0,180}window\.scrollTo\(0, 0\)/, 'page transitions should reset visitors immediately to the top of the destination page');
 assert.match(appSource, /function navigateToView\(view\)[\s\S]{0,180}setActiveView\(view, \{ scrollToTop: true \}\)/, 'data-view navigation should centralize top-scroll behavior');

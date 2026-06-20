@@ -10656,3 +10656,241 @@ body[data-active-view="sources"] #app .source-stack-rail .priority-stack-step.ac
 body[data-active-view="sources"] #app .priority-market.is-primary {
   border-left-color: var(--ui-accent) !important;
 }
+
+/* v1.48 - Phase 17 one-primary-action hierarchy with restrained SF-style line icons */
+:root {
+  --icon-stroke: 1.75;
+  --action-rule: rgba(11, 95, 89, .42);
+  --action-fill: rgba(19, 185, 170, .055);
+  --action-text: #0e201f;
+}
+.product-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: -3px;
+  color: currentColor;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+.primary-action-strip {
+  display: grid !important;
+  grid-template-columns: minmax(140px, .42fr) minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: clamp(10px, 1.4vw, 18px) !important;
+  width: 100% !important;
+  margin-top: clamp(16px, 2vw, 24px) !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--action-rule) !important;
+  border-bottom: 1px solid var(--ledger-rule) !important;
+  background: linear-gradient(90deg, var(--action-fill), transparent 70%) !important;
+  color: var(--action-text) !important;
+  box-shadow: none !important;
+}
+.primary-action-strip > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  color: var(--ui-accent-deep) !important;
+}
+.primary-action-strip > b {
+  display: block !important;
+  max-width: 72ch !important;
+  font-family: var(--font-heavy-text) !important;
+  font-size: clamp(14px, 1vw, 17px) !important;
+  line-height: 1.24 !important;
+  font-weight: 720 !important;
+  letter-spacing: -.015em !important;
+  color: var(--ui-ink) !important;
+}
+.primary-action-strip > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--ui-accent-deep) !important;
+  font-family: var(--font-grotesk) !important;
+  font-size: 13px !important;
+  line-height: 1.1 !important;
+  font-weight: 760 !important;
+  letter-spacing: -.01em !important;
+  white-space: nowrap !important;
+}
+.primary-action-strip > a:hover { transform: none !important; color: var(--ui-ink) !important; }
+.wk-actions a.primary-command {
+  gap: 8px !important;
+  border-top-color: var(--ui-accent) !important;
+  color: var(--ui-ink) !important;
+}
+.wk-actions a.primary-command .product-icon { width: 15px; height: 15px; }
+
+/* Apple review rule: one obvious action, then evidence. Secondary surfaces stay quieter. */
+body[data-active-view="today"] #command .wk-proof-grid,
+body[data-active-view="builders"] #builder-list-section .seller-control-panel,
+body[data-active-view="builders"] #builder-list-section .execution-conveyor-panel,
+body[data-active-view="sources"] #sources-hub .source-priority-grid,
+body[data-active-view="closing"] #closing-section .title-glass-card:not(.contract-document-experience) {
+  opacity: .82 !important;
+}
+body[data-active-view="today"] #command .wk-proof-card,
+body[data-active-view="builders"] #builder-list-section .seller-control-stage,
+body[data-active-view="builders"] #builder-list-section .execution-stage,
+body[data-active-view="sources"] #sources-hub .priority-market,
+body[data-active-view="closing"] #closing-section .title-market-card {
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+}
+body[data-active-view="deals"] #parcels .deal-workbench,
+body[data-active-view="closing"] #title-closing-panel .closing-page-stack {
+  grid-auto-flow: row !important;
+}
+body[data-active-view="deals"] #parcels .deals-primary-action,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action {
+  grid-column: 1 / -1 !important;
+  margin-top: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-section .builders-primary-action,
+body[data-active-view="sources"] #sources-hub .sources-primary-action {
+  max-width: 100% !important;
+}
+
+/* More reading calm: shorter measure and clearer scan rows. */
+#app :where(.wk-proof-card p,.fit-card p,.phase-detail-card p,.priority-market p,.permit-strategy,.title-card p,.contract-document-body p,.seller-control-row small,.execution-row small) {
+  max-width: 58ch !important;
+}
+#app :where(.queue-item,.wk-call-row,.validation-builder-row,.seller-control-row,.execution-row) {
+  grid-template-columns: 34px minmax(0, 1fr) auto !important;
+  column-gap: 12px !important;
+}
+#app :where(.queue-item > span,.wk-call-row > span,.validation-builder-row > span,.seller-control-row > span,.execution-row > span) {
+  color: var(--ui-accent-deep) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .08em !important;
+}
+#app :where(.queue-item b,.wk-call-row b,.validation-builder-row b,.seller-control-row b,.execution-row b) {
+  font-weight: 760 !important;
+  letter-spacing: -.018em !important;
+}
+
+@media (max-width: 780px) {
+  .primary-action-strip {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 11px 0 !important;
+  }
+  .primary-action-strip > a {
+    justify-content: flex-start !important;
+    white-space: normal !important;
+  }
+  body[data-active-view="today"] #command .wk-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  body[data-active-view="today"] #command .wk-actions a {
+    justify-content: flex-start !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .seller-control-panel,
+  body[data-active-view="builders"] #builder-list-section .execution-conveyor-panel,
+  body[data-active-view="closing"] #closing-section .title-glass-card:not(.contract-document-experience) {
+    opacity: .76 !important;
+  }
+}
+
+/* Route isolation after Phase 17 action hierarchy. */
+#app .app-panel[hidden],
+#app section.app-panel[hidden],
+#app #command[hidden],
+#app #parcels-section[hidden],
+#app #builder-list-section[hidden],
+#app #closing-section[hidden],
+#app #sources-hub[hidden],
+#app #workspace[hidden] {
+  display: none !important;
+}
+
+/* v1.48.1 - Phase 17 no-black-slab command correction */
+body[data-active-view="today"] #command .wk-actions a,
+body[data-active-view="today"] #command .wk-actions a.primary-command {
+  min-height: 42px !important;
+  padding: 11px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--ledger-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: var(--ui-ink) !important;
+}
+body[data-active-view="today"] #command .wk-actions a.primary-command {
+  border-top-color: var(--ui-accent) !important;
+  color: var(--ui-accent-deep) !important;
+  font-weight: 820 !important;
+}
+body[data-active-view="today"] #command .wk-actions a:not(.primary-command) {
+  color: var(--hierarchy-rest) !important;
+}
+body[data-active-view="today"] #command .wk-actions a:hover {
+  color: var(--ui-ink) !important;
+  transform: none !important;
+}
+
+/* v1.48.2 - Phase 17 no-black control slabs */
+#app :where(button,.button-link,a.button-link,.nav-cta,.filter,.state-filter,.outcome-chip,.validation-call-button,.builder-empty-state a,.compact-call-sheet a,.call-list a,.email-action,.copy-builder-email-address,[data-print-contract-packet],[data-contract-action]) {
+  background: transparent !important;
+  background-image: none !important;
+  color: var(--ui-ink) !important;
+  border: 0 !important;
+  border-top: 1px solid var(--ledger-rule) !important;
+  box-shadow: none !important;
+}
+#app :where(button:not(.tab-button):not(.contact-icon-toggle):not(.market-toggle):hover,.button-link:hover,a.button-link:hover,[data-print-contract-packet]:hover,[data-contract-action]:hover) {
+  background: linear-gradient(90deg, rgba(19,185,170,.055), transparent 70%) !important;
+  color: var(--ui-accent-deep) !important;
+  transform: none !important;
+}
+#app :where(button.danger,.danger) {
+  color: var(--red) !important;
+  border-top-color: rgba(180,35,24,.28) !important;
+}
+#app :where(.contract-print-actions,.button-row,.hero-actions,.vision-actions) {
+  gap: 10px !important;
+}
+#app :where(.contract-print-actions button,.button-row button,.button-row a,.hero-actions a,.vision-actions a) {
+  min-height: 40px !important;
+  padding: 10px 12px !important;
+}
+
+/* v1.48.3 - Phase 17 soften document step numerals */
+body[data-active-view="closing"] #app .closing-flow-card > span,
+body[data-active-view="closing"] #app .contract-backline > span,
+body[data-active-view="closing"] #app .contract-step {
+  background: transparent !important;
+  color: var(--ui-accent-deep) !important;
+  border: 1px solid var(--ledger-rule) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #app .closing-flow-card.active > span,
+body[data-active-view="closing"] #app .contract-step.active,
+body[data-active-view="closing"] #app .contract-step.complete {
+  border-color: var(--ui-accent) !important;
+  background: rgba(19,185,170,.055) !important;
+  color: var(--ui-accent-deep) !important;
+}

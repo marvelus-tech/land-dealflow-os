@@ -34,12 +34,22 @@ assert.match(css, /button, \.button-link,[\s\S]{0,520}border-radius: 0 !importan
 assert.match(css, /v1\.47 - Phase 16 cognitive-load kill pass: open ledgers, fewer boxes, sharper reading hierarchy/, 'Phase 16 cognitive-load kill pass marker required');
 assert.match(css, /v1\.47\.1 - Phase 16 mobile deboxing correction/, 'Phase 16 should include mobile deboxing after screenshot QA');
 assert.match(css, /v1\.47\.2 - Phase 16 no metric-box residue lock/, 'Phase 16 should remove residual metric-box styling after mobile QA');
+assert.match(css, /v1\.48 - Phase 17 one-primary-action hierarchy with restrained SF-style line icons/, 'Phase 17 one-primary-action icon hierarchy marker required');
+assert.match(css, /v1\.48\.1 - Phase 17 no-black-slab command correction/, 'Phase 17 should remove heavy black command slabs after screenshot QA');
+assert.match(css, /v1\.48\.2 - Phase 17 no-black control slabs/, 'Phase 17 should remove remaining black control slabs after closing QA');
+assert.match(css, /v1\.48\.3 - Phase 17 soften document step numerals/, 'Phase 17 should soften residual black document numerals after closing QA');
+assert.match(css, /\.product-icon[\s\S]{0,420}stroke-width: var\(--icon-stroke\)/, 'Phase 17 should use restrained stroke icons, not decorative icon boxes');
+assert.match(css, /\.primary-action-strip[\s\S]{0,760}grid-template-columns: minmax\(140px, \.42fr\) minmax\(0, 1fr\) auto/, 'Phase 17 should introduce a consistent primary-action strip hierarchy');
+assert.match(css, /Apple review rule: one obvious action, then evidence/, 'Phase 17 should de-emphasize secondary evidence after the primary action');
 assert.match(css, /--font-heavy-text: 'Inter'/, 'Phase 16 should use Inter/SF-style sans for dense technology-app reading');
 assert.match(css, /#app :where\(\.wk-workbench,[\s\S]{0,1400}border-top: 1px solid var\(--ledger-rule\) !important/, 'Phase 16 should replace nested modules with open ledger rules');
 assert.match(css, /body\[data-active-view="today"\] #command \.wk-rail \{ display: none !important; \}/, 'Phase 16 should remove Today rail chrome from first-screen cognition');
 assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard should remain after late layout overrides');
 assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer demand first\./, 'Builder page copy should make the hierarchy buyer-first');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,220}Call the top permit-active builder/, 'Builders should expose one primary action before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip closing-primary-action[\s\S]{0,260}Clear the title packet/, 'Closing should expose one primary action before secondary evidence');
 const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]
   .filter(match => !/border-radius:\s*0\s*!important/.test(match[2]));
 assert.deepEqual(roundedButtonRules.map(match => match[1].trim()).slice(0, 5), [], 'No button selector may retain rounded corner radius');

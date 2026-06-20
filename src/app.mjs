@@ -1149,6 +1149,17 @@ function outreachIcon(channel) {
   return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.93 5.5a3 3 0 0 1-3.14 0L1.5 8.67Z"/><path fill="currentColor" d="M22.5 6.91V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.16l9.71 5.98a1.5 1.5 0 0 0 1.58 0l9.71-5.98Z"/></svg>`;
 }
 
+function productIcon(kind) {
+  const paths = {
+    target: '<circle cx="12" cy="12" r="7"></circle><circle cx="12" cy="12" r="2"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path>',
+    phone: '<path d="M6.6 3.8 9 3.2l1.7 4.2-1.5 1.1c.9 2 2.4 3.5 4.3 4.3l1.1-1.5 4.2 1.7-.6 2.4c-.2.9-1 1.6-2 1.6C10 17 7 14 7 8c0-1 .7-1.8 1.6-2.2Z"></path>',
+    source: '<path d="M5 5h14M5 12h14M5 19h14"></path><path d="M7 3v4M17 10v4M11 17v4"></path>',
+    close: '<path d="M7 4h7l3 3v13H7z"></path><path d="M14 4v4h4M9 13h6M9 17h4"></path>',
+    arrow: '<path d="M5 12h13"></path><path d="m14 7 5 5-5 5"></path>',
+  };
+  return `<svg class="product-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[kind] || paths.arrow}</svg>`;
+}
+
 function actionIcon(kind) {
   if (kind === 'copy') {
     return `<svg class="action-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.25 3A3.25 3.25 0 0 1 11.5-.25h6A3.25 3.25 0 0 1 20.75 3v9A3.25 3.25 0 0 1 17.5 15.25h-6A3.25 3.25 0 0 1 8.25 12V3Zm3.25-.75a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75h6c.41 0 .75-.34.75-.75V3a.75.75 0 0 0-.75-.75h-6Z" transform="translate(0 1)"/><path fill="currentColor" d="M3.25 8A3.25 3.25 0 0 1 6.5 4.75h.75v2.5H6.5a.75.75 0 0 0-.75.75v9c0 .41.34.75.75.75h6c.41 0 .75-.34.75-.75v-.75h2.5V17A3.25 3.25 0 0 1 12.5 20.25h-6A3.25 3.25 0 0 1 3.25 17V8Z" transform="translate(0 1)"/></svg>`;
@@ -1352,7 +1363,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const validationEmail = selected.emailDraft || {};
   const fallbackEmail = generateBuilderEmail(selected);
   const validationEmailSubject = validationEmail.subject || fallbackEmail.subject;
-  const validationEmailBody = validationEmail.body || fallbackEmail.body;
+  const validationEmailBody = fallbackEmail.body;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   const nextActionCopy = selected.sellerSearch?.eligible
     ? 'Buy box captured. Find parcels matching this builder before seller outreach starts.'
@@ -1533,6 +1544,7 @@ function renderBuilderListEnginePanel(options = {}) {
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose market. Validate builder.</h3>
         <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> State tabs swap the queue, validation form, source map, and permit proof.</p>
+        <div class="primary-action-strip builders-primary-action"><span>${productIcon('target')} Primary action</span><b>Call the top permit-active builder and capture the missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -1671,7 +1683,7 @@ function renderClosingDeskPanel() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
   if (!selected) {
-    target.innerHTML = `<div class="closing-page-stack">${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays ready with templates, title-company candidates, and verification rules.</p></article></div>`;
+    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Primary action</span><b>Select one buyer-backed deal before opening escrow or title work.</b><a href="#deals" data-view="deals">Open deal queue ${productIcon('arrow')}</a></div>${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays ready with templates, title-company candidates, and verification rules.</p></article></div>`;
     return;
   }
   const buyer = getBuyer(selected);
@@ -1686,6 +1698,7 @@ function renderClosingDeskPanel() {
     </button>`;
   }).join('');
   target.innerHTML = `<div class="closing-page-stack">
+    <div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Primary action</span><b>Clear the title packet for ${h(selected.address || selected.parcelId || 'the selected deal')}.</b><a href="#contract-document-live">Review packet ${productIcon('arrow')}</a></div>
     ${renderContractComposer(selected)}
     ${renderClosingDeskResearchDeck()}
     <div class="closing-layout">
@@ -1727,6 +1740,7 @@ function renderParcels() {
   ];
 
   target.innerHTML = `<div class="deal-workbench">
+    <div class="primary-action-strip deals-primary-action"><span>${productIcon('phone')} Primary action</span><b>${h(getNextAction(selected))}</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner ${productIcon('arrow')}</a></div>
     <aside class="deal-queue" aria-label="Seller call queue">
       <div class="queue-header"><span class="eyebrow">Seller queue</span><strong>${visible.length} records</strong></div>
       <div class="queue-list">${visible.map((parcel, index) => {
@@ -1818,6 +1832,7 @@ function renderSourcePriorityBoard() {
       <span class="eyebrow">Permit-source priority</span>
       <h3>TN first. Then inland FL, AZ, NC, TX.</h3>
       <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent wells.</p>
+      <div class="primary-action-strip sources-primary-action"><span>${productIcon('source')} Primary action</span><b>Verify the Tennessee source lane before promoting any seller lead.</b><a href="#permit-landscape" data-view="builders">Open source lane ${productIcon('arrow')}</a></div>
     </div>
     <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
     <div class="source-guardrail"><b>Kentucky guardrail</b><span>If Kentucky records appear, treat them as target-state/HQ leakage unless they carry verified Tennessee permit evidence.</span></div>
@@ -1986,8 +2001,8 @@ function renderCommandCenter() {
         <h1>Call the buyer. Then move the deal.</h1>
         <p>Today has one job: prove demand, protect the seller queue, and advance the next defensible action.</p>
         <div class="wk-actions">
-          <a href="#builders" data-view="builders">Open builder radar</a>
-          <a href="#wk-work">Trace the signal path</a>
+          <a class="primary-command" href="#builders" data-view="builders">${productIcon('phone')} Call builder queue</a>
+          <a href="#wk-work">Trace signal path</a>
         </div>
       </div>
       <aside class="wk-artifact" aria-label="Permit and landscape intelligence model">
@@ -2008,7 +2023,7 @@ function renderCommandCenter() {
       <div class="wk-node-grid">${marketRows}</div>
     </section>
     <section id="wk-work" class="wk-workbench wk-reveal" aria-label="Daily money workbench">
-      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Choose the next defensible action.</h2></div>
+      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Choose the next defensible action.</h2><div class="primary-action-strip today-primary-action"><span>${productIcon('target')} Primary action</span><b>Validate the current buyer before touching a seller record.</b><a href="#builders" data-view="builders">Validate buyer ${productIcon('arrow')}</a></div></div>
       <div class="wk-proof-grid">${proofRows}</div>
       <div class="wk-work-grid">
         <article class="wk-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>
@@ -2849,7 +2864,7 @@ function bindEvents() {
       const email = builder.emailDraft || {};
       const fallbackEmail = generateBuilderEmail(builder);
       const subject = email.subject || fallbackEmail.subject;
-      const body = email.body || fallbackEmail.body;
+      const body = fallbackEmail.body;
       const payload = `Subject: ${subject}
 
 ${body}`;

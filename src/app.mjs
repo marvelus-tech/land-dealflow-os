@@ -698,9 +698,9 @@ function renderContractComposer(parcel = {}) {
   const requiredAssignmentMissing = ['assigneeName','assignmentFee','assigneePurchasePrice','titleCompany'].filter(name => !String(inputs[name] || '').trim());
   return `<section id="contract-composer" class="contract-composer-panel contract-flow-workspace" aria-label="Closing contract pipeline">
     <div class="contract-flow-hero">
-      <span class="eyebrow">Phase 12 · Print detail finish</span>
-      <h2>Print the exact packet you need.</h2>
-      <p>Seller only, assignment only, or the full title packet - still no backend, no DocuSign, no ceremony. Print fields now resolve as quiet document text with prepared-by metadata and tighter page breaks.</p>
+      <span class="eyebrow">Document packet</span>
+      <h2>Print the exact packet.</h2>
+      <p>Seller agreement, assignment, and title packet stay separated so the close stays legible.</p>
       <div class="contract-flow-actions"><button type="button" id="load-selected-contract-deal">Load selected deal</button><button type="button" class="secondary" id="save-contract-packet">Save draft</button><button type="button" class="secondary" id="print-contract-packet" data-print-contract-packet="packet">Preview full packet</button></div>
     </div>
     <div class="closing-flow-pipeline" aria-label="Contract stage pipeline">${pipeline}</div>
@@ -1328,7 +1328,13 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       `${h(evidenceCount || item.recentBuilds || 0)} permit proofs`,
       `${h(item.confidence || '-')} confidence`,
     ].join(' · ');
-    return `<article class="validation-queue-item ${active ? 'active' : ''}" data-validation-row="${h(item.builderId)}">
+    const completionStateClass = [
+      active ? 'active' : '',
+      outreach.email ? 'is-emailed' : 'needs-email',
+      outreach.phone ? 'is-called' : 'needs-call',
+      item.validation.sellerEligible ? 'is-done' : 'needs-buybox',
+    ].filter(Boolean).join(' ');
+    return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}">${h(item.validation.score)}</span>
@@ -1544,7 +1550,7 @@ function renderBuilderListEnginePanel(options = {}) {
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Choose market. Validate builder.</h3>
         <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> State tabs swap the queue, validation form, source map, and permit proof.</p>
-        <div class="primary-action-strip builders-primary-action"><span>${productIcon('target')} Primary action</span><b>Call the top permit-active builder and capture the missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
+        <div class="primary-action-strip builders-primary-action"><span>${productIcon('target')} Do first</span><b>Call the top permit-active builder. Capture the missing buy-box fields.</b><a href="#buyer-validation-command">Start queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -1683,7 +1689,7 @@ function renderClosingDeskPanel() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
   if (!selected) {
-    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Primary action</span><b>Select one buyer-backed deal before opening escrow or title work.</b><a href="#deals" data-view="deals">Open deal queue ${productIcon('arrow')}</a></div>${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays ready with templates, title-company candidates, and verification rules.</p></article></div>`;
+    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Do first</span><b>Select one buyer-backed deal before escrow or title work.</b><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></div>${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays locked until a real deal exists.</p></article></div>`;
     return;
   }
   const buyer = getBuyer(selected);
@@ -1698,7 +1704,7 @@ function renderClosingDeskPanel() {
     </button>`;
   }).join('');
   target.innerHTML = `<div class="closing-page-stack">
-    <div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Primary action</span><b>Clear the title packet for ${h(selected.address || selected.parcelId || 'the selected deal')}.</b><a href="#contract-document-live">Review packet ${productIcon('arrow')}</a></div>
+    <div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Do first</span><b>Clear the title packet for ${h(selected.address || selected.parcelId || 'the selected deal')}.</b><a href="#contract-document-live">Review packet ${productIcon('arrow')}</a></div>
     ${renderContractComposer(selected)}
     ${renderClosingDeskResearchDeck()}
     <div class="closing-layout">
@@ -1740,7 +1746,7 @@ function renderParcels() {
   ];
 
   target.innerHTML = `<div class="deal-workbench">
-    <div class="primary-action-strip deals-primary-action"><span>${productIcon('phone')} Primary action</span><b>${h(getNextAction(selected))}</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner ${productIcon('arrow')}</a></div>
+    <div class="primary-action-strip deals-primary-action"><span>${productIcon('phone')} Do first</span><b>${h(getNextAction(selected))}</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner ${productIcon('arrow')}</a></div>
     <aside class="deal-queue" aria-label="Seller call queue">
       <div class="queue-header"><span class="eyebrow">Seller queue</span><strong>${visible.length} records</strong></div>
       <div class="queue-list">${visible.map((parcel, index) => {
@@ -1832,7 +1838,7 @@ function renderSourcePriorityBoard() {
       <span class="eyebrow">Permit-source priority</span>
       <h3>TN first. Then inland FL, AZ, NC, TX.</h3>
       <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent wells.</p>
-      <div class="primary-action-strip sources-primary-action"><span>${productIcon('source')} Primary action</span><b>Verify the Tennessee source lane before promoting any seller lead.</b><a href="#permit-landscape" data-view="builders">Open source lane ${productIcon('arrow')}</a></div>
+      <div class="primary-action-strip sources-primary-action"><span>${productIcon('source')} Do first</span><b>Verify the Tennessee source lane before promoting any seller lead.</b><a href="#permit-landscape" data-view="builders">Open lane ${productIcon('arrow')}</a></div>
     </div>
     <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
     <div class="source-guardrail"><b>Kentucky guardrail</b><span>If Kentucky records appear, treat them as target-state/HQ leakage unless they carry verified Tennessee permit evidence.</span></div>
@@ -2023,7 +2029,7 @@ function renderCommandCenter() {
       <div class="wk-node-grid">${marketRows}</div>
     </section>
     <section id="wk-work" class="wk-workbench wk-reveal" aria-label="Daily money workbench">
-      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Choose the next defensible action.</h2><div class="primary-action-strip today-primary-action"><span>${productIcon('target')} Primary action</span><b>Validate the current buyer before touching a seller record.</b><a href="#builders" data-view="builders">Validate buyer ${productIcon('arrow')}</a></div></div>
+      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Choose the next defensible action.</h2><div class="primary-action-strip today-primary-action"><span>${productIcon('target')} Do first</span><b>Validate the current buyer before touching a seller record.</b><a href="#builders" data-view="builders">Validate buyer ${productIcon('arrow')}</a></div></div>
       <div class="wk-proof-grid">${proofRows}</div>
       <div class="wk-work-grid">
         <article class="wk-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>

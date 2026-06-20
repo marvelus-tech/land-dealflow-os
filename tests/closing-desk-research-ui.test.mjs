@@ -41,8 +41,9 @@ for (const phrase of ['assignment-friendly', 'title-ready', 'wire-instruction', 
   assert.ok(!visibleClosingData.includes(phrase), `Closing Desk visible copy should not use hyphenated phrase: ${phrase}`);
 }
 assert.match(publicClosingBundle, /Closing Desk is the information hub/, 'Closing Desk must frame the page as the hub itself');
-assert.match(appSource, /Phase 12 · Print detail finish/, 'Closing route should include Phase 12 print detail finish');
-assert.match(appSource, /Print the exact packet you need\./, 'Closing route should present focused print packet modes');
+assert.doesNotMatch(appSource, /Phase 12 · Print detail finish/, 'Closing route should hide implementation-phase residue in product copy');
+assert.match(appSource, /Document packet/, 'Closing route should frame the contract tools as a document packet');
+assert.match(appSource, /Print the exact packet\./, 'Closing route should present focused print packet modes');
 assert.match(appSource, /id="seller-agreement-experience"/, 'Seller Agreement should be its own fill experience');
 assert.match(appSource, /id="assignment-agreement-experience"/, 'Assignment Agreement should be its own fill experience');
 assert.match(appSource, /Assignment unlocks after seller agreement is marked signed/, 'Assignment should be visibly locked until seller agreement is signed');

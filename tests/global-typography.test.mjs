@@ -38,6 +38,12 @@ assert.match(css, /v1\.48 - Phase 17 one-primary-action hierarchy with restraine
 assert.match(css, /v1\.48\.1 - Phase 17 no-black-slab command correction/, 'Phase 17 should remove heavy black command slabs after screenshot QA');
 assert.match(css, /v1\.48\.2 - Phase 17 no-black control slabs/, 'Phase 17 should remove remaining black control slabs after closing QA');
 assert.match(css, /v1\.48\.3 - Phase 17 soften document step numerals/, 'Phase 17 should soften residual black document numerals after closing QA');
+assert.match(css, /v1\.49 - Phase 17B Apple-industrial information hierarchy refinement/, 'Phase 17B refined hierarchy marker required');
+assert.match(css, /v1\.49\.1 - Phase 17B closing de-nesting and proof-row quieting/, 'Phase 17B should include closing de-nesting after screenshot QA');
+assert.match(css, /v1\.49\.2 - Phase 17B operational completion color system/, 'Phase 17B should restore at-a-glance done\/todo color states');
+assert.match(css, /\.validation-queue-item\.is-emailed[\s\S]{0,260}border-left-color: var\(--done-accent\)/, 'Emailed builder rows need an immediate visual completion rail');
+assert.match(css, /Apple review rule: one obvious action, then quiet evidence, then optional depth/, 'Phase 17B should encode the Apple review hierarchy rule');
+assert.match(css, /#app \.primary-action-strip[\s\S]{0,520}grid-template-columns: minmax\(104px, \.26fr\) minmax\(0, 1fr\) auto !important/, 'Phase 17B should tighten the primary action strip into a calmer Swiss ledger');
 assert.match(css, /\.product-icon[\s\S]{0,420}stroke-width: var\(--icon-stroke\)/, 'Phase 17 should use restrained stroke icons, not decorative icon boxes');
 assert.match(css, /\.primary-action-strip[\s\S]{0,760}grid-template-columns: minmax\(140px, \.42fr\) minmax\(0, 1fr\) auto/, 'Phase 17 should introduce a consistent primary-action strip hierarchy');
 assert.match(css, /Apple review rule: one obvious action, then evidence/, 'Phase 17 should de-emphasize secondary evidence after the primary action');
@@ -49,7 +55,10 @@ assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy 
 assert.match(html, /Buyer demand first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,220}Call the top permit-active builder/, 'Builders should expose one primary action before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip closing-primary-action[\s\S]{0,260}Clear the title packet/, 'Closing should expose one primary action before secondary evidence');
+assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Phase 12 · Print detail finish/, 'Closing document packet should not expose implementation-phase residue');
 const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]
   .filter(match => !/border-radius:\s*0\s*!important/.test(match[2]));
 assert.deepEqual(roundedButtonRules.map(match => match[1].trim()).slice(0, 5), [], 'No button selector may retain rounded corner radius');

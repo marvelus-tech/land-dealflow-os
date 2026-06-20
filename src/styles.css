@@ -10894,3 +10894,304 @@ body[data-active-view="closing"] #app .contract-step.complete {
   background: rgba(19,185,170,.055) !important;
   color: var(--ui-accent-deep) !important;
 }
+
+/* v1.49 - Phase 17B Apple-industrial information hierarchy refinement */
+:root {
+  --phase17b-rule: rgba(15, 23, 42, .105);
+  --phase17b-rule-strong: rgba(15, 23, 42, .18);
+  --phase17b-muted: #667085;
+  --phase17b-quiet: #8792a2;
+  --phase17b-signal: #0b766d;
+  --phase17b-fill: rgba(19, 185, 170, .035);
+}
+
+/* Apple review rule: one obvious action, then quiet evidence, then optional depth. */
+#app .primary-action-strip {
+  grid-template-columns: minmax(104px, .26fr) minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: clamp(12px, 2vw, 26px) !important;
+  margin: clamp(18px, 3vw, 32px) 0 !important;
+  padding: clamp(15px, 2.2vw, 22px) 0 !important;
+  border-top: 1px solid var(--phase17b-rule-strong) !important;
+  border-bottom: 1px solid var(--phase17b-rule) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#app .primary-action-strip > span {
+  color: var(--phase17b-signal) !important;
+  font: 780 10px/1 var(--font-mono) !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+}
+#app .primary-action-strip > b {
+  max-width: 760px !important;
+  color: var(--ui-ink) !important;
+  font-family: var(--font-heavy-text) !important;
+  font-size: clamp(17px, 1.8vw, 25px) !important;
+  font-weight: 780 !important;
+  line-height: 1.12 !important;
+  letter-spacing: -.036em !important;
+}
+#app .primary-action-strip > a {
+  min-height: 0 !important;
+  padding: 7px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid transparent !important;
+  color: var(--phase17b-signal) !important;
+  background: transparent !important;
+  font: 760 11px/1 var(--font-mono) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+#app .primary-action-strip > a:hover {
+  border-top-color: var(--phase17b-signal) !important;
+  color: var(--ui-ink) !important;
+}
+#app .product-icon {
+  width: 15px !important;
+  height: 15px !important;
+  stroke-width: 1.55 !important;
+  opacity: .82 !important;
+  vector-effect: non-scaling-stroke;
+}
+#app .primary-action-strip .product-icon {
+  width: 13px !important;
+  height: 13px !important;
+  opacity: .9 !important;
+}
+
+/* Replace box hierarchy with reading hierarchy on dense route surfaces. */
+#app :where(.builder-market-workbench,.validation-command,.validation-focus-card,.validation-queue,.source-control-panel,.source-stack-rail,.closing-page-stack,.deal-workbench,.wk-workbench,.wk-proof-grid,.wk-work-grid) {
+  box-shadow: none !important;
+}
+#app :where(.active-market-summary li,.source-stack-card,.source-phase-card,.source-disclosure,.builder-market-detail,.builder-flow-rail li,.proof-row,.queue-card,.deal-summary-card,.call-tile,.mini-grid > div,.stat-card,.metric-card,.market-card) {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase17b-rule) !important;
+}
+#app :where(.active-market-summary li,.source-stack-card,.source-phase-card,.source-disclosure,.builder-market-detail,.builder-flow-rail li,.proof-row,.queue-card,.deal-summary-card,.call-tile,.mini-grid > div,.stat-card,.metric-card,.market-card) :where(p,span,em,small,li) {
+  color: var(--phase17b-muted) !important;
+}
+#app :where(.active-market-summary li,.source-stack-card,.source-phase-card,.source-disclosure,.builder-market-detail,.builder-flow-rail li,.proof-row,.queue-card,.deal-summary-card,.call-tile,.mini-grid > div,.stat-card,.metric-card,.market-card) :where(b,strong,h3,h4) {
+  color: var(--ui-ink) !important;
+  letter-spacing: -.026em !important;
+}
+
+/* Calm scan rows: labels become scent, values become the object. */
+#app :where(.queue-header,.panel-kicker,.validation-focus-head,.source-panel-heading,.section-heading,.builder-ops-title,.wk-section-head) :where(.eyebrow,.wk-kicker,span:first-child) {
+  color: var(--phase17b-signal) !important;
+  letter-spacing: .14em !important;
+}
+#app :where(.section-heading p,.builder-ops-title p,.validation-focus-head p,.source-panel-heading p,.wk-hero-copy p,.wk-section-head p) {
+  max-width: 68ch !important;
+  color: var(--phase17b-muted) !important;
+  font-family: var(--font-heavy-text) !important;
+  line-height: 1.55 !important;
+}
+
+/* Professional icon set discipline: icons support labels; they never become decoration blocks. */
+#app :where(.validation-actions a,.builder-ops-jump a,.wk-actions a,.contract-flow-actions button,.contract-print-actions button,.button-row button,.button-row a) .product-icon {
+  margin-inline: 0 6px !important;
+  color: currentColor !important;
+}
+#app :where(.validation-actions a,.builder-ops-jump a,.wk-actions a,.contract-flow-actions button,.contract-print-actions button,.button-row button,.button-row a) {
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Mobile fatigue guard: preserve hierarchy without stacking chrome. */
+@media (max-width: 780px) {
+  #app .primary-action-strip {
+    grid-template-columns: 1fr !important;
+    gap: 9px !important;
+    padding: 14px 0 16px !important;
+    margin: 18px 0 22px !important;
+  }
+  #app .primary-action-strip > b {
+    font-size: clamp(18px, 5.4vw, 23px) !important;
+    line-height: 1.08 !important;
+  }
+  #app .primary-action-strip > a {
+    width: max-content !important;
+    margin-top: 3px !important;
+  }
+  #app :where(.section-heading p,.builder-ops-title p,.validation-focus-head p,.source-panel-heading p,.wk-hero-copy p,.wk-section-head p) {
+    max-width: 36ch !important;
+    font-size: 15px !important;
+  }
+}
+
+/* v1.49.1 - Phase 17B closing de-nesting and proof-row quieting */
+body[data-active-view="closing"] #app :where(#contract-composer,.contract-composer-panel,.contract-flow-workspace,.contract-flow-hero,.closing-flow-pipeline,.contract-document-experience,.contract-document-shell,.contract-send-form) {
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #app #contract-composer {
+  border: 0 !important;
+  border-top: 1px solid var(--phase17b-rule-strong) !important;
+  padding: clamp(22px, 4vw, 42px) 0 0 !important;
+}
+body[data-active-view="closing"] #app .contract-flow-hero {
+  padding: 0 0 clamp(18px, 3vw, 30px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase17b-rule) !important;
+}
+body[data-active-view="closing"] #app .contract-flow-hero h2 {
+  max-width: 12ch !important;
+  font-size: clamp(28px, 5.8vw, 54px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.055em !important;
+}
+body[data-active-view="closing"] #app .contract-flow-hero p {
+  max-width: 46ch !important;
+  color: var(--phase17b-muted) !important;
+  font-family: var(--font-heavy-text) !important;
+}
+body[data-active-view="closing"] #app .closing-flow-pipeline {
+  display: grid !important;
+  gap: 0 !important;
+  border: 0 !important;
+}
+body[data-active-view="closing"] #app .closing-flow-card {
+  grid-template-columns: 50px minmax(0, 1fr) auto !important;
+  margin: 0 !important;
+  padding: clamp(17px, 3vw, 26px) 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase17b-rule) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #app .closing-flow-card > span,
+body[data-active-view="closing"] #app .closing-flow-card .badge {
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #app .closing-flow-card p {
+  max-width: 60ch !important;
+  color: var(--phase17b-muted) !important;
+  line-height: 1.48 !important;
+}
+#app :where(.validation-score-row,.queue-filter-row,.market-toggle-grid) {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+#app :where(.validation-score-row > *, .queue-filter-row > *) {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase17b-rule) !important;
+}
+@media (max-width: 780px) {
+  body[data-active-view="closing"] #app .closing-flow-card {
+    grid-template-columns: 44px minmax(0, 1fr) !important;
+  }
+  body[data-active-view="closing"] #app .closing-flow-card .badge {
+    grid-column: 2 !important;
+    width: max-content !important;
+    margin-top: 6px !important;
+  }
+}
+
+/* v1.49.2 - Phase 17B operational completion color system */
+:root {
+  --done-accent: #008a7a;
+  --done-fill: rgba(0, 138, 122, .075);
+  --todo-accent: #8a94a6;
+  --blocked-accent: #b42318;
+  --working-accent: #1f5bff;
+}
+
+/* Apple HIG-style state philosophy: done/todo must be visible at a glance, not buried in dates. */
+#app .validation-queue-item {
+  position: relative !important;
+  padding-left: 18px !important;
+  border-left: 3px solid transparent !important;
+  transition: border-color .16s ease, background .16s ease, color .16s ease !important;
+}
+#app .validation-queue-item.needs-email {
+  border-left-color: rgba(138, 148, 166, .42) !important;
+}
+#app .validation-queue-item.is-emailed {
+  border-left-color: var(--done-accent) !important;
+  background: linear-gradient(90deg, var(--done-fill), transparent 56%) !important;
+}
+#app .validation-queue-item.is-emailed .queue-copy b::after {
+  content: ' emailed';
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--done-accent);
+  font: 780 9px/1 var(--font-mono);
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+#app .validation-queue-item.is-called:not(.is-emailed) {
+  border-left-color: var(--working-accent) !important;
+  background: linear-gradient(90deg, rgba(31,91,255,.055), transparent 56%) !important;
+}
+#app .validation-queue-item.is-done {
+  border-left-color: var(--done-accent) !important;
+}
+#app .validation-queue-item.needs-buybox .badge {
+  color: var(--todo-accent) !important;
+  border-top-color: rgba(138,148,166,.36) !important;
+}
+#app .validation-queue-item.is-done .badge,
+#app .validation-queue-item.is-emailed .contact-icon-toggle[data-toggle-validation-contact="email"],
+#app .selected-outreach-state .contact-state-toggle.is-on,
+#app .operator-flow-pulse .done {
+  color: var(--done-accent) !important;
+  border-color: var(--done-accent) !important;
+  border-top-color: var(--done-accent) !important;
+  background: var(--done-fill) !important;
+}
+#app .contact-icon-toggle,
+#app .contact-state-toggle {
+  border-radius: 0 !important;
+  border: 1px solid var(--phase17b-rule) !important;
+  background: transparent !important;
+  color: var(--todo-accent) !important;
+  box-shadow: none !important;
+}
+#app .contact-icon-toggle.is-on,
+#app .contact-state-toggle.is-on {
+  color: var(--done-accent) !important;
+  border-color: rgba(0,138,122,.55) !important;
+  background: var(--done-fill) !important;
+}
+#app .contact-icon-toggle:not(.is-on):hover,
+#app .contact-state-toggle:not(.is-on):hover {
+  color: var(--working-accent) !important;
+  border-color: rgba(31,91,255,.42) !important;
+}
+#app .contact-icon-toggle[data-toggle-validation-contact="email"].is-on span::after,
+#app .contact-state-toggle[data-toggle-validation-contact="email"].is-on span::after {
+  content: '✓';
+  margin-left: 4px;
+  color: var(--done-accent);
+  font: 900 10px/1 var(--font-mono);
+}
+#app .queue-state-row {
+  align-items: center !important;
+}
+
+/* Carry the same at-a-glance completion cue into deal/seller rows and source lanes. */
+#app :where(.queue-item.active,.money-call.active,.source-stack-card:first-child,.source-phase-card.active,.builder-market-detail.active) {
+  border-left: 3px solid var(--done-accent) !important;
+  background: linear-gradient(90deg, var(--done-fill), transparent 60%) !important;
+}
+#app :where(.outcome-chip.active,.tab-button.active,.market-toggle.active,.state-filter.active) {
+  color: var(--done-accent) !important;
+  border-color: var(--done-accent) !important;
+  background: var(--done-fill) !important;
+}

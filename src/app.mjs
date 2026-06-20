@@ -1476,7 +1476,7 @@ function renderBuilderListEnginePanel(options = {}) {
   const marketSummary = `<div class="active-market-summary">
     <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected resource well'}</span>
     <strong>${h(activeState.isLive ? (activeState.marketLabel || activeState.label) : `${activeState.label} resource well`)}</strong>
-    <p>${h(activeState.isLive ? `${activeState.label} has ${activeBuilders.length} live permit-backed builders loaded from ${activeSummary.entries.length || 1} public source lane${(activeSummary.entries.length || 1) === 1 ? '' : 's'}. Switch states to inspect each deployed builder queue.` : `${activeState.marketLabel || activeState.label}. Source pipeline is ready; builder queue stays empty until permit-active companies are collected.`)}</p>
+    <p>${h(activeState.isLive ? `${activeBuilders.length} permit-backed builders. Capture buy box before seller work.` : `${activeState.marketLabel || activeState.label}. Source lane ready; builder queue waits for permit-active companies.`)}</p>
     <ul>
       ${activeState.isLive ? `<li>${h(activeBuilders.length)} builders</li>
       <li>${h(activeSummary.minimumUniqueBuilders || 20)} minimum per pull</li>
@@ -1531,8 +1531,8 @@ function renderBuilderListEnginePanel(options = {}) {
     <section class="builder-ops-header" aria-label="Builder operations summary">
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
-        <h3>Choose market. Validate builders.</h3>
-        <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> Tap a state to swap the builder queue, validation form, source map, and permit-proof context. Resource wells are independent, not a forced sequence.</p>
+        <h3>Choose market. Validate builder.</h3>
+        <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> State tabs swap the queue, validation form, source map, and permit proof.</p>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>
@@ -1579,7 +1579,7 @@ function renderSellerSearchControlLayer(control = {}) {
   return `<section id="seller-search-control" class="seller-control-panel" aria-label="Buyer-first seller search control layer">
     <div class="seller-control-hero">
       <span class="eyebrow">Seller search control layer · ${h(control.state || 'TN')}</span>
-      <h3>Do not chase sellers until the buyer demand can survive six gates.</h3>
+      <h3>Six buyer gates before seller work.</h3>
       <p>${h(control.nextAction || 'Validate buyer demand first, then unlock skip trace, seller calls, contract/title, buyer memo and feedback loop in order.')}</p>
       <div class="seller-control-metrics">
         <div><b>${h(control.stats?.buyers || 0)}</b><span>buyer candidates</span></div>
@@ -1817,7 +1817,7 @@ function renderSourcePriorityBoard() {
     <div class="source-priority-head">
       <span class="eyebrow">Permit-source priority</span>
       <h3>TN first. Then inland FL, AZ, NC, TX.</h3>
-      <p>No statewide permit database exists in these states. Lead generation follows the target-state order: Tennessee first, then inland Florida, Arizona, North Carolina, and Texas, using aggregator-first and direct-portal paths without Kentucky leakage.</p>
+      <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent wells.</p>
     </div>
     <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
     <div class="source-guardrail"><b>Kentucky guardrail</b><span>If Kentucky records appear, treat them as target-state/HQ leakage unless they carry verified Tennessee permit evidence.</span></div>
@@ -1983,8 +1983,8 @@ function renderCommandCenter() {
     <section id="wk-brief" class="wk-hero wk-reveal" aria-label="Land Dealflow OS terrain intelligence command">
       <div class="wk-hero-copy">
         <span class="wk-kicker">Terrain intelligence / Tennessee live-first</span>
-        <h1>Modern land intelligence, ready to act.</h1>
-        <p>Land Dealflow OS turns slow permit, parcel, terrain and buyer data into a calm command layer: readable, actionable and built for decisions instead of data walls.</p>
+        <h1>Call the buyer. Then move the deal.</h1>
+        <p>Today has one job: prove demand, protect the seller queue, and advance the next defensible action.</p>
         <div class="wk-actions">
           <a href="#builders" data-view="builders">Open builder radar</a>
           <a href="#wk-work">Trace the signal path</a>
@@ -1995,20 +1995,20 @@ function renderCommandCenter() {
         <div class="wk-horizon" aria-hidden="true"></div>
         <div class="wk-core-sample"><span>TN terrain</span><b>${h(totalBuilderSignals)}</b><em>permit signals</em></div>
         <div class="wk-contour c1"></div><div class="wk-contour c2"></div><div class="wk-contour c3"></div>
-        <p>Live terrain stack: permit velocity, builder demand, parcel constraints and one next action.</p>
+        <p>Permit velocity, builder demand, parcel constraint, next action.</p>
       </aside>
     </section>
     ${renderOperatorSessionMode(operatorSession)}
     <section class="wk-audit wk-reveal" aria-label="Operating principles">
-      <div><span class="wk-kicker">Signal system</span><h2>Landscape, demand and risk collapse into one operating map.</h2></div>
+      <div><span class="wk-kicker">Signal system</span><h2>Demand, seller fit, and risk collapse into one map.</h2></div>
       <ul>${operatingRows}</ul>
     </section>
     <section id="wk-map" class="wk-market-map wk-reveal" aria-label="Priority permit market map">
-      <div class="wk-section-head"><span class="wk-kicker">Market terrain</span><h2>TN is live terrain. FL, AZ, NC and TX are resource wells.</h2><p>No statewide permit database. The product behaves like a source radar: where evidence lives, which portal stack matters, and what unlocks buyer validation.</p></div>
+      <div class="wk-section-head"><span class="wk-kicker">Market terrain</span><h2>TN is live. FL, AZ, NC and TX wait as wells.</h2><p>Show where evidence lives, which portal matters, and what unlocks buyer validation.</p></div>
       <div class="wk-node-grid">${marketRows}</div>
     </section>
     <section id="wk-work" class="wk-workbench wk-reveal" aria-label="Daily money workbench">
-      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Today's job is not browsing. It is choosing the next defensible action.</h2></div>
+      <div class="wk-section-head"><span class="wk-kicker">One page / one job</span><h2>Choose the next defensible action.</h2></div>
       <div class="wk-proof-grid">${proofRows}</div>
       <div class="wk-work-grid">
         <article class="wk-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>
@@ -2017,7 +2017,7 @@ function renderCommandCenter() {
       </div>
     </section>
     <section id="wk-gates" class="wk-protocol wk-reveal" aria-label="Conversion protocol">
-      <div class="wk-section-head"><span class="wk-kicker">Conversion architecture</span><h2>The product is a gate system, not a dashboard.</h2></div>
+      <div class="wk-section-head"><span class="wk-kicker">Conversion architecture</span><h2>Gate the deal. Do not decorate the dashboard.</h2></div>
       <div class="wk-protocol-grid">${protocolRows}</div>
     </section>`;
   initializeEditorialMotion();

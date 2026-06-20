@@ -31,6 +31,15 @@ assert.match(css, /--hierarchy-page-title: clamp\(36px, 5\.4vw, 72px\)/, 'Phase 
 assert.match(css, /--ui-accent: #13b9aa/, 'Unified palette should collapse accents to one restrained cyan signal');
 assert.match(css, /\.wk-hero \{ min-height: clamp\(480px, 68vh, 660px\)/, 'Today hero should be compacted from billboard scale');
 assert.match(css, /button, \.button-link,[\s\S]{0,520}border-radius: 0 !important/, 'Visible buttons and button-like CTAs must be square');
+assert.match(css, /v1\.47 - Phase 16 cognitive-load kill pass: open ledgers, fewer boxes, sharper reading hierarchy/, 'Phase 16 cognitive-load kill pass marker required');
+assert.match(css, /v1\.47\.1 - Phase 16 mobile deboxing correction/, 'Phase 16 should include mobile deboxing after screenshot QA');
+assert.match(css, /v1\.47\.2 - Phase 16 no metric-box residue lock/, 'Phase 16 should remove residual metric-box styling after mobile QA');
+assert.match(css, /--font-heavy-text: 'Inter'/, 'Phase 16 should use Inter/SF-style sans for dense technology-app reading');
+assert.match(css, /#app :where\(\.wk-workbench,[\s\S]{0,1400}border-top: 1px solid var\(--ledger-rule\) !important/, 'Phase 16 should replace nested modules with open ledger rules');
+assert.match(css, /body\[data-active-view="today"\] #command \.wk-rail \{ display: none !important; \}/, 'Phase 16 should remove Today rail chrome from first-screen cognition');
+assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard should remain after late layout overrides');
+assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
+assert.match(html, /Buyer demand first\./, 'Builder page copy should make the hierarchy buyer-first');
 const roundedButtonRules = [...css.matchAll(/([^{}]*button[^{}]*)\{([^{}]*border-radius[^{}]*)\}/g)]
   .filter(match => !/border-radius:\s*0\s*!important/.test(match[2]));
 assert.deepEqual(roundedButtonRules.map(match => match[1].trim()).slice(0, 5), [], 'No button selector may retain rounded corner radius');

@@ -15232,3 +15232,709 @@ body[data-active-view="closing"] #title-closing-panel .closing-primary-action > 
     justify-content: flex-start !important;
   }
 }
+
+/* v1.62 - Phase 30 Today + Sources Apple information hierarchy: calm typography, premium forest/gold, no nested noise */
+:root {
+  --phase30-rule: today-sources-only-calm-premium-information-hierarchy;
+  --phase30-canvas: #f7f6f0;
+  --phase30-paper: #fffefa;
+  --phase30-ink: #111713;
+  --phase30-muted: #5e675f;
+  --phase30-soft: #879084;
+  --phase30-line: rgba(17, 23, 19, .108);
+  --phase30-line-strong: rgba(17, 23, 19, .16);
+  --phase30-forest: #123f2e;
+  --phase30-forest-2: #1a5b40;
+  --phase30-gold: #9a741e;
+  --phase30-gold-soft: rgba(154, 116, 30, .12);
+  --phase30-green-soft: rgba(18, 63, 46, .082);
+  --phase30-reading: 66ch;
+  --phase30-text: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif;
+  --phase30-display: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Segoe UI", sans-serif;
+}
+body[data-active-view="today"],
+body[data-active-view="sources"] {
+  background: linear-gradient(180deg, var(--phase30-canvas) 0%, #fbfaf6 48%, var(--phase30-canvas) 100%) !important;
+  color: var(--phase30-ink) !important;
+}
+body[data-active-view="today"] main,
+body[data-active-view="sources"] main {
+  max-width: 1240px !important;
+  padding-top: clamp(30px, 4vw, 58px) !important;
+  padding-bottom: 72px !important;
+}
+body[data-active-view="today"] :where(#command, #command *),
+body[data-active-view="sources"] :where(#sources-hub, #sources-hub *) {
+  text-shadow: none !important;
+}
+body[data-active-view="today"] #command :where(.wk-hero::before,.wk-hero::after,.wk-market-map::before,.wk-workbench::before,.wk-protocol::before,.map-glow,.wk-rail,.wk-progress,.legacy-proof-surface,.legacy-proof-rule,.legacy-proof-axis,.legacy-proof-ring),
+body[data-active-view="sources"] #sources-hub :where(.source-priority-board::before,.source-priority-board::after,.stage::before,.weekly-market-card::before,.weekly-market-card::after) {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command :where(.wk-kicker,.eyebrow),
+body[data-active-view="sources"] #sources-hub :where(.wk-kicker,.eyebrow,.source-priority-head > span,.priority-lane > span,.stage > span,.source-page-section > summary span) {
+  color: var(--phase30-forest-2) !important;
+  font: 760 11px/1.12 var(--phase30-text) !important;
+  letter-spacing: .072em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command :where(h1,h2,h3,b,strong),
+body[data-active-view="sources"] #sources-hub :where(h2,h3,b,strong) {
+  color: var(--phase30-ink) !important;
+  font-family: var(--phase30-display) !important;
+  text-transform: none !important;
+}
+body[data-active-view="today"] #command :where(p,em,li,small),
+body[data-active-view="sources"] #sources-hub :where(p,em,li,small) {
+  color: var(--phase30-muted) !important;
+  font-family: var(--phase30-text) !important;
+}
+
+/* Today: first screen becomes a calm command surface, not an illustrated hero. */
+body[data-active-view="today"] #command .phase24-today-hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.02fr) minmax(330px, .62fr) !important;
+  gap: clamp(34px, 5.4vw, 84px) !important;
+  align-items: end !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: clamp(20px, 3.8vw, 52px) 0 clamp(26px, 5vw, 64px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+body[data-active-view="today"] #command .phase24-hero-copy {
+  max-width: 760px !important;
+}
+body[data-active-view="today"] #command .phase24-today-hero h1 {
+  max-width: 11.8ch !important;
+  margin-top: 14px !important;
+  color: var(--phase30-ink) !important;
+  font: 735 clamp(54px, 7.4vw, 108px)/.91 var(--phase30-display) !important;
+  letter-spacing: -.074em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .phase24-today-hero p {
+  max-width: var(--phase30-reading) !important;
+  margin-top: 18px !important;
+  color: var(--phase30-muted) !important;
+  font: 430 clamp(17px, 1.42vw, 21px)/1.48 var(--phase30-text) !important;
+  letter-spacing: -.018em !important;
+}
+body[data-active-view="today"] #command .phase24-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  margin-top: clamp(24px, 3vw, 36px) !important;
+}
+body[data-active-view="today"] #command .phase24-actions a {
+  min-height: 40px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--phase30-line-strong) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase30-forest) !important;
+  font: 720 12px/1 var(--phase30-text) !important;
+  letter-spacing: .035em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .phase24-actions .primary-command {
+  border-color: transparent !important;
+  background: var(--phase30-forest) !important;
+  color: #fffefa !important;
+}
+body[data-active-view="today"] #command .phase24-actions a:hover {
+  transform: none !important;
+  border-color: var(--phase30-forest) !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot {
+  align-self: stretch !important;
+  display: grid !important;
+  align-content: end !important;
+  gap: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div {
+  display: grid !important;
+  grid-template-columns: minmax(116px, .52fr) minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  align-items: baseline !important;
+  padding: 15px 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div:first-child {
+  border-top: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot span {
+  color: var(--phase30-soft) !important;
+  font: 650 12px/1.25 var(--phase30-text) !important;
+  letter-spacing: .012em !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot b {
+  color: var(--phase30-ink) !important;
+  font: 725 clamp(22px, 2.4vw, 34px)/1 var(--phase30-display) !important;
+  letter-spacing: -.046em !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot em {
+  color: var(--phase30-gold) !important;
+  font: 680 11px/1.2 var(--phase30-text) !important;
+  letter-spacing: .045em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="today"] #command :where(.wk-market-map,.wk-workbench,.wk-protocol) {
+  margin-top: clamp(30px, 5vw, 70px) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .wk-section-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, .72fr) minmax(280px, .46fr) !important;
+  gap: clamp(22px, 4vw, 64px) !important;
+  align-items: end !important;
+  margin-bottom: clamp(18px, 2.6vw, 32px) !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="today"] #command .wk-section-head h2 {
+  max-width: 13.5ch !important;
+  margin-top: 10px !important;
+  font: 720 clamp(31px, 4vw, 58px)/.98 var(--phase30-display) !important;
+  letter-spacing: -.058em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .wk-section-head p {
+  max-width: 44ch !important;
+  margin: 0 !important;
+  font: 430 15px/1.5 var(--phase30-text) !important;
+  letter-spacing: -.01em !important;
+}
+body[data-active-view="today"] #command .today-primary-action {
+  grid-column: 1 / -1 !important;
+  margin: 4px 0 0 !important;
+}
+body[data-active-view="today"] #command :where(.phase24-market-list,.phase24-proof-grid,.phase24-work-grid) {
+  display: grid !important;
+  gap: 0 !important;
+  margin-top: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .phase24-market-list {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  border-top: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="today"] #command .phase24-proof-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  border-top: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="today"] #command .phase24-work-grid {
+  grid-template-columns: minmax(0, .9fr) minmax(260px, .66fr) minmax(0, .9fr) !important;
+  border-top: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="today"] #command :where(.wk-market-node,.phase24-proof-card,.phase24-focus-card,.phase24-call-stack,.phase24-script-card) {
+  min-height: 0 !important;
+  padding: clamp(18px, 2.2vw, 28px) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase30-line) !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase30-ink) !important;
+}
+body[data-active-view="today"] #command :where(.wk-market-node,.phase24-proof-card,.phase24-focus-card,.phase24-call-stack,.phase24-script-card):last-child {
+  border-right: 0 !important;
+}
+body[data-active-view="today"] #command .wk-market-node.hot {
+  background: var(--phase30-green-soft) !important;
+  color: var(--phase30-ink) !important;
+}
+body[data-active-view="today"] #command .wk-market-node:hover {
+  transform: none !important;
+  background: rgba(255,255,255,.42) !important;
+}
+body[data-active-view="today"] #command .wk-market-node b,
+body[data-active-view="today"] #command .phase24-proof-card strong {
+  margin-top: 18px !important;
+  color: var(--phase30-ink) !important;
+  font: 725 clamp(27px, 3.4vw, 48px)/.94 var(--phase30-display) !important;
+  letter-spacing: -.06em !important;
+}
+body[data-active-view="today"] #command .phase24-proof-card strong {
+  color: var(--phase30-gold) !important;
+}
+body[data-active-view="today"] #command :where(.wk-market-node em,.phase24-proof-card p,.phase24-focus-card p,.phase24-script-card p) {
+  margin-top: 12px !important;
+  max-width: 48ch !important;
+  font: 430 13px/1.45 var(--phase30-text) !important;
+  letter-spacing: -.006em !important;
+  opacity: 1 !important;
+}
+body[data-active-view="today"] #command :where(.phase24-focus-card h3,.phase24-script-card h3) {
+  margin-top: 18px !important;
+  font: 710 clamp(28px, 3vw, 42px)/1 var(--phase30-display) !important;
+  letter-spacing: -.052em !important;
+}
+body[data-active-view="today"] #command .phase24-focus-card a {
+  display: inline-flex !important;
+  width: fit-content !important;
+  margin-top: 22px !important;
+  min-height: 36px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid currentColor !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase30-forest) !important;
+  font: 735 12px/1 var(--phase30-text) !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .wk-call-row {
+  display: grid !important;
+  gap: 4px !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .wk-call-row b {
+  font: 705 15px/1.25 var(--phase30-text) !important;
+  letter-spacing: -.018em !important;
+}
+
+/* Sources: one evidence surface with quiet lanes, not stacked dashboards. */
+body[data-active-view="sources"] #sources-hub {
+  display: grid !important;
+  gap: clamp(22px, 3.4vw, 42px) !important;
+}
+body[data-active-view="sources"] #sources-hub > .section-heading {
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .9fr) minmax(260px, .42fr) !important;
+  gap: clamp(24px, 5vw, 76px) !important;
+  align-items: end !important;
+  margin: 0 !important;
+  padding: clamp(18px, 3.2vw, 44px) 0 clamp(24px, 3vw, 38px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="sources"] #sources-hub > .section-heading h2 {
+  max-width: 13.5ch !important;
+  margin-top: 12px !important;
+  font: 730 clamp(42px, 5.6vw, 84px)/.94 var(--phase30-display) !important;
+  letter-spacing: -.07em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="sources"] #sources-hub > .section-heading p {
+  align-self: end !important;
+  max-width: 43ch !important;
+  margin: 0 !important;
+  color: var(--phase30-muted) !important;
+  font: 430 clamp(16px, 1.25vw, 19px)/1.5 var(--phase30-text) !important;
+  letter-spacing: -.012em !important;
+}
+body[data-active-view="sources"] #sources-hub .source-priority-board {
+  display: grid !important;
+  grid-template-columns: minmax(0, .82fr) minmax(300px, .5fr) !important;
+  gap: clamp(22px, 4vw, 64px) !important;
+  padding: 0 0 clamp(24px, 4vw, 54px) !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="sources"] #sources-hub .source-priority-head {
+  grid-column: 1 !important;
+  align-self: end !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .source-priority-head h3 {
+  max-width: 12.4ch !important;
+  margin-top: 12px !important;
+  font: 720 clamp(30px, 4vw, 58px)/.98 var(--phase30-display) !important;
+  letter-spacing: -.058em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="sources"] #sources-hub .source-priority-head p {
+  max-width: var(--phase30-reading) !important;
+  margin-top: 15px !important;
+  font: 430 15px/1.48 var(--phase30-text) !important;
+}
+body[data-active-view="sources"] #sources-hub .sources-primary-action {
+  margin-top: clamp(20px, 3vw, 34px) !important;
+  margin-bottom: 0 !important;
+}
+body[data-active-view="sources"] #sources-hub .source-stack-rail {
+  grid-column: 2 !important;
+  grid-row: 1 / span 3 !important;
+  display: grid !important;
+  align-content: end !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .source-stack-node {
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: baseline !important;
+  padding: 14px 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="sources"] #sources-hub .source-stack-node:first-child {
+  border-top: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="sources"] #sources-hub .source-stack-node span:first-child {
+  color: var(--phase30-gold) !important;
+  font: 710 12px/1 var(--phase30-text) !important;
+  letter-spacing: .06em !important;
+}
+body[data-active-view="sources"] #sources-hub .source-stack-node b {
+  font: 700 16px/1.2 var(--phase30-text) !important;
+  letter-spacing: -.018em !important;
+}
+body[data-active-view="sources"] #sources-hub .source-stack-node em {
+  color: var(--phase30-soft) !important;
+  font: 650 11px/1.2 var(--phase30-text) !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="sources"] #sources-hub .source-guardrail {
+  grid-column: 1 !important;
+  display: grid !important;
+  grid-template-columns: max-content minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: baseline !important;
+  margin: 0 !important;
+  padding: 13px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(154, 116, 30, .22) !important;
+  border-bottom: 1px solid rgba(154, 116, 30, .22) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="sources"] #sources-hub .source-guardrail b {
+  color: var(--phase30-gold) !important;
+  font: 750 11px/1.2 var(--phase30-text) !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="sources"] #sources-hub .source-guardrail span {
+  color: var(--phase30-muted) !important;
+  font: 430 13px/1.38 var(--phase30-text) !important;
+}
+body[data-active-view="sources"] #sources-hub .source-priority-grid {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1fr) !important;
+  gap: clamp(18px, 3vw, 40px) !important;
+  margin: clamp(4px, 1vw, 10px) 0 0 !important;
+  border-top: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .priority-lane {
+  display: grid !important;
+  gap: 0 !important;
+  padding: 16px 0 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .priority-market-card {
+  display: grid !important;
+  gap: 8px !important;
+  min-height: 0 !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="sources"] #sources-hub .priority-market-card h4 {
+  margin: 0 !important;
+  color: var(--phase30-ink) !important;
+  font: 710 clamp(19px, 1.8vw, 25px)/1.08 var(--phase30-display) !important;
+  letter-spacing: -.04em !important;
+}
+body[data-active-view="sources"] #sources-hub .priority-market-card p {
+  max-width: 54ch !important;
+  font: 430 13px/1.43 var(--phase30-text) !important;
+}
+body[data-active-view="sources"] #sources-hub .priority-market-card :where(span,em,small) {
+  color: var(--phase30-soft) !important;
+  font: 650 11px/1.2 var(--phase30-text) !important;
+  letter-spacing: .045em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="sources"] #sources-hub .weekly-market-card,
+body[data-active-view="sources"] #sources-hub .weekly-market-scout,
+body[data-active-view="sources"] #sources-hub .source-page-section,
+body[data-active-view="sources"] #sources-hub .card,
+body[data-active-view="sources"] #sources-hub .stage {
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: var(--phase30-line) !important;
+}
+body[data-active-view="sources"] #sources-hub .weekly-market-card {
+  padding: clamp(20px, 3vw, 36px) 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase30-line) !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  color: var(--phase30-ink) !important;
+}
+body[data-active-view="sources"] #sources-hub .weekly-market-head {
+  grid-template-columns: minmax(0, 1fr) max-content !important;
+  gap: 20px !important;
+}
+body[data-active-view="sources"] #sources-hub .weekly-market-head h3 {
+  color: var(--phase30-ink) !important;
+  font: 720 clamp(28px, 3.7vw, 54px)/.99 var(--phase30-display) !important;
+  letter-spacing: -.058em !important;
+}
+body[data-active-view="sources"] #sources-hub .pipeline {
+  display: grid !important;
+  grid-template-columns: repeat(7, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--phase30-line) !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .stage {
+  min-height: 0 !important;
+  padding: 18px 14px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase30-line) !important;
+  overflow: visible !important;
+}
+body[data-active-view="sources"] #sources-hub .stage:last-child {
+  border-right: 0 !important;
+}
+body[data-active-view="sources"] #sources-hub .stage h3,
+body[data-active-view="sources"] #sources-hub .stage b {
+  margin-top: 10px !important;
+  font: 705 16px/1.12 var(--phase30-text) !important;
+  letter-spacing: -.02em !important;
+}
+body[data-active-view="sources"] #sources-hub .stage p {
+  margin-top: 8px !important;
+  font: 430 12px/1.36 var(--phase30-text) !important;
+}
+body[data-active-view="sources"] #sources-hub .source-page-section {
+  margin-top: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="sources"] #sources-hub .source-page-section > summary {
+  min-height: 54px !important;
+  display: grid !important;
+  grid-template-columns: 112px minmax(0, 1fr) auto !important;
+  gap: 18px !important;
+  align-items: baseline !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .source-page-section > summary span {
+  display: block !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .source-page-section > summary strong {
+  font: 710 17px/1.2 var(--phase30-text) !important;
+  letter-spacing: -.02em !important;
+}
+body[data-active-view="sources"] #sources-hub .source-page-section .grid {
+  padding: 0 !important;
+  gap: 0 !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="sources"] #sources-hub :where(#markets,#buyers).grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+body[data-active-view="sources"] #sources-hub .card {
+  padding: clamp(18px, 2vw, 26px) !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase30-line) !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+}
+body[data-active-view="sources"] #sources-hub .card:nth-child(2n) {
+  border-right: 0 !important;
+}
+body[data-active-view="sources"] #sources-hub .card h3,
+body[data-active-view="sources"] #sources-hub .card h4 {
+  color: var(--phase30-ink) !important;
+  font: 710 20px/1.08 var(--phase30-display) !important;
+  letter-spacing: -.04em !important;
+}
+body[data-active-view="sources"] #sources-hub .mini-grid {
+  gap: 0 !important;
+  margin-top: 16px !important;
+  padding: 10px 0 !important;
+  border-top: 1px solid var(--phase30-line) !important;
+  border-bottom: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .mini-grid div {
+  padding: 0 12px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase30-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="sources"] #sources-hub .mini-grid div:last-child {
+  border-right: 0 !important;
+}
+body[data-active-view="sources"] #sources-hub .mini-grid b {
+  color: var(--phase30-gold) !important;
+  font: 725 24px/1 var(--phase30-display) !important;
+  letter-spacing: -.045em !important;
+}
+body[data-active-view="sources"] #sources-hub :where(.badge,.tags span,.source-meta code,.permit-platform-tags em) {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: var(--phase30-green-soft) !important;
+  color: var(--phase30-forest) !important;
+  box-shadow: none !important;
+}
+@media (max-width: 1080px) {
+  body[data-active-view="today"] #command .phase24-market-list,
+  body[data-active-view="today"] #command .phase24-proof-grid,
+  body[data-active-view="sources"] #sources-hub .pipeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="today"] #command .phase24-work-grid,
+  body[data-active-view="sources"] #sources-hub .source-priority-board,
+  body[data-active-view="sources"] #sources-hub > .section-heading,
+  body[data-active-view="sources"] #sources-hub .source-priority-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="sources"] #sources-hub .source-stack-rail {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+@media (max-width: 720px) {
+  body[data-active-view="today"] main,
+  body[data-active-view="sources"] main {
+    padding: 22px 18px 54px !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero,
+  body[data-active-view="today"] #command .wk-section-head {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero h1 {
+    font-size: clamp(48px, 14vw, 68px) !important;
+    letter-spacing: -.062em !important;
+  }
+  body[data-active-view="today"] #command .phase24-snapshot div {
+    grid-template-columns: 1fr auto !important;
+    gap: 8px 14px !important;
+  }
+  body[data-active-view="today"] #command .phase24-snapshot span {
+    grid-column: 1 / -1 !important;
+  }
+  body[data-active-view="today"] #command .phase24-market-list,
+  body[data-active-view="today"] #command .phase24-proof-grid,
+  body[data-active-view="today"] #command .phase24-work-grid,
+  body[data-active-view="sources"] #sources-hub .pipeline,
+  body[data-active-view="sources"] #sources-hub :where(#markets,#buyers).grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="today"] #command :where(.wk-market-node,.phase24-proof-card,.phase24-focus-card,.phase24-call-stack,.phase24-script-card),
+  body[data-active-view="sources"] #sources-hub :where(.stage,.card) {
+    border-right: 0 !important;
+  }
+  body[data-active-view="sources"] #sources-hub > .section-heading h2 {
+    font-size: clamp(44px, 13vw, 66px) !important;
+    letter-spacing: -.062em !important;
+  }
+  body[data-active-view="sources"] #sources-hub .source-page-section > summary,
+  body[data-active-view="sources"] #sources-hub .source-guardrail {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* v1.62.1 - Phase 30 QA correction: Sources hero reads as one left-to-right editorial block */
+body[data-active-view="sources"] #sources-hub > .section-heading {
+  grid-template-areas:
+    "kicker support"
+    "title support" !important;
+  align-items: end !important;
+}
+body[data-active-view="sources"] #sources-hub > .section-heading .eyebrow {
+  grid-area: kicker !important;
+}
+body[data-active-view="sources"] #sources-hub > .section-heading h2 {
+  grid-area: title !important;
+  justify-self: start !important;
+}
+body[data-active-view="sources"] #sources-hub > .section-heading p {
+  grid-area: support !important;
+  justify-self: end !important;
+  margin-bottom: 8px !important;
+}
+@media (max-width: 720px) {
+  body[data-active-view="sources"] #sources-hub > .section-heading {
+    grid-template-areas:
+      "kicker"
+      "title"
+      "support" !important;
+  }
+  body[data-active-view="sources"] #sources-hub > .section-heading p {
+    justify-self: start !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+/* v1.62.2 - Phase 30 QA correction: Sources next action must not squeeze into word-by-word columns */
+body[data-active-view="sources"] #sources-hub .sources-primary-action {
+  grid-template-columns: 1fr !important;
+  column-gap: 0 !important;
+  row-gap: 10px !important;
+  align-items: start !important;
+}
+body[data-active-view="sources"] #sources-hub .sources-primary-action > span {
+  grid-column: 1 / -1 !important;
+}
+body[data-active-view="sources"] #sources-hub .sources-primary-action > b {
+  max-width: 36ch !important;
+  font-size: clamp(19px, 1.65vw, 24px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -.035em !important;
+}
+body[data-active-view="sources"] #sources-hub .sources-primary-action > a {
+  align-self: end !important;
+}
+@media (max-width: 720px) {
+  body[data-active-view="sources"] #sources-hub .sources-primary-action {
+    grid-template-columns: 1fr !important;
+  }
+}

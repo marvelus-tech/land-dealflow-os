@@ -225,5 +225,21 @@ assert.match(css, /--phase29-action-strip-rule: compact-next-action-bar-no-timel
 assert.match(css, /v1\.61\.6 - Apple HIG correction[\s\S]{0,1800}#app \.primary-action-strip::before,[\s\S]{0,900}content: none !important;[\s\S]{0,80}display: none !important/, 'Primary action strips must not draw fake timeline rail pseudo-elements');
 assert.match(css, /#app \.primary-action-strip > span \.product-icon,[\s\S]{0,260}display: none !important/, 'Primary action strip labels should not include decorative status icons');
 assert.match(css, /#app \.primary-action-strip > b,[\s\S]{0,260}font: 690 clamp\(17px, 1\.45vw, 21px\)\/1\.22/, 'Primary action copy should be compact instruction text, not a billboard hero');
+assert.match(css, /v1\.62 - Phase 30 Today \+ Sources Apple information hierarchy: calm typography, premium forest\/gold, no nested noise/, 'Phase 30 Today/Sources marker required');
+assert.match(css, /--phase30-rule: today-sources-only-calm-premium-information-hierarchy/, 'Phase 30 must encode that refinement is scoped to Today and Sources');
+assert.match(css, /--phase30-forest: #123f2e/, 'Phase 30 should define a refined accessible forest primary');
+assert.match(css, /--phase30-gold: #9a741e/, 'Phase 30 should define a restrained premium gold metric accent');
+assert.match(css, /--phase30-reading: 66ch/, 'Phase 30 should constrain dense supporting copy to a comfortable reading measure');
+assert.match(css, /body\[data-active-view="today"\] #command \.phase24-today-hero[\s\S]{0,520}border-bottom: 1px solid var\(--phase30-line\) !important;[\s\S]{0,220}background: transparent !important;[\s\S]{0,180}box-shadow: none !important/, 'Today hero should be a calm command surface, not a decorated slab');
+assert.match(css, /body\[data-active-view="today"\] #command \.phase24-snapshot div[\s\S]{0,420}grid-template-columns: minmax\(116px, \.52fr\) minmax\(0, 1fr\) auto !important/, 'Today metrics should read as a scan-friendly ledger');
+assert.match(css, /body\[data-active-view="today"\] #command :where\(\.phase24-market-list,\.phase24-proof-grid,\.phase24-work-grid\)[\s\S]{0,260}background: transparent !important/, 'Today dense grids should not carry nested boxed backgrounds');
+assert.match(css, /body\[data-active-view="sources"\] #sources-hub > \.section-heading[\s\S]{0,520}border-bottom: 1px solid var\(--phase30-line\) !important;[\s\S]{0,180}background: transparent !important;[\s\S]{0,100}box-shadow: none !important/, 'Sources heading should be a flat editorial header, not a hero card');
+assert.match(css, /body\[data-active-view="sources"\] #sources-hub \.source-priority-board[\s\S]{0,420}grid-template-columns: minmax\(0, \.82fr\) minmax\(300px, \.5fr\) !important/, 'Sources priority board should use a purposeful two-column hierarchy');
+assert.match(css, /body\[data-active-view="sources"\] #sources-hub \.pipeline[\s\S]{0,320}grid-template-columns: repeat\(7, minmax\(0, 1fr\)\) !important;[\s\S]{0,220}background: transparent !important/, 'Sources pipeline should be a compact seven-stage ledger, not a cluster of cards');
+assert.match(css, /body\[data-active-view="sources"\] #sources-hub :where\(\.badge,\.tags span,\.source-meta code,\.permit-platform-tags em\)[\s\S]{0,220}background: var\(--phase30-green-soft\) !important/, 'Sources chips should use restrained forest information scent');
+assert.match(css, /v1\.62\.1 - Phase 30 QA correction: Sources hero reads as one left-to-right editorial block/, 'Phase 30 Sources screenshot QA correction marker required');
+assert.match(css, /body\[data-active-view="sources"\] #sources-hub > \.section-heading[\s\S]{0,180}grid-template-areas:[\s\S]{0,160}"kicker support"[\s\S]{0,80}"title support" !important/, 'Sources desktop header should keep kicker/title together instead of splitting the title to the right column');
+assert.match(css, /v1\.62\.2 - Phase 30 QA correction: Sources next action must not squeeze into word-by-word columns/, 'Phase 30 Sources action-strip screenshot QA correction marker required');
+assert.match(css, /body\[data-active-view="sources"\] #sources-hub \.sources-primary-action[\s\S]{0,160}grid-template-columns: 1fr !important/, 'Sources next-action strip should give the instruction full reading width instead of squeezing into columns');
 
 console.log('global typography tests passed');

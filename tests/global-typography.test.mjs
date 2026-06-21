@@ -91,7 +91,7 @@ assert.match(css, /#app :where\(\.wk-workbench,[\s\S]{0,1400}border-top: 1px sol
 assert.match(css, /body\[data-active-view="today"\] #command \.wk-rail \{ display: none !important; \}/, 'Phase 16 should remove Today rail chrome from first-screen cognition');
 assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard should remain after late layout overrides');
 assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
-assert.match(html, /Buyer demand first\./, 'Builder page copy should make the hierarchy buyer-first');
+assert.match(html, /Buyer-first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,80}<span>Next<\/span>[\s\S]{0,220}Call the top builder\. Capture missing buy-box fields\./, 'Builders should expose a clear, calm next-action strip before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip[\s\S]{0,80}\$\{productIcon\('[^']+'\)\} Do first|>Start queue /, 'Primary action strips should not use vague Do first timeline-icon labeling');
@@ -340,6 +340,17 @@ assert.match(css, /v1\.66\.14 - Phase 34 compact selector tightening: narrow des
 assert.match(css, /market-toggle-grid\.market-toggle-grid \{[\s\S]{0,180}max-width: min\(100%, 560px\) !important/, 'Builders market selector should be constrained so it reads as a compact control');
 assert.match(css, /max-width: 420px !important/, 'Builders market selector desktop footprint should be tightened to a compact control width');
 assert.match(css, /width: min\(100%, 260px\) !important/, 'Builders market selector desktop rail should be tightened to compact width');
+assert.match(css, /v1\.67 - Phase 35 Builders hierarchy: compact command surface, calmer data rhythm/, 'Phase 35 Builders hierarchy marker required');
+assert.match(css, /--phase35-builders-rule: builders-only-typographic-command-surface/, 'Phase 35 Builders hierarchy must be route scoped');
+assert.match(css, /body\[data-active-view="builders"\] \.builder-ops-header \{[\s\S]{0,220}grid-template-columns: minmax\(280px, \.72fr\) minmax\(360px, \.88fr\) !important/, 'Builders header should be tightened into a compact command surface');
+assert.match(css, /body\[data-active-view="builders"\] \.builders-primary-action \{[\s\S]{0,260}grid-template-columns: 52px minmax\(0, 1fr\) auto !important/, 'Builders next action should be a compact command row');
+assert.match(css, /body\[data-active-view="builders"\] \.active-market-summary ul \{[\s\S]{0,240}grid-template-columns: repeat\(4, minmax\(0, auto\)\) !important/, 'Selected market metrics should scan as compact ledger values');
+assert.match(css, /v1\.67\.1 - Phase 35 self-review: compress hero, remove mobile command collision, calm lower chrome/, 'Phase 35 self-review correction marker required');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section > \.section-heading \{[\s\S]{0,260}max-width: 620px !important/, 'Builders page hero should be compact enough for a dense operator screen');
+assert.match(css, /v1\.67\.2 - Phase 35 final: remove redundant Next label from Builders command/, 'Phase 35 final command-label removal marker required');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-panel \.primary-action-strip\.builders-primary-action > span,[\s\S]{0,260}display: none !important/, 'Builders next-action label should be removed because the command and CTA carry the hierarchy');
+assert.match(css, /@media \(max-width: 720px\) \{[\s\S]{0,1800}\.builders-primary-action span \{[\s\S]{0,80}display: none !important/, 'Mobile Builders next-action label should be concealed to prevent command collision');
+assert.match(css, /body\[data-active-view="builders"\] \.validation-queue \.panel-kicker b \{[\s\S]{0,180}text-overflow: ellipsis !important/, 'Mobile queue header proof label should not clip into adjacent controls');
 assert.match(css, /market-toggle-v34 > \.market-contact-rail \{[\s\S]{0,180}width: min\(100%, 360px\) !important/, 'Builders progress rail should be compact, not full-row width');
 assert.match(css, /\.market-contact-rail \{[\s\S]{0,180}height: 12px !important;[\s\S]{0,260}rgba\(167, 123, 34, \.24\)/, 'Builders progress rail should have a prominent gold open-inventory track');
 assert.match(css, /\.market-toggle\.active \.market-contact-rail \{[\s\S]{0,120}height: 14px !important/, 'Active Builders market progress rail should be visually prominent');

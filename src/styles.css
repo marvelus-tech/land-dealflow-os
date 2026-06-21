@@ -20071,3 +20071,633 @@ body[data-active-view="builders"] #builder-list-panel .market-toggle-v34 > .mark
     font-size: 9.5px !important;
   }
 }
+
+/* v1.67 - Phase 35 Builders hierarchy: compact command surface, calmer data rhythm */
+body[data-active-view="builders"] {
+  --phase35-builders-rule: builders-only-typographic-command-surface;
+  --phase35-forest: #0b5138;
+  --phase35-forest-soft: rgba(11,81,56,.085);
+  --phase35-gold: #a67419;
+  --phase35-gold-soft: rgba(166,116,25,.12);
+  --phase35-ink: #101712;
+  --phase35-muted: #647064;
+  --phase35-hairline: rgba(16,23,18,.105);
+  --phase35-paper: #fffdf7;
+}
+
+body[data-active-view="builders"] main {
+  padding-top: clamp(18px, 3vw, 30px) !important;
+}
+
+body[data-active-view="builders"] .builder-engine-shell {
+  display: grid !important;
+  gap: 14px !important;
+}
+
+body[data-active-view="builders"] .builder-ops-header {
+  grid-template-columns: minmax(280px, .72fr) minmax(360px, .88fr) !important;
+  gap: 14px 22px !important;
+  padding: clamp(18px, 2vw, 24px) !important;
+  border-radius: 24px !important;
+  background: linear-gradient(180deg, rgba(255,253,247,.94), rgba(250,249,242,.88)) !important;
+  border-color: var(--phase35-hairline) !important;
+  box-shadow: rgba(16,23,18,.045) 0 14px 34px !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title .eyebrow,
+body[data-active-view="builders"] .active-market-summary > span,
+body[data-active-view="builders"] .panel-kicker span,
+body[data-active-view="builders"] .completion-state-legend span,
+body[data-active-view="builders"] .operator-flow-pulse span {
+  color: var(--phase35-forest) !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: .135em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title h3 {
+  max-width: 420px !important;
+  margin-top: 9px !important;
+  font-size: clamp(34px, 4vw, 50px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.074em !important;
+  color: var(--phase35-ink) !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title p {
+  max-width: 475px !important;
+  margin-top: 12px !important;
+  font-size: 14px !important;
+  line-height: 1.46 !important;
+  letter-spacing: -.018em !important;
+  color: var(--phase35-muted) !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title p b {
+  color: var(--phase35-ink) !important;
+  font-weight: 760 !important;
+}
+
+body[data-active-view="builders"] .builders-primary-action {
+  max-width: 475px !important;
+  margin-top: 14px !important;
+  padding: 10px 0 0 !important;
+  border-top: 1px solid var(--phase35-hairline) !important;
+  border-bottom: 0 !important;
+  display: grid !important;
+  grid-template-columns: 52px minmax(0, 1fr) auto !important;
+  grid-template-areas: "label action link" !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="builders"] .builders-primary-action span {
+  grid-area: label !important;
+  color: var(--phase35-forest) !important;
+  font-size: 10px !important;
+  letter-spacing: .14em !important;
+  font-weight: 820 !important;
+}
+
+body[data-active-view="builders"] .builders-primary-action b {
+  grid-area: action !important;
+  color: var(--phase35-ink) !important;
+  font-size: clamp(15px, 1.25vw, 18px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.04em !important;
+  font-weight: 790 !important;
+}
+
+body[data-active-view="builders"] .builders-primary-action a {
+  grid-area: link !important;
+  min-height: 30px !important;
+  padding: 0 10px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(11,81,56,.18) !important;
+  color: var(--phase35-forest) !important;
+  background: rgba(255,255,255,.68) !important;
+  font-size: 10px !important;
+  font-weight: 830 !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+body[data-active-view="builders"] .builder-market-workbench {
+  align-content: start !important;
+  gap: 8px !important;
+}
+
+body[data-active-view="builders"] .active-market-summary {
+  margin-top: 2px !important;
+  padding: 12px 0 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase35-hairline) !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="builders"] .active-market-summary strong {
+  max-width: 420px !important;
+  margin-top: 8px !important;
+  color: var(--phase35-ink) !important;
+  font-size: clamp(23px, 2.35vw, 34px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.06em !important;
+}
+
+body[data-active-view="builders"] .active-market-summary p {
+  max-width: 460px !important;
+  margin-top: 9px !important;
+  color: var(--phase35-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+}
+
+body[data-active-view="builders"] .active-market-summary ul {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, auto)) !important;
+  justify-content: start !important;
+  gap: 0 !important;
+  margin-top: 13px !important;
+  border-top: 1px solid var(--phase35-hairline) !important;
+  border-bottom: 1px solid var(--phase35-hairline) !important;
+}
+
+body[data-active-view="builders"] .active-market-summary li {
+  padding: 9px 18px 9px 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #2d382f !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  font-weight: 760 !important;
+  letter-spacing: -.015em !important;
+  white-space: nowrap !important;
+}
+
+body[data-active-view="builders"] .active-market-summary li:not(:last-child) {
+  border-right: 1px solid var(--phase35-hairline) !important;
+  margin-right: 18px !important;
+}
+
+body[data-active-view="builders"] .builder-ops-jump {
+  margin-top: 2px !important;
+  padding-top: 8px !important;
+  border-top: 1px solid var(--phase35-hairline) !important;
+}
+
+body[data-active-view="builders"] .builder-ops-jump a {
+  min-height: 28px !important;
+  padding: 0 0 8px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase35-muted) !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="builders"] .builder-ops-jump a:first-child {
+  color: var(--phase35-ink) !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--phase35-forest) !important;
+}
+
+body[data-active-view="builders"] .operator-flow-pulse,
+body[data-active-view="builders"] .completion-state-legend {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="builders"] .operator-flow-pulse {
+  padding: 0 0 10px !important;
+  border-bottom: 1px solid var(--phase35-hairline) !important;
+  gap: 0 !important;
+}
+
+body[data-active-view="builders"] .operator-flow-pulse span {
+  padding: 0 12px 0 0 !important;
+  color: var(--phase35-muted) !important;
+}
+body[data-active-view="builders"] .operator-flow-pulse span.done,
+body[data-active-view="builders"] .operator-flow-pulse span.active {
+  color: var(--phase35-forest) !important;
+}
+
+body[data-active-view="builders"] .completion-state-legend {
+  justify-content: flex-start !important;
+  gap: 18px !important;
+  padding: 10px 0 12px !important;
+}
+
+body[data-active-view="builders"] .completion-state-legend span {
+  position: relative !important;
+  color: var(--phase35-muted) !important;
+  padding-left: 12px !important;
+}
+body[data-active-view="builders"] .completion-state-legend span::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  width: 6px !important;
+  height: 6px !important;
+  transform: translateY(-50%) !important;
+  background: #8e988e !important;
+}
+body[data-active-view="builders"] .completion-state-legend .legend-done::before { background: var(--phase35-forest) !important; }
+body[data-active-view="builders"] .completion-state-legend .legend-working::before { background: var(--phase35-gold) !important; }
+
+body[data-active-view="builders"] .validation-command {
+  padding: 12px 0 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="builders"] .validation-grid-main {
+  grid-template-columns: minmax(230px, .58fr) minmax(0, 1.34fr) minmax(230px, .62fr) !important;
+  gap: 12px !important;
+}
+
+body[data-active-view="builders"] .validation-queue,
+body[data-active-view="builders"] .validation-focus-card,
+body[data-active-view="builders"] .seller-unlock-card {
+  padding: 14px !important;
+  border-radius: 18px !important;
+  background: rgba(255,255,255,.72) !important;
+  border-color: var(--phase35-hairline) !important;
+  box-shadow: rgba(16,23,18,.035) 0 10px 28px !important;
+}
+
+body[data-active-view="builders"] .panel-kicker {
+  margin-bottom: 10px !important;
+  padding-bottom: 8px !important;
+  border-bottom: 1px solid var(--phase35-hairline) !important;
+}
+
+body[data-active-view="builders"] .panel-kicker b {
+  color: var(--phase35-ink) !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  letter-spacing: -.01em !important;
+}
+
+body[data-active-view="builders"] .validation-queue-item {
+  min-height: 78px !important;
+  padding: 11px !important;
+  border-radius: 14px !important;
+  background: rgba(255,255,255,.58) !important;
+  border-color: rgba(16,23,18,.085) !important;
+}
+
+body[data-active-view="builders"] .validation-row-main {
+  min-height: 0 !important;
+  padding: 0 !important;
+  gap: 10px !important;
+}
+
+body[data-active-view="builders"] .validation-queue-item b {
+  color: var(--phase35-ink) !important;
+  font-size: 14px !important;
+  line-height: 1.13 !important;
+  letter-spacing: -.025em !important;
+}
+
+body[data-active-view="builders"] .validation-queue-item small {
+  margin-top: 4px !important;
+  color: var(--phase35-muted) !important;
+  font-size: 11px !important;
+  line-height: 1.28 !important;
+}
+
+body[data-active-view="builders"] .queue-score {
+  min-width: 36px !important;
+  min-height: 28px !important;
+  border-radius: 9px !important;
+  background: var(--phase35-gold-soft) !important;
+  color: var(--phase35-gold) !important;
+  font-size: 11px !important;
+}
+
+body[data-active-view="builders"] .validation-focus-head h3 {
+  font-size: clamp(23px, 2.5vw, 32px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.06em !important;
+}
+
+body[data-active-view="builders"] .validation-source-proof,
+body[data-active-view="builders"] .validation-form,
+body[data-active-view="builders"] .seller-unlock-card {
+  font-size: 13px !important;
+}
+
+body[data-active-view="builders"] .validation-form input,
+body[data-active-view="builders"] .validation-form select,
+body[data-active-view="builders"] .validation-form textarea {
+  min-height: 38px !important;
+  border-radius: 10px !important;
+  font-size: 13px !important;
+}
+
+@media (max-width: 1100px) {
+  body[data-active-view="builders"] .builder-ops-header,
+  body[data-active-view="builders"] .validation-grid-main {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-active-view="builders"] main {
+    padding: 18px 14px 42px !important;
+  }
+  body[data-active-view="builders"] .builder-ops-header {
+    padding: 14px !important;
+    border-radius: 20px !important;
+    gap: 14px !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title .eyebrow {
+    font-size: 9px !important;
+    letter-spacing: .16em !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title h3 {
+    max-width: 310px !important;
+    font-size: clamp(30px, 10vw, 39px) !important;
+    line-height: .94 !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title p {
+    font-size: 13px !important;
+    line-height: 1.42 !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action {
+    grid-template-columns: 46px minmax(0, 1fr) !important;
+    grid-template-areas: "label action" ". link" !important;
+    gap: 7px 9px !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action b {
+    font-size: 16px !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action a {
+    justify-self: start !important;
+  }
+  body[data-active-view="builders"] .active-market-summary strong {
+    font-size: clamp(25px, 8vw, 31px) !important;
+    max-width: 330px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary ul {
+    grid-template-columns: 1fr !important;
+    border-bottom: 0 !important;
+  }
+  body[data-active-view="builders"] .active-market-summary li {
+    display: flex !important;
+    justify-content: center !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--phase35-hairline) !important;
+  }
+  body[data-active-view="builders"] .builder-ops-jump {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  body[data-active-view="builders"] .builder-ops-jump a {
+    justify-content: center !important;
+    min-width: 0 !important;
+  }
+  body[data-active-view="builders"] .operator-flow-pulse {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] .completion-state-legend {
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+  body[data-active-view="builders"] .validation-queue,
+  body[data-active-view="builders"] .validation-focus-card,
+  body[data-active-view="builders"] .seller-unlock-card {
+    padding: 12px !important;
+    border-radius: 16px !important;
+  }
+}
+
+/* v1.67.1 - Phase 35 self-review: compress hero, remove mobile command collision, calm lower chrome */
+body[data-active-view="builders"] #builder-list-section > .section-heading {
+  display: block !important;
+  max-width: 620px !important;
+  margin: 0 0 clamp(18px, 2.4vw, 26px) !important;
+  padding: clamp(20px, 3.2vw, 34px) 0 clamp(18px, 2.5vw, 28px) !important;
+  border-bottom: 1px solid var(--phase35-hairline) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="builders"] #builder-list-section > .section-heading .eyebrow {
+  color: var(--phase35-forest) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: .15em !important;
+}
+
+body[data-active-view="builders"] #builder-list-section > .section-heading h2 {
+  max-width: 500px !important;
+  margin-top: 12px !important;
+  color: var(--phase35-ink) !important;
+  font-size: clamp(44px, 6vw, 72px) !important;
+  line-height: .89 !important;
+  letter-spacing: -.082em !important;
+}
+
+body[data-active-view="builders"] #builder-list-section > .section-heading p {
+  max-width: 460px !important;
+  margin-top: 14px !important;
+  color: var(--phase35-muted) !important;
+  font-size: clamp(16px, 1.5vw, 20px) !important;
+  line-height: 1.36 !important;
+  letter-spacing: -.025em !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title .eyebrow {
+  font-size: 9px !important;
+  letter-spacing: .16em !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title h3 {
+  font-size: clamp(30px, 3.2vw, 44px) !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title p {
+  max-width: 430px !important;
+  font-size: 13px !important;
+}
+
+body[data-active-view="builders"] .builders-primary-action {
+  min-height: 54px !important;
+}
+
+body[data-active-view="builders"] .active-market-summary p {
+  max-width: 420px !important;
+  font-size: 12px !important;
+}
+
+body[data-active-view="builders"] .active-market-summary li {
+  color: var(--phase35-ink) !important;
+  font-size: 11px !important;
+  font-weight: 760 !important;
+}
+
+body[data-active-view="builders"] .active-market-summary li::first-letter {
+  color: var(--phase35-gold) !important;
+}
+
+body[data-active-view="builders"] .operator-flow-pulse span:nth-child(n+4) {
+  color: rgba(100,112,100,.72) !important;
+}
+
+body[data-active-view="builders"] .completion-state-legend {
+  padding-top: 6px !important;
+}
+
+body[data-active-view="builders"] .validation-grid-main {
+  margin-top: 2px !important;
+}
+
+body[data-active-view="builders"] .validation-queue .panel-kicker,
+body[data-active-view="builders"] .validation-focus-card .panel-kicker,
+body[data-active-view="builders"] .seller-unlock-card .panel-kicker {
+  min-height: 28px !important;
+}
+
+body[data-active-view="builders"] .validation-queue .panel-kicker b {
+  max-width: 70px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+body[data-active-view="builders"] .validation-queue-item.active {
+  background: linear-gradient(180deg, rgba(255,253,247,.92), rgba(255,255,255,.78)) !important;
+  border-color: rgba(11,81,56,.20) !important;
+  box-shadow: inset 3px 0 0 var(--phase35-forest) !important;
+}
+
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #builder-list-section > .section-heading {
+    margin-bottom: 14px !important;
+    padding: 32px 0 18px !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading h2 {
+    max-width: 260px !important;
+    font-size: clamp(38px, 12vw, 48px) !important;
+    letter-spacing: -.078em !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading p {
+    max-width: 330px !important;
+    font-size: 15px !important;
+    line-height: 1.38 !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title h3 {
+    font-size: clamp(28px, 9vw, 36px) !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action {
+    min-height: 0 !important;
+    padding-top: 11px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action span {
+    display: none !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action b {
+    max-width: 315px !important;
+    font-size: 16px !important;
+    line-height: 1.13 !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action a {
+    min-height: 28px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+  }
+  body[data-active-view="builders"] .market-toggle-grid.market-toggle-grid {
+    margin-top: 2px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary p {
+    font-size: 13px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary ul {
+    margin-top: 10px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary li {
+    justify-content: flex-start !important;
+    padding: 9px 0 !important;
+    font-size: 12px !important;
+  }
+  body[data-active-view="builders"] .operator-flow-pulse {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 8px 0 !important;
+    overflow: visible !important;
+    white-space: normal !important;
+  }
+  body[data-active-view="builders"] .operator-flow-pulse span {
+    padding-right: 6px !important;
+    font-size: 9px !important;
+  }
+  body[data-active-view="builders"] .completion-state-legend {
+    padding: 8px 0 10px !important;
+    gap: 10px !important;
+  }
+  body[data-active-view="builders"] .completion-state-legend span {
+    font-size: 9px !important;
+    letter-spacing: .09em !important;
+  }
+  body[data-active-view="builders"] .validation-queue .panel-kicker {
+    grid-template-columns: minmax(0, 1fr) auto auto !important;
+    gap: 8px !important;
+  }
+  body[data-active-view="builders"] .validation-queue .panel-kicker span,
+  body[data-active-view="builders"] .validation-queue .panel-kicker b,
+  body[data-active-view="builders"] .queue-csv-link {
+    font-size: 10px !important;
+    letter-spacing: .08em !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* v1.67.2 - Phase 35 final: remove redundant Next label from Builders command */
+body[data-active-view="builders"] #builder-list-panel .primary-action-strip.builders-primary-action {
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  grid-template-areas: "action link" !important;
+}
+body[data-active-view="builders"] #builder-list-panel .primary-action-strip.builders-primary-action > span,
+body[data-active-view="builders"] .primary-action-strip.builders-primary-action > span,
+body[data-active-view="builders"] .builders-primary-action > span {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #builder-list-panel .primary-action-strip.builders-primary-action {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+}

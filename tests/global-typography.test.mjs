@@ -326,5 +326,16 @@ assert.match(appSource, /<h3>Market workbench<\/h3>/, 'Phase 33 should demote th
 assert.match(appSource, /<span>Next<\/span>[\s\S]{0,120}Call the top builder\. Capture missing buy-box fields\./, 'Phase 33 next action copy should be short and calm');
 assert.match(css, /v1\.65\.2 - Phase 33 final polish: action instruction must read as a sentence, not a stacked poster/, 'Phase 33 final action-strip polish marker required');
 assert.match(css, /\.builders-primary-action \{[\s\S]{0,160}grid-template-areas:\s*\n\s*"label action"\s*\n\s*"\. link" !important/, 'Builders action instruction should read horizontally before the link on desktop');
+assert.match(css, /v1\.66 - Phase 34 Builders: numerals are data, progress is the scan spine/, 'Phase 34 marker required for market metric/progress correction');
+assert.match(css, /--phase34-builders-rule: builders-market-metrics-progress-spine/, 'Phase 34 route-scoped rule token required');
+assert.match(appSource, /market-toggle-v34[\s\S]{0,280}<small class="market-row-main"><kbd class="market-code">/, 'Builders market selector should use no-span v34 row wrappers instead of inherited grid soup');
+assert.match(appSource, /market-builder-total[\s\S]{0,260}<b>\$\{h\(state\.contactLedger\.total\)\}<\/b><small>builders<\/small>/, 'Builders market total should separate numeral from metric label');
+assert.match(appSource, /market-contact-copy[\s\S]{0,220}<mark>\$\{h\(state\.contactLedger\.reached\)\}<\/mark> reached[\s\S]{0,180}<mark>\$\{h\(state\.contactLedger\.open\)\}<\/mark> open/, 'Builders reached/open copy should differentiate numerals from labels');
+assert.match(css, /\.market-builder-total b \{[\s\S]{0,220}font-variant-numeric: tabular-nums lining-nums !important/, 'Builders metric numerals should use tabular lining numerals');
+assert.match(css, /v1\.66\.1 - Phase 34 second pass: open inventory rail must be prominent even at 0 reached/, 'Phase 34 progress prominence correction marker required');
+assert.match(css, /v1\.66\.11 - Phase 34 no-span row anatomy: market row avoids legacy \.market-toggle span collapse/, 'Phase 34 final no-span market row repair marker required');
+assert.match(css, /v1\.66\.12 - Phase 34 consolidated market selector ownership/, 'Phase 34 consolidated market selector ownership marker required');
+assert.match(css, /\.market-contact-rail \{[\s\S]{0,180}height: 12px !important;[\s\S]{0,260}rgba\(167, 123, 34, \.24\)/, 'Builders progress rail should have a prominent gold open-inventory track');
+assert.match(css, /\.market-toggle\.active \.market-contact-rail \{[\s\S]{0,120}height: 14px !important/, 'Active Builders market progress rail should be visually prominent');
 
 console.log('global typography tests passed');

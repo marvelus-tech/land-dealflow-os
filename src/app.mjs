@@ -1489,12 +1489,10 @@ function renderBuilderListEnginePanel(options = {}) {
     const marketLabel = marketSummary.entries.map(item => item.marketName).join(' · ') || markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
     return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, contactLedger, status, marketLabel, rows, summary: marketSummary };
   });
-  const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
-    <span>${h(state.stateCode)}</span>
-    <strong>${h(state.label)}</strong>
-    <em class="market-builder-total">${h(state.isLive ? `${state.contactLedger.total} builders` : 'Ready')}</em>
-    ${state.isLive ? `<small class="market-contact-copy"><b>${h(state.contactLedger.reached)} reached</b><i>·</i><b>${h(state.contactLedger.open)} open</b></small>
-    <span class="market-contact-rail" role="progressbar" aria-label="${h(`${state.contactLedger.reached} of ${state.contactLedger.total} ${state.label} builders reached`)}" aria-valuemin="0" aria-valuemax="${h(state.contactLedger.total)}" aria-valuenow="${h(state.contactLedger.reached)}" style="--contact-progress:${h(state.contactLedger.percent)}%"><i></i></span>` : ''}
+  const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle market-toggle-v34 ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
+    <small class="market-row-main"><kbd class="market-code">${h(state.stateCode)}</kbd><strong class="market-name">${h(state.label)}</strong><em class="market-builder-total">${state.isLive ? `<b>${h(state.contactLedger.total)}</b><small>builders</small>` : `<b>Ready</b><small>lane</small>`}</em></small>
+    ${state.isLive ? `<span class="market-contact-rail" role="progressbar" aria-label="${h(`${state.contactLedger.reached} of ${state.contactLedger.total} ${state.label} builders reached`)}" aria-valuemin="0" aria-valuemax="${h(state.contactLedger.total)}" aria-valuenow="${h(state.contactLedger.reached)}" style="--contact-progress:${h(state.contactLedger.percent)}%"><i></i></span>
+    <small class="market-contact-copy"><b><mark>${h(state.contactLedger.reached)}</mark> reached</b><i>·</i><b><mark>${h(state.contactLedger.open)}</mark> open</b></small>` : ''}
   </button>`).join('');
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
   const activeBuilders = asArray(activeState.rows);

@@ -187,8 +187,8 @@ let selectedValidationBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
-let selectedBuilderMarketState = 'TN';
-let selectedBuilderMarketKey = 'knoxville';
+let selectedBuilderMarketState = 'GA';
+let selectedBuilderMarketKey = 'forsyth-ga';
 let selectedDealsMarketKey = 'all';
 let lastBuilderSkipTraceImportStatus = '';
 let openMachinePanel = '';
@@ -1244,7 +1244,12 @@ function marketSummaryForRows(rows = [], minimumUniqueBuilders = 20) {
 function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandscape()) {
   const loaded = getLoadedBuilderMarkets();
   const liveByKey = new Map(Object.values(loaded).map(market => [loadedBuilderMarketKey(market), market]));
-  return builderMarketRegistry.map(registry => {
+  const expansionStateCodes = new Set(['GA', 'SC']);
+  const orderedRegistry = [
+    ...builderMarketRegistry.filter(registry => expansionStateCodes.has(registry.state)),
+    ...builderMarketRegistry.filter(registry => !expansionStateCodes.has(registry.state)),
+  ];
+  return orderedRegistry.map(registry => {
     const live = liveByKey.get(registry.key) || {};
     const rows = rowsForBuilderMarketKey(registry.key);
     const stateMeta = asArray(permitLandscape.states).find(item => item.id === String(registry.state || '').toLowerCase()) || {};

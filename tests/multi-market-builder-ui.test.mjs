@@ -20,6 +20,8 @@ assert.match(app, /Array\.isArray\(data\) \? data : data\.rows/, 'UI loader must
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
 assert.match(app, /Suggested order, not a lock/, 'Visitor copy should frame market order as a recommendation, not a hardcoded path');
 assert.match(app, /const builderMarketRegistry = \[/, 'Builders page must expose a market registry, not only a state rail');
+assert.match(app, /let selectedBuilderMarketState = 'GA'/, 'Builders must open on expansion lanes instead of the old TN-first rail');
+assert.match(app, /const orderedRegistry = \[[\s\S]{0,220}expansionStateCodes\.has\(registry\.state\)/, 'Builders switchboard must pin GA\/SC expansion markets before older lanes');
 assert.match(app, /data-builder-market-key/, 'Builders switchboard must switch individual markets on demand');
 assert.match(app, /0 builders · needs source work/, 'Low/no-count markets must remain visible with source-work copy');
 for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga']) {

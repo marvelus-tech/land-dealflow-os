@@ -17435,3 +17435,1588 @@ body[data-active-view="builders"] #builder-list-panel .queue-score b {
     min-width: 58px !important;
   }
 }
+
+/* v1.64 - Phase 32 Builders top-to-bottom Apple typographic hierarchy */
+:root {
+  --phase32-builders-rule: builders-top-to-bottom-calm-apple-information-hierarchy;
+  --phase32-font-text: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", system-ui, sans-serif;
+  --phase32-font-display: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Segoe UI", system-ui, sans-serif;
+  --phase32-font-data: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+  --phase32-canvas: #f7f6f1;
+  --phase32-surface: #fffef9;
+  --phase32-surface-soft: #fbfaf5;
+  --phase32-ink: #101512;
+  --phase32-ink-2: #26322b;
+  --phase32-muted: #5e685f;
+  --phase32-soft: #8b938b;
+  --phase32-line: rgba(16, 21, 18, .105);
+  --phase32-line-strong: rgba(16, 21, 18, .18);
+  --phase32-forest: #0f4b35;
+  --phase32-forest-2: #173f31;
+  --phase32-forest-soft: rgba(15, 75, 53, .082);
+  --phase32-gold: #9b741f;
+  --phase32-gold-soft: rgba(155, 116, 31, .13);
+  --phase32-warn: #a06d18;
+}
+
+body[data-active-view="builders"] {
+  background: var(--phase32-canvas) !important;
+  color: var(--phase32-ink) !important;
+  font-family: var(--phase32-font-text) !important;
+}
+body[data-active-view="builders"] main {
+  max-width: 1240px !important;
+  padding: clamp(22px, 3.1vw, 42px) clamp(14px, 2.6vw, 34px) 72px !important;
+}
+body[data-active-view="builders"] #builder-list-section,
+body[data-active-view="builders"] #builder-list-panel {
+  background: var(--phase32-surface) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-section {
+  padding: clamp(30px, 5vw, 54px) clamp(24px, 5vw, 64px) clamp(18px, 3vw, 30px) !important;
+}
+body[data-active-view="builders"] #builder-list-section > .section-heading,
+body[data-active-view="builders"] #builder-list-section > header,
+body[data-active-view="builders"] #builder-list-section .section-heading {
+  max-width: 760px !important;
+  padding: 0 0 clamp(18px, 3vw, 30px) !important;
+  margin: 0 0 clamp(20px, 3.4vw, 34px) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] #builder-list-section .section-heading h2,
+body[data-active-view="builders"] #builder-list-section > header h2 {
+  font: 720 clamp(34px, 4.2vw, 56px)/.96 var(--phase32-font-display) !important;
+  letter-spacing: -.052em !important;
+  color: var(--phase32-ink) !important;
+  max-width: 11ch !important;
+}
+body[data-active-view="builders"] #builder-list-section .section-heading p,
+body[data-active-view="builders"] #builder-list-section > header p {
+  max-width: 58ch !important;
+  margin-top: 14px !important;
+  font: 430 clamp(15px, 1.18vw, 17px)/1.58 var(--phase32-font-text) !important;
+  letter-spacing: -.012em !important;
+  color: var(--phase32-muted) !important;
+}
+
+body[data-active-view="builders"] .eyebrow,
+body[data-active-view="builders"] .panel-kicker span,
+body[data-active-view="builders"] .market-toggle span,
+body[data-active-view="builders"] .active-market-summary span,
+body[data-active-view="builders"] .completion-head span,
+body[data-active-view="builders"] .next-best-action span,
+body[data-active-view="builders"] .seller-unlock-card .panel-kicker span {
+  font-family: var(--phase32-font-data) !important;
+  font-size: 10.5px !important;
+  line-height: 1.25 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  font-weight: 650 !important;
+  color: var(--phase32-forest) !important;
+}
+
+body[data-active-view="builders"] .builder-engine-shell {
+  display: grid !important;
+  gap: clamp(20px, 3vw, 34px) !important;
+}
+body[data-active-view="builders"] .builder-ops-header {
+  --phase32-header-gap: clamp(18px, 3vw, 34px);
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  align-items: start !important;
+  align-content: start !important;
+  gap: var(--phase32-header-gap) !important;
+  padding: 0 0 clamp(22px, 3.2vw, 34px) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid var(--phase32-line-strong) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+body[data-active-view="builders"] .builder-ops-title {
+  max-width: 860px !important;
+}
+body[data-active-view="builders"] .builder-ops-title h3 {
+  max-width: 12ch !important;
+  margin-top: 12px !important;
+  font: 720 clamp(40px, 5.3vw, 74px)/.91 var(--phase32-font-display) !important;
+  letter-spacing: -.064em !important;
+  color: var(--phase32-ink) !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="builders"] .builder-ops-title p {
+  max-width: 64ch !important;
+  margin-top: 18px !important;
+  font: 430 clamp(15px, 1.12vw, 17px)/1.58 var(--phase32-font-text) !important;
+  letter-spacing: -.012em !important;
+  color: var(--phase32-muted) !important;
+}
+body[data-active-view="builders"] .builder-ops-title p b {
+  color: var(--phase32-ink-2) !important;
+  font-weight: 670 !important;
+}
+body[data-active-view="builders"] .builders-primary-action,
+body[data-active-view="builders"] .primary-action-strip.builders-primary-action {
+  display: grid !important;
+  grid-template-columns: 118px minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 18px !important;
+  max-width: 920px !important;
+  margin-top: 22px !important;
+  padding: 16px 0 !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .builders-primary-action span {
+  font: 650 10.5px/1.2 var(--phase32-font-data) !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: var(--phase32-forest) !important;
+}
+body[data-active-view="builders"] .builders-primary-action b {
+  font: 620 clamp(17px, 1.35vw, 21px)/1.25 var(--phase32-font-text) !important;
+  letter-spacing: -.026em !important;
+  color: var(--phase32-ink) !important;
+}
+body[data-active-view="builders"] .builders-primary-action a {
+  justify-self: end !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-forest) !important;
+  font: 680 11px/1.1 var(--phase32-font-data) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="builders"] .builder-market-workbench {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  gap: 18px !important;
+  padding-top: 2px !important;
+}
+body[data-active-view="builders"] .market-toggle-grid {
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  overflow: visible !important;
+  padding: 0 !important;
+  border: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: var(--phase32-surface-soft) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .market-toggle {
+  position: relative !important;
+  display: grid !important;
+  align-content: start !important;
+  gap: 7px !important;
+  min-height: 128px !important;
+  padding: 17px 18px 16px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-ink) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .market-toggle:last-child { border-right: 0 !important; }
+body[data-active-view="builders"] .market-toggle::after {
+  content: "" !important;
+  display: block !important;
+  width: min(72px, 70%) !important;
+  height: 2px !important;
+  margin-top: auto !important;
+  background: rgba(16,21,18,.10) !important;
+}
+body[data-active-view="builders"] .market-toggle.active {
+  background: var(--phase32-forest-soft) !important;
+  color: var(--phase32-ink) !important;
+  box-shadow: inset 0 0 0 1px rgba(15,75,53,.12) !important;
+}
+body[data-active-view="builders"] .market-toggle.active::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 auto 0 0 !important;
+  width: 3px !important;
+  background: var(--phase32-forest) !important;
+}
+body[data-active-view="builders"] .market-toggle.active::after { background: var(--phase32-forest) !important; }
+body[data-active-view="builders"] .market-toggle strong {
+  margin: 2px 0 0 !important;
+  font: 660 clamp(16px, 1.4vw, 19px)/1.18 var(--phase32-font-text) !important;
+  letter-spacing: -.026em !important;
+  color: var(--phase32-ink) !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+body[data-active-view="builders"] .market-toggle em,
+body[data-active-view="builders"] .market-toggle .market-builder-total {
+  margin: 0 !important;
+  font: 650 11px/1.3 var(--phase32-font-data) !important;
+  letter-spacing: .065em !important;
+  color: var(--phase32-forest) !important;
+  text-transform: uppercase !important;
+  white-space: normal !important;
+}
+body[data-active-view="builders"] .market-toggle-grid .market-toggle { text-align: left !important; }
+
+body[data-active-view="builders"] .active-market-summary,
+body[data-active-view="builders"] .builder-ops-metrics,
+body[data-active-view="builders"] .validation-source-proof,
+body[data-active-view="builders"] .completion-chips,
+body[data-active-view="builders"] .seller-control-metrics {
+  display: grid !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] .builder-ops-metrics,
+body[data-active-view="builders"] .validation-source-proof,
+body[data-active-view="builders"] .seller-control-metrics { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+body[data-active-view="builders"] .builder-ops-metrics div,
+body[data-active-view="builders"] .validation-source-proof div,
+body[data-active-view="builders"] .seller-control-metrics div {
+  min-width: 0 !important;
+  padding: 14px 18px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] .builder-ops-metrics div:last-child,
+body[data-active-view="builders"] .validation-source-proof div:last-child,
+body[data-active-view="builders"] .seller-control-metrics div:last-child { border-right: 0 !important; }
+body[data-active-view="builders"] .builder-ops-metrics strong,
+body[data-active-view="builders"] .validation-source-proof strong,
+body[data-active-view="builders"] .seller-control-metrics b,
+body[data-active-view="builders"] .active-market-summary strong {
+  font: 670 clamp(18px, 1.7vw, 26px)/1.02 var(--phase32-font-text) !important;
+  letter-spacing: -.035em !important;
+  color: var(--phase32-ink) !important;
+}
+body[data-active-view="builders"] .builder-ops-metrics span,
+body[data-active-view="builders"] .validation-source-proof span,
+body[data-active-view="builders"] .seller-control-metrics span {
+  display: block !important;
+  margin-bottom: 6px !important;
+  font: 650 10px/1.2 var(--phase32-font-data) !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+  color: var(--phase32-soft) !important;
+}
+body[data-active-view="builders"] .active-market-summary {
+  padding: 22px 0 0 !important;
+  border-bottom: 0 !important;
+}
+body[data-active-view="builders"] .active-market-summary h3,
+body[data-active-view="builders"] .active-market-summary strong {
+  max-width: 11ch !important;
+  font: 720 clamp(30px, 4vw, 52px)/.96 var(--phase32-font-display) !important;
+  letter-spacing: -.054em !important;
+  color: var(--phase32-ink) !important;
+}
+body[data-active-view="builders"] .active-market-summary p {
+  max-width: 62ch !important;
+  margin-top: 12px !important;
+  color: var(--phase32-muted) !important;
+  font: 430 16px/1.55 var(--phase32-font-text) !important;
+}
+
+body[data-active-view="builders"] .builder-ops-jump {
+  display: flex !important;
+  gap: 22px !important;
+  padding-top: 0 !important;
+  border: 0 !important;
+}
+body[data-active-view="builders"] .builder-ops-jump a,
+body[data-active-view="builders"] .builder-ops-jump a:first-child {
+  min-height: 0 !important;
+  padding: 0 0 7px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-muted) !important;
+  font: 650 11px/1.2 var(--phase32-font-data) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .builder-ops-jump a:first-child {
+  color: var(--phase32-forest) !important;
+  border-bottom-color: var(--phase32-forest) !important;
+}
+
+body[data-active-view="builders"] .validation-command,
+body[data-active-view="builders"] #buyer-validation-command {
+  margin: 0 !important;
+  padding: clamp(18px, 2.6vw, 30px) 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+body[data-active-view="builders"] .operator-flow-pulse,
+body[data-active-view="builders"] .completion-state-legend {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .validation-grid-main {
+  display: grid !important;
+  grid-template-columns: minmax(300px, .38fr) minmax(0, 1fr) minmax(250px, .32fr) !important;
+  gap: clamp(18px, 2.1vw, 28px) !important;
+  align-items: start !important;
+  margin-top: 20px !important;
+}
+body[data-active-view="builders"] .validation-queue,
+body[data-active-view="builders"] .validation-focus-card,
+body[data-active-view="builders"] .seller-unlock-card,
+body[data-active-view="builders"] .seller-control-panel,
+body[data-active-view="builders"] .execution-conveyor,
+body[data-active-view="builders"] .builder-adapter-panel,
+body[data-active-view="builders"] .wide-permit-panel {
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .panel-kicker {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 0 0 12px !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .panel-kicker b {
+  font: 620 11px/1.2 var(--phase32-font-data) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: var(--phase32-soft) !important;
+}
+
+body[data-active-view="builders"] .validation-queue {
+  display: grid !important;
+  gap: 0 !important;
+  max-height: 760px !important;
+  overflow: auto !important;
+  border-top: 0 !important;
+}
+body[data-active-view="builders"] .validation-queue-item,
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item {
+  display: grid !important;
+  gap: 8px !important;
+  min-height: 0 !important;
+  padding: 13px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+body[data-active-view="builders"] .validation-queue-item.active,
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item.active {
+  background: transparent !important;
+  border-bottom-color: var(--phase32-line-strong) !important;
+  box-shadow: inset 3px 0 0 var(--phase32-forest) !important;
+  padding-left: 12px !important;
+}
+body[data-active-view="builders"] .validation-row-main,
+body[data-active-view="builders"] #builder-list-panel .validation-row-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 62px !important;
+  gap: 10px !important;
+  align-items: start !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .queue-copy b,
+body[data-active-view="builders"] #builder-list-panel .queue-copy b {
+  font: 650 15px/1.22 var(--phase32-font-text) !important;
+  letter-spacing: -.017em !important;
+  color: var(--phase32-ink) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+body[data-active-view="builders"] .queue-copy small,
+body[data-active-view="builders"] #builder-list-panel .queue-copy small {
+  margin-top: 5px !important;
+  font: 430 12.5px/1.42 var(--phase32-font-text) !important;
+  letter-spacing: -.005em !important;
+  color: var(--phase32-muted) !important;
+  overflow-wrap: normal !important;
+}
+body[data-active-view="builders"] .queue-score,
+body[data-active-view="builders"] #builder-list-panel .queue-score {
+  justify-content: flex-end !important;
+  min-width: 58px !important;
+  color: var(--phase32-gold) !important;
+  font-family: var(--phase32-font-data) !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+}
+body[data-active-view="builders"] .queue-score svg,
+body[data-active-view="builders"] #builder-list-panel .queue-score svg { display: none !important; }
+body[data-active-view="builders"] .queue-score b,
+body[data-active-view="builders"] #builder-list-panel .queue-score b {
+  font: 700 18px/1 var(--phase32-font-data) !important;
+  letter-spacing: -.02em !important;
+  color: var(--phase32-gold) !important;
+  white-space: nowrap !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body[data-active-view="builders"] .queue-state-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+body[data-active-view="builders"] .contact-icon-toggle {
+  width: auto !important;
+  min-width: 0 !important;
+  height: 22px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-soft) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .contact-icon-toggle.is-on { color: var(--phase32-forest) !important; }
+body[data-active-view="builders"] .queue-state-row .badge {
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-muted) !important;
+  font: 600 10.5px/1.2 var(--phase32-font-data) !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="builders"] .validation-focus-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 18px !important;
+  align-items: start !important;
+  padding-bottom: 18px !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-focus-head h3 {
+  max-width: 12ch !important;
+  font: 710 clamp(32px, 4.1vw, 54px)/.96 var(--phase32-font-display) !important;
+  letter-spacing: -.055em !important;
+  color: var(--phase32-ink) !important;
+}
+body[data-active-view="builders"] .validation-focus-head p {
+  max-width: 64ch !important;
+  margin-top: 12px !important;
+  font: 430 15px/1.52 var(--phase32-font-text) !important;
+  color: var(--phase32-muted) !important;
+  letter-spacing: -.01em !important;
+}
+body[data-active-view="builders"] .validation-score {
+  min-width: 92px !important;
+  padding: 0 0 0 18px !important;
+  border: 0 !important;
+  border-left: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-gold) !important;
+  box-shadow: none !important;
+  text-align: right !important;
+}
+body[data-active-view="builders"] .validation-score strong {
+  font: 720 clamp(30px, 3vw, 46px)/.96 var(--phase32-font-data) !important;
+  color: var(--phase32-gold) !important;
+}
+body[data-active-view="builders"] .validation-score span { color: var(--phase32-soft) !important; }
+
+body[data-active-view="builders"] .next-best-action,
+body[data-active-view="builders"] #builder-list-panel .next-best-action {
+  display: grid !important;
+  grid-template-columns: 84px minmax(0, 1fr) !important;
+  gap: 18px !important;
+  align-items: baseline !important;
+  margin: 18px 0 !important;
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .next-best-action strong,
+body[data-active-view="builders"] #builder-list-panel .next-best-action strong {
+  font: 620 clamp(16px, 1.24vw, 20px)/1.3 var(--phase32-font-text) !important;
+  letter-spacing: -.02em !important;
+  color: var(--phase32-ink) !important;
+}
+
+body[data-active-view="builders"] .validation-source-proof {
+  margin: 0 0 18px !important;
+}
+body[data-active-view="builders"] .validation-source-proof div {
+  padding: 12px 14px !important;
+}
+body[data-active-view="builders"] .permit-evidence-list,
+body[data-active-view="builders"] .top-permit-evidence,
+body[data-active-view="builders"] .evidence-stack,
+body[data-active-view="builders"] .permit-evidence-card {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .permit-evidence-card,
+body[data-active-view="builders"] .evidence-stack {
+  padding: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .permit-evidence-card li,
+body[data-active-view="builders"] .validation-permit-list li,
+body[data-active-view="builders"] .evidence-stack li {
+  padding: 13px 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] .permit-evidence-card li:last-child,
+body[data-active-view="builders"] .validation-permit-list li:last-child,
+body[data-active-view="builders"] .evidence-stack li:last-child { border-bottom: 0 !important; }
+
+body[data-active-view="builders"] .validation-actions,
+body[data-active-view="builders"] #builder-list-panel .validation-actions {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  gap: 0 !important;
+  margin: 18px 0 0 !important;
+  border: 1px solid var(--phase32-line) !important;
+  background: var(--phase32-surface-soft) !important;
+}
+body[data-active-view="builders"] .validation-actions > :where(a,button),
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button) {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  min-height: 44px !important;
+  padding: 0 10px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-ink) !important;
+  box-shadow: none !important;
+  font: 650 12px/1 var(--phase32-font-text) !important;
+  letter-spacing: -.005em !important;
+}
+body[data-active-view="builders"] .validation-actions > :where(a,button):last-of-type { border-right: 0 !important; }
+body[data-active-view="builders"] .validation-call-button.copy-email-button,
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.copy-email-button {
+  background: var(--phase32-forest) !important;
+  color: #fffef9 !important;
+}
+body[data-active-view="builders"] .validation-actions svg { width: 14px !important; height: 14px !important; }
+
+body[data-active-view="builders"] .buybox-completion {
+  margin: 24px 0 0 !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .completion-head {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+}
+body[data-active-view="builders"] .completion-head strong {
+  font: 720 clamp(22px, 2.2vw, 34px)/1 var(--phase32-font-data) !important;
+  color: var(--phase32-gold) !important;
+}
+body[data-active-view="builders"] .completion-rail {
+  height: 3px !important;
+  margin: 12px 0 14px !important;
+  border-radius: 0 !important;
+  background: rgba(16,21,18,.08) !important;
+}
+body[data-active-view="builders"] .completion-rail span {
+  background: var(--phase32-forest) !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] .completion-chips {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  border: 0 !important;
+}
+body[data-active-view="builders"] .completion-chip {
+  min-height: 26px !important;
+  padding: 0 0 4px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-muted) !important;
+  font: 600 12px/1.2 var(--phase32-text, var(--phase32-font-text)) !important;
+  letter-spacing: -.005em !important;
+}
+body[data-active-view="builders"] .completion-chip.missing { color: var(--phase32-warn) !important; }
+body[data-active-view="builders"] .completion-chip.done { color: var(--phase32-forest) !important; }
+body[data-active-view="builders"] .completion-chip svg { width: 12px !important; height: 12px !important; }
+
+body[data-active-view="builders"] .validation-form,
+body[data-active-view="builders"] .validation-buybox-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin-top: 18px !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-left: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-form label,
+body[data-active-view="builders"] .validation-buybox-grid label {
+  min-width: 0 !important;
+  padding: 13px 14px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: var(--phase32-surface) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .validation-form input,
+body[data-active-view="builders"] .validation-form select,
+body[data-active-view="builders"] .validation-form textarea,
+body[data-active-view="builders"] .validation-buybox-grid input,
+body[data-active-view="builders"] .validation-buybox-grid select,
+body[data-active-view="builders"] .validation-buybox-grid textarea {
+  width: 100% !important;
+  min-height: 30px !important;
+  padding: 6px 0 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase32-ink) !important;
+  font: 450 15px/1.35 var(--phase32-font-text) !important;
+  letter-spacing: -.012em !important;
+}
+body[data-active-view="builders"] .validation-save-row {
+  padding-top: 14px !important;
+  border-top: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-save-row button,
+body[data-active-view="builders"] [data-save-buyer-validation] {
+  min-height: 38px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--phase32-forest) !important;
+  border-radius: 0 !important;
+  background: var(--phase32-forest) !important;
+  color: #fffef9 !important;
+  box-shadow: none !important;
+  font: 650 12px/1 var(--phase32-font-text) !important;
+}
+
+body[data-active-view="builders"] .seller-unlock-card h4,
+body[data-active-view="builders"] .seller-control-hero h3,
+body[data-active-view="builders"] .builder-adapter-panel h4,
+body[data-active-view="builders"] .wide-permit-panel h4 {
+  margin: 14px 0 !important;
+  font: 690 clamp(20px, 2vw, 30px)/1.05 var(--phase32-font-display) !important;
+  letter-spacing: -.04em !important;
+  color: var(--phase32-ink) !important;
+}
+body[data-active-view="builders"] .seller-unlock-card ul,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card ul {
+  display: grid !important;
+  gap: 0 !important;
+  margin: 14px 0 0 !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  list-style: none !important;
+  counter-reset: phase32-seller-gate !important;
+}
+body[data-active-view="builders"] .seller-unlock-card li,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+  counter-increment: phase32-seller-gate !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  color: var(--phase32-ink) !important;
+  font: 500 14px/1.32 var(--phase32-font-text) !important;
+}
+body[data-active-view="builders"] .seller-unlock-card li::before,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li::before {
+  content: counter(phase32-seller-gate, decimal-leading-zero) !important;
+  flex: 0 0 28px !important;
+  color: var(--phase32-forest) !important;
+  font: 650 10px/1 var(--phase32-font-data) !important;
+  letter-spacing: .08em !important;
+}
+body[data-active-view="builders"] .seller-unlock-card li span[aria-hidden="true"] { display: none !important; }
+body[data-active-view="builders"] .unlock-price {
+  margin: 16px 0 !important;
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase32-gold) !important;
+}
+
+body[data-active-view="builders"] .seller-control-panel,
+body[data-active-view="builders"] .execution-conveyor,
+body[data-active-view="builders"] .builder-two-col {
+  margin-top: clamp(22px, 3.4vw, 42px) !important;
+  padding-top: clamp(22px, 3.4vw, 42px) !important;
+  border-top: 1px solid var(--phase32-line-strong) !important;
+}
+body[data-active-view="builders"] .seller-control-hero,
+body[data-active-view="builders"] .execution-conveyor-head,
+body[data-active-view="builders"] .builder-adapter-panel .panel-kicker {
+  max-width: 860px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .seller-control-stage,
+body[data-active-view="builders"] .seller-control-row,
+body[data-active-view="builders"] .execution-stage-card,
+body[data-active-view="builders"] .permit-state-card,
+body[data-active-view="builders"] .adapter-card,
+body[data-active-view="builders"] .normalization-tier,
+body[data-active-view="builders"] .portal-link-list a {
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .lock-state-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  color: var(--phase32-soft) !important;
+}
+body[data-active-view="builders"] .lock-state-icon svg {
+  width: 13px !important;
+  height: 13px !important;
+}
+body[data-active-view="builders"] .seller-control-row.locked em,
+body[data-active-view="builders"] .seller-control-stage.locked b {
+  color: transparent !important;
+  font-size: 0 !important;
+}
+body[data-active-view="builders"] .seller-control-row.locked em::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 13px !important;
+  height: 13px !important;
+  vertical-align: middle !important;
+  background: currentColor !important;
+  color: var(--phase32-soft) !important;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10V8a5 5 0 0 1 10 0v2h.25A2.75 2.75 0 0 1 20 12.75v5.5A2.75 2.75 0 0 1 17.25 21H6.75A2.75 2.75 0 0 1 4 18.25v-5.5A2.75 2.75 0 0 1 6.75 10H7Zm2.5 0h5V8a2.5 2.5 0 0 0-5 0v2Z'/%3E%3C/svg%3E") center/contain no-repeat !important;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10V8a5 5 0 0 1 10 0v2h.25A2.75 2.75 0 0 1 20 12.75v5.5A2.75 2.75 0 0 1 17.25 21H6.75A2.75 2.75 0 0 1 4 18.25v-5.5A2.75 2.75 0 0 1 6.75 10H7Zm2.5 0h5V8a2.5 2.5 0 0 0-5 0v2Z'/%3E%3C/svg%3E") center/contain no-repeat !important;
+}
+
+@media (max-width: 980px) {
+  body[data-active-view="builders"] .validation-grid-main {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] .validation-queue {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  body[data-active-view="builders"] .builder-ops-metrics,
+  body[data-active-view="builders"] .validation-source-proof,
+  body[data-active-view="builders"] .seller-control-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] .builder-ops-metrics div:nth-child(2n),
+  body[data-active-view="builders"] .validation-source-proof div:nth-child(2n),
+  body[data-active-view="builders"] .seller-control-metrics div:nth-child(2n) { border-right: 0 !important; }
+}
+@media (max-width: 640px) {
+  body[data-active-view="builders"] main {
+    padding: 0 14px 58px !important;
+  }
+  body[data-active-view="builders"] #builder-list-section {
+    padding: 26px 0 18px !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .section-heading h2,
+  body[data-active-view="builders"] #builder-list-section > header h2 {
+    font-size: clamp(28px, 8.8vw, 38px) !important;
+    letter-spacing: -.048em !important;
+    max-width: 12ch !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title h3 {
+    font-size: clamp(34px, 10.6vw, 47px) !important;
+    line-height: .95 !important;
+    max-width: 11ch !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title p {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action,
+  body[data-active-view="builders"] .primary-action-strip.builders-primary-action {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    padding: 14px 0 !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action a {
+    justify-self: start !important;
+    margin-top: 4px !important;
+  }
+  body[data-active-view="builders"] .market-toggle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] .market-toggle {
+    min-height: 112px !important;
+    padding: 14px 14px 13px !important;
+  }
+  body[data-active-view="builders"] .market-toggle:nth-child(2n) { border-right: 0 !important; }
+  body[data-active-view="builders"] .market-toggle:nth-child(n+3) { border-top: 1px solid var(--phase32-line) !important; }
+  body[data-active-view="builders"] .market-toggle strong {
+    font-size: 15.5px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary h3,
+  body[data-active-view="builders"] .active-market-summary strong {
+    font-size: clamp(28px, 9vw, 40px) !important;
+  }
+  body[data-active-view="builders"] .builder-ops-metrics,
+  body[data-active-view="builders"] .validation-source-proof,
+  body[data-active-view="builders"] .seller-control-metrics {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] .builder-ops-metrics div,
+  body[data-active-view="builders"] .validation-source-proof div,
+  body[data-active-view="builders"] .seller-control-metrics div {
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+    gap: 14px !important;
+    padding: 12px 0 !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--phase32-line) !important;
+  }
+  body[data-active-view="builders"] .builder-ops-metrics div:last-child,
+  body[data-active-view="builders"] .validation-source-proof div:last-child,
+  body[data-active-view="builders"] .seller-control-metrics div:last-child { border-bottom: 0 !important; }
+  body[data-active-view="builders"] .validation-focus-head {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] .validation-score {
+    justify-self: start !important;
+    width: 100% !important;
+    padding: 12px 0 0 !important;
+    border-left: 0 !important;
+    border-top: 1px solid var(--phase32-line) !important;
+    text-align: left !important;
+  }
+  body[data-active-view="builders"] .validation-focus-head h3 {
+    font-size: clamp(30px, 9vw, 42px) !important;
+    max-width: 12ch !important;
+  }
+  body[data-active-view="builders"] .next-best-action,
+  body[data-active-view="builders"] #builder-list-panel .next-best-action {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+  body[data-active-view="builders"] .validation-form,
+  body[data-active-view="builders"] .validation-buybox-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] .completion-chips {
+    gap: 9px 12px !important;
+  }
+  body[data-active-view="builders"] .validation-actions > :where(a,button),
+  body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button) {
+    min-height: 42px !important;
+    padding: 0 7px !important;
+    font-size: 11.5px !important;
+  }
+  body[data-active-view="builders"] .validation-actions svg { display: none !important; }
+  body[data-active-view="builders"] .queue-copy b,
+  body[data-active-view="builders"] #builder-list-panel .queue-copy b {
+    font-size: 14.5px !important;
+  }
+  body[data-active-view="builders"] .seller-unlock-card h4,
+  body[data-active-view="builders"] .seller-control-hero h3 {
+    font-size: clamp(22px, 7vw, 30px) !important;
+  }
+}
+
+/* v1.64.1 - Phase 32.1 Builders Apple QA: one hero, safer mobile nav, calmer ledgers */
+body[data-active-view="builders"] .nav,
+body[data-active-view="builders"] header.nav {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: none !important;
+}
+body[data-active-view="builders"] .nav::-webkit-scrollbar,
+body[data-active-view="builders"] header.nav::-webkit-scrollbar { display: none !important; }
+body[data-active-view="builders"] .app-tabs {
+  flex: 0 0 auto !important;
+  max-width: calc(100vw - 128px) !important;
+  overflow-x: auto !important;
+  scrollbar-width: none !important;
+}
+body[data-active-view="builders"] .app-tabs::-webkit-scrollbar { display: none !important; }
+
+body[data-active-view="builders"] #builder-list-section > .section-heading,
+body[data-active-view="builders"] #builder-list-section .section-heading {
+  max-width: 700px !important;
+  margin-bottom: clamp(16px, 2.5vw, 26px) !important;
+  padding-bottom: clamp(18px, 2.7vw, 28px) !important;
+}
+body[data-active-view="builders"] #builder-list-section .section-heading h2,
+body[data-active-view="builders"] #builder-list-section > header h2 {
+  max-width: 12ch !important;
+  font: 730 clamp(38px, 4.8vw, 64px)/.92 var(--phase32-font-display) !important;
+  letter-spacing: -.064em !important;
+}
+body[data-active-view="builders"] #builder-list-section .section-heading p,
+body[data-active-view="builders"] #builder-list-section > header p {
+  max-width: 52ch !important;
+  font-size: clamp(15px, 1.12vw, 18px) !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="builders"] .builder-ops-header {
+  padding-top: clamp(12px, 1.7vw, 22px) !important;
+}
+body[data-active-view="builders"] .builder-ops-title h3 {
+  max-width: 16ch !important;
+  font: 700 clamp(30px, 3.2vw, 46px)/.99 var(--phase32-font-display) !important;
+  letter-spacing: -.052em !important;
+}
+body[data-active-view="builders"] .builder-ops-title p {
+  max-width: 66ch !important;
+  margin-top: 14px !important;
+  font-size: 15.5px !important;
+  line-height: 1.52 !important;
+}
+body[data-active-view="builders"] .builders-primary-action,
+body[data-active-view="builders"] .primary-action-strip.builders-primary-action {
+  margin-top: 16px !important;
+  padding: 12px 0 !important;
+}
+body[data-active-view="builders"] .builders-primary-action b {
+  font-size: clamp(16px, 1.18vw, 19px) !important;
+  line-height: 1.28 !important;
+}
+
+body[data-active-view="builders"] .market-toggle-grid {
+  align-items: stretch !important;
+}
+body[data-active-view="builders"] .market-toggle {
+  min-height: 116px !important;
+  gap: 6px !important;
+}
+body[data-active-view="builders"] .market-toggle strong {
+  font-size: clamp(15px, 1.15vw, 17px) !important;
+  line-height: 1.18 !important;
+}
+body[data-active-view="builders"] .market-toggle em,
+body[data-active-view="builders"] .market-toggle .market-builder-total {
+  font-size: 10.5px !important;
+}
+body[data-active-view="builders"] .active-market-summary h3,
+body[data-active-view="builders"] .active-market-summary strong {
+  max-width: 14ch !important;
+  font-size: clamp(28px, 3.2vw, 44px) !important;
+  line-height: 1 !important;
+}
+
+body[data-active-view="builders"] .validation-source-proof div {
+  display: grid !important;
+  grid-template-columns: minmax(92px, .38fr) minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 12px !important;
+  padding: 13px 0 !important;
+}
+body[data-active-view="builders"] .validation-source-proof span {
+  margin: 0 !important;
+}
+body[data-active-view="builders"] .validation-source-proof strong {
+  min-width: 0 !important;
+  justify-self: end !important;
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  text-align: right !important;
+  font-size: clamp(15px, 1.25vw, 18px) !important;
+  line-height: 1.18 !important;
+}
+body[data-active-view="builders"] .validation-form,
+body[data-active-view="builders"] .validation-buybox-grid {
+  border-left: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-form label,
+body[data-active-view="builders"] .validation-buybox-grid label {
+  border-right: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] .validation-form label:nth-child(odd),
+body[data-active-view="builders"] .validation-buybox-grid label:nth-child(odd) {
+  padding-left: 0 !important;
+  padding-right: 18px !important;
+  border-right: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-form label:nth-child(even),
+body[data-active-view="builders"] .validation-buybox-grid label:nth-child(even) {
+  padding-left: 18px !important;
+  padding-right: 0 !important;
+}
+
+@media (max-width: 640px) {
+  body[data-active-view="builders"] .brand {
+    flex: 0 0 auto !important;
+    font-size: 11px !important;
+    letter-spacing: -.01em !important;
+  }
+  body[data-active-view="builders"] .app-tabs {
+    max-width: calc(100vw - 128px) !important;
+    gap: 2px !important;
+    padding: 3px !important;
+  }
+  body[data-active-view="builders"] .tab-button {
+    min-height: 30px !important;
+    padding: 0 10px !important;
+    font-size: 10.5px !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .section-heading h2,
+  body[data-active-view="builders"] #builder-list-section > header h2 {
+    font-size: clamp(34px, 10.8vw, 44px) !important;
+    line-height: .94 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .section-heading p,
+  body[data-active-view="builders"] #builder-list-section > header p {
+    font-size: 16px !important;
+    line-height: 1.46 !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title h3 {
+    font-size: clamp(27px, 8vw, 34px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.048em !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action b {
+    font-size: 17px !important;
+    line-height: 1.3 !important;
+  }
+  body[data-active-view="builders"] .market-toggle-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] .market-toggle {
+    min-height: 124px !important;
+    padding: 13px 13px 12px !important;
+  }
+  body[data-active-view="builders"] .market-toggle:nth-child(n) {
+    border-top: 0 !important;
+    border-right: 1px solid var(--phase32-line) !important;
+  }
+  body[data-active-view="builders"] .market-toggle:nth-child(2n) { border-right: 0 !important; }
+  body[data-active-view="builders"] .market-toggle:nth-child(n+3) { border-top: 1px solid var(--phase32-line) !important; }
+  body[data-active-view="builders"] .market-toggle:last-child {
+    grid-column: 1 / -1 !important;
+    min-height: 96px !important;
+    border-right: 0 !important;
+  }
+  body[data-active-view="builders"] .active-market-summary h3,
+  body[data-active-view="builders"] .active-market-summary strong {
+    font-size: clamp(30px, 9vw, 38px) !important;
+    max-width: 13ch !important;
+  }
+  body[data-active-view="builders"] .validation-source-proof {
+    border-top: 1px solid var(--phase32-line) !important;
+  }
+  body[data-active-view="builders"] .validation-source-proof div {
+    grid-template-columns: minmax(104px, .42fr) minmax(0, 1fr) !important;
+    border-bottom: 1px solid var(--phase32-line) !important;
+  }
+  body[data-active-view="builders"] .validation-source-proof div:last-child { border-bottom: 0 !important; }
+  body[data-active-view="builders"] .validation-source-proof strong {
+    font-size: 17px !important;
+  }
+  body[data-active-view="builders"] .validation-form,
+  body[data-active-view="builders"] .validation-buybox-grid {
+    border-left: 0 !important;
+  }
+  body[data-active-view="builders"] .validation-form label,
+  body[data-active-view="builders"] .validation-buybox-grid label,
+  body[data-active-view="builders"] .validation-form label:nth-child(odd),
+  body[data-active-view="builders"] .validation-buybox-grid label:nth-child(odd),
+  body[data-active-view="builders"] .validation-form label:nth-child(even),
+  body[data-active-view="builders"] .validation-buybox-grid label:nth-child(even) {
+    padding: 13px 0 !important;
+    border-right: 0 !important;
+  }
+}
+
+/* v1.64.2 - Phase 32.2 Builders Apple QA: remove second hero and force readable mobile market ledger */
+body[data-active-view="builders"] .nav,
+body[data-active-view="builders"] header.nav {
+  min-height: 46px !important;
+  padding: 0 12px !important;
+  gap: 10px !important;
+  justify-content: flex-start !important;
+}
+body[data-active-view="builders"] .brand-mark { display: none !important; }
+body[data-active-view="builders"] .brand {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="builders"] .app-tabs {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x proximity !important;
+}
+body[data-active-view="builders"] .tab-button {
+  flex: 0 0 auto !important;
+  scroll-snap-align: start !important;
+}
+
+body[data-active-view="builders"] .builder-ops-title h3 {
+  max-width: none !important;
+  font: 690 clamp(24px, 2.35vw, 34px)/1.04 var(--phase32-font-display) !important;
+  letter-spacing: -.044em !important;
+}
+body[data-active-view="builders"] .builder-ops-title p {
+  max-width: 72ch !important;
+  margin-top: 10px !important;
+  font-size: 15px !important;
+}
+body[data-active-view="builders"] .builders-primary-action,
+body[data-active-view="builders"] .primary-action-strip.builders-primary-action {
+  grid-template-columns: 104px minmax(0, 1fr) auto !important;
+  max-width: 860px !important;
+}
+body[data-active-view="builders"] .market-toggle-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+}
+
+@media (max-width: 640px) {
+  body[data-active-view="builders"] .nav,
+  body[data-active-view="builders"] header.nav {
+    padding: 0 8px !important;
+    gap: 8px !important;
+  }
+  body[data-active-view="builders"] .brand {
+    max-width: 112px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    font-size: 10.5px !important;
+  }
+  body[data-active-view="builders"] .app-tabs {
+    max-width: none !important;
+    padding: 2px !important;
+    gap: 1px !important;
+  }
+  body[data-active-view="builders"] .tab-button {
+    min-height: 29px !important;
+    padding: 0 9px !important;
+    font-size: 10px !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading,
+  body[data-active-view="builders"] #builder-list-section .section-heading {
+    padding-bottom: 18px !important;
+    margin-bottom: 14px !important;
+  }
+  body[data-active-view="builders"] .builder-ops-header {
+    padding-top: 8px !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title h3 {
+    font-size: clamp(24px, 7vw, 30px) !important;
+    line-height: 1.06 !important;
+    max-width: 16ch !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title p {
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+  }
+  body[data-active-view="builders"] .builders-primary-action,
+  body[data-active-view="builders"] .primary-action-strip.builders-primary-action {
+    grid-template-columns: 1fr !important;
+    gap: 7px !important;
+  }
+  body[data-active-view="builders"] .market-toggle-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    border: 0 !important;
+    border-top: 1px solid var(--phase32-line) !important;
+    background: transparent !important;
+  }
+  body[data-active-view="builders"] .market-toggle,
+  body[data-active-view="builders"] .market-toggle:nth-child(n),
+  body[data-active-view="builders"] .market-toggle:last-child {
+    grid-column: auto !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 42px minmax(0, 1fr) auto !important;
+    align-items: baseline !important;
+    gap: 8px 12px !important;
+    padding: 13px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--phase32-line) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="builders"] .market-toggle.active {
+    padding-left: 12px !important;
+    box-shadow: inset 3px 0 0 var(--phase32-forest) !important;
+    background: var(--phase32-forest-soft) !important;
+  }
+  body[data-active-view="builders"] .market-toggle::before { display: none !important; }
+  body[data-active-view="builders"] .market-toggle.active::before { display: block !important; }
+  body[data-active-view="builders"] .market-toggle::after {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    margin-top: 1px !important;
+    height: 1px !important;
+    opacity: .45 !important;
+  }
+  body[data-active-view="builders"] .market-toggle span {
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+    align-self: start !important;
+    margin-top: 2px !important;
+    text-align: left !important;
+  }
+  body[data-active-view="builders"] .market-toggle strong {
+    grid-column: 2 !important;
+    font-size: 16px !important;
+    line-height: 1.16 !important;
+  }
+  body[data-active-view="builders"] .market-toggle em,
+  body[data-active-view="builders"] .market-toggle .market-builder-total {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    font-size: 10px !important;
+  }
+  body[data-active-view="builders"] .active-market-summary {
+    padding-top: 18px !important;
+  }
+}
+
+/* v1.64.3 - Phase 32.3 Builders Apple QA: apply readable mobile system through tablet capture widths */
+body[data-active-view="builders"] .seller-gate-lock {
+  display: inline-flex !important;
+  width: 22px !important;
+  height: 22px !important;
+  margin-right: 9px !important;
+  vertical-align: -4px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--phase32-forest) !important;
+}
+body[data-active-view="builders"] .seller-gate-lock svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+@media (max-width: 980px) {
+  body[data-active-view="builders"] .nav,
+  body[data-active-view="builders"] header.nav {
+    min-height: 46px !important;
+    padding: 0 8px !important;
+    gap: 8px !important;
+    justify-content: flex-start !important;
+  }
+  body[data-active-view="builders"] .brand-mark { display: none !important; }
+  body[data-active-view="builders"] .brand {
+    flex: 0 0 auto !important;
+    max-width: 112px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    font-size: 10.5px !important;
+  }
+  body[data-active-view="builders"] .app-tabs {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    display: flex !important;
+    justify-content: flex-start !important;
+    overflow-x: auto !important;
+    padding: 2px !important;
+    gap: 1px !important;
+    scrollbar-width: none !important;
+  }
+  body[data-active-view="builders"] .app-tabs::-webkit-scrollbar { display: none !important; }
+  body[data-active-view="builders"] .tab-button {
+    flex: 0 0 auto !important;
+    min-height: 29px !important;
+    padding: 0 9px !important;
+    font-size: 10px !important;
+  }
+  body[data-active-view="builders"] .builder-ops-title h3 {
+    font-size: clamp(24px, 4.2vw, 32px) !important;
+    line-height: 1.06 !important;
+    max-width: 16ch !important;
+  }
+  body[data-active-view="builders"] .market-toggle-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    border: 0 !important;
+    border-top: 1px solid var(--phase32-line) !important;
+    background: transparent !important;
+  }
+  body[data-active-view="builders"] .market-toggle,
+  body[data-active-view="builders"] .market-toggle:nth-child(n),
+  body[data-active-view="builders"] .market-toggle:last-child {
+    grid-column: auto !important;
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 42px minmax(0, 1fr) auto !important;
+    align-items: baseline !important;
+    gap: 8px 12px !important;
+    padding: 13px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--phase32-line) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="builders"] .market-toggle.active {
+    padding-left: 12px !important;
+    box-shadow: inset 3px 0 0 var(--phase32-forest) !important;
+    background: var(--phase32-forest-soft) !important;
+  }
+  body[data-active-view="builders"] .market-toggle::before { display: none !important; }
+  body[data-active-view="builders"] .market-toggle.active::before { display: block !important; }
+  body[data-active-view="builders"] .market-toggle::after {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    margin-top: 1px !important;
+    height: 1px !important;
+    opacity: .45 !important;
+  }
+  body[data-active-view="builders"] .market-toggle span {
+    grid-column: 1 !important;
+    grid-row: 1 / span 2 !important;
+    align-self: start !important;
+    margin-top: 2px !important;
+    text-align: left !important;
+  }
+  body[data-active-view="builders"] .market-toggle strong {
+    grid-column: 2 !important;
+    font-size: 16px !important;
+    line-height: 1.16 !important;
+  }
+  body[data-active-view="builders"] .market-toggle em,
+  body[data-active-view="builders"] .market-toggle .market-builder-total {
+    grid-column: 3 !important;
+    justify-self: end !important;
+    text-align: right !important;
+    white-space: nowrap !important;
+    font-size: 10px !important;
+  }
+}
+
+/* v1.64.4 - Phase 32.4 Builders Apple QA: guaranteed market ledger and non-collapsing proof metrics */
+body[data-active-view="builders"] .market-toggle-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] .market-toggle,
+body[data-active-view="builders"] .market-toggle:nth-child(n),
+body[data-active-view="builders"] .market-toggle:last-child {
+  grid-column: auto !important;
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) auto !important;
+  align-items: baseline !important;
+  gap: 8px 14px !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+body[data-active-view="builders"] .market-toggle.active {
+  padding-left: 12px !important;
+  background: var(--phase32-forest-soft) !important;
+  box-shadow: inset 3px 0 0 var(--phase32-forest) !important;
+}
+body[data-active-view="builders"] .market-toggle::before { display: none !important; }
+body[data-active-view="builders"] .market-toggle.active::before { display: block !important; }
+body[data-active-view="builders"] .market-toggle::after {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  height: 1px !important;
+  margin-top: 1px !important;
+  opacity: .38 !important;
+}
+body[data-active-view="builders"] .market-toggle span {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: start !important;
+  margin-top: 2px !important;
+  text-align: left !important;
+}
+body[data-active-view="builders"] .market-toggle strong {
+  grid-column: 2 !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: clamp(15.5px, 1.15vw, 17px) !important;
+}
+body[data-active-view="builders"] .market-toggle em,
+body[data-active-view="builders"] .market-toggle .market-builder-total {
+  grid-column: 3 !important;
+  justify-self: end !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  font-size: 10.5px !important;
+}
+
+body[data-active-view="builders"] .validation-focus-card .validation-source-proof,
+body[data-active-view="builders"] #builder-list-panel .validation-focus-card .validation-source-proof {
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-focus-card .validation-source-proof div,
+body[data-active-view="builders"] #builder-list-panel .validation-focus-card .validation-source-proof div {
+  display: grid !important;
+  grid-template-columns: 132px minmax(0, 1fr) !important;
+  align-items: baseline !important;
+  gap: 14px !important;
+  padding: 10px 0 !important;
+  border-right: 0 !important;
+  border-bottom: 1px solid var(--phase32-line) !important;
+}
+body[data-active-view="builders"] .validation-focus-card .validation-source-proof div:last-child,
+body[data-active-view="builders"] #builder-list-panel .validation-focus-card .validation-source-proof div:last-child {
+  border-bottom: 0 !important;
+}
+body[data-active-view="builders"] .validation-focus-card .validation-source-proof strong,
+body[data-active-view="builders"] #builder-list-panel .validation-focus-card .validation-source-proof strong {
+  justify-self: start !important;
+  text-align: left !important;
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: anywhere !important;
+  color: var(--phase32-ink) !important;
+}
+@media (max-width: 640px) {
+  body[data-active-view="builders"] .market-toggle strong {
+    white-space: normal !important;
+  }
+  body[data-active-view="builders"] .validation-focus-card .validation-source-proof div,
+  body[data-active-view="builders"] #builder-list-panel .validation-focus-card .validation-source-proof div {
+    grid-template-columns: minmax(104px, .42fr) minmax(0, 1fr) !important;
+  }
+}
+
+/* v1.64.5 - Phase 32.5 Builders Apple QA: force market selector parent out of cramped columns */
+body[data-active-view="builders"] #builder-list-panel .builder-market-workbench > .market-toggle-grid,
+body[data-active-view="builders"] #builder-list-panel .builder-engine-shell .market-toggle-grid,
+body[data-active-view="builders"] #builder-list-panel .market-toggle-grid.market-toggle-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  grid-auto-flow: row !important;
+  grid-auto-columns: unset !important;
+  gap: 0 !important;
+  width: 100% !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase32-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-market-workbench > .market-toggle-grid > .market-toggle,
+body[data-active-view="builders"] #builder-list-panel .builder-engine-shell .market-toggle-grid > .market-toggle,
+body[data-active-view="builders"] #builder-list-panel .market-toggle-grid.market-toggle-grid > .market-toggle {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+}
+@media (min-width: 981px) {
+  body[data-active-view="builders"] #builder-list-panel .builder-market-workbench > .market-toggle-grid,
+  body[data-active-view="builders"] #builder-list-panel .builder-engine-shell .market-toggle-grid,
+  body[data-active-view="builders"] #builder-list-panel .market-toggle-grid.market-toggle-grid {
+    max-width: 860px !important;
+  }
+}
+
+/* v1.64.6 - Phase 32.6 Builders Apple QA: mobile nav must not clip route labels */
+@media (max-width: 640px) {
+  body[data-active-view="builders"] .nav,
+  body[data-active-view="builders"] header.nav {
+    padding: 0 6px !important;
+    gap: 6px !important;
+  }
+  body[data-active-view="builders"] .brand {
+    max-width: 86px !important;
+    font-size: 9.5px !important;
+    letter-spacing: -.02em !important;
+  }
+  body[data-active-view="builders"] .app-tabs {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
+    padding: 2px !important;
+  }
+  body[data-active-view="builders"] .tab-button {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    min-height: 29px !important;
+    padding: 0 4px !important;
+    font-size: 8.6px !important;
+    letter-spacing: .035em !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+  }
+}

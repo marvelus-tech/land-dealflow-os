@@ -1173,6 +1173,7 @@ function solidIndustryIcon(kind) {
     empty: '<path fill="currentColor" d="M5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75A2.75 2.75 0 0 1 5.75 4Zm0 2.5a.25.25 0 0 0-.25.25v10.5c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25V6.75a.25.25 0 0 0-.25-.25H5.75Zm2.5 2.75h7.5a1 1 0 1 1 0 2h-7.5a1 1 0 1 1 0-2Zm0 3.75h4.5a1 1 0 1 1 0 2h-4.5a1 1 0 1 1 0-2Z"/>',
     check: '<path fill="currentColor" d="M9.55 16.55 4.9 11.9a1.55 1.55 0 0 1 2.2-2.2l2.45 2.45 7.35-7.35a1.55 1.55 0 1 1 2.2 2.2l-9.55 9.55Z"/>',
     pending: '<path fill="currentColor" d="M12 3.25a8.75 8.75 0 1 0 0 17.5 8.75 8.75 0 0 0 0-17.5Zm0 2.5a6.25 6.25 0 1 1 0 12.5 6.25 6.25 0 0 1 0-12.5Zm-.1 2.7a1.1 1.1 0 0 1 1.1 1.1V12l2.05 1.2a1.1 1.1 0 1 1-1.1 1.9l-2.6-1.52a1.1 1.1 0 0 1-.55-.95V9.55a1.1 1.1 0 0 1 1.1-1.1Z"/>',
+    lock: '<path fill="currentColor" d="M7 10V7.8A5 5 0 0 1 12 2.8a5 5 0 0 1 5 5V10h.25A2.75 2.75 0 0 1 20 12.75v5.5A2.75 2.75 0 0 1 17.25 21H6.75A2.75 2.75 0 0 1 4 18.25v-5.5A2.75 2.75 0 0 1 6.75 10H7Zm2.5 0h5V7.8a2.5 2.5 0 0 0-5 0V10Zm2.5 4a1.25 1.25 0 0 0-.75 2.25v1a.75.75 0 0 0 1.5 0v-1A1.25 1.25 0 0 0 12 14Z"/>',
   };
   return `<svg class="solid-industry-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[kind] || paths.proof}</svg>`;
 }
@@ -1442,7 +1443,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       </article>
       <aside class="seller-unlock-card ${selected.sellerSearch?.eligible ? 'unlocked' : ''}">
         <div class="panel-kicker"><span>Seller gate</span><b>${selected.sellerSearch?.eligible ? 'open' : `${completion.complete}/${completion.total}`}</b></div>
-        <h4>${selected.sellerSearch?.eligible ? h(selected.sellerSearch?.headline || 'Seller search unlocked.') : 'Locked until the buy box is specific enough to protect seller outreach.'}</h4>
+        <h4>${selected.sellerSearch?.eligible ? h(selected.sellerSearch?.headline || 'Seller search open.') : `<span class="seller-gate-lock" aria-label="Seller search locked until buy box is specific" title="Seller search locked until buy box is specific">${solidIndustryIcon('lock')}</span>Specific buy box required.`}</h4>
         <ul>${sellerCriteria}</ul>
         ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p><a class="seller-unlock-cta" href="#top-calls">Find parcels</a>` : '<p title="Permit proof shows demand, but buyer criteria protect the seller call.">Capture the buy box first; seller calls must match real demand.</p>'}
       </aside>
@@ -1608,7 +1609,12 @@ function renderBuilderListEnginePanel(options = {}) {
 }
 
 function renderSellerSearchControlLayer(control = {}) {
-  const stageRows = asArray(control.stageRows).map(stage => `<article class="seller-control-stage ${h(stage.status)}"><span>${h(stage.label)}</span><b>${h(stage.status)}</b><p>${h(stage.detail)}</p></article>`).join('');
+  const stageRows = asArray(control.stageRows).map(stage => {
+    const statusText = String(stage.status || 'pending');
+    const locked = /locked/i.test(statusText);
+    const statusMark = locked ? `<span class="lock-state-icon" title="${h(statusText)}" aria-label="${h(statusText)}">${solidIndustryIcon('lock')}</span>` : h(statusText);
+    return `<article class="seller-control-stage ${h(statusText)}"><span>${h(stage.label)}</span><b>${statusMark}</b><p>${h(stage.detail)}</p></article>`;
+  }).join('');
   const buyerRows = asArray(control.buyerRows).map((buyer, index) => `<div class="seller-control-row buyer-gate-row">
     <span>${String(index + 1).padStart(2, '0')}</span>
     <div><b>${h(buyer.name)}</b><small>${h(buyer.market || 'market pending')} · ${h(buyer.recentBuilds)} permit proofs · ${h(buyer.contact || 'contact to find')}</small></div>

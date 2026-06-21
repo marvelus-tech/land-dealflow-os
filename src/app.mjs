@@ -689,22 +689,24 @@ function renderContractComposer(parcel = {}) {
   const carryNames = ['city','county','zip','legalDescription','includedRights','earnestMoneyHolder','taxProration','deedType','underlyingSellerName','earnestMoneyDue','earnestMoneyDeadline','inspectionAcknowledgement','sellerSignature','buyerSignature','assignorSignature','assigneeSignature','feasibilityDeadline','preparedBy'];
   const hiddenCarry = carryNames.map(name => `<input type="hidden" name="${h(name)}" value="${h(inputs[name] || '')}">`).join('') + `<input type="hidden" name="sellerAgreementStatus" value="${h(sellerStatus)}"><input type="hidden" name="assignmentAgreementStatus" value="${h(assignmentStatus)}"><input type="hidden" name="titlePacketStatus" value="${h(titleStatus)}">`;
   const docStepper = (active) => ['Details','Prepare','Preview PDF'].map((label, index) => `<span class="contract-step ${label === active ? 'active' : index < ['Details','Prepare','Preview PDF'].indexOf(active) ? 'complete' : 'locked'}">${index + 1}<b>${h(label)}</b></span>`).join('<i></i>');
-  const stageCards = [
-    { id: 'seller', step: '01', title: 'Seller Agreement', subtitle: 'Control the property', status: sellerStatus, active: true, detail: 'Land Sale Agreement. Used after the seller call accepts terms. Locks price, title review, feasibility, closing office, and assignability.' },
-    { id: 'assignment', step: '02', title: 'Assignment Agreement', subtitle: 'Assign to builder buyer', status: assignmentUnlocked ? assignmentStatus : 'locked until seller signed', active: assignmentUnlocked, detail: 'Used later, after seller control exists. Transfers our buyer position to the builder and states the assignment fee/title settlement treatment.' },
-    { id: 'title', step: '03', title: 'Title Packet', subtitle: 'Close cleanly', status: titleStatus, active: sellerReady, detail: 'Bundle the signed seller agreement, assignment, and title email framework for escrow/title review.' },
-  ];
-  const pipeline = stageCards.map(card => `<article class="closing-flow-card ${card.active ? 'active' : 'locked'}"><span>${h(card.step)}</span><div><b>${h(card.title)}</b><em>${h(card.subtitle)}</em><p>${h(card.detail)}</p></div>${badge(card.status, card.active ? 'good' : 'warn')}</article>`).join('');
   const requiredSellerMissing = ['propertyAddress','sellerName','buyerName','purchasePrice','propertyState'].filter(name => !String(inputs[name] || '').trim());
   const requiredAssignmentMissing = ['assigneeName','assignmentFee','assigneePurchasePrice','titleCompany'].filter(name => !String(inputs[name] || '').trim());
-  return `<section id="contract-composer" class="contract-composer-panel contract-flow-workspace" aria-label="Closing contract pipeline">
-    <div class="contract-flow-hero">
-      <span class="eyebrow">Document packet</span>
-      <h2>Print the exact packet.</h2>
-      <p>Seller agreement, assignment, and title packet stay separated so the close stays legible.</p>
-      <div class="contract-flow-actions"><button type="button" id="load-selected-contract-deal">Load selected deal</button><button type="button" class="secondary" id="save-contract-packet">Save draft</button><button type="button" class="secondary" id="print-contract-packet" data-print-contract-packet="packet">Preview full packet</button></div>
+  const titlePacketReady = sellerSigned && assignmentUnlocked && ['buyer-signed','assignment-ready','ready','exported','title-opened'].includes(assignmentStatus);
+  const stageCards = [
+    { id: 'seller', step: '01', verb: 'Control', title: 'Seller agreement', status: sellerStatus, active: true, detail: requiredSellerMissing.length ? `${requiredSellerMissing.length} fields left before seller PDF.` : 'Seller packet can be signed and controlled.' },
+    { id: 'assignment', step: '02', verb: 'Assign', title: 'Assignment agreement', status: assignmentUnlocked ? assignmentStatus : 'seller signature needed', active: assignmentUnlocked, detail: assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} assignment fields left.` : 'Buyer assignment can be prepared.') : 'Quiet until the seller agreement is signed.' },
+    { id: 'title', step: '03', verb: 'Close', title: 'Title packet', status: titlePacketReady ? titleStatus : 'waiting on prerequisites', active: titlePacketReady, detail: titlePacketReady ? 'Bundle is ready for title review.' : 'Secondary until control and assignment are real.' },
+  ];
+  const statusChip = (value, active) => `<span class="quiet-status-chip ${active ? 'ready' : 'waiting'}">${h(value)}</span>`;
+  const pipeline = stageCards.map(card => `<article class="closing-ledger-row ${card.active ? 'active' : 'waiting'}" data-closing-ledger-row="${h(card.id)}"><span class="ledger-step">${h(card.step)}</span><div class="ledger-copy"><b>${h(card.verb)}</b><strong>${h(card.title)}</strong><p>${h(card.detail)}</p></div>${statusChip(card.status, card.active)}</article>`).join('');
+  return `<section id="contract-composer" class="contract-composer-panel contract-flow-workspace phase40-closing-packet-ledger" aria-label="Closing legal packet pipeline">
+    <div class="contract-flow-hero legal-packet-hero">
+      <span class="eyebrow">Legal packet workflow</span>
+      <h2>Control. Assign. Close.</h2>
+      <p>One packet path. Seller control first, buyer assignment second, title bundle last.</p>
+      <div class="contract-flow-actions legal-packet-actions"><button type="button" id="load-selected-contract-deal">Load selected deal</button><a href="#contract-composer" class="text-action" id="save-contract-packet" role="button">Save draft</a><a href="#contract-composer" class="text-action" id="print-contract-packet" data-print-contract-packet="packet" role="button">Preview packet</a></div>
     </div>
-    <div class="closing-flow-pipeline" aria-label="Contract stage pipeline">${pipeline}</div>
+    <div class="closing-flow-pipeline closing-timeline-ledger" aria-label="Closing packet timeline ledger">${pipeline}</div>
     <form id="contract-packet-form" class="contract-send-form contract-separated-form">
       ${hiddenCarry}
       <div class="print-packet-cover print-only" aria-hidden="true">
@@ -783,9 +785,9 @@ function renderContractComposer(parcel = {}) {
         <div class="contract-send-footer"><span title="Asterisk marks missing buyer gates.">Assignment flow · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} * left` : 'ready to export as PDF') : 'locked until seller signed'}</span><div><button type="button" data-contract-status="buyer-signed" ${assignmentUnlocked ? '' : 'disabled'}>Mark buyer signed</button><button type="button" data-print-contract-packet="assignment" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Print assignment</button><button type="button" id="export-assignment-contract" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Export assignment</button></div></div>
       </details>
 
-      <section id="title-packet-experience" class="title-packet-experience" aria-label="Title packet export experience">
-        <div><span class="eyebrow">Step 3 - Close cleanly</span><h3>Title packet bundle</h3><p>Once the seller agreement is controlled and the assignment is ready, export the combined packet for title: seller agreement, assignment agreement, and attorney/title review letter.</p></div>
-        <div class="title-packet-actions"><button type="button" id="export-contract-packet">Export title packet Markdown</button><button type="button" data-print-contract-packet="title" class="secondary">Print title packet</button><button type="button" data-contract-status="title-opened" class="secondary">Mark title opened</button></div>
+      <section id="title-packet-experience" class="title-packet-experience ${titlePacketReady ? 'ready' : 'secondary'}" aria-label="Title packet export experience">
+        <div><span class="eyebrow">03 Close</span><h3>Title packet bundle</h3><p>${titlePacketReady ? 'Seller control and buyer assignment are in place. Send one clean bundle to title.' : 'Secondary until seller control and buyer assignment are complete.'}</p></div>
+        <div class="title-packet-actions"><button type="button" id="export-contract-packet" ${titlePacketReady ? '' : 'disabled'}>Export title packet</button><button type="button" data-print-contract-packet="title" class="text-action" ${titlePacketReady ? '' : 'disabled'}>Preview</button><button type="button" data-contract-status="title-opened" class="text-action" ${titlePacketReady ? '' : 'disabled'}>Mark opened</button></div>
       </section>
       <article class="contract-paper printable-paper title-review-paper print-only" data-print-doc="title-review" aria-hidden="true">
         ${printMeta('Attorney and title review')}
@@ -815,11 +817,12 @@ function renderClosingDeskResearchDeck() {
       <div class="candidate-stack">${candidates.map(candidate => `<a href="${h(candidate.url)}" target="_blank" rel="noopener noreferrer"><b>${h(candidate.name)}</b><small>${h(candidate.assignmentFriendly || 'unknown')} assignment status · ${h(asArray(candidate.serviceSignals).slice(0, 3).join(' / '))}</small></a>`).join('')}</div>
     </article>`;
   }).join('');
-  return `<section class="closing-intelligence-deck" aria-label="Closing desk operating system">
+  return `<details class="closing-intelligence-deck closing-os-disclosure" aria-label="Closing desk operating system">
+    <summary><span class="eyebrow">Operating system</span><b>Contracts, title, escrow, HUD</b><em>Reference notes</em></summary>
     <div class="closing-intel-hero">
       <span class="eyebrow">Closing desk operating system</span>
       <h2>Contracts, title, escrow, HUD. Paid cleanly.</h2>
-      <p>Closing Desk is the information hub for title, escrow, contracts, HUD review, disbursement, and public title-company candidates in our priority markets. The app does not pretend assignment friendly status is verified; it forces the call.</p>
+      <p>Reference layer only. The active workflow stays above: control, assign, close.</p>
       <div class="badge-stack">${badge('closing model ready', 'good')}${badge('public title candidates', 'neutral')}${badge('assignment status must be verified', 'warn')}</div>
     </div>
     <div class="closing-intel-grid">
@@ -856,9 +859,9 @@ function renderClosingDeskResearchDeck() {
       <div class="card-kicker"><span>Real title-company candidates</span><b>${h(markets.length)} markets</b></div>
       <h3>Start here, then verify assignments by call.</h3>
       <p>These are public web candidates in the priority geography. Public title/escrow service pages prove relevance, not assignment-friendliness.</p>
-      <div class="title-market-grid">${marketRows || '<p>Title-company market candidates loading…</p>'}</div>
+      <div class="title-market-grid">${marketRows || '<p>Title-company market candidates loading...</p>'}</div>
     </article>
-  </section>`;
+  </details>`;
 }
 
 function renderTitleClosingDesk(parcel, buyer, options = {}) {

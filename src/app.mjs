@@ -1742,10 +1742,10 @@ function renderBuilderListEnginePanel(options = {}) {
   selectedBuilderMarketKey = activeState?.markets?.[0]?.key || selectedBuilderMarketKey || 'knoxville';
   stateSummaries = stateSummaries.map(state => ({ ...state, isActive: state.stateCode === selectedBuilderMarketState }));
   activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
-  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
+  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span class="state-market-code">${h(state.stateCode)}</span>
-    <span class="state-market-copy"><strong>${h(state.thesis)}</strong><small>${h(state.countyCount)} ${state.countyCount === 1 ? 'county/market' : 'counties/markets'} · ${h(state.statusCopy)}</small></span>
-    <em>${h(state.builderCount)}</em>
+    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.label)}</span><span class="state-market-thesis">${h(state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'county lane' : 'county lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
+    <em><b>${h(state.builderCount)}</b><span>builders</span></em>
   </div>`).join('');
   const activeBuilders = asArray(activeState.rows);
   const activeSummary = activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
@@ -1771,10 +1771,10 @@ function renderBuilderListEnginePanel(options = {}) {
     <strong>${h(activeState.label)}</strong>
     <p><b>${h(activeState.detail || activeState.thesis)}.</b> ${h(activeState.note || '')}</p>
     <ul>
-      <li title="Permit-backed builder rows under this state.">${h(activeBuilders.length)} builders</li>
-      <li title="County/source lanes grouped under the state decision.">${h(activeState.countyCount || 0)} counties</li>
-      <li title="Rows with public phone/email/contact path ready for operator outreach.">${h(activeSummary.callable ?? 0)} callable</li>
-      <li title="Recent permit rows attached as public proof.">${h(activeSummary.totalRecentBuildSignals ?? 0)} proofs</li>
+      <li title="Permit-backed builder rows under this state."><b>${h(activeBuilders.length)}</b><span>builders</span></li>
+      <li title="County/source lanes grouped under the state decision."><b>${h(activeState.countyCount || 0)}</b><span>counties</span></li>
+      <li title="Rows with public phone/email/contact path ready for operator outreach."><b>${h(activeSummary.callable ?? 0)}</b><span>callable</span></li>
+      <li title="Recent permit rows attached as public proof."><b>${h(activeSummary.totalRecentBuildSignals ?? 0)}</b><span>proofs</span></li>
     </ul>
     ${renderBuilderCountyLedger(activeState)}
   </div>`;
@@ -1824,7 +1824,7 @@ function renderBuilderListEnginePanel(options = {}) {
         <span class="eyebrow">Builders · state workbench</span>
         <h3>Choose state. Read queue.</h3>
         <p><b>State first, counties as evidence.</b> Choose the operating state, read its builder proof, then move directly into the queue.</p>
-        <div class="primary-action-strip builders-primary-action"><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
+        <div class="primary-action-strip builders-primary-action"><b>Call top builder. Capture buy box.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="state-first-workbench state-data-workbench" aria-label="Choose operating state and read selected-state data">
         <div class="state-workbench-kicker">

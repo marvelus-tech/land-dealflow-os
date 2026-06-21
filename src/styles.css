@@ -26365,3 +26365,288 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     border-right: 0 !important;
   }
 }
+
+
+/* v1.89 - Builders desktop selector typography: state first, proof second, metric last */
+@media (min-width: 821px) {
+  body[data-active-view="builders"] .builders-phase83-workbench {
+    --builders-forest-deep: #0f3f2f;
+    --builders-forest: #14543f;
+    --builders-forest-soft: rgba(20, 84, 63, .072);
+    --builders-gold-refined: #9b6b16;
+    --builders-gold-soft: rgba(155, 107, 22, .105);
+    --builders-ink-strong: #0d1410;
+    --builders-text: #27342c;
+    --builders-text-muted: #647067;
+    --builders-rule-soft: rgba(13, 20, 16, .082);
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-layout {
+    grid-template-columns: minmax(380px, 430px) minmax(370px, 1fr) !important;
+    gap: clamp(34px, 3.6vw, 52px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-grid {
+    border-top-color: var(--builders-rule-soft) !important;
+    border-bottom-color: var(--builders-rule-soft) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle {
+    min-height: 68px !important;
+    grid-template-columns: 42px minmax(0, 1fr) minmax(54px, auto) !important;
+    column-gap: 15px !important;
+    padding: 12px 4px 12px 0 !important;
+    border-bottom-color: var(--builders-rule-soft) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle:hover {
+    background: rgba(20, 84, 63, .028) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle.is-active,
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle.active {
+    background: linear-gradient(90deg, rgba(20, 84, 63, .072), rgba(255, 255, 252, 0)) !important;
+    box-shadow: inset 2px 0 0 var(--builders-forest) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-code,
+  body[data-active-view="builders"] .builders-phase83-workbench .state-code {
+    width: 32px !important;
+    height: 32px !important;
+    margin-left: 6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid rgba(20, 84, 63, .14) !important;
+    border-radius: 999px !important;
+    background: rgba(20, 84, 63, .035) !important;
+    color: var(--builders-forest-deep) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    font-weight: 820 !important;
+    letter-spacing: .105em !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle.is-active .state-market-code,
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle.active .state-market-code {
+    border-color: var(--builders-forest) !important;
+    background: var(--builders-forest) !important;
+    color: #fffefa !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-copy {
+    min-width: 0 !important;
+    display: grid !important;
+    gap: 6px !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-copy strong {
+    display: grid !important;
+    grid-template-columns: minmax(112px, max-content) minmax(0, 1fr) !important;
+    column-gap: 10px !important;
+    align-items: baseline !important;
+    color: var(--builders-ink-strong) !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+    letter-spacing: 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-name {
+    color: var(--builders-ink-strong) !important;
+    font-size: 14px !important;
+    line-height: 1.08 !important;
+    font-weight: 790 !important;
+    letter-spacing: -.022em !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-thesis {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+    color: var(--builders-text-muted) !important;
+    font-size: 12px !important;
+    line-height: 1.15 !important;
+    font-weight: 590 !important;
+    letter-spacing: -.006em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-copy small {
+    display: flex !important;
+    align-items: baseline !important;
+    gap: 9px !important;
+    min-width: 0 !important;
+    color: var(--builders-text-muted) !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+    font-weight: 560 !important;
+    letter-spacing: .012em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-copy small span:first-child {
+    color: var(--builders-gold-refined) !important;
+    font-weight: 760 !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-copy small span + span {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle em {
+    justify-self: end !important;
+    min-width: 52px !important;
+    display: grid !important;
+    gap: 2px !important;
+    justify-items: end !important;
+    align-content: center !important;
+    color: var(--builders-gold-refined) !important;
+    font-style: normal !important;
+    font-variant-numeric: tabular-nums !important;
+    text-align: right !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle em b {
+    color: var(--builders-gold-refined) !important;
+    font-size: 20px !important;
+    line-height: .95 !important;
+    font-weight: 820 !important;
+    letter-spacing: -.04em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle em span {
+    color: var(--builders-text-muted) !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+    font-weight: 720 !important;
+    letter-spacing: .13em !important;
+    text-transform: uppercase !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > strong {
+    color: var(--builders-ink-strong) !important;
+    font-size: clamp(27px, 2vw, 33px) !important;
+    font-weight: 780 !important;
+    letter-spacing: -.045em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > p {
+    max-width: 42ch !important;
+    color: var(--builders-text) !important;
+    font-size: 14px !important;
+    line-height: 1.58 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > p b {
+    color: var(--builders-forest-deep) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    border-top-color: var(--builders-rule-soft) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li {
+    padding: 11px 12px 11px 0 !important;
+    color: var(--builders-text-muted) !important;
+    font-size: 11px !important;
+    line-height: 1.15 !important;
+    font-weight: 700 !important;
+    letter-spacing: .045em !important;
+    text-transform: uppercase !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li::first-letter {
+    color: var(--builders-gold-refined) !important;
+  }
+}
+
+/* v1.89.5 - Builders desktop second-pass: tighten selector cadence after self-review */
+@media (min-width: 1181px) {
+  body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+    grid-template-columns: minmax(235px, 280px) minmax(820px, 1fr) !important;
+    column-gap: clamp(42px, 5vw, 72px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title h3 {
+    max-width: 260px !important;
+    font-size: clamp(30px, 2.45vw, 38px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title p {
+    max-width: 282px !important;
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-layout {
+    grid-template-columns: minmax(410px, 450px) minmax(390px, 1fr) !important;
+    gap: clamp(38px, 4vw, 58px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary {
+    padding-left: clamp(34px, 3.2vw, 48px) !important;
+  }
+}
+
+
+/* v1.89.6 - Builders desktop Apple review fix: compact rail, no dead disclosure slab */
+@media (min-width: 1181px) {
+  body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+    grid-template-columns: minmax(300px, 330px) minmax(760px, 1fr) !important;
+    column-gap: clamp(38px, 4.2vw, 58px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench > .builder-ops-title {
+    max-width: 330px !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title h3 {
+    max-width: 320px !important;
+    font-size: clamp(29px, 2.2vw, 35px) !important;
+    line-height: 1.02 !important;
+    letter-spacing: -.044em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title p {
+    max-width: 292px !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 16px !important;
+    padding: 12px 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action b {
+    max-width: 19ch !important;
+    font-size: 16px !important;
+    line-height: 1.13 !important;
+    letter-spacing: -.026em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action a {
+    align-self: end !important;
+    margin-bottom: 1px !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-layout {
+    grid-template-columns: minmax(400px, 430px) minmax(330px, 1fr) !important;
+    gap: clamp(34px, 3.3vw, 48px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary {
+    padding-left: clamp(30px, 2.8vw, 42px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) !important;
+    gap: 4px !important;
+    align-items: baseline !important;
+    padding: 12px 10px 12px 0 !important;
+    text-transform: none !important;
+    letter-spacing: .01em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li b {
+    color: var(--builders-gold-refined) !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+    font-weight: 820 !important;
+    letter-spacing: -.035em !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li span {
+    color: var(--builders-text-muted) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    font-weight: 760 !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li::first-letter {
+    color: inherit !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-county-ledger:not([open]) ul {
+    display: none !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-county-ledger {
+    background: transparent !important;
+    min-height: 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-county-ledger summary {
+    background: transparent !important;
+    min-height: 0 !important;
+  }
+}

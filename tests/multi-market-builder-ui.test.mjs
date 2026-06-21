@@ -36,6 +36,12 @@ assert.match(app, /Queue pending verified proof\./, 'Empty builder states should
 assert.match(app, /builder-empty-proof/, 'Empty builder queues should show source proof as a sibling ledger, not a nested card');
 assert.doesNotMatch(app, /builder-market-workbench state-first-workbench/, 'State-first selector must not inherit legacy county-switchboard workbench layout');
 assert.match(app, /<div role="button" tabindex="0" class="state-market-toggle/, 'State selector controls must avoid global button chrome');
+assert.match(app, /active is-active/, 'Active Builders state row must expose the is-active hook used by the late Apple hierarchy layer');
+assert.match(app, /state-market-name/, 'State selector rows must split state name from lane thesis for desktop hierarchy');
+assert.match(app, /state-market-thesis/, 'State selector rows must demote the lane thesis below the state name');
+assert.match(app, /<em><b>\$\{h\(state\.builderCount\)\}<\/b><span>builders<\/span><\/em>/, 'Builder count must be a labeled metric, not an unlabeled number');
+assert.match(app, /Call top builder\. Capture buy box\./, 'Builders action copy should be compact enough for the desktop instruction rail');
+assert.match(app, /<li title="Permit-backed builder rows under this state\."\s*><b>\$\{h\(activeBuilders\.length\)\}<\/b><span>builders<\/span><\/li>/, 'Selected-state summary metrics should split numerals from labels');
 assert.doesNotMatch(app, /<button type="button" class="state-market-toggle/, 'State selector controls must not be native buttons with inherited dark slabs');
 assert.match(app, /State first, counties as evidence/, 'Builders copy must explain state-first grouping and progressive county detail');
 assert.match(app, /function renderBuilderCountyLedger/, 'County lanes must move into selected-state evidence detail');
@@ -85,6 +91,13 @@ assert.match(css, /v1\.85 - Builders lower queue becomes a calm operating ledger
 assert.match(css, /v1\.86 - Builders lower ledger second pass: empty queue is status, not hero/, 'Phase 86 lower queue second-pass scale correction missing');
 assert.match(css, /v1\.87 - Builders workbench Apple review correction: product surface, not poster/, 'Phase 87 Apple review correction missing');
 assert.match(css, /v1\.88 - Builders open work surface: remove the presentation frame/, 'Phase 88 open work-surface correction missing');
+assert.match(css, /v1\.89 - Builders desktop selector typography: state first, proof second, metric last/, 'Phase 89 desktop selector hierarchy layer missing');
+assert.match(css, /v1\.89\.5 - Builders desktop second-pass: tighten selector cadence after self-review/, 'Phase 89 second-pass desktop correction missing');
+assert.match(css, /v1\.89\.6 - Builders desktop Apple review fix: compact rail, no dead disclosure slab/, 'Phase 89 final screenshot-QA correction missing');
+assert.match(css, /@media \(min-width: 821px\) \{[\s\S]{0,140}body\[data-active-view="builders"\] \.builders-phase83-workbench/, 'Phase 89 must be desktop-scoped to Builders');
+assert.match(css, /\.state-market-code,[\s\S]{0,260}\.state-code \{[\s\S]{0,420}border-radius: 999px !important/, 'Phase 89 must style the actual state-market-code DOM hook');
+assert.match(css, /\.state-market-toggle em b \{[\s\S]{0,260}color: var\(--builders-gold-refined\) !important;[\s\S]{0,160}font-size: 20px !important/, 'Builder metric must be a clear gold tabular number');
+assert.match(css, /\.state-county-ledger:not\(\[open\]\) ul \{[\s\S]{0,80}display: none !important/, 'Collapsed county disclosure must not leave a dead white slab');
 assert.match(css, /\.builders-phase83-workbench\.builders-phase83-workbench \{[\s\S]{0,360}border: 0 !important;[\s\S]{0,220}background: transparent !important;[\s\S]{0,120}box-shadow: none !important;/, 'Builders workbench must be an open product surface, not a framed presentation card');
 assert.match(css, /\.state-market-grid \{[\s\S]{0,240}border: 0 !important;[\s\S]{0,180}border-top: 1px solid var\(--builders-line\) !important;[\s\S]{0,180}border-bottom: 1px solid var\(--builders-line\) !important;/, 'State selector should use open ledger hairlines, not a boxed table frame');
 assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missing');

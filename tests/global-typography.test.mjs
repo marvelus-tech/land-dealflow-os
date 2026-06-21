@@ -118,7 +118,7 @@ assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /
 assert.match(css, /v1\.55\.1 - Phase 23 screenshot correction: single-row mobile nav and no Today field relics/, 'Phase 23 screenshot correction marker required');
 assert.match(css, /\.app-tabs,[\s\S]{0,220}flex-wrap: nowrap !important/, 'Mobile nav tabs should remain single-row and horizontally scroll instead of forcing a tall grid');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Terrain intelligence \/ Tennessee live-first|TN terrain|builder demand, parcel constraint/, 'Today route should not keep old terrain/campaign wording relics');
-assert.match(css, /v1\.56 - Phase 24 Apple product-system Today rebuild: forest\/gold calm hierarchy, no wall\/sign relics/, 'Phase 24 marker required for the Apple product-system Today rebuild');
+assert.match(css, /v1\.56 - Phase 24 Apple product-system Today rebuild: forest\/gold calm hierarchy, no legacy display relics/, 'Phase 24 marker required for the Apple product-system Today rebuild');
 assert.match(css, /--phase24-forest: #164d36/, 'Phase 24 should define an accessible forest primary accent');
 assert.match(css, /--phase24-gold: #9c741f/, 'Phase 24 should define a restrained gold metric highlight');
 assert.match(css, /--phase24-rule: every-pixel-earns-place-one-primary-action-calm-evidence-after/, 'Phase 24 should encode the hierarchy rule');
@@ -180,5 +180,14 @@ assert.match(css, /Final route isolation guard after Phase 27 Closing cleanup/, 
 
 assert.match(appSource, /field-label-text[\s\S]{0,180}\$\{complete \? '✓' : '\*'\}/, 'Missing form fields should use an asterisk instead of visible required copy');
 assert.doesNotMatch(appSource, /required field\(s\) left|required seller field\(s\) left|required gate\(s\) left|buyer field\(s\) left|buyer gate\(s\) left|>\$\{complete \? '✓' : 'required'\}<\/em>/, 'Visible form status copy should not spell out required; use * plus tooltip/aria context');
+
+assert.match(css, /v1\.60 - Phase 28 Apple product-system convergence: Closing ledger, unified SF\/Inter typography, no legacy display-font relics/, 'Phase 28 product-system convergence marker required');
+assert.match(css, /--phase28-forest: #0f4d35/, 'Phase 28 should define premium accessible forest accent');
+assert.match(css, /--phase28-gold: #8a6418/, 'Phase 28 should define restrained gold highlight accent');
+assert.match(css, /body\[data-active-view="closing"\] \.closing-hero[\s\S]{0,520}linear-gradient\(145deg, #fffef8 0%, #f5f0e4 100%\)/, 'Closing hero should be brought into the calm light Apple ledger paradigm');
+assert.match(css, /body\[data-active-view="closing"\] \.contract-flow-workspace[\s\S]{0,260}background: transparent !important/, 'Closing contract workspace should remove excess nested card chrome');
+assert.match(css, /#closing-desk\[hidden\][\s\S]{0,120}display: none !important/, 'Phase 28 route isolation guard should protect hidden routed pages');
+assert.doesNotMatch(css, /Fraunces|Georgia|Times New Roman|Archivo|wk-serif|wk-sans|wk-meta/, 'Old stylistic font families and token names must be removed from the stylesheet');
+assert.doesNotMatch(appSource + css, /title-orbital|title-glass|title-command-card|resource well|permit signals|\bsignage\b|\bbillboard\b|wk-artifact|wk-scanline|wk-contour/, 'Wall/sign-era product relics must not remain in app markup or stylesheet');
 
 console.log('global typography tests passed');

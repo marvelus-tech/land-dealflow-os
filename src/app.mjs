@@ -1581,16 +1581,21 @@ function upsertBuyerValidation(row) {
 function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', label: 'Tennessee', isLive: true, markets: [], stateMeta: {} }, rows = [], summary = {}) {
   if (!rows.length) {
     const portals = asArray(activeState.stateMeta?.portals).slice(0, 3).map(portal => `<li><b>${h(portal.market)}</b><span>${h(portal.system)} · ${h(portal.jurisdiction)}</span></li>`).join('');
-    return `<section id="buyer-validation-command" class="validation-command builder-empty-command" aria-label="Builder queue empty for ${h(activeState.label)}">
-      <div class="builder-empty-state">
-        <span class="eyebrow">${h(activeState.label)} builder queue</span>
-        <h3>No permit-active builders loaded yet.</h3>
-        <p>This state lane stays intentionally blank until public permit activity is collected, companies are deduped, and public business contact provenance is verified.</p>
-        <div class="empty-state-actions">
-          <a href="#market-state-${h(activeState.stateCode.toLowerCase())}">Open ${h(activeState.stateCode)} pipeline</a>
-          <span>${h(asArray(activeState.stateMeta?.pipeline).length)} source steps ready</span>
+    return `<section id="buyer-validation-command" class="validation-command builder-empty-command phase85-builder-ledger" aria-label="Builder queue empty for ${h(activeState.label)}">
+      <div class="builder-empty-state builder-queue-ledger-empty">
+        <div class="builder-empty-copy">
+          <span class="eyebrow">${h(activeState.label)} builder queue</span>
+          <h3>Queue pending verified proof.</h3>
+          <p>This state lane stays blank until public permit activity is collected, companies are deduped, and public business contact provenance is verified.</p>
+          <div class="empty-state-actions">
+            <a href="#market-state-${h(activeState.stateCode.toLowerCase())}">Open ${h(activeState.stateCode)} source pipeline</a>
+            <span>${h(asArray(activeState.stateMeta?.pipeline).length)} source steps ready</span>
+          </div>
         </div>
-        <ul class="empty-source-list">${portals || '<li><b>Portal list pending</b><span>Add direct county/city sources before loading builders.</span></li>'}</ul>
+        <div class="builder-empty-proof" aria-label="Source readiness for ${h(activeState.label)}">
+          <span>Source readiness</span>
+          <ul class="empty-source-list">${portals || '<li><b>Portal list pending</b><span>Add direct county/city sources before loading builders.</span></li>'}</ul>
+        </div>
       </div>
     </section>`;
   }
@@ -1655,7 +1660,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const nextActionCopy = selected.sellerSearch?.eligible
     ? 'Buy box captured. Find parcels matching this builder before seller outreach starts.'
     : `Call once. Capture the exact buy box. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
-  return `<section id="buyer-validation-command" class="validation-command" aria-label="Buyer Validation Command Center">
+  return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger" aria-label="Buyer Validation Command Center">
     <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">

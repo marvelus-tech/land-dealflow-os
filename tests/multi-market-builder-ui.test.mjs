@@ -28,6 +28,9 @@ assert.doesNotMatch(app, /<section class="builder-ops-header"/, 'State-first Bui
 assert.match(app, /data-state-market-selector/, 'Builders top selector must be state-first, not a county-card switchboard');
 assert.match(app, /state-workbench-layout/, 'State selector and selected-state data must sit inside one adjacent workbench layout');
 assert.match(app, /Operating state/, 'Integrated workbench must label the selected operating state next to the selector');
+assert.match(app, /phase85-builder-ledger/, 'Builders lower queue must use the phase 85 calm operating ledger hook');
+assert.match(app, /Queue pending verified proof\./, 'Empty builder states should explain the proof gate, not read like a broken list');
+assert.match(app, /builder-empty-proof/, 'Empty builder queues should show source proof as a sibling ledger, not a nested card');
 assert.doesNotMatch(app, /builder-market-workbench state-first-workbench/, 'State-first selector must not inherit legacy county-switchboard workbench layout');
 assert.match(app, /<div role="button" tabindex="0" class="state-market-toggle/, 'State selector controls must avoid global button chrome');
 assert.doesNotMatch(app, /<button type="button" class="state-market-toggle/, 'State selector controls must not be native buttons with inherited dark slabs');
@@ -75,6 +78,8 @@ assert.match(css, /v1\.81 - State summary mobile copy must never kiss the scroll
 assert.match(css, /v1\.82 - Mobile state-first header must use full-width block flow/, 'Mobile state-first full-width block flow guard missing');
 assert.match(css, /v1\.83 - Builders Apple hierarchy: selector and data become one workbench/, 'Phase 83 integrated Builders workbench CSS missing');
 assert.match(css, /v1\.84 - Builders second-pass proximity repair: selected data attaches to selector/, 'Phase 84 selector-data proximity repair missing');
+assert.match(css, /v1\.85 - Builders lower queue becomes a calm operating ledger/, 'Phase 85 lower Builders ledger CSS missing');
+assert.match(css, /v1\.86 - Builders lower ledger second pass: empty queue is status, not hero/, 'Phase 86 lower queue second-pass scale correction missing');
 assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missing');
 
 console.log('multi-market builder UI tests passed');

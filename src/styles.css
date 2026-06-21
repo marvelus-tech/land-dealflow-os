@@ -25834,3 +25834,222 @@ body[data-active-view="builders"] .builders-phase83-workbench .state-county-row 
     padding-top: 12px !important;
   }
 }
+
+
+/* v1.85 - Builders lower queue becomes a calm operating ledger */
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger {
+  --phase85-forest: var(--builders-forest-800, #114734);
+  --phase85-forest-soft: rgba(17, 71, 52, .075);
+  --phase85-gold: var(--builders-gold-700, #9a6a12);
+  --phase85-ink: var(--builders-ink, #101612);
+  --phase85-muted: var(--builders-muted, #5f6b62);
+  --phase85-line: var(--builders-line, rgba(16, 22, 18, .105));
+  --phase85-hairline: var(--builders-hairline, rgba(16, 22, 18, .075));
+  margin-top: clamp(28px, 4vw, 46px) !important;
+  padding-top: clamp(18px, 2.2vw, 28px) !important;
+  border-top: 1px solid var(--phase85-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state {
+  width: 100% !important;
+  max-width: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(320px, .72fr) minmax(420px, 1fr) !important;
+  gap: clamp(28px, 4.8vw, 74px) !important;
+  align-items: start !important;
+  padding: clamp(18px, 2.8vw, 30px) 0 clamp(22px, 3vw, 36px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase85-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-copy,
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-proof {
+  min-width: 0 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state .eyebrow,
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-proof > span {
+  color: var(--phase85-forest) !important;
+  font-size: 11px !important;
+  line-height: 1.1 !important;
+  letter-spacing: .15em !important;
+  text-transform: uppercase !important;
+  font-weight: 850 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state h3 {
+  max-width: 520px !important;
+  margin: 14px 0 0 !important;
+  color: var(--phase85-ink) !important;
+  font-size: clamp(30px, 3.25vw, 44px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.055em !important;
+  font-weight: 830 !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state p {
+  max-width: 500px !important;
+  margin: 14px 0 0 !important;
+  color: var(--phase85-muted) !important;
+  font-size: 15px !important;
+  line-height: 1.58 !important;
+  letter-spacing: -.012em !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-state-actions {
+  margin-top: 18px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 14px !important;
+  align-items: center !important;
+  padding-top: 14px !important;
+  border-top: 1px solid var(--phase85-line) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-state-actions a,
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-state-actions span {
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase85-forest) !important;
+  font-size: 12px !important;
+  line-height: 1.25 !important;
+  font-weight: 820 !important;
+  letter-spacing: .02em !important;
+  text-decoration: none !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-state-actions span {
+  color: var(--phase85-gold) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-proof {
+  padding-top: 0 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-source-list {
+  margin: 14px 0 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--phase85-line) !important;
+  list-style: none !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-source-list li {
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .54fr) minmax(0, 1fr) !important;
+  gap: 18px !important;
+  align-items: baseline !important;
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase85-hairline) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-source-list b {
+  color: var(--phase85-ink) !important;
+  font-size: 14px !important;
+  line-height: 1.18 !important;
+  font-weight: 780 !important;
+  letter-spacing: -.018em !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-source-list span {
+  margin: 0 !important;
+  color: var(--phase85-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger:not(.builder-empty-command) .validation-grid-main {
+  grid-template-columns: minmax(300px, .72fr) minmax(0, 1.45fr) minmax(250px, .54fr) !important;
+  gap: clamp(22px, 2.7vw, 38px) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger:not(.builder-empty-command) .operator-flow-pulse {
+  margin-bottom: 18px !important;
+  border-color: var(--phase85-line) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger:not(.builder-empty-command) .completion-state-legend {
+  justify-content: flex-end !important;
+  margin-bottom: 18px !important;
+  color: var(--phase85-muted) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger :where(.validation-queue, .validation-focus-card, .seller-unlock-card) {
+  border-top-color: var(--phase85-line) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .validation-focus-head h3 {
+  font-size: clamp(28px, 2.8vw, 42px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.052em !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .next-best-action {
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--phase85-line) !important;
+  background: transparent !important;
+  padding: 14px 0 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .next-best-action span {
+  color: var(--phase85-gold) !important;
+}
+@media (max-width: 1000px) {
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state,
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger:not(.builder-empty-command) .validation-grid-main {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger {
+    margin-top: 24px !important;
+    padding-top: 18px !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state {
+    display: block !important;
+    padding: 18px 0 24px !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state h3 {
+    font-size: clamp(28px, 7.8vw, 34px) !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state p {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-proof {
+    margin-top: 24px !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-source-list li {
+    grid-template-columns: 1fr !important;
+    gap: 5px !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger:not(.builder-empty-command) .operator-flow-pulse {
+    overflow-x: auto !important;
+    grid-template-columns: repeat(5, minmax(92px, 1fr)) !important;
+  }
+}
+
+
+/* v1.86 - Builders lower ledger second pass: empty queue is status, not hero */
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state h3 {
+  max-width: 440px !important;
+  font-size: clamp(28px, 2.65vw, 38px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.052em !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state p {
+  max-width: 470px !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-proof {
+  max-width: 560px !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-state-actions {
+  max-width: 470px !important;
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .builder-empty-state h3 {
+    font-size: clamp(27px, 7vw, 31px) !important;
+    line-height: 1.04 !important;
+    max-width: 330px !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command.phase85-builder-ledger .empty-state-actions {
+    gap: 10px 14px !important;
+  }
+}

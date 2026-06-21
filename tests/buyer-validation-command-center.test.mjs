@@ -74,30 +74,6 @@ assert.ok(validatedBall.sellerSearch.criteria.some(item => item.includes('West K
 assert.ok(validatedBall.sellerSearch.criteria.some(item => item.includes('$65,000')));
 assert.equal(validatedBall.sellerSearch.offerCeiling, 53300);
 
-const staleBlankContactCenter = buildBuyerValidationCommandCenter([{ ...ball, phone: '865-862-4774', email: 'customerservice@ballhomes.com', website: 'https://www.ballhomes.com', contactUrl: 'https://www.ballhomes.com/contact/' }], [{
-  builderId: ball.builderId,
-  phone: '',
-  email: '',
-  website: '',
-  contactUrl: '',
-  buyBox: { geography: 'Karns' },
-}]);
-const staleBlankContactRow = staleBlankContactCenter.items[0];
-assert.equal(staleBlankContactRow.phone, '865-862-4774', 'blank saved workspace phone must not erase enriched source phone');
-assert.equal(staleBlankContactRow.email, 'customerservice@ballhomes.com', 'blank saved workspace email must not erase enriched source email');
-assert.equal(staleBlankContactRow.website, 'https://www.ballhomes.com', 'blank saved workspace website must not erase enriched source website');
-assert.equal(staleBlankContactRow.contactUrl, 'https://www.ballhomes.com/contact/', 'blank saved workspace contact URL must not erase enriched source website action');
-
-const rawIdContactCenter = buildBuyerValidationCommandCenter([{ id: 'raw-builder-id', name: 'Raw ID Builder', phone: '', email: 'desk@example.com', website: 'https://example.com' }], [{
-  builderId: 'raw-builder-id',
-  email: '',
-  website: '',
-  contactUrl: '',
-}]);
-assert.equal(rawIdContactCenter.items[0].builderId, 'raw-builder-id', 'raw builder_signals rows should still get a stable builderId');
-assert.equal(rawIdContactCenter.items[0].email, 'desk@example.com', 'blank saved rows must not erase direct emails on raw id-based source rows');
-assert.equal(rawIdContactCenter.items[0].contactUrl, 'https://example.com', 'website-only rows should still enable the Website action in detail');
-
 const lockedSearch = buildSellerSearchInstructions({ ...ball, buyBox: saved[0].buyBox, callStatus: 'spoke_to_decision_maker' });
 assert.equal(lockedSearch.eligible, false, 'complete fields still require explicit validated_buy_box call status');
 

@@ -25392,3 +25392,19 @@ body[data-active-view="builders"] .state-first-ops-header .builder-ops-title .pr
   position: static !important;
   transform: none !important;
 }
+
+
+/* v1.81 - State summary mobile copy must never kiss the scrollbar */
+body[data-active-view="builders"] .state-focus-summary,
+body[data-active-view="builders"] .state-focus-summary p,
+body[data-active-view="builders"] .state-county-ledger {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .state-focus-summary p {
+    padding-right: 4px !important;
+    line-height: 1.52 !important;
+  }
+}

@@ -67,6 +67,7 @@ assert.match(css, /v1\.77 - Builders state-first workbench owns the full row/, '
 assert.match(css, /v1\.78 - State-first Builders header uses normal vertical flow/, 'State-first header normal-flow correction missing');
 assert.match(css, /v1\.79 - Isolated state-first Builders header/, 'Isolated state-first header CSS missing');
 assert.match(css, /v1\.80 - Isolated state-first child order lock/, 'State-first title/workbench child order lock missing');
+assert.match(css, /v1\.81 - State summary mobile copy must never kiss the scrollbar/, 'State summary mobile wrap guard missing');
 assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missing');
 
 console.log('multi-market builder UI tests passed');

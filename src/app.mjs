@@ -1874,8 +1874,11 @@ function renderSourcePriorityBoard() {
     <div class="source-priority-grid">
       <div class="priority-lane primary"><span>Now</span>${tnMarkets.map(marketCard).join('')}</div>
       <div class="priority-lane"><span>Queued lanes</span>${nextMarkets.map(marketCard).join('')}</div>
-      <div class="priority-stack"><span>Normalize with</span>${tierRows}</div>
     </div>
+    <details class="priority-stack">
+      <summary>Normalize with source adapters</summary>
+      <div class="priority-stack-content">${tierRows}</div>
+    </details>
   </section>`;
 }
 

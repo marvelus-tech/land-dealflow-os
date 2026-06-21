@@ -93,7 +93,8 @@ assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard 
 assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer demand first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
-assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,220}Call the top permit-active builder/, 'Builders should expose one primary action before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,80}<span>Next action<\/span>[\s\S]{0,220}Call the highest-signal builder/, 'Builders should expose a clear next-action strip before secondary evidence');
+assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip[\s\S]{0,80}\$\{productIcon\('[^']+'\)\} Do first|>Start queue /, 'Primary action strips should not use vague Do first timeline-icon labeling');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /completion-state-legend[\s\S]{0,160}legend-working[\s\S]{0,120}legend-todo/, 'Builder command center should explain done, in-progress, and todo state colors');
@@ -219,5 +220,10 @@ assert.match(css, /--phase29-form-rule: apple-flat-settings-sheet-label-adjacent
 assert.match(css, /body\[data-active-view="builders"\] \.validation-buybox-grid \.form-field[\s\S]{0,520}border-right: 1px solid rgba\(16, 23, 19, \.085\) !important;[\s\S]{0,180}background: transparent !important;[\s\S]{0,120}box-shadow: none !important/, 'Buy-box fields should be flat cells with hairlines, not nested cards');
 assert.match(css, /body\[data-active-view="builders"\] \.validation-buybox-grid input,[\s\S]{0,420}border: 0 !important;[\s\S]{0,120}border-radius: 0 !important;[\s\S]{0,180}background: transparent !important/, 'Buy-box inputs should not create a second nested box inside the field cell');
 assert.match(css, /body\[data-active-view="builders"\] \.validation-buybox-grid \.field-label-text[\s\S]{0,260}display: inline-flex !important;[\s\S]{0,140}gap: 4px !important/, 'Required star should be visually associated immediately after the label');
+assert.match(css, /v1\.61\.6 - Apple HIG correction: primary action is an instruction bar, not a fake timeline hero/, 'Apple HIG action-strip correction marker required');
+assert.match(css, /--phase29-action-strip-rule: compact-next-action-bar-no-timeline-rail/, 'Action strips should encode compact next-action bar rule');
+assert.match(css, /v1\.61\.6 - Apple HIG correction[\s\S]{0,1800}#app \.primary-action-strip::before,[\s\S]{0,900}content: none !important;[\s\S]{0,80}display: none !important/, 'Primary action strips must not draw fake timeline rail pseudo-elements');
+assert.match(css, /#app \.primary-action-strip > span \.product-icon,[\s\S]{0,260}display: none !important/, 'Primary action strip labels should not include decorative status icons');
+assert.match(css, /#app \.primary-action-strip > b,[\s\S]{0,260}font: 690 clamp\(17px, 1\.45vw, 21px\)\/1\.22/, 'Primary action copy should be compact instruction text, not a billboard hero');
 
 console.log('global typography tests passed');

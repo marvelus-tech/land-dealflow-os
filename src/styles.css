@@ -15115,3 +15115,120 @@ body[data-active-view="builders"] .validation-buybox-grid textarea:focus {
   body[data-active-view="builders"] .validation-buybox-grid select,
   body[data-active-view="builders"] .validation-buybox-grid textarea { font-size: 17px !important; }
 }
+
+/* v1.61.6 - Apple HIG correction: primary action is an instruction bar, not a fake timeline hero */
+:root {
+  --phase29-action-strip-rule: compact-next-action-bar-no-timeline-rail;
+}
+#app .primary-action-strip,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(96px, max-content) minmax(0, 1fr) max-content !important;
+  align-items: center !important;
+  column-gap: clamp(14px, 2.2vw, 30px) !important;
+  row-gap: 8px !important;
+  min-height: 56px !important;
+  width: 100% !important;
+  margin: 0 0 clamp(20px, 3vw, 34px) !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(16, 23, 19, .105) !important;
+  border-bottom: 1px solid rgba(16, 23, 19, .105) !important;
+  border-left: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: #111713 !important;
+  overflow: visible !important;
+}
+#app .primary-action-strip::before,
+#app .primary-action-strip::after,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action::before,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action::after,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action::before,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action::after {
+  content: none !important;
+  display: none !important;
+}
+#app .primary-action-strip > span,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action > span,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  min-width: 0 !important;
+  color: rgba(15, 77, 53, .88) !important;
+  font: 760 11px/1.1 ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif !important;
+  letter-spacing: .055em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+#app .primary-action-strip > span .product-icon,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action > span .product-icon,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action > span .product-icon {
+  display: none !important;
+}
+#app .primary-action-strip > b,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action > b,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action > b {
+  max-width: none !important;
+  color: #101713 !important;
+  font: 690 clamp(17px, 1.45vw, 21px)/1.22 ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif !important;
+  letter-spacing: -.025em !important;
+  text-wrap: balance !important;
+}
+#app .primary-action-strip > a,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action > a,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action > a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 7px !important;
+  min-height: 32px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #0f4d35 !important;
+  font: 720 12px/1.1 ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif !important;
+  letter-spacing: .045em !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+}
+#app .primary-action-strip > a .product-icon,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action > a .product-icon,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action > a .product-icon {
+  width: 14px !important;
+  height: 14px !important;
+  stroke-width: 1.8 !important;
+}
+#app .primary-action-strip > a:hover,
+body[data-active-view="builders"] #builder-list-section .builders-primary-action > a:hover,
+body[data-active-view="closing"] #title-closing-panel .closing-primary-action > a:hover {
+  color: #101713 !important;
+  transform: none !important;
+}
+@media (max-width: 720px) {
+  #app .primary-action-strip,
+  body[data-active-view="builders"] #builder-list-section .builders-primary-action,
+  body[data-active-view="closing"] #title-closing-panel .closing-primary-action {
+    grid-template-columns: 1fr !important;
+    min-height: 0 !important;
+    padding: 13px 0 15px !important;
+    margin-bottom: 22px !important;
+  }
+  #app .primary-action-strip > b,
+  body[data-active-view="builders"] #builder-list-section .builders-primary-action > b,
+  body[data-active-view="closing"] #title-closing-panel .closing-primary-action > b {
+    font-size: 18px !important;
+    line-height: 1.25 !important;
+  }
+  #app .primary-action-strip > a,
+  body[data-active-view="builders"] #builder-list-section .builders-primary-action > a,
+  body[data-active-view="closing"] #title-closing-panel .closing-primary-action > a {
+    justify-content: flex-start !important;
+  }
+}

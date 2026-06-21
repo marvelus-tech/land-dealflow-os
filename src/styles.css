@@ -14588,15 +14588,15 @@ body {
   flex: 0 0 auto !important;
 }
 .app-tabs {
-  min-width: 0 !important;
-  max-width: min(720px, 58vw) !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  white-space: nowrap !important;
-  scrollbar-width: none !important;
-  -webkit-overflow-scrolling: touch !important;
+  min-width: min(100%, 320px) !important;
+  max-width: none !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  scrollbar-width: auto !important;
 }
-.app-tabs::-webkit-scrollbar { display: none !important; }
+.app-tabs::-webkit-scrollbar { display: initial !important; }
 .tab-button {
   flex: 0 0 auto !important;
   min-width: max-content !important;
@@ -14606,7 +14606,7 @@ body {
   white-space: nowrap !important;
 }
 @media (min-width: 761px) and (max-width: 1120px) {
-  .nav { display: grid !important; grid-template-columns: auto minmax(0, 1fr) auto !important; }
+  .nav { display: flex !important; grid-template-columns: none !important; }
   .app-tabs { justify-self: stretch !important; max-width: 100% !important; }
   .tab-button { padding-inline: 11px !important; font-size: 11px !important; }
   .nav-cta { padding-inline: 12px !important; }
@@ -14732,3 +14732,131 @@ body[data-active-view="closing"] .card.empty-state {
 #closing-desk[hidden],
 #sources[hidden],
 #machine[hidden] { display: none !important; }
+
+/* v1.61.1 - Phase 29 hotfix: visible wrapping nav and text-only builder log toggles */
+:root {
+  --phase29-hotfix-nav-rule: all-route-tabs-visible-no-hidden-scroller;
+  --phase29-hotfix-log-toggle-rule: color-state-only-no-leading-icons;
+}
+.nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px 14px !important;
+  min-height: 58px !important;
+  padding: 10px clamp(14px, 2.4vw, 32px) !important;
+  overflow: visible !important;
+}
+.brand {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+}
+.app-tabs {
+  display: flex !important;
+  flex: 1 1 640px !important;
+  width: auto !important;
+  min-width: min(100%, 320px) !important;
+  max-width: none !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 4px !important;
+  overflow: visible !important;
+  white-space: normal !important;
+  scrollbar-width: auto !important;
+}
+.app-tabs::-webkit-scrollbar { display: initial !important; }
+.tab-button {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  white-space: nowrap !important;
+  padding-inline: clamp(9px, 1vw, 14px) !important;
+}
+.nav-cta {
+  flex: 0 0 auto !important;
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  width: auto !important;
+  min-height: 34px !important;
+  padding: 8px 14px !important;
+}
+.nav-cta::after { content: none !important; }
+@media (min-width: 761px) and (max-width: 1120px) {
+  .nav { display: flex !important; grid-template-columns: none !important; }
+  .app-tabs { justify-self: auto !important; max-width: none !important; }
+  .tab-button { font-size: 11px !important; padding-inline: 10px !important; }
+}
+@media (min-width: 761px) and (max-width: 940px) {
+  .brand span:not(.brand-mark) {
+    max-width: none !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+  .nav-cta {
+    display: none !important;
+  }
+}
+.validation-queue button.contact-icon-toggle,
+.validation-queue button.contact-icon-toggle:hover,
+.validation-queue button.contact-icon-toggle:focus,
+.validation-queue button.contact-icon-toggle:active {
+  width: auto !important;
+  min-width: 44px !important;
+  height: 24px !important;
+  padding: 0 8px !important;
+  border-radius: 0 !important;
+}
+.validation-queue button.contact-icon-toggle span,
+.validation-focus-card .selected-outreach-state button.contact-state-toggle span {
+  display: none !important;
+}
+.validation-queue .contact-icon-toggle em {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  white-space: nowrap !important;
+  font-style: normal !important;
+  font-size: 10px !important;
+  font-weight: 760 !important;
+  letter-spacing: .035em !important;
+  text-transform: uppercase !important;
+}
+.validation-focus-card .selected-outreach-state button.contact-state-toggle,
+.validation-focus-card .selected-outreach-state button.contact-state-toggle:hover,
+.validation-focus-card .selected-outreach-state button.contact-state-toggle:focus {
+  gap: 0 !important;
+}
+
+/* v1.61.2 - Nav visibility hard guard: no route item can hide in historical app-tabs scrollers */
+:root { --phase29-nav-hard-guard: route-tabs-visible-after-all-legacy-nav-blocks; }
+.nav .app-tabs,
+body .nav .app-tabs,
+html body .nav .app-tabs {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-width: none !important;
+  white-space: normal !important;
+  scrollbar-width: auto !important;
+}
+.nav .app-tabs::-webkit-scrollbar,
+body .nav .app-tabs::-webkit-scrollbar,
+html body .nav .app-tabs::-webkit-scrollbar {
+  display: initial !important;
+}
+.nav .tab-button,
+body .nav .tab-button,
+html body .nav .tab-button {
+  flex: 0 1 auto !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+}

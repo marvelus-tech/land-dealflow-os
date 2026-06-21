@@ -142,8 +142,8 @@ assert.match(appSource, /function solidIndustryIcon\(kind\)[\s\S]*class="solid-i
 assert.doesNotMatch(appSource, /queue-proof-line|queue-source-link/, 'Builder queue should not repeat source/proof detail already shown in selected builder detail');
 assert.match(appSource, /validation-source-proof[\s\S]{0,260}safeLink\(selected\.sourceUrl/, 'Selected builder detail should retain the source proof link');
 assert.match(appSource, /queue-score[\s\S]{0,180}solidIndustryIcon\('score'\)/, 'Builder score should use the solid icon language');
-assert.match(appSource, /contact-call[\s\S]{0,420}solidIndustryIcon\('phone'\)/, 'Call toggle should use serious solid phone icon');
-assert.match(appSource, /contact-email[\s\S]{0,420}solidIndustryIcon\('email'\)/, 'Email toggle should use serious solid email icon');
+assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,420}<em>\$\{outreach\.phone \? 'Called' : 'Call'\}<\/em><\/button>/, 'Call log toggle should be text-only; color state is enough');
+assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,420}<em>\$\{outreach\.email \? 'Emailed' : 'Email'\}<\/em><\/button>/, 'Email log toggle should be text-only; color state is enough');
 assert.match(appSource, /validation-script-drawer[\s\S]{0,180}solidIndustryIcon\('chevron'\)/, 'Disclosure drawers should use a restrained solid chevron icon');
 assert.match(css, /\.validation-script-drawer:not\(\[open\]\) > :not\(summary\)[\s\S]{0,80}display: none !important/, 'Phase 25 should keep secondary scripts hidden until requested');
 const builderCommandSource = appSource.slice(appSource.indexOf('function renderBuyerValidationCommand'), appSource.indexOf('function renderBuilderMarketWorkbench'));
@@ -198,6 +198,15 @@ assert.match(appSource, /solidIndustryIcon\('check'\)[\s\S]{0,100}: solidIndustr
 assert.match(css, /body\[data-active-view="today"\][\s\S]{0,420}linear-gradient\(180deg, var\(--phase29-canvas\)/, 'Today should use calm canvas instead of old background effects');
 assert.match(css, /body\[data-active-view="today"\] #command :where\([\s\S]{0,220}\.map-glow[\s\S]{0,260}display: none !important/, 'Today old glow/map background effects should be suppressed');
 assert.match(css, /--phase29-nav-rule: desktop-responsive-tabs-wrap-without-clipping/, 'Phase 29 should encode the desktop responsive navbar repair');
-assert.match(css, /@media \(min-width: 761px\) and \(max-width: 1120px\)[\s\S]{0,280}grid-template-columns: auto minmax\(0, 1fr\) auto !important/, 'Desktop responsive nav should use a resilient grid at constrained widths');
+assert.match(css, /v1\.61\.1 - Phase 29 hotfix: visible wrapping nav and text-only builder log toggles/, 'Phase 29 hotfix marker required after nav visibility regression');
+assert.match(css, /v1\.61\.2 - Nav visibility hard guard: no route item can hide in historical app-tabs scrollers/, 'Final nav hard guard required after legacy app-tabs scrollers broke navigation');
+assert.match(css, /--phase29-nav-hard-guard: route-tabs-visible-after-all-legacy-nav-blocks/, 'Final nav guard should encode route-tab visibility after all legacy nav blocks');
+assert.match(css, /html body \.nav \.app-tabs[\s\S]{0,320}overflow-x: visible !important;[\s\S]{0,180}max-width: none !important;[\s\S]{0,120}white-space: normal !important/, 'Final nav guard must beat historical app-tabs overflow scrollers');
+assert.match(css, /--phase29-hotfix-nav-rule: all-route-tabs-visible-no-hidden-scroller/, 'Hotfix should encode visible route tabs rather than a hidden scroller');
+assert.match(css, /\.app-tabs[\s\S]{0,360}flex-wrap: wrap !important;[\s\S]{0,220}overflow: visible !important;[\s\S]{0,140}white-space: normal !important/, 'Navbar route tabs must wrap visibly instead of hiding items in a scrollbar');
+assert.doesNotMatch(css, /\.app-tabs \{[\s\S]{0,260}max-width: min\(720px, 58vw\) !important;[\s\S]{0,220}overflow-x: auto !important/, 'Broken Phase 29 hidden-scroll nav pattern must not be the active nav rule');
+assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,460}<em>\$\{outreach\.phone \? 'Called' : 'Call'\}<\/em><\/button>/, 'Builder queue call log toggle should be text/color state only, without leading icon');
+assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,460}<em>\$\{outreach\.email \? 'Emailed' : 'Email'\}<\/em><\/button>/, 'Builder queue email log toggle should be text/color state only, without leading icon');
+assert.doesNotMatch(appSource, /contact-icon-toggle contact-call[\s\S]{0,520}solidIndustryIcon\('phone'\)|contact-icon-toggle contact-email[\s\S]{0,520}solidIndustryIcon\('email'\)|contact-state-toggle[\s\S]{0,360}solidIndustryIcon\('(phone|email)'\)/, 'Builder queue/detail logging toggles should not include redundant icons; color state is enough');
 
 console.log('global typography tests passed');

@@ -27212,3 +27212,148 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     transform: none !important;
   }
 }
+
+
+/* v1.92 - Builders hero/workbench simplification: one page hero, one work surface, no empty rule stack */
+@media (min-width: 1024px) {
+  body[data-active-view="builders"] #builder-list-section {
+    --phase92-builders-rule: one-hero-one-work-surface-no-empty-rule-stack;
+    padding-top: 0 !important;
+  }
+  body[data-active-view="builders"] #app #builder-list-section > .section-heading.compact-heading {
+    min-height: clamp(138px, 14vw, 188px) !important;
+    margin-bottom: clamp(20px, 2.2vw, 30px) !important;
+    padding: clamp(38px, 4.7vw, 60px) 0 clamp(18px, 2vw, 26px) !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel.stack,
+  body[data-active-view="builders"] .builder-engine-shell {
+    gap: 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builder-engine-tabs,
+  body[data-active-view="builders"] #builder-list-section .builder-subnav,
+  body[data-active-view="builders"] #builder-list-section .builder-engine-nav,
+  body[data-active-view="builders"] #builder-list-section .builder-queue-nav,
+  body[data-active-view="builders"] #builder-list-section .builder-mode-tabs {
+    margin: 0 0 clamp(18px, 2vw, 26px) auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--phase91-line) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    min-height: 0 !important;
+    width: fit-content !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builder-engine-tabs a,
+  body[data-active-view="builders"] #builder-list-section .builder-engine-tabs button,
+  body[data-active-view="builders"] #builder-list-section .builder-subnav a,
+  body[data-active-view="builders"] #builder-list-section .builder-engine-nav a,
+  body[data-active-view="builders"] #builder-list-section .builder-queue-nav a,
+  body[data-active-view="builders"] #builder-list-section .builder-mode-tabs a {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 8px !important;
+    min-height: 0 !important;
+    color: var(--phase91-forest) !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    font-weight: 850 !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-phase83-workbench.builders-phase83-workbench {
+    margin-top: 0 !important;
+    padding-top: clamp(12px, 1.6vw, 22px) !important;
+    border-top: 1px solid var(--phase91-line) !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    row-gap: clamp(22px, 2.8vw, 36px) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-phase83-workbench > .builder-ops-title {
+    max-width: none !important;
+    display: grid !important;
+    grid-template-columns: minmax(320px, .54fr) minmax(340px, .46fr) !important;
+    column-gap: clamp(60px, 8vw, 120px) !important;
+    row-gap: 9px !important;
+    align-items: end !important;
+    padding-bottom: clamp(18px, 2vw, 26px) !important;
+    border-bottom: 1px solid var(--phase91-line) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builder-ops-title .eyebrow {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+    color: var(--phase91-forest) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    font-weight: 850 !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builder-ops-title h3 {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    max-width: none !important;
+    margin: 0 !important;
+    color: var(--phase91-ink) !important;
+    font-size: clamp(31px, 2.8vw, 44px) !important;
+    line-height: .96 !important;
+    letter-spacing: -.065em !important;
+    font-weight: 850 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builder-ops-title p {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    align-self: end !important;
+    max-width: 46ch !important;
+    margin: 0 0 2px !important;
+    color: var(--phase91-muted) !important;
+    font-size: 14px !important;
+    line-height: 1.48 !important;
+    letter-spacing: -.018em !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-primary-action {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    width: 100% !important;
+    margin: clamp(14px, 1.6vw, 22px) 0 0 !important;
+    padding: 13px 0 0 !important;
+    border-top: 1px solid var(--phase91-line) !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-primary-action b {
+    color: var(--phase91-ink) !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
+    font-weight: 760 !important;
+    letter-spacing: -.02em !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-primary-action a {
+    color: var(--phase91-forest) !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    font-weight: 850 !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-workbench-layout {
+    grid-template-columns: minmax(430px, .48fr) minmax(430px, .52fr) !important;
+    gap: clamp(42px, 5.2vw, 82px) !important;
+    align-items: start !important;
+  }
+}
+
+@media (min-width: 1181px) {
+  body[data-active-view="builders"] #builder-list-section .builder-engine-shell::before,
+  body[data-active-view="builders"] #builder-list-section .builder-engine-shell::after,
+  body[data-active-view="builders"] #builder-list-panel::before,
+  body[data-active-view="builders"] #builder-list-panel::after,
+  body[data-active-view="builders"] .builders-phase83-workbench::before,
+  body[data-active-view="builders"] .builders-phase83-workbench::after {
+    content: none !important;
+    display: none !important;
+  }
+}

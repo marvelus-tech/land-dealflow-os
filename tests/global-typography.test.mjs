@@ -437,3 +437,9 @@ assert.match(css, /--phase91-hard-lock: green-label-above-black-title-copy-right
 assert.match(css, /section-heading\.compact-heading > h2 \{[\s\S]{0,220}grid-column: 1 !important;[\s\S]{0,80}grid-row: 2 !important/, 'Route hero title must be locked to left column second row');
 assert.match(css, /section-heading\.compact-heading > p \{[\s\S]{0,220}grid-column: 2 !important;[\s\S]{0,80}grid-row: 2 !important/, 'Route hero copy must be locked to right column second row');
 
+assert.match(css, /v1\.92 - Builders hero\/workbench simplification: one page hero, one work surface, no empty rule stack/, 'Phase 92 Builders simplification marker missing');
+assert.match(css, /--phase92-builders-rule: one-hero-one-work-surface-no-empty-rule-stack/, 'Phase 92 should encode the no-empty-rule-stack product rule');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builders-phase83-workbench\.builders-phase83-workbench \{[\s\S]{0,240}grid-template-columns: 1fr !important/, 'Builders workbench should collapse from nested side-rail hero into one work surface');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builder-ops-title h3 \{[\s\S]{0,260}font-size: clamp\(31px, 2\.8vw, 44px\) !important/, 'Choose state should be a section title, not a second page hero');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builder-engine-shell::before,[\s\S]{0,360}body\[data-active-view="builders"\] \.builders-phase83-workbench::after \{[\s\S]{0,80}content: none !important/, 'Builders empty decorative rule stack should be killed');
+

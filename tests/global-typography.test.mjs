@@ -93,7 +93,7 @@ assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard 
 assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer-first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
-assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,80}<span>Next<\/span>[\s\S]{0,220}Call the top builder\. Capture missing buy-box fields\./, 'Builders should expose a clear, calm next-action strip before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,90}<span>Next action<\/span>[\s\S]{0,240}Call the top builder\. Capture missing buy-box fields\./, 'Builders should expose a clear, calm next-action strip before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip[\s\S]{0,80}\$\{productIcon\('[^']+'\)\} Do first|>Start queue /, 'Primary action strips should not use vague Do first timeline-icon labeling');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
@@ -322,8 +322,8 @@ assert.match(css, /v1\.65\.1 - Phase 33 pass 2 self-review correction: use deskt
 assert.match(css, /grid-template-areas:\s*\n\s*"title market"\s*\n\s*"jump jump" !important/, 'Phase 33 desktop workbench should use the right-side canvas instead of stacking everything left');
 assert.match(css, /grid-template-areas:\s*\n\s*"code name count"\s*\n\s*"rail meta meta" !important/, 'Phase 33 market rows must preserve market-name information scent');
 assert.match(css, /body\[data-active-view="builders"\] \.brand \{ display: none !important; \}/, 'Builders mobile nav should remove the brand label to prevent clipped route tabs');
-assert.match(appSource, /<h3>Choose operating state<\/h3>/, 'Builders header should use the state-first operating-state choice');
-assert.match(appSource, /<span>Next<\/span>[\s\S]{0,120}Call the top builder\. Capture missing buy-box fields\./, 'Phase 33 next action copy should be short and calm');
+assert.match(appSource, /<h3>Pick the state\. Read the queue\.<\/h3>/, 'Builders header should compress state choice and queue reading into one command');
+assert.match(appSource, /<span>Next action<\/span>[\s\S]{0,130}Call the top builder\. Capture missing buy-box fields\./, 'Phase 83 next action copy should be short and calm');
 assert.match(css, /v1\.65\.2 - Phase 33 final polish: action instruction must read as a sentence, not a stacked poster/, 'Phase 33 final action-strip polish marker required');
 assert.match(css, /\.builders-primary-action \{[\s\S]{0,160}grid-template-areas:\s*\n\s*"label action"\s*\n\s*"\. link" !important/, 'Builders action instruction should read horizontally before the link on desktop');
 assert.match(css, /v1\.66 - Phase 34 Builders: numerals are data, progress is the scan spine/, 'Phase 34 marker required for market metric/progress correction');

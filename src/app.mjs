@@ -1349,7 +1349,7 @@ function renderBuilderCountyLedger(activeState = {}) {
     <span><b>${h(market.label)}</b><small>${h(market.note || 'source lane')}</small></span>
     <em>${h(market.statusCopy)}</em>
   </li>`).join('');
-  return `<details class="state-county-ledger" open>
+  return `<details class="state-county-ledger">
     <summary><span>Counties included</span><b>${h(activeState.countyCount || 0)} lanes</b></summary>
     <ul>${rows}</ul>
   </details>`;
@@ -1814,20 +1814,27 @@ function renderBuilderListEnginePanel(options = {}) {
     ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
   </article>`).join('');
   target.innerHTML = `<div class="builder-engine-shell">
-    <section class="state-first-ops-header" aria-label="Builder operations summary">
+    <section class="state-first-ops-header builders-phase83-workbench" aria-label="Builder state workbench">
       <div class="builder-ops-title">
-        <span class="eyebrow">Builders · market focus</span>
-        <h3>Choose operating state</h3>
-        <p><b>State first, counties as evidence:</b> choose the state/market thesis, then inspect county lanes inside the selected workbench only when needed.</p>
-        <div class="primary-action-strip builders-primary-action"><span>Next</span><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
+        <span class="eyebrow">Builders · state workbench</span>
+        <h3>Pick the state. Read the queue.</h3>
+        <p><b>State first, counties as evidence:</b> the control, selected market data, and queue now sit in one scanning path so the operator never has to reconcile disconnected panels.</p>
+        <div class="primary-action-strip builders-primary-action"><span>Next action</span><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
-      <div class="state-first-workbench" aria-label="Choose operating state">
-        <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
-        ${marketSummary}
+      <div class="state-first-workbench state-data-workbench" aria-label="Choose operating state and read selected-state data">
+        <div class="state-workbench-kicker">
+          <span>Operating state</span>
+          <strong>${h(activeState.label)}</strong>
+          <em>${h(activeSummary.totalBuilders || 0)} builders · ${h(activeState.countyCount || 0)} county lanes</em>
+        </div>
+        <div class="state-workbench-layout">
+          <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
+          ${marketSummary}
+        </div>
       </div>
       <nav class="builder-ops-jump" aria-label="Builder page sections">
         <a href="#buyer-validation-command">Builder queue</a>
-        <a href="#permit-landscape">Permit sources</a>
+        <a href="#permit-sources">Permit sources</a>
       </nav>
     </section>
 

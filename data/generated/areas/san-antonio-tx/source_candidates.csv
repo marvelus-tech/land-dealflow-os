@@ -1,13 +1,2 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
 san-antonio-tx,"San Antonio, TX",Open Data SA / CKAN,permit,"San Antonio, TX — Open Data SA / CKAN",https://data.sanantonio.gov/,96,run_direct_permit_builder_adapter,"San Antonio, TX Open Data SA / CKAN building permits"
-san-antonio-tx,"San Antonio, TX",arcgis,parcel,Bexar County Education,https://services1.arcgis.com/hVMNhMnY75fwfIFy/arcgis/rest/services/Bexar County Education/FeatureServer,90,seller_parcel_discovery,Bexar County parcels
-san-antonio-tx,"San Antonio, TX",arcgis,zoning,SAPD SAFFE Zones,https://services.arcgis.com/g1fRTDLeMgspWrYp/arcgis/rest/services/SAPD_SAFFE_Zones/FeatureServer,90,deal_risk_and_fit_overlay,"San Antonio, TX zoning"
-san-antonio-tx,"San Antonio, TX",arcgis,parcel,Structures In Floodplain,https://services.arcgis.com/g1fRTDLeMgspWrYp/arcgis/rest/services/Structures_In_Floodplain/FeatureServer,90,seller_parcel_discovery,"San Antonio, TX parcels"
-san-antonio-tx,"San Antonio, TX",arcgis,sales,July Layers layers,https://services7.arcgis.com/RtX7tFjxuxerbFfd/arcgis/rest/services/zizo_vunguvungu_streamgis_July_Layers_layers/FeatureServer,80,buyer_and_market_comps,"San Antonio, TX property sales"
-san-antonio-tx,"San Antonio, TX",arcgis,sales,Q3 2025 TPCSA Refresh,https://services7.arcgis.com/ZodPOMBKsdAsTqF4/arcgis/rest/services/Q3_2025_TPCSA_Refresh/FeatureServer,80,buyer_and_market_comps,"San Antonio, TX property sales"
-san-antonio-tx,"San Antonio, TX",arcgis,parcel,Parcels,,70,seller_parcel_discovery,Bexar County parcels
-san-antonio-tx,"San Antonio, TX",arcgis,parcel,Structures in Floodplain Dashboard,,70,seller_parcel_discovery,"San Antonio, TX parcels"
-san-antonio-tx,"San Antonio, TX",arcgis,parcel,"The City of San Antonio, Texas",,70,seller_parcel_discovery,"San Antonio, TX parcels"
-san-antonio-tx,"San Antonio, TX",arcgis,parcel,"The City of San Antonio, Texas-Copy",,70,seller_parcel_discovery,"San Antonio, TX parcels"
-san-antonio-tx,"San Antonio, TX",arcgis,vacancy,VBP Impact Area,https://bsumaps.maps.arcgis.com/apps/View/index.html?appid=7c72c759002a42a4908111484835d7c8,70,seller_motivation_overlay,"San Antonio, TX vacant property"
-san-antonio-tx,"San Antonio, TX",arcgis,sales,Rubiola Realty and Mortgage,,60,buyer_and_market_comps,"San Antonio, TX property sales"

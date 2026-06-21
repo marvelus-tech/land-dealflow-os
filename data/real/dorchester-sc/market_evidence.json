@@ -1,0 +1,31 @@
+{
+  "market": "Dorchester County / Charleston edge, SC",
+  "marketId": "dorchester-sc",
+  "state": "SC",
+  "generatedAt": "2026-06-21T09:59:40.244Z",
+  "source": {
+    "name": "Dorchester County Evolve Public — Permit Search",
+    "portalUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "query": "Date Range 01/01/2025 to 12/31/2025",
+    "filter": "recordType R + builder-like contractor names"
+  },
+  "summary": {
+    "permitRowsSampled": 4587,
+    "residentialRows": 2496,
+    "uniqueBuilders": 70,
+    "minimumUniqueBuilders": 20,
+    "totalRecentBuildSignals": 1393,
+    "filter": "2025 Dorchester residential permit rows, excluding trades/repair/service categories by contractor-name filter."
+  },
+  "countyHeat": {
+    "tier": "SC coastal secondary market",
+    "thesis": "Charleston builder pressure is expanding into Dorchester/Berkeley; Dorchester exposes a workable public permit search with contractor names, making it the first SC queue candidate to promote into buyer validation.",
+    "buyerBoxHypothesis": "0.5–1 acre Charleston-edge/Dorchester-Berkeley lots, avoid flood-zone/marsh risk, confirm utilities/access and commute-to-Charleston/submarket constraints by call."
+  },
+  "operatingRules": [
+    "Contractor data is a permit-backed builder signal, not validated buyer demand until buy-box outreach is complete.",
+    "Do not source SC sellers until builder geography, max price, flood-zone tolerance, utility/access criteria, close speed, and title/assignment constraints are captured.",
+    "Berkeley County remains a watchlist candidate because its public builder portal is Cloudflare-challenged from this environment; do not fabricate Berkeley rows."
+  ]
+}

@@ -24810,3 +24810,265 @@ html body header.nav .tab-button.active {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+
+
+/* v1.72 - Builders market switchboard: selectable markets, not fixed state path */
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid.market-toggle-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(236px, 1fr)) !important;
+  width: 100% !important;
+  max-width: none !important;
+  max-height: 420px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border: 1px solid var(--app-hairline, rgba(16, 24, 20, .12)) !important;
+  border-radius: 22px !important;
+  background: rgba(255, 255, 252, .74) !important;
+  scrollbar-width: thin !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid.market-toggle-grid > .market-toggle {
+  grid-column: auto !important;
+  width: 100% !important;
+  min-height: 108px !important;
+  align-content: start !important;
+  border: 0 !important;
+  border-right: 1px solid var(--app-hairline, rgba(16, 24, 20, .1)) !important;
+  border-bottom: 1px solid var(--app-hairline, rgba(16, 24, 20, .1)) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-toggle.active {
+  background: rgba(11, 81, 56, .055) !important;
+  box-shadow: inset 3px 0 0 var(--app-forest, #0b5138) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-status-needs-work .market-builder-total b,
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-status-needs-work .market-contact-copy b {
+  color: #8a5a13 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-status-thin .market-builder-total b,
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-status-thin .market-contact-copy b {
+  color: #9a741e !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-row-main {
+  grid-template-columns: 36px minmax(0, 1fr) auto !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-name {
+  max-width: none !important;
+  font-size: 14.5px !important;
+  letter-spacing: -.025em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-contact-rail {
+  width: 100% !important;
+  height: 3px !important;
+  background: rgba(166, 116, 25, .18) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-contact-rail i {
+  height: 3px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-contact-copy {
+  display: block !important;
+  color: var(--app-muted, #66716a) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid .market-contact-copy i {
+  padding: 0 5px !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid.market-toggle-grid {
+    grid-template-columns: 1fr !important;
+    max-height: 520px !important;
+    border-radius: 18px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .market-switchboard-grid.market-toggle-grid > .market-toggle {
+    min-height: 96px !important;
+    border-right: 0 !important;
+  }
+}
+
+
+/* v1.73 - Deals market coverage: every builder market remains visible before seller deals exist */
+body[data-active-view="deals"] .deals-market-coverage {
+  --phase39-deals-market-coverage: selectable-market-lanes-before-seller-records;
+  display: grid !important;
+  gap: 16px !important;
+  padding: clamp(18px, 2.5vw, 28px) !important;
+  margin: 0 0 18px !important;
+  border: 1px solid rgba(17, 24, 39, .08) !important;
+  border-radius: 28px !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(248,250,252,.9)) !important;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, .06) !important;
+}
+
+body[data-active-view="deals"] .deals-market-head {
+  display: grid !important;
+  gap: 7px !important;
+  max-width: 760px !important;
+}
+
+body[data-active-view="deals"] .deals-market-head h3 {
+  margin: 0 !important;
+  font-size: clamp(1.15rem, 2vw, 1.65rem) !important;
+  letter-spacing: -.035em !important;
+}
+
+body[data-active-view="deals"] .deals-market-head p {
+  margin: 0 !important;
+  color: rgba(15, 23, 42, .62) !important;
+  line-height: 1.45 !important;
+}
+
+body[data-active-view="deals"] .deals-market-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(222px, 1fr)) !important;
+  gap: 10px !important;
+  max-height: 360px !important;
+  overflow: auto !important;
+  padding: 2px 2px 4px !important;
+  scrollbar-width: thin !important;
+}
+
+body[data-active-view="deals"] .deals-market-card {
+  appearance: none !important;
+  display: grid !important;
+  gap: 9px !important;
+  text-align: left !important;
+  padding: 13px 14px !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(15, 23, 42, .08) !important;
+  background: rgba(255, 255, 255, .82) !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+body[data-active-view="deals"] .deals-market-card.active {
+  border-color: rgba(17, 24, 39, .32) !important;
+  background: #fff !important;
+  box-shadow: inset 0 0 0 1px rgba(17, 24, 39, .2), 0 12px 30px rgba(15, 23, 42, .08) !important;
+}
+
+body[data-active-view="deals"] .deals-market-card small {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+}
+
+body[data-active-view="deals"] .deals-market-card kbd {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 34px !important;
+  height: 24px !important;
+  border-radius: 999px !important;
+  background: rgba(15, 23, 42, .06) !important;
+  color: rgba(15, 23, 42, .72) !important;
+  font: 760 .72rem/1 var(--font-sans, system-ui) !important;
+}
+
+body[data-active-view="deals"] .deals-market-card strong {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: .92rem !important;
+  letter-spacing: -.02em !important;
+}
+
+body[data-active-view="deals"] .deals-market-card span {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 6px !important;
+  color: rgba(15, 23, 42, .66) !important;
+  font-size: .82rem !important;
+}
+
+body[data-active-view="deals"] .deals-market-card span b {
+  color: #111827 !important;
+  font-size: 1.18rem !important;
+  font-variant-numeric: tabular-nums lining-nums !important;
+}
+
+body[data-active-view="deals"] .deals-market-card em {
+  color: rgba(15, 23, 42, .54) !important;
+  font-style: normal !important;
+  font-size: .78rem !important;
+  line-height: 1.35 !important;
+}
+
+body[data-active-view="deals"] .deals-market-card.is-live em {
+  color: #0f6b4f !important;
+}
+
+body[data-active-view="deals"] .deals-market-card.needs-work em,
+body[data-active-view="deals"] .deals-market-card.is-thin em {
+  color: #8a5a13 !important;
+}
+
+@media (max-width: 640px) {
+  body[data-active-view="deals"] .deals-market-coverage {
+    border-radius: 22px !important;
+    padding: 16px !important;
+  }
+
+  body[data-active-view="deals"] .deals-market-grid {
+    grid-template-columns: 1fr !important;
+    max-height: 410px !important;
+  }
+}
+
+
+/* v1.74 - Deals market cards must beat global button gradients */
+body[data-active-view="deals"] button.deals-market-card.deals-market-card {
+  background: rgba(255, 255, 255, .92) !important;
+  background-image: none !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  border: 1px solid rgba(15, 23, 42, .10) !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  opacity: 1 !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card.active {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  border-color: rgba(17, 24, 39, .34) !important;
+  box-shadow: inset 0 0 0 1px rgba(17, 24, 39, .18), 0 12px 30px rgba(15, 23, 42, .08) !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card *,
+body[data-active-view="deals"] button.deals-market-card.deals-market-card strong,
+body[data-active-view="deals"] button.deals-market-card.deals-market-card b {
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card kbd {
+  color: rgba(15, 23, 42, .72) !important;
+  -webkit-text-fill-color: rgba(15, 23, 42, .72) !important;
+  background: rgba(15, 23, 42, .06) !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card span {
+  color: rgba(15, 23, 42, .66) !important;
+  -webkit-text-fill-color: rgba(15, 23, 42, .66) !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card em {
+  color: rgba(15, 23, 42, .54) !important;
+  -webkit-text-fill-color: rgba(15, 23, 42, .54) !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card.is-live em {
+  color: #0f6b4f !important;
+  -webkit-text-fill-color: #0f6b4f !important;
+}
+
+body[data-active-view="deals"] button.deals-market-card.deals-market-card.needs-work em,
+body[data-active-view="deals"] button.deals-market-card.deals-market-card.is-thin em {
+  color: #8a5a13 !important;
+  -webkit-text-fill-color: #8a5a13 !important;
+}

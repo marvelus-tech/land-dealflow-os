@@ -1,0 +1,187 @@
+{
+  "market": "Forsyth County / Atlanta data-center corridor, GA",
+  "marketId": "forsyth-ga",
+  "state": "GA",
+  "generatedAt": "2026-06-21T10:00:28Z",
+  "source": {
+    "name": "Forsyth County ArcGIS Public EnerGov Building Permits",
+    "serviceUrl": "https://geo.forsythco.com/gis3/rest/services/Public_EnerGovPlans/Building_Permits/FeatureServer/0",
+    "portalUrl": "https://css.forsythco.com/EnerGov_Prod/SelfService/",
+    "where": "PermitType = 'Building (Residential)' AND PermitClass IN ('Single Family Detached','Single Family Attached') AND PermitStatus IN ('Issued','Submitted - Online')"
+  },
+  "summary": {
+    "permitRowsSampled": 1000,
+    "uniqueBuilders": 0,
+    "minimumUniqueBuilders": 20,
+    "builderQueueStatus": "blocked-open-layer-has-no-contractor-field",
+    "filter": "Residential building permits, single-family attached/detached, issued/submitted rows from public ArcGIS layer."
+  },
+  "countyHeat": {
+    "tier": "GA secondary data-center corridor",
+    "thesis": "Forsyth sits in the north/east Atlanta growth orbit and is useful for the user supplied data-center commuter housing thesis, but the current public ArcGIS layer exposes permit, parcel, status and Tyler detail links only\u2014not contractor/builder names.",
+    "buyerBoxHypothesis": "0.25-acre SFR/data-center-commuter lots near the Atlanta/Forsyth/Hall/Jackson/Douglas corridor; validate builder geography and commute radius before seller sourcing."
+  },
+  "operatingRules": [
+    "Do not promote Forsyth GA as a builder queue until contractor/builder names are retrieved from Tyler EnerGov detail API or another public source.",
+    "Use this as a source well/adapter target, not seller sourcing authority.",
+    "Next GA adapter targets: solve Forsyth Tyler tenant detail, test Hall issued-permit PDFs/OCR, then Jackson/Douglas portals."
+  ],
+  "samplePermits": [
+    {
+      "OBJECTID": 177010,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/f76dc204-b5be-48e2-b682-a108fa544d6d",
+      "ApplyDate": 1741719762000,
+      "IssueDate": 1781827200000,
+      "ParcelNumber": "190   278",
+      "PermitNumber": "BLDGRES-26-2687",
+      "PermitID": "f76dc204-b5be-48e2-b682-a108fa544d6d",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Detached Structure",
+      "PermitClass": "Single Family Detached",
+      "PermitStatus": "Issued"
+    },
+    {
+      "OBJECTID": 177009,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/f5586db2-b357-4584-95cf-5c315bee725c",
+      "ApplyDate": 1781880088000,
+      "IssueDate": null,
+      "ParcelNumber": "216   289",
+      "PermitNumber": "BLDGRES-26-2689",
+      "PermitID": "f5586db2-b357-4584-95cf-5c315bee725c",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176999,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/ac3611d9-cfc6-4a2e-82d9-3270c024ec68",
+      "ApplyDate": 1781880923000,
+      "IssueDate": null,
+      "ParcelNumber": "216   293",
+      "PermitNumber": "BLDGRES-26-2694",
+      "PermitID": "ac3611d9-cfc6-4a2e-82d9-3270c024ec68",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176988,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/6e75139a-1560-43cd-bfdc-2a90e714e2ae",
+      "ApplyDate": 1781884297000,
+      "IssueDate": null,
+      "ParcelNumber": "216   294",
+      "PermitNumber": "BLDGRES-26-2697",
+      "PermitID": "6e75139a-1560-43cd-bfdc-2a90e714e2ae",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176984,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/57a670e4-eae9-460c-bfde-9dc00f1ae0ce",
+      "ApplyDate": 1781879619000,
+      "IssueDate": null,
+      "ParcelNumber": "216   288",
+      "PermitNumber": "BLDGRES-26-2688",
+      "PermitID": "57a670e4-eae9-460c-bfde-9dc00f1ae0ce",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176979,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/235a65ae-234e-42e7-b464-a23a164fee5b",
+      "ApplyDate": 1781880330000,
+      "IssueDate": null,
+      "ParcelNumber": "216   290",
+      "PermitNumber": "BLDGRES-26-2691",
+      "PermitID": "235a65ae-234e-42e7-b464-a23a164fee5b",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176978,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/21131636-608c-45f4-8b96-bf45a39c61b3",
+      "ApplyDate": 1781880726000,
+      "IssueDate": null,
+      "ParcelNumber": "216   292",
+      "PermitNumber": "BLDGRES-26-2693",
+      "PermitID": "21131636-608c-45f4-8b96-bf45a39c61b3",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176977,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/1aaf4b75-04f6-4168-acd2-ba8a90fee369",
+      "ApplyDate": 1781880524000,
+      "IssueDate": null,
+      "ParcelNumber": "216   291",
+      "PermitNumber": "BLDGRES-26-2692",
+      "PermitID": "1aaf4b75-04f6-4168-acd2-ba8a90fee369",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Attached Structure",
+      "PermitClass": "Single Family Attached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176940,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/9398c2c5-3079-4f91-8556-d06e2699fac8",
+      "ApplyDate": 1781694400000,
+      "IssueDate": null,
+      "ParcelNumber": "010   403",
+      "PermitNumber": "BLDGRES-26-2645",
+      "PermitID": "9398c2c5-3079-4f91-8556-d06e2699fac8",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Detached Structure",
+      "PermitClass": "Single Family Detached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176918,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/75005716-a752-420f-95b6-70bdb4b52d20",
+      "ApplyDate": 1781607172000,
+      "IssueDate": null,
+      "ParcelNumber": "258   284",
+      "PermitNumber": "BLDGRES-26-2628",
+      "PermitID": "75005716-a752-420f-95b6-70bdb4b52d20",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Detached Structure",
+      "PermitClass": "Single Family Detached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176901,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/a65e9a1f-c238-4c50-8d0f-18cdc9feb943",
+      "ApplyDate": 1781560280000,
+      "IssueDate": null,
+      "ParcelNumber": "137   662",
+      "PermitNumber": "BLDGRES-26-2626",
+      "PermitID": "a65e9a1f-c238-4c50-8d0f-18cdc9feb943",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Detached Structure",
+      "PermitClass": "Single Family Detached",
+      "PermitStatus": "Submitted - Online"
+    },
+    {
+      "OBJECTID": 176892,
+      "Link": "https://css.forsythco.com/EnerGov_Prod/SelfService/#/plan/6ac865b0-cf4c-4445-b4c5-d31460190a7f",
+      "ApplyDate": 1781530096000,
+      "IssueDate": null,
+      "ParcelNumber": "197   082",
+      "PermitNumber": "BLDGRES-26-2614",
+      "PermitID": "6ac865b0-cf4c-4445-b4c5-d31460190a7f",
+      "PermitType": "Building (Residential)",
+      "PermitClassDescription": "Single Family Residential Detached Structure",
+      "PermitClass": "Single Family Detached",
+      "PermitStatus": "Submitted - Online"
+    }
+  ]
+}

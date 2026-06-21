@@ -85,9 +85,42 @@ const builderMarketSources = [
   { key: 'raleigh', state: 'NC', marketName: 'Raleigh / Wake County, NC', csvUrl: 'data/real/raleigh/builder_validation_queue.csv', signalsUrl: 'data/real/raleigh/builder_signals.json', evidenceUrl: 'data/real/raleigh/market_evidence.json' },
   { key: 'polk', state: 'FL', marketName: 'Polk / Lakeland, FL', csvUrl: 'data/real/polk/builder_validation_queue.csv', signalsUrl: 'data/real/polk/builder_signals.json', evidenceUrl: 'data/real/polk/market_evidence.json' },
   { key: 'maricopa', state: 'AZ', marketName: 'Phoenix / Maricopa County, AZ', csvUrl: 'data/real/maricopa/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa/builder_signals.json', evidenceUrl: 'data/real/maricopa/market_evidence.json' },
+  { key: 'dorchester-sc', state: 'SC', marketName: 'Dorchester County / Charleston edge, SC', csvUrl: 'data/real/dorchester-sc/builder_validation_queue.csv', signalsUrl: 'data/real/dorchester-sc/builder_signals.json', evidenceUrl: 'data/real/dorchester-sc/market_evidence.json' },
 ];
 
 const builderMarketSourceByKey = new Map(builderMarketSources.map(source => [source.key, source]));
+
+const builderMarketRegistry = [
+  { key: 'knoxville', state: 'TN', label: 'Knoxville / Knox County', note: 'live Tennessee beachhead', platform: 'KGIS + Buildchek', suggestedRank: 1, sourceWork: 'Keep buyer calls moving; expand permit pull depth.' },
+  { key: 'nashville-edge-tn', state: 'TN', label: 'Nashville / Davidson edge', note: 'Middle TN production-builder lane', platform: 'Buildchek + Metro Nashville Codes', suggestedRank: 2, sourceWork: 'Review Metro permit source and build contractor extraction.' },
+  { key: 'chattanooga-tn', state: 'TN', label: 'Chattanooga / Hamilton County', note: 'TN builder-sprawl permit lane', platform: 'Buildchek + Hamilton County GIS', suggestedRank: 3, sourceWork: 'Verify direct county/city permit fields.' },
+  { key: 'murfreesboro-tn', state: 'TN', label: 'Murfreesboro / Rutherford County', note: 'Nashville-edge sprawl lane', platform: 'CivicPlus / CivicGov', suggestedRank: 4, sourceWork: 'Build source monitor before seller sourcing.' },
+  { key: 'franklin-tn', state: 'TN', label: 'Franklin / Williamson County', note: 'high-value TN custom-builder lane', platform: 'IDT Plans + county records', suggestedRank: 5, sourceWork: 'Confirm permit detail access and builder fields.' },
+  { key: 'polk', state: 'FL', label: 'Polk / Lakeland', note: 'live inland Florida lane', platform: 'Accela Citizen Access', suggestedRank: 6, sourceWork: 'Refresh pull and enrich top builders.' },
+  { key: 'ocala-fl', state: 'FL', label: 'Ocala / Marion County', note: 'inland FL permit lane', platform: 'Civic Access / CivicPlus', suggestedRank: 7, sourceWork: 'Probe portal for contractor export.' },
+  { key: 'clermont-fl', state: 'FL', label: 'Clermont / Lake County', note: 'Orlando-edge growth lane', platform: 'TRAKiT / CentralSquare', suggestedRank: 8, sourceWork: 'Monitor migration and find machine-readable permits.' },
+  { key: 'alachua-fl', state: 'FL', label: 'Gainesville / Alachua County', note: 'inland FL permit lane', platform: 'Accela', suggestedRank: 9, sourceWork: 'Build Accela adapter after contractor-field proof.' },
+  { key: 'maricopa', state: 'AZ', label: 'Phoenix / Maricopa County', note: 'live AZ weekly-permit lane', platform: 'Maricopa weekly reports', suggestedRank: 10, sourceWork: 'Refresh weekly XLSX and call top permit builders.' },
+  { key: 'tucson-az', state: 'AZ', label: 'Tucson / Pima County', note: 'secondary AZ permit lane', platform: 'Accela / Tucson DSD', suggestedRank: 11, sourceWork: 'Probe Accela-style details for contractor rows.' },
+  { key: 'buckeye-az', state: 'AZ', label: 'Buckeye', note: 'fast-growth Phoenix edge', platform: 'City permit portal', suggestedRank: 12, sourceWork: 'Find export/API path for permit activity.' },
+  { key: 'raleigh', state: 'NC', label: 'Raleigh / Wake County', note: 'live Piedmont ArcGIS lane', platform: 'Wake/Raleigh ArcGIS', suggestedRank: 13, sourceWork: 'Refresh direct permit-builder pull.' },
+  { key: 'charlotte-nc', state: 'NC', label: 'Charlotte / Mecklenburg', note: 'large NC buyer market', platform: 'Accela + Power BI', suggestedRank: 14, sourceWork: 'Normalize dashboard/direct permit feed.' },
+  { key: 'greensboro-nc', state: 'NC', label: 'Greensboro / Guilford County', note: 'Piedmont corridor permit lane', platform: 'County/city systems', suggestedRank: 15, sourceWork: 'Verify public contractor rows.' },
+  { key: 'cabarrus-nc', state: 'NC', label: 'Concord / Cabarrus County', note: 'ArcGIS permit lane', platform: 'ArcGIS Open Data + Accela', suggestedRank: 16, sourceWork: 'Map permit/parcel layers and contractor fields.' },
+  { key: 'austin', state: 'TX', label: 'Austin', note: 'live TX open-data lane', platform: 'Socrata Open Data / BLDS', suggestedRank: 17, sourceWork: 'Refresh Socrata pull and validate buy boxes.' },
+  { key: 'san-antonio', state: 'TX', label: 'San Antonio', note: 'live CKAN/open-data lane', platform: 'Open Data SA / CKAN', suggestedRank: 18, sourceWork: 'Refresh CKAN pull and call active builders.' },
+  { key: 'plano-tx', state: 'TX', label: 'Plano / Collin County', note: 'DFW-edge permit lane', platform: 'Accela + custom county portals', suggestedRank: 19, sourceWork: 'Find reliable permit detail source.' },
+  { key: 'mcallen-tx', state: 'TX', label: 'McAllen', note: 'lower-priority Accela lane', platform: 'Accela', suggestedRank: 20, sourceWork: 'Probe Accela endpoint after higher-leverage markets.' },
+  { key: 'forsyth-ga', state: 'GA', label: 'Forsyth County / Atlanta data-center corridor', note: 'GA data-center commuter lane', platform: 'Forsyth ArcGIS EnerGov + Tyler detail', suggestedRank: 21, sourceWork: 'Unblock contractor names from Tyler/EnerGov detail; open layer has no builder field.' },
+  { key: 'hall-ga', state: 'GA', label: 'Hall County / Gainesville', note: 'NE Atlanta commuter lane', platform: 'Accela + issued-permit PDFs', suggestedRank: 22, sourceWork: 'Extract/OCR issued-permit PDFs or find detail export.' },
+  { key: 'jackson-ga', state: 'GA', label: 'Jackson County', note: 'I-85 / data-center corridor', platform: 'County/city permit portals', suggestedRank: 23, sourceWork: 'Verify contractor-bearing public permit source.' },
+  { key: 'douglas-ga', state: 'GA', label: 'Douglas County / Atlanta west', note: 'west Atlanta workforce-housing lane', platform: 'County/city portals', suggestedRank: 24, sourceWork: 'Review Accela/CentralSquare paths and contractor fields.' },
+  { key: 'dorchester-sc', state: 'SC', label: 'Dorchester County / Charleston edge', note: 'live SC coastal-edge lane', platform: 'Evolve Public permit search', suggestedRank: 25, sourceWork: 'Enrich top 20 builders and deepen permit proof links.' },
+  { key: 'berkeley-sc', state: 'SC', label: 'Berkeley County / Charleston edge', note: 'strong SC watchlist lane', platform: 'Builder portal / Cloudflare-challenged', suggestedRank: 26, sourceWork: 'Find reliable API/export path around portal challenge.' },
+  { key: 'greenville-sc', state: 'SC', label: 'Greenville County', note: 'Upstate SC secondary lane', platform: 'County/city permit portal review', suggestedRank: 27, sourceWork: 'Review after Dorchester/Berkeley.' },
+];
+
+const builderMarketRegistryByKey = new Map(builderMarketRegistry.map(market => [market.key, market]));
 
 const stages = [
   { id: 'market', name: 'Market Finder', desc: 'Where to hunt first.', sourceType: 'market' },
@@ -155,6 +188,8 @@ let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
 let selectedBuilderMarketState = 'TN';
+let selectedBuilderMarketKey = 'knoxville';
+let selectedDealsMarketKey = 'all';
 let lastBuilderSkipTraceImportStatus = '';
 let openMachinePanel = '';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
@@ -350,6 +385,8 @@ function rowState(row = {}) {
   if (/\bfl\b|florida|lehigh|cape-coral|ocala|palm bay|orlando/.test(text)) return 'FL';
   if (/\bar\b|arkansas|bentonville|bella vista/.test(text)) return 'AR';
   if (/\btx\b|texas|houston/.test(text)) return 'TX';
+  if (/\bga\b|georgia|forsyth|hall|jackson|douglas|atlanta|cumming|gainesville/.test(text)) return 'GA';
+  if (/\bsc\b|south carolina|dorchester|berkeley|charleston|summerville|greenville/.test(text)) return 'SC';
   return 'UNKNOWN';
 }
 
@@ -410,6 +447,8 @@ function stateFromBuilderRow(row = {}) {
   if (/arizona|phoenix|maricopa|mesa|tucson/.test(market)) return 'AZ';
   if (/north carolina|raleigh|wake|charlotte|mecklenburg|greensboro/.test(market)) return 'NC';
   if (/texas|austin|san antonio|travis|bexar|dfw|plano/.test(market)) return 'TX';
+  if (/georgia|forsyth|hall|jackson|douglas|atlanta|cumming|gainesville/.test(market)) return 'GA';
+  if (/south carolina|dorchester|berkeley|charleston|summerville|greenville/.test(market)) return 'SC';
   return selectedBuilderMarketState || 'TN';
 }
 
@@ -508,8 +547,28 @@ function scoredParcels() {
   return (workspace.parcels || []).map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
 }
 
+function dealMarketText(row = {}) {
+  return `${row.market || ''} ${row.marketKey || ''} ${row.sourceMarket || ''} ${row.address || ''} ${row.county || ''} ${row.state || ''}`.toLowerCase();
+}
+
+function parcelMatchesDealMarket(parcel = {}, market = null) {
+  if (!market || market.key === 'all') return true;
+  const state = rowState(parcel);
+  const text = dealMarketText(parcel);
+  const key = String(market.key || '').toLowerCase();
+  const labelSeed = String(market.label || market.marketLabel || '').split('/')[0].trim().toLowerCase();
+  return state === market.state || (key && text.includes(key)) || (labelSeed && text.includes(labelSeed));
+}
+
+function getSelectedDealsMarket() {
+  if (selectedDealsMarketKey === 'all') return null;
+  return builderMarketSwitchboardEntries().find(market => market.key === selectedDealsMarketKey) || builderMarketRegistryByKey.get(selectedDealsMarketKey) || null;
+}
+
 function getVisibleParcels() {
+  const selectedMarket = getSelectedDealsMarket();
   return scoredParcels().filter(parcel => {
+    if (!parcelMatchesDealMarket(parcel, selectedMarket)) return false;
     if (filter === 'all') return true;
     if (filter === 'seller-calls') return parcel.action === 'Call now' || parcel.crmStatus === 'New' || parcel.crmStatus === 'Generated lead';
     if (filter === 'offer-ready') return parcel.risk.status === 'Pass' && Number(parcel.buyerMaxPrice || 0) > Number(parcel.askingPrice || 0);
@@ -518,6 +577,59 @@ function getVisibleParcels() {
     if (filter === 'follow-up') return ['Contacted', 'Negotiating', 'Under Contract'].includes(parcel.crmStatus);
     return true;
   });
+}
+
+function dealsMarketCoverageEntries() {
+  const allDeals = scoredParcels();
+  const entries = builderMarketSwitchboardEntries().map(market => {
+    const dealCount = allDeals.filter(parcel => parcelMatchesDealMarket(parcel, market)).length;
+    const sourceState = market.isLive ? 'live' : market.isThin ? 'thin' : 'needs-work';
+    return {
+      ...market,
+      dealCount,
+      sourceState,
+      dealStatusCopy: dealCount ? `${dealCount} seller records` : '0 seller records',
+      sourceStatusCopy: market.statusCopy,
+      isDealsActive: selectedDealsMarketKey === market.key,
+    };
+  });
+  const expansionStateCodes = new Set(['GA', 'SC']);
+  const expansionEntries = entries.filter(market => expansionStateCodes.has(market.stateCode || market.state));
+  const otherEntries = entries.filter(market => !expansionStateCodes.has(market.stateCode || market.state));
+  return [{
+    key: 'all',
+    stateCode: 'ALL',
+    label: 'All markets',
+    marketLabel: 'All markets',
+    builderCount: entries.reduce((sum, market) => sum + Number(market.builderCount || 0), 0),
+    dealCount: allDeals.length,
+    sourceStatusCopy: `${entries.length} market lanes`,
+    dealStatusCopy: `${allDeals.length} seller records`,
+    sourceState: 'all',
+    isDealsActive: selectedDealsMarketKey === 'all',
+  }, ...expansionEntries, ...otherEntries];
+}
+
+function renderDealsMarketCoverage() {
+  const entries = dealsMarketCoverageEntries();
+  const selected = entries.find(market => market.isDealsActive) || entries[0];
+  const liveCount = entries.filter(market => market.key !== 'all' && market.builderCount > 0).length;
+  const marketButtons = entries.map(market => {
+    const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : market.sourceState === 'all' ? 'is-all' : 'needs-work';
+    return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
+      <small><kbd>${h(market.stateCode || market.state || '')}</kbd><strong>${h(market.marketLabel || market.label)}</strong></small>
+      <span><b>${h(market.dealCount)}</b> deals</span>
+      <em>${h(market.sourceStatusCopy)} · ${h(market.dealStatusCopy)}</em>
+    </div>`;
+  }).join('');
+  return `<section class="deals-market-coverage" aria-label="Deals market coverage">
+    <div class="deals-market-head">
+      <span class="eyebrow">Market coverage</span>
+      <h3>Deals follows every market lane.</h3>
+      <p>${h(selected.key === 'all' ? `${entries.length - 1} selectable markets. ${liveCount} have builder data; the rest stay visible as source-work lanes.` : `${selected.marketLabel || selected.label}: ${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
+    </div>
+    <div class="deals-market-grid" role="listbox" aria-label="Select Deals market">${marketButtons}</div>
+  </section>`;
 }
 
 function getSelectedParcel(visible = getVisibleParcels()) {
@@ -1044,7 +1156,7 @@ function getLoadedBuilderMarkets() {
     return [key, {
       ...source,
       ...data,
-      rows: asArray(data.rows).map(row => normalizeBuilderSignal(row, source)),
+      rows: asArray(Array.isArray(data) ? data : data.rows).map(row => normalizeBuilderSignal(row, source)),
     }];
   }));
   if (knoxvilleBuyerCallSheet?.rows?.length) {
@@ -1063,6 +1175,20 @@ function getLoadedBuilderMarkets() {
   return markets;
 }
 
+function loadedBuilderMarketKey(market = {}) {
+  if (market.key && builderMarketSourceByKey.has(market.key)) return market.key;
+  if (market.key === 'knoxvilleCallSheet') return 'knoxville';
+  const match = [...builderMarketSourceByKey.entries()].find(([, source]) => source.marketName === market.marketName || (source.state === market.state && source.signalsUrl === market.signalsUrl));
+  return match?.[0] || market.key || '';
+}
+
+function rowsForBuilderMarketKey(marketKey) {
+  return Object.values(getLoadedBuilderMarkets())
+    .filter(market => loadedBuilderMarketKey(market) === marketKey)
+    .flatMap(market => asArray(market.rows).map(row => ({ ...row, marketKey, marketName: market.marketName, csvUrl: market.csvUrl })))
+    .sort((a, b) => Number(b.recentBuilds || 0) - Number(a.recentBuilds || 0));
+}
+
 function getBuilderMarketEntriesForState(stateCode) {
   const markets = getLoadedBuilderMarkets();
   return Object.values(markets).filter(market => market.state === stateCode && asArray(market.rows).length);
@@ -1070,12 +1196,15 @@ function getBuilderMarketEntriesForState(stateCode) {
 
 function getStateBuilderRows(stateCode) {
   return getBuilderMarketEntriesForState(stateCode)
-    .flatMap(market => asArray(market.rows).map(row => ({ ...row, marketKey: market.key, marketName: market.marketName, csvUrl: market.csvUrl })))
+    .flatMap(market => {
+      const marketKey = loadedBuilderMarketKey(market);
+      return asArray(market.rows).map(row => ({ ...row, marketKey, marketName: market.marketName, csvUrl: market.csvUrl }));
+    })
     .sort((a, b) => Number(b.recentBuilds || 0) - Number(a.recentBuilds || 0));
 }
 
 function getActiveValidationRows() {
-  return getStateBuilderRows(selectedBuilderMarketState);
+  return selectedBuilderMarketKey ? rowsForBuilderMarketKey(selectedBuilderMarketKey) : getStateBuilderRows(selectedBuilderMarketState);
 }
 
 function findLoadedBuilderRow(builderId) {
@@ -1098,6 +1227,53 @@ function getStateBuilderSummary(stateCode) {
     callable,
     minimumUniqueBuilders: minimums.length ? Math.min(...minimums) : 20,
   };
+}
+
+function marketSummaryForRows(rows = [], minimumUniqueBuilders = 20) {
+  const totalRecentBuildSignals = rows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0);
+  return {
+    entries: [],
+    rows,
+    uniqueBuilders: rows.length,
+    totalRecentBuildSignals,
+    callable: rows.filter(row => row.phone || row.email).length,
+    minimumUniqueBuilders,
+  };
+}
+
+function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandscape()) {
+  const loaded = getLoadedBuilderMarkets();
+  const liveByKey = new Map(Object.values(loaded).map(market => [loadedBuilderMarketKey(market), market]));
+  return builderMarketRegistry.map(registry => {
+    const live = liveByKey.get(registry.key) || {};
+    const rows = rowsForBuilderMarketKey(registry.key);
+    const stateMeta = asArray(permitLandscape.states).find(item => item.id === String(registry.state || '').toLowerCase()) || {};
+    const landscapeMarket = asArray(permitLandscape.leadingMarkets).find(item => item.state === registry.state && String(item.market || '').toLowerCase().includes(String(registry.label || '').split('/')[0].trim().toLowerCase())) || null;
+    const minimumUniqueBuilders = Number(live.evidence?.summary?.minimumUniqueBuilders || live.evidence?.minimumUniqueBuilders || 20);
+    const status = rows.length >= minimumUniqueBuilders ? 'live' : rows.length > 0 ? 'thin' : 'needs-work';
+    const isActive = registry.key === selectedBuilderMarketKey;
+    return {
+      ...registry,
+      stateCode: registry.state,
+      key: registry.key,
+      label: registry.label,
+      marketLabel: live.marketName || registry.label,
+      stateMeta,
+      landscapeMarket,
+      rows,
+      summary: marketSummaryForRows(rows, minimumUniqueBuilders),
+      builderCount: rows.length,
+      contactLedger: builderContactLedgerForRows(rows),
+      minimumUniqueBuilders,
+      status,
+      isLive: rows.length >= minimumUniqueBuilders,
+      isThin: rows.length > 0 && rows.length < minimumUniqueBuilders,
+      isActive,
+      sequence: stateMeta.sequence || {},
+      markets: landscapeMarket ? [landscapeMarket] : [],
+      statusCopy: rows.length >= minimumUniqueBuilders ? `${rows.length} live builders` : rows.length > 0 ? `${rows.length}/${minimumUniqueBuilders} builders · needs more work` : '0 builders · needs source work',
+    };
+  });
 }
 
 function builderContactLedgerForRows(rows = []) {
@@ -1471,36 +1647,24 @@ function renderBuilderListEnginePanel(options = {}) {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
   const preservedViewport = options.preserveViewport ? captureBuilderInteractionViewport() : null;
-  const fallbackTnBuilders = getPermitBuilders();
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
   const permitLandscape = getPermitPortalLandscape();
   const publicSkipTrace = asArray(generatedLeads?.queues?.skipTrace);
-  const stateOrder = ['TN', 'FL', 'AZ', 'NC', 'TX'];
-  const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona' };
-  const stateSummaries = stateOrder.map((stateCode) => {
-    const marketSummary = getStateBuilderSummary(stateCode);
-    const fallbackRows = stateCode === 'TN' && !marketSummary.rows.length ? fallbackTnBuilders : [];
-    const rows = marketSummary.rows.length ? marketSummary.rows : fallbackRows;
-    const markets = asArray(permitLandscape.leadingMarkets).filter(item => item.state === stateCode);
-    const stateMeta = asArray(permitLandscape.states).find(item => item.id === stateCode.toLowerCase()) || {};
-    const sequence = stateMeta.sequence || {};
-    const isLive = rows.length > 0;
-    const isActive = stateCode === selectedBuilderMarketState;
-    const builderCount = rows.length;
-    const contactLedger = builderContactLedgerForRows(rows);
-    const status = isLive ? `${builderCount} live builders` : (sequence.label || 'source lane');
-    const marketLabel = marketSummary.entries.map(item => item.marketName).join(' · ') || markets.map(item => item.market).join(' · ') || stateMeta.state || stateLabels[stateCode];
-    return { stateCode, label: stateLabels[stateCode], markets, stateMeta, sequence, isLive, isActive, builderCount, contactLedger, status, marketLabel, rows, summary: marketSummary };
-  });
-  const stateSwitcher = stateSummaries.map((state) => `<button type="button" class="market-toggle market-toggle-v34 ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
-    <small class="market-row-main"><kbd class="market-code">${h(state.stateCode)}</kbd><strong class="market-name">${h(state.label)}</strong><em class="market-builder-total">${state.isLive ? `<b>${h(state.contactLedger.total)}</b><small>builders</small>` : `<b>Ready</b><small>lane</small>`}</em></small>
-    ${state.isLive ? `<span class="market-contact-rail" role="progressbar" aria-label="${h(`${state.contactLedger.reached} of ${state.contactLedger.total} ${state.label} builders reached`)}" aria-valuemin="0" aria-valuemax="${h(state.contactLedger.total)}" aria-valuenow="${h(state.contactLedger.reached)}" style="--contact-progress:${h(state.contactLedger.percent)}%"><i></i></span>
-    <small class="market-contact-copy"><b><mark>${h(state.contactLedger.reached)}</mark> reached</b><i>·</i><b><mark>${h(state.contactLedger.open)}</mark> open</b></small>` : ''}
+  let marketSummaries = builderMarketSwitchboardEntries(permitLandscape);
+  if (!marketSummaries.some(market => market.key === selectedBuilderMarketKey)) selectedBuilderMarketKey = marketSummaries[0]?.key || 'knoxville';
+  let activeState = marketSummaries.find(market => market.key === selectedBuilderMarketKey) || marketSummaries[0];
+  selectedBuilderMarketState = activeState?.stateCode || selectedBuilderMarketState || 'TN';
+  marketSummaries = marketSummaries.map(market => ({ ...market, isActive: market.key === selectedBuilderMarketKey }));
+  activeState = marketSummaries.find(market => market.key === selectedBuilderMarketKey) || marketSummaries[0];
+  const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona', GA: 'Georgia', SC: 'South Carolina' };
+  const stateSwitcher = marketSummaries.map((market) => `<button type="button" class="market-toggle market-toggle-v34 market-status-${h(market.status)} ${market.isActive ? 'active' : ''}" data-builder-market-key="${h(market.key)}" aria-pressed="${market.isActive ? 'true' : 'false'}">
+    <small class="market-row-main"><kbd class="market-code">${h(market.stateCode)}</kbd><strong class="market-name">${h(market.label)}</strong><em class="market-builder-total"><b>${h(market.builderCount)}</b><small>${market.builderCount === 1 ? 'builder' : 'builders'}</small></em></small>
+    <span class="market-contact-rail" role="progressbar" aria-label="${h(`${market.builderCount} of ${market.minimumUniqueBuilders} minimum builders collected for ${market.label}`)}" aria-valuemin="0" aria-valuemax="${h(market.minimumUniqueBuilders)}" aria-valuenow="${h(Math.min(market.builderCount, market.minimumUniqueBuilders))}" style="--contact-progress:${h(Math.min(100, Math.round((market.builderCount / Math.max(1, market.minimumUniqueBuilders)) * 100)))}%"><i></i></span>
+    <small class="market-contact-copy"><b>${h(market.statusCopy)}</b><i>·</i><span>${h(market.note)}</span></small>
   </button>`).join('');
-  const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
   const activeBuilders = asArray(activeState.rows);
-  const activeSummary = activeState.summary || getStateBuilderSummary(activeState.stateCode);
+  const activeSummary = activeState.summary || marketSummaryForRows(activeBuilders, 20);
   const selected = getSelectedBuilder(activeBuilders) || {};
   const buyerPool = buyerPoolForState(activeState.stateCode);
   const sellerPool = sellerPoolForState(activeState.stateCode);
@@ -1519,11 +1683,11 @@ function renderBuilderListEnginePanel(options = {}) {
     limit: 8,
   });
   const marketSummary = `<div class="active-market-summary">
-    <span>${activeState.isLive ? 'Live permit-backed market' : 'Selected source lane'}</span>
-    <strong>${h(activeState.isLive ? (activeState.marketLabel || activeState.label) : `${activeState.label} source lane`)}</strong>
-    <p>${h(activeState.isLive ? `${activeBuilders.length} permit-backed builders. Capture buy box before seller work.` : `${activeState.marketLabel || activeState.label}. Source lane ready; builder queue waits for permit-active companies.`)}</p>
+    <span>${activeState.isLive ? 'Live permit-backed market' : activeState.isThin ? 'Thin market lane' : 'Selected source lane'}</span>
+    <strong>${h(activeState.marketLabel || activeState.label)}</strong>
+    <p>${h(activeState.isLive ? `${activeBuilders.length} permit-backed builders. Capture buy box before seller work.` : activeState.isThin ? `${activeBuilders.length}/${activeState.minimumUniqueBuilders} builders collected. Keep this visible, but finish the source pull before seller work.` : `${activeState.label}. No builder queue yet. This market stays visible so the operator knows source work is still owed.`)}</p>
     <ul>
-      ${activeState.isLive ? `<li title="Unique permit-backed builders in the current lane.">${h(activeBuilders.length)} builders</li>
+      ${activeState.builderCount ? `<li title="Unique permit-backed builders in the current lane.">${h(activeBuilders.length)} builders</li>
       <li title="Minimum viable source pull before operator review.">${h(activeSummary.minimumUniqueBuilders || 20)} min</li>
       <li title="Rows with public phone/email/contact path ready for operator outreach.">${h(activeSummary.callable ?? 0)} callable</li>
       <li title="Recent permit rows attached as public proof.">${h(activeSummary.totalRecentBuildSignals ?? 0)} proofs</li>` : `<li>${h(activeState.markets.length)} markets</li>
@@ -1557,7 +1721,7 @@ function renderBuilderListEnginePanel(options = {}) {
     return `<article id="market-state-${h(state.stateCode.toLowerCase())}" class="permit-state-card target-market-lane ${state.isActive ? 'active' : ''} ${h(state.sequence.status || 'staged')}">
       <div class="permit-state-head">
         <div><span>${h(state.label)}</span><p>${h(stateMeta.reality || 'Source lane pending.')}</p></div>
-        <strong>${state.isLive ? `${h(state.builderCount)} builders` : h(state.status)}</strong>
+        <strong>${h(state.statusCopy || state.status)}</strong>
       </div>
       <div class="pipeline-unlock"><b>${h(state.sequence.label || 'Pipeline')}</b><span>${h(state.sequence.unlock || 'Collect permit-source priority before pulling builders.')}</span></div>
       <ul class="state-market-list">${markets || '<li><b>Market list pending</b><span>Collect permit-source priority before pulling builders.</span></li>'}</ul>
@@ -1577,11 +1741,11 @@ function renderBuilderListEnginePanel(options = {}) {
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
         <h3>Market workbench</h3>
-        <p><b>TN → inland FL → AZ → NC → TX.</b> Pick the buyer lane, then validate the highest-signal builder before seller work starts.</p>
+        <p><b>Suggested order, not a lock:</b> use the recommended stack when useful, but switch any market on demand. Empty lanes stay visible until the source work is finished.</p>
         <div class="primary-action-strip builders-primary-action"><span>Next</span><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
-        <div class="market-toggle-grid">${stateSwitcher}</div>
+        <div class="market-toggle-grid market-switchboard-grid">${stateSwitcher}</div>
         ${marketSummary}
       </div>
       <nav class="builder-ops-jump" aria-label="Builder page sections">
@@ -1596,7 +1760,7 @@ function renderBuilderListEnginePanel(options = {}) {
 
     <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
-        <div class="panel-kicker"><span>Permit portal landscape</span><b>five-state normalization map</b></div>
+        <div class="panel-kicker"><span>Permit portal landscape</span><b>market switchboard · buyer-first lanes</b></div>
         <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>
         <h4>Target-state lanes</h4>
         <div class="permit-state-grid market-lane-grid">${statePortalRows}</div>
@@ -1755,12 +1919,14 @@ function renderParcels() {
   const selected = getSelectedParcel(visible);
   const target = document.querySelector('#parcels');
   if (!target) return;
+  const marketCoverage = renderDealsMarketCoverage();
 
   if (!selected) {
-    target.innerHTML = `<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
+    const selectedMarket = getSelectedDealsMarket();
+    target.innerHTML = `${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
       <span class="eyebrow">No ready deals</span>
-      <h3>This lane is intentionally quiet.</h3>
-      <p class="deals-empty-why"><b>Why empty:</b> no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.</p>
+      <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
+      <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'this market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness.' : 'no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
       <a class="deals-empty-next" href="#builders" data-view="builders">Validate one buyer first ${productIcon('arrow')}</a>
     </article>`;
     return;
@@ -1783,7 +1949,7 @@ function renderParcels() {
     ['Next action', selected.action, getNextAction(selected)],
   ];
 
-  target.innerHTML = `<div class="deal-workbench">
+  target.innerHTML = `${marketCoverage}<div class="deal-workbench">
     <div class="primary-action-strip deals-primary-action"><span>Next action</span><b>${h(getNextAction(selected))}</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner ${productIcon('arrow')}</a></div>
     <aside class="deal-queue" aria-label="Seller call queue">
       <div class="queue-header"><span class="eyebrow">Seller queue</span><strong>${visible.length} records</strong></div>
@@ -1864,6 +2030,8 @@ function renderSourcePriorityBoard() {
     { code: 'AZ', label: 'Arizona', stance: 'queued velocity lane', platform: 'Maricopa weekly + Accela cities' },
     { code: 'NC', label: 'North Carolina', stance: 'Piedmont lane', platform: 'Buildchek + Mecklenburg/Wake direct data' },
     { code: 'TX', label: 'Texas', stance: 'fragmented high-volume lane', platform: 'PermitVector + Austin/San Antonio open data' },
+    { code: 'GA', label: 'Georgia', stance: 'secondary data-center lane', platform: 'Forsyth/Hall/Jackson/Douglas permit lanes' },
+    { code: 'SC', label: 'South Carolina', stance: 'secondary coastal lane', platform: 'Dorchester live + Berkeley watchlist' },
   ];
   const stackRows = stackOrder.map((item, index) => `<article class="priority-stack-step ${index === 0 ? 'active' : ''}"><span>${String(index + 1).padStart(2, '0')}</span><b>${h(item.code)} · ${h(item.label)}</b><small>${h(item.stance)} · ${h(item.platform)}</small></article>`).join('');
   const marketCard = item => `<article class="priority-market ${item.state === 'TN' ? 'is-primary' : ''}">
@@ -1874,8 +2042,8 @@ function renderSourcePriorityBoard() {
   target.innerHTML = `<section class="source-market-priority" aria-label="Priority permit portal markets">
     <div class="source-priority-head">
       <span class="eyebrow">Permit-source priority</span>
-      <h3>TN first. Then inland FL, AZ, NC, TX.</h3>
-      <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent lanes.</p>
+      <h3>TN first. Then inland FL, AZ, NC, TX. GA/SC secondary.</h3>
+      <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent lanes. Georgia and South Carolina sit behind them as secondary Southeast expansion lanes.</p>
       <div class="primary-action-strip sources-primary-action"><span>Next action</span><b>Verify the Tennessee source lane before promoting any seller lead.</b><a href="#permit-landscape" data-view="builders">Open lane ${productIcon('arrow')}</a></div>
     </div>
     <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
@@ -2493,12 +2661,21 @@ function bindEvents() {
       return;
     }
 
-    const builderMarketButton = event.target.closest('[data-builder-market-state]');
+    const builderMarketButton = event.target.closest('[data-builder-market-key], [data-builder-market-state]');
     if (builderMarketButton) {
       event.preventDefault();
+      const marketKey = builderMarketButton.dataset.builderMarketKey;
       const stateCode = builderMarketButton.dataset.builderMarketState;
-      if (stateCode) {
+      if (marketKey) {
+        const registryMarket = builderMarketRegistryByKey.get(marketKey);
+        selectedBuilderMarketKey = marketKey;
+        selectedBuilderMarketState = registryMarket?.state || selectedBuilderMarketState;
+        selectedBuilderId = '';
+        selectedValidationBuilderId = '';
+        renderBuilderListEnginePanel({ preserveViewport: true });
+      } else if (stateCode) {
         selectedBuilderMarketState = stateCode;
+        selectedBuilderMarketKey = builderMarketRegistry.find(market => market.state === stateCode)?.key || selectedBuilderMarketKey;
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
         renderBuilderListEnginePanel({ preserveViewport: true });
@@ -3062,9 +3239,32 @@ ${body}`;
       renderParcels();
       renderTopCallList();
     }
+
+    const dealsMarketButton = event.target.closest('[data-deals-market-key]');
+    if (dealsMarketButton) {
+      selectedDealsMarketKey = dealsMarketButton.dataset.dealsMarketKey || 'all';
+      selectedParcelId = '';
+      renderParcels();
+      renderTopCallList();
+    }
+
+    if (event.target.matches('[data-select-parcel]')) {
+      selectedParcelId = event.target.dataset.selectParcel;
+      renderParcels();
+    }
   });
 
   document.addEventListener('keydown', (event) => {
+    const dealsMarketButton = event.target.closest?.('[data-deals-market-key]');
+    if (dealsMarketButton && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      selectedDealsMarketKey = dealsMarketButton.dataset.dealsMarketKey || 'all';
+      selectedParcelId = '';
+      renderParcels();
+      renderTopCallList();
+      return;
+    }
+
     if (document.body?.dataset?.activeView !== 'builders') return;
     if (event.metaKey || event.ctrlKey || event.altKey) return;
     const tag = event.target?.tagName?.toLowerCase();

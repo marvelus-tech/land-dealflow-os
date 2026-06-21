@@ -13,6 +13,17 @@ assert.doesNotMatch(app, /<div class="empty-state-icon">\$\{solidIndustryIcon\('
 assert.match(app, /target\.setAttribute\('role', 'tablist'\)/, 'Deals filters must declare a segmented-control tablist.');
 assert.match(app, /aria-selected="\$\{filter === value \? 'true' : 'false'\}"/, 'Deals filter buttons must expose selected state.');
 assert.match(app, /\['research', 'Research'\]/, 'Deals filter labels must stay compact.');
+assert.match(app, /function renderDealsMarketCoverage/, 'Deals page must render a market coverage shelf before seller deals exist.');
+assert.match(app, /data-deals-market-key/, 'Deals page must let the operator switch market lanes independently from stage filters.');
+assert.match(app, /<div role="button" tabindex="0" class="deals-market-card/, 'Deals market cards must avoid global button gradients while staying keyboard reachable.');
+assert.doesNotMatch(app, /<button[^>]+class="deals-market-card/, 'Deals market cards must not use button elements that inherit global dark gradients.');
+assert.match(app, /builderMarketSwitchboardEntries\(\)/, 'Deals page must reuse the shared market registry instead of hiding new markets.');
+assert.match(app, /const expansionStateCodes = new Set\(\['GA', 'SC'\]\)/, 'Deals page must pin new GA/SC expansion markets near the top of the coverage shelf.');
+assert.match(app, /\.\.\.expansionEntries, \.\.\.otherEntries/, 'Deals market coverage must surface expansion markets before older lanes.');
+for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
+  assert.match(app, new RegExp(`key: '${key}'`), `Deals market coverage must include ${key} through the shared registry.`);
+}
+assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');
 
 assert.match(css, /v1\.65 - Phase 38 Deals calm empty state/, 'Phase 38 route-scoped CSS marker missing.');
 assert.match(css, /--phase38-deals-empty: compact-intentional-not-broken/, 'Deals route marker must document the intended state.');
@@ -20,5 +31,10 @@ assert.match(css, /#parcel-filters\.phase38-deals-segmented/, 'Deals filters mus
 assert.match(css, /\.phase38-deals-empty[\s\S]*width: min\(100%, 640px\)/, 'Deals empty state must be compact, not full-width dramatic.');
 assert.match(css, /\.phase38-deals-empty \.empty-state-icon[\s\S]*display: none !important/, 'Oversized empty-state icon box must stay hidden on Deals.');
 assert.match(css, /body\[data-active-view="deals"\] footer[\s\S]*padding-bottom: 18px/, 'Deals footer/dead space must be pulled out of the visual field.');
+assert.match(css, /v1\.73 - Deals market coverage: every builder market remains visible before seller deals exist/, 'Deals market coverage CSS marker missing.');
+assert.match(css, /\.deals-market-grid[\s\S]{0,220}repeat\(auto-fit, minmax\(222px, 1fr\)\)/, 'Deals market coverage must scale to many markets.');
+assert.match(css, /\.deals-market-card\.needs-work em[\s\S]{0,80}#8a5a13/, 'Deals low/no-data markets must have visible needs-work styling.');
+assert.match(css, /v1\.74 - Deals market cards must beat global button gradients/, 'Deals market cards need a late contrast override against global button gradients.');
+assert.match(css, /button\.deals-market-card\.deals-market-card[\s\S]{0,180}background-image: none !important/, 'Deals market card buttons must suppress inherited gradient backgrounds.');
 
 console.log('deals empty/filter UI guard passed');

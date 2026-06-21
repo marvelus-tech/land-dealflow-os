@@ -3017,6 +3017,636 @@
       "website": "",
       "task": "capture exact buy box",
       "confidence": 73
+    },
+    {
+      "buyerId": "dorchester-sc-builder-lennar-carolinas",
+      "name": "Lennar Carolinas",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-true-homes",
+      "name": "True Homes",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-center-park-builder-services",
+      "name": "Center Park Builder Services",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-dr-horton",
+      "name": "DR Horton",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-nvr-inc-ryan-homes",
+      "name": "NVR INC dba RYAN HOMES",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-eastwood-construction-partners-llc-subdivision",
+      "name": "Eastwood Construction Partners LLC (subdivision)",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-carter-construction-inc",
+      "name": "CARTER CONSTRUCTION, INC.",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-toby-j-wessel-new-beginnings-construction",
+      "name": "Toby J Wessel / New Beginnings Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "dorchester-sc-builder-kh-carolinas-homes-llc",
+      "name": "KH Carolinas Homes LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 93
+    },
+    {
+      "buyerId": "dorchester-sc-builder-alpha-omega-construction-group-inc",
+      "name": "ALPHA OMEGA CONSTRUCTION GROUP, INC.",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 88
+    },
+    {
+      "buyerId": "dorchester-sc-builder-atk-construction",
+      "name": "ATK Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 78
+    },
+    {
+      "buyerId": "dorchester-sc-builder-ragland-homes",
+      "name": "Ragland Homes",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 78
+    },
+    {
+      "buyerId": "dorchester-sc-builder-eastwood-homes",
+      "name": "EASTWOOD HOMES",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 73
+    },
+    {
+      "buyerId": "dorchester-sc-builder-jason-dandridge-dandridge-construction",
+      "name": "JASON DANDRIDGE dba DANDRIDGE CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 73
+    },
+    {
+      "buyerId": "dorchester-sc-builder-nextgen-homes-llc",
+      "name": "NextGen Homes LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "dorchester-sc-builder-rob-johnson-construction-llc",
+      "name": "ROB JOHNSON CONSTRUCTION LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "dorchester-sc-builder-scott-vasko-vaskos-quality-builders",
+      "name": "Scott Vasko dba Vaskos Quality Builders",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "dorchester-sc-builder-bobby-l-carter-jr-b-l-carter-construction",
+      "name": "Bobby L. Carter Jr./B.L. CARTER CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 63
+    },
+    {
+      "buyerId": "dorchester-sc-builder-eastwood-construction-partners-llc-on-your-lot",
+      "name": "Eastwood Construction Partners LLC (on your lot)",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 63
+    },
+    {
+      "buyerId": "dorchester-sc-builder-allblue-home-services-llc",
+      "name": "Allblue Home Services LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-alpha-omega-constuction-llc-capital-palmetto-builder",
+      "name": "Alpha & Omega Constuction LLC dba Capital Palmetto Builders",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-bleu-oak-construction-group",
+      "name": "Bleu Oak Construction Group",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-brian-whitsitt-sea-island-residential",
+      "name": "Brian Whitsitt dba Sea Island Residential",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-david-c-canington-tricity-construction",
+      "name": "David C Canington dba TriCity Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-hunter-quinn-homes",
+      "name": "Hunter Quinn Homes",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-irvin-vollrath-graceland-properties",
+      "name": "Irvin Vollrath dba Graceland Properties",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-j-m-murray-construction",
+      "name": "J M Murray Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-joseph-m-swails-classic-construction",
+      "name": "Joseph M Swails dba CLASSIC CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-kelvin-kinnear-k-man-inspections-and-home-improvemen",
+      "name": "Kelvin Kinnear dba K-Man Inspections and Home Improvements",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-sejal-patel-custom-homes-renovations-llc",
+      "name": "Sejal Patel dba Custom Homes & Renovations LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-teambuilt-construction-services",
+      "name": "TeamBuilt Construction Services",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-wilson-walpole-axis-construction-llc",
+      "name": "Wilson Walpole dba Axis Construction LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 58
+    },
+    {
+      "buyerId": "dorchester-sc-builder-15-n-atk-construction",
+      "name": "15 N ATK Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-americas-home-place",
+      "name": "Americas Home Place",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-amh-development-south-carolina-gc-llc-american-homes",
+      "name": "AMH DEVELOPMENT SOUTH CAROLINA GC LLC dba AMERICAN HOMES 4 RENT",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-burish-builders-inc",
+      "name": "Burish Builders INC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-canaday-custom-homes-llc",
+      "name": "Canaday Custom Homes, LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-carolina-custom-homes-of-chas-inc",
+      "name": "CAROLINA CUSTOM HOMES OF CHAS INC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-cb-murray-construction",
+      "name": "CB MURRAY CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-cebs-custom-homes-llc",
+      "name": "CEBS Custom Homes LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-coastal-builders-and-consultants-llc",
+      "name": "Coastal Builders and Consultants LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-d-g-home-services-llc",
+      "name": "D & G HOME SERVICES,LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-daniel-l-morgan-santee-home-improvements",
+      "name": "DANIEL L. MORGAN dba SANTEE HOME IMPROVEMENTS",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-diamond-quality-construction-llc",
+      "name": "Diamond Quality Construction LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-edgewater-construction-services-llc",
+      "name": "Edgewater Construction Services LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-evan-stahl-eas-homes",
+      "name": "Evan Stahl dba EAS Homes",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-germain-dr-lowcountry-home-builders",
+      "name": "GERMAIN DR Lowcountry Home Builders",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-home-sweet-home-renovations-and-construction",
+      "name": "Home Sweet Home Renovations and Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-jack-james-greene-jr-jr-greene-building-construction",
+      "name": "Jack James Greene Jr dba JR Greene Building & Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-james-dennis-dennis-construction-inc",
+      "name": "James Dennis dba DENNIS CONSTRUCTION, INC.",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-james-martino-duramax-construction",
+      "name": "James Martino/Duramax Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-joel-richter-jr-royal-homes-inc",
+      "name": "JOEL RICHTER JR/ROYAL HOMES, INC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-johnson-custom-home-builders-llc",
+      "name": "Johnson Custom Home Builders LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-keith-donahue-k-construction-llc",
+      "name": "Keith Donahue dba K Construction LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-lanell-t-willis-jw-construction-of-ridgeland-llc",
+      "name": "Lanell T Willis/JW CONSTRUCTION OF RIDGELAND LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-michael-j-taylor-taylor-coastal-construction-inc",
+      "name": "MICHAEL J TAYLOR dba TAYLOR COASTAL CONSTRUCTION, INC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-myers-construction-llc",
+      "name": "Myers Construction LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-next-vision-development-services-llc",
+      "name": "Next Vision Development Services LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-pineapple-express-construction-llc",
+      "name": "Pineapple Express Construction LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-platinum-homes-llc",
+      "name": "Platinum Homes LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-robin-simmons-woodland-builders",
+      "name": "Robin Simmons dba Woodland Builders",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-ryan-m-barrett-barrett-construction-group-llc",
+      "name": "Ryan M Barrett/Barrett Construction Group LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-southern-construction-inspection-llc",
+      "name": "Southern Construction & Inspection LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-t-l-construction",
+      "name": "T L CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-tadan-construction",
+      "name": "TADAN CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-tc-backer-construction-llc",
+      "name": "TC Backer Construction, LLC",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-terry-david-patoka-db-custom-homes",
+      "name": "TERRY DAVID PATOKA/ DB Custom Homes",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-timothy-james-sprinkle-in-a-pinch-construction-llc",
+      "name": "Timothy James Sprinkle (In a pinch Construction LLC)",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-williams-adams-adams-construction",
+      "name": "WILLIAMS ADAMS/ ADAMS CONSTRUCTION",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
+    },
+    {
+      "buyerId": "dorchester-sc-builder-ztw-construction",
+      "name": "ZTW Construction",
+      "market": "dorchester-sc",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 53
     }
   ],
   "buyerDiscovery": [
@@ -3131,6 +3761,54 @@
       "task": "Find active spec-builder in McAllen, TX",
       "reason": "new target area needs buyer discovery",
       "priority": 34
+    },
+    {
+      "market": "forsyth-ga",
+      "areaName": "Forsyth County / Atlanta data-center corridor, GA",
+      "buyerType": "data-center-commuter-builder",
+      "task": "Find active data-center-commuter-builder in Forsyth County / Atlanta data-center corridor, GA",
+      "reason": "new target area needs buyer discovery",
+      "priority": 30
+    },
+    {
+      "market": "hall-ga",
+      "areaName": "Hall County / Gainesville, GA",
+      "buyerType": "commuter-builder",
+      "task": "Find active commuter-builder in Hall County / Gainesville, GA",
+      "reason": "new target area needs buyer discovery",
+      "priority": 28
+    },
+    {
+      "market": "berkeley-sc",
+      "areaName": "Berkeley County / Charleston edge, SC",
+      "buyerType": "coastal-edge-builder",
+      "task": "Find active coastal-edge-builder in Berkeley County / Charleston edge, SC",
+      "reason": "new target area needs buyer discovery",
+      "priority": 27
+    },
+    {
+      "market": "jackson-ga",
+      "areaName": "Jackson County, GA",
+      "buyerType": "data-center-commuter-builder",
+      "task": "Find active data-center-commuter-builder in Jackson County, GA",
+      "reason": "new target area needs buyer discovery",
+      "priority": 26
+    },
+    {
+      "market": "douglas-ga",
+      "areaName": "Douglas County / Atlanta west, GA",
+      "buyerType": "commuter-builder",
+      "task": "Find active commuter-builder in Douglas County / Atlanta west, GA",
+      "reason": "new target area needs buyer discovery",
+      "priority": 24
+    },
+    {
+      "market": "greenville-sc",
+      "areaName": "Greenville County, SC",
+      "buyerType": "upstate-builder",
+      "task": "Find active upstate-builder in Greenville County, SC",
+      "reason": "new target area needs buyer discovery",
+      "priority": 22
     }
   ],
   "sellerDiscovery": [
@@ -3266,6 +3944,55 @@
       "task": "Find owner/seller parcel leads in McAllen, TX",
       "reason": "new target area needs seller/parcel discovery",
       "priority": 34
+    },
+    {
+      "market": "forsyth-ga",
+      "areaName": "Forsyth County / Atlanta data-center corridor, GA",
+      "task": "Find owner/seller parcel leads in Forsyth County / Atlanta data-center corridor, GA",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 30
+    },
+    {
+      "market": "dorchester-sc",
+      "areaName": "Dorchester County / Charleston edge, SC",
+      "task": "Find owner/seller parcel leads in Dorchester County / Charleston edge, SC",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 29
+    },
+    {
+      "market": "hall-ga",
+      "areaName": "Hall County / Gainesville, GA",
+      "task": "Find owner/seller parcel leads in Hall County / Gainesville, GA",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 28
+    },
+    {
+      "market": "berkeley-sc",
+      "areaName": "Berkeley County / Charleston edge, SC",
+      "task": "Find owner/seller parcel leads in Berkeley County / Charleston edge, SC",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 27
+    },
+    {
+      "market": "jackson-ga",
+      "areaName": "Jackson County, GA",
+      "task": "Find owner/seller parcel leads in Jackson County, GA",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 26
+    },
+    {
+      "market": "douglas-ga",
+      "areaName": "Douglas County / Atlanta west, GA",
+      "task": "Find owner/seller parcel leads in Douglas County / Atlanta west, GA",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 24
+    },
+    {
+      "market": "greenville-sc",
+      "areaName": "Greenville County, SC",
+      "task": "Find owner/seller parcel leads in Greenville County, SC",
+      "reason": "new target area needs seller/parcel discovery",
+      "priority": 22
     }
   ],
   "missingData": [

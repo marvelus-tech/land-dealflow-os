@@ -1,0 +1,3198 @@
+[
+  {
+    "id": "dorchester-sc-builder-lennar-carolinas",
+    "name": "Lennar Carolinas",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Lennar Carolinas",
+    "recentBuilds": 971,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202510068",
+        "permitId": "272369",
+        "address": "1026 RED TURNSTONE RUN",
+        "issuedAt": "2025-12-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272369"
+      },
+      {
+        "permitNumber": "202510078",
+        "permitId": "272367",
+        "address": "1035 ADIRONDACK DR",
+        "issuedAt": "2025-12-30",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272367"
+      },
+      {
+        "permitNumber": "202510066",
+        "permitId": "272363",
+        "address": "988 SCOTCH BONNET WAY",
+        "issuedAt": "2025-12-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272363"
+      },
+      {
+        "permitNumber": "202510067",
+        "permitId": "272362",
+        "address": "988 SCOTCH BONNET WAY",
+        "issuedAt": "2025-12-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272362"
+      },
+      {
+        "permitNumber": "202510054",
+        "permitId": "272386",
+        "address": "1030 RED TURNSTONE RUN",
+        "issuedAt": "2025-12-29",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272386"
+      },
+      {
+        "permitNumber": "202510053",
+        "permitId": "272383",
+        "address": "1028 RED TURNSTONE RUN",
+        "issuedAt": "2025-12-29",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272383"
+      },
+      {
+        "permitNumber": "202510055",
+        "permitId": "272359",
+        "address": "986 SCOTCH BONNET WAY",
+        "issuedAt": "2025-12-29",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272359"
+      },
+      {
+        "permitNumber": "202510056",
+        "permitId": "272358",
+        "address": "986 SCOTCH BONNET WAY",
+        "issuedAt": "2025-12-29",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272358"
+      }
+    ],
+    "acquisitionNotes": "Appears on 971 Dorchester County public residential permit rows in 2025. Latest sample 202510068 at 1026 RED TURNSTONE RUN issued 2025-12-30."
+  },
+  {
+    "id": "dorchester-sc-builder-true-homes",
+    "name": "True Homes",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "True Homes",
+    "recentBuilds": 102,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509908",
+        "permitId": "271585",
+        "address": "1213 HOMECOMING BLVD",
+        "issuedAt": "2025-12-17",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271585"
+      },
+      {
+        "permitNumber": "202509761",
+        "permitId": "271996",
+        "address": "1041 HOODED WARBLER WAY",
+        "issuedAt": "2025-12-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271996"
+      },
+      {
+        "permitNumber": "202509760",
+        "permitId": "271564",
+        "address": "1037 SWAMP HARRIER AVE",
+        "issuedAt": "2025-12-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271564"
+      },
+      {
+        "permitNumber": "202509759",
+        "permitId": "271561",
+        "address": "1035 SWAMP HARRIER AVE",
+        "issuedAt": "2025-12-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271561"
+      },
+      {
+        "permitNumber": "202509758",
+        "permitId": "271560",
+        "address": "1031 SWAMP HARRIER AVE",
+        "issuedAt": "2025-12-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271560"
+      },
+      {
+        "permitNumber": "202509757",
+        "permitId": "271556",
+        "address": "1033 SWAMP HARRIER AVE",
+        "issuedAt": "2025-12-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271556"
+      },
+      {
+        "permitNumber": "202509610",
+        "permitId": "271462",
+        "address": "1046 HOUSE FINCH AVE",
+        "issuedAt": "2025-12-03",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271462"
+      },
+      {
+        "permitNumber": "202509444",
+        "permitId": "271936",
+        "address": "1214 HOMECOMING BLVD",
+        "issuedAt": "2025-11-24",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271936"
+      }
+    ],
+    "acquisitionNotes": "Appears on 102 Dorchester County public residential permit rows in 2025. Latest sample 202509908 at 1213 HOMECOMING BLVD issued 2025-12-17."
+  },
+  {
+    "id": "dorchester-sc-builder-center-park-builder-services",
+    "name": "Center Park Builder Services",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Center Park Builder Services",
+    "recentBuilds": 67,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202510069",
+        "permitId": "271872",
+        "address": "6066 SOURWOOD TRL",
+        "issuedAt": "2025-12-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271872"
+      },
+      {
+        "permitNumber": "202510070",
+        "permitId": "271871",
+        "address": "6066 SOURWOOD TRL",
+        "issuedAt": "2025-12-30",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271871"
+      },
+      {
+        "permitNumber": "202509798",
+        "permitId": "271487",
+        "address": "267 DARBY MEADOW",
+        "issuedAt": "2025-12-11",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271487"
+      },
+      {
+        "permitNumber": "202509797",
+        "permitId": "270630",
+        "address": "126 ROBERTS RD",
+        "issuedAt": "2025-12-11",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270630"
+      },
+      {
+        "permitNumber": "202509057",
+        "permitId": "270659",
+        "address": "6061 SOURWOOD TRL",
+        "issuedAt": "2025-11-04",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270659"
+      },
+      {
+        "permitNumber": "202509060",
+        "permitId": "270658",
+        "address": "6061 SOURWOOD TRL",
+        "issuedAt": "2025-11-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270658"
+      },
+      {
+        "permitNumber": "202509059",
+        "permitId": "270526",
+        "address": "6078 SOURWOOD TRL",
+        "issuedAt": "2025-11-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270526"
+      },
+      {
+        "permitNumber": "202509058",
+        "permitId": "269719",
+        "address": "127 AUGUSTA PASS",
+        "issuedAt": "2025-11-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269719"
+      }
+    ],
+    "acquisitionNotes": "Appears on 67 Dorchester County public residential permit rows in 2025. Latest sample 202510069 at 6066 SOURWOOD TRL issued 2025-12-30."
+  },
+  {
+    "id": "dorchester-sc-builder-dr-horton",
+    "name": "DR Horton",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "DR Horton",
+    "recentBuilds": 62,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508280",
+        "permitId": "269234",
+        "address": "1027 LAUREL OAKS DR",
+        "issuedAt": "2025-09-29",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269234"
+      },
+      {
+        "permitNumber": "202508279",
+        "permitId": "269159",
+        "address": "1021 LAUREL OAKS DR",
+        "issuedAt": "2025-09-29",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269159"
+      },
+      {
+        "permitNumber": "202508278",
+        "permitId": "269155",
+        "address": "1047 FORREST CREEK DR",
+        "issuedAt": "2025-09-29",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269155"
+      },
+      {
+        "permitNumber": "202508277",
+        "permitId": "269154",
+        "address": "1053 FORREST CREEK DR",
+        "issuedAt": "2025-09-29",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269154"
+      },
+      {
+        "permitNumber": "202508038",
+        "permitId": "268780",
+        "address": "133 GROUPER LN",
+        "issuedAt": "2025-09-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268780"
+      },
+      {
+        "permitNumber": "202507874",
+        "permitId": "269519",
+        "address": "129 GROUPER LN",
+        "issuedAt": "2025-09-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269519"
+      },
+      {
+        "permitNumber": "202507873",
+        "permitId": "269514",
+        "address": "149 GROUPER LN",
+        "issuedAt": "2025-09-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269514"
+      },
+      {
+        "permitNumber": "202507872",
+        "permitId": "269508",
+        "address": "153 GROUPER LN",
+        "issuedAt": "2025-09-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269508"
+      }
+    ],
+    "acquisitionNotes": "Appears on 62 Dorchester County public residential permit rows in 2025. Latest sample 202508280 at 1027 LAUREL OAKS DR issued 2025-09-29."
+  },
+  {
+    "id": "dorchester-sc-builder-nvr-inc-ryan-homes",
+    "name": "NVR INC dba RYAN HOMES",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "NVR INC dba RYAN HOMES",
+    "recentBuilds": 32,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509939",
+        "permitId": "271622",
+        "address": "1030 THINLEAF AVE",
+        "issuedAt": "2025-12-18",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271622"
+      },
+      {
+        "permitNumber": "202509938",
+        "permitId": "271618",
+        "address": "1034 THINLEAF AVE",
+        "issuedAt": "2025-12-18",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271618"
+      },
+      {
+        "permitNumber": "202508960",
+        "permitId": "271045",
+        "address": "1051 THINLEAF AVE",
+        "issuedAt": "2025-10-28",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271045"
+      },
+      {
+        "permitNumber": "202508335",
+        "permitId": "270144",
+        "address": "1002 THINLEAF AVE",
+        "issuedAt": "2025-10-01",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270144"
+      },
+      {
+        "permitNumber": "202508334",
+        "permitId": "269798",
+        "address": "1015 LACEBARK DR",
+        "issuedAt": "2025-10-01",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269798"
+      },
+      {
+        "permitNumber": "202507299",
+        "permitId": "268589",
+        "address": "1009 CRESCENT COVE",
+        "issuedAt": "2025-08-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268589"
+      },
+      {
+        "permitNumber": "202507298",
+        "permitId": "268587",
+        "address": "1011 CRESCENT COVE",
+        "issuedAt": "2025-08-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268587"
+      },
+      {
+        "permitNumber": "202507297",
+        "permitId": "268584",
+        "address": "1013 CRESCENT COVE",
+        "issuedAt": "2025-08-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268584"
+      }
+    ],
+    "acquisitionNotes": "Appears on 32 Dorchester County public residential permit rows in 2025. Latest sample 202509939 at 1030 THINLEAF AVE issued 2025-12-18."
+  },
+  {
+    "id": "dorchester-sc-builder-eastwood-construction-partners-llc-subdivision",
+    "name": "Eastwood Construction Partners LLC (subdivision)",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Eastwood Construction Partners LLC (subdivision)",
+    "recentBuilds": 16,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509809",
+        "permitId": "271938",
+        "address": "224 PALFREY DR",
+        "issuedAt": "2025-12-12",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271938"
+      },
+      {
+        "permitNumber": "202509137",
+        "permitId": "270182",
+        "address": "239 PALFREY DR",
+        "issuedAt": "2025-11-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270182"
+      },
+      {
+        "permitNumber": "202509136",
+        "permitId": "270104",
+        "address": "226 PALFREY DR",
+        "issuedAt": "2025-11-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270104"
+      },
+      {
+        "permitNumber": "202509135",
+        "permitId": "270102",
+        "address": "222 PALFREY DR",
+        "issuedAt": "2025-11-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270102"
+      },
+      {
+        "permitNumber": "202508226",
+        "permitId": "270098",
+        "address": "117 PALFREY DR",
+        "issuedAt": "2025-09-25",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270098"
+      },
+      {
+        "permitNumber": "202507392",
+        "permitId": "268848",
+        "address": "111 PALFREY DR",
+        "issuedAt": "2025-08-20",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268848"
+      },
+      {
+        "permitNumber": "202506685",
+        "permitId": "268497",
+        "address": "233 PALFREY DR",
+        "issuedAt": "2025-07-23",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268497"
+      },
+      {
+        "permitNumber": "202506200",
+        "permitId": "267594",
+        "address": "229 PALFREY DR",
+        "issuedAt": "2025-07-03",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267594"
+      }
+    ],
+    "acquisitionNotes": "Appears on 16 Dorchester County public residential permit rows in 2025. Latest sample 202509809 at 224 PALFREY DR issued 2025-12-12."
+  },
+  {
+    "id": "dorchester-sc-builder-carter-construction-inc",
+    "name": "CARTER CONSTRUCTION, INC.",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "CARTER CONSTRUCTION, INC.",
+    "recentBuilds": 11,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508459",
+        "permitId": "270049",
+        "address": "677 WINNINGHAM RD",
+        "issuedAt": "2025-10-07",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270049"
+      },
+      {
+        "permitNumber": "202508458",
+        "permitId": "270048",
+        "address": "691 WINNINGHAM RD",
+        "issuedAt": "2025-10-07",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270048"
+      },
+      {
+        "permitNumber": "202508154",
+        "permitId": "270045",
+        "address": "460 REEVES FARM RD",
+        "issuedAt": "2025-09-24",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270045"
+      },
+      {
+        "permitNumber": "202507686",
+        "permitId": "269245",
+        "address": "220 HILL DR",
+        "issuedAt": "2025-09-02",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269245"
+      },
+      {
+        "permitNumber": "202506673",
+        "permitId": "268593",
+        "address": "686 WINNINGHAM RD",
+        "issuedAt": "2025-07-23",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268593"
+      },
+      {
+        "permitNumber": "202506672",
+        "permitId": "268591",
+        "address": "472 REEVES FARM RD",
+        "issuedAt": "2025-07-23",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268591"
+      },
+      {
+        "permitNumber": "202506671",
+        "permitId": "268590",
+        "address": "471 REEVES FARM RD",
+        "issuedAt": "2025-07-23",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268590"
+      },
+      {
+        "permitNumber": "202506636",
+        "permitId": "268574",
+        "address": "678 WINNINGHAM RD",
+        "issuedAt": "2025-07-22",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268574"
+      }
+    ],
+    "acquisitionNotes": "Appears on 11 Dorchester County public residential permit rows in 2025. Latest sample 202508459 at 677 WINNINGHAM RD issued 2025-10-07."
+  },
+  {
+    "id": "dorchester-sc-builder-toby-j-wessel-new-beginnings-construction",
+    "name": "Toby J Wessel / New Beginnings Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Toby J Wessel / New Beginnings Construction",
+    "recentBuilds": 11,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509995",
+        "permitId": "272462",
+        "address": "112 RUNNYMEDE LN",
+        "issuedAt": "2025-12-22",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272462"
+      },
+      {
+        "permitNumber": "202509733",
+        "permitId": "272166",
+        "address": "108 SWEETBRIAR RD",
+        "issuedAt": "2025-12-08",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272166"
+      },
+      {
+        "permitNumber": "202509259",
+        "permitId": "271716",
+        "address": "104 BIRCHWOOD DR",
+        "issuedAt": "2025-11-17",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271716"
+      },
+      {
+        "permitNumber": "202507852",
+        "permitId": "269842",
+        "address": "131 MOHICAN CIR",
+        "issuedAt": "2025-09-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269842"
+      },
+      {
+        "permitNumber": "202505372",
+        "permitId": "267568",
+        "address": "109 CASSELS LN",
+        "issuedAt": "2025-06-06",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267568"
+      },
+      {
+        "permitNumber": "202502021",
+        "permitId": "265222",
+        "address": "228 BRANDYWINE DR",
+        "issuedAt": "2025-03-26",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=265222"
+      },
+      {
+        "permitNumber": "202501207",
+        "permitId": "264453",
+        "address": "201 LORRAINE DR",
+        "issuedAt": "2025-03-03",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264453"
+      },
+      {
+        "permitNumber": "202500614",
+        "permitId": "260590",
+        "address": "123 AXTELL DR",
+        "issuedAt": "2025-02-04",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260590"
+      }
+    ],
+    "acquisitionNotes": "Appears on 11 Dorchester County public residential permit rows in 2025. Latest sample 202509995 at 112 RUNNYMEDE LN issued 2025-12-22."
+  },
+  {
+    "id": "dorchester-sc-builder-kh-carolinas-homes-llc",
+    "name": "KH Carolinas Homes LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "KH Carolinas Homes LLC",
+    "recentBuilds": 9,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 93,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202505393",
+        "permitId": "267252",
+        "address": "131 COLLARED DOVE CT",
+        "issuedAt": "2025-06-09",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267252"
+      },
+      {
+        "permitNumber": "202501630",
+        "permitId": "261083",
+        "address": "110 BLACK STILT WAY",
+        "issuedAt": "2025-03-18",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=261083"
+      },
+      {
+        "permitNumber": "202501448",
+        "permitId": "260687",
+        "address": "120 BLACK STILT WAY",
+        "issuedAt": "2025-03-12",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260687"
+      },
+      {
+        "permitNumber": "202501255",
+        "permitId": "260903",
+        "address": "138 COLLARED DOVE CT",
+        "issuedAt": "2025-03-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260903"
+      },
+      {
+        "permitNumber": "202501254",
+        "permitId": "260843",
+        "address": "152 COLLARED DOVE CT",
+        "issuedAt": "2025-03-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260843"
+      },
+      {
+        "permitNumber": "202501253",
+        "permitId": "260729",
+        "address": "140 COLLARED DOVE CT",
+        "issuedAt": "2025-03-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260729"
+      },
+      {
+        "permitNumber": "202501252",
+        "permitId": "260726",
+        "address": "133 COLLARED DOVE CT",
+        "issuedAt": "2025-03-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260726"
+      },
+      {
+        "permitNumber": "202501067",
+        "permitId": "260899",
+        "address": "128 COLLARED DOVE CT",
+        "issuedAt": "2025-02-25",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260899"
+      }
+    ],
+    "acquisitionNotes": "Appears on 9 Dorchester County public residential permit rows in 2025. Latest sample 202505393 at 131 COLLARED DOVE CT issued 2025-06-09."
+  },
+  {
+    "id": "dorchester-sc-builder-alpha-omega-construction-group-inc",
+    "name": "ALPHA OMEGA CONSTRUCTION GROUP, INC.",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "ALPHA OMEGA CONSTRUCTION GROUP, INC.",
+    "recentBuilds": 8,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 88,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509298",
+        "permitId": "271802",
+        "address": "8184 WINDSOR HILL BLVD, 400",
+        "issuedAt": "2025-11-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271802"
+      },
+      {
+        "permitNumber": "202507891",
+        "permitId": "270058",
+        "address": "2125 PIMLICO DR",
+        "issuedAt": "2025-09-11",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270058"
+      },
+      {
+        "permitNumber": "202506471",
+        "permitId": "268619",
+        "address": "132 CHARPIA AVE",
+        "issuedAt": "2025-07-16",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268619"
+      },
+      {
+        "permitNumber": "202504327",
+        "permitId": "266780",
+        "address": "271 DONNING DR",
+        "issuedAt": "2025-05-12",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266780"
+      },
+      {
+        "permitNumber": "202501947",
+        "permitId": "265482",
+        "address": "106 FOREST",
+        "issuedAt": "2025-03-25",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=265482"
+      },
+      {
+        "permitNumber": "202501514",
+        "permitId": "264713",
+        "address": "102 HUNTINGTON CIR",
+        "issuedAt": "2025-03-13",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264713"
+      },
+      {
+        "permitNumber": "202500972",
+        "permitId": "264175",
+        "address": "206 E EDGEFIELD DR",
+        "issuedAt": "2025-02-20",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264175"
+      },
+      {
+        "permitNumber": "202500608",
+        "permitId": "260821",
+        "address": "104 HUNTINGTON CIR",
+        "issuedAt": "2025-02-03",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260821"
+      }
+    ],
+    "acquisitionNotes": "Appears on 8 Dorchester County public residential permit rows in 2025. Latest sample 202509298 at 8184 WINDSOR HILL BLVD, 400 issued 2025-11-18."
+  },
+  {
+    "id": "dorchester-sc-builder-atk-construction",
+    "name": "ATK Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "ATK Construction",
+    "recentBuilds": 6,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 78,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508597",
+        "permitId": "270970",
+        "address": "405 FARMERS MARKET RD",
+        "issuedAt": "2025-10-14",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270970"
+      },
+      {
+        "permitNumber": "202507584",
+        "permitId": "268442",
+        "address": "9852 CHARLESTON HWY",
+        "issuedAt": "2025-08-27",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268442"
+      },
+      {
+        "permitNumber": "202505294",
+        "permitId": "267435",
+        "address": "227 MOUNT ZION RD",
+        "issuedAt": "2025-06-05",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267435"
+      },
+      {
+        "permitNumber": "202505125",
+        "permitId": "267036",
+        "address": "306 ACADEMY RD",
+        "issuedAt": "2025-05-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267036"
+      },
+      {
+        "permitNumber": "202501220",
+        "permitId": "260114",
+        "address": "195 JUDY BAY RD",
+        "issuedAt": "2025-03-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260114"
+      },
+      {
+        "permitNumber": "202500330",
+        "permitId": "260447",
+        "address": "287 SUGAR HILL RD",
+        "issuedAt": "2025-01-16",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260447"
+      }
+    ],
+    "acquisitionNotes": "Appears on 6 Dorchester County public residential permit rows in 2025. Latest sample 202508597 at 405 FARMERS MARKET RD issued 2025-10-14."
+  },
+  {
+    "id": "dorchester-sc-builder-ragland-homes",
+    "name": "Ragland Homes",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Ragland Homes",
+    "recentBuilds": 6,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 78,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509722",
+        "permitId": "271610",
+        "address": "121 SUNSET ACRES",
+        "issuedAt": "2025-12-08",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271610"
+      },
+      {
+        "permitNumber": "202509693",
+        "permitId": "271090",
+        "address": "111 TAKE OUT TRL",
+        "issuedAt": "2025-12-05",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271090"
+      },
+      {
+        "permitNumber": "202508981",
+        "permitId": "270006",
+        "address": "579 SANDRIDGE RD",
+        "issuedAt": "2025-10-29",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270006"
+      },
+      {
+        "permitNumber": "202506896",
+        "permitId": "268371",
+        "address": "109 TAKE OUT TRL",
+        "issuedAt": "2025-07-31",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268371"
+      },
+      {
+        "permitNumber": "202506895",
+        "permitId": "268221",
+        "address": "105 TAKE OUT TRL",
+        "issuedAt": "2025-07-31",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268221"
+      },
+      {
+        "permitNumber": "202506894",
+        "permitId": "268034",
+        "address": "103 TAKE OUT TRL",
+        "issuedAt": "2025-07-31",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268034"
+      }
+    ],
+    "acquisitionNotes": "Appears on 6 Dorchester County public residential permit rows in 2025. Latest sample 202509722 at 121 SUNSET ACRES issued 2025-12-08."
+  },
+  {
+    "id": "dorchester-sc-builder-eastwood-homes",
+    "name": "EASTWOOD HOMES",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "EASTWOOD HOMES",
+    "recentBuilds": 5,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 73,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506639",
+        "permitId": "268496",
+        "address": "227 PALFREY DR",
+        "issuedAt": "2025-07-22",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268496"
+      },
+      {
+        "permitNumber": "202501200",
+        "permitId": "260554",
+        "address": "217 PALFREY DR",
+        "issuedAt": "2025-03-03",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260554"
+      },
+      {
+        "permitNumber": "202500685",
+        "permitId": "260550",
+        "address": "215 PALFREY DR",
+        "issuedAt": "2025-02-06",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260550"
+      },
+      {
+        "permitNumber": "202500456",
+        "permitId": "260077",
+        "address": "219 PALFREY DR",
+        "issuedAt": "2025-01-27",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260077"
+      },
+      {
+        "permitNumber": "202500042",
+        "permitId": "259020",
+        "address": "134 PALFREY DR",
+        "issuedAt": "2025-01-03",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259020"
+      }
+    ],
+    "acquisitionNotes": "Appears on 5 Dorchester County public residential permit rows in 2025. Latest sample 202506639 at 227 PALFREY DR issued 2025-07-22."
+  },
+  {
+    "id": "dorchester-sc-builder-jason-dandridge-dandridge-construction",
+    "name": "JASON DANDRIDGE dba DANDRIDGE CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "JASON DANDRIDGE dba DANDRIDGE CONSTRUCTION",
+    "recentBuilds": 5,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 73,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509014",
+        "permitId": "270256",
+        "address": "1884 Wire Rd",
+        "issuedAt": "2025-10-31",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270256"
+      },
+      {
+        "permitNumber": "202505429",
+        "permitId": "267270",
+        "address": "304 RICKBORN RD",
+        "issuedAt": "2025-06-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267270"
+      },
+      {
+        "permitNumber": "202505428",
+        "permitId": "266213",
+        "address": "277 BEULAH CHURCH RD",
+        "issuedAt": "2025-06-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266213"
+      },
+      {
+        "permitNumber": "202504666",
+        "permitId": "266209",
+        "address": "962 CROSS CREEK RD",
+        "issuedAt": "2025-05-19",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266209"
+      },
+      {
+        "permitNumber": "202503015",
+        "permitId": "265784",
+        "address": "175 FAIRFIELD RD",
+        "issuedAt": "2025-04-21",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=265784"
+      }
+    ],
+    "acquisitionNotes": "Appears on 5 Dorchester County public residential permit rows in 2025. Latest sample 202509014 at 1884 Wire Rd issued 2025-10-31."
+  },
+  {
+    "id": "dorchester-sc-builder-nextgen-homes-llc",
+    "name": "NextGen Homes LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "NextGen Homes LLC",
+    "recentBuilds": 4,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 68,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202510003",
+        "permitId": "270135",
+        "address": "108 FROMAN DR",
+        "issuedAt": "2025-12-23",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270135"
+      },
+      {
+        "permitNumber": "202507193",
+        "permitId": "268335",
+        "address": "125 PECAN DR",
+        "issuedAt": "2025-08-13",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268335"
+      },
+      {
+        "permitNumber": "202507192",
+        "permitId": "267746",
+        "address": "103 CARVER AVE",
+        "issuedAt": "2025-08-13",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267746"
+      },
+      {
+        "permitNumber": "202507191",
+        "permitId": "267727",
+        "address": "5340 SUMTERS RUN",
+        "issuedAt": "2025-08-13",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267727"
+      }
+    ],
+    "acquisitionNotes": "Appears on 4 Dorchester County public residential permit rows in 2025. Latest sample 202510003 at 108 FROMAN DR issued 2025-12-23."
+  },
+  {
+    "id": "dorchester-sc-builder-rob-johnson-construction-llc",
+    "name": "ROB JOHNSON CONSTRUCTION LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "ROB JOHNSON CONSTRUCTION LLC",
+    "recentBuilds": 4,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 68,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508648",
+        "permitId": "269645",
+        "address": "505 TARLETON DR",
+        "issuedAt": "2025-10-16",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269645"
+      },
+      {
+        "permitNumber": "202505632",
+        "permitId": "264706",
+        "address": "187 PRINCE EDWARD DR",
+        "issuedAt": "2025-06-17",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264706"
+      },
+      {
+        "permitNumber": "202503390",
+        "permitId": "266380",
+        "address": "108 LAKEVIEW DR",
+        "issuedAt": "2025-04-25",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266380"
+      },
+      {
+        "permitNumber": "202500165",
+        "permitId": "259757",
+        "address": "1657 DAWSON BRANCH RD",
+        "issuedAt": "2025-01-09",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259757"
+      }
+    ],
+    "acquisitionNotes": "Appears on 4 Dorchester County public residential permit rows in 2025. Latest sample 202508648 at 505 TARLETON DR issued 2025-10-16."
+  },
+  {
+    "id": "dorchester-sc-builder-scott-vasko-vaskos-quality-builders",
+    "name": "Scott Vasko dba Vaskos Quality Builders",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Scott Vasko dba Vaskos Quality Builders",
+    "recentBuilds": 4,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 68,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506577",
+        "permitId": "266770",
+        "address": "1440 WANNAMAKER AVE",
+        "issuedAt": "2025-07-21",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266770"
+      },
+      {
+        "permitNumber": "202502916",
+        "permitId": "264225",
+        "address": "252 LAKE DR",
+        "issuedAt": "2025-04-17",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264225"
+      },
+      {
+        "permitNumber": "202501301",
+        "permitId": "264402",
+        "address": "100 WINSTON CIR",
+        "issuedAt": "2025-03-06",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264402"
+      },
+      {
+        "permitNumber": "202500631",
+        "permitId": "259878",
+        "address": "402 CATAWBA DR",
+        "issuedAt": "2025-02-04",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259878"
+      }
+    ],
+    "acquisitionNotes": "Appears on 4 Dorchester County public residential permit rows in 2025. Latest sample 202506577 at 1440 WANNAMAKER AVE issued 2025-07-21."
+  },
+  {
+    "id": "dorchester-sc-builder-bobby-l-carter-jr-b-l-carter-construction",
+    "name": "Bobby L. Carter Jr./B.L. CARTER CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Bobby L. Carter Jr./B.L. CARTER CONSTRUCTION",
+    "recentBuilds": 3,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 63,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508591",
+        "permitId": "270629",
+        "address": "178 WAY",
+        "issuedAt": "2025-10-14",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270629"
+      },
+      {
+        "permitNumber": "202504634",
+        "permitId": "266037",
+        "address": "115 CALLISON LN",
+        "issuedAt": "2025-05-19",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266037"
+      },
+      {
+        "permitNumber": "202501344",
+        "permitId": "260857",
+        "address": "1130 FIRST BEND",
+        "issuedAt": "2025-03-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260857"
+      }
+    ],
+    "acquisitionNotes": "Appears on 3 Dorchester County public residential permit rows in 2025. Latest sample 202508591 at 178 WAY issued 2025-10-14."
+  },
+  {
+    "id": "dorchester-sc-builder-eastwood-construction-partners-llc-on-your-lot",
+    "name": "Eastwood Construction Partners LLC (on your lot)",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Eastwood Construction Partners LLC (on your lot)",
+    "recentBuilds": 3,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 63,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202505616",
+        "permitId": "266504",
+        "address": "272 MENTOR ST",
+        "issuedAt": "2025-06-16",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266504"
+      },
+      {
+        "permitNumber": "202502450",
+        "permitId": "260164",
+        "address": "105 GONZALEZ LN",
+        "issuedAt": "2025-04-04",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260164"
+      },
+      {
+        "permitNumber": "202502270",
+        "permitId": "258528",
+        "address": "115 HAYES RD",
+        "issuedAt": "2025-04-01",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=258528"
+      }
+    ],
+    "acquisitionNotes": "Appears on 3 Dorchester County public residential permit rows in 2025. Latest sample 202505616 at 272 MENTOR ST issued 2025-06-16."
+  },
+  {
+    "id": "dorchester-sc-builder-allblue-home-services-llc",
+    "name": "Allblue Home Services LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Allblue Home Services LLC",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202505036",
+        "permitId": "264582",
+        "address": "220 CHEYENNE RD",
+        "issuedAt": "2025-05-29",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264582"
+      },
+      {
+        "permitNumber": "202501031",
+        "permitId": "260240",
+        "address": "403 SUMMERSET LN",
+        "issuedAt": "2025-02-24",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260240"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202505036 at 220 CHEYENNE RD issued 2025-05-29."
+  },
+  {
+    "id": "dorchester-sc-builder-alpha-omega-constuction-llc-capital-palmetto-builder",
+    "name": "Alpha & Omega Constuction LLC dba Capital Palmetto Builders",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Alpha & Omega Constuction LLC dba Capital Palmetto Builders",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202504535",
+        "permitId": "266935",
+        "address": "101 FALCON DR",
+        "issuedAt": "2025-05-15",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266935"
+      },
+      {
+        "permitNumber": "202501023",
+        "permitId": "264236",
+        "address": "5116 BLAIR RD",
+        "issuedAt": "2025-02-21",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264236"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202504535 at 101 FALCON DR issued 2025-05-15."
+  },
+  {
+    "id": "dorchester-sc-builder-bleu-oak-construction-group",
+    "name": "Bleu Oak Construction Group",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Bleu Oak Construction Group",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509123",
+        "permitId": "271505",
+        "address": "540 LAUREL RIDGE RD",
+        "issuedAt": "2025-11-07",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271505"
+      },
+      {
+        "permitNumber": "202507487",
+        "permitId": "269607",
+        "address": "540 LAUREL RIDGE RD",
+        "issuedAt": "2025-08-25",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269607"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202509123 at 540 LAUREL RIDGE RD issued 2025-11-07."
+  },
+  {
+    "id": "dorchester-sc-builder-brian-whitsitt-sea-island-residential",
+    "name": "Brian Whitsitt dba Sea Island Residential",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Brian Whitsitt dba Sea Island Residential",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501297",
+        "permitId": "264544",
+        "address": "191 MOON DANCE LN",
+        "issuedAt": "2025-03-06",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264544"
+      },
+      {
+        "permitNumber": "202500287",
+        "permitId": "260364",
+        "address": "212 SUMMERSET LN",
+        "issuedAt": "2025-01-15",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260364"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202501297 at 191 MOON DANCE LN issued 2025-03-06."
+  },
+  {
+    "id": "dorchester-sc-builder-david-c-canington-tricity-construction",
+    "name": "David C Canington dba TriCity Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "David C Canington dba TriCity Construction",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509696",
+        "permitId": "272205",
+        "address": "209 DAVID DR",
+        "issuedAt": "2025-12-05",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272205"
+      },
+      {
+        "permitNumber": "202503288",
+        "permitId": "260990",
+        "address": "5344 SUMTERS RUN",
+        "issuedAt": "2025-04-24",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260990"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202509696 at 209 DAVID DR issued 2025-12-05."
+  },
+  {
+    "id": "dorchester-sc-builder-hunter-quinn-homes",
+    "name": "Hunter Quinn Homes",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Hunter Quinn Homes",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202503918",
+        "permitId": "266075",
+        "address": "127 ALLSPICE DR",
+        "issuedAt": "2025-05-02",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266075"
+      },
+      {
+        "permitNumber": "202503742",
+        "permitId": "264860",
+        "address": "263 HIGHLAND DR",
+        "issuedAt": "2025-04-30",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264860"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202503918 at 127 ALLSPICE DR issued 2025-05-02."
+  },
+  {
+    "id": "dorchester-sc-builder-irvin-vollrath-graceland-properties",
+    "name": "Irvin Vollrath dba Graceland Properties",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Irvin Vollrath dba Graceland Properties",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202504096",
+        "permitId": "264736",
+        "address": "262 DEEP WOODS RD",
+        "issuedAt": "2025-05-06",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264736"
+      },
+      {
+        "permitNumber": "202501409",
+        "permitId": "245987",
+        "address": "1087 TROTTERS BLVD",
+        "issuedAt": "2025-03-11",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=245987"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202504096 at 262 DEEP WOODS RD issued 2025-05-06."
+  },
+  {
+    "id": "dorchester-sc-builder-j-m-murray-construction",
+    "name": "J M Murray Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "J M Murray Construction",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501865",
+        "permitId": "258932",
+        "address": "498 FARMERS MARKET RD",
+        "issuedAt": "2025-03-21",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=258932"
+      },
+      {
+        "permitNumber": "202501647",
+        "permitId": "258492",
+        "address": "4359 WIRE RD",
+        "issuedAt": "2025-03-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=258492"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202501865 at 498 FARMERS MARKET RD issued 2025-03-21."
+  },
+  {
+    "id": "dorchester-sc-builder-joseph-m-swails-classic-construction",
+    "name": "Joseph M Swails dba CLASSIC CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Joseph M Swails dba CLASSIC CONSTRUCTION",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202507951",
+        "permitId": "270228",
+        "address": "412 W BUTTERNUT RD",
+        "issuedAt": "2025-09-15",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270228"
+      },
+      {
+        "permitNumber": "202505216",
+        "permitId": "267447",
+        "address": "203 TWIN LAKE DR",
+        "issuedAt": "2025-06-03",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267447"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202507951 at 412 W BUTTERNUT RD issued 2025-09-15."
+  },
+  {
+    "id": "dorchester-sc-builder-kelvin-kinnear-k-man-inspections-and-home-improvemen",
+    "name": "Kelvin Kinnear dba K-Man Inspections and Home Improvements",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Kelvin Kinnear dba K-Man Inspections and Home Improvements",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501283",
+        "permitId": "260595",
+        "address": "686 CAMPBELL RD",
+        "issuedAt": "2025-03-05",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260595"
+      },
+      {
+        "permitNumber": "202501284",
+        "permitId": "260583",
+        "address": "686 CAMPBELL RD",
+        "issuedAt": "2025-03-05",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260583"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202501283 at 686 CAMPBELL RD issued 2025-03-05."
+  },
+  {
+    "id": "dorchester-sc-builder-sejal-patel-custom-homes-renovations-llc",
+    "name": "Sejal Patel dba Custom Homes & Renovations LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Sejal Patel dba Custom Homes & Renovations LLC",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509790",
+        "permitId": "272304",
+        "address": "1022 MILES-JAMISON RD",
+        "issuedAt": "2025-12-11",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272304"
+      },
+      {
+        "permitNumber": "202508865",
+        "permitId": "271292",
+        "address": "8330 LONGRIDGE RD",
+        "issuedAt": "2025-10-23",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271292"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202509790 at 1022 MILES-JAMISON RD issued 2025-12-11."
+  },
+  {
+    "id": "dorchester-sc-builder-teambuilt-construction-services",
+    "name": "TeamBuilt Construction Services",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "TeamBuilt Construction Services",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509563",
+        "permitId": "272071",
+        "address": "100 SALLY PORT CT",
+        "issuedAt": "2025-11-26",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=272071"
+      },
+      {
+        "permitNumber": "202508309",
+        "permitId": "270628",
+        "address": "306 MAYFIELD ST",
+        "issuedAt": "2025-09-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270628"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202509563 at 100 SALLY PORT CT issued 2025-11-26."
+  },
+  {
+    "id": "dorchester-sc-builder-wilson-walpole-axis-construction-llc",
+    "name": "Wilson Walpole dba Axis Construction LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Wilson Walpole dba Axis Construction LLC",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 58,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500956",
+        "permitId": "264090",
+        "address": "138 E MEADOW",
+        "issuedAt": "2025-02-19",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264090"
+      },
+      {
+        "permitNumber": "202500872",
+        "permitId": "263997",
+        "address": "4023 CASCADES THRUST",
+        "issuedAt": "2025-02-14",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=263997"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Dorchester County public residential permit rows in 2025. Latest sample 202500956 at 138 E MEADOW issued 2025-02-19."
+  },
+  {
+    "id": "dorchester-sc-builder-15-n-atk-construction",
+    "name": "15 N ATK Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "15 N ATK Construction",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501904",
+        "permitId": "260113",
+        "address": "1730 HIGHWAY",
+        "issuedAt": "2025-03-24",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260113"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501904 at 1730 HIGHWAY issued 2025-03-24."
+  },
+  {
+    "id": "dorchester-sc-builder-americas-home-place",
+    "name": "Americas Home Place",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Americas Home Place",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501511",
+        "permitId": "259913",
+        "address": "8253 DELEMAR HWY",
+        "issuedAt": "2025-03-13",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259913"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501511 at 8253 DELEMAR HWY issued 2025-03-13."
+  },
+  {
+    "id": "dorchester-sc-builder-amh-development-south-carolina-gc-llc-american-homes",
+    "name": "AMH DEVELOPMENT SOUTH CAROLINA GC LLC dba AMERICAN HOMES 4 RENT",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "AMH DEVELOPMENT SOUTH CAROLINA GC LLC dba AMERICAN HOMES 4 RENT",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202505359",
+        "permitId": "266591",
+        "address": "102 PAVILION ST",
+        "issuedAt": "2025-06-06",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266591"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202505359 at 102 PAVILION ST issued 2025-06-06."
+  },
+  {
+    "id": "dorchester-sc-builder-burish-builders-inc",
+    "name": "Burish Builders INC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Burish Builders INC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500205",
+        "permitId": "260261",
+        "address": "173 LONGFORD DR",
+        "issuedAt": "2025-01-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260261"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500205 at 173 LONGFORD DR issued 2025-01-10."
+  },
+  {
+    "id": "dorchester-sc-builder-canaday-custom-homes-llc",
+    "name": "Canaday Custom Homes, LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Canaday Custom Homes, LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202504368",
+        "permitId": "265966",
+        "address": "3496 REEVESVILLE RD",
+        "issuedAt": "2025-05-12",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=265966"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202504368 at 3496 REEVESVILLE RD issued 2025-05-12."
+  },
+  {
+    "id": "dorchester-sc-builder-carolina-custom-homes-of-chas-inc",
+    "name": "CAROLINA CUSTOM HOMES OF CHAS INC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "CAROLINA CUSTOM HOMES OF CHAS INC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202507518",
+        "permitId": "267284",
+        "address": "1016 MT WHITNEY DR",
+        "issuedAt": "2025-08-25",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267284"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202507518 at 1016 MT WHITNEY DR issued 2025-08-25."
+  },
+  {
+    "id": "dorchester-sc-builder-cb-murray-construction",
+    "name": "CB MURRAY CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "CB MURRAY CONSTRUCTION",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506248",
+        "permitId": "267698",
+        "address": "103 RHETTS WAY",
+        "issuedAt": "2025-07-07",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267698"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202506248 at 103 RHETTS WAY issued 2025-07-07."
+  },
+  {
+    "id": "dorchester-sc-builder-cebs-custom-homes-llc",
+    "name": "CEBS Custom Homes LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "CEBS Custom Homes LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202502577",
+        "permitId": "264083",
+        "address": "205 GARBON DR",
+        "issuedAt": "2025-04-09",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264083"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202502577 at 205 GARBON DR issued 2025-04-09."
+  },
+  {
+    "id": "dorchester-sc-builder-coastal-builders-and-consultants-llc",
+    "name": "Coastal Builders and Consultants LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Coastal Builders and Consultants LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508593",
+        "permitId": "270962",
+        "address": "228 DOGWOOD TRL",
+        "issuedAt": "2025-10-14",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270962"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202508593 at 228 DOGWOOD TRL issued 2025-10-14."
+  },
+  {
+    "id": "dorchester-sc-builder-d-g-home-services-llc",
+    "name": "D & G HOME SERVICES,LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "D & G HOME SERVICES,LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501465",
+        "permitId": "264682",
+        "address": "114 WILLOW OAKS LN",
+        "issuedAt": "2025-03-12",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264682"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501465 at 114 WILLOW OAKS LN issued 2025-03-12."
+  },
+  {
+    "id": "dorchester-sc-builder-daniel-l-morgan-santee-home-improvements",
+    "name": "DANIEL L. MORGAN dba SANTEE HOME IMPROVEMENTS",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "DANIEL L. MORGAN dba SANTEE HOME IMPROVEMENTS",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202503694",
+        "permitId": "266526",
+        "address": "228 BRANDYWINE DR",
+        "issuedAt": "2025-04-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266526"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202503694 at 228 BRANDYWINE DR issued 2025-04-30."
+  },
+  {
+    "id": "dorchester-sc-builder-diamond-quality-construction-llc",
+    "name": "Diamond Quality Construction LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Diamond Quality Construction LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500479",
+        "permitId": "204280",
+        "address": "131 HAINSWORTH DR",
+        "issuedAt": "2025-01-28",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=204280"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500479 at 131 HAINSWORTH DR issued 2025-01-28."
+  },
+  {
+    "id": "dorchester-sc-builder-edgewater-construction-services-llc",
+    "name": "Edgewater Construction Services LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Edgewater Construction Services LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508990",
+        "permitId": "269417",
+        "address": "304 SINCLAIR RD",
+        "issuedAt": "2025-10-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269417"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202508990 at 304 SINCLAIR RD issued 2025-10-30."
+  },
+  {
+    "id": "dorchester-sc-builder-evan-stahl-eas-homes",
+    "name": "Evan Stahl dba EAS Homes",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Evan Stahl dba EAS Homes",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202503209",
+        "permitId": "260908",
+        "address": "111 BOTANY BAY BLVD",
+        "issuedAt": "2025-04-23",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260908"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202503209 at 111 BOTANY BAY BLVD issued 2025-04-23."
+  },
+  {
+    "id": "dorchester-sc-builder-germain-dr-lowcountry-home-builders",
+    "name": "GERMAIN DR Lowcountry Home Builders",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "GERMAIN DR Lowcountry Home Builders",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500201",
+        "permitId": "259088",
+        "address": "223 ST",
+        "issuedAt": "2025-01-10",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259088"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500201 at 223 ST issued 2025-01-10."
+  },
+  {
+    "id": "dorchester-sc-builder-home-sweet-home-renovations-and-construction",
+    "name": "Home Sweet Home Renovations and Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Home Sweet Home Renovations and Construction",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506435",
+        "permitId": "268184",
+        "address": "409 UNIVERSITY DR",
+        "issuedAt": "2025-07-15",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268184"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202506435 at 409 UNIVERSITY DR issued 2025-07-15."
+  },
+  {
+    "id": "dorchester-sc-builder-jack-james-greene-jr-jr-greene-building-construction",
+    "name": "Jack James Greene Jr dba JR Greene Building & Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Jack James Greene Jr dba JR Greene Building & Construction",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501099",
+        "permitId": "264259",
+        "address": "100 MADISON AVE",
+        "issuedAt": "2025-02-26",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264259"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501099 at 100 MADISON AVE issued 2025-02-26."
+  },
+  {
+    "id": "dorchester-sc-builder-james-dennis-dennis-construction-inc",
+    "name": "James Dennis dba DENNIS CONSTRUCTION, INC.",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "James Dennis dba DENNIS CONSTRUCTION, INC.",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202502620",
+        "permitId": "264720",
+        "address": "6253 WIRE RD",
+        "issuedAt": "2025-04-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264720"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202502620 at 6253 WIRE RD issued 2025-04-10."
+  },
+  {
+    "id": "dorchester-sc-builder-james-martino-duramax-construction",
+    "name": "James Martino/Duramax Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "James Martino/Duramax Construction",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202507266",
+        "permitId": "269430",
+        "address": "248 HILL BRANCH RD",
+        "issuedAt": "2025-08-15",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269430"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202507266 at 248 HILL BRANCH RD issued 2025-08-15."
+  },
+  {
+    "id": "dorchester-sc-builder-joel-richter-jr-royal-homes-inc",
+    "name": "JOEL RICHTER JR/ROYAL HOMES, INC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "JOEL RICHTER JR/ROYAL HOMES, INC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202505715",
+        "permitId": "266473",
+        "address": "215 THOMAS KATE RD",
+        "issuedAt": "2025-06-18",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266473"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202505715 at 215 THOMAS KATE RD issued 2025-06-18."
+  },
+  {
+    "id": "dorchester-sc-builder-johnson-custom-home-builders-llc",
+    "name": "Johnson Custom Home Builders LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Johnson Custom Home Builders LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506014",
+        "permitId": "267117",
+        "address": "2058 BRIAR BEND",
+        "issuedAt": "2025-06-27",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267117"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202506014 at 2058 BRIAR BEND issued 2025-06-27."
+  },
+  {
+    "id": "dorchester-sc-builder-keith-donahue-k-construction-llc",
+    "name": "Keith Donahue dba K Construction LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Keith Donahue dba K Construction LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500174",
+        "permitId": "259742",
+        "address": "103 RAVENSWOOD CT",
+        "issuedAt": "2025-01-09",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259742"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500174 at 103 RAVENSWOOD CT issued 2025-01-09."
+  },
+  {
+    "id": "dorchester-sc-builder-lanell-t-willis-jw-construction-of-ridgeland-llc",
+    "name": "Lanell T Willis/JW CONSTRUCTION OF RIDGELAND LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Lanell T Willis/JW CONSTRUCTION OF RIDGELAND LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508282",
+        "permitId": "268953",
+        "address": "6254 COUNTY LINE RD",
+        "issuedAt": "2025-09-29",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268953"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202508282 at 6254 COUNTY LINE RD issued 2025-09-29."
+  },
+  {
+    "id": "dorchester-sc-builder-michael-j-taylor-taylor-coastal-construction-inc",
+    "name": "MICHAEL J TAYLOR dba TAYLOR COASTAL CONSTRUCTION, INC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "MICHAEL J TAYLOR dba TAYLOR COASTAL CONSTRUCTION, INC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509800",
+        "permitId": "271917",
+        "address": "5556 ALPINE DR",
+        "issuedAt": "2025-12-11",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=271917"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202509800 at 5556 ALPINE DR issued 2025-12-11."
+  },
+  {
+    "id": "dorchester-sc-builder-myers-construction-llc",
+    "name": "Myers Construction LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Myers Construction LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202510082",
+        "permitId": "270749",
+        "address": "347 GNARLY OAK LN",
+        "issuedAt": "2025-12-30",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270749"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202510082 at 347 GNARLY OAK LN issued 2025-12-30."
+  },
+  {
+    "id": "dorchester-sc-builder-next-vision-development-services-llc",
+    "name": "Next Vision Development Services LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Next Vision Development Services LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501250",
+        "permitId": "264464",
+        "address": "7230 MANGROVE DR, 2",
+        "issuedAt": "2025-03-04",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264464"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501250 at 7230 MANGROVE DR, 2 issued 2025-03-04."
+  },
+  {
+    "id": "dorchester-sc-builder-pineapple-express-construction-llc",
+    "name": "Pineapple Express Construction LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Pineapple Express Construction LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501912",
+        "permitId": "264590",
+        "address": "133 HITCHING POST LN",
+        "issuedAt": "2025-03-24",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=264590"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501912 at 133 HITCHING POST LN issued 2025-03-24."
+  },
+  {
+    "id": "dorchester-sc-builder-platinum-homes-llc",
+    "name": "Platinum Homes LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Platinum Homes LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500812",
+        "permitId": "259770",
+        "address": "979 Mayfield St",
+        "issuedAt": "2025-02-12",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259770"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500812 at 979 Mayfield St issued 2025-02-12."
+  },
+  {
+    "id": "dorchester-sc-builder-robin-simmons-woodland-builders",
+    "name": "Robin Simmons dba Woodland Builders",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Robin Simmons dba Woodland Builders",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501310",
+        "permitId": "259741",
+        "address": "1370 FIRST BEND",
+        "issuedAt": "2025-03-06",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=259741"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501310 at 1370 FIRST BEND issued 2025-03-06."
+  },
+  {
+    "id": "dorchester-sc-builder-ryan-m-barrett-barrett-construction-group-llc",
+    "name": "Ryan M Barrett/Barrett Construction Group LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Ryan M Barrett/Barrett Construction Group LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500112",
+        "permitId": "258965",
+        "address": "206 CAROLINIAN DR",
+        "issuedAt": "2025-01-07",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=258965"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500112 at 206 CAROLINIAN DR issued 2025-01-07."
+  },
+  {
+    "id": "dorchester-sc-builder-southern-construction-inspection-llc",
+    "name": "Southern Construction & Inspection LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Southern Construction & Inspection LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202501354",
+        "permitId": "260018",
+        "address": "0 Gallashaw Rd",
+        "issuedAt": "2025-03-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260018"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202501354 at 0 Gallashaw Rd issued 2025-03-10."
+  },
+  {
+    "id": "dorchester-sc-builder-t-l-construction",
+    "name": "T L CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "T L CONSTRUCTION",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506905",
+        "permitId": "266307",
+        "address": "419 GROUSE RD",
+        "issuedAt": "2025-07-31",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=266307"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202506905 at 419 GROUSE RD issued 2025-07-31."
+  },
+  {
+    "id": "dorchester-sc-builder-tadan-construction",
+    "name": "TADAN CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "TADAN CONSTRUCTION",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202506600",
+        "permitId": "268753",
+        "address": "104 WHITE HERON LN",
+        "issuedAt": "2025-07-21",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=268753"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202506600 at 104 WHITE HERON LN issued 2025-07-21."
+  },
+  {
+    "id": "dorchester-sc-builder-tc-backer-construction-llc",
+    "name": "TC Backer Construction, LLC",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "TC Backer Construction, LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202500740",
+        "permitId": "260806",
+        "address": "103 GERALD CT",
+        "issuedAt": "2025-02-10",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=260806"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202500740 at 103 GERALD CT issued 2025-02-10."
+  },
+  {
+    "id": "dorchester-sc-builder-terry-david-patoka-db-custom-homes",
+    "name": "TERRY DAVID PATOKA/ DB Custom Homes",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "TERRY DAVID PATOKA/ DB Custom Homes",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202509220",
+        "permitId": "270808",
+        "address": "138 JORDAN SIMMONS RD",
+        "issuedAt": "2025-11-13",
+        "status": "Completed",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270808"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202509220 at 138 JORDAN SIMMONS RD issued 2025-11-13."
+  },
+  {
+    "id": "dorchester-sc-builder-timothy-james-sprinkle-in-a-pinch-construction-llc",
+    "name": "Timothy James Sprinkle (In a pinch Construction LLC)",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Timothy James Sprinkle (In a pinch Construction LLC)",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202505299",
+        "permitId": "267474",
+        "address": "103 BRITTANY CT",
+        "issuedAt": "2025-06-05",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=267474"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202505299 at 103 BRITTANY CT issued 2025-06-05."
+  },
+  {
+    "id": "dorchester-sc-builder-williams-adams-adams-construction",
+    "name": "WILLIAMS ADAMS/ ADAMS CONSTRUCTION",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "WILLIAMS ADAMS/ ADAMS CONSTRUCTION",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508484",
+        "permitId": "270553",
+        "address": "139 CAMPBELL RD",
+        "issuedAt": "2025-10-08",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=270553"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202508484 at 139 CAMPBELL RD issued 2025-10-08."
+  },
+  {
+    "id": "dorchester-sc-builder-ztw-construction",
+    "name": "ZTW Construction",
+    "market": "dorchester-sc",
+    "state": "SC",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "ZTW Construction",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Dorchester County permit signal only. Call builder to capture Berkeley/Dorchester/Charleston-edge lot buy box, flood-zone constraints, utility/access requirements, max dirt price, close speed, and assignment-title tolerance before seller sourcing.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 53,
+    "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/",
+    "publicSource": "Dorchester County Evolve Public permit search. Filtered to 2025 residential permit rows with builder-like contractor names; trades, roofing, pools, restoration, mobile-home moving, and big-box service permits excluded.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "202508025",
+        "permitId": "269275",
+        "address": "318 TUPALO DR",
+        "issuedAt": "2025-09-18",
+        "status": "Issued",
+        "recordType": "R",
+        "sourceUrl": "https://evolvepublic.infovisionsoftware.com/Dorchester/?permitId=269275"
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Dorchester County public residential permit rows in 2025. Latest sample 202508025 at 318 TUPALO DR issued 2025-09-18."
+  }
+]

@@ -8,13 +8,15 @@ function readJson(path, fallback = null) {
   catch { return fallback; }
 }
 
-export const PERMIT_STATE_PRIORITY = ['TN', 'FL', 'AZ', 'NC', 'TX'];
+export const PERMIT_STATE_PRIORITY = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC'];
 export const PERMIT_STATE_LABELS = {
   TN: 'Tennessee',
   FL: 'Inland Florida',
   AZ: 'Arizona',
   NC: 'North Carolina',
   TX: 'Texas',
+  GA: 'Georgia secondary',
+  SC: 'South Carolina secondary',
 };
 
 export const PRIORITY_PERMIT_MARKETS = [
@@ -46,6 +48,15 @@ export const PRIORITY_PERMIT_MARKETS = [
   { id: 'san-antonio-tx', name: 'San Antonio, TX', city: 'San Antonio', county: 'Bexar County', state: 'TX', buyerType: 'production-builder', priority: 42, directAdapter: 'san-antonio-ckan-permit-builders', realDir: 'san-antonio', platform: 'Open Data SA / CKAN', portalUrl: 'https://data.sanantonio.gov/', thesis: 'TX open-data permit well with daily normalization potential.' },
   { id: 'plano-tx', name: 'Plano / Collin County, TX', city: 'Plano', county: 'Collin County', state: 'TX', buyerType: 'production-builder', priority: 38, platform: 'Accela + custom county portals', portalUrl: 'https://www.plano.gov/', thesis: 'DFW-edge resource well; direct portal/PermitVector required before seller sourcing.' },
   { id: 'mcallen-tx', name: 'McAllen, TX', city: 'McAllen', county: 'Hidalgo County', state: 'TX', buyerType: 'spec-builder', priority: 34, platform: 'Accela', portalUrl: 'https://aca-prod.accela.com/MCALLEN/Default.aspx', thesis: 'Accela-powered TX resource well; lower priority than open-data TX markets.' },
+
+  { id: 'forsyth-ga', name: 'Forsyth County / Atlanta data-center corridor, GA', city: 'Cumming', county: 'Forsyth County', state: 'GA', buyerType: 'data-center-commuter-builder', priority: 30, realDir: 'forsyth-ga', platform: 'Forsyth ArcGIS EnerGov layer + Tyler SelfService detail', portalUrl: 'https://geo.forsythco.com/gis3/rest/services/Public_EnerGovPlans/Building_Permits/FeatureServer/0', thesis: 'GA secondary source well: high Atlanta/data-center corridor relevance, but current public layer has no contractor field; solve Tyler detail before builder promotion.' },
+  { id: 'hall-ga', name: 'Hall County / Gainesville, GA', city: 'Gainesville', county: 'Hall County', state: 'GA', buyerType: 'commuter-builder', priority: 28, platform: 'Accela + county issued-permit PDF archive', portalUrl: 'https://www.hallcounty.org/230/Issued-Permits-Public-Reports', thesis: 'GA data-center/NE Atlanta corridor source candidate; PDF issued-permit reports need extraction/OCR before builder queue.' },
+  { id: 'jackson-ga', name: 'Jackson County, GA', city: 'Jefferson', county: 'Jackson County', state: 'GA', buyerType: 'data-center-commuter-builder', priority: 26, platform: 'County/city permit portals + ArcGIS review', portalUrl: 'https://www.jacksoncountygov.com/', thesis: 'GA I-85/data-center corridor watchlist; build permit adapter only after public contractor rows are verified.' },
+  { id: 'douglas-ga', name: 'Douglas County / Atlanta west, GA', city: 'Douglasville', county: 'Douglas County', state: 'GA', buyerType: 'commuter-builder', priority: 24, platform: 'County/city permit portals + Accela/CentralSquare review', portalUrl: 'https://www.celebratedouglascounty.com/', thesis: 'GA west-Atlanta data-center/workforce-housing watchlist; source review before seller sourcing.' },
+
+  { id: 'dorchester-sc', name: 'Dorchester County / Charleston edge, SC', city: 'Summerville', county: 'Dorchester County', state: 'SC', buyerType: 'coastal-edge-builder', priority: 29, directAdapter: 'dorchester-evolve-permit-builders', realDir: 'dorchester-sc', platform: 'Evolve Public permit search', portalUrl: 'https://evolvepublic.infovisionsoftware.com/Dorchester/', thesis: 'SC coastal-edge live queue: Dorchester exposes contractor names and clears the 20-builder floor for Charleston-edge buyer validation.' },
+  { id: 'berkeley-sc', name: 'Berkeley County / Charleston edge, SC', city: 'Moncks Corner', county: 'Berkeley County', state: 'SC', buyerType: 'coastal-edge-builder', priority: 27, platform: 'Public builder portal / Cloudflare-challenged', portalUrl: 'https://build.berkeleycountysc.gov/', thesis: 'Strong Charleston expansion county, but portal blocks this environment; keep as watchlist until a reliable public/API path is found.' },
+  { id: 'greenville-sc', name: 'Greenville County, SC', city: 'Greenville', county: 'Greenville County', state: 'SC', buyerType: 'upstate-builder', priority: 22, platform: 'County/city permit portal review', portalUrl: 'https://www.greenvillecounty.org/', thesis: 'Upstate SC secondary builder market; source review after Dorchester/Berkeley.' },
 ];
 
 function sourceCandidateForMarket(market) {

@@ -1,0 +1,2 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+berkeley-sc,"Berkeley County / Charleston edge, SC",Public builder portal / Cloudflare-challenged,source_review,"Berkeley County / Charleston edge, SC — Public builder portal / Cloudflare-challenged",https://build.berkeleycountysc.gov/,55,source_review_then_adapter_build,"Berkeley County / Charleston edge, SC Public builder portal / Cloudflare-challenged building permits"

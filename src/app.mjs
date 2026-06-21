@@ -713,7 +713,7 @@ function renderContractComposer(parcel = {}) {
         <dl><div><dt>Property</dt><dd>${printValue(inputs.propertyAddress, 'Property address pending')}</dd></div><div><dt>Parcel</dt><dd>${printValue(inputs.parcelId, 'pending')}</dd></div><div><dt>State</dt><dd>${printValue(inputs.propertyState, 'pending')}</dd></div><div><dt>Generated</dt><dd>${h(generatedDate)}</dd></div><div><dt>Prepared by</dt><dd>${printValue(preparedBy, 'operator pending')}</dd></div></dl>
       </div>
       <details id="seller-agreement-experience" class="contract-document-experience contract-disclosure-experience seller-experience" aria-label="Seller Agreement fill experience">
-        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em title="Asterisk marks missing fields.">Step 1 - Control · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} * left` : 'ready for seller PDF'}</em></div>${badge(sellerStatus, 'good')}<small>Open</small></summary>
+        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em title="Asterisk marks missing fields.">Step 1 - Control · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} * left` : 'ready for seller PDF'}</em></div>${badge(sellerStatus, 'good')}<small class="disclosure-news-icon" title="Open document">${solidIndustryIcon('disclosure')}</small></summary>
         <div class="contract-stepper" aria-label="Seller agreement progress">${docStepper('Prepare')}</div>
         <div class="contract-review-strip"><span>Review & Fill Seller Agreement Fields</span><a href="#seller-agreement-experience">Land Sale Agreement</a></div>
         <div class="contract-document-shell">
@@ -749,7 +749,7 @@ function renderContractComposer(parcel = {}) {
       </details>
 
       <details id="assignment-agreement-experience" class="contract-document-experience contract-disclosure-experience assignment-experience ${assignmentUnlocked ? '' : 'locked-experience'}" aria-label="Assignment Agreement fill experience">
-        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">02</span><b>Assignment Agreement</b><em title="Asterisk marks missing buyer fields.">Step 2 - Assign · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} * left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div>${badge(assignmentUnlocked ? assignmentStatus : 'locked', assignmentUnlocked ? 'good' : 'warn')}<small>Open</small></summary>
+        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">02</span><b>Assignment Agreement</b><em title="Asterisk marks missing buyer fields.">Step 2 - Assign · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} * left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div>${badge(assignmentUnlocked ? assignmentStatus : 'locked', assignmentUnlocked ? 'good' : 'warn')}<small class="disclosure-news-icon" title="Open document">${solidIndustryIcon('disclosure')}</small></summary>
         ${assignmentUnlocked ? `<div class="contract-stepper" aria-label="Assignment agreement progress">${docStepper('Prepare')}</div>` : '<div class="assignment-lock-banner"><b>Assignment unlocks after seller agreement is marked signed.</b><p>Do not prepare buyer assignment paperwork before the deal is under seller control and title/closing can review assignment handling.</p></div>'}
         <div class="contract-review-strip"><span>Review & Fill Assignment Fields</span><a href="#assignment-agreement-experience">Assignment of Vacant Land Purchase Agreement</a></div>
         <div class="contract-document-shell">
@@ -1169,6 +1169,10 @@ function solidIndustryIcon(kind) {
     score: '<path fill="currentColor" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 3.25a1.15 1.15 0 0 1 1.15 1.15v5.3a1.15 1.15 0 1 1-2.3 0V6.9A1.15 1.15 0 0 1 12 5.75Zm0 10.1a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7Z"/>',
     chevron: '<path fill="currentColor" d="M12 15.8c-.38 0-.74-.15-1.01-.42L5.8 10.2a1.43 1.43 0 0 1 2.02-2.02L12 12.36l4.18-4.18a1.43 1.43 0 0 1 2.02 2.02l-5.19 5.18c-.27.27-.63.42-1.01.42Z"/>',
     proof: '<path fill="currentColor" d="M6.75 2.75h7.4c.6 0 1.18.24 1.6.66l2.84 2.84c.42.42.66 1 .66 1.6v9.4A4.25 4.25 0 0 1 15 21.5H6.75a4.25 4.25 0 0 1-4.25-4.25V7a4.25 4.25 0 0 1 4.25-4.25Zm6.5 1.95v3.05c0 .55.45 1 1 1h3.05l-4.05-4.05ZM7 11.25a1 1 0 1 0 0 2h8.5a1 1 0 1 0 0-2H7Zm0 4a1 1 0 1 0 0 2h5.25a1 1 0 1 0 0-2H7Z"/>',
+    disclosure: '<path fill="currentColor" d="M6.75 2.75h7.7c.5 0 .98.2 1.33.55l2.92 2.92c.35.35.55.83.55 1.33v9.7a4 4 0 0 1-4 4h-8.5a4 4 0 0 1-4-4V6.75a4 4 0 0 1 4-4Zm7.25 2.2V7.5c0 .55.45 1 1 1h2.55L14 4.95ZM7.2 11.2a1 1 0 0 0 0 2h9.1a1 1 0 0 0 0-2H7.2Zm0 4a1 1 0 1 0 0 2h6.1a1 1 0 1 0 0-2H7.2Z"/>',
+    empty: '<path fill="currentColor" d="M5.75 4h12.5A2.75 2.75 0 0 1 21 6.75v10.5A2.75 2.75 0 0 1 18.25 20H5.75A2.75 2.75 0 0 1 3 17.25V6.75A2.75 2.75 0 0 1 5.75 4Zm0 2.5a.25.25 0 0 0-.25.25v10.5c0 .14.11.25.25.25h12.5c.14 0 .25-.11.25-.25V6.75a.25.25 0 0 0-.25-.25H5.75Zm2.5 2.75h7.5a1 1 0 1 1 0 2h-7.5a1 1 0 1 1 0-2Zm0 3.75h4.5a1 1 0 1 1 0 2h-4.5a1 1 0 1 1 0-2Z"/>',
+    check: '<path fill="currentColor" d="M9.55 16.55 4.9 11.9a1.55 1.55 0 0 1 2.2-2.2l2.45 2.45 7.35-7.35a1.55 1.55 0 1 1 2.2 2.2l-9.55 9.55Z"/>',
+    pending: '<path fill="currentColor" d="M12 3.25a8.75 8.75 0 1 0 0 17.5 8.75 8.75 0 0 0 0-17.5Zm0 2.5a6.25 6.25 0 1 1 0 12.5 6.25 6.25 0 0 1 0-12.5Zm-.1 2.7a1.1 1.1 0 0 1 1.1 1.1V12l2.05 1.2a1.1 1.1 0 1 1-1.1 1.9l-2.6-1.52a1.1 1.1 0 0 1-.55-.95V9.55a1.1 1.1 0 0 1 1.1-1.1Z"/>',
   };
   return `<svg class="solid-industry-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[kind] || paths.proof}</svg>`;
 }
@@ -1180,6 +1184,7 @@ function productIcon(kind) {
     source: '<path d="M5 5h14M5 12h14M5 19h14"></path><path d="M7 3v4M17 10v4M11 17v4"></path>',
     close: '<path d="M7 4h7l3 3v13H7z"></path><path d="M14 4v4h4M9 13h6M9 17h4"></path>',
     arrow: '<path d="M5 12h13"></path><path d="m14 7 5 5-5 5"></path>',
+    loop: '<path d="M5 8.5A7 7 0 0 1 17.4 5.2L19 7"></path><path d="M19 3.8V7h-3.2"></path><path d="M19 15.5A7 7 0 0 1 6.6 18.8L5 17"></path><path d="M5 20.2V17h3.2"></path>',
   };
   return `<svg class="product-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[kind] || paths.arrow}</svg>`;
 }
@@ -1238,7 +1243,7 @@ function buyBoxCompletion(row = {}) {
 
 function renderBuyBoxCompletion(row = {}) {
   const state = buyBoxCompletion(row);
-  const chips = state.fields.map(field => `<span class="completion-chip ${field.complete ? 'done' : 'missing'}"><span aria-hidden="true">${field.complete ? '✓' : '○'}</span>${h(field.label)}</span>`).join('');
+  const chips = state.fields.map(field => `<span class="completion-chip ${field.complete ? 'done' : 'missing'}"><span aria-hidden="true">${field.complete ? solidIndustryIcon('check') : solidIndustryIcon('pending')}</span>${h(field.label)}</span>`).join('');
   return `<section class="buybox-completion" aria-label="Buy box completion">
     <div class="completion-head"><span>Buy box completion</span><strong>${h(state.complete)}/${h(state.total)}</strong></div>
     <div class="completion-rail" aria-hidden="true"><span style="width:${h(state.percent)}%"></span></div>
@@ -1252,7 +1257,7 @@ function fieldStateClass(row = {}, key = '') {
 
 function fieldLabel(label, row = {}, key = '') {
   const complete = isBuyBoxFieldComplete(row.buyBox || {}, key);
-  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true" title="${complete ? 'Complete' : 'Missing'}">${complete ? '✓' : '*'}</em></span>`;
+  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true" title="${complete ? 'Complete' : 'Missing'}">${complete ? 'Done' : '*'}</em></span>`;
 }
 
 function renderAskNext(row = {}) {
@@ -1674,7 +1679,7 @@ function renderExecutionConveyor(conveyor = {}) {
     </article>`;
   }).join('');
   const feedbackRows = asArray(conveyor.feedbackRecommendations).slice(0, 3).map(row => `<div class="execution-row quiet">
-    <span>↻</span><div><b>${h(row.address || row.parcelId)}</b><small>${h(row.nextCallReason || 'No feedback penalty yet.')}</small></div><em>${h(row.adjustedScore || row.score || 0)}/100</em>
+    <span>${productIcon('loop')}</span><div><b>${h(row.address || row.parcelId)}</b><small>${h(row.nextCallReason || 'No feedback penalty yet.')}</small></div><em>${h(row.adjustedScore || row.score || 0)}/100</em>
   </div>`).join('');
   const firstSkipTraceRow = asArray(conveyor.matchedSellerBatch)[0] || asArray(conveyor.board?.sellerMatches).find(row => !(row.ownerPhone || row.ownerEmail || row.realContact)) || {};
   const enrichedCount = asArray(conveyor.callReadySellers).length;
@@ -1710,7 +1715,7 @@ function renderClosingDeskPanel() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
   if (!selected) {
-    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Do first</span><b>Select one buyer-backed deal before escrow or title work.</b><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></div>${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="card empty-state"><h3>No deal selected.</h3><p>Add a buyer-backed seller record before opening title. The closing desk stays locked until a real deal exists.</p></article></div>`;
+    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>${productIcon('close')} Do first</span><b>Select one buyer-backed deal before escrow or title work.</b><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></div>${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="closing-empty-state designed-empty-state" aria-label="Closing desk empty state"><div class="empty-state-icon">${solidIndustryIcon('empty')}</div><span class="eyebrow">Closing waits for a real file</span><h3>Select a buyer-backed deal to open escrow work.</h3><p>The desk stays intentionally quiet until a seller record has buyer demand, public provenance, and contract/title readiness.</p><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></article></div>`;
     return;
   }
   const buyer = getBuyer(selected);
@@ -1745,7 +1750,7 @@ function renderParcels() {
   if (!target) return;
 
   if (!selected) {
-    target.innerHTML = `<article class="card empty-state"><h3>No parcels match this filter.</h3><p>Import records or change the filter.</p></article>`;
+    target.innerHTML = `<article class="designed-empty-state" aria-label="No parcels match filter"><div class="empty-state-icon">${solidIndustryIcon('empty')}</div><span class="eyebrow">Nothing actionable in this view</span><h3>No parcels match this filter.</h3><p>Change the filter or import verified public records before seller outreach.</p></article>`;
     return;
   }
 

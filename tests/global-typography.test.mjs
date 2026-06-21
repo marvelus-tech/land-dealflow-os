@@ -4,15 +4,15 @@ import { readFileSync } from 'node:fs';
 const css = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 
-assert.match(css, /fonts\.googleapis\.com\/css2\?family=DM\+Mono[\s\S]*family=Space\+Grotesk/, 'Grotesk + DM Mono webfont import should lead the CSS');
-assert.match(css, /v1\.44 - Phase 13 Apple-grade Grotesk\/DM Mono typography system/, 'Phase 13 global typography system marker required');
+assert.doesNotMatch(css, /fonts\.googleapis\.com|DM\+Mono|Space\+Grotesk|DM Mono|Space Grotesk/, 'Old external stylistic webfont imports must be removed');
+assert.match(css, /v1\.44 - Phase 13 Apple-grade unified typography system/, 'Phase 13 global typography system marker required');
 assert.match(css, /v1\.44\.1 - Phase 13 light-base typography bleed cleanup/, 'Phase 13 light-base cleanup should remove dark-mode bleed across routed pages');
 assert.match(css, /v1\.44\.2 - Phase 13 nav typography specificity fix/, 'Phase 13 nav typography fix should prevent dark button leakage into tabs');
-assert.match(css, /--font-grotesk: 'Space Grotesk', 'Grotesk'/, 'Grotesk token should use Space Grotesk with Grotesk fallback');
-assert.match(css, /--font-mono: 'DM Mono'/, 'Mono token should use DM Mono');
-assert.match(css, /family=Inter:wght@400;500;600;700;800/, 'Dense body typography should have a readable sans text engine');
+assert.match(css, /--font-grotesk: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter"/, 'Grotesk token should collapse into Apple/SF/Inter system typography');
+assert.match(css, /--font-mono: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter"/, 'Old monospace label font should collapse into the same Apple system voice');
+assert.doesNotMatch(css, /family=Inter:wght@400;500;600;700;800/, 'Dense body typography should not depend on external Inter webfont import');
 assert.match(css, /body, button, input, textarea, select[\s\S]{0,110}font-family: var\(--font-grotesk\) !important/, 'Core UI controls should inherit the Grotesk system');
-assert.match(css, /\.eyebrow,[\s\S]{0,460}font-family: var\(--font-mono\) !important/, 'Labels, badges, and microcopy should use DM Mono');
+assert.match(css, /\.eyebrow,[\s\S]{0,460}font-family: var\(--font-grotesk\) !important/, 'Labels, badges, and microcopy should use the unified Apple system type voice');
 assert.match(css, /:is\(h1,h2,h3,h4\)[\s\S]{0,760}letter-spacing: -\.055em !important/, 'Headings should have unified tight Grotesk hierarchy');
 assert.match(css, /--type-accent: #23d7c3/, 'Light-mode translation should retain the image-inspired cyan accent');
 assert.match(css, /@media print[\s\S]{0,420}font-family: var\(--font-grotesk\) !important/, 'Print/PDF surfaces should be pulled into the same type system');
@@ -138,7 +138,7 @@ assert.match(css, /v1\.57 - Phase 25 Apple design review pass: calm ledger hiera
 assert.match(css, /--phase25-review-rule: apple-calm-ledger-one-primary-scent-secondary-depth-in-tooltips/, 'Phase 25 should encode calm hierarchy and tooltip-depth rule');
 assert.match(css, /--phase25-forest: #124d35/, 'Phase 25 should define an accessible forest primary accent');
 assert.match(css, /--phase25-gold: #8f6819/, 'Phase 25 should define a contrast-safe gold metric accent');
-assert.match(appSource, /function solidIndustryIcon\(kind\)[\s\S]{0,1800}class="solid-industry-icon"/, 'Phase 25 should introduce serious solid industry icons instead of decorative indicators');
+assert.match(appSource, /function solidIndustryIcon\(kind\)[\s\S]*class="solid-industry-icon"/, 'Phase 25/29 should use serious solid product icons instead of decorative indicators');
 assert.doesNotMatch(appSource, /queue-proof-line|queue-source-link/, 'Builder queue should not repeat source/proof detail already shown in selected builder detail');
 assert.match(appSource, /validation-source-proof[\s\S]{0,260}safeLink\(selected\.sourceUrl/, 'Selected builder detail should retain the source proof link');
 assert.match(appSource, /queue-score[\s\S]{0,180}solidIndustryIcon\('score'\)/, 'Builder score should use the solid icon language');
@@ -178,7 +178,7 @@ assert.doesNotMatch(css, /--glass|--glass-dark|--terrain-|wk-artifact|wk-scanlin
 assert.match(css, /body\[data-active-view="closing"\] \.closing-hero-copy h2[\s\S]{0,420}font-family: var\(--font-grotesk\) !important/, 'Closing heading should use the Grotesk product type system');
 assert.match(css, /Final route isolation guard after Phase 27 Closing cleanup/, 'Phase 27 should preserve route isolation after late Closing overrides');
 
-assert.match(appSource, /field-label-text[\s\S]{0,180}\$\{complete \? '✓' : '\*'\}/, 'Missing form fields should use an asterisk instead of visible required copy');
+assert.match(appSource, /field-label-text[\s\S]{0,220}\$\{complete \? 'Done' : '\*'\}/, 'Missing form fields should use an asterisk instead of visible required copy, with no raw check glyphs');
 assert.doesNotMatch(appSource, /required field\(s\) left|required seller field\(s\) left|required gate\(s\) left|buyer field\(s\) left|buyer gate\(s\) left|>\$\{complete \? '✓' : 'required'\}<\/em>/, 'Visible form status copy should not spell out required; use * plus tooltip/aria context');
 
 assert.match(css, /v1\.60 - Phase 28 Apple product-system convergence: Closing ledger, unified SF\/Inter typography, no legacy display-font relics/, 'Phase 28 product-system convergence marker required');
@@ -189,5 +189,15 @@ assert.match(css, /body\[data-active-view="closing"\] \.contract-flow-workspace[
 assert.match(css, /#closing-desk\[hidden\][\s\S]{0,120}display: none !important/, 'Phase 28 route isolation guard should protect hidden routed pages');
 assert.doesNotMatch(css, /Fraunces|Georgia|Times New Roman|Archivo|wk-serif|wk-sans|wk-meta/, 'Old stylistic font families and token names must be removed from the stylesheet');
 assert.doesNotMatch(appSource + css, /title-orbital|title-glass|title-command-card|resource well|permit signals|\bsignage\b|\bbillboard\b|wk-artifact|wk-scanline|wk-contour/, 'Wall/sign-era product relics must not remain in app markup or stylesheet');
+
+assert.match(css, /v1\.61 - Phase 29 Apple review: old colors\/icons\/effects removed, designed empty states, responsive nav repair/, 'Phase 29 Apple review marker required');
+assert.doesNotMatch(css, /fonts\.googleapis\.com|DM\+Mono|Space\+Grotesk|#2563eb|#174ea6|#9fe870|#ff6b57|rgba\(159,232,112|rgba\(37,99,235/, 'Old stylistic fonts and old blue/neon/coral color literals must not remain');
+assert.match(appSource, /closing-empty-state designed-empty-state[\s\S]{0,260}empty-state-icon[\s\S]{0,260}Select a buyer-backed deal to open escrow work/, 'Closing empty state should be a designed guided surface, not a confusing blank card');
+assert.match(appSource, /disclosure-news-icon[\s\S]{0,140}solidIndustryIcon\('disclosure'\)/, 'Closing expanding document components should use the loved document/news icon treatment');
+assert.match(appSource, /solidIndustryIcon\('check'\)[\s\S]{0,100}: solidIndustryIcon\('pending'\)/, 'Old raw completion glyph icons should be replaced by product SVG icons');
+assert.match(css, /body\[data-active-view="today"\][\s\S]{0,420}linear-gradient\(180deg, var\(--phase29-canvas\)/, 'Today should use calm canvas instead of old background effects');
+assert.match(css, /body\[data-active-view="today"\] #command :where\([\s\S]{0,220}\.map-glow[\s\S]{0,260}display: none !important/, 'Today old glow/map background effects should be suppressed');
+assert.match(css, /--phase29-nav-rule: desktop-responsive-tabs-wrap-without-clipping/, 'Phase 29 should encode the desktop responsive navbar repair');
+assert.match(css, /@media \(min-width: 761px\) and \(max-width: 1120px\)[\s\S]{0,280}grid-template-columns: auto minmax\(0, 1fr\) auto !important/, 'Desktop responsive nav should use a resilient grid at constrained widths');
 
 console.log('global typography tests passed');

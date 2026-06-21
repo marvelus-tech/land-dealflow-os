@@ -20,8 +20,8 @@ assert.match(css, /#operator-session-mode\.os8-session[\s\S]{0,520}linear-gradie
 assert.match(css, /#sources-hub \.section-heading[\s\S]{0,420}linear-gradient\(135deg, rgba\(255,255,255,\.98\)/, 'Sources heading should use light base instead of legacy dark hero');
 assert.match(css, /v1\.45 - Phase 14 unified light color, compact hierarchy, square buttons/, 'Phase 14 unified light color + square button pass required');
 assert.match(css, /v1\.45\.1 - Phase 14 strict cleanup: Today graphic lightening, source color collapse, no rounded CTAs/, 'Strict follow-up cleanup should target Today, Sources, and residual rounded CTAs');
-assert.match(css, /v1\.45\.2 - Phase 14 Today artifact final light-mode override/, 'Today artifact final override should remove dark graphic slab behavior');
-assert.match(css, /v1\.45\.3 - Phase 14 body-active Today overrides beat legacy terrain CSS/, 'Today body-active legacy terrain CSS must be overridden');
+assert.match(css, /v1\.45\.2 - Source row micro-fit: protect labels from count chrome/, 'Source row micro-fit marker should remain after token cleanup');
+assert.match(css, /v1\.45\.3 - Phase 14 body-active Today overrides beat legacy field CSS/, 'Today body-active legacy field CSS must be overridden');
 assert.match(css, /v1\.46 - Phase 15 rectilinear Swiss Apple information hierarchy/, 'Phase 15 rectilinear hierarchy layer required');
 assert.match(css, /v1\.46\.1 - Phase 15 high-specificity rectilinear cascade lock/, 'Phase 15 must beat older high-specificity rounded !important rules');
 assert.match(html, /<main id="app">/, 'Phase 15 cascade lock requires main#app wrapper so high-specificity rectilinear rules apply');
@@ -29,7 +29,7 @@ assert.match(css, /--font-readable: 'Inter'/, 'Phase 15 should use a readable sa
 assert.match(css, /\*,\n\*::before,\n\*::after \{\n  border-radius: 0 !important;/, 'Phase 15 should globally zero all visible corner radius');
 assert.match(css, /--hierarchy-page-title: clamp\(36px, 5\.4vw, 72px\)/, 'Phase 15 hierarchy title scale token required');
 assert.match(css, /--ui-accent: #13b9aa/, 'Unified palette should collapse accents to one restrained cyan signal');
-assert.match(css, /\.wk-hero \{ min-height: clamp\(480px, 68vh, 660px\)/, 'Today hero should be compacted from billboard scale');
+assert.match(css, /\.wk-hero \{ min-height: clamp\(480px, 68vh, 660px\)/, 'Today hero should be compacted from display scale');
 assert.match(css, /button, \.button-link,[\s\S]{0,520}border-radius: 0 !important/, 'Visible buttons and button-like CTAs must be square');
 assert.match(css, /v1\.47 - Phase 16 cognitive-load kill pass: open ledgers, fewer boxes, sharper reading hierarchy/, 'Phase 16 cognitive-load kill pass marker required');
 assert.match(css, /v1\.47\.1 - Phase 16 mobile deboxing correction/, 'Phase 16 should include mobile deboxing after screenshot QA');
@@ -109,20 +109,20 @@ assert.match(css, /--brand-forest: #194d36/, 'Phase 23 should define the premium
 assert.match(css, /--brand-gold: #b68a2c/, 'Phase 23 should define the restrained gold metric highlight');
 assert.match(css, /header\.nav[\s\S]{0,180}min-height: 44px !important/, 'Phase 23 should correct excessive desktop nav height');
 assert.match(css, /@media \(max-width: 760px\)[\s\S]{0,220}min-height: 46px !important/, 'Phase 23 should override the old tall mobile nav grid');
-assert.match(css, /body\[data-active-view="today"\] #command \.wk-hero::before,[\s\S]{0,180}display: none !important/, 'Phase 23 should remove Today legacy terrain/artifact chrome');
+assert.match(css, /body\[data-active-view="today"\] #command \.wk-hero::before,[\s\S]{0,180}display: none !important/, 'Phase 23 should remove Today legacy field/proof-surface chrome');
 assert.match(css, /\.validation-form\.validation-buybox-grid[\s\S]{0,260}grid-template-columns: repeat\(12, minmax\(0, 1fr\)\)/, 'Phase 23 should rebuild the buy-box form as a structured settings sheet');
 assert.match(css, /\.validation-buybox-grid :where\(input, select, textarea\)[\s\S]{0,360}background: transparent !important;[\s\S]{0,160}border: 0 !important/, 'Buy-box fields should not look like raw 90s HTML input boxes');
 assert.match(css, /\.contract-disclosure-experience:not\(\[open\]\) > :not\(summary\)[\s\S]{0,80}display: none !important/, 'Closing seller/buyer documents should use progressive disclosure');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details id="seller-agreement-experience"[\s\S]{0,220}contract-disclosure-summary/, 'Seller Agreement should render as a collapsible disclosure');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details id="assignment-agreement-experience"[\s\S]{0,220}contract-disclosure-summary/, 'Assignment Agreement should render as a collapsible disclosure');
-assert.match(css, /v1\.55\.1 - Phase 23 screenshot correction: single-row mobile nav and no Today terrain relics/, 'Phase 23 screenshot correction marker required');
+assert.match(css, /v1\.55\.1 - Phase 23 screenshot correction: single-row mobile nav and no Today field relics/, 'Phase 23 screenshot correction marker required');
 assert.match(css, /\.app-tabs,[\s\S]{0,220}flex-wrap: nowrap !important/, 'Mobile nav tabs should remain single-row and horizontally scroll instead of forcing a tall grid');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Terrain intelligence \/ Tennessee live-first|TN terrain|builder demand, parcel constraint/, 'Today route should not keep old terrain/campaign wording relics');
 assert.match(css, /v1\.56 - Phase 24 Apple product-system Today rebuild: forest\/gold calm hierarchy, no wall\/sign relics/, 'Phase 24 marker required for the Apple product-system Today rebuild');
 assert.match(css, /--phase24-forest: #164d36/, 'Phase 24 should define an accessible forest primary accent');
 assert.match(css, /--phase24-gold: #9c741f/, 'Phase 24 should define a restrained gold metric highlight');
 assert.match(css, /--phase24-rule: every-pixel-earns-place-one-primary-action-calm-evidence-after/, 'Phase 24 should encode the hierarchy rule');
-assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-rail,\.wk-progress,\.wk-artifact,\.wk-scanline,\.wk-horizon,\.wk-contour\)[\s\S]{0,90}display: none !important/, 'Phase 24 should hard-remove Today rail/artifact/sign relic chrome');
+assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-rail,\.wk-progress,\.legacy-proof-surface,\.legacy-proof-rule,\.legacy-proof-axis,\.legacy-proof-ring\)[\s\S]{0,90}display: none !important/, 'Phase 24 should hard-remove Today rail/proof/sign relic chrome');
 assert.match(css, /body\[data-active-view="today"\] #command \.phase24-snapshot div[\s\S]{0,260}border-bottom: 1px solid var\(--phase24-line\)/, 'Today snapshot should be a ledger, not another boxed dashboard tile');
 assert.match(css, /Final route isolation guard after Phase 24 Today rebuilding/, 'Phase 24 should preserve route isolation after late Today overrides');
 const appSource = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
@@ -130,7 +130,7 @@ const coreSource = readFileSync(new URL('../src/core.mjs', import.meta.url), 'ut
 const todaySource = appSource.slice(appSource.indexOf('function renderCommandCenter'), appSource.indexOf('function initializeEditorialMotion'));
 assert.match(todaySource, /phase24-today-hero[\s\S]{0,240}Make the clearest next move\./, 'Today should render the new Phase 24 operating hero');
 assert.match(todaySource, /phase24-snapshot[\s\S]{0,260}Builder proof/, 'Today should replace decorative artifact chrome with a proof snapshot');
-assert.doesNotMatch(todaySource, /wk-artifact|wk-scanline|wk-horizon|wk-contour|Today page map|Signal system|Market terrain|terrain intelligence|\bwells\b|\bwall\b/i, 'Today render path must not keep old wall/sign/terrain relics');
+assert.doesNotMatch(todaySource, /wk-artifact|wk-scanline|wk-horizon|wk-contour|Today page map|Signal system|Market terrain|terrain intelligence|\bwells\b|\bwall\b/i, 'Today render path must not keep old relics');
 assert.doesNotMatch(appSource, /one long wall/i, 'Product copy should not describe dense surfaces as a wall');
 assert.doesNotMatch(appSource + html, /source map|independent wells|resource wells|first resource well|velocity well|Piedmont well|high-volume well/i, 'Phase 24 should replace map/well signage with calm source-lane language');
 assert.match(appSource + html, /Source lanes|Queued lanes|source lane/, 'Phase 24 should use source-lane language consistently');
@@ -139,7 +139,8 @@ assert.match(css, /--phase25-review-rule: apple-calm-ledger-one-primary-scent-se
 assert.match(css, /--phase25-forest: #124d35/, 'Phase 25 should define an accessible forest primary accent');
 assert.match(css, /--phase25-gold: #8f6819/, 'Phase 25 should define a contrast-safe gold metric accent');
 assert.match(appSource, /function solidIndustryIcon\(kind\)[\s\S]{0,1800}class="solid-industry-icon"/, 'Phase 25 should introduce serious solid industry icons instead of decorative indicators');
-assert.match(appSource, /queue-proof-line" title="\$\{h\(proofTooltip\)\}"/, 'Builder queue should hide secondary proof depth inside native tooltips');
+assert.doesNotMatch(appSource, /queue-proof-line|queue-source-link/, 'Builder queue should not repeat source/proof detail already shown in selected builder detail');
+assert.match(appSource, /validation-source-proof[\s\S]{0,260}safeLink\(selected\.sourceUrl/, 'Selected builder detail should retain the source proof link');
 assert.match(appSource, /queue-score[\s\S]{0,180}solidIndustryIcon\('score'\)/, 'Builder score should use the solid icon language');
 assert.match(appSource, /contact-call[\s\S]{0,420}solidIndustryIcon\('phone'\)/, 'Call toggle should use serious solid phone icon');
 assert.match(appSource, /contact-email[\s\S]{0,420}solidIndustryIcon\('email'\)/, 'Email toggle should use serious solid email icon');
@@ -165,5 +166,19 @@ assert.match(coreSource, /label: 'Permit proof'[\s\S]{0,900}label: 'Review hold'
 assert.match(coreSource, /Live source lane|Source lane/, 'Source metadata should harmonize old well language into source-lane language');
 assert.match(css, /Final route isolation guard after Phase 26 Apple HIG refinement/, 'Phase 26 should preserve route isolation after late visual overrides');
 assert.match(css, /v1\.58\.1 - Phase 26 QA correction: reduce desktop dead air before the validation cockpit/, 'Phase 26 QA correction should reduce dead air before the validation cockpit');
+
+
+assert.match(css, /v1\.59 - Phase 27 Closing-first Apple HIG cleanup: no surface\/orbit\/field relics, calm ledger hierarchy/, 'Phase 27 Closing cleanup marker required');
+assert.match(css, /--phase27-forest: #104b33/, 'Phase 27 should preserve accessible forest accent');
+assert.match(css, /--phase27-gold: #896116/, 'Phase 27 should preserve restrained gold metric accent');
+assert.match(appSource, /<div class="closing-hero">/, 'Closing hero should use product-native class naming, not title/orbit language');
+assert.match(appSource, /class="closing-card checklist-card"/, 'Closing cards should use product-native card class naming');
+assert.doesNotMatch(appSource, /title-orbital-hero|title-glass-card|title-command-card|title-metric-strip/, 'Closing app markup must not keep old title/orbit/surface class relics');
+assert.doesNotMatch(css, /--glass|--glass-dark|--terrain-|wk-artifact|wk-scanline|wk-horizon|wk-contour|title-orbital-hero|title-glass-card|title-command-card|font-family: Georgia, 'Times New Roman', serif/, 'Stylesheet must not keep token-level Closing/Today typographic relics');
+assert.match(css, /body\[data-active-view="closing"\] \.closing-hero-copy h2[\s\S]{0,420}font-family: var\(--font-grotesk\) !important/, 'Closing heading should use the Grotesk product type system');
+assert.match(css, /Final route isolation guard after Phase 27 Closing cleanup/, 'Phase 27 should preserve route isolation after late Closing overrides');
+
+assert.match(appSource, /field-label-text[\s\S]{0,180}\$\{complete \? '✓' : '\*'\}/, 'Missing form fields should use an asterisk instead of visible required copy');
+assert.doesNotMatch(appSource, /required field\(s\) left|required seller field\(s\) left|required gate\(s\) left|buyer field\(s\) left|buyer gate\(s\) left|>\$\{complete \? '✓' : 'required'\}<\/em>/, 'Visible form status copy should not spell out required; use * plus tooltip/aria context');
 
 console.log('global typography tests passed');

@@ -101,7 +101,8 @@ assert.match(appSource, /<svg class="outreach-svg"[\s\S]{0,220}<path fill="curre
 assert.doesNotMatch(appSource, /contact-action/, 'selected builder must not duplicate outreach state with separate logged buttons');
 assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'outreach controls should be compressed into state badges/icons');
 assert.match(appSource, /scoreBreakdownRows/, 'validation score must expose progressive-disclosure breakdown rows');
-assert.match(appSource, /queue-source-link/, 'call queue rows must carry source-proof links from the old call-sheet list');
+assert.doesNotMatch(appSource, /queue-source-link|queue-proof-line/, 'call queue rows should stay compact; source proof lives in builder detail');
+assert.match(appSource, /validation-source-proof[\s\S]{0,180}Source[\s\S]{0,220}safeLink\(selected\.sourceUrl/, 'selected builder detail must retain source-proof link');
 assert.match(appSource, /queue-csv-link[\s\S]{0,220}activeState\.summary\.entries\[0\]\.csvUrl/, 'call queue header must preserve the active market CSV export');
 assert.match(appSource, /validation-source-proof/, 'selected builder card must preserve source type, contact status, confidence, and top permit proof');
 assert.match(appSource, /selected-permit-proof/, 'selected builder proof drawer must preserve permit evidence rows');

@@ -713,11 +713,11 @@ function renderContractComposer(parcel = {}) {
         <dl><div><dt>Property</dt><dd>${printValue(inputs.propertyAddress, 'Property address pending')}</dd></div><div><dt>Parcel</dt><dd>${printValue(inputs.parcelId, 'pending')}</dd></div><div><dt>State</dt><dd>${printValue(inputs.propertyState, 'pending')}</dd></div><div><dt>Generated</dt><dd>${h(generatedDate)}</dd></div><div><dt>Prepared by</dt><dd>${printValue(preparedBy, 'operator pending')}</dd></div></dl>
       </div>
       <details id="seller-agreement-experience" class="contract-document-experience contract-disclosure-experience seller-experience" aria-label="Seller Agreement fill experience">
-        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em>Step 1 - Control the property · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} required field(s) left` : 'ready for seller PDF'}</em></div>${badge(sellerStatus, 'good')}<small>Open</small></summary>
+        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">01</span><b>Seller Agreement</b><em title="Asterisk marks missing fields.">Step 1 - Control · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} * left` : 'ready for seller PDF'}</em></div>${badge(sellerStatus, 'good')}<small>Open</small></summary>
         <div class="contract-stepper" aria-label="Seller agreement progress">${docStepper('Prepare')}</div>
         <div class="contract-review-strip"><span>Review & Fill Seller Agreement Fields</span><a href="#seller-agreement-experience">Land Sale Agreement</a></div>
         <div class="contract-document-shell">
-          <div class="contract-document-head"><div><span>‹</span><b>${h(inputs.propertyAddress || 'Selected land deal')} - Land Sale Agreement</b><em>${requiredSellerMissing.length ? `${requiredSellerMissing.length} required seller field(s) left` : 'ready for seller PDF'}</em></div><button type="button" class="secondary" data-contract-status="seller-ready">Mark ready</button></div>
+          <div class="contract-document-head"><div><span>‹</span><b>${h(inputs.propertyAddress || 'Selected land deal')} - Land Sale Agreement</b><em title="Asterisk marks missing seller fields.">${requiredSellerMissing.length ? `${requiredSellerMissing.length} * left` : 'ready for seller PDF'}</em></div><button type="button" class="secondary" data-contract-status="seller-ready">Mark ready</button></div>
           <label class="recipient-select"><span class="recipient-dot"></span><select name="sellerRecipient"><option>${h(inputs.sellerName || 'Seller')}</option><option>${h(inputs.buyerName || 'Buyer / Assignor')}</option><option>Title / attorney review</option></select></label>
           <div class="contract-stage">
             <aside class="contract-page-rail" aria-label="Seller agreement pages"><button type="button" class="active">Seller<br>01</button><button type="button">Terms<br>02</button><button type="button">Sign<br>03</button></aside>
@@ -745,15 +745,15 @@ function renderContractComposer(parcel = {}) {
           </div>
           <div class="contract-fill-toolbar" aria-label="Seller field tools"><button type="button">Text</button><button type="button">Initial</button><button type="button">Signature</button><button type="button">Date</button><button type="button">Checkbox</button></div>
         </div>
-        <div class="contract-send-footer"><span>Seller flow · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} required gate(s) left` : 'ready to export as PDF'}</span><div><button type="button" data-contract-status="seller-signed">Mark seller signed</button><button type="button" data-print-contract-packet="seller" class="secondary">Print seller only</button><button type="button" id="export-seller-contract" class="secondary">Export seller packet</button></div><strong id="contract-packet-status">${h(savedCount)} saved packet(s) · ${h(packet.status)}</strong></div>
+        <div class="contract-send-footer"><span title="Asterisk marks missing seller gates.">Seller flow · ${requiredSellerMissing.length ? `${requiredSellerMissing.length} * left` : 'ready to export as PDF'}</span><div><button type="button" data-contract-status="seller-signed">Mark seller signed</button><button type="button" data-print-contract-packet="seller" class="secondary">Print seller only</button><button type="button" id="export-seller-contract" class="secondary">Export seller packet</button></div><strong id="contract-packet-status">${h(savedCount)} saved packet(s) · ${h(packet.status)}</strong></div>
       </details>
 
       <details id="assignment-agreement-experience" class="contract-document-experience contract-disclosure-experience assignment-experience ${assignmentUnlocked ? '' : 'locked-experience'}" aria-label="Assignment Agreement fill experience">
-        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">02</span><b>Assignment Agreement</b><em>Step 2 - Assign to builder buyer · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer field(s) left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div>${badge(assignmentUnlocked ? assignmentStatus : 'locked', assignmentUnlocked ? 'good' : 'warn')}<small>Open</small></summary>
+        <summary class="contract-disclosure-summary"><div class="contract-backline"><span aria-hidden="true">02</span><b>Assignment Agreement</b><em title="Asterisk marks missing buyer fields.">Step 2 - Assign · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} * left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div>${badge(assignmentUnlocked ? assignmentStatus : 'locked', assignmentUnlocked ? 'good' : 'warn')}<small>Open</small></summary>
         ${assignmentUnlocked ? `<div class="contract-stepper" aria-label="Assignment agreement progress">${docStepper('Prepare')}</div>` : '<div class="assignment-lock-banner"><b>Assignment unlocks after seller agreement is marked signed.</b><p>Do not prepare buyer assignment paperwork before the deal is under seller control and title/closing can review assignment handling.</p></div>'}
         <div class="contract-review-strip"><span>Review & Fill Assignment Fields</span><a href="#assignment-agreement-experience">Assignment of Vacant Land Purchase Agreement</a></div>
         <div class="contract-document-shell">
-          <div class="contract-document-head"><div><span>‹</span><b>${h(inputs.propertyAddress || 'Selected land deal')} - Assignment Agreement</b><em>${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer field(s) left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div><button type="button" class="secondary" data-contract-status="assignment-ready" ${assignmentUnlocked ? '' : 'disabled'}>Mark ready</button></div>
+          <div class="contract-document-head"><div><span>‹</span><b>${h(inputs.propertyAddress || 'Selected land deal')} - Assignment Agreement</b><em title="Asterisk marks missing buyer fields.">${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} * left` : 'ready for buyer PDF') : 'locked until seller signed'}</em></div><button type="button" class="secondary" data-contract-status="assignment-ready" ${assignmentUnlocked ? '' : 'disabled'}>Mark ready</button></div>
           <label class="recipient-select"><span class="recipient-dot"></span><select name="assignmentRecipient" ${assignmentUnlocked ? '' : 'disabled'}><option>${h(inputs.assigneeName || 'Builder / Assignee')}</option><option>${h(inputs.assignorName || 'Assignor')}</option><option>Title / settlement desk</option></select></label>
           <div class="contract-stage">
             <aside class="contract-page-rail" aria-label="Assignment agreement pages"><button type="button" class="active">Assign<br>01</button><button type="button">Fee<br>02</button><button type="button">Sign<br>03</button></aside>
@@ -779,7 +779,7 @@ function renderContractComposer(parcel = {}) {
           </div>
           <div class="contract-fill-toolbar" aria-label="Assignment field tools"><button type="button">Text</button><button type="button">Initial</button><button type="button">Signature</button><button type="button">Date</button><button type="button">Attach</button></div>
         </div>
-        <div class="contract-send-footer"><span>Assignment flow · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} buyer gate(s) left` : 'ready to export as PDF') : 'locked until seller signed'}</span><div><button type="button" data-contract-status="buyer-signed" ${assignmentUnlocked ? '' : 'disabled'}>Mark buyer signed</button><button type="button" data-print-contract-packet="assignment" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Print assignment only</button><button type="button" id="export-assignment-contract" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Export assignment packet</button></div><strong>${h(assignmentUnlocked ? assignmentStatus : 'locked')}</strong></div>
+        <div class="contract-send-footer"><span title="Asterisk marks missing buyer gates.">Assignment flow · ${assignmentUnlocked ? (requiredAssignmentMissing.length ? `${requiredAssignmentMissing.length} * left` : 'ready to export as PDF') : 'locked until seller signed'}</span><div><button type="button" data-contract-status="buyer-signed" ${assignmentUnlocked ? '' : 'disabled'}>Mark buyer signed</button><button type="button" data-print-contract-packet="assignment" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Print assignment</button><button type="button" id="export-assignment-contract" class="secondary" ${assignmentUnlocked ? '' : 'disabled'}>Export assignment</button></div></div>
       </details>
 
       <section id="title-packet-experience" class="title-packet-experience" aria-label="Title packet export experience">
@@ -822,36 +822,36 @@ function renderClosingDeskResearchDeck() {
       <div class="badge-stack">${badge('closing model ready', 'good')}${badge('public title candidates', 'neutral')}${badge('assignment status must be verified', 'warn')}</div>
     </div>
     <div class="closing-intel-grid">
-      <article class="title-glass-card operating-insight-card">
+      <article class="closing-card operating-insight-card">
         <div class="card-kicker"><span>Operating insight</span><b>${h(process.source?.name || 'Closing Desk model')}</b></div>
         <ul>${insights.map(item => `<li>${h(item)}</li>`).join('')}</ul>
       </article>
-      <article class="title-glass-card closing-rule-card">
+      <article class="closing-card closing-rule-card">
         <div class="card-kicker"><span>Non-negotiables</span><b>operator rules</b></div>
         <ul>${rules.map(item => `<li>${h(item)}</li>`).join('')}</ul>
       </article>
     </div>
     <div class="contract-template-grid">
-      <article class="title-glass-card contract-template-card">
+      <article class="closing-card contract-template-card">
         <div class="card-kicker"><span>Seller contract template</span><b>checklist</b></div>
         <h3>Vacant-land purchase agreement</h3>
         <p>Use a state-specific attorney/title-reviewed form. The app should track readiness, not generate fake legal documents.</p>
         <ul>${sellerChecklist.map(item => `<li>${h(item)}</li>`).join('')}</ul>
       </article>
-      <article class="title-glass-card contract-template-card">
+      <article class="closing-card contract-template-card">
         <div class="card-kicker"><span>Buyer contract template</span><b>assignment</b></div>
         <h3>Assignment / assignee agreement</h3>
         <p>Use when the builder takes over the buyer position. If title rejects assignment mechanics, escalate to double close/legal review.</p>
         <ul>${assignmentChecklist.map(item => `<li>${h(item)}</li>`).join('')}</ul>
       </article>
-      <article class="title-glass-card title-email-template-card">
+      <article class="closing-card closing-email-template-card">
         <div class="card-kicker"><span>Title packet email</span><b>copy framework</b></div>
         <h3>${h(template.subject || 'Assignment closing packet')}</h3>
         <pre>${h(template.body || 'Loading title packet email template…')}</pre>
-        <button type="button" class="secondary copy-research-title-email" data-copy-research-title-email>Copy template framework</button><span class="research-title-email-status"></span>
+        <button type="button" class="secondary copy-research-title-email" data-copy-research-title-email>Copy template framework</button><span class="research-closing-email-status"></span>
       </article>
     </div>
-    <article class="title-glass-card title-company-candidate-board">
+    <article class="closing-card closing-company-candidate-board">
       <div class="card-kicker"><span>Real title-company candidates</span><b>${h(markets.length)} markets</b></div>
       <h3>Start here, then verify assignments by call.</h3>
       <p>These are public web candidates in the priority geography. Public title/escrow service pages prove relevance, not assignment-friendliness.</p>
@@ -871,33 +871,33 @@ function renderTitleClosingDesk(parcel, buyer, options = {}) {
     ['Closing costs est.', desk.math.closingCostsEstimate, `${desk.math.closingCostsPayer} pays`],
   ];
   const emailPreview = `${desk.email.subject}\n\n${desk.email.body}`;
-  return `<section class="title-closing-desk ${options.compact ? 'compact-title-desk' : ''}" aria-label="Title company closing desk">
-    <div class="title-orbital-hero">
-      <div class="title-hero-copy">
+  return `<section class="closing-desk ${options.compact ? 'compact-title-desk' : ''}" aria-label="Title company closing desk">
+    <div class="closing-hero">
+      <div class="closing-hero-copy">
         <span class="eyebrow">Title company closing desk</span>
         <h2>Neutral escrow. Clean title. Assignment fee protected.</h2>
         <p>The seller and buyer do not freestyle money movement. The title company holds escrow, clears title/taxes/liens, verifies notarized docs, and pays seller + assignor from the settlement statement.</p>
         <div class="badge-stack">${badge(desk.label, tone)}${badge(`${desk.readiness}% ready`, tone)}${badge(`${done}/${desk.items.length} gates clear`, tone)}</div>
       </div>
-      <aside class="title-command-card">
+      <aside class="closing-command-card">
         <span>Next title action</span>
         <strong>${h(desk.nextAction)}</strong>
         <p>${h(desk.titleCompany.name || 'No title company selected yet. Search assignment friendly title companies near the property.')}</p>
       </aside>
     </div>
 
-    <div class="title-metric-strip">
+    <div class="closing-metric-strip">
       ${hudItems.map(([label, value, detail]) => `<article><span>${h(label)}</span><b>${formatMoney(value)}</b><em>${h(detail)}</em></article>`).join('')}
     </div>
 
-    <div class="title-desk-grid">
-      <article class="title-glass-card checklist-card">
+    <div class="closing-desk-grid">
+      <article class="closing-card checklist-card">
         <div class="card-kicker"><span>Packet gate</span><b>${h(desk.status)}</b></div>
-        <div class="title-checklist">
-          ${desk.items.map(item => `<div class="title-check ${h(item.status)}"><span>${item.status === 'clear' ? '✓' : item.status === 'review' ? '!' : '-'}</span><div><b>${h(item.label)}</b><p>${h(item.detail)}</p></div></div>`).join('')}
+        <div class="closing-checklist">
+          ${desk.items.map(item => `<div class="closing-check ${h(item.status)}"><span>${item.status === 'clear' ? '✓' : item.status === 'review' ? '!' : '-'}</span><div><b>${h(item.label)}</b><p>${h(item.detail)}</p></div></div>`).join('')}
         </div>
       </article>
-      <article class="title-glass-card timeline-card">
+      <article class="closing-card timeline-card">
         <div class="card-kicker"><span>14-day close path</span><b>virtual-ready</b></div>
         <div class="closing-timeline">
           ${desk.timeline.map(step => `<div class="timeline-node"><span>${h(step.day)}</span><b>${h(step.label)}</b><p>${h(step.detail)}</p></div>`).join('')}
@@ -905,14 +905,14 @@ function renderTitleClosingDesk(parcel, buyer, options = {}) {
       </article>
     </div>
 
-    <div class="title-desk-grid lower">
-      <article class="title-glass-card email-card">
+    <div class="closing-desk-grid lower">
+      <article class="closing-card email-card">
         <div class="card-kicker"><span>Title packet email</span><b>copy-ready</b></div>
         <div class="email-subject"><span>Subject</span><strong>${h(desk.email.subject)}</strong></div>
         <pre>${h(emailPreview)}</pre>
-        <div class="button-row"><button type="button" class="secondary copy-title-email" data-copy-title-email>Copy title email</button><span class="title-email-status"></span></div>
+        <div class="button-row"><button type="button" class="secondary copy-title-email" data-copy-title-email>Copy title email</button><span class="closing-email-status"></span></div>
       </article>
-      <article class="title-glass-card title-principles-card">
+      <article class="closing-card closing-principles-card">
         <div class="card-kicker"><span>Seller explanation</span><b>trust script</b></div>
         <blockquote>“The title company is the neutral closing company. They hold the buyer’s money in escrow, verify the paperwork, make sure title transfers legally, and then pay you at closing.”</blockquote>
         <ul>
@@ -1252,7 +1252,7 @@ function fieldStateClass(row = {}, key = '') {
 
 function fieldLabel(label, row = {}, key = '') {
   const complete = isBuyBoxFieldComplete(row.buyBox || {}, key);
-  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true">${complete ? '✓' : 'required'}</em></span>`;
+  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true" title="${complete ? 'Complete' : 'Missing'}">${complete ? '✓' : '*'}</em></span>`;
 }
 
 function renderAskNext(row = {}) {
@@ -1340,24 +1340,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     ? (selected.sellerSearch.criteria.map(item => `<li><span aria-hidden="true">✓</span>${h(item)}</li>`).join('') || unlockedList)
     : (missingList || '<li><span aria-hidden="true">○</span>Complete buy-box fields to unlock seller search.</li>');
   const statusOptions = BUYER_VALIDATION_STATUSES.map(status => `<option value="${h(status)}" ${selected.callStatus === status ? 'selected' : ''}>${h(callStatusLabel(status))}</option>`).join('');
-  const queue = center.items.map((item) => {
+  const queue = center.items.map((item, index) => {
     const active = item.builderId === selected.builderId;
     const itemCompletion = buyBoxCompletion(item);
     const tone = item.validation.sellerEligible ? 'good' : item.route === 'humanReview' ? 'warn' : itemCompletion.percent >= 67 ? 'warn' : 'neutral';
     const outreach = validationOutreach(item);
     const scoreTitle = scoreBreakdownText(item);
-    const evidenceCount = asArray(item.permitEvidence).length;
-    const proofBits = [
-      item.sourceUrl ? 'source verified' : 'source pending',
-      `${h(evidenceCount || item.recentBuilds || 0)} permit proofs`,
-      `${h(item.confidence || '-')} confidence`,
-    ].join(' · ');
-    const proofTooltip = [
-      item.sourceUrl ? `Source: ${item.sourceUrl}` : 'Source pending',
-      `${evidenceCount || item.recentBuilds || 0} permit proofs`,
-      `${item.confidence || '-'} confidence`,
-      scoreTitle ? `Score: ${scoreTitle}` : '',
-    ].filter(Boolean).join('\n');
     const completionStateClass = [
       active ? 'active' : '',
       outreach.email ? 'is-emailed' : 'needs-email',
@@ -1365,11 +1353,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       item.validation.sellerEligible ? 'is-done' : 'needs-buybox',
     ].filter(Boolean).join(' ');
     return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}">
-      <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}">
+      <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
       </button>
-      <div class="queue-proof-line" title="${h(proofTooltip)}"><span>${h(proofBits)}</span>${item.sourceUrl ? safeLink(item.sourceUrl, 'source', 'queue-source-link') : ''}</div>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
         <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span><em>${outreach.phone ? 'Called' : 'Call'}</em></button>
         <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span><em>${outreach.email ? 'Emailed' : 'Email'}</em></button>
@@ -1742,7 +1729,7 @@ function renderClosingDeskPanel() {
     ${renderContractComposer(selected)}
     ${renderClosingDeskResearchDeck()}
     <div class="closing-layout">
-      <aside class="deal-queue title-queue" aria-label="Closing file queue">
+      <aside class="deal-queue closing-queue" aria-label="Closing file queue">
         <div class="queue-header"><span class="eyebrow">Closing files</span><strong>${h(scoredParcels().length)} deals</strong></div>
         <div class="queue-list">${alternatives}</div>
       </aside>
@@ -2859,7 +2846,7 @@ function bindEvents() {
     if (event.target.matches('[data-copy-title-email]')) {
       const email = currentTitleCompanyEmail();
       if (!email) return;
-      const status = event.target.closest('.title-closing-desk')?.querySelector('.title-email-status');
+      const status = event.target.closest('.closing-desk')?.querySelector('.closing-email-status');
       const write = navigator.clipboard?.writeText?.(email) || Promise.reject(new Error('Clipboard unavailable'));
       write.then(() => { if (status) status.textContent = 'Title email copied.'; }).catch(() => {
         downloadText(`land-dealflow-title-company-email-${new Date().toISOString().slice(0, 10)}.txt`, email, 'text/plain');
@@ -2870,7 +2857,7 @@ function bindEvents() {
     if (event.target.matches('[data-copy-research-title-email]')) {
       const template = titleCompanyProcess?.templates?.titlePacketEmail || {};
       const payload = `Subject: ${template.subject || '<PROPERTY ADDRESS> - Assignment closing packet'}\n\n${template.body || ''}`;
-      const status = event.target.closest('.title-email-template-card')?.querySelector('.research-title-email-status');
+      const status = event.target.closest('.closing-email-template-card')?.querySelector('.research-closing-email-status');
       const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
       write.then(() => { if (status) status.textContent = 'Template copied.'; }).catch(() => {
         downloadText(`land-dealflow-title-packet-template-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');

@@ -25072,3 +25072,323 @@ body[data-active-view="deals"] button.deals-market-card.deals-market-card.is-thi
   color: #8a5a13 !important;
   -webkit-text-fill-color: #8a5a13 !important;
 }
+
+
+/* v1.75 - Builders state-first market focus: state is the choice, counties are evidence */
+body[data-active-view="builders"] .state-first-workbench {
+  gap: 12px !important;
+}
+body[data-active-view="builders"] .state-market-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(17, 24, 39, .08);
+  border-radius: 18px;
+  background: rgba(248, 250, 247, .74);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.82);
+}
+body[data-active-view="builders"] .state-market-toggle {
+  appearance: none;
+  border: 1px solid rgba(17, 24, 39, .08) !important;
+  border-radius: 13px !important;
+  background: rgba(255,255,255,.82) !important;
+  background-image: none !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  min-height: 70px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) auto;
+  gap: 9px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+body[data-active-view="builders"] .state-market-toggle.active {
+  border-color: rgba(15, 77, 53, .34) !important;
+  background: #fff !important;
+  box-shadow: inset 0 -2px 0 rgba(15, 77, 53, .86), 0 1px 2px rgba(17,24,39,.05) !important;
+}
+body[data-active-view="builders"] .state-market-code {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  background: rgba(15,77,53,.07);
+  color: #0f4d35;
+  font: 800 11px/1 var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  letter-spacing: .08em;
+}
+body[data-active-view="builders"] .state-market-toggle.active .state-market-code { background: #0f4d35; color: #fff; }
+body[data-active-view="builders"] .state-market-copy { min-width: 0; display: grid; gap: 3px; }
+body[data-active-view="builders"] .state-market-copy strong {
+  color: #111827 !important;
+  font-size: 12.5px;
+  line-height: 1.16;
+  letter-spacing: -.01em;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+body[data-active-view="builders"] .state-market-copy small {
+  color: #667085 !important;
+  font-size: 10.5px;
+  line-height: 1.28;
+  letter-spacing: 0;
+  text-transform: none;
+}
+body[data-active-view="builders"] .state-market-toggle em {
+  color: #0f4d35 !important;
+  font: 800 17px/1 var(--font-sans, Inter, system-ui, sans-serif);
+  letter-spacing: -.03em;
+  justify-self: end;
+}
+body[data-active-view="builders"] .state-focus-summary {
+  border-radius: 18px !important;
+  background: #fff !important;
+  border: 1px solid rgba(17,24,39,.08) !important;
+  box-shadow: 0 1px 2px rgba(17,24,39,.04) !important;
+}
+body[data-active-view="builders"] .state-focus-summary > p b { color: #111827; }
+body[data-active-view="builders"] .state-county-ledger {
+  margin-top: 12px;
+  border-top: 1px solid rgba(17,24,39,.08);
+  padding-top: 10px;
+}
+body[data-active-view="builders"] .state-county-ledger summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #475467;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+body[data-active-view="builders"] .state-county-ledger summary::-webkit-details-marker { display: none; }
+body[data-active-view="builders"] .state-county-ledger ul {
+  margin: 9px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+body[data-active-view="builders"] .state-county-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+  border-top: 1px solid rgba(17,24,39,.055);
+}
+body[data-active-view="builders"] .state-county-row:first-child { border-top: 0; }
+body[data-active-view="builders"] .state-county-row span { display: grid; gap: 2px; color: #111827; }
+body[data-active-view="builders"] .state-county-row b { font-size: 12px; letter-spacing: -.01em; }
+body[data-active-view="builders"] .state-county-row small { color: #667085; font-size: 10.5px; line-height: 1.25; }
+body[data-active-view="builders"] .state-county-row em { color: #475467; font-size: 10.5px; font-style: normal; text-align: right; }
+body[data-active-view="builders"] .state-county-row.market-status-live em { color: #0f4d35; font-weight: 800; }
+@media (min-width: 1120px) {
+  body[data-active-view="builders"] .state-market-grid { max-width: 520px; justify-self: end; }
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .state-market-grid {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 7px;
+  }
+  body[data-active-view="builders"] .state-market-toggle {
+    min-height: 58px;
+    padding: 9px;
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+  }
+  body[data-active-view="builders"] .state-market-copy strong { font-size: 12px; }
+  body[data-active-view="builders"] .state-market-copy small { font-size: 10px; }
+  body[data-active-view="builders"] .state-county-row { grid-template-columns: 1fr; gap: 4px; }
+  body[data-active-view="builders"] .state-county-row em { text-align: left; }
+}
+
+
+/* v1.76 - Builders state selector desktop ledger width correction */
+@media (min-width: 921px) {
+  body[data-active-view="builders"] .state-first-workbench {
+    min-width: 460px !important;
+    max-width: 540px !important;
+    justify-self: end;
+  }
+  body[data-active-view="builders"] .state-market-grid {
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 520px !important;
+    justify-self: stretch !important;
+  }
+  body[data-active-view="builders"] .state-market-toggle {
+    min-height: 54px !important;
+    grid-template-columns: 34px minmax(0, 1fr) 44px !important;
+  }
+  body[data-active-view="builders"] .state-market-copy strong { font-size: 13px !important; }
+  body[data-active-view="builders"] .state-market-copy small { font-size: 11px !important; }
+}
+
+
+/* v1.77 - Builders state-first workbench owns the full row */
+@media (min-width: 921px) {
+  body[data-active-view="builders"] .builder-ops-header {
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+  }
+  body[data-active-view="builders"] .state-first-workbench {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    justify-self: stretch !important;
+  }
+  body[data-active-view="builders"] .state-market-grid {
+    grid-template-columns: repeat(2, minmax(240px, 1fr)) !important;
+    max-width: none !important;
+  }
+  body[data-active-view="builders"] .state-market-toggle {
+    min-height: 58px !important;
+  }
+  body[data-active-view="builders"] .state-focus-summary {
+    max-width: none !important;
+  }
+}
+
+
+/* v1.78 - State-first Builders header uses normal vertical flow */
+body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  align-items: start !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  gap: clamp(22px, 3vw, 34px) !important;
+}
+body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench)::before {
+  opacity: .34 !important;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.04)) !important;
+}
+body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) .builder-ops-title {
+  display: grid !important;
+  max-width: 760px !important;
+  min-width: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) .builder-ops-title h3 {
+  max-width: 760px !important;
+  font-size: clamp(44px, 5.2vw, 76px) !important;
+  line-height: .96 !important;
+}
+body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) .builder-ops-title p {
+  max-width: 720px !important;
+  font-size: clamp(16px, 1.05vw, 19px) !important;
+}
+body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) .state-first-workbench {
+  position: relative !important;
+  z-index: 2 !important;
+  align-self: auto !important;
+  justify-self: stretch !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  display: grid !important;
+  gap: clamp(18px, 2.2vw, 24px) !important;
+}
+@media (min-width: 921px) {
+  body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) .state-market-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr)) !important;
+    max-width: none !important;
+  }
+}
+@media (max-width: 920px) {
+  body[data-active-view="builders"] .builder-ops-header:has(.state-first-workbench) .state-market-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v1.79 - Isolated state-first Builders header; no legacy hero collision */
+body[data-active-view="builders"] .state-first-ops-header {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: clamp(22px, 3vw, 34px) !important;
+  padding: clamp(24px, 4.5vw, 56px) !important;
+  border: 1px solid var(--os-line-strong, rgba(16,24,23,.12)) !important;
+  background: linear-gradient(115deg, rgba(253,254,250,.96), rgba(248,250,244,.88)) !important;
+  box-shadow: var(--os-shadow, 0 18px 50px rgba(18,28,20,.07)) !important;
+  overflow: visible !important;
+}
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title {
+  display: grid !important;
+  gap: 0 !important;
+  max-width: 760px !important;
+}
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title h3 {
+  max-width: 760px !important;
+  margin: 12px 0 0 !important;
+  font-size: clamp(44px, 5.2vw, 76px) !important;
+  font-weight: 780 !important;
+  line-height: .96 !important;
+  letter-spacing: -.06em !important;
+}
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title p {
+  max-width: 720px !important;
+  margin: 14px 0 0 !important;
+  color: rgba(47,64,58,.86) !important;
+  font-size: clamp(16px, 1.05vw, 19px) !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="builders"] .state-first-ops-header .primary-action-strip {
+  margin-top: 18px !important;
+}
+body[data-active-view="builders"] .state-first-ops-header .state-first-workbench {
+  width: 100% !important;
+  display: grid !important;
+  gap: clamp(18px, 2.2vw, 24px) !important;
+}
+@media (min-width: 921px) {
+  body[data-active-view="builders"] .state-first-ops-header .state-market-grid {
+    grid-template-columns: repeat(3, minmax(220px, 1fr)) !important;
+  }
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .state-first-ops-header {
+    padding: 22px 14px 18px !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+  body[data-active-view="builders"] .state-first-ops-header .builder-ops-title h3 {
+    font-size: clamp(34px, 10vw, 44px) !important;
+  }
+}
+
+
+/* v1.80 - Isolated state-first child order lock */
+body[data-active-view="builders"] .state-first-ops-header > .builder-ops-title {
+  grid-area: auto !important;
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  order: 1 !important;
+  align-self: start !important;
+}
+body[data-active-view="builders"] .state-first-ops-header > .state-first-workbench {
+  grid-area: auto !important;
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  order: 2 !important;
+  align-self: start !important;
+}
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title .eyebrow,
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title h3,
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title p,
+body[data-active-view="builders"] .state-first-ops-header .builder-ops-title .primary-action-strip {
+  position: static !important;
+  transform: none !important;
+}

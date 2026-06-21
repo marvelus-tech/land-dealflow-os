@@ -1281,6 +1281,80 @@ function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandsc
   });
 }
 
+
+const builderStateTheses = {
+  GA: { label: 'Georgia', thesis: 'Atlanta growth lanes', short: 'Atlanta growth', detail: 'Atlanta data-center commuter lane', note: 'Forsyth / Hall / Jackson / Douglas stay grouped as one source thesis until builders are verified.' },
+  SC: { label: 'South Carolina', thesis: 'Charleston + Upstate expansion', short: 'Charleston + Upstate', detail: 'Charleston coastal edge + Upstate growth', note: 'Dorchester carries live builder demand; Berkeley and Greenville remain supporting source lanes.' },
+  TN: { label: 'Tennessee', thesis: 'Knoxville core lane', short: 'Knoxville core', detail: 'Core Tennessee builder-demand lane', note: 'Keep this as the proven operating lane while expansion lanes mature.' },
+  FL: { label: 'Florida', thesis: 'Inland growth lane', short: 'Inland growth', detail: 'Inland permit-growth lane', note: 'Use this when buyer demand and permit proof justify seller sourcing.' },
+  AZ: { label: 'Arizona', thesis: 'Phoenix edge lane', short: 'Phoenix edge', detail: 'Phoenix / Maricopa edge growth', note: 'Treat as a state-level lane; county detail belongs in source proof, not the top selector.' },
+  NC: { label: 'North Carolina', thesis: 'Raleigh / Wake lane', short: 'Raleigh / Wake', detail: 'Triangle permit-growth lane', note: 'Keep county/source depth behind the selected state workbench.' },
+  TX: { label: 'Texas', thesis: 'Austin + San Antonio lanes', short: 'Austin + San Antonio', detail: 'Central / south Texas growth lanes', note: 'Austin and San Antonio stay under one Texas decision until a specific buyer call requires splitting.' },
+};
+
+function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntries(), permitLandscape = getPermitPortalLandscape()) {
+  const order = ['GA', 'SC', 'TN', 'FL', 'AZ', 'NC', 'TX'];
+  return order.map(stateCode => {
+    const markets = marketEntries.filter(market => market.stateCode === stateCode || market.state === stateCode);
+    if (!markets.length) return null;
+    const rows = markets.flatMap(market => asArray(market.rows));
+    const stateMeta = asArray(permitLandscape.states).find(item => item.id === String(stateCode).toLowerCase()) || markets[0]?.stateMeta || {};
+    const minimumUniqueBuilders = markets.reduce((sum, market) => sum + Number(market.minimumUniqueBuilders || 20), 0) || 20;
+    const builderCount = rows.length;
+    const callable = rows.filter(row => row.phone || row.email).length;
+    const totalRecentBuildSignals = rows.reduce((sum, row) => sum + Number(row.recentBuilds || 0), 0);
+    const liveMarketCount = markets.filter(market => market.isLive).length;
+    const thinMarketCount = markets.filter(market => market.isThin).length;
+    const status = liveMarketCount ? 'live' : thinMarketCount ? 'thin' : 'needs-work';
+    const thesis = builderStateTheses[stateCode] || { label: stateCode, thesis: `${stateCode} market lane`, short: `${stateCode} lane`, detail: `${stateCode} source lane`, note: 'State-level market lane.' };
+    const summary = {
+      entries: markets.flatMap(market => asArray(market.summary?.entries)),
+      rows,
+      uniqueBuilders: builderCount,
+      totalRecentBuildSignals,
+      callable,
+      minimumUniqueBuilders,
+    };
+    return {
+      ...thesis,
+      key: `state-${String(stateCode).toLowerCase()}`,
+      stateCode,
+      state: stateCode,
+      label: thesis.label,
+      marketLabel: thesis.thesis,
+      rows,
+      markets,
+      stateMeta,
+      summary,
+      builderCount,
+      callable,
+      totalRecentBuildSignals,
+      minimumUniqueBuilders,
+      countyCount: markets.length,
+      liveMarketCount,
+      thinMarketCount,
+      isLive: liveMarketCount > 0,
+      isThin: liveMarketCount === 0 && thinMarketCount > 0,
+      status,
+      sequence: stateMeta.sequence || {},
+      isActive: selectedBuilderMarketState === stateCode,
+      statusCopy: builderCount ? `${builderCount} live builders` : 'source work needed',
+      countyCopy: markets.map(market => market.label).join(' · '),
+    };
+  }).filter(Boolean);
+}
+
+function renderBuilderCountyLedger(activeState = {}) {
+  const rows = asArray(activeState.markets).map(market => `<li class="state-county-row market-status-${h(market.status)}">
+    <span><b>${h(market.label)}</b><small>${h(market.note || 'source lane')}</small></span>
+    <em>${h(market.statusCopy)}</em>
+  </li>`).join('');
+  return `<details class="state-county-ledger" open>
+    <summary><span>Counties included</span><b>${h(activeState.countyCount || 0)} lanes</b></summary>
+    <ul>${rows}</ul>
+  </details>`;
+}
+
 function builderContactLedgerForRows(rows = []) {
   const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
   const total = center.items.length;
@@ -1656,20 +1730,20 @@ function renderBuilderListEnginePanel(options = {}) {
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
   const permitLandscape = getPermitPortalLandscape();
   const publicSkipTrace = asArray(generatedLeads?.queues?.skipTrace);
-  let marketSummaries = builderMarketSwitchboardEntries(permitLandscape);
-  if (!marketSummaries.some(market => market.key === selectedBuilderMarketKey)) selectedBuilderMarketKey = marketSummaries[0]?.key || 'knoxville';
-  let activeState = marketSummaries.find(market => market.key === selectedBuilderMarketKey) || marketSummaries[0];
-  selectedBuilderMarketState = activeState?.stateCode || selectedBuilderMarketState || 'TN';
-  marketSummaries = marketSummaries.map(market => ({ ...market, isActive: market.key === selectedBuilderMarketKey }));
-  activeState = marketSummaries.find(market => market.key === selectedBuilderMarketKey) || marketSummaries[0];
-  const stateLabels = { TN: 'Tennessee', TX: 'Texas', NC: 'North Carolina', FL: 'Florida', AZ: 'Arizona', GA: 'Georgia', SC: 'South Carolina' };
-  const stateSwitcher = marketSummaries.map((market) => `<button type="button" class="market-toggle market-toggle-v34 market-status-${h(market.status)} ${market.isActive ? 'active' : ''}" data-builder-market-key="${h(market.key)}" aria-pressed="${market.isActive ? 'true' : 'false'}">
-    <small class="market-row-main"><kbd class="market-code">${h(market.stateCode)}</kbd><strong class="market-name">${h(market.label)}</strong><em class="market-builder-total"><b>${h(market.builderCount)}</b><small>${market.builderCount === 1 ? 'builder' : 'builders'}</small></em></small>
-    <span class="market-contact-rail" role="progressbar" aria-label="${h(`${market.builderCount} of ${market.minimumUniqueBuilders} minimum builders collected for ${market.label}`)}" aria-valuemin="0" aria-valuemax="${h(market.minimumUniqueBuilders)}" aria-valuenow="${h(Math.min(market.builderCount, market.minimumUniqueBuilders))}" style="--contact-progress:${h(Math.min(100, Math.round((market.builderCount / Math.max(1, market.minimumUniqueBuilders)) * 100)))}%"><i></i></span>
-    <small class="market-contact-copy"><b>${h(market.statusCopy)}</b><i>·</i><span>${h(market.note)}</span></small>
-  </button>`).join('');
+  const marketSummaries = builderMarketSwitchboardEntries(permitLandscape);
+  let stateSummaries = builderStateSummaryEntries(marketSummaries, permitLandscape);
+  if (!stateSummaries.some(state => state.stateCode === selectedBuilderMarketState)) selectedBuilderMarketState = stateSummaries[0]?.stateCode || 'GA';
+  let activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
+  selectedBuilderMarketKey = activeState?.markets?.[0]?.key || selectedBuilderMarketKey || 'knoxville';
+  stateSummaries = stateSummaries.map(state => ({ ...state, isActive: state.stateCode === selectedBuilderMarketState }));
+  activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
+  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
+    <span class="state-market-code">${h(state.stateCode)}</span>
+    <span class="state-market-copy"><strong>${h(state.thesis)}</strong><small>${h(state.countyCount)} ${state.countyCount === 1 ? 'county/market' : 'counties/markets'} · ${h(state.statusCopy)}</small></span>
+    <em>${h(state.builderCount)}</em>
+  </div>`).join('');
   const activeBuilders = asArray(activeState.rows);
-  const activeSummary = activeState.summary || marketSummaryForRows(activeBuilders, 20);
+  const activeSummary = activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
   const selected = getSelectedBuilder(activeBuilders) || {};
   const buyerPool = buyerPoolForState(activeState.stateCode);
   const sellerPool = sellerPoolForState(activeState.stateCode);
@@ -1687,19 +1761,17 @@ function renderBuilderListEnginePanel(options = {}) {
     titleCandidates: titlePool,
     limit: 8,
   });
-  const marketSummary = `<div class="active-market-summary">
-    <span>${activeState.isLive ? 'Live permit-backed market' : activeState.isThin ? 'Thin market lane' : 'Selected source lane'}</span>
-    <strong>${h(activeState.marketLabel || activeState.label)}</strong>
-    <p>${h(activeState.isLive ? `${activeBuilders.length} permit-backed builders. Capture buy box before seller work.` : activeState.isThin ? `${activeBuilders.length}/${activeState.minimumUniqueBuilders} builders collected. Keep this visible, but finish the source pull before seller work.` : `${activeState.label}. No builder queue yet. This market stays visible so the operator knows source work is still owed.`)}</p>
+  const marketSummary = `<div class="active-market-summary state-focus-summary">
+    <span>Selected market state</span>
+    <strong>${h(activeState.label)}</strong>
+    <p><b>${h(activeState.detail || activeState.thesis)}.</b> ${h(activeState.note || '')}</p>
     <ul>
-      ${activeState.builderCount ? `<li title="Unique permit-backed builders in the current lane.">${h(activeBuilders.length)} builders</li>
-      <li title="Minimum viable source pull before operator review.">${h(activeSummary.minimumUniqueBuilders || 20)} min</li>
+      <li title="Permit-backed builder rows under this state.">${h(activeBuilders.length)} builders</li>
+      <li title="County/source lanes grouped under the state decision.">${h(activeState.countyCount || 0)} counties</li>
       <li title="Rows with public phone/email/contact path ready for operator outreach.">${h(activeSummary.callable ?? 0)} callable</li>
-      <li title="Recent permit rows attached as public proof.">${h(activeSummary.totalRecentBuildSignals ?? 0)} proofs</li>` : `<li>${h(activeState.markets.length)} markets</li>
-      <li>${h(asArray(activeState.stateMeta.portals).length)} portals</li>
-      <li>${h(asArray(activeState.stateMeta.pipeline).length)} steps</li>
-      <li title="Validate buyer demand before seller sourcing.">buyer first</li>`}
+      <li title="Recent permit rows attached as public proof.">${h(activeSummary.totalRecentBuildSignals ?? 0)} proofs</li>
     </ul>
+    ${renderBuilderCountyLedger(activeState)}
   </div>`;
   const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
     <span>${h(adapter.name)}</span>
@@ -1708,7 +1780,7 @@ function renderBuilderListEnginePanel(options = {}) {
   </article>`).join('');
   const statePortalRows = [activeState].map(state => {
     const stateMeta = state.stateMeta || {};
-    const markets = asArray(state.markets).map(item => `<li><b>#${h(item.rank)} · ${h(item.market)}</b><span>${h(item.reason)}</span>${item.zillowUrl ? `<a class="zillow-market-link" href="${h(item.zillowUrl)}" target="_blank" rel="noopener noreferrer">Zillow market view</a>` : ''}</li>`).join('');
+    const markets = asArray(state.markets).map(item => `<li><b>${h(item.label || item.market || 'County lane')}</b><span>${h(item.statusCopy || item.reason || item.note || 'Source lane')}</span>${item.zillowUrl ? `<a class="zillow-market-link" href="${h(item.zillowUrl)}" target="_blank" rel="noopener noreferrer">Zillow market view</a>` : ''}</li>`).join('');
     const portals = asArray(stateMeta.portals).map(portal => `<a href="${h(portal.url)}" target="_blank" rel="noopener noreferrer">
         <b>${h(portal.market)}</b>
         <span>${h(portal.jurisdiction)}</span>
@@ -1742,15 +1814,15 @@ function renderBuilderListEnginePanel(options = {}) {
     ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
   </article>`).join('');
   target.innerHTML = `<div class="builder-engine-shell">
-    <section class="builder-ops-header" aria-label="Builder operations summary">
+    <section class="state-first-ops-header" aria-label="Builder operations summary">
       <div class="builder-ops-title">
-        <span class="eyebrow">Builders · market workbench</span>
-        <h3>Market workbench</h3>
-        <p><b>Suggested order, not a lock:</b> use the recommended stack when useful, but switch any market on demand. Empty lanes stay visible until the source work is finished.</p>
+        <span class="eyebrow">Builders · market focus</span>
+        <h3>Choose operating state</h3>
+        <p><b>State first, counties as evidence:</b> choose the state/market thesis, then inspect county lanes inside the selected workbench only when needed.</p>
         <div class="primary-action-strip builders-primary-action"><span>Next</span><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
-      <div class="builder-market-workbench" aria-label="Prioritized target markets">
-        <div class="market-toggle-grid market-switchboard-grid">${stateSwitcher}</div>
+      <div class="state-first-workbench" aria-label="Choose operating state">
+        <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
         ${marketSummary}
       </div>
       <nav class="builder-ops-jump" aria-label="Builder page sections">
@@ -3260,6 +3332,13 @@ ${body}`;
   });
 
   document.addEventListener('keydown', (event) => {
+    const stateMarketButton = event.target.closest?.('[data-builder-market-state].state-market-toggle');
+    if (stateMarketButton && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      stateMarketButton.click();
+      return;
+    }
+
     const dealsMarketButton = event.target.closest?.('[data-deals-market-key]');
     if (dealsMarketButton && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();

@@ -1574,9 +1574,9 @@ function renderBuilderListEnginePanel(options = {}) {
     <section class="builder-ops-header" aria-label="Builder operations summary">
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · market workbench</span>
-        <h3>Choose market. Validate builder.</h3>
-        <p><b>Priority is TN → inland FL → AZ → NC → TX.</b> State tabs swap the queue, validation form, source lane, and permit proof.</p>
-        <div class="primary-action-strip builders-primary-action"><span>Next action</span><b>Call the highest-signal builder and capture the missing buy-box fields.</b><a href="#buyer-validation-command">Open builder queue ${productIcon('arrow')}</a></div>
+        <h3>Market workbench</h3>
+        <p><b>TN → inland FL → AZ → NC → TX.</b> Pick the buyer lane, then validate the highest-signal builder before seller work starts.</p>
+        <div class="primary-action-strip builders-primary-action"><span>Next</span><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="builder-market-workbench" aria-label="Prioritized target markets">
         <div class="market-toggle-grid">${stateSwitcher}</div>

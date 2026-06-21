@@ -16,7 +16,7 @@ assert.match(app, /async function loadBuilderMarketData\(\)/, 'UI must load mult
 assert.match(app, /loadBuilderMarketData\(\)\.then\(renderAll\)/, 'UI must render after multi-market data loads');
 assert.match(app, /getStateBuilderRows\(stateCode\)/, 'UI must select builders by active state');
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
-assert.match(app, /Priority is TN → inland FL → AZ → NC → TX/, 'Visitor copy should disclose the user-supplied target-state priority stack');
+assert.match(app, /TN → inland FL → AZ → NC → TX/, 'Visitor copy should disclose the user-supplied target-state priority stack');
 assert.doesNotMatch(app, /const isLive = stateCode === 'TN'/, 'UI must not hard-code only Tennessee as live');
 assert.doesNotMatch(app, /non-live states stay empty until real permit pulls are loaded/, 'UI must not tell visitors deployed markets are empty');
 assert.doesNotMatch(app, /id="builder-evidence-desk"/, 'legacy duplicate evidence desk must not render');

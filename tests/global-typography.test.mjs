@@ -93,7 +93,7 @@ assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard 
 assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer demand first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
-assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,80}<span>Next action<\/span>[\s\S]{0,220}Call the highest-signal builder/, 'Builders should expose a clear next-action strip before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,80}<span>Next<\/span>[\s\S]{0,220}Call the top builder\. Capture missing buy-box fields\./, 'Builders should expose a clear, calm next-action strip before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip[\s\S]{0,80}\$\{productIcon\('[^']+'\)\} Do first|>Start queue /, 'Primary action strips should not use vague Do first timeline-icon labeling');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
@@ -316,5 +316,15 @@ assert.match(css, /body\[data-active-view="builders"\] \.validation-focus-card \
 assert.match(css, /validation-focus-card \.validation-source-proof div,[\s\S]{0,180}grid-template-columns: 132px minmax\(0, 1fr\) !important/, 'Builders proof metric rows should use a readable label/value ledger');
 assert.match(css, /v1\.64\.6 - Phase 32\.6 Builders Apple QA: mobile nav must not clip route labels/, 'Phase 32.6 mobile nav marker required');
 assert.match(css, /body\[data-active-view="builders"\] \.tab-button \{[\s\S]{0,180}font-size: 8\.6px !important;[\s\S]{0,160}white-space: nowrap !important/, 'Builders mobile nav labels should fit without clipping');
+assert.match(css, /v1\.65 - Phase 33 Builders pass 1: calmer Apple hierarchy, restored market scent/, 'Phase 33 pass 1 marker required');
+assert.match(css, /--phase33-builders-rule: builders-calm-operating-surface-pass1/, 'Phase 33 route-scoped design rule required');
+assert.match(css, /v1\.65\.1 - Phase 33 pass 2 self-review correction: use desktop canvas, reduce poster fatigue/, 'Phase 33 second-pass self-review correction marker required');
+assert.match(css, /grid-template-areas:\s*\n\s*"title market"\s*\n\s*"jump jump" !important/, 'Phase 33 desktop workbench should use the right-side canvas instead of stacking everything left');
+assert.match(css, /grid-template-areas:\s*\n\s*"code name count"\s*\n\s*"rail meta meta" !important/, 'Phase 33 market rows must preserve market-name information scent');
+assert.match(css, /body\[data-active-view="builders"\] \.brand \{ display: none !important; \}/, 'Builders mobile nav should remove the brand label to prevent clipped route tabs');
+assert.match(appSource, /<h3>Market workbench<\/h3>/, 'Phase 33 should demote the secondary Builders headline to a workbench label');
+assert.match(appSource, /<span>Next<\/span>[\s\S]{0,120}Call the top builder\. Capture missing buy-box fields\./, 'Phase 33 next action copy should be short and calm');
+assert.match(css, /v1\.65\.2 - Phase 33 final polish: action instruction must read as a sentence, not a stacked poster/, 'Phase 33 final action-strip polish marker required');
+assert.match(css, /\.builders-primary-action \{[\s\S]{0,160}grid-template-areas:\s*\n\s*"label action"\s*\n\s*"\. link" !important/, 'Builders action instruction should read horizontally before the link on desktop');
 
 console.log('global typography tests passed');

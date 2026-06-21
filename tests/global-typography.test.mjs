@@ -178,8 +178,8 @@ assert.doesNotMatch(css, /--glass|--glass-dark|--terrain-|wk-artifact|wk-scanlin
 assert.match(css, /body\[data-active-view="closing"\] \.closing-hero-copy h2[\s\S]{0,420}font-family: var\(--font-grotesk\) !important/, 'Closing heading should use the Grotesk product type system');
 assert.match(css, /Final route isolation guard after Phase 27 Closing cleanup/, 'Phase 27 should preserve route isolation after late Closing overrides');
 
-assert.match(appSource, /field-label-text[\s\S]{0,220}\$\{complete \? 'Done' : '\*'\}/, 'Missing form fields should use an asterisk instead of visible required copy, with no raw check glyphs');
-assert.doesNotMatch(appSource, /required field\(s\) left|required seller field\(s\) left|required gate\(s\) left|buyer field\(s\) left|buyer gate\(s\) left|>\$\{complete \? '✓' : 'required'\}<\/em>/, 'Visible form status copy should not spell out required; use * plus tooltip/aria context');
+assert.match(appSource, /field-label-text"><span>\$\{h\(label\)\}<\/span><em aria-hidden="true" title="Required">\*<\/em><\/span>/, 'Required buy-box form marks should sit directly after the label text');
+assert.doesNotMatch(appSource, /required field\(s\) left|required seller field\(s\) left|required gate\(s\) left|buyer field\(s\) left|buyer gate\(s\) left|>\$\{complete \? '✓' : 'required'\}<\/em>|field-helper">Required\.|\$\{complete \? 'Done' : '\*'\}/, 'Visible form status copy should not spell out required or Done; use label-adjacent * only');
 
 assert.match(css, /v1\.60 - Phase 28 Apple product-system convergence: Closing ledger, unified SF\/Inter typography, no legacy display-font relics/, 'Phase 28 product-system convergence marker required');
 assert.match(css, /--phase28-forest: #0f4d35/, 'Phase 28 should define premium accessible forest accent');
@@ -214,5 +214,10 @@ assert.match(appSource, /selected-outreach-state[\s\S]{0,1000}contact-state-togg
 assert.doesNotMatch(appSource, /contact-icon-toggle contact-call[\s\S]{0,520}<em>|contact-icon-toggle contact-email[\s\S]{0,520}<em>|contact-state-toggle[\s\S]{0,360}solidIndustryIcon\('check'\)/, 'Builder queue/detail logging toggles should not show explicit text or check icons');
 assert.doesNotMatch(css, /contact-(?:icon|state)-toggle\[data-toggle-validation-contact="email"\]\.is-on span::after[\s\S]{0,160}content:\s*['"]✓['"]/, 'Active email logging controls must keep the email icon but must not add a checkmark pseudo-element');
 assert.match(css, /contact-icon-toggle\[data-toggle-validation-contact="email"\]\.is-on span::after,[\s\S]{0,120}content: none !important;[\s\S]{0,80}display: none !important/, 'Email logging checkmark pseudo-element should be explicitly suppressed');
+assert.match(css, /v1\.61\.5 - Apple-grade builder validation form: flat settings sheet, label-adjacent required marks/, 'Form redesign marker required after screenshot correction');
+assert.match(css, /--phase29-form-rule: apple-flat-settings-sheet-label-adjacent-required-mark/, 'Form redesign should encode the flat Apple settings-sheet rule');
+assert.match(css, /body\[data-active-view="builders"\] \.validation-buybox-grid \.form-field[\s\S]{0,520}border-right: 1px solid rgba\(16, 23, 19, \.085\) !important;[\s\S]{0,180}background: transparent !important;[\s\S]{0,120}box-shadow: none !important/, 'Buy-box fields should be flat cells with hairlines, not nested cards');
+assert.match(css, /body\[data-active-view="builders"\] \.validation-buybox-grid input,[\s\S]{0,420}border: 0 !important;[\s\S]{0,120}border-radius: 0 !important;[\s\S]{0,180}background: transparent !important/, 'Buy-box inputs should not create a second nested box inside the field cell');
+assert.match(css, /body\[data-active-view="builders"\] \.validation-buybox-grid \.field-label-text[\s\S]{0,260}display: inline-flex !important;[\s\S]{0,140}gap: 4px !important/, 'Required star should be visually associated immediately after the label');
 
 console.log('global typography tests passed');

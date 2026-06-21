@@ -14974,3 +14974,144 @@ html body .nav .tab-button {
   justify-content: center !important;
   gap: 0 !important;
 }
+
+/* v1.61.5 - Apple-grade builder validation form: flat settings sheet, label-adjacent required marks */
+:root {
+  --phase29-form-rule: apple-flat-settings-sheet-label-adjacent-required-mark;
+}
+body[data-active-view="builders"] .validation-form.validation-buybox-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  margin-top: 14px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(16, 23, 19, .105) !important;
+  background: linear-gradient(180deg, #fffef9 0%, #fbfaf5 100%) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72) !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .form-field {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  min-height: 92px !important;
+  margin: 0 !important;
+  padding: 15px 18px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(16, 23, 19, .085) !important;
+  border-bottom: 1px solid rgba(16, 23, 19, .085) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase29-ink, #101713) !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .form-field:focus-within {
+  background: rgba(15, 77, 53, .045) !important;
+  box-shadow: inset 3px 0 0 rgba(15, 77, 53, .82) !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .field-status,
+body[data-active-view="builders"] .validation-buybox-grid .field-last,
+body[data-active-view="builders"] .validation-buybox-grid .field-callback { grid-column: span 4 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-geography { grid-column: span 5 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-lot { grid-column: span 3 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-price { grid-column: span 4 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-speed,
+body[data-active-view="builders"] .validation-buybox-grid .field-recipient,
+body[data-active-view="builders"] .validation-buybox-grid .field-utilities { grid-column: span 4 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-product,
+body[data-active-view="builders"] .validation-buybox-grid .field-killers { grid-column: span 6 !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-notes { grid-column: 1 / -1 !important; min-height: 214px !important; }
+body[data-active-view="builders"] .validation-buybox-grid .validation-save-row {
+  grid-column: 1 / -1 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  min-height: 82px !important;
+  margin: 0 !important;
+  padding: 16px 18px !important;
+  border-top: 1px solid rgba(16, 23, 19, .105) !important;
+  background: rgba(247, 248, 244, .72) !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .field-label-text {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  justify-content: flex-start !important;
+  gap: 4px !important;
+  width: auto !important;
+  color: #111713 !important;
+  font: 720 12px/1.2 ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif !important;
+  letter-spacing: .01em !important;
+  text-transform: none !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .field-label-text span { display: inline !important; }
+body[data-active-view="builders"] .validation-buybox-grid .field-label-text em {
+  position: static !important;
+  display: inline !important;
+  margin: 0 !important;
+  color: #8a6418 !important;
+  font: 780 12px/1 ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, sans-serif !important;
+  letter-spacing: 0 !important;
+  transform: translateY(-1px) !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid .field-helper { display: none !important; }
+body[data-active-view="builders"] .validation-buybox-grid input,
+body[data-active-view="builders"] .validation-buybox-grid select,
+body[data-active-view="builders"] .validation-buybox-grid textarea {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 34px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: #17211c !important;
+  font: 620 19px/1.28 ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", sans-serif !important;
+  letter-spacing: -.025em !important;
+  text-transform: none !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid select {
+  appearance: auto !important;
+  -webkit-appearance: auto !important;
+  background-image: none !important;
+  padding-right: 0 !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid textarea {
+  min-height: 154px !important;
+  resize: vertical !important;
+  line-height: 1.38 !important;
+  padding-top: 4px !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid input::placeholder,
+body[data-active-view="builders"] .validation-buybox-grid textarea::placeholder {
+  color: rgba(16, 23, 19, .36) !important;
+  opacity: 1 !important;
+}
+body[data-active-view="builders"] .validation-buybox-grid input:focus,
+body[data-active-view="builders"] .validation-buybox-grid select:focus,
+body[data-active-view="builders"] .validation-buybox-grid textarea:focus {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="builders"] .validation-form.validation-buybox-grid { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; }
+  body[data-active-view="builders"] .validation-buybox-grid .form-field { grid-column: span 3 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid .field-geography,
+  body[data-active-view="builders"] .validation-buybox-grid .field-product,
+  body[data-active-view="builders"] .validation-buybox-grid .field-killers,
+  body[data-active-view="builders"] .validation-buybox-grid .field-notes { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 620px) {
+  body[data-active-view="builders"] .validation-form.validation-buybox-grid { grid-template-columns: 1fr !important; }
+  body[data-active-view="builders"] .validation-buybox-grid .form-field { grid-column: 1 / -1 !important; min-height: 82px !important; padding: 14px 16px !important; border-right: 0 !important; }
+  body[data-active-view="builders"] .validation-buybox-grid input,
+  body[data-active-view="builders"] .validation-buybox-grid select,
+  body[data-active-view="builders"] .validation-buybox-grid textarea { font-size: 17px !important; }
+}

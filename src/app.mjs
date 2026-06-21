@@ -1256,8 +1256,7 @@ function fieldStateClass(row = {}, key = '') {
 }
 
 function fieldLabel(label, row = {}, key = '') {
-  const complete = isBuyBoxFieldComplete(row.buyBox || {}, key);
-  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true" title="${complete ? 'Complete' : 'Missing'}">${complete ? 'Done' : '*'}</em></span>`;
+  return `<span class="field-label-text"><span>${h(label)}</span><em aria-hidden="true" title="Required">*</em></span>`;
 }
 
 function renderAskNext(row = {}) {
@@ -1429,7 +1428,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           <label class="form-field field-status">Status <select class="validation-status">${statusOptions}</select></label>
           <label class="form-field field-last">Last touch <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
           <label class="form-field field-callback">Callback <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
-          <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /><small class="field-helper">Required.</small></label>
+          <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
           <label class="form-field field-lot ${fieldStateClass(selected, 'lotSize')}">${fieldLabel('Lot band', selected, 'lotSize')}<input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
           <label class="form-field field-price ${fieldStateClass(selected, 'maxPrice')}">${fieldLabel('Max price', selected, 'maxPrice')}<input class="validation-price" inputmode="numeric" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
           <label class="form-field field-speed ${fieldStateClass(selected, 'closeSpeed')}">${fieldLabel('Speed / appetite', selected, 'closeSpeed')}<input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>

@@ -27357,3 +27357,239 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     display: none !important;
   }
 }
+
+
+/* v1.93 - Builders top-half calm ledger: reduce filled blocks, redundant copy, and nested card noise */
+@media (min-width: 1024px) {
+  body[data-active-view="builders"] #builder-list-section {
+    --phase93-builders-rule: top-half-flat-ledger-selected-detail-continuation;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-first-workbench.state-data-workbench {
+    margin-top: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-workbench-kicker {
+    display: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-workbench-layout {
+    grid-template-columns: minmax(430px, .46fr) minmax(460px, .54fr) !important;
+    gap: clamp(28px, 3.2vw, 48px) !important;
+    padding-top: clamp(8px, 1vw, 14px) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-grid {
+    display: grid !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle {
+    min-height: 0 !important;
+    display: grid !important;
+    grid-template-columns: 42px minmax(0, 1fr) minmax(60px, max-content) !important;
+    align-items: center !important;
+    column-gap: 15px !important;
+    padding: 13px 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid rgba(8, 16, 12, .09) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: var(--phase91-ink) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle:hover {
+    transform: none !important;
+    background: rgba(15, 74, 53, .025) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle.active,
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle.is-active {
+    padding-left: 12px !important;
+    background: linear-gradient(90deg, rgba(15, 74, 53, .065), rgba(15, 74, 53, 0) 74%) !important;
+    box-shadow: inset 2px 0 0 var(--phase91-forest) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-code {
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: rgba(8, 16, 12, .48) !important;
+    box-shadow: none !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    font-weight: 860 !important;
+    letter-spacing: .13em !important;
+    text-align: left !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle.active .state-market-code,
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle.is-active .state-market-code {
+    background: transparent !important;
+    color: var(--phase91-forest) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-copy {
+    gap: 2px !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-copy strong {
+    display: flex !important;
+    gap: 8px !important;
+    align-items: baseline !important;
+    min-width: 0 !important;
+    color: var(--phase91-ink) !important;
+    font-size: 15px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.028em !important;
+    font-weight: 760 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-thesis {
+    color: rgba(82, 100, 91, .78) !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    font-weight: 540 !important;
+    letter-spacing: -.012em !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-copy small {
+    display: flex !important;
+    gap: 8px !important;
+    color: rgba(82, 100, 91, .72) !important;
+    font-size: 11px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -.004em !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-copy small span:last-child {
+    display: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle em {
+    justify-self: end !important;
+    min-width: 52px !important;
+    display: inline-flex !important;
+    align-items: baseline !important;
+    justify-content: flex-end !important;
+    gap: 4px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--phase91-gold) !important;
+    font-style: normal !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle em b {
+    font-size: 17px !important;
+    line-height: 1 !important;
+    letter-spacing: -.04em !important;
+    font-weight: 820 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle em span {
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .08em !important;
+    text-transform: uppercase !important;
+    color: rgba(82, 100, 91, .68) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .active-market-summary.state-focus-summary {
+    margin: 0 !important;
+    padding: 2px 0 0 clamp(22px, 2.2vw, 34px) !important;
+    border: 0 !important;
+    border-left: 1px solid rgba(8, 16, 12, .12) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > span {
+    display: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > strong {
+    display: block !important;
+    margin: 0 !important;
+    color: var(--phase91-ink) !important;
+    font-size: clamp(28px, 2.4vw, 38px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.058em !important;
+    font-weight: 850 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > p {
+    max-width: 58ch !important;
+    margin: 10px 0 0 !important;
+    color: var(--phase91-muted) !important;
+    font-size: 13px !important;
+    line-height: 1.46 !important;
+    letter-spacing: -.014em !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > p b {
+    color: var(--phase91-ink) !important;
+    font-weight: 690 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > ul {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 18px !important;
+    margin: clamp(16px, 1.8vw, 22px) 0 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    list-style: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > ul li {
+    min-width: 0 !important;
+    display: inline-grid !important;
+    gap: 3px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > ul li b {
+    color: var(--phase91-gold) !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    letter-spacing: -.055em !important;
+    font-weight: 850 !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-focus-summary > ul li span {
+    color: rgba(82, 100, 91, .68) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .105em !important;
+    text-transform: uppercase !important;
+    font-weight: 760 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-county-ledger {
+    margin-top: clamp(16px, 1.8vw, 24px) !important;
+    padding-top: 12px !important;
+    border-top: 1px solid rgba(8, 16, 12, .1) !important;
+    background: transparent !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-county-ledger summary {
+    padding: 0 !important;
+    border: 0 !important;
+    color: var(--phase91-forest) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    letter-spacing: .13em !important;
+    text-transform: uppercase !important;
+    font-weight: 850 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-county-ledger:not([open]) ul {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  body[data-active-view="builders"] #builder-list-section {
+    --phase93-builders-rule: top-half-flat-ledger-selected-detail-continuation-mobile-safe;
+  }
+}

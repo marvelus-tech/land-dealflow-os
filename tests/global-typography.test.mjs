@@ -443,3 +443,12 @@ assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.b
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builder-ops-title h3 \{[\s\S]{0,260}font-size: clamp\(31px, 2\.8vw, 44px\) !important/, 'Choose state should be a section title, not a second page hero');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builder-engine-shell::before,[\s\S]{0,360}body\[data-active-view="builders"\] \.builders-phase83-workbench::after \{[\s\S]{0,80}content: none !important/, 'Builders empty decorative rule stack should be killed');
 
+assert.match(css, /v1\.93 - Builders top-half calm ledger: reduce filled blocks, redundant copy, and nested card noise/, 'Phase 93 Builders top-half refinement marker missing');
+assert.match(css, /--phase93-builders-rule: top-half-flat-ledger-selected-detail-continuation/, 'Phase 93 should encode the flat-ledger selected-detail rule');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-workbench-kicker \{[\s\S]{0,80}display: none !important/, 'Builders top half should hide redundant operating-state kicker');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-market-grid \{[\s\S]{0,220}background: transparent !important;[\s\S]{0,80}box-shadow: none !important/, 'State selector should be a transparent ledger, not a filled card');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-market-toggle \{[\s\S]{0,520}border-bottom: 1px solid rgba\(8, 16, 12, \.09\) !important;[\s\S]{0,220}background: transparent !important/, 'State rows should use hairlines instead of filled boxes');
+assert.match(css, /state-market-copy small span:last-child \{[\s\S]{0,80}display: none !important/, 'State rows should conceal redundant status copy in the dense top half');
+assert.match(css, /active-market-summary\.state-focus-summary \{[\s\S]{0,220}border-left: 1px solid rgba\(8, 16, 12, \.12\) !important;[\s\S]{0,120}background: transparent !important/, 'Selected-state detail should continue the ledger, not render as a separate filled card');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-focus-summary > ul li \{[\s\S]{0,260}background: transparent !important;[\s\S]{0,80}box-shadow: none !important/, 'Selected-state metrics should be inline facts, not metric tiles');
+

@@ -1387,7 +1387,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const selectedScoreRows = scoreBreakdownRows(selected);
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
   const selectedPermitProof = asArray(selected.permitEvidence || selected.recentPermits).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</span>${permitVerificationLink(permit)}</li>`).join('');
-  const sourceProof = `<div class="validation-source-proof" aria-label="Selected builder source proof">
+  const sourceProof = `<div class="validation-source-proof" aria-label="Builder source proof">
     <div><span>Source</span><strong>${selected.sourceUrl ? safeLink(selected.sourceUrl, selected.sourceType || 'Official source') : h(selected.sourceType || 'source pending')}</strong></div>
     <div><span>Contact status</span><strong>${h(selected.contactStatus || 'contact pending')}</strong></div>
     <div><span>Confidence</span><strong>${h(selected.confidence || '-')}</strong></div>
@@ -1408,19 +1408,19 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
-      <aside class="validation-queue"><div class="panel-kicker"><span>Call queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by validation leverage: permit activity, callable public contact proof, buy-box completeness, decision-maker progress, outreach logged, and human-review penalties.">?</button></span><b>Proof attached</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div><div class="queue-filter-row" aria-label="Queue filters"><button type="button" disabled>Callable</button><button type="button" disabled>Needs buy box</button><button type="button" disabled>Highest permits</button></div>${queue}</aside>
+      <aside class="validation-queue"><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div><div class="queue-filter-row" aria-label="Queue filters"><button type="button" disabled>Callable</button><button type="button" disabled>Buy box</button><button type="button" disabled>Permits</button></div>${queue}</aside>
       <article class="validation-focus-card" id="selected-builder-card">
         <div class="validation-focus-head">
-          <div><span class="eyebrow">Selected builder</span><h3>${h(selected.name || 'Select builder')}</h3><p><b>Permit market: ${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} verified permit proofs. Contact/HQ may be regional: ${contact}</p></div>
+          <div><span class="eyebrow">Builder</span><h3>${h(selected.name || 'Select builder')}</h3><p title="Regional headquarters and operating-market contact paths may differ; verify the public business path before marking outreach done."><b>${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} permit proofs. ${contact}</p></div>
           <details class="validation-score" title="${h(selectedScoreTitle)}">
             <summary>${solidIndustryIcon('score')}<strong>${h(selected.validation?.score || 0)}</strong><span>score detail</span></summary>
             <div class="score-breakdown">${selectedScoreRows}</div>
           </details>
         </div>
-        <div class="next-best-action"><span>Next best action</span><strong>${h(nextActionCopy)}</strong></div>
+        <div class="next-best-action"><span>Next</span><strong>${h(nextActionCopy)}</strong></div>
         ${sourceProof}
         ${renderEvidenceStack(selected)}
-        <div class="selected-outreach-state" aria-label="Selected builder outreach state">
+        <div class="selected-outreach-state" aria-label="Builder outreach state">
           <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span>${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}</button>
           <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span>${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}</button>
         </div>
@@ -1434,36 +1434,36 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         ${renderBuyBoxCompletion(selected)}
         ${renderAskNext(selected)}
         <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
-          <label class="form-field field-status">Call status <select class="validation-status">${statusOptions}</select></label>
-          <label class="form-field field-last">Last contacted <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
-          <label class="form-field field-callback">Callback date <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
-          <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Target geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /><small class="field-helper">Required to unlock seller search.</small></label>
-          <label class="form-field field-lot ${fieldStateClass(selected, 'lotSize')}">${fieldLabel('Lot-size band', selected, 'lotSize')}<input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
-          <label class="form-field field-price ${fieldStateClass(selected, 'maxPrice')}">${fieldLabel('Max acquisition price', selected, 'maxPrice')}<input class="validation-price" inputmode="numeric" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
-          <label class="form-field field-speed ${fieldStateClass(selected, 'closeSpeed')}">${fieldLabel('Close speed / monthly appetite', selected, 'closeSpeed')}<input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
-          <label class="form-field field-recipient ${fieldStateClass(selected, 'packageRecipient')}">${fieldLabel('Package recipient', selected, 'packageRecipient')}<input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
-          <label class="form-field field-utilities">Utilities / access rules <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
-          <label class="form-field field-product">Finished product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
-          <label class="form-field field-killers ${fieldStateClass(selected, 'dealKillers')}">${fieldLabel('Deal killers', selected, 'dealKillers')}<input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
-          <label class="form-field field-notes wide">Exact buyer language <textarea class="validation-notes" placeholder="Paste what they actually said. No interpretation, no fabrication.">${h(selected.callNotes || '')}</textarea></label>
+          <label class="form-field field-status">Status <select class="validation-status">${statusOptions}</select></label>
+          <label class="form-field field-last">Last touch <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
+          <label class="form-field field-callback">Callback <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
+          <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /><small class="field-helper">Required.</small></label>
+          <label class="form-field field-lot ${fieldStateClass(selected, 'lotSize')}">${fieldLabel('Lot band', selected, 'lotSize')}<input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
+          <label class="form-field field-price ${fieldStateClass(selected, 'maxPrice')}">${fieldLabel('Max price', selected, 'maxPrice')}<input class="validation-price" inputmode="numeric" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
+          <label class="form-field field-speed ${fieldStateClass(selected, 'closeSpeed')}">${fieldLabel('Speed / appetite', selected, 'closeSpeed')}<input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
+          <label class="form-field field-recipient ${fieldStateClass(selected, 'packageRecipient')}">${fieldLabel('Recipient', selected, 'packageRecipient')}<input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
+          <label class="form-field field-utilities">Utilities <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
+          <label class="form-field field-product">Product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
+          <label class="form-field field-killers ${fieldStateClass(selected, 'dealKillers')}">${fieldLabel('Killers', selected, 'dealKillers')}<input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
+          <label class="form-field field-notes wide">Exact language <textarea class="validation-notes" placeholder="Paste what they said. No interpretation.">${h(selected.callNotes || '')}</textarea></label>
           <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status" aria-live="polite"></span></div>
         </div>
       </article>
       <aside class="seller-unlock-card ${selected.sellerSearch?.eligible ? 'unlocked' : ''}">
-        <div class="panel-kicker"><span>Seller search gate</span><b>${selected.sellerSearch?.eligible ? 'unlocked' : `${completion.complete}/${completion.total}`}</b></div>
-        <h4>${selected.sellerSearch?.eligible ? h(selected.sellerSearch?.headline || 'Seller search unlocked.') : 'Seller search is locked until the builder’s buying rules are specific enough to protect outreach.'}</h4>
+        <div class="panel-kicker"><span>Seller gate</span><b>${selected.sellerSearch?.eligible ? 'open' : `${completion.complete}/${completion.total}`}</b></div>
+        <h4>${selected.sellerSearch?.eligible ? h(selected.sellerSearch?.headline || 'Seller search unlocked.') : 'Locked until the buy box is specific enough to protect seller outreach.'}</h4>
         <ul>${sellerCriteria}</ul>
-        ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Suggested seller offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p><a class="seller-unlock-cta" href="#top-calls">Find seller parcels</a>` : '<p>Permit volume is only a demand signal. Capture the buy box first; then seller calls can match real demand instead of guessing.</p>'}
+        ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p><a class="seller-unlock-cta" href="#top-calls">Find parcels</a>` : '<p title="Permit proof shows demand, but buyer criteria protect the seller call.">Capture the buy box first; seller calls must match real demand.</p>'}
       </aside>
     </div>
     ${renderSelectedBuilderDock(selected)}
     <details class="validation-script-drawer">
-      <summary><span>Exact buy-box questions + call script</span>${solidIndustryIcon('chevron')}</summary>
+      <summary><span>Questions + script</span>${solidIndustryIcon('chevron')}</summary>
       <div class="script-grid"><div><h5>Public proof</h5><p>${h(selected.sourceEvidence || '')}</p><p>${h(selected.demandSignal || '')}</p><ul class="selected-permit-proof">${selectedPermitProof || '<li><span>No permit proof rows loaded.</span></li>'}</ul></div><div><h5>Buy-box questions</h5><ul>${scriptQuestions}</ul></div></div>
       <pre>${h(selected.callScript || '')}</pre>
     </details>
     <details class="validation-script-drawer marketing-drawer">
-      <summary><span>Optional marketing intro email template</span>${solidIndustryIcon('chevron')}</summary>
+      <summary><span>Intro email</span>${solidIndustryIcon('chevron')}</summary>
       <div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div>
       <pre>${h(marketingEmail.body)}</pre>
       <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
@@ -1529,13 +1529,13 @@ function renderBuilderListEnginePanel(options = {}) {
     <strong>${h(activeState.isLive ? (activeState.marketLabel || activeState.label) : `${activeState.label} source lane`)}</strong>
     <p>${h(activeState.isLive ? `${activeBuilders.length} permit-backed builders. Capture buy box before seller work.` : `${activeState.marketLabel || activeState.label}. Source lane ready; builder queue waits for permit-active companies.`)}</p>
     <ul>
-      ${activeState.isLive ? `<li>${h(activeBuilders.length)} builders</li>
-      <li>${h(activeSummary.minimumUniqueBuilders || 20)} minimum per pull</li>
-      <li>${h(activeSummary.callable ?? 0)} callable now</li>
-      <li>${h(activeSummary.totalRecentBuildSignals ?? 0)} permit proofs</li>` : `<li>${h(activeState.markets.length)} priority markets</li>
-      <li>${h(asArray(activeState.stateMeta.portals).length)} portal targets</li>
-      <li>${h(asArray(activeState.stateMeta.pipeline).length)} pipeline steps</li>
-      <li>buyer-first gate</li>`}
+      ${activeState.isLive ? `<li title="Unique permit-backed builders in the current lane.">${h(activeBuilders.length)} builders</li>
+      <li title="Minimum viable source pull before operator review.">${h(activeSummary.minimumUniqueBuilders || 20)} min</li>
+      <li title="Rows with public phone/email/contact path ready for operator outreach.">${h(activeSummary.callable ?? 0)} callable</li>
+      <li title="Recent permit rows attached as public proof.">${h(activeSummary.totalRecentBuildSignals ?? 0)} proofs</li>` : `<li>${h(activeState.markets.length)} markets</li>
+      <li>${h(asArray(activeState.stateMeta.portals).length)} portals</li>
+      <li>${h(asArray(activeState.stateMeta.pipeline).length)} steps</li>
+      <li title="Validate buyer demand before seller sourcing.">buyer first</li>`}
     </ul>
   </div>`;
   const adapterRows = getSourceAdapterChecklist().map(adapter => `<article class="adapter-card">
@@ -1836,7 +1836,7 @@ function renderParcels() {
 
     <aside class="deal-action" aria-label="Buyer fit and next action">
       <div class="next-action-card">
-        <span class="eyebrow">Next best action</span>
+        <span class="eyebrow">Next</span>
         <h3>${h(getNextAction(selected))}</h3>
         <div class="button-row"><a class="button-link" href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner</a><button type="button" class="secondary" data-view="machine">Open offer packet</button></div>
       </div>

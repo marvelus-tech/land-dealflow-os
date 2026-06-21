@@ -13792,3 +13792,183 @@ section.app-panel[hidden],
   color: var(--phase25-forest-strong) !important;
   border-color: rgba(18,77,53,.18) !important;
 }
+
+/* v1.58 - Phase 26 Apple HIG refinement: short labels, tooltip depth, calmer dense hierarchy */
+:root {
+  --phase26-canvas: #fbfaf3;
+  --phase26-surface: rgba(255,255,250,.72);
+  --phase26-ink: #0f1511;
+  --phase26-body: #303c36;
+  --phase26-muted: #6a746e;
+  --phase26-rule: rgba(15,21,17,.096);
+  --phase26-forest: #104b33;
+  --phase26-forest-strong: #082d20;
+  --phase26-forest-soft: rgba(16,75,51,.074);
+  --phase26-gold: #866014;
+  --phase26-gold-soft: rgba(134,96,20,.105);
+  --phase26-review-rule: short-visible-labels-secondary-detail-lives-in-tooltip;
+}
+body {
+  background:
+    radial-gradient(circle at 88% -4%, rgba(16,75,51,.065), transparent 28rem),
+    linear-gradient(180deg, var(--phase26-canvas), #f4f1e7) !important;
+  color: var(--phase26-body) !important;
+}
+main :where(.panel-kicker, .validation-focus-head, .seller-unlock-card .panel-kicker, .source-priority-head, .closing-intel-hero) {
+  letter-spacing: -.01em !important;
+}
+main :where(.panel-kicker span, .eyebrow, .next-best-action span, .validation-source-proof span, .unlock-price span) {
+  color: var(--phase26-forest) !important;
+  font-size: 9.5px !important;
+  letter-spacing: .095em !important;
+}
+.validation-command {
+  --phase25-forest: var(--phase26-forest);
+  --phase25-gold: var(--phase26-gold);
+  --phase25-rule: var(--phase26-rule);
+}
+.validation-grid-main {
+  grid-template-columns: minmax(230px, .72fr) minmax(0, 1.64fr) minmax(220px, .62fr) !important;
+  align-items: start !important;
+}
+.validation-queue,
+.validation-focus-card,
+.seller-unlock-card {
+  background: var(--phase26-surface) !important;
+  border-color: var(--phase26-rule) !important;
+}
+.validation-queue .panel-kicker b,
+.seller-unlock-card .panel-kicker b {
+  color: var(--phase26-gold) !important;
+  font-size: 11px !important;
+  font-weight: 760 !important;
+  letter-spacing: .02em !important;
+  cursor: help !important;
+}
+.validation-focus-head h3 {
+  color: var(--phase26-ink) !important;
+  font-size: clamp(36px, 4.7vw, 68px) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.066em !important;
+}
+.validation-focus-head p {
+  color: var(--phase26-muted) !important;
+  cursor: help !important;
+}
+.next-best-action {
+  margin-top: 18px !important;
+  padding: 14px 0 !important;
+  background: transparent !important;
+  border-top: 1px solid rgba(16,75,51,.18) !important;
+  border-bottom: 1px solid var(--phase26-rule) !important;
+  box-shadow: none !important;
+}
+.next-best-action strong {
+  color: var(--phase26-ink) !important;
+  font-size: clamp(17px, 1.4vw, 22px) !important;
+  line-height: 1.25 !important;
+  letter-spacing: -.025em !important;
+}
+.validation-source-proof {
+  margin-top: 18px !important;
+}
+.validation-source-proof strong {
+  color: var(--phase26-ink) !important;
+  font-size: 12.5px !important;
+  line-height: 1.28 !important;
+}
+.validation-buybox-grid .form-field {
+  min-height: 84px !important;
+  padding: 14px 16px !important;
+}
+.validation-buybox-grid .field-label-text,
+.validation-buybox-grid label {
+  color: var(--phase26-ink) !important;
+  font-size: 11.5px !important;
+  line-height: 1.2 !important;
+}
+.validation-buybox-grid .field-helper,
+.validation-buybox-grid small {
+  color: var(--phase26-muted) !important;
+  font-size: 10.5px !important;
+}
+.seller-unlock-card h4 {
+  color: var(--phase26-ink) !important;
+  font-size: clamp(22px, 2.1vw, 34px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.048em !important;
+}
+.seller-unlock-card p {
+  color: var(--phase26-muted) !important;
+  cursor: help !important;
+}
+.unlock-price strong,
+.queue-score b,
+.validation-score summary strong {
+  color: var(--phase26-gold) !important;
+}
+.active-market-summary ul {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid var(--phase26-rule) !important;
+}
+.active-market-summary li {
+  max-width: none !important;
+  min-height: 46px !important;
+  margin: 0 !important;
+  padding: 11px 12px !important;
+  border-right: 1px solid var(--phase26-rule) !important;
+  color: var(--phase26-body) !important;
+  font: 720 12px/1.2 var(--font-readable, Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif) !important;
+  letter-spacing: -.015em !important;
+  cursor: help !important;
+}
+.active-market-summary li:last-child { border-right: 0 !important; }
+.validation-script-drawer summary span {
+  color: var(--phase26-ink) !important;
+  font-size: 13px !important;
+}
+@media (max-width: 1080px) {
+  .validation-grid-main {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 760px) {
+  .validation-focus-head h3 {
+    font-size: clamp(34px, 10.5vw, 46px) !important;
+  }
+  .active-market-summary ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .active-market-summary li:nth-child(2n) { border-right: 0 !important; }
+  .validation-buybox-grid .form-field {
+    min-height: auto !important;
+  }
+}
+
+/* Final route isolation guard after Phase 26 Apple HIG refinement */
+.app-panel[hidden],
+section.app-panel[hidden],
+#command[hidden],
+#parcels-section[hidden],
+#builder-list-section[hidden],
+#closing-section[hidden],
+#sources-hub[hidden],
+#workspace[hidden] {
+  display: none !important;
+}
+
+/* v1.58.1 - Phase 26 QA correction: reduce desktop dead air before the validation cockpit */
+@media (min-width: 1081px) {
+  .builder-mode-tabs {
+    margin-top: clamp(34px, 4.8vw, 72px) !important;
+    margin-bottom: 0 !important;
+  }
+  .validation-command {
+    margin-top: clamp(16px, 2.2vw, 28px) !important;
+  }
+  .operator-flow-pulse {
+    margin-top: 0 !important;
+  }
+}

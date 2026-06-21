@@ -126,6 +126,7 @@ assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-rail,\
 assert.match(css, /body\[data-active-view="today"\] #command \.phase24-snapshot div[\s\S]{0,260}border-bottom: 1px solid var\(--phase24-line\)/, 'Today snapshot should be a ledger, not another boxed dashboard tile');
 assert.match(css, /Final route isolation guard after Phase 24 Today rebuilding/, 'Phase 24 should preserve route isolation after late Today overrides');
 const appSource = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
+const coreSource = readFileSync(new URL('../src/core.mjs', import.meta.url), 'utf8');
 const todaySource = appSource.slice(appSource.indexOf('function renderCommandCenter'), appSource.indexOf('function initializeEditorialMotion'));
 assert.match(todaySource, /phase24-today-hero[\s\S]{0,240}Make the clearest next move\./, 'Today should render the new Phase 24 operating hero');
 assert.match(todaySource, /phase24-snapshot[\s\S]{0,260}Builder proof/, 'Today should replace decorative artifact chrome with a proof snapshot');
@@ -149,5 +150,20 @@ assert.doesNotMatch(builderCommandSource, /Selected resource well|resource well|
 assert.match(css, /Final route isolation guard after Phase 25 Apple design review pass/, 'Phase 25 should preserve route isolation after late visual overrides');
 assert.match(css, /v1\.57\.1 - Phase 25 screenshot correction: queue controls are icon-only, no cramped CALL\/EMAIL text/, 'Phase 25 screenshot correction should prevent cramped queue contact labels');
 assert.match(css, /\.validation-queue \.contact-icon-toggle em[\s\S]{0,220}clip: rect\(0 0 0 0\) !important/, 'Queue contact text should be visually hidden while aria labels carry meaning');
+assert.match(css, /v1\.58 - Phase 26 Apple HIG refinement: short labels, tooltip depth, calmer dense hierarchy/, 'Phase 26 Apple HIG refinement marker required');
+assert.match(css, /--phase26-review-rule: short-visible-labels-secondary-detail-lives-in-tooltip/, 'Phase 26 should encode short labels and tooltip-depth rule');
+assert.match(css, /--phase26-forest: #104b33/, 'Phase 26 should define accessible forest primary accent');
+assert.match(css, /--phase26-gold: #866014/, 'Phase 26 should define contrast-safe gold metric accent');
+assert.match(appSource, /<span>Queue <button[\s\S]{0,280}<b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips/, 'Queue header should use short visible labels with tooltip depth');
+assert.match(appSource, /<span class="eyebrow">Builder<\/span>/, 'Selected builder label should be shortened to Builder');
+assert.match(appSource, /<div class="next-best-action"><span>Next<\/span>/, 'Next best action label should be shortened to Next');
+assert.match(appSource, /<span>Seller gate<\/span><b>\$\{selected\.sellerSearch\?\.eligible \? 'open'/, 'Seller gate label/status should be short');
+assert.match(appSource, /<summary><span>Questions \+ script<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'Call script drawer should use shorter summary copy');
+assert.match(appSource, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'Marketing drawer should use shorter summary copy');
+assert.doesNotMatch(appSource + coreSource, /resource well|Resource well|permit signals|Selected builder|Next best action|Seller search gate|Optional marketing intro email template|Exact buy-box questions \+ call script/, 'Phase 26 should remove remaining long/relic visible labels');
+assert.match(coreSource, /label: 'Permit proof'[\s\S]{0,900}label: 'Review hold'/, 'Score breakdown labels should be short and proof-based');
+assert.match(coreSource, /Live source lane|Source lane/, 'Source metadata should harmonize old well language into source-lane language');
+assert.match(css, /Final route isolation guard after Phase 26 Apple HIG refinement/, 'Phase 26 should preserve route isolation after late visual overrides');
+assert.match(css, /v1\.58\.1 - Phase 26 QA correction: reduce desktop dead air before the validation cockpit/, 'Phase 26 QA correction should reduce dead air before the validation cockpit');
 
 console.log('global typography tests passed');

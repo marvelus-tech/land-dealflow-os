@@ -460,12 +460,12 @@ export function scoreBuyerValidation(row = {}) {
   let score = permitPoints + callablePoints + phonePoints + emailPoints + buyBoxPoints + decisionMakerPoints + validatedPoints + outreachPoints + reviewPenalty;
   score = Math.round(clamp(score, 0, 100));
   const breakdown = [
-    { label: 'Permit leverage', value: permitPoints, detail: `${Number(row.recentBuilds || 0)} recent permit signals, capped at 30` },
-    { label: 'Callable public contact', value: callablePoints + phonePoints + emailPoints, detail: `${row.callable ? 'call-ready' : 'not call-ready'} · ${row.phone ? 'phone found' : 'phone missing'} · ${row.email ? 'email found' : 'email missing'}` },
-    { label: 'Buy-box completeness', value: buyBoxPoints, detail: `${buyBox.met}/${buyBox.total} required fields captured` },
-    { label: 'Decision-maker progress', value: decisionMakerPoints + validatedPoints, detail: row.callStatus || 'not_called' },
-    { label: 'Outreach logged', value: outreachPoints, detail: `${phoneContacted ? 'called' : 'not called'} · ${emailContacted ? 'emailed' : 'not emailed'}` },
-    { label: 'Human-review penalty', value: reviewPenalty, detail: reviewPenalty ? 'contact/source needs review before promotion' : 'none' },
+    { label: 'Permit proof', value: permitPoints, detail: `${Number(row.recentBuilds || 0)} recent permit proofs, capped at 30` },
+    { label: 'Public contact', value: callablePoints + phonePoints + emailPoints, detail: `${row.callable ? 'call-ready' : 'not call-ready'} · ${row.phone ? 'phone found' : 'phone missing'} · ${row.email ? 'email found' : 'email missing'}` },
+    { label: 'Buy box', value: buyBoxPoints, detail: `${buyBox.met}/${buyBox.total} required fields captured` },
+    { label: 'Decision maker', value: decisionMakerPoints + validatedPoints, detail: row.callStatus || 'not_called' },
+    { label: 'Outreach', value: outreachPoints, detail: `${phoneContacted ? 'called' : 'not called'} · ${emailContacted ? 'emailed' : 'not emailed'}` },
+    { label: 'Review hold', value: reviewPenalty, detail: reviewPenalty ? 'contact/source needs review before promotion' : 'none' },
   ];
   const tier = buyBox.complete && row.callStatus === 'validated_buy_box'
     ? 'Tier 1 · seller search eligible'
@@ -2141,7 +2141,7 @@ export function getPermitPortalLandscape() {
           { market: 'Jackson', jurisdiction: 'Madison County', system: 'CivicGov Citizen Portal / Building + Zoning', url: 'https://www.madisoncountytn.gov/191/Building-Zoning' },
         ],
         strategy: 'Use Buildchek as the single first pass across major metros. For real-time builder sprawl, bookmark Rutherford, Williamson, Montgomery, Davidson, Shelby, Knox, and Hamilton direct portals.',
-        sequence: { status: 'live', label: 'Live resource well', unlock: 'Keep Knoxville at 20+ unique builders and expand Tennessee county lanes before seller sourcing.' },
+        sequence: { status: 'live', label: 'Live source lane', unlock: 'Keep Knoxville at 20+ unique builders and expand Tennessee county lanes before seller sourcing.' },
         pipeline: [
           { step: '01', title: 'Aggregate recent permits', source: 'Buildchek + Knox/Metro/direct county portals', action: 'Pull issued/approved residential permits from Knoxville first, then Rutherford, Williamson, Montgomery, Davidson, Shelby, Knox, and Hamilton.', output: '20+ unique permit-active builders with jurisdiction and recent-permit proof.' },
           { step: '02', title: 'Deduplicate builder entities', source: 'Company name, license number, permit applicant, public business records', action: 'Merge regional/HQ variants while preserving permit-market geography.', output: 'One builder row per operating company, not one row per office address.' },
@@ -2166,7 +2166,7 @@ export function getPermitPortalLandscape() {
           { market: 'Clermont', jurisdiction: 'City of Clermont', system: 'TRAKiT / CentralSquare legacy + migration', url: 'https://www.clermontfl.gov/186/Building-Services' },
         ],
         strategy: 'Florida is the most fragmented. Learn Accela first, then monitor inland growth counties: Polk, Marion, Lake, Sumter, Alachua, St. Lucie, and Orange. Inland markets avoid some coastal insurance friction while keeping builder demand.',
-        sequence: { status: 'resource', label: 'Resource well', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
+        sequence: { status: 'resource', label: 'Source lane', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
         pipeline: [
           { step: '01', title: 'Stand up Accela/EnerGov search pattern', source: 'Polk, Marion, Lake, Sumter, Alachua, Orange, St. Lucie direct portals', action: 'Search recent issued residential/new-construction permits and normalize applicant/contractor names.', output: 'Inland Florida permit candidate sheet by county and portal type.' },
           { step: '02', title: 'Separate inland growth from coastal friction', source: 'Permit jurisdiction + county risk context', action: 'Prioritize Polk/Marion/Lake/Sumter/Alachua before coastal-heavy markets.', output: 'Builder batch limited to markets with cleaner seller-call economics.' },
@@ -2190,7 +2190,7 @@ export function getPermitPortalLandscape() {
           { market: 'Casa Grande', jurisdiction: 'City of Casa Grande', system: 'Custom development services', url: 'https://casagrandeaz.gov/development-services/' },
         ],
         strategy: 'Maricopa weekly reports are the Phoenix-metro normalization goldmine. Then use Accela-heavy cities and self-certification markets — Phoenix, Scottsdale, Mesa, Tempe — as velocity markets.',
-        sequence: { status: 'resource', label: 'Resource well', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
+        sequence: { status: 'resource', label: 'Source lane', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
         pipeline: [
           { step: '01', title: 'Normalize weekly permit drops', source: 'Maricopa County weekly permit activity + Phoenix/Mesa/Scottsdale Accela-style portals', action: 'Pull new residential permits and self-certification activity, then map applicant/contractor names to permit-market jurisdictions.', output: 'Phoenix-metro recent-permit builder candidate sheet.' },
           { step: '02', title: 'Prioritize velocity cities', source: 'Phoenix, Scottsdale, Mesa, Tempe, Buckeye, Casa Grande', action: 'Rank jurisdictions by recency, permit volume, and ease of portal access.', output: 'AZ market order for the first 20-builder pull.' },
@@ -2215,7 +2215,7 @@ export function getPermitPortalLandscape() {
           { market: 'Fayetteville', jurisdiction: 'Cumberland County', system: 'Buildchek + local permitting', url: 'https://www.cumberlandcountync.gov/departments/planning-group/planning-and-inspections' },
         ],
         strategy: 'Use Buildchek for broad NC metro coverage. For direct research, prioritize Mecklenburg Power BI/daily data, Wake spreadsheets, and Cabarrus ArcGIS. The Mecklenburg → Wake → Guilford Piedmont corridor is the land-flipping sweet spot.',
-        sequence: { status: 'resource', label: 'Resource well', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
+        sequence: { status: 'resource', label: 'Source lane', unlock: 'Pull this market whenever it becomes strategically useful; no fixed state order is required.' },
         pipeline: [
           { step: '01', title: 'Pull Piedmont permit sources', source: 'Buildchek, Mecklenburg daily permits, Wake reports, Cabarrus ArcGIS, Raleigh Accela', action: 'Collect recent issued/approved residential permit rows across Mecklenburg → Wake → Guilford/Cabarrus.', output: 'NC Piedmont candidate sheet with source URL and jurisdiction proof.' },
           { step: '02', title: 'Normalize builder names', source: 'Applicant/contractor fields + public builder websites', action: 'Deduplicate subsidiaries, LLC variants, and regional office names while keeping permit-market geography.', output: '20+ unique NC builder entities, not duplicate permit rows.' },
@@ -2242,7 +2242,7 @@ export function getPermitPortalLandscape() {
           { market: 'Texas aggregator', jurisdiction: 'Multiple Texas markets', system: 'PermitVector daily refresh', url: 'https://permitvector.com/' },
         ],
         strategy: 'Texas has the most volume and the worst fragmentation. Use PermitVector first for normalized market coverage. DIY: Austin and San Antonio Socrata are clean; Houston and Dallas proper require county-by-county work or aggregator coverage.',
-        sequence: { status: 'resource', label: 'Resource well', unlock: 'Texas is fully scaffolded as a resource well; pull Austin/San Antonio open data first when you choose to activate it.' },
+        sequence: { status: 'resource', label: 'Source lane', unlock: 'Texas is fully scaffolded as a source lane; pull Austin/San Antonio open data first when you choose to activate it.' },
         pipeline: [
           { step: '01', title: 'Start with normalized Texas coverage', source: 'PermitVector + Austin Socrata + San Antonio Open Data', action: 'Pull recent residential permits from Austin and San Antonio first, then compare against PermitVector-covered Texas markets.', output: 'Texas recent-permit candidate sheet with source, jurisdiction, permit date, and applicant/builder fields.' },
           { step: '02', title: 'Avoid black-hole markets first', source: 'Austin/San Antonio open data before Houston/Dallas proper', action: 'Defer Houston and Dallas proper until county-by-county or aggregator coverage is ready; do not let fragmented portals block the Texas launch.', output: 'Execution order: Austin → San Antonio → Travis/Plano/Collin/Denton/McAllen → Houston/Dallas later.' },

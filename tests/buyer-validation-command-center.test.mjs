@@ -67,7 +67,7 @@ assert.equal(validatedBall.validation.sellerEligible, true);
 assert.equal(validatedBall.validation.buyBox.complete, true);
 assert.equal(validatedBall.outreach.phone.contacted, true, 'phone outreach state should persist independently from buy-box validation');
 assert.equal(validatedBall.outreach.email.contacted, true, 'email outreach state should persist independently from buy-box validation');
-assert.ok(validatedBall.validation.breakdown.some(item => item.label === 'Outreach logged' && item.value === 4), 'validation score tooltip needs outreach math');
+assert.ok(validatedBall.validation.breakdown.some(item => item.label === 'Outreach' && item.value === 4), 'validation score tooltip needs outreach math');
 assert.match(validatedBall.validation.tier, /Tier 1/);
 assert.equal(validatedBall.sellerSearch.eligible, true);
 assert.ok(validatedBall.sellerSearch.criteria.some(item => item.includes('West Knoxville')));
@@ -117,7 +117,7 @@ assert.match(appSource, /<span>Website<\/span>/, 'source URL action should be la
 assert.doesNotMatch(appSource, /Landscaper\/vendor sourcing|site-prep network|vendor-chip-grid|builder-vendor-panel/, 'landscaper/vendor sourcing typo section must stay removed');
 assert.doesNotMatch(stylesSource, /vendor-chip-grid|builder-vendor-panel/, 'deleted landscaper/vendor surface must not leave dead CSS selectors behind');
 assert.doesNotMatch(appSource, /renderKnoxvilleBuyerCallSheet|Source-backed call sheet|buyer-call-sheet-list/, 'duplicate source-backed call sheet section must be removed after consolidation');
-assert.match(appSource, /Ranked by validation leverage: permit activity/, 'call queue ranking tooltip must explain validation leverage');
+assert.match(appSource, /Ranked by permit proof, callable public contact, buy-box capture/, 'call queue ranking tooltip must explain validation leverage with short Phase 26 copy');
 assert.match(appSource, /navigator\.clipboard\?\.writeText\?\.\(payload\)/, 'Copy email must copy the buy-box email payload, not just open mailto');
 assert.match(appSource, /const validationEmailBody = fallbackEmail\.body;/, 'Draft email mailto should use the generated bullet-list body rather than stale row emailDraft body');
 assert.match(appSource, /const body = fallbackEmail\.body;/, 'Copy draft should always copy the generated bullet-list buy-box questions');
@@ -126,8 +126,8 @@ assert.match(appSource, /function scrollToPageTop\(\)[\s\S]{0,260}root\.style\.s
 assert.match(appSource, /function navigateToView\(view\)[\s\S]{0,180}setActiveView\(view, \{ scrollToTop: true \}\)/, 'data-view navigation should centralize top-scroll behavior');
 assert.match(appSource, /const view = hashToView\(\);\n    if \(view\) setActiveView\(view, \{ scrollToTop: true \}\);/, 'hashchange should only switch panels for valid app routes and leave same-page anchors alone');
 assert.match(appSource, /navigateToView\(view\)/, 'clicking app navigation should use the scroll-safe route helper');
-assert.match(appSource, /minimum per pull/, 'Builders UX should explain the builder batch floor');
-assert.match(appSource, /minimum per pull/, 'Builders market summary should expose the batch floor without a duplicate stat band');
+assert.match(appSource, /Minimum viable source pull before operator review\./, 'Builders UX should explain the builder batch floor through tooltip depth');
+assert.match(appSource, />\$\{h\(activeSummary\.minimumUniqueBuilders \|\| 20\)\} min<\/li>/, 'Builders market summary should expose the batch floor with short visible copy');
 assert.doesNotMatch(appSource, />Next money action<|NEXT MONEY ACTION/, 'Builders page must not repeat selected-builder guidance in a separate Next Money Action card');
 assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action card component should stay removed');
 assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'second hero headline should stay removed; the page needs one top command header');
@@ -154,7 +154,7 @@ assert.match(appSource, /getStateBuilderRows\(stateCode\)/, 'all loaded states s
 assert.doesNotMatch(appSource, /const isLive = stateCode === 'TN'/, 'the UI must not hard-code Tennessee as the only live state');
 assert.doesNotMatch(appSource, /builder-empty-evidence/, 'legacy duplicate evidence section should not render after the command center');
 assert.doesNotMatch(appSource, /id="builder-evidence-desk"/, 'legacy evidence desk anchor should not remain in the page flow');
-assert.match(appSource, /Optional marketing intro email/, 'marketing template should be retained as a compact drawer inside the command center');
+assert.match(appSource, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'marketing template should be retained as a compact drawer inside the command center');
 assert.match(stylesSource, /v1\.32 - Builders mobile resource-well selector and empty states/, 'final mobile selector override should live after global button styles');
 assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}border-radius: 13px/, 'market toggles should be compact rounded rectangles, not circular pucks');
 assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}aspect-ratio: auto/, 'market toggles must not use square/circular aspect ratios on mobile');

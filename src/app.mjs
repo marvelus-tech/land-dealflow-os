@@ -1822,9 +1822,9 @@ function renderBuilderListEnginePanel(options = {}) {
     <section class="state-first-ops-header builders-phase83-workbench" aria-label="Builder state workbench">
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · state workbench</span>
-        <h3>Pick the state. Read the queue.</h3>
-        <p><b>State first, counties as evidence:</b> the control, selected market data, and queue now sit in one scanning path so the operator never has to reconcile disconnected panels.</p>
-        <div class="primary-action-strip builders-primary-action"><span>Next action</span><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
+        <h3>Choose state. Read queue.</h3>
+        <p><b>State first, counties as evidence.</b> Choose the operating state, read its builder proof, then move directly into the queue.</p>
+        <div class="primary-action-strip builders-primary-action"><b>Call the top builder. Capture missing buy-box fields.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="state-first-workbench state-data-workbench" aria-label="Choose operating state and read selected-state data">
         <div class="state-workbench-kicker">

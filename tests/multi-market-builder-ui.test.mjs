@@ -19,6 +19,9 @@ assert.match(app, /getStateBuilderRows\(stateCode\)/, 'UI must select builders b
 assert.match(app, /Array\.isArray\(data\) \? data : data\.rows/, 'UI loader must accept bare-array builder signal artifacts as well as { rows } payloads');
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
 assert.match(app, /State first, counties as evidence/, 'Visitor copy should frame states as the primary choice and counties as detail');
+assert.match(app, /Choose state\. Read queue\./, 'Builders workbench headline must be compact product copy, not poster-scale editorial copy');
+assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
+assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
 assert.match(app, /const builderMarketRegistry = \[/, 'Builders page must expose a market registry, not only a state rail');
 assert.match(app, /let selectedBuilderMarketState = 'GA'/, 'Builders must open on expansion lanes instead of the old TN-first rail');
 assert.match(app, /const orderedRegistry = \[[\s\S]{0,220}expansionStateCodes\.has\(registry\.state\)/, 'Builders switchboard must pin GA\/SC expansion markets before older lanes');
@@ -80,6 +83,7 @@ assert.match(css, /v1\.83 - Builders Apple hierarchy: selector and data become o
 assert.match(css, /v1\.84 - Builders second-pass proximity repair: selected data attaches to selector/, 'Phase 84 selector-data proximity repair missing');
 assert.match(css, /v1\.85 - Builders lower queue becomes a calm operating ledger/, 'Phase 85 lower Builders ledger CSS missing');
 assert.match(css, /v1\.86 - Builders lower ledger second pass: empty queue is status, not hero/, 'Phase 86 lower queue second-pass scale correction missing');
+assert.match(css, /v1\.87 - Builders workbench Apple review correction: product surface, not poster/, 'Phase 87 Apple review correction missing');
 assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missing');
 
 console.log('multi-market builder UI tests passed');

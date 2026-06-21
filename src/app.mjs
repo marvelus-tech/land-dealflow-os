@@ -1757,7 +1757,12 @@ function renderParcels() {
   if (!target) return;
 
   if (!selected) {
-    target.innerHTML = `<article class="designed-empty-state" aria-label="No parcels match filter"><div class="empty-state-icon">${solidIndustryIcon('empty')}</div><span class="eyebrow">Nothing actionable in this view</span><h3>No parcels match this filter.</h3><p>Change the filter or import verified public records before seller outreach.</p></article>`;
+    target.innerHTML = `<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
+      <span class="eyebrow">No ready deals</span>
+      <h3>This lane is intentionally quiet.</h3>
+      <p class="deals-empty-why"><b>Why empty:</b> no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.</p>
+      <a class="deals-empty-next" href="#builders" data-view="builders">Validate one buyer first ${productIcon('arrow')}</a>
+    </article>`;
     return;
   }
 
@@ -3105,15 +3110,18 @@ ${body}`;
 function renderFilters() {
   const target = document.querySelector('#parcel-filters');
   if (!target) return;
+  target.setAttribute('role', 'tablist');
+  target.setAttribute('aria-label', 'Deals filter');
+  target.classList.add('phase38-deals-segmented');
   const options = [
     ['all', 'All deals'],
     ['seller-calls', 'Seller calls'],
     ['offer-ready', 'Offer-ready'],
-    ['research', 'Needs research'],
+    ['research', 'Research'],
     ['follow-up', 'Follow-up'],
     ['blocked', 'Blocked'],
   ];
-  target.innerHTML = options.map(([value, label]) => `<button class="filter ${filter === value ? 'active' : ''}" type="button" data-filter="${h(value)}">${h(label)}</button>`).join('');
+  target.innerHTML = options.map(([value, label]) => `<button class="filter ${filter === value ? 'active' : ''}" type="button" role="tab" aria-selected="${filter === value ? 'true' : 'false'}" data-filter="${h(value)}">${h(label)}</button>`).join('');
 }
 
 function renderAll() {

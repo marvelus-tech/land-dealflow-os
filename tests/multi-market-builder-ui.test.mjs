@@ -63,6 +63,9 @@ assert.doesNotMatch(app, /id="builder-evidence-desk"/, 'legacy duplicate evidenc
 assert.doesNotMatch(app, /class="builder-two-col builder-support-tools"/, 'legacy support-tools block must not render');
 assert.doesNotMatch(app, /class="builder-table-panel"/, 'duplicate builder table panel must not render');
 assert.doesNotMatch(app, /class="builder-script-panel"/, 'duplicate script panel must not render');
+assert.doesNotMatch(app, /\$\{renderSellerSearchControlLayer\(sellerControl\)\}/, 'Builders page must not render the global seller-search operating-flow panel');
+assert.doesNotMatch(app, /\$\{renderExecutionConveyor\(executionConveyor\)\}/, 'Builders page must not render the global call-to-close conveyor panel');
+assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Builders page should keep the builder-specific validation command center after culling global flow panels');
 assert.match(app, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'unique marketing template should be retained inside the main command center with short Phase 26 copy');
 
 for (const [key, state, url] of markets) {

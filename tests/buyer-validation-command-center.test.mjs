@@ -74,6 +74,30 @@ assert.ok(validatedBall.sellerSearch.criteria.some(item => item.includes('West K
 assert.ok(validatedBall.sellerSearch.criteria.some(item => item.includes('$65,000')));
 assert.equal(validatedBall.sellerSearch.offerCeiling, 53300);
 
+const staleBlankContactCenter = buildBuyerValidationCommandCenter([{ ...ball, phone: '865-862-4774', email: 'customerservice@ballhomes.com', website: 'https://www.ballhomes.com', contactUrl: 'https://www.ballhomes.com/contact/' }], [{
+  builderId: ball.builderId,
+  phone: '',
+  email: '',
+  website: '',
+  contactUrl: '',
+  buyBox: { geography: 'Karns' },
+}]);
+const staleBlankContactRow = staleBlankContactCenter.items[0];
+assert.equal(staleBlankContactRow.phone, '865-862-4774', 'blank saved workspace phone must not erase enriched source phone');
+assert.equal(staleBlankContactRow.email, 'customerservice@ballhomes.com', 'blank saved workspace email must not erase enriched source email');
+assert.equal(staleBlankContactRow.website, 'https://www.ballhomes.com', 'blank saved workspace website must not erase enriched source website');
+assert.equal(staleBlankContactRow.contactUrl, 'https://www.ballhomes.com/contact/', 'blank saved workspace contact URL must not erase enriched source website action');
+
+const rawIdContactCenter = buildBuyerValidationCommandCenter([{ id: 'raw-builder-id', name: 'Raw ID Builder', phone: '', email: 'desk@example.com', website: 'https://example.com' }], [{
+  builderId: 'raw-builder-id',
+  email: '',
+  website: '',
+  contactUrl: '',
+}]);
+assert.equal(rawIdContactCenter.items[0].builderId, 'raw-builder-id', 'raw builder_signals rows should still get a stable builderId');
+assert.equal(rawIdContactCenter.items[0].email, 'desk@example.com', 'blank saved rows must not erase direct emails on raw id-based source rows');
+assert.equal(rawIdContactCenter.items[0].contactUrl, 'https://example.com', 'website-only rows should still enable the Website action in detail');
+
 const lockedSearch = buildSellerSearchInstructions({ ...ball, buyBox: saved[0].buyBox, callStatus: 'spoke_to_decision_maker' });
 assert.equal(lockedSearch.eligible, false, 'complete fields still require explicit validated_buy_box call status');
 
@@ -166,13 +190,13 @@ assert.match(appSource, /mailto:\$\{h\(selected\.email\)\}\?subject=\$\{encodeUR
 assert.match(appSource, /function buyerFromValidationRow\(row = \{\}\)/, 'saved selected-builder buy boxes should convert into first-class buyer objects');
 assert.match(appSource, /evidenceType: 'validated buyer buy-box from selected builder cockpit'/, 'promoted builder buyers need explicit provenance');
 assert.match(appSource, /upsertBuyerFromValidation\(centerRow\)/, 'saving a complete selected-builder validation should upsert the workspace buyer object');
-assert.match(appSource, /const buyerPool = buyerPoolForState\(activeState\.stateCode\)/, 'Builders downstream seller gate should use state-scoped saved selected-builder buyers');
 assert.match(appSource, /const stateCode = selectedBuilderMarketState \|\| 'TN'/, 'matched seller export must use the active Builders state, not an undefined legacy state variable');
-assert.match(appSource, /sellerPoolForState\(stateCode\)/, 'matched seller export should use the same state-scoped seller pool as the execution conveyor');
-assert.match(appSource, /selected builder is now the buyer object for seller matching and CSV export/, 'save feedback should explain persistence into the buyer-to-seller conveyor');
-assert.match(appSource, /Phase 7 · call-to-close control loop/, 'execution conveyor headline should advance to Phase 7 call-to-close loop while preserving inline skip-trace import');
-assert.match(appSource, /saved builder buy box → matched seller CSV → inline skip-trace return → seller-call outcome → contract\/title gate → buyer-send memo → buyer feedback rewrite/, 'Phase 7 copy should retain the full downstream conveyor detail');
-assert.match(appSource, /id="builder-skip-trace-csv"/, 'Builders execution conveyor should expose inline skip-trace return CSV import');
+assert.match(appSource, /sellerPoolForState\(stateCode\)/, 'matched seller export should keep using the active state-scoped seller pool when invoked');
+assert.match(appSource, /selected builder is now the buyer object for seller matching and CSV export/, 'save feedback should explain persistence into the buyer-to-seller workflow without rendering the global conveyor on Builders');
+assert.doesNotMatch(appSource, /\$\{renderSellerSearchControlLayer\(sellerControl\)\}/, 'Builders render should not inject the global seller-search operating-flow panel');
+assert.doesNotMatch(appSource, /\$\{renderExecutionConveyor\(executionConveyor\)\}/, 'Builders render should not inject the global call-to-close conveyor panel');
+assert.doesNotMatch(appSource, /const sellerControl = buildSellerSearchControlLayer\(\{[\s\S]{0,260}state: activeState\.stateCode/, 'Builders render should not prepare a hidden global seller-search control model');
+assert.doesNotMatch(appSource, /const executionConveyor = buildExecutionConveyor\(\{[\s\S]{0,260}limit: 8/, 'Builders render should not prepare a hidden global execution conveyor model');
 assert.match(appSource, /#builder-import-skiptrace[\s\S]{0,520}applySkipTraceImport\(workspace, input\?\.value \|\| '', \{ candidateParcels: sellerPoolForState\(stateCode\) \}\)/, 'Builders skip-trace import must reuse the existing applySkipTraceImport path with the state-scoped seller pool');
 assert.match(appSource, /Import return \+ recompute cockpit/, 'inline skip-trace import should visibly recompute the seller cockpit after import');
 assert.match(appSource, /\['seller_interested', 'Interested'\]/, 'Phase 7 seller cockpit should expose Interested outcome control');

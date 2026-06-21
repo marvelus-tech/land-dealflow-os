@@ -1751,23 +1751,6 @@ function renderBuilderListEnginePanel(options = {}) {
   </div>`).join('');
   const activeBuilders = asArray(activeState.rows);
   const activeSummary = activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
-  const selected = getSelectedBuilder(activeBuilders) || {};
-  const buyerPool = buyerPoolForState(activeState.stateCode);
-  const sellerPool = sellerPoolForState(activeState.stateCode);
-  const titlePool = titleCompanyCandidateMarkets();
-  const sellerControl = buildSellerSearchControlLayer({
-    buyers: buyerPool,
-    sellerCandidates: sellerPool,
-    titleCandidates: titlePool,
-    state: activeState.stateCode,
-    limit: 6,
-  });
-  const executionConveyor = buildExecutionConveyor({
-    buyers: buyerPool,
-    sellerCandidates: sellerPool,
-    titleCandidates: titlePool,
-    limit: 8,
-  });
   const marketSummary = `<div class="active-market-summary state-focus-summary">
     <span>Selected market state</span>
     <strong>${h(activeState.label)}</strong>
@@ -1846,8 +1829,6 @@ function renderBuilderListEnginePanel(options = {}) {
     </section>
 
     ${renderBuyerValidationCommandCenter(activeState, activeBuilders, activeSummary)}
-    ${renderSellerSearchControlLayer(sellerControl)}
-    ${renderExecutionConveyor(executionConveyor)}
 
     <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">

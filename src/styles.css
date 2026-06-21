@@ -26236,3 +26236,132 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     overflow-x: auto !important;
   }
 }
+
+
+/* v1.88 - Builders open work surface: remove the presentation frame */
+body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+  margin-top: clamp(22px, 3vw, 38px) !important;
+  padding: clamp(22px, 3vw, 38px) 0 clamp(22px, 3vw, 36px) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  border-top: 1px solid var(--builders-line) !important;
+  border-bottom: 1px solid var(--builders-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench::before,
+body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench::after {
+  display: none !important;
+  content: none !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench > .builder-ops-title {
+  padding-left: clamp(2px, .6vw, 8px) !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title .eyebrow {
+  color: var(--builders-forest-800) !important;
+  letter-spacing: .16em !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title h3 {
+  font-size: clamp(31px, 2.8vw, 42px) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.048em !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title p {
+  color: var(--builders-muted) !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action {
+  border-top: 1px solid var(--builders-line) !important;
+  border-bottom: 1px solid var(--builders-hairline) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench > .state-data-workbench {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-kicker {
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--builders-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-kicker span,
+body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-kicker em {
+  color: var(--builders-muted) !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-market-grid {
+  border: 0 !important;
+  border-top: 1px solid var(--builders-line) !important;
+  border-bottom: 1px solid var(--builders-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle {
+  background: transparent !important;
+  transition: background-color .18s ease, box-shadow .18s ease !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle:hover {
+  background: rgba(17, 71, 52, .035) !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle.is-active {
+  background: rgba(237, 246, 241, .58) !important;
+  box-shadow: inset 2px 0 0 var(--builders-forest-700) !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-code {
+  border: 1px solid rgba(17, 71, 52, .13) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-market-toggle.is-active .state-code {
+  border-color: var(--builders-forest-800) !important;
+  background: var(--builders-forest-800) !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > strong {
+  font-size: clamp(25px, 2vw, 32px) !important;
+  font-weight: 790 !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul {
+  border-top: 1px solid var(--builders-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-focus-summary > ul li {
+  background: transparent !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .state-county-ledger summary {
+  background: transparent !important;
+}
+body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump {
+  border-top: 1px solid var(--builders-line) !important;
+  background: transparent !important;
+}
+@media (max-width: 1180px) {
+  body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+    padding-inline: 0 !important;
+  }
+}
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 20px 0 18px !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench > .builder-ops-title {
+    padding-left: 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title h3 {
+    font-size: clamp(28px, 7.3vw, 34px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .state-market-grid {
+    border-left: 0 !important;
+    border-right: 0 !important;
+  }
+}

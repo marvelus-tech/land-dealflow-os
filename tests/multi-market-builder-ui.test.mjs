@@ -84,6 +84,9 @@ assert.match(css, /v1\.84 - Builders second-pass proximity repair: selected data
 assert.match(css, /v1\.85 - Builders lower queue becomes a calm operating ledger/, 'Phase 85 lower Builders ledger CSS missing');
 assert.match(css, /v1\.86 - Builders lower ledger second pass: empty queue is status, not hero/, 'Phase 86 lower queue second-pass scale correction missing');
 assert.match(css, /v1\.87 - Builders workbench Apple review correction: product surface, not poster/, 'Phase 87 Apple review correction missing');
+assert.match(css, /v1\.88 - Builders open work surface: remove the presentation frame/, 'Phase 88 open work-surface correction missing');
+assert.match(css, /\.builders-phase83-workbench\.builders-phase83-workbench \{[\s\S]{0,360}border: 0 !important;[\s\S]{0,220}background: transparent !important;[\s\S]{0,120}box-shadow: none !important;/, 'Builders workbench must be an open product surface, not a framed presentation card');
+assert.match(css, /\.state-market-grid \{[\s\S]{0,240}border: 0 !important;[\s\S]{0,180}border-top: 1px solid var\(--builders-line\) !important;[\s\S]{0,180}border-bottom: 1px solid var\(--builders-line\) !important;/, 'State selector should use open ledger hairlines, not a boxed table frame');
 assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missing');
 
 console.log('multi-market builder UI tests passed');

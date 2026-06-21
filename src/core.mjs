@@ -1646,7 +1646,7 @@ export function generateSellerOfferLetter(parcel = {}, packet = {}) {
   const offer = formatMoney(Number(packet.sellerOffer || 0));
   const closingDays = packet.closingDays || 21;
   const buyerName = packet.buyerName || packet.buyer?.name || 'our buying entity';
-  return `Dear ${owner},\n\nThank you for discussing ${address}. Based on the information available today, ${buyerName} can offer ${offer} cash for the property, subject to title, access, buildability, and standard due diligence review.\n\nProposed terms:\n- Purchase price: ${offer}\n- Closing timeline: ${closingDays} days after signed agreement and clear title\n- Seller convenience: standard closing costs can be handled through the closing process\n- Due diligence: parcel access, utilities, wetlands/flood zone, zoning, and title review\n\nIf these terms are acceptable, the next step is a simple written purchase agreement and title-company review.\n\nRespectfully,\nLand Dealflow OS`;
+  return `Dear ${owner},\n\nThank you for discussing ${address}. Based on the information available today, ${buyerName} can offer ${offer} cash for the property, subject to title, access, buildability, and standard due diligence review.\n\nProposed terms:\n- Purchase price: ${offer}\n- Closing timeline: ${closingDays} days after signed agreement and clear title\n- Seller convenience: standard closing costs can be handled through the closing process\n- Due diligence: parcel access, utilities, wetlands/flood zone, zoning, and title review\n\nIf these terms are acceptable, the next step is a simple written purchase agreement and title-company review.\n\nRespectfully,\nLandFlip OS`;
 }
 
 export function generateBuyerAssignmentSummary(parcel = {}, buyer = {}, packet = {}) {
@@ -1674,7 +1674,7 @@ export function generateBuyerSendMemo(parcel = {}, buyer = {}, packet = generate
     `Decision deadline: ${deadline}`,
   ];
   const ask = `Can you confirm yes/no on this parcel, your max assignment price, and any immediate kill criteria (${riskLines.slice(0, 3).join('; ') || 'access/utilities/title'})?`;
-  const message = `Subject: ${subject}\n\n${buyer.contactName ? `${buyer.contactName},` : 'Team,'}\n\nI have a buyer-box-matched parcel for review. Quick facts below.\n\n${bullets.map(item => `- ${item}`).join('\n')}\n\nRisk/detail notes:\n${riskLines.map(item => `- ${item}`).join('\n') || '- Risk checklist not available'}\n\nAsk: ${ask}\n\nIf this is a fit, I will hold the seller path open and coordinate title/assignment mechanics. If not, send the exact miss so I can tighten the next parcel batch.\n\n— Land Dealflow OS`;
+  const message = `Subject: ${subject}\n\n${buyer.contactName ? `${buyer.contactName},` : 'Team,'}\n\nI have a buyer-box-matched parcel for review. Quick facts below.\n\n${bullets.map(item => `- ${item}`).join('\n')}\n\nRisk/detail notes:\n${riskLines.map(item => `- ${item}`).join('\n') || '- Risk checklist not available'}\n\nAsk: ${ask}\n\nIf this is a fit, I will hold the seller path open and coordinate title/assignment mechanics. If not, send the exact miss so I can tighten the next parcel batch.\n\n— LandFlip OS`;
   return { subject, bullets, ask, message, deadline, assignmentFee, fit, riskLines, contract, checklist, packet };
 }
 
@@ -1819,7 +1819,7 @@ export function generateTitleCompanyEmail(parcel = {}, buyer = {}, assignor = {}
   const propertyAddress = parcel.address || packet.address || '<PROPERTY ADDRESS>';
   const closingDate = parcel.targetClosingDate || parcel.closingDate || '<CLOSING DATE>';
   const assignorName = assignor.name || parcel.assignorName || '<YOUR NAME>';
-  const assignorCompany = assignor.company || parcel.assignorCompany || 'Land Dealflow OS';
+  const assignorCompany = assignor.company || parcel.assignorCompany || 'LandFlip OS';
   const assignorPhone = assignor.phone || parcel.assignorPhone || '<YOUR NUMBER>';
   const assignorEmail = assignor.email || parcel.assignorEmail || '<YOUR EMAIL>';
   const subject = `${propertyAddress} - Assignment`;

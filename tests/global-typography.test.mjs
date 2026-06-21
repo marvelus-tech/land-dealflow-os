@@ -3,6 +3,15 @@ import { readFileSync } from 'node:fs';
 
 const css = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const appSource = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
+const coreSource = readFileSync(new URL('../src/core.mjs', import.meta.url), 'utf8');
+
+assert.match(html, /<title>LandFlip OS — Buyer-First Money Queue<\/title>/, 'Public document title must use the LandFlip OS brand');
+assert.match(html, /<div class="brand">LandFlip OS<\/div>/, 'Public shell brand must use LandFlip OS');
+assert.match(html, /LandFlip OS · buyer-first, source-backed dealflow/, 'Public footer must use LandFlip OS');
+assert.doesNotMatch(html, /Land Dealflow OS/, 'Old public shell brand must not return');
+assert.match(appSource, /LandFlip OS · clear path to more deals/, 'Today hero eyebrow must use LandFlip OS');
+assert.match(coreSource, /LandFlip OS/, 'Generated seller\/buyer\/title packet defaults must use LandFlip OS');
 
 assert.doesNotMatch(css, /fonts\.googleapis\.com|DM\+Mono|Space\+Grotesk|DM Mono|Space Grotesk/, 'Old external stylistic webfont imports must be removed');
 assert.match(css, /v1\.44 - Phase 13 Apple-grade unified typography system/, 'Phase 13 global typography system marker required');
@@ -126,8 +135,6 @@ assert.match(css, /--phase24-rule: every-pixel-earns-place-one-primary-action-ca
 assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-rail,\.wk-progress,\.legacy-proof-surface,\.legacy-proof-rule,\.legacy-proof-axis,\.legacy-proof-ring\)[\s\S]{0,90}display: none !important/, 'Phase 24 should hard-remove Today rail/proof/sign relic chrome');
 assert.match(css, /body\[data-active-view="today"\] #command \.phase24-snapshot div[\s\S]{0,260}border-bottom: 1px solid var\(--phase24-line\)/, 'Today snapshot should be a ledger, not another boxed dashboard tile');
 assert.match(css, /Final route isolation guard after Phase 24 Today rebuilding/, 'Phase 24 should preserve route isolation after late Today overrides');
-const appSource = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
-const coreSource = readFileSync(new URL('../src/core.mjs', import.meta.url), 'utf8');
 const todaySource = appSource.slice(appSource.indexOf('function renderCommandCenter'), appSource.indexOf('function initializeEditorialMotion'));
 assert.match(todaySource, /phase24-today-hero[\s\S]{0,240}Make the clearest next move\./, 'Today should render the new Phase 24 operating hero');
 assert.match(todaySource, /phase24-snapshot[\s\S]{0,260}Builder proof/, 'Today should replace decorative artifact chrome with a proof snapshot');

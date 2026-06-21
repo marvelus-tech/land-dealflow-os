@@ -1,6 +1,6 @@
 # Web App Infusion Plan — Carson/Jackson Business Plan
 
-This plan translates `docs/BUSINESS_PLAN_DISSECTION.md` into concrete Land Dealflow OS product upgrades.
+This plan translates `docs/BUSINESS_PLAN_DISSECTION.md` into concrete LandFlip OS product upgrades.
 
 ## North star
 

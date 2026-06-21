@@ -40,7 +40,7 @@ Regards,
 - [ ] Send to title/closing agent.
 - [ ] Send by any additional required method in the base contract.
 - [ ] Save timestamped copy in deal file.
-- [ ] Update Land Dealflow OS lead status: `terminated_due_diligence`.
+- [ ] Update LandFlip OS lead status: `terminated_due_diligence`.
 - [ ] Record reason: wetlands / slope / access / title / builder rejected / price / other.
 
 ## Attorney questions

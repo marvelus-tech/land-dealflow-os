@@ -2,7 +2,7 @@
 
 Date: 2026-06-17  
 Owner: IriSys / Okeito  
-Purpose: identify online contract forms that can serve as source material for the Land Dealflow OS contracts-ready gate.
+Purpose: identify online contract forms that can serve as source material for the LandFlip OS contracts-ready gate.
 
 > Not legal advice. Do not send any of these directly to sellers/buyers without review by a real estate attorney licensed in the target state. Treat this as a source shortlist for attorney review and operations design.
 

@@ -21,7 +21,7 @@ The core system is not “find cheap land and hope.” It is:
 6. Assign the contract to the builder/end-buyer.
 7. Close through title and collect the spread.
 
-The highest-leverage product insight: **Land Dealflow OS should behave less like a generic CRM and more like a buyer-demand targeting machine that tells Okeito exactly who to call next and why that call can turn into money.**
+The highest-leverage product insight: **LandFlip OS should behave less like a generic CRM and more like a buyer-demand targeting machine that tells Okeito exactly who to call next and why that call can turn into money.**
 
 ## Business model extracted
 
@@ -243,7 +243,7 @@ These are gaps our web app can exploit:
 7. **No learning loop.** Builder passes/accepts should update future scoring. Seller objections should update scripts and pricing.
 8. **No post-close/referral pipeline.** The referral and neighbor strategy is valuable but currently manual.
 
-## Highest-leverage insights for Land Dealflow OS
+## Highest-leverage insights for LandFlip OS
 
 1. **Buyer-first is not a preference; it is the whole risk-control mechanism.** Seller calls before buy-box validation are low-quality activity.
 2. **The buy box is the product’s central object.** Everything should orbit around buy boxes.
@@ -256,7 +256,7 @@ These are gaps our web app can exploit:
 
 ## Proposed product principle
 
-Build Land Dealflow OS as the **operating cockpit for a builder-first land wholesaling desk**:
+Build LandFlip OS as the **operating cockpit for a builder-first land wholesaling desk**:
 
 ```text
 Market evidence → builder buy box → seller parcel match → risk gate → offer script → contract/title packet → assignment/close → referral/neighbor expansion

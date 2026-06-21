@@ -1,4 +1,4 @@
-# Attorney/title review brief — Land Dealflow OS contract packet
+# Attorney/title review brief — LandFlip OS contract packet
 
 Purpose: send this brief to a Florida real-estate attorney and assignment-friendly title company to turn the operating templates into usable transaction documents.
 

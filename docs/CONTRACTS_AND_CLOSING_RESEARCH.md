@@ -1,4 +1,4 @@
-# Contracts + Closing Research for Land Dealflow OS
+# Contracts + Closing Research for LandFlip OS
 
 Date: 2026-06-17
 Owner: IriSys / Okeito
@@ -46,7 +46,7 @@ Evidence/examples:
   - Source example: https://landwholesalinglaws.com/
   - Source example: https://dealrun.ai/compliance
 
-Operating implication: Land Dealflow OS should never assume "assignment is legal everywhere." It should track target state and show a compliance status before seller outreach.
+Operating implication: LandFlip OS should never assume "assignment is legal everywhere." It should track target state and show a compliance status before seller outreach.
 
 ### 2. The contract packet should be modular, not universal
 
@@ -195,7 +195,7 @@ For our selected Lehigh Acres market:
   - What municipal/tax/lien searches do you run for Lee County?
   - What exact contract language do you prefer for assignments?
 
-## Product implications for Land Dealflow OS
+## Product implications for LandFlip OS
 
 Add a future "Contracts Ready" gate before seller-call activation:
 

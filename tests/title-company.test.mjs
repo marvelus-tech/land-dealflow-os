@@ -62,7 +62,7 @@ function testChecklistRequiresTitleCompanyAndContractsBeforeReady() {
 }
 
 function testTitleEmailIncludesAssignmentPacketAndWireSafety() {
-  const email = generateTitleCompanyEmail(parcel, buyer, { name: 'Okeito', company: 'Land Dealflow OS', phone: '555-0101', email: 'deals@example.com' });
+  const email = generateTitleCompanyEmail(parcel, buyer, { name: 'Okeito', company: 'LandFlip OS', phone: '555-0101', email: 'deals@example.com' });
   assert.equal(email.subject, '123 Grant Blvd, Lehigh Acres, FL - Assignment');
   assert.match(email.body, /Cash to seller: \$30,000/);
   assert.match(email.body, /Assignment Fee: \$10,000/);

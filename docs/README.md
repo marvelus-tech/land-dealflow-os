@@ -1,4 +1,4 @@
-# Land Dealflow OS v0.1
+# LandFlip OS v0.1
 
 Static web app prototype for a builder-first vacant-land wholesaling workflow.
 

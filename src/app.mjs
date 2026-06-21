@@ -822,7 +822,7 @@ function renderContractComposer(parcel = {}) {
     <form id="contract-packet-form" class="contract-send-form contract-separated-form">
       ${hiddenCarry}
       <div class="print-packet-cover print-only" aria-hidden="true">
-        <span>Land Dealflow OS</span>
+        <span>LandFlip OS</span>
         <h1>Closing Contract Packet</h1>
         <p>Seller agreement, assignment agreement, and title review cover prepared for attorney/title validation before signature.</p>
         <dl><div><dt>Property</dt><dd>${printValue(inputs.propertyAddress, 'Property address pending')}</dd></div><div><dt>Parcel</dt><dd>${printValue(inputs.parcelId, 'pending')}</dd></div><div><dt>State</dt><dd>${printValue(inputs.propertyState, 'pending')}</dd></div><div><dt>Generated</dt><dd>${h(generatedDate)}</dd></div><div><dt>Prepared by</dt><dd>${printValue(preparedBy, 'operator pending')}</dd></div></dl>
@@ -2162,7 +2162,7 @@ function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipT
 
   return `<section class="vision-hero" aria-label="Land Dealflow operating vision">
     <div class="vision-copy">
-      <span class="eyebrow">Land Dealflow OS · clear path to more deals</span>
+      <span class="eyebrow">LandFlip OS · clear path to more deals</span>
       <h1>Turn land deals into a simple daily flow.</h1>
       <p>A light operating system for an old industry: permit evidence finds active builders, builder buy boxes focus the seller search, and every screen points to the next deal-making action.</p>
       <div class="vision-actions">

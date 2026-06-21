@@ -432,3 +432,8 @@ assert.match(css, /--phase91-today-rule: exclude-from-sources-mode-reduce-displa
 assert.match(css, /body\[data-active-view="today"\] #command \.phase24-today-hero \.phase24-hero-copy \{[\s\S]{0,140}display: block !important/, 'Today hero copy should not flatten into the shared Sources-mode grid');
 assert.match(css, /body\[data-active-view="today"\] #command \.phase24-today-hero h1 \{[\s\S]{0,260}font-size: clamp\(70px, 7\.2vw, 108px\) !important/, 'Today headline should be reduced but remain a distinct operating hero');
 
+assert.match(css, /v1\.91\.3 - Hard hero layout lock: prevent legacy Builders\/route rules from collapsing title and copy/, 'Phase 91.3 overlap hard-lock marker missing');
+assert.match(css, /--phase91-hard-lock: green-label-above-black-title-copy-right-no-overlap/, 'Route hero hard lock should explicitly prevent title\/copy overlap');
+assert.match(css, /section-heading\.compact-heading > h2 \{[\s\S]{0,220}grid-column: 1 !important;[\s\S]{0,80}grid-row: 2 !important/, 'Route hero title must be locked to left column second row');
+assert.match(css, /section-heading\.compact-heading > p \{[\s\S]{0,220}grid-column: 2 !important;[\s\S]{0,80}grid-row: 2 !important/, 'Route hero copy must be locked to right column second row');
+

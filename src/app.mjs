@@ -156,6 +156,7 @@ let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
 let selectedBuilderMarketState = 'TN';
 let lastBuilderSkipTraceImportStatus = '';
+let openMachinePanel = '';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
 function hashToView(hash = location.hash) {
@@ -2100,64 +2101,63 @@ function initializeEditorialMotion() {
   update();
 }
 
+function machineOpenAttr(panelId) {
+  return openMachinePanel === panelId ? ' open' : '';
+}
+
 function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
-  existing.innerHTML = `<div class="section-heading compact-heading">
+  existing.innerHTML = `<div class="section-heading compact-heading machine-heading">
       <span class="eyebrow">Machine room</span>
-      <h2>Controls stay tucked away until needed.</h2>
-      <p>Imports, exports, quality gates, validation, outreach scripts, and offer packets are now progressive panels instead of one dense ledger.</p>
+      <h2>Hidden operational controls.</h2>
+      <p>The conveyor stays quiet by default. Open one tool, run it, then tuck it back away.</p>
     </div>
-    <div class="machine-stack">
-      <details class="machine-panel">
-        <summary><span>01</span><strong>Generated lead output</strong><em>Review conveyor belt health</em></summary>
-        <div id="lead-engine-panel"></div>
+    <div class="machine-stack" aria-label="Machine operational tools">
+      <details class="machine-panel" data-machine-panel="lead-output"${machineOpenAttr('lead-output')}>
+        <summary><span>01</span><strong>Generated lead output</strong><em>Health check</em></summary>
+        <div class="machine-tool-body" id="lead-engine-panel"></div>
       </details>
-      <details class="machine-panel" open>
-        <summary><span>02</span><strong>Buyer-first buy box validation</strong><em>Call buyers before sellers</em></summary>
-        <div id="buyer-contact-intake-panel"></div>
+      <details class="machine-panel" data-machine-panel="buyer-contact"${machineOpenAttr('buyer-contact')}>
+        <summary><span>02</span><strong>Buyer-first buy box validation</strong><em>Import buyer proof</em></summary>
+        <div class="machine-tool-body" id="buyer-contact-intake-panel"></div>
       </details>
-      <details class="machine-panel" open>
-        <summary><span>03</span><strong>Skip trace intake</strong><em>Only after buyer fit</em></summary>
-        <div id="skip-trace-intake-panel"></div>
+      <details class="machine-panel" data-machine-panel="skip-trace"${machineOpenAttr('skip-trace')}>
+        <summary><span>03</span><strong>Skip trace intake</strong><em>Import seller contact</em></summary>
+        <div class="machine-tool-body" id="skip-trace-intake-panel"></div>
       </details>
-      <details class="machine-panel">
-        <summary><span>04</span><strong>Import parcel data</strong><em>CSV, county exports, PropStream, LandGlide</em></summary>
-        <p class="helper-copy">Paste only when you need to refresh the local workspace. The app normalizes source-specific headers into one parcel model.</p>
-        <details class="mini-disclosure"><summary>Supported CSV fields</summary><p>address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p></details>
-        <textarea id="csv-input" rows="7" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea>
-        <label class="preset-row">Source preset<select id="source-preset"><option value="land-dealflow">Land Dealflow template</option><option value="lee-county">Lee County property export</option><option value="propstream">PropStream export</option><option value="landglide">LandGlide export</option></select></label>
-        <div class="button-row"><button id="load-lehigh-template" class="secondary" type="button">Use sample Lehigh CSV</button><button id="import-csv" type="button">Import parcel rows</button><span id="import-status"></span></div>
+      <details class="machine-panel" data-machine-panel="parcel-import"${machineOpenAttr('parcel-import')}>
+        <summary><span>04</span><strong>Import parcel data</strong><em>Compact CSV module</em></summary>
+        <div class="machine-tool-body compact-import-module">
+          <div class="machine-tool-intro"><p>Paste only when refreshing the local workspace. Headers normalize into one parcel model.</p><code>address,market,buyerMaxPrice,roadAccess</code></div>
+          <details class="mini-disclosure"><summary>Supported CSV fields</summary><p>address, market, buyerId, parcelId, lotSize, ownerName, ownerPhone, ownerEmail, ownerMailingAddress, skipTraceConfidence, buyerContactName, buyerPhone, buyerEmail, buyerWebsite, acquisitionNotes, buyerMaxPrice, lowestActiveListing, askingPrice, heldYears, paid, wetlands, floodZone, roadAccess, utilities, slope, wildlifeFlag, crmStatus, nextFollowUp, notes.</p></details>
+          <div class="machine-import-row"><label class="preset-row">Source preset<select id="source-preset"><option value="land-dealflow">Land Dealflow template</option><option value="lee-county">Lee County property export</option><option value="propstream">PropStream export</option><option value="landglide">LandGlide export</option></select></label><textarea id="csv-input" rows="3" placeholder="address,market,buyerMaxPrice,roadAccess\n123 Grant Blvd,lehigh,42000,true"></textarea></div>
+          <div class="button-row"><button id="load-lehigh-template" class="secondary" type="button">Load preview</button><button id="import-csv" type="button">Import parcel rows</button><span id="import-status"></span></div>
+        </div>
       </details>
-      <details class="machine-panel">
-        <summary><span>05</span><strong>Workspace backup</strong><em>Move or restore local state</em></summary>
-        <textarea id="json-input" rows="7" placeholder="Paste exported workspace JSON here"></textarea>
-        <div class="button-row"><button id="import-json" type="button">Restore JSON backup</button><button id="export-json" class="secondary" type="button">Download JSON backup</button><button id="reset-workspace" class="danger" type="button">Reset to seed data</button></div>
+      <details class="machine-panel" data-machine-panel="workspace-backup"${machineOpenAttr('workspace-backup')}>
+        <summary><span>05</span><strong>Workspace backup</strong><em>Restore / export</em></summary>
+        <div class="machine-tool-body compact-import-module"><div class="machine-tool-intro"><p>Restore only when moving local state between browsers.</p><code>{ "markets": [], "buyers": [], "parcels": [] }</code></div><textarea id="json-input" rows="3" placeholder="Paste exported workspace JSON here"></textarea><div class="button-row"><button id="import-json" type="button">Restore JSON</button><button id="export-json" class="secondary" type="button">Download backup</button><button id="reset-workspace" class="danger" type="button">Reset seed</button></div></div>
       </details>
-      <details class="machine-panel">
-        <summary><span>06</span><strong>Exports for action</strong><em>Call list, filtered CSV, mail merge</em></summary>
-        <p class="helper-copy">Exports respect the active deal filter. Use the call-list export when you are ready to execute.</p>
-        <div class="button-row"><button id="export-top20-csv" type="button">Download Top 20 seller call list</button><button id="export-filtered-csv" class="secondary" type="button">Download current deal view</button><button id="export-mailmerge-csv" class="secondary" type="button">Download mail merge file</button></div>
-        <div id="top-call-list" class="call-list"></div>
+      <details class="machine-panel" data-machine-panel="exports"${machineOpenAttr('exports')}>
+        <summary><span>06</span><strong>Exports for action</strong><em>Files out</em></summary>
+        <div class="machine-tool-body compact-import-module"><div class="machine-tool-intro"><p>Exports respect the active deal filter. Use call-list when ready to execute.</p><code>top20.csv · filtered.csv · mailmerge.csv</code></div><div class="button-row"><button id="export-top20-csv" type="button">Top 20 calls</button><button id="export-filtered-csv" class="secondary" type="button">Current view</button><button id="export-mailmerge-csv" class="secondary" type="button">Mail merge</button></div><div id="top-call-list" class="call-list compact-call-list"></div></div>
       </details>
-      <details class="machine-panel">
-        <summary><span>07</span><strong>Data quality gate</strong><em>Find blockers before calling</em></summary>
-        <div id="quality-gate"></div>
+      <details class="machine-panel" data-machine-panel="quality"${machineOpenAttr('quality')}>
+        <summary><span>07</span><strong>Data quality gate</strong><em>Blockers</em></summary>
+        <div class="machine-tool-body" id="quality-gate"></div>
       </details>
-      <details class="machine-panel">
-        <summary><span>08</span><strong>Buyer validation</strong><em>Buy boxes, proof, rejection lessons</em></summary>
-        <div class="button-row"><button id="capture-sample-buybox" type="button">Capture sample buy box</button><button id="add-sample-buyer-note" class="secondary" type="button">Add sample buyer note</button><span id="buyer-validation-status"></span></div>
-        <div id="buyer-validation-panel"></div>
+      <details class="machine-panel" data-machine-panel="buyer-validation"${machineOpenAttr('buyer-validation')}>
+        <summary><span>08</span><strong>Buyer validation</strong><em>Proof / lessons</em></summary>
+        <div class="machine-tool-body"><div class="button-row"><button id="capture-sample-buybox" type="button">Capture sample buy box</button><button id="add-sample-buyer-note" class="secondary" type="button">Add sample note</button><span id="buyer-validation-status"></span></div><div id="buyer-validation-panel"></div></div>
       </details>
-      <details class="machine-panel">
-        <summary><span>09</span><strong>Outreach execution</strong><em>Follow-ups and seller script</em></summary>
-        <div class="button-row"><button id="bulk-contact-callnow" type="button">Mark all “Call now” as contacted</button><span id="outreach-status"></span></div>
-        <div id="outreach-panel"></div>
+      <details class="machine-panel" data-machine-panel="outreach"${machineOpenAttr('outreach')}>
+        <summary><span>09</span><strong>Outreach execution</strong><em>Follow-ups</em></summary>
+        <div class="machine-tool-body"><div class="button-row"><button id="bulk-contact-callnow" type="button">Mark “Call now” contacted</button><span id="outreach-status"></span></div><div id="outreach-panel"></div></div>
       </details>
-      <details class="machine-panel">
-        <summary><span>10</span><strong>Offer packet + buyer memo</strong><em>Seller letter, assignment packet, builder-facing send memo</em></summary>
-        <div class="button-row"><button id="export-deal-memo" type="button">Download current deal memo</button><button id="download-buyer-send-memo" class="secondary" type="button">Download buyer send memo</button><button id="copy-buyer-send-memo" class="secondary" type="button">Copy buyer memo</button><span id="deal-memo-status"></span><span id="buyer-send-memo-status"></span></div>
-        <div id="offer-packet-panel"></div>
+      <details class="machine-panel" data-machine-panel="offer-packet"${machineOpenAttr('offer-packet')}>
+        <summary><span>10</span><strong>Offer packet + buyer memo</strong><em>Packet out</em></summary>
+        <div class="machine-tool-body"><div class="button-row"><button id="export-deal-memo" type="button">Deal memo</button><button id="download-buyer-send-memo" class="secondary" type="button">Buyer memo</button><button id="copy-buyer-send-memo" class="secondary" type="button">Copy memo</button><span id="deal-memo-status"></span><span id="buyer-send-memo-status"></span></div><div id="offer-packet-panel"></div></div>
       </details>
     </div>`;
 }
@@ -2179,10 +2179,10 @@ function renderSkipTraceIntakePanel() {
   const skipTrace = asArray(generatedLeads?.queues?.skipTrace);
   const sample = skipTrace[0];
   const matchedCount = asArray(workspace.parcels).filter(parcel => parcel.skipTraceImportedAt || parcel.realContact).length;
-  target.innerHTML = `<div class="intake-grid">
-    <section class="intake-card hero-intake"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-traced phones only after buyer fit.</h3><p>Match by parcelId first, then owner name, then address. Buyer-first rule: validate demand, export a matched seller batch, then enrich owner contact.</p><details class="provider-tip"><summary>Where to get skip-traced phone numbers</summary><p>Use CSV-in / CSV-out providers: BatchSkipTracing, PropStream, REISkip, Launch Control skip trace, DealMachine skip trace, Skip Genie, DataZapp, or IDI / TLO / Accurint-style providers if you have compliant access.</p></details><div class="deal-strip three"><div><span>Public leads waiting</span><strong>${h(skipTrace.length)}</strong></div><div><span>Matched in workspace</span><strong>${h(matchedCount)}</strong></div><div><span>Example lead</span><strong>${h(sample ? 'ready' : 'none')}</strong></div></div></section>
-    <section class="intake-card"><h4>CSV format</h4><pre>parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${h(sample?.parcelId || '274527L4110560090')},${h(sample?.ownerName || 'MONTEAN PETER & WENDY')},239-555-7722,owner@example.com,91</pre><textarea id="skip-trace-csv" rows="7" placeholder="parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence"></textarea><div class="button-row"><button id="load-skiptrace-template" class="secondary" type="button">Use first real lead</button><button id="import-skiptrace" type="button">Import skip trace</button><span id="skiptrace-status"></span></div></section>
-    <section class="intake-card queue-card"><h4>Next owners to enrich</h4>${skipTrace.slice(0, 6).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.ownerName)}</b><span>${h(item.address)} · ${h(item.ownerMailingAddress)} · confidence ${h(item.confidence)}</span></div>`).join('') || '<p>No generated skip-trace queue found yet.</p>'}</section>
+  target.innerHTML = `<div class="machine-import-shell">
+    <section class="machine-tool-intro"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-traced phones only after buyer fit.</h3><p>Match by parcelId first, then owner name, then address. Buyer-first rule stays intact.</p><div class="machine-micro-stats"><b>${h(skipTrace.length)}</b><span>waiting</span><b>${h(matchedCount)}</b><span>matched</span><b>${h(sample ? 'ready' : 'none')}</b><span>example</span></div></section>
+    <section class="machine-import-card"><div class="code-preview"><span>CSV preview</span><code>parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence</code><code>${h(sample?.parcelId || '274527L4110560090')},${h(sample?.ownerName || 'MONTEAN PETER & WENDY')},239-555-7722,owner@example.com,91</code></div><textarea id="skip-trace-csv" rows="3" placeholder="Paste skip-trace CSV here"></textarea><div class="button-row"><button id="load-skiptrace-template" class="secondary" type="button">Load first lead</button><button id="import-skiptrace" type="button">Import skip trace</button><span id="skiptrace-status"></span></div></section>
+    <section class="machine-queue-preview"><h4>Next owners</h4>${skipTrace.slice(0, 3).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.ownerName)}</b><span>${h(item.address)} · confidence ${h(item.confidence)}</span></div>`).join('') || '<p>No generated skip-trace queue found yet.</p>'}</section>
   </div>`;
 }
 
@@ -2192,10 +2192,10 @@ function renderBuyerContactIntakePanel() {
   const buyerQueue = buildBuyerContactQueue([...generatedCandidateBuyers(), ...enrichedBuilderContacts()]);
   const sample = buyerQueue[0];
   const marketLabel = sample?.market ? sample.market.split('-').map(part => part.length === 2 ? part.toUpperCase() : `${part.charAt(0).toUpperCase()}${part.slice(1)}`).join(' ') : 'Lehigh';
-  target.innerHTML = `<div class="intake-grid">
-    <section class="intake-card hero-intake"><span class="eyebrow">Buyer-first validation</span><h3>Call builders. Capture the buy box. Then touch sellers.</h3><p>Find a real acquisition contact, ask max price and kill criteria, and only send parcels that match confirmed demand.</p><div class="deal-strip three"><div><span>Buyer contacts needed</span><strong>${h(buyerQueue.length)}</strong></div><div><span>Top signal</span><strong>${h(sample?.recentBuilds || 0)}</strong></div><div><span>Market</span><strong>${h(marketLabel)}</strong></div></div></section>
-    <section class="intake-card"><h4>CSV format</h4><pre>buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice\n${h(sample?.buyerId || 'lehigh-builder-career-financial-corp')},${h(sample?.name || 'CAREER FINANCIAL CORP')},Acquisitions,239-555-8822,deals@example.com,https://example.com,"Lehigh quarter-acre lots under $42k",42000</pre><textarea id="buyer-contact-csv" rows="7" placeholder="buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice"></textarea><div class="button-row"><button id="load-buyer-contact-template" class="secondary" type="button">Use top builder signal</button><button id="import-buyer-contact" type="button">Import buyer contact</button><span id="buyer-contact-status"></span></div></section>
-    <section class="intake-card queue-card"><h4>Top builder signals</h4>${buyerQueue.slice(0, 8).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.name)}</b><span>${h(item.task)} · ${h(item.recentBuilds)} builds/signals · ${h(item.phone || item.website || 'find contact')}</span></div>`).join('') || '<p>All buyer contacts enriched.</p>'}</section>
+  target.innerHTML = `<div class="machine-import-shell">
+    <section class="machine-tool-intro"><span class="eyebrow">Buyer-first validation</span><h3>Call builders. Capture the buy box. Then touch sellers.</h3><p>Find a real acquisition contact, ask max price and kill criteria, then store only confirmed demand.</p><div class="machine-micro-stats"><b>${h(buyerQueue.length)}</b><span>contacts</span><b>${h(sample?.recentBuilds || 0)}</b><span>top signal</span><b>${h(marketLabel)}</b><span>market</span></div></section>
+    <section class="machine-import-card"><div class="code-preview"><span>CSV preview</span><code>buyerId,name,buyerContactName,buyerPhone,buyerEmail,buyerWebsite,buyBox,maxPrice</code><code>${h(sample?.buyerId || 'lehigh-builder-career-financial-corp')},${h(sample?.name || 'CAREER FINANCIAL CORP')},Acquisitions,239-555-8822,deals@example.com,https://example.com,"Lehigh quarter-acre lots under $42k",42000</code></div><textarea id="buyer-contact-csv" rows="3" placeholder="Paste buyer-contact CSV here"></textarea><div class="button-row"><button id="load-buyer-contact-template" class="secondary" type="button">Load top signal</button><button id="import-buyer-contact" type="button">Import buyer contact</button><span id="buyer-contact-status"></span></div></section>
+    <section class="machine-queue-preview"><h4>Top signals</h4>${buyerQueue.slice(0, 3).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.name)}</b><span>${h(item.recentBuilds)} builds/signals · ${h(item.phone || item.website || 'find contact')}</span></div>`).join('') || '<p>All buyer contacts enriched.</p>'}</section>
   </div>`;
 }
 
@@ -3073,6 +3073,19 @@ ${body}`;
   });
 
   document.addEventListener('toggle', (event) => {
+    const machinePanel = event.target.closest?.('.machine-panel');
+    if (machinePanel) {
+      if (machinePanel.open) {
+        openMachinePanel = machinePanel.dataset.machinePanel || '';
+        document.querySelectorAll('.machine-panel[open]').forEach((other) => {
+          if (other !== machinePanel) other.open = false;
+        });
+      } else if (openMachinePanel === machinePanel.dataset.machinePanel) {
+        openMachinePanel = '';
+      }
+      return;
+    }
+
     const disclosure = event.target.closest?.('.source-disclosure');
     if (!disclosure || !disclosure.open) return;
     document.querySelectorAll('.source-disclosure[open]').forEach((other) => {

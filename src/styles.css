@@ -23634,3 +23634,208 @@ body[data-active-view="sources"] #sources-hub #source-priority-board.source-prio
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+
+/* Phase 42 - Machine controls tucked away */
+body[data-active-view="machine"] #workspace {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+body[data-active-view="machine"] #workspace .machine-heading {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+body[data-active-view="machine"] #workspace .machine-heading h2 {
+  font-size: clamp(48px, 7vw, 92px);
+  line-height: .88;
+  max-width: 760px;
+}
+body[data-active-view="machine"] #workspace .machine-heading p {
+  max-width: 560px;
+}
+body[data-active-view="machine"] #workspace .machine-stack {
+  gap: 8px !important;
+}
+body[data-active-view="machine"] #workspace .machine-panel {
+  margin-top: 0 !important;
+  border-radius: 4px !important;
+  border-color: rgba(16,18,20,.07) !important;
+  box-shadow: none !important;
+  background: rgba(255,255,255,.66) !important;
+}
+body[data-active-view="machine"] #workspace .machine-panel > summary {
+  min-height: 58px;
+  padding: 13px 18px !important;
+  grid-template-columns: 38px minmax(0, 1fr) minmax(90px, auto) 18px !important;
+  gap: 12px !important;
+}
+body[data-active-view="machine"] #workspace .machine-panel > summary::after {
+  content: "+";
+  color: var(--muted);
+  font: 700 18px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-align: right;
+}
+body[data-active-view="machine"] #workspace .machine-panel[open] > summary::after {
+  content: "-";
+}
+body[data-active-view="machine"] #workspace .machine-panel > summary span {
+  width: 26px !important;
+  min-width: 26px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  font-size: 10px !important;
+}
+body[data-active-view="machine"] #workspace .machine-panel > summary strong {
+  font-size: 15px;
+  letter-spacing: -.015em;
+}
+body[data-active-view="machine"] #workspace .machine-panel > summary em {
+  font-size: 12px;
+  color: #767c80 !important;
+}
+body[data-active-view="machine"] #workspace .machine-tool-body {
+  margin: 0 !important;
+  padding: 18px 20px 20px;
+  border-top: 1px solid rgba(16,18,20,.07);
+}
+body[data-active-view="machine"] #workspace .machine-import-shell {
+  display: grid;
+  grid-template-columns: minmax(220px, .8fr) minmax(320px, 1.1fr) minmax(220px, .75fr);
+  gap: 14px;
+  align-items: start;
+}
+body[data-active-view="machine"] #workspace .machine-tool-intro,
+body[data-active-view="machine"] #workspace .machine-import-card,
+body[data-active-view="machine"] #workspace .machine-queue-preview {
+  min-width: 0;
+  padding: 14px !important;
+  border: 1px solid rgba(16,18,20,.08) !important;
+  border-radius: 4px !important;
+  background: rgba(251,250,246,.74) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="machine"] #workspace .machine-tool-intro h3 {
+  margin: 5px 0 8px;
+  font-size: clamp(19px, 2vw, 28px);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
+body[data-active-view="machine"] #workspace .machine-tool-intro p,
+body[data-active-view="machine"] #workspace .machine-queue-preview p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.42;
+}
+body[data-active-view="machine"] #workspace .machine-micro-stats {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  margin-top: 14px;
+  align-items: baseline;
+}
+body[data-active-view="machine"] #workspace .machine-micro-stats b {
+  font-size: 19px;
+  line-height: 1;
+}
+body[data-active-view="machine"] #workspace .machine-micro-stats span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+body[data-active-view="machine"] #workspace .code-preview {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+body[data-active-view="machine"] #workspace .code-preview span,
+body[data-active-view="machine"] #workspace .machine-queue-preview h4 {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+body[data-active-view="machine"] #workspace .code-preview code,
+body[data-active-view="machine"] #workspace .machine-tool-intro code {
+  display: block;
+  max-height: 44px;
+  overflow: hidden;
+  padding: 8px 9px;
+  border: 1px solid rgba(16,18,20,.09);
+  border-radius: 4px;
+  background: #f2f1eb;
+  color: #4d5358;
+  font: 11px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace;
+  overflow-wrap: anywhere;
+}
+body[data-active-view="machine"] #workspace .machine-import-row {
+  display: grid;
+  grid-template-columns: minmax(190px, .45fr) 1fr;
+  gap: 10px;
+  align-items: stretch;
+}
+body[data-active-view="machine"] #workspace #csv-input,
+body[data-active-view="machine"] #workspace #json-input,
+body[data-active-view="machine"] #workspace #skip-trace-csv,
+body[data-active-view="machine"] #workspace #buyer-contact-csv {
+  min-height: 74px !important;
+  max-height: 108px !important;
+  padding: 10px 11px !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  resize: vertical;
+}
+body[data-active-view="machine"] #workspace .machine-queue-preview .engine-row,
+body[data-active-view="machine"] #workspace .compact-call-list .call-row {
+  padding: 9px 0 !important;
+  border-bottom: 1px solid rgba(16,18,20,.07) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="machine"] #workspace .machine-queue-preview .engine-row:last-child { border-bottom: 0 !important; }
+body[data-active-view="machine"] #workspace .machine-queue-preview b { display: block; font-size: 12px; line-height: 1.25; }
+body[data-active-view="machine"] #workspace .machine-queue-preview span { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+body[data-active-view="machine"] #workspace .button-row { gap: 8px !important; }
+body[data-active-view="machine"] #workspace .button-row button {
+  min-height: 38px !important;
+  padding: 9px 12px !important;
+  font-size: 12px !important;
+}
+body[data-active-view="machine"] #workspace .mini-disclosure {
+  margin: 10px 0 !important;
+  padding: 10px 12px !important;
+  border-radius: 4px !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="machine"] #workspace .machine-import-shell,
+  body[data-active-view="machine"] #workspace .machine-import-row {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="machine"] #workspace .machine-panel > summary {
+    grid-template-columns: 32px 1fr 16px !important;
+  }
+  body[data-active-view="machine"] #workspace .machine-panel > summary em {
+    grid-column: 2 / span 1 !important;
+    text-align: left !important;
+  }
+  body[data-active-view="machine"] #workspace .machine-panel > summary::after {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    align-self: center;
+  }
+}
+@media (max-width: 540px) {
+  body[data-active-view="machine"] #workspace .machine-heading h2 {
+    font-size: clamp(42px, 13vw, 56px);
+  }
+  body[data-active-view="machine"] #workspace .machine-tool-body {
+    padding: 12px 12px 14px;
+  }
+  body[data-active-view="machine"] #workspace .machine-panel > summary {
+    padding: 12px 14px !important;
+  }
+}

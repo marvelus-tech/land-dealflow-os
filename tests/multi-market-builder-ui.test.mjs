@@ -18,8 +18,9 @@ assert.match(app, /loadBuilderMarketData\(\)\.then\(renderAll\)/, 'UI must rende
 assert.match(app, /getStateBuilderRows\(stateCode\)/, 'UI must select builders by active state');
 assert.match(app, /Array\.isArray\(data\) \? data : data\.rows/, 'UI loader must accept bare-array builder signal artifacts as well as { rows } payloads');
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
-assert.match(app, /State first, counties as evidence/, 'Visitor copy should frame states as the primary choice and counties as detail');
-assert.match(app, /Choose state\. Read queue\./, 'Builders workbench headline must be compact product copy, not poster-scale editorial copy');
+assert.match(app, /State first\./, 'Visitor copy should frame states as the primary choice');
+assert.match(app, /Counties stay as evidence/, 'Builders workbench copy should demote counties to evidence');
+assert.match(app, /Choose state\./, 'Builders workbench headline must be compact product copy, not poster-scale editorial copy');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
 assert.match(app, /const builderMarketRegistry = \[/, 'Builders page must expose a market registry, not only a state rail');
@@ -40,10 +41,10 @@ assert.match(app, /active is-active/, 'Active Builders state row must expose the
 assert.match(app, /state-market-name/, 'State selector rows must split state name from lane thesis for desktop hierarchy');
 assert.match(app, /state-market-thesis/, 'State selector rows must demote the lane thesis below the state name');
 assert.match(app, /<em><b>\$\{h\(state\.builderCount\)\}<\/b><span>builders<\/span><\/em>/, 'Builder count must be a labeled metric, not an unlabeled number');
-assert.match(app, /Call top builder\. Capture buy box\./, 'Builders action copy should be compact enough for the desktop instruction rail');
+assert.match(app, /Call top builder\./, 'Builders action copy should be compact enough for the desktop instruction rail');
 assert.match(app, /<li title="Permit-backed builder rows under this state\."\s*><b>\$\{h\(activeBuilders\.length\)\}<\/b><span>builders<\/span><\/li>/, 'Selected-state summary metrics should split numerals from labels');
 assert.doesNotMatch(app, /<button type="button" class="state-market-toggle/, 'State selector controls must not be native buttons with inherited dark slabs');
-assert.match(app, /State first, counties as evidence/, 'Builders copy must explain state-first grouping and progressive county detail');
+assert.match(app, /Counties stay as evidence/, 'Builders copy must explain state-first grouping and progressive county detail');
 assert.match(app, /function renderBuilderCountyLedger/, 'County lanes must move into selected-state evidence detail');
 assert.match(app, /<details class="state-county-ledger">/, 'County lane detail should be progressive disclosure, not open noise by default');
 assert.doesNotMatch(app, /<details class="state-county-ledger" open>/, 'County lane detail must not overwhelm the selected-state summary by default');
@@ -94,6 +95,12 @@ assert.match(css, /v1\.88 - Builders open work surface: remove the presentation 
 assert.match(css, /v1\.89 - Builders desktop selector typography: state first, proof second, metric last/, 'Phase 89 desktop selector hierarchy layer missing');
 assert.match(css, /v1\.89\.5 - Builders desktop second-pass: tighten selector cadence after self-review/, 'Phase 89 second-pass desktop correction missing');
 assert.match(css, /v1\.89\.6 - Builders desktop Apple review fix: compact rail, no dead disclosure slab/, 'Phase 89 final screenshot-QA correction missing');
+assert.match(css, /v1\.90 - Builders desktop header compression: brand signal becomes a quiet label, workbench moves up/, 'Phase 90 desktop header compression layer missing');
+assert.match(css, /v1\.90\.5 - Builders desktop workbench compression: instruction rail stops behaving like hero copy/, 'Phase 90.5 workbench compression layer missing');
+assert.match(css, /v1\.90\.6 - Builders desktop final action rail: one-line instruction, one quiet link/, 'Phase 90.6 final action rail layer missing');
+assert.match(css, /--phase90-builders-desktop-rule: compact-route-heading-prioritize-workbench/, 'Phase 90 route-scoped desktop rule token missing');
+assert.match(css, /#builder-list-section > \.section-heading\.compact-heading \{[\s\S]{0,260}grid-template-columns: auto minmax\(0, 1fr\) auto !important/, 'Builders desktop route heading should be an inline label row, not a tall hero');
+assert.match(css, /#builder-list-section > \.section-heading\.compact-heading h2 \{[\s\S]{0,220}font-size: clamp\(22px, 2\.05vw, 31px\) !important/, 'Builders desktop Buyer-first heading should be compact, not poster scale');
 assert.match(css, /@media \(min-width: 821px\) \{[\s\S]{0,140}body\[data-active-view="builders"\] \.builders-phase83-workbench/, 'Phase 89 must be desktop-scoped to Builders');
 assert.match(css, /\.state-market-code,[\s\S]{0,260}\.state-code \{[\s\S]{0,420}border-radius: 999px !important/, 'Phase 89 must style the actual state-market-code DOM hook');
 assert.match(css, /\.state-market-toggle em b \{[\s\S]{0,260}color: var\(--builders-gold-refined\) !important;[\s\S]{0,160}font-size: 20px !important/, 'Builder metric must be a clear gold tabular number');

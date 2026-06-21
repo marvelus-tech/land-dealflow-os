@@ -1093,8 +1093,8 @@ function normalizeBuilderSignal(row = {}, source = {}) {
   const permits = asArray(row.recentPermits).map(permit => normalizePermitEvidence(permit, source));
   const sourceJurisdictions = [...new Set(permits.map(permit => permit.jurisdiction).filter(Boolean))].slice(0, 3);
   const recentBuilds = Number(row.recentBuilds || permits.length || 0);
-  const phone = row.phone || permits.find(permit => permit.contractorPhone)?.contractorPhone || '';
-  const email = row.email || permits.find(permit => permit.contractorEmail)?.contractorEmail || '';
+  const phone = row.phone || row.contactPhone || permits.find(permit => permit.contractorPhone)?.contractorPhone || '';
+  const email = row.email || row.contactEmail || permits.find(permit => permit.contractorEmail)?.contractorEmail || '';
   const sourceUrl = row.sourceUrl || permits.find(permit => permit.sourceUrl)?.sourceUrl || source.evidenceUrl || source.signalsUrl || '';
   const marketLabel = source.marketName || row.market || source.state || 'Permit market';
   const normalized = {
@@ -1643,10 +1643,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const selectedScoreRows = scoreBreakdownRows(selected);
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
   const selectedPermitProof = asArray(selected.permitEvidence || selected.recentPermits).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</span>${permitVerificationLink(permit)}</li>`).join('');
+  const contactProofLink = selected.contactUrl || selected.website || '';
   const sourceProof = `<div class="validation-source-proof" aria-label="Builder source proof">
     <div><span>Source</span><strong>${selected.sourceUrl ? safeLink(selected.sourceUrl, selected.sourceType || 'Official source') : h(selected.sourceType || 'source pending')}</strong></div>
+    <div><span>Contact path</span><strong>${contactProofLink ? safeLink(contactProofLink, selected.contactRole || 'Public business contact') : h(selected.contactStatus || 'contact pending')}</strong></div>
     <div><span>Contact status</span><strong>${h(selected.contactStatus || 'contact pending')}</strong></div>
-    <div><span>Confidence</span><strong>${h(selected.confidence || '-')}</strong></div>
+    <div><span>Confidence</span><strong>${h(selected.contactConfidence || selected.confidence || '-')}</strong></div>
     <div><span>Top permit</span><strong>${h(selected.topPermit || '-')}</strong></div>
   </div>`;
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
@@ -1684,7 +1686,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
           <a class="validation-call-button icon-only ${selected.email ? '' : 'disabled'}" href="${mailHref}" aria-label="Draft email" title="Draft email">${actionIcon('email')}</a>
           <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>${actionIcon('copy')}<span>Draft</span></button>
-          ${selected.sourceUrl ? `<a class="validation-call-button secondary website-link" href="${h(selected.sourceUrl)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
+          ${contactProofLink ? `<a class="validation-call-button secondary website-link" href="${h(contactProofLink)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
         ${renderBuyBoxCompletion(selected)}
@@ -1822,9 +1824,9 @@ function renderBuilderListEnginePanel(options = {}) {
     <section class="state-first-ops-header builders-phase83-workbench" aria-label="Builder state workbench">
       <div class="builder-ops-title">
         <span class="eyebrow">Builders · state workbench</span>
-        <h3>Choose state. Read queue.</h3>
-        <p><b>State first, counties as evidence.</b> Choose the operating state, read its builder proof, then move directly into the queue.</p>
-        <div class="primary-action-strip builders-primary-action"><b>Call top builder. Capture buy box.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
+        <h3>Choose state.</h3>
+        <p><b>State first.</b> Counties stay as evidence; the queue starts after builder proof is clear.</p>
+        <div class="primary-action-strip builders-primary-action"><b>Call top builder.</b><a href="#buyer-validation-command">Open queue ${productIcon('arrow')}</a></div>
       </div>
       <div class="state-first-workbench state-data-workbench" aria-label="Choose operating state and read selected-state data">
         <div class="state-workbench-kicker">

@@ -127,7 +127,7 @@ assert.match(appSource, /function scrollToPageTop\(\)[\s\S]{0,260}root\.style\.s
 assert.match(appSource, /function navigateToView\(view\)[\s\S]{0,180}setActiveView\(view, \{ scrollToTop: true \}\)/, 'data-view navigation should centralize top-scroll behavior');
 assert.match(appSource, /const view = hashToView\(\);\n    if \(view\) setActiveView\(view, \{ scrollToTop: true \}\);/, 'hashchange should only switch panels for valid app routes and leave same-page anchors alone');
 assert.match(appSource, /navigateToView\(view\)/, 'clicking app navigation should use the scroll-safe route helper');
-assert.match(appSource, /State first, counties as evidence/, 'Builders UX should reduce cognitive load with state-first market focus');
+assert.match(appSource, /State first\./, 'Builders UX should reduce cognitive load with state-first market focus');
 assert.match(appSource, /function renderBuilderCountyLedger/, 'Builders market detail should expose county lanes as subordinate evidence');
 assert.doesNotMatch(appSource, />Next money action<|NEXT MONEY ACTION/, 'Builders page must not repeat selected-builder guidance in a separate Next Money Action card');
 assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action card component should stay removed');
@@ -135,7 +135,7 @@ assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'sec
 assert.match(appSource, /state-first-ops-header/, 'top Builders IA should be an isolated state-first workbench, not a static metric strip');
 assert.match(appSource, /data-state-market-selector/, 'priority states should be exposed as top-level state choices');
 assert.match(appSource, /const builderMarketRegistry = \[/, 'market toggles should be driven by a market registry, not a state-only rail');
-assert.match(appSource, /State first, counties as evidence/, 'Builders header should frame states as the primary choice and counties as evidence');
+assert.match(appSource, /Counties stay as evidence/, 'Builders header should frame states as the primary choice and counties as evidence');
 assert.match(appSource, /data-builder-market-key/, 'market toggles should be interactive controls that swap the displayed market data');
 assert.match(appSource, /selectedBuilderMarketKey = marketKey/, 'clicking a market toggle should change the selected Builders market');
 assert.match(appSource, /\[activeState\]\.map\(state =>/, 'the state detail panel should render only the selected state below the toggles');

@@ -11,7 +11,7 @@ assert.match(html, /id="source-priority-board"/, 'Sources page must reserve a pr
 assert.match(appSource, /function renderSourcePriorityBoard/, 'Sources page must render the priority market board from permit landscape data');
 assert.match(appSource, /TN first\. Then inland FL, AZ, NC, TX\. GA\/SC secondary\./, 'Sources page must reflect the expanded target-state priority stack');
 assert.match(appSource, /const builderMarketRegistry = \[/, 'Builders rail must come from a selectable market registry, not a hardcoded state path');
-assert.match(appSource, /State first, counties as evidence/, 'Builders copy must not present the Sources priority stack as a forced path');
+assert.match(appSource, /Counties stay as evidence/, 'Builders copy must not present the Sources priority stack as a forced path');
 assert.match(appSource, /getPermitPortalLandscape\(\)/, 'Sources priority board must render from tested permit landscape data');
 for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.match(appSource, new RegExp(`key: '${key}'`), `Sources/Builders shared market registry must keep ${key} visible.`);

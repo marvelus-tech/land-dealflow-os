@@ -26650,3 +26650,135 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     min-height: 0 !important;
   }
 }
+
+
+/* v1.90 - Builders desktop header compression: brand signal becomes a quiet label, workbench moves up */
+@media (min-width: 1024px) {
+  body[data-active-view="builders"] #builder-list-section {
+    --phase90-builders-desktop-rule: compact-route-heading-prioritize-workbench;
+    padding-top: clamp(18px, 2vw, 28px) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading {
+    display: grid !important;
+    grid-template-columns: auto minmax(0, 1fr) auto !important;
+    align-items: baseline !important;
+    column-gap: 14px !important;
+    row-gap: 0 !important;
+    margin: 0 0 clamp(12px, 1.4vw, 18px) !important;
+    padding: 0 0 13px !important;
+    border-bottom: 1px solid rgba(13,20,16,.075) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading .eyebrow {
+    grid-column: 1 !important;
+    margin: 0 !important;
+    color: #14543f !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    font-weight: 820 !important;
+    letter-spacing: .145em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading h2 {
+    grid-column: 2 !important;
+    margin: 0 !important;
+    color: #0d1410 !important;
+    font-size: clamp(22px, 2.05vw, 31px) !important;
+    line-height: 1 !important;
+    letter-spacing: -.052em !important;
+    font-weight: 780 !important;
+    max-width: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading p {
+    grid-column: 3 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    color: #647067 !important;
+    font-size: 12px !important;
+    line-height: 1.1 !important;
+    letter-spacing: -.01em !important;
+    font-weight: 650 !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel.stack,
+  body[data-active-view="builders"] .builder-engine-shell {
+    gap: clamp(14px, 1.45vw, 20px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+    margin-top: 0 !important;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1180px) {
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading p {
+    grid-column: 2 !important;
+    margin-top: 5px !important;
+    white-space: normal !important;
+  }
+}
+
+
+/* v1.90.5 - Builders desktop workbench compression: instruction rail stops behaving like hero copy */
+@media (min-width: 1181px) {
+  body[data-active-view="builders"] .builders-phase83-workbench.builders-phase83-workbench {
+    grid-template-columns: minmax(248px, 280px) minmax(820px, 1fr) !important;
+    column-gap: clamp(34px, 3.8vw, 52px) !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench > .builder-ops-title {
+    max-width: 280px !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title h3 {
+    max-width: 270px !important;
+    font-size: clamp(30px, 2.55vw, 40px) !important;
+    line-height: .98 !important;
+    letter-spacing: -.055em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-title p {
+    max-width: 270px !important;
+    margin-top: 13px !important;
+    font-size: 14px !important;
+    line-height: 1.48 !important;
+    letter-spacing: -.012em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    padding: 13px 0 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action b {
+    max-width: 24ch !important;
+    font-size: 15px !important;
+    line-height: 1.22 !important;
+    letter-spacing: -.018em !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action a {
+    justify-self: start !important;
+    align-self: start !important;
+    margin: 0 !important;
+  }
+}
+
+
+/* v1.90.6 - Builders desktop final action rail: one-line instruction, one quiet link */
+@media (min-width: 1181px) {
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action {
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: space-between !important;
+    gap: 18px !important;
+    padding: 14px 0 0 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action b {
+    max-width: none !important;
+    white-space: nowrap !important;
+    font-size: 16px !important;
+    line-height: 1 !important;
+  }
+  body[data-active-view="builders"] .builders-phase83-workbench .builders-primary-action a {
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+}

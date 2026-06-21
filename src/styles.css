@@ -24433,3 +24433,380 @@ body[data-active-view="deals"] footer {
     transform: translateY(-8px);
   }
 }
+
+
+/* v1.66 - Phase 43 visual-system cleanup */
+:root {
+  --phase43-visual-system: quiet-apple-grade-cleanup;
+  --system-bg: #f7f7f2;
+  --system-page: #fffdf7;
+  --system-ink: #111612;
+  --system-muted: #5f6a63;
+  --system-line: rgba(17, 22, 18, .115);
+  --system-line-soft: rgba(17, 22, 18, .075);
+  --system-green: #0c5b4b;
+  --system-gold: #9a7627;
+  --system-sheet: rgba(255, 253, 247, .84);
+}
+
+body {
+  background: linear-gradient(180deg, var(--system-page) 0%, var(--system-bg) 420px, var(--system-bg) 100%) !important;
+  color: var(--system-ink) !important;
+}
+
+.app-panel[hidden],
+.app-panel[hidden].active-panel,
+[hidden] {
+  display: none !important;
+}
+
+.nav {
+  min-height: 56px !important;
+  padding-inline: clamp(14px, 3vw, 32px) !important;
+  background: rgba(255, 253, 247, .82) !important;
+  border-bottom: 1px solid var(--system-line-soft) !important;
+  box-shadow: none !important;
+}
+
+.app-tabs {
+  gap: 2px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tab-button {
+  min-height: 42px !important;
+  padding: 0 10px !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #58645d !important;
+  border: 0 !important;
+  border-bottom: 1px solid transparent !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  font-weight: 760 !important;
+  letter-spacing: -.015em !important;
+  text-transform: none !important;
+}
+
+.tab-button:hover {
+  background: transparent !important;
+  color: var(--system-ink) !important;
+  transform: none !important;
+}
+
+.tab-button.active {
+  background: transparent !important;
+  color: var(--system-ink) !important;
+  border-bottom-color: var(--system-green) !important;
+  box-shadow: none !important;
+}
+
+.brand-hero,
+.cashflow-hero,
+.builder-hero-panel,
+.closing-hero,
+.vision-hero,
+.builder-market-hero,
+.section-hero {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: var(--system-line-soft) !important;
+}
+
+.map-glow,
+.vision-hero::before,
+.vision-hero::after,
+.brand-hero::before,
+.brand-hero::after,
+.builder-hero-panel::before,
+.builder-hero-panel::after {
+  display: none !important;
+  content: none !important;
+}
+
+.card,
+.stage,
+.deal-queue,
+.deal-detail,
+.deal-action,
+.validation-queue,
+.validation-focus-card,
+.seller-unlock-card,
+.builder-adapter-panel,
+.seller-control-panel,
+.execution-conveyor-panel,
+.machine-panel,
+.source-page-section,
+.closing-intelligence-deck,
+.contract-document-experience,
+.title-packet-experience,
+.primary-action-strip,
+.wk-session,
+.wk-audit,
+.wk-proof-card,
+.phase-detail-card,
+.seller-net-script-card,
+.fit-card,
+.detail-grid > div,
+.next-action-card {
+  background: var(--system-sheet) !important;
+  border-color: var(--system-line-soft) !important;
+  box-shadow: none !important;
+}
+
+button,
+.button-link,
+.nav-cta,
+.hero-actions a,
+.hero-actions button,
+.primary-action-strip a,
+.compact-action {
+  box-shadow: none !important;
+  background-image: none !important;
+  transition: color .16s ease, background-color .16s ease, border-color .16s ease, opacity .16s ease !important;
+}
+
+button:hover,
+.button-link:hover,
+.nav-cta:hover,
+.hero-actions a:hover,
+.hero-actions button:hover,
+.primary-action-strip a:hover,
+.compact-action:hover {
+  transform: none !important;
+}
+
+.eyebrow,
+.card-kicker span,
+.panel-kicker span,
+.wk-kicker,
+.builder-tab,
+.validation-stage-tabs button,
+.source-disclosure summary span,
+.badge,
+.quiet-status-chip {
+  letter-spacing: .095em !important;
+}
+
+.badge,
+.quiet-status-chip,
+.builder-state-progress small,
+.vision-proof-strip em,
+.wk-proof-card em,
+.deal-strip em,
+.primary-action-strip span {
+  color: var(--system-green) !important;
+}
+
+.badge.warn,
+.builder-state-progress strong,
+.vision-proof-strip em,
+.wk-proof-card em {
+  color: var(--system-gold) !important;
+}
+
+footer {
+  border-top-color: transparent !important;
+  box-shadow: none !important;
+  opacity: .58;
+}
+
+@media (max-width: 760px) {
+  .nav {
+    justify-content: center !important;
+    min-height: 52px !important;
+    padding: 8px 14px !important;
+  }
+  .brand,
+  .nav-cta {
+    display: none !important;
+  }
+  .app-tabs {
+    width: 100% !important;
+    justify-content: space-between !important;
+    overflow: visible !important;
+  }
+  .tab-button {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    min-height: 38px !important;
+    padding: 0 5px !important;
+    font-size: 11px !important;
+    letter-spacing: -.025em !important;
+  }
+  main {
+    padding-inline: 14px !important;
+  }
+  .brand-hero,
+  .cashflow-hero,
+  .builder-hero-panel,
+  .closing-hero,
+  .vision-hero,
+  .builder-market-hero,
+  .section-hero {
+    border-radius: 0 !important;
+    padding-inline: 0 !important;
+  }
+}
+
+
+/* v1.66.1 - Phase 43 mobile nav and meta correction */
+body .nav {
+  background: transparent !important;
+  border: 0 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body .app-tabs {
+  border: 0 !important;
+  outline: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body .tab-button {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.builder-state-progress strong,
+.builder-state-progress small,
+.vision-proof-strip em,
+.wk-proof-card em,
+.deal-strip em,
+.money-call em,
+.queue-item em,
+.primary-action-strip span,
+.validation-metric em {
+  color: #5f6a63 !important;
+}
+
+.builder-state-progress strong,
+.vision-proof-strip strong,
+.wk-proof-card strong {
+  font-weight: 760 !important;
+}
+
+@media (max-width: 760px) {
+  body .nav {
+    background: var(--system-page) !important;
+    border-bottom: 1px solid var(--system-line-soft) !important;
+  }
+  body .app-tabs {
+    padding: 0 !important;
+  }
+  body .tab-button {
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-top: 0 !important;
+  }
+}
+
+
+/* v1.66.2 - Phase 43 remove inherited nav pill geometry */
+html body .nav {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+  padding-block: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .app-tabs {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html body .tab-button.active {
+  background: transparent !important;
+  color: var(--system-ink) !important;
+  border-bottom: 1px solid var(--system-green) !important;
+}
+
+@media (max-width: 760px) {
+  html body .nav {
+    margin: 0 !important;
+    padding: 8px 14px !important;
+    border-radius: 0 !important;
+  }
+  html body .app-tabs {
+    border: 0 !important;
+  }
+}
+
+
+/* v1.66.3 - Phase 43 mobile route tabs must not clip */
+@media (max-width: 760px) {
+  html body .nav {
+    display: block !important;
+    overflow: hidden !important;
+  }
+  html body .app-tabs {
+    display: grid !important;
+    width: 100% !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    justify-content: stretch !important;
+    overflow: visible !important;
+  }
+  html body .tab-button {
+    width: 100% !important;
+    flex: initial !important;
+    min-width: 0 !important;
+    padding: 0 2px !important;
+    font-size: 10px !important;
+    letter-spacing: -.035em !important;
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+  }
+}
+
+body[data-active-view="builders"] .market-toggle b,
+body[data-active-view="builders"] .market-toggle em,
+body[data-active-view="builders"] .market-toggle small,
+body[data-active-view="builders"] .permit-state-head strong,
+body[data-active-view="builders"] .permit-state-head em,
+body[data-active-view="today"] .vision-proof-strip em,
+body[data-active-view="today"] .wk-proof-card em {
+  color: #66736c !important;
+}
+
+
+/* v1.66.4 - Phase 43 kill residual route rail outline */
+html body nav.nav .app-tabs,
+html body .nav .app-tabs,
+html body header.nav .app-tabs {
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+html body nav.nav .tab-button,
+html body .nav .tab-button,
+html body header.nav .tab-button {
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
+
+html body nav.nav .tab-button.active,
+html body .nav .tab-button.active,
+html body header.nav .tab-button.active {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

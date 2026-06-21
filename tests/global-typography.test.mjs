@@ -452,3 +452,9 @@ assert.match(css, /state-market-copy small span:last-child \{[\s\S]{0,80}display
 assert.match(css, /active-market-summary\.state-focus-summary \{[\s\S]{0,220}border-left: 1px solid rgba\(8, 16, 12, \.12\) !important;[\s\S]{0,120}background: transparent !important/, 'Selected-state detail should continue the ledger, not render as a separate filled card');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-focus-summary > ul li \{[\s\S]{0,260}background: transparent !important;[\s\S]{0,80}box-shadow: none !important/, 'Selected-state metrics should be inline facts, not metric tiles');
 
+assert.match(css, /v1\.94 - Builders top-half de-duplication: one hero only, no second hero\/actions above state ledger/, 'Phase 94 Builders single-hero marker missing');
+assert.match(css, /--phase94-builders-rule: single-hero-direct-state-ledger-no-superfluous-top-buttons/, 'Phase 94 should encode single-hero direct-ledger rule');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builders-phase83-workbench > \.builder-ops-title \{[\s\S]{0,80}display: none !important/, 'Builders duplicate Choose-state hero block should be hidden');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builder-ops-jump \{[\s\S]{0,80}display: none !important/, 'Builders top-half jump links should be hidden as superfluous buttons');
+assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-market-toggle:first-child \{[\s\S]{0,120}border-top: 1px solid rgba\(8, 16, 12, \.09\) !important/, 'State ledger should begin directly with a top hairline after the single hero');
+

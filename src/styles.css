@@ -27593,3 +27593,45 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     --phase93-builders-rule: top-half-flat-ledger-selected-detail-continuation-mobile-safe;
   }
 }
+
+
+/* v1.94 - Builders top-half de-duplication: one hero only, no second hero/actions above state ledger */
+@media (min-width: 1024px) {
+  body[data-active-view="builders"] #builder-list-section {
+    --phase94-builders-rule: single-hero-direct-state-ledger-no-superfluous-top-buttons;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-phase83-workbench.builders-phase83-workbench {
+    padding-top: clamp(6px, .8vw, 12px) !important;
+    border-top: 0 !important;
+    row-gap: 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-phase83-workbench > .builder-ops-title {
+    display: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builder-ops-jump {
+    display: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-first-workbench.state-data-workbench {
+    margin-top: 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-workbench-layout {
+    padding-top: 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .state-market-toggle:first-child {
+    border-top: 1px solid rgba(8, 16, 12, .09) !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  body[data-active-view="builders"] #builder-list-section {
+    --phase94-builders-rule: single-hero-direct-state-ledger-no-superfluous-top-buttons-mobile;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-phase83-workbench > .builder-ops-title,
+  body[data-active-view="builders"] #builder-list-section .builder-ops-jump {
+    display: none !important;
+  }
+  body[data-active-view="builders"] #builder-list-section .builders-phase83-workbench.builders-phase83-workbench {
+    padding-top: 8px !important;
+    border-top: 0 !important;
+  }
+}

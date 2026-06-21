@@ -11175,10 +11175,8 @@ body[data-active-view="closing"] #app .closing-flow-card p {
 }
 #app .contact-icon-toggle[data-toggle-validation-contact="email"].is-on span::after,
 #app .contact-state-toggle[data-toggle-validation-contact="email"].is-on span::after {
-  content: '✓';
-  margin-left: 4px;
-  color: var(--done-accent);
-  font: 900 10px/1 var(--font-mono);
+  content: none !important;
+  display: none !important;
 }
 #app .queue-state-row {
   align-items: center !important;

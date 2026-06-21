@@ -212,5 +212,7 @@ assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,460}solidIndus
 assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,460}solidIndustryIcon\('email'\)[\s\S]{0,90}<\/button>/, 'Builder queue email log toggle should be icon-only with email icon');
 assert.match(appSource, /selected-outreach-state[\s\S]{0,1000}contact-state-toggle[\s\S]{0,900}solidIndustryIcon\('phone'\)[\s\S]{0,900}contact-state-toggle[\s\S]{0,900}solidIndustryIcon\('email'\)/, 'Builder detail logging toggles should keep phone/email icons');
 assert.doesNotMatch(appSource, /contact-icon-toggle contact-call[\s\S]{0,520}<em>|contact-icon-toggle contact-email[\s\S]{0,520}<em>|contact-state-toggle[\s\S]{0,360}solidIndustryIcon\('check'\)/, 'Builder queue/detail logging toggles should not show explicit text or check icons');
+assert.doesNotMatch(css, /contact-(?:icon|state)-toggle\[data-toggle-validation-contact="email"\]\.is-on span::after[\s\S]{0,160}content:\s*['"]✓['"]/, 'Active email logging controls must keep the email icon but must not add a checkmark pseudo-element');
+assert.match(css, /contact-icon-toggle\[data-toggle-validation-contact="email"\]\.is-on span::after,[\s\S]{0,120}content: none !important;[\s\S]{0,80}display: none !important/, 'Email logging checkmark pseudo-element should be explicitly suppressed');
 
 console.log('global typography tests passed');

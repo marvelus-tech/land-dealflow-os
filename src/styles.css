@@ -20998,3 +20998,732 @@ footer {
     padding: 0 2px !important;
   }
 }
+
+/* v1.69 - Phase 37 Today command center: one action, compact proof ledger, sprint above fatigue line */
+body[data-active-view="today"] {
+  --phase37-today-rule: today-only-command-center-no-oversized-hero;
+  --phase37-forest: #0b5138;
+  --phase37-gold: #a67419;
+  --phase37-ink: #101712;
+  --phase37-muted: #637064;
+  --phase37-line: rgba(16, 23, 18, .105);
+  --phase37-paper: #fffdf7;
+}
+
+body[data-active-view="today"] #command {
+  display: grid !important;
+  gap: clamp(18px, 2.4vw, 30px) !important;
+}
+
+body[data-active-view="today"] #wk-brief.wk-hero {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .88fr) minmax(360px, .62fr) !important;
+  gap: clamp(24px, 4vw, 64px) !important;
+  align-items: end !important;
+  padding: clamp(34px, 6vw, 74px) 0 clamp(18px, 2.8vw, 32px) !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #wk-brief::before,
+body[data-active-view="today"] #wk-brief::after,
+body[data-active-view="today"] #operator-session-mode .os8-ambient {
+  display: none !important;
+}
+
+body[data-active-view="today"] #wk-brief .wk-hero-copy {
+  max-width: 620px !important;
+}
+
+body[data-active-view="today"] #wk-brief .wk-kicker,
+body[data-active-view="today"] #operator-session-mode .wk-kicker,
+body[data-active-view="today"] .wk-section-head .wk-kicker,
+body[data-active-view="today"] .wk-card-head span,
+body[data-active-view="today"] .os8-card-head span {
+  color: var(--phase37-forest) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="today"] #wk-brief h1 {
+  max-width: 580px !important;
+  margin-top: 13px !important;
+  font-size: clamp(58px, 8.1vw, 112px) !important;
+  line-height: .875 !important;
+  letter-spacing: -.087em !important;
+  font-weight: 800 !important;
+}
+
+body[data-active-view="today"] #wk-brief p {
+  max-width: 560px !important;
+  margin-top: 20px !important;
+  color: var(--phase37-muted) !important;
+  font-size: clamp(16px, 1.45vw, 20px) !important;
+  line-height: 1.42 !important;
+  letter-spacing: -.025em !important;
+}
+
+body[data-active-view="today"] #wk-brief .wk-actions {
+  max-width: 520px !important;
+  margin-top: 28px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 0 !important;
+  border-top: 1px solid rgba(11,81,56,.25) !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+}
+
+body[data-active-view="today"] #wk-brief .wk-actions a {
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 0 16px !important;
+  border: 0 !important;
+  border-left: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  color: var(--phase37-muted) !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  font-weight: 760 !important;
+  letter-spacing: .035em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="today"] #wk-brief .wk-actions a:first-child {
+  justify-content: flex-start !important;
+  border-left: 0 !important;
+  color: #007c72 !important;
+}
+
+body[data-active-view="today"] #wk-brief .phase24-snapshot {
+  align-self: end !important;
+  display: grid !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--phase37-line) !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #wk-brief .phase24-snapshot div {
+  min-height: 58px !important;
+  display: grid !important;
+  grid-template-columns: minmax(112px, .34fr) minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #wk-brief .phase24-snapshot div:first-child {
+  border-top: 0 !important;
+}
+
+body[data-active-view="today"] #wk-brief .phase24-snapshot span {
+  color: rgba(99,112,100,.78) !important;
+  font-size: 10px !important;
+  line-height: 1.05 !important;
+  font-weight: 780 !important;
+  letter-spacing: .035em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="today"] #wk-brief .phase24-snapshot b {
+  color: var(--phase37-ink) !important;
+  font-size: clamp(22px, 2.2vw, 34px) !important;
+  line-height: .95 !important;
+  font-weight: 760 !important;
+  letter-spacing: -.055em !important;
+}
+
+body[data-active-view="today"] #wk-brief .phase24-snapshot em {
+  color: var(--phase37-gold) !important;
+  font-size: 10px !important;
+  line-height: 1.1 !important;
+  font-weight: 820 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  font-style: normal !important;
+  white-space: nowrap !important;
+}
+
+body[data-active-view="today"] #operator-session-mode.os8-session {
+  display: grid !important;
+  grid-template-columns: minmax(300px, .72fr) minmax(0, 1fr) !important;
+  grid-template-areas:
+    "hero flow"
+    "metrics flow" !important;
+  gap: clamp(16px, 2vw, 28px) !important;
+  align-items: start !important;
+  padding: clamp(26px, 4vw, 46px) 0 0 !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-hero {
+  grid-area: hero !important;
+  display: block !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-hero h2 {
+  max-width: 420px !important;
+  margin-top: 13px !important;
+  font-size: clamp(38px, 5vw, 64px) !important;
+  line-height: .94 !important;
+  font-weight: 780 !important;
+  letter-spacing: -.07em !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-hero > p {
+  max-width: 430px !important;
+  margin-top: 16px !important;
+  color: var(--phase37-muted) !important;
+  font-size: 15px !important;
+  line-height: 1.48 !important;
+  letter-spacing: -.015em !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-next-card {
+  margin-top: 24px !important;
+  padding: 16px 0 18px !important;
+  border-top: 1px solid rgba(11,81,56,.22) !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-next-card small {
+  color: var(--phase37-muted) !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-next-card b {
+  display: block !important;
+  margin-top: 8px !important;
+  color: var(--phase37-ink) !important;
+  font-size: clamp(24px, 2.6vw, 36px) !important;
+  line-height: 1 !important;
+  font-weight: 780 !important;
+  letter-spacing: -.055em !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-next-card span {
+  display: block !important;
+  max-width: 440px !important;
+  margin-top: 10px !important;
+  color: #3f4b42 !important;
+  font-size: 14px !important;
+  line-height: 1.42 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metrics {
+  grid-area: metrics !important;
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--phase37-line) !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric {
+  min-height: 70px !important;
+  padding: 12px 14px !important;
+  border: 0 !important;
+  border-left: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric:first-child {
+  border-left: 0 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric span {
+  color: rgba(99,112,100,.80) !important;
+  font-size: 9px !important;
+  line-height: 1.1 !important;
+  font-weight: 790 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric b {
+  display: block !important;
+  margin-top: 10px !important;
+  color: var(--phase37-ink) !important;
+  font-size: 28px !important;
+  line-height: .9 !important;
+  font-weight: 760 !important;
+  letter-spacing: -.055em !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric em {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #007c72 !important;
+  font-size: 11px !important;
+  line-height: 1.15 !important;
+  font-style: normal !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-flow {
+  grid-area: flow !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .82fr) !important;
+  gap: 18px !important;
+  align-items: start !important;
+}
+
+body[data-active-view="today"] #operator-session-mode :where(.os8-sprint-card, .os8-packet-card) {
+  padding: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-card-head {
+  min-height: 44px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 0 0 10px !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-card-head b {
+  color: #007c72 !important;
+  font-size: 11px !important;
+  font-weight: 780 !important;
+  letter-spacing: -.01em !important;
+  white-space: nowrap !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step {
+  min-height: 84px !important;
+  display: grid !important;
+  grid-template-columns: 46px minmax(0, 1fr) auto !important;
+  gap: 16px !important;
+  align-items: center !important;
+  padding: 14px 8px 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step.active {
+  background: linear-gradient(90deg, rgba(11,81,56,.075), rgba(11,81,56,0)) !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step > span {
+  width: 42px !important;
+  height: 42px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: var(--phase37-gold) !important;
+  background: rgba(166,116,25,.08) !important;
+  font-size: 12px !important;
+  font-weight: 820 !important;
+  letter-spacing: -.02em !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step div b {
+  color: #26322a !important;
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  font-weight: 720 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step div strong {
+  display: block !important;
+  margin-top: 5px !important;
+  color: var(--phase37-ink) !important;
+  font-size: clamp(16px, 1.35vw, 21px) !important;
+  line-height: 1.1 !important;
+  font-weight: 760 !important;
+  letter-spacing: -.04em !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step div p {
+  max-width: 520px !important;
+  margin-top: 6px !important;
+  color: var(--phase37-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.38 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-step em,
+body[data-active-view="today"] #operator-session-mode .os8-gate em {
+  color: #007c72 !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+  font-weight: 820 !important;
+  letter-spacing: .045em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-gate {
+  min-height: 66px !important;
+  display: grid !important;
+  grid-template-columns: 8px minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-gate > span {
+  width: 4px !important;
+  height: 16px !important;
+  background: rgba(166,116,25,.80) !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-gate b {
+  color: var(--phase37-ink) !important;
+  font-size: 14px !important;
+  line-height: 1.2 !important;
+  font-weight: 730 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-gate p {
+  margin-top: 4px !important;
+  color: var(--phase37-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.32 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-packet-note {
+  margin-top: 16px !important;
+  padding: 14px 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="today"] .wk-audit.phase24-operating-rules {
+  margin-top: clamp(12px, 2vw, 22px) !important;
+  padding: clamp(18px, 2.2vw, 26px) 0 0 !important;
+  border-top: 1px solid var(--phase37-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 1100px) {
+  body[data-active-view="today"] #wk-brief.wk-hero,
+  body[data-active-view="today"] #operator-session-mode.os8-session,
+  body[data-active-view="today"] #operator-session-mode .os8-flow {
+    grid-template-columns: 1fr !important;
+    grid-template-areas: none !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-hero,
+  body[data-active-view="today"] #operator-session-mode .os8-metrics,
+  body[data-active-view="today"] #operator-session-mode .os8-flow {
+    grid-area: auto !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-active-view="today"] #command {
+    gap: 16px !important;
+  }
+
+  body[data-active-view="today"] #wk-brief.wk-hero {
+    padding: 28px 0 18px !important;
+    gap: 20px !important;
+  }
+
+  body[data-active-view="today"] #wk-brief h1 {
+    max-width: 350px !important;
+    font-size: clamp(46px, 14.7vw, 58px) !important;
+    line-height: .89 !important;
+  }
+
+  body[data-active-view="today"] #wk-brief p {
+    max-width: 340px !important;
+    margin-top: 17px !important;
+    font-size: 16px !important;
+    line-height: 1.43 !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .wk-actions {
+    grid-template-columns: 1fr !important;
+    margin-top: 24px !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .wk-actions a {
+    min-height: 42px !important;
+    justify-content: center !important;
+    border-left: 0 !important;
+    border-top: 1px solid var(--phase37-line) !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .wk-actions a:first-child {
+    border-top: 0 !important;
+    justify-content: center !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .phase24-snapshot div {
+    min-height: 54px !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 10px !important;
+    padding: 11px 0 !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .phase24-snapshot span {
+    grid-column: 1 / -1 !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .phase24-snapshot b {
+    font-size: 22px !important;
+  }
+
+  body[data-active-view="today"] #wk-brief .phase24-snapshot em {
+    font-size: 9px !important;
+    white-space: normal !important;
+    text-align: right !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode.os8-session {
+    padding-top: 18px !important;
+    gap: 16px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-hero h2 {
+    max-width: 330px !important;
+    font-size: clamp(34px, 10vw, 42px) !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-next-card {
+    margin-top: 18px !important;
+    padding: 14px 0 !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-next-card b {
+    font-size: 23px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-metric {
+    min-height: 58px !important;
+    padding: 10px 6px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-metric span {
+    font-size: 7.5px !important;
+    letter-spacing: .04em !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-metric b {
+    margin-top: 8px !important;
+    font-size: 22px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-metric em {
+    display: none !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-step {
+    grid-template-columns: 40px minmax(0, 1fr) !important;
+    min-height: 92px !important;
+    padding: 13px 0 !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-step > span {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-step em {
+    grid-column: 2 !important;
+    justify-self: start !important;
+    margin-top: -2px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-gate {
+    grid-template-columns: 6px minmax(0, 1fr) !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-gate em {
+    grid-column: 2 !important;
+    justify-self: start !important;
+  }
+}
+
+/* v1.69.1 - Phase 37 self-review: shorter Today hero and immediate session-state strip */
+body[data-active-view="today"] #wk-brief.wk-hero {
+  padding-top: clamp(24px, 4.4vw, 54px) !important;
+  padding-bottom: clamp(14px, 2vw, 24px) !important;
+  align-items: center !important;
+}
+
+body[data-active-view="today"] #wk-brief h1 {
+  max-width: 520px !important;
+  font-size: clamp(50px, 6.7vw, 92px) !important;
+  line-height: .895 !important;
+  letter-spacing: -.083em !important;
+}
+
+body[data-active-view="today"] #wk-brief p {
+  max-width: 520px !important;
+  margin-top: 16px !important;
+  font-size: clamp(15px, 1.25vw, 18px) !important;
+}
+
+body[data-active-view="today"] #wk-brief .wk-actions {
+  margin-top: 22px !important;
+}
+
+body[data-active-view="today"] #operator-session-mode.os8-session {
+  grid-template-columns: minmax(300px, .58fr) minmax(0, 1fr) !important;
+  grid-template-areas:
+    "hero flow"
+    "metrics flow" !important;
+  grid-template-rows: auto auto !important;
+  column-gap: clamp(18px, 2.4vw, 34px) !important;
+  row-gap: 16px !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-flow {
+  align-self: start !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-hero h2 {
+  font-size: clamp(34px, 4.2vw, 54px) !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-hero > p {
+  max-width: 400px !important;
+  margin-top: 12px !important;
+  font-size: 14px !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-next-card {
+  margin-top: 18px !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-next-card b {
+  font-size: clamp(22px, 2.25vw, 31px) !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metrics {
+  align-self: start !important;
+  margin-top: 0 !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric {
+  min-height: 62px !important;
+  padding: 10px 12px !important;
+}
+
+body[data-active-view="today"] #operator-session-mode .os8-metric b {
+  font-size: 24px !important;
+}
+
+@media (min-width: 1101px) {
+  body[data-active-view="today"] #operator-session-mode .os8-metrics {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    transform: translateY(calc(100% + 158px)) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  body[data-active-view="today"] #wk-brief.wk-hero {
+    padding-top: 22px !important;
+  }
+
+  body[data-active-view="today"] #wk-brief h1 {
+    font-size: clamp(42px, 13.2vw, 52px) !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-card-head b {
+    max-width: 148px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* v1.69.2 - Phase 37 final mobile correction: remove zero-metric artifact, keep action then sprint */
+@media (max-width: 760px) {
+  body[data-active-view="today"] #operator-session-mode .os8-metrics {
+    display: none !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-flow {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode :where(.os8-sprint-card, .os8-packet-card) {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* v1.69.3 - Phase 37 hard mobile layout lock: Today sprint never leaves the viewport */
+@media (max-width: 760px) {
+  body[data-active-view="today"] #operator-session-mode.os8-session {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: none !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-hero,
+  body[data-active-view="today"] #operator-session-mode .os8-flow {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    grid-area: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    transform: none !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-flow {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  body[data-active-view="today"] #operator-session-mode .os8-sprint-card,
+  body[data-active-view="today"] #operator-session-mode .os8-packet-card,
+  body[data-active-view="today"] #operator-session-mode .os8-step,
+  body[data-active-view="today"] #operator-session-mode .os8-gate {
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+}

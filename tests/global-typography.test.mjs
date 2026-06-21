@@ -335,6 +335,12 @@ assert.match(css, /\.market-builder-total b \{[\s\S]{0,220}font-variant-numeric:
 assert.match(css, /v1\.66\.1 - Phase 34 second pass: open inventory rail must be prominent even at 0 reached/, 'Phase 34 progress prominence correction marker required');
 assert.match(css, /v1\.66\.11 - Phase 34 no-span row anatomy: market row avoids legacy \.market-toggle span collapse/, 'Phase 34 final no-span market row repair marker required');
 assert.match(css, /v1\.66\.12 - Phase 34 consolidated market selector ownership/, 'Phase 34 consolidated market selector ownership marker required');
+assert.match(css, /v1\.66\.13 - Phase 34 compact market selector: control, not oversized panel/, 'Phase 34 compact market selector correction marker required');
+assert.match(css, /v1\.66\.14 - Phase 34 compact selector tightening: narrow desktop footprint/, 'Phase 34 compact selector desktop tightening marker required');
+assert.match(css, /market-toggle-grid\.market-toggle-grid \{[\s\S]{0,180}max-width: min\(100%, 560px\) !important/, 'Builders market selector should be constrained so it reads as a compact control');
+assert.match(css, /max-width: 420px !important/, 'Builders market selector desktop footprint should be tightened to a compact control width');
+assert.match(css, /width: min\(100%, 260px\) !important/, 'Builders market selector desktop rail should be tightened to compact width');
+assert.match(css, /market-toggle-v34 > \.market-contact-rail \{[\s\S]{0,180}width: min\(100%, 360px\) !important/, 'Builders progress rail should be compact, not full-row width');
 assert.match(css, /\.market-contact-rail \{[\s\S]{0,180}height: 12px !important;[\s\S]{0,260}rgba\(167, 123, 34, \.24\)/, 'Builders progress rail should have a prominent gold open-inventory track');
 assert.match(css, /\.market-toggle\.active \.market-contact-rail \{[\s\S]{0,120}height: 14px !important/, 'Active Builders market progress rail should be visually prominent');
 

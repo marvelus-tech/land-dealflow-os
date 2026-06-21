@@ -26782,3 +26782,321 @@ body[data-active-view="builders"] .builders-phase83-workbench .builder-ops-jump 
     white-space: nowrap !important;
   }
 }
+
+
+/* v1.91 - Sources-mode route heroes: every page header uses the same calm product cadence */
+:root {
+  --phase91-forest: #0f4a35;
+  --phase91-forest-soft: #dbe9e1;
+  --phase91-gold: #8f6818;
+  --phase91-ink: #08100c;
+  --phase91-muted: #52645b;
+  --phase91-line: rgba(8, 16, 12, .12);
+  --phase91-reading: 34ch;
+}
+
+@media (min-width: 1024px) {
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading,
+    #command .phase24-today-hero
+  ) {
+    --phase91-route-hero-rule: sources-mode-label-title-copy-hairline;
+    width: min(100%, 1060px) !important;
+    max-width: 1060px !important;
+    margin: 0 0 clamp(34px, 4.2vw, 64px) !important;
+    padding: clamp(46px, 6vw, 78px) 0 clamp(24px, 2.8vw, 34px) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--phase91-line) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, .58fr) minmax(280px, .42fr) !important;
+    column-gap: clamp(72px, 10vw, 150px) !important;
+    row-gap: clamp(28px, 3.2vw, 44px) !important;
+    align-items: end !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > .eyebrow,
+  body[data-active-view="today"] #command .phase24-today-hero .wk-kicker {
+    grid-column: 1 / -1 !important;
+    margin: 0 0 clamp(6px, .75vw, 10px) !important;
+    color: var(--phase91-forest) !important;
+    font-size: 11px !important;
+    line-height: 1 !important;
+    font-weight: 860 !important;
+    letter-spacing: .155em !important;
+    text-transform: uppercase !important;
+    white-space: nowrap !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > h2,
+  body[data-active-view="today"] #command .phase24-today-hero h1 {
+    grid-column: 1 !important;
+    margin: 0 !important;
+    max-width: 11.8ch !important;
+    color: var(--phase91-ink) !important;
+    font-family: var(--font-grotesk) !important;
+    font-size: clamp(47px, 4.2vw, 65px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.072em !important;
+    font-weight: 860 !important;
+    text-wrap: balance !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > p,
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-hero-copy > p {
+    grid-column: 2 !important;
+    align-self: end !important;
+    max-width: var(--phase91-reading) !important;
+    margin: 0 0 6px !important;
+    color: var(--phase91-muted) !important;
+    font-size: 14px !important;
+    line-height: 1.46 !important;
+    letter-spacing: -.018em !important;
+    font-weight: 500 !important;
+    text-wrap: pretty !important;
+  }
+  body[data-active-view="deals"] #parcels-section,
+  body[data-active-view="closing"] #closing-section,
+  body[data-active-view="sources"] #sources-hub,
+  body[data-active-view="machine"] #workspace {
+    padding-top: 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section {
+    padding-top: 0 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading {
+    grid-template-columns: minmax(0, .58fr) minmax(280px, .42fr) !important;
+    column-gap: clamp(72px, 10vw, 150px) !important;
+    row-gap: clamp(28px, 3.2vw, 44px) !important;
+    align-items: end !important;
+    margin-bottom: clamp(24px, 3vw, 40px) !important;
+    padding: clamp(42px, 5.4vw, 70px) 0 clamp(22px, 2.6vw, 32px) !important;
+    border-bottom-color: var(--phase91-line) !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading h2 {
+    max-width: 12ch !important;
+    font-size: clamp(47px, 4.2vw, 65px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.072em !important;
+    font-weight: 860 !important;
+  }
+  body[data-active-view="builders"] #builder-list-section > .section-heading.compact-heading p {
+    grid-column: 2 !important;
+    max-width: 30ch !important;
+    white-space: normal !important;
+    font-size: 14px !important;
+    line-height: 1.46 !important;
+    font-weight: 500 !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-active-view="today"] #command .phase24-today-hero {
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-hero-copy {
+    display: contents !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .wk-actions,
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-snapshot {
+    grid-column: 1 / -1 !important;
+    align-self: start !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .wk-actions {
+    width: min(100%, 520px) !important;
+    margin-top: -22px !important;
+    border-top: 1px solid var(--phase91-line) !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-snapshot {
+    margin-top: clamp(10px, 1.2vw, 18px) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  body[data-active-view="closing"] .closing-hero {
+    margin-top: clamp(8px, 1.2vw, 18px) !important;
+    padding-top: clamp(30px, 4vw, 54px) !important;
+    border-top: 0 !important;
+  }
+  body[data-active-view="closing"] .closing-hero-copy h2 {
+    font-size: clamp(38px, 3.4vw, 54px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.068em !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) {
+    --phase91-route-hero-rule: sources-mode-mobile-stacked-hairline;
+    padding: 28px 0 22px !important;
+    margin-bottom: 24px !important;
+    border-bottom: 1px solid var(--phase91-line) !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > h2 {
+    font-size: clamp(38px, 10vw, 56px) !important;
+    line-height: .96 !important;
+    letter-spacing: -.068em !important;
+  }
+}
+
+
+/* v1.91.1 - Route hero label stack: green eyebrow sits directly above black title */
+@media (min-width: 1024px) {
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading,
+    #command .phase24-today-hero
+  ) {
+    grid-template-rows: auto auto !important;
+    row-gap: clamp(10px, 1.1vw, 16px) !important;
+    align-items: end !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > .eyebrow,
+  body[data-active-view="today"] #command .phase24-today-hero .wk-kicker {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    align-self: end !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > h2,
+  body[data-active-view="today"] #command .phase24-today-hero h1 {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    align-self: start !important;
+  }
+  body[data-active-view] :where(
+    #parcels-section > .section-heading.compact-heading,
+    #builder-list-section > .section-heading.compact-heading,
+    #closing-section > .section-heading.compact-heading,
+    #sources-hub > .section-heading.compact-heading,
+    #workspace > .section-heading.compact-heading
+  ) > p,
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-hero-copy > p {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+    align-self: end !important;
+  }
+}
+
+
+/* v1.91.2 - Today is excluded from Sources-mode headers; only reduce its oversized operating headline */
+@media (min-width: 1024px) {
+  body[data-active-view="today"] #command .phase24-today-hero.phase24-today-hero {
+    --phase91-today-rule: exclude-from-sources-mode-reduce-display-scale;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: clamp(520px, 62vh, 700px) !important;
+    margin: 0 0 clamp(32px, 4vw, 56px) !important;
+    padding: clamp(56px, 6vw, 86px) clamp(32px, 5vw, 72px) clamp(42px, 5vw, 68px) !important;
+    display: grid !important;
+    grid-template-columns: minmax(0, .94fr) minmax(360px, .74fr) !important;
+    grid-template-rows: auto !important;
+    gap: clamp(48px, 6vw, 86px) !important;
+    align-items: center !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--phase91-line) !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-hero-copy {
+    display: block !important;
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    align-self: center !important;
+    max-width: 660px !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .wk-kicker {
+    display: inline-block !important;
+    grid-column: auto !important;
+    grid-row: auto !important;
+    margin: 0 !important;
+    color: var(--phase91-forest) !important;
+    font-size: 11px !important;
+    letter-spacing: .155em !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero h1 {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    max-width: 11ch !important;
+    margin: clamp(16px, 2vw, 24px) 0 0 !important;
+    color: var(--phase91-ink) !important;
+    font-size: clamp(70px, 7.2vw, 108px) !important;
+    line-height: .86 !important;
+    letter-spacing: -.085em !important;
+    font-weight: 860 !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-hero-copy > p {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    max-width: 56ch !important;
+    margin: clamp(22px, 2.4vw, 30px) 0 0 !important;
+    color: var(--phase91-muted) !important;
+    font-size: clamp(16px, 1.35vw, 19px) !important;
+    line-height: 1.42 !important;
+    letter-spacing: -.024em !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .wk-actions {
+    grid-column: auto !important;
+    width: min(100%, 520px) !important;
+    margin-top: clamp(22px, 2.6vw, 32px) !important;
+  }
+  body[data-active-view="today"] #command .phase24-today-hero .phase24-snapshot {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+  }
+}

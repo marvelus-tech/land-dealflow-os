@@ -420,3 +420,15 @@ assert.match(css, /\.state-market-toggle\.active/, 'Active Builders state choice
 assert.match(css, /\.state-focus-summary/, 'Selected Builders state summary should replace county-card progress rail emphasis');
 
 console.log('global typography tests passed');
+
+assert.match(css, /v1\.91 - Sources-mode route heroes: every page header uses the same calm product cadence/, 'Phase 91 Sources-mode route hero system missing');
+assert.match(css, /--phase91-route-hero-rule: sources-mode-label-title-copy-hairline/, 'Phase 91 desktop route hero rule token missing');
+assert.match(css, /#parcels-section > \.section-heading\.compact-heading,[\s\S]{0,260}#builder-list-section > \.section-heading\.compact-heading,[\s\S]{0,260}#closing-section > \.section-heading\.compact-heading,[\s\S]{0,260}#sources-hub > \.section-heading\.compact-heading,[\s\S]{0,260}#workspace > \.section-heading\.compact-heading/, 'Phase 91 must include Deals, Builders, Closing, Sources, and Machine route headers');
+assert.match(css, /grid-template-columns: minmax\(0, \.58fr\) minmax\(280px, \.42fr\) !important/, 'Phase 91 route heroes should use the Sources two-column label/title/copy cadence');
+assert.match(css, /--phase91-forest: #0f4a35/, 'Phase 91 should define refined forest accent');
+assert.match(css, /--phase91-gold: #8f6818/, 'Phase 91 should define restrained gold accent');
+assert.match(css, /v1\.91\.2 - Today is excluded from Sources-mode headers; only reduce its oversized operating headline/, 'Phase 91.2 Today exclusion/reduction marker missing');
+assert.match(css, /--phase91-today-rule: exclude-from-sources-mode-reduce-display-scale/, 'Today should be explicitly excluded from the shared Sources-mode header system');
+assert.match(css, /body\[data-active-view="today"\] #command \.phase24-today-hero \.phase24-hero-copy \{[\s\S]{0,140}display: block !important/, 'Today hero copy should not flatten into the shared Sources-mode grid');
+assert.match(css, /body\[data-active-view="today"\] #command \.phase24-today-hero h1 \{[\s\S]{0,260}font-size: clamp\(70px, 7\.2vw, 108px\) !important/, 'Today headline should be reduced but remain a distinct operating hero');
+

@@ -97,7 +97,7 @@ assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /completion-state-legend[\s\S]{0,160}legend-working[\s\S]{0,120}legend-todo/, 'Builder command center should explain done, in-progress, and todo state colors');
-assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /contact-call[\s\S]*Called[\s\S]*contact-email[\s\S]*Emailed/, 'Builder queue should expose readable call/email and called/emailed indicators');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /contact-call[\s\S]{0,520}solidIndustryIcon\('phone'\)[\s\S]{0,260}contact-email[\s\S]{0,520}solidIndustryIcon\('email'\)/, 'Builder queue should expose readable phone/email icon indicators with aria labels, not visible completion text');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip closing-primary-action[\s\S]{0,260}Clear the title packet/, 'Closing should expose one primary action before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Phase 12 · Print detail finish/, 'Closing document packet should not expose implementation-phase residue');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /Phase 8 · real operator session mode/, 'Today route should not expose implementation-phase residue');
@@ -142,8 +142,8 @@ assert.match(appSource, /function solidIndustryIcon\(kind\)[\s\S]*class="solid-i
 assert.doesNotMatch(appSource, /queue-proof-line|queue-source-link/, 'Builder queue should not repeat source/proof detail already shown in selected builder detail');
 assert.match(appSource, /validation-source-proof[\s\S]{0,260}safeLink\(selected\.sourceUrl/, 'Selected builder detail should retain the source proof link');
 assert.match(appSource, /queue-score[\s\S]{0,180}solidIndustryIcon\('score'\)/, 'Builder score should use the solid icon language');
-assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,420}<em>\$\{outreach\.phone \? 'Called' : 'Call'\}<\/em><\/button>/, 'Call log toggle should be text-only; color state is enough');
-assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,420}<em>\$\{outreach\.email \? 'Emailed' : 'Email'\}<\/em><\/button>/, 'Email log toggle should be text-only; color state is enough');
+assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,420}solidIndustryIcon\('phone'\)[\s\S]{0,80}<\/button>/, 'Call log toggle should keep the phone icon; color state is enough');
+assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,420}solidIndustryIcon\('email'\)[\s\S]{0,80}<\/button>/, 'Email log toggle should keep the email icon; color state is enough');
 assert.match(appSource, /validation-script-drawer[\s\S]{0,180}solidIndustryIcon\('chevron'\)/, 'Disclosure drawers should use a restrained solid chevron icon');
 assert.match(css, /\.validation-script-drawer:not\(\[open\]\) > :not\(summary\)[\s\S]{0,80}display: none !important/, 'Phase 25 should keep secondary scripts hidden until requested');
 const builderCommandSource = appSource.slice(appSource.indexOf('function renderBuyerValidationCommand'), appSource.indexOf('function renderBuilderMarketWorkbench'));
@@ -203,10 +203,14 @@ assert.match(css, /v1\.61\.2 - Nav visibility hard guard: no route item can hide
 assert.match(css, /--phase29-nav-hard-guard: route-tabs-visible-after-all-legacy-nav-blocks/, 'Final nav guard should encode route-tab visibility after all legacy nav blocks');
 assert.match(css, /html body \.nav \.app-tabs[\s\S]{0,320}overflow-x: visible !important;[\s\S]{0,180}max-width: none !important;[\s\S]{0,120}white-space: normal !important/, 'Final nav guard must beat historical app-tabs overflow scrollers');
 assert.match(css, /--phase29-hotfix-nav-rule: all-route-tabs-visible-no-hidden-scroller/, 'Hotfix should encode visible route tabs rather than a hidden scroller');
-assert.match(css, /\.app-tabs[\s\S]{0,360}flex-wrap: wrap !important;[\s\S]{0,220}overflow: visible !important;[\s\S]{0,140}white-space: normal !important/, 'Navbar route tabs must wrap visibly instead of hiding items in a scrollbar');
+assert.match(css, /v1\.61\.3 - Phase 29 correction: restore original nav rail spacing and icon-only call\/email log controls/, 'Phase 29 correction marker required for clarified nav/log-button intent');
+assert.match(css, /--phase29-nav-correction-rule: original-nav-rail-equal-side-spacing-only/, 'Nav correction should restore the old rail and only fix equal side spacing');
+assert.match(css, /html body \.nav[\s\S]{0,260}grid-template-columns: minmax\(120px, 1fr\) auto minmax\(120px, 1fr\) !important;[\s\S]{0,240}padding-left: clamp\(18px, 4vw, 42px\) !important;[\s\S]{0,120}padding-right: clamp\(18px, 4vw, 42px\) !important/, 'Navbar should use the original centered rail with equal left/right spacing');
 assert.doesNotMatch(css, /\.app-tabs \{[\s\S]{0,260}max-width: min\(720px, 58vw\) !important;[\s\S]{0,220}overflow-x: auto !important/, 'Broken Phase 29 hidden-scroll nav pattern must not be the active nav rule');
-assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,460}<em>\$\{outreach\.phone \? 'Called' : 'Call'\}<\/em><\/button>/, 'Builder queue call log toggle should be text/color state only, without leading icon');
-assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,460}<em>\$\{outreach\.email \? 'Emailed' : 'Email'\}<\/em><\/button>/, 'Builder queue email log toggle should be text/color state only, without leading icon');
-assert.doesNotMatch(appSource, /contact-icon-toggle contact-call[\s\S]{0,520}solidIndustryIcon\('phone'\)|contact-icon-toggle contact-email[\s\S]{0,520}solidIndustryIcon\('email'\)|contact-state-toggle[\s\S]{0,360}solidIndustryIcon\('(phone|email)'\)/, 'Builder queue/detail logging toggles should not include redundant icons; color state is enough');
+assert.match(css, /--phase29-log-correction-rule: phone-email-icons-only-no-check-no-visible-text/, 'Log toggle correction should preserve icons but remove explicit text/check indicators');
+assert.match(appSource, /contact-icon-toggle contact-call[\s\S]{0,460}solidIndustryIcon\('phone'\)[\s\S]{0,90}<\/button>/, 'Builder queue call log toggle should be icon-only with phone icon');
+assert.match(appSource, /contact-icon-toggle contact-email[\s\S]{0,460}solidIndustryIcon\('email'\)[\s\S]{0,90}<\/button>/, 'Builder queue email log toggle should be icon-only with email icon');
+assert.match(appSource, /selected-outreach-state[\s\S]{0,1000}contact-state-toggle[\s\S]{0,900}solidIndustryIcon\('phone'\)[\s\S]{0,900}contact-state-toggle[\s\S]{0,900}solidIndustryIcon\('email'\)/, 'Builder detail logging toggles should keep phone/email icons');
+assert.doesNotMatch(appSource, /contact-icon-toggle contact-call[\s\S]{0,520}<em>|contact-icon-toggle contact-email[\s\S]{0,520}<em>|contact-state-toggle[\s\S]{0,360}solidIndustryIcon\('check'\)/, 'Builder queue/detail logging toggles should not show explicit text or check icons');
 
 console.log('global typography tests passed');

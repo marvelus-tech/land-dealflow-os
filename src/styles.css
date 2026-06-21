@@ -16814,3 +16814,624 @@ body[data-active-view="builders"] .validation-command {
     grid-column: 1 / -1 !important;
   }
 }
+
+/* v1.63.6 - Phase 31 hard Apple review repair: Builders mobile rows and actions must be readable, not poster UI */
+:root {
+  --phase31-hard-repair-rule: builders-no-billboards-no-fractured-mobile-rows;
+}
+body[data-active-view="builders"] #builder-list-panel .next-best-action {
+  display: grid !important;
+  grid-template-columns: 96px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: baseline !important;
+  margin: 0 !important;
+  padding: 16px 0 !important;
+  min-height: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase31-line) !important;
+  border-bottom: 1px solid var(--phase31-line) !important;
+  border-left: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .next-best-action::before,
+body[data-active-view="builders"] #builder-list-panel .next-best-action::after {
+  content: none !important;
+  display: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .next-best-action span {
+  color: var(--phase31-forest-2) !important;
+  font: 760 11px/1.12 var(--phase31-text) !important;
+  letter-spacing: .075em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="builders"] #builder-list-panel .next-best-action strong {
+  max-width: 48ch !important;
+  color: var(--phase31-ink) !important;
+  font: 650 clamp(16px, 1.35vw, 20px)/1.28 var(--phase31-text) !important;
+  letter-spacing: -.026em !important;
+  text-transform: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid var(--phase31-line) !important;
+  border-bottom: 1px solid var(--phase31-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-email-status {
+  grid-column: 1 / -1 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button,
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.secondary,
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.icon-only,
+body[data-active-view="builders"] #builder-list-panel .copy-email-button,
+body[data-active-view="builders"] #builder-list-panel .website-link {
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  width: auto !important;
+  min-height: 54px !important;
+  padding: 0 12px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase31-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  color: var(--phase31-forest) !important;
+  font: 690 14px/1.1 var(--phase31-text) !important;
+  letter-spacing: -.012em !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button:last-of-type {
+  border-right: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button svg,
+body[data-active-view="builders"] #builder-list-panel .validation-call-button .action-svg {
+  width: 17px !important;
+  height: 17px !important;
+  flex: 0 0 17px !important;
+  color: currentColor !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.copy-email-button,
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.secondary.copy-email-button {
+  background: var(--phase31-forest) !important;
+  color: #fffefa !important;
+  font-weight: 720 !important;
+  letter-spacing: .01em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.disabled {
+  opacity: .34 !important;
+  pointer-events: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 8px !important;
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase31-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item.active {
+  padding-left: 12px !important;
+  background: var(--phase31-green-soft) !important;
+  box-shadow: inset 3px 0 0 var(--phase31-forest) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-row-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: start !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-copy {
+  display: grid !important;
+  gap: 5px !important;
+  min-width: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-copy b {
+  color: var(--phase31-ink) !important;
+  font: 710 14px/1.18 var(--phase31-text) !important;
+  letter-spacing: -.018em !important;
+  overflow-wrap: anywhere !important;
+  text-transform: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-copy small {
+  color: var(--phase31-muted) !important;
+  font: 430 12px/1.34 var(--phase31-text) !important;
+  letter-spacing: -.004em !important;
+  text-transform: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-score {
+  display: inline-grid !important;
+  grid-auto-flow: column !important;
+  gap: 5px !important;
+  align-items: center !important;
+  justify-content: end !important;
+  min-width: 36px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--phase31-gold) !important;
+  font: 730 12px/1 var(--phase31-text) !important;
+  letter-spacing: .08em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-state-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 9px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-state-row .badge {
+  max-width: 100% !important;
+  padding: 4px 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--phase31-muted) !important;
+  font: 650 11px/1.25 var(--phase31-text) !important;
+  letter-spacing: -.002em !important;
+  text-transform: none !important;
+  white-space: normal !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card {
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase31-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card h4 {
+  max-width: 34ch !important;
+  margin: 16px 0 10px !important;
+  color: var(--phase31-ink) !important;
+  font: 680 18px/1.22 var(--phase31-text) !important;
+  letter-spacing: -.025em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card p {
+  color: var(--phase31-muted) !important;
+  font: 430 13px/1.42 var(--phase31-text) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card ul {
+  display: grid !important;
+  gap: 0 !important;
+  margin: 12px 0 0 !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--phase31-line) !important;
+  list-style: none !important;
+  counter-reset: seller-gate !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+  counter-increment: seller-gate !important;
+  display: grid !important;
+  grid-template-columns: 34px minmax(0, 1fr) !important;
+  gap: 16px !important;
+  align-items: start !important;
+  min-width: 0 !important;
+  padding: 15px 0 !important;
+  border-bottom: 1px solid var(--phase31-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li::before {
+  content: counter(seller-gate, decimal-leading-zero) !important;
+  display: inline-block !important;
+  color: var(--phase31-forest-2) !important;
+  font: 760 11px/1 var(--phase31-text) !important;
+  letter-spacing: .12em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li b,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li strong {
+  min-width: 0 !important;
+  color: var(--phase31-ink) !important;
+  font: 670 14px/1.24 var(--phase31-text) !important;
+  letter-spacing: -.018em !important;
+  overflow-wrap: anywhere !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li span,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li small,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li em {
+  color: var(--phase31-muted) !important;
+  font: 430 13px/1.38 var(--phase31-text) !important;
+  letter-spacing: -.004em !important;
+  text-transform: none !important;
+  overflow-wrap: anywhere !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] main {
+    padding-inline: 20px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-grid-main {
+    gap: 20px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-focus-head {
+    padding: 20px 0 16px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-focus-head h3 {
+    max-width: 100% !important;
+    font: 720 clamp(30px, 9.4vw, 42px)/1.02 var(--phase31-display) !important;
+    letter-spacing: -.05em !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-focus-head p {
+    font-size: 14px !important;
+    line-height: 1.42 !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .next-best-action {
+    grid-template-columns: 1fr !important;
+    gap: 7px !important;
+    padding: 14px 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .next-best-action strong {
+    max-width: 100% !important;
+    font: 640 16px/1.33 var(--phase31-text) !important;
+    letter-spacing: -.018em !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button.secondary,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button.icon-only,
+  body[data-active-view="builders"] #builder-list-panel .copy-email-button,
+  body[data-active-view="builders"] #builder-list-panel .website-link {
+    min-height: 48px !important;
+    padding: 0 6px !important;
+    gap: 5px !important;
+    font-size: 12px !important;
+    letter-spacing: -.01em !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button svg,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button .action-svg {
+    width: 15px !important;
+    height: 15px !important;
+    flex-basis: 15px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-queue-item {
+    padding: 13px 0 !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-row-main {
+    grid-template-columns: minmax(0, 1fr) 36px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .queue-copy b {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .queue-copy small {
+    font-size: 12px !important;
+    line-height: 1.34 !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+    gap: 14px !important;
+    padding: 15px 0 !important;
+  }
+}
+
+/* v1.63.7 - Phase 31 hard Apple review repair: remove mobile artifacts from Builders actions and seller gate */
+body[data-active-view="builders"] #builder-list-panel .selected-outreach-state {
+  display: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-email-status:empty {
+  display: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions {
+  grid-auto-flow: column !important;
+  grid-auto-columns: minmax(0, 1fr) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button) {
+  grid-row: 1 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.icon-only::after {
+  content: "Email" !important;
+  display: inline !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button.copy-email-button {
+  min-width: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-save-row {
+  padding-top: 16px !important;
+  border-top: 1px solid var(--phase31-line) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-save-row button,
+body[data-active-view="builders"] #builder-list-panel button[data-save-buyer-validation] {
+  min-height: 42px !important;
+  padding: 0 16px !important;
+  border: 1px solid var(--phase31-forest) !important;
+  border-radius: 0 !important;
+  background: var(--phase31-forest) !important;
+  color: #fffefa !important;
+  box-shadow: none !important;
+  font: 730 11px/1 var(--phase31-text) !important;
+  letter-spacing: .06em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li span[aria-hidden="true"] {
+  display: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+  grid-template-columns: 36px minmax(0, 1fr) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li::before {
+  padding-top: 1px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+  color: var(--phase31-ink) !important;
+  font: 520 14px/1.3 var(--phase31-text) !important;
+  letter-spacing: -.01em !important;
+  overflow-wrap: normal !important;
+}
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li:not(:has(*:not(span))) {
+  white-space: normal !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] #builder-list-panel .validation-actions {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button.secondary,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button.icon-only,
+  body[data-active-view="builders"] #builder-list-panel .copy-email-button,
+  body[data-active-view="builders"] #builder-list-panel .website-link {
+    min-height: 46px !important;
+    font-size: 11.5px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button svg,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button .action-svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .seller-unlock-card h4 {
+    font-size: 17px !important;
+    line-height: 1.24 !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* v1.63.8 - Phase 31 hard Apple review repair: Builders action rail uses four explicit columns */
+body[data-active-view="builders"] #builder-list-panel .validation-actions {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  grid-auto-columns: initial !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button) {
+  grid-row: 1 !important;
+  grid-column: auto !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button):nth-of-type(1) { grid-column: 1 !important; }
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button):nth-of-type(2) { grid-column: 2 !important; }
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button):nth-of-type(3) { grid-column: 3 !important; }
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button):nth-of-type(4) { grid-column: 4 !important; }
+body[data-active-view="builders"] #builder-list-panel .validation-actions .website-link {
+  grid-column: 4 !important;
+  width: 100% !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-call-button.icon-only {
+  grid-column: 2 !important;
+  width: 100% !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions .copy-email-button {
+  grid-column: 3 !important;
+  width: 100% !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-call-button:first-child {
+  grid-column: 1 !important;
+  width: 100% !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button.secondary,
+  body[data-active-view="builders"] #builder-list-panel .validation-call-button.icon-only,
+  body[data-active-view="builders"] #builder-list-panel .copy-email-button,
+  body[data-active-view="builders"] #builder-list-panel .website-link {
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+}
+
+/* v1.63.9 - Phase 31 hard Apple review repair: replace fragile mobile action grid with a single no-wrap rail */
+body[data-active-view="builders"] .selected-outreach-state,
+body[data-active-view="builders"] #builder-list-panel .selected-outreach-state,
+body[data-active-view="builders"] .validation-email-status:empty,
+body[data-active-view="builders"] #builder-list-panel .validation-email-status:empty {
+  display: none !important;
+}
+body[data-active-view="builders"] .validation-actions,
+body[data-active-view="builders"] #builder-list-panel .validation-actions {
+  display: flex !important;
+  flex-flow: row nowrap !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+  gap: 0 !important;
+  width: 100% !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--phase31-line) !important;
+  border-bottom: 1px solid var(--phase31-line) !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+body[data-active-view="builders"] .validation-actions > :where(a,button),
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button) {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  grid-column: auto !important;
+  grid-row: auto !important;
+  min-height: 48px !important;
+  padding: 0 6px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase31-line) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  color: var(--phase31-forest) !important;
+  font: 710 12px/1 var(--phase31-text) !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+  gap: 5px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+}
+body[data-active-view="builders"] .validation-actions > :where(a,button):last-of-type,
+body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button):last-of-type {
+  border-right: 0 !important;
+}
+body[data-active-view="builders"] .validation-actions .copy-email-button,
+body[data-active-view="builders"] #builder-list-panel .validation-actions .copy-email-button {
+  background: var(--phase31-forest) !important;
+  color: #fffefa !important;
+  border-right: 0 !important;
+}
+body[data-active-view="builders"] .validation-actions .website-link,
+body[data-active-view="builders"] #builder-list-panel .validation-actions .website-link,
+body[data-active-view="builders"] .validation-actions .validation-call-button.icon-only,
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-call-button.icon-only,
+body[data-active-view="builders"] .validation-actions .validation-call-button:first-child,
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-call-button:first-child {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  grid-column: auto !important;
+}
+body[data-active-view="builders"] .validation-actions .validation-call-button.icon-only::after,
+body[data-active-view="builders"] #builder-list-panel .validation-actions .validation-call-button.icon-only::after {
+  content: "Email" !important;
+  display: inline !important;
+}
+body[data-active-view="builders"] .validation-actions svg,
+body[data-active-view="builders"] #builder-list-panel .validation-actions svg {
+  width: 14px !important;
+  height: 14px !important;
+  flex: 0 0 auto !important;
+}
+body[data-active-view="builders"] .seller-unlock-card li,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 16px !important;
+  min-height: 46px !important;
+  padding: 13px 0 !important;
+  color: var(--phase31-ink) !important;
+  font: 520 15px/1.28 var(--phase31-text) !important;
+  letter-spacing: -.012em !important;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+}
+body[data-active-view="builders"] .seller-unlock-card li::before,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li::before {
+  flex: 0 0 32px !important;
+  width: 32px !important;
+  color: var(--phase31-forest-2) !important;
+  font: 820 11px/1 var(--phase31-text) !important;
+  letter-spacing: .08em !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] .validation-actions,
+  body[data-active-view="builders"] #builder-list-panel .validation-actions {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+  body[data-active-view="builders"] .validation-actions > :where(a,button),
+  body[data-active-view="builders"] #builder-list-panel .validation-actions > :where(a,button) {
+    flex-basis: 25% !important;
+    font-size: 11.5px !important;
+  }
+  body[data-active-view="builders"] .seller-unlock-card li,
+  body[data-active-view="builders"] #builder-list-panel .seller-unlock-card li {
+    font-size: 15px !important;
+  }
+}
+
+/* v1.63.10 - Phase 31 hard Apple review repair: mobile queue scores must never split digits */
+body[data-active-view="builders"] .validation-queue-item,
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item {
+  overflow: hidden !important;
+}
+body[data-active-view="builders"] .validation-row-main,
+body[data-active-view="builders"] #builder-list-panel .validation-row-main {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(52px, auto) !important;
+  align-items: start !important;
+  gap: 10px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+body[data-active-view="builders"] .validation-row-main .queue-copy,
+body[data-active-view="builders"] #builder-list-panel .validation-row-main .queue-copy {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+body[data-active-view="builders"] .validation-row-main .queue-copy b,
+body[data-active-view="builders"] #builder-list-panel .validation-row-main .queue-copy b {
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+body[data-active-view="builders"] .queue-score,
+body[data-active-view="builders"] #builder-list-panel .queue-score {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 5px !important;
+  min-width: 52px !important;
+  width: max-content !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  flex: 0 0 auto !important;
+  text-align: right !important;
+}
+body[data-active-view="builders"] .queue-score b,
+body[data-active-view="builders"] #builder-list-panel .queue-score b {
+  display: inline-block !important;
+  min-width: 2ch !important;
+  white-space: nowrap !important;
+  word-break: keep-all !important;
+  overflow-wrap: normal !important;
+  font-variant-numeric: tabular-nums !important;
+  font-feature-settings: "tnum" 1 !important;
+  line-height: 1 !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] .validation-row-main,
+  body[data-active-view="builders"] #builder-list-panel .validation-row-main {
+    grid-template-columns: minmax(0, 1fr) 58px !important;
+  }
+  body[data-active-view="builders"] .queue-score,
+  body[data-active-view="builders"] #builder-list-panel .queue-score {
+    min-width: 58px !important;
+  }
+}

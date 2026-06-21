@@ -25408,3 +25408,42 @@ body[data-active-view="builders"] .state-county-ledger {
     line-height: 1.52 !important;
   }
 }
+
+
+/* v1.82 - Mobile state-first header must use full-width block flow */
+@media (max-width: 720px) {
+  body[data-active-view="builders"] .state-first-ops-header {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 26px 14px 18px !important;
+    box-sizing: border-box !important;
+  }
+  body[data-active-view="builders"] .state-first-ops-header > .builder-ops-title,
+  body[data-active-view="builders"] .state-first-ops-header > .state-first-workbench {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  body[data-active-view="builders"] .state-first-ops-header > .state-first-workbench {
+    margin-top: 44px !important;
+  }
+  body[data-active-view="builders"] .state-first-ops-header .state-market-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  body[data-active-view="builders"] .state-first-ops-header .state-market-toggle {
+    width: 100% !important;
+    min-width: 0 !important;
+    grid-template-columns: 36px minmax(0, 1fr) 32px !important;
+    box-sizing: border-box !important;
+  }
+}

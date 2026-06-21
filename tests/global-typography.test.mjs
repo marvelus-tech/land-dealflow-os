@@ -349,6 +349,18 @@ assert.match(css, /v1\.67\.1 - Phase 35 self-review: compress hero, remove mobil
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section > \.section-heading \{[\s\S]{0,260}max-width: 620px !important/, 'Builders page hero should be compact enough for a dense operator screen');
 assert.match(css, /v1\.67\.2 - Phase 35 final: remove redundant Next label from Builders command/, 'Phase 35 final command-label removal marker required');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-panel \.primary-action-strip\.builders-primary-action > span,[\s\S]{0,260}display: none !important/, 'Builders next-action label should be removed because the command and CTA carry the hierarchy');
+assert.match(css, /v1\.68 - Phase 36 Global Apple shell normalization: calm segmented workspace, safe mobile nav, unified route rhythm/, 'Phase 36 global shell normalization marker required');
+assert.match(css, /--phase36-shell-rule: global-apple-shell-normalization-no-route-redesign/, 'Phase 36 should encode that this is shell normalization, not route redesign');
+assert.match(css, /--app-forest: #0b5138/, 'Phase 36 should expose the refined forest accent token globally');
+assert.match(css, /--app-gold: #a67419/, 'Phase 36 should expose the refined gold metric token globally');
+assert.match(css, /header\.nav \.app-tabs \{[\s\S]{0,420}overflow-x: auto !important;[\s\S]{0,220}scrollbar-width: none !important/, 'Phase 36 nav tabs must be horizontally scroll-safe instead of clipped on mobile');
+assert.match(css, /@media \(max-width: 760px\) \{[\s\S]{0,520}header\.nav \.brand \{[\s\S]{0,80}display: none !important/, 'Phase 36 mobile shell should prioritize route tabs over brand text');
+assert.match(css, /main#app \{[\s\S]{0,220}max-width: var\(--app-shell-max\) !important;[\s\S]{0,180}var\(--app-shell-gutter\)/, 'Phase 36 should normalize app gutters and max width');
+assert.match(css, /#app :where\(\.section-heading, \.compact-heading\) \{[\s\S]{0,260}border-bottom: 1px solid var\(--app-hairline\) !important/, 'Phase 36 should normalize route heading rhythm with a quiet hairline');
+assert.match(css, /Final route isolation guard after Phase 36 global shell normalization/, 'Phase 36 must preserve route isolation after global shell overrides');
+assert.match(css, /v1\.68\.1 - Phase 36 self-review: all six mobile workspace tabs visible, no clipped route access/, 'Phase 36 self-review mobile nav correction marker required');
+assert.match(css, /@media \(max-width: 760px\) \{[\s\S]{0,180}header\.nav \.app-tabs \{[\s\S]{0,180}grid-template-columns: repeat\(6, minmax\(0, 1fr\)\) !important/, 'Phase 36 mobile nav should show all six workspace tabs, not hide Machine off-screen');
+assert.match(css, /header\.nav \.tab-button \{[\s\S]{0,180}font-size: clamp\(9px, 2\.45vw, 10\.5px\) !important/, 'Phase 36 mobile tab typography should fit all six tabs without clipping');
 assert.match(css, /@media \(max-width: 720px\) \{[\s\S]{0,1800}\.builders-primary-action span \{[\s\S]{0,80}display: none !important/, 'Mobile Builders next-action label should be concealed to prevent command collision');
 assert.match(css, /body\[data-active-view="builders"\] \.validation-queue \.panel-kicker b \{[\s\S]{0,180}text-overflow: ellipsis !important/, 'Mobile queue header proof label should not clip into adjacent controls');
 assert.match(css, /market-toggle-v34 > \.market-contact-rail \{[\s\S]{0,180}width: min\(100%, 360px\) !important/, 'Builders progress rail should be compact, not full-row width');

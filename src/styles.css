@@ -20701,3 +20701,300 @@ body[data-active-view="builders"] .builders-primary-action > span {
     gap: 8px !important;
   }
 }
+
+/* v1.68 - Phase 36 Global Apple shell normalization: calm segmented workspace, safe mobile nav, unified route rhythm */
+:root {
+  --phase36-shell-rule: global-apple-shell-normalization-no-route-redesign;
+  --app-canvas: #f8f7f1;
+  --app-paper: #fffdf7;
+  --app-elevated: #ffffff;
+  --app-ink: #101712;
+  --app-muted: #637064;
+  --app-subtle: #8b9389;
+  --app-hairline: rgba(16, 23, 18, .105);
+  --app-hairline-strong: rgba(16, 23, 18, .16);
+  --app-forest: #0b5138;
+  --app-forest-soft: rgba(11, 81, 56, .085);
+  --app-gold: #a67419;
+  --app-gold-soft: rgba(166, 116, 25, .12);
+  --app-shell-max: 1240px;
+  --app-shell-gutter: clamp(16px, 3.2vw, 32px);
+  --app-route-gap: clamp(16px, 2.4vw, 28px);
+}
+
+html {
+  background: var(--app-canvas) !important;
+}
+
+body {
+  color: var(--app-ink) !important;
+  background:
+    radial-gradient(circle at 12% -8%, rgba(255,255,255,.72), transparent 32rem),
+    radial-gradient(circle at 88% -10%, rgba(11,81,56,.055), transparent 28rem),
+    linear-gradient(180deg, #fbfaf4 0%, var(--app-canvas) 460px, #f5f3ec 100%) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", ui-sans-serif, system-ui, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+body::before {
+  opacity: .28 !important;
+  background: radial-gradient(circle at 50% -18%, rgba(255,255,255,.62), transparent 38rem) !important;
+}
+
+header.nav {
+  position: sticky !important;
+  top: max(8px, env(safe-area-inset-top)) !important;
+  z-index: 60 !important;
+  width: calc(100% - (var(--app-shell-gutter) * 2)) !important;
+  max-width: var(--app-shell-max) !important;
+  min-height: 52px !important;
+  margin: max(8px, env(safe-area-inset-top)) auto 0 !important;
+  padding: 5px 6px 5px 16px !important;
+  display: grid !important;
+  grid-template-columns: minmax(150px, auto) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: clamp(10px, 2vw, 20px) !important;
+  border: 1px solid rgba(16,23,18,.10) !important;
+  background: color-mix(in srgb, var(--app-paper) 84%, transparent) !important;
+  box-shadow: rgba(16,23,18,.055) 0 12px 32px, inset 0 1px 0 rgba(255,255,255,.72) !important;
+  backdrop-filter: saturate(180%) blur(22px) !important;
+}
+
+header.nav .brand {
+  min-width: 0 !important;
+  color: var(--app-ink) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  font-weight: 680 !important;
+  letter-spacing: -.035em !important;
+  white-space: nowrap !important;
+}
+
+header.nav .app-tabs {
+  justify-self: end !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  display: inline-flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 2px !important;
+  padding: 3px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+  border: 1px solid rgba(16,23,18,.075) !important;
+  background: rgba(16,23,18,.045) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.70) !important;
+}
+
+header.nav .app-tabs::-webkit-scrollbar {
+  display: none !important;
+}
+
+header.nav .tab-button {
+  flex: 0 0 auto !important;
+  min-width: max-content !important;
+  min-height: 34px !important;
+  padding: 0 13px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--app-muted) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 680 !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+  transform: none !important;
+}
+
+header.nav .tab-button:hover {
+  color: var(--app-ink) !important;
+  background: rgba(255,255,255,.46) !important;
+  transform: none !important;
+}
+
+header.nav .tab-button.active {
+  color: var(--app-ink) !important;
+  background: rgba(255,255,255,.92) !important;
+  box-shadow: rgba(16,23,18,.075) 0 3px 12px, inset 0 1px 0 rgba(255,255,255,.9) !important;
+}
+
+main#app {
+  width: 100% !important;
+  max-width: var(--app-shell-max) !important;
+  margin: 0 auto !important;
+  padding: clamp(24px, 4vw, 44px) var(--app-shell-gutter) clamp(52px, 7vw, 88px) !important;
+}
+
+#app .app-panel:not([hidden]) {
+  animation: phase36PanelIn .16s ease-out !important;
+}
+
+@keyframes phase36PanelIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#app .section.app-panel {
+  padding-top: 0 !important;
+}
+
+#app :where(.section-heading, .compact-heading) {
+  max-width: min(760px, 100%) !important;
+  margin: 0 0 var(--app-route-gap) !important;
+  padding: 0 0 clamp(16px, 2.4vw, 26px) !important;
+  border-bottom: 1px solid var(--app-hairline) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#app :where(.section-heading, .compact-heading) .eyebrow {
+  color: var(--app-forest) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 790 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+}
+
+#app :where(.section-heading, .compact-heading) h2 {
+  max-width: 640px !important;
+  margin-top: 11px !important;
+  color: var(--app-ink) !important;
+  font-size: clamp(38px, 5.8vw, 68px) !important;
+  line-height: .91 !important;
+  letter-spacing: -.078em !important;
+  font-weight: 780 !important;
+}
+
+#app :where(.section-heading, .compact-heading) p {
+  max-width: 540px !important;
+  margin-top: 12px !important;
+  color: var(--app-muted) !important;
+  font-size: clamp(15px, 1.45vw, 18px) !important;
+  line-height: 1.42 !important;
+  letter-spacing: -.02em !important;
+}
+
+footer {
+  max-width: var(--app-shell-max) !important;
+  margin: 0 auto !important;
+  padding: 22px var(--app-shell-gutter) 48px !important;
+  color: var(--app-subtle) !important;
+  border-top: 1px solid var(--app-hairline) !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+@media (max-width: 760px) {
+  header.nav {
+    top: max(6px, env(safe-area-inset-top)) !important;
+    width: calc(100% - 20px) !important;
+    min-height: 48px !important;
+    margin-top: max(6px, env(safe-area-inset-top)) !important;
+    padding: 6px !important;
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+    align-items: stretch !important;
+  }
+
+  header.nav .brand {
+    display: none !important;
+  }
+
+  header.nav .app-tabs {
+    width: 100% !important;
+    justify-self: stretch !important;
+    justify-content: flex-start !important;
+    padding: 3px !important;
+    gap: 2px !important;
+    scroll-snap-type: x proximity !important;
+  }
+
+  header.nav .tab-button {
+    scroll-snap-align: start !important;
+    min-height: 36px !important;
+    padding: 0 13px !important;
+    font-size: 11px !important;
+    letter-spacing: -.015em !important;
+  }
+
+  main#app {
+    padding: 18px 14px 48px !important;
+  }
+
+  #app :where(.section-heading, .compact-heading) {
+    margin-bottom: 16px !important;
+    padding-bottom: 16px !important;
+  }
+
+  #app :where(.section-heading, .compact-heading) h2 {
+    max-width: 330px !important;
+    font-size: clamp(34px, 11vw, 46px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.072em !important;
+  }
+
+  #app :where(.section-heading, .compact-heading) p {
+    max-width: 340px !important;
+    font-size: 14px !important;
+    line-height: 1.42 !important;
+  }
+
+  footer {
+    padding: 18px 14px 42px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  header.nav .tab-button {
+    padding: 0 11px !important;
+    font-size: 10.5px !important;
+  }
+}
+
+/* Final route isolation guard after Phase 36 global shell normalization */
+#app .app-panel[hidden],
+#app #command[hidden],
+#app #parcels-section[hidden],
+#app #builder-list-section[hidden],
+#app #closing-section[hidden],
+#app #sources-hub[hidden],
+#app #workspace[hidden] {
+  display: none !important;
+}
+
+/* v1.68.1 - Phase 36 self-review: all six mobile workspace tabs visible, no clipped route access */
+@media (max-width: 760px) {
+  header.nav .app-tabs {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+    gap: 1px !important;
+  }
+
+  header.nav .tab-button {
+    min-width: 0 !important;
+    width: auto !important;
+    padding: 0 4px !important;
+    font-size: clamp(9px, 2.45vw, 10.5px) !important;
+    font-weight: 720 !important;
+    letter-spacing: -.025em !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 340px) {
+  header.nav .tab-button {
+    font-size: 8.6px !important;
+    padding: 0 2px !important;
+  }
+}

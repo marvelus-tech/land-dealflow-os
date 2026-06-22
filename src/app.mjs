@@ -559,6 +559,10 @@ function scoredParcels() {
   return parcelRows.map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
 }
 
+function parcelSelectionKey(parcel = {}) {
+  return String(parcel.id || parcel.parcelId || parcel.apn || parcel.address || parcel.propertyAddress || '').trim();
+}
+
 function dealMarketText(row = {}) {
   return `${row.market || ''} ${row.marketKey || ''} ${row.sourceMarket || ''} ${row.address || ''} ${row.county || ''} ${row.state || ''}`.toLowerCase();
 }
@@ -856,8 +860,8 @@ function getSelectedParcel(visible = getVisibleParcels()) {
     selectedParcelId = '';
     return null;
   }
-  const selected = visible.find(parcel => parcel.id === selectedParcelId) || visible[0];
-  selectedParcelId = selected.id;
+  const selected = visible.find(parcel => parcelSelectionKey(parcel) === selectedParcelId) || visible[0];
+  selectedParcelId = parcelSelectionKey(selected);
   return selected;
 }
 
@@ -2197,7 +2201,8 @@ function renderClosingDeskPanel() {
   const buyer = getBuyer(selected);
   const alternatives = scoredParcels().slice(0, 5).map((parcel, index) => {
     const desk = buildTitleCompanyClosingDesk(parcel, getBuyer(parcel));
-    return `<button type="button" class="queue-item ${parcel.id === selected.id ? 'active' : ''}" data-select-parcel="${h(parcel.id)}">
+    const parcelKey = parcelSelectionKey(parcel);
+    return `<button type="button" class="queue-item ${parcelKey === parcelSelectionKey(selected) ? 'active' : ''}" data-select-parcel="${h(parcelKey)}">
       <span>${String(index + 1).padStart(2, '0')}</span>
       <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
       <small>${h(desk.titleCompany.name || 'title company missing')} · ${h(desk.status)}</small>
@@ -2267,11 +2272,12 @@ function renderParcels() {
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
       <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
       <div class="queue-list">${visible.map((parcel, index) => {
-        const isActive = parcel.id === selected.id;
+        const parcelKey = parcelSelectionKey(parcel);
+        const isActive = parcelKey === parcelSelectionKey(selected);
         const listingState = parcelListingState(parcel);
         const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
         const marketSignal = parcel.selectedMarketMatch ? 'selected lane' : 'other lane';
-        return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcel.id)}" title="${h(listingState.detail)}">
+        return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
           <span>${String(index + 1).padStart(2, '0')}</span>
           <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
           <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(Number(parcel.duplicateMergedCount || 0) > 0 ? `${parcel.duplicateMergedCount} duplicate merge${Number(parcel.duplicateMergedCount) === 1 ? '' : 's'}` : (parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail || 'contact not enriched'))} · ${h(marketSignal)}</small>
@@ -2903,7 +2909,7 @@ function renderOutreachPanel() {
 }
 
 function currentMemoTarget() {
-  const selected = (workspace.parcels || []).find(parcel => parcel.id === selectedParcelId);
+  const selected = (workspace.parcels || []).find(parcel => parcelSelectionKey(parcel) === selectedParcelId);
   return selected || buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 1 })[0] || scoredParcels()[0] || null;
 }
 

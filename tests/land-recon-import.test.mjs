@@ -112,6 +112,10 @@ function testLandReconImportSurfaceExists() {
   assert.match(app, /merged \$\{result\.summary\.duplicateMerged \|\| 0\} duplicate/, 'Import status must report duplicate merges.');
   assert.match(app, /APN, normalized address, owner\+address, and source URL keys merge duplicates/, 'Import copy must explain the duplicate-safe gate.');
   assert.match(app, /duplicate-merge-note/, 'Selected listing must surface duplicate merge history.');
+  assert.match(app, /function parcelSelectionKey\(parcel = \{\}\)/, 'Land row selection needs a stable key helper for generated rows without id fields.');
+  assert.match(app, /parcelSelectionKey\(parcel\) === selectedParcelId/, 'Selected parcel lookup must use the stable parcel key, not only parcel.id.');
+  assert.match(app, /data-select-parcel="\$\{h\(parcelKey\)\}"/, 'Land rows must render non-empty selection keys from parcelId/address fallback.');
+  assert.doesNotMatch(app, /data-select-parcel="\$\{h\(parcel\.id\)\}"/, 'Land rows must not render blank data-select-parcel for generated parcelId-only rows.');
   assert.match(css, /v1\.102 - Deals duplicate-safe ledger \+ Builders-nav parity \+ screenshot QA fixes/, 'Phase 102 CSS marker missing.');
   assert.match(css, /--phase102-rule: builders-nav-parity-land-ledger-duplicate-safe/, 'Phase 102 CSS rule marker missing.');
   assert.match(css, /html body > header\.nav\.nav[\s\S]{0,520}border-radius: 999px/, 'Global nav must inherit Builders-style pill rail on every route.');

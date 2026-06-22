@@ -653,7 +653,7 @@ h3, h4 { letter-spacing: -.035em; }
 .execution-conveyor-head h3 { margin-top: 10px; max-width: 880px; font-size: clamp(28px, 3.5vw, 48px); line-height: 1; letter-spacing: -.055em; }
 .execution-conveyor-head p { margin-top: 10px; max-width: 840px; color: var(--muted); font-size: 16px; line-height: 1.45; }
 .execution-metrics, .execution-stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
-.execution-metrics div, .execution-stage, .execution-grid article, .execution-feedback-card, .execution-call-card { padding: 14px; border: 1px solid var(--line-soft); border-radius: 18px; background: rgba(255,255,255,.74); }
+.execution-metrics div, .execution-stage, .execution-grid article, .execution-feedback-card, .execution-call-card, .execution-call-reference { padding: 14px; border: 1px solid var(--line-soft); border-radius: 18px; background: rgba(255,255,255,.74); }
 .execution-metrics b { display: block; color: var(--black); font-size: 26px; letter-spacing: -.04em; }
 .execution-metrics span, .execution-stage span { color: var(--muted); font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .07em; }
 .execution-stage b { display: block; margin-top: 7px; color: var(--black); text-transform: capitalize; }
@@ -8238,6 +8238,53 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
 .skiptrace-actions .compact-action {
   margin-top: 0;
 }
+/* v1.97 - LandFlip seller-call reference lives in webapp, not the agent skill */
+.execution-call-reference {
+  display: grid;
+  gap: 12px;
+  background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(247,252,244,.9)) !important;
+  border-color: rgba(15, 118, 75, .16) !important;
+}
+.execution-call-reference p {
+  margin: 0;
+  max-width: 860px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.execution-call-reference blockquote {
+  margin: 0;
+  padding: 14px 16px;
+  border-left: 3px solid var(--money-ink);
+  background: rgba(255,255,255,.72);
+  color: var(--black);
+  font-size: clamp(16px, 2vw, 21px);
+  line-height: 1.34;
+  letter-spacing: -.025em;
+}
+.seller-script-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.seller-script-grid div {
+  padding-top: 10px;
+  border-top: 1px solid var(--line-soft);
+}
+.seller-script-grid b,
+.seller-script-grid span {
+  display: block;
+}
+.seller-script-grid b {
+  color: var(--black);
+  font-size: 12px;
+}
+.seller-script-grid span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
 @media (max-width: 760px) {
   #execution-conveyor.execution-conveyor-panel {
     padding: 16px !important;
@@ -8267,7 +8314,8 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
   .execution-stage,
   .execution-grid article,
   .execution-feedback-card,
-  .execution-call-card {
+  .execution-call-card,
+  .execution-call-reference {
     padding: 12px;
     border-radius: 10px !important;
   }
@@ -8292,6 +8340,9 @@ body[data-active-view="builders"] .selected-builder-dock { display: none; }
   }
   .skiptrace-actions button {
     width: 100%;
+  }
+  .seller-script-grid {
+    grid-template-columns: 1fr;
   }
 }
 

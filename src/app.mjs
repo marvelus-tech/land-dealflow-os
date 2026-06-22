@@ -1883,6 +1883,19 @@ function renderSellerSearchControlLayer(control = {}) {
   </section>`;
 }
 
+function renderSellerCallReference() {
+  return `<article id="seller-call-reference" class="execution-call-reference" aria-label="Seller call reference">
+    <div class="panel-kicker"><span>Seller call reference</span><b>manual operator script</b></div>
+    <p>Use this only after a buyer-backed parcel has a verified owner contact. The webapp stores the script; subagents should reference it, not perform outreach.</p>
+    <blockquote>Hi, this is Okeito. I’m calling about your lot at [property address]. My partners and I buy land in [market], usually cash, and we can move quickly if the property fits. Would you consider selling it?</blockquote>
+    <div class="seller-script-grid">
+      <div><b>If yes</b><span>Do you already have a number in mind?</span></div>
+      <div><b>Capture</b><span>Ask, reason, timeline, title/ownership issues, road, utilities, flood/wetland/zoning, permission to follow up.</span></div>
+      <div><b>Do not promise</b><span>Offer, close date, or buyer package waits until the buildability/title gate is checked.</span></div>
+    </div>
+  </article>`;
+}
+
 function renderExecutionConveyor(conveyor = {}) {
   const stages = asArray(conveyor.stageRows).map(stage => `<article class="execution-stage ${h(stage.status)}"><span>${h(stage.label)}</span><b>${h(stage.status)}</b><p>${h(stage.detail)}</p></article>`).join('');
   const batchRows = asArray(conveyor.matchedSellerBatch).slice(0, 5).map((row, index) => `<div class="execution-row">
@@ -1947,6 +1960,7 @@ function renderExecutionConveyor(conveyor = {}) {
       <article><div class="panel-kicker"><span>Matched seller batch</span><b>export before skip trace</b></div>${batchRows || '<p>No buyer-box-matched seller batch yet. Buyer proof still leads.</p>'}<button id="export-matched-seller-batch" class="secondary compact-action" type="button">Download matched seller CSV</button><span id="matched-seller-export-status"></span></article>
       <article class="skiptrace-return-card"><div class="panel-kicker"><span>Skip-trace return gate</span><b>phone/email promotes, never fabricates</b></div><p>${h(skipTraceGateCopy)}</p><pre class="skiptrace-format">parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${h(firstSkipTraceRow.parcelId || 'parcel-id')},${h(firstSkipTraceRow.ownerName || 'Public Owner')},865-555-0198,owner@example.com,91</pre><textarea id="builder-skip-trace-csv" rows="5" placeholder="parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence"></textarea><div class="skiptrace-actions"><button id="builder-load-skiptrace-template" class="secondary compact-action" type="button">Use first matched row</button><button id="builder-import-skiptrace" class="compact-action" type="button">Import return + recompute cockpit</button></div><span id="builder-skiptrace-status">${h(importStatus)}</span></article>
     </div>
+    ${renderSellerCallReference()}
     <div class="execution-call-grid">${callRows || '<article class="execution-call-card blocked"><b>No seller call cockpit is armed.</b><p>Public records stay held for skip trace until real phone/email and title/contract readiness exist.</p></article>'}</div>
     <article class="execution-feedback-card"><div class="panel-kicker"><span>Feedback rewrite</span><b>${h(conveyor.feedbackLoop?.totalFeedback || 0)} buyer answers captured</b></div><p>${h(conveyor.feedbackLoop?.tightening || 'Buyer yes/no/maybe will rewrite tomorrow’s seller-call order.')}</p>${feedbackRows}</article>
   </section>`;

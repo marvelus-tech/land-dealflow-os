@@ -10,9 +10,11 @@ assert.match(app, /Why empty:/, 'Deals empty state must include a small why-empt
 assert.match(app, /Validate one buyer first/, 'Deals empty state must present one calm next action.');
 assert.doesNotMatch(app, /No parcels match this filter\./, 'Deals empty state must not use dramatic filter-failure language.');
 assert.doesNotMatch(app, /<div class="empty-state-icon">\$\{solidIndustryIcon\('empty'\)\}<\/div><span class="eyebrow">Nothing actionable in this view/, 'Deals empty state must not render the old oversized icon box.');
-assert.match(app, /target\.setAttribute\('role', 'tablist'\)/, 'Deals filters must declare a segmented-control tablist.');
-assert.match(app, /aria-selected="\$\{filter === value \? 'true' : 'false'\}"/, 'Deals filter buttons must expose selected state.');
-assert.match(app, /\['research', 'Research'\]/, 'Deals filter labels must stay compact.');
+assert.match(app, /function renderLandControls/, 'Land page must expose dedicated state and sort controls.');
+assert.match(app, /data-land-state/, 'Land page must let users focus listings by state.');
+assert.match(app, /data-land-sort/, 'Land page must let users sort listings by market, state, enrichment, and builder fit.');
+assert.match(app, /target\.hidden = true/, 'Legacy stage filters must be retired to remove overlapping controls from the Land page.');
+assert.doesNotMatch(app, /\['seller-calls', 'Seller calls'\]/, 'Land page must not preserve old deal-stage filter clutter.');
 assert.match(app, /function renderDealsMarketCoverage/, 'Deals page must render a market coverage shelf before seller deals exist.');
 assert.match(app, /data-deals-market-key/, 'Deals page must let the operator switch market lanes independently from stage filters.');
 assert.match(app, /<div role="button" tabindex="0" class="deals-market-card/, 'Deals market cards must avoid global button gradients while staying keyboard reachable.');
@@ -27,6 +29,22 @@ for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorches
   assert.match(app, new RegExp(`key: '${key}'`), `Deals market coverage must include ${key} through the shared registry.`);
 }
 assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');
+assert.match(app, /Sort by state, market, enrichment, or builder fit\. Every source-backed land record remains visible\./, 'Land primary instruction must explain sorting plus the always-visible ledger.');
+assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
+assert.match(app, /return scoredParcels\(\)\.map\(parcel => \(\{/, 'Deals visible parcels must keep all source-backed records visible.');
+assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| rowState\(parcel\) === selectedLandStateFilter/, 'Land state focus may prioritize matching rows but must not hide other land listings.');
+assert.match(app, /function landSortValue/, 'Land listings need a sortable value model for priority, state, market, enrichment, and builder fit.');
+assert.doesNotMatch(app, /if \(filter === 'seller-calls'\) return parcel\.action/, 'Deals stage filters must not hide land listings anymore.');
+assert.match(app, /listing-\$\{h\(listingState\.stage\)\}/, 'Land rows must expose visual state classes for enrichment/builder fit.');
+assert.match(app, /Matched \+ enriched/, 'Land rows must distinguish records that are both contact-enriched and builder-matched.');
+assert.match(app, /land-listing-status-strip/, 'Selected detail must show contact/builder-fit/priority progression.');
+assert.match(app, /function renderLandAgentIntakeGate/, 'Land page must expose a subagent intake proof gate.');
+assert.match(app, /Agent intake gate/, 'Land page must label the agent intake proof gate clearly.');
+assert.match(app, /Land Recon subagents may append public parcel rows here/, 'Land page must explain the subagent append boundary without promoting calls.');
+assert.match(app, /subagents reference the webapp script; they do not perform outreach/, 'Land agent intake gate must preserve the no-agent-outreach boundary.');
+assert.match(app, /Public proof', 'Required'/, 'Agent intake contract must require public proof before land promotion.');
+assert.match(app, /Owner contact', 'Gated'/, 'Agent intake contract must keep owner contact gated by verified enrichment.');
+assert.match(app, /Builder fit', 'Computed'/, 'Agent intake contract must compute builder fit from evidence rather than guessing.');
 
 assert.match(css, /v1\.65 - Phase 38 Deals calm empty state/, 'Phase 38 route-scoped CSS marker missing.');
 assert.match(css, /--phase38-deals-empty: compact-intentional-not-broken/, 'Deals route marker must document the intended state.');
@@ -43,5 +61,20 @@ assert.match(css, /button\.deals-market-card\.deals-market-card[\s\S]{0,180}back
 assert.match(css, /v1\.97 - LandFlip seller-call reference lives in webapp, not the agent skill/, 'Seller-call reference CSS marker must document the webapp-owned script boundary.');
 assert.match(css, /\.execution-call-reference[\s\S]{0,160}display: grid/, 'Seller-call reference must render as a compact operator reference card.');
 assert.match(css, /\.seller-script-grid[\s\S]{0,120}repeat\(3, minmax\(0, 1fr\)\)/, 'Seller script capture checklist must be scannable on desktop.');
+assert.match(css, /v1\.95 - Deals land listings are always visible; enrichment\/builder fit creates hierarchy, not hiding/, 'Phase 95 always-visible land ledger CSS marker missing.');
+assert.match(css, /--phase95-deals-rule: always-visible-land-ledger-enrichment-builder-fit-hierarchy/, 'Deals CSS must encode the always-visible listing rule.');
+assert.match(css, /\.land-listing-row\.listing-matched-enriched::before[\s\S]{0,160}var\(--deals-gold\)/, 'Matched and enriched land rows need a restrained gold priority rail.');
+assert.match(css, /\.land-ledger-queue[\s\S]{0,180}background: transparent !important/, 'Land ledger must be an open surface, not another boxed panel.');
+assert.match(css, /v1\.98 - Land Markets page: dedicated plot browser, state\/market sorting, enrichment\/builder-match scent/, 'Phase 98 Land Markets page CSS marker missing.');
+assert.match(css, /--phase98-land-rule: dedicated-land-markets-page-state-market-sort-enrichment-builder-match/, 'Land page must encode the dedicated market browser rule.');
+assert.match(css, /\.land-command-surface[\s\S]{0,220}grid-template-columns: minmax\(280px, \.58fr\) minmax\(0, 1fr\)/, 'Land controls must be a calm command surface, not another boxed dashboard.');
+assert.match(css, /\.land-state-filter\.active,[\s\S]{0,420}inset 2px 0 0 var\(--land-forest\)/, 'Active Land state/sort controls should use a quiet Apple rail.');
+assert.match(css, /\.land-stage-filters-retired \{ display: none !important; \}/, 'Retired stage filters must stay visually removed.');
+assert.match(css, /v1\.99 - Land agent intake gate: subagent rows must carry source\/contact\/builder-fit proof before promotion/, 'Phase 99 Land agent intake CSS marker missing.');
+assert.match(css, /--phase99-land-agent-intake: zero-fabrication-subagent-proof-gate/, 'Land page must encode the zero-fabrication subagent proof gate.');
+assert.match(css, /\.land-agent-intake-gate[\s\S]{0,220}grid-template-columns: minmax\(280px, \.52fr\) minmax\(0, 1fr\)/, 'Land agent intake gate must be an open two-column proof ledger on desktop.');
+assert.match(css, /\.land-agent-ledger li[\s\S]{0,180}grid-template-columns: minmax\(100px, \.22fr\) minmax\(80px, \.16fr\) minmax\(0, 1fr\)/, 'Land agent contract rows must read as a calm ledger, not boxed cards.');
+assert.match(css, /v1\.99b - Land controls must stay hairline rails, not dark button slabs/, 'Land controls need a late guard against dark button slabs.');
+assert.match(css, /#parcels \.land-control-group button\.land-state-filter,[\s\S]{0,260}background-color: transparent !important/, 'Land state controls must stay transparent hairline rails.');
 
 console.log('deals empty/filter UI tests passed');

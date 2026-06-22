@@ -99,7 +99,7 @@ assert.match(css, /--font-heavy-text: 'Inter'/, 'Phase 16 should use Inter/SF-st
 assert.match(css, /#app :where\(\.wk-workbench,[\s\S]{0,1400}border-top: 1px solid var\(--ledger-rule\) !important/, 'Phase 16 should replace nested modules with open ledger rules');
 assert.match(css, /body\[data-active-view="today"\] #command \.wk-rail \{ display: none !important; \}/, 'Phase 16 should remove Today rail chrome from first-screen cognition');
 assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard should remain after late layout overrides');
-assert.match(html, /One seller\. One reason\. One next move\./, 'Deal page copy should be compressed into one-action hierarchy');
+assert.match(html, /All plots, sorted by proof\./, 'Land page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer-first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,180}Call top builder\.[\s\S]{0,160}Open queue/, 'Builders should expose a clear, calm action strip before secondary evidence');
@@ -464,4 +464,26 @@ assert.match(css, /--phase94-builders-rule: single-hero-direct-state-ledger-no-s
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builders-phase83-workbench > \.builder-ops-title \{[\s\S]{0,80}display: none !important/, 'Builders duplicate Choose-state hero block should be hidden');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.builder-ops-jump \{[\s\S]{0,80}display: none !important/, 'Builders top-half jump links should be hidden as superfluous buttons');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-market-toggle:first-child \{[\s\S]{0,120}border-top: 1px solid rgba\(8, 16, 12, \.09\) !important/, 'State ledger should begin directly with a top hairline after the single hero');
+
+assert.match(css, /v1\.96 - Senior Apple fatigue-reduction hierarchy: premium calm work surfaces, scan-first ledgers/, 'Phase 96 senior Apple fatigue-reduction marker missing');
+assert.match(css, /--phase96-rule: apple-review-fatigue-reduction-open-ledgers-premium-forest-gold/, 'Phase 96 should encode the open-ledger premium calm rule');
+assert.match(css, /--phase96-forest: #0f4a35/, 'Phase 96 should define refined forest primary accent');
+assert.match(css, /--phase96-gold: #8a6418/, 'Phase 96 should define restrained gold metric accent');
+assert.match(css, /main#app \.primary-action-strip[\s\S]{0,360}grid-template-columns: minmax\(94px, \.24fr\) minmax\(0, 1fr\) auto !important/, 'Phase 96 should make primary actions compact native instruction rows');
+assert.match(css, /main#app :where\(pre, code, \.code-preview, \.skiptrace-format, \.csv-preview, \.template-preview, \.import-preview\)[\s\S]{0,180}background: var\(--phase96-field\) !important/, 'Phase 96 should keep code/import surfaces light, not terminal slabs');
+assert.match(css, /v1\.96\.1 - Second-pass Apple review correction: Deals and Machine scan density tightened after self-critique/, 'Phase 96 second-pass correction marker missing');
+assert.match(css, /--phase96-deals-rule: all-land-visible-but-priority-is-readable-in-one-scan/, 'Phase 96 Deals rule should preserve visibility while improving priority scanning');
+assert.match(css, /body\[data-active-view="machine"\] main#app \.machine-import-shell[\s\S]{0,220}grid-template-columns: minmax\(250px, \.58fr\) minmax\(0, 1fr\) minmax\(220px, \.48fr\) !important/, 'Phase 96 Machine importer should use a purposeful three-column scan hierarchy');
+assert.match(css, /Final route isolation guard after Phase 96 Apple fatigue-reduction layout overrides/, 'Phase 96 must end with a route-isolation guard after late layout overrides');
+
+assert.match(css, /v1\.97 - Apple interaction hierarchy: selected state clarity, native action rails, lower-surface fatigue reduction/, 'Phase 97 interaction hierarchy marker missing');
+assert.match(css, /--phase97-rule: selected-state-is-a-quiet-rail-actions-are-native-text-no-control-noise/, 'Phase 97 should encode selected-state and native-action rule');
+assert.match(css, /--phase97-forest: #0e4733/, 'Phase 97 should define refined action forest');
+assert.match(css, /main#app :where\(\.queue-item\.active, \.validation-queue-item\.active, \.market-toggle\.active, \.state-market-toggle\.active, \.deals-market-card\.active, \.source-stack-step\.active, \.tab-button\.active\)[\s\S]{0,260}box-shadow: inset 2px 0 0 var\(--phase97-forest\) !important/, 'Phase 97 active rows should use quiet rail selection, not heavy slabs');
+assert.match(css, /body\[data-active-view="builders"\] main#app #buyer-validation-command[\s\S]{0,120}--phase97-builders-rule: lower-cockpit-one-ledger-selected-builder-first/, 'Phase 97 should refine Builders lower cockpit as one ledger');
+assert.match(css, /body\[data-active-view="sources"\] main#app #sources-hub[\s\S]{0,120}--phase97-sources-rule: ranked-source-memo-first-supporting-pipelines-later/, 'Phase 97 should refine Sources as ranked source memo first');
+assert.match(css, /body\[data-active-view="closing"\] main#app #title-closing-panel[\s\S]{0,120}--phase97-closing-rule: document-confidence-through-quiet-disclosure-rhythm/, 'Phase 97 should refine Closing through document disclosure rhythm');
+assert.match(css, /body\[data-active-view="today"\] main#app #command[\s\S]{0,120}--phase97-today-rule: immediate-command-then-proof-ledger-no-dashboard-fatigue/, 'Phase 97 should refine Today as command then proof ledger');
+assert.match(css, /v1\.97\.1 - Self-review correction: mobile action rails and selected rows must not fracture or wrap into noise/, 'Phase 97 self-review mobile correction marker missing');
+assert.match(css, /Final route isolation guard after Phase 97 selected-state\/action-rail overrides/, 'Phase 97 route isolation guard missing');
 

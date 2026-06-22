@@ -192,6 +192,28 @@ function normalizeHeader(header) {
     ownermailingaddress: 'ownerMailingAddress',
     skip_trace_confidence: 'skipTraceConfidence',
     skiptraceconfidence: 'skipTraceConfidence',
+    candidate_phone: 'candidatePhone',
+    candidatephone: 'candidatePhone',
+    candidate_email: 'candidateEmail',
+    candidateemail: 'candidateEmail',
+    contact_source: 'contactSource',
+    contactsource: 'contactSource',
+    contact_source_url: 'contactSourceUrl',
+    contactsourceurl: 'contactSourceUrl',
+    contact_confidence: 'contactConfidence',
+    contactconfidence: 'contactConfidence',
+    enrichment_confidence: 'enrichmentConfidence',
+    enrichmentconfidence: 'enrichmentConfidence',
+    enrichment_status: 'enrichmentStatus',
+    enrichmentstatus: 'enrichmentStatus',
+    match_basis: 'matchBasis',
+    matchbasis: 'matchBasis',
+    verified_at: 'verifiedAt',
+    verifiedat: 'verifiedAt',
+    do_not_contact_status: 'doNotContactStatus',
+    donotcontactstatus: 'doNotContactStatus',
+    opt_out_status: 'optOutStatus',
+    optoutstatus: 'optOutStatus',
     buyer_contact_name: 'buyerContactName',
     buyercontactname: 'buyerContactName',
     buyer_phone: 'buyerPhone',
@@ -518,12 +540,29 @@ export function buildSellerSearchInstructions(row = {}) {
 }
 
 export function buildBuyerValidationCommandCenter(rows = [], savedRows = []) {
-  const saved = new Map((savedRows || []).map(row => [row.builderId, row]));
+  const rowKey = row => row?.builderId || row?.id || row?.buyerId || row?.leadId || '';
+  const saved = new Map((savedRows || []).map(row => [rowKey(row), row]).filter(([key]) => key));
   const items = (rows || []).map(row => {
-    const savedRow = saved.get(row.builderId) || {};
+    const sourceKey = rowKey(row);
+    const savedRow = saved.get(sourceKey) || {};
     const merged = {
       ...row,
       ...savedRow,
+      builderId: savedRow.builderId || row.builderId || row.id || row.buyerId || sourceKey,
+      // Public/source-loaded contact fields are authoritative unless the saved
+      // workspace has a non-empty override. Older localStorage rows may contain
+      // blank strings, and those must not erase newly enriched TX phone/email/site
+      // paths from builder_signals.json / builder_validation_queue.csv.
+      phone: savedRow.phone || row.phone || '',
+      email: savedRow.email || row.email || '',
+      website: savedRow.website || row.website || '',
+      contactUrl: savedRow.contactUrl || row.contactUrl || row.website || '',
+      contactRole: savedRow.contactRole || row.contactRole || '',
+      contactStatus: savedRow.contactStatus || row.contactStatus || '',
+      contactConfidence: savedRow.contactConfidence || row.contactConfidence || '',
+      sourceUrl: savedRow.sourceUrl || row.sourceUrl || '',
+      sourceUrls: savedRow.sourceUrls || row.sourceUrls || '',
+      contactSourceUrls: savedRow.contactSourceUrls || row.contactSourceUrls || '',
       buyBox: { ...(row.buyBox || {}), ...(savedRow.buyBox || {}) },
       callStatus: savedRow.callStatus || row.callStatus || 'not_called',
       lastContacted: savedRow.lastContacted || row.lastContacted || '',
@@ -854,6 +893,27 @@ function findBuyerMatch(record, buyers = []) {
     || buyers.find(buyer => name && name === normalizeMatchKey(buyer.name));
 }
 
+function firstFilled(...values) {
+  return values.find(value => String(value ?? '').trim() !== '') || '';
+}
+
+function contactConfidenceValue(record = {}) {
+  return firstFilled(record.contactConfidence, record.enrichmentConfidence, record.skipTraceConfidence, record.confidence);
+}
+
+function isPositiveContactEnrichment(record = {}) {
+  const confidence = String(contactConfidenceValue(record)).trim().toLowerCase();
+  const numericConfidence = Number(String(confidence).replace(/[^0-9.]+/g, '')) || 0;
+  const statusText = [record.enrichmentStatus, record.skipTraceStatus, record.status, record.doNotContactStatus, record.optOutStatus]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase();
+  if (/do\s*not\s*contact|dnc|opt\s*out|unsubscribed|bad\s*number|wrong\s*owner|low|weak|reject|rejected|failed|no\s*match/.test(statusText)) return false;
+  if (/^low$|weak|name[-\s]*only|no\s*usable|unknown/.test(confidence)) return false;
+  if (numericConfidence && numericConfidence < 70) return false;
+  return true;
+}
+
 export function applySkipTraceImport(workspace = {}, csvText = '', { candidateParcels = [], now = new Date().toISOString() } = {}) {
   const records = parseCsvRecords(csvText);
   const current = [...(workspace.parcels || [])];
@@ -863,14 +923,17 @@ export function applySkipTraceImport(workspace = {}, csvText = '', { candidatePa
   const unmatched = [];
 
   for (const record of records) {
-    const phone = record.ownerPhone || record.phone || '';
-    const email = record.ownerEmail || record.email || '';
+    const phone = firstFilled(record.ownerPhone, record.candidatePhone, record.phone);
+    const email = firstFilled(record.ownerEmail, record.candidateEmail, record.email);
     const match = findParcelMatch(record, candidates);
-    if (!match || !(phone || email)) {
+    if (!match || !(phone || email) || !isPositiveContactEnrichment(record)) {
       unmatched.push(record);
       continue;
     }
     const id = match.id || match.parcelId || record.parcelId || `skiptrace-${matched + created + 1}`;
+    const enrichmentNote = record.contactSource || record.matchBasis || record.verifiedAt
+      ? `Owner enrichment accepted as skip trace ${now.slice(0, 10)}${record.contactSource ? ` via ${record.contactSource}` : ''}${record.matchBasis ? `; match basis: ${record.matchBasis}` : ''}.`
+      : `Skip trace imported ${now.slice(0, 10)}.`;
     const update = {
       ...match,
       ...record,
@@ -879,12 +942,17 @@ export function applySkipTraceImport(workspace = {}, csvText = '', { candidatePa
       ownerName: record.ownerName || match.ownerName || match.owner || '',
       ownerPhone: phone || match.ownerPhone || '',
       ownerEmail: email || match.ownerEmail || '',
-      skipTraceConfidence: record.skipTraceConfidence || match.skipTraceConfidence || '',
+      skipTraceConfidence: firstFilled(record.skipTraceConfidence, record.contactConfidence, record.enrichmentConfidence, record.confidence, match.skipTraceConfidence),
+      contactSource: record.contactSource || match.contactSource || '',
+      contactSourceUrl: record.contactSourceUrl || match.contactSourceUrl || '',
+      matchBasis: record.matchBasis || match.matchBasis || '',
+      verifiedAt: record.verifiedAt || now,
+      skipTraceStatus: 'contact-enriched',
       crmStatus: ['Dead', 'Kill'].includes(match.crmStatus) ? match.crmStatus : 'New',
       nextFollowUp: match.nextFollowUp || '',
       realContact: true,
       skipTraceImportedAt: now,
-      notes: [match.notes, record.notes, `Skip trace imported ${now.slice(0, 10)}.`].filter(Boolean).join('\n'),
+      notes: [match.notes, record.notes, enrichmentNote].filter(Boolean).join('\n'),
     };
     const existingIndex = current.findIndex(parcel => normalizeMatchKey(parcel.id || parcel.parcelId) === normalizeMatchKey(id) || (update.parcelId && normalizeMatchKey(parcel.parcelId) === normalizeMatchKey(update.parcelId)));
     if (existingIndex >= 0) current[existingIndex] = { ...current[existingIndex], ...update };

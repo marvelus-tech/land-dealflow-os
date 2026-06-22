@@ -251,6 +251,48 @@ function testExecutionConveyorExportsSkipTraceBatchThenPromotesReturns() {
   assert.ok(promoted.callReadySellers[0].memo.subject.includes('Buyer Fit Ave'));
 }
 
+function testOwnerEnrichmentPositiveResultsAreTreatedAsSkipTrace() {
+  const publicLead = {
+    id: 'owner-enrichment-lead',
+    parcelId: 'KGIS-P6-001',
+    address: 'KGIS parcel P6 001, Knoxville, TN',
+    market: 'knoxville-tn',
+    ownerName: 'Public Owner Phase',
+    ownerMailingAddress: 'PO Box 1, Knoxville, TN',
+    askingPrice: 15000,
+    buyerMaxPrice: 45000,
+    roadAccess: true,
+    utilities: true,
+    wetlands: 'none',
+    floodZone: 'none',
+    crmStatus: 'Needs skip trace',
+  };
+  const csv = 'parcelId,ownerName,candidatePhone,candidateEmail,contactConfidence,contactSource,matchBasis,verifiedAt\nKGIS-P6-001,Public Owner Phase,865-555-0198,owner@example.com,high,manual lookup,same owner + mailing city,2026-06-20T00:00:00.000Z';
+  const result = applySkipTraceImport({ parcels: [] }, csv, { candidateParcels: [publicLead], now: '2026-06-20T01:00:00.000Z' });
+  assert.equal(result.summary.matched, 1);
+  assert.equal(result.workspace.parcels[0].ownerPhone, '865-555-0198');
+  assert.equal(result.workspace.parcels[0].realContact, true);
+  assert.equal(result.workspace.parcels[0].skipTraceStatus, 'contact-enriched');
+  assert.equal(result.workspace.parcels[0].contactSource, 'manual lookup');
+  assert.match(result.workspace.parcels[0].notes, /Owner enrichment accepted as skip trace/);
+}
+
+function testLowConfidenceOwnerEnrichmentDoesNotPromoteToSkipTrace() {
+  const publicLead = {
+    id: 'owner-enrichment-low',
+    parcelId: 'KGIS-P6-LOW',
+    address: 'KGIS parcel P6 LOW, Knoxville, TN',
+    market: 'knoxville-tn',
+    ownerName: 'Public Owner Low',
+    crmStatus: 'Needs skip trace',
+  };
+  const csv = 'parcelId,ownerName,candidatePhone,contactConfidence,matchBasis\nKGIS-P6-LOW,Public Owner Low,865-555-0000,low,name only';
+  const result = applySkipTraceImport({ parcels: [] }, csv, { candidateParcels: [publicLead] });
+  assert.equal(result.summary.matched, 0);
+  assert.equal(result.summary.unmatched, 1);
+  assert.equal(result.workspace.parcels.length, 0);
+}
+
 testDailyMoneyQueueRanksCallReadySellersWithScriptsAndBuyerBacking();
 testFollowUpsDueAreSeparatedFromFreshCalls();
 testCallOutcomeUpdatesCrmStatusAndNextFollowUp();
@@ -260,5 +302,7 @@ testSkipTraceImportMatchesRealPublicLeadAndPromotesToToday();
 testBuyerContactImportAndValidationQueue();
 testBuyerFirstBoardPrioritizesValidatedBuyBoxBeforeSellerSkipTrace();
 testExecutionConveyorExportsSkipTraceBatchThenPromotesReturns();
+testOwnerEnrichmentPositiveResultsAreTreatedAsSkipTrace();
+testLowConfidenceOwnerEnrichmentDoesNotPromoteToSkipTrace();
 
 console.log('cashflow tests passed');

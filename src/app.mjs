@@ -190,6 +190,8 @@ let leadEngineStateFilter = 'all';
 let selectedBuilderMarketState = 'GA';
 let selectedBuilderMarketKey = 'forsyth-ga';
 let selectedDealsMarketKey = 'all';
+let selectedLandStateFilter = 'all';
+let selectedLandSort = 'priority';
 let lastBuilderSkipTraceImportStatus = '';
 let openMachinePanel = '';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
@@ -544,7 +546,15 @@ function sellerPoolForState(stateCode = selectedBuilderMarketState) {
 }
 
 function scoredParcels() {
-  return (workspace.parcels || []).map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
+  // Deals must show source-backed seller records even before a browser-local
+  // import. Workspace rows come first so enriched/skip-traced local records
+  // override the generated public-record candidates with the same parcel id.
+  const parcelRows = uniqueRowsById([
+    ...asArray(workspace.parcels),
+    ...generatedCandidateParcels(),
+    ...asArray(generatedLeads?.queues?.skipTrace),
+  ], item => item.id || item.parcelId || item.address);
+  return parcelRows.map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
 }
 
 function dealMarketText(row = {}) {
@@ -565,18 +575,70 @@ function getSelectedDealsMarket() {
   return builderMarketSwitchboardEntries().find(market => market.key === selectedDealsMarketKey) || builderMarketRegistryByKey.get(selectedDealsMarketKey) || null;
 }
 
+function getLandRowMarketKey(parcel = {}) {
+  const text = dealMarketText(parcel);
+  const direct = builderMarketSwitchboardEntries().find(market => parcelMatchesDealMarket(parcel, market));
+  if (direct) return direct.key;
+  return String(parcel.marketId || parcel.market || parcel.county || rowState(parcel) || 'unknown').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
+}
+
+function getLandStateOptions() {
+  const registryStates = builderMarketRegistry.map(market => market.state).filter(Boolean);
+  const parcelStates = scoredParcels().map(rowState).filter(Boolean);
+  return ['all', ...new Set([...registryStates, ...parcelStates])];
+}
+
+function landSortValue(parcel = {}, mode = selectedLandSort) {
+  const state = parcelListingState(parcel);
+  if (mode === 'state') return `${rowState(parcel)} ${getLandRowMarketKey(parcel)} ${parcel.address || parcel.parcelId || ''}`;
+  if (mode === 'market') return `${getLandRowMarketKey(parcel)} ${rowState(parcel)} ${parcel.address || parcel.parcelId || ''}`;
+  if (mode === 'enrichment') return -(Number(state.enriched) * 1000 + Number(state.builderMatched) * 500 + Number(state.offerReady) * 250 + Number(parcel.score || 0));
+  if (mode === 'builder-fit') return -(Number(state.builderMatched) * 1000 + Number(state.enriched) * 250 + Number(parcel.score || 0));
+  return -(Number(parcel.selectedMarketMatch) * 2000 + Number(state.offerReady) * 1200 + Number(state.builderMatched) * 700 + Number(state.enriched) * 450 + Number(parcel.score || 0));
+}
+
 function getVisibleParcels() {
   const selectedMarket = getSelectedDealsMarket();
-  return scoredParcels().filter(parcel => {
-    if (!parcelMatchesDealMarket(parcel, selectedMarket)) return false;
-    if (filter === 'all') return true;
-    if (filter === 'seller-calls') return parcel.action === 'Call now' || parcel.crmStatus === 'New' || parcel.crmStatus === 'Generated lead';
-    if (filter === 'offer-ready') return parcel.risk.status === 'Pass' && Number(parcel.buyerMaxPrice || 0) > Number(parcel.askingPrice || 0);
-    if (filter === 'research') return parcel.action === 'Research more' || parcel.risk.status === 'Review';
-    if (filter === 'blocked') return parcel.action === 'Kill' || parcel.crmStatus === 'Kill' || parcel.risk.status === 'Kill';
-    if (filter === 'follow-up') return ['Contacted', 'Negotiating', 'Under Contract'].includes(parcel.crmStatus);
-    return true;
+  // The Land surface is an always-visible land ledger. State/market controls
+  // change scent, emphasis, and ordering; source-backed records remain discoverable.
+  return scoredParcels().map(parcel => ({
+    ...parcel,
+    selectedMarketMatch: parcelMatchesDealMarket(parcel, selectedMarket),
+    selectedStateMatch: selectedLandStateFilter === 'all' || rowState(parcel) === selectedLandStateFilter,
+    landMarketKey: getLandRowMarketKey(parcel),
+  })).sort((a, b) => {
+    const stateDelta = Number(b.selectedStateMatch) - Number(a.selectedStateMatch);
+    if (stateDelta) return stateDelta;
+    const av = landSortValue(a);
+    const bv = landSortValue(b);
+    if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv));
+    return av - bv;
   });
+}
+
+function parcelListingState(parcel = {}) {
+  const enriched = Boolean(parcel.ownerPhone || parcel.ownerEmail || parcel.realContact || parcel.skipTraceImportedAt || parcel.skipTraceStatus === 'contact-enriched');
+  const builderMatched = Boolean(
+    parcel.reasons?.some?.(reason => /buyer|buy box|market fit/i.test(reason))
+    || parcel.buyerId
+    || Number(parcel.buyerMaxPrice || parcel.offer?.buyerPrice || 0) > 0
+  );
+  const offerReady = parcel.risk?.status === 'Pass' && builderMatched && enriched && Number(parcel.metrics?.spread || 0) > 0;
+  const blocked = parcel.action === 'Kill' || parcel.crmStatus === 'Kill' || parcel.risk?.status === 'Kill';
+  const stage = offerReady ? 'offer-ready' : builderMatched && enriched ? 'matched-enriched' : builderMatched ? 'builder-match' : enriched ? 'enriched' : blocked ? 'blocked' : 'visible-source';
+  const label = offerReady ? 'Offer-ready' : builderMatched && enriched ? 'Matched + enriched' : builderMatched ? 'Builder match' : enriched ? 'Enriched contact' : blocked ? 'Blocked risk' : 'Visible source';
+  const detail = offerReady
+    ? 'Buyer fit, contact, and first-pass economics are present.'
+    : builderMatched && enriched
+      ? 'This owner has a reachable contact and buyer-fit signal.'
+      : builderMatched
+        ? 'Buyer-fit signal present; enrich owner contact next.'
+        : enriched
+          ? 'Reachable owner; still needs buyer-fit confirmation.'
+          : blocked
+            ? 'Keep visible for audit, but do not call.'
+            : 'Source-backed land record; not hidden from the flow.';
+  return { enriched, builderMatched, offerReady, blocked, stage, label, detail };
 }
 
 function dealsMarketCoverageEntries() {
@@ -608,6 +670,71 @@ function dealsMarketCoverageEntries() {
     sourceState: 'all',
     isDealsActive: selectedDealsMarketKey === 'all',
   }, ...expansionEntries, ...otherEntries];
+}
+
+function renderLandControls() {
+  const stateOptions = getLandStateOptions();
+  const parcels = scoredParcels();
+  const stateButtons = stateOptions.map(state => {
+    const count = state === 'all' ? parcels.length : parcels.filter(parcel => rowState(parcel) === state).length;
+    const label = state === 'all' ? 'All states' : state;
+    return `<button type="button" class="land-state-filter ${selectedLandStateFilter === state ? 'active' : ''}" data-land-state="${h(state)}" aria-pressed="${selectedLandStateFilter === state ? 'true' : 'false'}"><span>${h(label)}</span><b>${h(count)}</b></button>`;
+  }).join('');
+  const sortOptions = [
+    ['priority', 'Priority'],
+    ['state', 'State'],
+    ['market', 'Market'],
+    ['enrichment', 'Enriched'],
+    ['builder-fit', 'Builder fit'],
+  ];
+  const sortButtons = sortOptions.map(([value, label]) => `<button type="button" class="land-sort-option ${selectedLandSort === value ? 'active' : ''}" data-land-sort="${h(value)}" aria-pressed="${selectedLandSort === value ? 'true' : 'false'}">${h(label)}</button>`).join('');
+  const selectedStateCopy = selectedLandStateFilter === 'all' ? 'all states' : selectedLandStateFilter;
+  return `<section class="land-command-surface" aria-label="Land listings controls">
+    <div class="land-command-copy">
+      <span class="eyebrow">Land markets</span>
+      <h3>Browse every plot by state and market.</h3>
+      <p>Agents can periodically append source-backed land records here. Rows stay visible, then gain weight when owner contact is enriched and builder demand matches.</p>
+    </div>
+    <div class="land-control-ledger">
+      <div class="land-control-group" aria-label="Focus by state"><span>Focus state</span><div>${stateButtons}</div></div>
+      <div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>
+      <p class="land-control-note">Viewing ${h(selectedStateCopy)} · ${h(parcels.length)} source-backed records retained for audit.</p>
+    </div>
+  </section>`;
+}
+
+function renderLandAgentIntakeGate() {
+  const parcels = scoredParcels();
+  const counts = parcels.reduce((acc, parcel) => {
+    const state = parcelListingState(parcel);
+    acc.source += 1;
+    if (!state.enriched) acc.needsContact += 1;
+    if (state.builderMatched) acc.builderFit += 1;
+    if (state.offerReady) acc.offerReady += 1;
+    return acc;
+  }, { source: 0, needsContact: 0, builderFit: 0, offerReady: 0 });
+  const contractRows = [
+    ['Public proof', 'Required', 'county/GIS/tax/permit URL + collectedAt; no private guesswork'],
+    ['Owner contact', 'Gated', 'phone/email only after verified enrichment, confidence, source, and match basis'],
+    ['Builder fit', 'Computed', 'buy-box/permit evidence must exist before seller-call priority rises'],
+    ['Call status', 'Manual', 'subagents reference the webapp script; they do not perform outreach'],
+  ].map(([label, state, copy]) => `<li><span>${h(label)}</span><b>${h(state)}</b><p>${h(copy)}</p></li>`).join('');
+  return `<section class="land-agent-intake-gate" aria-label="Land agent intake contract">
+    <div class="land-agent-copy">
+      <span class="eyebrow">Agent intake gate</span>
+      <h3>Accept records only when the proof chain is visible.</h3>
+      <p>Land Recon subagents may append public parcel rows here, but the ledger refuses the dangerous shortcut: source-backed is visible, contact-enriched is stronger, buyer-fit is stronger again, and seller outreach stays manual.</p>
+    </div>
+    <div class="land-agent-ledger">
+      <div class="land-agent-facts" aria-label="Current land proof state">
+        <div><span>Source rows</span><b>${h(counts.source)}</b></div>
+        <div><span>Need contact</span><b>${h(counts.needsContact)}</b></div>
+        <div><span>Builder fit</span><b>${h(counts.builderFit)}</b></div>
+        <div><span>Offer-ready</span><b>${h(counts.offerReady)}</b></div>
+      </div>
+      <ol>${contractRows}</ol>
+    </div>
+  </section>`;
 }
 
 function renderDealsMarketCoverage() {
@@ -1940,8 +2067,8 @@ function renderExecutionConveyor(conveyor = {}) {
   const firstSkipTraceRow = asArray(conveyor.matchedSellerBatch)[0] || asArray(conveyor.board?.sellerMatches).find(row => !(row.ownerPhone || row.ownerEmail || row.realContact)) || {};
   const enrichedCount = asArray(conveyor.callReadySellers).length;
   const skipTraceGateCopy = enrichedCount
-    ? `${enrichedCount} imported owner contacts are now flowing into seller cockpit review. Keep title/contract gates honest before promising terms.`
-    : 'Paste the provider return here after exporting the matched seller CSV. Phone/email promotes the row; missing contact stays in needs-skip-trace.';
+    ? `${enrichedCount} skip-traced/enriched owner contacts are now flowing into seller cockpit review. Keep title/contract gates honest before promising terms.`
+    : 'Paste the provider skip-trace return or successful owner-enrichment result here after exporting the matched seller CSV. Verified phone/email promotes the row; missing, low-confidence, DNC, or opt-out contact stays in needs-skip-trace.';
   const importStatus = lastBuilderSkipTraceImportStatus || (firstSkipTraceRow.parcelId ? 'Waiting for skip-trace return CSV from the matched seller batch.' : 'No matched seller rows available to enrich yet.');
   return `<section id="execution-conveyor" class="execution-conveyor-panel" aria-label="Buyer to seller execution conveyor">
     <div class="execution-conveyor-head">
@@ -1958,7 +2085,7 @@ function renderExecutionConveyor(conveyor = {}) {
     <div class="execution-stages">${stages}</div>
     <div class="execution-grid">
       <article><div class="panel-kicker"><span>Matched seller batch</span><b>export before skip trace</b></div>${batchRows || '<p>No buyer-box-matched seller batch yet. Buyer proof still leads.</p>'}<button id="export-matched-seller-batch" class="secondary compact-action" type="button">Download matched seller CSV</button><span id="matched-seller-export-status"></span></article>
-      <article class="skiptrace-return-card"><div class="panel-kicker"><span>Skip-trace return gate</span><b>phone/email promotes, never fabricates</b></div><p>${h(skipTraceGateCopy)}</p><pre class="skiptrace-format">parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${h(firstSkipTraceRow.parcelId || 'parcel-id')},${h(firstSkipTraceRow.ownerName || 'Public Owner')},865-555-0198,owner@example.com,91</pre><textarea id="builder-skip-trace-csv" rows="5" placeholder="parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence"></textarea><div class="skiptrace-actions"><button id="builder-load-skiptrace-template" class="secondary compact-action" type="button">Use first matched row</button><button id="builder-import-skiptrace" class="compact-action" type="button">Import return + recompute cockpit</button></div><span id="builder-skiptrace-status">${h(importStatus)}</span></article>
+      <article class="skiptrace-return-card"><div class="panel-kicker"><span>Skip-trace / enrichment return gate</span><b>verified phone/email promotes, never fabricates</b></div><p>${h(skipTraceGateCopy)}</p><pre class="skiptrace-format">parcelId,ownerName,candidatePhone,candidateEmail,contactConfidence,contactSource,matchBasis\n${h(firstSkipTraceRow.parcelId || 'parcel-id')},${h(firstSkipTraceRow.ownerName || 'Public Owner')},865-555-0198,owner@example.com,high,manual lookup,same owner + mailing city</pre><textarea id="builder-skip-trace-csv" rows="5" placeholder="parcelId,ownerName,candidatePhone,candidateEmail,contactConfidence,contactSource,matchBasis"></textarea><div class="skiptrace-actions"><button id="builder-load-skiptrace-template" class="secondary compact-action" type="button">Use first matched row</button><button id="builder-import-skiptrace" class="compact-action" type="button">Import return + recompute cockpit</button></div><span id="builder-skiptrace-status">${h(importStatus)}</span></article>
     </div>
     ${renderSellerCallReference()}
     <div class="execution-call-grid">${callRows || '<article class="execution-call-card blocked"><b>No seller call cockpit is armed.</b><p>Public records stay held for skip trace until real phone/email and title/contract readiness exist.</p></article>'}</div>
@@ -2005,11 +2132,13 @@ function renderParcels() {
   const selected = getSelectedParcel(visible);
   const target = document.querySelector('#parcels');
   if (!target) return;
+  const landControls = renderLandControls();
+  const agentIntakeGate = renderLandAgentIntakeGate();
   const marketCoverage = renderDealsMarketCoverage();
 
   if (!selected) {
     const selectedMarket = getSelectedDealsMarket();
-    target.innerHTML = `${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
+    target.innerHTML = `${landControls}${agentIntakeGate}${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
       <span class="eyebrow">No ready deals</span>
       <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
       <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'this market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness.' : 'no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
@@ -2026,6 +2155,7 @@ function renderParcels() {
   const neighborPrompt = generateNeighborPrompt(selected);
   const operatorChecklist = buildOperatorChecklist(selected, buyer);
   const buyerMemo = generateBuyerSendMemo(selected, buyer, generateOfferPacket(selected, buyer));
+  const selectedListingState = parcelListingState(selected);
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const fitRows = [
@@ -2035,29 +2165,37 @@ function renderParcels() {
     ['Next action', selected.action, getNextAction(selected)],
   ];
 
-  target.innerHTML = `${marketCoverage}<div class="deal-workbench">
-    <div class="primary-action-strip deals-primary-action"><span>Next action</span><b>${h(getNextAction(selected))}</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner ${productIcon('arrow')}</a></div>
-    <aside class="deal-queue" aria-label="Seller call queue">
-      <div class="queue-header"><span class="eyebrow">Seller queue</span><strong>${visible.length} records</strong></div>
+  target.innerHTML = `${landControls}${agentIntakeGate}${marketCoverage}<div class="deal-workbench">
+    <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by state, market, enrichment, or builder fit. Every source-backed land record remains visible.</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${selectedListingState.offerReady || selectedListingState.enriched ? 'Act on selected' : 'Enrich selected'} ${productIcon('arrow')}</a></div>
+    <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
+      <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
+      <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-visible-source">source</span></div>
       <div class="queue-list">${visible.map((parcel, index) => {
         const isActive = parcel.id === selected.id;
+        const listingState = parcelListingState(parcel);
         const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
-        return `<button type="button" class="queue-item ${isActive ? 'active' : ''}" data-select-parcel="${h(parcel.id)}">
+        const marketSignal = parcel.selectedMarketMatch ? 'selected lane' : 'other lane';
+        return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcel.id)}" title="${h(listingState.detail)}">
           <span>${String(index + 1).padStart(2, '0')}</span>
           <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
-          <small>${h(parcel.ownerName || parcel.owner || 'owner unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || 'contact missing')}</small>
-          <em>${h(parcel.score)} score · ${formatMoney(parcel.metrics.spread)} spread · ${h(parcel.action)}</em>
-          ${badge(parcel.risk.status, tone)}
+          <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || 'contact not enriched')} · ${h(marketSignal)}</small>
+          <em><strong>${h(listingState.label)}</strong><i>${h(parcel.score)} score · ${formatMoney(parcel.metrics.spread)} spread</i></em>
+          <div class="land-row-signals"><mark>${listingState.enriched ? 'contact' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${badge(parcel.risk.status, tone)}</div>
         </button>`;
       }).join('')}</div>
     </aside>
 
     <article class="deal-detail" aria-label="Selected parcel detail">
       <div class="detail-hero">
-        <span class="eyebrow">Selected parcel</span>
+        <span class="eyebrow">Selected land listing · ${h(selectedListingState.label)}</span>
         <h2>${h(selected.address || selected.parcelId || 'Untitled parcel')}</h2>
-        <p>${h(selected.lotSize || 'lot size unknown')} · held ${h(selected.heldYears || 0)} yrs · paid ${formatMoney(Number(selected.paid || 0))}</p>
+        <p>${h(selectedListingState.detail)} ${h(selected.lotSize || 'lot size unknown')} · held ${h(selected.heldYears || 0)} yrs · paid ${formatMoney(Number(selected.paid || 0))}</p>
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
+      </div>
+      <div class="land-listing-status-strip" aria-label="Land listing progression">
+        <div class="${selectedListingState.enriched ? 'complete' : 'todo'}"><span>Contact</span><b>${selectedListingState.enriched ? 'Enriched' : 'Needs enrichment'}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'No verified phone/email yet.')}</p></div>
+        <div class="${selectedListingState.builderMatched ? 'complete' : 'todo'}"><span>Builder fit</span><b>${selectedListingState.builderMatched ? 'Matched criteria' : 'Fit unknown'}</b><p>${h(buyer.name || selected.buyerId || 'No buyer criterion attached.')}</p></div>
+        <div class="${selectedListingState.offerReady ? 'complete' : 'todo'}"><span>Priority</span><b>${h(selectedListingState.label)}</b><p>${h(selectedListingState.detail)}</p></div>
       </div>
       <div class="deal-strip five">
         <div><span>Buyer price</span><b>${formatMoney(selected.offer.buyerPrice)}</b></div>
@@ -2442,8 +2580,8 @@ function renderSkipTraceIntakePanel() {
   const sample = skipTrace[0];
   const matchedCount = asArray(workspace.parcels).filter(parcel => parcel.skipTraceImportedAt || parcel.realContact).length;
   target.innerHTML = `<div class="machine-import-shell">
-    <section class="machine-tool-intro"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-traced phones only after buyer fit.</h3><p>Match by parcelId first, then owner name, then address. Buyer-first rule stays intact.</p><div class="machine-micro-stats"><b>${h(skipTrace.length)}</b><span>waiting</span><b>${h(matchedCount)}</b><span>matched</span><b>${h(sample ? 'ready' : 'none')}</b><span>example</span></div></section>
-    <section class="machine-import-card"><div class="code-preview"><span>CSV preview</span><code>parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence</code><code>${h(sample?.parcelId || '274527L4110560090')},${h(sample?.ownerName || 'MONTEAN PETER & WENDY')},239-555-7722,owner@example.com,91</code></div><textarea id="skip-trace-csv" rows="3" placeholder="Paste skip-trace CSV here"></textarea><div class="button-row"><button id="load-skiptrace-template" class="secondary" type="button">Load first lead</button><button id="import-skiptrace" type="button">Import skip trace</button><span id="skiptrace-status"></span></div></section>
+    <section class="machine-tool-intro"><span class="eyebrow">Seller enrichment</span><h3>Paste skip-trace or enrichment positives only after buyer fit.</h3><p>Match by parcelId first, then owner name, then address. Successful owner enrichment is treated as skip tracing; low-confidence/DNC/opt-out rows stay held.</p><div class="machine-micro-stats"><b>${h(skipTrace.length)}</b><span>waiting</span><b>${h(matchedCount)}</b><span>matched</span><b>${h(sample ? 'ready' : 'none')}</b><span>example</span></div></section>
+    <section class="machine-import-card"><div class="code-preview"><span>CSV preview</span><code>parcelId,ownerName,candidatePhone,candidateEmail,contactConfidence,contactSource,matchBasis</code><code>${h(sample?.parcelId || '274527L4110560090')},${h(sample?.ownerName || 'MONTEAN PETER & WENDY')},239-555-7722,owner@example.com,high,manual lookup,same owner + mailing city</code></div><textarea id="skip-trace-csv" rows="3" placeholder="Paste skip-trace or owner-enrichment CSV here"></textarea><div class="button-row"><button id="load-skiptrace-template" class="secondary" type="button">Load first lead</button><button id="import-skiptrace" type="button">Import enrichment</button><span id="skiptrace-status"></span></div></section>
     <section class="machine-queue-preview"><h4>Next owners</h4>${skipTrace.slice(0, 3).map((item, index) => `<div class="engine-row"><b>${index + 1}. ${h(item.ownerName)}</b><span>${h(item.address)} · confidence ${h(item.confidence)}</span></div>`).join('') || '<p>No generated skip-trace queue found yet.</p>'}</section>
   </div>`;
 }
@@ -2463,13 +2601,13 @@ function renderBuyerContactIntakePanel() {
 
 function skipTraceTemplateRow() {
   const item = asArray(generatedLeads?.queues?.skipTrace)[0] || {};
-  return `parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${item.parcelId || '274527L4110560090'},${item.ownerName || 'MONTEAN PETER & WENDY'},239-555-7722,owner@example.com,91`;
+  return `parcelId,ownerName,candidatePhone,candidateEmail,contactConfidence,contactSource,matchBasis\n${item.parcelId || '274527L4110560090'},${item.ownerName || 'MONTEAN PETER & WENDY'},239-555-7722,owner@example.com,high,manual lookup,same owner + mailing city`;
 }
 
 function builderSkipTraceTemplateRow(stateCode = selectedBuilderMarketState) {
   const conveyor = buildExecutionConveyor({ buyers: buyerPoolForState(stateCode || 'TN'), sellerCandidates: sellerPoolForState(stateCode || 'TN'), limit: 50 });
   const item = asArray(conveyor.matchedSellerBatch)[0] || asArray(conveyor.board?.sellerMatches).find(row => !(row.ownerPhone || row.ownerEmail || row.realContact)) || {};
-  return `parcelId,ownerName,ownerPhone,ownerEmail,skipTraceConfidence\n${item.parcelId || item.id || 'parcel-id'},${item.ownerName || item.owner || 'Public Owner'},865-555-0198,owner@example.com,91`;
+  return `parcelId,ownerName,candidatePhone,candidateEmail,contactConfidence,contactSource,matchBasis\n${item.parcelId || item.id || 'parcel-id'},${item.ownerName || item.owner || 'Public Owner'},865-555-0198,owner@example.com,high,manual lookup,same owner + mailing city`;
 }
 
 function buyerContactTemplateRow() {
@@ -3334,6 +3472,22 @@ ${body}`;
       renderTopCallList();
     }
 
+    const landStateButton = event.target.closest('[data-land-state]');
+    if (landStateButton) {
+      selectedLandStateFilter = landStateButton.dataset.landState || 'all';
+      selectedParcelId = '';
+      renderParcels();
+      renderClosingDeskPanel();
+    }
+
+    const landSortButton = event.target.closest('[data-land-sort]');
+    if (landSortButton) {
+      selectedLandSort = landSortButton.dataset.landSort || 'priority';
+      selectedParcelId = '';
+      renderParcels();
+      renderClosingDeskPanel();
+    }
+
     if (event.target.matches('[data-select-parcel]')) {
       selectedParcelId = event.target.dataset.selectParcel;
       renderParcels();
@@ -3355,6 +3509,17 @@ ${body}`;
       selectedParcelId = '';
       renderParcels();
       renderTopCallList();
+      return;
+    }
+
+    const landKeyboardButton = event.target.closest?.('[data-land-state], [data-land-sort]');
+    if (landKeyboardButton && (event.key === 'Enter' || event.key === ' ')) {
+      event.preventDefault();
+      if (landKeyboardButton.dataset.landState) selectedLandStateFilter = landKeyboardButton.dataset.landState || 'all';
+      if (landKeyboardButton.dataset.landSort) selectedLandSort = landKeyboardButton.dataset.landSort || 'priority';
+      selectedParcelId = '';
+      renderParcels();
+      renderClosingDeskPanel();
       return;
     }
 
@@ -3403,18 +3568,10 @@ ${body}`;
 function renderFilters() {
   const target = document.querySelector('#parcel-filters');
   if (!target) return;
-  target.setAttribute('role', 'tablist');
-  target.setAttribute('aria-label', 'Deals filter');
-  target.classList.add('phase38-deals-segmented');
-  const options = [
-    ['all', 'All deals'],
-    ['seller-calls', 'Seller calls'],
-    ['offer-ready', 'Offer-ready'],
-    ['research', 'Research'],
-    ['follow-up', 'Follow-up'],
-    ['blocked', 'Blocked'],
-  ];
-  target.innerHTML = options.map(([value, label]) => `<button class="filter ${filter === value ? 'active' : ''}" type="button" role="tab" aria-selected="${filter === value ? 'true' : 'false'}" data-filter="${h(value)}">${h(label)}</button>`).join('');
+  target.setAttribute('aria-label', 'Land page legacy stage filters removed');
+  target.classList.add('land-stage-filters-retired');
+  target.hidden = true;
+  target.innerHTML = '';
 }
 
 function renderAll() {

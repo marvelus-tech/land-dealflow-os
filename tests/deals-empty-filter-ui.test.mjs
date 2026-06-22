@@ -29,7 +29,7 @@ for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorches
   assert.match(app, new RegExp(`key: '${key}'`), `Deals market coverage must include ${key} through the shared registry.`);
 }
 assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');
-assert.match(app, /Sort by state, market, enrichment, or builder fit\. Every source-backed land record remains visible\./, 'Land primary instruction must explain sorting plus the always-visible ledger.');
+assert.match(app, /Sort by confidence, proof, enrichment, or builder fit\. Every useful agent finding remains visible\./, 'Land primary instruction must explain ranking plus the always-visible ledger.');
 assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
 assert.match(app, /return scoredParcels\(\)\.map\(parcel => \(\{/, 'Deals visible parcels must keep all source-backed records visible.');
 assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| rowState\(parcel\) === selectedLandStateFilter/, 'Land state focus may prioritize matching rows but must not hide other land listings.');
@@ -40,10 +40,10 @@ assert.match(app, /Matched \+ enriched/, 'Land rows must distinguish records tha
 assert.match(app, /land-listing-status-strip/, 'Selected detail must show contact/builder-fit/priority progression.');
 assert.match(app, /function renderLandAgentIntakeGate/, 'Land page must expose a subagent intake proof gate.');
 assert.match(app, /Agent intake gate/, 'Land page must label the agent intake proof gate clearly.');
-assert.match(app, /Land Recon subagents may append public parcel rows here/, 'Land page must explain the subagent append boundary without promoting calls.');
+assert.match(app, /Land Recon subagents may append raw clues, proof-needed rows, and public parcel records/, 'Land page must explain the visible subagent append boundary without promoting calls.');
 assert.match(app, /subagents reference the webapp script; they do not perform outreach/, 'Land agent intake gate must preserve the no-agent-outreach boundary.');
-assert.match(app, /Public proof', 'Required'/, 'Agent intake contract must require public proof before land promotion.');
-assert.match(app, /Owner contact', 'Gated'/, 'Agent intake contract must keep owner contact gated by verified enrichment.');
+assert.match(app, /Public proof', 'Promotes'/, 'Agent intake contract must promote public proof without hiding raw findings.');
+assert.match(app, /Owner contact', 'Quarantined'/, 'Agent intake contract must keep weak owner contact visible but not callable.');
 assert.match(app, /Builder fit', 'Computed'/, 'Agent intake contract must compute builder fit from evidence rather than guessing.');
 
 assert.match(css, /v1\.65 - Phase 38 Deals calm empty state/, 'Phase 38 route-scoped CSS marker missing.');

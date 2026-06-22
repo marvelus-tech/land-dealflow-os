@@ -28994,3 +28994,29 @@ body[data-active-view="deals"] #land-recon-import-status {
   body[data-active-view="deals"] .land-recon-import-copy h3 { max-width: 22ch !important; }
 }
 
+/* v1.101 - Land agent findings are visible-first; confidence ranks promotion, never basic visibility. */
+body[data-active-view="deals"] #parcels {
+  --phase101-land-visible-intake: all-useful-agent-findings-visible-ranked-not-hidden;
+}
+body[data-active-view="deals"] #parcels .land-ledger-legend .state-contact-candidate::before { background: #b9822d; }
+body[data-active-view="deals"] #parcels .land-ledger-legend .state-needs-proof::before { background: #9b7c55; }
+body[data-active-view="deals"] #parcels .land-ledger-legend .state-raw-finding::before { background: rgba(82, 100, 91, .24); border: 1px solid rgba(82, 100, 91, .34); }
+body[data-active-view="deals"] #parcels .land-listing-row.listing-contact-candidate::before { background: #b9822d; }
+body[data-active-view="deals"] #parcels .land-listing-row.listing-needs-proof::before { background: #9b7c55; }
+body[data-active-view="deals"] #parcels .land-listing-row.listing-raw-finding::before { background: rgba(82, 100, 91, .28); }
+body[data-active-view="deals"] #parcels .land-listing-row.listing-needs-proof,
+body[data-active-view="deals"] #parcels .land-listing-row.listing-raw-finding {
+  color: rgba(8, 16, 12, .74) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row.listing-contact-candidate em strong { color: #9d6619 !important; }
+body[data-active-view="deals"] #parcels .land-listing-row.listing-needs-proof em strong,
+body[data-active-view="deals"] #parcels .land-listing-row.listing-raw-finding em strong { color: rgba(82, 100, 91, .72) !important; }
+body[data-active-view="deals"] #parcels .land-listing-status-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-status-strip .candidate b { color: #9d6619 !important; }
+body[data-active-view="deals"] #parcels .land-listing-status-strip .candidate p { color: rgba(82, 71, 45, .82) !important; }
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels .land-listing-status-strip { grid-template-columns: 1fr !important; }
+}
+

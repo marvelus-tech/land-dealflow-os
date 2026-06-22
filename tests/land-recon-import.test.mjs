@@ -26,22 +26,42 @@ function testSourceBackedPacketImportsButDoesNotBecomeCallable() {
   assert.equal(result.summary.imported, 1);
   assert.equal(result.summary.rejected, 0);
   const row = result.workspace.parcels[0];
-  assert.equal(row.agentIntakeStatus, 'source-backed');
+  assert.equal(row.agentIntakeStatus, 'contact-candidate');
   assert.equal(row.publicProofStatus, 'verified-public-source');
   assert.equal(row.skipTraceStatus, 'needs-skip-trace');
   assert.equal(row.ownerPhone, '', 'unverified contact must not be accepted from a public parcel packet');
   assert.equal(row.ownerEmail, '', 'unverified email must not be accepted from a public parcel packet');
+  assert.equal(row.unverifiedOwnerPhone, '865-555-0100', 'unverified contact should remain visible as candidate evidence');
+  assert.equal(row.unverifiedOwnerEmail, 'owner@example.com', 'unverified email should remain visible as candidate evidence');
   const daily = buildDailyMoneyQueue({ parcels: result.workspace.parcels, buyers: [], requireRealContact: true });
   assert.equal(daily.today.length, 0, 'source-backed rows without verified contact must not enter callable daily queue');
 }
 
-function testCsvRejectsRowsWithoutPublicProof() {
-  const csv = 'parcelId,propertyAddress,ownerName,collectedAt\nNO-PROOF-1,"1 Missing Proof Rd",No Source Owner,2026-06-22';
+function testCsvKeepsRowsWithoutPublicProofVisible() {
+  const csv = 'parcelId,propertyAddress,ownerName,collectedAt,confidence\nNO-PROOF-1,"1 Missing Proof Rd",No Source Owner,2026-06-22,12';
   const result = applyLandReconParcelImport({ parcels: [] }, csv, { now: '2026-06-22T00:00:00.000Z' });
   assert.equal(result.summary.received, 1);
-  assert.equal(result.summary.imported, 0);
-  assert.equal(result.summary.rejected, 1);
-  assert.match(result.rejected[0].reasons.join(' '), /missing public source URL/);
+  assert.equal(result.summary.imported, 1);
+  assert.equal(result.summary.rejected, 0);
+  const row = result.workspace.parcels[0];
+  assert.equal(row.agentIntakeStatus, 'needs-public-proof');
+  assert.equal(row.publicProofStatus, 'needs-public-proof');
+  assert.equal(row.visibleIntake, true);
+  assert.deepEqual(row.intakeMissing, ['missing public source URL']);
+  assert.equal(row.intakeConfidence, 12);
+}
+
+function testWeakContactIsVisibleButNotCallable() {
+  const csv = 'parcelId,propertyAddress,ownerName,sourceUrl,collectedAt,candidatePhone,contactSource,matchBasis,contactConfidence,enrichmentStatus\nKGIS-WEAK-1,"3 Weak Contact Rd",Weak Owner,https://knoxcounty.example/p/3,2026-06-22,865-555-0111,manual lookup,name only,31,weak';
+  const result = applyLandReconParcelImport({ parcels: [] }, csv, { now: '2026-06-22T00:00:00.000Z' });
+  const row = result.workspace.parcels[0];
+  assert.equal(row.agentIntakeStatus, 'contact-candidate');
+  assert.equal(row.publicProofStatus, 'verified-public-source');
+  assert.equal(row.ownerPhone, '', 'weak contact must not become callable ownerPhone');
+  assert.equal(row.unverifiedOwnerPhone, '865-555-0111');
+  assert.equal(row.unverifiedContactCandidates.length, 1);
+  const daily = buildDailyMoneyQueue({ parcels: result.workspace.parcels, buyers: [], requireRealContact: true });
+  assert.equal(daily.today.length, 0, 'weak contact candidate must not enter callable daily queue');
 }
 
 function testVerifiedEnrichmentCanPromoteContactButStillShowsProof() {
@@ -59,15 +79,19 @@ function testLandReconImportSurfaceExists() {
   assert.match(app, /function renderLandReconImportPath/, 'Land page must render a Land Recon artifact import path.');
   assert.match(app, /id="land-recon-packet-input"/, 'Land Recon import must expose a paste target.');
   assert.match(app, /id="import-land-recon-packet"/, 'Land Recon import must expose a validate-and-append action.');
-  assert.match(app, /Required: parcel\/APN or address, owner name, public source URL, and collectedAt/, 'Import surface must state the validation contract.');
-  assert.match(app, /Call-ready remains gated/, 'Import status must preserve the no-shortcut call-ready boundary.');
+  assert.match(app, /preserves first, promotes second/, 'Import surface must describe visible-first ingestion.');
+  assert.match(app, /needs-public-proof/, 'Import surface must expose visible proof-needed status.');
+  assert.match(app, /Confidence ranks; call-ready remains gated/, 'Import status must preserve ranking and no-shortcut call-ready boundary.');
   assert.match(css, /v1\.100 - Land Recon artifact import path validates source proof before appending to Land/, 'Phase 100 Land Recon import CSS marker missing.');
   assert.match(css, /--phase100-land-recon-import: source-backed-artifact-validation-before-ledger-append/, 'Phase 100 CSS rule marker missing.');
+  assert.match(css, /v1\.101 - Land agent findings are visible-first/, 'Phase 101 visible intake CSS marker missing.');
+  assert.match(css, /--phase101-land-visible-intake: all-useful-agent-findings-visible-ranked-not-hidden/, 'Phase 101 CSS rule marker missing.');
   assert.match(css, /\.land-recon-import-path[\s\S]{0,220}grid-template-columns: minmax\(280px, \.52fr\) minmax\(0, 1fr\)/, 'Import path must render as a calm two-column proof surface.');
 }
 
 testSourceBackedPacketImportsButDoesNotBecomeCallable();
-testCsvRejectsRowsWithoutPublicProof();
+testCsvKeepsRowsWithoutPublicProofVisible();
+testWeakContactIsVisibleButNotCallable();
 testVerifiedEnrichmentCanPromoteContactButStillShowsProof();
 testLandReconImportSurfaceExists();
 

@@ -1018,6 +1018,42 @@ function landReconProofUrls(record = {}) {
   return [record.sourceUrl, record.publicSource, record.assessorUrl, record.gisUrl, record.taxUrl, ...splitSourceUrls(record.sourceUrls), ...splitSourceUrls(record.sourceUrlsText)].filter(Boolean);
 }
 
+function usefulLandReconFinding(record = {}) {
+  const signalFields = [
+    record.parcelId, record.apn, record.id, record.propertyAddress, record.address,
+    record.ownerName, record.owner, record.ownerMailingAddress, record.sourceUrl, record.publicSource,
+    record.assessorUrl, record.gisUrl, record.taxUrl, record.sourceName, record.sourceType,
+    record.candidatePhone, record.candidateEmail, record.ownerPhone, record.ownerEmail,
+    record.notes, record.provenanceNotes, record.buyerMatchReason, record.market, record.state,
+  ];
+  return signalFields.some(value => String(value ?? '').trim() !== '');
+}
+
+function unverifiedContactCandidate(record = {}, now = new Date().toISOString()) {
+  const phone = firstFilled(record.ownerPhone, record.candidatePhone, record.phone);
+  const email = firstFilled(record.ownerEmail, record.candidateEmail, record.email);
+  if (!(phone || email)) return null;
+  return {
+    phone,
+    email,
+    source: firstFilled(record.contactSource, record.contactSourceUrl, record.sourceName, record.sourceUrl, record.publicSource),
+    confidence: String(contactConfidenceValue(record) || 'unverified'),
+    matchBasis: record.matchBasis || '',
+    status: firstFilled(record.enrichmentStatus, record.skipTraceStatus, record.status, 'needs verification'),
+    receivedAt: now,
+  };
+}
+
+function numericConfidence(record = {}) {
+  const raw = firstFilled(record.landConfidence, record.agentConfidence, record.contactConfidence, record.enrichmentConfidence, record.skipTraceConfidence, record.confidence);
+  const numeric = Number(String(raw).replace(/[^0-9.]+/g, ''));
+  if (Number.isFinite(numeric) && numeric > 0) return Math.max(0, Math.min(100, numeric));
+  if (/high|strong|verified/i.test(String(raw))) return 82;
+  if (/medium|review/i.test(String(raw))) return 55;
+  if (/low|weak|unknown|name[-\s]*only/i.test(String(raw))) return 22;
+  return 0;
+}
+
 function validateLandReconParcelRecord(record = {}) {
   const id = record.parcelId || record.apn || record.id;
   const address = record.propertyAddress || record.address;
@@ -1028,7 +1064,17 @@ function validateLandReconParcelRecord(record = {}) {
   if (!owner) reasons.push('missing ownerName');
   if (!urls.length) reasons.push('missing public source URL');
   if (!record.collectedAt && !record.sourceCollectedAt && !record.generatedAt) reasons.push('missing collectedAt timestamp');
-  return { ok: reasons.length === 0, reasons, urls };
+  const useful = usefulLandReconFinding(record);
+  const publicProofOk = Boolean((id || address) && owner && urls.length && (record.collectedAt || record.sourceCollectedAt || record.generatedAt));
+  const partialIdentity = Boolean(id || address || owner);
+  return {
+    ok: useful,
+    useful,
+    publicProofOk,
+    partialIdentity,
+    reasons: useful ? reasons : ['empty or unusable agent finding'],
+    urls,
+  };
 }
 
 export function applyLandReconParcelImport(workspace = {}, payload = '', { now = new Date().toISOString() } = {}) {
@@ -1047,12 +1093,25 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
       continue;
     }
 
-    const parcelId = record.parcelId || record.apn || record.id || `land-recon-${imported + 1}`;
+    const fallbackId = `land-recon-finding-${imported + 1}`;
+    const parcelId = record.parcelId || record.apn || record.id || normalizeMatchKey(record.propertyAddress || record.address || record.ownerName || record.owner) || fallbackId;
     const existingIndex = current.findIndex(parcel => normalizeMatchKey(parcel.parcelId || parcel.id) === normalizeMatchKey(parcelId));
     const existing = existingIndex >= 0 ? current[existingIndex] : {};
     const contactPositive = (record.ownerPhone || record.ownerEmail || record.candidatePhone || record.candidateEmail) && isPositiveContactEnrichment(record);
-    const publicStatus = contactPositive ? 'contact-enriched' : 'source-backed';
-    const importNote = `Land Recon packet imported ${now.slice(0, 10)} with public proof: ${validation.urls.slice(0, 2).join(' | ')}.`;
+    const unverifiedContact = contactPositive ? null : unverifiedContactCandidate(record, now);
+    const publicStatus = contactPositive
+      ? 'contact-enriched'
+      : validation.publicProofOk && unverifiedContact
+        ? 'contact-candidate'
+        : validation.publicProofOk
+          ? 'source-backed'
+          : validation.partialIdentity
+            ? 'needs-public-proof'
+            : 'raw-finding';
+    const proofCopy = validation.publicProofOk ? `public proof: ${validation.urls.slice(0, 2).join(' | ')}` : `visible intake; needs ${validation.reasons.join(', ')}`;
+    const importNote = `Land Recon packet imported ${now.slice(0, 10)} with ${proofCopy}.`;
+    const existingUnverified = Array.isArray(existing.unverifiedContactCandidates) ? existing.unverifiedContactCandidates : [];
+    const unverifiedContactCandidates = unverifiedContact ? [...existingUnverified, unverifiedContact] : existingUnverified;
     const update = {
       ...existing,
       ...record,
@@ -1067,11 +1126,15 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
       sourceUrls: validation.urls.length ? validation.urls : splitSourceUrls(existing.sourceUrls),
       publicSource: record.publicSource || record.sourceName || existing.publicSource || '',
       sourceName: record.sourceName || existing.sourceName || '',
-      sourceType: record.sourceType || existing.sourceType || 'public parcel/owner record',
+      sourceType: record.sourceType || existing.sourceType || (validation.publicProofOk ? 'public parcel/owner record' : 'agent finding; proof pending'),
       collectedAt: record.collectedAt || record.sourceCollectedAt || record.generatedAt || existing.collectedAt || now,
       landReconImportedAt: now,
-      publicProofStatus: 'verified-public-source',
+      publicProofStatus: validation.publicProofOk ? 'verified-public-source' : 'needs-public-proof',
       agentIntakeStatus: publicStatus,
+      landLedgerStatus: publicStatus,
+      intakeConfidence: numericConfidence(record),
+      intakeMissing: validation.reasons,
+      visibleIntake: true,
       skipTraceStatus: contactPositive ? 'contact-enriched' : (existing.skipTraceStatus || 'needs-skip-trace'),
       crmStatus: existing.crmStatus && ['Dead', 'Kill'].includes(existing.crmStatus) ? existing.crmStatus : 'Researching',
       realContact: contactPositive ? true : Boolean(existing.realContact),
@@ -1079,7 +1142,10 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
       ownerEmail: contactPositive ? firstFilled(record.ownerEmail, record.candidateEmail, existing.ownerEmail) : (existing.ownerEmail || ''),
       candidatePhone: contactPositive ? firstFilled(record.candidatePhone, record.ownerPhone, existing.candidatePhone) : '',
       candidateEmail: contactPositive ? firstFilled(record.candidateEmail, record.ownerEmail, existing.candidateEmail) : '',
-      notes: [existing.notes, record.notes, record.provenanceNotes, importNote, contactPositive ? 'Contact fields accepted only because enrichment confidence/status passed the skip-trace gate.' : 'Owner phone/email withheld until verified enrichment passes the skip-trace gate.'].filter(Boolean).join('\n'),
+      unverifiedContactCandidates,
+      unverifiedOwnerPhone: unverifiedContact?.phone || existing.unverifiedOwnerPhone || '',
+      unverifiedOwnerEmail: unverifiedContact?.email || existing.unverifiedOwnerEmail || '',
+      notes: [existing.notes, record.notes, record.provenanceNotes, importNote, contactPositive ? 'Contact fields accepted only because enrichment confidence/status passed the skip-trace gate.' : unverifiedContact ? 'Unverified phone/email preserved as visible evidence only; not callable until enrichment passes.' : 'Owner phone/email withheld until verified enrichment passes the skip-trace gate.'].filter(Boolean).join('\n'),
     };
     if (existingIndex >= 0) { current[existingIndex] = update; updated += 1; }
     else { current.push(update); created += 1; }

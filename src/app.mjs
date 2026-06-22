@@ -590,13 +590,36 @@ function getLandStateOptions() {
   return ['all', ...new Set([...registryStates, ...parcelStates])];
 }
 
+function landConfidenceScore(parcel = {}) {
+  const raw = parcel.intakeConfidence ?? parcel.landConfidence ?? parcel.agentConfidence ?? parcel.skipTraceConfidence ?? parcel.contactConfidence ?? parcel.confidence ?? 0;
+  const numeric = Number(String(raw).replace(/[^0-9.]+/g, ''));
+  if (Number.isFinite(numeric) && numeric > 0) return Math.max(0, Math.min(100, numeric));
+  if (/high|strong|verified/i.test(String(raw))) return 82;
+  if (/medium|review/i.test(String(raw))) return 55;
+  if (/low|weak|unknown|name[-\s]*only/i.test(String(raw))) return 22;
+  return 0;
+}
+
+function landStageWeight(state = {}) {
+  if (state.offerReady) return 1200;
+  if (state.builderMatched && state.enriched) return 950;
+  if (state.builderMatched) return 760;
+  if (state.enriched) return 650;
+  if (state.contactCandidate) return 480;
+  if (state.sourceBacked) return 360;
+  if (state.needsProof) return 160;
+  if (state.rawFinding) return 60;
+  return 0;
+}
+
 function landSortValue(parcel = {}, mode = selectedLandSort) {
   const state = parcelListingState(parcel);
+  const confidence = landConfidenceScore(parcel);
   if (mode === 'state') return `${rowState(parcel)} ${getLandRowMarketKey(parcel)} ${parcel.address || parcel.parcelId || ''}`;
   if (mode === 'market') return `${getLandRowMarketKey(parcel)} ${rowState(parcel)} ${parcel.address || parcel.parcelId || ''}`;
-  if (mode === 'enrichment') return -(Number(state.enriched) * 1000 + Number(state.builderMatched) * 500 + Number(state.offerReady) * 250 + Number(parcel.score || 0));
-  if (mode === 'builder-fit') return -(Number(state.builderMatched) * 1000 + Number(state.enriched) * 250 + Number(parcel.score || 0));
-  return -(Number(parcel.selectedMarketMatch) * 2000 + Number(state.offerReady) * 1200 + Number(state.builderMatched) * 700 + Number(state.enriched) * 450 + Number(parcel.score || 0));
+  if (mode === 'enrichment') return -(Number(state.enriched) * 1000 + Number(state.contactCandidate) * 420 + Number(state.builderMatched) * 500 + Number(state.offerReady) * 250 + confidence + Number(parcel.score || 0));
+  if (mode === 'builder-fit') return -(Number(state.builderMatched) * 1000 + Number(state.enriched) * 250 + confidence + Number(parcel.score || 0));
+  return -(Number(parcel.selectedMarketMatch) * 2000 + landStageWeight(state) + confidence * 1.8 + Number(parcel.score || 0));
 }
 
 function getVisibleParcels() {
@@ -619,6 +642,12 @@ function getVisibleParcels() {
 }
 
 function parcelListingState(parcel = {}) {
+  const status = parcel.landLedgerStatus || parcel.agentIntakeStatus || '';
+  const sourceBacked = parcel.publicProofStatus === 'verified-public-source' || ['source-backed', 'contact-candidate', 'contact-enriched', 'builder-fit', 'offer-ready'].includes(status);
+  const needsProof = status === 'needs-public-proof' || parcel.publicProofStatus === 'needs-public-proof';
+  const rawFinding = status === 'raw-finding';
+  const unverifiedContacts = Array.isArray(parcel.unverifiedContactCandidates) ? parcel.unverifiedContactCandidates : [];
+  const contactCandidate = status === 'contact-candidate' || Boolean(unverifiedContacts.length || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail);
   const enriched = Boolean(parcel.ownerPhone || parcel.ownerEmail || parcel.realContact || parcel.skipTraceImportedAt || parcel.skipTraceStatus === 'contact-enriched');
   const builderMatched = Boolean(
     parcel.reasons?.some?.(reason => /buyer|buy box|market fit/i.test(reason))
@@ -627,8 +656,27 @@ function parcelListingState(parcel = {}) {
   );
   const offerReady = parcel.risk?.status === 'Pass' && builderMatched && enriched && Number(parcel.metrics?.spread || 0) > 0;
   const blocked = parcel.action === 'Kill' || parcel.crmStatus === 'Kill' || parcel.risk?.status === 'Kill';
-  const stage = offerReady ? 'offer-ready' : builderMatched && enriched ? 'matched-enriched' : builderMatched ? 'builder-match' : enriched ? 'enriched' : blocked ? 'blocked' : 'visible-source';
-  const label = offerReady ? 'Offer-ready' : builderMatched && enriched ? 'Matched + enriched' : builderMatched ? 'Builder match' : enriched ? 'Enriched contact' : blocked ? 'Blocked risk' : 'Visible source';
+  const confidence = landConfidenceScore(parcel);
+  const stage = offerReady ? 'offer-ready'
+    : builderMatched && enriched ? 'matched-enriched'
+      : builderMatched ? 'builder-match'
+        : enriched ? 'enriched'
+          : contactCandidate ? 'contact-candidate'
+            : sourceBacked ? 'visible-source'
+              : needsProof ? 'needs-proof'
+                : rawFinding ? 'raw-finding'
+                  : blocked ? 'blocked'
+                    : 'raw-finding';
+  const label = offerReady ? 'Offer-ready'
+    : builderMatched && enriched ? 'Matched + enriched'
+      : builderMatched ? 'Builder match'
+        : enriched ? 'Enriched contact'
+          : contactCandidate ? 'Contact candidate'
+            : sourceBacked ? 'Source-backed'
+              : needsProof ? 'Needs public proof'
+                : rawFinding ? 'Raw finding'
+                  : blocked ? 'Blocked risk'
+                    : 'Raw finding';
   const detail = offerReady
     ? 'Buyer fit, contact, and first-pass economics are present.'
     : builderMatched && enriched
@@ -637,10 +685,16 @@ function parcelListingState(parcel = {}) {
         ? 'Buyer-fit signal present; enrich owner contact next.'
         : enriched
           ? 'Reachable owner; still needs buyer-fit confirmation.'
-          : blocked
-            ? 'Keep visible for audit, but do not call.'
-            : 'Source-backed land record; not hidden from the flow.';
-  return { enriched, builderMatched, offerReady, blocked, stage, label, detail };
+          : contactCandidate
+            ? 'Unverified contact evidence is visible, but not callable until enriched.'
+            : sourceBacked
+              ? 'Public source-backed land record; rank rises as confidence improves.'
+              : needsProof
+                ? 'Agent found something useful; attach public source proof before promotion.'
+                : blocked
+                  ? 'Keep visible for audit, but do not call.'
+                  : 'Raw agent finding; retained so the operator can research and enrich it.';
+  return { enriched, builderMatched, offerReady, blocked, sourceBacked, needsProof, rawFinding, contactCandidate, confidence, stage, label, detail };
 }
 
 function dealsMarketCoverageEntries() {
@@ -695,12 +749,12 @@ function renderLandControls() {
     <div class="land-command-copy">
       <span class="eyebrow">Land markets</span>
       <h3>Browse every plot by state and market.</h3>
-      <p>Agents can periodically append source-backed land records here. Rows stay visible, then gain weight when owner contact is enriched and builder demand matches.</p>
+      <p>Agents can append raw findings, proof-needed rows, and source-backed land here. Nothing useful disappears; confidence changes rank, color, symbols, and actions.</p>
     </div>
     <div class="land-control-ledger">
       <div class="land-control-group" aria-label="Focus by state"><span>Focus state</span><div>${stateButtons}</div></div>
       <div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>
-      <p class="land-control-note">Viewing ${h(selectedStateCopy)} · ${h(parcels.length)} source-backed records retained for audit.</p>
+      <p class="land-control-note">Viewing ${h(selectedStateCopy)} · ${h(parcels.length)} agent findings retained for audit and enrichment.</p>
     </div>
   </section>`;
 }
@@ -710,28 +764,31 @@ function renderLandAgentIntakeGate() {
   const counts = parcels.reduce((acc, parcel) => {
     const state = parcelListingState(parcel);
     acc.source += 1;
+    if (state.rawFinding || state.needsProof) acc.needsProof += 1;
+    if (state.contactCandidate) acc.contactCandidates += 1;
     if (!state.enriched) acc.needsContact += 1;
     if (state.builderMatched) acc.builderFit += 1;
     if (state.offerReady) acc.offerReady += 1;
     return acc;
-  }, { source: 0, needsContact: 0, builderFit: 0, offerReady: 0 });
+  }, { source: 0, needsProof: 0, contactCandidates: 0, needsContact: 0, builderFit: 0, offerReady: 0 });
   const contractRows = [
-    ['Public proof', 'Required', 'county/GIS/tax/permit URL + collectedAt; no private guesswork'],
-    ['Owner contact', 'Gated', 'phone/email only after verified enrichment, confidence, source, and match basis'],
+    ['Raw finding', 'Visible', 'agent clues stay inspectable even when proof is incomplete'],
+    ['Public proof', 'Promotes', 'county/GIS/tax/permit URL + collectedAt raises the row to source-backed'],
+    ['Owner contact', 'Quarantined', 'weak phone/email is shown as candidate evidence, not a callable field'],
     ['Builder fit', 'Computed', 'buy-box/permit evidence must exist before seller-call priority rises'],
     ['Call status', 'Manual', 'subagents reference the webapp script; they do not perform outreach'],
   ].map(([label, state, copy]) => `<li><span>${h(label)}</span><b>${h(state)}</b><p>${h(copy)}</p></li>`).join('');
   return `<section class="land-agent-intake-gate" aria-label="Land agent intake contract">
     <div class="land-agent-copy">
       <span class="eyebrow">Agent intake gate</span>
-      <h3>Accept records only when the proof chain is visible.</h3>
-      <p>Land Recon subagents may append public parcel rows here, but the ledger refuses the dangerous shortcut: source-backed is visible, contact-enriched is stronger, buyer-fit is stronger again, and seller outreach stays manual.</p>
+      <h3>Show every useful finding. Promote only what earns it.</h3>
+      <p>Land Recon subagents may append raw clues, proof-needed rows, and public parcel records. The ledger ranks confidence with color and symbols, but it does not hide useful data from the operator.</p>
     </div>
     <div class="land-agent-ledger">
       <div class="land-agent-facts" aria-label="Current land proof state">
-        <div><span>Source rows</span><b>${h(counts.source)}</b></div>
-        <div><span>Need contact</span><b>${h(counts.needsContact)}</b></div>
-        <div><span>Builder fit</span><b>${h(counts.builderFit)}</b></div>
+        <div><span>Visible findings</span><b>${h(counts.source)}</b></div>
+        <div><span>Need proof</span><b>${h(counts.needsProof)}</b></div>
+        <div><span>Contact candidates</span><b>${h(counts.contactCandidates)}</b></div>
         <div><span>Offer-ready</span><b>${h(counts.offerReady)}</b></div>
       </div>
       <ol>${contractRows}</ol>
@@ -759,8 +816,8 @@ function renderLandReconImportPath() {
   return `<section class="land-recon-import-path" aria-label="Land Recon artifact import path">
     <div class="land-recon-import-copy">
       <span class="eyebrow">Artifact import</span>
-      <h3>Paste a Land Recon packet. The ledger validates before append.</h3>
-      <p>Accepts JSON arrays, packet objects with <code>sellerRows</code>/<code>parcels</code>, or CSV. Required: parcel/APN or address, owner name, public source URL, and collectedAt. Unverified phones/emails stay out of call-ready status.</p>
+      <h3>Paste a Land Recon packet. The ledger preserves first, promotes second.</h3>
+      <p>Accepts JSON arrays, packet objects with <code>sellerRows</code>/<code>parcels</code>, or CSV. Missing proof becomes visible <code>needs-public-proof</code>; unverified phones/emails become contact candidates, not callable fields.</p>
     </div>
     <div class="land-recon-import-panel">
       <textarea id="land-recon-packet-input" rows="8" spellcheck="false" placeholder="${h(sample)}"></textarea>
@@ -2202,10 +2259,10 @@ function renderParcels() {
   ];
 
   target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}${marketCoverage}<div class="deal-workbench">
-    <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by state, market, enrichment, or builder fit. Every source-backed land record remains visible.</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${selectedListingState.offerReady || selectedListingState.enriched ? 'Act on selected' : 'Enrich selected'} ${productIcon('arrow')}</a></div>
+    <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by confidence, proof, enrichment, or builder fit. Every useful agent finding remains visible.</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${selectedListingState.offerReady || selectedListingState.enriched ? 'Act on selected' : selectedListingState.needsProof || selectedListingState.rawFinding ? 'Research proof' : 'Enrich selected'} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
-      <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-visible-source">source</span></div>
+      <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
       <div class="queue-list">${visible.map((parcel, index) => {
         const isActive = parcel.id === selected.id;
         const listingState = parcelListingState(parcel);
@@ -2214,9 +2271,9 @@ function renderParcels() {
         return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcel.id)}" title="${h(listingState.detail)}">
           <span>${String(index + 1).padStart(2, '0')}</span>
           <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
-          <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || 'contact not enriched')} · ${h(marketSignal)}</small>
-          <em><strong>${h(listingState.label)}</strong><i>${h(parcel.score)} score · ${formatMoney(parcel.metrics.spread)} spread</i></em>
-          <div class="land-row-signals"><mark>${listingState.enriched ? 'contact' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${badge(parcel.risk.status, tone)}</div>
+          <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail || 'contact not enriched')} · ${h(marketSignal)}</small>
+          <em><strong>${h(listingState.label)}</strong><i>${h(listingState.confidence)} confidence · ${h(parcel.score)} score</i></em>
+          <div class="land-row-signals"><mark>${listingState.sourceBacked ? 'proof' : listingState.needsProof ? 'needs proof' : 'raw'}</mark><mark>${listingState.enriched ? 'verified contact' : listingState.contactCandidate ? 'contact candidate' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${badge(parcel.risk.status, tone)}</div>
         </button>`;
       }).join('')}</div>
     </aside>
@@ -2229,7 +2286,8 @@ function renderParcels() {
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
       <div class="land-listing-status-strip" aria-label="Land listing progression">
-        <div class="${selectedListingState.enriched ? 'complete' : 'todo'}"><span>Contact</span><b>${selectedListingState.enriched ? 'Enriched' : 'Needs enrichment'}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'No verified phone/email yet.')}</p></div>
+        <div class="${selectedListingState.sourceBacked ? 'complete' : 'todo'}"><span>Proof</span><b>${selectedListingState.sourceBacked ? 'Source-backed' : 'Needs proof'}</b><p>${h(selected.sourceUrl || selected.publicSource || selected.intakeMissing?.join(' · ') || 'Attach public source URL and timestamp.')}</p></div>
+        <div class="${selectedListingState.enriched ? 'complete' : selectedListingState.contactCandidate ? 'candidate' : 'todo'}"><span>Contact</span><b>${selectedListingState.enriched ? 'Enriched' : selectedListingState.contactCandidate ? 'Candidate only' : 'Needs enrichment'}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'No verified phone/email yet.')}</p></div>
         <div class="${selectedListingState.builderMatched ? 'complete' : 'todo'}"><span>Builder fit</span><b>${selectedListingState.builderMatched ? 'Matched criteria' : 'Fit unknown'}</b><p>${h(buyer.name || selected.buyerId || 'No buyer criterion attached.')}</p></div>
         <div class="${selectedListingState.offerReady ? 'complete' : 'todo'}"><span>Priority</span><b>${h(selectedListingState.label)}</b><p>${h(selectedListingState.detail)}</p></div>
       </div>
@@ -2256,10 +2314,11 @@ function renderParcels() {
       ${renderBuyerSendMemoCard(buyerMemo)}
       ${renderBuyerFeedbackCapture(selected, buyer)}
       <div class="detail-grid">
-        <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || 'contact missing')}</p></div>
+        <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'contact missing')}</p></div>
         <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
         <div><span>Risk notes</span><b>${h(selected.risk.status)}</b><p>${h(selected.flags.join(', ') || 'No first-pass risk flags.')}</p></div>
         <div><span>Source notes</span><b>${h(selected.parcelId || selected.id)}</b><p>${h(selected.acquisitionNotes || selected.notes || 'No notes yet.')}</p></div>
+        <div><span>Intake confidence</span><b>${h(selectedListingState.confidence)} / 100</b><p>${h(selected.intakeMissing?.join(' · ') || selected.agentIntakeStatus || 'No missing intake fields recorded.')}</p></div>
       </div>
       <details class="detail-disclosure"><summary>Show CRM fields</summary>${crmControls(selected)}</details>
     </article>
@@ -2267,7 +2326,7 @@ function renderParcels() {
     <aside class="deal-action" aria-label="Buyer fit and next action">
       <div class="next-action-card">
         <span class="eyebrow">Next</span>
-        <h3>${h(getNextAction(selected))}</h3>
+        <h3>${h(selectedListingState.needsProof || selectedListingState.rawFinding ? 'Research proof before promotion.' : getNextAction(selected))}</h3>
         <div class="button-row"><a class="button-link" href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner</a><button type="button" class="secondary" data-view="machine">Open offer packet</button></div>
       </div>
       <div class="fit-stack">${fitRows.map(([label, title, detail]) => `<div class="fit-card"><span>${h(label)}</span><b>${h(title)}</b><p>${h(detail)}</p></div>`).join('')}</div>
@@ -2967,7 +3026,7 @@ function bindEvents() {
         const result = applyLandReconParcelImport(workspace, input?.value || '');
         workspace = result.workspace;
         persistWorkspace();
-        lastLandReconImportStatus = `Imported ${result.summary.imported} source-backed row${result.summary.imported === 1 ? '' : 's'}; rejected ${result.summary.rejected}. Call-ready remains gated.`;
+        lastLandReconImportStatus = `Imported ${result.summary.imported} visible finding${result.summary.imported === 1 ? '' : 's'}; rejected ${result.summary.rejected} unusable row${result.summary.rejected === 1 ? '' : 's'}. Confidence ranks; call-ready remains gated.`;
         selectedParcelId = result.workspace.parcels?.[0]?.id || selectedParcelId;
         if (status) status.textContent = lastLandReconImportStatus;
         renderAll();

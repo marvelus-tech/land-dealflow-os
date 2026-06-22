@@ -235,6 +235,32 @@ function normalizeHeader(header) {
     maxprice: 'maxPrice',
     acquisition_notes: 'acquisitionNotes',
     acquisitionnotes: 'acquisitionNotes',
+    source_url: 'sourceUrl',
+    sourceurl: 'sourceUrl',
+    source_urls: 'sourceUrls',
+    sourceurls: 'sourceUrls',
+    public_source: 'publicSource',
+    publicsource: 'publicSource',
+    source_name: 'sourceName',
+    sourcename: 'sourceName',
+    source_type: 'sourceType',
+    sourcetype: 'sourceType',
+    collected_at: 'collectedAt',
+    collectedat: 'collectedAt',
+    legal_description: 'legalDescription',
+    legaldescription: 'legalDescription',
+    tax_delinquency_status: 'taxDelinquencyStatus',
+    taxdelinquencystatus: 'taxDelinquencyStatus',
+    tax_delinquency_amount: 'taxDelinquencyAmount',
+    taxdelinquencyamount: 'taxDelinquencyAmount',
+    tax_year: 'taxYear',
+    taxyear: 'taxYear',
+    land_use: 'landUse',
+    landuse: 'landUse',
+    buyer_match_reason: 'buyerMatchReason',
+    buyermatchreason: 'buyerMatchReason',
+    provenance_notes: 'provenanceNotes',
+    provenancenotes: 'provenanceNotes',
   };
   const snake = cleaned.replace(/[^a-zA-Z0-9]+/g, '_').replace(/^_|_$/g, '').toLowerCase();
   if (aliases[snake]) return aliases[snake];
@@ -961,6 +987,110 @@ export function applySkipTraceImport(workspace = {}, csvText = '', { candidatePa
   }
 
   return { workspace: { ...workspace, parcels: current }, summary: { imported: records.length, matched, created, unmatched: unmatched.length }, unmatched };
+}
+
+function splitSourceUrls(value) {
+  if (Array.isArray(value)) return value.map(item => String(item || '').trim()).filter(Boolean);
+  if (typeof value === 'string') return value.split(/[\n|;]+/).map(item => item.trim()).filter(Boolean);
+  return [];
+}
+
+function landReconRecordsFromPayload(payload) {
+  if (typeof payload !== 'string') {
+    if (Array.isArray(payload)) return payload;
+    if (Array.isArray(payload?.parcels)) return payload.parcels;
+    if (Array.isArray(payload?.sellerRows)) return payload.sellerRows;
+    if (Array.isArray(payload?.sellerCandidates)) return payload.sellerCandidates;
+    if (Array.isArray(payload?.seller_source_candidates)) return payload.seller_source_candidates;
+    if (Array.isArray(payload?.dealScreenCandidates)) return payload.dealScreenCandidates;
+    return [];
+  }
+  const text = String(payload || '').trim();
+  if (!text) return [];
+  if (/^[\[{]/.test(text)) {
+    const parsed = JSON.parse(text);
+    return landReconRecordsFromPayload(parsed);
+  }
+  return parseCsvRecords(text);
+}
+
+function landReconProofUrls(record = {}) {
+  return [record.sourceUrl, record.publicSource, record.assessorUrl, record.gisUrl, record.taxUrl, ...splitSourceUrls(record.sourceUrls), ...splitSourceUrls(record.sourceUrlsText)].filter(Boolean);
+}
+
+function validateLandReconParcelRecord(record = {}) {
+  const id = record.parcelId || record.apn || record.id;
+  const address = record.propertyAddress || record.address;
+  const owner = record.ownerName || record.owner;
+  const urls = landReconProofUrls(record);
+  const reasons = [];
+  if (!id && !address) reasons.push('missing parcelId/APN or propertyAddress');
+  if (!owner) reasons.push('missing ownerName');
+  if (!urls.length) reasons.push('missing public source URL');
+  if (!record.collectedAt && !record.sourceCollectedAt && !record.generatedAt) reasons.push('missing collectedAt timestamp');
+  return { ok: reasons.length === 0, reasons, urls };
+}
+
+export function applyLandReconParcelImport(workspace = {}, payload = '', { now = new Date().toISOString() } = {}) {
+  const records = landReconRecordsFromPayload(payload);
+  const current = [...(workspace.parcels || [])];
+  const rejected = [];
+  let imported = 0;
+  let created = 0;
+  let updated = 0;
+
+  for (const raw of records) {
+    const record = { ...raw };
+    const validation = validateLandReconParcelRecord(record);
+    if (!validation.ok) {
+      rejected.push({ record, reasons: validation.reasons });
+      continue;
+    }
+
+    const parcelId = record.parcelId || record.apn || record.id || `land-recon-${imported + 1}`;
+    const existingIndex = current.findIndex(parcel => normalizeMatchKey(parcel.parcelId || parcel.id) === normalizeMatchKey(parcelId));
+    const existing = existingIndex >= 0 ? current[existingIndex] : {};
+    const contactPositive = (record.ownerPhone || record.ownerEmail || record.candidatePhone || record.candidateEmail) && isPositiveContactEnrichment(record);
+    const publicStatus = contactPositive ? 'contact-enriched' : 'source-backed';
+    const importNote = `Land Recon packet imported ${now.slice(0, 10)} with public proof: ${validation.urls.slice(0, 2).join(' | ')}.`;
+    const update = {
+      ...existing,
+      ...record,
+      id: existing.id || parcelId,
+      parcelId,
+      apn: record.apn || existing.apn || parcelId,
+      address: record.propertyAddress || record.address || existing.address || '',
+      propertyAddress: record.propertyAddress || record.address || existing.propertyAddress || existing.address || '',
+      ownerName: record.ownerName || record.owner || existing.ownerName || existing.owner || '',
+      ownerMailingAddress: record.ownerMailingAddress || existing.ownerMailingAddress || '',
+      sourceUrl: record.sourceUrl || validation.urls[0] || existing.sourceUrl || '',
+      sourceUrls: validation.urls.length ? validation.urls : splitSourceUrls(existing.sourceUrls),
+      publicSource: record.publicSource || record.sourceName || existing.publicSource || '',
+      sourceName: record.sourceName || existing.sourceName || '',
+      sourceType: record.sourceType || existing.sourceType || 'public parcel/owner record',
+      collectedAt: record.collectedAt || record.sourceCollectedAt || record.generatedAt || existing.collectedAt || now,
+      landReconImportedAt: now,
+      publicProofStatus: 'verified-public-source',
+      agentIntakeStatus: publicStatus,
+      skipTraceStatus: contactPositive ? 'contact-enriched' : (existing.skipTraceStatus || 'needs-skip-trace'),
+      crmStatus: existing.crmStatus && ['Dead', 'Kill'].includes(existing.crmStatus) ? existing.crmStatus : 'Researching',
+      realContact: contactPositive ? true : Boolean(existing.realContact),
+      ownerPhone: contactPositive ? firstFilled(record.ownerPhone, record.candidatePhone, existing.ownerPhone) : (existing.ownerPhone || ''),
+      ownerEmail: contactPositive ? firstFilled(record.ownerEmail, record.candidateEmail, existing.ownerEmail) : (existing.ownerEmail || ''),
+      candidatePhone: contactPositive ? firstFilled(record.candidatePhone, record.ownerPhone, existing.candidatePhone) : '',
+      candidateEmail: contactPositive ? firstFilled(record.candidateEmail, record.ownerEmail, existing.candidateEmail) : '',
+      notes: [existing.notes, record.notes, record.provenanceNotes, importNote, contactPositive ? 'Contact fields accepted only because enrichment confidence/status passed the skip-trace gate.' : 'Owner phone/email withheld until verified enrichment passes the skip-trace gate.'].filter(Boolean).join('\n'),
+    };
+    if (existingIndex >= 0) { current[existingIndex] = update; updated += 1; }
+    else { current.push(update); created += 1; }
+    imported += 1;
+  }
+
+  return {
+    workspace: { ...workspace, parcels: current },
+    summary: { received: records.length, imported, created, updated, rejected: rejected.length },
+    rejected,
+  };
 }
 
 export function applyBuyerContactImport(workspace = {}, csvText = '', { candidateBuyers = [], now = new Date().toISOString() } = {}) {

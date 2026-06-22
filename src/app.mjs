@@ -14,6 +14,7 @@ import {
   buildBuyerContactQueue,
   buildBuyerFirstBoard,
   applySkipTraceImport,
+  applyLandReconParcelImport,
   applyBuyerContactImport,
   CALL_OUTCOMES,
   BUYER_FEEDBACK_REASONS,
@@ -193,6 +194,7 @@ let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
 let lastBuilderSkipTraceImportStatus = '';
+let lastLandReconImportStatus = '';
 let openMachinePanel = '';
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
@@ -733,6 +735,39 @@ function renderLandAgentIntakeGate() {
         <div><span>Offer-ready</span><b>${h(counts.offerReady)}</b></div>
       </div>
       <ol>${contractRows}</ol>
+    </div>
+  </section>`;
+}
+
+function renderLandReconImportPath() {
+  const sample = JSON.stringify({
+    sellerRows: [{
+      parcelId: 'KGIS-EXAMPLE-001',
+      propertyAddress: '123 Public Proof Rd, Knoxville, TN',
+      ownerName: 'Owner from assessor record',
+      ownerMailingAddress: 'Mailing address from public record',
+      sourceUrl: 'https://county.example/parcel/KGIS-EXAMPLE-001',
+      sourceName: 'County assessor',
+      sourceType: 'public parcel/owner record',
+      collectedAt: new Date().toISOString().slice(0, 10),
+      market: 'Knoxville / Knox County, TN',
+      state: 'TN',
+      buyerMatchReason: 'Builder fit pending; do not call.',
+      provenanceNotes: 'Public source-backed only; contact enrichment remains gated.',
+    }],
+  }, null, 2);
+  return `<section class="land-recon-import-path" aria-label="Land Recon artifact import path">
+    <div class="land-recon-import-copy">
+      <span class="eyebrow">Artifact import</span>
+      <h3>Paste a Land Recon packet. The ledger validates before append.</h3>
+      <p>Accepts JSON arrays, packet objects with <code>sellerRows</code>/<code>parcels</code>, or CSV. Required: parcel/APN or address, owner name, public source URL, and collectedAt. Unverified phones/emails stay out of call-ready status.</p>
+    </div>
+    <div class="land-recon-import-panel">
+      <textarea id="land-recon-packet-input" rows="8" spellcheck="false" placeholder="${h(sample)}"></textarea>
+      <div class="land-recon-import-actions">
+        <button type="button" id="import-land-recon-packet">Validate + append to Land</button>
+        <span id="land-recon-import-status">${h(lastLandReconImportStatus || 'Waiting for a packet from a Land Recon subagent.')}</span>
+      </div>
     </div>
   </section>`;
 }
@@ -2134,11 +2169,12 @@ function renderParcels() {
   if (!target) return;
   const landControls = renderLandControls();
   const agentIntakeGate = renderLandAgentIntakeGate();
+  const landReconImportPath = renderLandReconImportPath();
   const marketCoverage = renderDealsMarketCoverage();
 
   if (!selected) {
     const selectedMarket = getSelectedDealsMarket();
-    target.innerHTML = `${landControls}${agentIntakeGate}${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
+    target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
       <span class="eyebrow">No ready deals</span>
       <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
       <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'this market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness.' : 'no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
@@ -2165,7 +2201,7 @@ function renderParcels() {
     ['Next action', selected.action, getNextAction(selected)],
   ];
 
-  target.innerHTML = `${landControls}${agentIntakeGate}${marketCoverage}<div class="deal-workbench">
+  target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}${marketCoverage}<div class="deal-workbench">
     <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by state, market, enrichment, or builder fit. Every source-backed land record remains visible.</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${selectedListingState.offerReady || selectedListingState.enriched ? 'Act on selected' : 'Enrich selected'} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
@@ -2920,6 +2956,25 @@ function bindEvents() {
       renderParcels();
       renderClosingDeskPanel();
       renderBuilderListEnginePanel();
+      return;
+    }
+
+    if (event.target.matches('#import-land-recon-packet')) {
+      event.preventDefault();
+      const input = document.querySelector('#land-recon-packet-input');
+      const status = document.querySelector('#land-recon-import-status');
+      try {
+        const result = applyLandReconParcelImport(workspace, input?.value || '');
+        workspace = result.workspace;
+        persistWorkspace();
+        lastLandReconImportStatus = `Imported ${result.summary.imported} source-backed row${result.summary.imported === 1 ? '' : 's'}; rejected ${result.summary.rejected}. Call-ready remains gated.`;
+        selectedParcelId = result.workspace.parcels?.[0]?.id || selectedParcelId;
+        if (status) status.textContent = lastLandReconImportStatus;
+        renderAll();
+      } catch (error) {
+        lastLandReconImportStatus = `Import blocked: ${error.message}`;
+        if (status) status.textContent = lastLandReconImportStatus;
+      }
       return;
     }
 

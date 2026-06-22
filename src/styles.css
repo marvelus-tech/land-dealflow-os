@@ -28918,3 +28918,79 @@ body[data-active-view="deals"] #parcels .land-control-group button.land-sort-opt
   transform: none !important;
   background: rgba(15, 74, 53, .045) !important;
 }
+/* v1.100 - Land Recon artifact import path validates source proof before appending to Land */
+body[data-active-view="deals"] { --phase100-land-recon-import: source-backed-artifact-validation-before-ledger-append; }
+body[data-active-view="deals"] .land-recon-import-path {
+  display: grid !important;
+  grid-template-columns: minmax(280px, .52fr) minmax(0, 1fr) !important;
+  gap: clamp(16px, 3vw, 32px) !important;
+  align-items: start !important;
+  margin: 14px 0 16px !important;
+  padding: clamp(18px, 3vw, 28px) 0 !important;
+  border-top: 1px solid rgba(7, 17, 13, .085) !important;
+  border-bottom: 1px solid rgba(7, 17, 13, .085) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] .land-recon-import-copy h3 {
+  max-width: 18ch !important;
+  margin: 5px 0 9px !important;
+  color: var(--land-ink, #07110d) !important;
+  font: 760 clamp(23px, 2.65vw, 38px)/.99 var(--font-display, inherit) !important;
+  letter-spacing: -.052em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="deals"] .land-recon-import-copy p {
+  max-width: 64ch !important;
+  color: var(--land-muted, #52645b) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+body[data-active-view="deals"] .land-recon-import-copy code {
+  color: var(--land-forest-strong, #0a3628) !important;
+  font-size: .92em !important;
+}
+body[data-active-view="deals"] .land-recon-import-panel {
+  display: grid !important;
+  gap: 10px !important;
+}
+body[data-active-view="deals"] #land-recon-packet-input {
+  width: 100% !important;
+  min-height: 184px !important;
+  resize: vertical !important;
+  padding: 14px 15px !important;
+  border: 1px solid rgba(7, 17, 13, .13) !important;
+  border-radius: 16px !important;
+  background: rgba(255, 255, 255, .68) !important;
+  color: var(--land-ink, #07110d) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.78) !important;
+  font: 520 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+body[data-active-view="deals"] .land-recon-import-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+body[data-active-view="deals"] #import-land-recon-packet {
+  min-height: 36px !important;
+  padding: 8px 13px !important;
+  border: 1px solid rgba(15, 74, 53, .24) !important;
+  border-radius: 999px !important;
+  background: rgba(15, 74, 53, .075) !important;
+  background-image: none !important;
+  color: var(--land-forest-strong, #0a3628) !important;
+  -webkit-text-fill-color: var(--land-forest-strong, #0a3628) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #import-land-recon-packet:hover { transform: none !important; background: rgba(15, 74, 53, .11) !important; }
+body[data-active-view="deals"] #land-recon-import-status {
+  color: rgba(82, 100, 91, .88) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="deals"] .land-recon-import-path { grid-template-columns: 1fr !important; gap: 14px !important; }
+  body[data-active-view="deals"] .land-recon-import-copy h3 { max-width: 22ch !important; }
+}
+

@@ -1054,6 +1054,43 @@ function numericConfidence(record = {}) {
   return 0;
 }
 
+function normalizeLandReconUrlKey(value = '') {
+  return String(value || '')
+    .trim()
+    .toLowerCase()
+    .replace(/^https?:\/\//, '')
+    .replace(/[?#].*$/, '')
+    .replace(/\/+$/, '')
+    .replace(/[^a-z0-9/._-]/g, '');
+}
+
+function landReconDuplicateKeys(record = {}) {
+  const address = normalizeAddressKey(record.propertyAddress || record.address || '');
+  const owner = normalizeMatchKey(record.ownerName || record.owner || '');
+  const state = normalizeMatchKey(record.state || record.propertyState || '');
+  const urls = landReconProofUrls(record).map(normalizeLandReconUrlKey).filter(Boolean);
+  const keyPairs = [
+    ['parcel', normalizeMatchKey(record.parcelId || record.apn || '')],
+    ['address', address ? `${state}:${address}` : ''],
+    ['owner-address', owner && address ? `${owner}:${address}` : ''],
+    ...urls.map(url => ['source-url', url]),
+  ];
+  return keyPairs
+    .filter(([, value]) => value)
+    .map(([type, value]) => `${type}:${value}`);
+}
+
+function findLandReconDuplicateIndex(parcels = [], record = {}) {
+  const incoming = new Set(landReconDuplicateKeys(record));
+  if (!incoming.size) return { index: -1, keys: [] };
+  for (let index = 0; index < parcels.length; index += 1) {
+    const existingKeys = landReconDuplicateKeys(parcels[index]);
+    const matches = existingKeys.filter(key => incoming.has(key));
+    if (matches.length) return { index, keys: matches };
+  }
+  return { index: -1, keys: [] };
+}
+
 function validateLandReconParcelRecord(record = {}) {
   const id = record.parcelId || record.apn || record.id;
   const address = record.propertyAddress || record.address;
@@ -1084,6 +1121,7 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
   let imported = 0;
   let created = 0;
   let updated = 0;
+  let duplicateMerged = 0;
 
   for (const raw of records) {
     const record = { ...raw };
@@ -1095,7 +1133,8 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
 
     const fallbackId = `land-recon-finding-${imported + 1}`;
     const parcelId = record.parcelId || record.apn || record.id || normalizeMatchKey(record.propertyAddress || record.address || record.ownerName || record.owner) || fallbackId;
-    const existingIndex = current.findIndex(parcel => normalizeMatchKey(parcel.parcelId || parcel.id) === normalizeMatchKey(parcelId));
+    const duplicateMatch = findLandReconDuplicateIndex(current, { ...record, parcelId });
+    const existingIndex = duplicateMatch.index;
     const existing = existingIndex >= 0 ? current[existingIndex] : {};
     const contactPositive = (record.ownerPhone || record.ownerEmail || record.candidatePhone || record.candidateEmail) && isPositiveContactEnrichment(record);
     const unverifiedContact = contactPositive ? null : unverifiedContactCandidate(record, now);
@@ -1135,6 +1174,10 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
       intakeConfidence: numericConfidence(record),
       intakeMissing: validation.reasons,
       visibleIntake: true,
+      duplicateKeyIndex: [...new Set([...(existing.duplicateKeyIndex || []), ...landReconDuplicateKeys({ ...record, parcelId })])],
+      duplicateMergedCount: Number(existing.duplicateMergedCount || 0) + (existingIndex >= 0 ? 1 : 0),
+      duplicateMergedAt: existingIndex >= 0 ? now : existing.duplicateMergedAt,
+      duplicateMatchKeys: duplicateMatch.keys,
       skipTraceStatus: contactPositive ? 'contact-enriched' : (existing.skipTraceStatus || 'needs-skip-trace'),
       crmStatus: existing.crmStatus && ['Dead', 'Kill'].includes(existing.crmStatus) ? existing.crmStatus : 'Researching',
       realContact: contactPositive ? true : Boolean(existing.realContact),
@@ -1147,14 +1190,14 @@ export function applyLandReconParcelImport(workspace = {}, payload = '', { now =
       unverifiedOwnerEmail: unverifiedContact?.email || existing.unverifiedOwnerEmail || '',
       notes: [existing.notes, record.notes, record.provenanceNotes, importNote, contactPositive ? 'Contact fields accepted only because enrichment confidence/status passed the skip-trace gate.' : unverifiedContact ? 'Unverified phone/email preserved as visible evidence only; not callable until enrichment passes.' : 'Owner phone/email withheld until verified enrichment passes the skip-trace gate.'].filter(Boolean).join('\n'),
     };
-    if (existingIndex >= 0) { current[existingIndex] = update; updated += 1; }
+    if (existingIndex >= 0) { current[existingIndex] = update; updated += 1; duplicateMerged += 1; }
     else { current.push(update); created += 1; }
     imported += 1;
   }
 
   return {
     workspace: { ...workspace, parcels: current },
-    summary: { received: records.length, imported, created, updated, rejected: rejected.length },
+    summary: { received: records.length, imported, created, updated, duplicateMerged, rejected: rejected.length },
     rejected,
   };
 }

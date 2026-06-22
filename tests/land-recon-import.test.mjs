@@ -74,6 +74,33 @@ function testVerifiedEnrichmentCanPromoteContactButStillShowsProof() {
   assert.equal(row.publicProofStatus, 'verified-public-source');
 }
 
+function testLandReconDuplicateSafeMergeUsesParcelAddressAndSourceUrl() {
+  const first = { sellerRows: [{
+    parcelId: 'KGIS-DUPE-1',
+    propertyAddress: '44 Duplicate Road, Knoxville, TN',
+    ownerName: 'Duplicate Owner',
+    sourceUrl: 'https://knoxcounty.example/parcels/KGIS-DUPE-1?utm=agent',
+    collectedAt: '2026-06-22',
+    provenanceNotes: 'first pull',
+  }] };
+  const initial = applyLandReconParcelImport({ parcels: [] }, JSON.stringify(first), { now: '2026-06-22T00:00:00.000Z' });
+  const second = { sellerRows: [{
+    apn: 'KGIS-DUPE-1',
+    propertyAddress: '44 Duplicate Rd Knoxville TN',
+    ownerName: 'Duplicate Owner',
+    sourceUrl: 'https://knoxcounty.example/parcels/KGIS-DUPE-1',
+    collectedAt: '2026-06-23',
+    provenanceNotes: 'second pull should merge, not render a second row',
+  }] };
+  const merged = applyLandReconParcelImport(initial.workspace, JSON.stringify(second), { now: '2026-06-23T00:00:00.000Z' });
+  assert.equal(merged.workspace.parcels.length, 1, 'duplicate-safe import must merge repeated APN/address/source URL rows before UI display');
+  assert.equal(merged.summary.created, 0);
+  assert.equal(merged.summary.updated, 1);
+  assert.equal(merged.summary.duplicateMerged, 1);
+  assert.equal(merged.workspace.parcels[0].duplicateMergedCount, 1);
+  assert.ok(merged.workspace.parcels[0].duplicateKeyIndex.some(key => key.startsWith('parcel:')), 'row must persist duplicate guard keys for future runs');
+}
+
 function testLandReconImportSurfaceExists() {
   assert.match(app, /applyLandReconParcelImport/, 'App must import the Land Recon packet validator.');
   assert.match(app, /function renderLandReconImportPath/, 'Land page must render a Land Recon artifact import path.');
@@ -82,6 +109,14 @@ function testLandReconImportSurfaceExists() {
   assert.match(app, /preserves first, promotes second/, 'Import surface must describe visible-first ingestion.');
   assert.match(app, /needs-public-proof/, 'Import surface must expose visible proof-needed status.');
   assert.match(app, /Confidence ranks; call-ready remains gated/, 'Import status must preserve ranking and no-shortcut call-ready boundary.');
+  assert.match(app, /merged \$\{result\.summary\.duplicateMerged \|\| 0\} duplicate/, 'Import status must report duplicate merges.');
+  assert.match(app, /APN, normalized address, owner\+address, and source URL keys merge duplicates/, 'Import copy must explain the duplicate-safe gate.');
+  assert.match(app, /duplicate-merge-note/, 'Selected listing must surface duplicate merge history.');
+  assert.match(css, /v1\.102 - Deals duplicate-safe ledger \+ Builders-nav parity \+ screenshot QA fixes/, 'Phase 102 CSS marker missing.');
+  assert.match(css, /--phase102-rule: builders-nav-parity-land-ledger-duplicate-safe/, 'Phase 102 CSS rule marker missing.');
+  assert.match(css, /html body > header\.nav\.nav[\s\S]{0,520}border-radius: 999px/, 'Global nav must inherit Builders-style pill rail on every route.');
+  assert.match(css, /body\[data-active-view="deals"\] #parcels \.land-listing-row[\s\S]{0,220}grid-template-areas/, 'Deals listing rows must have a non-overlapping grid layout.');
+  assert.match(css, /body\[data-active-view="deals"\] #parcels a\.is-disabled/, 'Locked call actions must be visibly disabled instead of pretending to be callable.');
   assert.match(css, /v1\.100 - Land Recon artifact import path validates source proof before appending to Land/, 'Phase 100 Land Recon import CSS marker missing.');
   assert.match(css, /--phase100-land-recon-import: source-backed-artifact-validation-before-ledger-append/, 'Phase 100 CSS rule marker missing.');
   assert.match(css, /v1\.101 - Land agent findings are visible-first/, 'Phase 101 visible intake CSS marker missing.');
@@ -93,6 +128,7 @@ testSourceBackedPacketImportsButDoesNotBecomeCallable();
 testCsvKeepsRowsWithoutPublicProofVisible();
 testWeakContactIsVisibleButNotCallable();
 testVerifiedEnrichmentCanPromoteContactButStillShowsProof();
+testLandReconDuplicateSafeMergeUsesParcelAddressAndSourceUrl();
 testLandReconImportSurfaceExists();
 
 console.log('land recon import tests passed');

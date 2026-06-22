@@ -817,7 +817,7 @@ function renderLandReconImportPath() {
     <div class="land-recon-import-copy">
       <span class="eyebrow">Artifact import</span>
       <h3>Paste a Land Recon packet. The ledger preserves first, promotes second.</h3>
-      <p>Accepts JSON arrays, packet objects with <code>sellerRows</code>/<code>parcels</code>, or CSV. Missing proof becomes visible <code>needs-public-proof</code>; unverified phones/emails become contact candidates, not callable fields.</p>
+      <p>Accepts JSON arrays, packet objects with <code>sellerRows</code>/<code>parcels</code>, or CSV. APN, normalized address, owner+address, and source URL keys merge duplicates into the existing row before display. Missing proof becomes visible <code>needs-public-proof</code>; unverified phones/emails become contact candidates, not callable fields.</p>
     </div>
     <div class="land-recon-import-panel">
       <textarea id="land-recon-packet-input" rows="8" spellcheck="false" placeholder="${h(sample)}"></textarea>
@@ -2251,6 +2251,9 @@ function renderParcels() {
   const selectedListingState = parcelListingState(selected);
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
+  const selectedCallable = selected.action === 'Call now' && Boolean(selected.ownerPhone || selected.ownerEmail) && !selectedListingState.needsProof && !selectedListingState.rawFinding;
+  const selectedPrimaryAction = selectedCallable ? 'Call selected' : selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach proof' : selectedListingState.contactCandidate ? 'Verify contact' : 'Review selected';
+  const duplicateNotice = Number(selected.duplicateMergedCount || 0) > 0 ? `<p class="duplicate-merge-note">Duplicate-safe merge: ${h(selected.duplicateMergedCount)} repeated intake${Number(selected.duplicateMergedCount) === 1 ? '' : 's'} collapsed into this row.</p>` : '';
   const fitRows = [
     ['Buyer fit', buyer.name || 'No matched buyer', `${buyer.score || 0}/100 · ${buyer.buyBox || 'buy box missing'}`],
     ['Seller contact', selected.ownerName || selected.owner || 'Owner unknown', selected.ownerPhone || selected.ownerEmail || 'Needs skip trace'],
@@ -2259,7 +2262,7 @@ function renderParcels() {
   ];
 
   target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}${marketCoverage}<div class="deal-workbench">
-    <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by confidence, proof, enrichment, or builder fit. Every useful agent finding remains visible.</b><a href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${selectedListingState.offerReady || selectedListingState.enriched ? 'Act on selected' : selectedListingState.needsProof || selectedListingState.rawFinding ? 'Research proof' : 'Enrich selected'} ${productIcon('arrow')}</a></div>
+    <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by confidence, proof, enrichment, or builder fit. Every useful agent finding remains visible. Duplicate-safe merge history stays attached to each row.</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
       <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
@@ -2271,7 +2274,7 @@ function renderParcels() {
         return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcel.id)}" title="${h(listingState.detail)}">
           <span>${String(index + 1).padStart(2, '0')}</span>
           <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
-          <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail || 'contact not enriched')} · ${h(marketSignal)}</small>
+          <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(Number(parcel.duplicateMergedCount || 0) > 0 ? `${parcel.duplicateMergedCount} duplicate merge${Number(parcel.duplicateMergedCount) === 1 ? '' : 's'}` : (parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail || 'contact not enriched'))} · ${h(marketSignal)}</small>
           <em><strong>${h(listingState.label)}</strong><i>${h(listingState.confidence)} confidence · ${h(parcel.score)} score</i></em>
           <div class="land-row-signals"><mark>${listingState.sourceBacked ? 'proof' : listingState.needsProof ? 'needs proof' : 'raw'}</mark><mark>${listingState.enriched ? 'verified contact' : listingState.contactCandidate ? 'contact candidate' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${badge(parcel.risk.status, tone)}</div>
         </button>`;
@@ -2283,6 +2286,7 @@ function renderParcels() {
         <span class="eyebrow">Selected land listing · ${h(selectedListingState.label)}</span>
         <h2>${h(selected.address || selected.parcelId || 'Untitled parcel')}</h2>
         <p>${h(selectedListingState.detail)} ${h(selected.lotSize || 'lot size unknown')} · held ${h(selected.heldYears || 0)} yrs · paid ${formatMoney(Number(selected.paid || 0))}</p>
+        ${duplicateNotice}
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
       <div class="land-listing-status-strip" aria-label="Land listing progression">
@@ -2327,7 +2331,7 @@ function renderParcels() {
       <div class="next-action-card">
         <span class="eyebrow">Next</span>
         <h3>${h(selectedListingState.needsProof || selectedListingState.rawFinding ? 'Research proof before promotion.' : getNextAction(selected))}</h3>
-        <div class="button-row"><a class="button-link" href="${selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">Call owner</a><button type="button" class="secondary" data-view="machine">Open offer packet</button></div>
+        <div class="button-row"><a class="button-link ${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${selectedCallable ? 'Call owner' : 'Call locked'}</a><button type="button" class="secondary" data-view="machine">${selectedListingState.offerReady ? 'Open offer packet' : 'Review proof gate'}</button></div>
       </div>
       <div class="fit-stack">${fitRows.map(([label, title, detail]) => `<div class="fit-card"><span>${h(label)}</span><b>${h(title)}</b><p>${h(detail)}</p></div>`).join('')}</div>
       <div class="tags">${selected.reasons.map(r => badge(r, 'good')).join('')}${selected.flags.length ? selected.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
@@ -3026,7 +3030,7 @@ function bindEvents() {
         const result = applyLandReconParcelImport(workspace, input?.value || '');
         workspace = result.workspace;
         persistWorkspace();
-        lastLandReconImportStatus = `Imported ${result.summary.imported} visible finding${result.summary.imported === 1 ? '' : 's'}; rejected ${result.summary.rejected} unusable row${result.summary.rejected === 1 ? '' : 's'}. Confidence ranks; call-ready remains gated.`;
+        lastLandReconImportStatus = `Imported ${result.summary.imported} visible finding${result.summary.imported === 1 ? '' : 's'}; merged ${result.summary.duplicateMerged || 0} duplicate${(result.summary.duplicateMerged || 0) === 1 ? '' : 's'}; rejected ${result.summary.rejected} unusable row${result.summary.rejected === 1 ? '' : 's'}. Confidence ranks; call-ready remains gated.`;
         selectedParcelId = result.workspace.parcels?.[0]?.id || selectedParcelId;
         if (status) status.textContent = lastLandReconImportStatus;
         renderAll();

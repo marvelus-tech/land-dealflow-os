@@ -8,7 +8,7 @@
     "phone": "9194663318",
     "email": "LennarPermits@lennar.com",
     "contactName": "LENNAR CAROLINAS, LLC",
-    "recentBuilds": 49,
+    "recentBuilds": 57,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -18,6 +18,19 @@
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BLDR-023749-2026",
+        "address": "4317 Gray Alder Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 446484.8,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New Construction Everlee Lot 20 Monoslab Rear Screened Porch",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-023749-2026"
+      },
       {
         "permitNumber": "BLDR-019786-2026",
         "address": "4372 Cedar Elm Ln, Raleigh, NC 27616",
@@ -69,22 +82,9 @@
         "housingUnits": 0,
         "description": "Townhomes, 5 units, Lots 136-141, VB Constr., R3 Occ., SPR-0068-2023, Typical #015132; BLDR-018993-2",
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-019783-2026"
-      },
-      {
-        "permitNumber": "BLDR-019787-2026",
-        "address": "4380 Cedar Elm Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-06-11",
-        "permitValue": 317246.8,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 5 units, Lots 136-141, VB Constr., R3 Occ., SPR-0068-2023, Typical #015132; BLDR-018993-2",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-019787-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 49 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-019786-2026 at 4372 Cedar Elm Ln issued 2026-06-11."
+    "acquisitionNotes": "Appears on 57 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-023749-2026 at 4317 Gray Alder Ln issued 2026-06-22."
   },
   {
     "id": "raleigh-builder-d-r-horton-inc",
@@ -182,7 +182,7 @@
     "phone": "9197687986",
     "email": "rcavalear@kbhome.com",
     "contactName": "KB Home Raleigh-Durham Inc.",
-    "recentBuilds": 41,
+    "recentBuilds": 42,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -192,6 +192,19 @@
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BLDR-019110-2026",
+        "address": "730 Sao Miguel Ln, Raleigh, NC 27610",
+        "issuedAt": "2026-06-18",
+        "permitValue": 211546,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 4 units, Lots 18-21, 2 stories, VB Construction, R3 Occupancy, SPR-0100-2021; BLDR- 01911",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-019110-2026"
+      },
       {
         "permitNumber": "BLDR-020001-2026",
         "address": "728 Sao Miguel Ln, Raleigh, NC 27610",
@@ -243,22 +256,9 @@
         "housingUnits": 0,
         "description": "Tucker Place Lot 93 2808 Springtooth Dr 1558 sqft New Single Family Residential Monoslab Rear Extend",
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-019875-2026"
-      },
-      {
-        "permitNumber": "BLDR-018084-2026",
-        "address": "8234 Feldwig Pl, Raleigh, NC 27616",
-        "issuedAt": "2026-05-18",
-        "permitValue": 390024.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "Tucker Place Lot 128 8234 Feldwig Place 2277 sqft New Single Family Residential",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-018084-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 41 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-020001-2026 at 728 Sao Miguel Ln issued 2026-06-15."
+    "acquisitionNotes": "Appears on 42 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-019110-2026 at 730 Sao Miguel Ln issued 2026-06-18."
   },
   {
     "id": "raleigh-builder-toll-brothers",
@@ -443,7 +443,7 @@
     "phone": "(919) 256-3390",
     "email": "craig@eyccompanies.com",
     "contactName": "Front Street Construction Services, LLC",
-    "recentBuilds": 22,
+    "recentBuilds": 25,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -453,6 +453,45 @@
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BLDR-020504-2026",
+        "address": "5343 Timberfield Way, Raleigh, NC 27616",
+        "issuedAt": "2026-06-18",
+        "permitValue": 259342.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Single-Family home with detached garage",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020504-2026"
+      },
+      {
+        "permitNumber": "BLDR-022692-2026",
+        "address": "5335 Timberfield Way, Raleigh, NC 27616",
+        "issuedAt": "2026-06-18",
+        "permitValue": 259342.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Single-Family home with detached garage",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-022692-2026"
+      },
+      {
+        "permitNumber": "BLDR-020351-2026",
+        "address": "5046 Landover Ridge Dr, Raleigh, NC 27616",
+        "issuedAt": "2026-06-18",
+        "permitValue": 259342.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Single-Family home with detached garage",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020351-2026"
+      },
       {
         "permitNumber": "BLDR-020524-2026",
         "address": "5347 Timberfield Way, Raleigh, NC 27616",
@@ -478,48 +517,96 @@
         "housingUnits": 0,
         "description": "Single-Family home with detached garage",
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020395-2026"
-      },
-      {
-        "permitNumber": "BLDR-020011-2026",
-        "address": "5100 Landover Ridge Dr, Raleigh, NC 27616",
-        "issuedAt": "2026-05-22",
-        "permitValue": 259342.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "Single-Family home with detached garage",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020011-2026"
-      },
-      {
-        "permitNumber": "BLDR-020083-2026",
-        "address": "5104 Landover Ridge Dr, Raleigh, NC 27616",
-        "issuedAt": "2026-05-22",
-        "permitValue": 300496.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "Two Story Single Family Home with Detached Garage",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020083-2026"
-      },
-      {
-        "permitNumber": "BLDR-016946-2026",
-        "address": "5135 Landover Ridge Dr, Raleigh, NC 27616",
-        "issuedAt": "2026-05-22",
-        "permitValue": 180211.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "Single-Family home Fifth Oak Sub Lot 14 Monoslab Rear Covered porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-016946-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 22 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-020524-2026 at 5347 Timberfield Way issued 2026-06-03."
+    "acquisitionNotes": "Appears on 25 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-020504-2026 at 5343 Timberfield Way issued 2026-06-18."
+  },
+  {
+    "id": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
+    "name": "Meritage Homes of the Carolinas, Inc.",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "9199957469",
+    "email": "raleigh.permits@meritagehomes.com",
+    "contactName": "Meritage Homes of the Carolinas, Inc.",
+    "recentBuilds": 20,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-021617-2026",
+        "address": "5970 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 382948.8,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve SFD Lot 241",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021617-2026"
+      },
+      {
+        "permitNumber": "BLDR-021637-2026",
+        "address": "5966 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 409085.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve SFD Lot 242",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021637-2026"
+      },
+      {
+        "permitNumber": "BLDR-021493-2026",
+        "address": "5947 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 441575.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve SFD Lot 238",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021493-2026"
+      },
+      {
+        "permitNumber": "BLDR-021489-2026",
+        "address": "5951 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 377461.6,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve SFD Lot 237",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021489-2026"
+      },
+      {
+        "permitNumber": "BLDR-021242-2026",
+        "address": "5963 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-16",
+        "permitValue": 424247.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve SFD Lot 234",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021242-2026"
+      }
+    ],
+    "acquisitionNotes": "Appears on 20 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-021617-2026 at 5970 Fallowfield Ln issued 2026-06-22."
   },
   {
     "id": "raleigh-builder-m-i-homes-of-raleigh",
@@ -694,93 +781,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 18 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-049336-2025 at 5404 Running Fox Ln issued 2026-03-11."
-  },
-  {
-    "id": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
-    "name": "Meritage Homes of the Carolinas, Inc.",
-    "market": "raleigh-nc",
-    "state": "NC",
-    "website": "",
-    "phone": "9199957469",
-    "email": "raleigh.permits@meritagehomes.com",
-    "contactName": "Meritage Homes of the Carolinas, Inc.",
-    "recentBuilds": 16,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
-    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BLDR-021242-2026",
-        "address": "5963 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-06-16",
-        "permitValue": 424247.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe Reserve SFD Lot 234",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021242-2026"
-      },
-      {
-        "permitNumber": "BLDR-022316-2026",
-        "address": "4020 Balvenie Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-06-10",
-        "permitValue": 531680.8,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Watkins Glen Lot 54 Monoslab Rear Covered Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-022316-2026"
-      },
-      {
-        "permitNumber": "BLDR-022315-2026",
-        "address": "4029 Balvenie Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-06-09",
-        "permitValue": 453704.8,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Watkins Glen Lot 62 Monoslab Rear Covered Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-022315-2026"
-      },
-      {
-        "permitNumber": "BLDR-020700-2026",
-        "address": "4028 Balvenie Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-06-08",
-        "permitValue": 496591.6,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Watkins Glen Lot 52",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020700-2026"
-      },
-      {
-        "permitNumber": "BLDR-021917-2026",
-        "address": "4025 Balvenie Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-06-08",
-        "permitValue": 494714.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Watkins Glen Lot 61 Monoslab Rear Covered Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021917-2026"
-      }
-    ],
-    "acquisitionNotes": "Appears on 16 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-021242-2026 at 5963 Fallowfield Ln issued 2026-06-16."
   },
   {
     "id": "raleigh-builder-murdock-gannon-construction-i",
@@ -1479,6 +1479,80 @@
     "acquisitionNotes": "Appears on 5 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-052002-2025 at 723 Orchard Vista Cir issued 2026-01-02."
   },
   {
+    "id": "raleigh-builder-djf-builders-inc",
+    "name": "DJF BUILDERS, INC.",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "9193631700",
+    "email": "info@djfbuilders.com",
+    "contactName": "DJF BUILDERS, INC.",
+    "recentBuilds": 4,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 76,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-017504-2026",
+        "address": "4105 Redington Dr, Raleigh, NC 27609",
+        "issuedAt": "2026-06-22",
+        "permitValue": 734562.8,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "new home construction Hickory Hills Lot 2 Custom DEMO 013915-2026 / ISSUED 5/13/2026 Sealed Crawl Re",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-017504-2026"
+      },
+      {
+        "permitNumber": "BLDR-006519-2026",
+        "address": "6905 North Ridge Dr, Raleigh, NC 27615",
+        "issuedAt": "2026-04-09",
+        "permitValue": 1197220.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "new home construction North Ridge Lot 55 Custom DEMO 041494-2025 / Issued 12/12/2025 Sealed Crawl Re",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-006519-2026"
+      },
+      {
+        "permitNumber": "BLDR-003951-2026",
+        "address": "1504 Strothmore Ct, Raleigh, NC 27615",
+        "issuedAt": "2026-03-26",
+        "permitValue": 839252.8,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "new home construction Lot 42 Custom DEMO 047742-2025 / FINALED 1/30/2026 Sealed Crawl Rear Covered P",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-003951-2026"
+      },
+      {
+        "permitNumber": "BLDR-057412-2025",
+        "address": "4128 Redington Dr, Raleigh, NC 27609",
+        "issuedAt": "2026-02-04",
+        "permitValue": 953617.6,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New Single Family Home DEMO-040871-2025",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-057412-2025"
+      }
+    ],
+    "acquisitionNotes": "Appears on 4 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-017504-2026 at 4105 Redington Dr issued 2026-06-22."
+  },
+  {
     "id": "raleigh-builder-homes-by-dickerson-inc",
     "name": "HOMES BY DICKERSON INC",
     "market": "raleigh-nc",
@@ -1749,67 +1823,6 @@
     "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-012947-2026 at 1328 Kent Rd issued 2026-05-14."
   },
   {
-    "id": "raleigh-builder-djf-builders-inc",
-    "name": "DJF BUILDERS, INC.",
-    "market": "raleigh-nc",
-    "state": "NC",
-    "website": "",
-    "phone": "9193631700",
-    "email": "info@djfbuilders.com",
-    "contactName": "DJF BUILDERS, INC.",
-    "recentBuilds": 3,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 71,
-    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
-    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BLDR-006519-2026",
-        "address": "6905 North Ridge Dr, Raleigh, NC 27615",
-        "issuedAt": "2026-04-09",
-        "permitValue": 1197220.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "new home construction North Ridge Lot 55 Custom DEMO 041494-2025 / Issued 12/12/2025 Sealed Crawl Re",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-006519-2026"
-      },
-      {
-        "permitNumber": "BLDR-003951-2026",
-        "address": "1504 Strothmore Ct, Raleigh, NC 27615",
-        "issuedAt": "2026-03-26",
-        "permitValue": 839252.8,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "new home construction Lot 42 Custom DEMO 047742-2025 / FINALED 1/30/2026 Sealed Crawl Rear Covered P",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-003951-2026"
-      },
-      {
-        "permitNumber": "BLDR-057412-2025",
-        "address": "4128 Redington Dr, Raleigh, NC 27609",
-        "issuedAt": "2026-02-04",
-        "permitValue": 953617.6,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New Single Family Home DEMO-040871-2025",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-057412-2025"
-      }
-    ],
-    "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-006519-2026 at 6905 North Ridge Dr issued 2026-04-09."
-  },
-  {
     "id": "raleigh-builder-m-i-homes",
     "name": "M/I Homes",
     "market": "raleigh-nc",
@@ -1869,6 +1882,67 @@
       }
     ],
     "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-013498-2026 at 4824 Salamander Ct issued 2026-04-28."
+  },
+  {
+    "id": "raleigh-builder-meritage-homes",
+    "name": "Meritage Homes",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "9197270392",
+    "email": "ashley.joyner@meritagehomes.com",
+    "contactName": "Meritage Homes",
+    "recentBuilds": 3,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 71,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-021433-2026",
+        "address": "5959 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 413128.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve Lot 235",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021433-2026"
+      },
+      {
+        "permitNumber": "BLDR-021481-2026",
+        "address": "5955 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-22",
+        "permitValue": 426413.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve Lot 236",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021481-2026"
+      },
+      {
+        "permitNumber": "BLDR-021906-2026",
+        "address": "3505 Blythedale Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-08",
+        "permitValue": 496591.6,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Watkins Glen Lot 94 Monoslab Rear Covered Porch",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021906-2026"
+      }
+    ],
+    "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-021433-2026 at 5959 Fallowfield Ln issued 2026-06-22."
   },
   {
     "id": "raleigh-builder-ravenscape-construction-llc",

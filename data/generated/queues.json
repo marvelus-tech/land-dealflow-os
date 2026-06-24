@@ -1337,12 +1337,21 @@
     },
     {
       "buyerId": "polk-builder-d-r-horton-inc",
-      "name": "D. R. HORTON, INC.",
+      "name": "D R HORTON INC",
       "market": "polk-fl",
       "phone": "4078505200",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 98
+      "confidence": 100
+    },
+    {
+      "buyerId": "polk-builder-maronda-homes-llc-of-florida",
+      "name": "MARONDA HOMES, LLC OF FLORIDA",
+      "market": "polk-fl",
+      "phone": "4073029871",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
     },
     {
       "buyerId": "polk-builder-terranova-builders-group-llc",
@@ -1360,16 +1369,43 @@
       "phone": "2466197103",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 86
+      "confidence": 92
     },
     {
-      "buyerId": "polk-builder-maronda-homes-llc-of-florida",
-      "name": "MARONDA HOMES, LLC OF FLORIDA",
+      "buyerId": "polk-builder-cw-mt-olive-llc",
+      "name": "CW MT OLIVE LLC",
       "market": "polk-fl",
-      "phone": "4073029871",
+      "phone": "3214416108",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 86
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-danny-sadler-inc",
+      "name": "DANNY SADLER INC",
+      "market": "polk-fl",
+      "phone": "8639674235",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-jst-construction-inc",
+      "name": "JST CONSTRUCTION INC",
+      "market": "polk-fl",
+      "phone": "7274231871",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-kb-home-orlando-llc",
+      "name": "KB HOME ORLANDO LLC",
+      "market": "polk-fl",
+      "phone": "4075924187",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
     },
     {
       "buyerId": "polk-builder-lgi-homes-florida-llc",
@@ -1378,22 +1414,13 @@
       "phone": "3214433640",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 80
+      "confidence": 68
     },
     {
-      "buyerId": "polk-builder-ryan-homes",
-      "name": "RYAN HOMES",
+      "buyerId": "polk-builder-mrp-hawb-llc",
+      "name": "MRP HAWB LLC",
       "market": "polk-fl",
-      "phone": "4079794966",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 80
-    },
-    {
-      "buyerId": "polk-builder-mexvez-llc",
-      "name": "MEXVEZ LLC",
-      "market": "polk-fl",
-      "phone": "3212846781",
+      "phone": "3214416108",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 68
@@ -1417,19 +1444,37 @@
       "confidence": 68
     },
     {
-      "buyerId": "polk-builder-cws-general-contractor",
-      "name": "CWS General Contractor",
+      "buyerId": "polk-builder-applied-building-development-company-oakhills-inc",
+      "name": "APPLIED BUILDING DEVELOPMENT COMPANY - OAKHILLS INC",
       "market": "polk-fl",
-      "phone": "8634126361",
+      "phone": "8634202100",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-eagle-building-contractors-llc",
-      "name": "EAGLE BUILDING CONTRACTORS, LLC",
+      "buyerId": "polk-builder-bbw-group-llc",
+      "name": "BBW GROUP LLC",
       "market": "polk-fl",
-      "phone": "8639650804",
+      "phone": "9545446061",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-clubhouse-estates-llc",
+      "name": "CLUBHOUSE ESTATES LLC",
+      "market": "polk-fl",
+      "phone": "8636475815",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-cw-s-general-contractor-inc",
+      "name": "CW'S GENERAL CONTRACTOR INC",
+      "market": "polk-fl",
+      "phone": "8634126361",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -1444,19 +1489,10 @@
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-majestic-eagle-construction-services-llc",
-      "name": "Majestic Eagle Construction Services LLC",
+      "buyerId": "polk-builder-m-i-homes-3-easton-oval-columbus-oh",
+      "name": "M/I HOMES 3 EASTON OVAL COLUMBUS, OH",
       "market": "polk-fl",
-      "phone": "2630170000",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
-    },
-    {
-      "buyerId": "polk-builder-proformance-builder-solutions",
-      "name": "PROFORMANCE BUILDER SOLUTIONS",
-      "market": "polk-fl",
-      "phone": "4075924187",
+      "phone": "8133166176",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -1471,37 +1507,10 @@
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-signature-homes-rss-enterprises-llc",
-      "name": "SIGNATURE HOMES RSS ENTERPRISES LLC",
+      "buyerId": "polk-builder-southern-homes-of-polk-co-inc",
+      "name": "SOUTHERN HOMES OF POLK CO INC",
       "market": "polk-fl",
-      "phone": "8639678527",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
-    },
-    {
-      "buyerId": "polk-builder-troubadour-investor-group-inc",
-      "name": "TROUBADOUR INVESTOR GROUP INC",
-      "market": "polk-fl",
-      "phone": "8639448749",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
-    },
-    {
-      "buyerId": "polk-builder-verandah-vue-inc",
-      "name": "VERANDAH VUE INC",
-      "market": "polk-fl",
-      "phone": "8636475815",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
-    },
-    {
-      "buyerId": "polk-builder-waller-construction-inc",
-      "name": "WALLER CONSTRUCTION, INC.",
-      "market": "polk-fl",
-      "phone": "8636888870",
+      "phone": "8636872700",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -1538,15 +1547,6 @@
       "name": "Better Builders LLC",
       "market": "maricopa-az",
       "phone": "602-819-0653",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 70
-    },
-    {
-      "buyerId": "maricopa-builder-fulton-homes-corporation",
-      "name": "Fulton Homes Corporation",
-      "market": "maricopa-az",
-      "phone": "480-753-6789 480-753-6789",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 70
@@ -1678,19 +1678,19 @@
       "confidence": 64
     },
     {
-      "buyerId": "maricopa-builder-custom-homes-unlimited-llc",
-      "name": "Custom Homes Unlimited LLC",
+      "buyerId": "maricopa-builder-elliott-homes-inc",
+      "name": "Elliott Homes Inc",
       "market": "maricopa-az",
-      "phone": "602-622-2434",
+      "phone": "480-831-5691",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64
     },
     {
-      "buyerId": "maricopa-builder-elliott-homes-inc",
-      "name": "Elliott Homes Inc",
+      "buyerId": "maricopa-builder-fulton-homes-corporation",
+      "name": "Fulton Homes Corporation",
       "market": "maricopa-az",
-      "phone": "480-831-5691",
+      "phone": "480-753-6789 480-753-6789",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64
@@ -1831,6 +1831,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
+      "name": "Meritage Homes of the Carolinas, Inc.",
+      "market": "raleigh-nc",
+      "phone": "9199957469",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "raleigh-builder-m-i-homes-of-raleigh",
       "name": "M I HOMES OF RALEIGH",
       "market": "raleigh-nc",
@@ -1844,15 +1853,6 @@
       "name": "Eastwood Homes of Raleigh, LLC",
       "market": "raleigh-nc",
       "phone": "919-758-8208",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
-      "name": "Meritage Homes of the Carolinas, Inc.",
-      "market": "raleigh-nc",
-      "phone": "9199957469",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 100
@@ -1930,6 +1930,15 @@
       "confidence": 81
     },
     {
+      "buyerId": "raleigh-builder-djf-builders-inc",
+      "name": "DJF BUILDERS, INC.",
+      "market": "raleigh-nc",
+      "phone": "9193631700",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 76
+    },
+    {
       "buyerId": "raleigh-builder-homes-by-dickerson-inc",
       "name": "HOMES BY DICKERSON INC",
       "market": "raleigh-nc",
@@ -1966,19 +1975,19 @@
       "confidence": 71
     },
     {
-      "buyerId": "raleigh-builder-djf-builders-inc",
-      "name": "DJF BUILDERS, INC.",
+      "buyerId": "raleigh-builder-m-i-homes",
+      "name": "M/I Homes",
       "market": "raleigh-nc",
-      "phone": "9193631700",
+      "phone": "",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 71
     },
     {
-      "buyerId": "raleigh-builder-m-i-homes",
-      "name": "M/I Homes",
+      "buyerId": "raleigh-builder-meritage-homes",
+      "name": "Meritage Homes",
       "market": "raleigh-nc",
-      "phone": "",
+      "phone": "9197270392",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 71
@@ -2380,8 +2389,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-precise-custom-homes-inc",
-      "name": "Precise Custom Homes Inc.",
+      "buyerId": "austin-builder-nalle-custom-homes",
+      "name": "Nalle Custom Homes",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -2389,8 +2398,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-nalle-custom-homes",
-      "name": "Nalle Custom Homes",
+      "buyerId": "austin-builder-precise-custom-homes-inc",
+      "name": "Precise Custom Homes Inc.",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -2409,6 +2418,15 @@
     {
       "buyerId": "austin-builder-jd-davis-green-construction-llc",
       "name": "JD Davis Green Construction LLC",
+      "market": "austin-tx",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "austin-builder-redbud-development-group-llc",
+      "name": "Redbud Development Group LLC",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -2436,15 +2454,6 @@
     {
       "buyerId": "austin-builder-nalle-custom-homes-inc",
       "name": "Nalle Custom Homes Inc",
-      "market": "austin-tx",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "austin-builder-redbud-development-group-llc",
-      "name": "Redbud Development Group LLC",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -5499,7 +5508,16 @@
       "parcelId": "118 17701",
       "buyerId": "polk-builder-d-r-horton-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "D. R. HORTON, INC.",
+      "buyerName": "D R HORTON INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "polk-builder-maronda-homes-llc-of-florida",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "MARONDA HOMES, LLC OF FLORIDA",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -5524,9 +5542,36 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "polk-builder-maronda-homes-llc-of-florida",
+      "buyerId": "polk-builder-cw-mt-olive-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "MARONDA HOMES, LLC OF FLORIDA",
+      "buyerName": "CW MT OLIVE LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "polk-builder-danny-sadler-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "DANNY SADLER INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "polk-builder-jst-construction-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "JST CONSTRUCTION INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "polk-builder-kb-home-orlando-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "KB HOME ORLANDO LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -5542,18 +5587,9 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "polk-builder-ryan-homes",
+      "buyerId": "polk-builder-mrp-hawb-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "RYAN HOMES",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "polk-builder-mexvez-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "MEXVEZ LLC",
+      "buyerName": "MRP HAWB LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -5578,18 +5614,36 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "polk-builder-cws-general-contractor",
+      "buyerId": "polk-builder-applied-building-development-company-oakhills-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "CWS General Contractor",
+      "buyerName": "APPLIED BUILDING DEVELOPMENT COMPANY - OAKHILLS INC",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "polk-builder-eagle-building-contractors-llc",
+      "buyerId": "polk-builder-bbw-group-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "EAGLE BUILDING CONTRACTORS, LLC",
+      "buyerName": "BBW GROUP LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "polk-builder-clubhouse-estates-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "CLUBHOUSE ESTATES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "polk-builder-cw-s-general-contractor-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "CW'S GENERAL CONTRACTOR INC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -5605,18 +5659,9 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "polk-builder-majestic-eagle-construction-services-llc",
+      "buyerId": "polk-builder-m-i-homes-3-easton-oval-columbus-oh",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Majestic Eagle Construction Services LLC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "polk-builder-proformance-builder-solutions",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "PROFORMANCE BUILDER SOLUTIONS",
+      "buyerName": "M/I HOMES 3 EASTON OVAL COLUMBUS, OH",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -5626,42 +5671,6 @@
       "buyerId": "polk-builder-reed-builders-group-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "REED BUILDERS GROUP INC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "polk-builder-signature-homes-rss-enterprises-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "SIGNATURE HOMES RSS ENTERPRISES LLC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "polk-builder-troubadour-investor-group-inc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "TROUBADOUR INVESTOR GROUP INC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "polk-builder-verandah-vue-inc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "VERANDAH VUE INC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "polk-builder-waller-construction-inc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "WALLER CONSTRUCTION, INC.",
       "score": 100,
       "fit": "strong",
       "misses": []

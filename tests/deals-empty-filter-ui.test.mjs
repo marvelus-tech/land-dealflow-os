@@ -32,7 +32,13 @@ assert.match(app, /this market is visible, but no public seller record currently
 assert.match(app, /Enrich one owner contact, then verify gently before any sales pitch\./, 'Land primary instruction must expose one clear safe next action.');
 assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
 assert.match(app, /return scoredParcels\(\)\.map\(parcel => \(\{/, 'Deals visible parcels must keep all source-backed records visible.');
-assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| rowState\(parcel\) === selectedLandStateFilter/, 'Land state focus may prioritize matching rows but must not hide other land listings.');
+assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| rowState\(parcel\) === selectedLandStateFilter/, 'Land state focus must compute state match for IA scent.');
+assert.match(app, /if \(selectedLandStateFilter !== 'all' && !parcel\.selectedStateMatch\) return false;/, 'Land state selector must own the list instead of leaving a confusing all-state smorgasbord.');
+assert.match(app, /selectedMarket\?\.isDallasProofLane \? Boolean\(dallasProofRowForParcel\(parcel\)\)/, 'Dallas proof lane must filter listings to Dallas proof sprint rows only.');
+assert.match(app, /selectedLandStateFilter === 'TX' && selectedDealsMarketKey === 'dallas-tx'/, 'Dallas proof sprint surface must render only inside TX → Dallas lane.');
+assert.match(app, /class="land-command-surface phase202-land-state-first"/, 'Land command surface must declare the state-first IA pass.');
+assert.match(app, /State first\. Lane second\. Parcel last\./, 'Land page copy must make the new IA model explicit.');
+assert.match(app, /Choose a state above to reveal its market lanes/, 'All-states mode must prompt for state first instead of showing every market lane.');
 assert.match(app, /function landSortValue/, 'Land listings need a sortable value model for priority, state, market, enrichment, and builder fit.');
 assert.doesNotMatch(app, /if \(filter === 'seller-calls'\) return parcel\.action/, 'Deals stage filters must not hide land listings anymore.');
 assert.match(app, /listing-\$\{h\(listingState\.stage\)\}/, 'Land rows must expose visual state classes for enrichment/builder fit.');
@@ -71,6 +77,11 @@ assert.match(css, /\.land-listing-row\.listing-matched-enriched::before[\s\S]{0,
 assert.match(css, /\.land-ledger-queue[\s\S]{0,180}background: transparent !important/, 'Land ledger must be an open surface, not another boxed panel.');
 assert.match(css, /v1\.98 - Land Markets page: dedicated plot browser, state\/market sorting, enrichment\/builder-match scent/, 'Phase 98 Land Markets page CSS marker missing.');
 assert.match(css, /--phase98-land-rule: dedicated-land-markets-page-state-market-sort-enrichment-builder-match/, 'Land page must encode the dedicated market browser rule.');
+assert.match(css, /--land-phase202-rule: state-first-lane-second-dallas-proof-scoped/, 'Phase 202 must encode state-first IA and scoped Dallas proof rule.');
+assert.match(css, /\.land-command-surface\.phase202-land-state-first[\s\S]{0,260}grid-template-columns: minmax\(260px, \.52fr\) minmax\(0, 1\.18fr\)/, 'Phase 202 command surface must use calmer Apple-grade hierarchy proportions.');
+assert.match(css, /\.land-market-lane-selector \.deals-market-card\.active[\s\S]{0,180}rgba\(11, 90, 67, \.055\)/, 'Phase 202 active market lane should be a quiet tint, not a loud slab.');
+assert.match(css, /\.land-market-lane-selector \.deals-market-card kbd[\s\S]{0,120}var\(--land-gold\)/, 'Phase 202 market lane state chips should use restrained gold for key data.');
+assert.match(css, /\.land-market-lane-selector\.is-state-required \.deals-market-grid[\s\S]{0,140}display: block !important/, 'All-states market area should be a quiet state-first prompt, not a full lane grid.');
 assert.match(css, /\.land-command-surface[\s\S]{0,220}grid-template-columns: minmax\(280px, \.58fr\) minmax\(0, 1fr\)/, 'Land controls must be a calm command surface, not another boxed dashboard.');
 assert.match(css, /\.land-state-filter\.active,[\s\S]{0,420}inset 2px 0 0 var\(--land-forest\)/, 'Active Land state/sort controls should use a quiet Apple rail.');
 assert.match(css, /\.land-stage-filters-retired \{ display: none !important; \}/, 'Retired stage filters must stay visually removed.');

@@ -1,0 +1,5447 @@
+{
+  "generatedAt": "2026-06-22",
+  "sourceMethod": "DCAD current appraisal roll + City of Dallas parcel/zoning ArcGIS + FEMA NFHL public API. Utility/tap and recorded plat still require phase verification.",
+  "buyerCriteria": {
+    "zips": [
+      "75206",
+      "75212",
+      "75214",
+      "75218",
+      "75220",
+      "75225",
+      "75229",
+      "75230"
+    ],
+    "minLotSqft": 8000,
+    "budget": "350000-450000",
+    "city": "Dallas",
+    "buyer": "active builder"
+  },
+  "count": 75,
+  "candidates": [
+    {
+      "account": "00000675700000000",
+      "propertyZip": "75212",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "1528 TORONTO ST",
+      "ownerName": "HOUSE SCALIXTO REALTY LLC",
+      "ownerMailingAddress": "2850 PEAVY RD DALLAS TEXAS 752284773",
+      "legalDescription": "GALLINI | BLK A/7112  LT 17 & S PT 18 | ACS 0.249 | INT202400195816 DD08302024 CO-DC | 7112 00A   01700      2007112 00A",
+      "gisParcelId": "00000675700000000",
+      "deedTransferDate": "09/30/2024",
+      "phoneRaw": "",
+      "improvementValue": 27770.0,
+      "landValue": 379610.0,
+      "totalValue": 407380.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "CONVERTED RESIDENCE (FRAME EXTERIOR)",
+      "landSqft": 10846.0,
+      "front": 48.0,
+      "depth": 150.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 5K SQFT"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 93%",
+        "lot >= 8,000 sf (10,846)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10871.79,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000675700000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "CONVERTED RESIDENCE (FRAME EXTERIOR)",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-5(A)",
+          "LONG_ZONE_DIST": "R-5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000156856000000",
+      "propertyZip": "75214",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "5406 GASTON AVE",
+      "ownerName": "SFR HISTORIC RESIDENCES OF EAST DALLAS LLC",
+      "ownerMailingAddress": "5201 TREMONT ST DALLAS TEXAS 752145322",
+      "legalDescription": "MUNGER PLACE | BLK V/1496 LT 2 | INT201400039529 DD02142014 CO-DC | 1496 00V   00200      1DA1496 00V",
+      "gisParcelId": "00000156856000000",
+      "deedTransferDate": "02/19/2014",
+      "phoneRaw": "",
+      "improvementValue": 91470.0,
+      "landValue": 301000.0,
+      "totalValue": 392470.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "CONVERTED RESIDENCE (BRICK EXTERIOR)",
+      "landSqft": 12040.0,
+      "front": 70.0,
+      "depth": 176.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "PLANNED DEVELOPMENT DISTRICT"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 77%",
+        "lot >= 8,000 sf (12,040)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 12169.447,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000156856000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "CONVERTED RESIDENCE (BRICK EXTERIOR)",
+      "cityCouncilDistrict": 14,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "PD",
+          "LONG_ZONE_DIST": "PD-99",
+          "PD_NUM": "99",
+          "DISTRICTUSE": 3,
+          "COMMON_NAME": "Gaston Avenue Special Purpose District"
+        }
+      ],
+      "zoningSummary": "PD",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000243421000000",
+      "propertyZip": "75214",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "6905 FISHER RD",
+      "ownerName": "SUBDIVISIONS REALTY LLC",
+      "ownerMailingAddress": "PO BOX 720549 DALLAS TEXAS 753720549",
+      "legalDescription": "BLK 2962 | LT 1 | @M K T RR | INT202000342546 DD12082020 CO-DC | 2962 000   00100      1002962 000",
+      "gisParcelId": "00000243421000000",
+      "deedTransferDate": "12/08/2020",
+      "phoneRaw": "",
+      "improvementValue": 0.0,
+      "landValue": 385390.0,
+      "totalValue": 385390.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "LAND ONLY",
+      "landSqft": 14014.0,
+      "front": 80.0,
+      "depth": 223.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": null,
+      "livingAreaSf": 0,
+      "conditionRatings": [
+        "UNASSIGNED"
+      ],
+      "buildingClasses": [
+        "LAND ONLY"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 100%",
+        "lot >= 8,000 sf (14,014)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 14168.076,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000243421000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "LAND ONLY",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000672602000000",
+      "propertyZip": "75212",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3115 PARVIA AVE",
+      "ownerName": "HOUSE TRINITY MODERN LLC",
+      "ownerMailingAddress": "3723 GREENVILLE AVE DALLAS TEXAS 752065311",
+      "legalDescription": "CLOSE IN | BLK 7094 LT 58 & PT 57 | PARVIA AVE | INT201500186476 DD07132015 CO-DC | 7094 000   05800      2007094 000",
+      "gisParcelId": "00000672602000000",
+      "deedTransferDate": "07/16/2015",
+      "phoneRaw": "",
+      "improvementValue": 15000.0,
+      "landValue": 337500.0,
+      "totalValue": 352500.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "CONVERTED RESIDENCE (FRAME EXTERIOR)",
+      "landSqft": 11250.0,
+      "front": 75.0,
+      "depth": 150.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 5K SQFT"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 96%",
+        "lot >= 8,000 sf (11,250)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11308.508,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000672602000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "CONVERTED RESIDENCE (FRAME EXTERIOR)",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-5(A)",
+          "LONG_ZONE_DIST": "R-5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000369493000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "8914 DAYTONIA AVE",
+      "ownerName": "BRESSLER WARD LLC",
+      "ownerMailingAddress": "4608 STEEL ST DALLAS TEXAS 752192404",
+      "legalDescription": "LAKELAND TERRACE | BLK 6/5233  LT 17 | INT202500225816 DD10232025 CO-DC | 5233 006   01700      3005233 006",
+      "gisParcelId": "00000369493000000",
+      "deedTransferDate": "10/27/2025",
+      "phoneRaw": "",
+      "improvementValue": 0.0,
+      "landValue": 350000.0,
+      "totalValue": 350000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "LAND ONLY",
+      "landSqft": 8020.0,
+      "front": 50.0,
+      "depth": 160.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": null,
+      "livingAreaSf": 0,
+      "conditionRatings": [
+        "UNASSIGNED"
+      ],
+      "buildingClasses": [
+        "LAND ONLY"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 100%",
+        "lot >= 8,000 sf (8,020)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 8020.146,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000369493000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "007119000A0080000",
+      "propertyZip": "75212",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3603 N WINNETKA AVE",
+      "ownerName": "VICINOS VECINOS UNIDOS INC",
+      "ownerMailingAddress": "3603 N WINNETKA AVE DALLAS TEXAS 752121948",
+      "legalDescription": "CASA RIO PH 1 | BLK A/7119 LT 8 | VOL93071/0119 DD041293 CO-DALLAS | 7119 00A   008        2007119 00A",
+      "gisParcelId": "007119000A0080000",
+      "deedTransferDate": "04/12/1993",
+      "phoneRaw": "",
+      "improvementValue": 90870.0,
+      "landValue": 397590.0,
+      "totalValue": 488460.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "CONVERTED RESIDENCE (BRICK EXTERIOR)",
+      "landSqft": 13710.0,
+      "front": 96.0,
+      "depth": 145.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "TOWNHOUSE DISTRICT 2"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 81%",
+        "lot >= 8,000 sf (13,710)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 13783.607,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=007119000A0080000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "CONVERTED RESIDENCE (BRICK EXTERIOR)",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "TH-2(A)",
+          "LONG_ZONE_DIST": "TH-2(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "TH-2(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000383560000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "9946 KILARNEY DR",
+      "ownerName": "YATES CELINA ORTIZ & OLIVER R",
+      "ownerMailingAddress": "6814 SANTA MARIA LN DALLAS TEXAS 752142846",
+      "legalDescription": "LAKE PARK ESTS | BLK 2/5371 LT 5 | INT202500152813 DD07212025 CO-DC | 5371 002   00500      3005371 002",
+      "gisParcelId": "00000383560000000",
+      "deedTransferDate": "07/23/2025",
+      "phoneRaw": "",
+      "improvementValue": 100000.0,
+      "landValue": 300000.0,
+      "totalValue": 400000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "15",
+      "landSqft": 10306.0,
+      "front": 40.0,
+      "depth": 120.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1950,
+      "livingAreaSf": 1229,
+      "conditionRatings": [
+        "POOR"
+      ],
+      "buildingClasses": [
+        "15"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1950)",
+        "land-heavy value ratio 75%",
+        "lot >= 8,000 sf (10,306)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10306.465,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000383560000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "15",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000528985000000",
+      "propertyZip": "75220",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3712 CORTEZ DR",
+      "ownerName": "NAJERA LUISA MUNOZ",
+      "ownerMailingAddress": "3712 CORTEZ DR DALLAS TEXAS 752203620",
+      "legalDescription": "RIDGECREST VILLAGE | BLK C/6175 LT 3 | VOL90078/0743 EX040490 CO-DALLAS | 6175 00C   00300      1006175 00C",
+      "gisParcelId": "00000528985000000",
+      "deedTransferDate": "04/20/1990",
+      "phoneRaw": "",
+      "improvementValue": 20000.0,
+      "landValue": 380000.0,
+      "totalValue": 400000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 9063.0,
+      "front": 57.0,
+      "depth": 159.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1891,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 95%",
+        "lot >= 8,000 sf (9,063)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9441.769,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000528985000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000528949000000",
+      "propertyZip": "75220",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3747 CORTEZ DR",
+      "ownerName": "MANSOUR CAROLYN",
+      "ownerMailingAddress": "18619 FORTSON AVE DALLAS TEXAS 752522513",
+      "legalDescription": "RIDGECREST VILLAGE | BLK B/6175 LT 21 | INT200503570048 DD09302005 CO-DC | 6175 00B   02100      1DA6175 00B",
+      "gisParcelId": "00000528949000000",
+      "deedTransferDate": "11/04/2005",
+      "phoneRaw": "",
+      "improvementValue": 20000.0,
+      "landValue": 380000.0,
+      "totalValue": 400000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 8142.0,
+      "front": 59.0,
+      "depth": 138.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1064,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 95%",
+        "lot >= 8,000 sf (8,142)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 8240.385,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000528949000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594130000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11652 CORAL HILLS CT",
+      "ownerName": "BURANI ROHIT M &",
+      "ownerMailingAddress": "CHETNA A MANGHNANI 11652 CORAL HILLS CT DALLAS TEXAS 752292501",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LT 23 | INT201900222067 DD08092019 CO-DC | 6441 017   02300      1006441 017",
+      "gisParcelId": "00000594130000000",
+      "deedTransferDate": "08/22/2019",
+      "phoneRaw": "",
+      "improvementValue": 125000.0,
+      "landValue": 275000.0,
+      "totalValue": 400000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 14403.0,
+      "front": 75.0,
+      "depth": 150.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1751,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (14,403)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 14404.3,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594130000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000595177000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3434 ST CLOUD CIR",
+      "ownerName": "HILLS SUSANNAH J",
+      "ownerMailingAddress": "3434 SAINT CLOUD CIR DALLAS TEXAS 752292634",
+      "legalDescription": "PARK FOREST 3RD INST | BLK 8/6442 LT 42 | VOL98111/2251 DD052998 CO-DALLAS | 6442 008   04200      1006442 008",
+      "gisParcelId": "00000595177000000",
+      "deedTransferDate": "06/09/1998",
+      "phoneRaw": "",
+      "improvementValue": 100000.0,
+      "landValue": 300000.0,
+      "totalValue": 400000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 12156.0,
+      "front": 109.0,
+      "depth": 115.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1959,
+      "livingAreaSf": 2098,
+      "conditionRatings": [
+        "FAIR"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1959)",
+        "land-heavy value ratio 75%",
+        "lot >= 8,000 sf (12,156)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 12156.039,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000595177000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000591304000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3227 ROYAL LN",
+      "ownerName": "3227 ROYAL A SERIES OF",
+      "ownerMailingAddress": "DIMPLE DELL LLC 10882 S LOSTWOOD DR SANDY UTAH 840924924",
+      "legalDescription": "WEBSTER GROVE | BLK F/6434 LOT 24 | INT202000205646 DD07272020 CO-DC | 6434 00F   02400      1006434 00F",
+      "gisParcelId": "00000591304000000",
+      "deedTransferDate": "08/07/2020",
+      "phoneRaw": "",
+      "improvementValue": 100000.0,
+      "landValue": 300000.0,
+      "totalValue": 400000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 10260.0,
+      "front": 80.0,
+      "depth": 128.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1791,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 75%",
+        "lot >= 8,000 sf (10,260)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10259.605,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000591304000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000373312000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "9038 FOREST HILLS BLVD",
+      "ownerName": "TUCKER RICHARD A",
+      "ownerMailingAddress": "1404 SAN SABA DR DALLAS TEXAS 752183551",
+      "legalDescription": "BLK 4/5299  LOT 3 | CO-DALLAS | 5299 004   003        3005299 004",
+      "gisParcelId": "00000373312000000",
+      "deedTransferDate": "",
+      "phoneRaw": "",
+      "improvementValue": 50050.0,
+      "landValue": 350000.0,
+      "totalValue": 400050.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 8318.0,
+      "front": 5.0,
+      "depth": 150.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1940,
+      "livingAreaSf": 875,
+      "conditionRatings": [
+        "FAIR"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1940)",
+        "land-heavy value ratio 87%",
+        "lot >= 8,000 sf (8,318)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 8317.707,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000373312000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594277000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3243 MODELLA AVE",
+      "ownerName": "HOLMAN LORIA ANN",
+      "ownerMailingAddress": "3243 MODELLA AVE DALLAS TEXAS 752292516",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LOT 73 | INT201400129199 DOD05142000 | 6441 017   07300      1006441 017",
+      "gisParcelId": "00000594277000000",
+      "deedTransferDate": "08/07/2014",
+      "phoneRaw": "",
+      "improvementValue": 125450.0,
+      "landValue": 275000.0,
+      "totalValue": 400450.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 20638.0,
+      "front": 75.0,
+      "depth": 170.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1751,
+      "conditionRatings": [
+        "FAIR"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (20,638)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 20644.042,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594277000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594265000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3252 TOWER TRL",
+      "ownerName": "TREJO ISIDRO VARGAS & MARIA BLANCA VALDEZ",
+      "ownerMailingAddress": "3252 TOWER TRL DALLAS TEXAS 752292519",
+      "legalDescription": "CORAL HILLS | BLK 17/6441  LT 69 | INT200900145160 DD05182009 CO-DC | 6441 017   06900      1006441 017",
+      "gisParcelId": "00000594265000000",
+      "deedTransferDate": "05/21/2009",
+      "phoneRaw": "",
+      "improvementValue": 125470.0,
+      "landValue": 275000.0,
+      "totalValue": 400470.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 11515.0,
+      "front": 74.0,
+      "depth": 144.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1604,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (11,515)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11514.64,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594265000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594451000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3168 MODELLA AVE",
+      "ownerName": "PADGETT CRYSTAL LEIGH",
+      "ownerMailingAddress": "3168 MODELLA AVE DALLAS TEXAS 752292431",
+      "legalDescription": "CORAL HILLS | BLK 20/6441  LT 5 | INT201900036296 DD02012019 CO-DC | 6441 020   00500      1006441 020",
+      "gisParcelId": "00000594451000000",
+      "deedTransferDate": "02/12/2019",
+      "phoneRaw": "",
+      "improvementValue": 124440.0,
+      "landValue": 275000.0,
+      "totalValue": 399440.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10566.0,
+      "front": 74.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1364,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,566)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10565.722,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594451000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000670624000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "170 EASTON RD",
+      "ownerName": "RAYNER WESLEY & ANNA",
+      "ownerMailingAddress": "170 EASTON RD DALLAS TEXAS 752181005",
+      "legalDescription": "LAKE HIGHLAND ESTATES NO 7 | BLK 2/7079 LT 17 | INT201700250513 DD08302017 CO-DC | 7079 002   01700      3007079 002",
+      "gisParcelId": "00000670624000000",
+      "deedTransferDate": "09/06/2017",
+      "phoneRaw": "",
+      "improvementValue": 59540.0,
+      "landValue": 339700.0,
+      "totalValue": 399240.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "15",
+      "landSqft": 9436.0,
+      "front": 75.0,
+      "depth": 125.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1953,
+      "livingAreaSf": 1546,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "15"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1953)",
+        "land-heavy value ratio 85%",
+        "lot >= 8,000 sf (9,436)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9435.939,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000670624000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "15",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593764000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3270 DARTMOOR DR",
+      "ownerName": "HALPERN MARSHA M",
+      "ownerMailingAddress": "3270 DARTMOOR DR DALLAS TEXAS 752292510",
+      "legalDescription": "CORAL HILLS | BLK 13/6441 LOT 9 | INT201300341010 DD09192011 CO-DC | 6441 013   00900      1006441 013",
+      "gisParcelId": "00000593764000000",
+      "deedTransferDate": "11/04/2013",
+      "phoneRaw": "",
+      "improvementValue": 125800.0,
+      "landValue": 275000.0,
+      "totalValue": 400800.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10259.0,
+      "front": 70.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1959,
+      "livingAreaSf": 1743,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1959)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,259)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10258.913,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593764000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000392584000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "643 N BUCKNER BLVD",
+      "ownerName": "WALLACE RYAN & LAURA VALENCIA",
+      "ownerMailingAddress": "643 N BUCKNER BLVD DALLAS TEXAS 752182785",
+      "legalDescription": "LAKE HIGHLANDS | BLK 20/5397 LOT 3 | INT202300258182 DD12262023 CO-DC | 5397 020   00300      3005397 020",
+      "gisParcelId": "00000392584000000",
+      "deedTransferDate": "12/27/2023",
+      "phoneRaw": "",
+      "improvementValue": 43470.0,
+      "landValue": 355650.0,
+      "totalValue": 399120.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "15",
+      "landSqft": 9484.0,
+      "front": 70.0,
+      "depth": 136.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1940,
+      "livingAreaSf": 1969,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "15"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1940)",
+        "land-heavy value ratio 89%",
+        "lot >= 8,000 sf (9,484)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9483.758,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000392584000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "15",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594532000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11483 CORAL HILLS DR",
+      "ownerName": "DELIMARKOS JOHN &",
+      "ownerMailingAddress": "HARIKLIA 1321 UPLAND DR PMB 17217 HOUSTON TEXAS 770434718",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LOT 32 | CORAL HILLS DR | VOL84240 PG4972   CO-DALLAS | 6441 020   03200      1006441 020",
+      "gisParcelId": "00000594532000000",
+      "deedTransferDate": "12/10/1984",
+      "phoneRaw": "",
+      "improvementValue": 124000.0,
+      "landValue": 275000.0,
+      "totalValue": 399000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10477.0,
+      "front": 71.0,
+      "depth": 132.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,477)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10484.856,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594532000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000531802000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3760 WALNUT HILL LN",
+      "ownerName": "BHATTACHARYAA SUMAN &",
+      "ownerMailingAddress": "ANASUYA 3760 WALNUT HILL LN DALLAS TEXAS 752296138",
+      "legalDescription": "MARSH LANE 2 | BLK 11/6178 LOT 17A | INT202500144663 DD07102025 CO-DC | 6178 011   17A00      1DA6178 011",
+      "gisParcelId": "00000531802000000",
+      "deedTransferDate": "07/14/2025",
+      "phoneRaw": "",
+      "improvementValue": 68540.0,
+      "landValue": 332500.0,
+      "totalValue": 401040.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "13",
+      "landSqft": 10071.0,
+      "front": 78.0,
+      "depth": 127.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1952,
+      "livingAreaSf": 1264,
+      "conditionRatings": [
+        "VERY GOOD"
+      ],
+      "buildingClasses": [
+        "13"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1952)",
+        "land-heavy value ratio 83%",
+        "lot >= 8,000 sf (10,071)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10071.225,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000531802000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "13",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000703267000000",
+      "propertyZip": "75212",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "925 WALKWAY ST",
+      "ownerName": "COLEMAN BEVERLY",
+      "ownerMailingAddress": "925 WALKWAY ST DALLAS TEXAS 752125336",
+      "legalDescription": "Z E COOMBS WEST END | BLK 4/7265 LT 14 & W PT 15 | T AND P RW 100FR CONKLIN | VOL2005100/01512 DD05122005 CO-DC | 7265 004   01400      2007265 004",
+      "gisParcelId": "00000703267000000",
+      "deedTransferDate": "10/19/2004",
+      "phoneRaw": "",
+      "improvementValue": 104150.0,
+      "landValue": 297000.0,
+      "totalValue": 401150.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 9900.0,
+      "front": 66.0,
+      "depth": 150.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "TOWNHOUSE DISTRICT 3"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1964,
+      "livingAreaSf": 976,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1964)",
+        "land-heavy value ratio 74%",
+        "lot >= 8,000 sf (9,900)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9613.282,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000703267000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+        },
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "TH-3(A)",
+          "LONG_ZONE_DIST": "TH-3(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "TH-3(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593878000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11353 CORAL HILLS DR",
+      "ownerName": "HUMMINGBIRD HAVEN PPTIES",
+      "ownerMailingAddress": "5431 PALOMAR LN DALLAS TEXAS 752296413",
+      "legalDescription": "CORAL HILLS | BLK 15/6441 LT 11 | INT200600265900 DD07132006 CO-DC | 6441 015   01100      1006441 015",
+      "gisParcelId": "00000593878000000",
+      "deedTransferDate": "07/21/2006",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10459.0,
+      "front": 72.0,
+      "depth": 145.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,459)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10459.084,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593878000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594061000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11476 CORAL HILLS DR",
+      "ownerName": "",
+      "ownerMailingAddress": "",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LT 57 | INT20070379744 DD051498 CO-DC | 6441 016   05700      1006441 016",
+      "gisParcelId": "00000594061000000",
+      "deedTransferDate": "10/23/2007",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 11227.0,
+      "front": 109.0,
+      "depth": 71.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (11,227)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11227.227,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594061000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594394000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3210 MODELLA AVE",
+      "ownerName": "SUTTON WILLIAM T",
+      "ownerMailingAddress": "3210 MODELLA AVE DALLAS TEXAS 752292515",
+      "legalDescription": "CORAL HILLS | BLK 19/6441  LT 2 | VOL2003222/10996 DD11052003 CO-DC | 6441 019   002        1006441 019",
+      "gisParcelId": "00000594394000000",
+      "deedTransferDate": "11/10/2003",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10567.0,
+      "front": 75.0,
+      "depth": 140.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,567)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10566.674,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594394000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594046000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3225 CORAL ROCK LN",
+      "ownerName": "LOPEZ MARTIN &",
+      "ownerMailingAddress": "ALICIA LOPEZ 3225 CORAL ROCK LN DALLAS TEXAS 752292531",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 52 | VOL2000249/4537 DD12262000 CO-DC | 6441 016   05200      1006441 016",
+      "gisParcelId": "00000594046000000",
+      "deedTransferDate": "12/27/2000",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 9831.0,
+      "front": 85.0,
+      "depth": 133.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (9,831)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9836.424,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594046000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593920000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3250 ST CROIX DR",
+      "ownerName": "PURCHASING FUND 2023 1 LLC",
+      "ownerMailingAddress": "BLDG 9 STE 415 1007 S CONGRESS AVD AUSTIN TEXAS 787040000",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 10 | INT202600100580 DD04302026 CO-DC | 6441 016   01000      1006441 016",
+      "gisParcelId": "00000593920000000",
+      "deedTransferDate": "05/12/2026",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10671.0,
+      "front": 69.0,
+      "depth": 138.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,671)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10670.756,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593920000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594019000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11416 CORAL HILLS DR",
+      "ownerName": "WISE JAMES ROBERT",
+      "ownerMailingAddress": "11416 CORAL HILLS DR DALLAS TEXAS 752292528",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LT 43 | INT20080106345 DD03252008 CO-DC | 6441 016   04300      1006441 016",
+      "gisParcelId": "00000594019000000",
+      "deedTransferDate": "04/02/2008",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10626.0,
+      "front": 70.0,
+      "depth": 146.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,626)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10626.416,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594019000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000152704000000",
+      "propertyZip": "75214",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "5103 EAST SIDE AVE",
+      "ownerName": "AGUILAR JOSEPHINE &",
+      "ownerMailingAddress": "JOSE RAMON 5103 EAST SIDE AVE DALLAS TEXAS 752145526",
+      "legalDescription": "FREEMANS COLUMBIA AVE | SE PT LT 10;50X25.94X113X75X120 | EAST SIDE & GARRETT | INT201700250325 DD08282017 CO-DC | 1422 00D   01000      1DA1422 00D",
+      "gisParcelId": "00000152704000000",
+      "deedTransferDate": "09/06/2017",
+      "phoneRaw": "",
+      "improvementValue": 128740.0,
+      "landValue": 270000.0,
+      "totalValue": 398740.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 9000.0,
+      "front": 75.0,
+      "depth": 120.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "DUPLEX DISTRICT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1935,
+      "livingAreaSf": 836,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1935)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (9,000)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9037.704,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000152704000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 2,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "D(A)",
+          "LONG_ZONE_DIST": "D(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "D(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000591301000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3221 ROYAL LN",
+      "ownerName": "3221 ROYAL",
+      "ownerMailingAddress": "A SERIES OF DIMPLE DELL LLC 10882 S LOSTWOOD DR SANDY UTAH 840924924",
+      "legalDescription": "WEBSTER GROVE | BLK F/6434 LT 23 | INT202000205547 DD07272020 CO-DC | 6434 00F   02300      1006434 00F",
+      "gisParcelId": "00000591301000000",
+      "deedTransferDate": "08/07/2020",
+      "phoneRaw": "",
+      "improvementValue": 98720.0,
+      "landValue": 300000.0,
+      "totalValue": 398720.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 10311.0,
+      "front": 80.0,
+      "depth": 128.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1514,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 75%",
+        "lot >= 8,000 sf (10,311)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10311.238,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000591301000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593974000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3233 DARTMOOR CT",
+      "ownerName": "VOSGIEN CATHERINE C",
+      "ownerMailingAddress": "3233 DARTMOOR CT DALLAS TEXAS 752292509",
+      "legalDescription": "CORAL HILLS | BLK 16/6441   LT 28 | INT201800200040 DD01012016 CO-DC | 6441 016   02800      1006441 016",
+      "gisParcelId": "00000593974000000",
+      "deedTransferDate": "03/06/2020",
+      "phoneRaw": "",
+      "improvementValue": 122730.0,
+      "landValue": 275000.0,
+      "totalValue": 397730.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10064.0,
+      "front": 71.0,
+      "depth": 141.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1684,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,064)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10063.905,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593974000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594007000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11374 CORAL HILLS DR",
+      "ownerName": "11374 CORAL HILLS TRUST",
+      "ownerMailingAddress": "BEACH VIBES LLC 3225 MCLEOD DR STE 777 LAS VEGAS NEVADA 891212257",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LT 39 | INT202500191589 DD08042025 CO-DC | 6441 016   03900      1006441 016",
+      "gisParcelId": "00000594007000000",
+      "deedTransferDate": "09/12/2025",
+      "phoneRaw": "",
+      "improvementValue": 122730.0,
+      "landValue": 275000.0,
+      "totalValue": 397730.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10438.0,
+      "front": 72.0,
+      "depth": 144.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1684,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,438)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10437.817,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594007000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000392737000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "646 N BUCKNER BLVD",
+      "ownerName": "KF NORTH BUCKNER LLC",
+      "ownerMailingAddress": "8351 SAN FERNANDO WAY DALLAS TEXAS 752184302",
+      "legalDescription": "LAKE HIGHLANDS ESTATES | BLK 1/5401 LT 1 | BUCKNER & N CLIFF | VOL2002144/6631 DD06152002 CO-DC | 5401 001   001        3005401 001",
+      "gisParcelId": "00000392737000000",
+      "deedTransferDate": "07/24/2002",
+      "phoneRaw": "",
+      "improvementValue": 68860.0,
+      "landValue": 333480.0,
+      "totalValue": 402340.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "15",
+      "landSqft": 9881.0,
+      "front": 70.0,
+      "depth": 142.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1947,
+      "livingAreaSf": 1536,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "15"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1947)",
+        "land-heavy value ratio 83%",
+        "lot >= 8,000 sf (9,881)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9881.377,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000392737000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "15",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000169069000000",
+      "propertyZip": "75214",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "6308 COVINGTON LN",
+      "ownerName": "HERNANDEZ NANCEY",
+      "ownerMailingAddress": "6308 COVINGTON LN DALLAS TEXAS 752144507",
+      "legalDescription": "COVINGTON PLACE | BLK 1671 LT 6 | VOL2000060/5699 DD03242000 CO-DC | 1671 000   006        1001671 000",
+      "gisParcelId": "00000169069000000",
+      "deedTransferDate": "03/27/2000",
+      "phoneRaw": "",
+      "improvementValue": 75140.0,
+      "landValue": 327240.0,
+      "totalValue": 402380.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "03",
+      "landSqft": 8181.0,
+      "front": 60.0,
+      "depth": 164.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "DUPLEX DISTRICT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1941,
+      "livingAreaSf": 2578,
+      "conditionRatings": [
+        "FAIR"
+      ],
+      "buildingClasses": [
+        "03"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1941)",
+        "land-heavy value ratio 81%",
+        "lot >= 8,000 sf (8,181)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 7216.061,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000169069000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "03",
+      "cityCouncilDistrict": 14,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "D(A)",
+          "LONG_ZONE_DIST": "D(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "D(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000166624000000",
+      "propertyZip": "75214",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "5906 REIGER AVE",
+      "ownerName": "BAUMANN JAMES JOSEPH",
+      "ownerMailingAddress": "LIVING TRUST 5906 REIGER AVE DALLAS TEXAS 752144723",
+      "legalDescription": "JUNIUS HEIGHTS REV | BLK 21/1617 LT 5A | 75X143 REIGER | INT202200280262 DD10212022 CO-DC | 1617 021   05A00      1001617 021",
+      "gisParcelId": "00000166624000000",
+      "deedTransferDate": "03/13/2026",
+      "phoneRaw": "",
+      "improvementValue": 134280.0,
+      "landValue": 268130.0,
+      "totalValue": 402410.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "08",
+      "landSqft": 10725.0,
+      "front": 75.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "PLANNED DEVELOPMENT DISTRICT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1590,
+      "conditionRatings": [
+        "FAIR"
+      ],
+      "buildingClasses": [
+        "08"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 67%",
+        "lot >= 8,000 sf (10,725)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10724.813,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000166624000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "08",
+      "cityCouncilDistrict": 14,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "PD",
+          "LONG_ZONE_DIST": "PD-397",
+          "PD_NUM": "397",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "PD",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593941000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3277 DARTMOOR CT",
+      "ownerName": "STEIN JUDY A",
+      "ownerMailingAddress": "3277 DARTMOOR CT DALLAS TEXAS 752292509",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 17 | DARTMOOR COURT & DARTMOOR DR | 6441 016   01700      1006441 016",
+      "gisParcelId": "00000593941000000",
+      "deedTransferDate": "",
+      "phoneRaw": "",
+      "improvementValue": 127450.0,
+      "landValue": 275000.0,
+      "totalValue": 402450.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10488.0,
+      "front": 75.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1408,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,488)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10487.882,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593941000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593986000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11340 CORAL HILLS DR",
+      "ownerName": "RUIZ GUILLERMO",
+      "ownerMailingAddress": "11340 CORAL HILLS DR DALLAS TEXAS 752292569",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 32 | CORAL HILLS DR & DARTMOOR DR | VOL2002135/5090 DD07022002 CO-DC | 6441 016   03200      1006441 016",
+      "gisParcelId": "00000593986000000",
+      "deedTransferDate": "07/12/2002",
+      "phoneRaw": "",
+      "improvementValue": 127450.0,
+      "landValue": 275000.0,
+      "totalValue": 402450.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10508.0,
+      "front": 76.0,
+      "depth": 140.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1408,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,508)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10508.365,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593986000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594493000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3135 ST CROIX DR",
+      "ownerName": "PLATZ MARK A",
+      "ownerMailingAddress": "3135 SAINT CROIX DR DALLAS TEXAS 752292547",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LOT 19 | ST CROIX DR & CORAL HILLS DR | VOL2005120/13945 DD06152005 CO-DC | 6441 020   01900      2DA6441 020",
+      "gisParcelId": "00000594493000000",
+      "deedTransferDate": "06/21/2005",
+      "phoneRaw": "",
+      "improvementValue": 127450.0,
+      "landValue": 275000.0,
+      "totalValue": 402450.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 11068.0,
+      "front": 78.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1408,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (11,068)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11067.88,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594493000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593644000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11607 CORAL HILLS DR",
+      "ownerName": "I&G SFR II BORROWER LLC",
+      "ownerMailingAddress": "1887 WHITNEY MESA DR # 3380 HENDERSON NEVADA 890142069",
+      "legalDescription": "CORAL HILLS | BLK 11/6441  LT 6 | INT202100262703 DD09012021 CO-DC | 6441 011   00600      1006441 011",
+      "gisParcelId": "00000593644000000",
+      "deedTransferDate": "09/02/2021",
+      "phoneRaw": "",
+      "improvementValue": 127950.0,
+      "landValue": 275000.0,
+      "totalValue": 402950.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 15710.0,
+      "front": 85.0,
+      "depth": 161.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1408,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (15,710)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 15705.449,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593644000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000591340000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3347 ROYAL LN",
+      "ownerName": "MONEYFORUCASA LLC",
+      "ownerMailingAddress": "14011 ROLLING HILLS LN DALLAS TEXAS 752403807",
+      "legalDescription": "WEBSTER GROVE | BLK F/6434 LT 36 | INT202600081300 DD04152026 CO-DC | 6434200F   03600      1006434200F",
+      "gisParcelId": "00000591340000000",
+      "deedTransferDate": "04/17/2026",
+      "phoneRaw": "",
+      "improvementValue": 96970.0,
+      "landValue": 300000.0,
+      "totalValue": 396970.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 10340.0,
+      "front": 80.0,
+      "depth": 128.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1965,
+      "livingAreaSf": 1638,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1965)",
+        "land-heavy value ratio 76%",
+        "lot >= 8,000 sf (10,340)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10340.108,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000591340000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594502000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3117 ST CROIX DR",
+      "ownerName": "PENICHE ALEN ENRIQUE COUOH &",
+      "ownerMailingAddress": "TZUCESCALANTE SUEMY A 3117 SAINT CROIX DR DALLAS TEXAS 752292547",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LOT 22 ST CROIX DR | INT201400129166 DD05232014 CO-DC | 6441 020   02200      1006441 020",
+      "gisParcelId": "00000594502000000",
+      "deedTransferDate": "05/27/2014",
+      "phoneRaw": "",
+      "improvementValue": 128090.0,
+      "landValue": 275000.0,
+      "totalValue": 403090.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10564.0,
+      "front": 74.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1576,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,564)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10563.973,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594502000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594484000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3124 TOWER TRL",
+      "ownerName": "HOUSING AUTHORITY OF THE",
+      "ownerMailingAddress": "CITY OF DALLAS 3939 N HAMPTON RD DALLAS TEXAS 752121630",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LT 16 | VOL94186/3645 DD092094 CO-DALLAS | 6441 020   016        1006441 020",
+      "gisParcelId": "00000594484000000",
+      "deedTransferDate": "09/26/1994",
+      "phoneRaw": "",
+      "improvementValue": 121900.0,
+      "landValue": 275000.0,
+      "totalValue": 396900.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10225.0,
+      "front": 74.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1364,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,225)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10224.737,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594484000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593908000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3230 ST CROIX DR",
+      "ownerName": "PORTILLO JOSE DE JESUS SANTOYO &",
+      "ownerMailingAddress": "3230 SAINT CROIX DR DALLAS TEXAS 752292548",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LT 6 | INT201300199919 DD06122013 CO-DC | 441 016   00600      100 441 016",
+      "gisParcelId": "00000593908000000",
+      "deedTransferDate": "06/26/2013",
+      "phoneRaw": "",
+      "improvementValue": 121590.0,
+      "landValue": 275000.0,
+      "totalValue": 396590.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 9965.0,
+      "front": 72.0,
+      "depth": 140.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1512,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (9,965)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9965.142,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593908000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594379000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3163 MODELLA AVE",
+      "ownerName": "JOHNSON LOUIS HENRY &",
+      "ownerMailingAddress": "BRENDA L K 3163 MODELLA AVE DALLAS TEXAS 752292406",
+      "legalDescription": "CORAL HILLS | BLK 18/6441 LOT 28 MODELLA AVE | 6441 018   02800      1006441 018",
+      "gisParcelId": "00000594379000000",
+      "deedTransferDate": "",
+      "phoneRaw": "",
+      "improvementValue": 121590.0,
+      "landValue": 275000.0,
+      "totalValue": 396590.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10168.0,
+      "front": 74.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1512,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,168)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10167.836,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594379000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594064000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11506 CORAL HILLS DR",
+      "ownerName": "VINTAGE VANGUARD BUILDERS LLC",
+      "ownerMailingAddress": "12017 COX LN DALLAS TEXAS 752440000",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LOT 1 | INT202600075782 DD04072026 CO-DC | 6441 017   00100      1006441 017",
+      "gisParcelId": "00000594064000000",
+      "deedTransferDate": "04/10/2026",
+      "phoneRaw": "",
+      "improvementValue": 128520.0,
+      "landValue": 275000.0,
+      "totalValue": 403520.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 11685.0,
+      "front": 78.0,
+      "depth": 130.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (11,685)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11677.709,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594064000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000392242000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "703 N BUCKNER BLVD",
+      "ownerName": "LOCK KENNETH A",
+      "ownerMailingAddress": "703 N BUCKNER BLVD DALLAS TEXAS 752182710",
+      "legalDescription": "LAKE HIGHLANDS | BLK 12/5390   LT 2 | INT200600208933 DD05262006 CO-DC | 5390 012   00200      3005390 012",
+      "gisParcelId": "00000392242000000",
+      "deedTransferDate": "06/08/2006",
+      "phoneRaw": "",
+      "improvementValue": 36080.0,
+      "landValue": 367650.0,
+      "totalValue": 403730.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "15",
+      "landSqft": 9804.0,
+      "front": 75.0,
+      "depth": 0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1121,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "15"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 91%",
+        "lot >= 8,000 sf (9,804)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9803.838,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000392242000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "15",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000681256000000",
+      "propertyZip": "75212",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "2034 ANGELINA DR",
+      "ownerName": "CURRY FANNIE MAE",
+      "ownerMailingAddress": "2034 ANGELINA DR DALLAS TEXAS 752121711",
+      "legalDescription": "ROOSEVELT MANOR 2ND INST | BLK 11/7130 LTS 8 & 9 ACS 0.28 | VOL99189/4191 DD08061999 CO-DC | 7130 011   00900      2007130 011",
+      "gisParcelId": "00000681256000000",
+      "deedTransferDate": "09/10/2019",
+      "phoneRaw": "",
+      "improvementValue": 91010.0,
+      "landValue": 305000.0,
+      "totalValue": 396010.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 12200.0,
+      "front": 93.0,
+      "depth": 130.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 5K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1945,
+      "livingAreaSf": 1077,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1945)",
+        "land-heavy value ratio 77%",
+        "lot >= 8,000 sf (12,200)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11998.799,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000681256000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA WITH REDUCED FLOOD RISK DUE TO LEVEE"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-5(A)",
+          "LONG_ZONE_DIST": "R-5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000528982000000",
+      "propertyZip": "75220",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3706 CORTEZ DR",
+      "ownerName": "RICHMOND MARI",
+      "ownerMailingAddress": "2333 HIGHLAND HEIGHTS LN CARROLLTON TEXAS 750072033",
+      "legalDescription": "RIDGECREST VILLAGE | BLK C/6175 LT 2 | INT202100014194 DD01152021 CO-DC | 6175 00C   00200      1006175 00C",
+      "gisParcelId": "00000528982000000",
+      "deedTransferDate": "01/15/2021",
+      "phoneRaw": "",
+      "improvementValue": 24000.0,
+      "landValue": 380000.0,
+      "totalValue": 404000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 9462.0,
+      "front": 57.0,
+      "depth": 166.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1056,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 94%",
+        "lot >= 8,000 sf (9,462)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9732.783,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000528982000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000529033000000",
+      "propertyZip": "75220",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3822 DAVILA DR",
+      "ownerName": "GONZALEZ FAMILY TRUST",
+      "ownerMailingAddress": "3826 DAVILA DR DALLAS TEXAS 752203710",
+      "legalDescription": "RIDGECREST VILLAGE | BLK D/6175 LT 5 | INT20070354964 DD09262007 CO-DC | 6175 00D   00500      1006175 00D",
+      "gisParcelId": "00000529033000000",
+      "deedTransferDate": "12/21/2023",
+      "phoneRaw": "",
+      "improvementValue": 15880.0,
+      "landValue": 380000.0,
+      "totalValue": 395880.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 8280.0,
+      "front": 60.0,
+      "depth": 138.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1379,
+      "conditionRatings": [
+        "FAIR"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 96%",
+        "lot >= 8,000 sf (8,280)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 8904.198,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000529033000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 6,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000591328000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3323 ROYAL LN",
+      "ownerName": "MORENO CAROLINA C",
+      "ownerMailingAddress": "3323 ROYAL LN DALLAS TEXAS 752295062",
+      "legalDescription": "WEBSTER GROVE | BLK F/6434 LOT 32 | ROYLA LN | VOL930/0864           CO-DC | 6434 00F   03200      1006434 00F",
+      "gisParcelId": "00000591328000000",
+      "deedTransferDate": "",
+      "phoneRaw": "",
+      "improvementValue": 104140.0,
+      "landValue": 300000.0,
+      "totalValue": 404140.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 10306.0,
+      "front": 80.0,
+      "depth": 128.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1962,
+      "livingAreaSf": 1940,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1962)",
+        "land-heavy value ratio 74%",
+        "lot >= 8,000 sf (10,306)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10306.211,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000591328000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594490000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3136 TOWER TRL",
+      "ownerName": "CAMARILLO JUANITA M",
+      "ownerMailingAddress": "3136 TOWER TRL DALLAS TEXAS 752292517",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LOT 18 | VOL91233/1354 EX112291 CO-DALLAS | 6441 020   01800      1006441 020",
+      "gisParcelId": "00000594490000000",
+      "deedTransferDate": "10/11/2017",
+      "phoneRaw": "",
+      "improvementValue": 129250.0,
+      "landValue": 275000.0,
+      "totalValue": 404250.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10725.0,
+      "front": 78.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1408,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,725)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10725.499,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594490000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000591325000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3317 ROYAL LN",
+      "ownerName": "3317 ROYAL EE LLC",
+      "ownerMailingAddress": "1500 S HAVEN AVE STE 210 ONTARIO CALIFORNIA 917612971",
+      "legalDescription": "WEBSTER GROVE | BLK F/6434 LT 31 | INT202500166092 DD07232025 CO-DC | 6434 00F   03100      1006434 00F",
+      "gisParcelId": "00000591325000000",
+      "deedTransferDate": "08/08/2025",
+      "phoneRaw": "",
+      "improvementValue": 104300.0,
+      "landValue": 300000.0,
+      "totalValue": 404300.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 10342.0,
+      "front": 80.0,
+      "depth": 128.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1831,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 74%",
+        "lot >= 8,000 sf (10,342)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10342.184,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000591325000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593998000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11360 CORAL HILLS DR",
+      "ownerName": "RAMOS ELISA C TR EST OF",
+      "ownerMailingAddress": "11360 CORAL HILLS DR DALLAS TEXAS 752292569",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LT 36 | VOL2003079/12539          CO-DC | 6441 016   036        1006441 016",
+      "gisParcelId": "00000593998000000",
+      "deedTransferDate": "04/24/2003",
+      "phoneRaw": "",
+      "improvementValue": 120630.0,
+      "landValue": 275000.0,
+      "totalValue": 395630.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10263.0,
+      "front": 71.0,
+      "depth": 142.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1776,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 70%",
+        "lot >= 8,000 sf (10,263)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10263.345,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593998000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594637000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3236 NORTHAVEN CT",
+      "ownerName": "BLACKBURN PEGGY R",
+      "ownerMailingAddress": "3236 NORTHAVEN CT DALLAS TEXAS 752292542",
+      "legalDescription": "CORAL HILLS | BLK 22/6441 LOT 12 NORTHAVEN CT | VOL86238 PG3833   CO-DALLAS | 6441 022   01200      1006441 022",
+      "gisParcelId": "00000594637000000",
+      "deedTransferDate": "12/10/1986",
+      "phoneRaw": "",
+      "improvementValue": 129680.0,
+      "landValue": 275000.0,
+      "totalValue": 404680.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10145.0,
+      "front": 78.0,
+      "depth": 130.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,145)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10145.545,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594637000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000591337000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3341 ROYAL LN",
+      "ownerName": "JIN JIE",
+      "ownerMailingAddress": "3341 ROYAL LN DALLAS TEXAS 752295062",
+      "legalDescription": "WEBSTER GROVE | BLK F/6434 LT 35  ROYAL LN | INT201800177568 DD06282018 CO-DC | 6434 00F   03500      1006434 00F",
+      "gisParcelId": "00000591337000000",
+      "deedTransferDate": "07/05/2018",
+      "phoneRaw": "",
+      "improvementValue": 95280.0,
+      "landValue": 300000.0,
+      "totalValue": 395280.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "18",
+      "landSqft": 10281.0,
+      "front": 80.0,
+      "depth": 128.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1964,
+      "livingAreaSf": 1763,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "18"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1964)",
+        "land-heavy value ratio 76%",
+        "lot >= 8,000 sf (10,281)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10281.174,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000591337000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "18",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593953000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3261 DARTMOOR CT",
+      "ownerName": "GARCIA ARIANA &",
+      "ownerMailingAddress": "3261 DARTMOOR CT DALLAS TEXAS 752292509",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 21 DARTMOOR CT | INT200900254130 DD08272009 CO-DC | 6441 016   02100      1006441 016",
+      "gisParcelId": "00000593953000000",
+      "deedTransferDate": "07/10/2013",
+      "phoneRaw": "",
+      "improvementValue": 120160.0,
+      "landValue": 275000.0,
+      "totalValue": 395160.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10320.0,
+      "front": 71.0,
+      "depth": 142.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1442,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 70%",
+        "lot >= 8,000 sf (10,320)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10319.794,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593953000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594586000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11437 CORAL HILLS DR",
+      "ownerName": "MENDOZA MARTIN &",
+      "ownerMailingAddress": "MARIA A SANCHEZ 11437 CORAL HILLS DR DALLAS TEXAS 752292529",
+      "legalDescription": "CORAL HILLS | BLK 21/6441 LT 8 | VOL2002237/0904 DD11182002 CO-DC | 6441 021   008        1006441 021",
+      "gisParcelId": "00000594586000000",
+      "deedTransferDate": "12/05/2002",
+      "phoneRaw": "",
+      "improvementValue": 120160.0,
+      "landValue": 275000.0,
+      "totalValue": 395160.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10323.0,
+      "front": 76.0,
+      "depth": 141.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1442,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 70%",
+        "lot >= 8,000 sf (10,323)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10322.639,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594586000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594082000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11544 CORAL HILLS DR",
+      "ownerName": "CHAVEZ ROBERTO &",
+      "ownerMailingAddress": "ROSALINDA 11544 CORAL HILLS DR DALLAS TEXAS 752292502",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LT 7 | VOL98072/6475 DD040398 CO-DALLAS | 6441 017   007        1006441 017",
+      "gisParcelId": "00000594082000000",
+      "deedTransferDate": "04/13/1998",
+      "phoneRaw": "",
+      "improvementValue": 120160.0,
+      "landValue": 275000.0,
+      "totalValue": 395160.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10229.0,
+      "front": 74.0,
+      "depth": 136.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1442,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 70%",
+        "lot >= 8,000 sf (10,229)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10229.035,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594082000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594286000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3229 MODELLA AVE",
+      "ownerName": "LANIER TERRANCE L &",
+      "ownerMailingAddress": "LISA M 3229 MODELLA AVE DALLAS TEXAS 752292516",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LOT 76 MODELLA AVE | VOL2000217/3629 DD10312000  CO-DC | 6441 017   07600      1006441 017",
+      "gisParcelId": "00000594286000000",
+      "deedTransferDate": "11/06/2000",
+      "phoneRaw": "",
+      "improvementValue": 120160.0,
+      "landValue": 275000.0,
+      "totalValue": 395160.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 9899.0,
+      "front": 75.0,
+      "depth": 135.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1442,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 70%",
+        "lot >= 8,000 sf (9,899)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9899.343,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594286000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594250000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3230 TOWER TRL",
+      "ownerName": "CASEY BARRY ALLEN &",
+      "ownerMailingAddress": "GLENDA J CAST CASEY 3230 TOWER TRL DALLAS TEXAS 752292519",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LT 64 | VOL89094/3567 DD050889 CO-DALLAS | 6441 017   064        1006441 017",
+      "gisParcelId": "00000594250000000",
+      "deedTransferDate": "05/15/1989",
+      "phoneRaw": "",
+      "improvementValue": 120160.0,
+      "landValue": 275000.0,
+      "totalValue": 395160.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 9653.0,
+      "front": 70.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1442,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 70%",
+        "lot >= 8,000 sf (9,653)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9652.65,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594250000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593914000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3240 ST CROIX DR",
+      "ownerName": "GIRON JOSE EFRAIN & REINA",
+      "ownerMailingAddress": "209 NW COUNTY RD 185 RICE TEXAS 751550000",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LT 8 | INT202500266253 DD12172025 CO-DC | 6441 016   00800      2DA6441 016",
+      "gisParcelId": "00000593914000000",
+      "deedTransferDate": "12/18/2025",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10154.0,
+      "front": 72.0,
+      "depth": 140.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,154)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10154.0,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593914000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594412000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3238 MODELLA AVE",
+      "ownerName": "VALLES GRACIELA CASTANEDA",
+      "ownerMailingAddress": "3238 MODELLA AVE DALLAS TEXAS 752292515",
+      "legalDescription": "CORAL HILLS | BLK 19/6441 LT 8 | INT201600093058 DD04052016 CO-DC | 6441 019   00800      1006441 019",
+      "gisParcelId": "00000594412000000",
+      "deedTransferDate": "04/11/2016",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10899.0,
+      "front": 80.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,899)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10898.289,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594412000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594088000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "11554 CORAL HILLS DR",
+      "ownerName": "DRISCOLL JOSEPH M",
+      "ownerMailingAddress": "4030 CROWN SHORE DR DALLAS TEXAS 752447227",
+      "legalDescription": "CORAL HILLS | BLK 17/6441  LOT 009 | VOL84062 PG 4637 | 6441 017   009        1006441 017",
+      "gisParcelId": "00000594088000000",
+      "deedTransferDate": "03/28/1984",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10207.0,
+      "front": 74.0,
+      "depth": 136.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,207)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10207.396,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594088000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000593971000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3237 DARTMOOR CT",
+      "ownerName": "CHARLTON JUDITH C",
+      "ownerMailingAddress": "3237 DARTMOOR CT DALLAS TEXAS 752292509",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 27 | VOL93250/4055 DD121793 CO-DALLAS | 6441 016   027        1006441 016",
+      "gisParcelId": "00000593971000000",
+      "deedTransferDate": "12/27/1993",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10081.0,
+      "front": 71.0,
+      "depth": 138.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,081)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10081.473,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000593971000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594205000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3249 ST CROIX DR",
+      "ownerName": "RODRIGUEZ JUAN M",
+      "ownerMailingAddress": "3249 SAINT CROIX DR DALLAS TEXAS 752292549",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LOT 49 ST CROIX DR | INT201000160251 DD06182010 CO-DC | 6441 017   04900      1006441 017",
+      "gisParcelId": "00000594205000000",
+      "deedTransferDate": "06/24/2010",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10113.0,
+      "front": 71.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,113)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10112.601,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594205000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594469000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3111 TOWER TRL",
+      "ownerName": "AGUINAGA MIREYA",
+      "ownerMailingAddress": "3111 TOWER TRL DALLAS TEXAS 752292518",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LT 11 | VOL2005155/3759 DD07292005 CO-DC | 6441 020   01100      1DA6441 020",
+      "gisParcelId": "00000594469000000",
+      "deedTransferDate": "08/09/2005",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 11582.0,
+      "front": 80.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (11,582)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 11582.252,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594469000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594187000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3279 ST CROIX DR",
+      "ownerName": "SORTO JUAN R & ADELA ALEMAN",
+      "ownerMailingAddress": "3279 SAINT CROIX DR DALLAS TEXAS 752292549",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LOT 43 | INT20070391224 DD08212007 CO-DC | 6441 017   04300      1006441 017",
+      "gisParcelId": "00000594187000000",
+      "deedTransferDate": "06/02/2016",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10217.0,
+      "front": 68.0,
+      "depth": 145.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,217)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10223.487,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594187000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000594448000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3162 MODELLA AVE",
+      "ownerName": "LARA RAFAEL JR & OLIVIA S",
+      "ownerMailingAddress": "3162 MODELLA AVE DALLAS TEXAS 752292431",
+      "legalDescription": "CORAL HILLS | BLK 20/6441 LOT 4 MODELLA AVE | VOL86132 PG3579    CO-DALLAS | 6441 020   00400      1006441 020",
+      "gisParcelId": "00000594448000000",
+      "deedTransferDate": "07/09/1986",
+      "phoneRaw": "",
+      "improvementValue": 129940.0,
+      "landValue": 275000.0,
+      "totalValue": 404940.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10646.0,
+      "front": 74.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1410,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 68%",
+        "lot >= 8,000 sf (10,646)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 10645.736,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594448000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "14",
+      "cityCouncilDistrict": 13,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "pass-outside-sfha",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase2-screened-public-record-candidate"
+    },
+    {
+      "account": "00000372310000000",
+      "propertyZip": "75218",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "8520 EUSTIS AVE",
+      "ownerName": "ORTIZ SANDRA ELISA PINA",
+      "ownerMailingAddress": "8136 EUSTIS AVE DALLAS TEXAS 752180000",
+      "legalDescription": "FOREST HILLS ESTS | BLK 2/5283 LT 9 | INT202500149284 DD07092025 CO-DC | 5283 002   00900      3DA5283 002",
+      "gisParcelId": "00000372310000000",
+      "deedTransferDate": "07/18/2025",
+      "phoneRaw": "",
+      "improvementValue": 0.0,
+      "landValue": 375000.0,
+      "totalValue": 375000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "23",
+      "landSqft": 9307.0,
+      "front": 80.0,
+      "depth": 125.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 2024,
+      "livingAreaSf": 4224,
+      "conditionRatings": [
+        "MANUALLY ENTER DEPRECIATION"
+      ],
+      "buildingClasses": [
+        "23"
+      ],
+      "teardownScore": 100,
+      "screeningReasons": [
+        "vacant/no residential improvement in RES_DETAIL",
+        "land-heavy value ratio 100%",
+        "lot >= 8,000 sf (9,307)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9307.33,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000372310000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "23",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "AE",
+          "SFHA_TF": "T",
+          "ZONE_SUBTY": null
+        }
+      ],
+      "floodStatus": "fail-or-review-sfha-intersection",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-10(A)",
+          "LONG_ZONE_DIST": "R-10(A)",
+          "PD_NUM": " ",
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-10(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    },
+    {
+      "account": "00000395833000000",
+      "propertyZip": "75214",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "6561 TRAMMEL DR",
+      "ownerName": "BLACKMER THOMAS",
+      "ownerMailingAddress": "709 W RUSK ST STE B ROCKWALL TEXAS 750873600",
+      "legalDescription": "WILLIAM KELMAN | BLK B/5422 LT 15 | INT201100203055 DD07272011 CO-DC | 5422 00B   01500      1005422 00B",
+      "gisParcelId": "00000395833000000",
+      "deedTransferDate": "08/04/2011",
+      "phoneRaw": "",
+      "improvementValue": 1000.0,
+      "landValue": 400000.0,
+      "totalValue": 401000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 9350.0,
+      "front": 55.0,
+      "depth": 170.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1925,
+      "livingAreaSf": 640,
+      "conditionRatings": [
+        "GOOD"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1925)",
+        "land-heavy value ratio 100%",
+        "lot >= 8,000 sf (9,350)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityParcelAreaFeet": 9715.272,
+      "cityParcelUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000395833000000",
+      "cityParcelPropertyClass": "SINGLE FAMILY RESIDENCES",
+      "cityParcelBuildingClass": "04",
+      "cityCouncilDistrict": 9,
+      "cityLimitsStatus": "inside-dallas-city-parcel-layer",
+      "floodZones": [
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "0.2 PCT ANNUAL CHANCE FLOOD HAZARD"
+        },
+        {
+          "FLD_ZONE": "AE",
+          "SFHA_TF": "T",
+          "ZONE_SUBTY": null
+        },
+        {
+          "FLD_ZONE": "X",
+          "SFHA_TF": "F",
+          "ZONE_SUBTY": "AREA OF MINIMAL FLOOD HAZARD"
+        }
+      ],
+      "floodStatus": "fail-or-review-sfha-intersection",
+      "zoningIntersections": [
+        {
+          "ZONE_DIST": "R-7.5(A)",
+          "LONG_ZONE_DIST": "R-7.5(A)",
+          "PD_NUM": null,
+          "DISTRICTUSE": null,
+          "COMMON_NAME": null
+        }
+      ],
+      "zoningSummary": "R-7.5(A)",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    },
+    {
+      "account": "00000594268000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3258 TOWER TRL",
+      "ownerName": "TREJO BLANCA",
+      "ownerMailingAddress": "3258 TOWER TRL DALLAS TEXAS 752292519",
+      "legalDescription": "CORAL HILLS | BLK 17/6441 LT 70 | INT202100054957 DD02162021 CO-DC | 6441 017   07000      1006441 017",
+      "gisParcelId": "00000594268000000",
+      "deedTransferDate": "09/03/2024",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 9913.0,
+      "front": 70.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (9,913)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityLimitsStatus": "parcel-not-found-in-city-layer",
+      "floodStatus": "needs-flood-check",
+      "zoningSummary": "needs-zoning-check",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    },
+    {
+      "account": "00000594481000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3118 TOWER TRL",
+      "ownerName": "WILLIAMS TY & CARMEN",
+      "ownerMailingAddress": "3118 TOWER TRL DALLAS TEXAS 752292517",
+      "legalDescription": "CORAL HILLS | BLK 20/6441   LT 15 | INT202000282440 DD08262020 CO-DC | 6441 020   01500      1006441 020",
+      "gisParcelId": "00000594481000000",
+      "deedTransferDate": "10/15/2020",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10434.0,
+      "front": 74.0,
+      "depth": 137.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,434)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityLimitsStatus": "parcel-not-found-in-city-layer",
+      "floodStatus": "needs-flood-check",
+      "zoningSummary": "needs-zoning-check",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    },
+    {
+      "account": "00000593944000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3273 DARTMOOR CT",
+      "ownerName": "TURBIVILLE RICHARD B",
+      "ownerMailingAddress": "50 HARMONY HALL RD MIDDLEBURG FLORIDA 320686631",
+      "legalDescription": "CORAL HILLS | BLK 16/6441 LOT 18 DARTMOOR CT | CO-DALLAS | 6441 016   01800      1006441 016",
+      "gisParcelId": "00000593944000000",
+      "deedTransferDate": "",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10009.0,
+      "front": 70.0,
+      "depth": 143.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,009)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityLimitsStatus": "parcel-not-found-in-city-layer",
+      "floodStatus": "needs-flood-check",
+      "zoningSummary": "needs-zoning-check",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    },
+    {
+      "account": "00000593905000000",
+      "propertyZip": "75229",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3226 ST CROIX DR",
+      "ownerName": "KEPHART ERIC & DIANA CETARES",
+      "ownerMailingAddress": "7069 ANGELINA DR IRVING TEXAS 750393307",
+      "legalDescription": "CORAL HILLS | BLK 16/6441  LT 5 | INT20070352378 DD08022007 CO-DC | 6441 016   00500      1006441 016",
+      "gisParcelId": "00000593905000000",
+      "deedTransferDate": "11/21/2017",
+      "phoneRaw": "",
+      "improvementValue": 123760.0,
+      "landValue": 275000.0,
+      "totalValue": 398760.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "14",
+      "landSqft": 10089.0,
+      "front": 72.0,
+      "depth": 140.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 10K SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1960,
+      "livingAreaSf": 1488,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "14"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1960)",
+        "land-heavy value ratio 69%",
+        "lot >= 8,000 sf (10,089)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityLimitsStatus": "parcel-not-found-in-city-layer",
+      "floodStatus": "needs-flood-check",
+      "zoningSummary": "needs-zoning-check",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    },
+    {
+      "account": "00000528832000000",
+      "propertyZip": "75220",
+      "propertyCity": "DALLAS",
+      "propertyAddress": "3750 DAVILA DR",
+      "ownerName": "CHAVEZ JOHN A &",
+      "ownerMailingAddress": "GONZALES LOURDES 3750 DAVILA DR DALLAS TEXAS 752203622",
+      "legalDescription": "RIDGECREST VILLAGE | BLK A/6175   LT 10 | VOL2000233/3935 DD11222000 CO-DC | 6175 00A   01000      1006175 00A",
+      "gisParcelId": "00000528832000000",
+      "deedTransferDate": "09/15/2021",
+      "phoneRaw": "",
+      "improvementValue": 17000.0,
+      "landValue": 380000.0,
+      "totalValue": 397000.0,
+      "cityJurisdiction": "DALLAS",
+      "sptdCode": "A11",
+      "buildingClassCode": "04",
+      "landSqft": 8694.0,
+      "front": 63.0,
+      "depth": 138.0,
+      "landSections": 1,
+      "landDescriptions": [
+        "SINGLE FAMILY RESIDENCES"
+      ],
+      "zoningDescriptions": [
+        "SINGLE FAMILY 7500 SQFT"
+      ],
+      "resBuildings": 1,
+      "oldestYearBuilt": 1951,
+      "livingAreaSf": 1082,
+      "conditionRatings": [
+        "AVERAGE"
+      ],
+      "buildingClasses": [
+        "04"
+      ],
+      "teardownScore": 80,
+      "screeningReasons": [
+        "older structure (1951)",
+        "land-heavy value ratio 96%",
+        "lot >= 8,000 sf (8,694)",
+        "DCAD land/total value within $350K-$450K proxy range"
+      ],
+      "status": "source-backed-needs-flood-utility-plat-verification",
+      "sourceName": "Dallas Central Appraisal District 2026 current appraisal roll",
+      "sourceUrl": "https://www.dallascad.org/DataProducts.aspx",
+      "collectedAt": "2026-06-22",
+      "cityLimitsStatus": "parcel-not-found-in-city-layer",
+      "floodStatus": "needs-flood-check",
+      "zoningSummary": "needs-zoning-check",
+      "utilityStatus": "probable-existing-services-needs-tap-provider-verification",
+      "phase": "phase1-source-backed-needs-public-risk-check"
+    }
+  ]
+}

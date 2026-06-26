@@ -1,0 +1,71 @@
+{
+  "generatedAt": "2026-06-22",
+  "market": "dallas-buyer-752xx",
+  "state": "TX",
+  "phases": [
+    {
+      "phase": "0-buy-box-lock",
+      "goal": "Preserve buyer criteria and ask network contact for buyer package recipient and proof of funds/closing speed if available",
+      "status": "complete-from-user-message"
+    },
+    {
+      "phase": "1-public-parcel-screen",
+      "goal": "Use DCAD 2026 current appraisal roll to source parcels in target ZIPs with Dallas situs, 8,000+ sf, single-family/vacant/teardown proxy, and value near budget",
+      "status": "complete",
+      "output": "dcad_phase1_candidates_raw.json"
+    },
+    {
+      "phase": "2-risk-overlay-screen",
+      "goal": "Check top public-record candidates against City of Dallas parcel layer, FEMA NFHL flood hazard layer, and City zoning layer",
+      "status": "complete for top 75 scored candidates",
+      "output": "dallas_752xx_phase2_screened_candidates.csv/json"
+    },
+    {
+      "phase": "3-utility-and-plat-verification",
+      "goal": "Verify water/sewer/electric/gas taps or active service, recorded plat/legal lot status, and valid address. Public CCN/service-area is not enough for final pass.",
+      "status": "next"
+    },
+    {
+      "phase": "4-owner-contact-enrichment",
+      "goal": "Skip-trace owners only after parcel proof survives criteria; no fake/guessed phones or emails",
+      "status": "not started"
+    },
+    {
+      "phase": "5-offer-packaging",
+      "goal": "Create buyer-facing packet with parcel proof, flood/zoning/utility/plat evidence, target acquisition band, and due-diligence checklist",
+      "status": "not started"
+    }
+  ],
+  "sources": [
+    {
+      "name": "Dallas CAD Data Products",
+      "url": "https://www.dallascad.org/DataProducts.aspx",
+      "use": "appraisal roll, owner, situs ZIP, values, legal descriptions"
+    },
+    {
+      "name": "City of Dallas Tax Parcels ArcGIS",
+      "url": "https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasTaxParcels/FeatureServer/0",
+      "use": "parcel geometry, city parcel attributes, public parcel URL"
+    },
+    {
+      "name": "FEMA NFHL Flood Hazard Zones",
+      "url": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+      "use": "SFHA/flood-zone intersection screen"
+    },
+    {
+      "name": "City of Dallas Zoning ArcGIS",
+      "url": "https://gis.dallascityhall.com/arcgis/rest/services/sdc_public/Zoning/MapServer/15",
+      "use": "base zoning screen"
+    },
+    {
+      "name": "Dallas County Official Public Records",
+      "url": "https://dallas.tx.publicsearch.us/",
+      "use": "recorded plat/replat confirmation in later verification"
+    },
+    {
+      "name": "Texas PUC Water/Sewer CCN GIS",
+      "url": "https://www.puc.texas.gov/industry/water/utilities/gis/",
+      "use": "service-area/provider context; not final utilities-in-place proof"
+    }
+  ]
+}

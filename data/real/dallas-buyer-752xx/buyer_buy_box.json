@@ -1,0 +1,33 @@
+{
+  "generatedAt": "2026-06-22",
+  "market": "dallas-buyer-752xx",
+  "state": "TX",
+  "buyerStatus": "active-builder-ready-now",
+  "targetZips": [
+    "75230",
+    "75229",
+    "75220",
+    "75218",
+    "75214",
+    "75206",
+    "75225",
+    "75212"
+  ],
+  "propertyTypes": [
+    "single-family teardown",
+    "vacant lot"
+  ],
+  "minLotSqft": 8000,
+  "budgetMin": 350000,
+  "budgetMax": 450000,
+  "arvTarget": 1800000,
+  "arvFlexibility": "flexible",
+  "mustMeetAll": [
+    "utilities in place",
+    "outside SFHA/flood zone",
+    "platted with valid address",
+    "Dallas city limits preferred"
+  ],
+  "sourceOfDemand": "user network post: active builder looking now",
+  "status": "buy-box-known; buyer identity/contact not stored here"
+}

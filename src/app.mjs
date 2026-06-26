@@ -178,6 +178,7 @@ let workspace = loadWorkspace();
 let generatedLeads = null;
 let weeklyMarketScout = null;
 let knoxvilleBuyerCallSheet = null;
+let dallasProofSprint = null;
 let builderMarketData = { markets: {}, loaded: false, error: '' };
 let titleCompanyProcess = titleCompanyProcessFallback;
 let titleCompanyMarkets = titleCompanyMarketsFallback;
@@ -388,10 +389,44 @@ function rowState(row = {}) {
   if (/\btn\b|tennessee|knoxville|chattanooga|nashville/.test(text)) return 'TN';
   if (/\bfl\b|florida|lehigh|cape-coral|ocala|palm bay|orlando/.test(text)) return 'FL';
   if (/\bar\b|arkansas|bentonville|bella vista/.test(text)) return 'AR';
-  if (/\btx\b|texas|houston/.test(text)) return 'TX';
+  if (/\btx\b|texas|houston|dallas/.test(text)) return 'TX';
   if (/\bga\b|georgia|forsyth|hall|jackson|douglas|atlanta|cumming|gainesville/.test(text)) return 'GA';
   if (/\bsc\b|south carolina|dorchester|berkeley|charleston|summerville|greenville/.test(text)) return 'SC';
   return 'UNKNOWN';
+}
+
+function normalizeParcelAddress(value = '') {
+  return String(value || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function dallasProofRows() {
+  return asArray(dallasProofSprint?.rows);
+}
+
+function dallasPhase4Rows() {
+  return asArray(generatedLeads?.snapshot?.parcels).filter(parcel => parcel.phase4Status || /Dallas \/ Dallas County/i.test(String(parcel.market || '')));
+}
+
+function dallasProofRowForParcel(parcel = {}) {
+  const parcelId = String(parcel.parcelId || parcel.apn || parcel.id || '').trim();
+  const address = normalizeParcelAddress(parcel.address || parcel.propertyAddress);
+  return dallasProofRows().find(row => String(row.parcelId || '').trim() === parcelId || normalizeParcelAddress(`${row.propertyAddress || ''} ${row.propertyCity || ''} TX ${row.propertyZip || ''}`) === address || normalizeParcelAddress(row.propertyAddress) === address) || null;
+}
+
+function dallasProofSummary() {
+  const complete = dallasPhase4Rows();
+  const sprint = dallasProofRows();
+  const rows = complete.length ? complete : sprint;
+  const held = rows.filter(row => row.phase4Status === 'hold-needs-utility-plat-proof' || row.crmStatus === 'Needs utility/plat verification' || row.operatorDecision === 'hold').length;
+  const offerReady = asArray(generatedLeads?.queues?.offerReady).filter(row => /dallas/i.test(`${row.market || ''} ${row.address || ''}`)).length;
+  return {
+    completeCount: dallasProofSprint?.completePhase4Count || complete.length || 0,
+    sprintCount: dallasProofSprint?.sprintCount || sprint.length || 0,
+    heldCount: held || Number(dallasProofSprint?.completePhase4Count || 0),
+    offerReady,
+    generatedAt: dallasProofSprint?.generatedAt || generatedLeads?.generatedAt || '',
+    status: dallasProofSprint?.status || 'operator-proof-needed-before-owner-enrichment',
+  };
 }
 
 function matchesLeadEngineState(row = {}) {
@@ -647,8 +682,9 @@ function getVisibleParcels() {
 
 function parcelListingState(parcel = {}) {
   const status = parcel.landLedgerStatus || parcel.agentIntakeStatus || '';
-  const sourceBacked = parcel.publicProofStatus === 'verified-public-source' || ['source-backed', 'contact-candidate', 'contact-enriched', 'builder-fit', 'offer-ready'].includes(status);
-  const needsProof = status === 'needs-public-proof' || parcel.publicProofStatus === 'needs-public-proof';
+  const utilityPlatHold = parcel.phase4Status === 'hold-needs-utility-plat-proof' || parcel.crmStatus === 'Needs utility/plat verification';
+  const sourceBacked = Boolean(parcel.publicSource || parcel.sourceUrl || parcel.publicProofStatus === 'verified-public-source') || ['source-backed', 'contact-candidate', 'contact-enriched', 'builder-fit', 'offer-ready'].includes(status);
+  const needsProof = utilityPlatHold || status === 'needs-public-proof' || parcel.publicProofStatus === 'needs-public-proof';
   const rawFinding = status === 'raw-finding';
   const unverifiedContacts = Array.isArray(parcel.unverifiedContactCandidates) ? parcel.unverifiedContactCandidates : [];
   const contactCandidate = status === 'contact-candidate' || Boolean(unverifiedContacts.length || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail);
@@ -852,6 +888,43 @@ function renderDealsMarketCoverage() {
       <p>${h(selected.key === 'all' ? `${entries.length - 1} selectable markets. ${liveCount} have builder data; the rest stay visible as source-work lanes.` : `${selected.marketLabel || selected.label}: ${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
     </div>
     <div class="deals-market-grid" role="listbox" aria-label="Select Deals market">${marketButtons}</div>
+  </section>`;
+}
+
+function renderDallasProofSprintSurface() {
+  const summary = dallasProofSummary();
+  if (!summary.completeCount && !summary.sprintCount) return '';
+  const rows = dallasProofRows();
+  const sprintRows = rows.slice(0, 12).map(row => {
+    const tasks = asArray(row.proofTasks).slice(0, 2).map(task => `<li>${h(task)}</li>`).join('');
+    return `<article class="dallas-proof-row" data-dallas-proof-parcel="${h(row.parcelId)}">
+      <div><span>${String(row.sprintRank || row.rank || '').padStart(2, '0')}</span><b>${h(row.propertyAddress || 'Dallas parcel')}</b><em>${h(row.zoning || 'zoning pending')} · ${h(Number(row.lotSqft || 0).toLocaleString())} sf · ${h(row.floodStatus || 'flood pending')}</em></div>
+      <div class="dallas-proof-links">
+        ${row.dcadAccountUrl ? safeLink(row.dcadAccountUrl, 'DCAD', 'proof-inline-link') : ''}
+        ${row.cityParcelQueryUrl ? safeLink(row.cityParcelQueryUrl, 'City parcel API', 'proof-inline-link') : ''}
+        ${row.dallasCountyPublicSearchUrl ? safeLink(row.dallasCountyPublicSearchUrl, 'Recorded plat search', 'proof-inline-link') : ''}
+      </div>
+      <ul>${tasks}</ul>
+    </article>`;
+  }).join('');
+  const statusRows = [
+    ['Complete Dallas queue', summary.completeCount, 'all qualifying rows stay visible; Top-12 is only a sprint view'],
+    ['Proof sprint', summary.sprintCount, 'highest-leverage rows ready for manual source attachment'],
+    ['Held for proof', summary.heldCount, 'utility/tap + recorded plat + builder zoning acceptance required'],
+    ['Offer-ready', summary.offerReady, 'must remain zero until every proof gate passes'],
+  ].map(([label, value, copy]) => `<div><span>${h(label)}</span><b>${h(value)}</b><p>${h(copy)}</p></div>`).join('');
+  return `<section class="dallas-proof-sprint-surface" aria-label="Dallas Phase 4.5 utility and recorded plat proof sprint">
+    <div class="dallas-proof-head">
+      <span class="eyebrow">Dallas Phase 4.5</span>
+      <h3>Top-12 proof sprint surfaced inside Land.</h3>
+      <p>Dallas rows are visible, prioritized, and locked. The operator attaches real utility/tap, electric/gas, recorded-plat, and builder-zoning proof here before owner enrichment can begin.</p>
+      <small>Generated ${h(formatDateTime(summary.generatedAt))} · ${h(summary.status)}</small>
+    </div>
+    <div class="dallas-proof-metrics">${statusRows}</div>
+    <details class="dallas-proof-disclosure" open>
+      <summary><b>Open Top-12 proof ledger</b><span>DCAD, City parcel API, Dallas County record-search links included</span></summary>
+      <div class="dallas-proof-ledger">${sprintRows || '<p>Proof sprint artifact not loaded yet.</p>'}</div>
+    </details>
   </section>`;
 }
 
@@ -2233,10 +2306,11 @@ function renderParcels() {
   const agentIntakeGate = renderLandAgentIntakeGate();
   const landReconImportPath = renderLandReconImportPath();
   const marketCoverage = renderDealsMarketCoverage();
+  const dallasProofSurface = renderDallasProofSprintSurface();
 
   if (!selected) {
     const selectedMarket = getSelectedDealsMarket();
-    target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
+    target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}${marketCoverage}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
       <span class="eyebrow">No ready deals</span>
       <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
       <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'this market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness.' : 'no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
@@ -2254,6 +2328,25 @@ function renderParcels() {
   const operatorChecklist = buildOperatorChecklist(selected, buyer);
   const buyerMemo = generateBuyerSendMemo(selected, buyer, generateOfferPacket(selected, buyer));
   const selectedListingState = parcelListingState(selected);
+  const selectedDallasProofRow = dallasProofRowForParcel(selected);
+  const selectedDallasProofPanel = selectedDallasProofRow ? `<section class="selected-dallas-proof-panel" aria-label="Selected Dallas proof sprint detail">
+    <div><span class="eyebrow">Dallas proof sprint #${h(selectedDallasProofRow.sprintRank || selectedDallasProofRow.rank)}</span><h3>Utility + recorded plat gate is the next action.</h3><p>${h(selectedDallasProofRow.operatorNextAction || 'Verify utilities/taps and recorded plat before owner enrichment.')}</p></div>
+    <div class="selected-dallas-proof-links">
+      ${selectedDallasProofRow.dcadAccountUrl ? safeLink(selectedDallasProofRow.dcadAccountUrl, 'Open DCAD account', 'proof-inline-link') : ''}
+      ${selectedDallasProofRow.cityParcelQueryUrl ? safeLink(selectedDallasProofRow.cityParcelQueryUrl, 'Open City parcel API', 'proof-inline-link') : ''}
+      ${selectedDallasProofRow.dallasCountyPublicSearchUrl ? safeLink(selectedDallasProofRow.dallasCountyPublicSearchUrl, 'Open recorded plat search', 'proof-inline-link') : ''}
+      ${selectedDallasProofRow.dallasWaterUtilitiesUrl ? safeLink(selectedDallasProofRow.dallasWaterUtilitiesUrl, 'Dallas Water Utilities', 'proof-inline-link') : ''}
+      ${selectedDallasProofRow.oncorServiceUrl ? safeLink(selectedDallasProofRow.oncorServiceUrl, 'Oncor', 'proof-inline-link') : ''}
+      ${selectedDallasProofRow.atmosServiceUrl ? safeLink(selectedDallasProofRow.atmosServiceUrl, 'Atmos', 'proof-inline-link') : ''}
+    </div>
+    <dl>
+      <div><dt>Water/sewer</dt><dd>${h(selectedDallasProofRow.waterSewerProofStatus || 'needs-proof')}</dd></div>
+      <div><dt>Electric/gas</dt><dd>${h(selectedDallasProofRow.electricGasProofStatus || 'needs-proof')}</dd></div>
+      <div><dt>Recorded plat</dt><dd>${h(selectedDallasProofRow.recordedPlatProofStatus || 'needs-proof')}</dd></div>
+      <div><dt>Builder zoning</dt><dd>${h(selectedDallasProofRow.zoningBuilderAcceptedStatus || 'unknown')}</dd></div>
+    </dl>
+    <p class="selected-dallas-search-terms"><b>County search terms:</b> ${h(selectedDallasProofRow.dallasCountySearchTerms || 'search terms pending')}</p>
+  </section>` : '';
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const selectedCallable = selected.action === 'Call now' && Boolean(selected.ownerPhone || selected.ownerEmail) && !selectedListingState.needsProof && !selectedListingState.rawFinding;
@@ -2266,7 +2359,7 @@ function renderParcels() {
     ['Next action', selected.action, getNextAction(selected)],
   ];
 
-  target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}${marketCoverage}<div class="deal-workbench">
+  target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}${marketCoverage}<div class="deal-workbench">
     <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by confidence, proof, enrichment, or builder fit. Every useful agent finding remains visible. Duplicate-safe merge history stays attached to each row.</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
@@ -2275,14 +2368,16 @@ function renderParcels() {
         const parcelKey = parcelSelectionKey(parcel);
         const isActive = parcelKey === parcelSelectionKey(selected);
         const listingState = parcelListingState(parcel);
+        const dallasProofRow = dallasProofRowForParcel(parcel);
+        const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark>` : '';
         const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
         const marketSignal = parcel.selectedMarketMatch ? 'selected lane' : 'other lane';
-        return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
+        return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
           <span>${String(index + 1).padStart(2, '0')}</span>
           <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
           <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(Number(parcel.duplicateMergedCount || 0) > 0 ? `${parcel.duplicateMergedCount} duplicate merge${Number(parcel.duplicateMergedCount) === 1 ? '' : 's'}` : (parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail || 'contact not enriched'))} · ${h(marketSignal)}</small>
           <em><strong>${h(listingState.label)}</strong><i>${h(listingState.confidence)} confidence · ${h(parcel.score)} score</i></em>
-          <div class="land-row-signals"><mark>${listingState.sourceBacked ? 'proof' : listingState.needsProof ? 'needs proof' : 'raw'}</mark><mark>${listingState.enriched ? 'verified contact' : listingState.contactCandidate ? 'contact candidate' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${badge(parcel.risk.status, tone)}</div>
+          <div class="land-row-signals"><mark>${listingState.sourceBacked ? 'proof' : listingState.needsProof ? 'needs proof' : 'raw'}</mark><mark>${listingState.enriched ? 'verified contact' : listingState.contactCandidate ? 'contact candidate' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${dallasSprintChip}${badge(parcel.risk.status, tone)}</div>
         </button>`;
       }).join('')}</div>
     </aside>
@@ -2301,6 +2396,7 @@ function renderParcels() {
         <div class="${selectedListingState.builderMatched ? 'complete' : 'todo'}"><span>Builder fit</span><b>${selectedListingState.builderMatched ? 'Matched criteria' : 'Fit unknown'}</b><p>${h(buyer.name || selected.buyerId || 'No buyer criterion attached.')}</p></div>
         <div class="${selectedListingState.offerReady ? 'complete' : 'todo'}"><span>Priority</span><b>${h(selectedListingState.label)}</b><p>${h(selectedListingState.detail)}</p></div>
       </div>
+      ${selectedDallasProofPanel}
       <div class="deal-strip five">
         <div><span>Buyer price</span><b>${formatMoney(selected.offer.buyerPrice)}</b></div>
         <div><span>Seller ask</span><b>${formatMoney(selected.metrics.askingPrice)}</b></div>
@@ -2727,6 +2823,16 @@ async function loadGeneratedLeads() {
     generatedLeads = await response.json();
   } catch (error) {
     generatedLeads = { error: error.message };
+  }
+}
+
+async function loadDallasProofSprint() {
+  try {
+    const response = await fetch('data/real/dallas-buyer-752xx/phase45_top12_proof_sprint.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`dallas proof sprint ${response.status}`);
+    dallasProofSprint = await response.json();
+  } catch (error) {
+    dallasProofSprint = { error: error.message, rows: [] };
   }
 }
 
@@ -3724,6 +3830,7 @@ function renderAll() {
 bindEvents();
 renderAll();
 loadGeneratedLeads().then(renderAll);
+loadDallasProofSprint().then(renderAll);
 loadKnoxvilleBuyerCallSheet().then(renderAll);
 loadBuilderMarketData().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);

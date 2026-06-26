@@ -45,6 +45,10 @@ assert.match(app, /subagents reference the webapp script; they do not perform ou
 assert.match(app, /Public proof', 'Promotes'/, 'Agent intake contract must promote public proof without hiding raw findings.');
 assert.match(app, /Owner contact', 'Quarantined'/, 'Agent intake contract must keep weak owner contact visible but not callable.');
 assert.match(app, /Builder fit', 'Computed'/, 'Agent intake contract must compute builder fit from evidence rather than guessing.');
+assert.match(app, /land-selected-summary/, 'Selected Land detail must expose a compact proof/contact/buyer/action summary.');
+assert.match(app, /land-close-timeline/, 'Call-to-close control must render as a compact timeline instead of boxed steps.');
+assert.match(app, /land-settings-sheet/, 'Buyer memo and feedback must sit inside one lower settings sheet.');
+assert.match(app, /Record the answer that rewrites tomorrow’s calls/, 'Buyer feedback copy must be compressed into a calm settings-row prompt.');
 
 assert.match(css, /v1\.65 - Phase 38 Deals calm empty state/, 'Phase 38 route-scoped CSS marker missing.');
 assert.match(css, /--phase38-deals-empty: compact-intentional-not-broken/, 'Deals route marker must document the intended state.');
@@ -76,5 +80,9 @@ assert.match(css, /\.land-agent-intake-gate[\s\S]{0,220}grid-template-columns: m
 assert.match(css, /\.land-agent-ledger li[\s\S]{0,180}grid-template-columns: minmax\(100px, \.22fr\) minmax\(80px, \.16fr\) minmax\(0, 1fr\)/, 'Land agent contract rows must read as a calm ledger, not boxed cards.');
 assert.match(css, /v1\.99b - Land controls must stay hairline rails, not dark button slabs/, 'Land controls need a late guard against dark button slabs.');
 assert.match(css, /#parcels \.land-control-group button\.land-state-filter,[\s\S]{0,260}background-color: transparent !important/, 'Land state controls must stay transparent hairline rails.');
+assert.match(css, /--land-phase201-rule: lower-depth-becomes-summary-timeline-settings-sheet/, 'Phase 201 lower-depth simplification marker missing.');
+assert.match(css, /\.land-selected-summary[\s\S]{0,220}position: sticky !important/, 'Selected Land summary should stay available as the operator scans lower detail.');
+assert.match(css, /\.land-close-timeline li[\s\S]{0,220}grid-template-columns/, 'Call-to-close timeline must be compact rows, not heavy cards.');
+assert.match(css, /#parcel-filters\.land-stage-filters-retired[\s\S]{0,120}display: none !important/, 'Retired Land filter speck must stay hidden after pixel QA.');
 
 console.log('deals empty/filter UI tests passed');

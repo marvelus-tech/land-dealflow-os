@@ -1051,17 +1051,22 @@ function crmControls(parcel) {
 }
 
 function renderOperatorChecklist(checklist, { compact = false } = {}) {
-  return `<section class="operator-checklist ${compact ? 'compact' : ''}" aria-label="Call-to-close checklist">
-    <div class="operator-checklist-head">
-      <span class="eyebrow">Call → Close Control</span>
-      <h3>${h(checklist.next.label)}</h3>
-      <div class="probability-meter" style="--score:${h(checklist.probability)}"><strong>${h(checklist.probability)}%</strong><span>assignment close probability</span></div>
-    </div>
-    <div class="operator-steps">${checklist.steps.map((step, index) => `<article class="operator-step ${step.done ? 'done' : 'todo'}">
-      <span>${String(index + 1).padStart(2, '0')}</span>
-      <b>${h(step.label)}</b>
-      <p>${h(step.detail)}</p>
-    </article>`).join('')}</div>
+  const doneCount = checklist.steps.filter(step => step.done).length;
+  return `<section class="operator-checklist land-timeline-card ${compact ? 'compact' : ''}" aria-label="Call-to-close checklist">
+    <details open>
+      <summary>
+        <span><em class="eyebrow">Call → close</em><b>${h(checklist.next.label)}</b></span>
+        <strong>${h(checklist.probability)}% <i>close probability</i></strong>
+      </summary>
+      <ol class="land-close-timeline" aria-label="Call-to-close timeline">
+        ${checklist.steps.map((step, index) => `<li class="${step.done ? 'done' : 'todo'}">
+          <span>${String(index + 1).padStart(2, '0')}</span>
+          <b>${h(step.label)}</b>
+          <p>${h(step.detail)}</p>
+        </li>`).join('')}
+      </ol>
+      <p class="land-timeline-note">${h(doneCount)} of ${h(checklist.steps.length)} gates cleared. Keep proof, title, and buyer response visible; do not promote beyond the current gate.</p>
+    </details>
   </section>`;
 }
 
@@ -2398,6 +2403,12 @@ function renderParcels() {
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const selectedCallable = selected.action === 'Call now' && Boolean(selected.ownerPhone || selected.ownerEmail) && !selectedListingState.needsProof && !selectedListingState.rawFinding;
   const selectedPrimaryAction = selectedCallable ? 'Call selected' : selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach proof' : selectedListingState.contactCandidate ? 'Verify contact' : 'Review selected';
+  const selectedMiniSummary = `<div class="land-selected-summary" aria-label="Selected land state summary">
+    <div><span>Proof</span><b>${selectedListingState.sourceBacked ? 'Ready' : 'Needed'}</b></div>
+    <div><span>Contact</span><b>${selectedListingState.enriched ? 'Verified' : selectedListingState.contactCandidate ? 'Candidate' : 'Needed'}</b></div>
+    <div><span>Buyer fit</span><b>${selectedListingState.builderMatched ? 'Matched' : 'Unknown'}</b></div>
+    <div><span>Action</span><b>${h(selectedPrimaryAction)}</b></div>
+  </div>`;
   const duplicateNotice = Number(selected.duplicateMergedCount || 0) > 0 ? `<p class="duplicate-merge-note">Duplicate-safe merge: ${h(selected.duplicateMergedCount)} repeated intake${Number(selected.duplicateMergedCount) === 1 ? '' : 's'} collapsed into this row.</p>` : '';
   const fitRows = [
     ['Buyer fit', buyer.name || 'No matched buyer', `${buyer.score || 0}/100 · ${buyer.buyBox || 'buy box missing'}`],
@@ -2438,6 +2449,7 @@ function renderParcels() {
         ${duplicateNotice}
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
+      ${selectedMiniSummary}
       <div class="land-listing-status-strip" aria-label="Land listing progression">
         <div class="${selectedListingState.sourceBacked ? 'complete' : 'todo'}"><span>Proof</span><b>${selectedListingState.sourceBacked ? 'Source-backed' : 'Needs proof'}</b><p>${h(selected.sourceUrl || selected.publicSource || selected.intakeMissing?.join(' · ') || 'Attach public source URL and timestamp.')}</p></div>
         <div class="${selectedListingState.enriched ? 'complete' : selectedListingState.contactCandidate ? 'candidate' : 'todo'}"><span>Contact</span><b>${selectedListingState.enriched ? 'Enriched' : selectedListingState.contactCandidate ? 'Candidate only' : 'Needs enrichment'}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'No verified phone/email yet.')}</p></div>
@@ -2465,8 +2477,10 @@ function renderParcels() {
         <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
       </div>
       ${renderOperatorChecklist(operatorChecklist)}
-      ${renderBuyerSendMemoCard(buyerMemo)}
-      ${renderBuyerFeedbackCapture(selected, buyer)}
+      <section class="land-settings-sheet" aria-label="Buyer memo and feedback settings">
+        ${renderBuyerSendMemoCard(buyerMemo)}
+        ${renderBuyerFeedbackCapture(selected, buyer)}
+      </section>
       <div class="detail-grid">
         <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'contact missing')}</p></div>
         <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
@@ -3090,10 +3104,13 @@ function currentTitleCompanyEmail() {
 function renderBuyerSendMemoCard(memo, { compact = false } = {}) {
   if (!memo) return '';
   return `<section class="buyer-send-memo ${compact ? 'compact' : ''}" aria-label="Buyer send memo">
-    <div class="buyer-memo-head"><span class="eyebrow">Buyer send memo</span><h3>${h(memo.subject)}</h3><p>${h(memo.ask)}</p></div>
-    <div class="deal-strip four"><div><span>Assignment fee path</span><strong>${formatMoney(memo.assignmentFee)}</strong></div><div><span>Fit score</span><strong>${h(memo.fit?.score || 0)}/100</strong></div><div><span>Contract gate</span><strong>${h(memo.contract?.label || 'unknown')}</strong></div><div><span>Close probability</span><strong>${h(memo.checklist?.probability || 0)}%</strong></div></div>
-    <pre class="buyer-memo-preview">${h(memo.message.slice(0, compact ? 720 : 1400))}</pre>
-    <div class="button-row"><button type="button" class="copy-buyer-send-memo">Copy memo</button><button type="button" class="secondary download-buyer-send-memo">Download memo</button><span class="buyer-send-memo-status"></span></div>
+    <details open>
+      <summary><span><em class="eyebrow">Buyer memo</em><b>${h(memo.subject)}</b></span><strong>${formatMoney(memo.assignmentFee)}</strong></summary>
+      <p class="buyer-memo-ask">${h(memo.ask)}</p>
+      <div class="deal-strip four"><div><span>Assignment fee path</span><strong>${formatMoney(memo.assignmentFee)}</strong></div><div><span>Fit score</span><strong>${h(memo.fit?.score || 0)}/100</strong></div><div><span>Contract gate</span><strong>${h(memo.contract?.label || 'unknown')}</strong></div><div><span>Close probability</span><strong>${h(memo.checklist?.probability || 0)}%</strong></div></div>
+      <pre class="buyer-memo-preview">${h(memo.message.slice(0, compact ? 720 : 1400))}</pre>
+      <div class="button-row"><button type="button" class="copy-buyer-send-memo">Copy memo</button><button type="button" class="secondary download-buyer-send-memo">Download memo</button><span class="buyer-send-memo-status"></span></div>
+    </details>
   </section>`;
 }
 
@@ -3101,16 +3118,19 @@ function renderBuyerFeedbackCapture(parcel, buyer) {
   const loop = buildBuyerFeedbackLoop(workspace.buyers || []);
   const recommendations = recommendNextSellerCallsFromFeedback(workspace.parcels || [], workspace.buyers || []).slice(0, 3);
   return `<section class="buyer-feedback-capture" data-feedback-parcel-id="${h(parcel.id)}" aria-label="Buyer feedback capture">
-    <div class="feedback-head"><span class="eyebrow">Buyer feedback loop</span><h3>Capture the buyer answer. Let rejection rewrite tomorrow’s calls.</h3><p>${h(loop.tightening)}</p></div>
-    <div class="feedback-form-grid">
-      <label>Buyer response<select class="buyer-feedback-decision"><option value="accept">yes / wants it</option><option value="maybe">maybe / needs review</option><option value="reject">no / reject</option></select></label>
-      <label>Reason<select class="buyer-feedback-reason">${BUYER_FEEDBACK_REASONS.map(reason => `<option value="${h(reason)}">${h(reason)}</option>`).join('')}</select></label>
-      <label>Buyer max price<input class="buyer-feedback-max" type="number" min="0" step="500" placeholder="${h(buyer.maxPrice || parcel.buyerMaxPrice || '')}"></label>
-      <label class="feedback-note-label">Exact words / next constraint<textarea class="buyer-feedback-note" rows="2" placeholder="Too much wetland risk; only send paved-road lots under $38k..."></textarea></label>
-      <button class="save-buyer-feedback" type="button">Save buyer feedback</button><span class="buyer-feedback-status"></span>
-    </div>
-    <div class="feedback-summary"><div><span>Total feedback</span><b>${loop.totalFeedback}</b></div><div><span>Accepted</span><b>${loop.accepted}</b></div><div><span>Rejected</span><b>${loop.rejected}</b></div><div><span>Maybe</span><b>${loop.maybe}</b></div></div>
-    <div class="next-call-guidance"><h4>What to call next</h4>${recommendations.map(item => `<div><b>${h(item.address)} · ${h(item.adjustedScore)}/100</b><span>${h(item.nextCallReason)}</span></div>`).join('') || '<p>No recommendations yet.</p>'}</div>
+    <details>
+      <summary><span><em class="eyebrow">Buyer feedback</em><b>Record the answer that rewrites tomorrow’s calls.</b></span><strong>${h(loop.totalFeedback)} logged</strong></summary>
+      <p class="feedback-tightening-copy">${h(loop.tightening)}</p>
+      <div class="feedback-form-grid">
+        <label>Buyer response<select class="buyer-feedback-decision"><option value="accept">yes / wants it</option><option value="maybe">maybe / needs review</option><option value="reject">no / reject</option></select></label>
+        <label>Reason<select class="buyer-feedback-reason">${BUYER_FEEDBACK_REASONS.map(reason => `<option value="${h(reason)}">${h(reason)}</option>`).join('')}</select></label>
+        <label>Buyer max price<input class="buyer-feedback-max" type="number" min="0" step="500" placeholder="${h(buyer.maxPrice || parcel.buyerMaxPrice || '')}"></label>
+        <label class="feedback-note-label">Exact words / next constraint<textarea class="buyer-feedback-note" rows="2" placeholder="Too much wetland risk; only send paved-road lots under $38k..."></textarea></label>
+        <button class="save-buyer-feedback" type="button">Save buyer feedback</button><span class="buyer-feedback-status"></span>
+      </div>
+      <div class="feedback-summary"><div><span>Total feedback</span><b>${loop.totalFeedback}</b></div><div><span>Accepted</span><b>${loop.accepted}</b></div><div><span>Rejected</span><b>${loop.rejected}</b></div><div><span>Maybe</span><b>${loop.maybe}</b></div></div>
+      <div class="next-call-guidance"><h4>What to call next</h4>${recommendations.map(item => `<div><b>${h(item.address)} · ${h(item.adjustedScore)}/100</b><span>${h(item.nextCallReason)}</span></div>`).join('') || '<p>No recommendations yet.</p>'}</div>
+    </details>
   </section>`;
 }
 

@@ -413,6 +413,47 @@ function dallasProofRowForParcel(parcel = {}) {
   return dallasProofRows().find(row => String(row.parcelId || '').trim() === parcelId || normalizeParcelAddress(`${row.propertyAddress || ''} ${row.propertyCity || ''} TX ${row.propertyZip || ''}`) === address || normalizeParcelAddress(row.propertyAddress) === address) || null;
 }
 
+function dallasProofGateTone(status = '') {
+  const value = String(status || '').toLowerCase();
+  if (/fail|reject|blocked|contradict|bad/.test(value)) return 'fail';
+  if (/partial|evidence-present|legal-lot-reference-found/.test(value)) return 'partial';
+  if (/hold|needed|needs|not-found|unknown|no-builder|pending/.test(value)) return 'needed';
+  if (/lock/.test(value)) return 'locked';
+  if (/^pass(?:\b|-)|\bpass-(?:public|contact|outside|inside)|verified|public-api-pass|public-zoning/.test(value)) return 'pass';
+  return 'needed';
+}
+
+function dallasProofGateChip(label, status = '') {
+  const tone = dallasProofGateTone(status);
+  const glyphs = { pass: '✓', partial: '◐', fail: '×', locked: '🔒', needed: '…' };
+  const copy = { pass: 'Pass', partial: 'Partial', fail: 'Fail', locked: 'Locked', needed: 'Needed' };
+  return `<span class="dallas-proof-gate-chip is-${h(tone)}" title="${h(status || copy[tone])}"><i>${h(glyphs[tone])}</i><b>${h(label)}</b><em>${h(copy[tone])}</em></span>`;
+}
+
+function dallasProofGateItems(row = {}) {
+  return [
+    ['Parcel', row.cityParcelProofStatus || row.cityLimitsStatus || row.addressValidationStatus],
+    ['Zoning', row.publicZoningProofStatus || row.zoning || row.zoningBuilderAcceptedStatus],
+    ['Plat', row.recordedPlatProofStatus || row.platVerificationStatus],
+    ['Water/sewer', row.waterSewerProofStatus],
+    ['Electric/gas', row.electricGasProofStatus],
+    ['Builder OK', row.zoningBuilderAcceptedStatus],
+    ['Owner contact', row.ownerPhone || row.ownerEmail ? 'pass-contact-present' : 'locked-owner-contact-not-enriched'],
+  ];
+}
+
+function dallasProofGateStrip(row = {}, limit = 7) {
+  return `<div class="dallas-proof-gate-strip" aria-label="Dallas proof gate pass fail indicators">${dallasProofGateItems(row).slice(0, limit).map(([label, status]) => dallasProofGateChip(label, status)).join('')}</div>`;
+}
+
+function dallasProofAggregateStatus(row = {}) {
+  const tones = dallasProofGateItems(row).map(([, status]) => dallasProofGateTone(status));
+  if (tones.includes('fail')) return { label: 'Failed buyer gate', tone: 'fail' };
+  if (tones.every(tone => tone === 'pass')) return { label: 'Offer-ready proof', tone: 'pass' };
+  if (tones.includes('pass') || tones.includes('partial')) return { label: 'Partial proof / held', tone: 'partial' };
+  return { label: 'Held for proof', tone: 'needed' };
+}
+
 function dallasProofSummary() {
   const complete = dallasPhase4Rows();
   const sprint = dallasProofRows();
@@ -897,12 +938,16 @@ function renderDallasProofSprintSurface() {
   const rows = dallasProofRows();
   const sprintRows = rows.slice(0, 12).map(row => {
     const tasks = asArray(row.proofTasks).slice(0, 2).map(task => `<li>${h(task)}</li>`).join('');
+    const aggregate = dallasProofAggregateStatus(row);
     return `<article class="dallas-proof-row" data-dallas-proof-parcel="${h(row.parcelId)}">
-      <div><span>${String(row.sprintRank || row.rank || '').padStart(2, '0')}</span><b>${h(row.propertyAddress || 'Dallas parcel')}</b><em>${h(row.zoning || 'zoning pending')} · ${h(Number(row.lotSqft || 0).toLocaleString())} sf · ${h(row.floodStatus || 'flood pending')}</em></div>
-      <div class="dallas-proof-links">
-        ${row.dcadAccountUrl ? safeLink(row.dcadAccountUrl, 'DCAD', 'proof-inline-link') : ''}
-        ${row.cityParcelQueryUrl ? safeLink(row.cityParcelQueryUrl, 'City parcel API', 'proof-inline-link') : ''}
-        ${row.dallasCountyPublicSearchUrl ? safeLink(row.dallasCountyPublicSearchUrl, 'Recorded plat search', 'proof-inline-link') : ''}
+      <div><span>${String(row.sprintRank || row.rank || '').padStart(2, '0')}</span><b>${h(row.propertyAddress || 'Dallas parcel')}</b><em>${h(row.zoning || 'zoning pending')} · ${h(Number(row.lotSqft || 0).toLocaleString())} sf · ${h(row.floodStatus || 'flood pending')}</em><mark class="dallas-proof-aggregate is-${h(aggregate.tone)}">${h(aggregate.label)}</mark></div>
+      <div class="dallas-proof-row-middle">
+        ${dallasProofGateStrip(row, 6)}
+        <div class="dallas-proof-links">
+          ${row.dcadAccountUrl ? safeLink(row.dcadAccountUrl, 'DCAD', 'proof-inline-link') : ''}
+          ${row.cityParcelQueryUrl ? safeLink(row.cityParcelQueryUrl, 'City parcel API', 'proof-inline-link') : ''}
+          ${row.dallasCountyPublicSearchUrl ? safeLink(row.dallasCountyPublicSearchUrl, 'Recorded plat search', 'proof-inline-link') : ''}
+        </div>
       </div>
       <ul>${tasks}</ul>
     </article>`;
@@ -2329,8 +2374,10 @@ function renderParcels() {
   const buyerMemo = generateBuyerSendMemo(selected, buyer, generateOfferPacket(selected, buyer));
   const selectedListingState = parcelListingState(selected);
   const selectedDallasProofRow = dallasProofRowForParcel(selected);
+  const selectedDallasProofAggregate = selectedDallasProofRow ? dallasProofAggregateStatus(selectedDallasProofRow) : null;
   const selectedDallasProofPanel = selectedDallasProofRow ? `<section class="selected-dallas-proof-panel" aria-label="Selected Dallas proof sprint detail">
-    <div><span class="eyebrow">Dallas proof sprint #${h(selectedDallasProofRow.sprintRank || selectedDallasProofRow.rank)}</span><h3>Utility + recorded plat gate is the next action.</h3><p>${h(selectedDallasProofRow.operatorNextAction || 'Verify utilities/taps and recorded plat before owner enrichment.')}</p></div>
+    <div><span class="eyebrow">Dallas proof sprint #${h(selectedDallasProofRow.sprintRank || selectedDallasProofRow.rank)}</span><h3>Utility + recorded plat gate is the next action.</h3><p>${h(selectedDallasProofRow.operatorNextAction || 'Verify utilities/taps and recorded plat before owner enrichment.')}</p><mark class="dallas-proof-aggregate is-${h(selectedDallasProofAggregate.tone)}">${h(selectedDallasProofAggregate.label)}</mark></div>
+    ${dallasProofGateStrip(selectedDallasProofRow)}
     <div class="selected-dallas-proof-links">
       ${selectedDallasProofRow.dcadAccountUrl ? safeLink(selectedDallasProofRow.dcadAccountUrl, 'Open DCAD account', 'proof-inline-link') : ''}
       ${selectedDallasProofRow.cityParcelQueryUrl ? safeLink(selectedDallasProofRow.cityParcelQueryUrl, 'Open City parcel API', 'proof-inline-link') : ''}
@@ -2369,7 +2416,8 @@ function renderParcels() {
         const isActive = parcelKey === parcelSelectionKey(selected);
         const listingState = parcelListingState(parcel);
         const dallasProofRow = dallasProofRowForParcel(parcel);
-        const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark>` : '';
+        const dallasAggregate = dallasProofRow ? dallasProofAggregateStatus(dallasProofRow) : null;
+        const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark><mark class="dallas-proof-row-chip is-${h(dallasAggregate.tone)}">${h(dallasAggregate.label)}</mark>` : '';
         const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
         const marketSignal = parcel.selectedMarketMatch ? 'selected lane' : 'other lane';
         return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">

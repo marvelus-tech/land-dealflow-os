@@ -30897,3 +30897,143 @@ body[data-active-view="deals"] #parcels .land-market-empty-note {
     padding-left: 0 !important;
   }
 }
+
+/* v2.03 - Land state gate: all-states is a decision board, not an open parcel cockpit */
+body[data-active-view="deals"] #parcels {
+  --land-phase203-rule: all-states-state-gate-before-parcel-cockpit;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-board {
+  display: grid !important;
+  grid-template-columns: minmax(280px, .52fr) minmax(0, 1fr) !important;
+  gap: clamp(18px, 3vw, 42px) !important;
+  align-items: start !important;
+  padding: 0 0 clamp(20px, 3vw, 34px) !important;
+  margin: 0 0 clamp(18px, 2.5vw, 30px) !important;
+  border-bottom: 1px solid var(--land-line, rgba(7, 17, 13, .105)) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-copy h3 {
+  max-width: 15ch !important;
+  margin: 5px 0 10px !important;
+  color: var(--land-ink, #07110d) !important;
+  font: 760 clamp(25px, 3vw, 42px)/.98 var(--font-display, inherit) !important;
+  letter-spacing: -.055em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-copy p {
+  max-width: 52ch !important;
+  margin: 0 0 16px !important;
+  color: var(--land-muted, #52645b) !important;
+  font-size: 14px !important;
+  line-height: 1.52 !important;
+}
+body[data-active-view="deals"] #parcels .land-state-primary {
+  min-height: 38px !important;
+  padding: 8px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--land-forest-strong, #0f4a35) !important;
+  box-shadow: inset 0 -1px 0 rgba(15, 74, 53, .28) !important;
+  font-size: 13px !important;
+  font-weight: 760 !important;
+  letter-spacing: -.01em !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-ledger {
+  display: grid !important;
+  gap: 0 !important;
+  border-top: 1px solid rgba(7, 17, 13, .09) !important;
+  border-bottom: 1px solid rgba(7, 17, 13, .09) !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row {
+  display: grid !important;
+  grid-template-columns: 54px 74px minmax(135px, .45fr) minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: baseline !important;
+  width: 100% !important;
+  min-height: 54px !important;
+  padding: 12px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(7, 17, 13, .07) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--land-ink, #07110d) !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row:last-child { border-bottom: 0 !important; }
+body[data-active-view="deals"] #parcels .land-state-decision-row.recommended {
+  background: linear-gradient(90deg, rgba(15, 74, 53, .055), rgba(15, 74, 53, 0)) !important;
+  box-shadow: inset 2px 0 0 var(--land-forest, #0b5a43) !important;
+  padding-left: 12px !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row span {
+  color: var(--land-forest-strong, #0f4a35) !important;
+  font-size: 12px !important;
+  font-weight: 820 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row b {
+  color: var(--land-gold, #a66f00) !important;
+  font-size: clamp(24px, 3vw, 36px) !important;
+  line-height: .9 !important;
+  letter-spacing: -.055em !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row em,
+body[data-active-view="deals"] #parcels .land-state-decision-row small {
+  color: var(--land-muted, #52645b) !important;
+  font-style: normal !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row.is-empty {
+  opacity: .62 !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="deals"] #parcels .land-state-decision-board { grid-template-columns: 1fr !important; gap: 16px !important; }
+  body[data-active-view="deals"] #parcels .land-state-decision-copy h3 { max-width: 18ch !important; }
+  body[data-active-view="deals"] #parcels .land-state-decision-row { grid-template-columns: 48px 58px minmax(0, 1fr) !important; }
+  body[data-active-view="deals"] #parcels .land-state-decision-row small { grid-column: 3 / -1 !important; }
+}
+@media (max-width: 560px) {
+  body[data-active-view="deals"] #parcels .land-state-decision-row { grid-template-columns: 42px 54px minmax(0, 1fr) !important; gap: 10px !important; }
+  body[data-active-view="deals"] #parcels .land-state-decision-row.recommended { padding-left: 8px !important; }
+}
+
+/* v2.03b - Mobile nav stays visible while Land state gate owns the first screen */
+@media (max-width: 640px) {
+  body[data-active-view] .nav {
+    margin: 8px 10px 0 !important;
+    padding: 10px !important;
+    border-radius: 22px !important;
+    min-height: auto !important;
+    overflow: visible !important;
+  }
+  body[data-active-view] .nav .brand {
+    display: none !important;
+  }
+  body[data-active-view] .nav .app-tabs {
+    order: 1 !important;
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+    overflow: visible !important;
+    justify-content: stretch !important;
+    padding: 3px !important;
+    border-radius: 16px !important;
+  }
+  body[data-active-view] .nav .tab-button {
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 30px !important;
+    padding: 0 5px !important;
+    justify-content: center !important;
+    font-size: 9px !important;
+    letter-spacing: .035em !important;
+    white-space: nowrap !important;
+  }
+}

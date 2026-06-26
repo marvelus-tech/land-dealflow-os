@@ -39,6 +39,10 @@ assert.match(app, /selectedLandStateFilter === 'TX' && selectedDealsMarketKey ==
 assert.match(app, /class="land-command-surface phase202-land-state-first"/, 'Land command surface must declare the state-first IA pass.');
 assert.match(app, /State first\. Lane second\. Parcel last\./, 'Land page copy must make the new IA model explicit.');
 assert.match(app, /Choose a state above to reveal its market lanes/, 'All-states mode must prompt for state first instead of showing every market lane.');
+assert.match(app, /function renderLandStateDecisionBoard/, 'All-states mode must render a state decision board before opening parcel detail.');
+assert.match(app, /class="land-state-decision-board phase203-land-state-gate"/, 'State decision board must declare the Phase 203 state-gate pass.');
+assert.match(app, /if \(selectedLandStateFilter === 'all'\) \{[\s\S]{0,180}renderLandStateDecisionBoard\(\)/, 'All-states mode must stop at the state gate instead of rendering the parcel cockpit.');
+assert.match(app, /if \(selectedLandStateFilter === 'all'\) selectedDealsMarketKey = 'all';/, 'Returning to all states must clear subordinate market lane filters.');
 assert.match(app, /function landSortValue/, 'Land listings need a sortable value model for priority, state, market, enrichment, and builder fit.');
 assert.doesNotMatch(app, /if \(filter === 'seller-calls'\) return parcel\.action/, 'Deals stage filters must not hide land listings anymore.');
 assert.match(app, /listing-\$\{h\(listingState\.stage\)\}/, 'Land rows must expose visual state classes for enrichment/builder fit.');
@@ -82,6 +86,11 @@ assert.match(css, /\.land-command-surface\.phase202-land-state-first[\s\S]{0,260
 assert.match(css, /\.land-market-lane-selector \.deals-market-card\.active[\s\S]{0,180}rgba\(11, 90, 67, \.055\)/, 'Phase 202 active market lane should be a quiet tint, not a loud slab.');
 assert.match(css, /\.land-market-lane-selector \.deals-market-card kbd[\s\S]{0,120}var\(--land-gold\)/, 'Phase 202 market lane state chips should use restrained gold for key data.');
 assert.match(css, /\.land-market-lane-selector\.is-state-required \.deals-market-grid[\s\S]{0,140}display: block !important/, 'All-states market area should be a quiet state-first prompt, not a full lane grid.');
+assert.match(css, /--land-phase203-rule: all-states-state-gate-before-parcel-cockpit/, 'Phase 203 must encode all-states as a state gate before parcel detail.');
+assert.match(css, /v2\.03b - Mobile nav stays visible while Land state gate owns the first screen/, 'Phase 203 mobile QA must keep primary nav visible instead of clipped.');
+assert.match(css, /\.nav \.app-tabs[\s\S]{0,180}grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, 'Mobile nav tabs must wrap into a visible grid, not clip horizontally.');
+assert.match(css, /\.land-state-decision-board[\s\S]{0,220}grid-template-columns: minmax\(280px, \.52fr\) minmax\(0, 1fr\)/, 'State gate must read as an open decision ledger, not a boxed dashboard.');
+assert.match(css, /\.land-state-decision-row\.recommended[\s\S]{0,180}inset 2px 0 0 var\(--land-forest/, 'Recommended state row should use a quiet rail rather than loud button chrome.');
 assert.match(css, /\.land-command-surface[\s\S]{0,220}grid-template-columns: minmax\(280px, \.58fr\) minmax\(0, 1fr\)/, 'Land controls must be a calm command surface, not another boxed dashboard.');
 assert.match(css, /\.land-state-filter\.active,[\s\S]{0,420}inset 2px 0 0 var\(--land-forest\)/, 'Active Land state/sort controls should use a quiet Apple rail.');
 assert.match(css, /\.land-stage-filters-retired \{ display: none !important; \}/, 'Retired stage filters must stay visually removed.');

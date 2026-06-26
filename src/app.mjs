@@ -861,6 +861,12 @@ function renderLandControls() {
     if (!activeMarket) return true;
     return activeMarket.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, activeMarket);
   }).length;
+  const sortControl = selectedLandStateFilter === 'all'
+    ? ''
+    : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
+  const stateNote = selectedLandStateFilter === 'all'
+    ? `${parcels.length} retained records · choose a state to open its parcel cockpit · promotion requires public proof + scored contact.`
+    : `${visibleCount} visible of ${parcels.length} retained records · viewing ${selectedStateCopy} · promotion requires public proof + scored contact.`;
   return `<section class="land-command-surface phase202-land-state-first" aria-label="Land listings controls">
     <div class="land-command-copy">
       <span class="eyebrow">Land IA</span>
@@ -870,8 +876,8 @@ function renderLandControls() {
     <div class="land-control-ledger">
       <div class="land-control-group" aria-label="Focus by state"><span>State</span><div>${stateButtons}</div></div>
       ${renderDealsMarketCoverage()}
-      <div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>
-      <p class="land-control-note">${h(visibleCount)} visible of ${h(parcels.length)} retained records · viewing ${h(selectedStateCopy)} · promotion requires public proof + scored contact.</p>
+      ${sortControl}
+      <p class="land-control-note">${h(stateNote)}</p>
     </div>
   </section>`;
 }
@@ -2388,6 +2394,51 @@ function renderClosingDeskPanel() {
   </div>`;
 }
 
+function landStateDecisionRows() {
+  const parcels = scoredParcels();
+  return getLandStateOptions().filter(state => state !== 'all').map(state => {
+    const stateParcels = parcels.filter(parcel => rowState(parcel) === state);
+    const stageCounts = stateParcels.reduce((acc, parcel) => {
+      const listingState = parcelListingState(parcel);
+      if (listingState.sourceBacked) acc.sourceBacked += 1;
+      if (listingState.needsProof || listingState.rawFinding) acc.needsProof += 1;
+      if (listingState.enriched) acc.enriched += 1;
+      if (listingState.builderMatched) acc.builderFit += 1;
+      if (listingState.offerReady) acc.offerReady += 1;
+      return acc;
+    }, { sourceBacked: 0, needsProof: 0, enriched: 0, builderFit: 0, offerReady: 0 });
+    const marketEntries = dealsMarketCoverageEntries().filter(market => market.key !== 'all' && (market.stateCode || market.state) === state);
+    const liveMarkets = marketEntries.filter(market => Number(market.builderCount || 0) > 0).length;
+    const priority = state === 'TN' ? 1 : state === 'FL' ? 2 : state === 'AZ' ? 3 : state === 'NC' ? 4 : state === 'TX' ? 5 : 9;
+    return { state, count: stateParcels.length, marketCount: marketEntries.length, liveMarkets, priority, ...stageCounts };
+  }).sort((a, b) => (a.priority - b.priority) || (b.count - a.count) || a.state.localeCompare(b.state));
+}
+
+function renderLandStateDecisionBoard() {
+  const rows = landStateDecisionRows();
+  const total = rows.reduce((sum, row) => sum + row.count, 0);
+  const recommended = rows.find(row => row.count > 0) || rows[0];
+  const rowCards = rows.map(row => {
+    const laneCopy = row.marketCount ? `${row.marketCount} lanes · ${row.liveMarkets} builder-live` : 'no lanes yet';
+    const tone = row.count ? 'has-records' : 'is-empty';
+    return `<button type="button" class="land-state-decision-row ${tone} ${recommended?.state === row.state ? 'recommended' : ''}" data-land-state="${h(row.state)}" aria-label="Open ${h(row.state)} land lane">
+      <span>${h(row.state)}</span>
+      <b>${h(row.count)}</b>
+      <em>${h(laneCopy)}</em>
+      <small>${h(row.sourceBacked)} source-backed · ${h(row.needsProof)} need proof · ${h(row.enriched)} enriched · ${h(row.builderFit)} builder-fit</small>
+    </button>`;
+  }).join('');
+  return `<section class="land-state-decision-board phase203-land-state-gate" aria-label="Choose a state before opening seller listings">
+    <div class="land-state-decision-copy">
+      <span class="eyebrow">State gate</span>
+      <h3>Choose the operating state before the seller queue opens.</h3>
+      <p>All ${h(total)} retained records stay counted here, but the parcel cockpit stays closed until the operator picks a state. That keeps the Land screen state-first instead of leaking back into a 149-row smorgasbord.</p>
+      ${recommended ? `<button type="button" class="land-state-primary" data-land-state="${h(recommended.state)}">Open ${h(recommended.state)} lane ${productIcon('arrow')}</button>` : ''}
+    </div>
+    <div class="land-state-decision-ledger" role="listbox" aria-label="State decision ledger">${rowCards}</div>
+  </section>`;
+}
+
 function renderParcels() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
@@ -2397,6 +2448,12 @@ function renderParcels() {
   const agentIntakeGate = renderLandAgentIntakeGate();
   const landReconImportPath = renderLandReconImportPath();
   const dallasProofSurface = renderDallasProofSprintSurface();
+
+  if (selectedLandStateFilter === 'all') {
+    selectedParcelId = '';
+    target.innerHTML = `${landControls}${renderLandStateDecisionBoard()}${agentIntakeGate}${landReconImportPath}`;
+    return;
+  }
 
   if (!selected) {
     const selectedMarket = getSelectedDealsMarket();
@@ -3814,6 +3871,7 @@ ${body}`;
     if (landStateButton) {
       selectedLandStateFilter = landStateButton.dataset.landState || 'all';
       const activeMarket = getSelectedDealsMarket();
+      if (selectedLandStateFilter === 'all') selectedDealsMarketKey = 'all';
       if (activeMarket && selectedLandStateFilter !== 'all' && (activeMarket.stateCode || activeMarket.state) !== selectedLandStateFilter) selectedDealsMarketKey = 'all';
       selectedParcelId = '';
       renderParcels();
@@ -3858,6 +3916,7 @@ ${body}`;
       if (landKeyboardButton.dataset.landState) {
         selectedLandStateFilter = landKeyboardButton.dataset.landState || 'all';
         const activeMarket = getSelectedDealsMarket();
+        if (selectedLandStateFilter === 'all') selectedDealsMarketKey = 'all';
         if (activeMarket && selectedLandStateFilter !== 'all' && (activeMarket.stateCode || activeMarket.state) !== selectedLandStateFilter) selectedDealsMarketKey = 'all';
       }
       if (landKeyboardButton.dataset.landSort) selectedLandSort = landKeyboardButton.dataset.landSort || 'priority';

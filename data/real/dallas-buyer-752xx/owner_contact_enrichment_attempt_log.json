@@ -1,0 +1,16 @@
+{
+  "generatedAt": "2026-06-26T11:42:39Z",
+  "market": "dallas-buyer-752xx",
+  "attempts": [
+    {
+      "parcelId": "00000594277000000",
+      "ownerName": "HOLMAN LORIA ANN",
+      "method": "TruePeopleSearch browser lookup",
+      "url": "https://www.truepeoplesearch.com/results?name=LORIA%20HOLMAN&citystatezip=Dallas%2C%20TX",
+      "result": "blocked-by-cloudflare-security-challenge",
+      "actionTaken": "stopped; did not bypass captcha/security challenge",
+      "nextAction": "manual lookup by user/operator or use compliant skip-trace provider return CSV"
+    }
+  ],
+  "complianceNote": "Do not automate bulk scraping of TruePeopleSearch or bypass Cloudflare/captchas. Use manual visible snippets/screenshots or provider-return CSV, then score candidates before calling."
+}

@@ -1,5 +1,679 @@
 {
-  "generatedAt": "2026-06-26T09:48:31+00:00",
-  "count": 0,
-  "rows": []
+  "contactContextVersion": 1,
+  "generatedAt": "2026-06-26T11:38:38+00:00",
+  "market": "dallas-buyer-752xx",
+  "purpose": "Help landowners sell land to builders/businesses looking for a deal",
+  "count": 12,
+  "rows": [
+    {
+      "parcelId": "00000594277000000",
+      "rank": 1,
+      "sprintRank": 1,
+      "propertyAddress": "3243 MODELLA AVE, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "HOLMAN LORIA ANN",
+      "ownerMailingAddress": "3243 MODELLA AVE DALLAS TEXAS 752292516",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594277000000",
+      "publicProofStatus": {
+        "zoning": "pass-public-zoning-layer",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "hold-dwu-official-request-ready-not-submitted",
+        "electric": "pass-official-oncor-address-esiid-match",
+        "gas": "hold-atmos-address-level-proof-not-found-in-public-pass",
+        "plat": "partial-public-record-legal-lot-reference-found"
+      },
+      "manualLookupSearchTerms": "HOLMAN LORIA ANN | 3243 MODELLA AVE DALLAS TEXAS 752292516 | 3243 MODELLA AVE",
+      "callPrep": {
+        "openingLine": "Hi, is this HOLMAN LORIA ANN? I\u2019m calling about the property at/near 3243 MODELLA AVE. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3243 MODELLA AVE?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594277000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594130000000",
+      "rank": 3,
+      "sprintRank": 2,
+      "propertyAddress": "11652 CORAL HILLS CT, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "BURANI ROHIT M &",
+      "ownerMailingAddress": "CHETNA A MANGHNANI 11652 CORAL HILLS CT DALLAS TEXAS 752292501",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594130000000",
+      "publicProofStatus": {
+        "zoning": "pass-public-zoning-layer",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "hold-dwu-official-request-ready-not-submitted",
+        "electric": "pass-official-oncor-address-esiid-match",
+        "gas": "hold-atmos-address-level-proof-not-found-in-public-pass",
+        "plat": "partial-public-record-legal-lot-reference-found"
+      },
+      "manualLookupSearchTerms": "BURANI ROHIT M & | CHETNA A MANGHNANI 11652 CORAL HILLS CT DALLAS TEXAS 752292501 | 11652 CORAL HILLS CT",
+      "callPrep": {
+        "openingLine": "Hi, is this BURANI ROHIT M &? I\u2019m calling about the property at/near 11652 CORAL HILLS CT. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 11652 CORAL HILLS CT?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594130000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000681256000000",
+      "rank": 6,
+      "sprintRank": 3,
+      "propertyAddress": "2034 ANGELINA DR, DALLAS, TX 75212",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "CURRY FANNIE MAE",
+      "ownerMailingAddress": "2034 ANGELINA DR DALLAS TEXAS 752121711",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000681256000000",
+      "publicProofStatus": {
+        "zoning": "pass-public-zoning-layer",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "hold-dwu-official-request-ready-not-submitted",
+        "electric": "pass-official-oncor-address-esiid-match",
+        "gas": "hold-atmos-address-level-proof-not-found-in-public-pass",
+        "plat": "partial-public-record-subdivision-reference-found-needs-exact-lot-confirmation"
+      },
+      "manualLookupSearchTerms": "CURRY FANNIE MAE | 2034 ANGELINA DR DALLAS TEXAS 752121711 | 2034 ANGELINA DR",
+      "callPrep": {
+        "openingLine": "Hi, is this CURRY FANNIE MAE? I\u2019m calling about the property at/near 2034 ANGELINA DR. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 2034 ANGELINA DR?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000681256000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000595177000000",
+      "rank": 7,
+      "sprintRank": 4,
+      "propertyAddress": "3434 ST CLOUD CIR, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "HILLS SUSANNAH J",
+      "ownerMailingAddress": "3434 SAINT CLOUD CIR DALLAS TEXAS 752292634",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000595177000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "HILLS SUSANNAH J | 3434 SAINT CLOUD CIR DALLAS TEXAS 752292634 | 3434 ST CLOUD CIR",
+      "callPrep": {
+        "openingLine": "Hi, is this HILLS SUSANNAH J? I\u2019m calling about the property at/near 3434 ST CLOUD CIR. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3434 ST CLOUD CIR?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000595177000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address"
+      ]
+    },
+    {
+      "parcelId": "00000594469000000",
+      "rank": 9,
+      "sprintRank": 5,
+      "propertyAddress": "3111 TOWER TRL, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "AGUINAGA MIREYA",
+      "ownerMailingAddress": "3111 TOWER TRL DALLAS TEXAS 752292518",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594469000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "AGUINAGA MIREYA | 3111 TOWER TRL DALLAS TEXAS 752292518 | 3111 TOWER TRL",
+      "callPrep": {
+        "openingLine": "Hi, is this AGUINAGA MIREYA? I\u2019m calling about the property at/near 3111 TOWER TRL. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3111 TOWER TRL?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594469000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594265000000",
+      "rank": 10,
+      "sprintRank": 6,
+      "propertyAddress": "3252 TOWER TRL, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "TREJO ISIDRO VARGAS & MARIA BLANCA VALDEZ",
+      "ownerMailingAddress": "3252 TOWER TRL DALLAS TEXAS 752292519",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594265000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "TREJO ISIDRO VARGAS & MARIA BLANCA VALDEZ | 3252 TOWER TRL DALLAS TEXAS 752292519 | 3252 TOWER TRL",
+      "callPrep": {
+        "openingLine": "Hi, is this TREJO ISIDRO VARGAS & MARIA BLANCA VALDEZ? I\u2019m calling about the property at/near 3252 TOWER TRL. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3252 TOWER TRL?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594265000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594493000000",
+      "rank": 13,
+      "sprintRank": 7,
+      "propertyAddress": "3135 ST CROIX DR, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "PLATZ MARK A",
+      "ownerMailingAddress": "3135 SAINT CROIX DR DALLAS TEXAS 752292547",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594493000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "PLATZ MARK A | 3135 SAINT CROIX DR DALLAS TEXAS 752292547 | 3135 ST CROIX DR",
+      "callPrep": {
+        "openingLine": "Hi, is this PLATZ MARK A? I\u2019m calling about the property at/near 3135 ST CROIX DR. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3135 ST CROIX DR?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594493000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address"
+      ]
+    },
+    {
+      "parcelId": "00000594412000000",
+      "rank": 14,
+      "sprintRank": 8,
+      "propertyAddress": "3238 MODELLA AVE, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "VALLES GRACIELA CASTANEDA",
+      "ownerMailingAddress": "3238 MODELLA AVE DALLAS TEXAS 752292515",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594412000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "VALLES GRACIELA CASTANEDA | 3238 MODELLA AVE DALLAS TEXAS 752292515 | 3238 MODELLA AVE",
+      "callPrep": {
+        "openingLine": "Hi, is this VALLES GRACIELA CASTANEDA? I\u2019m calling about the property at/near 3238 MODELLA AVE. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3238 MODELLA AVE?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594412000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594490000000",
+      "rank": 16,
+      "sprintRank": 9,
+      "propertyAddress": "3136 TOWER TRL, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "CAMARILLO JUANITA M",
+      "ownerMailingAddress": "3136 TOWER TRL DALLAS TEXAS 752292517",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594490000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "CAMARILLO JUANITA M | 3136 TOWER TRL DALLAS TEXAS 752292517 | 3136 TOWER TRL",
+      "callPrep": {
+        "openingLine": "Hi, is this CAMARILLO JUANITA M? I\u2019m calling about the property at/near 3136 TOWER TRL. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3136 TOWER TRL?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594490000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594448000000",
+      "rank": 18,
+      "sprintRank": 10,
+      "propertyAddress": "3162 MODELLA AVE, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "LARA RAFAEL JR & OLIVIA S",
+      "ownerMailingAddress": "3162 MODELLA AVE DALLAS TEXAS 752292431",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594448000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "LARA RAFAEL JR & OLIVIA S | 3162 MODELLA AVE DALLAS TEXAS 752292431 | 3162 MODELLA AVE",
+      "callPrep": {
+        "openingLine": "Hi, is this LARA RAFAEL JR & OLIVIA S? I\u2019m calling about the property at/near 3162 MODELLA AVE. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3162 MODELLA AVE?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594448000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594019000000",
+      "rank": 19,
+      "sprintRank": 11,
+      "propertyAddress": "11416 CORAL HILLS DR, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "WISE JAMES ROBERT",
+      "ownerMailingAddress": "11416 CORAL HILLS DR DALLAS TEXAS 752292528",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594019000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "WISE JAMES ROBERT | 11416 CORAL HILLS DR DALLAS TEXAS 752292528 | 11416 CORAL HILLS DR",
+      "callPrep": {
+        "openingLine": "Hi, is this WISE JAMES ROBERT? I\u2019m calling about the property at/near 11416 CORAL HILLS DR. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 11416 CORAL HILLS DR?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594019000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    },
+    {
+      "parcelId": "00000594394000000",
+      "rank": 20,
+      "sprintRank": 12,
+      "propertyAddress": "3210 MODELLA AVE, DALLAS, TX 75229",
+      "market": "dallas-buyer-752xx",
+      "state": "TX",
+      "ownerName": "SUTTON WILLIAM T",
+      "ownerMailingAddress": "3210 MODELLA AVE DALLAS TEXAS 752292515",
+      "entityType": "individual-owner",
+      "contactStatus": "needs-manual-truepeoplesearch-or-provider-skiptrace",
+      "candidatePhone": "",
+      "candidateEmail": "",
+      "contactSource": "",
+      "contactConfidence": 0,
+      "confidenceBand": "skipTrace",
+      "routingQueue": "skipTrace",
+      "nextAction": "manual-owner-lookup-then-verification-first-call-if-confidence>=60",
+      "doNotContactStatus": "unknown",
+      "optOutStatus": "unknown",
+      "sourceUrl": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594394000000",
+      "publicProofStatus": {
+        "zoning": "R-10(A)",
+        "flood": "pass-outside-sfha",
+        "cityParcel": "public-api-pass",
+        "waterSewer": "needs-proof",
+        "electric": null,
+        "gas": null,
+        "plat": "needs-proof"
+      },
+      "manualLookupSearchTerms": "SUTTON WILLIAM T | 3210 MODELLA AVE DALLAS TEXAS 752292515 | 3210 MODELLA AVE",
+      "callPrep": {
+        "openingLine": "Hi, is this SUTTON WILLIAM T? I\u2019m calling about the property at/near 3210 MODELLA AVE. I work with builders looking for land deals in Dallas, and your property may fit what they buy. I\u2019m not calling to pressure you \u2014 I\u2019m checking whether selling is something you\u2019d consider if the terms made sense.",
+        "verificationQuestion": "Are you connected to the owner of 3210 MODELLA AVE?",
+        "knownUnknowns": [
+          "Phone/email not verified yet",
+          "DWU water/sewer official response not obtained yet",
+          "Buyer acceptance not confirmed yet"
+        ],
+        "ifWrongPerson": "Mark wrong-number/do-not-contact for that contact; do not pressure for relatives.",
+        "ifInterested": "Ask preferred price/timeline and permission to send to builder buyer list.",
+        "ifNotInterested": "Mark not interested and ask whether no follow-up is preferred."
+      },
+      "sourceLedger": [
+        {
+          "sourceType": "county-parcel/DCAD + Dallas proof sprint",
+          "url": "https://www.dallascad.org/AcctDetail.aspx?ID=00000594394000000",
+          "capturedAt": "2026-06-26T11:38:38+00:00",
+          "notes": "Owner/mailing from public parcel proof sprint; no phone/email fabricated."
+        }
+      ],
+      "confidenceReasons": [
+        "DCAD/public parcel source has owner and mailing address",
+        "mailing address overlaps property address; likely owner-occupant or direct owner mailing"
+      ]
+    }
+  ]
 }

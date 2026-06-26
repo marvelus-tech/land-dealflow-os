@@ -828,14 +828,14 @@ function renderLandControls() {
   const selectedStateCopy = selectedLandStateFilter === 'all' ? 'all states' : selectedLandStateFilter;
   return `<section class="land-command-surface" aria-label="Land listings controls">
     <div class="land-command-copy">
-      <span class="eyebrow">Land markets</span>
-      <h3>Browse every plot by state and market.</h3>
-      <p>Agents can append raw findings, proof-needed rows, and source-backed land here. Nothing useful disappears; confidence changes rank, color, symbols, and actions.</p>
+      <span class="eyebrow">Land</span>
+      <h3>Find the next owner to contact.</h3>
+      <p>Proof, contact, and buyer fit are separated so the operator can scan the queue without guessing what is safe to do next.</p>
     </div>
     <div class="land-control-ledger">
-      <div class="land-control-group" aria-label="Focus by state"><span>Focus state</span><div>${stateButtons}</div></div>
+      <div class="land-control-group" aria-label="Focus by state"><span>State</span><div>${stateButtons}</div></div>
       <div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>
-      <p class="land-control-note">Viewing ${h(selectedStateCopy)} · ${h(parcels.length)} agent findings retained for audit and enrichment.</p>
+      <p class="land-control-note">${h(parcels.length)} retained records · viewing ${h(selectedStateCopy)} · promotion requires public proof + scored contact.</p>
     </div>
   </section>`;
 }
@@ -861,9 +861,9 @@ function renderLandAgentIntakeGate() {
   ].map(([label, state, copy]) => `<li><span>${h(label)}</span><b>${h(state)}</b><p>${h(copy)}</p></li>`).join('');
   return `<section class="land-agent-intake-gate" aria-label="Land agent intake contract">
     <div class="land-agent-copy">
-      <span class="eyebrow">Agent intake gate</span>
-      <h3>Show every useful finding. Promote only what earns it.</h3>
-      <p>Land Recon subagents may append raw clues, proof-needed rows, and public parcel records. The ledger ranks confidence with color and symbols, but it does not hide useful data from the operator.</p>
+      <span class="eyebrow">Proof rules</span>
+      <h3>Visible is not callable.</h3>
+      <p>Rows stay available for research, but seller motion only starts after public proof and a scored owner contact clear the gate.</p>
     </div>
     <div class="land-agent-ledger">
       <div class="land-agent-facts" aria-label="Current land proof state">
@@ -897,8 +897,8 @@ function renderLandReconImportPath() {
   return `<section class="land-recon-import-path" aria-label="Land Recon artifact import path">
     <div class="land-recon-import-copy">
       <span class="eyebrow">Artifact import</span>
-      <h3>Paste a Land Recon packet. The ledger preserves first, promotes second.</h3>
-      <p>Accepts JSON arrays, packet objects with <code>sellerRows</code>/<code>parcels</code>, or CSV. APN, normalized address, owner+address, and source URL keys merge duplicates into the existing row before display. Missing proof becomes visible <code>needs-public-proof</code>; unverified phones/emails become contact candidates, not callable fields.</p>
+      <h3>Import a packet.</h3>
+      <p>Paste JSON or CSV from Land Recon. Matching APN, address, owner+address, and source URLs merge into the existing ledger. Unverified contact stays candidate-only until scored.</p>
     </div>
     <div class="land-recon-import-panel">
       <textarea id="land-recon-packet-input" rows="8" spellcheck="false" placeholder="${h(sample)}"></textarea>
@@ -966,8 +966,8 @@ function renderDallasProofSprintSurface() {
       <small>Generated ${h(formatDateTime(summary.generatedAt))} · ${h(summary.status)}</small>
     </div>
     <div class="dallas-proof-metrics">${statusRows}</div>
-    <details class="dallas-proof-disclosure" open>
-      <summary><b>Open Top-12 proof ledger</b><span>DCAD, City parcel API, Dallas County record-search links included</span></summary>
+    <details class="dallas-proof-disclosure">
+      <summary><b>Top-12 proof ledger</b><span>Open only when attaching Dallas evidence</span></summary>
       <div class="dallas-proof-ledger">${sprintRows || '<p>Proof sprint artifact not loaded yet.</p>'}</div>
     </details>
   </section>`;
@@ -2406,8 +2406,8 @@ function renderParcels() {
     ['Next action', selected.action, getNextAction(selected)],
   ];
 
-  target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}${marketCoverage}<div class="deal-workbench">
-    <div class="primary-action-strip deals-primary-action"><span>Land ledger</span><b>Sort by confidence, proof, enrichment, or builder fit. Every useful agent finding remains visible. Duplicate-safe merge history stays attached to each row.</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
+  target.innerHTML = `${landControls}<div class="deal-workbench">
+    <div class="primary-action-strip deals-primary-action"><span>Next action</span><b>Enrich one owner contact, then verify gently before any sales pitch.</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
       <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
@@ -2486,7 +2486,7 @@ function renderParcels() {
       <div class="fit-stack">${fitRows.map(([label, title, detail]) => `<div class="fit-card"><span>${h(label)}</span><b>${h(title)}</b><p>${h(detail)}</p></div>`).join('')}</div>
       <div class="tags">${selected.reasons.map(r => badge(r, 'good')).join('')}${selected.flags.length ? selected.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
     </aside>
-  </div>`;
+  </div>${agentIntakeGate}${dallasProofSurface}${landReconImportPath}${marketCoverage}`;
 }
 
 function renderSourcePriorityBoard() {

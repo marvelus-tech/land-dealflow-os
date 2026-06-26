@@ -99,7 +99,7 @@ assert.match(css, /--font-heavy-text: 'Inter'/, 'Phase 16 should use Inter/SF-st
 assert.match(css, /#app :where\(\.wk-workbench,[\s\S]{0,1400}border-top: 1px solid var\(--ledger-rule\) !important/, 'Phase 16 should replace nested modules with open ledger rules');
 assert.match(css, /body\[data-active-view="today"\] #command \.wk-rail \{ display: none !important; \}/, 'Phase 16 should remove Today rail chrome from first-screen cognition');
 assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard should remain after late layout overrides');
-assert.match(html, /All plots, sorted by proof\./, 'Land page copy should be compressed into one-action hierarchy');
+assert.match(html, /One calm queue for owner motion\./, 'Land page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer-first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip builders-primary-action[\s\S]{0,180}Call top builder\.[\s\S]{0,160}Open queue/, 'Builders should expose a clear, calm action strip before secondary evidence');

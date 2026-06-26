@@ -29631,3 +29631,547 @@ body[data-active-view="deals"] #parcels .selected-dallas-proof-panel .dallas-pro
     grid-column: 2;
   }
 }
+
+
+/* v2.00 - Land page Apple review pass: fatigue-reduction scan hierarchy, premium forest/gold palette */
+body[data-active-view="deals"] #parcels {
+  --land-phase200-rule: land-only-apple-typographic-hierarchy-owner-first;
+  --land-ink: #07110d;
+  --land-text: #1f2a24;
+  --land-muted: #66756d;
+  --land-faint: #8a968f;
+  --land-forest: #0b5a3d;
+  --land-forest-2: #287456;
+  --land-gold: #a87412;
+  --land-gold-soft: rgba(168, 116, 18, .12);
+  --land-mist: #f7f8f5;
+  --land-line: rgba(7, 17, 13, .105);
+  --land-line-soft: rgba(7, 17, 13, .068);
+  color: var(--land-text) !important;
+}
+
+body[data-active-view="deals"] #parcels :where(h2,h3,b,strong) {
+  letter-spacing: -.045em !important;
+  color: var(--land-ink) !important;
+}
+body[data-active-view="deals"] #parcels :where(p,small,em,dd,li,textarea,input,select) {
+  letter-spacing: -.012em !important;
+}
+body[data-active-view="deals"] #parcels .eyebrow {
+  color: var(--land-forest) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  letter-spacing: .16em !important;
+  font-weight: 820 !important;
+}
+
+body[data-active-view="deals"] .land-command-surface,
+body[data-active-view="deals"] .land-agent-intake-gate,
+body[data-active-view="deals"] #parcels .dallas-proof-sprint-surface,
+body[data-active-view="deals"] .land-recon-import-path,
+body[data-active-view="deals"] #parcels .deals-market-coverage {
+  max-width: 1220px !important;
+  margin-inline: auto !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+body[data-active-view="deals"] .land-command-surface {
+  display: grid !important;
+  grid-template-columns: minmax(240px, .8fr) minmax(0, 1.7fr) !important;
+  gap: clamp(34px, 7vw, 124px) !important;
+  padding: clamp(18px, 2vw, 26px) 0 clamp(16px, 2vw, 24px) !important;
+  margin-bottom: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--land-line) !important;
+}
+body[data-active-view="deals"] .land-command-copy h3 {
+  max-width: 12.5ch !important;
+  margin: 8px 0 0 !important;
+  font-size: clamp(34px, 5vw, 62px) !important;
+  line-height: .88 !important;
+  letter-spacing: -.074em !important;
+  font-weight: 850 !important;
+}
+body[data-active-view="deals"] .land-command-copy p {
+  max-width: 38ch !important;
+  margin-top: 18px !important;
+  color: var(--land-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.52 !important;
+}
+body[data-active-view="deals"] .land-control-ledger {
+  align-self: end !important;
+  padding-top: 8px !important;
+}
+body[data-active-view="deals"] .land-control-group {
+  display: grid !important;
+  grid-template-columns: 96px minmax(0, 1fr) !important;
+  align-items: start !important;
+  gap: 16px !important;
+  padding: 11px 0 !important;
+  border-bottom: 1px solid var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] .land-control-group > span {
+  color: var(--land-faint) !important;
+  font-size: 10px !important;
+  font-weight: 760 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] .land-control-group > div {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px 12px !important;
+}
+body[data-active-view="deals"] .land-state-filter,
+body[data-active-view="deals"] .land-sort-option {
+  min-height: 24px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--land-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+body[data-active-view="deals"] .land-state-filter b {
+  margin-left: 4px !important;
+  color: var(--land-gold) !important;
+  font-size: 11px !important;
+  font-variant-numeric: tabular-nums !important;
+}
+body[data-active-view="deals"] .land-state-filter.active,
+body[data-active-view="deals"] .land-sort-option.active {
+  color: var(--land-forest) !important;
+  box-shadow: inset 0 -1.5px 0 var(--land-forest) !important;
+}
+body[data-active-view="deals"] .land-control-note {
+  margin: 8px 0 0 112px !important;
+  color: var(--land-muted) !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+}
+
+body[data-active-view="deals"] #parcels .deal-workbench {
+  max-width: 1220px !important;
+  margin: clamp(22px, 3vw, 36px) auto clamp(30px, 4vw, 52px) !important;
+  grid-template-columns: minmax(280px, .88fr) minmax(0, 1.44fr) minmax(260px, .72fr) !important;
+  gap: clamp(18px, 2.2vw, 32px) !important;
+}
+body[data-active-view="deals"] #parcels .deals-primary-action {
+  padding: 0 0 14px !important;
+  align-items: center !important;
+  grid-template-columns: 112px minmax(0, 1fr) auto !important;
+  border-bottom: 1px solid var(--land-line) !important;
+}
+body[data-active-view="deals"] #parcels .deals-primary-action span {
+  color: var(--land-forest) !important;
+  letter-spacing: .16em !important;
+}
+body[data-active-view="deals"] #parcels .deals-primary-action b {
+  max-width: 54ch !important;
+  font-size: clamp(18px, 2vw, 28px) !important;
+  line-height: 1.04 !important;
+  font-weight: 820 !important;
+}
+body[data-active-view="deals"] #parcels .deals-primary-action a,
+body[data-active-view="deals"] #parcels .deals-primary-action a.is-disabled {
+  color: var(--land-forest) !important;
+  opacity: .92 !important;
+  font-size: 12px !important;
+  font-weight: 760 !important;
+}
+
+body[data-active-view="deals"] #parcels .land-ledger-queue {
+  position: sticky !important;
+  top: 74px !important;
+  max-height: calc(100vh - 92px) !important;
+  overflow: auto !important;
+  border-right: 1px solid var(--land-line) !important;
+}
+body[data-active-view="deals"] #parcels .queue-header {
+  padding-bottom: 10px !important;
+}
+body[data-active-view="deals"] #parcels .queue-header strong {
+  color: var(--land-gold) !important;
+  font-size: 12px !important;
+}
+body[data-active-view="deals"] #parcels .land-ledger-legend {
+  gap: 5px 9px !important;
+  padding: 9px 0 8px !important;
+}
+body[data-active-view="deals"] #parcels .land-ledger-legend span {
+  font-size: 9px !important;
+  letter-spacing: .11em !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row {
+  padding: 12px 10px 12px 32px !important;
+  border-bottom-color: var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row.active {
+  background: linear-gradient(90deg, rgba(11, 90, 61, .082), rgba(11, 90, 61, .018) 58%, rgba(255,255,255,0)) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row::before {
+  top: 12px !important;
+  bottom: 12px !important;
+  background: rgba(102,117,109,.28) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row.active::before {
+  width: 3px !important;
+  background: var(--land-forest) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row > span {
+  color: var(--land-gold) !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row b {
+  font-size: 12.5px !important;
+  line-height: 1.2 !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row small,
+body[data-active-view="deals"] #parcels .land-listing-row em i {
+  color: var(--land-muted) !important;
+  font-size: 10.5px !important;
+}
+body[data-active-view="deals"] #parcels .land-row-signals {
+  gap: 5px 8px !important;
+}
+body[data-active-view="deals"] #parcels .land-row-signals mark,
+body[data-active-view="deals"] #parcels .land-row-signals .badge {
+  min-height: 0 !important;
+  font-size: 9px !important;
+  letter-spacing: .075em !important;
+}
+
+body[data-active-view="deals"] #parcels .deal-detail,
+body[data-active-view="deals"] #parcels .deal-action {
+  padding-top: 0 !important;
+}
+body[data-active-view="deals"] #parcels .detail-hero {
+  padding: 0 0 clamp(16px, 2vw, 22px) !important;
+  border-bottom: 1px solid var(--land-line) !important;
+}
+body[data-active-view="deals"] #parcels .detail-hero h2 {
+  max-width: 14ch !important;
+  font-size: clamp(36px, 4.8vw, 64px) !important;
+  line-height: .88 !important;
+  letter-spacing: -.078em !important;
+  font-weight: 860 !important;
+}
+body[data-active-view="deals"] #parcels .detail-hero p {
+  max-width: 64ch !important;
+  color: var(--land-muted) !important;
+  font-size: 14px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="deals"] #parcels .badge-stack,
+body[data-active-view="deals"] #parcels .tags {
+  gap: 6px !important;
+}
+body[data-active-view="deals"] #parcels .badge,
+body[data-active-view="deals"] #parcels .dallas-proof-aggregate,
+body[data-active-view="deals"] #parcels .dallas-proof-row-chip {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-status-strip,
+body[data-active-view="deals"] #parcels .deal-strip,
+body[data-active-view="deals"] #parcels .phase-one-detail-grid,
+body[data-active-view="deals"] #parcels .detail-grid {
+  border-color: var(--land-line) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-status-strip {
+  margin-top: 14px !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-status-strip div {
+  padding: 12px 14px !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-status-strip b,
+body[data-active-view="deals"] #parcels .deal-strip b,
+body[data-active-view="deals"] #parcels .phase-detail-card b,
+body[data-active-view="deals"] #parcels .fit-card b {
+  color: var(--land-ink) !important;
+  font-weight: 780 !important;
+}
+body[data-active-view="deals"] #parcels .deal-strip b {
+  color: var(--land-gold) !important;
+}
+body[data-active-view="deals"] #parcels .phase-detail-card,
+body[data-active-view="deals"] #parcels .seller-net-script-card,
+body[data-active-view="deals"] #parcels .next-action-card,
+body[data-active-view="deals"] #parcels .fit-card,
+body[data-active-view="deals"] #parcels .buyer-feedback-card,
+body[data-active-view="deals"] #parcels .buyer-memo-card,
+body[data-active-view="deals"] #parcels .operator-checklist,
+body[data-active-view="deals"] #parcels .detail-disclosure {
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: var(--land-line) !important;
+}
+body[data-active-view="deals"] #parcels .next-action-card {
+  padding: 0 0 18px !important;
+  border-width: 0 0 1px !important;
+}
+body[data-active-view="deals"] #parcels .next-action-card h3 {
+  font-size: clamp(20px, 2.2vw, 32px) !important;
+  line-height: .98 !important;
+}
+body[data-active-view="deals"] #parcels .button-link,
+body[data-active-view="deals"] #parcels button.secondary,
+body[data-active-view="deals"] #parcels .compact-action,
+body[data-active-view="deals"] #parcels .land-recon-import-actions button {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-weight: 760 !important;
+}
+body[data-active-view="deals"] #parcels .button-link:not(.is-disabled),
+body[data-active-view="deals"] #parcels .land-recon-import-actions button,
+body[data-active-view="deals"] #parcels .buyer-feedback-card button,
+body[data-active-view="deals"] #parcels .buyer-memo-card button:first-of-type {
+  background: var(--land-forest) !important;
+  color: #fff !important;
+  border-color: var(--land-forest) !important;
+}
+body[data-active-view="deals"] #parcels .button-link.is-disabled {
+  background: rgba(7,17,13,.10) !important;
+  color: rgba(7,17,13,.62) !important;
+  border-color: transparent !important;
+}
+
+body[data-active-view="deals"] .land-agent-intake-gate,
+body[data-active-view="deals"] #parcels .dallas-proof-sprint-surface,
+body[data-active-view="deals"] .land-recon-import-path,
+body[data-active-view="deals"] #parcels .deals-market-coverage {
+  padding: clamp(24px, 3vw, 38px) 0 !important;
+  margin-top: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--land-line) !important;
+}
+body[data-active-view="deals"] .land-agent-intake-gate,
+body[data-active-view="deals"] .land-recon-import-path {
+  grid-template-columns: minmax(210px, .64fr) minmax(0, 1.55fr) !important;
+  gap: clamp(30px, 5vw, 86px) !important;
+}
+body[data-active-view="deals"] .land-agent-copy h3,
+body[data-active-view="deals"] .land-recon-import-copy h3,
+body[data-active-view="deals"] #parcels .dallas-proof-head h3,
+body[data-active-view="deals"] #parcels .deals-market-head h3 {
+  max-width: 13ch !important;
+  font-size: clamp(24px, 3.2vw, 42px) !important;
+  line-height: .93 !important;
+  letter-spacing: -.062em !important;
+  font-weight: 830 !important;
+}
+body[data-active-view="deals"] .land-agent-copy p,
+body[data-active-view="deals"] .land-recon-import-copy p,
+body[data-active-view="deals"] #parcels .dallas-proof-head p,
+body[data-active-view="deals"] #parcels .deals-market-head p {
+  max-width: 42ch !important;
+  color: var(--land-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+body[data-active-view="deals"] .land-agent-facts,
+body[data-active-view="deals"] #parcels .dallas-proof-metrics,
+body[data-active-view="deals"] #parcels .deal-strip {
+  border-top: 1px solid var(--land-line) !important;
+  border-bottom: 1px solid var(--land-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="deals"] .land-agent-facts div,
+body[data-active-view="deals"] #parcels .dallas-proof-metrics div,
+body[data-active-view="deals"] #parcels .deal-strip div {
+  background: transparent !important;
+  border-color: var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] .land-agent-facts b,
+body[data-active-view="deals"] #parcels .dallas-proof-metrics b {
+  color: var(--land-gold) !important;
+  font-size: clamp(24px, 3vw, 42px) !important;
+  letter-spacing: -.06em !important;
+}
+body[data-active-view="deals"] .land-agent-ledger li {
+  border-color: var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] .land-agent-ledger li b {
+  color: var(--land-gold) !important;
+}
+body[data-active-view="deals"] #parcels .dallas-proof-sprint-surface {
+  display: grid !important;
+  grid-template-columns: minmax(220px, .72fr) minmax(0, 1.4fr) !important;
+  gap: clamp(28px, 4vw, 70px) !important;
+}
+body[data-active-view="deals"] #parcels .dallas-proof-disclosure {
+  grid-column: 1 / -1 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--land-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="deals"] #parcels .dallas-proof-disclosure summary {
+  padding: 14px 0 !important;
+}
+body[data-active-view="deals"] #parcels .dallas-proof-ledger {
+  border-top: 1px solid var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] #parcels .dallas-proof-row {
+  grid-template-columns: minmax(170px, .64fr) minmax(0, 1fr) minmax(230px, .75fr) !important;
+  border-bottom-color: var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] .land-recon-import-panel textarea,
+body[data-active-view="deals"] #parcels textarea,
+body[data-active-view="deals"] #parcels input,
+body[data-active-view="deals"] #parcels select {
+  border-radius: 0 !important;
+  border-color: var(--land-line) !important;
+  background: rgba(255,255,255,.72) !important;
+  color: var(--land-text) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] .land-recon-import-panel textarea {
+  min-height: 132px !important;
+}
+body[data-active-view="deals"] #parcels .deals-market-grid {
+  border-top: 1px solid var(--land-line-soft) !important;
+}
+body[data-active-view="deals"] #parcels .deals-market-card {
+  min-width: 164px !important;
+  padding: 12px 14px !important;
+}
+
+@media (max-width: 980px) {
+  body[data-active-view="deals"] .land-command-surface,
+  body[data-active-view="deals"] .land-agent-intake-gate,
+  body[data-active-view="deals"] .land-recon-import-path,
+  body[data-active-view="deals"] #parcels .dallas-proof-sprint-surface {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  body[data-active-view="deals"] #parcels .deal-workbench {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .land-ledger-queue {
+    position: static !important;
+    max-height: none !important;
+    border-right: 0 !important;
+    padding-right: 0 !important;
+  }
+  body[data-active-view="deals"] #parcels .deals-primary-action {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+}
+@media (max-width: 640px) {
+  body[data-active-view="deals"] .land-command-surface {
+    padding-top: 4px !important;
+  }
+  body[data-active-view="deals"] .land-command-copy h3,
+  body[data-active-view="deals"] #parcels .detail-hero h2 {
+    font-size: clamp(34px, 13vw, 48px) !important;
+    max-width: 11ch !important;
+  }
+  body[data-active-view="deals"] .land-control-group {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  body[data-active-view="deals"] .land-control-note { margin-left: 0 !important; }
+  body[data-active-view="deals"] #parcels .land-listing-status-strip,
+  body[data-active-view="deals"] #parcels .deal-strip,
+  body[data-active-view="deals"] #parcels .phase-one-detail-grid,
+  body[data-active-view="deals"] #parcels .detail-grid,
+  body[data-active-view="deals"] .land-agent-facts,
+  body[data-active-view="deals"] #parcels .dallas-proof-metrics {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-status-strip div:nth-child(2n),
+  body[data-active-view="deals"] #parcels .deal-strip div:nth-child(2n) {
+    border-right: 0 !important;
+  }
+  body[data-active-view="deals"] #parcels .dallas-proof-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* v2.00.1 - Land screenshot self-review: reduce duplicate hero weight, tighten first-screen decision density */
+body[data-active-view="deals"] #parcels-section > .section-heading.compact-heading {
+  max-width: 1220px !important;
+  margin: 0 auto !important;
+  padding: clamp(44px, 7vw, 88px) 0 clamp(22px, 3vw, 34px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(260px, .9fr) minmax(280px, .72fr) !important;
+  column-gap: clamp(44px, 12vw, 180px) !important;
+  align-items: end !important;
+  border-bottom: 1px solid var(--land-line, rgba(7,17,13,.105)) !important;
+}
+body[data-active-view="deals"] #parcels-section > .section-heading.compact-heading .eyebrow {
+  grid-column: 1 !important;
+}
+body[data-active-view="deals"] #parcels-section > .section-heading.compact-heading h2 {
+  grid-column: 1 !important;
+  max-width: 13ch !important;
+  margin: 8px 0 0 !important;
+  font-size: clamp(38px, 5.6vw, 70px) !important;
+  line-height: .88 !important;
+  letter-spacing: -.08em !important;
+  font-weight: 860 !important;
+}
+body[data-active-view="deals"] #parcels-section > .section-heading.compact-heading p {
+  grid-column: 2 !important;
+  max-width: 39ch !important;
+  margin: 0 0 8px !important;
+  color: var(--land-muted, #66756d) !important;
+  font-size: 14px !important;
+  line-height: 1.54 !important;
+}
+body[data-active-view="deals"] .land-command-surface {
+  padding: clamp(18px, 2.4vw, 28px) 0 clamp(14px, 1.8vw, 22px) !important;
+  grid-template-columns: minmax(220px, .62fr) minmax(0, 1.74fr) !important;
+  gap: clamp(28px, 6vw, 96px) !important;
+}
+body[data-active-view="deals"] .land-command-copy h3 {
+  max-width: 15ch !important;
+  font-size: clamp(26px, 3.2vw, 42px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.066em !important;
+}
+body[data-active-view="deals"] .land-command-copy p {
+  margin-top: 12px !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="deals"] #parcels .detail-hero h2 {
+  max-width: 17ch !important;
+  font-size: clamp(32px, 3.55vw, 50px) !important;
+  line-height: .93 !important;
+  letter-spacing: -.072em !important;
+}
+body[data-active-view="deals"] #parcels .deal-workbench {
+  margin-top: clamp(18px, 2.2vw, 28px) !important;
+}
+body[data-active-view="deals"] #parcels .deals-primary-action b {
+  font-size: clamp(17px, 1.75vw, 24px) !important;
+  letter-spacing: -.045em !important;
+}
+body[data-active-view="deals"] #parcels .operator-checklist,
+body[data-active-view="deals"] #parcels .buyer-memo-card,
+body[data-active-view="deals"] #parcels .buyer-feedback-card {
+  margin-top: 18px !important;
+}
+@media (max-width: 980px) {
+  body[data-active-view="deals"] #parcels-section > .section-heading.compact-heading {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  body[data-active-view="deals"] #parcels-section > .section-heading.compact-heading p {
+    grid-column: 1 !important;
+    margin: 0 !important;
+  }
+}

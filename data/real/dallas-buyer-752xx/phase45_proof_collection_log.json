@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-06-26T10:20:47+00:00",
+  "market": "dallas-buyer-752xx",
+  "phase": "4.5-proof-collection-first3",
+  "verifiedBy": "IriSys automated public-source pass",
+  "zeroFabricationNote": "Only official/public records observed during this pass are recorded. Utility/tap, electric/gas, and builder acceptance remain locked unless address-level proof is attached.",
+  "rows": [
+    {
+      "parcelId": "00000594277000000",
+      "publicZoningProofStatus": "pass-public-zoning-layer",
+      "publicZoningProofUrl": "https://gis.dallascityhall.com/arcgis/rest/services/sdc_public/Zoning/MapServer/15/query",
+      "publicZoningProofSummary": "City of Dallas Zoning MapServer layer 15 intersects the City Tax Parcel geometry for ACCT 00000594277000000 with ZONE_DIST R-10(A), LONG_ZONE_DIST R-10(A), PD_NUM blank, DISTRICTUSE null.",
+      "recordedPlatProofStatus": "partial-public-record-legal-lot-reference-found",
+      "recordedPlatProofUrl": "https://dallas.tx.publicsearch.us/",
+      "recordedPlatProofSummary": "Dallas County Property Records quick search `CORAL HILLS LOT 73` returned official index rows matching Coral Hills Lot 73 Block 17 CBLK 6441, including doc 198900182488 and doc 198402447714 with Reference 40/139. This confirms county-indexed subdivision/lot/block legal evidence, but not a full utility/plat pass packet.",
+      "waterSewerProofStatus": "hold-address-level-proof-not-found-in-automated-pass",
+      "waterSewerProofUrl": "",
+      "electricGasProofStatus": "hold-address-level-proof-not-found-in-automated-pass",
+      "electricGasProofUrl": "",
+      "zoningBuilderAcceptedStatus": "unknown-no-builder-acceptance-yet",
+      "zoningBuilderAcceptedProof": "",
+      "operatorDecision": "hold",
+      "operatorNotes": "Public parcel identity and public zoning layer passed. Dallas County indexed legal-lot evidence found for Coral Hills Lot 73 Block 17 / CBLK 6441. Keep locked: no address-level DWU water/sewer tap proof, no address-level Oncor/Atmos electric/gas proof, and no builder zoning acceptance captured.",
+      "verifiedAt": "2026-06-26T10:20:47+00:00"
+    },
+    {
+      "parcelId": "00000594130000000",
+      "publicZoningProofStatus": "pass-public-zoning-layer",
+      "publicZoningProofUrl": "https://gis.dallascityhall.com/arcgis/rest/services/sdc_public/Zoning/MapServer/15/query",
+      "publicZoningProofSummary": "City of Dallas Zoning MapServer layer 15 intersects the City Tax Parcel geometry for ACCT 00000594130000000 with ZONE_DIST R-10(A), LONG_ZONE_DIST R-10(A), PD_NUM blank, DISTRICTUSE null.",
+      "recordedPlatProofStatus": "partial-public-record-legal-lot-reference-found",
+      "recordedPlatProofUrl": "https://dallas.tx.publicsearch.us/",
+      "recordedPlatProofSummary": "Dallas County Property Records quick search `CORAL HILLS LOT 23` returned an official index row matching Coral Hills Lot 23 Block 17 CBLK 6441, doc 201200366789. Search also returned Coral Hills records with Reference 40/139 for the same subdivision/CBLK. This confirms county-indexed subdivision/lot/block legal evidence, but not a full utility/plat pass packet.",
+      "waterSewerProofStatus": "hold-address-level-proof-not-found-in-automated-pass",
+      "waterSewerProofUrl": "",
+      "electricGasProofStatus": "hold-address-level-proof-not-found-in-automated-pass",
+      "electricGasProofUrl": "",
+      "zoningBuilderAcceptedStatus": "unknown-no-builder-acceptance-yet",
+      "zoningBuilderAcceptedProof": "",
+      "operatorDecision": "hold",
+      "operatorNotes": "Public parcel identity and public zoning layer passed. Dallas County indexed legal-lot evidence found for Coral Hills Lot 23 Block 17 / CBLK 6441. Keep locked: no address-level DWU water/sewer tap proof, no address-level Oncor/Atmos electric/gas proof, and no builder zoning acceptance captured.",
+      "verifiedAt": "2026-06-26T10:20:47+00:00"
+    },
+    {
+      "parcelId": "00000681256000000",
+      "publicZoningProofStatus": "pass-public-zoning-layer",
+      "publicZoningProofUrl": "https://gis.dallascityhall.com/arcgis/rest/services/sdc_public/Zoning/MapServer/15/query",
+      "publicZoningProofSummary": "City of Dallas Zoning MapServer layer 15 intersects the City Tax Parcel geometry for ACCT 00000681256000000 with ZONE_DIST R-5(A), LONG_ZONE_DIST R-5(A), PD_NUM blank, DISTRICTUSE null.",
+      "recordedPlatProofStatus": "partial-public-record-subdivision-reference-found-needs-exact-lot-confirmation",
+      "recordedPlatProofUrl": "https://dallas.tx.publicsearch.us/",
+      "recordedPlatProofSummary": "Dallas County Property Records quick searches `ROOSEVELT MANOR`, `ROOSEVELT MANOR LOT 8 BLOCK 11`, and `CURRY FANNIE MAE` found official indexed Roosevelt Manor records and repeated Reference 8/178 for subdivision/CBLK 7130 context, but did not find an exact Lot 8 & 9 Block 11 match in the first returned rows. Legal-lot status remains partial/needs deeper county-record review.",
+      "waterSewerProofStatus": "hold-address-level-proof-not-found-in-automated-pass",
+      "waterSewerProofUrl": "",
+      "electricGasProofStatus": "hold-address-level-proof-not-found-in-automated-pass",
+      "electricGasProofUrl": "",
+      "zoningBuilderAcceptedStatus": "unknown-no-builder-acceptance-yet",
+      "zoningBuilderAcceptedProof": "",
+      "operatorDecision": "hold",
+      "operatorNotes": "Public parcel identity and public zoning layer passed. Dallas County subdivision context found for Roosevelt Manor / CBLK 7130, but exact Lot 8 & 9 Block 11 evidence was not confirmed in the automated pass. Keep locked: no address-level DWU water/sewer tap proof, no address-level Oncor/Atmos electric/gas proof, and no builder zoning acceptance captured.",
+      "verifiedAt": "2026-06-26T10:20:47+00:00"
+    }
+  ]
+}

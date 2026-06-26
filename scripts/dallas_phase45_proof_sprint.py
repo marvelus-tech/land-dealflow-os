@@ -22,6 +22,7 @@ OUT_JSON = BASE / "phase45_top12_proof_sprint.json"
 OUT_CSV = BASE / "phase45_top12_proof_sprint.csv"
 OUT_MD = BASE / "phase45_top12_proof_sprint.md"
 BUYER_DRAFT = BASE / "phase45_builder_zoning_acceptance_draft.md"
+PROOF_LOG = BASE / "phase45_proof_collection_log.json"
 
 CITY_PARCEL_QUERY = "https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasTaxParcels/FeatureServer/0/query"
 ZONING_LAYER = "https://gis.dallascityhall.com/arcgis/rest/services/sdc_public/Zoning/MapServer/15"
@@ -87,7 +88,14 @@ def load_rows() -> list[dict]:
     return sorted(eligible, key=sprint_score, reverse=True)[:12]
 
 
-def enrich_row(row: dict, sprint_rank: int) -> dict:
+def load_proof_overlay() -> dict[str, dict]:
+    if not PROOF_LOG.exists():
+        return {}
+    data = json.loads(PROOF_LOG.read_text())
+    return {str(row.get("parcelId") or ""): row for row in data.get("rows", []) if row.get("parcelId")}
+
+
+def enrich_row(row: dict, sprint_rank: int, proof_overlay: dict[str, dict] | None = None) -> dict:
     acct = row.get("parcelId", "")
     city_attrs = {}
     try:
@@ -129,6 +137,9 @@ def enrich_row(row: dict, sprint_rank: int) -> dict:
             "operatorDecision = pass",
         ],
     })
+    overlay = (proof_overlay or {}).get(str(acct), {})
+    if overlay:
+        row.update({key: value for key, value in overlay.items() if key != "parcelId"})
     return row
 
 
@@ -137,7 +148,7 @@ def write_csv(rows: list[dict]):
         "sprintRank", "rank", "phase45Status", "propertyAddress", "propertyZip", "parcelId", "ownerName", "lotSqft", "zoning", "floodStatus",
         "cityParcelProofStatus", "cityParcelAreaFeet", "cityParcelPropertyClass", "cityParcelLegal1", "cityParcelLegal2",
         "waterSewerProofStatus", "waterSewerProofUrl", "electricGasProofStatus", "electricGasProofUrl", "recordedPlatProofStatus", "recordedPlatProofUrl",
-        "zoningBuilderAcceptedStatus", "zoningBuilderAcceptedProof", "operatorDecision", "operatorNotes", "dcadAccountUrl", "cityParcelQueryUrl", "dallasCountyPublicSearchUrl", "dallasCountySearchTerms",
+        "publicZoningProofStatus", "publicZoningProofUrl", "publicZoningProofSummary", "zoningBuilderAcceptedStatus", "zoningBuilderAcceptedProof", "operatorDecision", "operatorNotes", "dcadAccountUrl", "cityParcelQueryUrl", "dallasCountyPublicSearchUrl", "dallasCountySearchTerms",
     ]
     with OUT_CSV.open("w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fields)
@@ -182,6 +193,10 @@ def write_md(rows: list[dict], generated_at: str):
             f"- Zoning: `{row.get('zoning')}`",
             f"- Flood: {row.get('floodStatus')}",
             f"- City parcel proof: {row.get('cityParcelProofStatus')} / {row.get('cityParcelPropertyClass')}",
+            f"- Public zoning proof: {row.get('publicZoningProofStatus') or 'needs-proof'} — {row.get('publicZoningProofSummary') or ''}",
+            f"- Recorded plat/legal-lot proof: {row.get('recordedPlatProofStatus') or 'needs-proof'} — {row.get('recordedPlatProofSummary') or ''}",
+            f"- Water/sewer proof: {row.get('waterSewerProofStatus')}",
+            f"- Electric/gas proof: {row.get('electricGasProofStatus')}",
             f"- Legal: {row.get('legalDescription')}",
             f"- DCAD: {row.get('dcadAccountUrl')}",
             f"- City parcel API: {row.get('cityParcelQueryUrl')}",
@@ -228,7 +243,8 @@ def write_buyer_draft(rows: list[dict]):
 
 def main():
     generated_at = now_iso()
-    rows = [enrich_row(row, idx) for idx, row in enumerate(load_rows(), 1)]
+    proof_overlay = load_proof_overlay()
+    rows = [enrich_row(row, idx, proof_overlay) for idx, row in enumerate(load_rows(), 1)]
     OUT_JSON.write_text(json.dumps({
         "generatedAt": generated_at,
         "market": "dallas-buyer-752xx",

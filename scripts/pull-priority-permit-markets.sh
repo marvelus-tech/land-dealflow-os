@@ -78,6 +78,7 @@ run_pull() {
 
 # Pull order follows Okeito's permit priority stack: TN → inland FL → AZ → NC → TX.
 run_pull "TN" "TN Knoxville KGIS permits/parcels" node scripts/adapters/knoxville-kgis-public-leads.mjs
+run_pull "TN" "TN Nashville/Davidson ArcGIS builders" node scripts/adapters/nashville-arcgis-permit-builders.mjs
 run_pull "FL" "FL inland Polk Accela builders" python3 scripts/adapters/polk-accela-permit-builders.py
 run_pull "AZ" "AZ Maricopa weekly permit builders" python3 scripts/adapters/maricopa-xlsx-permit-builders.py
 run_pull "NC" "NC Raleigh/Wake ArcGIS builders" node scripts/adapters/raleigh-arcgis-permit-builders.mjs

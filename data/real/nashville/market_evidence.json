@@ -1,0 +1,25 @@
+{
+  "market": "Nashville / Davidson County, TN",
+  "marketId": "nashville-edge-tn",
+  "state": "TN",
+  "generatedAt": "2026-06-26T21:33:18.504Z",
+  "source": {
+    "name": "Metro Nashville Codes Daily Reports — Building Permits Issued ArcGIS feed",
+    "serviceUrl": "https://services2.arcgis.com/HdTo6HJqh92wn4D8/arcgis/rest/services/Building_Permits_Issued_2/FeatureServer/0",
+    "sourceUrl": "https://www.nashville.gov/departments/codes/codes-administration/public-records-and-data/daily-reports",
+    "experienceUrl": "https://experience.arcgis.com/experience/4aa2856cf64e412e812fda2a893291d7",
+    "where": "Date_Issued >= DATE '2025-01-01' AND Permit_Type_Description='Building Residential - New' AND Contact IS NOT NULL AND Address IS NOT NULL"
+  },
+  "summary": {
+    "permitRowsSampled": 4915,
+    "uniqueBuilders": 80,
+    "minimumUniqueBuilders": 20,
+    "totalRecentBuildSignals": 2407,
+    "filter": "Metro Nashville Building Residential - New permits issued since 2025-01-01; builder-like contacts only; requires 3+ permit rows per builder signal."
+  },
+  "operatingRules": [
+    "Contractor/contact data is a permit-backed active-builder signal, not validated buyer demand until buy-box outreach is complete.",
+    "Only Metro Nashville Building Residential - New issued permits are counted; self-contractor, accessory, shed, pool, trade, roofing, and service contractor rows are excluded.",
+    "No Davidson County seller sourcing until builder geography, lot size, max price, close speed, utilities/access, slope/flood/infill deal killers, and acquisitions recipient are captured."
+  ]
+}

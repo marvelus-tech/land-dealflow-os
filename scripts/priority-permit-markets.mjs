@@ -25,7 +25,11 @@ export const PRIORITY_PERMIT_MARKETS = [
     directAdapter: 'knoxville-kgis-public-leads', realDir: 'knoxville', platform: 'KGIS ArcGIS + Buildchek coverage', portalUrl: 'https://www.kgis.org/',
     thesis: 'TN live-first permit market: KGIS public permits and parcel layers give the fastest verified builder-signal plus skip-trace research loop.',
   },
-  { id: 'nashville-edge-tn', name: 'Nashville / Davidson County, TN', city: 'Nashville', county: 'Davidson County', state: 'TN', buyerType: 'production-builder', priority: 96, platform: 'Buildchek + Metro Nashville Codes', portalUrl: 'https://www.nashville.gov/departments/codes', thesis: 'High-growth Tennessee perimeter market; use Buildchek/Metro permit evidence before seller promotion.' },
+  {
+    id: 'nashville-edge-tn', name: 'Nashville / Davidson County, TN', city: 'Nashville', county: 'Davidson County', state: 'TN', buyerType: 'production-builder', priority: 96,
+    directAdapter: 'nashville-arcgis-permit-builders', realDir: 'nashville', platform: 'Metro Nashville Codes ArcGIS Daily Reports', portalUrl: 'https://www.nashville.gov/departments/codes/codes-administration/public-records-and-data/daily-reports',
+    thesis: 'High-growth Tennessee perimeter market; Metro Nashville daily permit reports expose a public ArcGIS feed for verified residential new-build builder signals before seller promotion.',
+  },
   { id: 'chattanooga-tn', name: 'Chattanooga / Hamilton County, TN', city: 'Chattanooga', county: 'Hamilton County', state: 'TN', buyerType: 'custom-builder', priority: 92, platform: 'Buildchek + Hamilton County GIS', portalUrl: 'https://gis.hamiltontn.gov/', thesis: 'TN builder-sprawl source well; pull permit builders before parcel sourcing.' },
   { id: 'murfreesboro-tn', name: 'Murfreesboro / Rutherford County, TN', city: 'Murfreesboro', county: 'Rutherford County', state: 'TN', buyerType: 'production-builder', priority: 90, platform: 'CivicPlus / CivicGov Citizen Portal', portalUrl: 'https://www.rutherfordcountytn.gov/', thesis: 'Hot TN builder-sprawl jurisdiction; CivicPlus permit monitoring should feed buyer validation first.' },
   { id: 'franklin-tn', name: 'Franklin / Williamson County, TN', city: 'Franklin', county: 'Williamson County', state: 'TN', buyerType: 'custom-builder', priority: 88, platform: 'IDT Plans + county permit records', portalUrl: 'https://williamson.idtplans.com/', thesis: 'High-value TN infill/perimeter market; direct portal source review before parcel calls.' },
@@ -60,7 +64,7 @@ export const PRIORITY_PERMIT_MARKETS = [
 ];
 
 function sourceCandidateForMarket(market) {
-  const sourceType = /permit|accela|buildchek|civic|idt|socrata|ckan|weekly/i.test(market.platform) ? 'permit' : 'source_review';
+  const sourceType = /permit|arcgis|accela|buildchek|civic|idt|socrata|ckan|weekly/i.test(market.platform) ? 'permit' : 'source_review';
   return {
     market: market.id,
     state: market.state,

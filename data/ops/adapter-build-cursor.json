@@ -1,0 +1,21 @@
+{
+  "stateCursor": [
+    "TN",
+    "FL",
+    "AZ",
+    "NC",
+    "TX",
+    "GA",
+    "SC"
+  ],
+  "nextState": "FL",
+  "attempts": [
+    {
+      "at": "2026-06-26T21:36:16.015Z",
+      "state": "TN",
+      "market": "chattanooga-tn",
+      "outcome": "selected"
+    }
+  ],
+  "blockedMarkets": []
+}

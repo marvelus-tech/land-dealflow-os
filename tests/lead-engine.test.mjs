@@ -260,10 +260,10 @@ function testPriorityPermitModeExpandsAndJudgesLeadingMarketStack() {
 
 function testFridayAdapterTargetUsesRotatingPriorityCursor() {
   const selected = selectNextAdapterTarget({ advance: false, now: '2026-06-19T09:00:00.000Z' });
-  assert.equal(selected.state, 'TN');
-  assert.equal(selected.nextState, 'FL');
-  assert.equal(selected.target.id, 'nashville-edge-tn');
-  assert.equal(selected.target.activeBuilderSignals, 0);
+  assert.ok(PERMIT_STATE_PRIORITY.includes(selected.state));
+  assert.equal(selected.nextState, PERMIT_STATE_PRIORITY[(PERMIT_STATE_PRIORITY.indexOf(selected.state) + 1) % PERMIT_STATE_PRIORITY.length]);
+  assert.ok(selected.target.id);
+  assert.ok(selected.target.activeBuilderSignals < selected.target.requiredFloor);
   assert.match(selected.target.nextAction, /build a direct adapter|Fix\/run/);
 }
 

@@ -47,6 +47,16 @@ def clean_company(value):
     return compact(text).strip(' ,')
 
 
+def canonical_builder_brand(value):
+    text = clean_company(value)
+    # Accela detail pages often render this builder without punctuation as
+    # "D R HORTON INC". Keep the permit-backed match, but restore the public
+    # builder brand/legal punctuation used by the Polk evidence contract.
+    if re.fullmatch(r'D\s*\.?\s*R\s*\.?\s+HORTON,?\s+INC\.?', text, re.I) or re.fullmatch(r'DR\s+HORTON', text, re.I):
+        return 'D. R. HORTON, INC.'
+    return text
+
+
 def is_builder_name(value):
     text = clean_company(value)
     if not text or len(text) < 4:
@@ -149,19 +159,19 @@ def extract_builder(text):
     professional = text[start:end if end != -1 else start + 3000] if start != -1 else ''
     candidates = []
     for match in re.finditer(r'(?:\d+\)\s*)?([A-Z][A-Za-z .\'-]{2,60})\s+([\w.+-]+@[\w.-]+)?\s*([A-Z0-9][A-Z0-9 &.,\'/-]{4,90}?)\s+\d{2,6}\s+.{0,180}?\b(Building|Residential|General)\b\s+[A-Z]{2,}\d+', professional, re.I):
-        company = clean_company(match.group(3))
+        company = canonical_builder_brand(match.group(3))
         if is_builder_name(company):
             candidates.append(company)
     if candidates:
         return candidates[-1]
     owner = re.search(r'Owner:\s*([^*]{4,90})\s*\*', text, re.I)
     if owner:
-        company = clean_company(owner.group(1))
+        company = canonical_builder_brand(owner.group(1))
         if is_builder_name(company):
             return company
     applicant = re.search(r'Applicant:\s*([^:]{4,120}?)(?:\s+Work Phone|\s+Mobile Phone|\s+[\w.+-]+@[\w.-]+)', text, re.I)
     if applicant:
-        company = clean_company(applicant.group(1))
+        company = canonical_builder_brand(applicant.group(1))
         if is_builder_name(company):
             return company
     return ''

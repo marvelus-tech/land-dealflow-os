@@ -1,6 +1,6 @@
 # Phase 4.5 Top-12 Proof Sprint — Dallas 752xx
 
-Generated: 2026-06-26T10:21:04+00:00
+Generated: 2026-06-26T11:16:34+00:00
 
 Purpose: verify the buyer's hard criteria before skip-tracing any owner.
 
@@ -31,8 +31,8 @@ Purpose: verify the buyer's hard criteria before skip-tracing any owner.
 - City parcel proof: public-api-pass / SINGLE FAMILY RESIDENCES
 - Public zoning proof: pass-public-zoning-layer — City of Dallas Zoning MapServer layer 15 intersects the City Tax Parcel geometry for ACCT 00000594277000000 with ZONE_DIST R-10(A), LONG_ZONE_DIST R-10(A), PD_NUM blank, DISTRICTUSE null.
 - Recorded plat/legal-lot proof: partial-public-record-legal-lot-reference-found — Dallas County Property Records quick search `CORAL HILLS LOT 73` returned official index rows matching Coral Hills Lot 73 Block 17 CBLK 6441, including doc 198900182488 and doc 198402447714 with Reference 40/139. This confirms county-indexed subdivision/lot/block legal evidence, but not a full utility/plat pass packet.
-- Water/sewer proof: hold-address-level-proof-not-found-in-automated-pass
-- Electric/gas proof: hold-address-level-proof-not-found-in-automated-pass
+- Water/sewer proof: hold-official-dwu-availability-request-required
+- Electric/gas proof: partial-official-oncor-esiid-found-gas-not-verified
 - Legal: CORAL HILLS | BLK 17/6441 LOT 73 | INT201400129199 DOD05142000 | 6441 017   07300      1006441 017
 - DCAD: https://www.dallascad.org/AcctDetail.aspx?ID=00000594277000000
 - City parcel API: https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasTaxParcels/FeatureServer/0/query?f=json&where=ACCT+%3D+%2700000594277000000%27&outFields=%2A&returnGeometry=false
@@ -54,8 +54,8 @@ Purpose: verify the buyer's hard criteria before skip-tracing any owner.
 - City parcel proof: public-api-pass / SINGLE FAMILY RESIDENCES
 - Public zoning proof: pass-public-zoning-layer — City of Dallas Zoning MapServer layer 15 intersects the City Tax Parcel geometry for ACCT 00000594130000000 with ZONE_DIST R-10(A), LONG_ZONE_DIST R-10(A), PD_NUM blank, DISTRICTUSE null.
 - Recorded plat/legal-lot proof: partial-public-record-legal-lot-reference-found — Dallas County Property Records quick search `CORAL HILLS LOT 23` returned an official index row matching Coral Hills Lot 23 Block 17 CBLK 6441, doc 201200366789. Search also returned Coral Hills records with Reference 40/139 for the same subdivision/CBLK. This confirms county-indexed subdivision/lot/block legal evidence, but not a full utility/plat pass packet.
-- Water/sewer proof: hold-address-level-proof-not-found-in-automated-pass
-- Electric/gas proof: hold-address-level-proof-not-found-in-automated-pass
+- Water/sewer proof: hold-official-dwu-availability-request-required
+- Electric/gas proof: partial-official-oncor-esiid-found-gas-not-verified
 - Legal: CORAL HILLS | BLK 17/6441 LT 23 | INT201900222067 DD08092019 CO-DC | 6441 017   02300      1006441 017
 - DCAD: https://www.dallascad.org/AcctDetail.aspx?ID=00000594130000000
 - City parcel API: https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasTaxParcels/FeatureServer/0/query?f=json&where=ACCT+%3D+%2700000594130000000%27&outFields=%2A&returnGeometry=false
@@ -77,8 +77,8 @@ Purpose: verify the buyer's hard criteria before skip-tracing any owner.
 - City parcel proof: public-api-pass / SINGLE FAMILY RESIDENCES
 - Public zoning proof: pass-public-zoning-layer — City of Dallas Zoning MapServer layer 15 intersects the City Tax Parcel geometry for ACCT 00000681256000000 with ZONE_DIST R-5(A), LONG_ZONE_DIST R-5(A), PD_NUM blank, DISTRICTUSE null.
 - Recorded plat/legal-lot proof: partial-public-record-subdivision-reference-found-needs-exact-lot-confirmation — Dallas County Property Records quick searches `ROOSEVELT MANOR`, `ROOSEVELT MANOR LOT 8 BLOCK 11`, and `CURRY FANNIE MAE` found official indexed Roosevelt Manor records and repeated Reference 8/178 for subdivision/CBLK 7130 context, but did not find an exact Lot 8 & 9 Block 11 match in the first returned rows. Legal-lot status remains partial/needs deeper county-record review.
-- Water/sewer proof: hold-address-level-proof-not-found-in-automated-pass
-- Electric/gas proof: hold-address-level-proof-not-found-in-automated-pass
+- Water/sewer proof: hold-official-dwu-availability-request-required
+- Electric/gas proof: partial-official-oncor-esiid-found-gas-not-verified
 - Legal: ROOSEVELT MANOR 2ND INST | BLK 11/7130 LTS 8 & 9 ACS 0.28 | VOL99189/4191 DD08061999 CO-DC | 7130 011   00900      2007130 011
 - DCAD: https://www.dallascad.org/AcctDetail.aspx?ID=00000681256000000
 - City parcel API: https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasTaxParcels/FeatureServer/0/query?f=json&where=ACCT+%3D+%2700000681256000000%27&outFields=%2A&returnGeometry=false

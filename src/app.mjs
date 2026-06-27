@@ -2513,8 +2513,30 @@ function renderParcels() {
     ['Buildability', selected.risk.status, selected.flags.length ? selected.flags.join(', ') : 'clean first pass'],
     ['Next action', selected.action, getNextAction(selected)],
   ];
+  const stateListingStates = visible.map(parcelListingState);
+  const stateSourceBackedCount = stateListingStates.filter(row => row.sourceBacked).length;
+  const stateEnrichedCount = stateListingStates.filter(row => row.enriched).length;
+  const stateBuilderFitCount = stateListingStates.filter(row => row.builderMatched).length;
+  const stateOfferReadyCount = stateListingStates.filter(row => row.offerReady).length;
+  const stateNextAction = stateOfferReadyCount > 0
+    ? 'Work the offer-ready row before opening more research.'
+    : stateEnrichedCount > 0
+      ? 'Match enriched owners to a buyer before drafting offers.'
+      : stateSourceBackedCount > 0
+        ? 'Enrich one source-backed owner contact.'
+        : 'Attach public proof before contact work.';
+  const stateWorkbenchBrief = `<section class="land-state-workbench-brief phase206-land-state-workbench" aria-label="Selected state operating brief">
+    <div class="land-state-brief-copy"><span class="eyebrow">${h(selectedLandStateFilter)} lane</span><h3>Work one clean next action.</h3><p>${h(stateNextAction)} Keep proof, contact, buyer fit, and offer readiness in one scan line.</p></div>
+    <div class="land-state-brief-ledger">
+      <div><span>Retained</span><b>${h(visible.length)}</b></div>
+      <div><span>Source-backed</span><b>${h(stateSourceBackedCount)}</b></div>
+      <div><span>Owner enriched</span><b>${h(stateEnrichedCount)}</b></div>
+      <div><span>Buyer-fit</span><b>${h(stateBuilderFitCount)}</b></div>
+      <div><span>Offer-ready</span><b>${h(stateOfferReadyCount)}</b></div>
+    </div>
+  </section>`;
 
-  target.innerHTML = `${landControls}<div class="deal-workbench">
+  target.innerHTML = `${landControls}${stateWorkbenchBrief}<div class="deal-workbench phase206-selected-state-workbench">
     <div class="primary-action-strip deals-primary-action"><span>Next action</span><b>Enrich one owner contact, then verify gently before any sales pitch.</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
@@ -2578,13 +2600,16 @@ function renderParcels() {
         ${renderBuyerSendMemoCard(buyerMemo)}
         ${renderBuyerFeedbackCapture(selected, buyer)}
       </section>
-      <div class="detail-grid">
-        <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'contact missing')}</p></div>
-        <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
-        <div><span>Risk notes</span><b>${h(selected.risk.status)}</b><p>${h(selected.flags.join(', ') || 'No first-pass risk flags.')}</p></div>
-        <div><span>Source notes</span><b>${h(selected.parcelId || selected.id)}</b><p>${h(selected.acquisitionNotes || selected.notes || 'No notes yet.')}</p></div>
-        <div><span>Intake confidence</span><b>${h(selectedListingState.confidence)} / 100</b><p>${h(selected.intakeMissing?.join(' · ') || selected.agentIntakeStatus || 'No missing intake fields recorded.')}</p></div>
-      </div>
+      <details class="land-raw-depth" aria-label="Owner source and intake detail">
+        <summary><span><em class="eyebrow">Raw depth</em><b>Owner, buyer, risk, source, and intake fields.</b></span><strong>Open only when editing evidence</strong></summary>
+        <div class="detail-grid">
+          <div><span>Owner</span><b>${h(selected.ownerName || selected.owner || 'unknown')}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'contact missing')}</p></div>
+          <div><span>Buyer</span><b>${h(selected.buyerContactName || buyer.contactName || buyer.name || 'missing')}</b><p>${h(selected.buyerPhone || buyer.phone || '')} ${h(selected.buyerEmail || buyer.email || '')}</p></div>
+          <div><span>Risk notes</span><b>${h(selected.risk.status)}</b><p>${h(selected.flags.join(', ') || 'No first-pass risk flags.')}</p></div>
+          <div><span>Source notes</span><b>${h(selected.parcelId || selected.id)}</b><p>${h(selected.acquisitionNotes || selected.notes || 'No notes yet.')}</p></div>
+          <div><span>Intake confidence</span><b>${h(selectedListingState.confidence)} / 100</b><p>${h(selected.intakeMissing?.join(' · ') || selected.agentIntakeStatus || 'No missing intake fields recorded.')}</p></div>
+        </div>
+      </details>
       <details class="detail-disclosure"><summary>Show CRM fields</summary>${crmControls(selected)}</details>
     </article>
 

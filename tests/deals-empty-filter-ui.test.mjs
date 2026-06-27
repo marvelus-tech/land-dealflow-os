@@ -36,6 +36,11 @@ assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| ro
 assert.match(app, /if \(selectedLandStateFilter !== 'all' && !parcel\.selectedStateMatch\) return false;/, 'Land state selector must own the list instead of leaving a confusing all-state smorgasbord.');
 assert.match(app, /selectedMarket\?\.isDallasProofLane \? Boolean\(dallasProofRowForParcel\(parcel\)\)/, 'Dallas proof lane must filter listings to Dallas proof sprint rows only.');
 assert.match(app, /selectedLandStateFilter === 'TX' && selectedDealsMarketKey === 'dallas-tx'/, 'Dallas proof sprint surface must render only inside TX → Dallas lane.');
+assert.match(app, /class="land-state-workbench-brief phase206-land-state-workbench"/, 'Selected Land state must render a Phase 206 operating brief before the workbench.');
+assert.match(app, /Work one clean next action\./, 'Selected-state brief must make the next action the scan anchor.');
+assert.match(app, /class="deal-workbench phase206-selected-state-workbench"/, 'Selected-state Land workbench must declare the Phase 206 workbench hierarchy.');
+assert.match(app, /class="land-raw-depth"/, 'Owner/source/intake depth must move behind a raw-depth disclosure.');
+assert.match(app, /Open only when editing evidence/, 'Raw CRM/source depth must be demoted below the action path.');
 assert.match(app, /class="land-command-surface phase202-land-state-first"/, 'Land command surface must declare the state-first IA pass.');
 assert.match(app, /Choose state\. Then lane\. Then parcel\./, 'Land page copy must make the state-led operating model explicit.');
 assert.match(app, /Choose a state above to reveal its market lanes/, 'All-states mode must prompt for state first instead of showing every market lane.');
@@ -93,6 +98,11 @@ assert.match(css, /--land-phase205-rule: apple-calm-state-led-scan-hierarchy-no-
 assert.match(css, /--land-phase205b-correction: command-memo-scale-mobile-state-controls-readable/, 'Phase 205 self-review correction must reduce second-hero scale and fix mobile state controls.');
 assert.match(css, /--land-phase205c-correction: compact-viewports-stack-command-controls/, 'Phase 205 compact viewport correction must prevent squeezed two-column Land controls.');
 assert.match(css, /--land-phase205d-correction: compact-state-counts-stay-attached/, 'Phase 205 compact control correction must keep state labels and counts visually paired.');
+assert.match(css, /--land-phase206-rule: selected-state-workbench-action-path-before-raw-depth/, 'Phase 206 must encode the selected-state action-path hierarchy.');
+assert.match(css, /--land-phase206b-correction: selected-state-lane-browser-is-compact-control/, 'Phase 206 self-review must demote the selected-state lane browser into a compact control.');
+assert.match(css, /--land-phase206c-correction: lane-browser-copy-horizontal-no-vertical-shards/, 'Phase 206 final self-review must prevent selected lane browser copy from collapsing vertically.');
+assert.match(css, /\.land-state-workbench-brief\.phase206-land-state-workbench/, 'Phase 206 must style the selected-state operating brief.');
+assert.match(css, /\.land-raw-depth:not\(\[open\]\) \.detail-grid \{ display: none !important; \}/, 'Raw owner/source/intake detail must stay collapsed until explicitly opened.');
 assert.match(css, /--land-brand-primary: #0b5a43/, 'Phase 205 Land palette must define a forest primary accent.');
 assert.match(css, /--land-brand-gold: #a97622/, 'Phase 205 Land palette must reserve gold for metrics and value emphasis.');
 assert.match(css, /\.land-market-lane-selector\.is-state-required \{[\s\S]{0,80}display: none !important/, 'All-states should remove the duplicate market-lane prompt and let the state decision ledger carry the job.');

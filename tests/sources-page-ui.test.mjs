@@ -13,7 +13,7 @@ assert.match(appSource, /TN first\. Then inland FL, AZ, NC, TX\. GA\/SC secondar
 assert.match(appSource, /const builderMarketRegistry = \[/, 'Builders rail must come from a selectable market registry, not a hardcoded state path');
 assert.match(appSource, /Counties stay as evidence/, 'Builders copy must not present the Sources priority stack as a forced path');
 assert.match(appSource, /getPermitPortalLandscape\(\)/, 'Sources priority board must render from tested permit landscape data');
-for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
+for (const key of ['columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.match(appSource, new RegExp(`key: '${key}'`), `Sources/Builders shared market registry must keep ${key} visible.`);
 }
 assert.match(appSource, /Georgia[\s\S]{0,220}Forsyth\/Hall\/Jackson\/Douglas permit lanes/, 'Sources page must describe the GA expansion lanes.');

@@ -119,6 +119,10 @@ const builderMarketRegistry = [
   { key: 'dorchester-sc', state: 'SC', label: 'Dorchester County / Charleston edge', note: 'live SC coastal-edge lane', platform: 'Evolve Public permit search', suggestedRank: 25, sourceWork: 'Enrich top 20 builders and deepen permit proof links.' },
   { key: 'berkeley-sc', state: 'SC', label: 'Berkeley County / Charleston edge', note: 'strong SC watchlist lane', platform: 'Builder portal / Cloudflare-challenged', suggestedRank: 26, sourceWork: 'Find reliable API/export path around portal challenge.' },
   { key: 'greenville-sc', state: 'SC', label: 'Greenville County', note: 'Upstate SC secondary lane', platform: 'County/city permit portal review', suggestedRank: 27, sourceWork: 'Review after Dorchester/Berkeley.' },
+  { key: 'columbus-oh', state: 'OH', label: 'Columbus / Franklin County', note: 'Ohio source lane', platform: 'City/county permit portals + county GIS', suggestedRank: 28, sourceWork: 'Verify residential permit rows with contractor/builder names before buyer outreach.' },
+  { key: 'boise-id', state: 'ID', label: 'Boise / Ada County', note: 'Idaho growth-market source lane', platform: 'City of Boise + Ada County permitting/GIS', suggestedRank: 29, sourceWork: 'Find machine-readable permit path and builder identity fields.' },
+  { key: 'indianapolis-in', state: 'IN', label: 'Indianapolis / Marion County', note: 'Indiana infill and edge-lot source lane', platform: 'Accela/Citizen Access + county property records', suggestedRank: 30, sourceWork: 'Probe permit export/detail pages for residential builder names.' },
+  { key: 'pittsburgh-pa', state: 'PA', label: 'Pittsburgh / Allegheny County', note: 'Pennsylvania source-work lane', platform: 'City/county permit portals + county assessment records', suggestedRank: 31, sourceWork: 'Verify permit-builder visibility and parcel source coverage before seller sourcing.' },
 ];
 
 const builderMarketRegistryByKey = new Map(builderMarketRegistry.map(market => [market.key, market]));
@@ -542,6 +546,10 @@ function stateFromBuilderRow(row = {}) {
   if (/texas|austin|san antonio|travis|bexar|dfw|plano/.test(market)) return 'TX';
   if (/georgia|forsyth|hall|jackson|douglas|atlanta|cumming|gainesville/.test(market)) return 'GA';
   if (/south carolina|dorchester|berkeley|charleston|summerville|greenville/.test(market)) return 'SC';
+  if (/ohio|columbus|franklin county/.test(market)) return 'OH';
+  if (/idaho|boise|ada county/.test(market)) return 'ID';
+  if (/indiana|indianapolis|marion county/.test(market)) return 'IN';
+  if (/pennsylvania|pittsburgh|allegheny/.test(market)) return 'PA';
   return selectedBuilderMarketState || 'TN';
 }
 
@@ -702,7 +710,7 @@ function getLandRowMarketKey(parcel = {}) {
   return String(parcel.marketId || parcel.market || parcel.county || rowState(parcel) || 'unknown').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
 }
 
-const landStateToggleOrder = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'PA', 'OH', 'ID', 'IN'];
+const landStateToggleOrder = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'];
 
 function getLandStateOptions() {
   if (cachedLandStateOptions) return cachedLandStateOptions;
@@ -852,7 +860,7 @@ function dealsMarketCoverageEntries() {
   const stateScopedEntries = selectedLandStateFilter === 'all'
     ? entriesWithDallas
     : entriesWithDallas.filter(market => (market.stateCode || market.state) === selectedLandStateFilter);
-  const expansionStateCodes = new Set(['GA', 'SC']);
+  const expansionStateCodes = new Set(['OH', 'ID', 'IN', 'PA', 'GA', 'SC']);
   const expansionEntries = stateScopedEntries.filter(market => expansionStateCodes.has(market.stateCode || market.state));
   const otherEntries = stateScopedEntries.filter(market => !expansionStateCodes.has(market.stateCode || market.state));
   const stateDealCount = selectedLandStateFilter === 'all' ? allDeals.length : allDeals.filter(parcel => rowState(parcel) === selectedLandStateFilter).length;
@@ -1688,7 +1696,7 @@ function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandsc
   if (cachedBuilderSwitchboardEntries) return cachedBuilderSwitchboardEntries;
   const loaded = getLoadedBuilderMarkets();
   const liveByKey = new Map(Object.values(loaded).map(market => [loadedBuilderMarketKey(market), market]));
-  const expansionStateCodes = new Set(['GA', 'SC']);
+  const expansionStateCodes = new Set(['OH', 'ID', 'IN', 'PA', 'GA', 'SC']);
   const orderedRegistry = [
     ...builderMarketRegistry.filter(registry => expansionStateCodes.has(registry.state)),
     ...builderMarketRegistry.filter(registry => !expansionStateCodes.has(registry.state)),
@@ -1742,7 +1750,7 @@ const builderStateTheses = {
 };
 
 function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntries(), permitLandscape = getPermitPortalLandscape()) {
-  const order = ['GA', 'SC', 'TN', 'FL', 'AZ', 'NC', 'TX'];
+  const order = ['OH', 'ID', 'IN', 'PA', 'GA', 'SC', 'TN', 'FL', 'AZ', 'NC', 'TX'];
   return order.map(stateCode => {
     const markets = marketEntries.filter(market => market.stateCode === stateCode || market.state === stateCode);
     if (!markets.length) return null;

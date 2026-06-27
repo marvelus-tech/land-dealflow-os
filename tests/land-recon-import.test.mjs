@@ -116,16 +116,13 @@ function testLandReconImportSurfaceExists() {
   assert.match(app, /parcelSelectionKey\(parcel\) === selectedParcelId/, 'Selected parcel lookup must use the stable parcel key, not only parcel.id.');
   assert.match(app, /data-select-parcel="\$\{h\(parcelKey\)\}"/, 'Land rows must render non-empty selection keys from parcelId/address fallback.');
   assert.doesNotMatch(app, /data-select-parcel="\$\{h\(parcel\.id\)\}"/, 'Land rows must not render blank data-select-parcel for generated parcelId-only rows.');
-  assert.match(css, /v1\.102 - Deals duplicate-safe ledger \+ Builders-nav parity \+ screenshot QA fixes/, 'Phase 102 CSS marker missing.');
-  assert.match(css, /--phase102-rule: builders-nav-parity-land-ledger-duplicate-safe/, 'Phase 102 CSS rule marker missing.');
+  assert.match(css, /--land-final-css: consolidated-land-styles-no-stale-phase-overrides/, 'Land Recon CSS must live in the consolidated Land stylesheet.');
+  assert.match(css, /--land-final-css: consolidated-land-styles-no-stale-phase-overrides/, 'Final Land CSS rule marker missing.');
   assert.match(css, /html body > header\.nav\.nav[\s\S]{0,520}border-radius: 999px/, 'Global nav must inherit Builders-style pill rail on every route.');
   assert.match(css, /body\[data-active-view="deals"\] #parcels \.land-listing-row[\s\S]{0,220}grid-template-areas/, 'Deals listing rows must have a non-overlapping grid layout.');
   assert.match(css, /body\[data-active-view="deals"\] #parcels a\.is-disabled/, 'Locked call actions must be visibly disabled instead of pretending to be callable.');
-  assert.match(css, /v1\.100 - Land Recon artifact import path validates source proof before appending to Land/, 'Phase 100 Land Recon import CSS marker missing.');
-  assert.match(css, /--phase100-land-recon-import: source-backed-artifact-validation-before-ledger-append/, 'Phase 100 CSS rule marker missing.');
-  assert.match(css, /v1\.101 - Land agent findings are visible-first/, 'Phase 101 visible intake CSS marker missing.');
-  assert.match(css, /--phase101-land-visible-intake: all-useful-agent-findings-visible-ranked-not-hidden/, 'Phase 101 CSS rule marker missing.');
-  assert.match(css, /\.land-recon-import-path[\s\S]{0,220}grid-template-columns: minmax\(280px, \.52fr\) minmax\(0, 1fr\)/, 'Import path must render as a calm two-column proof surface.');
+  assert.match(css, /\.land-recon-import-path/, 'Land Recon import path styles must remain present after consolidation.');
+  assert.match(css, /\.land-agent-intake-gate,[\s\S]{0,180}\.land-recon-import-path[\s\S]{0,180}grid-template-columns:minmax\(240px,\.34fr\) minmax\(0,1fr\)/, 'Import path must render as a calm two-column proof surface.');
 }
 
 testSourceBackedPacketImportsButDoesNotBecomeCallable();

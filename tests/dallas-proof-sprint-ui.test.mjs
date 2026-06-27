@@ -41,13 +41,12 @@ assert.match(app, /Atmos/, 'Selected Dallas proof detail must expose gas proof p
 assert.match(app, /County search terms:/, 'Selected Dallas proof detail must show manual search terms.');
 assert.match(app, /dallasProofSurface/, 'Dallas proof surface must be inserted into the Land render path.');
 
-assert.match(css, /v1\.103 - Dallas Phase 4\.5 proof sprint surfaced in Land/, 'Dallas Phase 4.5 CSS marker missing.');
+assert.match(css, /--land-final-css: consolidated-land-styles-no-stale-phase-overrides/, 'Dallas proof styling must live in the consolidated Land stylesheet.');
 assert.match(css, /\.dallas-proof-sprint-surface/, 'Dallas proof sprint surface must have route-scoped styling.');
-assert.match(css, /\.dallas-proof-metrics[\s\S]{0,180}repeat\(4, minmax\(0, 1fr\)\)/, 'Dallas proof metrics should render as a compact four-column ledger.');
-assert.match(css, /\.dallas-proof-row[\s\S]{0,180}grid-template-columns: minmax\(250px, 1fr\) auto minmax\(240px, \.9fr\)/, 'Dallas proof rows should keep address, proof links, and tasks in one scan line on desktop.');
-assert.match(css, /\.land-listing-row\.in-dallas-proof-sprint[\s\S]{0,180}border-left: 3px solid/, 'Top-12 rows need a restrained priority rail.');
+assert.match(css, /\.dallas-proof-metrics\)[\s\S]{0,180}repeat\(4,minmax\(0,1fr\)\)/, 'Dallas proof metrics should render as a compact four-column ledger.');
+assert.match(css, /\.dallas-proof-row \{[\s\S]{0,220}grid-template-columns:minmax\(170px,\.64fr\) minmax\(0,1fr\) minmax\(230px,\.75fr\)/, 'Dallas proof rows should keep address, proof links, and tasks in one scan line on desktop.');
+assert.match(css, /\.land-listing-row\.in-dallas-proof-sprint \{ border-left:3px solid/, 'Top-12 rows need a restrained priority rail.');
 assert.match(css, /\.selected-dallas-proof-panel/, 'Selected Dallas proof detail must be styled.');
-assert.match(css, /v1\.104 - Dallas proof pass\/fail gate chips/, 'Dallas proof pass/fail gate chip CSS marker missing.');
 assert.match(css, /\.dallas-proof-gate-chip\.is-pass/, 'Dallas proof gates must have pass styling.');
 assert.match(css, /\.dallas-proof-gate-chip\.is-partial/, 'Dallas proof gates must have partial styling.');
 assert.match(css, /\.dallas-proof-gate-chip\.is-fail/, 'Dallas proof gates must have fail styling.');

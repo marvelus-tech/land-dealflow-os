@@ -37,7 +37,7 @@ assert.match(app, /if \(selectedLandStateFilter !== 'all' && !parcel\.selectedSt
 assert.match(app, /selectedMarket\?\.isDallasProofLane \? Boolean\(dallasProofRowForParcel\(parcel\)\)/, 'Dallas proof lane must filter listings to Dallas proof sprint rows only.');
 assert.match(app, /selectedLandStateFilter === 'TX' && selectedDealsMarketKey === 'dallas-tx'/, 'Dallas proof sprint surface must render only inside TX → Dallas lane.');
 assert.match(app, /class="land-command-surface phase202-land-state-first"/, 'Land command surface must declare the state-first IA pass.');
-assert.match(app, /State first\. Lane second\. Parcel last\./, 'Land page copy must make the new IA model explicit.');
+assert.match(app, /Choose state\. Then lane\. Then parcel\./, 'Land page copy must make the state-led operating model explicit.');
 assert.match(app, /Choose a state above to reveal its market lanes/, 'All-states mode must prompt for state first instead of showing every market lane.');
 assert.match(app, /function renderLandStateDecisionBoard/, 'All-states mode must render a state decision board before opening parcel detail.');
 assert.match(app, /class="land-state-decision-board phase203-land-state-gate"/, 'State decision board must declare the Phase 203 state-gate pass.');
@@ -89,6 +89,14 @@ assert.match(css, /\.land-market-lane-selector\.is-state-required \.deals-market
 assert.match(css, /--land-phase203-rule: all-states-state-gate-before-parcel-cockpit/, 'Phase 203 must encode all-states as a state gate before parcel detail.');
 assert.match(css, /v2\.03b - Mobile nav stays visible while Land state gate owns the first screen/, 'Phase 203 mobile QA must keep primary nav visible instead of clipped.');
 assert.match(css, /--land-phase204-rule: mobile-listing-buttons-use-block-flow-no-overlap/, 'Phase 204 must lock mobile listing buttons into block flow to avoid iOS Safari row overlap.');
+assert.match(css, /--land-phase205-rule: apple-calm-state-led-scan-hierarchy-no-smorgasbord/, 'Phase 205 must encode the Land-only Apple calm scan hierarchy rule.');
+assert.match(css, /--land-phase205b-correction: command-memo-scale-mobile-state-controls-readable/, 'Phase 205 self-review correction must reduce second-hero scale and fix mobile state controls.');
+assert.match(css, /--land-phase205c-correction: compact-viewports-stack-command-controls/, 'Phase 205 compact viewport correction must prevent squeezed two-column Land controls.');
+assert.match(css, /--land-phase205d-correction: compact-state-counts-stay-attached/, 'Phase 205 compact control correction must keep state labels and counts visually paired.');
+assert.match(css, /--land-brand-primary: #0b5a43/, 'Phase 205 Land palette must define a forest primary accent.');
+assert.match(css, /--land-brand-gold: #a97622/, 'Phase 205 Land palette must reserve gold for metrics and value emphasis.');
+assert.match(css, /\.land-market-lane-selector\.is-state-required \{[\s\S]{0,80}display: none !important/, 'All-states should remove the duplicate market-lane prompt and let the state decision ledger carry the job.');
+assert.match(css, /\.deals-primary-action[\s\S]{0,320}grid-column: 1 \/ -1 !important/, 'Selected-state workbench should start with one full-width next-action instruction row.');
 assert.match(css, /@media \(max-width: 760px\)[\s\S]{0,900}\.land-listing-row \{[\s\S]{0,260}display: block !important/, 'Mobile Land listing rows must not use CSS grid on button controls.');
 assert.match(css, /\.land-listing-row b,[\s\S]{0,220}\.land-listing-row small,[\s\S]{0,220}\.land-listing-row em,[\s\S]{0,260}grid-area: auto !important/, 'Mobile Land row children must leave inherited grid areas and stack in normal flow.');
 assert.match(css, /\.nav \.app-tabs[\s\S]{0,180}grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, 'Mobile nav tabs must wrap into a visible grid, not clip horizontally.');

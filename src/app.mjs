@@ -865,13 +865,13 @@ function renderLandControls() {
     ? ''
     : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
   const stateNote = selectedLandStateFilter === 'all'
-    ? `${parcels.length} retained records · choose a state to open its parcel cockpit · promotion requires public proof + scored contact.`
-    : `${visibleCount} visible of ${parcels.length} retained records · viewing ${selectedStateCopy} · promotion requires public proof + scored contact.`;
+    ? `${parcels.length} retained records · choose a state to open the workbench · only source-backed, enriched, buyer-fit rows advance.`
+    : `${visibleCount} visible of ${parcels.length} retained records · viewing ${selectedStateCopy} · only source-backed, enriched, buyer-fit rows advance.`;
   return `<section class="land-command-surface phase202-land-state-first" aria-label="Land listings controls">
     <div class="land-command-copy">
-      <span class="eyebrow">Land IA</span>
-      <h3>State first. Lane second. Parcel last.</h3>
-      <p>The state selector now owns the list. Market lanes are subordinate evidence filters, and Dallas proof work appears only inside the Dallas lane.</p>
+      <span class="eyebrow">Land command</span>
+      <h3>Choose state. Then lane. Then parcel.</h3>
+      <p>Start with geography, then narrow by market evidence. The parcel cockpit opens only after the operating state is clear.</p>
     </div>
     <div class="land-control-ledger">
       <div class="land-control-group" aria-label="Focus by state"><span>State</span><div>${stateButtons}</div></div>

@@ -15,6 +15,11 @@ assert.match(app, /data-land-state/, 'Land page must let users focus listings by
 assert.match(app, /data-land-sort/, 'Land page must let users sort listings by market, state, enrichment, and builder fit.');
 assert.match(app, /target\.hidden = true/, 'Legacy stage filters must be retired to remove overlapping controls from the Land page.');
 assert.doesNotMatch(app, /\['seller-calls', 'Seller calls'\]/, 'Land page must not preserve old deal-stage filter clutter.');
+assert.match(app, /landStateToggleOrder = \['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'PA', 'OH', 'ID', 'IN'\]/, 'Land state toggle must include abbreviation-only queued states including PA/OH/ID/IN.');
+assert.match(app, /const label = state === 'all' \? 'All' : state;/, 'Land state toggle should label all-states as All and state filters as abbreviations.');
+assert.match(app, /const stateLabel = 'All';/, 'Land market toggle should label the aggregate market filter as All.');
+assert.doesNotMatch(app, /All markets/, 'Land UI should no longer say All markets.');
+assert.doesNotMatch(app, /const label = state === 'all' \? 'All states' : state;/, 'Land state toggle should not use the longer All states label.');
 assert.match(app, /function renderDealsMarketCoverage/, 'Deals page must render a market coverage shelf before seller deals exist.');
 assert.match(app, /data-deals-market-key/, 'Deals page must let the operator switch market lanes independently from stage filters.');
 assert.match(app, /<div role="button" tabindex="0" class="deals-market-card/, 'Deals market cards must avoid global button gradients while staying keyboard reachable.');
@@ -29,7 +34,7 @@ for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorches
   assert.match(app, new RegExp(`key: '${key}'`), `Deals market coverage must include ${key} through the shared registry.`);
 }
 assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');
-assert.match(app, /Enrich one owner contact, then verify gently before any sales pitch\./, 'Land primary instruction must expose one clear safe next action.');
+assert.match(app, /Attach public proof before contact or money review\./, 'Land primary instruction must expose the proof-first operator action before money review.');
 assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
 assert.match(app, /return scoredParcels\(\)\.map\(parcel => \(\{/, 'Deals visible parcels must keep all source-backed records visible.');
 assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| rowState\(parcel\) === selectedLandStateFilter/, 'Land state focus must compute state match for IA scent.');
@@ -67,6 +72,11 @@ assert.match(app, /land-selected-summary/, 'Selected Land detail must expose a c
 assert.match(app, /land-close-timeline/, 'Call-to-close control must render as a compact timeline instead of boxed steps.');
 assert.match(app, /land-settings-sheet/, 'Buyer memo and feedback must sit inside one lower settings sheet.');
 assert.match(app, /Record the answer that rewrites tomorrow’s calls/, 'Buyer feedback copy must be compressed into a calm settings-row prompt.');
+assert.match(app, /phase208-calm-operator-sheet/, 'Selected Parcel Detail must declare the Phase 208 calm operator sheet.');
+assert.match(app, /phase208-selected-parcel-summary/, 'Phase 208 must promote selected-parcel summary first.');
+assert.match(app, /phase208-action-before-money/, 'Phase 208 must place operator action before money review.');
+assert.match(app, /phase208-money-last/, 'Phase 208 must move money into a late gated sheet.');
+assert.match(app, /Money stays parked until proof, contact, and buyer fit are clean\./, 'Phase 208 must park money until the operator gates are clean.');
 
 assert.match(css, /v1\.65 - Phase 38 Deals calm empty state/, 'Phase 38 route-scoped CSS marker missing.');
 assert.match(css, /--phase38-deals-empty: compact-intentional-not-broken/, 'Deals route marker must document the intended state.');
@@ -107,6 +117,10 @@ assert.match(css, /--land-phase206c-correction: lane-browser-copy-horizontal-no-
 assert.match(css, /--land-phase207-rule: one-all-states-selector-state-ledger-owns-choice/, 'Phase 207 must encode one All-states state selector with the state ledger owning choice.');
 assert.match(css, /--land-phase207b-correction: tighter-command-to-state-gate-rhythm/, 'Phase 207 self-review must tighten command-to-state-gate rhythm after pixel review.');
 assert.match(css, /--land-phase207c-correction: selected-lane-cards-wrap-inside-command-rail/, 'Phase 207 selected-state self-review must prevent lane cards from overflowing the command rail.');
+assert.match(css, /--land-phase208-rule: selected-parcel-summary-proof-action-money-raw/, 'Phase 208 must encode summary → proof → action → money → raw selected-parcel hierarchy.');
+assert.match(css, /\.land-calm-operator-sheet\.phase208-calm-operator-sheet/, 'Phase 208 must style the selected parcel as a calm operator sheet.');
+assert.match(css, /\.land-money-sheet\.phase208-money-last:not\(\[open\]\) \.deal-strip/, 'Phase 208 must hide money metrics until the gated money sheet is opened.');
+assert.match(css, /--land-phase208b-correction: selected-parcel-right-rail-demoted-to-quiet-inspector/, 'Phase 208 self-review must demote the selected parcel right rail into a quiet inspector.');
 assert.match(css, /\.land-state-orientation\.phase207-state-gate-handoff/, 'Phase 207 must replace the duplicate top All-states state selector with an orientation handoff.');
 assert.match(css, /\.land-command-surface\.phase207-top-control-cohesion[\s\S]{0,260}min-height: 0 !important/, 'Phase 207 must remove irregular command-surface vertical padding/min-height.');
 assert.match(css, /\.land-state-decision-board\.phase203-land-state-gate[\s\S]{0,260}margin-top: var\(--land-rhythm-lg\)/, 'Phase 207 must regularize spacing between command surface and state ledger.');

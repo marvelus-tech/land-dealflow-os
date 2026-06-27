@@ -684,10 +684,15 @@ function getLandRowMarketKey(parcel = {}) {
   return String(parcel.marketId || parcel.market || parcel.county || rowState(parcel) || 'unknown').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
 }
 
+const landStateToggleOrder = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'PA', 'OH', 'ID', 'IN'];
+
 function getLandStateOptions() {
   const registryStates = builderMarketRegistry.map(market => market.state).filter(Boolean);
   const parcelStates = scoredParcels().map(rowState).filter(Boolean);
-  return ['all', ...new Set([...registryStates, ...parcelStates])];
+  const states = new Set([...landStateToggleOrder, ...registryStates, ...parcelStates].filter(Boolean));
+  const orderedStates = landStateToggleOrder.filter(state => states.has(state));
+  const remainderStates = [...states].filter(state => !landStateToggleOrder.includes(state)).sort((a, b) => a.localeCompare(b));
+  return ['all', ...orderedStates, ...remainderStates];
 }
 
 function landConfidenceScore(parcel = {}) {
@@ -823,7 +828,7 @@ function dealsMarketCoverageEntries() {
   const expansionEntries = stateScopedEntries.filter(market => expansionStateCodes.has(market.stateCode || market.state));
   const otherEntries = stateScopedEntries.filter(market => !expansionStateCodes.has(market.stateCode || market.state));
   const stateDealCount = selectedLandStateFilter === 'all' ? allDeals.length : allDeals.filter(parcel => rowState(parcel) === selectedLandStateFilter).length;
-  const stateLabel = selectedLandStateFilter === 'all' ? 'All markets' : `All ${selectedLandStateFilter} lanes`;
+  const stateLabel = 'All';
   return [{
     key: 'all',
     stateCode: selectedLandStateFilter === 'all' ? 'ALL' : selectedLandStateFilter,
@@ -843,7 +848,7 @@ function renderLandControls() {
   const parcels = scoredParcels();
   const stateButtons = stateOptions.map(state => {
     const count = state === 'all' ? parcels.length : parcels.filter(parcel => rowState(parcel) === state).length;
-    const label = state === 'all' ? 'All states' : state;
+    const label = state === 'all' ? 'All' : state;
     return `<button type="button" class="land-state-filter ${selectedLandStateFilter === state ? 'active' : ''}" data-land-state="${h(state)}" aria-pressed="${selectedLandStateFilter === state ? 'true' : 'false'}"><span>${h(label)}</span><b>${h(count)}</b></button>`;
   }).join('');
   const sortOptions = [
@@ -1687,6 +1692,10 @@ const builderStateTheses = {
   AZ: { label: 'Arizona', thesis: 'Phoenix edge lane', short: 'Phoenix edge', detail: 'Phoenix / Maricopa edge growth', note: 'Treat as a state-level lane; county detail belongs in source proof, not the top selector.' },
   NC: { label: 'North Carolina', thesis: 'Raleigh / Wake lane', short: 'Raleigh / Wake', detail: 'Triangle permit-growth lane', note: 'Keep county/source depth behind the selected state workbench.' },
   TX: { label: 'Texas', thesis: 'Austin + San Antonio lanes', short: 'Austin + San Antonio', detail: 'Central / south Texas growth lanes', note: 'Austin and San Antonio stay under one Texas decision until a specific buyer call requires splitting.' },
+  PA: { label: 'Pennsylvania', thesis: 'Queued source lane', short: 'Queued', detail: 'Pennsylvania source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
+  OH: { label: 'Ohio', thesis: 'Queued source lane', short: 'Queued', detail: 'Ohio source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
+  ID: { label: 'Idaho', thesis: 'Queued source lane', short: 'Queued', detail: 'Idaho source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
+  IN: { label: 'Indiana', thesis: 'Queued source lane', short: 'Queued', detail: 'Indiana source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
 };
 
 function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntries(), permitLandscape = getPermitPortalLandscape()) {
@@ -2413,7 +2422,8 @@ function landStateDecisionRows() {
     }, { sourceBacked: 0, needsProof: 0, enriched: 0, builderFit: 0, offerReady: 0 });
     const marketEntries = dealsMarketCoverageEntries().filter(market => market.key !== 'all' && (market.stateCode || market.state) === state);
     const liveMarkets = marketEntries.filter(market => Number(market.builderCount || 0) > 0).length;
-    const priority = state === 'TN' ? 1 : state === 'FL' ? 2 : state === 'AZ' ? 3 : state === 'NC' ? 4 : state === 'TX' ? 5 : 9;
+    const priorityMap = { TN: 1, FL: 2, AZ: 3, NC: 4, TX: 5, GA: 6, SC: 7, PA: 8, OH: 9, ID: 10, IN: 11 };
+    const priority = priorityMap[state] || 99;
     return { state, count: stateParcels.length, marketCount: marketEntries.length, liveMarkets, priority, ...stageCounts };
   }).sort((a, b) => (a.priority - b.priority) || (b.count - a.count) || a.state.localeCompare(b.state));
 }
@@ -2504,8 +2514,19 @@ function renderParcels() {
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const selectedCallable = selected.action === 'Call now' && Boolean(selected.ownerPhone || selected.ownerEmail) && !selectedListingState.needsProof && !selectedListingState.rawFinding;
   const selectedPrimaryAction = selectedCallable ? 'Call selected' : selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach proof' : selectedListingState.contactCandidate ? 'Verify contact' : 'Review selected';
-  const selectedMiniSummary = `<div class="land-selected-summary" aria-label="Selected land state summary">
-    <div><span>Proof</span><b>${selectedListingState.sourceBacked ? 'Ready' : 'Needed'}</b></div>
+  const selectedMoneyReady = Boolean(selectedListingState.offerReady);
+  const selectedMoneyGateCopy = selectedMoneyReady
+    ? 'Money is ready to inspect because proof, contact, buyer fit, and spread are aligned.'
+    : 'Money stays parked until proof, contact, and buyer fit are clean.';
+  const selectedSheetStage = selectedListingState.sourceBacked
+    ? selectedListingState.enriched
+      ? selectedListingState.builderMatched
+        ? selectedListingState.offerReady ? 'Offer review' : 'Action review'
+        : 'Buyer fit next'
+      : 'Contact next'
+    : 'Proof first';
+  const selectedMiniSummary = `<div class="land-selected-summary phase208-selected-parcel-summary" aria-label="Selected parcel operator summary">
+    <div><span>Sheet stage</span><b>${h(selectedSheetStage)}</b></div>
     <div><span>Contact</span><b>${selectedListingState.enriched ? 'Verified' : selectedListingState.contactCandidate ? 'Candidate' : 'Needed'}</b></div>
     <div><span>Buyer fit</span><b>${selectedListingState.builderMatched ? 'Matched' : 'Unknown'}</b></div>
     <div><span>Action</span><b>${h(selectedPrimaryAction)}</b></div>
@@ -2541,7 +2562,7 @@ function renderParcels() {
   </section>`;
 
   target.innerHTML = `${landControls}${stateWorkbenchBrief}<div class="deal-workbench phase206-selected-state-workbench">
-    <div class="primary-action-strip deals-primary-action"><span>Next action</span><b>Enrich one owner contact, then verify gently before any sales pitch.</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
+    <div class="primary-action-strip deals-primary-action phase208-operator-action"><span>Next action</span><b>${h(selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach public proof before contact or money review.' : selectedListingState.contactCandidate ? 'Verify one contact, then reopen seller action.' : selectedListingState.enriched && !selectedListingState.builderMatched ? 'Match this owner to a buyer before pricing.' : getNextAction(selected))}</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
     <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
       <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
       <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
@@ -2564,7 +2585,7 @@ function renderParcels() {
       }).join('')}</div>
     </aside>
 
-    <article class="deal-detail" aria-label="Selected parcel detail">
+    <article class="deal-detail land-calm-operator-sheet phase208-calm-operator-sheet ${selectedMoneyReady ? 'is-money-ready' : 'is-money-parked'}" aria-label="Selected parcel calm operator sheet">
       <div class="detail-hero">
         <span class="eyebrow">Selected land listing · ${h(selectedListingState.label)}</span>
         <h2>${h(selected.address || selected.parcelId || 'Untitled parcel')}</h2>
@@ -2580,26 +2601,31 @@ function renderParcels() {
         <div class="${selectedListingState.offerReady ? 'complete' : 'todo'}"><span>Priority</span><b>${h(selectedListingState.label)}</b><p>${h(selectedListingState.detail)}</p></div>
       </div>
       ${selectedDallasProofPanel}
-      <div class="deal-strip five">
-        <div><span>Buyer price</span><b>${formatMoney(selected.offer.buyerPrice)}</b></div>
-        <div><span>Seller ask</span><b>${formatMoney(selected.metrics.askingPrice)}</b></div>
-        <div><span>Initial offer</span><b>${formatMoney(selected.offer.initialSellerOffer)}</b></div>
-        <div><span>Max offer</span><b>${formatMoney(selected.offer.maxSellerOffer)}</b></div>
-        <div><span>Spread</span><b>${formatMoney(selected.metrics.spread)}</b></div>
-      </div>
-      <div class="phase-one-detail-grid">
-        <article class="phase-detail-card"><span>Buy box completeness</span><b>${h(buyBox.percent)}%</b><p>${h(buyBox.missing.slice(0, 2).join(' · ') || 'Buyer criteria complete enough for seller matching.')}</p></article>
-        <article class="phase-detail-card"><span>Seller motivation</span><b>${h(motivation.score)} · ${h(motivation.temperature)}</b><p>${h(motivation.signals.slice(0, 3).join(' · ') || 'No strong motivation signal yet.')}</p></article>
-        <article class="phase-detail-card"><span>Contract gate</span><b>${h(contractGate.score)}%</b><p>${h(contractGate.blockers.slice(0, 2).join(' · ') || contractGate.label)}</p></article>
-      </div>
-      <div class="seller-net-script-card">
-        <span class="eyebrow">Seller net offer script</span>
-        <h3>${h(sellerNet.headline)}</h3>
-        <p>${h(sellerNet.netLine)}</p>
-        <p><strong>Ask:</strong> ${h(sellerNet.ask)}</p>
-        <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
-      </div>
-      ${renderOperatorChecklist(operatorChecklist)}
+      <section class="land-action-sheet phase208-action-before-money" aria-label="Selected parcel action sheet">
+        <div class="seller-net-script-card">
+          <span class="eyebrow">Seller action script</span>
+          <h3>${h(sellerNet.headline)}</h3>
+          <p>${h(sellerNet.netLine)}</p>
+          <p><strong>Ask:</strong> ${h(sellerNet.ask)}</p>
+          <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
+        </div>
+        ${renderOperatorChecklist(operatorChecklist)}
+      </section>
+      <details class="land-money-sheet phase208-money-last" ${selectedMoneyReady ? 'open' : ''} aria-label="Selected parcel money review">
+        <summary><span><em class="eyebrow">Money review</em><b>${h(selectedMoneyGateCopy)}</b></span><strong>${selectedMoneyReady ? 'Ready' : 'Parked'}</strong></summary>
+        <div class="deal-strip five">
+          <div><span>Buyer price</span><b>${formatMoney(selected.offer.buyerPrice)}</b></div>
+          <div><span>Seller ask</span><b>${formatMoney(selected.metrics.askingPrice)}</b></div>
+          <div><span>Initial offer</span><b>${formatMoney(selected.offer.initialSellerOffer)}</b></div>
+          <div><span>Max offer</span><b>${formatMoney(selected.offer.maxSellerOffer)}</b></div>
+          <div><span>Spread</span><b>${formatMoney(selected.metrics.spread)}</b></div>
+        </div>
+        <div class="phase-one-detail-grid">
+          <article class="phase-detail-card"><span>Buy box completeness</span><b>${h(buyBox.percent)}%</b><p>${h(buyBox.missing.slice(0, 2).join(' · ') || 'Buyer criteria complete enough for seller matching.')}</p></article>
+          <article class="phase-detail-card"><span>Seller motivation</span><b>${h(motivation.score)} · ${h(motivation.temperature)}</b><p>${h(motivation.signals.slice(0, 3).join(' · ') || 'No strong motivation signal yet.')}</p></article>
+          <article class="phase-detail-card"><span>Contract gate</span><b>${h(contractGate.score)}%</b><p>${h(contractGate.blockers.slice(0, 2).join(' · ') || contractGate.label)}</p></article>
+        </div>
+      </details>
       <section class="land-settings-sheet" aria-label="Buyer memo and feedback settings">
         ${renderBuyerSendMemoCard(buyerMemo)}
         ${renderBuyerFeedbackCapture(selected, buyer)}

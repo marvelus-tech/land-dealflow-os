@@ -2574,13 +2574,30 @@ function renderParcels() {
         const dallasAggregate = dallasProofRow ? dallasProofAggregateStatus(dallasProofRow) : null;
         const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark><mark class="dallas-proof-row-chip is-${h(dallasAggregate.tone)}">${h(dallasAggregate.label)}</mark>` : '';
         const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
-        const marketSignal = parcel.selectedMarketMatch ? 'selected lane' : 'other lane';
-        return `<button type="button" class="queue-item land-listing-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
-          <span>${String(index + 1).padStart(2, '0')}</span>
+        const queueReason = listingState.needsProof || listingState.rawFinding
+          ? 'Attach public proof'
+          : !listingState.enriched
+            ? 'Find verified contact'
+            : !listingState.builderMatched
+              ? 'Confirm buyer fit'
+              : listingState.offerReady ? 'Offer review ready' : 'Review seller action';
+        const queueMarketLabel = `${rowState(parcel) || 'state unknown'} · ${parcel.landMarketKey || 'market unknown'}`;
+        const queueStateScent = parcel.selectedMarketMatch ? 'In lane' : 'Adjacent';
+        const proofState = listingState.sourceBacked ? 'ready' : listingState.needsProof ? 'needed' : 'raw';
+        const contactState = listingState.enriched ? 'ready' : listingState.contactCandidate ? 'candidate' : 'needed';
+        const fitState = listingState.builderMatched ? 'ready' : 'needed';
+        return `<button type="button" class="queue-item land-listing-row phase209-scan-rail-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
+          <span class="land-row-index">${String(index + 1).padStart(2, '0')}</span>
           <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
-          <small>${h(rowState(parcel) || 'state unknown')} · ${h(parcel.landMarketKey || 'market unknown')} · ${h(Number(parcel.duplicateMergedCount || 0) > 0 ? `${parcel.duplicateMergedCount} duplicate merge${Number(parcel.duplicateMergedCount) === 1 ? '' : 's'}` : (parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail || 'contact not enriched'))} · ${h(marketSignal)}</small>
-          <em><strong>${h(listingState.label)}</strong><i>${h(listingState.confidence)} confidence · ${h(parcel.score)} score</i></em>
-          <div class="land-row-signals"><mark>${listingState.sourceBacked ? 'proof' : listingState.needsProof ? 'needs proof' : 'raw'}</mark><mark>${listingState.enriched ? 'verified contact' : listingState.contactCandidate ? 'contact candidate' : 'needs contact'}</mark><mark>${listingState.builderMatched ? 'builder fit' : 'fit unknown'}</mark>${dallasSprintChip}${badge(parcel.risk.status, tone)}</div>
+          <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
+          <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
+          <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
+            <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
+            <mark class="contact-${h(contactState)}">${contactState === 'ready' ? 'Contact' : contactState === 'candidate' ? 'Candidate' : 'Contact needed'}</mark>
+            <mark class="fit-${h(fitState)}">${fitState === 'ready' ? 'Buyer fit' : 'Fit needed'}</mark>
+            ${dallasSprintChip}
+            <mark class="risk-${h(tone)}">${h(parcel.risk.status)}</mark>
+          </div>
         </button>`;
       }).join('')}</div>
     </aside>

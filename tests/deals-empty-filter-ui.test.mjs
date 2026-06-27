@@ -77,6 +77,9 @@ assert.match(app, /phase208-selected-parcel-summary/, 'Phase 208 must promote se
 assert.match(app, /phase208-action-before-money/, 'Phase 208 must place operator action before money review.');
 assert.match(app, /phase208-money-last/, 'Phase 208 must move money into a late gated sheet.');
 assert.match(app, /Money stays parked until proof, contact, and buyer fit are clean\./, 'Phase 208 must park money until the operator gates are clean.');
+assert.match(app, /phase209-scan-rail-row/, 'Land parcel queue rows must declare the Phase 209 scan rail.');
+assert.match(app, /const queueReason = listingState\.needsProof \|\| listingState\.rawFinding/, 'Phase 209 queue must compute one visible reason per parcel.');
+assert.match(app, /phase209-proof-contact-fit/, 'Phase 209 queue must render a clean proof\/contact\/buyer-fit badge row.');
 
 assert.match(css, /v1\.65 - Phase 38 Deals calm empty state/, 'Phase 38 route-scoped CSS marker missing.');
 assert.match(css, /--phase38-deals-empty: compact-intentional-not-broken/, 'Deals route marker must document the intended state.');
@@ -121,6 +124,11 @@ assert.match(css, /--land-phase208-rule: selected-parcel-summary-proof-action-mo
 assert.match(css, /\.land-calm-operator-sheet\.phase208-calm-operator-sheet/, 'Phase 208 must style the selected parcel as a calm operator sheet.');
 assert.match(css, /\.land-money-sheet\.phase208-money-last:not\(\[open\]\) \.deal-strip/, 'Phase 208 must hide money metrics until the gated money sheet is opened.');
 assert.match(css, /--land-phase208b-correction: selected-parcel-right-rail-demoted-to-quiet-inspector/, 'Phase 208 self-review must demote the selected parcel right rail into a quiet inspector.');
+assert.match(css, /--land-phase209-rule: parcel-queue-addictive-scan-rail-one-reason-clean-gates/, 'Phase 209 must encode the parcel queue scan-rail hierarchy.');
+assert.match(css, /\.land-listing-row\.phase209-scan-rail-row[\s\S]{0,420}grid-template-areas/, 'Phase 209 queue rows must use a compact Apple-sidebar grid.');
+assert.match(css, /\.land-row-signals\.phase209-proof-contact-fit \.risk-good \{ display: none !important; \}/, 'Phase 209 queue must hide low-signal clean risk badges.');
+assert.match(css, /--land-phase209b-correction: scan-rail-badges-stack-no-horizontal-cram/, 'Phase 209 self-review must stop queue badges from squeezing horizontally.');
+assert.match(css, /--land-phase209c-correction: hide-repeated-review-risk-chip-in-queue/, 'Phase 209 self-review must hide repeated Review risk chip noise from the queue.');
 assert.match(css, /\.land-state-orientation\.phase207-state-gate-handoff/, 'Phase 207 must replace the duplicate top All-states state selector with an orientation handoff.');
 assert.match(css, /\.land-command-surface\.phase207-top-control-cohesion[\s\S]{0,260}min-height: 0 !important/, 'Phase 207 must remove irregular command-surface vertical padding/min-height.');
 assert.match(css, /\.land-state-decision-board\.phase203-land-state-gate[\s\S]{0,260}margin-top: var\(--land-rhythm-lg\)/, 'Phase 207 must regularize spacing between command surface and state ledger.');

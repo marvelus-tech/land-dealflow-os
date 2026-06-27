@@ -902,14 +902,14 @@ function renderLandControls() {
     : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
   const isAllStates = selectedLandStateFilter === 'all';
   const stateNote = isAllStates
-    ? `${parcels.length} retained records · pick one state to reveal market lanes and the parcel queue.`
-    : `${visibleCount} visible of ${parcels.length} retained records · ${selectedStateCopy} is the operating state · market lanes and parcels below now respond to this switcher.`;
-  const stateControl = `<div class="land-control-group state-switcher phase211-single-state-switcher" aria-label="Switch operating state"><span>State</span><div>${stateButtons}</div></div>`;
-  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
+    ? `${parcels.length} retained records · choose one state to open its market lanes and parcel queue.`
+    : `${visibleCount} visible · ${selectedStateCopy} controls the lanes and rows underneath.`;
+  const stateControl = `<div class="land-control-group state-switcher phase211-single-state-switcher phase213-state-rail" aria-label="Switch operating state"><span>State</span><div>${stateButtons}</div></div>`;
+  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
     <div class="land-command-copy">
       <span class="eyebrow">Land command</span>
-      <h3>Choose one state. Everything else follows.</h3>
-      <p>This is the only state selector. Market lanes, seller rows, proof rules, and the parcel inspector underneath all change from this switcher.</p>
+      <h3>Choose state.</h3>
+      <p>One rail owns the page. Lanes, queue, proof, and inspector follow.</p>
     </div>
     <div class="land-control-ledger">
       ${stateControl}
@@ -1009,11 +1009,23 @@ function renderDealsMarketCoverage() {
   return `<section class="deals-market-coverage land-market-lane-selector ${selectedLandStateFilter === 'all' ? 'is-state-required' : ''}" aria-label="Deals market lane selector">
     <div class="deals-market-head">
       <span class="eyebrow">Market lane</span>
-      <h3>${h(selectedLandStateFilter === 'all' ? 'Choose a state first.' : selected.key === 'all' ? 'Pick a lane inside the selected state.' : `${selected.marketLabel || selected.label}`)}</h3>
+      <h3>${h(selectedLandStateFilter === 'all' ? 'Choose state first.' : selected.key === 'all' ? 'Select lane.' : `${selected.marketLabel || selected.label}`)}</h3>
       <p>${h(selectedLandStateFilter === 'all' ? scopeCopy : selected.key === 'all' ? scopeCopy : `${selected.marketLabel || selected.label}: ${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
     </div>
     <div class="deals-market-grid" role="listbox" aria-label="Select Deals market">${marketButtons}</div>
   </section>`;
+}
+
+function renderLandSupportDrawer(agentIntakeGate = '', dallasProofSurface = '', landReconImportPath = '') {
+  const hasDallasProof = Boolean(dallasProofSurface);
+  return `<details class="land-support-drawer phase213-support-drawer" aria-label="Land support tools">
+    <summary><span><em class="eyebrow">Support tools</em><b>Proof rules, Dallas sprint, and packet import</b></span><strong>${hasDallasProof ? 'Lane proof ready' : 'Closed'}</strong></summary>
+    <div class="land-support-drawer-body">
+      ${agentIntakeGate}
+      ${dallasProofSurface}
+      ${landReconImportPath}
+    </div>
+  </details>`;
 }
 
 function renderDallasProofSprintSurface() {
@@ -2489,10 +2501,11 @@ function renderParcels() {
   const agentIntakeGate = renderLandAgentIntakeGate();
   const landReconImportPath = renderLandReconImportPath();
   const dallasProofSurface = renderDallasProofSprintSurface();
+  const landSupportDrawer = renderLandSupportDrawer(agentIntakeGate, dallasProofSurface, landReconImportPath);
 
   if (selectedLandStateFilter === 'all') {
     selectedParcelId = '';
-    target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}`;
+    target.innerHTML = `${landControls}${landSupportDrawer}`;
     return;
   }
 
@@ -2507,10 +2520,10 @@ function renderParcels() {
           <p class="deals-empty-why"><b>Why:</b> state and market switching now renders the queue first, then opens the heavier operator sheet only after a parcel click.</p>
           <p class="deals-empty-next">${h(visible.length)} records loaded · choose the next proof/contact/buyer-fit row.</p>
         </article>
-      </div>${agentIntakeGate}${dallasProofSurface}${landReconImportPath}`;
+      </div>${landSupportDrawer}`;
       return;
     }
-    target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
+    target.innerHTML = `${landControls}${landSupportDrawer}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
       <span class="eyebrow">No ready deals</span>
       <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
       <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'this market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness.' : 'no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
@@ -2669,7 +2682,7 @@ function renderParcels() {
       <div class="fit-stack">${fitRows.map(([label, title, detail]) => `<div class="fit-card"><span>${h(label)}</span><b>${h(title)}</b><p>${h(detail)}</p></div>`).join('')}</div>
       <div class="tags">${selected.reasons.map(r => badge(r, 'good')).join('')}${selected.flags.length ? selected.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
     </aside>
-  </div>${agentIntakeGate}${dallasProofSurface}${landReconImportPath}`;
+  </div>${landSupportDrawer}`;
 }
 
 function renderSourcePriorityBoard() {

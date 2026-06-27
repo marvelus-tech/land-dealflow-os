@@ -70,9 +70,14 @@ assert.doesNotMatch(css, /--land-phase20[0-9]/, 'Stale Land phase custom-propert
 assert.doesNotMatch(css, /\/\* v2\.0[0-9]/, 'Stale Land phase comment blocks must be removed from the final stylesheet.');
 assert.match(css, /\.land-command-surface\.phase202-land-state-first,[\s\S]{0,260}grid-template-columns:minmax\(280px,\.42fr\) minmax\(0,1fr\)/, 'Land controls must be one calm command surface, not layered historical overrides.');
 assert.match(app, /phase211-one-state-switcher/, 'Land command must expose one always-present state switcher.');
-assert.match(app, /This is the only state selector\./, 'Land copy must make the single state selector explicit.');
+assert.match(app, /One rail owns the page\./, 'Land copy must make the single state-selector ownership explicit.');
 assert.doesNotMatch(app, /renderLandStateDecisionBoard/, 'Land page must not render a second state-gate selector surface.');
 assert.match(css, /--land-phase211-state-selector: one-state-switcher-market-lanes-underneath/, 'Land CSS must encode the single-selector hierarchy rule.');
+assert.match(css, /--land-phase213-harmony: state-rail-lane-queue-support-disclosure/, 'Land page must encode the harmonized Apple state/lane/queue/support hierarchy.');
+assert.match(app, /phase213-harmonized-command/, 'Land command must use the harmonized command surface.');
+assert.match(app, /renderLandSupportDrawer\(agentIntakeGate, dallasProofSurface, landReconImportPath\)/, 'Proof rules and import tools must be demoted behind one quiet support drawer.');
+assert.match(css, /\.phase213-state-rail>div[\s\S]{0,140}grid-template-columns:repeat\(12,minmax\(0,1fr\)\)/, 'Desktop state rail must be compact, not a chunky card grid.');
+assert.match(css, /\.phase213-support-drawer:not\(\[open\]\) \.land-support-drawer-body \{ display:none !important; \}/, 'Support modules must be collapsed by default.');
 assert.match(css, /\.phase211-single-state-switcher>div[\s\S]{0,180}grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/, 'Single state switcher must be a readable ledger, not a pill soup.');
 assert.match(css, /@media \(max-width:560px\)[\s\S]*\.phase211-single-state-switcher>div \{ grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/, 'Mobile single state switcher must stay compact without becoming a one-column wall.');
 assert.match(css, /\.land-market-lane-selector:not\(\.is-state-required\)[\s\S]{0,260}display:block !important/, 'Selected-state market lanes must be a compact control.');

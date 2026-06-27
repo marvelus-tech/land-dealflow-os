@@ -29029,3 +29029,88 @@ body[data-active-view="deals"] #parcels .phase209-scan-rail-row.active .land-row
   body[data-active-view="deals"] #parcels .land-close-timeline li { grid-template-columns:30px minmax(0,1fr) !important; gap:8px 12px !important; }
   body[data-active-view="deals"] #parcels .land-close-timeline li p { grid-column:2/-1 !important; }
 }
+
+/* v2.14 - Per-item call/email/mail activity toggles for Builders and Land */
+:root {
+  --phase214-activity-done: #0b5a43;
+  --phase214-activity-open: rgba(16,18,20,.48);
+  --phase214-activity-line: rgba(11,90,67,.16);
+  --phase214-activity-fill: rgba(11,90,67,.065);
+}
+#app .contact-icon-toggle.contact-mail,
+#app .contact-state-toggle[data-toggle-validation-contact="mail"] {
+  color: var(--phase214-activity-open) !important;
+}
+#app .contact-icon-toggle.contact-mail.is-on,
+#app .contact-state-toggle[data-toggle-validation-contact="mail"].is-on {
+  color: var(--phase214-activity-done) !important;
+  border-color: rgba(11,90,67,.42) !important;
+  background: var(--phase214-activity-fill) !important;
+}
+body[data-active-view="deals"] #parcels .land-listing-row.phase209-scan-rail-row {
+  grid-template-areas:"idx title" "idx meta" "idx reason" "idx badges" "idx activity" !important;
+}
+body[data-active-view="deals"] #parcels .land-row-select {
+  display: contents !important;
+  appearance: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  color: inherit !important;
+  box-shadow: none !important;
+  text-align: inherit !important;
+}
+body[data-active-view="deals"] #parcels .land-activity-row {
+  grid-area: activity !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+  align-items: center !important;
+  margin-top: 2px !important;
+}
+body[data-active-view="deals"] #parcels button.land-activity-toggle,
+body[data-active-view="deals"] #parcels button.land-activity-toggle:hover,
+body[data-active-view="deals"] #parcels button.land-activity-toggle:focus {
+  appearance: none !important;
+  min-height: 24px !important;
+  height: 24px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  padding: 0 6px !important;
+  border: 1px solid var(--phase214-activity-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  color: var(--phase214-activity-open) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  font: 740 9px/1 var(--font-mono) !important;
+  letter-spacing: .05em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels button.land-activity-toggle.is-on,
+body[data-active-view="deals"] #parcels button.land-activity-toggle.is-on:hover,
+body[data-active-view="deals"] #parcels button.land-activity-toggle.is-on:focus {
+  color: var(--phase214-activity-done) !important;
+  border-color: rgba(11,90,67,.42) !important;
+  background: var(--phase214-activity-fill) !important;
+}
+body[data-active-view="deals"] #parcels button.land-activity-toggle .solid-industry-icon {
+  width: 11px !important;
+  height: 11px !important;
+  flex: 0 0 auto !important;
+}
+body[data-active-view="deals"] #parcels button.land-activity-toggle em {
+  display: inline !important;
+  color: currentColor !important;
+  font-style: normal !important;
+  font: inherit !important;
+}
+@media (max-width:560px) {
+  body[data-active-view="deals"] #parcels .land-activity-row { grid-template-columns: repeat(3, 1fr) !important; }
+  body[data-active-view="deals"] #parcels button.land-activity-toggle { padding: 0 4px !important; }
+  body[data-active-view="deals"] #parcels button.land-activity-toggle em { font-size: 8px !important; }
+}

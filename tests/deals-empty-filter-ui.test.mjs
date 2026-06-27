@@ -84,11 +84,15 @@ assert.match(css, /\.land-market-lane-selector:not\(\.is-state-required\)[\s\S]{
 assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:none !important; \}/, 'All-states should hide market lanes until the single state switcher picks a state.');
 assert.match(css, /\.deal-workbench,[\s\S]{0,180}\.phase206-selected-state-workbench[\s\S]{0,220}grid-template-columns:minmax\(350px,388px\) minmax\(0,1fr\) minmax\(210px,250px\)/, 'Selected-state workbench must keep the scan rail, operator sheet, and inspector proportions.');
 assert.match(css, /\.deals-primary-action[\s\S]{0,320}grid-column:1\/-1 !important/, 'Selected-state workbench should start with one full-width next-action instruction row.');
-assert.match(css, /\.land-listing-row\.phase209-scan-rail-row[\s\S]{0,420}grid-template-areas/, 'Queue rows must use a compact Apple-sidebar grid.');
+assert.match(css, /\.land-listing-row\.phase209-scan-rail-row[\s\S]{0,520}grid-template-areas/, 'Queue rows must use a compact Apple-sidebar grid.');
 assert.match(css, /\.land-row-signals\.phase209-proof-contact-fit :where\(\.risk-good,\.risk-neutral,\.risk-warn,\.dallas-proof-row-chip,\.dallas-sprint-chip\) \{ display:none !important; \}/, 'Queue must hide low-signal clean/repeated badges.');
 assert.match(css, /\.land-listing-row\.phase209-scan-rail-row\.active \.land-row-signals\.phase209-proof-contact-fit \.dallas-sprint-chip \{ display:inline-flex !important; \}/, 'Dallas sprint chip may appear only on the active queue row.');
 assert.match(css, /\.land-calm-operator-sheet\.phase208-calm-operator-sheet/, 'Selected parcel must still style as a calm operator sheet.');
 assert.match(app, /land-proof-action-gates phase212-progressive-detail/, 'Selected parcel detail must start with proof/action/contact/buyer/money gate summary.');
+assert.match(app, /const ACTIVITY_CHANNELS = \['phone', 'email', 'mail'\]/, 'Land rows must share call/email/mail activity channels.');
+assert.match(app, /data-toggle-\$\{h\(scope\)\}-activity/, 'Land rows must render per-item activity toggle controls.');
+assert.match(app, /setActivityChannel\('land', parcelKey, channel/, 'Land activity toggles must persist into browser-local workspace activity state.');
+assert.match(app, /class="land-row-select" data-select-parcel/, 'Land row selection must stay separate from activity buttons to avoid nested-button toggles.');
 assert.match(app, /renderBuyerSendMemoCard\(buyerMemo, \{ compact: true, open: false \}\)/, 'Buyer memo must be quiet disclosure by default in the selected sheet.');
 assert.match(app, /renderOperatorChecklist\(operatorChecklist, \{ compact: true, open: false \}\)/, 'Call-to-close timeline must be collapsed until needed.');
 assert.match(css, /--land-phase212-selected-detail: proof-action-contact-buyer-money-disclosure/, 'Selected detail CSS must encode the progressive-disclosure hierarchy.');

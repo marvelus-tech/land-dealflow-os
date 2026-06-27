@@ -97,6 +97,10 @@ assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-val
 assert.match(appSource, /class="contact-state-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'selected builder email state badge must be the toggle');
 assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="phone"/, 'queue phone state must be a compact icon toggle');
 assert.match(appSource, /class="contact-icon-toggle[\s\S]{0,260}data-toggle-validation-contact="email"/, 'queue email state must be a compact icon toggle');
+assert.match(appSource, /class="contact-icon-toggle contact-mail[\s\S]{0,260}data-toggle-validation-contact="mail"/, 'queue mail state must be a compact icon toggle');
+assert.match(appSource, /const ACTIVITY_CHANNELS = \['phone', 'email', 'mail'\]/, 'builder and land activity tracking must share call/email/mail channels');
+assert.match(appSource, /outreach\.mail\?\.contacted/, 'builder activity state must persist a mailed toggle independently from call/email');
+assert.match(appSource, /data-mail-state="\$\{outreach\.mail \? 'done' : 'todo'\}"/, 'builder queue rows must expose mail state for QA and operators');
 assert.match(appSource, /<svg class="outreach-svg"[\s\S]{0,220}<path fill="currentColor"/, 'outreach controls should use solid currentColor SVG icons, not text glyphs or bordered icon boxes');
 assert.doesNotMatch(appSource, /contact-action/, 'selected builder must not duplicate outreach state with separate logged buttons');
 assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'outreach controls should be compressed into state badges/icons');

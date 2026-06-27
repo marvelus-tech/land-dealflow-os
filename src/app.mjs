@@ -1840,27 +1840,83 @@ function todayIsoDate() {
   return new Date().toISOString().slice(0, 10);
 }
 
+const ACTIVITY_CHANNELS = ['phone', 'email', 'mail'];
+
+function channelDoneCopy(channel) {
+  if (channel === 'phone') return 'Called';
+  if (channel === 'mail') return 'Mail sent';
+  return 'Email sent';
+}
+
+function channelTodoCopy(channel) {
+  if (channel === 'phone') return 'Call open';
+  if (channel === 'mail') return 'Mail open';
+  return 'Email open';
+}
+
+function activityStore(scope = 'land') {
+  const activity = workspace.activity || {};
+  return activity[scope] || {};
+}
+
+function itemActivity(scope = 'land', itemId = '') {
+  return activityStore(scope)[itemId] || {};
+}
+
+function activityChannelState(scope = 'land', itemId = '', channel = 'phone') {
+  const entry = itemActivity(scope, itemId)[channel] || {};
+  return { done: Boolean(entry.done || entry.contacted), at: entry.at || '' };
+}
+
+function setActivityChannel(scope = 'land', itemId = '', channel = 'phone', done = false, at = '') {
+  const currentScope = activityStore(scope);
+  const currentItem = currentScope[itemId] || {};
+  workspace = {
+    ...workspace,
+    activity: {
+      ...(workspace.activity || {}),
+      [scope]: {
+        ...currentScope,
+        [itemId]: {
+          ...currentItem,
+          [channel]: { done, at: done ? at : '' },
+        },
+      },
+    },
+  };
+}
+
 function validationOutreach(row = {}) {
   const outreach = row.outreach || {};
   return {
     phone: Boolean(outreach.phone?.contacted || row.contactedByPhone),
     email: Boolean(outreach.email?.contacted || row.contactedByEmail),
+    mail: Boolean(outreach.mail?.contacted || row.contactedByMail),
     phoneAt: outreach.phone?.at || '',
     emailAt: outreach.email?.at || '',
+    mailAt: outreach.mail?.at || '',
   };
 }
 
 function validationOutreachLabel(row = {}) {
   const state = validationOutreach(row);
-  if (state.phone && state.email) return 'Contacted';
+  const count = [state.phone, state.email, state.mail].filter(Boolean).length;
+  if (count >= 2) return `${count}/3 touched`;
   if (state.phone) return 'Called';
   if (state.email) return 'Emailed';
+  if (state.mail) return 'Mailed';
   return 'Not contacted';
 }
 
 function outreachToggleLabel(channel, active, at = '') {
-  if (channel === 'phone') return active ? `Called${at ? ` ${at}` : ''}` : 'Not logged';
-  return active ? `Email sent${at ? ` ${at}` : ''}` : 'Not logged';
+  return active ? `${channelDoneCopy(channel)}${at ? ` ${at}` : ''}` : channelTodoCopy(channel);
+}
+
+function activityToggleButton({ scope = 'land', itemId = '', channel = 'phone', name = '', state = {}, className = 'activity-toggle' } = {}) {
+  const icon = channel === 'phone' ? 'phone' : channel === 'mail' ? 'mail' : 'email';
+  const active = Boolean(state.done || state.contacted);
+  const label = `${active ? channelDoneCopy(channel) : channelTodoCopy(channel)}: ${name || 'item'}`;
+  return `<button type="button" class="${h(className)} activity-${h(channel)} ${active ? 'is-on' : ''}" data-toggle-${h(scope)}-activity="${h(channel)}" data-activity-id="${h(itemId)}" aria-pressed="${active ? 'true' : 'false'}" aria-label="${h(label)}" title="${h(label)}"><span aria-hidden="true">${solidIndustryIcon(icon)}</span><em>${h(channel === 'phone' ? 'Call' : channel === 'mail' ? 'Mail' : 'Email')}</em></button>`;
 }
 
 function outreachIcon(channel) {
@@ -1874,6 +1930,7 @@ function solidIndustryIcon(kind) {
   const paths = {
     phone: '<path fill="currentColor" d="M6.42 2.75c.98-.3 2.02.22 2.4 1.17l1.1 2.75c.31.78.09 1.67-.55 2.2l-.86.72a12.85 12.85 0 0 0 5.9 5.9l.72-.86c.53-.64 1.42-.86 2.2-.55l2.75 1.1c.95.38 1.47 1.42 1.17 2.4l-.52 1.69A2.55 2.55 0 0 1 18.3 21H17C9.27 21 3 14.73 3 7V5.7c0-1.12.72-2.1 1.79-2.43l1.63-.52Z"/>',
     email: '<path fill="currentColor" d="M4.75 5h14.5A2.75 2.75 0 0 1 22 7.75v8.5A2.75 2.75 0 0 1 19.25 19H4.75A2.75 2.75 0 0 1 2 16.25v-8.5A2.75 2.75 0 0 1 4.75 5Zm.02 2.2 6.15 4.02c.66.43 1.5.43 2.16 0l6.15-4.02H4.77Z"/>',
+    mail: '<path fill="currentColor" d="M5 3.75h10.25A3.75 3.75 0 0 1 19 7.5V9h.75A2.25 2.25 0 0 1 22 11.25v6A2.75 2.75 0 0 1 19.25 20H4.75A2.75 2.75 0 0 1 2 17.25v-9.5A4 4 0 0 1 6 3.75H5Zm2.5 2.5A1.5 1.5 0 0 0 6 7.75v2.5h10.5V7.5a1.25 1.25 0 0 0-1.25-1.25H7.5Zm-3 6.5v4.5c0 .14.11.25.25.25h14.5c.14 0 .25-.11.25-.25v-5.75H4.5v1.25Zm3 1.25h5a1 1 0 1 1 0 2h-5a1 1 0 1 1 0-2Z"/>',
     score: '<path fill="currentColor" d="M12 2.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19Zm0 3.25a1.15 1.15 0 0 1 1.15 1.15v5.3a1.15 1.15 0 1 1-2.3 0V6.9A1.15 1.15 0 0 1 12 5.75Zm0 10.1a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7Z"/>',
     chevron: '<path fill="currentColor" d="M12 15.8c-.38 0-.74-.15-1.01-.42L5.8 10.2a1.43 1.43 0 0 1 2.02-2.02L12 12.36l4.18-4.18a1.43 1.43 0 0 1 2.02 2.02l-5.19 5.18c-.27.27-.63.42-1.01.42Z"/>',
     proof: '<path fill="currentColor" d="M6.75 2.75h7.4c.6 0 1.18.24 1.6.66l2.84 2.84c.42.42.66 1 .66 1.6v9.4A4.25 4.25 0 0 1 15 21.5H6.75a4.25 4.25 0 0 1-4.25-4.25V7a4.25 4.25 0 0 1 4.25-4.25Zm6.5 1.95v3.05c0 .55.45 1 1 1h3.05l-4.05-4.05ZM7 11.25a1 1 0 1 0 0 2h8.5a1 1 0 1 0 0-2H7Zm0 4a1 1 0 1 0 0 2h5.25a1 1 0 1 0 0-2H7Z"/>',
@@ -2068,16 +2125,18 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       active ? 'active' : '',
       outreach.email ? 'is-emailed' : 'needs-email',
       outreach.phone ? 'is-called' : 'needs-call',
+      outreach.mail ? 'is-mailed' : 'needs-mail',
       item.validation.sellerEligible ? 'is-done' : 'needs-buybox',
     ].filter(Boolean).join(' ');
-    return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}">
+    return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
       </button>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
         <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button>
-        <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Message not logged'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button>
+        <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Email open'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button>
+        <button type="button" class="contact-icon-toggle contact-mail ${outreach.mail ? 'is-on' : ''}" data-toggle-validation-contact="mail" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.mail ? 'true' : 'false'}" aria-label="${outreach.mail ? 'Mail sent' : 'Mail open'}: ${h(item.name)}" title="${outreach.mail ? `Mail sent ${h(outreach.mailAt || '')}` : 'Tap to mark mailed'}"><span aria-hidden="true">${solidIndustryIcon('mail')}</span></button>
         ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'needs buy box', tone)}
       </div>
     </article>`;
@@ -2130,6 +2189,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         <div class="selected-outreach-state" aria-label="Builder outreach state">
           <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}" title="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button>
           <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}" title="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button>
+          <button type="button" class="contact-state-toggle ${selectedOutreach.mail ? 'is-on' : ''}" data-toggle-validation-contact="mail" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.mail ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}" title="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}"><span aria-hidden="true">${solidIndustryIcon('mail')}</span></button>
         </div>
         <div class="validation-actions">
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
@@ -2475,19 +2535,32 @@ function renderLandQueue(visible = [], selected = null) {
       const proofState = listingState.sourceBacked ? 'ready' : listingState.needsProof ? 'needed' : 'raw';
       const contactState = listingState.enriched ? 'ready' : listingState.contactCandidate ? 'candidate' : 'needed';
       const fitState = listingState.builderMatched ? 'ready' : 'needed';
-      return `<button type="button" class="queue-item land-listing-row phase209-scan-rail-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
-        <span class="land-row-index">${String(index + 1).padStart(2, '0')}</span>
-        <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
-        <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
-        <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
-        <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
-          <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
-          <mark class="contact-${h(contactState)}">${contactState === 'ready' ? 'Contact' : contactState === 'candidate' ? 'Candidate' : 'Contact needed'}</mark>
-          <mark class="fit-${h(fitState)}">${fitState === 'ready' ? 'Buyer fit' : 'Fit needed'}</mark>
-          ${dallasSprintChip}
-          <mark class="risk-${h(tone)}">${h(parcel.risk.status)}</mark>
-        </div>
-      </button>`;
+      const landActivity = itemActivity('land', parcelKey);
+      const itemName = parcel.address || parcel.parcelId || 'land item';
+      const activityButtons = ACTIVITY_CHANNELS.map(channel => activityToggleButton({
+        scope: 'land',
+        itemId: parcelKey,
+        channel,
+        name: itemName,
+        state: landActivity[channel] || {},
+        className: 'land-activity-toggle',
+      })).join('');
+      return `<article class="queue-item land-listing-row phase209-scan-rail-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(listingState.detail)}" data-land-activity-row="${h(parcelKey)}">
+        <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" aria-label="Select ${h(itemName)}">
+          <span class="land-row-index">${String(index + 1).padStart(2, '0')}</span>
+          <b>${h(itemName)}</b>
+          <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
+          <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
+          <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
+            <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
+            <mark class="contact-${h(contactState)}">${contactState === 'ready' ? 'Contact' : contactState === 'candidate' ? 'Candidate' : 'Contact needed'}</mark>
+            <mark class="fit-${h(fitState)}">${fitState === 'ready' ? 'Buyer fit' : 'Fit needed'}</mark>
+            ${dallasSprintChip}
+            <mark class="risk-${h(tone)}">${h(parcel.risk.status)}</mark>
+          </div>
+        </button>
+        <div class="land-activity-row" aria-label="Activity tracking for ${h(itemName)}">${activityButtons}</div>
+      </article>`;
     }).join('')}</div>
   </aside>`;
 }
@@ -3379,6 +3452,21 @@ function bindEvents() {
       return;
     }
 
+
+    const landActivityButton = event.target.closest('[data-toggle-land-activity]');
+    if (landActivityButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      const parcelKey = landActivityButton.dataset.activityId || '';
+      const channel = landActivityButton.dataset.toggleLandActivity;
+      if (!parcelKey || !ACTIVITY_CHANNELS.includes(channel)) return;
+      const current = activityChannelState('land', parcelKey, channel);
+      setActivityChannel('land', parcelKey, channel, !current.done, todayIsoDate());
+      persistWorkspace();
+      renderParcels();
+      return;
+    }
+
     const parcelButton = event.target.closest('[data-select-parcel]');
     if (parcelButton) {
       selectedParcelId = parcelButton.dataset.selectParcel;
@@ -3422,7 +3510,7 @@ function bindEvents() {
       event.preventDefault();
       const builderId = validationContactButton.dataset.builderId || selectedValidationBuilderId;
       const channel = validationContactButton.dataset.toggleValidationContact;
-      if (!builderId || !['phone', 'email'].includes(channel)) return;
+      if (!builderId || !ACTIVITY_CHANNELS.includes(channel)) return;
       const current = asArray(workspace.buyerValidations).find(item => item.builderId === builderId) || {};
       const currentOutreach = current.outreach || {};
       const currentChannel = currentOutreach[channel] || {};
@@ -3972,6 +4060,21 @@ ${body}`;
       selectedLandSort = landSortButton.dataset.landSort || 'priority';
       selectedParcelId = '';
       renderParcels();
+    }
+
+
+    const lateLandActivityButton = event.target.closest('[data-toggle-land-activity]');
+    if (lateLandActivityButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      const parcelKey = lateLandActivityButton.dataset.activityId || '';
+      const channel = lateLandActivityButton.dataset.toggleLandActivity;
+      if (!parcelKey || !ACTIVITY_CHANNELS.includes(channel)) return;
+      const current = activityChannelState('land', parcelKey, channel);
+      setActivityChannel('land', parcelKey, channel, !current.done, todayIsoDate());
+      persistWorkspace();
+      renderParcels();
+      return;
     }
 
     if (event.target.matches('[data-select-parcel]')) {

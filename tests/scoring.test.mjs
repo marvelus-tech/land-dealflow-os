@@ -194,6 +194,9 @@ function testCrmUpdateAndWorkspaceExportImportRoundTrip() {
   const exported = exportWorkspace(updated);
   const restored = importWorkspace(exported);
   assert.deepEqual(restored.parcels[0], updated.parcels[0]);
+  const activityWorkspace = { ...updated, activity: { land: { p1: { phone: { done: true, at: '2026-06-27' }, email: { done: true, at: '2026-06-27' }, mail: { done: true, at: '2026-06-27' } } } } };
+  const activityRestored = importWorkspace(exportWorkspace(activityWorkspace));
+  assert.deepEqual(activityRestored.activity.land.p1.mail, { done: true, at: '2026-06-27' }, 'per-parcel mail activity must survive export/import localStorage hydration');
 }
 
 function testLehighTemplateIncludesContactsAndParsesBack() {

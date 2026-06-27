@@ -36,7 +36,16 @@ for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorches
 assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');
 assert.match(app, /Attach public proof before contact or money review\./, 'Land primary instruction must expose the proof-first operator action before money review.');
 assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
-assert.match(app, /return scoredParcels\(\)\.map\(parcel => \(\{/, 'Deals visible parcels must keep all source-backed records visible.');
+assert.match(app, /if \(cachedScoredParcels\) return cachedScoredParcels;/, 'Land performance must cache expensive scored parcel generation across render cycles.');
+assert.match(app, /if \(activeView === 'deals'\) \{[\s\S]{0,120}renderParcels\(\);[\s\S]{0,80}renderAppShell\(\);[\s\S]{0,40}return;/, 'Deals page load must render only the active Land panel instead of every hidden workspace panel.');
+assert.match(app, /if \(cachedDealsMarketEntries\?\.key === cacheKey\) return cachedDealsMarketEntries\.entries;/, 'Deals market lane entries must be cached per state/market selection.');
+assert.match(app, /if \(activeView !== 'deals'\) \{[\s\S]{0,120}renderBuilderListEnginePanel\(\)/, 'Land row selection must not rerender unrelated builder/closing panels on every parcel click.');
+assert.match(app, /const selected = selectedParcelId \? getSelectedParcel\(visible\) : null;/, 'Land state and market switching must not auto-open the heavy selected parcel sheet.');
+assert.match(app, /phase210-lightweight-selection/, 'Land performance pass must render a lightweight queue-first selection prompt before parcel detail.');
+assert.match(css, /--land-phase210-performance-rule: queue-first-state-market-switches-heavy-detail-only-after-parcel-click/, 'Land performance CSS marker must be present for queue-first state switching.');
+assert.match(css, /body\[data-active-view="deals"\] \.land-listing-row \{[\s\S]{0,80}contain: layout paint style;/, 'Land queue rows must isolate layout and paint work.');
+assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
+assert.match(app, /return scoredParcels\(\)\.map\(parcel => \{/, 'Deals visible parcels must keep all source-backed records visible while precomputing row state for performance.');
 assert.match(app, /selectedStateMatch: selectedLandStateFilter === 'all' \|\| rowState\(parcel\) === selectedLandStateFilter/, 'Land state focus must compute state match for IA scent.');
 assert.match(app, /if \(selectedLandStateFilter !== 'all' && !parcel\.selectedStateMatch\) return false;/, 'Land state selector must own the list instead of leaving a confusing all-state smorgasbord.');
 assert.match(app, /selectedMarket\?\.isDallasProofLane \? Boolean\(dallasProofRowForParcel\(parcel\)\)/, 'Dallas proof lane must filter listings to Dallas proof sprint rows only.');

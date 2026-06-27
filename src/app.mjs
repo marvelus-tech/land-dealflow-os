@@ -197,7 +197,18 @@ let selectedLandSort = 'priority';
 let lastBuilderSkipTraceImportStatus = '';
 let lastLandReconImportStatus = '';
 let openMachinePanel = '';
+let cachedScoredParcels = null;
+let cachedDealsMarketEntries = null;
+let cachedLandStateOptions = null;
+let cachedBuilderSwitchboardEntries = null;
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
+
+function invalidateLandPerformanceCaches() {
+  cachedScoredParcels = null;
+  cachedDealsMarketEntries = null;
+  cachedLandStateOptions = null;
+  cachedBuilderSwitchboardEntries = null;
+}
 
 function hashToView(hash = location.hash) {
   const view = String(hash || '#today').replace('#', '');
@@ -217,6 +228,7 @@ function loadWorkspace() {
 }
 
 function persistWorkspace() {
+  invalidateLandPerformanceCaches();
   localStorage.setItem(STORAGE_KEY, exportWorkspace(workspace));
 }
 
@@ -329,6 +341,7 @@ function navigateToView(view) {
   if (!validViews.has(view)) return;
   history.replaceState(null, '', `#${view}`);
   setActiveView(view, { scrollToTop: true });
+  renderAll();
 }
 
 function captureBuilderInteractionViewport() {
@@ -624,6 +637,7 @@ function sellerPoolForState(stateCode = selectedBuilderMarketState) {
 }
 
 function scoredParcels() {
+  if (cachedScoredParcels) return cachedScoredParcels;
   // Deals must show source-backed seller records even before a browser-local
   // import. Workspace rows come first so enriched/skip-traced local records
   // override the generated public-record candidates with the same parcel id.
@@ -632,7 +646,8 @@ function scoredParcels() {
     ...generatedCandidateParcels(),
     ...asArray(generatedLeads?.queues?.skipTrace),
   ], item => item.id || item.parcelId || item.address);
-  return parcelRows.map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
+  cachedScoredParcels = parcelRows.map(parcel => scoreParcelDeal(parcel, getBuyer(parcel))).sort((a, b) => b.score - a.score);
+  return cachedScoredParcels;
 }
 
 function parcelSelectionKey(parcel = {}) {
@@ -649,7 +664,10 @@ function parcelMatchesDealMarket(parcel = {}, market = null) {
   const text = dealMarketText(parcel);
   const key = String(market.key || '').toLowerCase();
   const labelSeed = String(market.label || market.marketLabel || '').split('/')[0].trim().toLowerCase();
-  return state === market.state || (key && text.includes(key)) || (labelSeed && text.includes(labelSeed));
+  const keyMatch = Boolean(key && text.includes(key));
+  const labelMatch = Boolean(labelSeed && text.includes(labelSeed));
+  const stateOnlyFallback = !keyMatch && !labelMatch && !key && !labelSeed && state === market.state;
+  return keyMatch || labelMatch || stateOnlyFallback;
 }
 
 function dallasVirtualMarketEntry() {
@@ -687,12 +705,14 @@ function getLandRowMarketKey(parcel = {}) {
 const landStateToggleOrder = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'PA', 'OH', 'ID', 'IN'];
 
 function getLandStateOptions() {
+  if (cachedLandStateOptions) return cachedLandStateOptions;
   const registryStates = builderMarketRegistry.map(market => market.state).filter(Boolean);
   const parcelStates = scoredParcels().map(rowState).filter(Boolean);
   const states = new Set([...landStateToggleOrder, ...registryStates, ...parcelStates].filter(Boolean));
   const orderedStates = landStateToggleOrder.filter(state => states.has(state));
   const remainderStates = [...states].filter(state => !landStateToggleOrder.includes(state)).sort((a, b) => a.localeCompare(b));
-  return ['all', ...orderedStates, ...remainderStates];
+  cachedLandStateOptions = ['all', ...orderedStates, ...remainderStates];
+  return cachedLandStateOptions;
 }
 
 function landConfidenceScore(parcel = {}) {
@@ -718,7 +738,7 @@ function landStageWeight(state = {}) {
 }
 
 function landSortValue(parcel = {}, mode = selectedLandSort) {
-  const state = parcelListingState(parcel);
+  const state = parcel._listingState || parcelListingState(parcel);
   const confidence = landConfidenceScore(parcel);
   if (mode === 'state') return `${rowState(parcel)} ${getLandRowMarketKey(parcel)} ${parcel.address || parcel.parcelId || ''}`;
   if (mode === 'market') return `${getLandRowMarketKey(parcel)} ${rowState(parcel)} ${parcel.address || parcel.parcelId || ''}`;
@@ -731,18 +751,24 @@ function getVisibleParcels() {
   const selectedMarket = getSelectedDealsMarket();
   // Phase 202: State is the primary IA decision. Market lanes are subordinate
   // filters; All states remains the only mode that shows the entire ledger.
-  return scoredParcels().map(parcel => ({
-    ...parcel,
-    selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, selectedMarket),
-    selectedStateMatch: selectedLandStateFilter === 'all' || rowState(parcel) === selectedLandStateFilter,
-    landMarketKey: getLandRowMarketKey(parcel),
-  })).filter(parcel => {
+  return scoredParcels().map(parcel => {
+    const landMarketKey = getLandRowMarketKey(parcel);
+    const listingState = parcelListingState(parcel);
+    const enrichedParcel = {
+      ...parcel,
+      selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, selectedMarket),
+      selectedStateMatch: selectedLandStateFilter === 'all' || rowState(parcel) === selectedLandStateFilter,
+      landMarketKey,
+      _listingState: listingState,
+    };
+    return { ...enrichedParcel, _landSortValue: landSortValue(enrichedParcel) };
+  }).filter(parcel => {
     if (selectedLandStateFilter !== 'all' && !parcel.selectedStateMatch) return false;
     if (selectedMarket && !parcel.selectedMarketMatch) return false;
     return true;
   }).sort((a, b) => {
-    const av = landSortValue(a);
-    const bv = landSortValue(b);
+    const av = a._landSortValue;
+    const bv = b._landSortValue;
     if (typeof av === 'string' || typeof bv === 'string') return String(av).localeCompare(String(bv));
     return av - bv;
   });
@@ -806,6 +832,8 @@ function parcelListingState(parcel = {}) {
 }
 
 function dealsMarketCoverageEntries() {
+  const cacheKey = `${selectedLandStateFilter}|${selectedDealsMarketKey}`;
+  if (cachedDealsMarketEntries?.key === cacheKey) return cachedDealsMarketEntries.entries;
   const allDeals = scoredParcels();
   const entries = builderMarketSwitchboardEntries().map(market => {
     const dealCount = allDeals.filter(parcel => parcelMatchesDealMarket(parcel, market)).length;
@@ -829,7 +857,7 @@ function dealsMarketCoverageEntries() {
   const otherEntries = stateScopedEntries.filter(market => !expansionStateCodes.has(market.stateCode || market.state));
   const stateDealCount = selectedLandStateFilter === 'all' ? allDeals.length : allDeals.filter(parcel => rowState(parcel) === selectedLandStateFilter).length;
   const stateLabel = 'All';
-  return [{
+  const aggregateEntry = {
     key: 'all',
     stateCode: selectedLandStateFilter === 'all' ? 'ALL' : selectedLandStateFilter,
     label: stateLabel,
@@ -840,7 +868,10 @@ function dealsMarketCoverageEntries() {
     dealStatusCopy: `${stateDealCount} seller records`,
     sourceState: 'all',
     isDealsActive: selectedDealsMarketKey === 'all',
-  }, ...expansionEntries, ...otherEntries];
+  };
+  const result = [aggregateEntry, ...expansionEntries, ...otherEntries];
+  cachedDealsMarketEntries = { key: cacheKey, entries: result };
+  return result;
 }
 
 function renderLandControls() {
@@ -1644,6 +1675,7 @@ function marketSummaryForRows(rows = [], minimumUniqueBuilders = 20) {
 }
 
 function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandscape()) {
+  if (cachedBuilderSwitchboardEntries) return cachedBuilderSwitchboardEntries;
   const loaded = getLoadedBuilderMarkets();
   const liveByKey = new Map(Object.values(loaded).map(market => [loadedBuilderMarketKey(market), market]));
   const expansionStateCodes = new Set(['GA', 'SC']);
@@ -1651,7 +1683,7 @@ function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandsc
     ...builderMarketRegistry.filter(registry => expansionStateCodes.has(registry.state)),
     ...builderMarketRegistry.filter(registry => !expansionStateCodes.has(registry.state)),
   ];
-  return orderedRegistry.map(registry => {
+  cachedBuilderSwitchboardEntries = orderedRegistry.map(registry => {
     const live = liveByKey.get(registry.key) || {};
     const rows = rowsForBuilderMarketKey(registry.key);
     const stateMeta = asArray(permitLandscape.states).find(item => item.id === String(registry.state || '').toLowerCase()) || {};
@@ -1681,6 +1713,7 @@ function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandsc
       statusCopy: rows.length >= minimumUniqueBuilders ? `${rows.length} live builders` : rows.length > 0 ? `${rows.length}/${minimumUniqueBuilders} builders · needs more work` : '0 builders · needs source work',
     };
   });
+  return cachedBuilderSwitchboardEntries;
 }
 
 
@@ -2453,9 +2486,51 @@ function renderLandStateDecisionBoard() {
   </section>`;
 }
 
+function renderLandQueue(visible = [], selected = null) {
+  const selectedKey = selected ? parcelSelectionKey(selected) : '';
+  return `<aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
+    <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
+    <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
+    <div class="queue-list">${visible.map((parcel, index) => {
+      const parcelKey = parcelSelectionKey(parcel);
+      const isActive = parcelKey === selectedKey;
+      const listingState = parcel._listingState || parcelListingState(parcel);
+      const dallasProofRow = dallasProofRowForParcel(parcel);
+      const dallasAggregate = dallasProofRow ? dallasProofAggregateStatus(dallasProofRow) : null;
+      const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark><mark class="dallas-proof-row-chip is-${h(dallasAggregate.tone)}">${h(dallasAggregate.label)}</mark>` : '';
+      const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
+      const queueReason = listingState.needsProof || listingState.rawFinding
+        ? 'Attach public proof'
+        : !listingState.enriched
+          ? 'Find verified contact'
+          : !listingState.builderMatched
+            ? 'Confirm buyer fit'
+            : listingState.offerReady ? 'Offer review ready' : 'Review seller action';
+      const queueMarketLabel = `${rowState(parcel) || 'state unknown'} · ${parcel.landMarketKey || 'market unknown'}`;
+      const queueStateScent = parcel.selectedMarketMatch ? 'In lane' : 'Adjacent';
+      const proofState = listingState.sourceBacked ? 'ready' : listingState.needsProof ? 'needed' : 'raw';
+      const contactState = listingState.enriched ? 'ready' : listingState.contactCandidate ? 'candidate' : 'needed';
+      const fitState = listingState.builderMatched ? 'ready' : 'needed';
+      return `<button type="button" class="queue-item land-listing-row phase209-scan-rail-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
+        <span class="land-row-index">${String(index + 1).padStart(2, '0')}</span>
+        <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
+        <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
+        <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
+        <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
+          <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
+          <mark class="contact-${h(contactState)}">${contactState === 'ready' ? 'Contact' : contactState === 'candidate' ? 'Candidate' : 'Contact needed'}</mark>
+          <mark class="fit-${h(fitState)}">${fitState === 'ready' ? 'Buyer fit' : 'Fit needed'}</mark>
+          ${dallasSprintChip}
+          <mark class="risk-${h(tone)}">${h(parcel.risk.status)}</mark>
+        </div>
+      </button>`;
+    }).join('')}</div>
+  </aside>`;
+}
+
 function renderParcels() {
   const visible = getVisibleParcels();
-  const selected = getSelectedParcel(visible);
+  const selected = selectedParcelId ? getSelectedParcel(visible) : null;
   const target = document.querySelector('#parcels');
   if (!target) return;
   const landControls = renderLandControls();
@@ -2471,6 +2546,18 @@ function renderParcels() {
 
   if (!selected) {
     const selectedMarket = getSelectedDealsMarket();
+    if (visible.length) {
+      target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}<div class="deal-workbench phase206-selected-state-workbench phase210-lightweight-selection">
+        ${renderLandQueue(visible, null)}
+        <article class="deals-empty-state phase38-deals-empty phase210-select-parcel-prompt" aria-label="Select parcel prompt">
+          <span class="eyebrow">${h(selectedLandStateFilter)} scan rail</span>
+          <h3>Select one parcel when you are ready to inspect it.</h3>
+          <p class="deals-empty-why"><b>Why:</b> state and market switching now renders the queue first, then opens the heavier operator sheet only after a parcel click.</p>
+          <p class="deals-empty-next">${h(visible.length)} records loaded · choose the next proof/contact/buyer-fit row.</p>
+        </article>
+      </div>`;
+      return;
+    }
     target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
       <span class="eyebrow">No ready deals</span>
       <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
@@ -2563,44 +2650,7 @@ function renderParcels() {
 
   target.innerHTML = `${landControls}${stateWorkbenchBrief}<div class="deal-workbench phase206-selected-state-workbench">
     <div class="primary-action-strip deals-primary-action phase208-operator-action"><span>Next action</span><b>${h(selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach public proof before contact or money review.' : selectedListingState.contactCandidate ? 'Verify one contact, then reopen seller action.' : selectedListingState.enriched && !selectedListingState.builderMatched ? 'Match this owner to a buyer before pricing.' : getNextAction(selected))}</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
-    <aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
-      <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
-      <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
-      <div class="queue-list">${visible.map((parcel, index) => {
-        const parcelKey = parcelSelectionKey(parcel);
-        const isActive = parcelKey === parcelSelectionKey(selected);
-        const listingState = parcelListingState(parcel);
-        const dallasProofRow = dallasProofRowForParcel(parcel);
-        const dallasAggregate = dallasProofRow ? dallasProofAggregateStatus(dallasProofRow) : null;
-        const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark><mark class="dallas-proof-row-chip is-${h(dallasAggregate.tone)}">${h(dallasAggregate.label)}</mark>` : '';
-        const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
-        const queueReason = listingState.needsProof || listingState.rawFinding
-          ? 'Attach public proof'
-          : !listingState.enriched
-            ? 'Find verified contact'
-            : !listingState.builderMatched
-              ? 'Confirm buyer fit'
-              : listingState.offerReady ? 'Offer review ready' : 'Review seller action';
-        const queueMarketLabel = `${rowState(parcel) || 'state unknown'} · ${parcel.landMarketKey || 'market unknown'}`;
-        const queueStateScent = parcel.selectedMarketMatch ? 'In lane' : 'Adjacent';
-        const proofState = listingState.sourceBacked ? 'ready' : listingState.needsProof ? 'needed' : 'raw';
-        const contactState = listingState.enriched ? 'ready' : listingState.contactCandidate ? 'candidate' : 'needed';
-        const fitState = listingState.builderMatched ? 'ready' : 'needed';
-        return `<button type="button" class="queue-item land-listing-row phase209-scan-rail-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" data-select-parcel="${h(parcelKey)}" title="${h(listingState.detail)}">
-          <span class="land-row-index">${String(index + 1).padStart(2, '0')}</span>
-          <b>${h(parcel.address || parcel.parcelId || 'Untitled parcel')}</b>
-          <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
-          <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
-          <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
-            <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
-            <mark class="contact-${h(contactState)}">${contactState === 'ready' ? 'Contact' : contactState === 'candidate' ? 'Candidate' : 'Contact needed'}</mark>
-            <mark class="fit-${h(fitState)}">${fitState === 'ready' ? 'Buyer fit' : 'Fit needed'}</mark>
-            ${dallasSprintChip}
-            <mark class="risk-${h(tone)}">${h(parcel.risk.status)}</mark>
-          </div>
-        </button>`;
-      }).join('')}</div>
-    </aside>
+    ${renderLandQueue(visible, selected)}
 
     <article class="deal-detail land-calm-operator-sheet phase208-calm-operator-sheet ${selectedMoneyReady ? 'is-money-ready' : 'is-money-parked'}" aria-label="Selected parcel calm operator sheet">
       <div class="detail-hero">
@@ -3052,6 +3102,7 @@ async function loadGeneratedLeads() {
     const response = await fetch('data/generated/latest.json', { cache: 'no-store' });
     if (!response.ok) throw new Error(`lead engine ${response.status}`);
     generatedLeads = await response.json();
+    invalidateLandPerformanceCaches();
   } catch (error) {
     generatedLeads = { error: error.message };
   }
@@ -3062,6 +3113,7 @@ async function loadDallasProofSprint() {
     const response = await fetch('data/real/dallas-buyer-752xx/phase45_top12_proof_sprint.json', { cache: 'no-store' });
     if (!response.ok) throw new Error(`dallas proof sprint ${response.status}`);
     dallasProofSprint = await response.json();
+    cachedDealsMarketEntries = null;
   } catch (error) {
     dallasProofSprint = { error: error.message, rows: [] };
   }
@@ -3093,6 +3145,8 @@ async function loadBuilderMarketData() {
     }
   }));
   builderMarketData = { loaded: true, error: '', markets: Object.fromEntries(entries) };
+  cachedBuilderSwitchboardEntries = null;
+  cachedDealsMarketEntries = null;
 }
 
 async function loadWeeklyMarketScout() {
@@ -3366,8 +3420,10 @@ function bindEvents() {
     if (parcelButton) {
       selectedParcelId = parcelButton.dataset.selectParcel;
       renderParcels();
-      renderClosingDeskPanel();
-      renderBuilderListEnginePanel();
+      if (activeView !== 'deals') {
+        renderClosingDeskPanel();
+        renderBuilderListEnginePanel();
+      }
       return;
     }
 
@@ -3936,7 +3992,6 @@ ${body}`;
       selectedDealsMarketKey = dealsMarketButton.dataset.dealsMarketKey || 'all';
       selectedParcelId = '';
       renderParcels();
-      renderTopCallList();
     }
 
     const landStateButton = event.target.closest('[data-land-state]');
@@ -3947,7 +4002,6 @@ ${body}`;
       if (activeMarket && selectedLandStateFilter !== 'all' && (activeMarket.stateCode || activeMarket.state) !== selectedLandStateFilter) selectedDealsMarketKey = 'all';
       selectedParcelId = '';
       renderParcels();
-      renderClosingDeskPanel();
     }
 
     const landSortButton = event.target.closest('[data-land-sort]');
@@ -3955,7 +4009,6 @@ ${body}`;
       selectedLandSort = landSortButton.dataset.landSort || 'priority';
       selectedParcelId = '';
       renderParcels();
-      renderClosingDeskPanel();
     }
 
     if (event.target.matches('[data-select-parcel]')) {
@@ -3978,7 +4031,6 @@ ${body}`;
       selectedDealsMarketKey = dealsMarketButton.dataset.dealsMarketKey || 'all';
       selectedParcelId = '';
       renderParcels();
-      renderTopCallList();
       return;
     }
 
@@ -3994,7 +4046,6 @@ ${body}`;
       if (landKeyboardButton.dataset.landSort) selectedLandSort = landKeyboardButton.dataset.landSort || 'priority';
       selectedParcelId = '';
       renderParcels();
-      renderClosingDeskPanel();
       return;
     }
 
@@ -4050,6 +4101,12 @@ function renderFilters() {
 }
 
 function renderAll() {
+  if (activeView === 'deals') {
+    renderFilters();
+    renderParcels();
+    renderAppShell();
+    return;
+  }
   renderCommandCenter();
   renderWorkspaceTools();
   renderSkipTraceIntakePanel();

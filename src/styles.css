@@ -32866,3 +32866,34 @@ body[data-active-view="deals"] #parcels .land-row-signals.phase209-proof-contact
 body[data-active-view="deals"] #parcels .land-row-signals.phase209-proof-contact-fit .risk-bad {
   display: inline-flex !important;
 }
+
+/* v2.10 - Land performance: queue-first state switching */
+body[data-active-view="deals"] #parcels {
+  --land-phase210-performance-rule: queue-first-state-market-switches-heavy-detail-only-after-parcel-click;
+}
+
+body[data-active-view="deals"] .phase210-lightweight-selection {
+  align-items: start;
+}
+
+body[data-active-view="deals"] .phase210-select-parcel-prompt {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-style: dashed;
+  background: linear-gradient(180deg, rgba(251, 251, 248, 0.98), rgba(244, 239, 229, 0.64));
+}
+
+body[data-active-view="deals"] .phase210-select-parcel-prompt .deals-empty-next {
+  align-self: flex-start;
+}
+
+/* v2.10b - Land performance: isolate expensive queue row paint/layout */
+body[data-active-view="deals"] .land-listing-row {
+  contain: layout paint style;
+}
+
+body[data-active-view="deals"] .deal-detail.land-calm-operator-sheet {
+  contain: layout paint style;
+}

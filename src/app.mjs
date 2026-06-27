@@ -885,11 +885,54 @@ function dealsMarketCoverageEntries() {
 function renderLandControls() {
   const stateOptions = getLandStateOptions();
   const parcels = scoredParcels();
-  const stateButtons = stateOptions.map(state => {
-    const count = state === 'all' ? parcels.length : parcels.filter(parcel => rowState(parcel) === state).length;
+  const marketEntries = builderMarketSwitchboardEntries();
+  const activeMarket = getSelectedDealsMarket();
+  const stateSummaries = stateOptions.map(state => {
     const label = state === 'all' ? 'All' : state;
-    return `<button type="button" class="land-state-filter ${selectedLandStateFilter === state ? 'active' : ''}" data-land-state="${h(state)}" aria-pressed="${selectedLandStateFilter === state ? 'true' : 'false'}"><span>${h(label)}</span><b>${h(count)}</b></button>`;
-  }).join('');
+    const isAll = state === 'all';
+    const markets = isAll ? marketEntries : marketEntries.filter(market => (market.stateCode || market.state) === state);
+    const stateParcels = isAll ? parcels : parcels.filter(parcel => rowState(parcel) === state);
+    const listingStates = stateParcels.map(parcelListingState);
+    const sourceBacked = listingStates.filter(row => row.sourceBacked).length;
+    const enriched = listingStates.filter(row => row.enriched).length;
+    const offerReady = listingStates.filter(row => row.offerReady).length;
+    const builderCount = markets.reduce((sum, market) => sum + Number(market.builderCount || 0), 0);
+    const liveMarketCount = markets.filter(market => market.isLive || Number(market.builderCount || 0) > 0).length;
+    const thinMarketCount = markets.filter(market => market.isThin || market.status === 'thin').length;
+    const thesis = isAll
+      ? { label: 'All states', thesis: 'State decision required', detail: 'Choose one state before lanes or seller rows get visual weight', note: 'All records remain retained; action starts after a state is explicit.' }
+      : (builderStateTheses[state] || { label: state, thesis: `${state} source lane`, detail: `${state} state lane`, note: 'State-level market lane.' });
+    const status = offerReady ? 'live' : sourceBacked || liveMarketCount ? 'thin' : thinMarketCount ? 'thin' : 'needs-work';
+    const statusCopy = offerReady ? `${offerReady} offer-ready` : sourceBacked ? `${sourceBacked} source-backed` : `${stateParcels.length} retained records`;
+    return {
+      ...thesis,
+      state,
+      stateCode: isAll ? 'ALL' : state,
+      isAll,
+      markets,
+      countyCount: markets.length,
+      builderCount,
+      dealCount: stateParcels.length,
+      sourceBacked,
+      enriched,
+      offerReady,
+      liveMarketCount,
+      status,
+      statusCopy,
+      isActive: selectedLandStateFilter === state,
+    };
+  });
+  const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
+  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle land-state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-land-state="${h(state.state)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
+    <span class="state-market-code">${h(state.stateCode)}</span>
+    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.label)}</span><span class="state-market-thesis">${h(state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'market lane' : 'market lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
+    <em><b>${h(state.dealCount)}</b><span>records</span></em>
+  </div>`).join('');
+  const visibleCount = parcels.filter(parcel => {
+    if (selectedLandStateFilter !== 'all' && rowState(parcel) !== selectedLandStateFilter) return false;
+    if (!activeMarket) return true;
+    return activeMarket.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, activeMarket);
+  }).length;
   const sortOptions = [
     ['priority', 'Priority'],
     ['state', 'State'],
@@ -898,32 +941,43 @@ function renderLandControls() {
     ['builder-fit', 'Builder fit'],
   ];
   const sortButtons = sortOptions.map(([value, label]) => `<button type="button" class="land-sort-option ${selectedLandSort === value ? 'active' : ''}" data-land-sort="${h(value)}" aria-pressed="${selectedLandSort === value ? 'true' : 'false'}">${h(label)}</button>`).join('');
-  const selectedStateCopy = selectedLandStateFilter === 'all' ? 'all states' : selectedLandStateFilter;
-  const activeMarket = getSelectedDealsMarket();
-  const visibleCount = parcels.filter(parcel => {
-    if (selectedLandStateFilter !== 'all' && rowState(parcel) !== selectedLandStateFilter) return false;
-    if (!activeMarket) return true;
-    return activeMarket.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, activeMarket);
-  }).length;
   const sortControl = selectedLandStateFilter === 'all'
     ? ''
-    : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
-  const isAllStates = selectedLandStateFilter === 'all';
-  const stateNote = isAllStates
-    ? `${parcels.length} retained records. Pick a state to reveal lanes and parcels.`
-    : `${visibleCount} visible in ${selectedStateCopy}. Lane, sort, queue follow this rail.`;
-  const stateControl = `<div class="land-control-group state-switcher phase211-single-state-switcher phase213-state-rail" aria-label="Switch operating state"><span>State</span><div>${stateButtons}</div></div>`;
-  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command phase215-award-command ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
-    <div class="land-command-copy">
-      <span class="eyebrow">Land command</span>
-      <h3>State → lane → parcel.</h3>
-      <p>One decision at a time. No duplicate controls.</p>
+    : `<div class="land-control-group sort land-refined-sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
+  const stateNote = selectedLandStateFilter === 'all'
+    ? `${parcels.length} retained records. Pick a state to reveal market lanes and parcels.`
+    : `${visibleCount} visible in ${selectedLandStateFilter}. Market lane, sort, and queue follow this state.`;
+  const marketSummary = `<div class="active-market-summary state-focus-summary land-state-focus-summary">
+    <span>Selected land state</span>
+    <strong>${h(activeState.label)}</strong>
+    <p><b>${h(activeState.detail)}.</b> ${h(activeState.note)}</p>
+    <ul>
+      <li title="Retained seller/source records in this state."><b>${h(activeState.dealCount)}</b><span>records</span></li>
+      <li title="Visible market lanes under this state decision."><b>${h(activeState.countyCount || 0)}</b><span>lanes</span></li>
+      <li title="Source-backed rows safe for next evidence work."><b>${h(activeState.sourceBacked || 0)}</b><span>proofed</span></li>
+      <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(activeState.offerReady || 0)}</b><span>offer-ready</span></li>
+    </ul>
+    ${renderDealsMarketCoverage()}
+    ${sortControl}
+    <p class="land-control-note">${h(stateNote)}</p>
+  </div>`;
+  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command phase215-award-command phase218-builder-style-workbench builders-phase83-workbench ${selectedLandStateFilter === 'all' ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
+    <div class="builder-ops-title land-command-copy">
+      <span class="eyebrow">Land · state workbench</span>
+      <h3>Choose state.</h3>
+      <p><b>State first.</b> State → lane → parcel. Market lanes stay as evidence; owner motion starts only after proof, contact, and buyer fit are clear.</p>
+      <div class="primary-action-strip builders-primary-action land-primary-action"><b>Work clean parcel.</b><a href="#parcels">Open queue ${productIcon('arrow')}</a></div>
     </div>
-    <div class="land-control-ledger">
-      ${stateControl}
-      ${renderDealsMarketCoverage()}
-      ${sortControl}
-      <p class="land-control-note">${h(stateNote)}</p>
+    <div class="state-first-workbench state-data-workbench land-state-data-workbench" aria-label="Choose land operating state and read selected-state data">
+      <div class="state-workbench-kicker">
+        <span>Operating state</span>
+        <strong>${h(activeState.label)}</strong>
+        <em>${h(activeState.dealCount)} records · ${h(activeState.countyCount || 0)} market lanes</em>
+      </div>
+      <div class="state-workbench-layout">
+        <div class="state-market-grid land-state-market-grid" data-land-state-selector>${stateSwitcher}</div>
+        ${marketSummary}
+      </div>
     </div>
   </section>`;
 }

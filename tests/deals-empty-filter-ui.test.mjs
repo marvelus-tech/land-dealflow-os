@@ -84,6 +84,10 @@ assert.match(css, /\.land-market-lane-selector:not\(\.is-state-required\)[\s\S]{
 assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:none !important; \}/, 'All-states should hide market lanes until the single state switcher picks a state.');
 assert.match(css, /--land-phase216-self-review: command-demoted-workbench-raised-row-noise-reduced/, 'Land page must encode the second-pass Apple self-review corrections.');
 assert.match(css, /--land-phase217-selected-polish: compact-state-brief-no-duplicate-action-rail/, 'Selected parcel view must encode the compact selected-state polish pass.');
+assert.match(css, /--land-phase218-workbench: builder-style-state-ledger/, 'Land top workbench must encode the Builders-style state-ledger hero rule.');
+assert.match(app, /phase218-builder-style-workbench builders-phase83-workbench/, 'Land hero must reuse the Builders-style workbench hierarchy class.');
+assert.ok(css.includes('phase218-builder-style-workbench.phase213-harmonized-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid'), 'Selected-state Land market lanes must have a high-specificity phase218 selector.');
+assert.match(css, /phase218-builder-style-workbench\.phase215-award-command[\s\S]{0,260}grid-template-columns: 1fr !important/, 'Selected-state Land market lanes must stay readable instead of collapsing into six clipped mini-columns.');
 assert.match(css, /\.deal-workbench:not\(\.phase210-lightweight-selection\) > \.deal-action[\s\S]{0,80}display: none !important/, 'Selected parcel view must remove the duplicate lower action rail.');
 assert.match(css, /\.phase215-queue-rail[\s\S]{0,260}border-right: 1px solid var\(--land-award-line\)/, 'Land queue must be a quiet rail, not a boxed panel.');
 assert.match(css, /\.deals-primary-action[\s\S]{0,320}grid-column:1\/-1 !important/, 'Selected-state workbench should start with one full-width next-action instruction row.');

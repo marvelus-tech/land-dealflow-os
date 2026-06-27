@@ -69,9 +69,14 @@ assert.match(css, /--land-brand-gold: #a97622/, 'Land palette must reserve gold 
 assert.doesNotMatch(css, /--land-phase20[0-9]/, 'Stale Land phase custom-property markers must be removed from the final stylesheet.');
 assert.doesNotMatch(css, /\/\* v2\.0[0-9]/, 'Stale Land phase comment blocks must be removed from the final stylesheet.');
 assert.match(css, /\.land-command-surface\.phase202-land-state-first,[\s\S]{0,260}grid-template-columns:minmax\(280px,\.42fr\) minmax\(0,1fr\)/, 'Land controls must be one calm command surface, not layered historical overrides.');
-assert.match(css, /\.land-state-decision-board\.phase203-land-state-gate[\s\S]{0,260}grid-template-columns:minmax\(250px,\.34fr\) minmax\(0,1fr\)/, 'State gate must read as an open decision ledger.');
+assert.match(app, /phase211-one-state-switcher/, 'Land command must expose one always-present state switcher.');
+assert.match(app, /This is the only state selector\./, 'Land copy must make the single state selector explicit.');
+assert.doesNotMatch(app, /renderLandStateDecisionBoard/, 'Land page must not render a second state-gate selector surface.');
+assert.match(css, /--land-phase211-state-selector: one-state-switcher-market-lanes-underneath/, 'Land CSS must encode the single-selector hierarchy rule.');
+assert.match(css, /\.phase211-single-state-switcher>div[\s\S]{0,180}grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/, 'Single state switcher must be a readable ledger, not a pill soup.');
+assert.match(css, /@media \(max-width:560px\)[\s\S]*\.phase211-single-state-switcher>div \{ grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/, 'Mobile single state switcher must stay compact without becoming a one-column wall.');
 assert.match(css, /\.land-market-lane-selector:not\(\.is-state-required\)[\s\S]{0,260}display:block !important/, 'Selected-state market lanes must be a compact control.');
-assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:none !important; \}/, 'All-states should remove the duplicate market-lane prompt and let the state decision ledger carry the job.');
+assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:none !important; \}/, 'All-states should hide market lanes until the single state switcher picks a state.');
 assert.match(css, /\.deal-workbench,[\s\S]{0,180}\.phase206-selected-state-workbench[\s\S]{0,220}grid-template-columns:minmax\(350px,388px\) minmax\(0,1fr\) minmax\(210px,250px\)/, 'Selected-state workbench must keep the scan rail, operator sheet, and inspector proportions.');
 assert.match(css, /\.deals-primary-action[\s\S]{0,320}grid-column:1\/-1 !important/, 'Selected-state workbench should start with one full-width next-action instruction row.');
 assert.match(css, /\.land-listing-row\.phase209-scan-rail-row[\s\S]{0,420}grid-template-areas/, 'Queue rows must use a compact Apple-sidebar grid.');

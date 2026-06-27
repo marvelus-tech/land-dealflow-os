@@ -28770,6 +28770,21 @@ body[data-active-view="deals"] #parcels .land-recon-import-actions { display:fle
 body[data-active-view="deals"] #parcels #import-land-recon-packet { min-height:36px !important; border:0 !important; border-radius:0 !important; background:var(--land-brand-primary) !important; color:#fff !important; box-shadow:none !important; padding:0 16px !important; }
 body[data-active-view="deals"] #parcels #land-recon-import-status { color:var(--land-muted) !important; font-size:12px !important; }
 
+/* Land phase 211: one always-present state switcher, no duplicate state gate. */
+body[data-active-view="deals"] #parcels { --land-phase211-state-selector: one-state-switcher-market-lanes-underneath; }
+body[data-active-view="deals"] #parcels .land-command-surface.phase211-one-state-switcher { grid-template-columns:minmax(260px,.31fr) minmax(0,1fr) !important; gap:clamp(28px,4.8vw,72px) !important; padding-top:clamp(18px,2.4vw,28px) !important; padding-bottom:clamp(18px,2.4vw,28px) !important; }
+body[data-active-view="deals"] #parcels .land-command-surface.phase211-one-state-switcher .land-command-copy h3 { max-width:12.5ch !important; font-size:clamp(27px,3vw,40px) !important; line-height:.99 !important; }
+body[data-active-view="deals"] #parcels .land-command-surface.phase211-one-state-switcher .land-command-copy p { max-width:34ch !important; }
+body[data-active-view="deals"] #parcels .phase211-single-state-switcher { grid-template-columns:64px minmax(0,1fr) !important; padding:0 0 16px !important; border-bottom:1px solid var(--land-hairline) !important; }
+body[data-active-view="deals"] #parcels .phase211-single-state-switcher>div { display:grid !important; grid-template-columns:repeat(6,minmax(0,1fr)) !important; gap:0 !important; border-top:1px solid var(--land-softline) !important; border-left:1px solid var(--land-softline) !important; }
+body[data-active-view="deals"] #parcels .phase211-single-state-switcher button.land-state-filter { display:grid !important; grid-template-columns:auto 1fr !important; align-items:baseline !important; justify-content:space-between !important; min-height:46px !important; padding:9px 11px !important; border:0 !important; border-right:1px solid var(--land-softline) !important; border-bottom:1px solid var(--land-softline) !important; color:var(--land-muted) !important; background:transparent !important; box-shadow:none !important; font-size:11px !important; letter-spacing:.1em !important; text-transform:uppercase !important; }
+body[data-active-view="deals"] #parcels .phase211-single-state-switcher button.land-state-filter span { color:inherit !important; font-weight:820 !important; }
+body[data-active-view="deals"] #parcels .phase211-single-state-switcher button.land-state-filter b { justify-self:end !important; margin:0 !important; color:var(--land-brand-gold) !important; font-size:15px !important; letter-spacing:-.03em !important; }
+body[data-active-view="deals"] #parcels .phase211-single-state-switcher button.land-state-filter.active { color:var(--land-brand-primary-strong) !important; background:linear-gradient(90deg, rgba(11,90,67,.07), rgba(11,90,67,0)) !important; box-shadow:inset 2px 0 0 var(--land-brand-primary) !important; }
+body[data-active-view="deals"] #parcels .is-all-states-command .land-market-lane-selector.is-state-required { display:none !important; }
+body[data-active-view="deals"] #parcels .is-all-states-command + .land-agent-intake-gate { margin-top:var(--land-rhythm-lg) !important; }
+body[data-active-view="deals"] #parcels .land-state-decision-board.phase203-land-state-gate { display:none !important; }
+
 /* Dallas proof ledger. */
 body[data-active-view="deals"] #parcels .dallas-proof-sprint-surface { display:grid !important; grid-template-columns:minmax(220px,.72fr) minmax(0,1.4fr) !important; gap:clamp(28px,4vw,70px) !important; }
 body[data-active-view="deals"] #parcels .dallas-proof-disclosure { grid-column:1/-1 !important; border:0 !important; border-top:1px solid var(--land-hairline) !important; background:transparent !important; }
@@ -28873,7 +28888,7 @@ body[data-active-view="deals"] #parcels .buyer-send-memo :where(button,.button-l
 body[data-active-view="deals"] #parcels :where(.save-buyer-feedback,.save-crm) { min-height:36px !important; border:0 !important; border-radius:0 !important; background:transparent !important; color:var(--land-brand-primary-strong) !important; box-shadow:inset 0 -1px 0 rgba(11,90,67,.34) !important; padding:0 0 4px !important; }
 body[data-active-view="deals"] #parcels .buyer-send-memo button:first-child { color:#fff !important; background:var(--land-brand-primary) !important; padding:0 16px !important; box-shadow:none !important; }
 body[data-active-view="deals"] #parcels .phase210-lightweight-selection { align-items:start !important; }
-body[data-active-view="deals"] #parcels .phase210-select-parcel-prompt { min-height:360px !important; display:flex !important; flex-direction:column !important; justify-content:center !important; border-style:dashed !important; background:linear-gradient(180deg, rgba(251,251,248,.98), rgba(244,239,229,.64)) !important; }
+body[data-active-view="deals"] #parcels .phase210-select-parcel-prompt { min-height:260px !important; display:flex !important; flex-direction:column !important; justify-content:center !important; border:0 !important; border-top:1px solid var(--land-hairline) !important; border-bottom:1px solid var(--land-hairline) !important; border-radius:0 !important; background:transparent !important; box-shadow:none !important; }
 body[data-active-view="deals"] #parcels .phase210-select-parcel-prompt .deals-empty-next { align-self:flex-start !important; }
 
 @media (max-width:1180px) {
@@ -28921,6 +28936,8 @@ body[data-active-view="deals"] #parcels .phase210-select-parcel-prompt .deals-em
 @media (max-width:560px) {
   body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-grid,
   body[data-active-view="deals"] #parcels .land-control-group>div { grid-template-columns:1fr !important; }
+  body[data-active-view="deals"] #parcels .phase211-single-state-switcher>div { grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+  body[data-active-view="deals"] #parcels .phase211-single-state-switcher button.land-state-filter { min-height:42px !important; padding:8px 10px !important; }
   body[data-active-view="deals"] #parcels .land-close-timeline li { grid-template-columns:30px minmax(0,1fr) !important; gap:8px 12px !important; }
   body[data-active-view="deals"] #parcels .land-close-timeline li p { grid-column:2/-1 !important; }
 }

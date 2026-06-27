@@ -902,16 +902,14 @@ function renderLandControls() {
     : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
   const isAllStates = selectedLandStateFilter === 'all';
   const stateNote = isAllStates
-    ? `${parcels.length} retained records · use the state gate below · the cockpit opens after one operating state is chosen.`
-    : `${visibleCount} visible of ${parcels.length} retained records · viewing ${selectedStateCopy} · only source-backed, enriched, buyer-fit rows advance.`;
-  const stateControl = isAllStates
-    ? `<div class="land-state-orientation phase207-state-gate-handoff" aria-label="State gate handoff"><span>Scope</span><b>All states counted</b><em>The state gate below is the selector in All-states view.</em></div>`
-    : `<div class="land-control-group state-switcher" aria-label="Switch operating state"><span>State switcher</span><div>${stateButtons}</div></div>`;
-  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
+    ? `${parcels.length} retained records · pick one state to reveal market lanes and the parcel queue.`
+    : `${visibleCount} visible of ${parcels.length} retained records · ${selectedStateCopy} is the operating state · market lanes and parcels below now respond to this switcher.`;
+  const stateControl = `<div class="land-control-group state-switcher phase211-single-state-switcher" aria-label="Switch operating state"><span>State</span><div>${stateButtons}</div></div>`;
+  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
     <div class="land-command-copy">
       <span class="eyebrow">Land command</span>
-      <h3>Choose state. Then lane. Then parcel.</h3>
-      <p>Start with geography, then narrow by market evidence. In All-states, the state ledger below is the selector; after a state is chosen, this area becomes a compact switcher.</p>
+      <h3>Choose one state. Everything else follows.</h3>
+      <p>This is the only state selector. Market lanes, seller rows, proof rules, and the parcel inspector underneath all change from this switcher.</p>
     </div>
     <div class="land-control-ledger">
       ${stateControl}
@@ -2440,52 +2438,6 @@ function renderClosingDeskPanel() {
   </div>`;
 }
 
-function landStateDecisionRows() {
-  const parcels = scoredParcels();
-  return getLandStateOptions().filter(state => state !== 'all').map(state => {
-    const stateParcels = parcels.filter(parcel => rowState(parcel) === state);
-    const stageCounts = stateParcels.reduce((acc, parcel) => {
-      const listingState = parcelListingState(parcel);
-      if (listingState.sourceBacked) acc.sourceBacked += 1;
-      if (listingState.needsProof || listingState.rawFinding) acc.needsProof += 1;
-      if (listingState.enriched) acc.enriched += 1;
-      if (listingState.builderMatched) acc.builderFit += 1;
-      if (listingState.offerReady) acc.offerReady += 1;
-      return acc;
-    }, { sourceBacked: 0, needsProof: 0, enriched: 0, builderFit: 0, offerReady: 0 });
-    const marketEntries = dealsMarketCoverageEntries().filter(market => market.key !== 'all' && (market.stateCode || market.state) === state);
-    const liveMarkets = marketEntries.filter(market => Number(market.builderCount || 0) > 0).length;
-    const priorityMap = { TN: 1, FL: 2, AZ: 3, NC: 4, TX: 5, GA: 6, SC: 7, PA: 8, OH: 9, ID: 10, IN: 11 };
-    const priority = priorityMap[state] || 99;
-    return { state, count: stateParcels.length, marketCount: marketEntries.length, liveMarkets, priority, ...stageCounts };
-  }).sort((a, b) => (a.priority - b.priority) || (b.count - a.count) || a.state.localeCompare(b.state));
-}
-
-function renderLandStateDecisionBoard() {
-  const rows = landStateDecisionRows();
-  const total = rows.reduce((sum, row) => sum + row.count, 0);
-  const recommended = rows.find(row => row.count > 0) || rows[0];
-  const rowCards = rows.map(row => {
-    const laneCopy = row.marketCount ? `${row.marketCount} lanes · ${row.liveMarkets} builder-live` : 'no lanes yet';
-    const tone = row.count ? 'has-records' : 'is-empty';
-    return `<button type="button" class="land-state-decision-row ${tone} ${recommended?.state === row.state ? 'recommended' : ''}" data-land-state="${h(row.state)}" aria-label="Open ${h(row.state)} land lane">
-      <span>${h(row.state)}</span>
-      <b>${h(row.count)}</b>
-      <em>${h(laneCopy)}</em>
-      <small>${h(row.sourceBacked)} source-backed · ${h(row.needsProof)} need proof · ${h(row.enriched)} enriched · ${h(row.builderFit)} builder-fit</small>
-    </button>`;
-  }).join('');
-  return `<section class="land-state-decision-board phase203-land-state-gate" aria-label="Choose a state before opening seller listings">
-    <div class="land-state-decision-copy">
-      <span class="eyebrow">State gate</span>
-      <h3>Choose the operating state before the seller queue opens.</h3>
-      <p>All ${h(total)} retained records stay counted here, but the parcel cockpit stays closed until the operator picks a state. That keeps the Land screen state-first instead of leaking back into a 149-row smorgasbord.</p>
-      ${recommended ? `<button type="button" class="land-state-primary" data-land-state="${h(recommended.state)}">Open ${h(recommended.state)} lane ${productIcon('arrow')}</button>` : ''}
-    </div>
-    <div class="land-state-decision-ledger" role="listbox" aria-label="State decision ledger">${rowCards}</div>
-  </section>`;
-}
-
 function renderLandQueue(visible = [], selected = null) {
   const selectedKey = selected ? parcelSelectionKey(selected) : '';
   return `<aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
@@ -2540,14 +2492,14 @@ function renderParcels() {
 
   if (selectedLandStateFilter === 'all') {
     selectedParcelId = '';
-    target.innerHTML = `${landControls}${renderLandStateDecisionBoard()}${agentIntakeGate}${landReconImportPath}`;
+    target.innerHTML = `${landControls}${agentIntakeGate}${landReconImportPath}`;
     return;
   }
 
   if (!selected) {
     const selectedMarket = getSelectedDealsMarket();
     if (visible.length) {
-      target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}<div class="deal-workbench phase206-selected-state-workbench phase210-lightweight-selection">
+      target.innerHTML = `${landControls}<div class="deal-workbench phase206-selected-state-workbench phase210-lightweight-selection">
         ${renderLandQueue(visible, null)}
         <article class="deals-empty-state phase38-deals-empty phase210-select-parcel-prompt" aria-label="Select parcel prompt">
           <span class="eyebrow">${h(selectedLandStateFilter)} scan rail</span>
@@ -2555,7 +2507,7 @@ function renderParcels() {
           <p class="deals-empty-why"><b>Why:</b> state and market switching now renders the queue first, then opens the heavier operator sheet only after a parcel click.</p>
           <p class="deals-empty-next">${h(visible.length)} records loaded · choose the next proof/contact/buyer-fit row.</p>
         </article>
-      </div>`;
+      </div>${agentIntakeGate}${dallasProofSurface}${landReconImportPath}`;
       return;
     }
     target.innerHTML = `${landControls}${agentIntakeGate}${dallasProofSurface}${landReconImportPath}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">

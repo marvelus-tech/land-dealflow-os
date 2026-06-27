@@ -711,6 +711,20 @@ function getLandRowMarketKey(parcel = {}) {
 }
 
 const landStateToggleOrder = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'];
+const landStateSelectorAbbreviations = {
+  all: 'All',
+  TN: 'Tenn.',
+  FL: 'Fla.',
+  AZ: 'Ariz.',
+  NC: 'N.C.',
+  TX: 'Tex.',
+  GA: 'Ga.',
+  SC: 'S.C.',
+  OH: 'Ohio',
+  ID: 'Idaho',
+  IN: 'Ind.',
+  PA: 'Pa.',
+};
 
 function getLandStateOptions() {
   if (cachedLandStateOptions) return cachedLandStateOptions;
@@ -907,6 +921,7 @@ function renderLandControls() {
     return {
       ...thesis,
       state,
+      displayLabel: landStateSelectorAbbreviations[state] || thesis.short || thesis.label,
       stateCode: isAll ? 'ALL' : state,
       isAll,
       markets,
@@ -923,9 +938,9 @@ function renderLandControls() {
     };
   });
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
-  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle land-state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-land-state="${h(state.state)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
+  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle land-state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-land-state="${h(state.state)}" aria-label="${h(`${state.label}. ${state.thesis}. ${state.countyCount} ${state.countyCount === 1 ? 'market lane' : 'market lanes'}. ${state.dealCount} records.`)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span class="state-market-code">${h(state.stateCode)}</span>
-    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.label)}</span><span class="state-market-thesis">${h(state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'market lane' : 'market lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
+    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.displayLabel)}</span><span class="state-market-thesis">${h(state.short || state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'lane' : 'lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
     <em><b>${h(state.dealCount)}</b><span>records</span></em>
   </div>`).join('');
   const visibleCount = parcels.filter(parcel => {
@@ -1052,6 +1067,22 @@ function renderLandReconImportPath() {
   </section>`;
 }
 
+function landLaneAbbrev(market = {}) {
+  if (market.key === 'all') return 'All';
+  if (market.isDallasProofLane || market.key === 'dallas-tx') return 'DAL';
+  const label = String(market.marketLabel || market.label || market.key || '').toLowerCase();
+  if (label.includes('austin')) return 'AUS';
+  if (label.includes('san antonio')) return 'SA';
+  if (label.includes('plano') || label.includes('collin')) return 'PLN';
+  if (label.includes('mcallen')) return 'MCA';
+  if (label.includes('knoxville')) return 'KNX';
+  if (label.includes('nashville')) return 'NSH';
+  if (label.includes('chattanooga')) return 'CHA';
+  if (label.includes('raleigh') || label.includes('wake')) return 'RDU';
+  if (label.includes('phoenix') || label.includes('maricopa')) return 'PHX';
+  return String(market.stateCode || market.state || 'LN').slice(0, 3).toUpperCase();
+}
+
 function renderDealsMarketCoverage() {
   const entries = dealsMarketCoverageEntries();
   const selected = entries.find(market => market.isDealsActive) || entries[0];
@@ -1059,8 +1090,9 @@ function renderDealsMarketCoverage() {
   const liveCount = visibleEntries.filter(market => market.builderCount > 0).length;
   const marketButtons = selectedLandStateFilter === 'all' ? `<p class="land-market-empty-note">Pick a state to unlock market lanes.</p>` : entries.map(market => {
     const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : market.sourceState === 'all' ? 'is-all' : 'needs-work';
-    return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
-      <small><kbd>${h(market.stateCode || market.state || '')}</kbd><strong>${h(market.marketLabel || market.label)}</strong></small>
+    const laneAbbrev = landLaneAbbrev(market);
+    return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} deals.`)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
+      <small><kbd>${h(laneAbbrev)}</kbd><strong>${h(market.marketLabel || market.label)}</strong></small>
       <span><b>${h(market.dealCount)}</b> deals</span>
       <em>${h(market.sourceStatusCopy)} · ${h(market.dealStatusCopy)}</em>
     </div>`;

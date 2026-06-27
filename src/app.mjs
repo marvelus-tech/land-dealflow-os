@@ -902,14 +902,14 @@ function renderLandControls() {
     : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
   const isAllStates = selectedLandStateFilter === 'all';
   const stateNote = isAllStates
-    ? `${parcels.length} retained records · choose one state to open its market lanes and parcel queue.`
-    : `${visibleCount} visible · ${selectedStateCopy} controls the lanes and rows underneath.`;
+    ? `${parcels.length} retained records. Pick a state to reveal lanes and parcels.`
+    : `${visibleCount} visible in ${selectedStateCopy}. Lane, sort, queue follow this rail.`;
   const stateControl = `<div class="land-control-group state-switcher phase211-single-state-switcher phase213-state-rail" aria-label="Switch operating state"><span>State</span><div>${stateButtons}</div></div>`;
-  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
+  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command phase215-award-command ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
     <div class="land-command-copy">
       <span class="eyebrow">Land command</span>
-      <h3>Choose state.</h3>
-      <p>One rail owns the page. Lanes, queue, proof, and inspector follow.</p>
+      <h3>State → lane → parcel.</h3>
+      <p>One decision at a time. No duplicate controls.</p>
     </div>
     <div class="land-control-ledger">
       ${stateControl}
@@ -995,7 +995,7 @@ function renderDealsMarketCoverage() {
   const selected = entries.find(market => market.isDealsActive) || entries[0];
   const visibleEntries = entries.filter(market => market.key !== 'all');
   const liveCount = visibleEntries.filter(market => market.builderCount > 0).length;
-  const marketButtons = selectedLandStateFilter === 'all' ? `<p class="land-market-empty-note">Choose a state above to reveal its market lanes. This keeps the Land page from becoming an all-market smorgasbord.</p>` : entries.map(market => {
+  const marketButtons = selectedLandStateFilter === 'all' ? `<p class="land-market-empty-note">Pick a state to unlock market lanes.</p>` : entries.map(market => {
     const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : market.sourceState === 'all' ? 'is-all' : 'needs-work';
     return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
       <small><kbd>${h(market.stateCode || market.state || '')}</kbd><strong>${h(market.marketLabel || market.label)}</strong></small>
@@ -1004,13 +1004,13 @@ function renderDealsMarketCoverage() {
     </div>`;
   }).join('');
   const scopeCopy = selectedLandStateFilter === 'all'
-    ? 'Start with a state. Market lanes stay hidden until the state decision is made.'
-    : `${selectedLandStateFilter} lanes only. ${liveCount} have builder data; Dallas proof stays inside Dallas instead of floating globally.`;
+    ? 'State first. Lanes stay parked until geography is explicit.'
+    : `${selectedLandStateFilter} lanes. Dallas proof stays in Dallas; low-signal markets stay visible but quiet.`;
   return `<section class="deals-market-coverage land-market-lane-selector ${selectedLandStateFilter === 'all' ? 'is-state-required' : ''}" aria-label="Deals market lane selector">
     <div class="deals-market-head">
-      <span class="eyebrow">Market lane</span>
-      <h3>${h(selectedLandStateFilter === 'all' ? 'Choose state first.' : selected.key === 'all' ? 'Select lane.' : `${selected.marketLabel || selected.label}`)}</h3>
-      <p>${h(selectedLandStateFilter === 'all' ? scopeCopy : selected.key === 'all' ? scopeCopy : `${selected.marketLabel || selected.label}: ${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
+      <span class="eyebrow">Lane</span>
+      <h3>${h(selectedLandStateFilter === 'all' ? 'Parked.' : selected.key === 'all' ? 'All lanes.' : `${selected.marketLabel || selected.label}`)}</h3>
+      <p>${h(selectedLandStateFilter === 'all' ? scopeCopy : selected.key === 'all' ? scopeCopy : `${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
     </div>
     <div class="deals-market-grid" role="listbox" aria-label="Select Deals market">${marketButtons}</div>
   </section>`;
@@ -2512,8 +2512,8 @@ function renderClosingDeskPanel() {
 
 function renderLandQueue(visible = [], selected = null) {
   const selectedKey = selected ? parcelSelectionKey(selected) : '';
-  return `<aside class="deal-queue land-ledger-queue" aria-label="Always-visible land listings">
-    <div class="queue-header"><span class="eyebrow">Land listings</span><strong>${visible.length} always visible</strong></div>
+  return `<aside class="deal-queue land-ledger-queue phase215-queue-rail" aria-label="Land parcel queue">
+    <div class="queue-header"><span class="eyebrow">Queue</span><strong>${visible.length} parcels</strong></div>
     <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
     <div class="queue-list">${visible.map((parcel, index) => {
       const parcelKey = parcelSelectionKey(parcel);
@@ -2587,11 +2587,11 @@ function renderParcels() {
     if (visible.length) {
       target.innerHTML = `${landControls}<div class="deal-workbench phase206-selected-state-workbench phase210-lightweight-selection">
         ${renderLandQueue(visible, null)}
-        <article class="deals-empty-state phase38-deals-empty phase210-select-parcel-prompt" aria-label="Select parcel prompt">
-          <span class="eyebrow">${h(selectedLandStateFilter)} scan rail</span>
-          <h3>Select one parcel when you are ready to inspect it.</h3>
-          <p class="deals-empty-why"><b>Why:</b> state and market switching now renders the queue first, then opens the heavier operator sheet only after a parcel click.</p>
-          <p class="deals-empty-next">${h(visible.length)} records loaded · choose the next proof/contact/buyer-fit row.</p>
+        <article class="deals-empty-state phase38-deals-empty phase210-select-parcel-prompt phase215-inspector-prompt" aria-label="Select parcel prompt">
+          <span class="eyebrow">Inspector</span>
+          <h3>Choose a parcel.</h3>
+          <p class="deals-empty-why">The sheet opens only when you ask for it. Until then, the queue stays fast and scan-first.</p>
+          <p class="deals-empty-next">${h(visible.length)} ${h(selectedLandStateFilter)} records · next: proof, contact, or buyer fit.</p>
         </article>
       </div>${landSupportDrawer}`;
       return;

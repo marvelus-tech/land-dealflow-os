@@ -70,7 +70,7 @@ assert.doesNotMatch(css, /--land-phase20[0-9]/, 'Stale Land phase custom-propert
 assert.doesNotMatch(css, /\/\* v2\.0[0-9]/, 'Stale Land phase comment blocks must be removed from the final stylesheet.');
 assert.match(css, /\.land-command-surface\.phase202-land-state-first,[\s\S]{0,260}grid-template-columns:minmax\(280px,\.42fr\) minmax\(0,1fr\)/, 'Land controls must be one calm command surface, not layered historical overrides.');
 assert.match(app, /phase211-one-state-switcher/, 'Land command must expose one always-present state switcher.');
-assert.match(app, /One rail owns the page\./, 'Land copy must make the single state-selector ownership explicit.');
+assert.match(app, /State → lane → parcel\./, 'Land copy must make the single state/lane/parcel hierarchy explicit.');
 assert.doesNotMatch(app, /renderLandStateDecisionBoard/, 'Land page must not render a second state-gate selector surface.');
 assert.match(css, /--land-phase211-state-selector: one-state-switcher-market-lanes-underneath/, 'Land CSS must encode the single-selector hierarchy rule.');
 assert.match(css, /--land-phase213-harmony: state-rail-lane-queue-support-disclosure/, 'Land page must encode the harmonized Apple state/lane/queue/support hierarchy.');
@@ -82,7 +82,10 @@ assert.match(css, /\.phase211-single-state-switcher>div[\s\S]{0,180}grid-templat
 assert.match(css, /@media \(max-width:560px\)[\s\S]*\.phase211-single-state-switcher>div \{ grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/, 'Mobile single state switcher must stay compact without becoming a one-column wall.');
 assert.match(css, /\.land-market-lane-selector:not\(\.is-state-required\)[\s\S]{0,260}display:block !important/, 'Selected-state market lanes must be a compact control.');
 assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:none !important; \}/, 'All-states should hide market lanes until the single state switcher picks a state.');
-assert.match(css, /\.deal-workbench,[\s\S]{0,180}\.phase206-selected-state-workbench[\s\S]{0,220}grid-template-columns:minmax\(350px,388px\) minmax\(0,1fr\) minmax\(210px,250px\)/, 'Selected-state workbench must keep the scan rail, operator sheet, and inspector proportions.');
+assert.match(css, /--land-phase216-self-review: command-demoted-workbench-raised-row-noise-reduced/, 'Land page must encode the second-pass Apple self-review corrections.');
+assert.match(css, /--land-phase217-selected-polish: compact-state-brief-no-duplicate-action-rail/, 'Selected parcel view must encode the compact selected-state polish pass.');
+assert.match(css, /\.deal-workbench:not\(\.phase210-lightweight-selection\) > \.deal-action[\s\S]{0,80}display: none !important/, 'Selected parcel view must remove the duplicate lower action rail.');
+assert.match(css, /\.phase215-queue-rail[\s\S]{0,260}border-right: 1px solid var\(--land-award-line\)/, 'Land queue must be a quiet rail, not a boxed panel.');
 assert.match(css, /\.deals-primary-action[\s\S]{0,320}grid-column:1\/-1 !important/, 'Selected-state workbench should start with one full-width next-action instruction row.');
 assert.match(css, /\.land-listing-row\.phase209-scan-rail-row[\s\S]{0,520}grid-template-areas/, 'Queue rows must use a compact Apple-sidebar grid.');
 assert.match(css, /\.land-row-signals\.phase209-proof-contact-fit :where\(\.risk-good,\.risk-neutral,\.risk-warn,\.dallas-proof-row-chip,\.dallas-sprint-chip\) \{ display:none !important; \}/, 'Queue must hide low-signal clean/repeated badges.');

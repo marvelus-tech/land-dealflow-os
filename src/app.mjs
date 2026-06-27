@@ -1135,10 +1135,10 @@ function crmControls(parcel) {
   </div>`;
 }
 
-function renderOperatorChecklist(checklist, { compact = false } = {}) {
+function renderOperatorChecklist(checklist, { compact = false, open = true } = {}) {
   const doneCount = checklist.steps.filter(step => step.done).length;
   return `<section class="operator-checklist land-timeline-card ${compact ? 'compact' : ''}" aria-label="Call-to-close checklist">
-    <details open>
+    <details ${open ? 'open' : ''}>
       <summary>
         <span><em class="eyebrow">Call → close</em><b>${h(checklist.next.label)}</b></span>
         <strong>${h(checklist.probability)}% <i>close probability</i></strong>
@@ -2530,8 +2530,9 @@ function renderParcels() {
   const selectedListingState = parcelListingState(selected);
   const selectedDallasProofRow = dallasProofRowForParcel(selected);
   const selectedDallasProofAggregate = selectedDallasProofRow ? dallasProofAggregateStatus(selectedDallasProofRow) : null;
-  const selectedDallasProofPanel = selectedDallasProofRow ? `<section class="selected-dallas-proof-panel" aria-label="Selected Dallas proof sprint detail">
-    <div><span class="eyebrow">Dallas proof sprint #${h(selectedDallasProofRow.sprintRank || selectedDallasProofRow.rank)}</span><h3>Utility + recorded plat gate is the next action.</h3><p>${h(selectedDallasProofRow.operatorNextAction || 'Verify utilities/taps and recorded plat before owner enrichment.')}</p><mark class="dallas-proof-aggregate is-${h(selectedDallasProofAggregate.tone)}">${h(selectedDallasProofAggregate.label)}</mark></div>
+  const selectedDallasProofPanel = selectedDallasProofRow ? `<details class="selected-dallas-proof-panel phase212-proof-depth" aria-label="Selected Dallas proof sprint detail">
+    <summary><span><em class="eyebrow">Dallas proof sprint #${h(selectedDallasProofRow.sprintRank || selectedDallasProofRow.rank)}</em><b>Utility + recorded plat gate.</b></span><strong>${h(selectedDallasProofAggregate.label)}</strong></summary>
+    <div class="selected-dallas-proof-body"><div><p>${h(selectedDallasProofRow.operatorNextAction || 'Verify utilities/taps and recorded plat before owner enrichment.')}</p><mark class="dallas-proof-aggregate is-${h(selectedDallasProofAggregate.tone)}">${h(selectedDallasProofAggregate.label)}</mark></div>
     ${dallasProofGateStrip(selectedDallasProofRow)}
     <div class="selected-dallas-proof-links">
       ${selectedDallasProofRow.dcadAccountUrl ? safeLink(selectedDallasProofRow.dcadAccountUrl, 'Open DCAD account', 'proof-inline-link') : ''}
@@ -2547,8 +2548,8 @@ function renderParcels() {
       <div><dt>Recorded plat</dt><dd>${h(selectedDallasProofRow.recordedPlatProofStatus || 'needs-proof')}</dd></div>
       <div><dt>Builder zoning</dt><dd>${h(selectedDallasProofRow.zoningBuilderAcceptedStatus || 'unknown')}</dd></div>
     </dl>
-    <p class="selected-dallas-search-terms"><b>County search terms:</b> ${h(selectedDallasProofRow.dallasCountySearchTerms || 'search terms pending')}</p>
-  </section>` : '';
+    <p class="selected-dallas-search-terms"><b>County search terms:</b> ${h(selectedDallasProofRow.dallasCountySearchTerms || 'search terms pending')}</p></div>
+  </details>` : '';
   const riskTone = selected.risk.status === 'Pass' ? 'good' : selected.risk.status === 'Review' ? 'warn' : 'bad';
   const actionTone = selected.action === 'Call now' ? 'good' : selected.action === 'Mail first' ? 'warn' : selected.action === 'Kill' ? 'bad' : 'neutral';
   const selectedCallable = selected.action === 'Call now' && Boolean(selected.ownerPhone || selected.ownerEmail) && !selectedListingState.needsProof && !selectedListingState.rawFinding;
@@ -2564,12 +2565,16 @@ function renderParcels() {
         : 'Buyer fit next'
       : 'Contact next'
     : 'Proof first';
-  const selectedMiniSummary = `<div class="land-selected-summary phase208-selected-parcel-summary" aria-label="Selected parcel operator summary">
-    <div><span>Sheet stage</span><b>${h(selectedSheetStage)}</b></div>
-    <div><span>Contact</span><b>${selectedListingState.enriched ? 'Verified' : selectedListingState.contactCandidate ? 'Candidate' : 'Needed'}</b></div>
-    <div><span>Buyer fit</span><b>${selectedListingState.builderMatched ? 'Matched' : 'Unknown'}</b></div>
-    <div><span>Action</span><b>${h(selectedPrimaryAction)}</b></div>
-  </div>`;
+  const selectedProofReady = Boolean(selectedListingState.sourceBacked && !selectedListingState.needsProof && !selectedListingState.rawFinding);
+  const selectedContactReady = Boolean(selectedListingState.enriched);
+  const selectedBuyerReady = Boolean(selectedListingState.builderMatched);
+  const selectedGateSummary = `<section class="land-proof-action-gates phase212-progressive-detail" aria-label="Selected parcel proof contact buyer gates">
+    <div class="phase212-proof-summary ${selectedProofReady ? 'is-complete' : 'is-next'}"><span>Proof summary</span><b>${selectedProofReady ? 'Source-backed' : 'Attach public proof'}</b><p>${h(selected.sourceUrl || selected.publicSource || selected.intakeMissing?.join(' · ') || 'Attach public source URL and timestamp before contact or pricing.')}</p></div>
+    <div class="phase212-next-action"><span>One next action</span><b>${h(selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach public proof before contact or money review.' : selectedListingState.contactCandidate ? 'Verify one contact, then reopen seller action.' : selectedListingState.enriched && !selectedListingState.builderMatched ? 'Match this owner to a buyer before pricing.' : getNextAction(selected))}</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
+    <div class="phase212-gate-row ${selectedContactReady ? 'is-complete' : 'is-parked'}"><span>Contact gate</span><b>${selectedContactReady ? 'Verified contact' : selectedListingState.contactCandidate ? 'Candidate only' : 'Locked'}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'No verified phone/email yet.')}</p></div>
+    <div class="phase212-gate-row ${selectedBuyerReady ? 'is-complete' : 'is-parked'}"><span>Buyer-fit gate</span><b>${selectedBuyerReady ? 'Matched' : 'Parked'}</b><p>${h(buyer.name || selected.buyerId || 'No buyer criterion attached.')}</p></div>
+    <div class="phase212-gate-row ${selectedMoneyReady ? 'is-complete' : 'is-parked'}"><span>Money gate</span><b>${selectedMoneyReady ? 'Ready' : 'Parked'}</b><p>${h(selectedMoneyGateCopy)}</p></div>
+  </section>`;
   const duplicateNotice = Number(selected.duplicateMergedCount || 0) > 0 ? `<p class="duplicate-merge-note">Duplicate-safe merge: ${h(selected.duplicateMergedCount)} repeated intake${Number(selected.duplicateMergedCount) === 1 ? '' : 's'} collapsed into this row.</p>` : '';
   const fitRows = [
     ['Buyer fit', buyer.name || 'No matched buyer', `${buyer.score || 0}/100 · ${buyer.buyBox || 'buy box missing'}`],
@@ -2612,23 +2617,16 @@ function renderParcels() {
         ${duplicateNotice}
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
-      ${selectedMiniSummary}
-      <div class="land-listing-status-strip" aria-label="Land listing progression">
-        <div class="${selectedListingState.sourceBacked ? 'complete' : 'todo'}"><span>Proof</span><b>${selectedListingState.sourceBacked ? 'Source-backed' : 'Needs proof'}</b><p>${h(selected.sourceUrl || selected.publicSource || selected.intakeMissing?.join(' · ') || 'Attach public source URL and timestamp.')}</p></div>
-        <div class="${selectedListingState.enriched ? 'complete' : selectedListingState.contactCandidate ? 'candidate' : 'todo'}"><span>Contact</span><b>${selectedListingState.enriched ? 'Enriched' : selectedListingState.contactCandidate ? 'Candidate only' : 'Needs enrichment'}</b><p>${h(selected.ownerPhone || selected.ownerEmail || selected.unverifiedOwnerPhone || selected.unverifiedOwnerEmail || 'No verified phone/email yet.')}</p></div>
-        <div class="${selectedListingState.builderMatched ? 'complete' : 'todo'}"><span>Builder fit</span><b>${selectedListingState.builderMatched ? 'Matched criteria' : 'Fit unknown'}</b><p>${h(buyer.name || selected.buyerId || 'No buyer criterion attached.')}</p></div>
-        <div class="${selectedListingState.offerReady ? 'complete' : 'todo'}"><span>Priority</span><b>${h(selectedListingState.label)}</b><p>${h(selectedListingState.detail)}</p></div>
-      </div>
+      ${selectedGateSummary}
       ${selectedDallasProofPanel}
-      <section class="land-action-sheet phase208-action-before-money" aria-label="Selected parcel action sheet">
-        <div class="seller-net-script-card">
-          <span class="eyebrow">Seller action script</span>
-          <h3>${h(sellerNet.headline)}</h3>
+      <section class="land-action-sheet phase212-action-depth" aria-label="Selected parcel action sheet">
+        <details class="seller-net-script-card phase212-seller-script">
+          <summary><span><em class="eyebrow">Seller action script</em><b>${h(sellerNet.headline)}</b></span><strong>Script</strong></summary>
           <p>${h(sellerNet.netLine)}</p>
           <p><strong>Ask:</strong> ${h(sellerNet.ask)}</p>
           <p><strong>Neighbor alpha:</strong> ${h(neighborPrompt)}</p>
-        </div>
-        ${renderOperatorChecklist(operatorChecklist)}
+        </details>
+        ${renderOperatorChecklist(operatorChecklist, { compact: true, open: false })}
       </section>
       <details class="land-money-sheet phase208-money-last" ${selectedMoneyReady ? 'open' : ''} aria-label="Selected parcel money review">
         <summary><span><em class="eyebrow">Money review</em><b>${h(selectedMoneyGateCopy)}</b></span><strong>${selectedMoneyReady ? 'Ready' : 'Parked'}</strong></summary>
@@ -2646,7 +2644,7 @@ function renderParcels() {
         </div>
       </details>
       <section class="land-settings-sheet" aria-label="Buyer memo and feedback settings">
-        ${renderBuyerSendMemoCard(buyerMemo)}
+        ${renderBuyerSendMemoCard(buyerMemo, { compact: true, open: false })}
         ${renderBuyerFeedbackCapture(selected, buyer)}
       </section>
       <details class="land-raw-depth" aria-label="Owner source and intake detail">
@@ -3276,10 +3274,10 @@ function currentTitleCompanyEmail() {
   return `${desk.email.subject}\n\n${desk.email.body}`;
 }
 
-function renderBuyerSendMemoCard(memo, { compact = false } = {}) {
+function renderBuyerSendMemoCard(memo, { compact = false, open = true } = {}) {
   if (!memo) return '';
   return `<section class="buyer-send-memo ${compact ? 'compact' : ''}" aria-label="Buyer send memo">
-    <details open>
+    <details ${open ? 'open' : ''}>
       <summary><span><em class="eyebrow">Buyer memo</em><b>${h(memo.subject)}</b></span><strong>${formatMoney(memo.assignmentFee)}</strong></summary>
       <p class="buyer-memo-ask">${h(memo.ask)}</p>
       <div class="deal-strip four"><div><span>Assignment fee path</span><strong>${formatMoney(memo.assignmentFee)}</strong></div><div><span>Fit score</span><strong>${h(memo.fit?.score || 0)}/100</strong></div><div><span>Contract gate</span><strong>${h(memo.contract?.label || 'unknown')}</strong></div><div><span>Close probability</span><strong>${h(memo.checklist?.probability || 0)}%</strong></div></div>

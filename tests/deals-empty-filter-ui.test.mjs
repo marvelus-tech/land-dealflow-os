@@ -83,6 +83,11 @@ assert.match(css, /\.land-listing-row\.phase209-scan-rail-row[\s\S]{0,420}grid-t
 assert.match(css, /\.land-row-signals\.phase209-proof-contact-fit :where\(\.risk-good,\.risk-neutral,\.risk-warn,\.dallas-proof-row-chip,\.dallas-sprint-chip\) \{ display:none !important; \}/, 'Queue must hide low-signal clean/repeated badges.');
 assert.match(css, /\.land-listing-row\.phase209-scan-rail-row\.active \.land-row-signals\.phase209-proof-contact-fit \.dallas-sprint-chip \{ display:inline-flex !important; \}/, 'Dallas sprint chip may appear only on the active queue row.');
 assert.match(css, /\.land-calm-operator-sheet\.phase208-calm-operator-sheet/, 'Selected parcel must still style as a calm operator sheet.');
+assert.match(app, /land-proof-action-gates phase212-progressive-detail/, 'Selected parcel detail must start with proof/action/contact/buyer/money gate summary.');
+assert.match(app, /renderBuyerSendMemoCard\(buyerMemo, \{ compact: true, open: false \}\)/, 'Buyer memo must be quiet disclosure by default in the selected sheet.');
+assert.match(app, /renderOperatorChecklist\(operatorChecklist, \{ compact: true, open: false \}\)/, 'Call-to-close timeline must be collapsed until needed.');
+assert.match(css, /--land-phase212-selected-detail: proof-action-contact-buyer-money-disclosure/, 'Selected detail CSS must encode the progressive-disclosure hierarchy.');
+assert.match(css, /\.phase212-proof-depth:not\(\[open\]\)[\s\S]{0,160}\*\:not\(summary\)/, 'Dallas proof sprint depth must stay behind a quiet disclosure by default.');
 assert.match(css, /\.land-money-sheet\.phase208-money-last:not\(\[open\]\) :where\(\.deal-strip,\.phase-one-detail-grid\) \{ display:none !important; \}/, 'Money metrics must remain hidden until the gated money sheet is opened.');
 assert.match(css, /\.land-raw-depth[\s\S]{0,140}border:1px solid rgba\(11,90,67,\.13\)/, 'Raw owner/source depth must remain a gated lower disclosure.');
 assert.match(css, /\.land-agent-intake-gate,[\s\S]{0,160}\.land-recon-import-path[\s\S]{0,160}grid-template-columns:minmax\(240px,\.34fr\) minmax\(0,1fr\)/, 'Proof/import surfaces must stay open two-column ledgers on desktop.');

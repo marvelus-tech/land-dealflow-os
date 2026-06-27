@@ -88,6 +88,9 @@ assert.match(css, /\.land-market-lane-selector \.deals-market-card kbd[\s\S]{0,1
 assert.match(css, /\.land-market-lane-selector\.is-state-required \.deals-market-grid[\s\S]{0,140}display: block !important/, 'All-states market area should be a quiet state-first prompt, not a full lane grid.');
 assert.match(css, /--land-phase203-rule: all-states-state-gate-before-parcel-cockpit/, 'Phase 203 must encode all-states as a state gate before parcel detail.');
 assert.match(css, /v2\.03b - Mobile nav stays visible while Land state gate owns the first screen/, 'Phase 203 mobile QA must keep primary nav visible instead of clipped.');
+assert.match(css, /--land-phase204-rule: mobile-listing-buttons-use-block-flow-no-overlap/, 'Phase 204 must lock mobile listing buttons into block flow to avoid iOS Safari row overlap.');
+assert.match(css, /@media \(max-width: 760px\)[\s\S]{0,900}\.land-listing-row \{[\s\S]{0,260}display: block !important/, 'Mobile Land listing rows must not use CSS grid on button controls.');
+assert.match(css, /\.land-listing-row b,[\s\S]{0,220}\.land-listing-row small,[\s\S]{0,220}\.land-listing-row em,[\s\S]{0,260}grid-area: auto !important/, 'Mobile Land row children must leave inherited grid areas and stack in normal flow.');
 assert.match(css, /\.nav \.app-tabs[\s\S]{0,180}grid-template-columns: repeat\(3, minmax\(0, 1fr\)\)/, 'Mobile nav tabs must wrap into a visible grid, not clip horizontally.');
 assert.match(css, /\.land-state-decision-board[\s\S]{0,220}grid-template-columns: minmax\(280px, \.52fr\) minmax\(0, 1fr\)/, 'State gate must read as an open decision ledger, not a boxed dashboard.');
 assert.match(css, /\.land-state-decision-row\.recommended[\s\S]{0,180}inset 2px 0 0 var\(--land-forest/, 'Recommended state row should use a quiet rail rather than loud button chrome.');

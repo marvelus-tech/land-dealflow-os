@@ -31037,3 +31037,91 @@ body[data-active-view="deals"] #parcels .land-state-decision-row.is-empty {
     white-space: nowrap !important;
   }
 }
+
+/* v2.04 - Mobile Land listing rows: do not grid form controls on iOS Safari */
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels {
+    --land-phase204-rule: mobile-listing-buttons-use-block-flow-no-overlap;
+  }
+  body[data-active-view="deals"] #parcels .land-ledger-queue {
+    overflow: visible !important;
+  }
+  body[data-active-view="deals"] #parcels .queue-list {
+    display: grid !important;
+    gap: 0 !important;
+    max-height: 58vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    contain: layout paint !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    min-height: 88px !important;
+    height: auto !important;
+    padding: 12px 6px 12px 42px !important;
+    overflow: visible !important;
+    contain: none !important;
+    text-align: left !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row > span {
+    position: absolute !important;
+    left: 10px !important;
+    top: 14px !important;
+    display: inline-grid !important;
+    place-items: center !important;
+    width: 24px !important;
+    min-width: 24px !important;
+    height: 20px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(138, 100, 24, .18) !important;
+    color: var(--land-gold, #a97622) !important;
+    font-size: 10px !important;
+    line-height: 1 !important;
+    font-variant-numeric: tabular-nums !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row b,
+  body[data-active-view="deals"] #parcels .land-listing-row small,
+  body[data-active-view="deals"] #parcels .land-listing-row em,
+  body[data-active-view="deals"] #parcels .land-listing-row .land-row-signals {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    grid-area: auto !important;
+    clear: both !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row b {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+    font-size: 13.5px !important;
+    line-height: 1.13 !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row small {
+    margin-top: 4px !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-size: 11px !important;
+    line-height: 1.28 !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row em {
+    margin-top: 5px !important;
+    font-size: 10.5px !important;
+    line-height: 1.2 !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row em i {
+    display: block !important;
+    margin-top: 2px !important;
+  }
+  body[data-active-view="deals"] #parcels .land-listing-row .land-row-signals {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px 7px !important;
+    margin-top: 6px !important;
+  }
+}

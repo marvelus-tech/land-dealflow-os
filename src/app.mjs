@@ -961,7 +961,7 @@ function renderLandControls() {
     ${sortControl}
     <p class="land-control-note">${h(stateNote)}</p>
   </div>`;
-  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command phase215-award-command phase218-builder-style-workbench builders-phase83-workbench ${selectedLandStateFilter === 'all' ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
+  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion phase211-one-state-switcher phase213-harmonized-command phase215-award-command phase218-builder-style-workbench phase219-calm-scan-hierarchy builders-phase83-workbench ${selectedLandStateFilter === 'all' ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
     <div class="builder-ops-title land-command-copy">
       <span class="eyebrow">Land · state workbench</span>
       <h3>Choose state.</h3>

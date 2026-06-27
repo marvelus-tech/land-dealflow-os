@@ -85,7 +85,11 @@ assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:non
 assert.match(css, /--land-phase216-self-review: command-demoted-workbench-raised-row-noise-reduced/, 'Land page must encode the second-pass Apple self-review corrections.');
 assert.match(css, /--land-phase217-selected-polish: compact-state-brief-no-duplicate-action-rail/, 'Selected parcel view must encode the compact selected-state polish pass.');
 assert.match(css, /--land-phase218-workbench: builder-style-state-ledger/, 'Land top workbench must encode the Builders-style state-ledger hero rule.');
-assert.match(app, /phase218-builder-style-workbench builders-phase83-workbench/, 'Land hero must reuse the Builders-style workbench hierarchy class.');
+assert.match(css, /--land-phase219-calm-scan: unboxed-state-ledger-queue-enters-first-screen/, 'Land next phase must encode the unboxed Apple scan hierarchy.');
+assert.match(css, /--land-phase220-self-review: compressed-state-command-earlier-queue-no-dead-air/, 'Land self-review must compress the command area so the queue enters earlier.');
+assert.match(css, /--land-phase221-self-review: no-clipped-labels-sensor-friendly-density/, 'Land self-review must preserve full readable labels in dense controls.');
+assert.match(css, /--land-phase222-self-review: state-label-thesis-breathing-restored/, 'Land self-review must preserve breathing between state names and state thesis text.');
+assert.match(app, /phase218-builder-style-workbench phase219-calm-scan-hierarchy builders-phase83-workbench/, 'Land hero must reuse the Builders-style workbench hierarchy while enabling the calm scan pass.');
 assert.ok(css.includes('phase218-builder-style-workbench.phase213-harmonized-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid'), 'Selected-state Land market lanes must have a high-specificity phase218 selector.');
 assert.match(css, /phase218-builder-style-workbench\.phase215-award-command[\s\S]{0,260}grid-template-columns: 1fr !important/, 'Selected-state Land market lanes must stay readable instead of collapsing into six clipped mini-columns.');
 assert.match(css, /\.deal-workbench:not\(\.phase210-lightweight-selection\) > \.deal-action[\s\S]{0,80}display: none !important/, 'Selected parcel view must remove the duplicate lower action rail.');

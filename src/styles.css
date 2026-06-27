@@ -30326,3 +30326,330 @@ body[data-active-view="deals"] #parcels .phase218-builder-style-workbench .land-
     justify-self: start !important;
   }
 }
+
+
+/* v2.19 - Land Apple calm scan hierarchy (consolidated Phase 219-221) */
+body[data-active-view="deals"] #parcels {
+  --land-phase219-calm-scan: unboxed-state-ledger-queue-enters-first-screen;
+  --land-phase220-self-review: compressed-state-command-earlier-queue-no-dead-air;
+  --land-phase221-self-review: no-clipped-labels-sensor-friendly-density;
+  --land-premium-primary: #0a4f3a;
+  --land-premium-primary-strong: #073a2b;
+  --land-premium-primary-soft: rgba(10, 79, 58, .075);
+  --land-premium-gold: #9f6b16;
+  --land-premium-ink: #101411;
+  --land-premium-body: #4f5d55;
+  --land-premium-muted: #738078;
+  --land-premium-line: rgba(16, 20, 17, .11);
+  --land-premium-hairline: rgba(16, 20, 17, .07);
+  gap: clamp(18px, 2.4vw, 28px) !important;
+}
+body[data-active-view="deals"] #parcels-section.section { padding-top: clamp(24px, 3.6vw, 44px) !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.builders-phase83-workbench {
+  grid-template-columns: minmax(160px, .18fr) minmax(0, 1fr) !important;
+  column-gap: clamp(18px, 2.8vw, 42px) !important;
+  row-gap: 12px !important;
+  margin: 0 auto clamp(14px, 2vw, 24px) !important;
+  padding: 0 0 clamp(14px, 1.9vw, 22px) !important;
+  border: 0 !important;
+  border-top: 1px solid var(--land-premium-line) !important;
+  border-bottom: 1px solid var(--land-premium-line) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy > .builder-ops-title {
+  max-width: 190px !important;
+  padding-top: clamp(14px, 1.8vw, 20px) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .builder-ops-title .eyebrow,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-kicker span,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > span,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-head .eyebrow,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-refined-sort > span,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .queue-header span,
+body[data-active-view="deals"] #parcels .phase215-inspector-prompt .eyebrow {
+  color: var(--land-premium-primary) !important;
+  font-size: 9.5px !important;
+  line-height: 1.2 !important;
+  letter-spacing: .165em !important;
+  font-weight: 820 !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .builder-ops-title h3 {
+  max-width: 10ch !important;
+  margin: 10px 0 0 !important;
+  color: var(--land-premium-ink) !important;
+  font-size: clamp(22px, 2.25vw, 30px) !important;
+  line-height: .99 !important;
+  letter-spacing: -.058em !important;
+  font-weight: 840 !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .builder-ops-title p {
+  max-width: 21ch !important;
+  margin-top: 11px !important;
+  color: var(--land-premium-body) !important;
+  font-size: 12px !important;
+  line-height: 1.42 !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-primary-action {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 6px !important;
+  margin-top: 14px !important;
+  padding: 9px 0 !important;
+  border-color: var(--land-premium-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-primary-action b {
+  color: var(--land-premium-ink) !important;
+  font-size: 13px !important;
+  line-height: 1.22 !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-primary-action a {
+  color: var(--land-premium-primary-strong) !important;
+  font-size: 10px !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy > .state-data-workbench {
+  padding-top: clamp(14px, 2vw, 22px) !important;
+  gap: 10px !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-kicker {
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  gap: 10px 14px !important;
+  padding-bottom: 9px !important;
+  border-bottom: 1px solid var(--land-premium-line) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-kicker strong {
+  color: var(--land-premium-ink) !important;
+  font-size: clamp(19px, 1.65vw, 26px) !important;
+  letter-spacing: -.045em !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-kicker em {
+  color: var(--land-premium-gold) !important;
+  font-size: 11px !important;
+  font-weight: 790 !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-layout {
+  grid-template-columns: minmax(0, 1.38fr) minmax(250px, .48fr) !important;
+  gap: clamp(16px, 2.2vw, 28px) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  border: 0 !important;
+  border-top: 1px solid var(--land-premium-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle {
+  min-height: 50px !important;
+  grid-template-columns: 25px minmax(0, 1fr) auto !important;
+  gap: 8px !important;
+  padding: 8px 8px 8px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--land-premium-hairline) !important;
+  border-right: 1px solid var(--land-premium-hairline) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle:nth-child(3n) { border-right: 0 !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle:hover { background: rgba(10,79,58,.035) !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle.active,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle.is-active {
+  background: linear-gradient(90deg, var(--land-premium-primary-soft), rgba(255,255,252,0) 86%) !important;
+  box-shadow: inset 2px 0 0 var(--land-premium-primary) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-code {
+  width: 23px !important;
+  height: 23px !important;
+  color: var(--land-premium-primary) !important;
+  background: rgba(10,79,58,.07) !important;
+  font-size: 8.5px !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle.active .state-market-code,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle.is-active .state-market-code {
+  background: var(--land-premium-primary) !important;
+  color: #fff !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-copy { gap: 2px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-copy strong { display: block !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-name,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-thesis,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card strong,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card span {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-name {
+  color: var(--land-premium-ink) !important;
+  font-size: 10.8px !important;
+  line-height: 1.08 !important;
+  font-weight: 790 !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-thesis {
+  max-height: 2.2em !important;
+  color: var(--land-premium-body) !important;
+  font-size: 9px !important;
+  line-height: 1.1 !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-copy small { display: none !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle em { gap: 1px !important; color: var(--land-premium-gold) !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle em b { color: currentColor !important; font-size: 13px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle em span { color: var(--land-premium-muted) !important; font-size: 7px !important; letter-spacing: .12em !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary {
+  padding-left: clamp(14px, 1.8vw, 22px) !important;
+  border-left: 1px solid var(--land-premium-line) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > strong {
+  margin-top: 7px !important;
+  color: var(--land-premium-ink) !important;
+  font-size: clamp(21px, 1.8vw, 28px) !important;
+  letter-spacing: -.055em !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > p {
+  max-width: 42ch !important;
+  margin-top: 9px !important;
+  color: var(--land-premium-body) !important;
+  font-size: 11.5px !important;
+  line-height: 1.36 !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > ul {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  margin-top: 9px !important;
+  border-top: 1px solid var(--land-premium-line) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > ul li {
+  padding: 7px 8px 7px 0 !important;
+  border-bottom: 1px solid var(--land-premium-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > ul b { color: var(--land-premium-gold) !important; font-size: 14px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > ul span { color: var(--land-premium-muted) !important; font-size: 7.5px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-market-lane-selector {
+  margin-top: 12px !important;
+  border-top: 1px solid var(--land-premium-line) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-head {
+  grid-template-columns: 38px minmax(0, 1fr) !important;
+  gap: 5px 10px !important;
+  margin: 8px 0 7px !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-head h3 { color: var(--land-premium-ink) !important; font-size: 14px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.is-selected-state-command .deals-market-head p { display: none !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-grid,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-market-lane-selector .deals-market-grid,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase213-harmonized-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase215-award-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  border-color: var(--land-premium-hairline) !important;
+  background: transparent !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-market-lane-selector .deals-market-card {
+  min-height: 38px !important;
+  padding: 7px 8px !important;
+  border-bottom-color: var(--land-premium-hairline) !important;
+  border-right: 1px solid var(--land-premium-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card:nth-child(2n) { border-right: 0 !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card.active {
+  background: var(--land-premium-primary-soft) !important;
+  box-shadow: inset 2px 0 0 var(--land-premium-primary) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card kbd { display: none !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card strong { color: var(--land-premium-ink) !important; font-size: 10px !important; line-height: 1.12 !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card span { margin-top: 4px !important; color: var(--land-premium-body) !important; font-size: 9px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-card span b { color: var(--land-premium-gold) !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-refined-sort {
+  grid-template-columns: 38px minmax(0, 1fr) !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+  border-top-color: var(--land-premium-line) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-refined-sort > div { gap: 10px !important; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy button.land-sort-option {
+  min-height: 18px !important;
+  color: var(--land-premium-body) !important;
+  font-size: 10px !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy button.land-sort-option.active {
+  color: var(--land-premium-primary-strong) !important;
+  box-shadow: inset 0 -1px 0 var(--land-premium-primary) !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-control-note {
+  margin-top: 7px !important;
+  color: var(--land-premium-body) !important;
+  font-size: 10.5px !important;
+  line-height: 1.32 !important;
+}
+body[data-active-view="deals"] #parcels .phase210-lightweight-selection {
+  margin-top: 0 !important;
+  padding-top: clamp(14px, 2vw, 22px) !important;
+  grid-template-columns: minmax(400px, 470px) minmax(0, 1fr) !important;
+  gap: clamp(24px, 3.4vw, 48px) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail {
+  border-right-color: var(--land-premium-line) !important;
+  padding-right: clamp(18px, 2.4vw, 30px) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .queue-header { border-bottom-color: var(--land-premium-line) !important; }
+body[data-active-view="deals"] #parcels .phase215-queue-rail .queue-header strong,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-row-index { color: var(--land-premium-gold) !important; }
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase209-scan-rail-row {
+  padding: 9px 0 8px !important;
+  border-bottom-color: var(--land-premium-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.active {
+  background: linear-gradient(90deg, var(--land-premium-primary-soft), rgba(251,251,247,0) 90%) !important;
+  box-shadow: inset 2px 0 0 var(--land-premium-primary) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row b { color: var(--land-premium-ink) !important; font-size: 12.5px !important; }
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row small,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-row-signals mark,
+body[data-active-view="deals"] #parcels .phase215-queue-rail button.land-activity-toggle { color: var(--land-premium-muted) !important; }
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row small strong,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row em,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .proof-ready,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .contact-ready,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .fit-ready { color: var(--land-premium-primary) !important; }
+body[data-active-view="deals"] #parcels .phase215-inspector-prompt { margin-top: 0 !important; border-top-color: var(--land-premium-line) !important; }
+body[data-active-view="deals"] #parcels .phase215-inspector-prompt h3 { color: var(--land-premium-ink) !important; font-size: clamp(25px, 2.7vw, 34px) !important; }
+body[data-active-view="deals"] #parcels .phase215-inspector-prompt p { color: var(--land-premium-body) !important; }
+body[data-active-view="deals"] #parcels .land-support-drawer.phase213-support-drawer { margin-top: clamp(20px, 2.8vw, 36px) !important; }
+@media (max-width: 1180px) {
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-layout { grid-template-columns: 1fr !important; }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary { padding-left: 0 !important; border-left: 0 !important; }
+}
+@media (max-width: 960px) {
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.builders-phase83-workbench,
+  body[data-active-view="deals"] #parcels .phase210-lightweight-selection { grid-template-columns: 1fr !important; }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy > .builder-ops-title { max-width: none !important; }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .builder-ops-title h3,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .builder-ops-title p { max-width: 36ch !important; }
+}
+@media (max-width: 720px) {
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-market-lane-selector .deals-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase213-harmonized-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase215-award-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle:nth-child(3n) { border-right: 1px solid var(--land-premium-hairline) !important; }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-toggle:nth-child(2n) { border-right: 0 !important; }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > ul { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+/* v2.22 - Land density correction: restore breathing between state label and thesis */
+body[data-active-view="deals"] #parcels { --land-phase222-self-review: state-label-thesis-breathing-restored; }
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-copy strong {
+  display: grid !important;
+  gap: 2px !important;
+  align-content: center !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-name,
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-thesis {
+  display: block !important;
+}
+body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-thesis {
+  margin-top: 1px !important;
+  color: #58645d !important;
+}

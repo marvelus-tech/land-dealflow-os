@@ -41,7 +41,10 @@ assert.match(app, /Work one clean next action\./, 'Selected-state brief must mak
 assert.match(app, /class="deal-workbench phase206-selected-state-workbench"/, 'Selected-state Land workbench must declare the Phase 206 workbench hierarchy.');
 assert.match(app, /class="land-raw-depth"/, 'Owner/source/intake depth must move behind a raw-depth disclosure.');
 assert.match(app, /Open only when editing evidence/, 'Raw CRM/source depth must be demoted below the action path.');
-assert.match(app, /class="land-command-surface phase202-land-state-first"/, 'Land command surface must declare the state-first IA pass.');
+assert.match(app, /class="land-command-surface phase202-land-state-first phase207-top-control-cohesion/, 'Land command surface must declare the state-first IA and top-control cohesion pass.');
+assert.match(app, /phase207-state-gate-handoff/, 'All-states Land command must hand off state choice to the state ledger instead of rendering a duplicate state selector.');
+assert.match(app, /The state gate below is the selector in All-states view\./, 'All-states copy must explain why the lower state ledger is the selector.');
+assert.match(app, /State switcher/, 'Selected-state mode may keep a compact state switcher after the primary state has been chosen.');
 assert.match(app, /Choose state\. Then lane\. Then parcel\./, 'Land page copy must make the state-led operating model explicit.');
 assert.match(app, /Choose a state above to reveal its market lanes/, 'All-states mode must prompt for state first instead of showing every market lane.');
 assert.match(app, /function renderLandStateDecisionBoard/, 'All-states mode must render a state decision board before opening parcel detail.');
@@ -101,6 +104,12 @@ assert.match(css, /--land-phase205d-correction: compact-state-counts-stay-attach
 assert.match(css, /--land-phase206-rule: selected-state-workbench-action-path-before-raw-depth/, 'Phase 206 must encode the selected-state action-path hierarchy.');
 assert.match(css, /--land-phase206b-correction: selected-state-lane-browser-is-compact-control/, 'Phase 206 self-review must demote the selected-state lane browser into a compact control.');
 assert.match(css, /--land-phase206c-correction: lane-browser-copy-horizontal-no-vertical-shards/, 'Phase 206 final self-review must prevent selected lane browser copy from collapsing vertically.');
+assert.match(css, /--land-phase207-rule: one-all-states-selector-state-ledger-owns-choice/, 'Phase 207 must encode one All-states state selector with the state ledger owning choice.');
+assert.match(css, /--land-phase207b-correction: tighter-command-to-state-gate-rhythm/, 'Phase 207 self-review must tighten command-to-state-gate rhythm after pixel review.');
+assert.match(css, /--land-phase207c-correction: selected-lane-cards-wrap-inside-command-rail/, 'Phase 207 selected-state self-review must prevent lane cards from overflowing the command rail.');
+assert.match(css, /\.land-state-orientation\.phase207-state-gate-handoff/, 'Phase 207 must replace the duplicate top All-states state selector with an orientation handoff.');
+assert.match(css, /\.land-command-surface\.phase207-top-control-cohesion[\s\S]{0,260}min-height: 0 !important/, 'Phase 207 must remove irregular command-surface vertical padding/min-height.');
+assert.match(css, /\.land-state-decision-board\.phase203-land-state-gate[\s\S]{0,260}margin-top: var\(--land-rhythm-lg\)/, 'Phase 207 must regularize spacing between command surface and state ledger.');
 assert.match(css, /\.land-state-workbench-brief\.phase206-land-state-workbench/, 'Phase 206 must style the selected-state operating brief.');
 assert.match(css, /\.land-raw-depth:not\(\[open\]\) \.detail-grid \{ display: none !important; \}/, 'Raw owner/source/intake detail must stay collapsed until explicitly opened.');
 assert.match(css, /--land-brand-primary: #0b5a43/, 'Phase 205 Land palette must define a forest primary accent.');

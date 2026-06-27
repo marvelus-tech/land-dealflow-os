@@ -864,17 +864,21 @@ function renderLandControls() {
   const sortControl = selectedLandStateFilter === 'all'
     ? ''
     : `<div class="land-control-group sort" aria-label="Sort land listings"><span>Sort</span><div>${sortButtons}</div></div>`;
-  const stateNote = selectedLandStateFilter === 'all'
-    ? `${parcels.length} retained records · choose a state to open the workbench · only source-backed, enriched, buyer-fit rows advance.`
+  const isAllStates = selectedLandStateFilter === 'all';
+  const stateNote = isAllStates
+    ? `${parcels.length} retained records · use the state gate below · the cockpit opens after one operating state is chosen.`
     : `${visibleCount} visible of ${parcels.length} retained records · viewing ${selectedStateCopy} · only source-backed, enriched, buyer-fit rows advance.`;
-  return `<section class="land-command-surface phase202-land-state-first" aria-label="Land listings controls">
+  const stateControl = isAllStates
+    ? `<div class="land-state-orientation phase207-state-gate-handoff" aria-label="State gate handoff"><span>Scope</span><b>All states counted</b><em>The state gate below is the selector in All-states view.</em></div>`
+    : `<div class="land-control-group state-switcher" aria-label="Switch operating state"><span>State switcher</span><div>${stateButtons}</div></div>`;
+  return `<section class="land-command-surface phase202-land-state-first phase207-top-control-cohesion ${isAllStates ? 'is-all-states-command' : 'is-selected-state-command'}" aria-label="Land listings controls">
     <div class="land-command-copy">
       <span class="eyebrow">Land command</span>
       <h3>Choose state. Then lane. Then parcel.</h3>
-      <p>Start with geography, then narrow by market evidence. The parcel cockpit opens only after the operating state is clear.</p>
+      <p>Start with geography, then narrow by market evidence. In All-states, the state ledger below is the selector; after a state is chosen, this area becomes a compact switcher.</p>
     </div>
     <div class="land-control-ledger">
-      <div class="land-control-group" aria-label="Focus by state"><span>State</span><div>${stateButtons}</div></div>
+      ${stateControl}
       ${renderDealsMarketCoverage()}
       ${sortControl}
       <p class="land-control-note">${h(stateNote)}</p>

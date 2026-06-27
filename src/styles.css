@@ -32084,3 +32084,197 @@ body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state
     grid-template-columns: 1fr !important;
   }
 }
+
+/* v2.07 - Land top-control cohesion: one state selector in All-states, regularized Apple spacing */
+body[data-active-view="deals"] #parcels {
+  --land-phase207-rule: one-all-states-selector-state-ledger-owns-choice;
+  --land-rhythm-xl: clamp(44px, 6vw, 86px);
+  --land-rhythm-lg: clamp(30px, 4.6vw, 58px);
+  --land-rhythm-md: clamp(20px, 3vw, 34px);
+  --land-rhythm-sm: clamp(12px, 1.7vw, 18px);
+}
+body[data-active-view="deals"] #parcels .land-command-surface.phase207-top-control-cohesion {
+  padding: var(--land-rhythm-md) 0 var(--land-rhythm-md) !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  gap: clamp(34px, 6vw, 92px) !important;
+  align-items: start !important;
+  border-top: 1px solid var(--land-hairline) !important;
+  border-bottom: 1px solid var(--land-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .phase207-top-control-cohesion .land-command-copy h3 {
+  max-width: 13ch !important;
+  margin-bottom: 12px !important;
+}
+body[data-active-view="deals"] #parcels .phase207-top-control-cohesion .land-command-copy p {
+  max-width: 38ch !important;
+}
+body[data-active-view="deals"] #parcels .phase207-top-control-cohesion .land-control-ledger {
+  align-self: start !important;
+  display: grid !important;
+  gap: 14px !important;
+  padding-top: 2px !important;
+  min-height: 0 !important;
+}
+body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff {
+  display: grid !important;
+  grid-template-columns: minmax(96px, .22fr) minmax(140px, .34fr) minmax(0, 1fr) !important;
+  gap: 12px 18px !important;
+  align-items: baseline !important;
+  padding: 0 0 14px !important;
+  border-bottom: 1px solid var(--land-softline) !important;
+  color: var(--land-muted) !important;
+}
+body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff span {
+  color: var(--land-brand-primary) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 860 !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff b {
+  color: var(--land-ink) !important;
+  font-size: clamp(14px, 1.35vw, 17px) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.02em !important;
+}
+body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff em {
+  color: var(--land-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+  font-style: normal !important;
+  max-width: 52ch !important;
+}
+body[data-active-view="deals"] #parcels .is-all-states-command .land-control-note {
+  max-width: 58ch !important;
+  margin: 0 !important;
+  padding-top: 0 !important;
+}
+body[data-active-view="deals"] #parcels .is-selected-state-command .state-switcher {
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid var(--land-softline) !important;
+}
+body[data-active-view="deals"] #parcels .is-selected-state-command .state-switcher > span {
+  color: var(--land-brand-primary) !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-board.phase203-land-state-gate {
+  margin-top: var(--land-rhythm-lg) !important;
+  padding: var(--land-rhythm-lg) 0 var(--land-rhythm-lg) !important;
+  gap: clamp(38px, 6vw, 82px) !important;
+  border-top: 0 !important;
+  border-bottom: 1px solid var(--land-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-copy h3 {
+  margin-bottom: 14px !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-copy p {
+  max-width: 31ch !important;
+  margin-bottom: 20px !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-ledger {
+  border-top: 1px solid var(--land-hairline) !important;
+  border-bottom: 1px solid var(--land-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-row {
+  min-height: 70px !important;
+  padding-block: 12px !important;
+}
+body[data-active-view="deals"] #parcels .land-proof-rules,
+body[data-active-view="deals"] #parcels .land-recon-import-path {
+  margin-top: var(--land-rhythm-xl) !important;
+  padding-top: var(--land-rhythm-lg) !important;
+}
+body[data-active-view="deals"] #parcels .land-proof-rules {
+  border-top: 1px solid var(--land-hairline) !important;
+}
+body[data-active-view="deals"] #parcels .land-recon-import-path {
+  border-top: 1px solid var(--land-hairline) !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="deals"] #parcels .land-command-surface.phase207-top-control-cohesion,
+  body[data-active-view="deals"] #parcels .land-state-decision-board.phase203-land-state-gate {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 560px) {
+  body[data-active-view="deals"] #parcels .land-command-surface.phase207-top-control-cohesion {
+    padding-block: 22px !important;
+  }
+  body[data-active-view="deals"] #parcels .land-state-decision-row {
+    min-height: 64px !important;
+  }
+}
+
+/* v2.07b - Self-review correction: remove residual top dead air and tighten handoff copy */
+body[data-active-view="deals"] #parcels {
+  --land-phase207b-correction: tighter-command-to-state-gate-rhythm;
+}
+body[data-active-view="deals"] #parcels .land-command-surface.phase207-top-control-cohesion {
+  padding-top: clamp(22px, 3vw, 34px) !important;
+  padding-bottom: clamp(18px, 2.6vw, 30px) !important;
+}
+body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff {
+  grid-template-columns: 86px minmax(140px, .3fr) minmax(0, .8fr) !important;
+  padding-bottom: 12px !important;
+}
+body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff em {
+  max-width: 38ch !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-board.phase203-land-state-gate {
+  margin-top: clamp(22px, 3vw, 34px) !important;
+  padding-top: clamp(22px, 3vw, 34px) !important;
+  padding-bottom: clamp(30px, 4vw, 46px) !important;
+  align-items: start !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-copy {
+  padding-top: 0 !important;
+}
+body[data-active-view="deals"] #parcels .land-state-decision-ledger {
+  align-self: start !important;
+}
+body[data-active-view="deals"] #parcels .land-proof-rules,
+body[data-active-view="deals"] #parcels .land-recon-import-path {
+  margin-top: clamp(48px, 6vw, 76px) !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="deals"] #parcels .land-state-orientation.phase207-state-gate-handoff {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* v2.07c - Selected-state lane cards cannot overflow the Land command rail */
+body[data-active-view="deals"] #parcels {
+  --land-phase207c-correction: selected-lane-cards-wrap-inside-command-rail;
+}
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+}
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-card {
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-card small,
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-card strong,
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-card em {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-card strong,
+body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-card em {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels .land-market-lane-selector:not(.is-state-required) .deals-market-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

@@ -91,8 +91,12 @@ assert.match(css, /--land-phase221-self-review: no-clipped-labels-sensor-friendl
 assert.match(css, /--land-phase222-self-review: state-label-thesis-breathing-restored/, 'Land self-review must preserve breathing between state names and state thesis text.');
 assert.match(css, /--land-phase223-selector: vertical-abbreviated-state-ledger/, 'Land selector must use a vertical abbreviated state ledger.');
 assert.match(css, /--land-phase224-lane-selector: vertical-abbreviated-market-ledger/, 'Selected-state market lanes must use a vertical abbreviated ledger.');
+assert.match(css, /--land-phase225-queue-rail: proof-action-abbrev-rail-mobile-safe/, 'Land queue rows must use the selector-matched proof/action rail and mobile-safe layout.');
+assert.match(css, /--land-phase226-self-review: action-rail-separated-mobile-image-safe/, 'Land queue self-review must preserve mobile image/layout safety and separated action rail metadata.');
 assert.match(app, /landStateSelectorAbbreviations/, 'Land selector must keep full labels accessible while rendering abbreviated state names.');
 assert.match(app, /landLaneAbbrev/, 'Land market lane selector must render compact lane abbreviations.');
+assert.match(app, /land-row-action-rail/, 'Land queue rows must expose a left proof/action rail.');
+assert.match(app, /Public proof needed/, 'Land queue rows must reduce repeated imperative proof copy into calmer status language.');
 assert.match(app, /aria-label="\$\{h\(`\$\{state\.label\}/, 'Abbreviated state rows must retain full accessible labels.');
 assert.match(app, /phase218-builder-style-workbench phase219-calm-scan-hierarchy builders-phase83-workbench/, 'Land hero must reuse the Builders-style workbench hierarchy while enabling the calm scan pass.');
 assert.ok(css.includes('phase218-builder-style-workbench.phase213-harmonized-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid'), 'Selected-state Land market lanes must have a high-specificity phase218 selector.');

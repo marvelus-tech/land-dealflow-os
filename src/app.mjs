@@ -2618,12 +2618,20 @@ function renderLandQueue(visible = [], selected = null) {
       const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark><mark class="dallas-proof-row-chip is-${h(dallasAggregate.tone)}">${h(dallasAggregate.label)}</mark>` : '';
       const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
       const queueReason = listingState.needsProof || listingState.rawFinding
-        ? 'Attach public proof'
+        ? 'Public proof needed'
         : !listingState.enriched
-          ? 'Find verified contact'
+          ? 'Verified contact needed'
           : !listingState.builderMatched
-            ? 'Confirm buyer fit'
+            ? 'Buyer fit needed'
             : listingState.offerReady ? 'Offer review ready' : 'Review seller action';
+      const queueActionCode = listingState.needsProof || listingState.rawFinding
+        ? 'Proof'
+        : !listingState.enriched
+          ? 'Call'
+          : !listingState.builderMatched
+            ? 'Fit'
+            : listingState.offerReady ? 'Offer' : 'Next';
+      const queueActionClass = queueActionCode.toLowerCase();
       const queueMarketLabel = `${rowState(parcel) || 'state unknown'} · ${parcel.landMarketKey || 'market unknown'}`;
       const queueStateScent = parcel.selectedMarketMatch ? 'In lane' : 'Adjacent';
       const proofState = listingState.sourceBacked ? 'ready' : listingState.needsProof ? 'needed' : 'raw';
@@ -2639,9 +2647,9 @@ function renderLandQueue(visible = [], selected = null) {
         state: landActivity[channel] || {},
         className: 'land-activity-toggle',
       })).join('');
-      return `<article class="queue-item land-listing-row phase209-scan-rail-row ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(listingState.detail)}" data-land-activity-row="${h(parcelKey)}">
-        <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" aria-label="Select ${h(itemName)}">
-          <span class="land-row-index">${String(index + 1).padStart(2, '0')}</span>
+      return `<article class="queue-item land-listing-row phase209-scan-rail-row phase225-action-rail-row action-${h(queueActionClass)} ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(listingState.detail)}" data-land-activity-row="${h(parcelKey)}">
+        <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" aria-label="Select ${h(itemName)} - ${h(queueReason)}">
+          <span class="land-row-action-rail"><b>${h(queueActionCode)}</b><i>${String(index + 1).padStart(2, '0')}</i></span>
           <b>${h(itemName)}</b>
           <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
           <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>

@@ -30882,3 +30882,335 @@ body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-mar
   font-size: 12px !important;
   letter-spacing: -.03em !important;
 }
+
+/* v2.25 - Land queue action rail + mobile selector/image correction */
+body[data-active-view="deals"] #parcels {
+  --land-phase225-queue-rail: proof-action-abbrev-rail-mobile-safe;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-ledger-legend {
+  display: none !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .queue-list {
+  border-top: 1px solid var(--land-premium-line) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase225-action-rail-row {
+  grid-template-columns: 54px minmax(0, 1fr) !important;
+  grid-template-areas: "rail title" "rail meta" "rail reason" "rail badges" "rail activity" !important;
+  column-gap: 12px !important;
+  row-gap: 3px !important;
+  min-height: 96px !important;
+  padding: 10px 0 !important;
+  border-bottom: 1px solid var(--land-premium-hairline) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase225-action-rail-row.active {
+  background: linear-gradient(90deg, rgba(10,79,58,.068), rgba(251,251,247,0) 88%) !important;
+  box-shadow: inset 2px 0 0 var(--land-premium-primary) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-row-action-rail {
+  grid-area: rail !important;
+  align-self: stretch !important;
+  display: grid !important;
+  align-content: start !important;
+  justify-items: start !important;
+  gap: 8px !important;
+  padding: 2px 0 0 12px !important;
+  border-left: 2px solid rgba(10,79,58,.18) !important;
+  color: var(--land-premium-muted) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row.active .land-row-action-rail {
+  border-left-color: var(--land-premium-primary) !important;
+  color: var(--land-premium-primary) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-row-action-rail b {
+  color: currentColor !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  letter-spacing: .15em !important;
+  font-weight: 850 !important;
+  text-transform: uppercase !important;
+  writing-mode: horizontal-tb !important;
+  max-width: 48px !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-row-action-rail i {
+  color: var(--land-premium-gold) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-style: normal !important;
+  font-weight: 760 !important;
+  font-variant-numeric: tabular-nums !important;
+  letter-spacing: .08em !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row > .land-row-select,
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-select {
+  display: contents !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row > .land-row-select > b {
+  grid-area: title !important;
+  color: var(--land-premium-ink) !important;
+  font-size: 12.5px !important;
+  line-height: 1.16 !important;
+  letter-spacing: -.018em !important;
+  font-weight: 780 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row small {
+  grid-area: meta !important;
+  display: flex !important;
+  gap: 7px !important;
+  min-width: 0 !important;
+  color: var(--land-premium-muted) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row small strong {
+  flex: 0 0 auto !important;
+  color: var(--land-premium-primary) !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  letter-spacing: .14em !important;
+  font-weight: 820 !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row small i {
+  min-width: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  color: var(--land-premium-muted) !important;
+  font-size: 10px !important;
+  font-style: normal !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em {
+  grid-area: reason !important;
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+  color: var(--land-premium-muted) !important;
+  font-style: normal !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em strong {
+  color: var(--land-premium-primary) !important;
+  font-size: 11.5px !important;
+  line-height: 1.16 !important;
+  letter-spacing: -.005em !important;
+  font-weight: 760 !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em i {
+  color: var(--land-premium-muted) !important;
+  font-size: 9px !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit {
+  grid-area: badges !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 4px !important;
+  margin-top: 2px !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit mark {
+  justify-content: center !important;
+  min-width: 0 !important;
+  min-height: 16px !important;
+  padding: 3px 4px !important;
+  border-radius: 5px !important;
+  border: 1px solid rgba(10,79,58,.10) !important;
+  background: transparent !important;
+  font-size: 8px !important;
+  line-height: 1 !important;
+  letter-spacing: .09em !important;
+  font-weight: 820 !important;
+  text-transform: uppercase !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit :where(.proof-ready,.contact-ready,.fit-ready) {
+  border-color: rgba(10,79,58,.18) !important;
+  color: var(--land-premium-primary) !important;
+  background: rgba(10,79,58,.035) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit :where(.proof-needed,.contact-needed,.fit-needed,.proof-raw,.contact-candidate) {
+  border-color: rgba(159,107,22,.20) !important;
+  color: var(--land-premium-gold) !important;
+  background: rgba(159,107,22,.035) !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit :where(.risk-good,.risk-neutral,.risk-warn,.dallas-proof-row-chip,.dallas-sprint-chip) {
+  display: none !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-activity-row {
+  grid-area: activity !important;
+  margin-top: 4px !important;
+  display: flex !important;
+  gap: 10px !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row button.land-activity-toggle {
+  min-height: 18px !important;
+  padding: 0 !important;
+  gap: 4px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--land-premium-primary) !important;
+  box-shadow: none !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels {
+    overflow-x: clip !important;
+  }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .deals-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .land-market-lane-selector .deals-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase213-harmonized-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid,
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase215-award-command .land-market-lane-selector:not(.is-state-required) .deals-market-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-kicker {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+  body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-workbench-kicker strong {
+    font-size: 20px !important;
+    line-height: 1.04 !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .queue-list {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase225-action-rail-row {
+    display: block !important;
+    position: relative !important;
+    min-height: 104px !important;
+    padding: 11px 0 10px 58px !important;
+    overflow: visible !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-select {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    text-align: left !important;
+    background: transparent !important;
+    border: 0 !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-action-rail {
+    position: absolute !important;
+    left: 10px !important;
+    top: 12px !important;
+    bottom: 12px !important;
+    width: 38px !important;
+    padding-left: 8px !important;
+    grid-area: auto !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row :where(.land-row-select > b, small, em, .phase209-proof-contact-fit, .land-activity-row) {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    grid-area: auto !important;
+    clear: both !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-select > b,
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row small i,
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em strong {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    overflow-wrap: anywhere !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row small {
+    margin-top: 4px !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em {
+    margin-top: 5px !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em i {
+    display: none !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    margin-top: 7px !important;
+  }
+}
+
+/* v2.26 - Land queue self-review: separate action rail from row metadata */
+body[data-active-view="deals"] #parcels {
+  --land-phase226-self-review: action-rail-separated-mobile-image-safe;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase225-action-rail-row {
+  grid-template-columns: 68px minmax(0, 1fr) !important;
+  column-gap: 14px !important;
+  min-height: 92px !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-action-rail {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  padding: 2px 0 0 12px !important;
+  min-width: 0 !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-action-rail b {
+  order: 1 !important;
+  display: block !important;
+  grid-area: auto !important;
+  max-width: 50px !important;
+  color: currentColor !important;
+  font-size: 8.5px !important;
+  line-height: 1 !important;
+  letter-spacing: .13em !important;
+  font-weight: 850 !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-action-rail i {
+  order: 2 !important;
+  display: block !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row > .land-row-select > b {
+  font-size: 12.75px !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row em strong {
+  color: #0b5a43 !important;
+  font-size: 11px !important;
+  font-weight: 740 !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit {
+  grid-template-columns: repeat(3, minmax(0, auto)) !important;
+  justify-content: start !important;
+  gap: 9px !important;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .phase209-proof-contact-fit mark {
+  min-height: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font-size: 8.5px !important;
+  letter-spacing: .08em !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase225-action-rail-row {
+    padding-left: 68px !important;
+    min-height: 110px !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-action-rail {
+    width: 48px !important;
+    left: 10px !important;
+    padding-left: 8px !important;
+  }
+  body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-rail-row .land-row-action-rail b {
+    max-width: 44px !important;
+    font-size: 8px !important;
+  }
+}

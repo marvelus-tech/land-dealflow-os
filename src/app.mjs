@@ -194,6 +194,7 @@ let weeklyMarketScout = null;
 let knoxvilleBuyerCallSheet = null;
 let dallasProofSprint = null;
 let keystoneHeightsLandowners = null;
+let freeGovOwnerSources = null;
 let builderMarketData = { markets: {}, loaded: false, error: '' };
 let titleCompanyProcess = titleCompanyProcessFallback;
 let titleCompanyMarkets = titleCompanyMarketsFallback;
@@ -2886,6 +2887,39 @@ function renderParcels() {
   </div>${landSupportDrawer}`;
 }
 
+function renderFreeGovOwnerSourceBoard() {
+  if (!freeGovOwnerSources) return '<section class="free-gov-owner-board"><p>Loading free-government owner source matrix…</p></section>';
+  if (freeGovOwnerSources.error) return `<section class="free-gov-owner-board"><p>Free-government owner source matrix not loaded: ${h(freeGovOwnerSources.error)}.</p></section>`;
+  const summary = freeGovOwnerSources.summary || {};
+  const markets = asArray(freeGovOwnerSources.markets);
+  const agents = asArray(freeGovOwnerSources.agents);
+  const activeMarkets = markets.filter(market => Number(market.publicOwnerRecords || 0) > 0).sort((a, b) => Number(b.publicOwnerRecords || 0) - Number(a.publicOwnerRecords || 0));
+  const zeroMarkets = markets.filter(market => !Number(market.publicOwnerRecords || 0)).slice(0, 12);
+  const activeRows = activeMarkets.map(market => {
+    const marketAgents = agents.filter(agent => agent.marketKey === market.key && agent.status === 'ready');
+    const sourceLinks = asArray(market.sourceUrls).slice(0, 2).map((url, index) => safeLink(url, index === 0 ? 'Owner record' : 'Public record', 'owner-source-link')).join('');
+    return `<article class="owner-source-market is-active">
+      <div><span>${h(market.state)} · ${h(market.status)}</span><b>${h(market.market)}</b><p>${h(market.agentNextAction)}</p>${sourceLinks ? `<div class="owner-source-links">${sourceLinks}</div>` : ''}</div>
+      <dl><div><dt>Public records</dt><dd>${h(market.publicOwnerRecords)}</dd></div><div><dt>Human anchors</dt><dd>${h(market.humanOwnerAnchors)}</dd></div><div><dt>Verified calls</dt><dd>${h(market.verifiedPhoneEmailContacts)}</dd></div><div><dt>Agents</dt><dd>${h(marketAgents.length)}/5 ready</dd></div></dl>
+    </article>`;
+  }).join('');
+  const zeroRows = zeroMarkets.map(market => `<article class="owner-source-zero"><span>${h(market.state)}</span><b>${h(market.market)}</b><em>${h(market.primaryPublicSource || market.builderPlatform || 'source adapter ready')}</em></article>`).join('');
+  const agentRows = agents.filter(agent => agent.status === 'ready').slice(0, 15).map(agent => `<li><span>${h(agent.type)}</span><b>${h(agent.market)}</b><em>${h(agent.instruction)}</em></li>`).join('');
+  return `<section class="free-gov-owner-board" aria-label="Free government owner source matrix">
+    <div class="free-gov-owner-head">
+      <span class="eyebrow">Free gov owner-source agents · zero fabrication</span>
+      <h3>Every market is stored. Real land-lot markets get execution agents.</h3>
+      <p>County/city owner records become APN + owner + mailing-address anchors. Phone/email remains locked until lawful enrichment; zero-count markets stay visible as source-ready lanes instead of fake queues.</p>
+    </div>
+    <div class="deal-strip five owner-source-metrics"><div><span>Markets stored</span><strong>${h(summary.marketCount || markets.length)}</strong></div><div><span>With owner rows</span><strong>${h(summary.marketsWithPublicOwnerRecords || activeMarkets.length)}</strong></div><div><span>Zero-count ready</span><strong>${h(summary.zeroCountMarketsReady || 0)}</strong></div><div><span>Owner records</span><strong>${h(summary.publicOwnerRecords || 0)}</strong></div><div><span>Fabricated contacts</span><strong>${h(summary.contactsFabricated ?? 0)}</strong></div></div>
+    <div class="free-gov-owner-grid">
+      <div class="owner-source-active"><h4>Executing now: listed land lots</h4>${activeRows || '<p>No public owner rows loaded yet.</p>'}</div>
+      <div class="owner-source-agents"><h4>Agent work orders</h4><ul>${agentRows || '<li><span>Waiting</span><b>No active agents</b><em>Load source matrix first.</em></li>'}</ul></div>
+      <details class="owner-source-zero-lanes" open><summary><span>Zero-count markets remain ready</span><b>${h(summary.zeroCountMarketsReady || zeroMarkets.length)} lanes</b></summary><div>${zeroRows}</div></details>
+    </div>
+  </section>`;
+}
+
 function renderSourcePriorityBoard() {
   const target = document.querySelector('#source-priority-board');
   if (!target) return;
@@ -2926,7 +2960,7 @@ function renderSourcePriorityBoard() {
       <summary>Normalize with source adapters</summary>
       <div class="priority-stack-content">${tierRows}</div>
     </details>
-  </section>`;
+  </section>${renderFreeGovOwnerSourceBoard()}`;
 }
 
 function renderPipeline() {
@@ -3292,6 +3326,16 @@ async function loadKeystoneHeightsLandowners() {
     cachedDealsMarketEntries = null;
   } catch (error) {
     keystoneHeightsLandowners = { error: error.message, parcels: [] };
+  }
+}
+
+async function loadFreeGovOwnerSources() {
+  try {
+    const response = await fetch('data/generated/free_gov_owner_sources.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`free gov owner sources ${response.status}`);
+    freeGovOwnerSources = await response.json();
+  } catch (error) {
+    freeGovOwnerSources = { error: error.message, markets: [], agents: [], summary: {} };
   }
 }
 
@@ -4365,6 +4409,7 @@ renderAll();
 loadGeneratedLeads().then(renderAll);
 loadDallasProofSprint().then(renderAll);
 loadKeystoneHeightsLandowners().then(renderAll);
+loadFreeGovOwnerSources().then(renderAll);
 loadKnoxvilleBuyerCallSheet().then(renderAll);
 loadBuilderMarketData().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);

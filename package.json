@@ -12,6 +12,7 @@
     "pull:polk-builders": "python3 scripts/adapters/polk-accela-permit-builders.py",
     "pull:maricopa-builders": "python3 scripts/adapters/maricopa-xlsx-permit-builders.py",
     "pull:dorchester-builders": "node scripts/adapters/dorchester-evolve-permit-builders.mjs",
+    "pull:evansville-builders": "node scripts/adapters/evansville-arcgis-permit-builders.mjs",
     "pull:priority-permit-markets": "bash scripts/pull-priority-permit-markets.sh",
     "pull:priority-permit-markets:tn": "bash scripts/pull-priority-permit-markets.sh --state TN",
     "pull:priority-permit-markets:secondary": "bash scripts/pull-priority-permit-markets.sh --states FL,AZ,NC,TX,GA,SC",

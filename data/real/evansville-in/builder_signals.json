@@ -1,0 +1,2202 @@
+[
+  {
+    "id": "evansville-arcgis-scott-jagoe",
+    "name": "Scott Jagoe",
+    "builderName": "Scott Jagoe",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 105,
+    "qualifyingPermitCount": 105,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 95,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236804%2C236651%2C236501%2C236292%2C236339)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-27",
+        "status": "ACTIVE",
+        "address": "12400 PETERSBURG RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236804
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-20",
+        "status": "ACTIVE",
+        "address": "11227 SUGARBERRY DR",
+        "subdivision": "",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236651
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-13",
+        "status": "ACTIVE",
+        "address": "2908 DONNA DEE DR",
+        "subdivision": "McCUTCHAN TRACE SEC 3",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236501
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-07",
+        "status": "ACTIVE",
+        "address": "4900 GOLDFINCH DR",
+        "subdivision": "GOLDFINCH COVE SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236292
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-07",
+        "status": "ACTIVE",
+        "address": "2714 HAUSCHILD DR",
+        "subdivision": "WESTRIDGE COMMONS",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236339
+      }
+    ],
+    "sourceEvidence": "Scott Jagoe appears as the contractor name/alias (JAGOE SCOTT; SCOTT JAGOE) on 105 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-patrick-landry",
+    "name": "Patrick Landry",
+    "builderName": "Patrick Landry",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 45,
+    "qualifyingPermitCount": 45,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 94,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(235156%2C234482%2C233946%2C233724%2C233725)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-28",
+        "status": "ACTIVE",
+        "address": "315 CASS AVE",
+        "subdivision": "CROFTON PLACE REPLAT BLKS 3 AN",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 235156
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-07",
+        "status": "ACTIVE",
+        "address": "303 RIDGEWAY AVE",
+        "subdivision": "CROFTON PLACE REPLAT BLKS 3 AN",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 234482
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-19",
+        "status": "ACTIVE",
+        "address": "308 WAGGONER AVE",
+        "subdivision": "CROFTON PLACE",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 233946
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-13",
+        "status": "ACTIVE",
+        "address": "1711 S BEDFORD AVE",
+        "subdivision": "OAK PARK",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 233724
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-13",
+        "status": "ACTIVE",
+        "address": "307 CASS AVE",
+        "subdivision": "CROFTON PLACE REPLAT BLKS 3 AN",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 233725
+      }
+    ],
+    "sourceEvidence": "Patrick Landry appears as the contractor name/alias (LANDRY, PATRICK M.) on 45 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-john-elpers",
+    "name": "John Elpers",
+    "builderName": "John Elpers",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 43,
+    "qualifyingPermitCount": 43,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 93,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236908%2C236603%2C234622%2C234084%2C233828)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-29",
+        "status": "ACTIVE",
+        "address": "2020 SHIAR CT",
+        "subdivision": "",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 236908
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-18",
+        "status": "ACTIVE",
+        "address": "8115 PRESCOTT DR",
+        "subdivision": "CENTERRA RIDGE SEC 9 PHASE 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 236603
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-10",
+        "status": "ACTIVE",
+        "address": "2727 MIDORA DR",
+        "subdivision": "NA",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 234622
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-24",
+        "status": "ACTIVE",
+        "address": "2636 KISSEL RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234084
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2026-03-17",
+        "status": "ACTIVE",
+        "address": "1722 THEO DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 233828
+      }
+    ],
+    "sourceEvidence": "John Elpers appears as the contractor name/alias (ELPERS, JOHN J) on 43 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-matthew-reinbrecht",
+    "name": "Matthew Reinbrecht",
+    "builderName": "Matthew Reinbrecht",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 39,
+    "qualifyingPermitCount": 39,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 92,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236725%2C236592%2C235275%2C234907%2C234799)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-22",
+        "status": "ACTIVE",
+        "address": "1458 GREENFIELD RD",
+        "subdivision": "ARCADIAN ACRES NO 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 236725
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-18",
+        "status": "ACTIVE",
+        "address": "6444 MARX RD",
+        "subdivision": "",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236592
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-30",
+        "status": "ACTIVE",
+        "address": "13925 PERSIMMON LN",
+        "subdivision": "",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235275
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-20",
+        "status": "ACTIVE",
+        "address": "15412 HAIKU RD",
+        "subdivision": "POET SQUARE SEC 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234907
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-16",
+        "status": "ACTIVE",
+        "address": "15424 HAIKU RD",
+        "subdivision": "POET SQUARE SEC 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234799
+      }
+    ],
+    "sourceEvidence": "Matthew Reinbrecht appears as the contractor name/alias (REINBRECHT, MATTHEW W) on 39 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-christopher-chapman",
+    "name": "Christopher Chapman",
+    "builderName": "Christopher Chapman",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 25,
+    "qualifyingPermitCount": 25,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 91,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236298%2C235289%2C235001%2C234263%2C233263)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-07",
+        "status": "ACTIVE",
+        "address": "4311 CHASKA DR",
+        "subdivision": "CREEKSIDE MEADOWS SEC 5 PH 3",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236298
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-30",
+        "status": "ACTIVE",
+        "address": "12827 HALLE DR",
+        "subdivision": "CREEKSIDE MEADOWS SEC 6",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235289
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-22",
+        "status": "ACTIVE",
+        "address": "4432 VIOLET DR",
+        "subdivision": "",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235001
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-31",
+        "status": "ACTIVE",
+        "address": "4321 CHASKA DR",
+        "subdivision": "CREEKSIDE MEADOWS SEC 5 PH 3",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234263
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-02-23",
+        "status": "ACTIVE",
+        "address": "4222 CHASKA DR",
+        "subdivision": "CREEKSIDE MEADOWS SEC 5 PH 3",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233263
+      }
+    ],
+    "sourceEvidence": "Christopher Chapman appears as the contractor name/alias (CHAPMAN, CHRISTOPHER R) on 25 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-christopher-brown",
+    "name": "Christopher Brown",
+    "builderName": "Christopher Brown",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 21,
+    "qualifyingPermitCount": 21,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 90,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(235265%2C235121%2C234216%2C233983%2C233790)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-30",
+        "status": "ACTIVE",
+        "address": "18846 ROSCOMMON RD",
+        "subdivision": "BACK NINE PUD",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235265
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-27",
+        "status": "ACTIVE",
+        "address": "19217 BRAEBURN DR",
+        "subdivision": "CAMBRIDGE VILLAGE PH IV",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235121
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-30",
+        "status": "ACTIVE",
+        "address": "18805 ROSCOMMON RD",
+        "subdivision": "BACK NINE PUD",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234216
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-20",
+        "status": "ACTIVE",
+        "address": "18833 ROSCOMMON RD",
+        "subdivision": "BACK NINE PUD",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233983
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-16",
+        "status": "ACTIVE",
+        "address": "4546 VIOLET DR",
+        "subdivision": "",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233790
+      }
+    ],
+    "sourceEvidence": "Christopher Brown appears as the contractor name/alias (BROWN CHRISTOPHER M) on 21 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-thomas-thomspson",
+    "name": "Thomas Thomspson",
+    "builderName": "Thomas Thomspson",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 17,
+    "qualifyingPermitCount": 17,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 89,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236661%2C236329%2C236335%2C234080%2C232502)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-20",
+        "status": "ACTIVE",
+        "address": "8137 JT CT",
+        "subdivision": "CENTERRA RIDGE SEC 10 PH 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 236661
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-07",
+        "status": "ACTIVE",
+        "address": "8207 JT CT",
+        "subdivision": "CENTERRA RIDGE SEC 10 PH 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 236329
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-07",
+        "status": "ACTIVE",
+        "address": "2924 LARIMER ST",
+        "subdivision": "SUMMERLYN TRAIL SUB",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 236335
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-24",
+        "status": "ACTIVE",
+        "address": "12921 HALLE DR",
+        "subdivision": "CREEKSIDE MEADOWS SEC 5 PH 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234080
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-01-22",
+        "status": "ACTIVE",
+        "address": "6412 LARIMER CV",
+        "subdivision": "SUMMERLYN TRAIL SUB",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 232502
+      }
+    ],
+    "sourceEvidence": "Thomas Thomspson appears as the contractor name/alias (THOMSPSON THOMAS N II) on 17 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-charles-murphy",
+    "name": "Charles Murphy",
+    "builderName": "Charles Murphy",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 16,
+    "qualifyingPermitCount": 16,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 88,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(229727%2C229731%2C229732%2C229733%2C229735)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-09-11",
+        "status": "ACTIVE",
+        "address": "6635 OLD BOONVILLE HWY BUILD NN",
+        "subdivision": "NA",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 229727
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-09-11",
+        "status": "ACTIVE",
+        "address": "6635 OLD BOONVILLE HWY BUILD MM",
+        "subdivision": "NA",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 229731
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-09-11",
+        "status": "ACTIVE",
+        "address": "6635 OLD BOONVILLE HWY BUILD LL",
+        "subdivision": "NA",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 229732
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-09-11",
+        "status": "ACTIVE",
+        "address": "6635 OLD BOONVILLE HWY BUILD GG",
+        "subdivision": "NA",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 229733
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-09-11",
+        "status": "ACTIVE",
+        "address": "6635 OLD BOONVILLE HWY BUILD FF",
+        "subdivision": "NA",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 229735
+      }
+    ],
+    "sourceEvidence": "Charles Murphy appears as the contractor name/alias (MURPHY, CHARLES L) on 16 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-charley-troutman",
+    "name": "Charley Troutman",
+    "builderName": "Charley Troutman",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 15,
+    "qualifyingPermitCount": 15,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 87,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236531%2C236532%2C233801%2C232647%2C232116)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-14",
+        "status": "ACTIVE",
+        "address": "14400 HONEYSUCKLE DR",
+        "subdivision": "VALLEY-VIEW",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236531
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-14",
+        "status": "ACTIVE",
+        "address": "5601 RIDGEWOOD RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236532
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-16",
+        "status": "ACTIVE",
+        "address": "1025 VANDERBURGH AVE",
+        "subdivision": "WANSFORD ADD REPLAT",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 233801
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-01-29",
+        "status": "ACTIVE",
+        "address": "1823 S HELFRICH AVE",
+        "subdivision": "INDUSTRIAL ADD",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 232647
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-01-07",
+        "status": "ACTIVE",
+        "address": "4700 KRATZVILLE RD",
+        "subdivision": "GANTNER ACRES",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 232116
+      }
+    ],
+    "sourceEvidence": "Charley Troutman appears as the contractor name/alias (TROUTMAN CHARLEY) on 15 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-jordan-cessna",
+    "name": "Jordan Cessna",
+    "builderName": "Jordan Cessna",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 10,
+    "qualifyingPermitCount": 10,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 86,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(220927%2C220014%2C219047%2C218791%2C218566)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-12-20",
+        "status": "ACTIVE",
+        "address": "8136 JT CT",
+        "subdivision": "CENTERRA RIDGE SEC 10 PH 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 220927
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-11-13",
+        "status": "ACTIVE",
+        "address": "8030 JT CT",
+        "subdivision": "CENTERRA RIDGE SEC 10 PH 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 220014
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-10-07",
+        "status": "ACTIVE",
+        "address": "4307 KENLY DR",
+        "subdivision": "CREEKSIDE MEADOWS SEC 5 PH 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 219047
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-09-25",
+        "status": "ACTIVE",
+        "address": "6426 FUCHSIA PASS",
+        "subdivision": "",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 218791
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-09-16",
+        "status": "ACTIVE",
+        "address": "3345 RALSTON DR",
+        "subdivision": "CENTERRA RIDGE SEC 8 PHASE 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 218566
+      }
+    ],
+    "sourceEvidence": "Jordan Cessna appears as the contractor name/alias (CESSNA JORDAN T) on 10 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-brian-murphy",
+    "name": "Brian Murphy",
+    "builderName": "Brian Murphy",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 8,
+    "qualifyingPermitCount": 8,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 85,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(231088%2C229304%2C224084%2C224086%2C218194)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-11-21",
+        "status": "ACTIVE",
+        "address": "4507 VIOLET DR",
+        "subdivision": "",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 231088
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-08-27",
+        "status": "ACTIVE",
+        "address": "18521 SOMERVILLE CT",
+        "subdivision": "CAMBRIDGE VILLAGE PHASE 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 229304
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-04-22",
+        "status": "ACTIVE",
+        "address": "10135 GALLOP WAY",
+        "subdivision": "SADDLE CREEK EST SEC 3",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 224084
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-04-22",
+        "status": "ACTIVE",
+        "address": "10143 GALLOP WAY",
+        "subdivision": "SADDLE CREEK EST SEC 3",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 224086
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-08-29",
+        "status": "ACTIVE",
+        "address": "1101 EDGAR ALLAN RD",
+        "subdivision": "POET SQUARE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 218194
+      }
+    ],
+    "sourceEvidence": "Brian Murphy appears as the contractor name/alias (MURPHY, BRIAN N.) on 8 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-brian-stevens",
+    "name": "Brian Stevens",
+    "builderName": "Brian Stevens",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 8,
+    "qualifyingPermitCount": 8,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 84,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(234735%2C233266%2C230290%2C229280%2C227585)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-14",
+        "status": "ACTIVE",
+        "address": "2205 ORCHARD RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234735
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-02-23",
+        "status": "ACTIVE",
+        "address": "605 WHITETAIL CT",
+        "subdivision": "DEERFIELD SEC 4",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233266
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-09-30",
+        "status": "ACTIVE",
+        "address": "19149 AMHERST LN",
+        "subdivision": "CAMBRIDGE VILLAGE PH IV",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 230290
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-08-26",
+        "status": "ACTIVE",
+        "address": "8130 WILLETT DR",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 229280
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-06-04",
+        "status": "ACTIVE",
+        "address": "16101 N VOLKMAN RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 227585
+      }
+    ],
+    "sourceEvidence": "Brian Stevens appears as the contractor name/alias (STEVENS BRIAN D) on 8 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-aaron-miller",
+    "name": "Aaron Miller",
+    "builderName": "Aaron Miller",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 6,
+    "qualifyingPermitCount": 6,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 83,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(234532%2C233247%2C229439%2C228843%2C222008)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-08",
+        "status": "ACTIVE",
+        "address": "2920 PALOMAR DR",
+        "subdivision": "",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 234532
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-02-23",
+        "status": "ACTIVE",
+        "address": "1727 VENTURE DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 233247
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-09-02",
+        "status": "ACTIVE",
+        "address": "1637 ELI DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 229439
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-08-11",
+        "status": "ACTIVE",
+        "address": "1527 ELI DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 228843
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-02-07",
+        "status": "ACTIVE",
+        "address": "7920 WHISTLER DR",
+        "subdivision": "DEERFIELD SEC 4",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 222008
+      }
+    ],
+    "sourceEvidence": "Aaron Miller appears as the contractor name/alias (AARON M MILLER; MILLER AARON M) on 6 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-adam-kunkel",
+    "name": "Adam Kunkel",
+    "builderName": "Adam Kunkel",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 6,
+    "qualifyingPermitCount": 6,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 82,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(231276%2C231280%2C230386%2C230387%2C223197)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-12-01",
+        "status": "ACTIVE",
+        "address": "3132 FEHME CT",
+        "subdivision": "NEVAYAH PLACE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 231276
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-12-01",
+        "status": "ACTIVE",
+        "address": "3140 FEHME CT",
+        "subdivision": "NEVAYAH PLACE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 231280
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-11-04",
+        "status": "ACTIVE",
+        "address": "3028 FEHME CT",
+        "subdivision": "NEVAYAH PLACE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 230386
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-11-04",
+        "status": "ACTIVE",
+        "address": "3016 FEHME CT",
+        "subdivision": "NEVAYAH PLACE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 230387
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-03-24",
+        "status": "ACTIVE",
+        "address": "18802 ROSCOMMON RD",
+        "subdivision": "BACK NINE PUD",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 223197
+      }
+    ],
+    "sourceEvidence": "Adam Kunkel appears as the contractor name/alias (KUNKEL ADAM R) on 6 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-carl-elpers",
+    "name": "Carl Elpers",
+    "builderName": "Carl Elpers",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 6,
+    "qualifyingPermitCount": 6,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 81,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(232755%2C227929%2C224844%2C214986%2C214189)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-02-03",
+        "status": "ACTIVE",
+        "address": "1604 ELI DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 232755
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-06-13",
+        "status": "ACTIVE",
+        "address": "1501 ELI DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 227929
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-05-16",
+        "status": "ACTIVE",
+        "address": "1449 ELI DR",
+        "subdivision": "BRIAR POINTE SEC 1",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 224844
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-04-23",
+        "status": "COMPLETE",
+        "address": "19346 SAFFRON HILL CT",
+        "subdivision": "CAMBRIDGE VILLAGE PH IV",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 214986
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-03-20",
+        "status": "COMPLETE",
+        "address": "1514 ELI DR",
+        "subdivision": "",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 214189
+      }
+    ],
+    "sourceEvidence": "Carl Elpers appears as the contractor name/alias (ELPERS, CARL A) on 6 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-kyle-sterchi",
+    "name": "Kyle Sterchi",
+    "builderName": "Kyle Sterchi",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 6,
+    "qualifyingPermitCount": 6,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 80,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(233593%2C233594%2C233597%2C233194%2C228392)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-10",
+        "status": "ACTIVE",
+        "address": "4714 VIOLET DR",
+        "subdivision": "GREEN RIVER MEADOWS SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233593
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-10",
+        "status": "ACTIVE",
+        "address": "4404 VIOLET DR",
+        "subdivision": "GREEN RIVER MEADOWS SEC 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233594
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-03-10",
+        "status": "ACTIVE",
+        "address": "3240 HESEMAN AVE",
+        "subdivision": "FIELDSTONE SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233597
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-02-19",
+        "status": "ACTIVE",
+        "address": "3333 JAYLYNN CT",
+        "subdivision": "FIELDSTONE SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 233194
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-06-26",
+        "status": "ACTIVE",
+        "address": "19115 BRAEBURN DR",
+        "subdivision": "CAMBRIDGE VILLAGE PH IV",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 228392
+      }
+    ],
+    "sourceEvidence": "Kyle Sterchi appears as the contractor name/alias (STERCHI KYLE B) on 6 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-dustin-stoll",
+    "name": "Dustin Stoll",
+    "builderName": "Dustin Stoll",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 5,
+    "qualifyingPermitCount": 5,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 79,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236302%2C235286%2C235014%2C216576%2C216381)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-07",
+        "status": "ACTIVE",
+        "address": "9201 CYNDERELLA DR",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236302
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-30",
+        "status": "ACTIVE",
+        "address": "9201 CYNDERELLA DR",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235286
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-22",
+        "status": "ACTIVE",
+        "address": "5726 HEERDINK LN",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 235014
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-06-21",
+        "status": "COMPLETE",
+        "address": "4239 BROMM RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 216576
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-06-13",
+        "status": "COMPLETE",
+        "address": "8303 BROADWAY AVE",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 216381
+      }
+    ],
+    "sourceEvidence": "Dustin Stoll appears as the contractor name/alias (STOLL DUSTIN L) on 5 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-nathan-mominee",
+    "name": "Nathan Mominee",
+    "builderName": "Nathan Mominee",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 5,
+    "qualifyingPermitCount": 5,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 78,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(234193%2C234194%2C224079%2C223806%2C214114)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2026-03-27",
+        "status": "ACTIVE",
+        "address": "273 WASHINGTON AVE",
+        "subdivision": "GOODSELLS ENLARGEMENT",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 234193
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2026-03-27",
+        "status": "ACTIVE",
+        "address": "273 WASHINGTON AVE",
+        "subdivision": "GOODSELLS ENLARGEMENT",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 234194
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-04-22",
+        "status": "ACTIVE",
+        "address": "67 ADAMS AVE",
+        "subdivision": "GOODSELLS ENLARGEMENT",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 224079
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-04-14",
+        "status": "ACTIVE",
+        "address": "1207 CULVER DR",
+        "subdivision": "CULVER-JOHNSON''S SUB",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 223806
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2024-03-15",
+        "status": "ACTIVE",
+        "address": "1211 CULVER DR",
+        "subdivision": "CULVER-JOHNSON''S SUB",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 214114
+      }
+    ],
+    "sourceEvidence": "Nathan Mominee appears as the contractor name/alias (MOMINEE, NATHAN R) on 5 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-byron-hawes",
+    "name": "Byron Hawes",
+    "builderName": "Byron Hawes",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 4,
+    "qualifyingPermitCount": 4,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 77,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(234614%2C230095%2C227085%2C220218)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-10",
+        "status": "ACTIVE",
+        "address": "10112 STALLION DR",
+        "subdivision": "SADDLE CREEK EST SEC 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234614
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-09-23",
+        "status": "ACTIVE",
+        "address": "2909 PALOMAR DR",
+        "subdivision": "BRIAR POINTE SEC 2",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 230095
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-07-22",
+        "status": "ACTIVE",
+        "address": "8135 DOE RUN TRL",
+        "subdivision": "DEERFIELD SEC 3 PH 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 227085
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-11-20",
+        "status": "ACTIVE",
+        "address": "514 WHITETAIL CT",
+        "subdivision": "DEERFIELD SEC 4",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 220218
+      }
+    ],
+    "sourceEvidence": "Byron Hawes appears as the contractor name/alias (HAWES, BYRON) on 4 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-dennis-gates",
+    "name": "Dennis Gates",
+    "builderName": "Dennis Gates",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 4,
+    "qualifyingPermitCount": 4,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(222265%2C221942%2C217370%2C212949)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-02-18",
+        "status": "ACTIVE",
+        "address": "515 E CHERRY ST",
+        "subdivision": "ORR PLACE",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 222265
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-02-05",
+        "status": "ACTIVE",
+        "address": "600 E POWELL AVE",
+        "subdivision": "COLUMBIA ADD REPLAT",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 221942
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-07-26",
+        "status": "COMPLETE",
+        "address": "708 E POWELL AVE",
+        "subdivision": "COLUMBIA ADD REPLAT",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 217370
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-01-19",
+        "status": "COMPLETE",
+        "address": "419 S DENBY AVE",
+        "subdivision": "LINCOLN PLACE",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 212949
+      }
+    ],
+    "sourceEvidence": "Dennis Gates appears as the contractor name/alias (GATES, DENNIS E) on 4 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-ryan-bond",
+    "name": "Ryan Bond",
+    "builderName": "Ryan Bond",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 4,
+    "qualifyingPermitCount": 4,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(236534%2C227412%2C220772%2C217263)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-05-14",
+        "status": "ACTIVE",
+        "address": "6420 MARX RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 236534
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-07-31",
+        "status": "ACTIVE",
+        "address": "11925 HENRY LN",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 227412
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-12-13",
+        "status": "ACTIVE",
+        "address": "8801 SCHAEFFER RD",
+        "subdivision": "BENTSEN NO 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 220772
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-07-22",
+        "status": "ACTIVE",
+        "address": "10714 BIG CYNTHIANA RD",
+        "subdivision": "WHISPERING HILLS SEC C-2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 217263
+      }
+    ],
+    "sourceEvidence": "Ryan Bond appears as the contractor name/alias (BOND RYAN F) on 4 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-timothy-odell",
+    "name": "Timothy Odell",
+    "builderName": "Timothy Odell",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 4,
+    "qualifyingPermitCount": 4,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 74,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(225246%2C217959%2C216030%2C213437)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-05-30",
+        "status": "ACTIVE",
+        "address": "18438 WHITFIELD CT",
+        "subdivision": "CAMBRIDGE VILLAGE PHASE 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 225246
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-08-21",
+        "status": "ACTIVE",
+        "address": "19329 SAFFRON HILL CT",
+        "subdivision": "CAMBRIDGE VILLAGE PH IV",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 217959
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-05-31",
+        "status": "COMPLETE",
+        "address": "19219 AMHERST LN",
+        "subdivision": "NA",
+        "jurisdiction": "NA",
+        "sourceObjectId": 216030
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-02-12",
+        "status": "COMPLETE",
+        "address": "18508 WHITFIELD CT",
+        "subdivision": "CAMBRIDGE VILLAGE PHASE 2",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 213437
+      }
+    ],
+    "sourceEvidence": "Timothy Odell appears as the contractor name/alias (O'DELL TIMOTHY A) on 4 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-christopher-miller",
+    "name": "Christopher Miller",
+    "builderName": "Christopher Miller",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 73,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(231885%2C224115%2C218991)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-12-22",
+        "status": "ACTIVE",
+        "address": "2929 LENOX DR",
+        "subdivision": "HAWTHORNE ESTATES SEC A",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 231885
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-04-23",
+        "status": "ACTIVE",
+        "address": "5100 W MILL RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 224115
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-10-03",
+        "status": "COMPLETE",
+        "address": "2824 LENOX DR",
+        "subdivision": "HAWTHORNE ESTATES SEC A",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 218991
+      }
+    ],
+    "sourceEvidence": "Christopher Miller appears as the contractor name/alias (MILLER CHRISTOPHER T) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-corey-hirsch",
+    "name": "Corey Hirsch",
+    "builderName": "Corey Hirsch",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 72,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(218033%2C216901%2C214944)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-08-26",
+        "status": "ACTIVE",
+        "address": "13000 WOODLAND LN",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 218033
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-07-08",
+        "status": "ACTIVE",
+        "address": "19137 AMHERST LN",
+        "subdivision": "CAMBRIDGE VILLAGE PH IV",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 216901
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-04-22",
+        "status": "COMPLETE",
+        "address": "5700 W SAINT JOSEPH RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 214944
+      }
+    ],
+    "sourceEvidence": "Corey Hirsch appears as the contractor name/alias (HIRSCH, COREY M) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-guy-walker",
+    "name": "Guy Walker",
+    "builderName": "Guy Walker",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 71,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(231261%2C217962%2C212923)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-12-01",
+        "status": "ACTIVE",
+        "address": "9319 OLD STATE RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 231261
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-08-21",
+        "status": "ACTIVE",
+        "address": "3123 FEHME CT",
+        "subdivision": "NEVAYAH PLACE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 217962
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-01-17",
+        "status": "ACTIVE",
+        "address": "3124 FEHME CT",
+        "subdivision": "NEVAYAH PLACE",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 212923
+      }
+    ],
+    "sourceEvidence": "Guy Walker appears as the contractor name/alias (WALKER GUY) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-keith-baker",
+    "name": "Keith Baker",
+    "builderName": "Keith Baker",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 70,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(227763%2C227764%2C222380)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-06-10",
+        "status": "ACTIVE",
+        "address": "801 N BOEHNE CAMP RD",
+        "subdivision": "BLUE TERRACE TWO",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 227763
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-06-10",
+        "status": "ACTIVE",
+        "address": "801 N BOEHNE CAMP RD",
+        "subdivision": "BLUE TERRACE TWO",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 227764
+      },
+      {
+        "permitNumber": "BD179175",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-02-20",
+        "status": "ENTERED IN ERROR",
+        "address": "801 N BOEHNE CAMP RD",
+        "subdivision": "BLUE TERRACE TWO",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 222380
+      }
+    ],
+    "sourceEvidence": "Keith Baker appears as the contractor name/alias (BAKER, KEITH E) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-nelson-wittmer",
+    "name": "Nelson Wittmer",
+    "builderName": "Nelson Wittmer",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 70,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(234325%2C216379%2C212641)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2026-04-01",
+        "status": "ACTIVE",
+        "address": "6800 SIX SCHOOL RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 234325
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-06-13",
+        "status": "ACTIVE",
+        "address": "19606 BIG CYNTHIANA RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 216379
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-01-03",
+        "status": "COMPLETE",
+        "address": "2645 N POSEY COUNTY LINE RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 212641
+      }
+    ],
+    "sourceEvidence": "Nelson Wittmer appears as the contractor name/alias (WITTMER, NELSON) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-shawn-powell",
+    "name": "Shawn Powell",
+    "builderName": "Shawn Powell",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 70,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(224876%2C220542%2C215646)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2025-05-19",
+        "status": "ACTIVE",
+        "address": "1516 OLIVE ST",
+        "subdivision": "COLLEGE HEIGHTS",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 224876
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2024-12-05",
+        "status": "ACTIVE",
+        "address": "1512 OLIVE ST",
+        "subdivision": "COLLEGE HEIGHTS",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 220542
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW TWO FAMILY DWELLING",
+        "issueDate": "2024-05-15",
+        "status": "COMPLETE",
+        "address": "2100 COVERT AVE",
+        "subdivision": "FAIRLAWN SUB",
+        "jurisdiction": "CITY OF EVANSVILLE",
+        "sourceObjectId": 215646
+      }
+    ],
+    "sourceEvidence": "Shawn Powell appears as the contractor name/alias (POWELL, SHAWN D) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-timothy-scheu",
+    "name": "Timothy Scheu",
+    "builderName": "Timothy Scheu",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 70,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(227898%2C224608%2C215498)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-06-12",
+        "status": "ACTIVE",
+        "address": "5600 HOGUE RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 227898
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-05-08",
+        "status": "ACTIVE",
+        "address": "9220 MOFFETT LN",
+        "subdivision": "MILLER SUB",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 224608
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-05-09",
+        "status": "COMPLETE",
+        "address": "14501 CEMETERY RD",
+        "subdivision": "NA",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 215498
+      }
+    ],
+    "sourceEvidence": "Timothy Scheu appears as the contractor name/alias (SCHEU, TIMOTHY G) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  },
+  {
+    "id": "evansville-arcgis-william-chandler",
+    "name": "William Chandler",
+    "builderName": "William Chandler",
+    "market": "evansville-in",
+    "marketLabel": "Evansville / Vanderburgh County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit contractor found; acquisition contact unknown; no outreach performed",
+    "recentBuilds": 3,
+    "qualifyingPermitCount": 3,
+    "validationStatus": "permit-verified-needs-company-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 70,
+    "sourceUrl": "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0/query?f=json&where=OBJECTID%20in%20(222971%2C217257%2C215361)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "City of Evansville / Vanderburgh County Building Commission ArcGIS permits; contractor field on new single-family/two-family dwelling permits",
+    "permitEvidence": [
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2025-03-14",
+        "status": "ACTIVE",
+        "address": "14218 HEMLOCK LN",
+        "subdivision": "MAGNOLIA RIDGE SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 222971
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-07-22",
+        "status": "COMPLETE",
+        "address": "4502 HIBISCUS LN",
+        "subdivision": "MAGNOLIA RIDGE SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 217257
+      },
+      {
+        "permitNumber": "MULTIPLE",
+        "permitType": "NEW SINGLE FAMILY DWELLING",
+        "issueDate": "2024-05-03",
+        "status": "ACTIVE",
+        "address": "4711 LEMON GRASS CT",
+        "subdivision": "MAGNOLIA RIDGE SEC 1",
+        "jurisdiction": "VANDERBURGH COUNTY",
+        "sourceObjectId": 215361
+      }
+    ],
+    "sourceEvidence": "William Chandler appears as the contractor name/alias (CHANDLER WILLIAM LEE) on 3 public Building Commission new single-family/two-family dwelling permit records in Evansville/Vanderburgh County.",
+    "evidenceFreshness": "2026-06-28",
+    "notes": "This is a stronger Indiana path than generic directory scraping because it is official permit activity with contractor fields. Contractor names are public permit names and may be licensed individuals/principals rather than final company DBA; enrich website/land-acquisition contact before outreach."
+  }
+]

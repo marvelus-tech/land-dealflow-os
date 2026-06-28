@@ -88,9 +88,12 @@ const builderMarketSources = [
   { key: 'maricopa', state: 'AZ', marketName: 'Phoenix / Maricopa County, AZ', csvUrl: 'data/real/maricopa/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa/builder_signals.json', evidenceUrl: 'data/real/maricopa/market_evidence.json' },
   { key: 'dorchester-sc', state: 'SC', marketName: 'Dorchester County / Charleston edge, SC', csvUrl: 'data/real/dorchester-sc/builder_validation_queue.csv', signalsUrl: 'data/real/dorchester-sc/builder_signals.json', evidenceUrl: 'data/real/dorchester-sc/market_evidence.json' },
   { key: 'columbus-oh', state: 'OH', marketName: 'Columbus / Franklin County, OH', csvUrl: 'data/real/columbus-oh/builder_validation_queue.csv', signalsUrl: 'data/real/columbus-oh/builder_signals.json', evidenceUrl: 'data/real/columbus-oh/market_evidence.json' },
+  { key: 'philadelphia-pa', state: 'PA', marketName: 'Philadelphia, PA', csvUrl: 'data/real/philadelphia-pa/builder_validation_queue.csv', signalsUrl: 'data/real/philadelphia-pa/builder_signals.json', evidenceUrl: 'data/real/philadelphia-pa/market_evidence.json' },
   { key: 'pittsburgh-pa', state: 'PA', marketName: 'Pittsburgh / Allegheny County, PA', csvUrl: 'data/real/pittsburgh-pa/builder_validation_queue.csv', signalsUrl: 'data/real/pittsburgh-pa/builder_signals.json', evidenceUrl: 'data/real/pittsburgh-pa/builder_discovery_packet.json' },
+  { key: 'forsyth-ga', state: 'GA', marketName: 'Forsyth County / North Atlanta, GA', csvUrl: 'data/real/forsyth-ga/builder_validation_queue.csv', signalsUrl: 'data/real/forsyth-ga/builder_signals.json', evidenceUrl: 'data/real/forsyth-ga/market_evidence.json' },
   { key: 'hall-ga', state: 'GA', marketName: 'Hall County / Gainesville, GA', csvUrl: 'data/real/hall-ga/builder_validation_queue.csv', signalsUrl: 'data/real/hall-ga/builder_signals.json', evidenceUrl: 'data/real/hall-ga/market_evidence.json' },
   { key: 'boise-id', state: 'ID', marketName: 'Boise / Ada County, ID', csvUrl: 'data/real/boise-id/builder_validation_queue.csv', signalsUrl: 'data/real/boise-id/builder_signals.json', evidenceUrl: 'data/real/boise-id/market_evidence.json' },
+  { key: 'evansville-in', state: 'IN', marketName: 'Evansville / Vanderburgh County, IN', csvUrl: 'data/real/evansville-in/builder_validation_queue.csv', signalsUrl: 'data/real/evansville-in/builder_signals.json', evidenceUrl: 'data/real/evansville-in/market_evidence.json' },
 ];
 
 const builderMarketSourceByKey = new Map(builderMarketSources.map(source => [source.key, source]));
@@ -125,8 +128,10 @@ const builderMarketRegistry = [
   { key: 'greenville-sc', state: 'SC', label: 'Greenville County', note: 'Upstate SC secondary lane', platform: 'County/city permit portal review', suggestedRank: 27, sourceWork: 'Review after Dorchester/Berkeley.' },
   { key: 'columbus-oh', state: 'OH', label: 'Columbus / Franklin County', note: 'Ohio source lane', platform: 'City/county permit portals + county GIS', suggestedRank: 28, sourceWork: 'Verify residential permit rows with contractor/builder names before buyer outreach.' },
   { key: 'boise-id', state: 'ID', label: 'Boise / Ada County', note: 'Idaho growth-market source lane', platform: 'City of Boise + Ada County permitting/GIS', suggestedRank: 29, sourceWork: 'Find machine-readable permit path and builder identity fields.' },
-  { key: 'indianapolis-in', state: 'IN', label: 'Indianapolis / Marion County', note: 'Indiana infill and edge-lot source lane', platform: 'Accela/Citizen Access + county property records', suggestedRank: 30, sourceWork: 'Probe permit export/detail pages for residential builder names.' },
-  { key: 'pittsburgh-pa', state: 'PA', label: 'Pittsburgh / Allegheny County', note: 'Pennsylvania source-work lane', platform: 'City/county permit portals + county assessment records', suggestedRank: 31, sourceWork: 'Verify permit-builder visibility and parcel source coverage before seller sourcing.' },
+  { key: 'evansville-in', state: 'IN', label: 'Evansville / Vanderburgh County', note: 'live Indiana official-permit lane', platform: 'Evansville/Vanderburgh Building Commission ArcGIS', suggestedRank: 30, sourceWork: 'Enrich permit contractor principals to company DBA/contact URLs before any outreach.' },
+  { key: 'indianapolis-in', state: 'IN', label: 'Indianapolis / Marion County', note: 'Indiana infill and edge-lot source lane', platform: 'Accela/Citizen Access + county property records', suggestedRank: 31, sourceWork: 'Probe permit export/detail pages for residential builder names.' },
+  { key: 'philadelphia-pa', state: 'PA', label: 'Philadelphia', note: 'live PA L&I permit-backed lane', platform: 'OpenDataPhilly / Carto L&I permits', suggestedRank: 32, sourceWork: 'Enrich high-count permit builders with public company contact paths before outreach.' },
+  { key: 'pittsburgh-pa', state: 'PA', label: 'Pittsburgh / Allegheny County', note: 'Pennsylvania source-work lane', platform: 'City/county permit portals + county assessment records', suggestedRank: 33, sourceWork: 'Verify permit-builder visibility and parcel source coverage before seller sourcing.' },
 ];
 
 const builderMarketRegistryByKey = new Map(builderMarketRegistry.map(market => [market.key, market]));
@@ -198,7 +203,7 @@ let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
 let selectedBuilderMarketState = 'GA';
-let selectedBuilderMarketKey = 'hall-ga';
+let selectedBuilderMarketKey = '';
 let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
@@ -1834,10 +1839,10 @@ const builderStateTheses = {
   AZ: { label: 'Arizona', thesis: 'Phoenix edge lane', short: 'Phoenix edge', detail: 'Phoenix / Maricopa edge growth', note: 'Treat as a state-level lane; county detail belongs in source proof, not the top selector.' },
   NC: { label: 'North Carolina', thesis: 'Raleigh / Wake lane', short: 'Raleigh / Wake', detail: 'Triangle permit-growth lane', note: 'Keep county/source depth behind the selected state workbench.' },
   TX: { label: 'Texas', thesis: 'Austin + San Antonio lanes', short: 'Austin + San Antonio', detail: 'Central / south Texas growth lanes', note: 'Austin and San Antonio stay under one Texas decision until a specific buyer call requires splitting.' },
-  PA: { label: 'Pennsylvania', thesis: 'Pittsburgh permit lane', short: 'Pittsburgh live', detail: 'Pittsburgh permit-builder lane', note: 'Pittsburgh now carries source-backed residential new-construction builders; use the county ledger for proof depth.' },
+  PA: { label: 'Pennsylvania', thesis: 'Philadelphia + Pittsburgh permit lanes', short: 'Philly + Pittsburgh live', detail: 'Philadelphia L&I plus Pittsburgh permit-builder lanes', note: 'Philadelphia adds a deep permit-backed builder list; Pittsburgh remains a supporting western PA lane.' },
   OH: { label: 'Ohio', thesis: 'Columbus permit lane', short: 'Columbus live', detail: 'Columbus public ArcGIS permit lane', note: 'Columbus now carries source-backed permit applicants; call-confirm buy boxes before seller sourcing.' },
-  ID: { label: 'Idaho', thesis: 'Boise candidate lane', short: 'Boise thin', detail: 'Boise public-builder candidate lane', note: 'Boise has public builder candidates and source-path proof, but still needs contractor-bearing permit evidence.' },
-  IN: { label: 'Indiana', thesis: 'Queued source lane', short: 'Queued', detail: 'Indiana source lane', note: 'Indianapolis remains visible while the Accela scraper is built and permit-backed rows are promoted.' },
+  ID: { label: 'Idaho', thesis: 'Boise / Treasure Valley builder lane', short: 'Boise directory live', detail: 'Boise public-builder candidate lane', note: 'Boise now carries BCA SW Idaho public-builder directory rows; contractor-bearing permit proof is the next enrichment layer.' },
+  IN: { label: 'Indiana', thesis: 'Evansville official-permit lane', short: 'Evansville live', detail: 'Evansville / Vanderburgh official ArcGIS permit lane', note: 'Evansville now carries public permit-backed contractor principals; company DBA/contact enrichment comes before outreach.' },
 };
 
 function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntries(), permitLandscape = getPermitPortalLandscape()) {
@@ -1893,7 +1898,7 @@ function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntr
 }
 
 function renderBuilderCountyLedger(activeState = {}) {
-  const rows = asArray(activeState.markets).map(market => `<li class="state-county-row market-status-${h(market.status)}">
+  const rows = asArray(activeState.markets).map(market => `<li role="button" tabindex="0" class="state-county-row market-status-${h(market.status)} ${market.key === selectedBuilderMarketKey ? 'active is-active' : ''}" data-builder-market-key="${h(market.key)}" aria-pressed="${market.key === selectedBuilderMarketKey ? 'true' : 'false'}">
     <span><b>${h(market.label)}</b><small>${h(market.note || 'source lane')}</small></span>
     <em>${h(market.statusCopy)}</em>
   </li>`).join('');
@@ -2349,7 +2354,8 @@ function renderBuilderListEnginePanel(options = {}) {
   let stateSummaries = builderStateSummaryEntries(marketSummaries, permitLandscape);
   if (!stateSummaries.some(state => state.stateCode === selectedBuilderMarketState)) selectedBuilderMarketState = stateSummaries[0]?.stateCode || 'GA';
   let activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
-  selectedBuilderMarketKey = activeState?.markets?.[0]?.key || selectedBuilderMarketKey || 'knoxville';
+  const activeMarketKeys = new Set(asArray(activeState?.markets).map(market => market.key));
+  if (selectedBuilderMarketKey && !activeMarketKeys.has(selectedBuilderMarketKey)) selectedBuilderMarketKey = '';
   stateSummaries = stateSummaries.map(state => ({ ...state, isActive: state.stateCode === selectedBuilderMarketState }));
   activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
   const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
@@ -2357,12 +2363,14 @@ function renderBuilderListEnginePanel(options = {}) {
     <span class="state-market-copy"><strong><span class="state-market-name">${h(state.label)}</span><span class="state-market-thesis">${h(state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'county lane' : 'county lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
     <em><b>${h(state.builderCount)}</b><span>builders</span></em>
   </div>`).join('');
-  const activeBuilders = asArray(activeState.rows);
-  const activeSummary = activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
+  const selectedMarket = selectedBuilderMarketKey ? asArray(activeState.markets).find(market => market.key === selectedBuilderMarketKey) : null;
+  const activeBuilders = selectedMarket ? asArray(selectedMarket.rows) : asArray(activeState.rows);
+  const activeSummary = selectedMarket?.summary || activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
+  const activeLaneLabel = selectedMarket ? selectedMarket.label : activeState.label;
   const marketSummary = `<div class="active-market-summary state-focus-summary">
-    <span>Selected market state</span>
-    <strong>${h(activeState.label)}</strong>
-    <p><b>${h(activeState.detail || activeState.thesis)}.</b> ${h(activeState.note || '')}</p>
+    <span>${selectedMarket ? 'Selected market lane' : 'Selected market state'}</span>
+    <strong>${h(activeLaneLabel)}</strong>
+    <p><b>${h(selectedMarket?.marketName || activeState.detail || activeState.thesis)}.</b> ${h(selectedMarket?.note || activeState.note || '')}</p>
     <ul>
       <li title="Permit-backed builder rows under this state."><b>${h(activeBuilders.length)}</b><span>builders</span></li>
       <li title="County/source lanes grouped under the state decision."><b>${h(activeState.countyCount || 0)}</b><span>counties</span></li>
@@ -2423,7 +2431,7 @@ function renderBuilderListEnginePanel(options = {}) {
         <div class="state-workbench-kicker">
           <span>Operating state</span>
           <strong>${h(activeState.label)}</strong>
-          <em>${h(activeSummary.totalBuilders || 0)} builders · ${h(activeState.countyCount || 0)} county lanes</em>
+          <em>${h(activeSummary.totalBuilders || activeState.builderCount || activeBuilders.length || 0)} builders · ${h(activeState.countyCount || 0)} county lanes</em>
         </div>
         <div class="state-workbench-layout">
           <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
@@ -3544,7 +3552,7 @@ function bindEvents() {
         renderBuilderListEnginePanel({ preserveViewport: true });
       } else if (stateCode) {
         selectedBuilderMarketState = stateCode;
-        selectedBuilderMarketKey = builderMarketRegistry.find(market => market.state === stateCode)?.key || selectedBuilderMarketKey;
+        selectedBuilderMarketKey = '';
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
         renderBuilderListEnginePanel({ preserveViewport: true });

@@ -11,9 +11,12 @@ const markets = [
   ['maricopa', 'AZ', 'data/real/maricopa/builder_signals.json', 20],
   ['dorchester-sc', 'SC', 'data/real/dorchester-sc/builder_signals.json', 20],
   ['columbus-oh', 'OH', 'data/real/columbus-oh/builder_signals.json', 20],
+  ['philadelphia-pa', 'PA', 'data/real/philadelphia-pa/builder_signals.json', 25],
   ['pittsburgh-pa', 'PA', 'data/real/pittsburgh-pa/builder_signals.json', 11],
+  ['forsyth-ga', 'GA', 'data/real/forsyth-ga/builder_signals.json', 18],
   ['hall-ga', 'GA', 'data/real/hall-ga/builder_signals.json', 11],
-  ['boise-id', 'ID', 'data/real/boise-id/builder_signals.json', 7],
+  ['boise-id', 'ID', 'data/real/boise-id/builder_signals.json', 30],
+  ['evansville-in', 'IN', 'data/real/evansville-in/builder_signals.json', 30],
 ];
 
 assert.match(app, /const builderMarketSources = \[/, 'UI must declare deployed builder market sources');
@@ -54,7 +57,7 @@ assert.match(app, /<details class="state-county-ledger">/, 'County lane detail s
 assert.doesNotMatch(app, /<details class="state-county-ledger" open>/, 'County lane detail must not overwhelm the selected-state summary by default');
 assert.match(app, /data-builder-market-key/, 'Builders switchboard must switch individual markets on demand');
 assert.match(app, /0 builders · needs source work/, 'Low/no-count markets must remain visible with source-work copy');
-for (const key of ['columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa']) {
+for (const key of ['columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa']) {
   assert.match(app, new RegExp(`key: '${key}'`), `New OH/ID/IN/PA market must remain visible on Builders: ${key}`);
 }
 for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga']) {
@@ -77,7 +80,8 @@ assert.match(app, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('che
 
 assert.match(app, /row\.name \|\| row\.companyName \|\| row\.builderName/, 'Builder normalization must display builderName-only permit artifacts, not Unnamed builder');
 assert.match(app, /row\.sourceUrl \|\| asArray\(row\.sourceUrls\)\[0\]/, 'Builder normalization must use sourceUrls arrays for proof links');
-assert.match(app, /let selectedBuilderMarketKey = 'hall-ga'/, 'Builders should open on the Georgia lane that now has source-backed rows');
+assert.match(app, /let selectedBuilderMarketKey = ''/, 'Builders should open on the whole selected state so every live county lane is visible before drilling into one market');
+assert.match(app, /selectedBuilderMarketKey = ''/, 'Clicking a state must reset the county lane filter and show every live market in that state');
 for (const [key, state, url, minRows] of markets) {
   assert.ok(app.includes(`key: '${key}'`), `missing builder source key ${key}`);
   assert.ok(app.includes(`state: '${state}'`), `missing state ${state} for ${key}`);
@@ -86,7 +90,7 @@ for (const [key, state, url, minRows] of markets) {
   assert.ok(rows.length >= minRows, `${key} must have at least ${minRows} deployed builder rows`);
 }
 
-for (const key of ['columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
+for (const key of ['columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.ok(app.includes(`key: '${key}'`), `missing visible market key ${key}`);
 }
 

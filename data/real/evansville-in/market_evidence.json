@@ -1,0 +1,26 @@
+{
+  "market": "evansville-in",
+  "marketLabel": "Evansville / Vanderburgh County, IN",
+  "state": "IN",
+  "generatedAt": "2026-06-28",
+  "sourcePath": {
+    "name": "Evansville/Vanderburgh Building Commission ArcGIS permit layer",
+    "sourceUrls": [
+      "https://www.arcgis.com/home/item.html?id=3d8b703a7c984249a9caf9c706b1e50d",
+      "https://maps.evansvillegis.com/arcgis_server/rest/services/BC/BUILDING_COMMISSION_PERMITS/MapServer/0"
+    ],
+    "whyStrongerForIndiana": "Official local government permit records expose USER_Contractor on new single-family/two-family dwelling permits. This avoids blocked/weak statewide licensing or association-directory paths and produces activity-backed builder candidates.",
+    "conversionMethod": "GET MapServer/0/query with where=(UPPER(USER_Project_Activity) LIKE '%NEW SINGLE FAMILY%' OR '%NEW TWO FAMILY%') AND USER_Application_Recv_d >= DATE '2024-01-01'; outFields include USER_Contractor, USER_Permit_Number, USER_Location, USER_App_Status, USER_Application_Recv_d; group by normalized contractor first/last aliases; sort by permit count; emit data/real/evansville-in/builder_signals.json and builder_validation_queue.csv.",
+    "caveat": "Contractor field frequently stores licensed individual names, not company DBA names. Treat as permit-verified buyer discovery leads requiring company/contact enrichment; no outreach performed."
+  },
+  "recordCount": 30,
+  "rawPermitCount": 504,
+  "fieldsUsed": [
+    "USER_Project_Activity",
+    "USER_Contractor",
+    "USER_Permit_Number",
+    "USER_Location",
+    "USER_App_Status",
+    "USER_Application_Recv_d"
+  ]
+}

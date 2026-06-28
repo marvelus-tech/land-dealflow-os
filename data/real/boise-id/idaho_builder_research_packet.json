@@ -1,0 +1,467 @@
+{
+  "market": "Boise / Ada / Canyon / Treasure Valley, Idaho",
+  "state": "ID",
+  "generatedAt": "2026-06-28",
+  "recordCount": 30,
+  "mostProductiveSourcePath": "Building Contractors Association of Southwestern Idaho public member directory category page: /memberdirectory/Search/builders-369948. It yielded 133 public Builder-category members with phones, category tags, detail URLs, and some websites.",
+  "conversionNotes": "Map BCA directory cards to data/real/boise-id/builder_signals.json. Use name/builderName, state=ID, market=boise-id, contactPage=member detail URL, phone=directory phone, sourceUrls=[directory category URL, detail URL, website if harvested], evidenceType=BCA public member directory Builder category, confidence 76-88 with higher scores for production builders or Developer/Land Development category tags. Keep validationStatus=needs-call-confirmation until permit/license or direct buy-box validation is added.",
+  "candidates": [
+    {
+      "builderName": "Berkeley Building Co.",
+      "market": "Meridian / Ada County / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://www.berkeleybuildingco.com/",
+      "phone": "(208) 995-2885",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/berkeley-building-co-2017817",
+        "https://www.berkeleybuildingco.com/"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders; developer/land-development category also present",
+      "confidence": 86,
+      "notes": "BCA SW Idaho directory lists as Builder plus Developer/Land Development. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Biltmore Company",
+      "market": "Meridian / Ada County / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://www.biltmoreco.com/",
+      "phone": "(208) 895-0500",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/biltmore-company-2017816",
+        "https://www.biltmoreco.com/"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 84,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "KB Home",
+      "market": "Meridian / Ada County / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://www.kbhome.com/new-homes-idaho",
+      "phone": "(208) 250-6161",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/kb-home-2113968",
+        "https://www.kbhome.com/new-homes-idaho"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 86,
+      "notes": "BCA SW Idaho directory lists as Builder; national production builder with Idaho new-home page. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Tresidio Homes",
+      "market": "Meridian / Ada County / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://www.tresidio.com/",
+      "phone": "(208) 917-7500",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/tresidio-homes-2017773",
+        "https://www.tresidio.com/"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 84,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Alturas Homes, LLC",
+      "market": "Boise / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/alturas-homes-llc-2017878",
+      "phone": "(208) 391-4445",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/alturas-homes-llc-2017878"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder; website not harvested from directory card. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Amyx Homes",
+      "market": "Eagle / Ada County / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/amyx-homes-2017687",
+      "phone": "(208) 939-5665",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/amyx-homes-2017687"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Blackrock Homes",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/blackrock-homes-3018930",
+      "phone": "208-297-5940",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/blackrock-homes-3018930"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 76,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Boise Hunter Homes",
+      "market": "Boise / Ada County / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://boisehunterhomes.com/",
+      "phone": "(208) 577-5501",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/boise-hunter-homes-2017858",
+        "https://boisehunterhomes.com/"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 82,
+      "notes": "BCA SW Idaho directory lists as Builder; official builder site previously validated in existing lane. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Capstone Homes Idaho",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/capstone-homes-idaho-3168930",
+      "phone": "(208) 999-7640",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/capstone-homes-idaho-3168930"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 76,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "CBH Homes",
+      "market": "Boise / Ada / Canyon / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://cbhhomes.com",
+      "phone": "(208) 288-5560",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/cbh-homes-2017856",
+        "https://cbhhomes.com"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 88,
+      "notes": "BCA SW Idaho directory lists as Builder; official builder site previously validated in existing lane. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Clark & Co Homes",
+      "market": "Boise / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/clark-co-homes-2017731",
+      "phone": "(208) 991-4010",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/clark-co-homes-2017731"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Conger Group",
+      "market": "Boise / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/conger-group-2017814",
+      "phone": "(208) 336-5355",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/conger-group-2017814"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Element Design Build LLC",
+      "market": "Boise / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/element-design-build-llc-2098989",
+      "phone": "(208) 274-8000",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/element-design-build-llc-2098989"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders; developer/land-development category also present",
+      "confidence": 84,
+      "notes": "BCA SW Idaho directory lists as Builder plus Developers/Land Development. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Gardner Homes Idaho",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/gardner-homes-idaho-2017912",
+      "phone": "(208) 917-9029",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/gardner-homes-idaho-2017912"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Hallmark Homes",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/hallmark-homes-2017808",
+      "phone": "(208) 887-9090",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/hallmark-homes-2017808"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder/Construction. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Hayden Homes, LLC",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/hayden-homes-llc-2017806",
+      "phone": "(800) 971-4691",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/hayden-homes-llc-2017806"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 80,
+      "notes": "BCA SW Idaho directory lists as Builder; regional production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Highland Homes LLC",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/highland-homes-llc-2017724",
+      "phone": "(208) 288-2722",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/highland-homes-llc-2017724"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Hubble Homes, LLC",
+      "market": "Boise / Ada / Canyon / Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://www.hubblehomes.com",
+      "phone": "(208) 433-8800",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/hubble-homes-llc-2017684",
+        "https://www.hubblehomes.com"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 86,
+      "notes": "BCA SW Idaho directory lists as Builder; official builder site previously validated in existing lane. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "James Clyde Homes",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/james-clyde-homes-2017905",
+      "phone": "(208) 297-5822",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/james-clyde-homes-2017905"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Legacy Homes",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/legacy-homes-2017755",
+      "phone": "(208) 860-8235",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/legacy-homes-2017755"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Lennar Homes of Idaho, LLC",
+      "market": "Boise / Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/lennar-homes-of-idaho-llc-2017804",
+      "phone": "(208) 314-6730",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/lennar-homes-of-idaho-llc-2017804"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 84,
+      "notes": "BCA SW Idaho directory lists as Builder; national production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Pacific Lifestyle Homes",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/pacific-lifestyle-homes-3588056",
+      "phone": "(360) 304-9901",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/pacific-lifestyle-homes-3588056"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 80,
+      "notes": "BCA SW Idaho directory lists as Builder; regional production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Rennison Companies",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/rennison-companies-2017751",
+      "phone": "(208) 938-2440",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/rennison-companies-2017751"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders; developer/land-development category also present",
+      "confidence": 82,
+      "notes": "BCA SW Idaho directory lists as Builder plus Developer. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Richmond American Homes",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/richmond-american-homes-2206085",
+      "phone": "208-713-7237",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/richmond-american-homes-2206085"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 82,
+      "notes": "BCA SW Idaho directory lists as Builder; national production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Riverwood Homes, Inc.",
+      "market": "Treasure Valley",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/riverwood-homes-inc-2017718",
+      "phone": "(208) 850-2983",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/riverwood-homes-inc-2017718"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 78,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Schell Brothers",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/schell-brothers-3636991",
+      "phone": "(208) 609-5011",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/schell-brothers-3636991"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 80,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Shea Homes Inc.",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/shea-homes-inc-2017946",
+      "phone": "(425) 450-7161",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/shea-homes-inc-2017946"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 80,
+      "notes": "BCA SW Idaho directory lists as Builder; national/regional production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Toll Brothers Idaho Division",
+      "market": "Boise / Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/toll-brothers-idaho-division-2017796",
+      "phone": "(208) 424-0020",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/toll-brothers-idaho-division-2017796"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 84,
+      "notes": "BCA SW Idaho directory lists as Builder; national production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Williams Homes Inc",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/williams-homes-inc-2017793",
+      "phone": "(661) 222-9207",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/williams-homes-inc-2017793"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 80,
+      "notes": "BCA SW Idaho directory lists as Builder; regional production builder. No outreach performed; phone is public directory phone where present."
+    },
+    {
+      "builderName": "Woodbridge Pacific Group",
+      "market": "Treasure Valley / Idaho",
+      "state": "ID",
+      "websiteOrContactUrl": "https://business.bcaswi.org/memberdirectory/Details/woodbridge-pacific-group-2017708",
+      "phone": "(208) 889-9112",
+      "email": "",
+      "sourceUrls": [
+        "https://business.bcaswi.org/memberdirectory/Search/builders-369948",
+        "https://business.bcaswi.org/memberdirectory/Details/woodbridge-pacific-group-2017708"
+      ],
+      "evidenceType": "Building Contractors Association of Southwestern Idaho public member directory; category includes Builder/Builders",
+      "confidence": 80,
+      "notes": "BCA SW Idaho directory lists as Builder. No outreach performed; phone is public directory phone where present."
+    }
+  ]
+}

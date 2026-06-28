@@ -1,0 +1,30 @@
+{
+  "market": "philadelphia-pa",
+  "marketLabel": "Philadelphia, PA",
+  "state": "PA",
+  "generatedAt": "2026-06-28",
+  "sourcePath": {
+    "name": "Philadelphia Licenses & Inspections building permits via OpenDataPhilly / Carto SQL API",
+    "sourceUrls": [
+      "https://www.opendataphilly.org/dataset/licenses-and-inspections-building-permits",
+      "https://phl.carto.com/api/v2/sql"
+    ],
+    "whyStrongerForPennsylvania": "Official municipal L&I permit rows expose contractorname on recent residential/new-construction building permits, producing permit-backed builder/developer candidates instead of generic directory leads.",
+    "conversionMethod": "Query phl.carto.com permits where permitissuedate >= 2024-01-01, permitdescription includes BUILDING, work/scope indicates new construction/dwelling language, and residential/dwelling terms are present; group by contractorname, sort by permit count, emit builder_signals rows with sample permits and sourceUrls.",
+    "caveat": "Rows are permit-backed buyer-discovery candidates; company contact URLs/phones/emails remain unresolved unless explicitly present and must be enriched before outreach."
+  },
+  "recordCount": 25,
+  "rawPermitCount": 1161,
+  "fieldsUsed": [
+    "permitnumber",
+    "contractorname",
+    "permitdescription",
+    "typeofwork",
+    "commercialorresidential",
+    "approvedscopeofwork",
+    "permitissuedate",
+    "status",
+    "address",
+    "zip"
+  ]
+}

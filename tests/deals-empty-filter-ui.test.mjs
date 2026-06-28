@@ -135,10 +135,21 @@ assert.match(readFileSync('index.html', 'utf8'), /src\/styles\.css\?v=phase229/,
 assert.match(app, /let freeGovOwnerSources = null;/, 'App must store the free-government owner source matrix.');
 assert.match(app, /loadFreeGovOwnerSources\(\)\.then\(renderAll\)/, 'App must load the free-government owner source matrix into the UI.');
 assert.match(app, /function renderFreeGovOwnerSourceBoard/, 'Sources page must render stored market owner-source agent lanes.');
+assert.match(app, /function deriveLandLotEnrichment/, 'Land page must derive per-lot enrichment from app-loaded parcel data.');
+assert.match(app, /_landLotEnrichment: landLotEnrichment/, 'Visible Land rows must carry derived enrichment on the app-loaded row object.');
+assert.match(app, /function landLotFactChips/, 'Land page must render compact and selected enriched lot facts.');
+assert.match(app, /landLotFactChips\(parcel, \{ compact: true \}\)/, 'Land queue rows must surface compact enriched lot facts.');
+assert.match(app, /landLotFactChips\(selected\)/, 'Selected parcel detail must surface enriched lot facts above raw depth.');
+assert.match(app, /Skip-trace locked/, 'Land lot enrichment must keep no-contact rows locked instead of fabricating contacts.');
+assert.match(app, /Human-review owner before contact work\./, 'Land lot enrichment must route entity\/estate\/multi-owner rows to human review.');
 assert.match(app, /Every market is stored\. Real land-lot markets get execution agents\./, 'Sources UI must explain stored zero markets and active land-lot agents.');
 assert.match(app, /Zero-count markets remain ready/, 'Sources UI must preserve zero-count markets as ready lanes.');
 assert.match(app, /Fabricated contacts/, 'Sources UI must expose zero-fabrication contact accounting.');
 assert.match(css, /--land-phase229-free-gov-owner-agents: stored-zero-count-markets-active-owner-anchor-agents/, 'CSS must encode the free-gov owner-source agent pass.');
+assert.match(css, /--land-phase230-lot-enrichment: app-loaded-apn-owner-contact-utility-facts/, 'CSS must encode app-loaded per-lot enrichment facts.');
+assert.match(css, /\.land-row-lot-facts/, 'Land row lot facts need route-scoped styling.');
+assert.match(css, /\.land-selected-lot-facts[\s\S]{0,220}grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/, 'Selected detail lot facts must render as a quiet two-column ledger.');
+assert.match(css, /grid-template-areas: "idx title" "idx meta" "idx facts" "idx reason" "idx badges" "idx activity"/, 'Land row grid must reserve a stable facts row.');
 assert.ok(readFileSync('data/generated/free_gov_owner_sources.json', 'utf8').includes('"contactsFabricated": 0'), 'Free-gov owner source matrix must preserve zero-fabrication accounting.');
 
 console.log('deals empty/filter UI tests passed');

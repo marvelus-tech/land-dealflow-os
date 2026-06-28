@@ -31567,6 +31567,90 @@ body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-ra
   }
 }
 
+/* v2.30 - Land per-lot enrichment: APN owner contact utility facts visible */
+body[data-active-view="deals"] #parcels {
+  --land-phase230-lot-enrichment: app-loaded-apn-owner-contact-utility-facts;
+}
+body[data-active-view="deals"] #parcels .phase215-queue-rail .land-listing-row.phase209-scan-rail-row {
+  grid-template-areas: "idx title" "idx meta" "idx facts" "idx reason" "idx badges" "idx activity" !important;
+}
+body[data-active-view="deals"] #parcels .land-row-lot-facts {
+  grid-area: facts !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px 8px !important;
+  max-width: 100% !important;
+  margin: 4px 0 0 !important;
+  padding: 0 !important;
+}
+body[data-active-view="deals"] #parcels .land-row-lot-fact {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 3px !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--land-premium-muted, #738078) !important;
+  font-size: 9.5px !important;
+  line-height: 1.15 !important;
+}
+body[data-active-view="deals"] #parcels .land-row-lot-fact b,
+body[data-active-view="deals"] #parcels .land-selected-lot-fact b {
+  color: var(--land-premium-primary, #0a4f3a) !important;
+  font-size: inherit !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+  font-weight: 820 !important;
+}
+body[data-active-view="deals"] #parcels .land-row-lot-fact em,
+body[data-active-view="deals"] #parcels .land-selected-lot-fact em {
+  min-width: 0 !important;
+  color: inherit !important;
+  font-style: normal !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="deals"] #parcels .land-row-lot-fact em {
+  max-width: 13ch !important;
+}
+body[data-active-view="deals"] #parcels .land-selected-lot-facts {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin: 14px 0 0 !important;
+  padding-top: 12px !important;
+  border-top: 1px solid var(--land-premium-hairline, rgba(16,20,17,.07)) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels .land-selected-lot-fact {
+  display: grid !important;
+  grid-template-columns: minmax(68px, .26fr) minmax(0, 1fr) !important;
+  gap: 8px !important;
+  align-items: baseline !important;
+  min-width: 0 !important;
+  padding: 8px 10px 8px 0 !important;
+  border-bottom: 1px solid var(--land-premium-hairline, rgba(16,20,17,.07)) !important;
+  color: var(--land-premium-body, #4f5d55) !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+}
+body[data-active-view="deals"] #parcels .land-selected-lot-fact em {
+  white-space: normal !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels .land-selected-lot-facts {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .land-row-lot-fact em {
+    max-width: 16ch !important;
+  }
+}
+
 /* v2.26 - Mobile Builders state header spacing and row label separation */
 @media (max-width: 720px) {
   body[data-active-view="builders"] .builders-phase83-workbench .state-workbench-kicker {

@@ -793,12 +793,14 @@ function getVisibleParcels() {
   return scoredParcels().map(parcel => {
     const landMarketKey = getLandRowMarketKey(parcel);
     const listingState = parcelListingState(parcel);
+    const landLotEnrichment = deriveLandLotEnrichment(parcel, listingState);
     const enrichedParcel = {
       ...parcel,
       selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, selectedMarket),
       selectedStateMatch: selectedLandStateFilter === 'all' || rowState(parcel) === selectedLandStateFilter,
       landMarketKey,
       _listingState: listingState,
+      _landLotEnrichment: landLotEnrichment,
     };
     return { ...enrichedParcel, _landSortValue: landSortValue(enrichedParcel) };
   }).filter(parcel => {
@@ -868,6 +870,103 @@ function parcelListingState(parcel = {}) {
                   ? 'Keep visible for audit, but do not call.'
                   : 'Raw agent finding; retained so the operator can research and enrich it.';
   return { enriched, builderMatched, offerReady, blocked, sourceBacked, needsProof, rawFinding, contactCandidate, confidence, stage, label, detail };
+}
+
+function humanOwnerTypeFromName(ownerName = '', explicitType = '') {
+  const name = String(ownerName || '').toUpperCase();
+  const explicit = String(explicitType || '').toLowerCase();
+  if (/estate|heirs|trust/.test(explicit) || /\b(ESTATE|HEIRS?|TRUST|TRUSTEE|PROBATE|DECEASED)\b/.test(name)) return 'Estate/heirs review';
+  if (/\b(LLC|INC|CORP|COMPANY|CO\.|LTD|LP|LLP|BANK|CHURCH|MINISTRY|CITY OF|COUNTY|AUTHORITY|ASSOCIATION|FOUNDATION|HOLDINGS?|INVESTMENTS?)\b/.test(name)) return 'Entity review';
+  if (/\b(ET AL|EL\/E|E\/LE|L\/E)\b/.test(name)) return 'Multi-owner review';
+  if (ownerName) return 'Individual owner';
+  return 'Owner unknown';
+}
+
+function sourceProofLabel(parcel = {}) {
+  const url = String(parcel.sourceUrl || parcel.publicSource || '').toLowerCase();
+  const source = String(parcel.sourceName || parcel.sourceId || parcel.publicSource || '').toLowerCase();
+  if (/qpublic|clay|keystone/.test(url + source)) return 'qPublic owner source';
+  if (/dcad|dallas/.test(url + source)) return 'Dallas CAD source';
+  if (/kgis|knox|featureServer/i.test(url + source)) return 'KGIS public source';
+  return parcel.sourceName || parcel.publicSource || 'Public source';
+}
+
+function deriveLandLotEnrichment(parcel = {}, listingState = parcelListingState(parcel)) {
+  const apnDisplay = String(parcel.apn || parcel.parcelId || parcel.id || '').trim();
+  const sourceUrl = parcel.sourceUrl || asArray(parcel.sourceUrls)[0] || parcel.publicSource || '';
+  const ownerType = humanOwnerTypeFromName(parcel.ownerName || parcel.owner, parcel.entityType);
+  const hasPhoneEmail = Boolean(parcel.ownerPhone || parcel.ownerEmail || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail);
+  const hasMailing = Boolean(parcel.ownerMailingAddress || parcel.mailingAddress || parcel.ownerAddress);
+  const dallasProofRow = dallasProofRowForParcel(parcel);
+  const proofGate = dallasProofRow
+    ? dallasProofAggregateStatus(dallasProofRow).label
+    : listingState.needsProof
+      ? 'Proof hold'
+      : listingState.sourceBacked
+        ? 'Public source anchored'
+        : 'Proof missing';
+  const contactGate = hasPhoneEmail
+    ? listingState.enriched ? 'Verified contact present' : 'Contact candidate only'
+    : /estate|entity|multi-owner/i.test(ownerType)
+      ? 'Human review before skip-trace'
+      : 'Skip-trace locked';
+  const buyerFitGate = listingState.builderMatched ? 'Buyer fit signal' : 'Buyer fit not attached';
+  const utilityStatus = parcel.utilities || dallasProofRow?.waterSewerProofStatus || 'utilities unknown';
+  const accessStatus = parcel.roadAccess || 'access unknown';
+  const buildabilityStatus = parcel.buildabilityStatus || parcel.phase4Status || parcel.risk?.status || 'needs review';
+  const moneyBasis = parcel.assessedLandValue || parcel.landValue || parcel.totalValue || parcel.askingPrice || parcel.buyerMaxPrice || '';
+  const nextAction = /estate|entity|multi-owner/i.test(ownerType)
+    ? 'Human-review owner before contact work.'
+    : !hasPhoneEmail
+      ? 'Skip-trace owner from public APN/source; verify match and DNC before any call.'
+      : listingState.needsProof
+        ? 'Attach utility/buildability proof before pricing.'
+        : !listingState.builderMatched
+          ? 'Attach buyer-fit criteria before pricing.'
+          : 'Review seller action.';
+  return {
+    apnDisplay,
+    apnCompact: apnDisplay.replace(/[^a-z0-9]+/gi, ''),
+    ownerType,
+    mailingCompleteness: hasMailing ? 'Mailing present' : 'Mailing missing',
+    sourceProofStatus: sourceUrl ? 'Source link present' : 'Source missing',
+    sourceProofLabel: sourceProofLabel(parcel),
+    sourceUrl,
+    proofGate,
+    contactGate,
+    buyerFitGate,
+    utilityStatus,
+    accessStatus,
+    buildabilityStatus,
+    moneyGate: moneyBasis ? `Value basis ${formatMoney(Number(moneyBasis) || 0)}` : 'Money unknown',
+    callReady: Boolean(listingState.enriched && !listingState.needsProof && listingState.builderMatched),
+    nextAction,
+  };
+}
+
+function landLotFactRows(parcel = {}, { compact = false } = {}) {
+  const enrich = parcel._landLotEnrichment || deriveLandLotEnrichment(parcel, parcel._listingState || parcelListingState(parcel));
+  const rows = [
+    ['APN', enrich.apnDisplay || 'pending'],
+    ['Owner', enrich.ownerType],
+    ['Source', enrich.sourceProofLabel],
+    ['Mailing', enrich.mailingCompleteness],
+    ['Contact', enrich.contactGate],
+    ['Access', enrich.accessStatus],
+    ['Utilities', enrich.utilityStatus],
+    ['Buildability', enrich.buildabilityStatus],
+    ['Buyer', enrich.buyerFitGate],
+    ['Money', enrich.moneyGate],
+    ['Next', enrich.nextAction],
+  ].filter(([, value]) => value && String(value).trim());
+  return compact ? rows.filter(([label]) => ['APN', 'Owner', 'Contact', 'Utilities'].includes(label)).slice(0, 4) : rows;
+}
+
+function landLotFactChips(parcel = {}, { compact = false } = {}) {
+  const rows = landLotFactRows(parcel, { compact });
+  if (!rows.length) return '';
+  const className = compact ? 'land-row-lot-facts' : 'land-selected-lot-facts';
+  return `<div class="${className}" aria-label="${compact ? 'Compact enriched lot facts' : 'Selected enriched lot facts'}">${rows.map(([label, value]) => `<span class="${compact ? 'land-row-lot-fact' : 'land-selected-lot-fact'}"><b>${h(label)}</b><em>${h(value)}</em></span>`).join('')}</div>`;
 }
 
 function dealsMarketCoverageEntries() {
@@ -2673,6 +2772,7 @@ function renderLandQueue(visible = [], selected = null) {
           <span class="land-row-action-rail"><b>${h(queueActionCode)}</b><i>${String(index + 1).padStart(2, '0')}</i></span>
           <b>${h(itemName)}</b>
           <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
+          ${landLotFactChips(parcel, { compact: true })}
           <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
           <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
             <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
@@ -2828,6 +2928,7 @@ function renderParcels() {
         <span class="eyebrow">Selected land listing · ${h(selectedListingState.label)}</span>
         <h2>${h(selected.address || selected.parcelId || 'Untitled parcel')}</h2>
         <p>${h(selectedListingState.detail)} ${h(selected.lotSize || 'lot size unknown')} · held ${h(selected.heldYears || 0)} yrs · paid ${formatMoney(Number(selected.paid || 0))}</p>
+        ${landLotFactChips(selected)}
         ${duplicateNotice}
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>

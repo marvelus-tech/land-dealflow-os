@@ -2766,6 +2766,11 @@ function renderParcels() {
   const selectedMoneyGateCopy = selectedMoneyReady
     ? 'Money is ready to inspect because proof, contact, buyer fit, and spread are aligned.'
     : 'Money stays parked until proof, contact, and buyer fit are clean.';
+  const selectedNeighborhoodLinks = [
+    selected.zillowNeighborhoodUrl ? safeLink(selected.zillowNeighborhoodUrl, selected.zillowNeighborhoodLabel || 'Zillow neighborhood view', 'zillow-market-link parcel-context-link') : '',
+    selected.zillowZipMarketUrl ? safeLink(selected.zillowZipMarketUrl, 'Zillow ZIP view', 'zillow-market-link parcel-context-link') : '',
+  ].filter(Boolean).join('');
+  const selectedNeighborhoodContext = selectedNeighborhoodLinks ? `<section class="parcel-context-links" aria-label="Neighborhood context links"><span>Neighborhood context</span><p>${h(selected.zillowNeighborhoodQuery || `${selected.propertyAddress || selected.address || ''} ${selected.propertyZip || ''}`.trim())}</p><div>${selectedNeighborhoodLinks}</div></section>` : '';
   const selectedSheetStage = selectedListingState.sourceBacked
     ? selectedListingState.enriched
       ? selectedListingState.builderMatched
@@ -2825,6 +2830,7 @@ function renderParcels() {
         ${duplicateNotice}
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
+      ${selectedNeighborhoodContext}
       ${selectedGateSummary}
       ${selectedDallasProofPanel}
       <section class="land-action-sheet phase212-action-depth" aria-label="Selected parcel action sheet">

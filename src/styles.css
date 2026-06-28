@@ -5543,6 +5543,33 @@ body .validation-focus-card .selected-outreach-state button.contact-state-toggle
   text-decoration: none;
 }
 .zillow-market-link:hover { background: rgba(31, 118, 74, .11); }
+.parcel-context-links {
+  display: grid;
+  gap: 8px;
+  padding: 12px 14px;
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 16px;
+  background: rgba(255,255,255,.72);
+}
+.parcel-context-links span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.parcel-context-links p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+}
+.parcel-context-links div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.parcel-context-links .zillow-market-link { margin-top: 0; }
 
 /* v1.35 - Market selector: premium segmented rail, no pill soup */
 .builder-ops-header .market-toggle-grid {

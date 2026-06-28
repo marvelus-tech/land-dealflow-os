@@ -112,6 +112,9 @@ function testLandReconImportSurfaceExists() {
   assert.match(app, /merged \$\{result\.summary\.duplicateMerged \|\| 0\} duplicate/, 'Import status must report duplicate merges.');
   assert.match(app, /Matching APN, address, owner\+address, and source URLs merge into the existing ledger/, 'Import copy must explain the duplicate-safe gate.');
   assert.match(app, /duplicate-merge-note/, 'Selected listing must surface duplicate merge history.');
+  assert.match(app, /selectedNeighborhoodContext/, 'Selected listing must expose parcel-level neighborhood context links.');
+  assert.match(app, /zillowNeighborhoodUrl/, 'Land rows can carry Zillow neighborhood search URLs for operator neighborhood review.');
+  assert.match(app, /Zillow ZIP view/, 'Selected listing must expose a ZIP-level Zillow market view link.');
   assert.match(app, /function parcelSelectionKey\(parcel = \{\}\)/, 'Land row selection needs a stable key helper for generated rows without id fields.');
   assert.match(app, /parcelSelectionKey\(parcel\) === selectedParcelId/, 'Selected parcel lookup must use the stable parcel key, not only parcel.id.');
   assert.match(app, /data-select-parcel="\$\{h\(parcelKey\)\}"/, 'Land rows must render non-empty selection keys from parcelId/address fallback.');

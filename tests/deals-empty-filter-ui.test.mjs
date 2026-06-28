@@ -127,5 +127,10 @@ assert.match(css, /body\[data-active-view="deals"\] #parcels \.phase208-selected
 assert.match(css, /--land-phase228-empty-inspector-width: match-selected-detail-workbench/, 'Land empty inspector must encode the selected-detail width rule.');
 assert.match(css, /\.deal-workbench\.phase210-lightweight-selection[\s\S]{0,180}grid-template-columns: minmax\(340px, 410px\) minmax\(0, 1fr\) !important/, 'Land empty inspector workbench must use the same queue/detail columns as the selected parcel layout.');
 assert.match(css, /\.phase210-lightweight-selection > \.phase210-select-parcel-prompt[\s\S]{0,120}grid-column: 2 !important;[\s\S]{0,80}width: 100% !important/, 'Land empty inspector must fill the detail column instead of shrinking to a narrow island.');
+assert.match(css, /--land-phase219-desktop-width: open-surface-flattened-state-workbench-full-bleed/, 'Land desktop pass must encode the full-width flattened work surface rule.');
+assert.match(css, /phase218-builder-style-workbench > \.state-data-workbench,[\s\S]{0,140}display: contents !important/, 'Land desktop state workbench must flatten nested wrapper gutters.');
+assert.match(css, /phase218-builder-style-workbench\.builders-phase83-workbench[\s\S]{0,360}grid-template-columns: minmax\(170px, \.22fr\) minmax\(450px, \.47fr\) minmax\(300px, \.31fr\) !important/, 'Land desktop top workbench must use three real columns instead of a shrunken nested island.');
+assert.match(css, /deal-workbench\.phase210-lightweight-selection,[\s\S]{0,220}grid-template-columns: minmax\(390px, \.39fr\) minmax\(0, \.61fr\) !important/, 'Land desktop queue/detail workbench must use the full holder width.');
+assert.match(readFileSync('index.html', 'utf8'), /src\/styles\.css\?v=phase219/, 'Index must bust CSS cache for the desktop responsive pass.');
 
 console.log('deals empty/filter UI tests passed');

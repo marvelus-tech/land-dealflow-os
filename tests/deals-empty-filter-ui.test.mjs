@@ -124,5 +124,8 @@ assert.match(css, /\.land-agent-ledger li[\s\S]{0,180}grid-template-columns:minm
 assert.match(css, /#parcel-filters\.land-stage-filters-retired \{ display:none !important;/, 'Retired Land filter speck must stay hidden after consolidation.');
 assert.match(css, /@media \(max-width:760px\)[\s\S]{0,520}\.nav \.app-tabs[\s\S]{0,180}grid-template-columns:repeat\(3,minmax\(0,1fr\)\)/, 'Mobile nav tabs must wrap into a visible grid, not clip horizontally.');
 assert.match(css, /body\[data-active-view="deals"\] #parcels \.phase208-selected-parcel-summary \{ position:static !important;/, 'Mobile selected summary must not stick over the operator sheet.');
+assert.match(css, /--land-phase228-empty-inspector-width: match-selected-detail-workbench/, 'Land empty inspector must encode the selected-detail width rule.');
+assert.match(css, /\.deal-workbench\.phase210-lightweight-selection[\s\S]{0,180}grid-template-columns: minmax\(340px, 410px\) minmax\(0, 1fr\) !important/, 'Land empty inspector workbench must use the same queue/detail columns as the selected parcel layout.');
+assert.match(css, /\.phase210-lightweight-selection > \.phase210-select-parcel-prompt[\s\S]{0,120}grid-column: 2 !important;[\s\S]{0,80}width: 100% !important/, 'Land empty inspector must fill the detail column instead of shrinking to a narrow island.');
 
 console.log('deals empty/filter UI tests passed');

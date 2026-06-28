@@ -105,6 +105,7 @@ const builderMarketRegistry = [
   { key: 'murfreesboro-tn', state: 'TN', label: 'Murfreesboro / Rutherford County', note: 'Nashville-edge sprawl lane', platform: 'CivicPlus / CivicGov', suggestedRank: 4, sourceWork: 'Build source monitor before seller sourcing.' },
   { key: 'franklin-tn', state: 'TN', label: 'Franklin / Williamson County', note: 'high-value TN custom-builder lane', platform: 'IDT Plans + county records', suggestedRank: 5, sourceWork: 'Confirm permit detail access and builder fields.' },
   { key: 'polk', state: 'FL', label: 'Polk / Lakeland', note: 'live inland Florida lane', platform: 'Accela Citizen Access', suggestedRank: 6, sourceWork: 'Refresh pull and enrich top builders.' },
+  { key: 'keystone-heights-fl', state: 'FL', label: 'Keystone Heights / Clay County', note: 'source-backed landowner lane', platform: 'Clay County parcel GIS + property appraiser', suggestedRank: 7, sourceWork: 'Skip-trace top private vacant owners; buyer proof still leads before outreach.' },
   { key: 'ocala-fl', state: 'FL', label: 'Ocala / Marion County', note: 'inland FL permit lane', platform: 'Civic Access / CivicPlus', suggestedRank: 7, sourceWork: 'Probe portal for contractor export.' },
   { key: 'clermont-fl', state: 'FL', label: 'Clermont / Lake County', note: 'Orlando-edge growth lane', platform: 'TRAKiT / CentralSquare', suggestedRank: 8, sourceWork: 'Monitor migration and find machine-readable permits.' },
   { key: 'alachua-fl', state: 'FL', label: 'Gainesville / Alachua County', note: 'inland FL permit lane', platform: 'Accela', suggestedRank: 9, sourceWork: 'Build Accela adapter after contractor-field proof.' },
@@ -192,6 +193,7 @@ let generatedLeads = null;
 let weeklyMarketScout = null;
 let knoxvilleBuyerCallSheet = null;
 let dallasProofSprint = null;
+let keystoneHeightsLandowners = null;
 let builderMarketData = { markets: {}, loaded: false, error: '' };
 let titleCompanyProcess = titleCompanyProcessFallback;
 let titleCompanyMarkets = titleCompanyMarketsFallback;
@@ -399,6 +401,10 @@ function getBuyer(parcel) {
 
 function generatedCandidateParcels() {
   return asArray(generatedLeads?.snapshot?.parcels).filter(parcel => parcel.sourceId || parcel.publicSource || parcel.crmStatus === 'Needs skip trace');
+}
+
+function keystoneHeightsCandidateParcels() {
+  return asArray(keystoneHeightsLandowners?.parcels).filter(parcel => parcel.publicProofStatus === 'verified-public-source' || parcel.sourceUrl || parcel.publicSource);
 }
 
 function generatedCandidateBuyers() {
@@ -660,6 +666,7 @@ function scoredParcels() {
   // override the generated public-record candidates with the same parcel id.
   const parcelRows = uniqueRowsById([
     ...asArray(workspace.parcels),
+    ...keystoneHeightsCandidateParcels(),
     ...generatedCandidateParcels(),
     ...asArray(generatedLeads?.queues?.skipTrace),
   ], item => item.id || item.parcelId || item.address);
@@ -2640,7 +2647,7 @@ function renderLandQueue(visible = [], selected = null) {
       const queueActionCode = listingState.needsProof || listingState.rawFinding
         ? 'Proof'
         : !listingState.enriched
-          ? 'Call'
+          ? listingState.sourceBacked ? 'Trace' : 'Call'
           : !listingState.builderMatched
             ? 'Fit'
             : listingState.offerReady ? 'Offer' : 'Next';
@@ -3267,6 +3274,18 @@ async function loadDallasProofSprint() {
     cachedDealsMarketEntries = null;
   } catch (error) {
     dallasProofSprint = { error: error.message, rows: [] };
+  }
+}
+
+async function loadKeystoneHeightsLandowners() {
+  try {
+    const response = await fetch('data/real/duval-keystone-fl/keystone_heights_clay_landowners_app.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`keystone heights landowners ${response.status}`);
+    keystoneHeightsLandowners = await response.json();
+    invalidateLandPerformanceCaches();
+    cachedDealsMarketEntries = null;
+  } catch (error) {
+    keystoneHeightsLandowners = { error: error.message, parcels: [] };
   }
 }
 
@@ -4314,6 +4333,7 @@ bindEvents();
 renderAll();
 loadGeneratedLeads().then(renderAll);
 loadDallasProofSprint().then(renderAll);
+loadKeystoneHeightsLandowners().then(renderAll);
 loadKnoxvilleBuyerCallSheet().then(renderAll);
 loadBuilderMarketData().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);

@@ -1,0 +1,52 @@
+{
+  "market": "boise-id",
+  "state": "ID",
+  "generatedAt": "2026-06-28T00:00:00Z",
+  "status": "source-discovery-partial",
+  "summary": {
+    "builderCandidates": 7,
+    "permitBackedBuilders": 0,
+    "officialPermitSourceFound": true,
+    "adapterFeasibility": "medium-blocked-by-missing-contractor-field"
+  },
+  "officialSources": [
+    {
+      "name": "City of Boise High Impact Building Permits ArcGIS FeatureServer",
+      "url": "https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/PDS_BuildingPermits_HighImpact/FeatureServer/0",
+      "queryPath": "FeatureServer/0/query?f=json&where=1=1&outFields=*&returnGeometry=false",
+      "fieldsObserved": [
+        "RecordID",
+        "PropertyAddress",
+        "RecordTypeAlias",
+        "PermitStatus",
+        "IssuedDate",
+        "ReceiveDate",
+        "Description",
+        "RecordName",
+        "Units",
+        "JobValue",
+        "TypeOfUse",
+        "TypeOfPermit",
+        "TypeOfWork",
+        "ZoningDistrict"
+      ],
+      "blocker": "Layer exposes high-impact permit activity but not contractor/applicant/builder names in observed fields. Useful for market activity and address proof, not direct builder extraction."
+    },
+    {
+      "name": "ArcGIS item search result: High Impact Building Permits",
+      "url": "https://www.arcgis.com/sharing/rest/search?f=json&q=Boise%20Building%20Permits&num=10",
+      "blocker": "Finds official feature service; contractor fields still absent from layer metadata."
+    }
+  ],
+  "candidateSourceUrls": [
+    "https://cbhhomes.com",
+    "https://www.hubblehomes.com",
+    "https://www.tresidio.com/",
+    "https://boisehunterhomes.com/",
+    "https://www.brightonhomes-idaho.com",
+    "https://www.biltmoreco.com",
+    "https://www.berkeleybuildingco.com"
+  ],
+  "provenanceNotes": "Boise sprint recovered official permit activity source and source-backed public builder-site candidates. This is not as strong as Columbus/Pittsburgh/Hall because no permit source with builder names was confirmed within the sprint. Keep all rows as low/medium confidence buyer-validation candidates until official permit/license evidence or association directory evidence is attached.",
+  "nextAction": "Find a Boise/Ada permit or licensing source that exposes contractor/applicant names, or use browser-rendered BCA SW Idaho directory/manual validation to raise candidates above website-only confidence."
+}

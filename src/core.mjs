@@ -2430,6 +2430,10 @@ export function getPermitPortalLandscape() {
       { rank: 6, state: 'AZ', market: 'Maricopa velocity markets', reason: 'Weekly reports + Accela/self-certification cities: Phoenix, Mesa, Scottsdale, Tempe, Buckeye.', zillowUrl: 'https://www.zillow.com/maricopa-county-az/' },
       { rank: 7, state: 'NC', market: 'Charlotte / Mecklenburg → Wake → Guilford corridor', reason: 'Buildchek + Accela + Power BI/ArcGIS data; strong Piedmont land-flipping corridor.', zillowUrl: 'https://www.zillow.com/charlotte-nc/' },
       { rank: 8, state: 'TX', market: 'Austin / San Antonio open-data corridor', reason: 'Socrata/open data gives programmatic permit intake before fragmented Houston/Dallas work; PermitVector covers normalized paid expansion.', zillowUrl: 'https://www.zillow.com/austin-tx/' },
+      { rank: 9, state: 'OH', market: 'Columbus / Franklin County', reason: 'City of Columbus ArcGIS building-permit layer now exposes source-backed residential permit applicants for buyer validation.', zillowUrl: 'https://www.zillow.com/columbus-oh/' },
+      { rank: 10, state: 'PA', market: 'Pittsburgh / Allegheny County', reason: 'WPRDC PLI permit data now exposes residential new-construction contractors for a thin buyer-validation queue.', zillowUrl: 'https://www.zillow.com/pittsburgh-pa/' },
+      { rank: 11, state: 'GA', market: 'Hall County / Gainesville', reason: 'Official Hall County issued-permit PDFs expose contractor/contact names and are the fastest Georgia builder lane.', zillowUrl: 'https://www.zillow.com/hall-county-ga/' },
+      { rank: 12, state: 'ID', market: 'Boise / Ada County', reason: 'Boise public builder candidates are loaded; keep source status thin until contractor-bearing permits are recovered.', zillowUrl: 'https://www.zillow.com/boise-id/' },
     ],
     states: [
       {
@@ -2556,6 +2560,76 @@ export function getPermitPortalLandscape() {
           { step: '02', title: 'Avoid black-hole markets first', source: 'Austin/San Antonio open data before Houston/Dallas proper', action: 'Defer Houston and Dallas proper until county-by-county or aggregator coverage is ready; do not let fragmented portals block the Texas launch.', output: 'Execution order: Austin → San Antonio → Travis/Plano/Collin/Denton/McAllen → Houston/Dallas later.' },
           { step: '03', title: 'Deduplicate and qualify builders', source: 'Permit applicant/contractor names, Accela/Socrata metadata, public business records', action: 'Deduplicate LLC/name variants and require recent issued/approved residential activity before buyer-validation promotion.', output: '20+ unique Texas permit-active builders for the call queue.' },
           { step: '04', title: 'Enrich public contact + validate buy box', source: 'Official builder websites, public company contacts, phone/email outreach', action: 'Attach lawful public contact channels and capture target counties, lot size, max price, utilities/access, close speed, and deal killers.', output: 'Texas buyer-validation queue ready to unlock seller parcels only after buy boxes are captured.' }
+        ]
+      },
+      {
+        id: 'oh',
+        state: 'Ohio',
+        reality: 'Columbus exposes a public ArcGIS building-permit layer with applicant business names for new residential structures.',
+        platforms: ['ArcGIS REST', 'Columbus permit record router', 'County/city portals'],
+        portals: [
+          { market: 'Columbus', jurisdiction: 'City of Columbus', system: 'ArcGIS Building_Permits FeatureServer', url: 'https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0' },
+          { market: 'Columbus permit records', jurisdiction: 'City of Columbus', system: 'Permit record router', url: 'https://ca.columbus.gov/permits/urlrouting.ashx' }
+        ],
+        strategy: 'Use Columbus as the Ohio entry lane: group recent new-residential permit applicants, enrich only public company contacts, then call-confirm land buy boxes.',
+        sequence: { status: 'thin', label: 'Columbus lane loaded', unlock: '20 Columbus builder rows are visible; validate buy boxes before seller sourcing.' },
+        pipeline: [
+          { step: '01', title: 'Refresh Columbus ArcGIS permits', source: 'Building_Permits FeatureServer', action: 'Query issued 1,2,3 Family New Structure rows and group applicant businesses.', output: 'Columbus permit-backed builder rows.' },
+          { step: '02', title: 'Normalize applicant entities', source: 'Applicant business name + permit samples', action: 'Merge LLC/corporate variants while preserving permit proof.', output: 'One buyer-validation row per builder/company.' },
+          { step: '03', title: 'Attach public contact path', source: 'Official company websites and public pages', action: 'Load lawful phone/email/contact pages; route weak rows to review.', output: 'Callable Columbus builder queue.' },
+          { step: '04', title: 'Capture Ohio buy boxes', source: 'Builder calls/emails', action: 'Confirm target counties, lot type, max price, utilities/access, close speed, and deal killers.', output: 'Ohio seller matching unlocks only after buyer validation.' }
+        ]
+      },
+      {
+        id: 'pa',
+        state: 'Pennsylvania',
+        reality: 'Pittsburgh WPRDC PLI permits expose residential new-construction contractor names through CKAN/datastore APIs.',
+        platforms: ['CKAN / WPRDC datastore', 'City PLI permit data', 'County assessment records'],
+        portals: [
+          { market: 'Pittsburgh', jurisdiction: 'City of Pittsburgh', system: 'WPRDC PLI permits datastore', url: 'https://data.wprdc.org/dataset/pli-permits' }
+        ],
+        strategy: 'Use Pittsburgh CKAN rows as the Pennsylvania proof lane, then decide whether Allegheny suburbs need separate portal work.',
+        sequence: { status: 'thin', label: 'Pittsburgh lane loaded', unlock: '11 Pittsburgh builders are visible; deepen to 20+ unique rows or call-confirm the highest-signal builders.' },
+        pipeline: [
+          { step: '01', title: 'Refresh WPRDC PLI rows', source: 'CKAN datastore SQL/search', action: 'Pull issued residential BUILDING / NEW CONSTRUCTION rows with contractor names.', output: 'Pittsburgh contractor-builder proof rows.' },
+          { step: '02', title: 'Deduplicate contractors', source: 'Contractor names + permit IDs', action: 'Group repeated townhouse/SFR permits by operating company.', output: 'Thin but real Pennsylvania builder queue.' },
+          { step: '03', title: 'Enrich public contact path', source: 'Official contractor/builder websites', action: 'Attach public company phone/contact URL where available.', output: 'Human-review and callable rows separated.' },
+          { step: '04', title: 'Capture Pennsylvania buy boxes', source: 'Builder calls/emails', action: 'Ask target neighborhoods/suburbs, lot bands, pricing, utilities/access, and title tolerance.', output: 'Pennsylvania seller work stays gated behind buyer validation.' }
+        ]
+      },
+      {
+        id: 'ga',
+        state: 'Georgia',
+        reality: 'Hall County issued-permit PDFs expose contractor/contact names; Forsyth open layers remain blocked until detail pages reveal builders.',
+        platforms: ['Issued permit PDFs', 'Accela / EnerGov detail pages', 'County/city portals'],
+        portals: [
+          { market: 'Hall County', jurisdiction: 'Hall County Building Inspection Services', system: 'Archive issued-permit PDFs', url: 'https://www.hallcounty.org/Archive.aspx?AMID=39' },
+          { market: 'Forsyth County', jurisdiction: 'Forsyth County', system: 'ArcGIS/EnerGov detail research', url: 'https://www.forsythco.com/Departments-Offices/Building-Economic-Development' }
+        ],
+        strategy: 'Promote Hall first because it has contractor-bearing public records; keep Forsyth/Jackson/Douglas visible as supporting lanes until proof lands.',
+        sequence: { status: 'thin', label: 'Hall lane loaded', unlock: '11 Hall County builders are visible; PDF adapter and buy-box calls are the next gate.' },
+        pipeline: [
+          { step: '01', title: 'Extract Hall issued PDFs', source: 'Hall County ArchiveCenter PDFs', action: 'Download issued residential/commercial PDFs and split permit records.', output: 'Contractor-bearing Georgia permit rows.' },
+          { step: '02', title: 'Normalize Georgia builders', source: 'Contractor/contact company fields', action: 'Group builder companies and retain permit examples.', output: 'Hall County buyer-validation queue.' },
+          { step: '03', title: 'Find public contact path', source: 'Official builder websites and contact pages', action: 'Attach lawful public contact channels without fabricating acquisition contacts.', output: 'Georgia callable/human-review split.' },
+          { step: '04', title: 'Capture Georgia buy boxes', source: 'Builder calls/emails', action: 'Validate Gainesville/Buford/Flowery Branch lot demand before seller sourcing.', output: 'Georgia seller search unlocks only after buyer validation.' }
+        ]
+      },
+      {
+        id: 'id',
+        state: 'Idaho',
+        reality: 'Boise public builder candidates are loaded, but the official permit layer found so far does not expose contractor/builder fields.',
+        platforms: ['ArcGIS permit layer', 'Boise / Ada County portals', 'Public builder websites'],
+        portals: [
+          { market: 'Boise', jurisdiction: 'City of Boise', system: 'High Impact Building Permits ArcGIS layer', url: 'https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/PDS_BuildingPermits_HighImpact/FeatureServer/0' }
+        ],
+        strategy: 'Display Boise as a thin candidate lane while continuing source discovery for contractor-bearing permits or license records.',
+        sequence: { status: 'thin', label: 'Boise candidate lane', unlock: '7 Boise builders are visible as public candidates; do not treat as permit-verified until contractor proof lands.' },
+        pipeline: [
+          { step: '01', title: 'Recover contractor-bearing source', source: 'Boise/Ada permit portals and ArcGIS layers', action: 'Search for fields or detail pages that expose contractor/builder names.', output: 'Permit proof path or documented blocker.' },
+          { step: '02', title: 'Reconcile public builders', source: 'Official/public builder sites', action: 'Keep candidate rows clearly marked as non-permit-verified until matched to public records.', output: 'Boise thin queue with no fabricated proof.' },
+          { step: '03', title: 'Attach public contact path', source: 'Official builder contact pages', action: 'Use only public business phones/emails/contact URLs.', output: 'Callable Boise candidates for later validation.' },
+          { step: '04', title: 'Capture Idaho buy boxes', source: 'Builder calls/emails after proof gate', action: 'Validate Treasure Valley submarkets, lot constraints, pricing, close speed, and deal killers.', output: 'Idaho seller search remains gated behind buyer validation and source proof.' }
         ]
       }
     ],

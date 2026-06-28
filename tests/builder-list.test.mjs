@@ -66,7 +66,7 @@ assert.deepEqual(adapters.map(item => item.id), ['accela', 'socrata', 'energov',
 
 const landscape = getPermitPortalLandscape();
 assert.match(landscape.summary, /No target state has a unified statewide building-permit database/);
-assert.deepEqual(landscape.states.map(item => item.id), ['tn', 'fl', 'az', 'nc', 'tx']);
+assert.deepEqual(landscape.states.map(item => item.id), ['tn', 'fl', 'az', 'nc', 'tx', 'oh', 'pa', 'ga', 'id']);
 assert.equal(landscape.states.every(state => state.portals.every(portal => /^https:\/\//.test(portal.url))), true);
 assert.ok(landscape.states.find(state => state.id === 'tx').portals.some(portal => portal.url.includes('permitvector.com')));
 assert.ok(landscape.states.find(state => state.id === 'tn').portals.some(portal => portal.url.includes('buildchek.com')));

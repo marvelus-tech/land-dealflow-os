@@ -1,0 +1,35 @@
+{
+  "market": "Hall County / Gainesville, GA",
+  "marketKey": "hall-ga",
+  "generatedAt": "2026-06-28T06:31:30Z",
+  "sources": {
+    "hallCountyArchive": "https://www.hallcounty.org/Archive.aspx?AMID=39",
+    "latestResidentialPermitPdf": "https://www.hallcounty.org/ArchiveCenter/ViewFile/Item/1413",
+    "latestCommercialPermitPdf": "https://www.hallcounty.org/ArchiveCenter/ViewFile/Item/1415"
+  },
+  "summary": {
+    "minimumUniqueBuilders": 20,
+    "activeBuilderSignals": 11,
+    "status": "thin-source-backed",
+    "proofGate": "permit-backed builder rows loaded, call confirmation still required"
+  },
+  "confidenceSurface": {
+    "permitSourceType": "official Hall County issued-permit PDFs",
+    "contractorFields": "contractor/contact names are visible in extracted permit text",
+    "activeBuilderSignals": 11
+  },
+  "operatingRules": [
+    "Treat Hall rows as buyer-validation candidates only until calls confirm land buy boxes.",
+    "Do not promote Forsyth open-layer rows as builder demand until contractor names are recovered.",
+    "No seller sourcing in Georgia until the selected builder lane has call-confirmed demand."
+  ],
+  "adapterFeasibility": {
+    "status": "high",
+    "approach": "Scrape Hall County Archive issued-permit PDFs, extract text, split permit records, retain residential new SFR/townhome permits, normalize contractor/contact companies, then emit builder_signals.json and builder_validation_queue.csv."
+  },
+  "blockers": [
+    "PDF extraction/OCR should become a repeatable adapter before weekly refresh.",
+    "Several public contacts are corporate sales/contact pages, not verified land acquisition contacts.",
+    "Minimum unique-builder gate not yet met; market should display as thin, not fully live."
+  ]
+}

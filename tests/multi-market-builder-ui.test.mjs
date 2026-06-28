@@ -3,13 +3,17 @@ import fs from 'node:fs';
 
 const app = fs.readFileSync('src/app.mjs', 'utf8');
 const markets = [
-  ['knoxville', 'TN', 'data/real/knoxville/builder_signals.json'],
-  ['austin', 'TX', 'data/real/austin/builder_signals.json'],
-  ['san-antonio', 'TX', 'data/real/san-antonio/builder_signals.json'],
-  ['raleigh', 'NC', 'data/real/raleigh/builder_signals.json'],
-  ['polk', 'FL', 'data/real/polk/builder_signals.json'],
-  ['maricopa', 'AZ', 'data/real/maricopa/builder_signals.json'],
-  ['dorchester-sc', 'SC', 'data/real/dorchester-sc/builder_signals.json'],
+  ['knoxville', 'TN', 'data/real/knoxville/builder_signals.json', 20],
+  ['austin', 'TX', 'data/real/austin/builder_signals.json', 20],
+  ['san-antonio', 'TX', 'data/real/san-antonio/builder_signals.json', 20],
+  ['raleigh', 'NC', 'data/real/raleigh/builder_signals.json', 20],
+  ['polk', 'FL', 'data/real/polk/builder_signals.json', 20],
+  ['maricopa', 'AZ', 'data/real/maricopa/builder_signals.json', 20],
+  ['dorchester-sc', 'SC', 'data/real/dorchester-sc/builder_signals.json', 20],
+  ['columbus-oh', 'OH', 'data/real/columbus-oh/builder_signals.json', 20],
+  ['pittsburgh-pa', 'PA', 'data/real/pittsburgh-pa/builder_signals.json', 11],
+  ['hall-ga', 'GA', 'data/real/hall-ga/builder_signals.json', 11],
+  ['boise-id', 'ID', 'data/real/boise-id/builder_signals.json', 7],
 ];
 
 assert.match(app, /const builderMarketSources = \[/, 'UI must declare deployed builder market sources');
@@ -71,12 +75,15 @@ assert.doesNotMatch(app, /\$\{renderExecutionConveyor\(executionConveyor\)\}/, '
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Builders page should keep the builder-specific validation command center after culling global flow panels');
 assert.match(app, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'unique marketing template should be retained inside the main command center with short Phase 26 copy');
 
-for (const [key, state, url] of markets) {
+assert.match(app, /row\.name \|\| row\.companyName \|\| row\.builderName/, 'Builder normalization must display builderName-only permit artifacts, not Unnamed builder');
+assert.match(app, /row\.sourceUrl \|\| asArray\(row\.sourceUrls\)\[0\]/, 'Builder normalization must use sourceUrls arrays for proof links');
+assert.match(app, /let selectedBuilderMarketKey = 'hall-ga'/, 'Builders should open on the Georgia lane that now has source-backed rows');
+for (const [key, state, url, minRows] of markets) {
   assert.ok(app.includes(`key: '${key}'`), `missing builder source key ${key}`);
   assert.ok(app.includes(`state: '${state}'`), `missing state ${state} for ${key}`);
   assert.ok(app.includes(url), `missing builder signals URL ${url}`);
   const rows = JSON.parse(fs.readFileSync(url, 'utf8'));
-  assert.ok(rows.length >= 20, `${key} must have at least 20 deployed builder rows`);
+  assert.ok(rows.length >= minRows, `${key} must have at least ${minRows} deployed builder rows`);
 }
 
 for (const key of ['columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {

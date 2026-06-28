@@ -1,0 +1,31 @@
+{
+  "market": "Columbus / Franklin County, OH",
+  "marketKey": "columbus-oh",
+  "generatedAt": "2026-06-28T06:20:55Z",
+  "sources": {
+    "buildingPermitsFeatureServer": "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+    "buildingPermitsQueryPath": "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0/query?f=json&where=ISSUED_YEAR+%3E%3D+2025+AND+B1_PER_TYPE+%3D+%271%2C2%2C3+Family%27+AND+B1_PER_CATEGORY+%3D+%27New+Structure%27&outFields=APPLICANT_BUS_NAME%2CB1_ALT_ID%2CSITE_ADDRESS%2CISSUED_DT%2CACA_URL%2CVALUE_DESC%2CUNITS%2CG3_VALUE_TTL&returnGeometry=false&orderByFields=ISSUED_DT+DESC",
+    "buildingPermitsWebMap": "https://www.arcgis.com/sharing/rest/content/items/ad99db45b9984dbf842796d95a08dbf2/data?f=json",
+    "buildingPermitsExperience": "https://experience.arcgis.com/experience/95997d47e31b43828386130038d752b8/",
+    "cityPermitRecordRouter": "https://ca.columbus.gov/permits/urlrouting.ashx"
+  },
+  "confidenceSurface": {
+    "newResidentialPermitRowsSampled": 1379,
+    "activeBuilderSignals": 20,
+    "publicPermitLayerMaxRecordCount": 2000
+  },
+  "operatingRules": [
+    "Permit applicant businesses are buyer-validation candidates, not validated land buyers, until a call confirms buy box and acquisition appetite.",
+    "Zillow/business directories were not used for validation.",
+    "No outreach performed; no contacts or buy boxes fabricated."
+  ],
+  "adapterFeasibility": {
+    "status": "high",
+    "approach": "Use ArcGIS REST query against Building_Permits FeatureServer/0; filter ISSUED_YEAR >= currentYear-1, B1_PER_TYPE = 1,2,3 Family, B1_PER_CATEGORY = New Structure; group by normalized APPLICANT_BUS_NAME aliases; keep latest 3-5 ACA_URL permit samples; emit builder_signals.json, builder_validation_queue.csv, market_evidence.json."
+  },
+  "blockers": [
+    "Public permit layer gives APPLICANT_BUS_NAME but not direct acquisition contact or land-buy box.",
+    "Some applicants are developers/affordable housing operators/entities rather than conventional lot buyers; call confirmation required.",
+    "Franklin County suburbs outside Columbus city limits require separate municipal/county permit sources for full metro coverage."
+  ]
+}

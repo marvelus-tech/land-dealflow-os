@@ -1,0 +1,1710 @@
+[
+  {
+    "id": "columbus-oh-builder-d-r-horton",
+    "builderName": "D.R. Horton",
+    "name": "D.R. Horton",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.drhorton.com/ohio/columbus",
+    "contactPage": "https://www.drhorton.com/ohio/columbus",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 318,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 318 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2622840 at 7102 BALATON CREEK AVE issued 2026-06-24.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00P0A&AgencyCode=COLUMBUS",
+      "https://www.drhorton.com/ohio/columbus"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-24",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2622840",
+        "address": "7102 BALATON CREEK AVE",
+        "issuedAt": "2026-06-24",
+        "permitValue": 349678,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00P0A&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2623351",
+        "address": "5921 SCARLET BIRCH DR",
+        "issuedAt": "2026-06-22",
+        "permitValue": 391982,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00PK0&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2622305",
+        "address": "4370 BLACK ASH DR",
+        "issuedAt": "2026-06-12",
+        "permitValue": 394029,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00OES&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2622300",
+        "address": "4378 BLACK ASH DR",
+        "issuedAt": "2026-06-12",
+        "permitValue": 412487,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00OEM&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2622285",
+        "address": "4402 BLACK ASH DR",
+        "issuedAt": "2026-06-12",
+        "permitValue": 412487,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00OE1&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 318 Columbus public new-residential permit rows. Latest sample NEWR2622840 at 7102 BALATON CREEK AVE issued 2026-06-24."
+  },
+  {
+    "id": "columbus-oh-builder-lincoln-avenue-communities",
+    "builderName": "Lincoln Avenue Communities",
+    "name": "Lincoln Avenue Communities",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 255,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 255 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2535692 at 211 ROUND HILL RD issued 2025-11-14.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=012QL&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2025-11-14",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2535692",
+        "address": "211 ROUND HILL RD",
+        "issuedAt": "2025-11-14",
+        "permitValue": 193874,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=012QL&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2536156",
+        "address": "121 ROUND HILL RD",
+        "issuedAt": "2025-11-14",
+        "permitValue": 388810,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01382&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2536089",
+        "address": "75 ROUND HILL RD",
+        "issuedAt": "2025-11-14",
+        "permitValue": 167796,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=0135I&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2536109",
+        "address": "84 ROUND HILL RD",
+        "issuedAt": "2025-11-14",
+        "permitValue": 167796,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01369&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2536085",
+        "address": "72 ROUND HILL RD",
+        "issuedAt": "2025-11-14",
+        "permitValue": 193874,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=0135C&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 255 Columbus public new-residential permit rows. Latest sample NEWR2535692 at 211 ROUND HILL RD issued 2025-11-14."
+  },
+  {
+    "id": "columbus-oh-builder-pulte-homes-of-ohio-llc",
+    "builderName": "Pulte Homes of Ohio LLC",
+    "name": "Pulte Homes of Ohio LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.pulte.com/homes/ohio/columbus",
+    "contactPage": "https://www.pulte.com/homes/ohio/columbus",
+    "publicPhone": "(614) 665-6036",
+    "publicEmail": "",
+    "phone": "(614) 665-6036",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 208,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 208 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2622853 at 344 RYE ST issued 2026-06-24.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00P0T&AgencyCode=COLUMBUS",
+      "https://www.pulte.com/homes/ohio/columbus"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-24",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2622853",
+        "address": "344 RYE ST",
+        "issuedAt": "2026-06-24",
+        "permitValue": 381820,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00P0T&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2622851",
+        "address": "350 RYE ST",
+        "issuedAt": "2026-06-24",
+        "permitValue": 414260,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00P0P&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2622668",
+        "address": "2083 PESCA DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 567420,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00OTH&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2622701",
+        "address": "6075 PISELLO DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 634020,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00OUD&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2621320",
+        "address": "343 RYE ST",
+        "issuedAt": "2026-06-12",
+        "permitValue": 387880,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00N9Z&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 208 Columbus public new-residential permit rows. Latest sample NEWR2622853 at 344 RYE ST issued 2026-06-24."
+  },
+  {
+    "id": "columbus-oh-builder-maronda-homes-llc-of-ohio",
+    "builderName": "Maronda Homes, LLC Of Ohio",
+    "name": "Maronda Homes, LLC Of Ohio",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.marondahomes.com/",
+    "contactPage": "https://www.marondahomes.com/",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 191,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 191 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2623234 at 1446 BEGONIA DR issued 2026-06-25.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00PFQ&AgencyCode=COLUMBUS",
+      "https://www.marondahomes.com/"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-25",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2623234",
+        "address": "1446 BEGONIA DR",
+        "issuedAt": "2026-06-25",
+        "permitValue": 411005,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00PFQ&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2624251",
+        "address": "5618 VILLAGE CHANNEL DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 293510,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00QI2&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2624259",
+        "address": "5620 VILLAGE CHANNEL DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 284325,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00QIA&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2624260",
+        "address": "5622 VILLAGE CHANNEL DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 280940,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00QIC&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2624264",
+        "address": "5624 VILLAGE CHANNEL DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 278745,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00QIH&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 191 Columbus public new-residential permit rows. Latest sample NEWR2623234 at 1446 BEGONIA DR issued 2026-06-25."
+  },
+  {
+    "id": "columbus-oh-builder-kmm-builders-llc",
+    "builderName": "KMM BUILDERS LLC",
+    "name": "KMM BUILDERS LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 57,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 57 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2618023 at 2273 MCGUFFEY RD issued 2026-06-10.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JHA&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-10",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2618023",
+        "address": "2273 MCGUFFEY RD",
+        "issuedAt": "2026-06-10",
+        "permitValue": 500000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JHA&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2618021",
+        "address": "1238 LORETTA AVE",
+        "issuedAt": "2026-05-20",
+        "permitValue": 500000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JH8&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2615503",
+        "address": "1545-1547 26TH AVE",
+        "issuedAt": "2026-05-15",
+        "permitValue": 500000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00GJ3&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2615498",
+        "address": "1541-1543 26TH AVE",
+        "issuedAt": "2026-05-15",
+        "permitValue": 500000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00GIX&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2615504",
+        "address": "1551-1553 26TH AVE",
+        "issuedAt": "2026-05-15",
+        "permitValue": 500000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00GJ4&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 57 Columbus public new-residential permit rows. Latest sample NEWR2618023 at 2273 MCGUFFEY RD issued 2026-06-10."
+  },
+  {
+    "id": "columbus-oh-builder-wj3-enterprises-ltd",
+    "builderName": "WJ3 ENTERPRISES LTD",
+    "name": "WJ3 ENTERPRISES LTD",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 37,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 37 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2619274 at 1027 LORETTA AVE issued 2026-06-16.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KZZ&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-16",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2619274",
+        "address": "1027 LORETTA AVE",
+        "issuedAt": "2026-06-16",
+        "permitValue": 282000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KZZ&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2615745",
+        "address": "1289 E 17TH AVE",
+        "issuedAt": "2026-06-08",
+        "permitValue": 434500,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00GTR&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619279",
+        "address": "2579 ATWOOD TER",
+        "issuedAt": "2026-06-03",
+        "permitValue": 282000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00L06&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619277",
+        "address": "2575 ATWOOD TER",
+        "issuedAt": "2026-06-03",
+        "permitValue": 282000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00L02&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619267",
+        "address": "2921 HOWEY RD",
+        "issuedAt": "2026-06-03",
+        "permitValue": 282000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KZP&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 37 Columbus public new-residential permit rows. Latest sample NEWR2619274 at 1027 LORETTA AVE issued 2026-06-16."
+  },
+  {
+    "id": "columbus-oh-builder-habitat-for-humanity-midohio",
+    "builderName": "HABITAT FOR HUMANITY MIDOHIO",
+    "name": "HABITAT FOR HUMANITY MIDOHIO",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.habitatmidohio.org/",
+    "contactPage": "https://www.habitatmidohio.org/",
+    "publicPhone": "(614) 422-4828",
+    "publicEmail": "info@habitatmidohio.org",
+    "phone": "(614) 422-4828",
+    "email": "info@habitatmidohio.org",
+    "contactName": "",
+    "recentBuilds": 27,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 27 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2617991 at 851 BASSETT AVE issued 2026-06-01.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JG6&AgencyCode=COLUMBUS",
+      "https://www.habitatmidohio.org/"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-01",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2617991",
+        "address": "851 BASSETT AVE",
+        "issuedAt": "2026-06-01",
+        "permitValue": 250000,
+        "permitType": "Single Family Houses Attached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JG6&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2617981",
+        "address": "843 BASSETT AVE",
+        "issuedAt": "2026-06-01",
+        "permitValue": 250000,
+        "permitType": "Single Family Houses Attached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JFR&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2617969",
+        "address": "835 BASSETT AVE",
+        "issuedAt": "2026-06-01",
+        "permitValue": 250000,
+        "permitType": "Single Family Houses Attached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JF7&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2617985",
+        "address": "845 BASSETT AVE",
+        "issuedAt": "2026-06-01",
+        "permitValue": 244000,
+        "permitType": "Single Family Houses Attached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JFW&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2617978",
+        "address": "841 BASSETT AVE",
+        "issuedAt": "2026-06-01",
+        "permitValue": 244000,
+        "permitType": "Single Family Houses Attached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00JFH&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 27 Columbus public new-residential permit rows. Latest sample NEWR2617991 at 851 BASSETT AVE issued 2026-06-01."
+  },
+  {
+    "id": "columbus-oh-builder-thrive-construction-llc",
+    "builderName": "THRIVE CONSTRUCTION LLC",
+    "name": "THRIVE CONSTRUCTION LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 24,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 24 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2619846 at 2402 QUARRY TRAILS DR issued 2026-06-24.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LNC&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-24",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2619846",
+        "address": "2402 QUARRY TRAILS DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 600000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LNC&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619854",
+        "address": "2410 QUARRY TRAILS DR",
+        "issuedAt": "2026-06-24",
+        "permitValue": 600000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LNM&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2616570",
+        "address": "2510 QUARRY TRAILS DR",
+        "issuedAt": "2026-05-11",
+        "permitValue": 600000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00HSU&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2607791",
+        "address": "2502 QUARRY TRAILS DR",
+        "issuedAt": "2026-04-17",
+        "permitValue": 600000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=0071Q&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2610559",
+        "address": "2902 KATMAI DR",
+        "issuedAt": "2026-04-16",
+        "permitValue": 600000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00AGY&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 24 Columbus public new-residential permit rows. Latest sample NEWR2619846 at 2402 QUARRY TRAILS DR issued 2026-06-24."
+  },
+  {
+    "id": "columbus-oh-builder-schottenstein-homes-llc",
+    "builderName": "Schottenstein Homes LLC",
+    "name": "Schottenstein Homes LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 23,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 23 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2619868 at 1567 EBBETS CT issued 2026-05-29.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LO0&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-05-29",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2619868",
+        "address": "1567 EBBETS CT",
+        "issuedAt": "2026-05-29",
+        "permitValue": 317000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LO0&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619875",
+        "address": "1561 EBBETS CT",
+        "issuedAt": "2026-05-29",
+        "permitValue": 238000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LO9&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619944",
+        "address": "1543 EBBETS CT",
+        "issuedAt": "2026-05-29",
+        "permitValue": 250000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00LQR&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2616909",
+        "address": "1573 EBBETS CT",
+        "issuedAt": "2026-05-13",
+        "permitValue": 297000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00I6L&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2539194",
+        "address": "6180 RENNER PARK DR",
+        "issuedAt": "2025-11-03",
+        "permitValue": 250000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=016V8&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 23 Columbus public new-residential permit rows. Latest sample NEWR2619868 at 1567 EBBETS CT issued 2026-05-29."
+  },
+  {
+    "id": "columbus-oh-builder-cap-city-collaborative-llc",
+    "builderName": "CAP CITY COLLABORATIVE LLC",
+    "name": "CAP CITY COLLABORATIVE LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 20,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 20 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2612160 at 966 BELLOWS AVE issued 2026-04-13.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00CGJ&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-04-13",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 90,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2612160",
+        "address": "966 BELLOWS AVE",
+        "issuedAt": "2026-04-13",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00CGJ&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2612152",
+        "address": "199 AVONDALE AVE",
+        "issuedAt": "2026-04-10",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00CGB&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2612155",
+        "address": "268 AVONDALE AVE",
+        "issuedAt": "2026-04-10",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00CGE&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2612156",
+        "address": "277 AVONDALE AVE",
+        "issuedAt": "2026-04-10",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00CGF&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2612153",
+        "address": "208 AVONDALE AVE",
+        "issuedAt": "2026-04-10",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00CGC&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 20 Columbus public new-residential permit rows. Latest sample NEWR2612160 at 966 BELLOWS AVE issued 2026-04-13."
+  },
+  {
+    "id": "columbus-oh-builder-fischer-homes-columbus-ii-llc",
+    "builderName": "Fischer Homes Columbus II, LLC",
+    "name": "Fischer Homes Columbus II, LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.fischerhomes.com/",
+    "contactPage": "https://www.fischerhomes.com/",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 17,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 17 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2620523 at 4569 BALTORO RD issued 2026-06-10.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00MEJ&AgencyCode=COLUMBUS",
+      "https://www.fischerhomes.com/"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-10",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 82,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2620523",
+        "address": "4569 BALTORO RD",
+        "issuedAt": "2026-06-10",
+        "permitValue": 214275,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00MEJ&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619066",
+        "address": "4561 BALTORO RD",
+        "issuedAt": "2026-05-27",
+        "permitValue": 174250,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KQR&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2615886",
+        "address": "6611 PERITO DR",
+        "issuedAt": "2026-05-06",
+        "permitValue": 179185,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00GZ6&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2614050",
+        "address": "6682 PERITO DR",
+        "issuedAt": "2026-04-21",
+        "permitValue": 223931,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00ESD&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2610357",
+        "address": "6635 PERITO DR",
+        "issuedAt": "2026-04-01",
+        "permitValue": 193333,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00A7R&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 17 Columbus public new-residential permit rows. Latest sample NEWR2620523 at 4569 BALTORO RD issued 2026-06-10."
+  },
+  {
+    "id": "columbus-oh-builder-treplus-communities",
+    "builderName": "TREPLUS COMMUNITIES",
+    "name": "TREPLUS COMMUNITIES",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.trepluscommunities.com/",
+    "contactPage": "https://www.trepluscommunities.com/",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 17,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 17 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2411372 at 6194-6198 SPRUCE COMMONS DR issued 2025-02-21.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=24CAP&capID2=00000&capID3=00A0L&AgencyCode=COLUMBUS",
+      "https://www.trepluscommunities.com/"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2025-02-21",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 82,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2411372",
+        "address": "6194-6198 SPRUCE COMMONS DR",
+        "issuedAt": "2025-02-21",
+        "permitValue": 345600,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=24CAP&capID2=00000&capID3=00A0L&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2411375",
+        "address": "6186-6190 SPRUCE COMMONS DR",
+        "issuedAt": "2025-02-21",
+        "permitValue": 345600,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=24CAP&capID2=00000&capID3=00A0O&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2411427",
+        "address": "6229-6233 GOLDEN ASPEN WAY",
+        "issuedAt": "2025-02-21",
+        "permitValue": 345600,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=24CAP&capID2=00000&capID3=00A2A&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2411425",
+        "address": "6237-6241 GOLDEN ASPEN WAY",
+        "issuedAt": "2025-02-21",
+        "permitValue": 345600,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=24CAP&capID2=00000&capID3=00A28&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2411428",
+        "address": "6209-6215 GOLDEN ASPEN WAY",
+        "issuedAt": "2025-02-21",
+        "permitValue": 345600,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=24CAP&capID2=00000&capID3=00A2C&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 17 Columbus public new-residential permit rows. Latest sample NEWR2411372 at 6194-6198 SPRUCE COMMONS DR issued 2025-02-21."
+  },
+  {
+    "id": "columbus-oh-builder-simmons-corporation",
+    "builderName": "Simmons Corporation",
+    "name": "Simmons Corporation",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.simmonscorp.com/",
+    "contactPage": "https://www.simmonscorp.com/",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 9,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 9 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2611304 at 1651 KOHR PL issued 2026-04-01.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00BFT&AgencyCode=COLUMBUS",
+      "https://www.simmonscorp.com/"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-04-01",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2611304",
+        "address": "1651 KOHR PL",
+        "issuedAt": "2026-04-01",
+        "permitValue": 350000,
+        "permitType": null,
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00BFT&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2544978",
+        "address": "1652 KOHR PL",
+        "issuedAt": "2026-01-05",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01DQQ&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2544969",
+        "address": "1645 KOHR PL",
+        "issuedAt": "2026-01-05",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01DQA&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2545192",
+        "address": "1650 KOHR PL",
+        "issuedAt": "2026-01-05",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01E12&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2544960",
+        "address": "1587 KOHR PL",
+        "issuedAt": "2025-12-23",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01DPR&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 9 Columbus public new-residential permit rows. Latest sample NEWR2611304 at 1651 KOHR PL issued 2026-04-01."
+  },
+  {
+    "id": "columbus-oh-builder-walnut-homes-for-you-llc",
+    "builderName": "WALNUT HOMES FOR YOU LLC",
+    "name": "WALNUT HOMES FOR YOU LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 9,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 9 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2608690 at 791 BASSETT AVE issued 2026-04-20.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=0086L&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-04-20",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2608690",
+        "address": "791 BASSETT AVE",
+        "issuedAt": "2026-04-20",
+        "permitValue": 180000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=0086L&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2608687",
+        "address": "787 BASSETT AVE",
+        "issuedAt": "2026-04-15",
+        "permitValue": 180000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=0086H&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2519410",
+        "address": "1097-1099 E 18TH AVE",
+        "issuedAt": "2026-04-06",
+        "permitValue": 200000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=00K1I&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2541392",
+        "address": "474 SOUTHWOOD AVE",
+        "issuedAt": "2025-11-24",
+        "permitValue": 180000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=019G1&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2538079",
+        "address": "278 SOUTHGATE DR",
+        "issuedAt": "2025-11-21",
+        "permitValue": 240000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=015J8&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 9 Columbus public new-residential permit rows. Latest sample NEWR2608690 at 791 BASSETT AVE issued 2026-04-20."
+  },
+  {
+    "id": "columbus-oh-builder-homewood-building",
+    "builderName": "HOMEWOOD BUILDING",
+    "name": "HOMEWOOD BUILDING",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "https://www.homewood-homes.com/",
+    "contactPage": "https://www.homewood-homes.com/",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 7,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 7 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2614166 at 6195 RENNER PARK DR issued 2026-04-22.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00EXI&AgencyCode=COLUMBUS",
+      "https://www.homewood-homes.com/"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-04-22",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2614166",
+        "address": "6195 RENNER PARK DR",
+        "issuedAt": "2026-04-22",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00EXI&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2603802",
+        "address": "6648 TASMAN DR",
+        "issuedAt": "2026-02-10",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00284&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2542586",
+        "address": "4553 BALTORO RD",
+        "issuedAt": "2025-12-30",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01AV2&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2542587",
+        "address": "4550 BALTORO RD",
+        "issuedAt": "2025-12-29",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01AV5&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2534731",
+        "address": "1530 BOES CT",
+        "issuedAt": "2025-09-30",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=011LP&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 7 Columbus public new-residential permit rows. Latest sample NEWR2614166 at 6195 RENNER PARK DR issued 2026-04-22."
+  },
+  {
+    "id": "columbus-oh-builder-lehman-park-ltd",
+    "builderName": "LEHMAN PARK LTD",
+    "name": "LEHMAN PARK LTD",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 7,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 7 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2611888 at 7274 LEHMAN PARK PL issued 2026-04-27.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00C4R&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-04-27",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2611888",
+        "address": "7274 LEHMAN PARK PL",
+        "issuedAt": "2026-04-27",
+        "permitValue": 213120,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00C4R&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2609451",
+        "address": "7295 LEHMAN PARK PL",
+        "issuedAt": "2026-03-26",
+        "permitValue": 225000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=0093T&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2608233",
+        "address": "7287 LEHMAN PARK PL",
+        "issuedAt": "2026-03-19",
+        "permitValue": 225000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=007LR&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2608234",
+        "address": "7279 LEHMAN PARK PL",
+        "issuedAt": "2026-03-19",
+        "permitValue": 250000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=007LS&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2532769",
+        "address": "7266 LEHMAN PARK PL",
+        "issuedAt": "2025-09-12",
+        "permitValue": 227160,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=00Z71&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 7 Columbus public new-residential permit rows. Latest sample NEWR2611888 at 7274 LEHMAN PARK PL issued 2026-04-27."
+  },
+  {
+    "id": "columbus-oh-builder-simco-construction",
+    "builderName": "SIMCO CONSTRUCTION",
+    "name": "SIMCO CONSTRUCTION",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 7,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 7 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2536394 at 917 MILLER AVE issued 2026-03-02.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=013IO&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-03-02",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2536394",
+        "address": "917 MILLER AVE",
+        "issuedAt": "2026-03-02",
+        "permitValue": 525000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=013IO&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2542428",
+        "address": "1595 KOHR PL",
+        "issuedAt": "2025-12-15",
+        "permitValue": 350000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01AO4&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2533508",
+        "address": "1613 KOHR PL",
+        "issuedAt": "2025-11-12",
+        "permitValue": 330000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01045&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2533726",
+        "address": "1608 KOHR PL",
+        "issuedAt": "2025-11-12",
+        "permitValue": 330000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=010DN&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2533501",
+        "address": "1636 KOHR PL",
+        "issuedAt": "2025-11-12",
+        "permitValue": 330000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=0103X&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 7 Columbus public new-residential permit rows. Latest sample NEWR2536394 at 917 MILLER AVE issued 2026-03-02."
+  },
+  {
+    "id": "columbus-oh-builder-the-columbus-design-company",
+    "builderName": "The Columbus Design Company",
+    "name": "The Columbus Design Company",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 7,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 7 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2530108 at 576 FAIRWOOD AVE issued 2025-11-14.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=00VZ4&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2025-11-14",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2530108",
+        "address": "576 FAIRWOOD AVE",
+        "issuedAt": "2025-11-14",
+        "permitValue": 300000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=00VZ4&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2536961",
+        "address": "257 N MONROE AVE",
+        "issuedAt": "2025-10-10",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=0146X&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2536962",
+        "address": "266 TALMADGE ST",
+        "issuedAt": "2025-10-10",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=0146Z&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2526495",
+        "address": "983 OAK ST",
+        "issuedAt": "2025-07-28",
+        "permitValue": 300000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=00RYM&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2525096",
+        "address": "973 OAK ST",
+        "issuedAt": "2025-07-17",
+        "permitValue": 300000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=00QES&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 7 Columbus public new-residential permit rows. Latest sample NEWR2530108 at 576 FAIRWOOD AVE issued 2025-11-14."
+  },
+  {
+    "id": "columbus-oh-builder-garcia-builders-construction-llc",
+    "builderName": "GARCIA BUILDERS CONSTRUCTION LLC",
+    "name": "GARCIA BUILDERS CONSTRUCTION LLC",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 6,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 6 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2605162 at 235 S HARRIS AVE issued 2026-02-25.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=003U3&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-02-25",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2605162",
+        "address": "235 S HARRIS AVE",
+        "issuedAt": "2026-02-25",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=003U3&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2545948",
+        "address": "118 N OGDEN AVE",
+        "issuedAt": "2026-01-28",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01EX7&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2545242",
+        "address": "2380 LOUDEN AVE",
+        "issuedAt": "2026-01-16",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01E36&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2541993",
+        "address": "65 S WHEATLAND AVE",
+        "issuedAt": "2025-12-11",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=01A5K&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2537424",
+        "address": "2394 LOUDEN AVE",
+        "issuedAt": "2025-10-28",
+        "permitValue": 150000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=25CAP&capID2=00000&capID3=014RB&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 6 Columbus public new-residential permit rows. Latest sample NEWR2605162 at 235 S HARRIS AVE issued 2026-02-25."
+  },
+  {
+    "id": "columbus-oh-builder-nailed-it-general-contractors",
+    "builderName": "NAILED IT GENERAL CONTRACTORS",
+    "name": "NAILED IT GENERAL CONTRACTORS",
+    "market": "columbus-oh",
+    "state": "OH",
+    "website": "",
+    "contactPage": "",
+    "publicPhone": "",
+    "publicEmail": "",
+    "phone": "",
+    "email": "",
+    "contactName": "",
+    "recentBuilds": 6,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "acquisitionContactStatus": "not-contacted; source-backed permit signal only",
+    "permitEvidence": "Appears on 6 City of Columbus 2025-2026 1,2,3 Family New Structure permit row(s). Latest sample NEWR2619128 at 1627 E 12TH AVE issued 2026-06-12.",
+    "sourceEvidence": "City of Columbus Department of Building and Zoning Services ArcGIS Building_Permits FeatureServer; applicant business name on new residential structure permit rows.",
+    "sourceUrls": [
+      "https://services1.arcgis.com/9yy6msODkIBzkUXU/arcgis/rest/services/Building_Permits/FeatureServer/0",
+      "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KTS&AgencyCode=COLUMBUS"
+    ],
+    "evidenceFreshness": {
+      "latestPermitIssuedAt": "2026-06-12",
+      "queriedAt": "2026-06-28T06:20:55Z",
+      "permitYears": [
+        2025,
+        2026
+      ]
+    },
+    "confidence": 74,
+    "status": "buyer-validation-candidate",
+    "validationStatus": "needs-call-confirmation",
+    "buyBox": "Public Columbus permit signal only. Call builder to capture exact land buy box, max price, close speed, utility/entitlement requirements, and deal killers before treating as validated demand.",
+    "recentPermits": [
+      {
+        "permitNumber": "NEWR2619128",
+        "address": "1627 E 12TH AVE",
+        "issuedAt": "2026-06-12",
+        "permitValue": 390000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KTS&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619131",
+        "address": "3116 E 5TH AVE",
+        "issuedAt": "2026-06-03",
+        "permitValue": 190000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KTV&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619315",
+        "address": "1631 E 12TH AVE",
+        "issuedAt": "2026-06-03",
+        "permitValue": 195000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00L1K&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619130",
+        "address": "1635 E 12TH AVE",
+        "issuedAt": "2026-06-01",
+        "permitValue": 195000,
+        "permitType": "Single Family Houses Detached",
+        "units": 1,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KTU&AgencyCode=COLUMBUS"
+      },
+      {
+        "permitNumber": "NEWR2619120",
+        "address": "1201-1203 E WHITTIER ST",
+        "issuedAt": "2026-05-28",
+        "permitValue": 350000,
+        "permitType": "Two Family Buildings",
+        "units": 2,
+        "sourceUrl": "https://ca.columbus.gov/permits/urlrouting.ashx?type=1000&Module=Building&capID1=26CAP&capID2=00000&capID3=00KTK&AgencyCode=COLUMBUS"
+      }
+    ],
+    "notes": "No outreach performed. Website/contact fields included only where a live public site/page was verified during sprint; blank contact fields mean not source-backed in this sprint.",
+    "acquisitionNotes": "Appears on 6 Columbus public new-residential permit rows. Latest sample NEWR2619128 at 1627 E 12TH AVE issued 2026-06-12."
+  }
+]

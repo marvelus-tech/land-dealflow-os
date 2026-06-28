@@ -1,0 +1,8 @@
+id,name,market,state,recentBuilds,phone,email,validationStatus,confidence,sourceUrl,acquisitionNotes
+boise-builder-cbh-homes,CBH Homes,boise-id,ID,0,(208) 991-4931,newhomes@cbhhomes.com,needs-call-confirmation,62,https://cbhhomes.com,"Candidate only; not permit-verified. Use Boise/Ada official permit source for development activity, then call/contact only after buy-box workflow approval."
+boise-builder-hubble-homes,Hubble Homes,boise-id,ID,0,208-620-2607,,needs-call-confirmation,60,https://www.hubblehomes.com,Candidate only; needs permit/license confirmation and buy-box capture.
+boise-builder-tresidio-homes,Tresidio Homes,boise-id,ID,0,(208) 917-7500,,needs-call-confirmation,60,https://www.tresidio.com/,Candidate only; needs permit/license confirmation and buy-box capture.
+boise-builder-boise-hunter-homes,Boise Hunter Homes,boise-id,ID,0,,,needs-call-confirmation,56,https://boisehunterhomes.com/,"Candidate only; automated phone extraction produced noisy asset numbers, so phone withheld."
+boise-builder-brighton-homes-idaho,Brighton Homes Idaho,boise-id,ID,0,,,needs-call-confirmation,56,https://www.brightonhomes-idaho.com,Candidate only; needs permit/license confirmation and clean contact extraction.
+boise-builder-biltmore-co,Biltmore Co.,boise-id,ID,0,,,needs-call-confirmation,56,https://www.biltmoreco.com,Candidate only; needs permit/license confirmation and clean contact extraction.
+boise-builder-berkeley-building-co,Berkeley Building Co.,boise-id,ID,0,,,needs-call-confirmation,52,https://www.berkeleybuildingco.com,Candidate only; needs browser-rendered contact extraction and permit/license confirmation.

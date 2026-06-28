@@ -87,6 +87,10 @@ const builderMarketSources = [
   { key: 'polk', state: 'FL', marketName: 'Polk / Lakeland, FL', csvUrl: 'data/real/polk/builder_validation_queue.csv', signalsUrl: 'data/real/polk/builder_signals.json', evidenceUrl: 'data/real/polk/market_evidence.json' },
   { key: 'maricopa', state: 'AZ', marketName: 'Phoenix / Maricopa County, AZ', csvUrl: 'data/real/maricopa/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa/builder_signals.json', evidenceUrl: 'data/real/maricopa/market_evidence.json' },
   { key: 'dorchester-sc', state: 'SC', marketName: 'Dorchester County / Charleston edge, SC', csvUrl: 'data/real/dorchester-sc/builder_validation_queue.csv', signalsUrl: 'data/real/dorchester-sc/builder_signals.json', evidenceUrl: 'data/real/dorchester-sc/market_evidence.json' },
+  { key: 'columbus-oh', state: 'OH', marketName: 'Columbus / Franklin County, OH', csvUrl: 'data/real/columbus-oh/builder_validation_queue.csv', signalsUrl: 'data/real/columbus-oh/builder_signals.json', evidenceUrl: 'data/real/columbus-oh/market_evidence.json' },
+  { key: 'pittsburgh-pa', state: 'PA', marketName: 'Pittsburgh / Allegheny County, PA', csvUrl: 'data/real/pittsburgh-pa/builder_validation_queue.csv', signalsUrl: 'data/real/pittsburgh-pa/builder_signals.json', evidenceUrl: 'data/real/pittsburgh-pa/builder_discovery_packet.json' },
+  { key: 'hall-ga', state: 'GA', marketName: 'Hall County / Gainesville, GA', csvUrl: 'data/real/hall-ga/builder_validation_queue.csv', signalsUrl: 'data/real/hall-ga/builder_signals.json', evidenceUrl: 'data/real/hall-ga/market_evidence.json' },
+  { key: 'boise-id', state: 'ID', marketName: 'Boise / Ada County, ID', csvUrl: 'data/real/boise-id/builder_validation_queue.csv', signalsUrl: 'data/real/boise-id/builder_signals.json', evidenceUrl: 'data/real/boise-id/market_evidence.json' },
 ];
 
 const builderMarketSourceByKey = new Map(builderMarketSources.map(source => [source.key, source]));
@@ -194,7 +198,7 @@ let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
 let selectedBuilderMarketState = 'GA';
-let selectedBuilderMarketKey = 'forsyth-ga';
+let selectedBuilderMarketKey = 'hall-ga';
 let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
@@ -1632,13 +1636,14 @@ function normalizeBuilderSignal(row = {}, source = {}) {
   const recentBuilds = Number(row.recentBuilds || permits.length || 0);
   const phone = row.phone || row.contactPhone || permits.find(permit => permit.contractorPhone)?.contractorPhone || '';
   const email = row.email || row.contactEmail || permits.find(permit => permit.contractorEmail)?.contractorEmail || '';
-  const sourceUrl = row.sourceUrl || permits.find(permit => permit.sourceUrl)?.sourceUrl || source.evidenceUrl || source.signalsUrl || '';
+  const builderLabel = row.name || row.companyName || row.builderName || row.contractorName || '';
+  const sourceUrl = row.sourceUrl || asArray(row.sourceUrls)[0] || permits.find(permit => permit.sourceUrl)?.sourceUrl || source.evidenceUrl || source.signalsUrl || '';
   const marketLabel = source.marketName || row.market || source.state || 'Permit market';
   const normalized = {
     ...row,
-    builderId: row.builderId || row.id || `${source.key || 'builder'}-${slugify(row.name || row.companyName || 'unknown')}`,
-    companyName: row.companyName || row.name || 'Unnamed builder',
-    name: row.name || row.companyName || 'Unnamed builder',
+    builderId: row.builderId || row.id || `${source.key || 'builder'}-${slugify(builderLabel || 'unknown')}`,
+    companyName: row.companyName || row.name || row.builderName || row.contractorName || 'Unnamed builder',
+    name: builderLabel || 'Unnamed builder',
     marketName: marketLabel,
     state: row.state || source.state || '',
     phone,
@@ -1829,10 +1834,10 @@ const builderStateTheses = {
   AZ: { label: 'Arizona', thesis: 'Phoenix edge lane', short: 'Phoenix edge', detail: 'Phoenix / Maricopa edge growth', note: 'Treat as a state-level lane; county detail belongs in source proof, not the top selector.' },
   NC: { label: 'North Carolina', thesis: 'Raleigh / Wake lane', short: 'Raleigh / Wake', detail: 'Triangle permit-growth lane', note: 'Keep county/source depth behind the selected state workbench.' },
   TX: { label: 'Texas', thesis: 'Austin + San Antonio lanes', short: 'Austin + San Antonio', detail: 'Central / south Texas growth lanes', note: 'Austin and San Antonio stay under one Texas decision until a specific buyer call requires splitting.' },
-  PA: { label: 'Pennsylvania', thesis: 'Queued source lane', short: 'Queued', detail: 'Pennsylvania source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
-  OH: { label: 'Ohio', thesis: 'Queued source lane', short: 'Queued', detail: 'Ohio source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
-  ID: { label: 'Idaho', thesis: 'Queued source lane', short: 'Queued', detail: 'Idaho source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
-  IN: { label: 'Indiana', thesis: 'Queued source lane', short: 'Queued', detail: 'Indiana source lane', note: 'Empty for now; keep visible so the market can be filled later without changing the selector.' },
+  PA: { label: 'Pennsylvania', thesis: 'Pittsburgh permit lane', short: 'Pittsburgh live', detail: 'Pittsburgh permit-builder lane', note: 'Pittsburgh now carries source-backed residential new-construction builders; use the county ledger for proof depth.' },
+  OH: { label: 'Ohio', thesis: 'Columbus permit lane', short: 'Columbus live', detail: 'Columbus public ArcGIS permit lane', note: 'Columbus now carries source-backed permit applicants; call-confirm buy boxes before seller sourcing.' },
+  ID: { label: 'Idaho', thesis: 'Boise candidate lane', short: 'Boise thin', detail: 'Boise public-builder candidate lane', note: 'Boise has public builder candidates and source-path proof, but still needs contractor-bearing permit evidence.' },
+  IN: { label: 'Indiana', thesis: 'Queued source lane', short: 'Queued', detail: 'Indiana source lane', note: 'Indianapolis remains visible while the Accela scraper is built and permit-backed rows are promoted.' },
 };
 
 function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntries(), permitLandscape = getPermitPortalLandscape()) {

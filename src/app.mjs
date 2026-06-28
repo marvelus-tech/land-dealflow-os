@@ -3351,6 +3351,31 @@ async function loadTitleCompanyResearch() {
   }
 }
 
+function marketRadarPlaceholderHtml() {
+  const validationSteps = [
+    ['01', 'Scan', 'Land.com sold/pending · 0-1 acre · $30k-$150k · undeveloped'],
+    ['02', 'Gate', '5-10+ new builds, recent land comps, active inventory, repeatable infill lots'],
+    ['03', 'Call', 'Ask high/low-comp agents what changes value before any seller list is pulled'],
+  ].map(([number, label, detail]) => `<div class="engine-row priority-row"><b>${number} · ${label}</b><span>${detail}</span></div>`).join('');
+  const placeholderCriteria = [
+    ['Page', 'Sources', 'Market Radar belongs before parcel sourcing because it chooses where source lanes should run.'],
+    ['Guardrail', 'Raw candidate != validated market', 'Keep candidate markets separate from buyer-backed seller queues.'],
+    ['Next build', 'Generate first candidate packet', 'Output market_candidates.json, expert_call_targets.csv, and niche_value_rules.json.'],
+  ].map(([label, title, detail]) => `<div class="criterion-row"><b>${label}: ${title}</b><span>${detail}</span></div>`).join('');
+  return `<section class="weekly-market-card market-radar-placeholder" aria-label="Market Radar placeholder">
+    <div class="weekly-market-head">
+      <div><span class="eyebrow">Market Radar · placeholder</span><h3>Find hot land markets before seller sourcing.</h3><p>This lives on Sources because it is upstream of Builders and Land: it turns market signals into validated source lanes, then hands buyer targets to Builders and seller-list filters to Land.</p></div>
+      <div class="market-grade"><span>Status</span><strong>Hold</strong><em>build next</em></div>
+    </div>
+    <div class="deal-strip four"><div><span>Current page</span><strong>Sources</strong></div><div><span>Workflow</span><strong>15-min scan</strong></div><div><span>Primary gate</span><strong>Expert call</strong></div><div><span>Promotion</span><strong>Validated only</strong></div></div>
+    <div class="weekly-market-grid">
+      <div><h4>Why here</h4>${placeholderCriteria}</div>
+      <div><h4>Method to wire later</h4>${validationSteps}</div>
+      <div><h4>Do not promote yet</h4>${badge('No fake markets', 'warn')}${badge('Zillow context only', 'warn')}${badge('No outreach without approval', 'warn')}<p>Run <code>node scripts/weekly-market-scout.mjs</code> later when the Market Radar generator exists.</p></div>
+    </div>
+  </section>`;
+}
+
 function renderWeeklyMarketScout() {
   const target = document.querySelector('#weekly-market-scout');
   if (!target) return;
@@ -3359,7 +3384,7 @@ function renderWeeklyMarketScout() {
     return;
   }
   if (weeklyMarketScout.error) {
-    target.innerHTML = `<section class="weekly-market-card"><span class="eyebrow">Market Expansion Engine</span><h3>Weekly scout not generated yet.</h3><p>Run <code>node scripts/weekly-market-scout.mjs</code> to publish this week’s market candidate.</p></section>`;
+    target.innerHTML = marketRadarPlaceholderHtml();
     return;
   }
   const market = weeklyMarketScout.recommendedMarket || {};
@@ -3370,7 +3395,7 @@ function renderWeeklyMarketScout() {
     .split('-')
     .map(part => part.charAt(0).toUpperCase() + part.slice(1))
     .join(' ');
-  target.innerHTML = `<section class="weekly-market-card">
+  target.innerHTML = `${marketRadarPlaceholderHtml()}<section class="weekly-market-card weekly-market-legacy">
     <div class="weekly-market-head">
       <div><span class="eyebrow">Market Expansion Engine · week ${h(weeklyMarketScout.week || '')}</span><h3>${h(market.name || 'No market selected')}</h3><p>${h(market.thesis || 'No thesis generated yet.')}</p></div>
       <div class="market-grade"><span>Score</span><strong>${h(market.score ?? 0)}</strong><em>Grade ${h(market.grade || '-')}</em></div>

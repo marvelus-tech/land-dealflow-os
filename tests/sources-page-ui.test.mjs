@@ -20,6 +20,10 @@ assert.match(appSource, /Georgia[\s\S]{0,220}Forsyth\/Hall\/Jackson\/Douglas per
 assert.match(appSource, /South Carolina[\s\S]{0,220}Dorchester live \+ Berkeley watchlist/, 'Sources page must describe the SC expansion lanes.');
 assert.match(coreSource, /Buildchek|PermitVector/, 'Permit landscape data must preserve aggregator/platform references');
 assert.match(appSource, /renderSourcePriorityBoard\(\)/, 'Sources priority board must be part of the render loop');
+assert.match(appSource, /Market Radar · placeholder/, 'Sources page must reserve the hot-land market radar workflow placeholder');
+assert.match(appSource, /Raw candidate != validated market/, 'Market Radar placeholder must keep raw candidates separate from validated markets');
+assert.match(appSource, /Land.com sold\/pending/, 'Market Radar placeholder must preserve the 15-minute market scan method');
+assert.match(css, /#weekly-market-scout:has\(\.market-radar-placeholder\)[\s\S]{0,180}max-height: none !important/, 'Market Radar placeholder must not inherit the collapsed weekly scout shell');
 assert.match(css, /#sources-hub \.source-popover[\s\S]{0,420}position: absolute !important/, 'Desktop source inspector must float instead of consuming card layout');
 assert.match(css, /bottom: calc\(100% \+ 12px\) !important/, 'Desktop source inspector must appear above the source control');
 assert.match(css, /#sources-hub \.source-disclosure summary span[\s\S]{0,120}display: none !important/, 'Source buttons should avoid redundant visible Source label text');

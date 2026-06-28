@@ -131,7 +131,7 @@ assert.match(css, /--land-phase219-desktop-width: open-surface-flattened-state-w
 assert.match(css, /phase218-builder-style-workbench > \.state-data-workbench,[\s\S]{0,140}display: contents !important/, 'Land desktop state workbench must flatten nested wrapper gutters.');
 assert.match(css, /phase218-builder-style-workbench\.builders-phase83-workbench[\s\S]{0,360}grid-template-columns: minmax\(170px, \.22fr\) minmax\(450px, \.47fr\) minmax\(300px, \.31fr\) !important/, 'Land desktop top workbench must use three real columns instead of a shrunken nested island.');
 assert.match(css, /deal-workbench\.phase210-lightweight-selection,[\s\S]{0,220}grid-template-columns: minmax\(390px, \.39fr\) minmax\(0, \.61fr\) !important/, 'Land desktop queue/detail workbench must use the full holder width.');
-assert.match(readFileSync('index.html', 'utf8'), /src\/styles\.css\?v=phase230/, 'Index must bust CSS cache for the per-lot enrichment pass.');
+assert.match(readFileSync('index.html', 'utf8'), /src\/styles\.css\?v=phase231/, 'Index must bust CSS cache for the empty inspector parity pass.');
 assert.match(app, /let freeGovOwnerSources = null;/, 'App must store the free-government owner source matrix.');
 assert.match(app, /loadFreeGovOwnerSources\(\)\.then\(renderAll\)/, 'App must load the free-government owner source matrix into the UI.');
 assert.match(app, /function renderFreeGovOwnerSourceBoard/, 'Sources page must render stored market owner-source agent lanes.');
@@ -147,6 +147,10 @@ assert.match(app, /Zero-count markets remain ready/, 'Sources UI must preserve z
 assert.match(app, /Fabricated contacts/, 'Sources UI must expose zero-fabrication contact accounting.');
 assert.match(css, /--land-phase229-free-gov-owner-agents: stored-zero-count-markets-active-owner-anchor-agents/, 'CSS must encode the free-gov owner-source agent pass.');
 assert.match(css, /--land-phase230-lot-enrichment: app-loaded-apn-owner-contact-utility-facts/, 'CSS must encode app-loaded per-lot enrichment facts.');
+assert.match(css, /--land-phase231-empty-detail-parity: empty-inspector-reserves-selected-sheet-geometry/, 'Land empty inspector must encode the selected-detail geometry parity pass.');
+assert.match(app, /phase231-empty-action-row/, 'Unselected Land queue must keep the same full-width next-action row as selected detail.');
+assert.match(app, /deal-detail land-empty-inspector/, 'Unselected Land inspector must reuse selected detail sheet geometry classes.');
+assert.match(css, /\.phase210-lightweight-selection > \.phase231-empty-detail-parity,[\s\S]{0,420}max-width: none !important;[\s\S]{0,260}border-left: 1px solid/, 'Unselected Land inspector must fill the selected detail column and keep the same sheet edge.');
 assert.match(css, /\.land-row-lot-facts/, 'Land row lot facts need route-scoped styling.');
 assert.match(css, /\.land-selected-lot-facts[\s\S]{0,220}grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/, 'Selected detail lot facts must render as a quiet two-column ledger.');
 assert.match(css, /grid-template-areas: "idx title" "idx meta" "idx facts" "idx reason" "idx badges" "idx activity"/, 'Land row grid must reserve a stable facts row.');

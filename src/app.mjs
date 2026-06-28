@@ -2809,8 +2809,9 @@ function renderParcels() {
     const selectedMarket = getSelectedDealsMarket();
     if (visible.length) {
       target.innerHTML = `${landControls}<div class="deal-workbench phase206-selected-state-workbench phase210-lightweight-selection">
+        <div class="primary-action-strip deals-primary-action phase208-operator-action phase231-empty-action-row"><span>Next action</span><b>Choose one parcel to open the proof, contact, buyer-fit, and money sheet.</b><a class="is-disabled" aria-disabled="true" href="#">Select parcel ${productIcon('arrow')}</a></div>
         ${renderLandQueue(visible, null)}
-        <article class="deals-empty-state phase38-deals-empty phase210-select-parcel-prompt phase215-inspector-prompt" aria-label="Select parcel prompt">
+        <article class="deal-detail land-empty-inspector deals-empty-state phase38-deals-empty phase210-select-parcel-prompt phase215-inspector-prompt phase231-empty-detail-parity" aria-label="Select parcel prompt">
           <span class="eyebrow">Inspector</span>
           <h3>Choose a parcel.</h3>
           <p class="deals-empty-why">The sheet opens only when you ask for it. Until then, the queue stays fast and scan-first.</p>

@@ -31232,7 +31232,9 @@ body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-ra
     padding: 0 !important;
     border-radius: 28px !important;
     justify-content: flex-start !important;
-    background: rgba(255,255,252,.82) !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
   }
   body[data-active-view="deals"] .nav .brand,
   body[data-active-view="deals"] .nav .nav-cta {
@@ -31241,6 +31243,8 @@ body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-ra
   body[data-active-view="deals"] .nav .app-tabs,
   .nav .app-tabs {
     width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 0 !important;
@@ -31348,5 +31352,21 @@ body[data-active-view="deals"] #parcels .phase215-queue-rail .phase225-action-ra
   }
   body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy .state-focus-summary > ul {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  body[data-active-view="deals"] .nav {
+    width: 190px !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 48px) !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+  }
+  body[data-active-view="deals"] .nav .app-tabs {
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 }

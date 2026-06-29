@@ -1,0 +1,82 @@
+{
+  "market": "Lehigh Acres",
+  "state": "FL",
+  "sourceMethod": "operator-entered-test-fixture",
+  "targetSpread": 10000,
+  "closingCostBuffer": 2000,
+  "riskBuffer": 2500,
+  "parcels": [
+    {
+      "parcelId": "LEHIGH-001",
+      "address": "612 S Sheldon Ave, Lehigh Acres, FL",
+      "market": "Lehigh Acres",
+      "state": "FL",
+      "acreage": 0.5,
+      "buyerBuyBox": {
+        "buyerName": "Example Builder",
+        "maxPrice": 25000,
+        "lotSize": "0.5 acre",
+        "geo": "Lehigh Acres target area",
+        "quoteSource": "call-note",
+        "verifiedAt": "2026-06-28T00:00:00Z",
+        "matchesParcel": true
+      },
+      "estimateSignals": {
+        "redfinEstimate": 29000,
+        "redfinEstimateCollectedAt": "2026-06-28T00:00:00Z",
+        "redfinUrl": "operator-entered"
+      },
+      "comps": {
+        "active": [{"price": 28000}, {"price": 30000}],
+        "pending": [{"price": 25000}],
+        "sold": [{"price": 24000}, {"price": 25000}, {"price": 26000}]
+      },
+      "parcelRisk": {
+        "roadAccess": "pass",
+        "utilities": "pass",
+        "flood": "pass",
+        "zoning": "pass"
+      }
+    },
+    {
+      "parcelId": "SW-001",
+      "address": "Southwest Example Lot, Lehigh Acres, FL",
+      "market": "Lehigh Acres",
+      "state": "FL",
+      "acreage": 0.5,
+      "estimateSignals": {
+        "redfinEstimate": 54000,
+        "redfinEstimateCollectedAt": "2026-06-28T00:00:00Z"
+      },
+      "comps": {
+        "active": [{"price": 55000}, {"price": 60000}],
+        "pending": [{"price": 50000}],
+        "sold": [{"price": 54000}, {"price": 58000}, {"price": 60000}]
+      },
+      "parcelRisk": {
+        "roadAccess": "pass",
+        "utilities": "unknown",
+        "flood": "pass",
+        "zoning": "pass"
+      }
+    },
+    {
+      "parcelId": "BLOCKED-001",
+      "address": "No Access Example Lot",
+      "market": "Lehigh Acres",
+      "state": "FL",
+      "estimateSignals": {
+        "redfinEstimate": 50000
+      },
+      "comps": {
+        "active": [{"price": 55000}],
+        "pending": [{"price": 52000}],
+        "sold": [{"price": 51000}, {"price": 53000}, {"price": 54000}]
+      },
+      "parcelRisk": {
+        "roadAccess": "landlocked",
+        "utilities": "unknown"
+      }
+    }
+  ]
+}

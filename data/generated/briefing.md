@@ -1,15 +1,15 @@
-# Lead Engine Briefing — 2026-06-24
+# Lead Engine Briefing — 2026-06-29
 
-Run: lead-engine-2026-06-24T21-33-43-619Z
+Run: lead-engine-2026-06-29T21-31-02-087Z
 
 - Markets watched: 27
-- Buyer leads: 289
+- Buyer leads: 387
 - Parcel leads: 81
 - Top seller calls: 0
 - Real skip-trace leads: 81
-- Buyer validation tasks: 289
+- Buyer validation tasks: 387
 - Offer-ready deals: 0
-- New-area buyer discovery tasks: 20
+- New-area buyer discovery tasks: 18
 - New-area seller discovery tasks: 26
 - Source candidates found: 27
 - Missing-data blockers: 81
@@ -18,7 +18,7 @@ Run: lead-engine-2026-06-24T21-33-43-619Z
 
 ## Priority permit market judgement
 1. Knoxville / Knox County, TN — pulled; 30 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Knoxville / Knox County, TN to capture buy box before seller sourcing.
-2. Nashville / Davidson County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Buildchek + Metro Nashville Codes and build a direct adapter for Nashville / Davidson County, TN.
+2. Nashville / Davidson County, TN — pulled; 80 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Nashville / Davidson County, TN to capture buy box before seller sourcing.
 3. Chattanooga / Hamilton County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Buildchek + Hamilton County GIS and build a direct adapter for Chattanooga / Hamilton County, TN.
 4. Murfreesboro / Rutherford County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review CivicPlus / CivicGov Citizen Portal and build a direct adapter for Murfreesboro / Rutherford County, TN.
 5. Franklin / Williamson County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review IDT Plans + county permit records and build a direct adapter for Franklin / Williamson County, TN.
@@ -57,20 +57,20 @@ Run: lead-engine-2026-06-24T21-33-43-619Z
 10. DEFINITY CONSTRUCTION LLC — capture exact buy box — find contact
 
 ## New-area discovery tasks
-1. Nashville / Davidson County, TN — new target area needs buyer discovery — Find active production-builder in Nashville / Davidson County, TN
-2. Chattanooga / Hamilton County, TN — new target area needs buyer discovery — Find active custom-builder in Chattanooga / Hamilton County, TN
-3. Murfreesboro / Rutherford County, TN — new target area needs buyer discovery — Find active production-builder in Murfreesboro / Rutherford County, TN
-4. Franklin / Williamson County, TN — new target area needs buyer discovery — Find active custom-builder in Franklin / Williamson County, TN
-5. Ocala / Marion County, FL — new target area needs buyer discovery — Find active custom-builder in Ocala / Marion County, FL
-6. Clermont / Lake County, FL — new target area needs buyer discovery — Find active spec-builder in Clermont / Lake County, FL
-7. Gainesville / Alachua County, FL — new target area needs buyer discovery — Find active custom-builder in Gainesville / Alachua County, FL
-8. Tucson / Pima County, AZ — new target area needs buyer discovery — Find active custom-builder in Tucson / Pima County, AZ
-9. Buckeye, AZ — new target area needs buyer discovery — Find active production-builder in Buckeye, AZ
-10. Charlotte / Mecklenburg County, NC — new target area needs buyer discovery — Find active production-builder in Charlotte / Mecklenburg County, NC
+1. Chattanooga / Hamilton County, TN — new target area needs buyer discovery — Find active custom-builder in Chattanooga / Hamilton County, TN
+2. Murfreesboro / Rutherford County, TN — new target area needs buyer discovery — Find active production-builder in Murfreesboro / Rutherford County, TN
+3. Franklin / Williamson County, TN — new target area needs buyer discovery — Find active custom-builder in Franklin / Williamson County, TN
+4. Ocala / Marion County, FL — new target area needs buyer discovery — Find active custom-builder in Ocala / Marion County, FL
+5. Clermont / Lake County, FL — new target area needs buyer discovery — Find active spec-builder in Clermont / Lake County, FL
+6. Gainesville / Alachua County, FL — new target area needs buyer discovery — Find active custom-builder in Gainesville / Alachua County, FL
+7. Tucson / Pima County, AZ — new target area needs buyer discovery — Find active custom-builder in Tucson / Pima County, AZ
+8. Buckeye, AZ — new target area needs buyer discovery — Find active production-builder in Buckeye, AZ
+9. Charlotte / Mecklenburg County, NC — new target area needs buyer discovery — Find active production-builder in Charlotte / Mecklenburg County, NC
+10. Greensboro / Guilford County, NC — new target area needs buyer discovery — Find active custom-builder in Greensboro / Guilford County, NC
 
 ## Source candidates
 1. Knoxville / Knox County, TN — KGIS ArcGIS + Buildchek coverage/permit — Knoxville / Knox County, TN — KGIS ArcGIS + Buildchek coverage — confidence 96
-2. Nashville / Davidson County, TN — Buildchek + Metro Nashville Codes/permit — Nashville / Davidson County, TN — Buildchek + Metro Nashville Codes — confidence 82
+2. Nashville / Davidson County, TN — Metro Nashville Codes ArcGIS Daily Reports/permit — Nashville / Davidson County, TN — Metro Nashville Codes ArcGIS Daily Reports — confidence 96
 3. Chattanooga / Hamilton County, TN — Buildchek + Hamilton County GIS/permit — Chattanooga / Hamilton County, TN — Buildchek + Hamilton County GIS — confidence 78
 4. Murfreesboro / Rutherford County, TN — CivicPlus / CivicGov Citizen Portal/permit — Murfreesboro / Rutherford County, TN — CivicPlus / CivicGov Citizen Portal — confidence 77
 5. Franklin / Williamson County, TN — IDT Plans + county permit records/permit — Franklin / Williamson County, TN — IDT Plans + county permit records — confidence 75

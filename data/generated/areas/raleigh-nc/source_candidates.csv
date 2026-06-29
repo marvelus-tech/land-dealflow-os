@@ -1,2 +1,2 @@
 market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
-raleigh-nc,"Raleigh / Wake County, NC",Wake/Raleigh ArcGIS + Power BI,source_review,"Raleigh / Wake County, NC — Wake/Raleigh ArcGIS + Power BI",https://data.wake.gov/,96,run_direct_permit_builder_adapter,"Raleigh / Wake County, NC Wake/Raleigh ArcGIS + Power BI building permits"
+raleigh-nc,"Raleigh / Wake County, NC",Wake/Raleigh ArcGIS + Power BI,permit,"Raleigh / Wake County, NC — Wake/Raleigh ArcGIS + Power BI",https://data.wake.gov/,96,run_direct_permit_builder_adapter,"Raleigh / Wake County, NC Wake/Raleigh ArcGIS + Power BI building permits"

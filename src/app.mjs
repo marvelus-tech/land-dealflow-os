@@ -52,6 +52,7 @@ import {
   buildOperatorChecklist,
   buildTitleCompanyClosingDesk,
   calculateLandOfferMath,
+  normalizeLandOfferBuyBoxes,
   buildContractPacketDraft,
   exportContractPacketMarkdown,
   renderContractDocumentText,
@@ -196,6 +197,7 @@ let knoxvilleBuyerCallSheet = null;
 let dallasProofSprint = null;
 let keystoneHeightsLandowners = null;
 let freeGovOwnerSources = null;
+let landOfferBuyBoxes = null;
 let builderMarketData = { markets: {}, loaded: false, error: '' };
 let titleCompanyProcess = titleCompanyProcessFallback;
 let titleCompanyMarkets = titleCompanyMarketsFallback;
@@ -797,7 +799,7 @@ function getVisibleParcels() {
     const landMarketKey = getLandRowMarketKey(parcel);
     const listingState = parcelListingState(parcel);
     const landLotEnrichment = deriveLandLotEnrichment(parcel, listingState);
-    const landOfferMath = calculateLandOfferMath(parcel);
+    const landOfferMath = calculateLandOfferMath(parcel, { buyBoxes: landOfferBuyBoxes });
     const enrichedParcel = {
       ...parcel,
       selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, selectedMarket),
@@ -1011,7 +1013,7 @@ function renderSelectedLandOfferMathPanel(parcel = {}) {
     <div class="offer-math-context">
       <article><span>Buy box basis</span><b>${h(basisCopy)}</b><p>Mode: ${h(math.mode)} · confidence: ${h(math.confidence)} · source: ${h(math.source)}.</p></article>
       <article><span>Formula</span><b>85% offer · 15% fee</b><p>SMS prices round to the nearest $1,000. This is not call-ready proof by itself.</p></article>
-      <article><span>Compliance</span><b>Manual copy only</b><p>${h(math.sms?.compliance || 'No texting/blasting. Manual copy only until opt-out/compliance workflow exists.')}</p></article>
+      <article><span>Compliance</span><b>Manual copy only</b><p>${h(math.sms?.compliance || 'No texting or campaigns. Manual copy/paste draft support only.')}</p></article>
     </div>
     <ul class="offer-math-adjustments">${adjustmentRows}</ul>
   </section>`;
@@ -3493,6 +3495,18 @@ async function loadFreeGovOwnerSources() {
   }
 }
 
+async function loadLandOfferBuyBoxes() {
+  try {
+    const response = await fetch('data/real/buy_boxes/land_offer_buy_boxes.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`land offer buy boxes ${response.status}`);
+    const payload = await response.json();
+    landOfferBuyBoxes = normalizeLandOfferBuyBoxes(payload);
+    invalidateLandPerformanceCaches();
+  } catch (error) {
+    landOfferBuyBoxes = null;
+  }
+}
+
 async function loadKnoxvilleBuyerCallSheet() {
   try {
     const response = await fetch('data/real/knoxville/buyer_call_sheet.json', { cache: 'no-store' });
@@ -4564,6 +4578,7 @@ loadGeneratedLeads().then(renderAll);
 loadDallasProofSprint().then(renderAll);
 loadKeystoneHeightsLandowners().then(renderAll);
 loadFreeGovOwnerSources().then(renderAll);
+loadLandOfferBuyBoxes().then(renderAll);
 loadKnoxvilleBuyerCallSheet().then(renderAll);
 loadBuilderMarketData().then(renderAll);
 loadWeeklyMarketScout().then(renderAll);

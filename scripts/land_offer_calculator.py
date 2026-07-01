@@ -249,7 +249,7 @@ def build_offer_packet(
         "sms": {
             "price": sms_price,
             "manualCopyOnly": True,
-            "compliance": "No texting/blasting. Manual copy only until opt-out/compliance workflow exists.",
+            "compliance": "No texting or campaigns. Manual copy/paste draft support only.",
         },
         "zeroFabrication": True,
     }

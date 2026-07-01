@@ -88,6 +88,14 @@ export const LAND_OFFER_BUY_BOX_REFERENCE = [
   },
 ];
 
+export function normalizeLandOfferBuyBoxes(payload = null) {
+  if (Array.isArray(payload)) return payload.filter(Boolean);
+  if (Array.isArray(payload?.buyBoxes)) return payload.buyBoxes.filter(Boolean);
+  if (Array.isArray(payload?.buyBoxReference)) return payload.buyBoxReference.filter(Boolean);
+  if (Array.isArray(payload?.rows)) return payload.rows.filter(Boolean);
+  return LAND_OFFER_BUY_BOX_REFERENCE;
+}
+
 function landOfferZip(parcel = {}) {
   return String(parcel.zip || parcel.propertyZip || parcel.postalCode || parcel.addressZip || parcel.address || parcel.propertyAddress || parcel.siteAddress || '').match(/\b\d{5}\b/)?.[0] || '';
 }
@@ -105,7 +113,7 @@ function roundToNearest(value = 0, increment = 1000) {
 }
 
 export function calculateLandOfferMath(parcel = {}, options = {}) {
-  const buyBoxes = options.buyBoxes || LAND_OFFER_BUY_BOX_REFERENCE;
+  const buyBoxes = normalizeLandOfferBuyBoxes(options.buyBoxes);
   const zip = landOfferZip(parcel);
   const matchedBuyBox = options.buyBox || buyBoxes.find(box => String(box.zip) === zip) || null;
   const acres = Number(parcel.acres || parcel.acreage || parcel.lotAcres || parcel.lotSizeAcres || 0);
@@ -167,7 +175,7 @@ export function calculateLandOfferMath(parcel = {}, options = {}) {
     sms: {
       price: smsPriceToSend,
       manualCopyOnly: true,
-      compliance: 'No texting/blasting. Manual copy only until opt-out/compliance workflow exists.',
+      compliance: 'No texting or campaigns. Manual copy/paste draft support only.',
     },
     zeroFabrication: true,
   };

@@ -1,0 +1,53 @@
+{
+  "schema": "landflip.landOfferBuyBoxes.v1",
+  "updatedAt": "2026-07-01",
+  "purpose": "MVP source of truth for LandFlip OS offer-math buy boxes. Operator-entered values only; no fabricated buyer demand.",
+  "rules": [
+    "Use for calculator/comps aid only, not automated outreach.",
+    "SMS output is copy/paste draft support only; LandFlip OS does not send texts or run campaigns.",
+    "If a parcel has no matching buy box or verified buyer target, keep it in manual review."
+  ],
+  "buyBoxes": [
+    {
+      "key": "raleigh-27607-infill",
+      "zip": "27607",
+      "state": "NC",
+      "market": "Raleigh / Wake County",
+      "label": "Raleigh infill / Rankin-style lot",
+      "mode": "infill-builder-lot",
+      "referenceAcres": 0.25,
+      "builderTargetPerReferenceAcreage": 550000,
+      "source": "operator-entered calculator reference",
+      "confidence": "medium",
+      "notes": "Spreadsheet seed value. Confirm with buyer quote/comps before treating as offer-ready."
+    },
+    {
+      "key": "raleigh-27604-mordecai-infill",
+      "zip": "27604",
+      "state": "NC",
+      "market": "Raleigh / Wake County",
+      "label": "Mordecai / central Raleigh infill lot",
+      "mode": "infill-builder-lot",
+      "referenceAcres": 0.25,
+      "builderTargetPerReferenceAcreage": 425000,
+      "primeOverrideLow": 475000,
+      "primeOverrideHigh": 500000,
+      "source": "operator-entered calculator reference",
+      "confidence": "medium",
+      "notes": "Prime Mordecai blocks may warrant a manual override before offer math is used. Belvedere spreadsheet parity still needs review."
+    },
+    {
+      "key": "apex-27502-infill",
+      "zip": "27502",
+      "state": "NC",
+      "market": "Apex / Wake County",
+      "label": "Apex infill / small builder lot",
+      "mode": "infill-builder-lot",
+      "referenceAcres": 0.25,
+      "builderTargetPerReferenceAcreage": 400000,
+      "source": "operator-entered calculator reference",
+      "confidence": "medium",
+      "notes": "Spreadsheet seed value. Buyer-backed quote should replace/confirm this before offer motion."
+    }
+  ]
+}

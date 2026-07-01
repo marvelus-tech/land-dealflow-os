@@ -1,0 +1,3 @@
+parcelId,address,zip,acres,floodZone,slope,busyStreet,parkNearby
+rankin-csv,"123 Rankin St, Raleigh, NC",27607,0.25,,,,
+risk-csv,"Risky Raleigh infill, Raleigh, NC",27607,0.25,yes,steep,true,no

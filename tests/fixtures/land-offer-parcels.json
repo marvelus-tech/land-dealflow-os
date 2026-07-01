@@ -1,0 +1,43 @@
+{
+  "parcels": [
+    {
+      "parcelId": "rankin-123",
+      "address": "123 Rankin St, Raleigh, NC 27607",
+      "zip": "27607",
+      "acres": 0.25
+    },
+    {
+      "parcelId": "mordecai-456",
+      "address": "456 Mordecai Ave, Raleigh, NC 27604",
+      "zip": "27604",
+      "acres": 0.20
+    },
+    {
+      "parcelId": "apex-321",
+      "address": "321 Apex Main St, Apex, NC 27502",
+      "zip": "27502",
+      "acres": 0.18
+    },
+    {
+      "parcelId": "risk-001",
+      "address": "Risky Raleigh infill, Raleigh, NC 27607",
+      "zip": "27607",
+      "acres": 0.25,
+      "floodZone": "yes",
+      "slope": "steep",
+      "busyStreet": "true",
+      "parkNearby": "no"
+    },
+    {
+      "parcelId": "manual-001",
+      "address": "Unknown ZIP manual target",
+      "manualBuilderTarget": 300000
+    },
+    {
+      "parcelId": "blocked-001",
+      "address": "Unknown ZIP missing acreage",
+      "zip": "99999",
+      "access": "landlocked"
+    }
+  ]
+}

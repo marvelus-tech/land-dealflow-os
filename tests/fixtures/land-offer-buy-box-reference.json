@@ -1,0 +1,33 @@
+{
+  "buyBoxes": [
+    {
+      "key": "raleigh-27607-infill",
+      "zip": "27607",
+      "label": "Raleigh infill / Rankin-style lot",
+      "mode": "infill-builder-lot",
+      "referenceAcres": 0.25,
+      "builderTargetPerReferenceAcreage": 550000,
+      "source": "operator-entered calculator reference"
+    },
+    {
+      "key": "raleigh-27604-mordecai",
+      "zip": "27604",
+      "label": "Mordecai / central Raleigh infill lot",
+      "mode": "infill-builder-lot",
+      "referenceAcres": 0.25,
+      "builderTargetPerReferenceAcreage": 425000,
+      "primeOverrideLow": 475000,
+      "primeOverrideHigh": 500000,
+      "source": "operator-entered calculator reference"
+    },
+    {
+      "key": "apex-27502-infill",
+      "zip": "27502",
+      "label": "Apex infill / small builder lot",
+      "mode": "infill-builder-lot",
+      "referenceAcres": 0.25,
+      "builderTargetPerReferenceAcreage": 400000,
+      "source": "operator-entered calculator reference"
+    }
+  ]
+}

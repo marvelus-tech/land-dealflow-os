@@ -51,6 +51,7 @@ import {
   generateNeighborPrompt,
   buildOperatorChecklist,
   buildTitleCompanyClosingDesk,
+  calculateLandOfferMath,
   buildContractPacketDraft,
   exportContractPacketMarkdown,
   renderContractDocumentText,
@@ -783,6 +784,8 @@ function landSortValue(parcel = {}, mode = selectedLandSort) {
   if (mode === 'market') return `${getLandRowMarketKey(parcel)} ${rowState(parcel)} ${parcel.address || parcel.parcelId || ''}`;
   if (mode === 'enrichment') return -(Number(state.enriched) * 1000 + Number(state.contactCandidate) * 420 + Number(state.builderMatched) * 500 + Number(state.offerReady) * 250 + confidence + Number(parcel.score || 0));
   if (mode === 'builder-fit') return -(Number(state.builderMatched) * 1000 + Number(state.enriched) * 250 + confidence + Number(parcel.score || 0));
+  if (mode === 'projected-fee') return -(Number(parcel._landOfferMath?.projectedAssignmentFee || 0) + Number(state.offerReady) * 10000000 + confidence * 1000);
+  if (mode === 'sms-ready') return -(Number(parcel._landOfferMath?.smsPriceToSend || 0) > 0 ? 10000000 : 0) - (Number(parcel._landOfferMath?.suggestedSellerOffer || 0) + confidence * 1000);
   return -(Number(parcel.selectedMarketMatch) * 2000 + landStageWeight(state) + confidence * 1.8 + Number(parcel.score || 0));
 }
 
@@ -794,6 +797,7 @@ function getVisibleParcels() {
     const landMarketKey = getLandRowMarketKey(parcel);
     const listingState = parcelListingState(parcel);
     const landLotEnrichment = deriveLandLotEnrichment(parcel, listingState);
+    const landOfferMath = calculateLandOfferMath(parcel);
     const enrichedParcel = {
       ...parcel,
       selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, selectedMarket),
@@ -801,6 +805,7 @@ function getVisibleParcels() {
       landMarketKey,
       _listingState: listingState,
       _landLotEnrichment: landLotEnrichment,
+      _landOfferMath: landOfferMath,
     };
     return { ...enrichedParcel, _landSortValue: landSortValue(enrichedParcel) };
   }).filter(parcel => {
@@ -969,6 +974,49 @@ function landLotFactChips(parcel = {}, { compact = false } = {}) {
   return `<div class="${className}" aria-label="${compact ? 'Compact enriched lot facts' : 'Selected enriched lot facts'}">${rows.map(([label, value]) => `<span class="${compact ? 'land-row-lot-fact' : 'land-selected-lot-fact'}"><b>${h(label)}</b><em>${h(value)}</em></span>`).join('')}</div>`;
 }
 
+function renderLandOfferMathChips(parcel = {}) {
+  const math = parcel._landOfferMath || calculateLandOfferMath(parcel);
+  if (!math.smsPriceToSend && !math.projectedAssignmentFee) return '';
+  return `<div class="land-offer-mini-chips phase240-offer-math" aria-label="Offer math quick chips">
+    <span>SMS ${formatMoney(math.smsPriceToSend)}</span>
+    <span>Fee ${formatMoney(math.projectedAssignmentFee)}</span>
+  </div>`;
+}
+
+function renderSelectedLandOfferMathPanel(parcel = {}) {
+  const math = parcel._landOfferMath || calculateLandOfferMath(parcel);
+  const adjustmentRows = math.adjustments.length
+    ? math.adjustments.map(adjustment => `<li><span>${h(adjustment.label)}</span><b>-${Math.round(adjustment.percent * 100)}%</b><p>${h(adjustment.reason)}</p></li>`).join('')
+    : '<li><span>Risk adjustments</span><b>None applied</b><p>No calculator discount from flood, slope, street exposure, or park proximity.</p></li>';
+  const blockerRows = math.blockers.length ? `<div class="offer-math-blockers">${math.blockers.map(blocker => `<span>${h(blocker)}</span>`).join('')}</div>` : '';
+  const buyBox = math.buyBox || {};
+  const basisCopy = math.buyBox
+    ? `${buyBox.zip} · ${buyBox.label} · ${formatMoney(buyBox.builderTargetPerReferenceAcreage)} per ${buyBox.referenceAcres} ac`
+    : math.builderTarget ? 'Manual/buyer target attached to this parcel.' : 'No matching ZIP buy box yet.';
+  return `<section class="land-offer-math-panel phase240-offer-math ${math.blockers.length ? 'is-manual-review' : 'is-priced'}" aria-label="Selected parcel offer math">
+    <div class="land-offer-math-head">
+      <span class="eyebrow">Offer Math · calculator estimate</span>
+      <h3>${math.smsPriceToSend ? `${formatMoney(math.smsPriceToSend)} SMS price` : 'Offer math locked'}</h3>
+      <p>${h(math.smsPriceToSend ? 'Builder target, risk discounts, assignment fee, and clean manual-copy SMS number stay beside the parcel.' : 'Add ZIP buy box, acreage, or a verified buyer target before pricing this land.')}</p>
+      ${blockerRows}
+    </div>
+    <div class="offer-math-ledger">
+      <div><span>Builder target</span><b>${formatMoney(math.builderTarget)}</b></div>
+      <div><span>Risk-adjusted target</span><b>${formatMoney(math.riskAdjustedBuilderTarget)}</b></div>
+      <div><span>Suggested offer</span><b>${formatMoney(math.suggestedSellerOffer)}</b></div>
+      <div><span>Assignment price</span><b>${formatMoney(math.assignmentPrice)}</b></div>
+      <div><span>Projected fee</span><b>${formatMoney(math.projectedAssignmentFee)}</b></div>
+      <div><span>SMS price</span><b>${formatMoney(math.smsPriceToSend)}</b></div>
+    </div>
+    <div class="offer-math-context">
+      <article><span>Buy box basis</span><b>${h(basisCopy)}</b><p>Mode: ${h(math.mode)} · confidence: ${h(math.confidence)} · source: ${h(math.source)}.</p></article>
+      <article><span>Formula</span><b>85% offer · 15% fee</b><p>SMS prices round to the nearest $1,000. This is not call-ready proof by itself.</p></article>
+      <article><span>Compliance</span><b>Manual copy only</b><p>${h(math.sms?.compliance || 'No texting/blasting. Manual copy only until opt-out/compliance workflow exists.')}</p></article>
+    </div>
+    <ul class="offer-math-adjustments">${adjustmentRows}</ul>
+  </section>`;
+}
+
 function dealsMarketCoverageEntries() {
   const cacheKey = `${selectedLandStateFilter}|${selectedDealsMarketKey}`;
   if (cachedDealsMarketEntries?.key === cacheKey) return cachedDealsMarketEntries.entries;
@@ -1070,6 +1118,8 @@ function renderLandControls() {
     ['market', 'Market'],
     ['enrichment', 'Enriched'],
     ['builder-fit', 'Builder fit'],
+    ['projected-fee', 'Fee'],
+    ['sms-ready', 'SMS ready'],
   ];
   const sortButtons = sortOptions.map(([value, label]) => `<button type="button" class="land-sort-option ${selectedLandSort === value ? 'active' : ''}" data-land-sort="${h(value)}" aria-pressed="${selectedLandSort === value ? 'true' : 'false'}">${h(label)}</button>`).join('');
   const sortControl = selectedLandStateFilter === 'all'
@@ -2773,6 +2823,7 @@ function renderLandQueue(visible = [], selected = null) {
           <b>${h(itemName)}</b>
           <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
           ${landLotFactChips(parcel, { compact: true })}
+          ${renderLandOfferMathChips(parcel)}
           <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
           <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
             <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
@@ -2935,6 +2986,7 @@ function renderParcels() {
       </div>
       ${selectedNeighborhoodContext}
       ${selectedGateSummary}
+      ${renderSelectedLandOfferMathPanel(selected)}
       ${selectedDallasProofPanel}
       <section class="land-action-sheet phase212-action-depth" aria-label="Selected parcel action sheet">
         <details class="seller-net-script-card phase212-seller-script">

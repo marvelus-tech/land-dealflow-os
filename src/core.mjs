@@ -55,6 +55,124 @@ export function computeOffer({ buyerMaxPrice, desiredSpreadPct = 0.16, closingCo
   };
 }
 
+export const LAND_OFFER_BUY_BOX_REFERENCE = [
+  {
+    zip: '27607',
+    label: 'Raleigh infill / Rankin-style lot',
+    mode: 'infill-builder-lot',
+    referenceAcres: 0.25,
+    builderTargetPerReferenceAcreage: 550000,
+    source: 'operator-entered calculator reference',
+    confidence: 'medium',
+  },
+  {
+    zip: '27604',
+    label: 'Mordecai / central Raleigh infill lot',
+    mode: 'infill-builder-lot',
+    referenceAcres: 0.25,
+    builderTargetPerReferenceAcreage: 425000,
+    primeOverrideLow: 475000,
+    primeOverrideHigh: 500000,
+    source: 'operator-entered calculator reference',
+    confidence: 'medium',
+    notes: 'Prime Mordecai blocks may warrant a manual override before offer math is used.',
+  },
+  {
+    zip: '27502',
+    label: 'Apex infill / small builder lot',
+    mode: 'infill-builder-lot',
+    referenceAcres: 0.25,
+    builderTargetPerReferenceAcreage: 400000,
+    source: 'operator-entered calculator reference',
+    confidence: 'medium',
+  },
+];
+
+function landOfferZip(parcel = {}) {
+  return String(parcel.zip || parcel.propertyZip || parcel.postalCode || parcel.addressZip || parcel.address || parcel.propertyAddress || parcel.siteAddress || '').match(/\b\d{5}\b/)?.[0] || '';
+}
+
+function booleanish(value) {
+  if (value === true) return true;
+  if (value === false || value == null) return false;
+  if (/^(yes|y|true|1|present|high|major|on)$/i.test(String(value).trim())) return true;
+  if (/^(no|n|false|0|none|low|clear|off)$/i.test(String(value).trim())) return false;
+  return false;
+}
+
+function roundToNearest(value = 0, increment = 1000) {
+  return Math.round(Number(value || 0) / increment) * increment;
+}
+
+export function calculateLandOfferMath(parcel = {}, options = {}) {
+  const buyBoxes = options.buyBoxes || LAND_OFFER_BUY_BOX_REFERENCE;
+  const zip = landOfferZip(parcel);
+  const matchedBuyBox = options.buyBox || buyBoxes.find(box => String(box.zip) === zip) || null;
+  const acres = Number(parcel.acres || parcel.acreage || parcel.lotAcres || parcel.lotSizeAcres || 0);
+  const manualTarget = Number(parcel.manualBuilderTarget || parcel.builderTargetOverride || parcel.builderTarget || 0);
+  const buyerTarget = Number(parcel.buyerMaxPrice || parcel.offer?.buyerPrice || 0);
+  const referenceAcres = Number(matchedBuyBox?.referenceAcres || 0.25);
+  const basePerReference = Number(matchedBuyBox?.builderTargetPerReferenceAcreage || 0);
+  const builderTarget = manualTarget || buyerTarget || (matchedBuyBox && acres > 0 && basePerReference > 0
+    ? Math.round(basePerReference * (acres / referenceAcres))
+    : 0);
+
+  const adjustments = [];
+  const flood = booleanish(parcel.floodZone || parcel.inFloodZone || parcel.femaFloodZone);
+  const steepSlope = /steep|severe|major|high/i.test(String(parcel.slope || parcel.slopeRisk || '')) || booleanish(parcel.steepSlope);
+  const busyStreet = booleanish(parcel.busyStreet || parcel.mainRoad || parcel.trafficExposure);
+  const parkNearbyKnown = parcel.parkNearby !== undefined || parcel.nearPark !== undefined;
+  const noParkNearby = parkNearbyKnown && !booleanish(parcel.parkNearby ?? parcel.nearPark);
+  if (flood) adjustments.push({ key: 'flood-zone', label: 'Flood zone', percent: 0.15, reason: 'Flood-zone discount from calculator guardrail.' });
+  if (steepSlope) adjustments.push({ key: 'steep-slope', label: 'Steep slope', percent: 0.10, reason: 'Slope discount from calculator guardrail.' });
+  if (busyStreet) adjustments.push({ key: 'busy-street', label: 'Busy street', percent: 0.08, reason: 'Street-exposure discount from calculator guardrail.' });
+  if (noParkNearby) adjustments.push({ key: 'no-park-nearby', label: 'No park nearby', percent: 0.03, reason: 'Minor location discount from calculator guardrail.' });
+
+  const totalAdjustmentPercent = adjustments.reduce((sum, adjustment) => sum + adjustment.percent, 0);
+  const riskAdjustedBuilderTarget = builderTarget ? Math.round(builderTarget * Math.max(0, 1 - totalAdjustmentPercent)) : 0;
+  const offerRatio = Number(options.offerRatio ?? parcel.offerRatio ?? 0.85);
+  const feeRatio = Number(options.feeRatio ?? parcel.feeRatio ?? 0.15);
+  const suggestedSellerOffer = riskAdjustedBuilderTarget ? Math.round(riskAdjustedBuilderTarget * offerRatio) : 0;
+  const assignmentPrice = riskAdjustedBuilderTarget || builderTarget || 0;
+  const projectedAssignmentFee = Math.max(0, Math.round(assignmentPrice * feeRatio));
+  const smsPriceToSend = suggestedSellerOffer ? roundToNearest(suggestedSellerOffer, 1000) : 0;
+  const blockers = [];
+  if (!matchedBuyBox && !manualTarget && !buyerTarget) blockers.push('No matching ZIP buy box or builder target.');
+  if (!acres && !manualTarget && !buyerTarget) blockers.push('Acreage missing, so ZIP math cannot scale.');
+  if (/landlocked|no road|no access/i.test(String(parcel.roadAccess || parcel.access || parcel.flags?.join?.(' ') || ''))) blockers.push('Access blocker requires manual review.');
+  const confidence = blockers.length ? 'manual-review'
+    : manualTarget || buyerTarget ? 'medium-high'
+      : adjustments.length || matchedBuyBox?.confidence === 'medium' ? 'medium'
+        : 'low';
+  const nextAction = blockers.length ? 'manual-review' : 'review-offer-math';
+  return {
+    mode: matchedBuyBox?.mode || parcel.dealType || 'infill-builder-lot',
+    zip,
+    acres,
+    buyBox: matchedBuyBox,
+    builderTarget,
+    riskAdjustedBuilderTarget,
+    suggestedSellerOffer,
+    assignmentPrice,
+    projectedAssignmentFee,
+    smsPriceToSend,
+    offerRatio,
+    feeRatio,
+    totalAdjustmentPercent,
+    adjustments,
+    confidence,
+    blockers,
+    nextAction,
+    source: matchedBuyBox?.source || (manualTarget ? 'manual override' : buyerTarget ? 'buyer max price' : 'unknown'),
+    sms: {
+      price: smsPriceToSend,
+      manualCopyOnly: true,
+      compliance: 'No texting/blasting. Manual copy only until opt-out/compliance workflow exists.',
+    },
+    zeroFabrication: true,
+  };
+}
+
 export function classifyParcelRisk(parcel) {
   const flags = [];
   if (parcel.wetlands && parcel.wetlands !== 'none') flags.push(`wetlands: ${parcel.wetlands}`);

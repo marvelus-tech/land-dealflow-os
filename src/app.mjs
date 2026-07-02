@@ -1005,6 +1005,125 @@ function renderSelectedLandSmsDraft(parcel = {}, math = parcel._landOfferMath ||
   </section>`;
 }
 
+
+function landOfferReviewConfidenceWeight(confidence = '') {
+  const value = String(confidence || '').toLowerCase();
+  if (/high/.test(value)) return 34;
+  if (/medium/.test(value)) return 22;
+  if (/low/.test(value)) return 8;
+  if (/manual|review/.test(value)) return 4;
+  return 0;
+}
+
+function landOfferReviewWarnings(parcel = {}, math = parcel._landOfferMath || calculateLandOfferMath(parcel)) {
+  const draft = buildLandSmsDraft(parcel, math);
+  const listingState = parcel._listingState || parcelListingState(parcel);
+  const warnings = [];
+  const normalizeWarning = label => String(label || '').replace(/^Calculator note:\s*/i, '').trim().toLowerCase();
+  const add = (label, tone = 'note') => {
+    const key = normalizeWarning(label);
+    if (label && !warnings.some(item => normalizeWarning(item.label) === key)) warnings.push({ label, tone });
+  };
+  asArray(math.blockers).forEach(blocker => add(blocker, 'review'));
+  asArray(draft.notes).forEach(note => add(note, /missing|No calculated|Calculator/i.test(note) ? 'review' : 'note'));
+  if (!Number(math.projectedAssignmentFee || 0)) add('Projected fee not calculated yet.', 'review');
+  if (!math.buyBox && !Number(parcel.buyerMaxPrice || parcel.offer?.buyerPrice || parcel.manualBuilderTarget || 0)) add('Buyer/buy-box basis missing.', 'review');
+  if (!listingState.sourceBacked) add('Public record basis should be checked before outreach.', 'note');
+  if (listingState.blocked) add('Risk row remains visible for audit and judgment.', 'risk');
+  return warnings.slice(0, 5);
+}
+
+function buildTodayOfferReviewItems(limit = 8) {
+  return scoredParcels().map(parcel => {
+    const listingState = parcel._listingState || parcelListingState(parcel);
+    const math = parcel._landOfferMath || calculateLandOfferMath(parcel, { buyBoxes: landOfferBuyBoxes });
+    const draft = buildLandSmsDraft(parcel, math);
+    const warnings = landOfferReviewWarnings(parcel, math);
+    const fee = Number(math.projectedAssignmentFee || 0);
+    const sellerOffer = Number(math.suggestedSellerOffer || 0);
+    const smsPrice = Number(math.smsPriceToSend || 0);
+    const hasBuyBoxBasis = Boolean(math.buyBox || parcel.buyerMaxPrice || parcel.offer?.buyerPrice || parcel.manualBuilderTarget || parcel.builderTarget);
+    const hasContact = Boolean(parcel.ownerPhone || parcel.phone || parcel.ownerEmail || parcel.email || parcel.unverifiedOwnerPhone || parcel.unverifiedOwnerEmail);
+    const score = Math.round(
+      Math.min(52, fee / 2500)
+      + Math.min(20, smsPrice / 25000)
+      + landOfferReviewConfidenceWeight(math.confidence)
+      + (hasBuyBoxBasis ? 26 : 0)
+      + (hasContact ? 14 : 0)
+      + (listingState.sourceBacked ? 10 : 0)
+      + (listingState.builderMatched ? 12 : 0)
+      - warnings.filter(item => item.tone === 'risk').length * 18
+      - warnings.filter(item => item.tone === 'review').length * 5
+    );
+    const reviewScore = Math.max(0, score);
+    return {
+      parcel,
+      math,
+      draft,
+      listingState,
+      warnings,
+      score: reviewScore,
+      fee,
+      sellerOffer,
+      smsPrice,
+      hasBuyBoxBasis,
+      hasContact,
+      key: parcelSelectionKey(parcel),
+    };
+  }).filter(item => item.key).sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    if (b.fee !== a.fee) return b.fee - a.fee;
+    return String(a.parcel.address || a.parcel.parcelId || '').localeCompare(String(b.parcel.address || b.parcel.parcelId || ''));
+  }).slice(0, limit);
+}
+
+function renderTodayOfferReviewLane() {
+  const items = buildTodayOfferReviewItems(8);
+  const priced = items.filter(item => item.smsPrice || item.sellerOffer).length;
+  const withWarnings = items.filter(item => item.warnings.length).length;
+  const totalFee = items.reduce((sum, item) => sum + Number(item.fee || 0), 0);
+  const rows = items.length ? items.map((item, index) => {
+    const parcel = item.parcel;
+    const marketLine = [parcel.market || parcel.county || 'market pending', rowState(parcel)].filter(Boolean).join(' · ');
+    const warningRows = item.warnings.length
+      ? item.warnings.map(warning => `<span class="today-offer-warning is-${h(warning.tone)}">${h(warning.label)}</span>`).join('')
+      : '<span class="today-offer-warning is-clear">No calculator warning surfaced.</span>';
+    const basis = item.math.buyBox
+      ? `${item.math.buyBox.zip} buy box · ${item.math.buyBox.label}`
+      : item.hasBuyBoxBasis ? 'Manual/buyer target attached' : 'No buy-box basis yet';
+    return `<article class="today-offer-row phase243-offers-review ${index === 0 ? 'is-lead' : ''}" data-today-offer-key="${h(item.key)}">
+      <button type="button" class="today-offer-main" data-open-today-offer="${h(item.key)}" aria-label="Review ${h(parcel.address || parcel.propertyAddress || parcel.parcelId || 'land offer')}">
+        <span class="today-offer-rank">${String(index + 1).padStart(2, '0')}</span>
+        <span class="today-offer-copy">
+          <b>${h(parcel.address || parcel.propertyAddress || parcel.parcelId || 'Untitled land record')}</b>
+          <small>${h(marketLine)} · ${h(item.listingState.label)} · score ${h(item.score)}</small>
+        </span>
+        <span class="today-offer-money"><strong>${item.fee ? formatMoney(item.fee) : 'Review'}</strong><em>${item.sellerOffer ? `${formatMoney(item.sellerOffer)} offer` : 'price pending'}</em></span>
+      </button>
+      <div class="today-offer-context">
+        <div><span>Basis</span><b>${h(basis)}</b></div>
+        <div><span>SMS draft</span><b>${h(item.draft.smsPrice ? `${formatMoney(item.draft.smsPrice)} draft number` : 'Conversation opener visible')}</b></div>
+        <div><span>Contact</span><b>${h(item.hasContact ? 'Owner contact signal present' : 'Contact missing / verify manually')}</b></div>
+      </div>
+      <div class="today-offer-warnings" aria-label="Transparent offer review warnings">${warningRows}</div>
+    </article>`;
+  }).join('') : '<article class="today-offer-empty phase243-offers-review"><b>No land records loaded yet.</b><span>Import or source public land records; this lane will become a ranked review lens without hiding warnings.</span></article>';
+  return `<section id="today-offers-review" class="today-offers-review phase243-offers-review wk-reveal" aria-label="Offers to review">
+    <div class="today-offers-head">
+      <span class="wk-kicker">Offers to review</span>
+      <h2>Review useful land opportunities without hiding the messy parts.</h2>
+      <p>Ranked by projected fee, buy-box basis, confidence, and contact signal. Warnings stay visible; they do not remove the resource.</p>
+      <div class="today-offers-metrics" aria-label="Offers review summary">
+        <div><span>Review rows</span><b>${h(items.length)}</b></div>
+        <div><span>Priced</span><b>${h(priced)}</b></div>
+        <div><span>Warnings shown</span><b>${h(withWarnings)}</b></div>
+        <div><span>Visible fee path</span><b>${h(formatMoney(totalFee))}</b></div>
+      </div>
+    </div>
+    <div class="today-offers-list">${rows}</div>
+  </section>`;
+}
+
 function renderSelectedLandOfferMathPanel(parcel = {}) {
   const math = parcel._landOfferMath || calculateLandOfferMath(parcel);
   const adjustmentRows = math.adjustments.length
@@ -3305,6 +3424,7 @@ function renderCommandCenter() {
       </aside>
     </section>
     ${renderOperatorSessionMode(operatorSession)}
+    ${renderTodayOfferReviewLane()}
     <section class="wk-audit phase24-operating-rules wk-reveal" aria-label="Operating principles">
       <div><span class="wk-kicker">Clarity system</span><h2>A calm queue beats a crowded dashboard.</h2></div>
       <ul>${operatingRows}</ul>
@@ -3862,6 +3982,19 @@ function bindEvents() {
       setActivityChannel('land', parcelKey, channel, !current.done, todayIsoDate());
       persistWorkspace();
       renderParcels();
+      return;
+    }
+
+    const todayOfferButton = event.target.closest('[data-open-today-offer]');
+    if (todayOfferButton) {
+      event.preventDefault();
+      selectedParcelId = todayOfferButton.dataset.openTodayOffer || '';
+      const selectedTodayOfferParcel = scoredParcels().find(parcel => parcelSelectionKey(parcel) === selectedParcelId);
+      selectedLandStateFilter = selectedTodayOfferParcel ? rowState(selectedTodayOfferParcel) : 'all';
+      selectedDealsMarketKey = selectedTodayOfferParcel ? getLandRowMarketKey(selectedTodayOfferParcel) : 'all';
+      navigateToView('deals');
+      renderParcels();
+      document.querySelector('#parcels-section')?.scrollIntoView?.({ block: 'start' });
       return;
     }
 

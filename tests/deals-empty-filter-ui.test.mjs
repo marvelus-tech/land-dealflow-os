@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const app = readFileSync('src/app.mjs', 'utf8');
 const css = readFileSync('src/styles.css', 'utf8');
+const html = readFileSync('index.html', 'utf8');
 
 assert.match(app, /phase38-deals-empty/, 'Deals empty state must use the Phase 38 compact component.');
 assert.match(app, /This lane is intentionally quiet\./, 'Deals empty state must explain intentional emptiness quickly.');
@@ -131,7 +132,7 @@ assert.match(css, /--land-phase219-desktop-width: open-surface-flattened-state-w
 assert.match(css, /phase218-builder-style-workbench > \.state-data-workbench,[\s\S]{0,140}display: contents !important/, 'Land desktop state workbench must flatten nested wrapper gutters.');
 assert.match(css, /phase218-builder-style-workbench\.builders-phase83-workbench[\s\S]{0,360}grid-template-columns: minmax\(170px, \.22fr\) minmax\(450px, \.47fr\) minmax\(300px, \.31fr\) !important/, 'Land desktop top workbench must use three real columns instead of a shrunken nested island.');
 assert.match(css, /deal-workbench\.phase210-lightweight-selection,[\s\S]{0,220}grid-template-columns: minmax\(390px, \.39fr\) minmax\(0, \.61fr\) !important/, 'Land desktop queue/detail workbench must use the full holder width.');
-assert.match(readFileSync('index.html', 'utf8'), /src\/styles\.css\?v=phase242/, 'Index must bust CSS cache through the latest Land Offer Math/SMS draft pass while preserving empty inspector parity.');
+assert.match(html, /src\/styles\.css\?v=phase243/, 'Index must bust CSS cache through the latest Land Offer Math/SMS draft/Today review pass while preserving empty inspector parity.');
 assert.match(app, /let freeGovOwnerSources = null;/, 'App must store the free-government owner source matrix.');
 assert.match(app, /loadFreeGovOwnerSources\(\)\.then\(renderAll\)/, 'App must load the free-government owner source matrix into the UI.');
 assert.match(app, /function renderFreeGovOwnerSourceBoard/, 'Sources page must render stored market owner-source agent lanes.');

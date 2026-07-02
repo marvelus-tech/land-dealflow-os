@@ -794,6 +794,61 @@ function landSortValue(parcel = {}, mode = selectedLandSort) {
   return -(Number(parcel.selectedMarketMatch) * 2000 + landStageWeight(state) + confidence * 1.8 + Number(parcel.score || 0));
 }
 
+function normalizedLandMarketKey(value = '') {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
+}
+
+function actualLandRecordMarket(parcel = {}) {
+  const registryKey = String(parcel.marketKey || parcel.marketId || '').trim();
+  const registry = registryKey ? builderMarketRegistryByKey.get(registryKey) : null;
+  const label = registry?.label || parcel.market || parcel.sourceMarket || parcel.county || rowState(parcel) || 'Unknown market';
+  const key = registryKey || normalizedLandMarketKey(label);
+  return { key: normalizedLandMarketKey(key), label };
+}
+
+function actualLandRecordMarkets(parcels = []) {
+  const byKey = new Map();
+  parcels.forEach((parcel) => {
+    const market = actualLandRecordMarket(parcel);
+    if (!byKey.has(market.key)) byKey.set(market.key, market);
+  });
+  return [...byKey.values()].filter(market => market.key !== 'unknown');
+}
+
+function actualLandRecordMatchesMarket(parcel = {}, market = {}) {
+  if (!market || market.key === 'all') return true;
+  if (market.isDallasProofLane) return Boolean(dallasProofRowForParcel(parcel));
+  const actual = actualLandRecordMarket(parcel);
+  const marketKey = normalizedLandMarketKey(market.key);
+  const marketKeyWithState = normalizedLandMarketKey(`${market.key}-${market.stateCode || market.state || ''}`);
+  return actual.key === marketKey || actual.key === marketKeyWithState;
+}
+
+function landRecordCountForMarket(parcels = [], market = {}) {
+  return parcels.filter(parcel => actualLandRecordMatchesMarket(parcel, market)).length;
+}
+
+function populatedLandMarketEntries(parcels = scoredParcels(), markets = builderMarketSwitchboardEntries()) {
+  return markets.map(market => ({
+    ...market,
+    sellerRecordCount: landRecordCountForMarket(parcels, market),
+  })).filter(market => market.sellerRecordCount > 0);
+}
+
+function describeLandStateRecordScope(state, stateParcels = []) {
+  if (!stateParcels.length) return '0 seller records';
+  const populated = actualLandRecordMarkets(stateParcels);
+  if (state === 'all') return `${populated.length} populated ${populated.length === 1 ? 'lane' : 'lanes'} · ${stateParcels.length} retained records`;
+  if (populated.length === 1) return `${stateParcels.length} ${populated[0].label} only`;
+  return `${populated.length} populated lanes · ${stateParcels.length} records`;
+}
+
+function landLaneCountCopy(totalLanes = 0, populatedLanes = 0) {
+  if (!totalLanes) return '0 lanes';
+  if (!populatedLanes) return `0 populated / ${totalLanes} ${totalLanes === 1 ? 'lane' : 'lanes'}`;
+  return `${populatedLanes} populated / ${totalLanes} ${totalLanes === 1 ? 'lane' : 'lanes'}`;
+}
+
 function getVisibleParcels() {
   const selectedMarket = getSelectedDealsMarket();
   // Phase 202: State is the primary IA decision. Market lanes are subordinate
@@ -805,7 +860,7 @@ function getVisibleParcels() {
     const landOfferMath = calculateLandOfferMath(parcel, { buyBoxes: landOfferBuyBoxes });
     const enrichedParcel = {
       ...parcel,
-      selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, selectedMarket),
+      selectedMarketMatch: selectedMarket?.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : actualLandRecordMatchesMarket(parcel, selectedMarket),
       selectedStateMatch: selectedLandStateFilter === 'all' || rowState(parcel) === selectedLandStateFilter,
       landMarketKey,
       _listingState: listingState,
@@ -1157,7 +1212,7 @@ function dealsMarketCoverageEntries() {
   if (cachedDealsMarketEntries?.key === cacheKey) return cachedDealsMarketEntries.entries;
   const allDeals = scoredParcels();
   const entries = builderMarketSwitchboardEntries().map(market => {
-    const dealCount = allDeals.filter(parcel => parcelMatchesDealMarket(parcel, market)).length;
+    const dealCount = landRecordCountForMarket(allDeals, market);
     const sourceState = market.isLive ? 'live' : market.isThin ? 'thin' : 'needs-work';
     return {
       ...market,
@@ -1205,6 +1260,8 @@ function renderLandControls() {
     const isAll = state === 'all';
     const markets = isAll ? marketEntries : marketEntries.filter(market => (market.stateCode || market.state) === state);
     const stateParcels = isAll ? parcels : parcels.filter(parcel => rowState(parcel) === state);
+    const populatedSellerMarkets = actualLandRecordMarkets(stateParcels);
+    const populatedSellerLaneCount = populatedSellerMarkets.length;
     const listingStates = stateParcels.map(parcelListingState);
     const sourceBacked = listingStates.filter(row => row.sourceBacked).length;
     const enriched = listingStates.filter(row => row.enriched).length;
@@ -1216,7 +1273,7 @@ function renderLandControls() {
       ? { label: 'All states', thesis: 'State decision required', detail: 'Choose one state before lanes or seller rows get visual weight', note: 'All records remain retained; action starts after a state is explicit.' }
       : (builderStateTheses[state] || { label: state, thesis: `${state} source lane`, detail: `${state} state lane`, note: 'State-level market lane.' });
     const status = offerReady ? 'live' : sourceBacked || liveMarketCount ? 'thin' : thinMarketCount ? 'thin' : 'needs-work';
-    const statusCopy = offerReady ? `${offerReady} offer-ready` : sourceBacked ? `${sourceBacked} source-backed` : `${stateParcels.length} retained records`;
+    const statusCopy = describeLandStateRecordScope(state, stateParcels);
     return {
       ...thesis,
       state,
@@ -1225,6 +1282,8 @@ function renderLandControls() {
       isAll,
       markets,
       countyCount: markets.length,
+      populatedSellerLaneCount,
+      populatedSellerMarkets,
       builderCount,
       dealCount: stateParcels.length,
       sourceBacked,
@@ -1237,15 +1296,18 @@ function renderLandControls() {
     };
   });
   const activeState = stateSummaries.find(state => state.isActive) || stateSummaries[0];
-  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle land-state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-land-state="${h(state.state)}" aria-label="${h(`${state.label}. ${state.thesis}. ${state.countyCount} ${state.countyCount === 1 ? 'market lane' : 'market lanes'}. ${state.dealCount} records.`)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
+  const stateSwitcher = stateSummaries.map((state) => {
+    const laneCopy = landLaneCountCopy(state.countyCount || 0, state.populatedSellerLaneCount || 0);
+    return `<div role="button" tabindex="0" class="state-market-toggle land-state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-land-state="${h(state.state)}" aria-label="${h(`${state.label}. ${state.thesis}. ${laneCopy}. ${state.dealCount} records.`)}" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span class="state-market-code">${h(state.stateCode)}</span>
-    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.displayLabel)}</span><span class="state-market-thesis">${h(state.short || state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'lane' : 'lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
+    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.displayLabel)}</span><span class="state-market-thesis">${h(state.short || state.thesis)}</span></strong><small><span>${h(laneCopy)}</span><span>${h(state.statusCopy)}</span></small></span>
     <em><b>${h(state.dealCount)}</b><span>records</span></em>
-  </div>`).join('');
+  </div>`;
+  }).join('');
   const visibleCount = parcels.filter(parcel => {
     if (selectedLandStateFilter !== 'all' && rowState(parcel) !== selectedLandStateFilter) return false;
     if (!activeMarket) return true;
-    return activeMarket.isDallasProofLane ? Boolean(dallasProofRowForParcel(parcel)) : parcelMatchesDealMarket(parcel, activeMarket);
+    return actualLandRecordMatchesMarket(parcel, activeMarket);
   }).length;
   const sortOptions = [
     ['priority', 'Priority'],
@@ -1269,7 +1331,7 @@ function renderLandControls() {
     <p><b>${h(activeState.detail)}.</b> ${h(activeState.note)}</p>
     <ul>
       <li title="Retained seller/source records in this state."><b>${h(activeState.dealCount)}</b><span>records</span></li>
-      <li title="Visible market lanes under this state decision."><b>${h(activeState.countyCount || 0)}</b><span>lanes</span></li>
+      <li title="Populated seller/land lanes under this state decision."><b>${h(activeState.populatedSellerLaneCount || 0)}</b><span>populated lanes</span></li>
       <li title="Source-backed rows safe for next evidence work."><b>${h(activeState.sourceBacked || 0)}</b><span>proofed</span></li>
       <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(activeState.offerReady || 0)}</b><span>offer-ready</span></li>
     </ul>
@@ -1288,7 +1350,7 @@ function renderLandControls() {
       <div class="state-workbench-kicker">
         <span>Operating state</span>
         <strong>${h(activeState.label)}</strong>
-        <em>${h(activeState.dealCount)} records · ${h(activeState.countyCount || 0)} market lanes</em>
+        <em>${h(activeState.dealCount)} records · ${h(activeState.populatedSellerLaneCount || 0)} populated / ${h(activeState.countyCount || 0)} market lanes</em>
       </div>
       <div class="state-workbench-layout">
         <div class="state-market-grid land-state-market-grid" data-land-state-selector>${stateSwitcher}</div>
@@ -1392,9 +1454,9 @@ function renderDealsMarketCoverage() {
   const marketButtons = selectedLandStateFilter === 'all' ? `<p class="land-market-empty-note">Pick a state to unlock market lanes.</p>` : entries.map(market => {
     const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : market.sourceState === 'all' ? 'is-all' : 'needs-work';
     const laneAbbrev = landLaneAbbrev(market);
-    return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} deals.`)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
+    return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records.`)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
       <small><kbd>${h(laneAbbrev)}</kbd><strong>${h(market.marketLabel || market.label)}</strong></small>
-      <span><b>${h(market.dealCount)}</b> deals</span>
+      <span><b>${h(market.dealCount)}</b> records</span>
       <em>${h(market.sourceStatusCopy)} · ${h(market.dealStatusCopy)}</em>
     </div>`;
   }).join('');

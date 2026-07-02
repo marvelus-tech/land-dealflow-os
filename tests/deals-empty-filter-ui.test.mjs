@@ -19,6 +19,15 @@ assert.doesNotMatch(app, /\['seller-calls', 'Seller calls'\]/, 'Land page must n
 assert.match(app, /landStateToggleOrder = \['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'\]/, 'Land state toggle must include abbreviation-only queued states including OH/ID/IN/PA.');
 assert.match(app, /const label = state === 'all' \? 'All' : state;/, 'Land state toggle should label all-states as All and state filters as abbreviations.');
 assert.match(app, /const stateLabel = 'All';/, 'Land market toggle should label the aggregate market filter as All.');
+assert.match(app, /function describeLandStateRecordScope/, 'Land state counts must explain whether records are broad state coverage or one populated seller lane.');
+assert.match(app, /function actualLandRecordMarkets/, 'Land state counts must derive populated seller lanes from actual seller records, including virtual lanes like Dallas.');
+assert.match(app, /function actualLandRecordMatchesMarket/, 'Land market lane counts must use exact seller market identity instead of loose text matching.');
+assert.match(app, /const dealCount = landRecordCountForMarket\(allDeals, market\)/, 'Market lane counts must not leak Dallas/TX records into Austin or other text-matched lanes.');
+assert.match(app, /actualLandRecordMatchesMarket\(parcel, activeMarket\)/, 'Selected market filtering must use exact seller market identity.');
+assert.match(app, /landLaneCountCopy\(state\.countyCount \|\| 0, state\.populatedSellerLaneCount \|\| 0\)/, 'Land selector must show populated seller lanes separately from total queued lanes.');
+assert.match(app, /\$\{stateParcels\.length\} \$\{populated\[0\]\.label\} only/, 'Single-market seller coverage such as Keystone must not masquerade as full-state coverage.');
+assert.match(app, /populated lanes/, 'Selected-state summary must label populated seller lanes, not generic market lanes.');
+assert.doesNotMatch(app, /<em>\$\{h\(activeState\.dealCount\)\} records · \$\{h\(activeState\.countyCount \|\| 0\)\} market lanes<\/em>/, 'Operating-state kicker must not imply all state lanes have seller records.');
 assert.doesNotMatch(app, /All markets/, 'Land UI should no longer say All markets.');
 assert.doesNotMatch(app, /const label = state === 'all' \? 'All states' : state;/, 'Land state toggle should not use the longer All states label.');
 assert.match(app, /function renderDealsMarketCoverage/, 'Deals page must render a market coverage shelf before seller deals exist.');

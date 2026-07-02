@@ -193,9 +193,9 @@ assert.match(appSource, /class="state-market-code">\$\{h\(state\.stateCode\)\}<\
 assert.match(appSource, /\$\{h\(state\.statusCopy\)\}/, 'state card should expose live/thin/needs-source status copy');
 assert.match(appSource, /active-market-summary state-focus-summary/, 'selected state summary should expose readiness metrics without per-county progress rails');
 assert.match(appSource, /class="state-county-ledger"/, 'selected state should expose county coverage as subordinate evidence');
-assert.match(appSource, /Operator session/, 'Today page should surface the operator sprint without implementation-phase residue');
+assert.match(appSource, /Next action/, 'Today page should surface the operator sprint as a clear next-action command without implementation-phase residue');
 assert.doesNotMatch(appSource, /Phase 8 · real operator session mode/, 'Today page should not expose implementation-phase residue in visible copy');
-assert.match(appSource, /Deal packet assembly gate/, 'Phase 8 should keep deal packet readiness visible in the operator sprint');
+assert.match(appSource, /Gate sequence/, 'Today sprint should keep the deal-gate sequence visible without the old sidecard noise');
 assert.match(stylesSource, /v1\.38 - Phase 8 Clay-level operator session mode/, 'Phase 8 should include the premium Clay-level visual system');
 
 const conveyorBuyer = {

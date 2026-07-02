@@ -136,7 +136,7 @@ assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-rail,\
 assert.match(css, /body\[data-active-view="today"\] #command \.phase24-snapshot div[\s\S]{0,260}border-bottom: 1px solid var\(--phase24-line\)/, 'Today snapshot should be a ledger, not another boxed dashboard tile');
 assert.match(css, /Final route isolation guard after Phase 24 Today rebuilding/, 'Phase 24 should preserve route isolation after late Today overrides');
 const todaySource = appSource.slice(appSource.indexOf('function renderCommandCenter'), appSource.indexOf('function initializeEditorialMotion'));
-assert.match(todaySource, /phase24-today-hero[\s\S]{0,240}Make the clearest next move\./, 'Today should render the new Phase 24 operating hero');
+assert.match(todaySource, /phase24-today-hero[\s\S]{0,260}Today is one defensible move\./, 'Today should render the Phase 244 concise operating memo');
 assert.match(todaySource, /phase24-snapshot[\s\S]{0,260}Builder proof/, 'Today should replace decorative artifact chrome with a proof snapshot');
 assert.doesNotMatch(todaySource, /wk-artifact|wk-scanline|wk-horizon|wk-contour|Today page map|Signal system|Market terrain|terrain intelligence|\bwells\b|\bwall\b/i, 'Today render path must not keep old relics');
 assert.doesNotMatch(appSource, /one long wall/i, 'Product copy should not describe dense surfaces as a wall');
@@ -383,6 +383,15 @@ assert.match(css, /v1\.69\.2 - Phase 37 final mobile correction: remove zero-met
 assert.match(css, /@media \(max-width: 760px\) \{[\s\S]{0,120}body\[data-active-view="today"\] #operator-session-mode \.os8-metrics \{[\s\S]{0,80}display: none !important/, 'Today mobile should hide zero metric strip to avoid clipped artifacts and reduce cognitive load');
 assert.match(css, /v1\.69\.3 - Phase 37 hard mobile layout lock: Today sprint never leaves the viewport/, 'Phase 37 hard mobile layout lock marker required');
 assert.match(css, /body\[data-active-view="today"\] #operator-session-mode\.os8-session \{[\s\S]{0,180}grid-template-columns: minmax\(0, 1fr\) !important;[\s\S]{0,120}grid-template-areas: none !important/, 'Today mobile operator session must stay single-column after desktop overrides');
+assert.match(css, /v1\.70 - Phase 244 Today-only Apple hierarchy: one memo, one action, one offer ledger/, 'Phase 244 Today-only hierarchy marker required');
+assert.match(css, /--phase244-today-rule: today-only-ruthless-information-hierarchy-one-defensible-move/, 'Phase 244 should encode ruthless Today-only scope');
+assert.match(css, /--phase244-self-review: reduce-poster-gravity-prioritize-offer-ledger/, 'Phase 244 self-review should reduce poster gravity and prioritize the ledger');
+assert.match(css, /--phase244-empty-state-rule: empty-offer-ledger-never-side-card-or-narrow-column/, 'Phase 244 empty offer state should keep full-width ledger parity before data loads');
+assert.match(css, /--phase244-mobile-lock: today-offer-ledger-single-column-no-squeezed-rows/, 'Phase 244 final mobile lock should prevent squeezed offer rows');
+assert.match(css, /body\[data-active-view="today"\] #command :where\(\.wk-audit,\.wk-market-map,\.wk-workbench,\.wk-protocol,\.phase24-operating-rules,\.phase24-market-board,\.phase24-work-surface,\.phase24-protocol\)[\s\S]{0,120}display: none !important/, 'Phase 244 should remove Today teaching/market/workbench/protocol sections from the visible route');
+assert.match(appSource, /Today is one defensible move\./, 'Today hero should become a concise daily memo, not poster copy');
+assert.match(appSource, /buildTodayOfferReviewItems\(5\)/, 'Phase 244 should cap Today offer review to five rows');
+assert.doesNotMatch(appSource.slice(appSource.indexOf('function renderOperatorSessionMode'), appSource.indexOf('function renderCommandCenter')), /os8-metrics|os8-packet-card|os8-packet-note/, 'Phase 244 operator session should delete zero metric strip and packet sidecard noise');
 assert.match(css, /v1\.70 - Phase 39 Builders lower command refinement: calm queue, selected detail, proof ledger, seller gate/, 'Phase 39 Builders lower command marker required');
 assert.match(css, /--phase39-builders-rule: builders-only-lower-queue-detail-apple-ledger/, 'Phase 39 must encode Builders-only lower surface scope');
 assert.match(css, /body\[data-active-view="builders"\] #buyer-validation-command \.validation-grid-main \{[\s\S]{0,240}grid-template-columns: minmax\(252px, \.58fr\) minmax\(0, 1\.38fr\) minmax\(230px, \.48fr\) !important/, 'Phase 39 should rebalance queue/detail/seller gate columns');

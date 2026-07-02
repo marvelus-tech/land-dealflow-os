@@ -1078,7 +1078,7 @@ function buildTodayOfferReviewItems(limit = 8) {
 }
 
 function renderTodayOfferReviewLane() {
-  const items = buildTodayOfferReviewItems(8);
+  const items = buildTodayOfferReviewItems(5);
   const priced = items.filter(item => item.smsPrice || item.sellerOffer).length;
   const withWarnings = items.filter(item => item.warnings.length).length;
   const totalFee = items.reduce((sum, item) => sum + Number(item.fee || 0), 0);
@@ -1096,28 +1096,21 @@ function renderTodayOfferReviewLane() {
         <span class="today-offer-rank">${String(index + 1).padStart(2, '0')}</span>
         <span class="today-offer-copy">
           <b>${h(parcel.address || parcel.propertyAddress || parcel.parcelId || 'Untitled land record')}</b>
-          <small>${h(marketLine)} · ${h(item.listingState.label)} · score ${h(item.score)}</small>
+          <small>${h(marketLine)} · ${h(basis)} · ${h(item.hasContact ? 'contact signal' : 'contact missing')}</small>
         </span>
-        <span class="today-offer-money"><strong>${item.fee ? formatMoney(item.fee) : 'Review'}</strong><em>${item.sellerOffer ? `${formatMoney(item.sellerOffer)} offer` : 'price pending'}</em></span>
+        <span class="today-offer-money"><strong>${item.fee ? formatMoney(item.fee) : 'Review'}</strong><em>${item.sellerOffer ? `${formatMoney(item.sellerOffer)} offer` : 'no price yet'}</em></span>
       </button>
-      <div class="today-offer-context">
-        <div><span>Basis</span><b>${h(basis)}</b></div>
-        <div><span>SMS draft</span><b>${h(item.draft.smsPrice ? `${formatMoney(item.draft.smsPrice)} draft number` : 'Conversation opener visible')}</b></div>
-        <div><span>Contact</span><b>${h(item.hasContact ? 'Owner contact signal present' : 'Contact missing / verify manually')}</b></div>
-      </div>
       <div class="today-offer-warnings" aria-label="Transparent offer review warnings">${warningRows}</div>
     </article>`;
   }).join('') : '<article class="today-offer-empty phase243-offers-review"><b>No land records loaded yet.</b><span>Import or source public land records; this lane will become a ranked review lens without hiding warnings.</span></article>';
-  return `<section id="today-offers-review" class="today-offers-review phase243-offers-review wk-reveal" aria-label="Offers to review">
+  return `<section id="today-offers-review" class="today-offers-review phase243-offers-review phase244-offers-ledger wk-reveal" aria-label="Offers to review">
     <div class="today-offers-head">
-      <span class="wk-kicker">Offers to review</span>
-      <h2>Review useful land opportunities without hiding the messy parts.</h2>
-      <p>Ranked by projected fee, buy-box basis, confidence, and contact signal. Warnings stay visible; they do not remove the resource.</p>
+      <span class="wk-kicker">Offer review</span>
+      <h2>Only inspect land that can improve today’s decision.</h2>
+      <p>Five records maximum. Warnings remain visible; low-confidence rows do not receive decorative weight.</p>
       <div class="today-offers-metrics" aria-label="Offers review summary">
-        <div><span>Review rows</span><b>${h(items.length)}</b></div>
-        <div><span>Priced</span><b>${h(priced)}</b></div>
-        <div><span>Warnings shown</span><b>${h(withWarnings)}</b></div>
-        <div><span>Visible fee path</span><b>${h(formatMoney(totalFee))}</b></div>
+        <div><span>Rows</span><b>${h(items.length)}</b></div>
+        <div><span>Warnings</span><b>${h(withWarnings)}</b></div>
       </div>
     </div>
     <div class="today-offers-list">${rows}</div>
@@ -3323,35 +3316,19 @@ function renderOperatorVisionHero({ leadBuyer, boxMeter, moneyQueue, publicSkipT
 }
 
 function renderOperatorSessionMode(session = {}) {
-  const metricRows = [
-    ['Validated buyers', session.metrics?.buyers || 0, 'demand proof'],
-    ['Matched sellers', session.metrics?.sellers || 0, 'buyer-box export'],
-    ['Enriched contacts', session.metrics?.contacts || 0, 'call unlocked'],
-    ['Packet ready', session.metrics?.packetReady || 0, 'sendable now'],
-  ].map(([label, value, detail]) => `<article class="os8-metric"><span>${h(label)}</span><b>${h(value)}</b><em>${h(detail)}</em></article>`).join('');
-  const stepRows = asArray(session.sprintSteps).map((step) => `<a class="os8-step ${h(step.status)}" href="${h(step.href || '#builders')}" data-view="builders">
+  const stepRows = asArray(session.sprintSteps).slice(0, 4).map((step) => `<a class="os8-step ${h(step.status)}" href="${h(step.href || '#builders')}" data-view="builders">
     <span>${h(step.label)}</span>
     <div><b>${h(step.title)}</b><strong>${h(step.action)}</strong><p>${h(step.detail)}</p></div>
     <em>${h(step.status)}</em>
   </a>`).join('');
-  const gateRows = asArray(session.packetGate).map(gate => `<div class="os8-gate ${h(gate.status)}"><span></span><div><b>${h(gate.label)}</b><p>${h(gate.detail)}</p></div><em>${h(gate.status)}</em></div>`).join('');
-  return `<section id="operator-session-mode" class="os8-session wk-reveal" aria-label="Operator session mode">
-    <div class="os8-ambient" aria-hidden="true"></div>
+  return `<section id="operator-session-mode" class="os8-session phase244-today-command wk-reveal" aria-label="Today command session">
     <div class="os8-hero">
-      <span class="wk-kicker">Operator session</span>
-      <h2>${h(session.title || 'Today’s Call Sprint')}</h2>
-      <p>${h(session.subtitle || 'One complete operator session from buyer proof to feedback rewrite.')}</p>
-      <div class="os8-next-card">
-        <small>Next defensible action</small>
-        <b>${h(session.activeStep?.action || 'Open the builder queue')}</b>
-        <span>${h(session.activeStep?.detail || 'Do not advance sellers until the next gate is true.')}</span>
-      </div>
+      <span class="wk-kicker">Next action</span>
+      <h2>${h(session.activeStep?.action || 'Open the builder queue')}</h2>
+      <p>${h(session.activeStep?.detail || 'Do not advance sellers until the next gate is true.')}</p>
+      <a class="today-command-link" href="${h(session.activeStep?.href || '#builders')}" data-view="builders">Open work surface ${productIcon('arrow')}</a>
     </div>
-    <div class="os8-metrics">${metricRows}</div>
-    <div class="os8-flow">
-      <article class="os8-sprint-card"><div class="os8-card-head"><span>Guided sprint</span><b>not browsing, executing</b></div>${stepRows}</article>
-      <article class="os8-packet-card"><div class="os8-card-head"><span>Deal packet assembly gate</span><b>${session.dealPacketReady ? 'sendable' : 'guarded'}</b></div>${gateRows}<div class="os8-packet-note"><b>Packet promise</b><p>Every buyer-send package must carry parcel facts, buyer fit, seller range, assignment math, risk notes, title gate, deadline, and exact language. No missing context, no fabricated certainty.</p></div></article>
-    </div>
+    <article class="os8-sprint-card" aria-label="Today gate sequence"><div class="os8-card-head"><span>Gate sequence</span><b>execute only what is defensible</b></div>${stepRows}</article>
   </section>`;
 }
 
@@ -3406,11 +3383,11 @@ function renderCommandCenter() {
   ].map(([verb, title, detail]) => `<li><span>${h(verb)}</span><b>${h(title)}</b><em>${h(detail)}</em></li>`).join('');
 
   document.querySelector('#command').innerHTML = `
-    <section id="wk-brief" class="wk-hero phase24-today-hero wk-reveal" aria-label="Today buyer-first operating view">
+    <section id="wk-brief" class="wk-hero phase24-today-hero phase244-today-only wk-reveal" aria-label="Today buyer-first operating view">
       <div class="wk-hero-copy phase24-hero-copy">
         <span class="wk-kicker">Today / buyer-first operating view</span>
-        <h1>Make the clearest next move.</h1>
-        <p>A calm, high-confidence surface for proving demand, protecting seller attention, and moving only the deals that deserve a call.</p>
+        <h1>Today is one defensible move.</h1>
+        <p>Validate buyer demand first. Everything else stays quiet until proof improves the next call.</p>
         <div class="wk-actions phase24-actions">
           <a class="primary-command" href="#builders" data-view="builders">${productIcon('phone')} Call builder queue</a>
           <a href="#wk-work">Review today’s action</a>
@@ -3424,28 +3401,7 @@ function renderCommandCenter() {
       </aside>
     </section>
     ${renderOperatorSessionMode(operatorSession)}
-    ${renderTodayOfferReviewLane()}
-    <section class="wk-audit phase24-operating-rules wk-reveal" aria-label="Operating principles">
-      <div><span class="wk-kicker">Clarity system</span><h2>A calm queue beats a crowded dashboard.</h2></div>
-      <ul>${operatingRows}</ul>
-    </section>
-    <section id="wk-map" class="wk-market-map phase24-market-board wk-reveal" aria-label="Priority permit markets">
-      <div class="wk-section-head"><span class="wk-kicker">Market readiness</span><h2>Tennessee is active. Other states stay queued until buyer proof improves.</h2><p>Show the source of evidence, the next validation path, and the reason to act - nothing decorative.</p></div>
-      <div class="wk-node-grid phase24-market-list">${marketRows}</div>
-    </section>
-    <section id="wk-work" class="wk-workbench phase24-work-surface wk-reveal" aria-label="Daily money workbench">
-      <div class="wk-section-head"><span class="wk-kicker">One job today</span><h2>Choose the next defensible action.</h2><div class="primary-action-strip today-primary-action"><span>Next action</span><b>Validate the current buyer before touching a seller record.</b><a href="#builders" data-view="builders">Validate buyer ${productIcon('arrow')}</a></div></div>
-      <div class="wk-proof-grid phase24-proof-grid">${proofRows}</div>
-      <div class="wk-work-grid phase24-work-grid">
-        <article class="wk-focus-card phase24-focus-card"><span class="wk-kicker">Current buyer target</span><h3>${h(leadBuyer?.name || 'Permit-active builder')}</h3><p>${h(leadBuyer?.buyBox || leadBuyer?.acquisitionNotes || leadBuyer?.task || 'Capture price, area, lot size, utilities, roads, wetlands/flood kills and close speed.')}</p><a href="#builders" data-view="builders">Validate buy box</a></article>
-        <div class="wk-call-stack phase24-call-stack"><span class="wk-kicker">Seller queue</span>${callRows}</div>
-        <article class="wk-script-card phase24-script-card"><span class="wk-kicker">If a seller earns the call</span><h3>${h(netScript?.opening || 'Lead with net cash, not a pitch.')}</h3><p>${h(netScript?.netLine || heroMotivation.signals.slice(0, 2).join(' · ') || 'No seller call is promoted until buyer proof and reachable contact data exist.')}</p></article>
-      </div>
-    </section>
-    <section id="wk-gates" class="wk-protocol phase24-protocol wk-reveal" aria-label="Conversion protocol">
-      <div class="wk-section-head"><span class="wk-kicker">Conversion architecture</span><h2>Gate the deal. Do not decorate the dashboard.</h2></div>
-      <div class="wk-protocol-grid phase24-protocol-grid">${protocolRows}</div>
-    </section>`;
+    ${renderTodayOfferReviewLane()}`;
   initializeEditorialMotion();
 }
 

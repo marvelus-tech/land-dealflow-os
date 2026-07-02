@@ -32438,3 +32438,554 @@ body[data-active-view="today"] #command .today-offer-empty span { color: var(--m
   body[data-active-view="today"] #command .today-offer-context { grid-template-columns: 1fr; margin: 0 20px 14px 20px; }
   body[data-active-view="today"] #command .today-offer-warnings { margin: 0 20px 18px 20px; }
 }
+
+
+/* v1.70 - Phase 244 Today-only Apple hierarchy: one memo, one action, one offer ledger */
+:root {
+  --phase244-today-rule: today-only-ruthless-information-hierarchy-one-defensible-move;
+  --phase244-ink: #0b120f;
+  --phase244-body: #3f4843;
+  --phase244-muted: #738078;
+  --phase244-line: rgba(11,18,15,.118);
+  --phase244-line-soft: rgba(11,18,15,.072);
+  --phase244-canvas: #fbfaf5;
+  --phase244-paper: rgba(255,254,249,.78);
+  --phase244-forest: #0f4d35;
+  --phase244-gold: #9a721d;
+  --phase244-gold-soft: rgba(154,114,29,.105);
+}
+body[data-active-view="today"] #command {
+  max-width: 1180px !important;
+  margin-inline: auto !important;
+  padding: clamp(24px, 3.4vw, 44px) clamp(20px, 4vw, 48px) clamp(56px, 7vw, 88px) !important;
+  background: var(--phase244-canvas) !important;
+}
+body[data-active-view="today"] #command .wk-reveal { opacity: 1 !important; transform: none !important; }
+body[data-active-view="today"] #command .phase244-today-only {
+  min-height: 0 !important;
+  padding: clamp(52px, 7vw, 92px) 0 clamp(34px, 5vw, 58px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .92fr) minmax(320px, .68fr) !important;
+  gap: clamp(36px, 7vw, 90px) !important;
+  align-items: end !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase244-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .phase244-today-only::before,
+body[data-active-view="today"] #command .phase244-today-only::after { display: none !important; }
+body[data-active-view="today"] #command .phase244-today-only .wk-kicker,
+body[data-active-view="today"] #command .wk-kicker,
+body[data-active-view="today"] #command .os8-card-head span,
+body[data-active-view="today"] #command .today-offers-metrics span {
+  color: var(--phase244-forest) !important;
+  font-size: 10px !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .phase244-today-only h1 {
+  max-width: 760px !important;
+  margin: 18px 0 0 !important;
+  color: var(--phase244-ink) !important;
+  font-size: clamp(48px, 7vw, 86px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.072em !important;
+  text-wrap: balance !important;
+}
+body[data-active-view="today"] #command .phase244-today-only p {
+  max-width: 520px !important;
+  margin: 22px 0 0 !important;
+  color: var(--phase244-body) !important;
+  font-size: clamp(15px, 1.35vw, 18px) !important;
+  line-height: 1.5 !important;
+  letter-spacing: -.012em !important;
+}
+body[data-active-view="today"] #command .wk-actions.phase24-actions {
+  width: min(100%, 520px) !important;
+  margin-top: 34px !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  border-top: 1px solid var(--phase244-line) !important;
+  border-bottom: 1px solid var(--phase244-line-soft) !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .wk-actions.phase24-actions a {
+  min-height: 48px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 0 2px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase244-muted) !important;
+  font-size: 12px !important;
+  font-weight: 780 !important;
+  letter-spacing: .02em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .wk-actions.phase24-actions a:first-child {
+  color: var(--phase244-forest) !important;
+  border-top: 2px solid var(--phase244-forest) !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot {
+  display: grid !important;
+  gap: 0 !important;
+  align-self: end !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div {
+  min-height: 58px !important;
+  display: grid !important;
+  grid-template-columns: minmax(105px, .44fr) minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 18px !important;
+  padding: 11px 0 !important;
+  border-top: 1px solid var(--phase244-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div:last-child { border-bottom: 1px solid var(--phase244-line) !important; }
+body[data-active-view="today"] #command .phase24-snapshot span,
+body[data-active-view="today"] #command .today-offer-copy small {
+  color: var(--phase244-muted) !important;
+  font-size: 11px !important;
+  font-weight: 720 !important;
+  letter-spacing: .01em !important;
+  text-transform: none !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot b {
+  color: var(--phase244-ink) !important;
+  font-size: clamp(20px, 2.35vw, 30px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.045em !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot em {
+  color: var(--phase244-gold) !important;
+  font-size: 10px !important;
+  font-weight: 820 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #operator-session-mode.phase244-today-command {
+  margin: 0 !important;
+  padding: clamp(28px, 4vw, 46px) 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(280px, .52fr) minmax(0, 1fr) !important;
+  gap: clamp(28px, 5vw, 68px) !important;
+  align-items: start !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase244-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero,
+body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero h2 {
+  margin: 16px 0 0 !important;
+  color: var(--phase244-ink) !important;
+  font-size: clamp(30px, 4vw, 52px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.058em !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero p {
+  max-width: 470px !important;
+  margin: 16px 0 0 !important;
+  color: var(--phase244-body) !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+}
+body[data-active-view="today"] #operator-session-mode .today-command-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 28px !important;
+  padding-bottom: 7px !important;
+  border-bottom: 1px solid var(--phase244-forest) !important;
+  color: var(--phase244-forest) !important;
+  font-size: 12px !important;
+  font-weight: 820 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-card-head {
+  min-height: 0 !important;
+  padding: 0 0 13px !important;
+  border-bottom: 1px solid var(--phase244-line) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-card-head b {
+  color: var(--phase244-forest) !important;
+  font-size: 11px !important;
+  font-weight: 760 !important;
+  letter-spacing: .02em !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step {
+  min-height: 72px !important;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) auto !important;
+  gap: 14px !important;
+  align-items: center !important;
+  padding: 15px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase244-line-soft) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--phase244-ink) !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step > span {
+  color: var(--phase244-gold) !important;
+  background: var(--phase244-gold-soft) !important;
+  border-radius: 0 !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: grid !important;
+  place-items: center !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step b,
+body[data-active-view="today"] #operator-session-mode .os8-step p { display: none !important; }
+body[data-active-view="today"] #operator-session-mode .os8-step strong {
+  display: block !important;
+  color: var(--phase244-ink) !important;
+  font-size: 16px !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.025em !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step em {
+  color: var(--phase244-forest) !important;
+  font-size: 10px !important;
+  font-weight: 820 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .today-offers-review.phase244-offers-ledger {
+  margin: 0 !important;
+  padding: clamp(30px, 4vw, 50px) 0 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(260px, .42fr) minmax(0, 1fr) !important;
+  gap: clamp(28px, 5vw, 70px) !important;
+  overflow: visible !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .today-offers-head,
+body[data-active-view="today"] #command .today-offers-list,
+body[data-active-view="today"] #command .today-offer-row {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .today-offers-head {
+  padding: 0 !important;
+  gap: 18px !important;
+}
+body[data-active-view="today"] #command .today-offers-head h2 {
+  max-width: 420px !important;
+  margin: 14px 0 0 !important;
+  color: var(--phase244-ink) !important;
+  font-size: clamp(28px, 3.5vw, 46px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.058em !important;
+}
+body[data-active-view="today"] #command .today-offers-head p {
+  max-width: 370px !important;
+  margin-top: 14px !important;
+  color: var(--phase244-body) !important;
+  font-size: 14px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="today"] #command .today-offers-metrics {
+  width: min(100%, 260px) !important;
+  margin-top: 8px !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase244-line) !important;
+  border-bottom: 1px solid var(--phase244-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .today-offers-metrics div {
+  padding: 12px 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #command .today-offers-metrics b {
+  color: var(--phase244-gold) !important;
+  font-size: 22px !important;
+  letter-spacing: -.04em !important;
+}
+body[data-active-view="today"] #command .today-offers-list {
+  display: grid !important;
+  gap: 0 !important;
+}
+body[data-active-view="today"] #command .today-offer-row {
+  padding: 0 !important;
+  border-bottom: 1px solid var(--phase244-line) !important;
+}
+body[data-active-view="today"] #command .today-offer-main {
+  min-height: 74px !important;
+  grid-template-columns: 40px minmax(0, 1fr) minmax(92px, auto) !important;
+  padding: 15px 0 10px !important;
+  gap: 14px !important;
+}
+body[data-active-view="today"] #command .today-offer-rank {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 0 !important;
+  background: var(--phase244-gold-soft) !important;
+  color: var(--phase244-gold) !important;
+}
+body[data-active-view="today"] #command .today-offer-copy b {
+  color: var(--phase244-ink) !important;
+  font-size: 16px !important;
+  line-height: 1.15 !important;
+  letter-spacing: -.026em !important;
+}
+body[data-active-view="today"] #command .today-offer-money strong {
+  color: var(--phase244-ink) !important;
+  font-size: 18px !important;
+  letter-spacing: -.035em !important;
+}
+body[data-active-view="today"] #command .today-offer-money em { color: var(--phase244-muted) !important; }
+body[data-active-view="today"] #command .today-offer-warnings {
+  margin: 0 0 14px 54px !important;
+  gap: 6px !important;
+}
+body[data-active-view="today"] #command .today-offer-warning {
+  padding: 4px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase244-gold) !important;
+  font-size: 11px !important;
+  font-weight: 720 !important;
+}
+body[data-active-view="today"] #command .today-offer-warning + .today-offer-warning::before {
+  content: "·";
+  margin: 0 7px 0 1px;
+  color: var(--phase244-line);
+}
+body[data-active-view="today"] #command :where(.wk-audit,.wk-market-map,.wk-workbench,.wk-protocol,.phase24-operating-rules,.phase24-market-board,.phase24-work-surface,.phase24-protocol) {
+  display: none !important;
+}
+@media (max-width: 860px) {
+  body[data-active-view="today"] #command { padding-inline: 20px !important; }
+  body[data-active-view="today"] #command .phase244-today-only,
+  body[data-active-view="today"] #operator-session-mode.phase244-today-command,
+  body[data-active-view="today"] #command .today-offers-review.phase244-offers-ledger {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 26px !important;
+  }
+  body[data-active-view="today"] #command .phase244-today-only h1 { font-size: clamp(42px, 13vw, 58px) !important; }
+  body[data-active-view="today"] #command .phase24-snapshot div { grid-template-columns: minmax(96px, .36fr) minmax(0, 1fr) !important; }
+  body[data-active-view="today"] #command .phase24-snapshot em { justify-self: start !important; }
+  body[data-active-view="today"] #command .wk-actions.phase24-actions { grid-template-columns: 1fr !important; }
+  body[data-active-view="today"] #operator-session-mode .os8-step { grid-template-columns: 34px minmax(0, 1fr) !important; }
+  body[data-active-view="today"] #operator-session-mode .os8-step em { grid-column: 2; justify-self: start !important; }
+  body[data-active-view="today"] #command .today-offer-main { grid-template-columns: 34px minmax(0, 1fr) !important; }
+  body[data-active-view="today"] #command .today-offer-money { grid-column: 2 !important; justify-items: start !important; text-align: left !important; }
+  body[data-active-view="today"] #command .today-offer-warnings { margin-left: 48px !important; }
+}
+
+
+/* v1.70.1 - Phase 244 self-review: Today memo scale reduced, ledger receives priority */
+:root {
+  --phase244-self-review: reduce-poster-gravity-prioritize-offer-ledger;
+}
+body[data-active-view="today"] #command {
+  padding-top: clamp(18px, 2.4vw, 32px) !important;
+}
+body[data-active-view="today"] #command .phase244-today-only {
+  padding-top: clamp(38px, 5.2vw, 68px) !important;
+  padding-bottom: clamp(28px, 3.8vw, 44px) !important;
+  gap: clamp(32px, 6vw, 76px) !important;
+}
+body[data-active-view="today"] #command .phase244-today-only h1 {
+  max-width: 660px !important;
+  font-size: clamp(44px, 5.75vw, 72px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.068em !important;
+}
+body[data-active-view="today"] #command .phase244-today-only p {
+  max-width: 480px !important;
+  margin-top: 18px !important;
+}
+body[data-active-view="today"] #command .wk-actions.phase24-actions {
+  margin-top: 28px !important;
+}
+body[data-active-view="today"] #operator-session-mode.phase244-today-command {
+  padding-top: clamp(24px, 3.4vw, 38px) !important;
+  padding-bottom: clamp(24px, 3.4vw, 38px) !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero h2 {
+  max-width: 390px !important;
+  font-size: clamp(28px, 3.35vw, 44px) !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step {
+  min-height: 62px !important;
+  padding-block: 12px !important;
+}
+body[data-active-view="today"] #command .today-offers-review.phase244-offers-ledger {
+  padding-top: clamp(26px, 3.4vw, 42px) !important;
+  grid-template-columns: minmax(220px, .32fr) minmax(0, 1fr) !important;
+  gap: clamp(26px, 4.2vw, 56px) !important;
+}
+body[data-active-view="today"] #command .today-offers-head h2 {
+  max-width: 340px !important;
+  font-size: clamp(24px, 2.55vw, 34px) !important;
+  line-height: 1.02 !important;
+}
+body[data-active-view="today"] #command .today-offers-head p {
+  max-width: 300px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+body[data-active-view="today"] #command .today-offer-main {
+  min-height: 68px !important;
+  padding-block: 13px 8px !important;
+}
+body[data-active-view="today"] #command .today-offer-copy b {
+  font-size: 15px !important;
+}
+body[data-active-view="today"] #command .today-offer-warnings {
+  margin-bottom: 12px !important;
+}
+@media (max-width: 860px) {
+  body[data-active-view="today"] #command .phase244-today-only {
+    padding-top: 28px !important;
+  }
+  body[data-active-view="today"] #command .phase244-today-only h1 {
+    font-size: clamp(38px, 11.5vw, 52px) !important;
+    letter-spacing: -.062em !important;
+  }
+  body[data-active-view="today"] #command .today-offers-head h2 {
+    max-width: 100% !important;
+    font-size: clamp(28px, 8.2vw, 38px) !important;
+  }
+}
+
+
+/* v1.70.2 - Phase 244 empty-state correction: offer ledger keeps width parity before data loads */
+:root {
+  --phase244-empty-state-rule: empty-offer-ledger-never-side-card-or-narrow-column;
+}
+body[data-active-view="today"] #command .today-offer-empty.phase243-offers-review {
+  width: 100% !important;
+  min-height: 132px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .36fr) minmax(0, 1fr) !important;
+  gap: 22px !important;
+  align-items: start !important;
+  padding: 18px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase244-line) !important;
+  border-bottom: 1px solid var(--phase244-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #command .today-offer-empty.phase243-offers-review b {
+  color: var(--phase244-ink) !important;
+  font-size: clamp(18px, 1.8vw, 26px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.04em !important;
+}
+body[data-active-view="today"] #command .today-offer-empty.phase243-offers-review span {
+  max-width: 460px !important;
+  color: var(--phase244-body) !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+@media (max-width: 860px) {
+  body[data-active-view="today"] #command .today-offer-empty.phase243-offers-review {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+    min-height: 0 !important;
+  }
+}
+
+
+/* v1.70.3 - Phase 244 final mobile lock: Today offer ledger never keeps desktop split */
+:root {
+  --phase244-mobile-lock: today-offer-ledger-single-column-no-squeezed-rows;
+}
+@media (max-width: 900px) {
+  body[data-active-view="today"] #command .today-offers-review.phase244-offers-ledger {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  body[data-active-view="today"] #command .today-offers-head {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  body[data-active-view="today"] #command .today-offers-head h2,
+  body[data-active-view="today"] #command .today-offers-head p {
+    max-width: 100% !important;
+  }
+  body[data-active-view="today"] #command .today-offers-metrics {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  body[data-active-view="today"] #command .today-offers-list,
+  body[data-active-view="today"] #command .today-offer-row,
+  body[data-active-view="today"] #command .today-offer-main {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  body[data-active-view="today"] #command .today-offer-main {
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+  }
+  body[data-active-view="today"] #command .today-offer-money {
+    grid-column: 2 !important;
+    justify-self: start !important;
+    justify-items: start !important;
+    text-align: left !important;
+  }
+  body[data-active-view="today"] #command .today-offer-copy,
+  body[data-active-view="today"] #command .today-offer-copy b,
+  body[data-active-view="today"] #command .today-offer-copy small {
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+  }
+  body[data-active-view="today"] #command .today-offer-warnings {
+    margin-left: 48px !important;
+    max-width: calc(100% - 48px) !important;
+    display: block !important;
+  }
+  body[data-active-view="today"] #command .today-offer-warning {
+    display: inline !important;
+    overflow-wrap: anywhere !important;
+  }
+  body[data-active-view="today"] #operator-session-mode .os8-card-head b {
+    max-width: 128px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+  }
+}

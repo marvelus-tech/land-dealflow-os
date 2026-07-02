@@ -7,6 +7,7 @@ const markets = [
   ['austin', 'TX', 'data/real/austin/builder_signals.json', 20],
   ['san-antonio', 'TX', 'data/real/san-antonio/builder_signals.json', 20],
   ['raleigh', 'NC', 'data/real/raleigh/builder_signals.json', 20],
+  ['rocky-mount-nc', 'NC', 'data/real/rocky-mount-nc/builder_signals.json', 10],
   ['polk', 'FL', 'data/real/polk/builder_signals.json', 20],
   ['maricopa', 'AZ', 'data/real/maricopa/builder_signals.json', 20],
   ['dorchester-sc', 'SC', 'data/real/dorchester-sc/builder_signals.json', 20],

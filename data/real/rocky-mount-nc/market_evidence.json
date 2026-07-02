@@ -1,0 +1,37 @@
+{
+  "market": "Rocky Mount / Nash-Edgecombe, NC",
+  "marketId": "rocky-mount-nc",
+  "state": "NC",
+  "generatedAt": "2026-07-01T23:55:43Z",
+  "source": {
+    "name": "Rocky Mount buyer-builder sprint",
+    "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+    "permitPortalUrl": "https://rockymountnc.munisselfservice.com/css/citizens/default.aspx",
+    "cityPermittingUrl": "https://www.rockymountnc.gov/526/Building-Trades-Permitting",
+    "method": "Current new-home community listings plus official builder/community pages where reachable. City CSS permit search requires login, so rows are active-community buyer-validation candidates, not permit-verified buyers."
+  },
+  "summary": {
+    "activeBuilderCandidates": 10,
+    "sameCityBuilders": 4,
+    "sameZip27803Builders": 1,
+    "officialBuilderPagesVerified": 4,
+    "minimumUniqueBuilders": 10,
+    "target": "NC SF Development Site Rocky Mount 27803",
+    "minimumUniqueBuildersNote": "Project-specific buyer-builder call sheet for NC SF Development Site Rocky Mount 27803; 10 curated active/recently-active builder candidates is sufficient for this lane."
+  },
+  "operatingRules": [
+    "Rows are buyer-validation candidates until a direct call/email captures buy box and acquisition path.",
+    "NewHomeSource/Zillow-style listings are discovery/context, not permit validation.",
+    "City Rocky Mount confirms building/trades permits and CSS portal, but public permit search requires sign-in in this environment.",
+    "No seller sourcing/contact promotion from this packet until buyer geography, max price, product, close speed, package recipient, and deal killers are captured."
+  ],
+  "sourceUrls": [
+    "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+    "https://www.rockymountnc.gov/526/Building-Trades-Permitting",
+    "https://rockymountnc.munisselfservice.com/css/citizens/default.aspx",
+    "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/autumn-ridge/",
+    "https://www.lennar.com/new-homes/north-carolina/raleigh/sims/mill-stone-creek",
+    "https://www.dreamfindershomes.com/new-homes/nc/castalia/lukes-landing/",
+    "https://www.starlighthomes.com/raleigh/cardinal-woods"
+  ]
+}

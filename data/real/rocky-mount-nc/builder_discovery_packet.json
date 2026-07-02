@@ -1,0 +1,611 @@
+{
+  "generatedAt": "2026-07-01T23:55:43Z",
+  "target": "NC SF Development Site Rocky Mount 27803",
+  "market": "Rocky Mount / Nash-Edgecombe, NC",
+  "rows": [
+    {
+      "id": "rocky-mount-nc-builder-adams-homes",
+      "name": "Adams Homes",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.adamshomes.com/communities/north-carolina/raleigh/joyner-park",
+      "contactUrl": "https://www.adamshomes.com/contact-us",
+      "phone": "",
+      "email": "",
+      "contactName": "Adams Homes Raleigh / Eastern NC sales",
+      "recentBuilds": 5,
+      "qualifyingPermitCount": 5,
+      "activityTier": "active-local-sf",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 92,
+      "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.adamshomes.com/communities/north-carolina/raleigh/joyner-park"
+      ],
+      "publicSource": "NewHomeSource current Rocky Mount-area new-home community listings; Adams official Joyner Park community page checked for product/market context.",
+      "evidenceType": "active new-home community signal, same-ZIP priority",
+      "demandSignal": "Same-ZIP 27803 Joyner Park plus Longneedle in Rocky Mount and nearby Williams Grove, Magnolia Estates, Cool Water, and Harvest Creek communities listed as active/new-home inventory.",
+      "communities": [
+        "Joyner Park \u2014 Rocky Mount NC 27803 \u2014 from $230,260 \u2014 3 bed / 2 bath / 1,514-1,875 sf",
+        "Longneedle \u2014 Rocky Mount NC 27804 \u2014 pricing coming soon",
+        "Williams Grove \u2014 Bailey NC 27807 \u2014 from $329,020",
+        "Magnolia Estates \u2014 Battleboro NC 27809 \u2014 from $361,920",
+        "Cool Water \u2014 Bailey NC 27807 \u2014 from $456,450",
+        "Harvest Creek \u2014 Nashville NC 27856 \u2014 from $393,800"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "NHS-JOYNER-PARK-27803",
+          "address": "Joyner Park, Rocky Mount, NC 27803",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Joyner Park in Rocky Mount 27803 by Adams Homes with active pricing and plans.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        },
+        {
+          "permitNumber": "NHS-LONGNEEDLE-27804",
+          "address": "Longneedle, Rocky Mount, NC 27804",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current community / pricing pending",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Longneedle in Rocky Mount 27804 by Adams Homes.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Public community signal only. Call to capture whether Adams buys finished lots, paper lots, or raw SF development sites around Rocky Mount 27803; confirm lot count/yield, utility/road requirements, max takedown price, close speed, and acquisitions package recipient.",
+      "acquisitionNotes": "Priority buyer for a 27803 SF development site because Adams has a same-ZIP Rocky Mount community and multiple nearby eastern-NC communities. Route to buyer validation; not validated demand until buy box is captured.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 1,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-dr-horton",
+      "name": "D.R. Horton",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.drhorton.com/north-carolina/raleigh-durham",
+      "contactUrl": "https://www.drhorton.com/contact-us",
+      "phone": "",
+      "email": "",
+      "contactName": "D.R. Horton Raleigh-Durham division",
+      "recentBuilds": 6,
+      "qualifyingPermitCount": 6,
+      "activityTier": "active-local-production",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 90,
+      "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.drhorton.com/north-carolina/raleigh-durham"
+      ],
+      "publicSource": "NewHomeSource current Rocky Mount-area communities; D.R. Horton regional website checked as public contact path.",
+      "evidenceType": "active new-home community signal",
+      "demandSignal": "Hunter Hill, The Townes at Hunter Hill, and Saddlebrook are listed in Rocky Mount 27804; nearby Beaver Dam Crossing, Jetstream Park, and Bedford Place are also listed in the Rocky Mount-area set.",
+      "communities": [
+        "Hunter Hill \u2014 Rocky Mount NC 27804 \u2014 from $263,490 \u2014 3-4 bed / 2 bath / 1,927-2,174 sf",
+        "The Townes at Hunter Hill \u2014 Rocky Mount NC 27804 \u2014 from $231,700 \u2014 3 bed / 2 bath / 1,418 sf",
+        "Saddlebrook \u2014 Rocky Mount NC 27804 \u2014 from $271,950 \u2014 3-5 bed / 2-3 bath / 1,618-2,824 sf",
+        "Beaver Dam Crossing \u2014 Bailey NC 27807 \u2014 from $304,990",
+        "Jetstream Park \u2014 Wilson NC 27896 \u2014 from $244,000",
+        "Bedford Place \u2014 Wilson NC 27893 \u2014 from $299,990"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "NHS-HUNTER-HILL-27804",
+          "address": "Hunter Hill, Rocky Mount, NC 27804",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Hunter Hill in Rocky Mount by D.R. Horton Basic.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        },
+        {
+          "permitNumber": "NHS-SADDLEBROOK-27804",
+          "address": "Saddlebrook, Rocky Mount, NC 27804",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Saddlebrook in Rocky Mount by D.R. Horton Basic.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Public community signal only. Call division acquisitions/land team to confirm interest in Rocky Mount 27803 SF development site, minimum lot count, finished-lot vs raw-land appetite, utilities/sewer, access, flood, and price.",
+      "acquisitionNotes": "High-priority production buyer due to multiple current Rocky Mount communities; exact land-acquisition path unresolved.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 2,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-century-complete",
+      "name": "Century Complete",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/autumn-ridge/",
+      "contactUrl": "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/autumn-ridge/",
+      "phone": "919-786-9795",
+      "email": "",
+      "contactName": "Century Complete / Century Communities Raleigh-Durham sales",
+      "recentBuilds": 5,
+      "qualifyingPermitCount": 5,
+      "activityTier": "active-local-production",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 90,
+      "sourceUrl": "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/autumn-ridge/",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/",
+        "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/autumn-ridge/",
+        "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/castalia/lancaster-farm/"
+      ],
+      "publicSource": "Century Communities official Rocky Mount/Autumn Ridge pages plus NewHomeSource current listings.",
+      "evidenceType": "active official-community signal",
+      "demandSignal": "Official Century page describes Autumn Ridge homes for sale in Rocky Mount; NewHomeSource also lists Lancaster Farm, Bright Leaf, Bull Head Landing, and Castle Berry in nearby Nash/Wilson/Bailey/Nashville markets.",
+      "communities": [
+        "Autumn Ridge \u2014 Rocky Mount NC 27804 \u2014 from $275,990 on NewHomeSource; official Century page title: Autumn Ridge | Homes for Sale in Rocky Mount, NC",
+        "Lancaster Farm \u2014 Castalia NC 27816 \u2014 from $249,888 / recently reduced; official Century page notes access to US-64/I-95 and Rocky Mount",
+        "Bright Leaf \u2014 Wilson NC 27893 \u2014 from $279,888",
+        "Bull Head Landing \u2014 Bailey NC 27807 \u2014 from $274,990",
+        "Castle Berry \u2014 Nashville NC 27856 \u2014 coming soon"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "CENTURY-AUTUMN-RIDGE-OFFICIAL",
+          "address": "Autumn Ridge, Rocky Mount, NC 27804",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Official builder community",
+          "workClass": "Homes for sale",
+          "landUse": "Single-family homes",
+          "description": "Official Century Communities page: Autumn Ridge | Homes for Sale in Rocky Mount, NC.",
+          "sourceUrl": "https://www.centurycommunities.com/find-your-new-home/north-carolina/raleigh-durham-metro/rocky-mount/autumn-ridge/"
+        },
+        {
+          "permitNumber": "NHS-LANCASTER-FARM-27816",
+          "address": "Lancaster Farm, Castalia, NC 27816",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Lancaster Farm by Century Complete near Rocky Mount.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Public community signal only. Call to ask if Century Complete buys/plans additional Rocky Mount 27803 lots or paper lots; capture lot count, lot price ceiling, utility/sewer, road, and entitlement requirements.",
+      "acquisitionNotes": "High-priority buyer with verified official Rocky Mount community page and public sales phone 919-786-9795.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 3,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-lennar",
+      "name": "Lennar",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.lennar.com/new-homes/north-carolina/raleigh/sims/mill-stone-creek",
+      "contactUrl": "https://www.lennar.com/new-homes/north-carolina/raleigh/sims/mill-stone-creek",
+      "phone": "919-337-9420",
+      "email": "",
+      "contactName": "Lennar Raleigh sales consultant",
+      "recentBuilds": 2,
+      "qualifyingPermitCount": 2,
+      "activityTier": "nearby-production",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 84,
+      "sourceUrl": "https://www.lennar.com/new-homes/north-carolina/raleigh/sims/mill-stone-creek",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.lennar.com/new-homes/north-carolina/raleigh/sims/mill-stone-creek"
+      ],
+      "publicSource": "Lennar official Mill Stone Creek page plus NewHomeSource current listings.",
+      "evidenceType": "nearby official-community signal",
+      "demandSignal": "Mill Stone Creek Crown and Carolina collections are listed in Sims NC 27880, west/southwest of Rocky Mount. Official Lennar page says Mill Stone Creek is a new-home community in Sims/Raleigh market.",
+      "communities": [
+        "Mill Stone Creek - Crown Collection \u2014 Sims NC 27880 \u2014 from $329,990 \u2014 4-5 bed / 3-4 bath / 2,341-2,999 sf",
+        "Mill Stone Creek - Carolina Collection \u2014 Sims NC 27880 \u2014 from $267,990 \u2014 3-4 bed / 2 bath / 1,494-2,180 sf"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "LENNAR-MILL-STONE-CREEK-OFFICIAL",
+          "address": "Mill Stone Creek, Sims, NC 27880",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Official builder community",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "Lennar official page: Mill Stone Creek new home community in Sims, Raleigh, NC.",
+          "sourceUrl": "https://www.lennar.com/new-homes/north-carolina/raleigh/sims/mill-stone-creek"
+        }
+      ],
+      "buyBox": "Nearby production-builder signal only. Call to confirm whether Lennar will look east to Rocky Mount 27803 or only Wilson/Sims/Raleigh-lane finished-lot opportunities.",
+      "acquisitionNotes": "Good regional production buyer, but not same-city; qualify geography before seller sourcing.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 4,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-mullen-company",
+      "name": "Mullen & Company, Inc",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "",
+      "contactUrl": "https://www.newhomesource.com/basiccommunity/community-194986/mullen--company-inc-rocky-mount-nc-27804",
+      "phone": "",
+      "email": "",
+      "contactName": "Mullen & Company, Inc",
+      "recentBuilds": 1,
+      "qualifyingPermitCount": 1,
+      "activityTier": "local-custom-builder",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 78,
+      "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.newhomesource.com/basiccommunity/community-194986/mullen--company-inc-rocky-mount-nc-27804"
+      ],
+      "publicSource": "NewHomeSource current Rocky Mount-area community listing.",
+      "evidenceType": "local community/builder signal",
+      "demandSignal": "NewHomeSource lists Mullen & Company, Inc as a Rocky Mount NC 27804 community/builder entry with pricing coming soon.",
+      "communities": [
+        "Mullen & Company, Inc \u2014 Rocky Mount NC 27804 \u2014 pricing coming soon"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "NHS-MULLEN-27804",
+          "address": "Mullen & Company, Inc, Rocky Mount, NC 27804",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current community / pricing pending",
+          "landUse": "Single-family/custom homes",
+          "description": "NewHomeSource lists Mullen & Company, Inc in Rocky Mount 27804.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Local builder signal only. Call to determine if they buy lots/development sites or are mainly build-on-your-lot/custom.",
+      "acquisitionNotes": "Local Rocky Mount operator; lower scale than production builders but useful for referrals and small takedowns.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 5,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-dream-finders-homes",
+      "name": "Dream Finders Homes",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.dreamfindershomes.com/new-homes/nc/castalia/lukes-landing/",
+      "contactUrl": "https://www.dreamfindershomes.com/new-homes/nc/castalia/lukes-landing/",
+      "phone": "984-370-7388",
+      "email": "",
+      "contactName": "Dream Finders Homes Raleigh division",
+      "recentBuilds": 2,
+      "qualifyingPermitCount": 2,
+      "activityTier": "nearby-production",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 80,
+      "sourceUrl": "https://www.dreamfindershomes.com/new-homes/nc/castalia/lukes-landing/",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.dreamfindershomes.com/new-homes/nc/castalia/lukes-landing/"
+      ],
+      "publicSource": "Dream Finders official Luke\u2019s Landing page plus NewHomeSource current listings.",
+      "evidenceType": "nearby official-community signal",
+      "demandSignal": "Luke\u2019s Landing in Castalia NC 27816 and Haley Ridge in Wilson NC 27893 are listed in the Rocky Mount-area current community set; official Dream Finders page says Luke\u2019s Landing has large lots and mid-$200s pricing.",
+      "communities": [
+        "Luke\u2019s Landing \u2014 Castalia NC 27816 \u2014 from $264,990 on NewHomeSource; official page notes new homes/large lots from mid-$200s",
+        "Haley Ridge \u2014 Wilson NC 27893 \u2014 coming soon"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "DREAM-LUKES-LANDING-OFFICIAL",
+          "address": "Luke\u2019s Landing, Castalia, NC 27816",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Official builder community",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes / large lots",
+          "description": "Official Dream Finders page: Luke\u2019s Landing in Castalia, NC; new homes/large lots/affordable prices from mid-$200s.",
+          "sourceUrl": "https://www.dreamfindershomes.com/new-homes/nc/castalia/lukes-landing/"
+        }
+      ],
+      "buyBox": "Nearby production-builder signal only. Call to confirm whether they want Rocky Mount 27803 lots/development sites or prefer Castalia/Wilson lanes.",
+      "acquisitionNotes": "Strong nearby buyer candidate with public phone; geography must be validated.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 6,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-starlight-homes",
+      "name": "Starlight Homes",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.starlighthomes.com/raleigh/cardinal-woods",
+      "contactUrl": "https://www.starlighthomes.com/raleigh/cardinal-woods",
+      "phone": "252-486-6147",
+      "email": "",
+      "contactName": "Starlight Homes Cardinal Woods sales",
+      "recentBuilds": 1,
+      "qualifyingPermitCount": 1,
+      "activityTier": "nearby-affordable-production",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 78,
+      "sourceUrl": "https://www.starlighthomes.com/raleigh/cardinal-woods",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.starlighthomes.com/raleigh/cardinal-woods"
+      ],
+      "publicSource": "Starlight official Cardinal Woods page plus NewHomeSource current listing.",
+      "evidenceType": "nearby official-community signal",
+      "demandSignal": "Cardinal Woods is listed in Vaughan/Nashville-area; official Starlight page markets Cardinal Woods as new homes in Nashville NC with a short commute to Rocky Mount.",
+      "communities": [
+        "Cardinal Woods \u2014 Vaughan/Nashville NC area \u2014 from $260,990 \u2014 3-4 bed / 2-3 bath / 1,206-2,260 sf"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "STARLIGHT-CARDINAL-WOODS-OFFICIAL",
+          "address": "Cardinal Woods, Nashville/Vaughan, NC",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Official builder community",
+          "workClass": "Current active community",
+          "landUse": "Affordable single-family homes",
+          "description": "Official Starlight page says Cardinal Woods is new homes in Nashville, NC with short commute to Rocky Mount; public sales phone 252-486-6147.",
+          "sourceUrl": "https://www.starlighthomes.com/raleigh/cardinal-woods"
+        }
+      ],
+      "buyBox": "Affordable-production nearby signal only. Call to confirm Rocky Mount 27803 geography and lot/development-site appetite.",
+      "acquisitionNotes": "Useful for affordable/SF lot demand validation; likely price-sensitive.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 7,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-four-seasons-contractors",
+      "name": "Four Seasons Contractors",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://fourseasonscontractors.com/",
+      "contactUrl": "https://fourseasonscontractors.com/",
+      "phone": "",
+      "email": "",
+      "contactName": "Four Seasons Contractors",
+      "recentBuilds": 1,
+      "qualifyingPermitCount": 1,
+      "activityTier": "nearby-local-builder",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 76,
+      "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://fourseasonscontractors.com/"
+      ],
+      "publicSource": "NewHomeSource current community listing; public company homepage checked.",
+      "evidenceType": "nearby local-builder community signal",
+      "demandSignal": "Four Seasons Nash County New Homes is listed in Nashville NC 27856 at $439,900+ in the Rocky Mount-area results.",
+      "communities": [
+        "Four Seasons Nash County New Homes \u2014 Nashville NC 27856 \u2014 from $439,900 \u2014 3-4 bed / 2-3 bath / 1,877-2,759 sf"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "NHS-FOUR-SEASONS-NASH-COUNTY",
+          "address": "Four Seasons Nash County New Homes, Nashville, NC 27856",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Four Seasons Nash County New Homes by Four Seasons Contractors in Nashville, NC.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Nearby local-builder signal only. Call for builder-lot/referral demand; likely smaller takedown than national builders.",
+      "acquisitionNotes": "Good local/regional referral source for Nash County builders and lot demand.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 8,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-eastwood-homes",
+      "name": "Eastwood Homes",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.eastwoodhomes.com/raleigh/wilson",
+      "contactUrl": "https://www.eastwoodhomes.com/contact",
+      "phone": "",
+      "email": "",
+      "contactName": "Eastwood Homes Raleigh/Wilson sales",
+      "recentBuilds": 2,
+      "qualifyingPermitCount": 2,
+      "activityTier": "nearby-regional-builder",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 74,
+      "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.eastwoodhomes.com/raleigh/wilson"
+      ],
+      "publicSource": "NewHomeSource current Wilson-area listings in the Rocky Mount-area set.",
+      "evidenceType": "nearby community signal",
+      "demandSignal": "1158 Place and 1158 Place Townhomes are listed in Wilson NC 27896 in the Rocky Mount-area community results.",
+      "communities": [
+        "1158 Place \u2014 Wilson NC 27896 \u2014 from $299,900 \u2014 3-4 bed / 2-3 bath / 1,893-2,162 sf",
+        "1158 Place Townhomes \u2014 Wilson NC 27896 \u2014 from $234,900 \u2014 3 bed / 2 bath / 1,367 sf"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "NHS-EASTWOOD-1158-PLACE",
+          "address": "1158 Place, Wilson, NC 27896",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family/townhomes",
+          "description": "NewHomeSource lists Eastwood Homes communities in Wilson near Rocky Mount.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Nearby regional-builder signal only. Call to confirm whether Eastwood wants Rocky Mount 27803 SF lots/development sites or stays Wilson/Raleigh-adjacent.",
+      "acquisitionNotes": "Lower priority for exact 27803 than Adams/D.R./Century; still worth a validation call for buyer list breadth.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 9,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    },
+    {
+      "id": "rocky-mount-nc-builder-ryan-homes",
+      "name": "Ryan Homes",
+      "market": "rocky-mount-nc",
+      "state": "NC",
+      "website": "https://www.ryanhomes.com/",
+      "contactUrl": "https://www.ryanhomes.com/contact-us",
+      "phone": "",
+      "email": "carolinasteam@ryanhomes.com",
+      "contactName": "Ryan Homes Carolinas team",
+      "recentBuilds": 1,
+      "qualifyingPermitCount": 1,
+      "activityTier": "nearby-production",
+      "validationStatus": "needs-call-confirmation",
+      "confidence": 72,
+      "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+      "sourceUrls": [
+        "https://www.newhomesource.com/communities/nc/rocky-mount-area",
+        "https://www.ryanhomes.com/"
+      ],
+      "publicSource": "NewHomeSource current Bailey-area listing; Ryan Homes public site checked for contact path.",
+      "evidenceType": "nearby community signal",
+      "demandSignal": "Williams Run is listed in Bailey NC 27807 in the Rocky Mount-area results.",
+      "communities": [
+        "Williams Run \u2014 Bailey NC 27807 \u2014 from $239,990 \u2014 3-4 bed / 2-3 bath / 1,296-2,203 sf"
+      ],
+      "recentPermits": [
+        {
+          "permitNumber": "NHS-RYAN-WILLIAMS-RUN",
+          "address": "Williams Run, Bailey, NC 27807",
+          "issuedAt": "2026-07-01",
+          "permitClass": "Market listing",
+          "workClass": "Current active community",
+          "landUse": "Single-family homes",
+          "description": "NewHomeSource lists Williams Run by Ryan Homes in Bailey, NC.",
+          "sourceUrl": "https://www.newhomesource.com/communities/nc/rocky-mount-area"
+        }
+      ],
+      "buyBox": "Nearby production-builder signal only. Call/email to verify whether Rocky Mount 27803 is in active acquisition geography.",
+      "acquisitionNotes": "Regional buyer candidate; qualify geography before spending seller-source time.",
+      "buyBoxStatus": "needs call",
+      "route": "buyerValidation",
+      "contactStatus": "public business contact path loaded",
+      "callable": true,
+      "rank": 10,
+      "projectFit": "SF Development Site Rocky Mount 27803",
+      "buyBoxCapture": {
+        "geography": "Are you actively buying lots or development sites in Rocky Mount 27803 / Nash-Edgecombe side, or only the listed community submarkets?",
+        "lotSize": "What finished-lot size/frontage/depth and raw-acre/site-yield range works for your SF product?",
+        "maxPrice": "What is your max finished-lot price or raw land / paper lot takedown price for Rocky Mount?",
+        "closeSpeed": "Can you close/takedown now, and do you prefer bulk lots, optioned phases, or finished lots?",
+        "packageRecipient": "Who receives land/development-site packages and what should the memo include?",
+        "dealKillers": "What kills Rocky Mount lots: no sewer, no water, flood/wetlands, road access, zoning, offsite costs, HOA, title, impact/extension fees?"
+      }
+    }
+  ],
+  "notes": [
+    "Prioritize same-ZIP/same-city builders first: Adams, D.R. Horton, Century Complete, Mullen.",
+    "Then call nearby production/regional builders with Wilson/Sims/Nashville/Castalia/Bailey communities for eastern-NC expansion appetite.",
+    "Use public business contacts/pages only; no personal mobiles or guessed emails."
+  ]
+}

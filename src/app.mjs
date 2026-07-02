@@ -990,25 +990,18 @@ function renderLandOfferMathChips(parcel = {}) {
 
 function renderSelectedLandSmsDraft(parcel = {}, math = parcel._landOfferMath || calculateLandOfferMath(parcel)) {
   const draft = buildLandSmsDraft(parcel, math);
-  if (!draft.smsPrice && !draft.blockers.length) return '';
-  const blockerRows = draft.blockers.length
-    ? `<div class="land-sms-draft-blockers">${draft.blockers.map(blocker => `<span>${h(blocker)}</span>`).join('')}</div>`
-    : '';
-  const draftPreview = draft.ready
-    ? `<textarea class="land-sms-draft-text" readonly rows="3">${h(draft.message)}</textarea>`
-    : '<p class="land-sms-draft-locked-copy">Draft unlocks after a nonzero SMS price, individual-owner gate, and verified owner phone are present.</p>';
-  const copyButton = draft.ready
-    ? `<button type="button" class="secondary land-sms-copy-button" data-copy-land-sms-draft>Copy SMS draft</button>`
-    : '<button type="button" class="secondary land-sms-copy-button" disabled>Draft locked</button>';
-  return `<section class="land-sms-draft-panel phase241-copy-only ${draft.ready ? 'is-ready' : 'is-locked'}" aria-label="Manual copy SMS draft">
+  const noteRows = draft.notes?.length
+    ? `<div class="land-sms-draft-blockers" aria-label="SMS draft notes">${draft.notes.map(note => `<span>${h(note)}</span>`).join('')}</div>`
+    : '<div class="land-sms-draft-blockers is-clear" aria-label="SMS draft notes"><span>No calculator warnings on this draft.</span></div>';
+  return `<section class="land-sms-draft-panel phase242-transparent is-transparent" aria-label="Manual copy SMS draft">
     <div class="land-sms-draft-head">
       <span class="eyebrow">SMS draft · copy/paste only</span>
-      <h4>${draft.ready ? 'Copyable seller draft' : 'SMS draft locked'}</h4>
-      <p>No send button. No campaign queue. This is only a clipboard helper after offer math, individual-owner, and verified-phone checks pass.</p>
+      <h4>Seller draft resource</h4>
+      <p>Always visible. Nothing sends from LandFlip OS; warnings stay beside the draft so you can use judgment instead of fighting rigid gates.</p>
     </div>
-    ${draftPreview}
-    ${blockerRows}
-    <div class="land-sms-draft-actions">${copyButton}<span class="land-sms-draft-status" aria-live="polite"></span></div>
+    <textarea class="land-sms-draft-text" readonly rows="3">${h(draft.message)}</textarea>
+    ${noteRows}
+    <div class="land-sms-draft-actions"><button type="button" class="secondary land-sms-copy-button" data-copy-land-sms-draft>Copy SMS draft</button><span class="land-sms-draft-status" aria-live="polite"></span></div>
   </section>`;
 }
 
@@ -4249,10 +4242,6 @@ function bindEvents() {
       const draft = buildLandSmsDraft(selected, math);
       const panel = event.target.closest('.land-sms-draft-panel');
       const status = panel?.querySelector('.land-sms-draft-status');
-      if (!draft.ready || !draft.message) {
-        if (status) status.textContent = 'Draft locked.';
-        return;
-      }
       const write = navigator.clipboard?.writeText?.(draft.message) || Promise.reject(new Error('Clipboard unavailable'));
       write.then(() => { if (status) status.textContent = 'SMS draft copied.'; }).catch(() => {
         downloadText(`landflip-sms-draft-${new Date().toISOString().slice(0, 10)}.txt`, draft.message, 'text/plain');

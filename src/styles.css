@@ -32132,11 +32132,11 @@ body[data-active-view="deals"] #parcels .land-offer-math-panel.is-manual-review 
   }
 }
 
-/* v2.41 - Land Offer Math SMS draft is copy/paste only: no sender, no campaign system. */
+/* v2.42 - Land Offer Math SMS draft stays visible; warnings do not hide useful resources. */
 body[data-active-view="deals"] #parcels {
-  --land-phase241-sms-draft: copy-paste-draft-only-no-sending;
+  --land-phase242-sms-draft: transparent-copy-paste-resource-no-sending;
 }
-body[data-active-view="deals"] #parcels .land-sms-draft-panel.phase241-copy-only {
+body[data-active-view="deals"] #parcels .land-sms-draft-panel.phase242-transparent {
   margin-top: clamp(18px, 2.5vw, 28px) !important;
   padding-top: clamp(16px, 2.2vw, 24px) !important;
   border-top: 1px solid rgba(11,90,67,.12) !important;
@@ -32198,6 +32198,11 @@ body[data-active-view="deals"] #parcels .land-sms-draft-blockers span {
   font-size: 11px !important;
   font-weight: 800 !important;
 }
+body[data-active-view="deals"] #parcels .land-sms-draft-blockers.is-clear span {
+  border-left-color: rgba(11,90,67,.42) !important;
+  background: rgba(11,90,67,.055) !important;
+  color: #0b5a43 !important;
+}
 body[data-active-view="deals"] #parcels .land-sms-draft-actions {
   display: flex !important;
   flex-wrap: wrap !important;
@@ -32207,10 +32212,6 @@ body[data-active-view="deals"] #parcels .land-sms-draft-actions {
 }
 body[data-active-view="deals"] #parcels .land-sms-copy-button {
   min-height: 34px !important;
-}
-body[data-active-view="deals"] #parcels .land-sms-copy-button[disabled] {
-  opacity: .45 !important;
-  cursor: not-allowed !important;
 }
 body[data-active-view="deals"] #parcels .land-sms-draft-status {
   color: rgba(23,33,27,.58) !important;

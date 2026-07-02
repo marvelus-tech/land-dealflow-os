@@ -39,15 +39,22 @@ const draft = buildLandSmsDraft({ ownerName: 'Avery Johnson', ownerPhone: '91955
 assert.equal(draft.ready, true);
 assert.equal(draft.manualCopyOnly, true);
 assert.equal(draft.noSending, true);
+assert.equal(draft.transparentWarningsOnly, true);
 assert.match(draft.message, /^Hi Avery, I’m looking at your land on 123 Rankin St, Raleigh in Wake County\./);
 assert.match(draft.message, /\$468,000 cash\/as-is\?/);
 
 const entityDraft = buildLandSmsDraft({ ownerName: 'Rankin Holdings LLC', ownerPhone: '9195550101', zip: '27607', acres: 0.25 }, rankin);
-assert.equal(entityDraft.ready, false);
-assert.match(entityDraft.blockers.join(' '), /Entity\/trust\/institution owner/);
+assert.equal(entityDraft.ready, true);
+assert.match(entityDraft.message, /\$468,000 cash\/as-is\?/);
+assert.match(entityDraft.notes.join(' '), /Entity\/trust\/institution owner/);
 assert.equal(landSmsOwnerGate({ ownerName: 'Morgan Trust' }).ready, false);
 
 const manualReview = calculateLandOfferMath({ zip: '99999', access: 'landlocked' });
+const unpricedDraft = buildLandSmsDraft({ ownerName: 'Taylor Morgan', address: 'Unknown parcel, Knoxville, TN' }, manualReview);
+assert.equal(unpricedDraft.ready, true);
+assert.match(unpricedDraft.message, /if we can agree on a price/);
+assert.match(unpricedDraft.notes.join(' '), /No calculated SMS price yet/);
+
 assert.equal(manualReview.confidence, 'manual-review');
 assert.equal(manualReview.nextAction, 'manual-review');
 assert.ok(manualReview.blockers.includes('No matching ZIP buy box or builder target.'));

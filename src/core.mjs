@@ -203,25 +203,30 @@ export function buildLandSmsDraft(parcel = {}, math = calculateLandOfferMath(par
   const hardBlockers = Array.isArray(math?.blockers) ? math.blockers.filter(Boolean) : [];
   const phone = String(parcel.ownerPhone || parcel.phone || '').trim();
   const smsPrice = Number(math?.smsPriceToSend || math?.sms?.price || 0);
-  const blockers = [];
-  if (!smsPrice) blockers.push('SMS price missing.');
-  if (hardBlockers.length) blockers.push(...hardBlockers);
-  if (!ownerGate.ready) blockers.push(ownerGate.label);
-  if (!phone) blockers.push('Verified owner phone missing.');
+  const notes = [];
+  if (!smsPrice) notes.push('No calculated SMS price yet; use this as a conversation opener, not a priced offer.');
+  if (hardBlockers.length) notes.push(...hardBlockers.map(blocker => `Calculator note: ${blocker}`));
+  if (!ownerGate.ready) notes.push(`Owner note: ${ownerGate.label}`);
+  if (!phone) notes.push('Phone note: verified owner phone missing.');
   const ownerFirst = String(parcel.ownerName || parcel.owner || 'there').trim().split(/\s+/)[0] || 'there';
   const address = landSmsAddressLine(parcel);
   const county = String(parcel.county || parcel.market || '').trim();
   const location = county && !new RegExp(county.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(address) ? `${address} in ${county}` : address;
-  const message = `Hi ${ownerFirst}, I’m looking at your land on ${location}. Would you consider selling it for around ${formatMoney(smsPrice)} cash/as-is?`;
+  const priceLine = smsPrice
+    ? `Would you consider selling it for around ${formatMoney(smsPrice)} cash/as-is?`
+    : 'Would you consider selling it cash/as-is if we can agree on a price?';
+  const message = `Hi ${ownerFirst}, I’m looking at your land on ${location}. ${priceLine}`;
   return {
-    ready: blockers.length === 0,
-    message: blockers.length ? '' : message,
+    ready: true,
+    message,
     displayMessage: message,
     smsPrice,
     ownerGate,
-    blockers,
+    blockers: notes,
+    notes,
     manualCopyOnly: true,
     noSending: true,
+    transparentWarningsOnly: true,
   };
 }
 

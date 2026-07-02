@@ -181,6 +181,50 @@ export function calculateLandOfferMath(parcel = {}, options = {}) {
   };
 }
 
+export function landSmsOwnerGate(parcel = {}) {
+  const ownerName = String(parcel.ownerName || parcel.owner || '').trim();
+  const entityText = String(parcel.entityType || parcel.ownerType || '').trim();
+  const ownerText = `${ownerName} ${entityText}`.toUpperCase();
+  if (!ownerName) return { ready: false, state: 'owner-missing', label: 'Owner missing' };
+  if (/\b(LLC|INC|CORP|COMPANY|CO\.|LTD|LP|LLP|BANK|CHURCH|MINISTRY|CITY OF|COUNTY|AUTHORITY|ASSOCIATION|FOUNDATION|HOLDINGS?|INVESTMENTS?)\b/.test(ownerText)) return { ready: false, state: 'entity-review', label: 'Entity/trust/institution owner — human review' };
+  if (/\b(TRUST|TRUSTEE|ESTATE|HEIRS?|PROBATE|DECEASED)\b/.test(ownerText)) return { ready: false, state: 'human-review', label: 'Estate/trust/heirs owner — human review' };
+  if (/\b(ET AL|EL\/E|E\/LE|L\/E)\b/.test(ownerText)) return { ready: false, state: 'multi-owner-review', label: 'Multi-owner record — human review' };
+  return { ready: true, state: 'individual-owner', label: 'Individual owner' };
+}
+
+function landSmsAddressLine(parcel = {}) {
+  const raw = String(parcel.propertyAddress || parcel.address || parcel.siteAddress || parcel.parcelAddress || '').trim();
+  if (!raw) return 'your land';
+  return raw.split(',').slice(0, 2).map(part => part.trim()).filter(Boolean).join(', ') || raw;
+}
+
+export function buildLandSmsDraft(parcel = {}, math = calculateLandOfferMath(parcel)) {
+  const ownerGate = landSmsOwnerGate(parcel);
+  const hardBlockers = Array.isArray(math?.blockers) ? math.blockers.filter(Boolean) : [];
+  const phone = String(parcel.ownerPhone || parcel.phone || '').trim();
+  const smsPrice = Number(math?.smsPriceToSend || math?.sms?.price || 0);
+  const blockers = [];
+  if (!smsPrice) blockers.push('SMS price missing.');
+  if (hardBlockers.length) blockers.push(...hardBlockers);
+  if (!ownerGate.ready) blockers.push(ownerGate.label);
+  if (!phone) blockers.push('Verified owner phone missing.');
+  const ownerFirst = String(parcel.ownerName || parcel.owner || 'there').trim().split(/\s+/)[0] || 'there';
+  const address = landSmsAddressLine(parcel);
+  const county = String(parcel.county || parcel.market || '').trim();
+  const location = county && !new RegExp(county.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i').test(address) ? `${address} in ${county}` : address;
+  const message = `Hi ${ownerFirst}, I’m looking at your land on ${location}. Would you consider selling it for around ${formatMoney(smsPrice)} cash/as-is?`;
+  return {
+    ready: blockers.length === 0,
+    message: blockers.length ? '' : message,
+    displayMessage: message,
+    smsPrice,
+    ownerGate,
+    blockers,
+    manualCopyOnly: true,
+    noSending: true,
+  };
+}
+
 export function classifyParcelRisk(parcel) {
   const flags = [];
   if (parcel.wetlands && parcel.wetlands !== 'none') flags.push(`wetlands: ${parcel.wetlands}`);

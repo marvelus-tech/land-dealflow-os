@@ -51,6 +51,7 @@ import {
   generateNeighborPrompt,
   buildOperatorChecklist,
   buildTitleCompanyClosingDesk,
+  buildLandSmsDraft,
   calculateLandOfferMath,
   normalizeLandOfferBuyBoxes,
   buildContractPacketDraft,
@@ -985,6 +986,30 @@ function renderLandOfferMathChips(parcel = {}) {
   </div>`;
 }
 
+function renderSelectedLandSmsDraft(parcel = {}, math = parcel._landOfferMath || calculateLandOfferMath(parcel)) {
+  const draft = buildLandSmsDraft(parcel, math);
+  if (!draft.smsPrice && !draft.blockers.length) return '';
+  const blockerRows = draft.blockers.length
+    ? `<div class="land-sms-draft-blockers">${draft.blockers.map(blocker => `<span>${h(blocker)}</span>`).join('')}</div>`
+    : '';
+  const draftPreview = draft.ready
+    ? `<textarea class="land-sms-draft-text" readonly rows="3">${h(draft.message)}</textarea>`
+    : '<p class="land-sms-draft-locked-copy">Draft unlocks after a nonzero SMS price, individual-owner gate, and verified owner phone are present.</p>';
+  const copyButton = draft.ready
+    ? `<button type="button" class="secondary land-sms-copy-button" data-copy-land-sms-draft>Copy SMS draft</button>`
+    : '<button type="button" class="secondary land-sms-copy-button" disabled>Draft locked</button>';
+  return `<section class="land-sms-draft-panel phase241-copy-only ${draft.ready ? 'is-ready' : 'is-locked'}" aria-label="Manual copy SMS draft">
+    <div class="land-sms-draft-head">
+      <span class="eyebrow">SMS draft · copy/paste only</span>
+      <h4>${draft.ready ? 'Copyable seller draft' : 'SMS draft locked'}</h4>
+      <p>No send button. No campaign queue. This is only a clipboard helper after offer math, individual-owner, and verified-phone checks pass.</p>
+    </div>
+    ${draftPreview}
+    ${blockerRows}
+    <div class="land-sms-draft-actions">${copyButton}<span class="land-sms-draft-status" aria-live="polite"></span></div>
+  </section>`;
+}
+
 function renderSelectedLandOfferMathPanel(parcel = {}) {
   const math = parcel._landOfferMath || calculateLandOfferMath(parcel);
   const adjustmentRows = math.adjustments.length
@@ -1016,6 +1041,7 @@ function renderSelectedLandOfferMathPanel(parcel = {}) {
       <article><span>Compliance</span><b>Manual copy only</b><p>${h(math.sms?.compliance || 'No texting or campaigns. Manual copy/paste draft support only.')}</p></article>
     </div>
     <ul class="offer-math-adjustments">${adjustmentRows}</ul>
+    ${renderSelectedLandSmsDraft(parcel, math)}
   </section>`;
 }
 
@@ -4212,6 +4238,25 @@ function bindEvents() {
         downloadText(`land-dealflow-buyer-send-memo-${new Date().toISOString().slice(0, 10)}.txt`, memo.message, 'text/plain');
         if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
       });
+    }
+
+    if (event.target.matches('[data-copy-land-sms-draft]')) {
+      const selected = getSelectedParcel(getVisibleParcels());
+      if (!selected) return;
+      const math = selected._landOfferMath || calculateLandOfferMath(selected, { buyBoxes: landOfferBuyBoxes });
+      const draft = buildLandSmsDraft(selected, math);
+      const panel = event.target.closest('.land-sms-draft-panel');
+      const status = panel?.querySelector('.land-sms-draft-status');
+      if (!draft.ready || !draft.message) {
+        if (status) status.textContent = 'Draft locked.';
+        return;
+      }
+      const write = navigator.clipboard?.writeText?.(draft.message) || Promise.reject(new Error('Clipboard unavailable'));
+      write.then(() => { if (status) status.textContent = 'SMS draft copied.'; }).catch(() => {
+        downloadText(`landflip-sms-draft-${new Date().toISOString().slice(0, 10)}.txt`, draft.message, 'text/plain');
+        if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
+      });
+      return;
     }
 
     if (event.target.matches('[data-copy-title-email]')) {

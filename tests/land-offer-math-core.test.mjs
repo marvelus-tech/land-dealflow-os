@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { calculateLandOfferMath, normalizeLandOfferBuyBoxes } from '../src/core.mjs';
+import { buildLandSmsDraft, calculateLandOfferMath, landSmsOwnerGate, normalizeLandOfferBuyBoxes } from '../src/core.mjs';
 
 const dataBuyBoxes = JSON.parse(readFileSync('data/real/buy_boxes/land_offer_buy_boxes.json', 'utf8'));
 const normalizedBuyBoxes = normalizeLandOfferBuyBoxes(dataBuyBoxes);
@@ -34,6 +34,18 @@ assert.equal(risk.riskAdjustedBuilderTarget, 352000);
 assert.equal(risk.suggestedSellerOffer, 299200);
 assert.equal(risk.projectedAssignmentFee, 52800);
 assert.equal(risk.smsPriceToSend, 299000);
+
+const draft = buildLandSmsDraft({ ownerName: 'Avery Johnson', ownerPhone: '9195550101', address: '123 Rankin St, Raleigh, NC 27607', county: 'Wake County', acres: 0.25 }, rankin);
+assert.equal(draft.ready, true);
+assert.equal(draft.manualCopyOnly, true);
+assert.equal(draft.noSending, true);
+assert.match(draft.message, /^Hi Avery, I’m looking at your land on 123 Rankin St, Raleigh in Wake County\./);
+assert.match(draft.message, /\$468,000 cash\/as-is\?/);
+
+const entityDraft = buildLandSmsDraft({ ownerName: 'Rankin Holdings LLC', ownerPhone: '9195550101', zip: '27607', acres: 0.25 }, rankin);
+assert.equal(entityDraft.ready, false);
+assert.match(entityDraft.blockers.join(' '), /Entity\/trust\/institution owner/);
+assert.equal(landSmsOwnerGate({ ownerName: 'Morgan Trust' }).ready, false);
 
 const manualReview = calculateLandOfferMath({ zip: '99999', access: 'landlocked' });
 assert.equal(manualReview.confidence, 'manual-review');

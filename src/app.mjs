@@ -2008,6 +2008,45 @@ function permitVerificationLink(permit = {}) {
   return url ? safeLink(url, 'Verify permit', 'proof-inline-link verify-permit-link') : '';
 }
 
+function builderDedupeKey(row = {}) {
+  const profileUrl = String(row.website || row.contactUrl || row.sourceProfileUrl || '').trim().toLowerCase().replace(/\/$/, '');
+  if (profileUrl) return `profile:${profileUrl}`;
+  const label = String(row.name || row.companyName || row.builderName || row.contractorName || '').toLowerCase().replace(/\b(limited liability company|llc|l l c|incorporated|inc|corporation|corp|company|co|ltd|limited)\b/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
+  return label ? `name:${label}` : `id:${row.builderId || row.id || ''}`;
+}
+
+function mergeDuplicateBuilderRows(rows = []) {
+  const mergedByKey = new Map();
+  asArray(rows).forEach(row => {
+    const key = builderDedupeKey(row);
+    const existing = mergedByKey.get(key);
+    if (!existing) {
+      mergedByKey.set(key, { ...row });
+      return;
+    }
+    const zipCodes = [...new Set([...asArray(existing.zipCodes), ...asArray(row.zipCodes)].filter(Boolean))];
+    const sourceUrls = [...new Set([...asArray(existing.sourceUrls), existing.sourceUrl, ...asArray(row.sourceUrls), row.sourceUrl, row.website, row.contactUrl].filter(Boolean))];
+    const richerContact = (row.phone || row.email) && !(existing.phone || existing.email) ? row : existing;
+    mergedByKey.set(key, {
+      ...existing,
+      phone: richerContact.phone || existing.phone || row.phone || '',
+      contactPhone: richerContact.contactPhone || existing.contactPhone || row.contactPhone || '',
+      email: richerContact.email || existing.email || row.email || '',
+      contactEmail: richerContact.contactEmail || existing.contactEmail || row.contactEmail || '',
+      recentBuilds: Math.max(Number(existing.recentBuilds || 0), Number(row.recentBuilds || 0)),
+      qualifyingPermitCount: Math.max(Number(existing.qualifyingPermitCount || 0), Number(row.qualifyingPermitCount || 0)),
+      confidence: Math.max(Number(existing.confidence || 0), Number(row.confidence || 0)),
+      callable: Boolean(existing.callable || row.callable || richerContact.phone || richerContact.email),
+      zipCodes,
+      sourceUrls,
+      sourceUrl: existing.sourceUrl || row.sourceUrl || sourceUrls[0] || '',
+      recentPermits: [...asArray(existing.recentPermits), ...asArray(row.recentPermits)],
+      dedupeNote: existing.dedupeNote || row.dedupeNote || 'Merged duplicate builder directory rows before rendering.',
+    });
+  });
+  return [...mergedByKey.values()];
+}
+
 function normalizeBuilderSignal(row = {}, source = {}) {
   const permits = asArray(row.recentPermits).map(permit => normalizePermitEvidence(permit, source));
   const sourceJurisdictions = [...new Set(permits.map(permit => permit.jurisdiction).filter(Boolean))].slice(0, 3);
@@ -2076,7 +2115,7 @@ function getLoadedBuilderMarkets() {
     return [key, {
       ...source,
       ...data,
-      rows: asArray(Array.isArray(data) ? data : data.rows).map(row => normalizeBuilderSignal(row, source)),
+      rows: mergeDuplicateBuilderRows(asArray(Array.isArray(data) ? data : data.rows).map(row => normalizeBuilderSignal(row, source))),
     }];
   }));
   if (knoxvilleBuyerCallSheet?.rows?.length) {
@@ -2089,7 +2128,7 @@ function getLoadedBuilderMarkets() {
       marketName: 'Knoxville / Knox County, TN',
       csvUrl: 'data/real/knoxville/buyer_call_sheet.csv',
       evidence: knoxvilleBuyerCallSheet,
-      rows: asArray(knoxvilleBuyerCallSheet.rows).map(row => normalizeBuilderSignal({ ...row, id: row.builderId || row.id, name: row.name || row.companyName }, source)),
+      rows: mergeDuplicateBuilderRows(asArray(knoxvilleBuyerCallSheet.rows).map(row => normalizeBuilderSignal({ ...row, id: row.builderId || row.id, name: row.name || row.companyName }, source))),
     };
   }
   return markets;

@@ -28,6 +28,8 @@ const markets = [
   ['evansville-in', 'IN', 'data/real/evansville-in/builder_signals.json', 30],
 ];
 
+const duplicateKey = row => String(row.website || row.contactUrl || row.name || row.companyName || row.builderName || '').trim().toLowerCase().replace(/\/$/, '');
+
 assert.match(app, /const builderMarketSources = \[/, 'UI must declare deployed builder market sources');
 assert.match(app, /async function loadBuilderMarketData\(\)/, 'UI must load multi-market builder JSON');
 assert.match(app, /loadBuilderMarketData\(\)\.then\(renderAll\)/, 'UI must render after multi-market data loads');
@@ -93,12 +95,18 @@ assert.match(app, /row\.name \|\| row\.companyName \|\| row\.builderName/, 'Buil
 assert.match(app, /row\.sourceUrl \|\| asArray\(row\.sourceUrls\)\[0\]/, 'Builder normalization must use sourceUrls arrays for proof links');
 assert.match(app, /let selectedBuilderMarketKey = ''/, 'Builders should open on the whole selected state so every live county lane is visible before drilling into one market');
 assert.match(app, /selectedBuilderMarketKey = ''/, 'Clicking a state must reset the county lane filter and show every live market in that state');
+assert.match(app, /function mergeDuplicateBuilderRows/, 'Builders loader must dedupe repeated public profile rows before rendering');
+assert.match(app, /builderDedupeKey/, 'Builders loader must use a stable profile/name key for duplicate prevention');
+assert.match(app, /mergeDuplicateBuilderRows\(asArray\(Array\.isArray\(data\) \? data : data\.rows\)\.map/, 'All loaded market artifacts should pass through duplicate-row merging');
+
 for (const [key, state, url, minRows] of markets) {
   assert.ok(app.includes(`key: '${key}'`), `missing builder source key ${key}`);
   assert.ok(app.includes(`state: '${state}'`), `missing state ${state} for ${key}`);
   assert.ok(app.includes(url), `missing builder signals URL ${url}`);
   const rows = JSON.parse(fs.readFileSync(url, 'utf8'));
   assert.ok(rows.length >= minRows, `${key} must have at least ${minRows} deployed builder rows`);
+  const duplicateKeys = rows.map(duplicateKey).filter(Boolean);
+  assert.equal(new Set(duplicateKeys).size, duplicateKeys.length, `${key} must not contain duplicate public builder profile/name rows`);
 }
 
 for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {

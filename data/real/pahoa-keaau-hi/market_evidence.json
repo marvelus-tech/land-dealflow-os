@@ -10,7 +10,10 @@
   ],
   "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
   "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
-  "builderCount": 88,
-  "callableCount": 20,
-  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+  "builderCount": 72,
+  "callableCount": 14,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json",
+  "dedupePolicy": "One row per public builder profile/name; duplicate BuildZoom directory appearances across 96749, 96778, and 96771 are merged with ZIP scope preserved.",
+  "dedupedFromRows": 88,
+  "duplicateGroupsMerged": 8
 }

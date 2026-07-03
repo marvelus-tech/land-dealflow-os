@@ -3297,14 +3297,17 @@ function renderSourcePriorityBoard() {
   const target = document.querySelector('#source-priority-board');
   if (!target) return;
   const landscape = getPermitPortalLandscape();
-  const leading = asArray(landscape.leadingMarkets).slice(0, 8);
+  const leading = asArray(landscape.leadingMarkets).slice(0, 12);
   const tnMarkets = leading.filter(item => item.state === 'TN');
   const nextMarkets = leading.filter(item => item.state !== 'TN');
   const tierRows = asArray(landscape.tiers).slice(0, 2).map(tier => `<article><span>${h(tier.name.replace(/^Tier \d+ - /, ''))}</span>${asArray(tier.items).slice(0, 3).map(item => safeLink(item.url, item.label, 'priority-source-link')).join('')}</article>`).join('');
   const stackOrder = [
-    { code: 'TN', label: 'Tennessee', stance: 'live first', platform: 'Buildchek + direct portals' },
-    { code: 'FL', label: 'Inland Florida', stance: 'queued resource lane', platform: 'Accela / EnerGov / Civic Access' },
-    { code: 'AZ', label: 'Arizona', stance: 'queued velocity lane', platform: 'Maricopa weekly + Accela cities' },
+    { code: 'FL', label: 'Charlotte County ZIPs', stance: 'live ZIP sprints', platform: 'BuildZoom public profiles + county follow-up' },
+    { code: 'AZ', label: 'Maricopa + Mohave ZIPs', stance: 'live ZIP sprints', platform: 'BuildZoom public profiles + county follow-up' },
+    { code: 'HI', label: 'Puna / East Hawaii', stance: 'live ZIP sprint', platform: 'BuildZoom public profiles + Hawaii County follow-up' },
+    { code: 'NV', label: 'Pahrump 89048', stance: 'live ZIP sprint', platform: 'BuildZoom public profiles + Nye County follow-up' },
+    { code: 'CA', label: 'Joshua Tree 92252', stance: 'live ZIP sprint', platform: 'BuildZoom public profiles + San Bernardino follow-up' },
+    { code: 'TN', label: 'Tennessee', stance: 'existing live core', platform: 'Buildchek + direct portals' },
     { code: 'NC', label: 'North Carolina', stance: 'Piedmont lane', platform: 'Buildchek + Mecklenburg/Wake direct data' },
     { code: 'TX', label: 'Texas', stance: 'fragmented high-volume lane', platform: 'PermitVector + Austin/San Antonio open data' },
     { code: 'GA', label: 'Georgia', stance: 'secondary data-center lane', platform: 'Forsyth/Hall/Jackson/Douglas permit lanes' },

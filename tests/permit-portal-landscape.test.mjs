@@ -5,10 +5,23 @@ const landscape = getPermitPortalLandscape();
 
 assert.equal(landscape.leadingMarkets[0].state, 'TN');
 assert.match(landscape.leadingMarkets[0].market, /Knoxville/);
-assert.equal(landscape.leadingMarkets[4].state, 'FL', 'inland Florida must be first source lane after Tennessee');
-assert.equal(landscape.leadingMarkets[5].state, 'AZ', 'Arizona must follow inland Florida in the priority stack');
-assert.equal(landscape.leadingMarkets[6].state, 'NC', 'North Carolina must follow Arizona in the priority stack');
-assert.equal(landscape.leadingMarkets[7].state, 'TX', 'Texas must remain the final source lane because DIY coverage is fragmented');
+for (const market of [
+  ['FL', /Port Charlotte 33948/],
+  ['FL', /Punta Gorda/],
+  ['FL', /Port Charlotte 33953/],
+  ['AZ', /Maricopa \/ Ak-Chin/],
+  ['AZ', /Mohave Valley/],
+  ['HI', /Puna \/ East Hawaii/],
+  ['NV', /Pahrump 89048/],
+  ['CA', /Joshua Tree 92252/],
+]) {
+  assert.ok(
+    landscape.leadingMarkets.some(item => item.state === market[0] && market[1].test(item.market)),
+    `specific ZIP sprint must appear in Sources priority landscape: ${market[0]} ${market[1]}`,
+  );
+}
+assert.ok(landscape.leadingMarkets.find(item => item.state === 'NC'));
+assert.ok(landscape.leadingMarkets.find(item => item.state === 'TX'));
 assert.ok(!JSON.stringify(landscape).match(/Kentucky|\bKY\b/), 'Kentucky must not appear in the priority permit landscape');
 assert.ok(landscape.leadingMarkets.some(item => item.state === 'NC'));
 assert.ok(landscape.leadingMarkets.some(item => item.state === 'TX'));

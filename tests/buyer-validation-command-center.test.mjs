@@ -152,7 +152,7 @@ assert.match(appSource, /zillow-market-link/, 'priority markets should expose Zi
 assert.match(appSource, /Zillow market view/, 'Zillow market links should be labeled as market views, not evidence');
 assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/knoxville-tn\//, 'Knoxville market should include a Zillow context link');
 assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/austin-tx\//, 'Texas market should include a Zillow context link');
-assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/polk-county-fl\//, 'Florida market should include a Zillow context link');
+assert.match(coreSource, /zillowUrl: 'https:\/\/www\.zillow\.com\/port-charlotte-fl-33948\//, 'Florida specific ZIP market should include a Zillow context link');
 assert.match(appSource, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'selected market state must drive the call queue with active rows, not just the hero');
 assert.match(appSource, /if \(!rows\.length\)/, 'states with no data must still render an intentional empty call queue state');
 assert.match(appSource, /getStateBuilderRows\(stateCode\)/, 'all loaded states should receive live builder rows');

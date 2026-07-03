@@ -8,14 +8,30 @@
     "GA",
     "SC"
   ],
-  "nextState": "FL",
+  "nextState": "AZ",
   "attempts": [
     {
       "at": "2026-06-26T21:36:16.015Z",
       "state": "TN",
       "market": "chattanooga-tn",
       "outcome": "selected"
+    },
+    {
+      "at": "2026-07-03T21:32:59.192Z",
+      "state": "FL",
+      "market": "ocala-fl",
+      "outcome": "blocked-no-contractor-bearing-public-source"
     }
   ],
-  "blockedMarkets": []
+  "blockedMarkets": [
+    {
+      "market": "ocala-fl",
+      "marketName": "Ocala / Marion County, FL",
+      "state": "FL",
+      "date": "2026-07-03",
+      "reason": "Official Marion County ArcGIS EPL_PermitReport layer is machine-readable and exposes permit number, dates, type/status, parcel, and site address, but it does not expose contractor/builder/applicant/contact fields. Marionfl.org Building Safety pages returned HTTP 403 from this environment, and token-gated internal permit map services are not safe to automate. Unable to produce 20+ unique permit-active builders without fabricating builder identities.",
+      "sourceChecked": "https://gis.marionfl.org/public/rest/services/Applications/EPL_PermitReport/MapServer/0",
+      "nextHumanAction": "Ask Marion County Building Safety/Growth Services for a public contractor-bearing permit export/API, report endpoint, or portal access path; otherwise pick another official FL inland county source with contractor fields."
+    }
+  ]
 }

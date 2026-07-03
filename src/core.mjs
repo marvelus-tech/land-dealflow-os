@@ -2561,21 +2561,11 @@ export function generateBuilderEmail(builder = {}) {
   const market = builder.marketName || builder.primaryCity || builder.market || '{{Market}}';
   const company = builder.name || builder.companyName || '{{CompanyName}}';
   const recentBuilds = Number(builder.recentBuilds || builder.qualifyingPermitCount || 0);
-  const { permitNumber, permitAddress } = getBuilderTopPermitEvidence(builder);
-  const sourcePhrase = getPermitSourcePhrase(builder);
   const proofClause = recentBuilds
-    ? `${company} shows ${recentBuilds} recent residential build signals${permitNumber || permitAddress ? `, including ${permitNumber || 'a recent permit'} near ${permitAddress || market}` : ''}.`
-    : `${company} shows recent residential permit/build activity in ${market}.`;
+    ? `I saw ${company} is building in ${market}.`
+    : `I saw you’re building homes in ${market}.`;
   const subject = `Quick question on ${market} lots`;
-  const buyBoxQuestions = [
-    'What zip codes/subdivisions?',
-    'Lot sizes?',
-    'Max lot price?',
-    'Utility/access requirements?',
-    'Flood, wetlands, road, zoning, or title deal killers?',
-    'Best person to send a clean parcel package to?',
-  ].map(question => `- ${question}`).join('\n');
-  const body = `Good morning,\n\nMy name is Okeito, and I run MarvelUs Intel LLC. I’m not trying to blast you with random parcels — I’m trying to learn what actually makes your job easier.\n\nI’m tracking ${sourcePhrase} builder activity in ${market}. ${proofClause}\n\nIf you’re still buying/building in this area, I’d like to screen off-market lots around your exact criteria before I send anything. Could you point me to the right buy box?\n\n${buyBoxQuestions}\n\nIf a lot doesn’t fit, I won’t waste your time. If it does, I’ll send the basics clearly so you can give me a fast yes/no.\n\nThanks,\n\nOkeito S.\nMarvelUs Intel LLC`;
+  const body = `Good afternoon,\n\nMy name is Okeito, and I run MarvelUs Intel LLC. ${proofClause}\n\nI bring builders off-market land opportunities and try to make the screening easy: only deals that fit your buy box and can save you money versus buying on-market.\n\nIs there anything specific you’re looking for right now, and what range would you want to pay?\n\nThanks,\n\nOkeito S.\nMarvelUs Intel LLC`;
   return { subject, body };
 }
 

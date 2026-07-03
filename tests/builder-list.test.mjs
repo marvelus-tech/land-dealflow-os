@@ -46,15 +46,15 @@ const email = generateBuilderEmail({
   topPermitAddress: '8362 LAKE VILLAGE CIR',
 });
 assert.equal(email.subject, 'Quick question on Knoxville lots');
+assert.match(email.body, /Good afternoon/);
 assert.match(email.body, /My name is Okeito, and I run MarvelUs Intel LLC/);
-assert.match(email.body, /not trying to blast you with random parcels/);
-assert.match(email.body, /what actually makes your job easier/);
-assert.match(email.body, /public KGIS permit-backed builder activity in Knoxville/);
-assert.match(email.body, /Smithbilt Homes shows 70 recent residential build signals, including 25-B1211 near 8362 LAKE VILLAGE CIR/);
-assert.match(email.body, /exact criteria/);
-assert.match(email.body, /Could you point me to the right buy box\?/);
-assert.match(email.body, /- What zip codes\/subdivisions\?\n- Lot sizes\?\n- Max lot price\?\n- Utility\/access requirements\?\n- Flood, wetlands, road, zoning, or title deal killers\?\n- Best person to send a clean parcel package to\?/);
-assert.match(email.body, /If a lot doesn’t fit, I won’t waste your time/);
+assert.match(email.body, /I saw Smithbilt Homes is building in Knoxville/);
+assert.match(email.body, /I bring builders off-market land opportunities/);
+assert.match(email.body, /make the screening easy/);
+assert.match(email.body, /save you money versus buying on-market/);
+assert.match(email.body, /Is there anything specific you’re looking for right now, and what range would you want to pay\?/);
+assert.doesNotMatch(email.body, /What zip codes\/subdivisions|Flood, wetlands|Best person to send a clean parcel package|not trying to blast you/);
+assert.ok(email.body.length < 520, 'relationship email should stay short enough to scan quickly');
 assert.match(email.body, /Okeito S\.\nMarvelUs Intel LLC/);
 
 const marketingEmail = generateBuilderMarketingEmailTemplate({ companyName: 'Precision Gulf Homes', contactName: 'Maya', primaryCity: 'Lehigh Acres' });

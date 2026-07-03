@@ -28,7 +28,7 @@ const markets = [
   ['evansville-in', 'IN', 'data/real/evansville-in/builder_signals.json', 30],
 ];
 
-const duplicateKey = row => String(row.website || row.contactUrl || row.name || row.companyName || row.builderName || '').trim().toLowerCase().replace(/\/$/, '');
+const duplicateKey = row => String(row.name || row.companyName || row.builderName || row.contractorName || '').toLowerCase().replace(/\b(limited liability company|llc|l l c|incorporated|inc|corporation|corp|company|co|ltd|limited)\b/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim() || String(row.website || row.contactUrl || '').trim().toLowerCase().replace(/\/$/, '');
 
 assert.match(app, /const builderMarketSources = \[/, 'UI must declare deployed builder market sources');
 assert.match(app, /async function loadBuilderMarketData\(\)/, 'UI must load multi-market builder JSON');

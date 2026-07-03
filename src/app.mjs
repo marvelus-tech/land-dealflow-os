@@ -2009,10 +2009,10 @@ function permitVerificationLink(permit = {}) {
 }
 
 function builderDedupeKey(row = {}) {
-  const profileUrl = String(row.website || row.contactUrl || row.sourceProfileUrl || '').trim().toLowerCase().replace(/\/$/, '');
-  if (profileUrl) return `profile:${profileUrl}`;
   const label = String(row.name || row.companyName || row.builderName || row.contractorName || '').toLowerCase().replace(/\b(limited liability company|llc|l l c|incorporated|inc|corporation|corp|company|co|ltd|limited)\b/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
-  return label ? `name:${label}` : `id:${row.builderId || row.id || ''}`;
+  if (label) return `name:${label}`;
+  const profileUrl = String(row.website || row.contactUrl || row.sourceProfileUrl || '').trim().toLowerCase().replace(/\/$/, '');
+  return profileUrl ? `profile:${profileUrl}` : `id:${row.builderId || row.id || ''}`;
 }
 
 function mergeDuplicateBuilderRows(rows = []) {

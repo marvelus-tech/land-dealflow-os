@@ -4,7 +4,7 @@
   "state": "TX",
   "generatedAt": "2026-06-24T21:33:41.519Z",
   "source": {
-    "name": "City of Austin Open Data — Issued Construction Permits",
+    "name": "City of Austin Open Data \u2014 Issued Construction Permits",
     "datasetId": "hw8f-smxh",
     "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
     "apiUrl": "https://data.austintexas.gov/resource/hw8f-smxh.json",
@@ -12,15 +12,21 @@
   },
   "summary": {
     "permitRowsSampled": 3531,
-    "uniqueBuilders": 50,
+    "uniqueBuilders": 49,
     "minimumUniqueBuilders": 20,
     "totalRecentBuildSignals": 2159,
-    "filter": "Residential building permits, New work class, one or more housing units, SFR / two-family / secondary apartment classes, issued since 2025-01-01."
+    "filter": "Residential building permits, New work class, one or more housing units, SFR / two-family / secondary apartment classes, issued since 2025-01-01.",
+    "callableBuilders": 49
   },
   "operatingRules": [
     "Permit contractors are buyer-validation candidates, not validated buyers, until buy box/contact is confirmed.",
     "Austin contact_phone may be a permit applicant/contractor phone; treat it as public permit context, not a verified sales/acquisitions line.",
     "No pool/accessory-structure contractors are included in this market batch.",
     "Do not promote seller sourcing until builder geography, lot size, max price, close speed, package recipient, and kill criteria are captured."
-  ]
+  ],
+  "builderCount": 49,
+  "callableCount": 49,
+  "dedupePolicy": "One row per normalized public builder name/profile inside the market; duplicate legal suffix variants are merged with provenance preserved.",
+  "dedupedFromRows": 50,
+  "duplicateGroupsMerged": 1
 }

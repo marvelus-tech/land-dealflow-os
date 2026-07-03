@@ -80,7 +80,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13718257"
       }
     ],
-    "acquisitionNotes": "Appears on 179 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078345 BP at 8900 BREEZE HILL DR issued 2026-06-22."
+    "acquisitionNotes": "Appears on 179 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078345 BP at 8900 BREEZE HILL DR issued 2026-06-22.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 179,
+    "callable": true,
+    "builderId": "austin-builder-brookfield-residential-texas-homes-llc"
   },
   {
     "id": "austin-builder-m-i-homes-of-austin-llc",
@@ -163,7 +170,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13582475"
       }
     ],
-    "acquisitionNotes": "Appears on 161 Austin public residential new-construction permit rows since 2025. Latest sample 2026-013224 BP at 9213 FURMAN DR issued 2026-02-05."
+    "acquisitionNotes": "Appears on 161 Austin public residential new-construction permit rows since 2025. Latest sample 2026-013224 BP at 9213 FURMAN DR issued 2026-02-05.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 161,
+    "callable": true,
+    "builderId": "austin-builder-m-i-homes-of-austin-llc"
   },
   {
     "id": "austin-builder-perry-homes-llc",
@@ -246,7 +260,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13718207"
       }
     ],
-    "acquisitionNotes": "Appears on 144 Austin public residential new-construction permit rows since 2025. Latest sample 2026-074388 BP at 8900 FALLKILL DR issued 2026-06-11."
+    "acquisitionNotes": "Appears on 144 Austin public residential new-construction permit rows since 2025. Latest sample 2026-074388 BP at 8900 FALLKILL DR issued 2026-06-11.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 144,
+    "callable": true,
+    "builderId": "austin-builder-perry-homes-llc"
   },
   {
     "id": "austin-builder-icb-construction-llc",
@@ -329,7 +350,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609550"
       }
     ],
-    "acquisitionNotes": "Appears on 133 Austin public residential new-construction permit rows since 2025. Latest sample 2025-143284 BP at 8508 COSMICO ST issued 2025-11-06."
+    "acquisitionNotes": "Appears on 133 Austin public residential new-construction permit rows since 2025. Latest sample 2025-143284 BP at 8508 COSMICO ST issued 2025-11-06.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 133,
+    "callable": true,
+    "builderId": "austin-builder-icb-construction-llc"
   },
   {
     "id": "austin-builder-kb-home",
@@ -412,7 +440,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13711432"
       }
     ],
-    "acquisitionNotes": "Appears on 132 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078339 BP at 13216 KINCANE DR issued 2026-06-23."
+    "acquisitionNotes": "Appears on 132 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078339 BP at 13216 KINCANE DR issued 2026-06-23.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 132,
+    "callable": true,
+    "builderId": "austin-builder-kb-home"
   },
   {
     "id": "austin-builder-taylor-morrison-of-texas-inc",
@@ -495,7 +530,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13705961"
       }
     ],
-    "acquisitionNotes": "Appears on 116 Austin public residential new-construction permit rows since 2025. Latest sample 2026-073321 BP at 9313 DINGO DR issued 2026-06-15."
+    "acquisitionNotes": "Appears on 116 Austin public residential new-construction permit rows since 2025. Latest sample 2026-073321 BP at 9313 DINGO DR issued 2026-06-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 116,
+    "callable": true,
+    "builderId": "austin-builder-taylor-morrison-of-texas-inc"
   },
   {
     "id": "austin-builder-d-r-horton-homes",
@@ -578,7 +620,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13719780"
       }
     ],
-    "acquisitionNotes": "Appears on 112 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078602 BP at 7000 FROG POND BND issued 2026-06-23."
+    "acquisitionNotes": "Appears on 112 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078602 BP at 7000 FROG POND BND issued 2026-06-23.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 112,
+    "callable": true,
+    "builderId": "austin-builder-d-r-horton-homes"
   },
   {
     "id": "austin-builder-milestone-community-builders-llc",
@@ -661,7 +710,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13716930"
       }
     ],
-    "acquisitionNotes": "Appears on 102 Austin public residential new-construction permit rows since 2025. Latest sample 2026-075542 BP at 12113 FENNEC WAY issued 2026-06-15."
+    "acquisitionNotes": "Appears on 102 Austin public residential new-construction permit rows since 2025. Latest sample 2026-075542 BP at 12113 FENNEC WAY issued 2026-06-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 102,
+    "callable": true,
+    "builderId": "austin-builder-milestone-community-builders-llc"
   },
   {
     "id": "austin-builder-david-weekley-homes",
@@ -744,7 +800,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13686043"
       }
     ],
-    "acquisitionNotes": "Appears on 98 Austin public residential new-construction permit rows since 2025. Latest sample 2026-044382 BP at 1071 BRICKELL LOOP UNIT A issued 2026-06-18."
+    "acquisitionNotes": "Appears on 98 Austin public residential new-construction permit rows since 2025. Latest sample 2026-044382 BP at 1071 BRICKELL LOOP UNIT A issued 2026-06-18.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 98,
+    "callable": true,
+    "builderId": "austin-builder-david-weekley-homes"
   },
   {
     "id": "austin-builder-new-home-co",
@@ -827,7 +890,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13715917"
       }
     ],
-    "acquisitionNotes": "Appears on 96 Austin public residential new-construction permit rows since 2025. Latest sample 2026-074848 BP at 8010 ERMIS FARM RD issued 2026-06-23."
+    "acquisitionNotes": "Appears on 96 Austin public residential new-construction permit rows since 2025. Latest sample 2026-074848 BP at 8010 ERMIS FARM RD issued 2026-06-23.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 96,
+    "callable": true,
+    "builderId": "austin-builder-new-home-co"
   },
   {
     "id": "austin-builder-meritage-homes-corp",
@@ -910,7 +980,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708523"
       }
     ],
-    "acquisitionNotes": "Appears on 74 Austin public residential new-construction permit rows since 2025. Latest sample 2026-067478 BP at 4900 EASTON LN issued 2026-06-02."
+    "acquisitionNotes": "Appears on 74 Austin public residential new-construction permit rows since 2025. Latest sample 2026-067478 BP at 4900 EASTON LN issued 2026-06-02.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 74,
+    "callable": true,
+    "builderId": "austin-builder-meritage-homes-corp"
   },
   {
     "id": "austin-builder-paradisa-homes-llc",
@@ -993,7 +1070,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708462"
       }
     ],
-    "acquisitionNotes": "Appears on 59 Austin public residential new-construction permit rows since 2025. Latest sample 2026-080109 BP at 1505 REDD ST issued 2026-06-23."
+    "acquisitionNotes": "Appears on 59 Austin public residential new-construction permit rows since 2025. Latest sample 2026-080109 BP at 1505 REDD ST issued 2026-06-23.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 59,
+    "callable": true,
+    "builderId": "austin-builder-paradisa-homes-llc"
   },
   {
     "id": "austin-builder-highland-homes",
@@ -1076,7 +1160,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13715881"
       }
     ],
-    "acquisitionNotes": "Appears on 53 Austin public residential new-construction permit rows since 2025. Latest sample 2026-076605 BP at 6320 MC MURTRY ST issued 2026-06-16."
+    "acquisitionNotes": "Appears on 53 Austin public residential new-construction permit rows since 2025. Latest sample 2026-076605 BP at 6320 MC MURTRY ST issued 2026-06-16.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 53,
+    "callable": true,
+    "builderId": "austin-builder-highland-homes"
   },
   {
     "id": "austin-builder-joseph-design-build",
@@ -1159,7 +1250,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13669911"
       }
     ],
-    "acquisitionNotes": "Appears on 52 Austin public residential new-construction permit rows since 2025. Latest sample 2026-043776 BP at 4404 JINX AVE BLDG 2 issued 2026-04-15."
+    "acquisitionNotes": "Appears on 52 Austin public residential new-construction permit rows since 2025. Latest sample 2026-043776 BP at 4404 JINX AVE BLDG 2 issued 2026-04-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 52,
+    "callable": true,
+    "builderId": "austin-builder-joseph-design-build"
   },
   {
     "id": "austin-builder-eastside-construction-company-llc",
@@ -1242,7 +1340,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13482926"
       }
     ],
-    "acquisitionNotes": "Appears on 44 Austin public residential new-construction permit rows since 2025. Latest sample 2025-075327 BP at 806 VARGAS RD issued 2026-01-26."
+    "acquisitionNotes": "Appears on 44 Austin public residential new-construction permit rows since 2025. Latest sample 2025-075327 BP at 806 VARGAS RD issued 2026-01-26.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 44,
+    "callable": true,
+    "builderId": "austin-builder-eastside-construction-company-llc"
   },
   {
     "id": "austin-builder-pecan-valley-homes-llc",
@@ -1325,7 +1430,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532716"
       }
     ],
-    "acquisitionNotes": "Appears on 44 Austin public residential new-construction permit rows since 2025. Latest sample 2025-087272 BP at 913 CAPITOL CT BLDG 2 issued 2026-01-07."
+    "acquisitionNotes": "Appears on 44 Austin public residential new-construction permit rows since 2025. Latest sample 2025-087272 BP at 913 CAPITOL CT BLDG 2 issued 2026-01-07.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 44,
+    "callable": true,
+    "builderId": "austin-builder-pecan-valley-homes-llc"
   },
   {
     "id": "austin-builder-hoch-construction-llc",
@@ -1408,7 +1520,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13677114"
       }
     ],
-    "acquisitionNotes": "Appears on 36 Austin public residential new-construction permit rows since 2025. Latest sample 2026-045548 BP at 5910 ROTUNDA VW issued 2026-04-15."
+    "acquisitionNotes": "Appears on 36 Austin public residential new-construction permit rows since 2025. Latest sample 2026-045548 BP at 5910 ROTUNDA VW issued 2026-04-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 36,
+    "callable": true,
+    "builderId": "austin-builder-hoch-construction-llc"
   },
   {
     "id": "austin-builder-canedo-builders",
@@ -1491,7 +1610,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13712338"
       }
     ],
-    "acquisitionNotes": "Appears on 35 Austin public residential new-construction permit rows since 2025. Latest sample 2025-112221 BP at 1904 CULLEN AVE BLDG 2 issued 2026-06-11."
+    "acquisitionNotes": "Appears on 35 Austin public residential new-construction permit rows since 2025. Latest sample 2025-112221 BP at 1904 CULLEN AVE BLDG 2 issued 2026-06-11.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 35,
+    "callable": true,
+    "builderId": "austin-builder-canedo-builders"
   },
   {
     "id": "austin-builder-austin-habitat-for-humanity",
@@ -1574,7 +1700,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13626458"
       }
     ],
-    "acquisitionNotes": "Appears on 33 Austin public residential new-construction permit rows since 2025. Latest sample 2025-146573 BP at 17110 RADIANT DR issued 2026-05-08."
+    "acquisitionNotes": "Appears on 33 Austin public residential new-construction permit rows since 2025. Latest sample 2025-146573 BP at 17110 RADIANT DR issued 2026-05-08.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 33,
+    "callable": true,
+    "builderId": "austin-builder-austin-habitat-for-humanity"
   },
   {
     "id": "austin-builder-pacesetter-homes-llc",
@@ -1657,7 +1790,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13635700"
       }
     ],
-    "acquisitionNotes": "Appears on 28 Austin public residential new-construction permit rows since 2025. Latest sample 2026-009340 BP at 8602 CHALGRIN PL issued 2026-01-26."
+    "acquisitionNotes": "Appears on 28 Austin public residential new-construction permit rows since 2025. Latest sample 2026-009340 BP at 8602 CHALGRIN PL issued 2026-01-26.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 28,
+    "callable": true,
+    "builderId": "austin-builder-pacesetter-homes-llc"
   },
   {
     "id": "austin-builder-pulte-homes-of-texas-l-p-dba-pulte-group",
@@ -1740,7 +1880,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13692371"
       }
     ],
-    "acquisitionNotes": "Appears on 28 Austin public residential new-construction permit rows since 2025. Latest sample 2026-075552 BP at 5009 MONARDA MINT DR issued 2026-06-16."
+    "acquisitionNotes": "Appears on 28 Austin public residential new-construction permit rows since 2025. Latest sample 2026-075552 BP at 5009 MONARDA MINT DR issued 2026-06-16.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 28,
+    "callable": true,
+    "builderId": "austin-builder-pulte-homes-of-texas-l-p-dba-pulte-group"
   },
   {
     "id": "austin-builder-gfo-home",
@@ -1823,7 +1970,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13693028"
       }
     ],
-    "acquisitionNotes": "Appears on 26 Austin public residential new-construction permit rows since 2025. Latest sample 2026-075766 BP at 17104 WIND CHIME DR issued 2026-06-16."
+    "acquisitionNotes": "Appears on 26 Austin public residential new-construction permit rows since 2025. Latest sample 2026-075766 BP at 17104 WIND CHIME DR issued 2026-06-16.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 26,
+    "callable": true,
+    "builderId": "austin-builder-gfo-home"
   },
   {
     "id": "austin-builder-newmark-homes-austin-llc",
@@ -1906,7 +2060,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13711620"
       }
     ],
-    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2026-011679 BP at 8607 DONGAN DR issued 2026-06-08."
+    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2026-011679 BP at 8607 DONGAN DR issued 2026-06-08.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 25,
+    "callable": true,
+    "builderId": "austin-builder-newmark-homes-austin-llc"
   },
   {
     "id": "austin-builder-texas-home-redevelopment-llc",
@@ -1989,7 +2150,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13629273"
       }
     ],
-    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2026-069461 BP at 5405 BLUE BIRD LN issued 2026-06-12."
+    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2026-069461 BP at 5405 BLUE BIRD LN issued 2026-06-12.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 25,
+    "callable": true,
+    "builderId": "austin-builder-texas-home-redevelopment-llc"
   },
   {
     "id": "austin-builder-prominence-homes-llc-main",
@@ -2072,7 +2240,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13667179"
       }
     ],
-    "acquisitionNotes": "Appears on 22 Austin public residential new-construction permit rows since 2025. Latest sample 2026-055448 BP at 9803 RIBELIN RANCH CT BLDG 3 issued 2026-06-02."
+    "acquisitionNotes": "Appears on 22 Austin public residential new-construction permit rows since 2025. Latest sample 2026-055448 BP at 9803 RIBELIN RANCH CT BLDG 3 issued 2026-06-02.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 22,
+    "callable": true,
+    "builderId": "austin-builder-prominence-homes-llc-main"
   },
   {
     "id": "austin-builder-ash-creek-homes-inc",
@@ -2155,7 +2330,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13598592"
       }
     ],
-    "acquisitionNotes": "Appears on 20 Austin public residential new-construction permit rows since 2025. Latest sample 2025-132814 BP at 2406 DREW LN BLDG 2 issued 2025-10-14."
+    "acquisitionNotes": "Appears on 20 Austin public residential new-construction permit rows since 2025. Latest sample 2025-132814 BP at 2406 DREW LN BLDG 2 issued 2025-10-14.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 20,
+    "callable": true,
+    "builderId": "austin-builder-ash-creek-homes-inc"
   },
   {
     "id": "austin-builder-st-stephens-build-llc",
@@ -2238,7 +2420,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13669812"
       }
     ],
-    "acquisitionNotes": "Appears on 20 Austin public residential new-construction permit rows since 2025. Latest sample 2026-072729 BP at 5001 PECAN SPRINGS RD BLDG 24 issued 2026-06-11."
+    "acquisitionNotes": "Appears on 20 Austin public residential new-construction permit rows since 2025. Latest sample 2026-072729 BP at 5001 PECAN SPRINGS RD BLDG 24 issued 2026-06-11.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 20,
+    "callable": true,
+    "builderId": "austin-builder-st-stephens-build-llc"
   },
   {
     "id": "austin-builder-awhiddon-construction-llc",
@@ -2321,7 +2510,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13669240"
       }
     ],
-    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2026-065193 BP at 1402 VALLEYRIDGE DR UNIT 1B issued 2026-06-08."
+    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2026-065193 BP at 1402 VALLEYRIDGE DR UNIT 1B issued 2026-06-08.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 17,
+    "callable": true,
+    "builderId": "austin-builder-awhiddon-construction-llc"
   },
   {
     "id": "austin-builder-desert-construction-llc",
@@ -2404,7 +2600,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13589358"
       }
     ],
-    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2025-137065 BP at 409 CROCKETT ST BLDG 2 issued 2025-10-23."
+    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2025-137065 BP at 409 CROCKETT ST BLDG 2 issued 2025-10-23.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 17,
+    "callable": true,
+    "builderId": "austin-builder-desert-construction-llc"
   },
   {
     "id": "austin-builder-nalle-custom-homes",
@@ -2485,9 +2688,77 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 4bath] with Habitable Attic basement and Attached Garage",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13655684"
+      },
+      {
+        "permitNumber": "2026-027066 BP",
+        "projectId": "13665380",
+        "address": "4111 SHOAL CREEK BLVD",
+        "issuedAt": "2026-04-21",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4 bed 5.5 bath].",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13665380"
+      },
+      {
+        "permitNumber": "2026-017410 BP",
+        "projectId": "13654675",
+        "address": "2617 DELWOOD PL UNIT B",
+        "issuedAt": "2026-02-13",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [2bed 2bath] with attached Garage. Unit B",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13654675"
+      },
+      {
+        "permitNumber": "2026-017409 BP",
+        "projectId": "13654674",
+        "address": "2617 DELWOOD PL UNIT A",
+        "issuedAt": "2026-02-13",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [5bed 4bath]",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13654674"
+      },
+      {
+        "permitNumber": "2025-160510 BP",
+        "projectId": "13630959",
+        "address": "2805 BONNIE RD BLDG 1",
+        "issuedAt": "2026-01-12",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "BLDG 1: New construction of a 2-Story Duplex unit [5 bed 5bath] with attached 3-car garage & covered patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13630959"
+      },
+      {
+        "permitNumber": "2025-160511 BP",
+        "projectId": "13630960",
+        "address": "2805 BONNIE RD BLDG 2",
+        "issuedAt": "2026-01-12",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "BLDG 2: New construction of a 2-Story Duplex unit [1 bed 1.5 bath]. Attached to the corner of the patio for Building 1",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13630960"
       }
     ],
-    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2026-039489 BP at 1508 PEASE RD issued 2026-06-23."
+    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2026-039489 BP at 1508 PEASE RD issued 2026-06-23.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 17,
+    "callable": true,
+    "dedupeNote": "Merged 2 duplicate builder rows by normalized public builder name.",
+    "builderId": "austin-builder-nalle-custom-homes"
   },
   {
     "id": "austin-builder-precise-custom-homes-inc",
@@ -2570,10 +2841,17 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13300482"
       }
     ],
-    "acquisitionNotes": "Appears on 16 Austin public residential new-construction permit rows since 2025. Latest sample 2019-066870 BP at 1406 E APPLEGATE DR issued 2026-06-05."
+    "acquisitionNotes": "Appears on 16 Austin public residential new-construction permit rows since 2025. Latest sample 2019-066870 BP at 1406 E APPLEGATE DR issued 2026-06-05.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 16,
+    "callable": true,
+    "builderId": "austin-builder-precise-custom-homes-inc"
   },
   {
-    "id": "austin-builder-rivendale-homes-texas-llc-pavillian-communities-texas-ll",
+    "id": "austin-builder-rivendale-homes-texas-llc-pavillian-communities-texas-llc",
     "name": "Rivendale Homes Texas LLC/ Pavillian Communities Texas, LLC",
     "market": "austin-tx",
     "state": "TX",
@@ -2653,7 +2931,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13685896"
       }
     ],
-    "acquisitionNotes": "Appears on 15 Austin public residential new-construction permit rows since 2025. Latest sample 2026-010877 BP at 2519 HARRIS BLVD BLDG 2 issued 2026-06-15."
+    "acquisitionNotes": "Appears on 15 Austin public residential new-construction permit rows since 2025. Latest sample 2026-010877 BP at 2519 HARRIS BLVD BLDG 2 issued 2026-06-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 15,
+    "callable": true,
+    "builderId": "austin-builder-rivendale-homes-texas-llc-pavillian-communities-texas-llc"
   },
   {
     "id": "austin-builder-jd-davis-green-construction-llc",
@@ -2736,7 +3021,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13654620"
       }
     ],
-    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060895 BP at 1704 MIRIAM AVE UNIT 1A issued 2026-05-20."
+    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060895 BP at 1704 MIRIAM AVE UNIT 1A issued 2026-05-20.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 13,
+    "callable": true,
+    "builderId": "austin-builder-jd-davis-green-construction-llc"
   },
   {
     "id": "austin-builder-redbud-development-group-llc",
@@ -2819,7 +3111,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13383863"
       }
     ],
-    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2024-110719 BP at 5519 JACKIE ROBINSON ST BLDG 10 issued 2025-09-11."
+    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2024-110719 BP at 5519 JACKIE ROBINSON ST BLDG 10 issued 2025-09-11.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 13,
+    "callable": true,
+    "builderId": "austin-builder-redbud-development-group-llc"
   },
   {
     "id": "austin-builder-urban-intown-homes-llc",
@@ -2902,7 +3201,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13332560"
       }
     ],
-    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157679 BP at 2706 ESTONIA PATH issued 2025-12-15."
+    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157679 BP at 2706 ESTONIA PATH issued 2025-12-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 13,
+    "callable": true,
+    "builderId": "austin-builder-urban-intown-homes-llc"
   },
   {
     "id": "austin-builder-atx-luxury-builders",
@@ -2985,90 +3291,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13626280"
       }
     ],
-    "acquisitionNotes": "Appears on 12 Austin public residential new-construction permit rows since 2025. Latest sample 2026-022719 BP at 904 W ELIZABETH ST issued 2026-02-25."
-  },
-  {
-    "id": "austin-builder-nalle-custom-homes-inc",
-    "name": "Nalle Custom Homes Inc",
-    "market": "austin-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "Paul Zubeldia",
-    "contactPhone": "5129856825",
-    "recentBuilds": 12,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
-    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "2026-027066 BP",
-        "projectId": "13665380",
-        "address": "4111 SHOAL CREEK BLVD",
-        "issuedAt": "2026-04-21",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4 bed 5.5 bath].",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13665380"
-      },
-      {
-        "permitNumber": "2026-017410 BP",
-        "projectId": "13654675",
-        "address": "2617 DELWOOD PL UNIT B",
-        "issuedAt": "2026-02-13",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [2bed 2bath] with attached Garage. Unit B",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13654675"
-      },
-      {
-        "permitNumber": "2026-017409 BP",
-        "projectId": "13654674",
-        "address": "2617 DELWOOD PL UNIT A",
-        "issuedAt": "2026-02-13",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [5bed 4bath]",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13654674"
-      },
-      {
-        "permitNumber": "2025-160510 BP",
-        "projectId": "13630959",
-        "address": "2805 BONNIE RD BLDG 1",
-        "issuedAt": "2026-01-12",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "BLDG 1: New construction of a 2-Story Duplex unit [5 bed 5bath] with attached 3-car garage & covered patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13630959"
-      },
-      {
-        "permitNumber": "2025-160511 BP",
-        "projectId": "13630960",
-        "address": "2805 BONNIE RD BLDG 2",
-        "issuedAt": "2026-01-12",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "BLDG 2: New construction of a 2-Story Duplex unit [1 bed 1.5 bath]. Attached to the corner of the patio for Building 1",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13630960"
-      }
+    "acquisitionNotes": "Appears on 12 Austin public residential new-construction permit rows since 2025. Latest sample 2026-022719 BP at 904 W ELIZABETH ST issued 2026-02-25.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
     ],
-    "acquisitionNotes": "Appears on 12 Austin public residential new-construction permit rows since 2025. Latest sample 2026-027066 BP at 4111 SHOAL CREEK BLVD issued 2026-04-21."
+    "qualifyingPermitCount": 12,
+    "callable": true,
+    "builderId": "austin-builder-atx-luxury-builders"
   },
   {
     "id": "austin-builder-blue-wizard-homes-llc",
@@ -3151,7 +3381,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609429"
       }
     ],
-    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2026-046788 BP at 1801 W ST JOHNS AVE UNIT A issued 2026-04-20."
+    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2026-046788 BP at 1801 W ST JOHNS AVE UNIT A issued 2026-04-20.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 11,
+    "callable": true,
+    "builderId": "austin-builder-blue-wizard-homes-llc"
   },
   {
     "id": "austin-builder-tawi-tawi-properties-llc",
@@ -3234,7 +3471,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13614299"
       }
     ],
-    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157251 BP at 4703 SANTA ANNA ST BLDG 3 issued 2026-01-06."
+    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157251 BP at 4703 SANTA ANNA ST BLDG 3 issued 2026-01-06.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 11,
+    "callable": true,
+    "builderId": "austin-builder-tawi-tawi-properties-llc"
   },
   {
     "id": "austin-builder-thurman-homes",
@@ -3317,7 +3561,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13554184"
       }
     ],
-    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2026-030082 BP at 2708 BRISTOL DR issued 2026-03-12."
+    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2026-030082 BP at 2708 BRISTOL DR issued 2026-03-12.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 11,
+    "callable": true,
+    "builderId": "austin-builder-thurman-homes"
   },
   {
     "id": "austin-builder-mission-home-builders-llc",
@@ -3400,7 +3651,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13560950"
       }
     ],
-    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060271 BP at 4709 MENCHACA RD issued 2026-05-15."
+    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060271 BP at 4709 MENCHACA RD issued 2026-05-15.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 10,
+    "callable": true,
+    "builderId": "austin-builder-mission-home-builders-llc"
   },
   {
     "id": "austin-builder-patriot-builders",
@@ -3483,7 +3741,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13454443"
       }
     ],
-    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2026-064741 BP at 2716 BRISTOL DR BLDG 2 issued 2026-05-26."
+    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2026-064741 BP at 2716 BRISTOL DR BLDG 2 issued 2026-05-26.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 10,
+    "callable": true,
+    "builderId": "austin-builder-patriot-builders"
   },
   {
     "id": "austin-builder-real-international-construction-llc",
@@ -3566,7 +3831,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13596049"
       }
     ],
-    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2025-069667 BP at 1942 WEBBERVILLE RD BLDG 1 issued 2026-02-27."
+    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2025-069667 BP at 1942 WEBBERVILLE RD BLDG 1 issued 2026-02-27.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 10,
+    "callable": true,
+    "builderId": "austin-builder-real-international-construction-llc"
   },
   {
     "id": "austin-builder-paragon-home-builder",
@@ -3649,7 +3921,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532493"
       }
     ],
-    "acquisitionNotes": "Appears on 9 Austin public residential new-construction permit rows since 2025. Latest sample 2025-072773 BP at 1204 MARCY ST BLDG 1B issued 2025-07-28."
+    "acquisitionNotes": "Appears on 9 Austin public residential new-construction permit rows since 2025. Latest sample 2025-072773 BP at 1204 MARCY ST BLDG 1B issued 2025-07-28.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 9,
+    "callable": true,
+    "builderId": "austin-builder-paragon-home-builder"
   },
   {
     "id": "austin-builder-habitat-haus-llc",
@@ -3732,7 +4011,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540627"
       }
     ],
-    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-065346 BP at 1508 MADISON AVE issued 2026-05-22."
+    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-065346 BP at 1508 MADISON AVE issued 2026-05-22.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 8,
+    "callable": true,
+    "builderId": "austin-builder-habitat-haus-llc"
   },
   {
     "id": "austin-builder-new-vision-construction",
@@ -3815,7 +4101,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13066573"
       }
     ],
-    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2025-125488 BP at 2805 OAK HAVEN DR issued 2026-02-24."
+    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2025-125488 BP at 2805 OAK HAVEN DR issued 2026-02-24.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 8,
+    "callable": true,
+    "builderId": "austin-builder-new-vision-construction"
   },
   {
     "id": "austin-builder-stone-acorn-builders",
@@ -3898,7 +4191,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13634514"
       }
     ],
-    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-063271 BP at 3006 FRUTH ST BLDG 1 issued 2026-05-22."
+    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-063271 BP at 3006 FRUTH ST BLDG 1 issued 2026-05-22.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 8,
+    "callable": true,
+    "builderId": "austin-builder-stone-acorn-builders"
   },
   {
     "id": "austin-builder-trophy-signature-homes",
@@ -3981,7 +4281,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13717187"
       }
     ],
-    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-077070 BP at 4705 NATIVE PEARL LN issued 2026-06-18."
+    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-077070 BP at 4705 NATIVE PEARL LN issued 2026-06-18.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 8,
+    "callable": true,
+    "builderId": "austin-builder-trophy-signature-homes"
   },
   {
     "id": "austin-builder-drew-homes",
@@ -4064,7 +4371,14 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511869"
       }
     ],
-    "acquisitionNotes": "Appears on 7 Austin public residential new-construction permit rows since 2025. Latest sample 2026-047734 BP at 4704 PHILCO DR issued 2026-04-20."
+    "acquisitionNotes": "Appears on 7 Austin public residential new-construction permit rows since 2025. Latest sample 2026-047734 BP at 4704 PHILCO DR issued 2026-04-20.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 7,
+    "callable": true,
+    "builderId": "austin-builder-drew-homes"
   },
   {
     "id": "austin-builder-austin-787-properties",
@@ -4147,6 +4461,13 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13643686"
       }
     ],
-    "acquisitionNotes": "Appears on 6 Austin public residential new-construction permit rows since 2025. Latest sample 2025-163501 BP at 1207 PEREZ ST BLDG 2 issued 2026-03-06."
+    "acquisitionNotes": "Appears on 6 Austin public residential new-construction permit rows since 2025. Latest sample 2025-163501 BP at 1207 PEREZ ST BLDG 2 issued 2026-03-06.",
+    "zipCodes": [],
+    "sourceUrls": [
+      "https://data.austintexas.gov/d/hw8f-smxh"
+    ],
+    "qualifyingPermitCount": 6,
+    "callable": true,
+    "builderId": "austin-builder-austin-787-properties"
   }
 ]

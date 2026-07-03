@@ -45,18 +45,20 @@ const email = generateBuilderEmail({
   topPermit: '25-B1211',
   topPermitAddress: '8362 LAKE VILLAGE CIR',
 });
-assert.equal(email.subject, 'Off-Market Lots for Builders - Let’s Connect');
+assert.equal(email.subject, 'Quick question on Knoxville lots');
 assert.match(email.body, /My name is Okeito, and I run MarvelUs Intel LLC/);
+assert.match(email.body, /not trying to blast you with random parcels/);
+assert.match(email.body, /what actually makes your job easier/);
 assert.match(email.body, /public KGIS permit-backed builder activity in Knoxville/);
 assert.match(email.body, /Smithbilt Homes shows 70 recent residential build signals, including 25-B1211 near 8362 LAKE VILLAGE CIR/);
-assert.match(email.body, /actual buy box/);
-assert.match(email.body, /Could you send me your criteria on these\?/);
-assert.match(email.body, /- What zip codes\/subdivisions\?\n- Lot sizes\?\n- Max lot price\?\n- Utility\/access requirements\?\n- Any deal killers I should screen for before sending anything\?/);
-assert.match(email.body, /better land\/acquisitions contact/);
+assert.match(email.body, /exact criteria/);
+assert.match(email.body, /Could you point me to the right buy box\?/);
+assert.match(email.body, /- What zip codes\/subdivisions\?\n- Lot sizes\?\n- Max lot price\?\n- Utility\/access requirements\?\n- Flood, wetlands, road, zoning, or title deal killers\?\n- Best person to send a clean parcel package to\?/);
+assert.match(email.body, /If a lot doesn’t fit, I won’t waste your time/);
 assert.match(email.body, /Okeito S\.\nMarvelUs Intel LLC/);
 
 const marketingEmail = generateBuilderMarketingEmailTemplate({ companyName: 'Precision Gulf Homes', contactName: 'Maya', primaryCity: 'Lehigh Acres' });
-assert.equal(marketingEmail.subject, 'Off-Market Lots for Builders - Let’s Connect');
+assert.equal(marketingEmail.subject, 'Quick question on Lehigh Acres lots');
 assert.match(marketingEmail.body, /MarvelUs Intel LLC/);
 assert.doesNotMatch(marketingEmail.body, /assortment of marketing efforts and acquisition avenues/);
 assert.doesNotMatch(marketingEmail.body, /few weeks|few days/i);

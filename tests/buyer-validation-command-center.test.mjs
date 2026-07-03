@@ -159,7 +159,7 @@ assert.match(appSource, /getStateBuilderRows\(stateCode\)/, 'all loaded states s
 assert.doesNotMatch(appSource, /const isLive = stateCode === 'TN'/, 'the UI must not hard-code Tennessee as the only live state');
 assert.doesNotMatch(appSource, /builder-empty-evidence/, 'legacy duplicate evidence section should not render after the command center');
 assert.doesNotMatch(appSource, /id="builder-evidence-desk"/, 'legacy evidence desk anchor should not remain in the page flow');
-assert.match(appSource, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'marketing template should be retained as a compact drawer inside the command center');
+assert.match(appSource, /<summary><span>Relationship email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'relationship email draft should be retained as a compact drawer inside the command center');
 assert.match(stylesSource, /v1\.32 - Builders mobile resource-well selector and empty states/, 'final mobile selector override should live after global button styles');
 assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}border-radius: 13px/, 'market toggles should be compact rounded rectangles, not circular pucks');
 assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}aspect-ratio: auto/, 'market toggles must not use square/circular aspect ratios on mobile');

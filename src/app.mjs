@@ -2688,10 +2688,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       <pre>${h(selected.callScript || '')}</pre>
     </details>
     <details class="validation-script-drawer marketing-drawer">
-      <summary><span>Intro email</span>${solidIndustryIcon('chevron')}</summary>
+      <summary><span>Relationship email</span>${solidIndustryIcon('chevron')}</summary>
       <div class="email-subject"><span>Subject</span><strong>${h(marketingEmail.subject)}</strong></div>
       <pre>${h(marketingEmail.body)}</pre>
-      <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy marketing template</button><span class="builder-marketing-email-status"></span></div>
+      <div class="button-row"><button type="button" class="secondary" data-copy-builder-marketing-email>Copy relationship draft</button><span class="builder-marketing-email-status"></span></div>
     </details>
   </section>`;
 }
@@ -4542,10 +4542,10 @@ ${body}`;
       const builder = getSelectedBuilder();
       const email = generateBuilderMarketingEmailTemplate(builder);
       const payload = `Subject: ${email.subject}\n\n${email.body}`;
-      const status = event.target.closest('.builder-script-panel')?.querySelector('.builder-marketing-email-status');
+      const status = event.target.closest('.validation-script-drawer')?.querySelector('.builder-marketing-email-status');
       const write = navigator.clipboard?.writeText?.(payload) || Promise.reject(new Error('Clipboard unavailable'));
-      write.then(() => { if (status) status.textContent = 'Marketing template copied.'; }).catch(() => {
-        downloadText(`land-dealflow-builder-marketing-template-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
+      write.then(() => { if (status) status.textContent = 'Relationship draft copied.'; }).catch(() => {
+        downloadText(`land-dealflow-builder-relationship-draft-${new Date().toISOString().slice(0, 10)}.txt`, payload, 'text/plain');
         if (status) status.textContent = 'Clipboard blocked; downloaded instead.';
       });
     }

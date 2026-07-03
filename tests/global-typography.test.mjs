@@ -168,7 +168,7 @@ assert.match(appSource, /<span class="eyebrow">Builder<\/span>/, 'Selected build
 assert.match(appSource, /<div class="next-best-action"><span>Next<\/span>/, 'Next best action label should be shortened to Next');
 assert.match(appSource, /<span>Seller gate<\/span><b>\$\{selected\.sellerSearch\?\.eligible \? 'open'/, 'Seller gate label/status should be short');
 assert.match(appSource, /<summary><span>Questions \+ script<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'Call script drawer should use shorter summary copy');
-assert.match(appSource, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'Marketing drawer should use shorter summary copy');
+assert.match(appSource, /<summary><span>Relationship email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'Relationship email drawer should use shorter summary copy');
 assert.doesNotMatch(appSource + coreSource, /resource well|Resource well|permit signals|Selected builder|Next best action|Seller search gate|Optional marketing intro email template|Exact buy-box questions \+ call script/, 'Phase 26 should remove remaining long/relic visible labels');
 assert.match(coreSource, /label: 'Permit proof'[\s\S]{0,900}label: 'Review hold'/, 'Score breakdown labels should be short and proof-based');
 assert.match(coreSource, /Live source lane|Source lane/, 'Source metadata should harmonize old well language into source-lane language');

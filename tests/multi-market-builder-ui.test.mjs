@@ -77,7 +77,9 @@ assert.doesNotMatch(app, /class="builder-script-panel"/, 'duplicate script panel
 assert.doesNotMatch(app, /\$\{renderSellerSearchControlLayer\(sellerControl\)\}/, 'Builders page must not render the global seller-search operating-flow panel');
 assert.doesNotMatch(app, /\$\{renderExecutionConveyor\(executionConveyor\)\}/, 'Builders page must not render the global call-to-close conveyor panel');
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Builders page should keep the builder-specific validation command center after culling global flow panels');
-assert.match(app, /<summary><span>Intro email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'unique marketing template should be retained inside the main command center with short Phase 26 copy');
+assert.match(app, /<summary><span>Relationship email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'relationship email draft should be retained inside the main command center with concise builder-first copy');
+assert.match(app, /Copy relationship draft/, 'Builders page should store the relationship draft as a copyable email drawer');
+assert.match(app, /Relationship draft copied\./, 'Copy feedback must match the relationship-email workflow');
 
 assert.match(app, /row\.name \|\| row\.companyName \|\| row\.builderName/, 'Builder normalization must display builderName-only permit artifacts, not Unnamed builder');
 assert.match(app, /row\.sourceUrl \|\| asArray\(row\.sourceUrls\)\[0\]/, 'Builder normalization must use sourceUrls arrays for proof links');

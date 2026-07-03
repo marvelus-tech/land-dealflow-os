@@ -89,7 +89,15 @@ const builderMarketSources = [
   { key: 'raleigh', state: 'NC', marketName: 'Raleigh / Wake County, NC', csvUrl: 'data/real/raleigh/builder_validation_queue.csv', signalsUrl: 'data/real/raleigh/builder_signals.json', evidenceUrl: 'data/real/raleigh/market_evidence.json' },
   { key: 'rocky-mount-nc', state: 'NC', marketName: 'Rocky Mount / Nash-Edgecombe, NC', csvUrl: 'data/real/rocky-mount-nc/builder_validation_queue.csv', signalsUrl: 'data/real/rocky-mount-nc/builder_signals.json', evidenceUrl: 'data/real/rocky-mount-nc/market_evidence.json' },
   { key: 'polk', state: 'FL', marketName: 'Polk / Lakeland, FL', csvUrl: 'data/real/polk/builder_validation_queue.csv', signalsUrl: 'data/real/polk/builder_signals.json', evidenceUrl: 'data/real/polk/market_evidence.json' },
+  { key: 'port-charlotte-fl-33948', state: 'FL', marketName: 'Port Charlotte 33948 / Charlotte County, FL', csvUrl: 'data/real/port-charlotte-fl-33948/builder_validation_queue.csv', signalsUrl: 'data/real/port-charlotte-fl-33948/builder_signals.json', evidenceUrl: 'data/real/port-charlotte-fl-33948/market_evidence.json' },
+  { key: 'punta-gorda-fl-33983', state: 'FL', marketName: 'Punta Gorda / Deep Creek 33983, FL', csvUrl: 'data/real/punta-gorda-fl-33983/builder_validation_queue.csv', signalsUrl: 'data/real/punta-gorda-fl-33983/builder_signals.json', evidenceUrl: 'data/real/punta-gorda-fl-33983/market_evidence.json' },
+  { key: 'port-charlotte-fl-33953', state: 'FL', marketName: 'Port Charlotte 33953 / NW Charlotte County, FL', csvUrl: 'data/real/port-charlotte-fl-33953/builder_validation_queue.csv', signalsUrl: 'data/real/port-charlotte-fl-33953/builder_signals.json', evidenceUrl: 'data/real/port-charlotte-fl-33953/market_evidence.json' },
   { key: 'maricopa', state: 'AZ', marketName: 'Phoenix / Maricopa County, AZ', csvUrl: 'data/real/maricopa/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa/builder_signals.json', evidenceUrl: 'data/real/maricopa/market_evidence.json' },
+  { key: 'mohave-valley-az-86440', state: 'AZ', marketName: 'Mohave Valley / Fort Mohave 86440, AZ', csvUrl: 'data/real/mohave-valley-az-86440/builder_validation_queue.csv', signalsUrl: 'data/real/mohave-valley-az-86440/builder_signals.json', evidenceUrl: 'data/real/mohave-valley-az-86440/market_evidence.json' },
+  { key: 'maricopa-ak-chin-az-85139', state: 'AZ', marketName: 'Maricopa / Ak-Chin edge 85139, AZ', csvUrl: 'data/real/maricopa-ak-chin-az-85139/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa-ak-chin-az-85139/builder_signals.json', evidenceUrl: 'data/real/maricopa-ak-chin-az-85139/market_evidence.json' },
+  { key: 'pahoa-keaau-hi', state: 'HI', marketName: 'Puna / East Hawaii ZIPs 96749, 96778, 96771', csvUrl: 'data/real/pahoa-keaau-hi/builder_validation_queue.csv', signalsUrl: 'data/real/pahoa-keaau-hi/builder_signals.json', evidenceUrl: 'data/real/pahoa-keaau-hi/market_evidence.json' },
+  { key: 'pahrump-nv-89048', state: 'NV', marketName: 'Pahrump 89048 / Nye County, NV', csvUrl: 'data/real/pahrump-nv-89048/builder_validation_queue.csv', signalsUrl: 'data/real/pahrump-nv-89048/builder_signals.json', evidenceUrl: 'data/real/pahrump-nv-89048/market_evidence.json' },
+  { key: 'joshua-tree-ca-92252', state: 'CA', marketName: 'Joshua Tree 92252 / San Bernardino County, CA', csvUrl: 'data/real/joshua-tree-ca-92252/builder_validation_queue.csv', signalsUrl: 'data/real/joshua-tree-ca-92252/builder_signals.json', evidenceUrl: 'data/real/joshua-tree-ca-92252/market_evidence.json' },
   { key: 'dorchester-sc', state: 'SC', marketName: 'Dorchester County / Charleston edge, SC', csvUrl: 'data/real/dorchester-sc/builder_validation_queue.csv', signalsUrl: 'data/real/dorchester-sc/builder_signals.json', evidenceUrl: 'data/real/dorchester-sc/market_evidence.json' },
   { key: 'columbus-oh', state: 'OH', marketName: 'Columbus / Franklin County, OH', csvUrl: 'data/real/columbus-oh/builder_validation_queue.csv', signalsUrl: 'data/real/columbus-oh/builder_signals.json', evidenceUrl: 'data/real/columbus-oh/market_evidence.json' },
   { key: 'philadelphia-pa', state: 'PA', marketName: 'Philadelphia, PA', csvUrl: 'data/real/philadelphia-pa/builder_validation_queue.csv', signalsUrl: 'data/real/philadelphia-pa/builder_signals.json', evidenceUrl: 'data/real/philadelphia-pa/market_evidence.json' },
@@ -109,11 +117,19 @@ const builderMarketRegistry = [
   { key: 'murfreesboro-tn', state: 'TN', label: 'Murfreesboro / Rutherford County', note: 'Nashville-edge sprawl lane', platform: 'CivicPlus / CivicGov', suggestedRank: 4, sourceWork: 'Build source monitor before seller sourcing.' },
   { key: 'franklin-tn', state: 'TN', label: 'Franklin / Williamson County', note: 'high-value TN custom-builder lane', platform: 'IDT Plans + county records', suggestedRank: 5, sourceWork: 'Confirm permit detail access and builder fields.' },
   { key: 'polk', state: 'FL', label: 'Polk / Lakeland', note: 'live inland Florida lane', platform: 'Accela Citizen Access', suggestedRank: 6, sourceWork: 'Refresh pull and enrich top builders.' },
+  { key: 'port-charlotte-fl-33948', state: 'FL', label: 'Port Charlotte 33948 / Charlotte County', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Charlotte County follow-up', suggestedRank: 6.1, sourceWork: 'Call through public profile numbers/contact forms; capture buy box before seller sourcing.' },
+  { key: 'punta-gorda-fl-33983', state: 'FL', label: 'Punta Gorda / Deep Creek 33983', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Charlotte County follow-up', suggestedRank: 6.2, sourceWork: 'Call Deep Creek/Charlotte builders for max lot price and absorption.' },
+  { key: 'port-charlotte-fl-33953', state: 'FL', label: 'Port Charlotte 33953 / NW Charlotte County', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Charlotte County follow-up', suggestedRank: 6.3, sourceWork: 'Call NW Charlotte builders for lot criteria before owner enrichment.' },
   { key: 'keystone-heights-fl', state: 'FL', label: 'Keystone Heights / Clay County', note: 'source-backed landowner lane', platform: 'Clay County parcel GIS + property appraiser', suggestedRank: 7, sourceWork: 'Skip-trace top private vacant owners; buyer proof still leads before outreach.' },
   { key: 'ocala-fl', state: 'FL', label: 'Ocala / Marion County', note: 'inland FL permit lane', platform: 'Civic Access / CivicPlus', suggestedRank: 7, sourceWork: 'Probe portal for contractor export.' },
   { key: 'clermont-fl', state: 'FL', label: 'Clermont / Lake County', note: 'Orlando-edge growth lane', platform: 'TRAKiT / CentralSquare', suggestedRank: 8, sourceWork: 'Monitor migration and find machine-readable permits.' },
   { key: 'alachua-fl', state: 'FL', label: 'Gainesville / Alachua County', note: 'inland FL permit lane', platform: 'Accela', suggestedRank: 9, sourceWork: 'Build Accela adapter after contractor-field proof.' },
   { key: 'maricopa', state: 'AZ', label: 'Phoenix / Maricopa County', note: 'live AZ weekly-permit lane', platform: 'Maricopa weekly reports', suggestedRank: 10, sourceWork: 'Refresh weekly XLSX and call top permit builders.' },
+  { key: 'mohave-valley-az-86440', state: 'AZ', label: 'Mohave Valley / Fort Mohave 86440', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Mohave County follow-up', suggestedRank: 10.1, sourceWork: 'Call regional builders for scattered-lot appetite and utility/access constraints.' },
+  { key: 'maricopa-ak-chin-az-85139', state: 'AZ', label: 'Maricopa / Ak-Chin edge 85139', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Pinal/Maricopa follow-up', suggestedRank: 10.2, sourceWork: 'Use Casa Grande/Queen Creek/Chandler spillover buyers; confirm 85139 lot appetite.' },
+  { key: 'pahoa-keaau-hi', state: 'HI', label: 'Puna / East Hawaii ZIPs 96749, 96778, 96771', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Hawaii County follow-up', suggestedRank: 10.3, sourceWork: 'Validate Big Island lot demand and lava/flood/access deal killers before seller sourcing.' },
+  { key: 'pahrump-nv-89048', state: 'NV', label: 'Pahrump 89048 / Nye County', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Nye County follow-up', suggestedRank: 10.4, sourceWork: 'Capture well/septic/power/road thresholds before land sourcing.' },
+  { key: 'joshua-tree-ca-92252', state: 'CA', label: 'Joshua Tree 92252 / San Bernardino County', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + San Bernardino County follow-up', suggestedRank: 10.5, sourceWork: 'Validate water, access, desert-build, and STR-sensitive deal killers before seller sourcing.' },
   { key: 'tucson-az', state: 'AZ', label: 'Tucson / Pima County', note: 'secondary AZ permit lane', platform: 'Accela / Tucson DSD', suggestedRank: 11, sourceWork: 'Probe Accela-style details for contractor rows.' },
   { key: 'buckeye-az', state: 'AZ', label: 'Buckeye', note: 'fast-growth Phoenix edge', platform: 'City permit portal', suggestedRank: 12, sourceWork: 'Find export/API path for permit activity.' },
   { key: 'raleigh', state: 'NC', label: 'Raleigh / Wake County', note: 'live Piedmont ArcGIS lane', platform: 'Wake/Raleigh ArcGIS', suggestedRank: 13, sourceWork: 'Refresh direct permit-builder pull.' },
@@ -211,7 +227,7 @@ let selectedValidationBuilderId = '';
 let selectedSourceType = 'market';
 let selectedMoneyCallId = '';
 let leadEngineStateFilter = 'all';
-let selectedBuilderMarketState = 'GA';
+let selectedBuilderMarketState = 'FL';
 let selectedBuilderMarketKey = '';
 let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
@@ -733,12 +749,15 @@ function getLandRowMarketKey(parcel = {}) {
   return String(parcel.marketId || parcel.market || parcel.county || rowState(parcel) || 'unknown').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'unknown';
 }
 
-const landStateToggleOrder = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'];
+const landStateToggleOrder = ['FL', 'AZ', 'HI', 'NV', 'CA', 'TN', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'];
 const landStateSelectorAbbreviations = {
   all: 'All',
   TN: 'Tenn.',
   FL: 'Fla.',
   AZ: 'Ariz.',
+  HI: 'Haw.',
+  NV: 'Nev.',
+  CA: 'Calif.',
   NC: 'N.C.',
   TX: 'Tex.',
   GA: 'Ga.',
@@ -1228,7 +1247,7 @@ function dealsMarketCoverageEntries() {
   const stateScopedEntries = selectedLandStateFilter === 'all'
     ? entriesWithDallas
     : entriesWithDallas.filter(market => (market.stateCode || market.state) === selectedLandStateFilter);
-  const expansionStateCodes = new Set(['OH', 'ID', 'IN', 'PA', 'GA', 'SC']);
+  const expansionStateCodes = new Set(['FL', 'AZ', 'HI', 'NV', 'CA', 'OH', 'ID', 'IN', 'PA', 'GA', 'SC']);
   const expansionEntries = stateScopedEntries.filter(market => expansionStateCodes.has(market.stateCode || market.state));
   const otherEntries = stateScopedEntries.filter(market => !expansionStateCodes.has(market.stateCode || market.state));
   const stateDealCount = selectedLandStateFilter === 'all' ? allDeals.length : allDeals.filter(parcel => rowState(parcel) === selectedLandStateFilter).length;
@@ -2146,7 +2165,7 @@ function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandsc
   if (cachedBuilderSwitchboardEntries) return cachedBuilderSwitchboardEntries;
   const loaded = getLoadedBuilderMarkets();
   const liveByKey = new Map(Object.values(loaded).map(market => [loadedBuilderMarketKey(market), market]));
-  const expansionStateCodes = new Set(['OH', 'ID', 'IN', 'PA', 'GA', 'SC']);
+  const expansionStateCodes = new Set(['FL', 'AZ', 'HI', 'NV', 'CA', 'OH', 'ID', 'IN', 'PA', 'GA', 'SC']);
   const orderedRegistry = [
     ...builderMarketRegistry.filter(registry => expansionStateCodes.has(registry.state)),
     ...builderMarketRegistry.filter(registry => !expansionStateCodes.has(registry.state)),
@@ -2189,8 +2208,11 @@ const builderStateTheses = {
   GA: { label: 'Georgia', thesis: 'Atlanta growth lanes', short: 'Atlanta growth', detail: 'Atlanta data-center commuter lane', note: 'Forsyth / Hall / Jackson / Douglas stay grouped as one source thesis until builders are verified.' },
   SC: { label: 'South Carolina', thesis: 'Charleston + Upstate expansion', short: 'Charleston + Upstate', detail: 'Charleston coastal edge + Upstate growth', note: 'Dorchester carries live builder demand; Berkeley and Greenville remain supporting source lanes.' },
   TN: { label: 'Tennessee', thesis: 'Knoxville core lane', short: 'Knoxville core', detail: 'Core Tennessee builder-demand lane', note: 'Keep this as the proven operating lane while expansion lanes mature.' },
-  FL: { label: 'Florida', thesis: 'Inland growth lane', short: 'Inland growth', detail: 'Inland permit-growth lane', note: 'Use this when buyer demand and permit proof justify seller sourcing.' },
-  AZ: { label: 'Arizona', thesis: 'Phoenix edge lane', short: 'Phoenix edge', detail: 'Phoenix / Maricopa edge growth', note: 'Treat as a state-level lane; county detail belongs in source proof, not the top selector.' },
+  FL: { label: 'Florida', thesis: 'Charlotte ZIPs + inland growth', short: 'Charlotte + Polk live', detail: 'Charlotte County ZIP sprint plus inland permit-growth lanes', note: 'Use Port Charlotte/Punta Gorda call queues now; buyer proof still leads seller sourcing.' },
+  AZ: { label: 'Arizona', thesis: 'Maricopa + Mohave ZIPs', short: 'Maricopa + Mohave live', detail: 'Phoenix/Maricopa plus Mohave Valley ZIP-call lanes', note: 'Treat exact ZIP appetite as a buyer-validation question before sourcing owners.' },
+  HI: { label: 'Hawaii', thesis: 'Puna / East Hawaii ZIP sprint', short: 'Puna ZIPs live', detail: '96749, 96778, 96771 buyer-validation lane', note: 'Validate lava/flood/access constraints and lot-price ceiling before seller sourcing.' },
+  NV: { label: 'Nevada', thesis: 'Pahrump 89048 builder sprint', short: 'Pahrump live', detail: 'Nye County desert-lot buyer-validation lane', note: 'Well/septic/power/road thresholds must be captured before seller sourcing.' },
+  CA: { label: 'California', thesis: 'Joshua Tree 92252 sprint', short: 'Joshua Tree live', detail: 'Hi-desert custom-builder buyer-validation lane', note: 'Water, access, desert-build, STR and entitlement deal killers need call validation.' },
   NC: { label: 'North Carolina', thesis: 'Raleigh / Wake lane', short: 'Raleigh / Wake', detail: 'Triangle permit-growth lane', note: 'Keep county/source depth behind the selected state workbench.' },
   TX: { label: 'Texas', thesis: 'Austin + San Antonio lanes', short: 'Austin + San Antonio', detail: 'Central / south Texas growth lanes', note: 'Austin and San Antonio stay under one Texas decision until a specific buyer call requires splitting.' },
   PA: { label: 'Pennsylvania', thesis: 'Philadelphia + Pittsburgh permit lanes', short: 'Philly + Pittsburgh live', detail: 'Philadelphia L&I plus Pittsburgh permit-builder lanes', note: 'Philadelphia adds a deep permit-backed builder list; Pittsburgh remains a supporting western PA lane.' },
@@ -2200,7 +2222,7 @@ const builderStateTheses = {
 };
 
 function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntries(), permitLandscape = getPermitPortalLandscape()) {
-  const order = ['OH', 'ID', 'IN', 'PA', 'GA', 'SC', 'TN', 'FL', 'AZ', 'NC', 'TX'];
+  const order = ['FL', 'AZ', 'HI', 'NV', 'CA', 'OH', 'ID', 'IN', 'PA', 'GA', 'SC', 'TN', 'NC', 'TX'];
   return order.map(stateCode => {
     const markets = marketEntries.filter(market => market.stateCode === stateCode || market.state === stateCode);
     if (!markets.length) return null;
@@ -3297,9 +3319,9 @@ function renderSourcePriorityBoard() {
   target.innerHTML = `<section class="source-market-priority" aria-label="Priority permit portal markets">
     <div class="source-priority-head">
       <span class="eyebrow">Permit-source priority</span>
-      <h3>TN first. Then inland FL, AZ, NC, TX. GA/SC secondary.</h3>
-      <p>Priority order stays simple: Tennessee now; inland Florida, Arizona, North Carolina, and Texas as independent lanes. Georgia and South Carolina sit behind them as secondary Southeast expansion lanes.</p>
-      <div class="primary-action-strip sources-primary-action"><span>Next action</span><b>Verify the Tennessee source lane before promoting any seller lead.</b><a href="#permit-landscape" data-view="builders">Open lane ${productIcon('arrow')}</a></div>
+      <h3>New ZIP sprints are live: FL, AZ, HI, NV, CA.</h3>
+      <p>Priority now exposes the exact builder-call markets Okeito requested: Charlotte County FL, Maricopa/Mohave AZ, Puna HI, Pahrump NV, and Joshua Tree CA. Older TN/NC/TX/GA/SC lanes remain selectable below; none of this validates buyers until the buy-box call is captured.</p>
+      <div class="primary-action-strip sources-primary-action"><span>Next action</span><b>Open a live ZIP sprint, call the top builder, and capture the buy box before seller sourcing.</b><a href="#builders" data-view="builders">Open Builders ${productIcon('arrow')}</a></div>
     </div>
     <div class="source-stack-rail" aria-label="Target-state priority order">${stackRows}</div>
     <div class="source-guardrail"><b>Kentucky guardrail</b><span>If Kentucky records appear, treat them as target-state/HQ leakage unless they carry verified Tennessee permit evidence.</span></div>

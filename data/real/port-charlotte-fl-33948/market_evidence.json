@@ -1,0 +1,14 @@
+{
+  "key": "port-charlotte-fl-33948",
+  "state": "FL",
+  "marketName": "Port Charlotte 33948 / Charlotte County, FL",
+  "county": "Charlotte County",
+  "zips": [
+    "33948"
+  ],
+  "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
+  "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
+  "builderCount": 25,
+  "callableCount": 16,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+}

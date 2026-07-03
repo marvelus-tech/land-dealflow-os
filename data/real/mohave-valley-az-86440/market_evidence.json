@@ -1,0 +1,14 @@
+{
+  "key": "mohave-valley-az-86440",
+  "state": "AZ",
+  "marketName": "Mohave Valley / Fort Mohave 86440, AZ",
+  "county": "Mohave County",
+  "zips": [
+    "86440"
+  ],
+  "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
+  "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
+  "builderCount": 17,
+  "callableCount": 12,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+}

@@ -1,0 +1,14 @@
+{
+  "key": "joshua-tree-ca-92252",
+  "state": "CA",
+  "marketName": "Joshua Tree 92252 / San Bernardino County, CA",
+  "county": "San Bernardino County",
+  "zips": [
+    "92252"
+  ],
+  "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
+  "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
+  "builderCount": 26,
+  "callableCount": 21,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+}

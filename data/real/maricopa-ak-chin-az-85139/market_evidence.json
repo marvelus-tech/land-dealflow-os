@@ -1,0 +1,14 @@
+{
+  "key": "maricopa-ak-chin-az-85139",
+  "state": "AZ",
+  "marketName": "Maricopa / Ak-Chin edge 85139, AZ",
+  "county": "Pinal County",
+  "zips": [
+    "85139"
+  ],
+  "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
+  "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
+  "builderCount": 65,
+  "callableCount": 55,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+}

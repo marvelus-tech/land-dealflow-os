@@ -9,7 +9,15 @@ const markets = [
   ['raleigh', 'NC', 'data/real/raleigh/builder_signals.json', 20],
   ['rocky-mount-nc', 'NC', 'data/real/rocky-mount-nc/builder_signals.json', 10],
   ['polk', 'FL', 'data/real/polk/builder_signals.json', 20],
+  ['port-charlotte-fl-33948', 'FL', 'data/real/port-charlotte-fl-33948/builder_signals.json', 20],
+  ['punta-gorda-fl-33983', 'FL', 'data/real/punta-gorda-fl-33983/builder_signals.json', 20],
+  ['port-charlotte-fl-33953', 'FL', 'data/real/port-charlotte-fl-33953/builder_signals.json', 20],
   ['maricopa', 'AZ', 'data/real/maricopa/builder_signals.json', 20],
+  ['mohave-valley-az-86440', 'AZ', 'data/real/mohave-valley-az-86440/builder_signals.json', 17],
+  ['maricopa-ak-chin-az-85139', 'AZ', 'data/real/maricopa-ak-chin-az-85139/builder_signals.json', 20],
+  ['pahoa-keaau-hi', 'HI', 'data/real/pahoa-keaau-hi/builder_signals.json', 20],
+  ['pahrump-nv-89048', 'NV', 'data/real/pahrump-nv-89048/builder_signals.json', 20],
+  ['joshua-tree-ca-92252', 'CA', 'data/real/joshua-tree-ca-92252/builder_signals.json', 20],
   ['dorchester-sc', 'SC', 'data/real/dorchester-sc/builder_signals.json', 20],
   ['columbus-oh', 'OH', 'data/real/columbus-oh/builder_signals.json', 20],
   ['philadelphia-pa', 'PA', 'data/real/philadelphia-pa/builder_signals.json', 25],
@@ -32,8 +40,8 @@ assert.match(app, /Choose state\./, 'Builders workbench headline must be compact
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
 assert.match(app, /const builderMarketRegistry = \[/, 'Builders page must expose a market registry, not only a state rail');
-assert.match(app, /let selectedBuilderMarketState = 'GA'/, 'Builders must open on expansion lanes instead of the old TN-first rail');
-assert.match(app, /const orderedRegistry = \[[\s\S]{0,220}expansionStateCodes\.has\(registry\.state\)/, 'Builders switchboard must pin OH\/ID\/IN\/PA and GA\/SC expansion markets before older lanes');
+assert.match(app, /let selectedBuilderMarketState = 'FL'/, 'Builders must open on the new Florida ZIP sprint lanes instead of the old rail');
+assert.match(app, /const orderedRegistry = \[[\s\S]{0,220}expansionStateCodes\.has\(registry\.state\)/, 'Builders switchboard must pin new ZIP sprint states plus expansion markets before older lanes');
 assert.match(app, /function builderStateSummaryEntries/, 'Builders selector must aggregate county lanes into state-level market choices');
 assert.match(app, /<section class="state-first-ops-header builders-phase83-workbench"/, 'State-first Builders header must use the integrated phase 83 workbench');
 assert.doesNotMatch(app, /<section class="builder-ops-header"/, 'State-first Builders header must not inherit legacy hero layout');
@@ -58,8 +66,8 @@ assert.match(app, /<details class="state-county-ledger">/, 'County lane detail s
 assert.doesNotMatch(app, /<details class="state-county-ledger" open>/, 'County lane detail must not overwhelm the selected-state summary by default');
 assert.match(app, /data-builder-market-key/, 'Builders switchboard must switch individual markets on demand');
 assert.match(app, /0 builders · needs source work/, 'Low/no-count markets must remain visible with source-work copy');
-for (const key of ['columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa']) {
-  assert.match(app, new RegExp(`key: '${key}'`), `New OH/ID/IN/PA market must remain visible on Builders: ${key}`);
+for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa']) {
+  assert.match(app, new RegExp(`key: '${key}'`), `New ZIP sprint or queued market must remain visible on Builders: ${key}`);
 }
 for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga']) {
   assert.match(app, new RegExp(`key: '${key}'`), `New Georgia market must remain visible on Builders: ${key}`);
@@ -93,7 +101,7 @@ for (const [key, state, url, minRows] of markets) {
   assert.ok(rows.length >= minRows, `${key} must have at least ${minRows} deployed builder rows`);
 }
 
-for (const key of ['columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
+for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.ok(app.includes(`key: '${key}'`), `missing visible market key ${key}`);
 }
 

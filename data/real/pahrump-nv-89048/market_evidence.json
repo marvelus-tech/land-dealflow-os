@@ -1,0 +1,14 @@
+{
+  "key": "pahrump-nv-89048",
+  "state": "NV",
+  "marketName": "Pahrump 89048 / Nye County, NV",
+  "county": "Nye County",
+  "zips": [
+    "89048"
+  ],
+  "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
+  "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
+  "builderCount": 35,
+  "callableCount": 33,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+}

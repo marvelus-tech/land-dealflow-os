@@ -1,0 +1,14 @@
+{
+  "key": "punta-gorda-fl-33983",
+  "state": "FL",
+  "marketName": "Punta Gorda / Deep Creek 33983, FL",
+  "county": "Charlotte County",
+  "zips": [
+    "33983"
+  ],
+  "source": "BuildZoom public contractor profiles/directories collected from research/specific-builder-markets",
+  "sourceCaveat": "Rows are buyer-validation candidates with public profile/contact snippets, not validated buyers. Call/email required for buy box.",
+  "builderCount": 25,
+  "callableCount": 10,
+  "generatedFrom": "research/specific-builder-markets/builder_call_queue.json"
+}

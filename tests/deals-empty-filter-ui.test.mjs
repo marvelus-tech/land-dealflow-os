@@ -16,7 +16,7 @@ assert.match(app, /data-land-state/, 'Land page must let users focus listings by
 assert.match(app, /data-land-sort/, 'Land page must let users sort listings by market, state, enrichment, and builder fit.');
 assert.match(app, /target\.hidden = true/, 'Legacy stage filters must be retired to remove overlapping controls from the Land page.');
 assert.doesNotMatch(app, /\['seller-calls', 'Seller calls'\]/, 'Land page must not preserve old deal-stage filter clutter.');
-assert.match(app, /landStateToggleOrder = \['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'\]/, 'Land state toggle must include abbreviation-only queued states including OH/ID/IN/PA.');
+assert.match(app, /landStateToggleOrder = \['FL', 'AZ', 'HI', 'NV', 'CA', 'TN', 'NC', 'TX', 'GA', 'SC', 'OH', 'ID', 'IN', 'PA'\]/, 'Land state toggle must include abbreviation-only queued states including OH/ID/IN/PA.');
 assert.match(app, /const label = state === 'all' \? 'All' : state;/, 'Land state toggle should label all-states as All and state filters as abbreviations.');
 assert.match(app, /const stateLabel = 'All';/, 'Land market toggle should label the aggregate market filter as All.');
 assert.match(app, /function describeLandStateRecordScope/, 'Land state counts must explain whether records are broad state coverage or one populated seller lane.');
@@ -38,9 +38,9 @@ assert.match(app, /builderMarketSwitchboardEntries\(\)/, 'Deals page must reuse 
 assert.match(app, /function renderSellerCallReference/, 'Deals execution conveyor must store the seller call reference in the webapp, not only in agent memory.');
 assert.match(app, /Hi, this is Okeito\. I’m calling about your lot at \[property address\]/, 'Seller phone script opener must be available in the webapp reference section.');
 assert.match(app, /subagents should reference it, not perform outreach/, 'Webapp seller script must preserve the subagent boundary: reference only, no outreach.');
-assert.match(app, /const expansionStateCodes = new Set\(\['OH', 'ID', 'IN', 'PA', 'GA', 'SC'\]\)/, 'Deals page must pin newly added OH/ID/IN/PA plus GA/SC expansion markets near the top of the coverage shelf.');
+assert.match(app, /const expansionStateCodes = new Set\(\['FL', 'AZ', 'HI', 'NV', 'CA', 'OH', 'ID', 'IN', 'PA', 'GA', 'SC'\]\)/, 'Deals page must pin newly added OH/ID/IN/PA plus GA/SC expansion markets near the top of the coverage shelf.');
 assert.match(app, /\.\.\.expansionEntries, \.\.\.otherEntries/, 'Deals market coverage must surface expansion markets before older lanes.');
-for (const key of ['columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
+for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.match(app, new RegExp(`key: '${key}'`), `Deals market coverage must include ${key} through the shared registry.`);
 }
 assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');

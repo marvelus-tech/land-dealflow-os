@@ -32991,3 +32991,259 @@ body[data-active-view="today"] #command .today-offer-empty.phase243-offers-revie
     white-space: nowrap !important;
   }
 }
+
+/* v1.71 - Phase 245 unified Apple visual-system layer: one token source, route harmony, scan-first ledgers */
+:root {
+  --phase245-system-rule: unified-apple-hig-typographic-hierarchy-open-ledger-single-token-source;
+  --phase245-canvas: #fbfaf6;
+  --phase245-paper: #fffef9;
+  --phase245-field: #f5f3ec;
+  --phase245-ink: #0c1210;
+  --phase245-body: #3f4843;
+  --phase245-muted: #748078;
+  --phase245-soft: #9aa39c;
+  --phase245-line: rgba(12,18,16,.118);
+  --phase245-line-soft: rgba(12,18,16,.074);
+  --phase245-line-strong: rgba(12,18,16,.18);
+  --phase245-forest: #0f4d35;
+  --phase245-forest-deep: #093224;
+  --phase245-forest-soft: rgba(15,77,53,.082);
+  --phase245-gold: #9a721d;
+  --phase245-gold-soft: rgba(154,114,29,.115);
+  --phase245-danger: #8b2f25;
+  --phase245-radius: 0px;
+  --phase245-control-radius: 10px;
+  --phase245-max: 1180px;
+  --phase245-gutter: clamp(20px, 4vw, 48px);
+  --phase245-section: clamp(34px, 5vw, 64px);
+  --phase245-measure: 64ch;
+  --phase245-label: 10px;
+  --phase245-copy: 14px;
+  --phase245-title: clamp(34px, 4.8vw, 62px);
+  --phase245-subtitle: clamp(24px, 3vw, 38px);
+  --bg: var(--phase245-canvas);
+  --page: var(--phase245-paper);
+  --panel: var(--phase245-paper);
+  --panel-soft: var(--phase245-field);
+  --panel-warm: var(--phase245-canvas);
+  --panel-green: var(--phase245-forest-soft);
+  --ink: var(--phase245-ink);
+  --black: var(--phase245-ink);
+  --muted: var(--phase245-body);
+  --soft: var(--phase245-muted);
+  --line: var(--phase245-line);
+  --line-soft: var(--phase245-line-soft);
+  --brand: var(--phase245-forest);
+  --brand-dark: var(--phase245-forest-deep);
+  --green: var(--phase245-forest);
+  --money: var(--phase245-gold);
+  --money-ink: var(--phase245-gold);
+  --amber: var(--phase245-gold);
+  --coral: var(--phase245-gold);
+  --shadow: none;
+  --shadow-soft: none;
+}
+
+html body {
+  background: linear-gradient(180deg, var(--phase245-paper) 0%, var(--phase245-canvas) 420px, var(--phase245-canvas) 100%) !important;
+  color: var(--phase245-ink) !important;
+  font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
+  font-feature-settings: "kern" 1, "liga" 1, "tnum" 1;
+}
+main#app { width: min(100%, var(--phase245-max)) !important; max-width: var(--phase245-max) !important; padding: clamp(22px, 3vw, 38px) var(--phase245-gutter) clamp(64px, 8vw, 104px) !important; }
+.app-panel[hidden], main#app .app-panel[hidden] { display: none !important; }
+body :where(.eyebrow, .panel-kicker span, .panel-kicker b, .wk-kicker, .builder-ops-title > span, .state-workbench-kicker span, .completion-head span, .evidence-stack-head span, .validation-source-proof span, .form-field, .seller-unlock-card li span, .permit-state-head span, .adapter-card span, .phase-detail-card span, .metric-label, .badge) { letter-spacing: .115em !important; text-transform: uppercase !important; font-size: var(--phase245-label) !important; line-height: 1.15 !important; font-weight: 820 !important; }
+body :where(p, li, small, input, textarea, select) { color: var(--phase245-body); font-size: var(--phase245-copy); line-height: 1.48; letter-spacing: -.006em; }
+body :where(h1, h2, h3, h4) { color: var(--phase245-ink) !important; text-wrap: balance; }
+body :where(h1) { font-size: var(--phase245-title) !important; line-height: .96 !important; letter-spacing: -.068em !important; font-weight: 850 !important; }
+body :where(h2, .daily-heading h2, .today-offers-head h2) { font-size: var(--phase245-subtitle) !important; line-height: 1.02 !important; letter-spacing: -.055em !important; font-weight: 820 !important; }
+body :where(h3) { font-size: clamp(22px, 2.4vw, 34px) !important; line-height: 1.04 !important; letter-spacing: -.048em !important; }
+body :where(.brand-hero, .cashflow-hero, .section-hero, .closing-hero, .daily-heading, .card, .stage, .side-panel, .money-queue-panel, .call-script-panel, .outcome-panel, .builder-adapter-panel, .permit-state-card, .normalization-tier, .adapter-card, .source-disclosure, .seller-unlock-card, .validation-focus-card, .validation-queue, .state-first-ops-header, .state-first-workbench, .active-market-summary, .validation-script-drawer, .today-offers-review, .os8-session, .fabrication-guard) { border-radius: var(--phase245-radius) !important; box-shadow: none !important; background: transparent !important; }
+body :where(.card, .stage, .side-panel, .daily-heading, .builder-adapter-panel, .permit-state-card, .normalization-tier, .adapter-card, .validation-script-drawer, .fabrication-guard) { border: 0 !important; border-top: 1px solid var(--phase245-line) !important; }
+body :where(button, .button-link, .hero-actions a, .nav-cta, .validation-call-button, .seller-unlock-cta, .empty-state-actions a) { border-radius: 0 !important; box-shadow: none !important; background-image: none !important; font-weight: 780 !important; }
+body :where(button:hover, .button-link:hover, .hero-actions a:hover, .validation-call-button:hover) { transform: none !important; }
+body :where(.badge, .filter, .completion-chip, .permit-platform-tags em, .today-offer-warning, .contact-icon-toggle, .activity-toggle) { border-radius: 7px !important; box-shadow: none !important; }
+body :where(pre, code, textarea, input, select) { background: var(--phase245-field) !important; color: var(--phase245-ink) !important; border-color: var(--phase245-line) !important; box-shadow: none !important; }
+body:not([data-active-view="today"]) .app-panel > :where(section, div):first-child, body:not([data-active-view="today"]) .builder-engine-shell > .state-first-ops-header { margin-top: 0 !important; padding-top: clamp(34px, 5vw, 70px) !important; padding-bottom: clamp(28px, 4vw, 48px) !important; border-bottom: 1px solid var(--phase245-line) !important; }
+body:not([data-active-view="today"]) .app-panel > :where(section, div):first-child :where(p) { max-width: var(--phase245-measure); }
+body[data-active-view="builders"] #builder-list-panel .builder-engine-shell { display: grid !important; gap: var(--phase245-section) !important; }
+body[data-active-view="builders"] #builder-list-panel .builders-phase83-workbench { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: clamp(28px, 4vw, 46px) !important; padding-inline: 0 !important; }
+body[data-active-view="builders"] #builder-list-panel .builder-ops-title { display: grid !important; grid-template-columns: minmax(0, .55fr) minmax(280px, .45fr) !important; gap: clamp(24px, 5vw, 70px) !important; align-items: end !important; border-bottom: 1px solid var(--phase245-line) !important; padding-bottom: clamp(22px, 3vw, 34px) !important; }
+body[data-active-view="builders"] #builder-list-panel .builder-ops-title .eyebrow { grid-column: 1 / -1; }
+body[data-active-view="builders"] #builder-list-panel .builder-ops-title h3 { font-size: clamp(34px, 4.6vw, 58px) !important; }
+body[data-active-view="builders"] #builder-list-panel .builders-primary-action, body[data-active-view="builders"] #builder-list-panel .builder-ops-jump { display: none !important; }
+body[data-active-view="builders"] #builder-list-panel .state-first-workbench { padding: 0 !important; border: 0 !important; }
+body[data-active-view="builders"] #builder-list-panel .state-workbench-kicker { min-height: 0 !important; display: grid !important; grid-template-columns: minmax(0, 1fr) auto !important; gap: 8px 18px !important; padding: 0 0 13px !important; border-bottom: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-workbench-kicker strong { font-size: 16px !important; letter-spacing: -.02em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-workbench-kicker em { justify-self: end; color: var(--phase245-muted) !important; font-size: 12px !important; font-style: normal !important; }
+body[data-active-view="builders"] #builder-list-panel .state-workbench-layout { display: grid !important; grid-template-columns: minmax(360px, .56fr) minmax(320px, .44fr) !important; gap: clamp(28px, 4.8vw, 54px) !important; align-items: stretch !important; margin-top: 24px !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-grid { display: grid !important; gap: 0 !important; border-top: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-toggle { min-height: 56px !important; display: grid !important; grid-template-columns: 38px minmax(0, 1fr) minmax(72px, auto) !important; gap: 14px !important; align-items: center !important; padding: 9px 0 !important; border: 0 !important; border-bottom: 1px solid var(--phase245-line-soft) !important; border-radius: 0 !important; background: transparent !important; color: var(--phase245-ink) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-toggle.active, body[data-active-view="builders"] #builder-list-panel .state-market-toggle.is-active { background: linear-gradient(90deg, var(--phase245-forest-soft), transparent 54%) !important; box-shadow: inset 3px 0 0 var(--phase245-forest) !important; padding-left: 14px !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-code { color: var(--phase245-forest) !important; font-size: 12px !important; font-weight: 850 !important; letter-spacing: .08em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-copy strong { display: flex !important; gap: 6px !important; align-items: baseline !important; min-width: 0 !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-name { color: var(--phase245-ink) !important; font-size: 14px !important; font-weight: 790 !important; letter-spacing: -.012em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-thesis { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--phase245-muted) !important; font-size: 12px !important; font-weight: 620 !important; letter-spacing: -.006em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-copy small { display: flex !important; gap: 8px !important; color: var(--phase245-gold) !important; font-size: 11px !important; font-weight: 720 !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-toggle em { color: var(--phase245-ink) !important; font-style: normal !important; text-align: right !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-toggle em b { font-size: 17px !important; letter-spacing: -.035em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-toggle em span { color: var(--phase245-soft) !important; font-size: 10px !important; letter-spacing: .095em !important; text-transform: uppercase !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary { display: grid !important; grid-template-rows: auto auto 1fr auto !important; gap: 20px !important; padding: 3px 0 0 clamp(24px, 3vw, 34px) !important; border: 0 !important; border-left: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary > span { color: var(--phase245-forest) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary strong { font-size: clamp(28px, 3vw, 38px) !important; letter-spacing: -.052em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary p { max-width: 47ch !important; color: var(--phase245-body) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary ul { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 0 !important; align-content: end !important; border-top: 1px solid var(--phase245-line) !important; border-bottom: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary li { padding: 15px 0 !important; background: transparent !important; border: 0 !important; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary li b { color: var(--phase245-gold) !important; font-size: 23px !important; letter-spacing: -.045em !important; }
+body[data-active-view="builders"] #builder-list-panel .state-county-ledger { border-top: 1px solid var(--phase245-line) !important; padding-top: 13px !important; }
+body[data-active-view="builders"] #buyer-validation-command { display: grid !important; gap: 26px !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .operator-flow-pulse { display: grid !important; grid-template-columns: repeat(5, minmax(0, 1fr)) !important; gap: 0 !important; border-top: 1px solid var(--phase245-line) !important; border-bottom: 1px solid var(--phase245-line) !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .operator-flow-pulse span { min-height: 44px !important; display: grid !important; place-items: center !important; border-right: 1px solid var(--phase245-line-soft) !important; background: transparent !important; color: var(--phase245-muted) !important; font-size: 10px !important; letter-spacing: .12em !important; text-transform: uppercase !important; }
+body[data-active-view="builders"] #buyer-validation-command .operator-flow-pulse span.done, body[data-active-view="builders"] #buyer-validation-command .operator-flow-pulse span.active { color: var(--phase245-forest) !important; box-shadow: inset 0 -2px 0 var(--phase245-forest) !important; }
+body[data-active-view="builders"] #buyer-validation-command .completion-state-legend { justify-self: end !important; margin: 0 !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-grid-main { display: grid !important; grid-template-columns: minmax(260px, .34fr) minmax(0, 1fr) minmax(220px, .26fr) !important; gap: clamp(20px, 3vw, 34px) !important; align-items: start !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-queue, body[data-active-view="builders"] #buyer-validation-command .validation-focus-card, body[data-active-view="builders"] #buyer-validation-command .seller-unlock-card { padding: 0 !important; border: 0 !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-queue { border-top: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #buyer-validation-command .panel-kicker { min-height: 44px !important; padding: 0 !important; border-bottom: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #buyer-validation-command .queue-filter-row { display: none !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-queue-item { border: 0 !important; border-bottom: 1px solid var(--phase245-line-soft) !important; border-radius: 0 !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-queue-item.active { background: var(--phase245-forest-soft) !important; box-shadow: inset 3px 0 0 var(--phase245-forest) !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-row-main { min-height: 62px !important; padding: 11px 0 7px 14px !important; border: 0 !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .queue-copy b { font-size: 14px !important; line-height: 1.14 !important; letter-spacing: -.02em !important; }
+body[data-active-view="builders"] #buyer-validation-command .queue-copy small { color: var(--phase245-muted) !important; font-size: 11px !important; line-height: 1.25 !important; }
+body[data-active-view="builders"] #buyer-validation-command .queue-score { color: var(--phase245-gold) !important; }
+body[data-active-view="builders"] #buyer-validation-command .queue-state-row { padding: 0 0 11px 14px !important; }
+body[data-active-view="builders"] #buyer-validation-command .contact-icon-toggle { width: 24px !important; height: 24px !important; background: transparent !important; border: 1px solid var(--phase245-line-soft) !important; }
+body[data-active-view="builders"] #buyer-validation-command .contact-icon-toggle.is-on { color: var(--phase245-forest) !important; border-color: var(--phase245-forest) !important; background: var(--phase245-forest-soft) !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-focus-head { display: grid !important; grid-template-columns: minmax(0, 1fr) auto !important; gap: 22px !important; padding-bottom: 18px !important; border-bottom: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-focus-head h3 { max-width: 610px !important; font-size: clamp(36px, 5vw, 64px) !important; line-height: .94 !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-focus-head p { max-width: 62ch !important; margin-top: 12px !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-score { border-left: 1px solid var(--phase245-line) !important; padding-left: 24px !important; }
+body[data-active-view="builders"] #buyer-validation-command .next-best-action, body[data-active-view="builders"] #buyer-validation-command .validation-source-proof, body[data-active-view="builders"] #buyer-validation-command .evidence-stack, body[data-active-view="builders"] #buyer-validation-command .buybox-completion, body[data-active-view="builders"] #buyer-validation-command .ask-next-card, body[data-active-view="builders"] #buyer-validation-command .validation-form { margin-top: 18px !important; padding: 18px 0 0 !important; border: 0 !important; border-top: 1px solid var(--phase245-line) !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+body[data-active-view="builders"] #buyer-validation-command .next-best-action { display: grid !important; grid-template-columns: 86px minmax(0,1fr) !important; gap: 18px !important; align-items: baseline !important; }
+body[data-active-view="builders"] #buyer-validation-command .next-best-action strong { max-width: 620px !important; font-size: clamp(21px, 2.4vw, 30px) !important; line-height: 1.05 !important; letter-spacing: -.045em !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-source-proof { display: grid !important; grid-template-columns: 1fr !important; gap: 0 !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-source-proof div { display: grid !important; grid-template-columns: 130px minmax(0, 1fr) !important; gap: 18px !important; min-height: 42px !important; padding: 10px 0 !important; border-bottom: 1px solid var(--phase245-line-soft) !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-actions { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 0 !important; margin-top: 22px !important; border: 1px solid var(--phase245-line) !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-call-button { min-height: 50px !important; border: 0 !important; border-right: 1px solid var(--phase245-line) !important; border-radius: 0 !important; background: transparent !important; color: var(--phase245-forest) !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-call-button.copy-email-button { background: var(--phase245-forest) !important; color: white !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 0 !important; border: 1px solid var(--phase245-line) !important; padding: 0 !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid .form-field { min-height: 104px !important; padding: 18px !important; border-right: 1px solid var(--phase245-line-soft) !important; border-bottom: 1px solid var(--phase245-line-soft) !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid input, body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid textarea, body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid select { margin-top: 14px !important; padding: 0 !important; border: 0 !important; background: transparent !important; }
+body[data-active-view="builders"] #buyer-validation-command .field-notes, body[data-active-view="builders"] #buyer-validation-command .validation-save-row { grid-column: 1 / -1 !important; }
+body[data-active-view="builders"] #buyer-validation-command .seller-unlock-card { border-top: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #buyer-validation-command .seller-unlock-card ul li { display: grid !important; grid-template-columns: 34px minmax(0,1fr) !important; min-height: 44px !important; border-bottom: 1px solid var(--phase245-line-soft) !important; }
+body[data-active-view="builders"] #builder-list-panel .builder-two-col { display: block !important; margin-top: 0 !important; }
+body[data-active-view="builders"] #builder-list-panel .wide-permit-panel { width: 100% !important; max-width: none !important; display: grid !important; grid-template-columns: minmax(260px, .34fr) minmax(0, 1fr) !important; gap: clamp(28px, 5vw, 72px) !important; padding: clamp(28px, 4vw, 52px) 0 0 !important; border-top: 1px solid var(--phase245-line) !important; }
+body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > .panel-kicker, body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > .permit-landscape-summary, body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > h4 { grid-column: 1 !important; }
+body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > .permit-state-grid, body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > .adapter-grid, body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > .normalization-grid { grid-column: 2 !important; }
+body[data-active-view="builders"] #builder-list-panel .market-lane-grid, body[data-active-view="builders"] #builder-list-panel .state-market-list, body[data-active-view="builders"] #builder-list-panel .state-pipeline-list, body[data-active-view="builders"] #builder-list-panel .portal-link-list, body[data-active-view="builders"] #builder-list-panel .adapter-grid, body[data-active-view="builders"] #builder-list-panel .normalization-grid { display: grid !important; gap: 0 !important; }
+body[data-active-view="builders"] #builder-list-panel .state-market-list li, body[data-active-view="builders"] #builder-list-panel .state-pipeline-list li, body[data-active-view="builders"] #builder-list-panel .portal-link-list a, body[data-active-view="builders"] #builder-list-panel .adapter-card, body[data-active-view="builders"] #builder-list-panel .normalization-tier { min-height: 58px !important; padding: 14px 0 !important; border: 0 !important; border-bottom: 1px solid var(--phase245-line-soft) !important; background: transparent !important; }
+body[data-active-view="sources"] :where(.source-card, .source-pipeline-card, .workflow-card, .source-row, .source-detail), body[data-active-view="closing"] :where(.closing-card, .closing-step, .legal-packet-card, .trust-card), body[data-active-view="machine"] :where(.machine-card, .import-card, .admin-card, .code-card), body[data-active-view="deals"] :where(.deal-card, .deal-detail, .money-call, .offer-card) { border-radius: 0 !important; box-shadow: none !important; background: transparent !important; border-color: var(--phase245-line) !important; }
+body[data-active-view="machine"] :where(pre, code, textarea, .csv-example, .import-preview) { background: var(--phase245-field) !important; color: var(--phase245-ink) !important; border: 1px solid var(--phase245-line) !important; }
+@media (max-width: 900px) {
+  main#app { padding-inline: 20px !important; }
+  body[data-active-view="builders"] #builder-list-panel .builder-ops-title, body[data-active-view="builders"] #builder-list-panel .state-workbench-layout, body[data-active-view="builders"] #buyer-validation-command .validation-grid-main, body[data-active-view="builders"] #builder-list-panel .wide-permit-panel { grid-template-columns: minmax(0, 1fr) !important; gap: 24px !important; }
+  body[data-active-view="builders"] #builder-list-panel .state-focus-summary { padding-left: 0 !important; border-left: 0 !important; border-top: 1px solid var(--phase245-line) !important; padding-top: 22px !important; }
+  body[data-active-view="builders"] #buyer-validation-command .completion-state-legend { justify-self: start !important; }
+  body[data-active-view="builders"] #buyer-validation-command .operator-flow-pulse { grid-template-columns: 1fr !important; }
+  body[data-active-view="builders"] #buyer-validation-command .operator-flow-pulse span { justify-content: start !important; padding-left: 0 !important; place-items: center start !important; border-right: 0 !important; }
+  body[data-active-view="builders"] #buyer-validation-command .validation-focus-head, body[data-active-view="builders"] #buyer-validation-command .next-best-action, body[data-active-view="builders"] #buyer-validation-command .validation-source-proof div, body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  body[data-active-view="builders"] #buyer-validation-command .validation-actions { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  body[data-active-view="builders"] #builder-list-panel .wide-permit-panel > * { grid-column: 1 !important; }
+}
+@media (max-width: 640px) {
+  :root { --phase245-copy: 13px; }
+  body :where(h1) { font-size: clamp(38px, 11vw, 52px) !important; }
+  body[data-active-view="builders"] #builder-list-panel .state-market-toggle { grid-template-columns: 34px minmax(0, 1fr) auto !important; }
+  body[data-active-view="builders"] #builder-list-panel .state-market-thesis { display: none !important; }
+  body[data-active-view="builders"] #builder-list-panel .state-focus-summary ul { grid-template-columns: 1fr 1fr !important; }
+}
+
+/* v1.71.1 - Phase 245 second-pass review: remove dead air, calm builder detail scale, preserve scan width */
+:root { --phase245-second-pass-rule: no-dead-air-detail-title-stays-proportional; }
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary {
+  grid-template-rows: auto auto auto auto !important;
+  align-content: start !important;
+  gap: 16px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .state-focus-summary ul {
+  margin-top: 2px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .state-county-ledger {
+  margin-top: 2px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builders-phase83-workbench {
+  padding-bottom: clamp(22px, 3vw, 36px) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command {
+  margin-top: 0 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .validation-grid-main {
+  grid-template-columns: minmax(260px, .31fr) minmax(360px, .45fr) minmax(218px, .24fr) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .validation-focus-head h3 {
+  font-size: clamp(30px, 3.35vw, 46px) !important;
+  line-height: .98 !important;
+  max-width: 540px !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .next-best-action strong {
+  font-size: clamp(20px, 2vw, 26px) !important;
+  line-height: 1.05 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .validation-source-proof div {
+  grid-template-columns: 112px minmax(0, 1fr) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .validation-source-proof p,
+body[data-active-view="builders"] #buyer-validation-command .evidence-stack p {
+  max-width: 48ch !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .validation-buybox-grid .form-field {
+  min-height: 92px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .wide-permit-panel {
+  padding-top: clamp(22px, 3vw, 38px) !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="builders"] #buyer-validation-command .validation-grid-main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+/* v1.71.2 - Phase 245 closing sidebar QA: queue numerals get their own rail, no address collision */
+:root { --phase245-closing-queue-rule: stable-number-rail-before-address-copy; }
+body[data-active-view="closing"] .closing-queue .queue-item {
+  display: grid !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  gap: 4px 14px !important;
+  align-items: start !important;
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase245-line-soft) !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item > span {
+  grid-row: 1 / span 4 !important;
+  grid-column: 1 !important;
+  width: 28px !important;
+  min-width: 28px !important;
+  justify-self: start !important;
+  text-align: center !important;
+  color: var(--phase245-forest) !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item > b,
+body[data-active-view="closing"] .closing-queue .queue-item > small,
+body[data-active-view="closing"] .closing-queue .queue-item > em,
+body[data-active-view="closing"] .closing-queue .queue-item > .badge {
+  grid-column: 2 !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item > b {
+  overflow-wrap: anywhere !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item > .badge {
+  justify-self: start !important;
+  margin-top: 6px !important;
+}

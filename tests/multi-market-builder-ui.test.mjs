@@ -98,6 +98,8 @@ assert.match(app, /selectedBuilderMarketKey = ''/, 'Clicking a state must reset 
 assert.match(app, /function mergeDuplicateBuilderRows/, 'Builders loader must dedupe repeated public profile rows before rendering');
 assert.match(app, /builderDedupeKey/, 'Builders loader must use a stable profile/name key for duplicate prevention');
 assert.match(app, /mergeDuplicateBuilderRows\(asArray\(Array\.isArray\(data\) \? data : data\.rows\)\.map/, 'All loaded market artifacts should pass through duplicate-row merging');
+assert.match(app, /return mergeDuplicateBuilderRows\(getBuilderMarketEntriesForState\(stateCode\)/, 'State-level builder queues must dedupe the same company across adjacent market lanes');
+assert.match(app, /const rows = mergeDuplicateBuilderRows\(markets\.flatMap\(market => asArray\(market\.rows\)\)\)/, 'State selector summaries must use deduped state rows, not summed market rows');
 
 for (const [key, state, url, minRows] of markets) {
   assert.ok(app.includes(`key: '${key}'`), `missing builder source key ${key}`);

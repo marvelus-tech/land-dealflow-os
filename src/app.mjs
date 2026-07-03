@@ -2154,11 +2154,11 @@ function getBuilderMarketEntriesForState(stateCode) {
 }
 
 function getStateBuilderRows(stateCode) {
-  return getBuilderMarketEntriesForState(stateCode)
+  return mergeDuplicateBuilderRows(getBuilderMarketEntriesForState(stateCode)
     .flatMap(market => {
       const marketKey = loadedBuilderMarketKey(market);
       return asArray(market.rows).map(row => ({ ...row, marketKey, marketName: market.marketName, csvUrl: market.csvUrl }));
-    })
+    }))
     .sort((a, b) => Number(b.recentBuilds || 0) - Number(a.recentBuilds || 0));
 }
 
@@ -2265,7 +2265,7 @@ function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntr
   return order.map(stateCode => {
     const markets = marketEntries.filter(market => market.stateCode === stateCode || market.state === stateCode);
     if (!markets.length) return null;
-    const rows = markets.flatMap(market => asArray(market.rows));
+    const rows = mergeDuplicateBuilderRows(markets.flatMap(market => asArray(market.rows)));
     const stateMeta = asArray(permitLandscape.states).find(item => item.id === String(stateCode).toLowerCase()) || markets[0]?.stateMeta || {};
     const minimumUniqueBuilders = markets.reduce((sum, market) => sum + Number(market.minimumUniqueBuilders || 20), 0) || 20;
     const builderCount = rows.length;

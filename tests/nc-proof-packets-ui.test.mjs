@@ -9,10 +9,14 @@ assert.match(app, /function renderNorthCarolinaWakeProofPackets/, 'Land page mus
 assert.match(app, /selectedLandStateFilter === 'NC'/, 'Proof packets must be scoped to the North Carolina Land state.');
 assert.match(app, /selectedDealsMarketKey === 'all' \|\| selectedDealsMarketKey === 'raleigh'/, 'Proof packets must live under the Raleigh\/Wake NC market lane.');
 assert.match(app, /Download ZIP proof packets\./, 'Land UI must expose downloadable proof packets copy.');
+assert.match(app, /wake_nc_27604_proof_packet\.html/, '27604 clickable HTML packet must be linked.');
 assert.match(app, /wake_nc_27604_proof_packet\.md/, '27604 packet must be linked.');
+assert.match(app, /wake_nc_27607_proof_packet\.html/, '27607 clickable HTML packet must be linked.');
 assert.match(app, /wake_nc_27607_proof_packet\.md/, '27607 packet must be linked.');
+assert.match(app, /wake_nc_27502_proof_packet\.html/, '27502 clickable HTML packet must be linked.');
 assert.match(app, /wake_nc_27502_proof_packet\.md/, '27502 packet must be linked.');
-assert.match(app, /downloadLink\(packet\.markdownUrl, 'Download MD'/, 'Primary packet action must be a downloadable markdown file.');
+assert.match(app, /safeLink\(packet\.htmlUrl, 'Open packet'/, 'Primary packet action must open a clickable HTML packet.');
+assert.match(app, /downloadLink\(packet\.markdownUrl, 'MD'/, 'Markdown download must be available per ZIP.');
 assert.match(app, /downloadLink\(packet\.csvUrl, 'CSV'/, 'CSV download must be available per ZIP.');
 assert.match(app, /downloadLink\(packet\.jsonUrl, 'JSON'/, 'JSON download must be available per ZIP.');
 
@@ -21,7 +25,7 @@ assert.match(css, /\.nc-proof-packet-grid[\s\S]{0,120}repeat\(3, minmax\(0, 1fr\
 assert.match(css, /\.proof-packet-download\.primary/, 'Primary proof packet download style must exist.');
 
 for (const zip of ['27604', '27607', '27502']) {
-  for (const ext of ['md', 'csv', 'json']) {
+  for (const ext of ['html', 'md', 'csv', 'json']) {
     const path = `data/real/wake-nc-buy-box/wake_nc_${zip}_proof_packet.${ext}`;
     assert.ok(existsSync(path), `${path} must exist as a downloadable static asset.`);
     const body = readFileSync(path, 'utf8');

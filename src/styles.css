@@ -33423,3 +33423,8 @@ body[data-active-view="deals"] .nc-proof-packet-actions a.proof-packet-download.
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
+
+/* v1.78 - proof packets open as clickable HTML first; raw files remain downloadable */
+body[data-active-view="deals"] .nc-proof-packet-actions {
+  grid-template-columns: minmax(0, 1.35fr) repeat(3, minmax(44px, .5fr)) !important;
+}

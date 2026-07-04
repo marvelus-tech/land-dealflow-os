@@ -167,6 +167,7 @@ const northCarolinaWakeProofPackets = [
     vacantParcelCount: 137,
     status: 'Hold for manual easement check',
     note: 'Strongest financial match; urban-infill pocket, not a seller-call list yet.',
+    htmlUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.html',
     markdownUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.md',
     csvUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.csv',
     jsonUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.json',
@@ -179,6 +180,7 @@ const northCarolinaWakeProofPackets = [
     vacantParcelCount: 81,
     status: 'High-variance infill review',
     note: 'Many financial fits; street quality and premium-pocket risk decide usefulness.',
+    htmlUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.html',
     markdownUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.md',
     csvUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.csv',
     jsonUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.json',
@@ -191,6 +193,7 @@ const northCarolinaWakeProofPackets = [
     vacantParcelCount: 61,
     status: 'Scarcity / buildability review',
     note: 'All official land values fit, but active inventory is thin and Apex needs manual utility/slope review.',
+    htmlUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.html',
     markdownUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.md',
     csvUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.csv',
     jsonUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.json',
@@ -1525,7 +1528,8 @@ function renderNorthCarolinaWakeProofPackets() {
       <div><dt>Candidates</dt><dd>${h(packet.candidateCount)} / ${h(packet.vacantParcelCount)}</dd></div>
     </dl>
     <div class="nc-proof-packet-actions">
-      ${downloadLink(packet.markdownUrl, 'Download MD', 'proof-packet-download primary')}
+      ${safeLink(packet.htmlUrl, 'Open packet', 'proof-packet-download primary')}
+      ${downloadLink(packet.markdownUrl, 'MD', 'proof-packet-download')}
       ${downloadLink(packet.csvUrl, 'CSV', 'proof-packet-download')}
       ${downloadLink(packet.jsonUrl, 'JSON', 'proof-packet-download')}
     </div>

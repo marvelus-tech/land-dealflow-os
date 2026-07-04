@@ -33247,3 +33247,179 @@ body[data-active-view="closing"] .closing-queue .queue-item > .badge {
   justify-self: start !important;
   margin-top: 6px !important;
 }
+
+/* v1.76 - North Carolina ZIP proof-packet downloads live under the Land market lane */
+body[data-active-view="deals"] .nc-proof-packets {
+  --nc-proof-packet-rule: separate-zip-downloads-under-nc-land-market;
+  margin-top: 14px;
+  padding: 16px;
+  border: 1px solid rgba(11, 90, 67, .14);
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,250,244,.78));
+  box-shadow: rgba(24,29,38,.045) 0 12px 32px;
+}
+
+body[data-active-view="deals"] .nc-proof-packets-head {
+  display: grid;
+  gap: 5px;
+  max-width: 760px;
+}
+
+body[data-active-view="deals"] .nc-proof-packets-head p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid rgba(17,24,39,.08);
+  border-radius: 18px;
+  background: rgba(255,255,255,.78);
+}
+
+body[data-active-view="deals"] .nc-proof-packet-head {
+  display: grid;
+  gap: 4px;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-head span {
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(169,118,34,.13);
+  color: var(--land-brand-gold, #a97622);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .04em;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-head b {
+  color: var(--black);
+  font-size: 14px;
+  letter-spacing: -.02em;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-head em,
+body[data-active-view="deals"] .nc-proof-packet-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+  font-style: normal;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card dl div {
+  display: grid;
+  gap: 2px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(17,24,39,.07);
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card dt {
+  color: var(--soft);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card dd {
+  margin: 0;
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 780;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+body[data-active-view="deals"] .proof-packet-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 7px 10px;
+  border: 1px solid rgba(11,90,67,.15);
+  border-radius: 999px;
+  background: rgba(255,255,255,.72);
+  color: var(--land-brand-primary, #0b5a43);
+  font-size: 11px;
+  font-weight: 820;
+}
+
+body[data-active-view="deals"] .proof-packet-download.primary {
+  background: var(--land-brand-primary, #0b5a43);
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  body[data-active-view="deals"] .nc-proof-packet-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* v1.77 - NC proof packets stay readable in the narrow selected-state inspector */
+body[data-active-view="deals"] .nc-proof-packets-head h3 {
+  font-size: clamp(22px, 2.2vw, 32px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.055em !important;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-grid {
+  grid-template-columns: 1fr !important;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card p {
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-card dl {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body[data-active-view="deals"] .nc-proof-packet-actions {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.2fr) repeat(2, minmax(54px, .6fr));
+}
+
+body[data-active-view="deals"] .proof-packet-download {
+  width: 100%;
+  min-width: 0;
+  padding-inline: 8px;
+  white-space: nowrap;
+}
+
+body[data-active-view="deals"] .proof-packet-download.primary {
+  color: #fff !important;
+}
+
+body[data-active-view="deals"] .nc-proof-packet-actions .proof-packet-download.primary,
+body[data-active-view="deals"] .nc-proof-packet-actions a.proof-packet-download.primary {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}

@@ -158,6 +158,45 @@ const builderMarketRegistry = [
 
 const builderMarketRegistryByKey = new Map(builderMarketRegistry.map(market => [market.key, market]));
 
+const northCarolinaWakeProofPackets = [
+  {
+    zip: '27604',
+    label: 'Raleigh 27604',
+    target: '$350k-$500k / 0.25 ac',
+    candidateCount: 14,
+    vacantParcelCount: 137,
+    status: 'Hold for manual easement check',
+    note: 'Strongest financial match; urban-infill pocket, not a seller-call list yet.',
+    markdownUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.md',
+    csvUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.csv',
+    jsonUrl: 'data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.json',
+  },
+  {
+    zip: '27607',
+    label: 'Raleigh 27607',
+    target: 'Under $550k / 0.25 ac',
+    candidateCount: 70,
+    vacantParcelCount: 81,
+    status: 'High-variance infill review',
+    note: 'Many financial fits; street quality and premium-pocket risk decide usefulness.',
+    markdownUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.md',
+    csvUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.csv',
+    jsonUrl: 'data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.json',
+  },
+  {
+    zip: '27502',
+    label: 'Apex 27502',
+    target: 'Under $400k / 0.25 ac',
+    candidateCount: 61,
+    vacantParcelCount: 61,
+    status: 'Scarcity / buildability review',
+    note: 'All official land values fit, but active inventory is thin and Apex needs manual utility/slope review.',
+    markdownUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.md',
+    csvUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.csv',
+    jsonUrl: 'data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.json',
+  },
+];
+
 const stages = [
   { id: 'market', name: 'Market Finder', desc: 'Where to hunt first.', sourceType: 'market' },
   { id: 'buyer', name: 'Buyer Finder', desc: 'Who is actively building.', sourceType: 'buyer' },
@@ -1355,6 +1394,7 @@ function renderLandControls() {
       <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(activeState.offerReady || 0)}</b><span>offer-ready</span></li>
     </ul>
     ${renderDealsMarketCoverage()}
+    ${renderNorthCarolinaWakeProofPackets()}
     ${sortControl}
     <p class="land-control-note">${h(stateNote)}</p>
   </div>`;
@@ -1463,6 +1503,41 @@ function landLaneAbbrev(market = {}) {
   if (label.includes('raleigh') || label.includes('wake')) return 'RDU';
   if (label.includes('phoenix') || label.includes('maricopa')) return 'PHX';
   return String(market.stateCode || market.state || 'LN').slice(0, 3).toUpperCase();
+}
+
+function downloadLink(url, label, className = '') {
+  return `<a ${className ? `class="${h(className)}" ` : ''}href="${h(url)}" download>${h(label)}</a>`;
+}
+
+function renderNorthCarolinaWakeProofPackets() {
+  const showForState = selectedLandStateFilter === 'NC';
+  const showForMarket = selectedDealsMarketKey === 'all' || selectedDealsMarketKey === 'raleigh';
+  if (!showForState || !showForMarket) return '';
+  const rows = northCarolinaWakeProofPackets.map(packet => `<article class="nc-proof-packet-card" data-nc-proof-zip="${h(packet.zip)}">
+    <div class="nc-proof-packet-head">
+      <span>${h(packet.zip)}</span>
+      <b>${h(packet.label)}</b>
+      <em>${h(packet.status)}</em>
+    </div>
+    <p>${h(packet.note)}</p>
+    <dl>
+      <div><dt>Buyer target</dt><dd>${h(packet.target)}</dd></div>
+      <div><dt>Candidates</dt><dd>${h(packet.candidateCount)} / ${h(packet.vacantParcelCount)}</dd></div>
+    </dl>
+    <div class="nc-proof-packet-actions">
+      ${downloadLink(packet.markdownUrl, 'Download MD', 'proof-packet-download primary')}
+      ${downloadLink(packet.csvUrl, 'CSV', 'proof-packet-download')}
+      ${downloadLink(packet.jsonUrl, 'JSON', 'proof-packet-download')}
+    </div>
+  </article>`).join('');
+  return `<section class="nc-proof-packets" aria-label="North Carolina ZIP proof packets">
+    <div class="nc-proof-packets-head">
+      <span class="eyebrow">North Carolina · Wake buy-box proof</span>
+      <h3>Download ZIP proof packets.</h3>
+      <p>Each packet is separate by ZIP: official Wake parcel/GIS + FEMA first-pass evidence, Zillow/Redfin outbound context links, and owner-contact locked status. These are buyer-confirmation packets, not seller-call lists.</p>
+    </div>
+    <div class="nc-proof-packet-grid">${rows}</div>
+  </section>`;
 }
 
 function renderDealsMarketCoverage() {

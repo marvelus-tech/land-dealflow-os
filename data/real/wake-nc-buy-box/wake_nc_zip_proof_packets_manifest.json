@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-07-04T06:20:38.508625+00:00",
+  "market": "Wake County NC builder buy-box proof packets",
+  "packets": [
+    {
+      "zip": "27604",
+      "label": "Raleigh 27604",
+      "target": "$350k\u2013$500k / 0.25 ac",
+      "candidateCount": 14,
+      "vacantParcelCount": 137,
+      "markdownUrl": "data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.md",
+      "csvUrl": "data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.csv",
+      "jsonUrl": "data/real/wake-nc-buy-box/wake_nc_27604_proof_packet.json",
+      "sourceNote": "Wake County/FEMA first-pass proof; Zillow/Redfin outbound context links only; owner contact locked."
+    },
+    {
+      "zip": "27607",
+      "label": "Raleigh 27607",
+      "target": "under $550k / 0.25 ac",
+      "candidateCount": 70,
+      "vacantParcelCount": 81,
+      "markdownUrl": "data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.md",
+      "csvUrl": "data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.csv",
+      "jsonUrl": "data/real/wake-nc-buy-box/wake_nc_27607_proof_packet.json",
+      "sourceNote": "Wake County/FEMA first-pass proof; Zillow/Redfin outbound context links only; owner contact locked."
+    },
+    {
+      "zip": "27502",
+      "label": "Apex 27502",
+      "target": "under $400k / 0.25 ac",
+      "candidateCount": 61,
+      "vacantParcelCount": 61,
+      "markdownUrl": "data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.md",
+      "csvUrl": "data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.csv",
+      "jsonUrl": "data/real/wake-nc-buy-box/wake_nc_27502_proof_packet.json",
+      "sourceNote": "Wake County/FEMA first-pass proof; Zillow/Redfin outbound context links only; owner contact locked."
+    }
+  ]
+}

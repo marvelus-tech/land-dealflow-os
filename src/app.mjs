@@ -2517,6 +2517,90 @@ function activityToggleButton({ scope = 'land', itemId = '', channel = 'phone', 
   return `<button type="button" class="${h(className)} activity-${h(channel)} ${active ? 'is-on' : ''}" data-toggle-${h(scope)}-activity="${h(channel)}" data-activity-id="${h(itemId)}" aria-pressed="${active ? 'true' : 'false'}" aria-label="${h(label)}" title="${h(label)}"><span aria-hidden="true">${solidIndustryIcon(icon)}</span><em>${h(channel === 'phone' ? 'Call' : channel === 'mail' ? 'Mail' : 'Email')}</em></button>`;
 }
 
+const PARCEL_VISUAL_CHECKS = [
+  { key: 'publicRoad', icon: 'RD', short: 'Road', label: 'Touches a public road', clue: 'Does the parcel touch a public road?' },
+  { key: 'usableFlatArea', icon: 'FL', short: 'Flat', label: 'Usable flat/open area', clue: 'Is there enough usable flat/open area?' },
+  { key: 'clearing', icon: 'CL', short: 'Clear', label: 'Cleared / woods checked', clue: 'Is it mostly cleared or heavily wooded?' },
+  { key: 'nearbyHomes', icon: 'HM', short: 'Homes', label: 'Homes nearby', clue: 'Are homes nearby, suggesting utilities/septic feasibility?' },
+  { key: 'utilityPoles', icon: 'PW', short: 'Power', label: 'Utility poles visible', clue: 'Do you see utility poles on the road?' },
+  { key: 'publicUtilityClue', icon: 'UT', short: 'Util.', label: 'Hydrant/manhole clue', clue: 'Do you see fire hydrants/manholes? Public utility clue.' },
+  { key: 'wetArea', icon: 'WT', short: 'Wet', label: 'Water/wet area checked', clue: 'Any creek, drainage ditch, pond, or wet-looking area?' },
+  { key: 'slope', icon: 'SL', short: 'Slope', label: 'Slope/terrain checked', clue: 'Any steep slope/hollow/mountain terrain?' },
+  { key: 'weirdShape', icon: 'SH', short: 'Shape', label: 'Shape checked', clue: 'Any weird narrow strip shape?' },
+  { key: 'nuisance', icon: 'NG', short: 'Adj.', label: 'Neighbor nuisance checked', clue: 'Any neighboring junkyard/industrial/ag nuisance?' },
+];
+
+const PARCEL_AERIAL_RATINGS = [
+  { key: 'green', icon: 'G', label: 'Green', clue: 'Clearly buildable-looking, road frontage, open/partly open, nearby homes/utilities' },
+  { key: 'yellow', icon: 'Y', label: 'Yellow', clue: 'Wooded, hilly, unclear driveway, unclear utility path' },
+  { key: 'red', icon: 'R', label: 'Red', clue: 'Landlocked-looking, wet/creek-heavy, steep, no obvious access, weird shape, heavy flood/wetland risk' },
+];
+
+function parcelVisualProofStore() {
+  return workspace.parcelVisualProof || {};
+}
+
+function parcelVisualProof(parcelKey = '') {
+  return parcelVisualProofStore()[parcelKey] || { checks: {}, aerial: '' };
+}
+
+function setParcelVisualCheck(parcelKey = '', checkKey = '', done = false, at = '') {
+  if (!parcelKey || !PARCEL_VISUAL_CHECKS.some(item => item.key === checkKey)) return;
+  const store = parcelVisualProofStore();
+  const current = store[parcelKey] || { checks: {}, aerial: '' };
+  workspace = {
+    ...workspace,
+    parcelVisualProof: {
+      ...store,
+      [parcelKey]: {
+        ...current,
+        checks: {
+          ...(current.checks || {}),
+          [checkKey]: { done: Boolean(done), at: done ? at : '' },
+        },
+      },
+    },
+  };
+}
+
+function setParcelAerialRating(parcelKey = '', rating = '') {
+  if (!parcelKey || !PARCEL_AERIAL_RATINGS.some(item => item.key === rating)) return;
+  const store = parcelVisualProofStore();
+  const current = store[parcelKey] || { checks: {}, aerial: '' };
+  workspace = {
+    ...workspace,
+    parcelVisualProof: {
+      ...store,
+      [parcelKey]: {
+        ...current,
+        aerial: current.aerial === rating ? '' : rating,
+        aerialAt: current.aerial === rating ? '' : todayIsoDate(),
+      },
+    },
+  };
+}
+
+function renderParcelVisualChecklist(parcel = {}, { compact = false } = {}) {
+  const parcelKey = parcelSelectionKey(parcel);
+  const proof = parcelVisualProof(parcelKey);
+  const checks = proof.checks || {};
+  const doneCount = PARCEL_VISUAL_CHECKS.filter(item => checks[item.key]?.done).length;
+  const checkButtons = PARCEL_VISUAL_CHECKS.map(item => {
+    const active = Boolean(checks[item.key]?.done);
+    const label = `${active ? 'Verified' : 'Verify'}: ${item.clue}`;
+    return `<button type="button" class="parcel-visual-toggle ${active ? 'is-on' : ''}" data-toggle-parcel-visual="${h(item.key)}" data-parcel-visual-id="${h(parcelKey)}" aria-pressed="${active ? 'true' : 'false'}" aria-label="${h(label)}" title="${h(label)}"><span aria-hidden="true">${h(item.icon)}</span><em>${h(compact ? item.short : item.label)}</em></button>`;
+  }).join('');
+  const ratingButtons = PARCEL_AERIAL_RATINGS.map(item => {
+    const active = proof.aerial === item.key;
+    return `<button type="button" class="parcel-aerial-rating rating-${h(item.key)} ${active ? 'is-on' : ''}" data-set-parcel-aerial="${h(item.key)}" data-parcel-visual-id="${h(parcelKey)}" aria-pressed="${active ? 'true' : 'false'}" aria-label="Mark aerial ${h(item.label)}: ${h(item.clue)}" title="${h(item.label)}: ${h(item.clue)}"><span aria-hidden="true">${h(item.icon)}</span><em>${h(item.label)}</em></button>`;
+  }).join('');
+  return `<section class="parcel-visual-checklist ${compact ? 'is-compact' : 'is-detail'}" aria-label="Aerial buildability verification checklist for ${h(parcel.address || parcel.parcelId || 'parcel')}">
+    <div class="parcel-visual-head"><span>${compact ? 'Aerial' : 'Quick visual checklist'}</span><strong>${h(doneCount)}/${h(PARCEL_VISUAL_CHECKS.length)}</strong></div>
+    <div class="parcel-visual-buttons">${checkButtons}</div>
+    <div class="parcel-aerial-ratings" aria-label="Aerial buildability rating">${ratingButtons}</div>
+  </section>`;
+}
+
 function outreachIcon(channel) {
   if (channel === 'phone') {
     return `<svg class="outreach-svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M1.5 4.5A3 3 0 0 1 4.5 1.5h1.37c.86 0 1.61.58 1.82 1.41l.72 2.88a3 3 0 0 1-.8 2.82l-.74.74a14.25 14.25 0 0 0 7.78 7.78l.74-.74a3 3 0 0 1 2.82-.8l2.88.72a1.88 1.88 0 0 1 1.41 1.82v1.37a3 3 0 0 1-3 3h-1.13C9.05 22.5 1.5 14.95 1.5 5.63V4.5Z"/></svg>`;
@@ -3147,6 +3231,7 @@ function renderLandQueue(visible = [], selected = null) {
         state: landActivity[channel] || {},
         className: 'land-activity-toggle',
       })).join('');
+      const visualChecklist = renderParcelVisualChecklist(parcel, { compact: true });
       return `<article class="queue-item land-listing-row phase209-scan-rail-row phase225-action-rail-row action-${h(queueActionClass)} ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(listingState.detail)}" data-land-activity-row="${h(parcelKey)}">
         <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" aria-label="Select ${h(itemName)} - ${h(queueReason)}">
           <span class="land-row-action-rail"><b>${h(queueActionCode)}</b><i>${String(index + 1).padStart(2, '0')}</i></span>
@@ -3163,6 +3248,7 @@ function renderLandQueue(visible = [], selected = null) {
             <mark class="risk-${h(tone)}">${h(parcel.risk.status)}</mark>
           </div>
         </button>
+        ${visualChecklist}
         <div class="land-activity-row" aria-label="Activity tracking for ${h(itemName)}">${activityButtons}</div>
       </article>`;
     }).join('')}</div>
@@ -3316,6 +3402,7 @@ function renderParcels() {
       </div>
       ${selectedNeighborhoodContext}
       ${selectedGateSummary}
+      ${renderParcelVisualChecklist(selected, { compact: false })}
       ${renderSelectedLandOfferMathPanel(selected)}
       ${selectedDallasProofPanel}
       <section class="land-action-sheet phase212-action-depth" aria-label="Selected parcel action sheet">
@@ -4139,6 +4226,29 @@ function bindEvents() {
       return;
     }
 
+    const parcelVisualButton = event.target.closest('[data-toggle-parcel-visual]');
+    if (parcelVisualButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      const parcelKey = parcelVisualButton.dataset.parcelVisualId || '';
+      const checkKey = parcelVisualButton.dataset.toggleParcelVisual || '';
+      const current = parcelVisualProof(parcelKey).checks?.[checkKey] || {};
+      setParcelVisualCheck(parcelKey, checkKey, !current.done, todayIsoDate());
+      persistWorkspace();
+      renderParcels();
+      return;
+    }
+
+    const parcelAerialButton = event.target.closest('[data-set-parcel-aerial]');
+    if (parcelAerialButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      setParcelAerialRating(parcelAerialButton.dataset.parcelVisualId || '', parcelAerialButton.dataset.setParcelAerial || '');
+      persistWorkspace();
+      renderParcels();
+      return;
+    }
+
     const todayOfferButton = event.target.closest('[data-open-today-offer]');
     if (todayOfferButton) {
       event.preventDefault();
@@ -4762,6 +4872,29 @@ ${body}`;
       renderParcels();
     }
 
+
+    const lateParcelVisualButton = event.target.closest('[data-toggle-parcel-visual]');
+    if (lateParcelVisualButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      const parcelKey = lateParcelVisualButton.dataset.parcelVisualId || '';
+      const checkKey = lateParcelVisualButton.dataset.toggleParcelVisual || '';
+      const current = parcelVisualProof(parcelKey).checks?.[checkKey] || {};
+      setParcelVisualCheck(parcelKey, checkKey, !current.done, todayIsoDate());
+      persistWorkspace();
+      renderParcels();
+      return;
+    }
+
+    const lateParcelAerialButton = event.target.closest('[data-set-parcel-aerial]');
+    if (lateParcelAerialButton) {
+      event.preventDefault();
+      event.stopPropagation();
+      setParcelAerialRating(lateParcelAerialButton.dataset.parcelVisualId || '', lateParcelAerialButton.dataset.setParcelAerial || '');
+      persistWorkspace();
+      renderParcels();
+      return;
+    }
 
     const lateLandActivityButton = event.target.closest('[data-toggle-land-activity]');
     if (lateLandActivityButton) {

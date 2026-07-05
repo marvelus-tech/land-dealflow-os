@@ -2228,13 +2228,63 @@
     "website": "",
     "phone": "(919) 302-8790",
     "email": "paul@arcadiaconstructionco.com",
-    "contactName": "Arcadia Construction Company",
+    "contactName": "Paul Tanner",
     "recentBuilds": 2,
     "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 66,
+    "maxPrice": 550000,
+    "maxPriceNotes": "$350,000-$550,000 per 0.25 acres by ZIP/submarket",
+    "buyBox": {
+      "geography": "Raleigh / Wake County, NC: 27607 inside the beltline Raleigh; 27604 Mordecai and Belvedere Park Raleigh; 27502 Downtown Apex",
+      "lotSize": "0.18-0.33 acres",
+      "lotSizeRange": "0.18-0.33 acres",
+      "maxPrice": 550000,
+      "maxPriceNotes": "27607: target lot cost < $550,000 per 0.25 acres; 27604: depending on location, target lot cost $350,000-$500,000 per 0.25 acres; 27502 Downtown Apex: target lot cost $400,000 per 0.25 acres",
+      "priceByZip": [
+        {
+          "zip": "27607",
+          "submarket": "Inside the beltline Raleigh",
+          "targetLotCost": "< $550,000 per 0.25 acres"
+        },
+        {
+          "zip": "27604",
+          "submarket": "Mordecai and Belvedere Park Raleigh",
+          "targetLotCost": "$350,000-$500,000 per 0.25 acres depending on location"
+        },
+        {
+          "zip": "27502",
+          "submarket": "Downtown Apex",
+          "targetLotCost": "$400,000 per 0.25 acres"
+        }
+      ],
+      "closeSpeed": "unknown",
+      "closeSpeedDays": "",
+      "packageRecipient": "Paul Tanner <paul@arcadiaconstructionco.com>",
+      "utilitiesAccess": "Avoid lots with utility easements or stream buffers; utility access details still need confirmation.",
+      "productType": "Infill/custom builder lots; recent Rankin St lot purchase signal.",
+      "dealKillers": [
+        "flood zones",
+        "significant slope",
+        "utility easements",
+        "stream buffers",
+        "main or busy streets"
+      ],
+      "preferences": [
+        "Topography and easements are both important",
+        "Minimize slope",
+        "Ideally walking distance to a park",
+        "Lot cost depends on location"
+      ],
+      "zipCodes": [
+        "27607",
+        "27604",
+        "27502"
+      ],
+      "submissionMethod": "Email parcel packages to Paul Tanner",
+      "proofSource": "Direct email reply screenshot from Paul Tanner / Arcadia Construction Company provided by Okeito on 2026-07-04",
+      "buyerQuestion": "Where are you based out of?"
+    },
+    "validationStatus": "validated_buy_box",
+    "confidence": 92,
     "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
@@ -2266,14 +2316,22 @@
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-053597-2025"
       }
     ],
-    "acquisitionNotes": "Appears on 2 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-008686-2026 at 1807 Rankin St issued 2026-05-21.",
-    "zipCodes": [],
+    "acquisitionNotes": "Appears on 2 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-008686-2026 at 1807 Rankin St issued 2026-05-21. Direct written buy box captured from Paul Tanner: 0.18-0.33 acres; 27607 under $550k/0.25ac, 27604 $350k-$500k/0.25ac, 27502 $400k/0.25ac; avoid flood zones, slope, utility easements, stream buffers, main/busy streets; park proximity preferred.",
+    "zipCodes": [
+      "27607",
+      "27604",
+      "27502"
+    ],
     "sourceUrls": [
       "https://data.wake.gov/maps/ral::building-permits"
     ],
     "qualifyingPermitCount": 2,
     "callable": true,
-    "builderId": "raleigh-builder-arcadia-construction-company"
+    "builderId": "raleigh-builder-arcadia-construction-company",
+    "buyBoxStatus": "captured",
+    "callStatus": "validated_buy_box",
+    "buyBoxCapturedAt": "2026-07-04",
+    "buyBoxProof": "Email screenshot supplied by Okeito; source text asks: 'Where are you based out of?' and lists lot criteria after recent Rankin St purchase."
   },
   {
     "id": "raleigh-builder-blue-heel-construction",

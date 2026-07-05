@@ -28,7 +28,11 @@ for (const builder of signals) {
   assert.ok(builder.recentBuilds >= 2, `${builder.name} needs at least two permit rows to be a builder signal`);
   assert.ok(builder.recentPermits?.length, `${builder.name} missing permit evidence`);
   assert.equal(builder.evidenceType, 'permitVerified active-builder signal');
-  assert.match(builder.buyBox, /permit signal only/i);
+  if (typeof builder.buyBox === 'string') {
+    assert.match(builder.buyBox, /permit signal only/i);
+  } else {
+    assert.ok(builder.buyBox?.proofSource, `${builder.name} captured buy box needs proof source`);
+  }
   assert.match(builder.acquisitionNotes, /Raleigh\/Wake public residential new-building permit rows/i);
   assert.doesNotMatch(builder.name, /pool|spa|roof|plumb|electric|mechanical|fence|retaining/i, `${builder.name} looks like a trade/accessory contractor, not a land buyer`);
   for (const permit of builder.recentPermits) {

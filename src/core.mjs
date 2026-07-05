@@ -721,22 +721,30 @@ export function buildSellerSearchInstructions(row = {}) {
       blockers: validation.buyBox.missing,
     };
   }
+  const maxPrice = Number(box.maxPrice || row.maxPrice || 0) || 0;
+  const marketLabel = row.marketName || row.market || box.geography || 'this market';
+  const priceDetails = Array.isArray(box.priceByZip)
+    ? box.priceByZip.map(item => `${item.zip}: ${item.submarket ? `${item.submarket} — ` : ''}${item.targetLotCost}`).join('; ')
+    : '';
   const criteria = [
     `Market/geography: ${box.geography}`,
     `Lot-size band: ${box.lotSize}`,
-    `Max acquisition price: ${formatMoney(Number(box.maxPrice || 0))}`,
+    `Max acquisition price: ${maxPrice ? formatMoney(maxPrice) : 'unknown'}`,
+    box.maxPriceNotes ? `Price detail: ${box.maxPriceNotes}` : '',
+    priceDetails ? `Price by ZIP: ${priceDetails}` : '',
     `Close speed: ${box.closeSpeed}`,
     `Avoid/kill: ${Array.isArray(box.dealKillers) ? box.dealKillers.join(', ') : box.dealKillers}`,
     `Submit package to: ${box.packageRecipient}`,
-  ];
+  ].filter(Boolean);
+  if (box.preferences?.length) criteria.push(`Preferences: ${box.preferences.join('; ')}`);
   if (box.utilitiesAccess) criteria.push(`Utilities/access: ${box.utilitiesAccess}`);
   if (box.productType) criteria.push(`Finished product: ${box.productType}`);
   return {
     eligible: true,
-    headline: `Find seller parcels for ${row.name || 'validated builder'} under ${formatMoney(Number(box.maxPrice || 0))}.`,
+    headline: `Find seller parcels for ${row.name || 'validated builder'} under ${maxPrice ? formatMoney(maxPrice) : 'the captured price bands'}.`,
     criteria,
-    offerCeiling: Math.max(0, Math.round(Number(box.maxPrice || 0) * 0.82)),
-    sellerAngle: `I am calling because a permit-active Knoxville builder is looking for lots matching ${box.geography} / ${box.lotSize}; if title and access are clean, I can move quickly.`,
+    offerCeiling: Math.max(0, Math.round(maxPrice * 0.82)),
+    sellerAngle: `I am calling because a permit-active ${marketLabel} builder is looking for lots matching ${box.geography} / ${box.lotSize}; if title and access are clean, I can move quickly.`,
   };
 }
 

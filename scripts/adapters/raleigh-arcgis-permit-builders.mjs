@@ -9,6 +9,43 @@ const MINIMUM_UNIQUE_BUILDERS = 20;
 const SERVICE_URL = 'https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Building_Permits_Issued_Past_180_Days/FeatureServer/0';
 const SOURCE_URL = 'https://data.wake.gov/maps/ral::building-permits';
 
+const MANUAL_BUY_BOX_OVERRIDES = {
+  'raleigh-builder-arcadia-construction-company': {
+    contactName: 'Paul Tanner',
+    maxPrice: 550000,
+    maxPriceNotes: '$350,000-$550,000 per 0.25 acres by ZIP/submarket',
+    buyBoxStatus: 'captured',
+    validationStatus: 'validated_buy_box',
+    callStatus: 'validated_buy_box',
+    confidence: 92,
+    buyBoxCapturedAt: '2026-07-04',
+    buyBoxProof: "Email screenshot supplied by Okeito; source text asks: 'Where are you based out of?' and lists lot criteria after recent Rankin St purchase.",
+    buyBox: {
+      geography: 'Raleigh / Wake County, NC: 27607 inside the beltline Raleigh; 27604 Mordecai and Belvedere Park Raleigh; 27502 Downtown Apex',
+      lotSize: '0.18-0.33 acres',
+      lotSizeRange: '0.18-0.33 acres',
+      maxPrice: 550000,
+      maxPriceNotes: '27607: target lot cost < $550,000 per 0.25 acres; 27604: depending on location, target lot cost $350,000-$500,000 per 0.25 acres; 27502 Downtown Apex: target lot cost $400,000 per 0.25 acres',
+      priceByZip: [
+        { zip: '27607', submarket: 'Inside the beltline Raleigh', targetLotCost: '< $550,000 per 0.25 acres' },
+        { zip: '27604', submarket: 'Mordecai and Belvedere Park Raleigh', targetLotCost: '$350,000-$500,000 per 0.25 acres depending on location' },
+        { zip: '27502', submarket: 'Downtown Apex', targetLotCost: '$400,000 per 0.25 acres' },
+      ],
+      closeSpeed: 'unknown',
+      closeSpeedDays: '',
+      packageRecipient: 'Paul Tanner <paul@arcadiaconstructionco.com>',
+      utilitiesAccess: 'Avoid lots with utility easements or stream buffers; utility access details still need confirmation.',
+      productType: 'Infill/custom builder lots; recent Rankin St lot purchase signal.',
+      dealKillers: ['flood zones', 'significant slope', 'utility easements', 'stream buffers', 'main or busy streets'],
+      preferences: ['Topography and easements are both important', 'Minimize slope', 'Ideally walking distance to a park', 'Lot cost depends on location'],
+      zipCodes: ['27607', '27604', '27502'],
+      submissionMethod: 'Email parcel packages to Paul Tanner',
+      proofSource: 'Direct email reply screenshot from Paul Tanner / Arcadia Construction Company provided by Okeito on 2026-07-04',
+      buyerQuestion: 'Where are you based out of?',
+    },
+  },
+};
+
 function compact(value) { return String(value || '').replace(/[\u0000-\u001f\u007f]+/g, ' ').replace(/\s+/g, ' ').trim(); }
 function slug(value) { return compact(value).toLowerCase().replace(/t\/a|aka:|dba/gi, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unknown'; }
 function cleanName(value) { return compact(value).replace(/\s+T\/A\s+.*$/i, '').replace(/\s+AKA:\s+.*$/i, '').replace(/\s+DBA\s+.*$/i, '').trim(); }
@@ -41,8 +78,9 @@ function normalizeBuilder(name, rows) {
     description: compact(row.proposedworkdescription || row.description),
     sourceUrl: sourceFor(row),
   }));
-  return {
-    id: `raleigh-builder-${slug(clean).slice(0, 56)}`,
+  const id = `raleigh-builder-${slug(clean).slice(0, 56)}`;
+  const base = {
+    id,
     name: clean,
     market: 'raleigh-nc',
     state: 'NC',
@@ -61,6 +99,14 @@ function normalizeBuilder(name, rows) {
     evidenceType: 'permitVerified active-builder signal',
     recentPermits,
     acquisitionNotes: `Appears on ${rows.length} Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample ${compact(sample.permitnum)} at ${compact(sample.originaladdress1)} issued ${dateFromMs(sample.issueddate)}.`,
+  };
+  const override = MANUAL_BUY_BOX_OVERRIDES[id];
+  if (!override) return base;
+  return {
+    ...base,
+    ...override,
+    confidence: Math.max(base.confidence, override.confidence || 0),
+    acquisitionNotes: `${base.acquisitionNotes} Direct written buy box captured from ${override.contactName}: 0.18-0.33 acres; 27607 under $550k/0.25ac, 27604 $350k-$500k/0.25ac, 27502 $400k/0.25ac; avoid flood zones, slope, utility easements, stream buffers, main/busy streets; park proximity preferred.`,
   };
 }
 async function fetchArcgis(where, rowLimit) {

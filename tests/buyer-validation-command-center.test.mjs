@@ -129,9 +129,8 @@ assert.match(appSource, /const body = fallbackEmail\.body;/, 'Copy draft should 
 assert.match(appSource, /function hashToView\(hash = location\.hash\)/, 'router should parse only valid app-route hashes');
 assert.match(appSource, /function scrollToPageTop\(\)[\s\S]{0,260}root\.style\.scrollBehavior = 'auto';[\s\S]{0,180}window\.scrollTo\(0, 0\)/, 'page transitions should reset visitors immediately to the top of the destination page');
 assert.match(appSource, /function navigateToView\(view\)[\s\S]{0,180}setActiveView\(view, \{ scrollToTop: true \}\)/, 'data-view navigation should centralize top-scroll behavior');
-assert.match(appSource, /const view = hashToView\(\);\n    if \(view\) setActiveView\(view, \{ scrollToTop: true \}\);/, 'hashchange should only switch panels for valid app routes and leave same-page anchors alone');
-assert.match(appSource, /navigateToView\(view\)/, 'clicking app navigation should use the scroll-safe route helper');
-assert.match(appSource, /Builders · selected market/, 'Builders UX should reduce cognitive load with a selected-market page surface');
+assert.match(appSource, /if \(view === 'builders'\)[\s\S]{0,180}syncBuilderSelectionFromRoute\(\);[\s\S]{0,180}renderBuilderListEnginePanel\(\);/, 'hashchange should switch panels for valid app routes, restore builder URL state, and leave same-page anchors alone');
+assert.match(appSource, /renderBuilderMarketHero/, 'Builders UX should reduce cognitive load with a selected-market page surface');
 assert.match(appSource, /function renderBuilderCountyLedger/, 'Builders market detail should expose county lanes as subordinate evidence');
 assert.doesNotMatch(appSource, />Next money action<|NEXT MONEY ACTION/, 'Builders page must not repeat selected-builder guidance in a separate Next Money Action card');
 assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action card component should stay removed');

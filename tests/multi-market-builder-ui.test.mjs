@@ -36,8 +36,10 @@ assert.match(app, /loadBuilderMarketData\(\)\.then\(renderAll\)/, 'UI must rende
 assert.match(app, /getStateBuilderRows\(stateCode\)/, 'UI must select builders by active state');
 assert.match(app, /Array\.isArray\(data\) \? data : data\.rows/, 'UI loader must accept bare-array builder signal artifacts as well as { rows } payloads');
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
-assert.match(app, /Builders · selected market/, 'Builders page must enter through the selected market, not a top-of-screen market wall');
-assert.match(app, /Change market/, 'Market list should be hidden behind an explicit market switcher control');
+assert.match(app, /builderMarketRouteHash/, 'Builders market selection must write URL-backed state');
+assert.match(app, /builderRouteSelectionFromHash/, 'Builders deep links must restore selected state or market');
+assert.match(app, /renderBuilderMarketHero/, 'Builders page must render a dedicated market-world hero');
+assert.match(app, /Explore markets/, 'Market list should be hidden behind an elegant contextual market explorer');
 assert.match(app, /seller sourcing stays parked until a buy box is captured/, 'Selected market copy should keep the buyer-first proof gate clear');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
@@ -146,5 +148,10 @@ assert.match(css, /\.state-county-ledger:not\(\[open\]\) ul \{[\s\S]{0,80}displa
 assert.match(css, /\.builders-phase83-workbench\.builders-phase83-workbench \{[\s\S]{0,360}border: 0 !important;[\s\S]{0,220}background: transparent !important;[\s\S]{0,120}box-shadow: none !important;/, 'Builders workbench must be an open product surface, not a framed presentation card');
 assert.match(css, /\.state-market-grid \{[\s\S]{0,240}border: 0 !important;[\s\S]{0,180}border-top: 1px solid var\(--builders-line\) !important;[\s\S]{0,180}border-bottom: 1px solid var\(--builders-line\) !important;/, 'State selector should use open ledger hairlines, not a boxed table frame');
 assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missing');
+
+assert.match(css, /v1\.91 - Builders market-page transition world/, 'Phase 91 market-page transition world layer missing');
+assert.match(css, /--phase91-builders-market-rule: url-backed-spatial-market-page-transition/, 'Phase 91 URL-backed market transition token missing');
+assert.match(css, /builder-market-hero/, 'Builders market page needs a distinct market-world hero treatment');
+assert.match(css, /@keyframes buildersMarketPageIn/, 'Builders market switches need a page-transition animation');
 
 console.log('multi-market builder UI tests passed');

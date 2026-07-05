@@ -274,6 +274,29 @@ let selectedBuilderMarketKey = '';
 let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
+
+function syncBuilderSelectionFromRoute(hash = location.hash) {
+  const route = builderRouteSelectionFromHash(hash);
+  if (!route) return;
+  if (route.type === 'market') {
+    const market = builderMarketRegistryByKey.get(route.value);
+    if (!market) return;
+    selectedBuilderMarketKey = route.value;
+    selectedBuilderMarketState = market.state || selectedBuilderMarketState;
+    return;
+  }
+  if (route.type === 'state') {
+    selectedBuilderMarketState = route.value;
+    selectedBuilderMarketKey = '';
+  }
+}
+
+function builderMarketRouteHash({ stateCode = selectedBuilderMarketState, marketKey = selectedBuilderMarketKey } = {}) {
+  if (marketKey) return `#builders/market/${encodeURIComponent(marketKey)}`;
+  return `#builders/state/${encodeURIComponent(stateCode || 'FL')}`;
+}
+
+syncBuilderSelectionFromRoute();
 let lastBuilderSkipTraceImportStatus = '';
 let lastLandReconImportStatus = '';
 let openMachinePanel = '';
@@ -290,9 +313,25 @@ function invalidateLandPerformanceCaches() {
   cachedBuilderSwitchboardEntries = null;
 }
 
+function hashToParts(hash = location.hash) {
+  return String(hash || '#today')
+    .replace(/^#/, '')
+    .split('/')
+    .map(part => decodeURIComponent(part || '').trim())
+    .filter(Boolean);
+}
+
 function hashToView(hash = location.hash) {
-  const view = String(hash || '#today').replace('#', '');
+  const view = hashToParts(hash)[0] || 'today';
   return validViews.has(view) ? view : '';
+}
+
+function builderRouteSelectionFromHash(hash = location.hash) {
+  const [view, scope, value] = hashToParts(hash);
+  if (view !== 'builders') return null;
+  if (scope === 'market' && value) return { type: 'market', value };
+  if (scope === 'state' && value) return { type: 'state', value: value.toUpperCase() };
+  return null;
 }
 
 let activeView = hashToView() || 'today';
@@ -2920,6 +2959,53 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   </section>`;
 }
 
+
+function builderMarketWorldTheme(activeState = {}, selectedMarket = null, activeBuilders = []) {
+  const stateCode = String(activeState.stateCode || activeState.state || selectedMarket?.state || 'FL').toUpperCase();
+  const label = selectedMarket?.label || activeState.label || stateCode;
+  const themes = {
+    FL: { mood: 'coastal growth', tone: 'Canals, infill lots, and inland permit heat.', accent: 'citrus-water', icon: '▰', action: 'Validate ZIP appetite before owner sourcing.' },
+    AZ: { mood: 'desert edge', tone: 'Road, power, water, and terrain decide the buy box.', accent: 'desert-copper', icon: '◇', action: 'Confirm exact ZIP and utility tolerance.' },
+    HI: { mood: 'island constraint', tone: 'Lava, road, rain, and access risk make calls surgical.', accent: 'lava-fern', icon: '◒', action: 'Ask builders which constraints they actually absorb.' },
+    NV: { mood: 'high desert', tone: 'Well, septic, power distance, and road surface lead.', accent: 'sage-gold', icon: '▱', action: 'Capture utility thresholds before any seller lane opens.' },
+    CA: { mood: 'hi-desert custom', tone: 'Water, entitlement, road, and STR appetite drive demand.', accent: 'yucca-sand', icon: '△', action: 'Validate build envelope and buyer ceiling first.' },
+    TN: { mood: 'Appalachian infill', tone: 'Access, slope, septic, and local builder appetite stay first.', accent: 'forest-limestone', icon: '▣', action: 'Use Knoxville proof as the control lane.' },
+    NC: { mood: 'Triangle expansion', tone: 'Wake permit velocity needs exact builder fit.', accent: 'pine-clay', icon: '⬡', action: 'Confirm county and ZIP buy boxes before sourcing.' },
+    TX: { mood: 'Central Texas growth', tone: 'Austin/San Antonio demand is strong; buyer specificity decides.', accent: 'limestone-sky', icon: '◆', action: 'Split lanes only when calls prove different demand.' },
+    GA: { mood: 'North Atlanta pressure', tone: 'Commuter growth lanes need builder proof before seller work.', accent: 'peach-forest', icon: '●', action: 'Keep counties grouped until a buyer call demands split.' },
+    SC: { mood: 'Lowcountry expansion', tone: 'Coastal edge and upstate lanes need clean proof depth.', accent: 'marsh-indigo', icon: '◈', action: 'Prioritize source-backed builders and county fit.' },
+    PA: { mood: 'legacy permit cities', tone: 'Municipal permit lists become builder demand only after contact proof.', accent: 'steel-keystone', icon: '◧', action: 'Confirm scattered-lot appetite city by city.' },
+    OH: { mood: 'Midwest infill', tone: 'Permit applicants need buy-box confirmation before land motion.', accent: 'buckeye-ink', icon: '◨', action: 'Use public permit rows as the call queue spine.' },
+    ID: { mood: 'Treasure Valley', tone: 'Directory-backed builders need permit and lot-type proof.', accent: 'river-sage', icon: '▧', action: 'Enrich the public directory into buyer calls.' },
+    IN: { mood: 'official permit lane', tone: 'Contractor principals need DBA/contact enrichment before outreach.', accent: 'river-brick', icon: '▨', action: 'Turn permit proof into named builder validation.' },
+  };
+  const theme = themes[stateCode] || { mood: 'market lane', tone: activeState.note || 'Buyer validation comes before seller sourcing.', accent: 'brand', icon: '□', action: 'Capture a buy box before seller work.' };
+  return {
+    ...theme,
+    stateCode,
+    label,
+    density: activeBuilders.length >= (activeState.minimumUniqueBuilders || 20) ? 'source-backed' : activeBuilders.length ? 'thin-signal' : 'needs-source-work',
+    route: selectedMarket ? `Market / ${label}` : `State / ${activeState.label || stateCode}`,
+  };
+}
+
+function renderBuilderMarketHero(theme = {}, activeState = {}, selectedMarket = null, activeBuilders = []) {
+  const marketCount = selectedMarket ? 1 : asArray(activeState.markets).length;
+  return `<section class="builder-market-hero market-world-${h(theme.accent)}" data-builder-market-world="${h(theme.stateCode)}" aria-label="${h(theme.label)} builder market world">
+    <div class="builder-market-hero-copy">
+      <span class="eyebrow">${h(theme.route)} · ${h(theme.mood)}</span>
+      <h3>${h(theme.label)}</h3>
+      <p><b>${h(activeBuilders.length)} permit-backed builders.</b> ${h(theme.tone)} ${h(theme.action)} seller sourcing stays parked until a buy box is captured.</p>
+      <div class="builder-market-context-pills" aria-label="Current market context">
+        <span>${h(theme.stateCode)}</span>
+        <span>${h(marketCount)} ${marketCount === 1 ? 'lane' : 'lanes'}</span>
+        <span>${h(theme.density)}</span>
+      </div>
+    </div>
+    <div class="builder-market-hero-art" aria-hidden="true"><span>${h(theme.icon)}</span><i></i><b>${h(theme.stateCode)}</b></div>
+  </section>`;
+}
+
 function renderBuilderListEnginePanel(options = {}) {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
@@ -2945,6 +3031,8 @@ function renderBuilderListEnginePanel(options = {}) {
   const activeBuilders = selectedMarket ? asArray(selectedMarket.rows) : asArray(activeState.rows);
   const activeSummary = selectedMarket?.summary || activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
   const activeLaneLabel = selectedMarket ? selectedMarket.label : activeState.label;
+  const marketWorld = builderMarketWorldTheme(activeState, selectedMarket, activeBuilders);
+  const marketHero = renderBuilderMarketHero(marketWorld, activeState, selectedMarket, activeBuilders);
   const marketSummary = `<div class="active-market-summary state-focus-summary">
     <span>${selectedMarket ? 'Selected market lane' : 'Selected market state'}</span>
     <strong>${h(activeLaneLabel)}</strong>
@@ -2997,18 +3085,14 @@ function renderBuilderListEnginePanel(options = {}) {
     <h4>${h(tier.name)}</h4>
     ${tier.items.map(item => `<p>${safeLink(item.url, item.label)} <span>${h(item.note)}</span></p>`).join('')}
   </article>`).join('');
-  target.innerHTML = `<div class="builder-engine-shell builders-market-page-shell">
+  target.innerHTML = `<div class="builder-engine-shell builders-market-page-shell" data-market-page-key="${h(selectedMarket?.key || activeState.key || activeState.stateCode)}">
     <section class="state-first-ops-header builders-phase83-workbench builders-market-page" aria-label="Builder market page">
-      <div class="builder-ops-title">
-        <span class="eyebrow">Builders · selected market</span>
-        <h3>${h(activeLaneLabel)}</h3>
-        <p><b>${h(activeBuilders.length)} permit-backed builders.</b> Validate demand here; seller sourcing stays parked until a buy box is captured.</p>
-      </div>
+      ${marketHero}
       <div class="state-first-workbench state-data-workbench builder-market-stage" aria-label="Selected market content and market switcher">
         <div class="state-workbench-layout builder-market-page-layout">
           ${marketSummary}
           <details class="builder-market-switcher" data-market-switcher>
-            <summary><span>Change market</span><b>${h(activeState.stateCode)}</b><em>${h(stateSummaries.length)} available</em></summary>
+            <summary><span>Explore markets</span><b>${h(activeState.stateCode)}</b><em>${h(stateSummaries.length)} available</em></summary>
             <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
           </details>
         </div>
@@ -4193,13 +4277,17 @@ function bindEvents() {
         selectedBuilderMarketState = registryMarket?.state || selectedBuilderMarketState;
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
-        renderBuilderListEnginePanel({ preserveViewport: true });
+        history.pushState(null, '', builderMarketRouteHash({ marketKey, stateCode: selectedBuilderMarketState }));
+        setActiveView('builders', { scrollToTop: true });
+        renderBuilderListEnginePanel();
       } else if (stateCode) {
         selectedBuilderMarketState = stateCode;
         selectedBuilderMarketKey = '';
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
-        renderBuilderListEnginePanel({ preserveViewport: true });
+        history.pushState(null, '', builderMarketRouteHash({ stateCode, marketKey: '' }));
+        setActiveView('builders', { scrollToTop: true });
+        renderBuilderListEnginePanel();
       }
       return;
     }
@@ -4986,7 +5074,14 @@ ${body}`;
 
   window.addEventListener('hashchange', () => {
     const view = hashToView();
-    if (view) setActiveView(view, { scrollToTop: true });
+    if (!view) return;
+    if (view === 'builders') {
+      syncBuilderSelectionFromRoute();
+      setActiveView(view, { scrollToTop: true });
+      renderBuilderListEnginePanel();
+      return;
+    }
+    setActiveView(view, { scrollToTop: true });
   });
 }
 

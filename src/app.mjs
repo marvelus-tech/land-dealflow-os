@@ -326,8 +326,7 @@ function syncLandSelectionFromRoute(hash = location.hash) {
   }
   if (route.type === 'state') {
     selectedLandStateFilter = route.value;
-    const activeMarket = getSelectedDealsMarket();
-    if (activeMarket && (activeMarket.stateCode || activeMarket.state) !== selectedLandStateFilter) selectedDealsMarketKey = 'all';
+    selectedDealsMarketKey = 'all';
   }
 }
 
@@ -1614,6 +1613,20 @@ function renderLandMarketIndex() {
     </article>`;
   }).join('');
   const showingStateIndex = selectedLandStateFilter === 'all';
+  const activeStateSummary = stateMarketSummaries.find(state => state.state === selectedLandStateFilter) || {
+    state: selectedLandStateFilter,
+    label: selectedLandStateFilter,
+    marketCount,
+    dealCount: liveSellerCount,
+    builderCount: liveBuilderCount,
+    scope: `${liveSellerCount} retained records`,
+  };
+  const populatedMarkets = entries.filter(market => Number(market.dealCount || 0) > 0).length;
+  const zeroMarkets = Math.max(0, entries.length - populatedMarkets);
+  const stateDetailSummary = showingStateIndex ? '' : `<div class="land-state-detail-summary phase256-land-state-detail-summary" aria-label="Selected Land state summary">
+      <div class="land-state-detail-copy"><span class="eyebrow">State detail</span><h3>${h(activeStateSummary.label)} operating lanes</h3><p>${h(activeStateSummary.scope)}. Choose one submarket lane next; seller queues stay closed until a lane is selected.</p></div>
+      <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Populated lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Ready zero lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
+    </div>`;
   return `<section class="land-market-index phase254-land-market-index ${showingStateIndex ? 'phase255-land-state-index' : 'phase255-land-submarket-index'}" aria-label="Land market index">
     <div class="land-market-index-hero">
       <span class="eyebrow">Land · ${showingStateIndex ? 'state index' : `${selectedLandStateFilter} market lanes`}</span>
@@ -1622,6 +1635,7 @@ function renderLandMarketIndex() {
       <div class="land-market-index-stats"><div><b>${h(marketCount)}</b><span>${showingStateIndex ? 'states' : 'markets'}</span></div><div><b>${h(liveSellerCount)}</b><span>seller records</span></div><div><b>${h(liveBuilderCount)}</b><span>builder signals</span></div></div>
     </div>
     <div class="land-market-index-filter" aria-label="Filter Land markets by state">${stateFilters}</div>
+    ${stateDetailSummary}
     <div class="land-market-index-grid">${showingStateIndex ? stateCards : marketCards}</div>
   </section>`;
 }
@@ -1644,8 +1658,10 @@ function renderDealsMarketCoverage() {
       <em>${h(market.sourceStatusCopy)} · ${h(market.dealStatusCopy)}</em>
     </div>`;
   }).join('');
-  return `<section class="deals-market-coverage land-market-lane-selector land-market-command-rail phase254-land-market-command-rail phase255-state-gated-market-rail" aria-label="Land market command rail">
+  const selectedCrumbs = selected ? ['Land', selectedLandStateFilter, selected.marketLabel || selected.label].filter(Boolean) : ['Land', selectedLandStateFilter || 'State'];
+  return `<section class="deals-market-coverage land-market-lane-selector land-market-command-rail phase254-land-market-command-rail phase255-state-gated-market-rail phase256-selected-market-nav" aria-label="Land market command rail">
     <div class="deals-market-head land-market-command-head">
+      <nav class="land-market-breadcrumb phase256-land-market-breadcrumb" aria-label="Land market breadcrumb">${selectedCrumbs.map((crumb, index) => `<span ${index === selectedCrumbs.length - 1 ? 'aria-current="page"' : ''}>${h(crumb)}</span>`).join('')}</nav>
       <span class="eyebrow">Land · state then lane</span>
       <h3>${h(selected ? `${selected.marketLabel || selected.label}` : 'Choose market.')}</h3>
       <p>${h(selected ? `${selectedLandStateFilter} selected. ${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.` : 'Choose a state first, then a submarket lane to swap the workspace below.')}</p>

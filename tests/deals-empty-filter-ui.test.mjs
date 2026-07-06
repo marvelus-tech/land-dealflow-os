@@ -81,10 +81,16 @@ assert.match(app, /function renderLandMarketIndex/, 'Land default route must ren
 assert.match(app, /phase254-land-market-index/, 'Land market index must be a first-class render surface.');
 assert.match(app, /phase255-land-state-index/, 'Land default selector must show states first before submarket lanes.');
 assert.match(app, /phase255-land-submarket-index/, 'Land state routes must reveal submarket lanes only after a state is selected.');
+assert.match(app, /phase256-land-state-detail-summary/, 'Selected state route must show a state summary before submarket lane cards.');
+assert.match(app, /Ready zero lanes/, 'Selected state route must distinguish populated lanes from ready zero-count lanes.');
+assert.match(app, /seller queues stay closed until a lane is selected/, 'Selected state route must keep seller queues closed until a submarket lane is chosen.');
 assert.match(app, /phase254-land-selected-workspace/, 'Selected Land market must render a dedicated workspace shell.');
 assert.match(css, /--phase254-land-ia-reset: market-index-first-selected-workspace-second/, 'Land CSS must encode the Phase 254 IA reset.');
 assert.match(css, /--phase254-land-selected-workspace: market-menu-before-selected-content-no-state-workbench/, 'Selected Land market must keep the market menu before selected content without the state workbench.');
 assert.match(css, /--phase255-land-selector: states-first-submarket-lanes-after-state/, 'Land CSS must encode the state-first selector rule.');
+assert.match(app, /phase256-land-market-breadcrumb/, 'Selected market view must show a Land/state/market breadcrumb.');
+assert.match(css, /phase256-land-state-detail-summary[\s\S]{0,220}grid-area: summary/, 'Selected state summary must occupy its own grid row before submarket lanes.');
+assert.match(css, /grid-template-areas: "hero" "filter" "summary" "grid"/, 'Mobile Land state route must keep the summary between filter and lane grid.');
 assert.match(app, /land-selected-state-switcher/, 'Selected Land market view must provide a state switcher so operators can change states without returning to the root.');
 assert.match(app, /land-back-to-state-index/, 'Selected Land market view must provide an obvious back affordance to the main state index.');
 assert.match(app, /data-land-market-state/, 'Land market cards must carry state so selecting a market swaps the state-scoped content underneath.');

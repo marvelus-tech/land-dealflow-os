@@ -244,6 +244,18 @@ const texasLandReports = [
       estate: 'Hi [Name], I’m reaching out regarding [Address]. I’m not sure if your family has ever considered selling, but I work with buyers who purchase older Dallas homes as-is, including properties that need repairs or cleanout. If a private sale would ever be helpful, we can work around your timeline and avoid repairs, prep, and public showings. Would it be okay if I sent over a simple no-obligation offer range?',
       premium: 'Hi [Name], I’m reaching out privately about [Address]. I work with qualified buyers looking for older homes in established Dallas neighborhoods where the property may be more valuable as a lot or rebuild opportunity. If you’ve ever considered a quiet as-is sale without public marketing, I’d be glad to give you a straightforward offer. No obligation either way.'
     },
+    sms: {
+      principle: 'Blanket SMS goal: check seller appetite, not negotiate. Keep it short, property-specific, low-pressure, and manual copy/paste only.',
+      blanket: 'Hi [Name], this is Okeito. I am reaching out about your vacant lot at/near [Address]. I am looking to buy a few lots in the area and wanted to ask if you would consider selling if the price and timing worked. No pressure either way.',
+      warm: 'Hi [Name], this is Okeito. I hope you are well. I am reaching out about your vacant lot at/near [Address]. I am interested in buying a few lots in the area and wanted to see if you would ever consider a simple private sale. No pressure either way.',
+      absentee: 'Hi [Name], this is Okeito. I am checking in about your vacant lot at/near [Address]. I am actively looking for lots in the area and wanted to see if you would be open to an as-is offer. Would selling be something you would consider?',
+      infill: 'Hi [Name], this is Okeito. I am reaching out about your property at/near [Address]. I am looking for larger-lot properties in the area and wanted to ask if you would consider a private as-is sale if the price and timing worked. No pressure either way.',
+      unknownOwner: 'Hi, this is Okeito. I am reaching out about the vacant lot at/near [Address]. I am looking to buy a few lots in the area and wanted to ask if the owner would consider selling if the price and timing worked. No pressure either way.',
+      maybeReply: 'Totally fair. What would make it worth considering for you - mostly price, timing, or just keeping the process simple?',
+      offerReply: 'I would want to verify the lot size, access, utilities, and any restrictions first so I do not waste your time. Have you had a number in mind that would make selling worth considering?',
+      makeOfferReply: 'Happy to. Can I confirm a few things first - is the lot still vacant, do you know if utilities are available, and are there any liens, back taxes, or access issues I should know about?',
+      notInterested: 'No problem at all. Thanks for getting back to me. If anything changes later, feel free to keep my number.'
+    },
     filters: [
       'ZIPs 75218, 75214, 75228, 75229, 75220, 75209.',
       'Lot size minimum 8,000 sf; ideal 9,000-12,000 sf.',
@@ -1816,6 +1828,7 @@ function renderTexasLandReports() {
         <section><h4>Owner targets</h4>${renderBulletList(report.ownerTargets)}</section>
         <section><h4>Current trend read</h4>${renderBulletList(report.trendNotes)}</section>
         <section><h4>Outreach positioning</h4><p>${h(report.outreach.positioning)}</p><p class="land-report-warning">${h(report.outreach.avoid)}</p><div class="land-report-scripts"><article><span>Landlord / absentee</span><p>${h(report.outreach.landlord)}</p></article><article><span>Estate / inherited</span><p>${h(report.outreach.estate)}</p></article><article><span>Premium pocket</span><p>${h(report.outreach.premium)}</p></article></div></section>
+        ${report.sms ? `<section><h4>Blanket vacant-lot SMS</h4><p>${h(report.sms.principle)}</p><div class="land-report-scripts land-report-sms-scripts"><article><span>Best blanket SMS</span><p>${h(report.sms.blanket)}</p></article><article><span>Warmer owner version</span><p>${h(report.sms.warm)}</p></article><article><span>Absentee / investor owner</span><p>${h(report.sms.absentee)}</p></article><article><span>Dallas infill / larger-lot</span><p>${h(report.sms.infill)}</p></article><article><span>Unknown owner name</span><p>${h(report.sms.unknownOwner)}</p></article><article><span>Maybe / depends reply</span><p>${h(report.sms.maybeReply)}</p></article><article><span>What are you offering?</span><p>${h(report.sms.offerReply)}</p></article><article><span>Make me an offer</span><p>${h(report.sms.makeOfferReply)}</p></article><article><span>Not interested</span><p>${h(report.sms.notInterested)}</p></article></div></section>` : ''}
         <section><h4>Lead-list filters</h4>${renderBulletList(report.filters)}</section>
         <section><h4>JV verification questions</h4>${renderBulletList(report.jvQuestions)}</section>
         <section><h4>Dallas proof gates</h4>${renderBulletList(report.proofGates)}</section>

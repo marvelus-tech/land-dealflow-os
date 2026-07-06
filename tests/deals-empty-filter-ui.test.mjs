@@ -103,6 +103,8 @@ assert.match(app, /Dallas JV infill land \/ teardown seller report/, 'TX Land re
 assert.match(app, /function renderTexasLandReports/, 'TX state route must render the Texas report dock.');
 assert.match(app, /phase261-land-report-dock/, 'TX reports must have a dedicated report button/panel surface.');
 assert.match(app, /Download full markdown/, 'TX report panel must expose the full markdown report file.');
+assert.match(app, /Blanket vacant-lot SMS/, 'TX report panel must include the vacant-lot SMS appetite-check scripts.');
+assert.match(app, /Hi \[Name\], this is Okeito\. I am reaching out about your vacant lot at\/near \[Address\]/, 'TX report panel must expose the recommended blanket vacant-lot SMS.');
 assert.match(css, /--phase261-tx-reports: dallas-jv-infill-seller-intelligence/, 'TX report CSS must encode the Dallas JV report surface.');
 assert.match(css, /\.land-report-card summary[\s\S]{0,240}cursor: pointer !important/, 'TX report card must behave like a reports button.');
 assert.match(app, /phase254-land-selected-workspace/, 'Selected Land market must render a dedicated workspace shell.');

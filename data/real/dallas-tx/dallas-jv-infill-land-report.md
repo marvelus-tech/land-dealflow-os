@@ -355,6 +355,104 @@ Hi [Name], I’m reaching out privately about [Address]. I work with qualified b
 
 If you’ve ever considered a quiet as-is sale without public marketing, I’d be glad to give you a straightforward offer. No obligation either way.
 
+## Blanket vacant-lot SMS appetite check
+
+Use this when you have a small batch of vacant-lot owners and the only goal is to test appetite: are they open to selling if price and timing work?
+
+Principle: keep it short, property-specific, and low-pressure. Do not open with "cash buyer," "urgent," "developer," "teardown," "distressed," or "I can close fast." Those words can make normal owners defensive.
+
+### SMS structure
+
+1. Name / identity: "Hi [Name], this is Okeito."
+2. Property-specific reason: "I am reaching out about your vacant lot at/near [Address]."
+3. Simple intent: "I am looking to buy a few lots in the area."
+4. Appetite check: "Would you consider selling if the price and timing worked?"
+5. Respectful close: "No pressure either way."
+
+### Recommended blanket SMS
+
+```text
+Hi [Name], this is Okeito. I am reaching out about your vacant lot at/near [Address]. I am looking to buy a few lots in the area and wanted to ask if you would consider selling if the price and timing worked. No pressure either way.
+```
+
+### Warmer owner-occupant version
+
+```text
+Hi [Name], this is Okeito. I hope you are well. I am reaching out about your vacant lot at/near [Address]. I am interested in buying a few lots in the area and wanted to see if you would ever consider a simple private sale. No pressure either way.
+```
+
+### Absentee / investor-owner version
+
+```text
+Hi [Name], this is Okeito. I am checking in about your vacant lot at/near [Address]. I am actively looking for lots in the area and wanted to see if you would be open to an as-is offer. Would selling be something you would consider?
+```
+
+### Dallas infill / larger-lot version
+
+Use this where records mix true vacant lots, old houses, and teardown / lot-value properties.
+
+```text
+Hi [Name], this is Okeito. I am reaching out about your property at/near [Address]. I am looking for larger-lot properties in the area and wanted to ask if you would consider a private as-is sale if the price and timing worked. No pressure either way.
+```
+
+### Unknown owner-name version
+
+```text
+Hi, this is Okeito. I am reaching out about the vacant lot at/near [Address]. I am looking to buy a few lots in the area and wanted to ask if the owner would consider selling if the price and timing worked. No pressure either way.
+```
+
+### If they reply "maybe" or "depends"
+
+```text
+Totally fair. What would make it worth considering for you - mostly price, timing, or just keeping the process simple?
+```
+
+Follow-up:
+
+```text
+If helpful, I can take a quick look and send you a simple as-is offer. You would not need to clean it up, list it, or do any prep.
+```
+
+### If they ask "what are you offering?"
+
+```text
+I would want to verify the lot size, access, utilities, and any restrictions first so I do not waste your time. Have you had a number in mind that would make selling worth considering?
+```
+
+If they push again:
+
+```text
+Understood. I am usually looking at these as as-is private purchases, so my number would depend on the lot details and how quickly/cleanly you would want to close.
+```
+
+### If they say "not interested"
+
+```text
+No problem at all. Thanks for getting back to me. If anything changes later, feel free to keep my number.
+```
+
+Do not push after a clear no.
+
+### If they say "make me an offer"
+
+```text
+Happy to. Can I confirm a few things first - is the lot still vacant, do you know if utilities are available, and are there any liens, back taxes, or access issues I should know about?
+```
+
+Then gather:
+- Is it still vacant?
+- Any road/access issue?
+- Utilities available?
+- Any back taxes?
+- Any liens?
+- Are they the only decision-maker?
+- Desired timeline?
+- Desired price?
+
+### Compliance boundary
+
+Use these as manual copy/paste SMS drafts only. Do not automate blasting. Respect DNC/opt-outs. If anyone says stop, do not message again.
+
 ## Lead-list filters
 
 Property filters:

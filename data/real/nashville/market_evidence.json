@@ -2,30 +2,24 @@
   "market": "Nashville / Davidson County, TN",
   "marketId": "nashville-edge-tn",
   "state": "TN",
-  "generatedAt": "2026-06-29T21:31:01.673Z",
+  "generatedAt": "2026-07-06T21:30:35.037Z",
   "source": {
-    "name": "Metro Nashville Codes Daily Reports \u2014 Building Permits Issued ArcGIS feed",
+    "name": "Metro Nashville Codes Daily Reports — Building Permits Issued ArcGIS feed",
     "serviceUrl": "https://services2.arcgis.com/HdTo6HJqh92wn4D8/arcgis/rest/services/Building_Permits_Issued_2/FeatureServer/0",
     "sourceUrl": "https://www.nashville.gov/departments/codes/codes-administration/public-records-and-data/daily-reports",
     "experienceUrl": "https://experience.arcgis.com/experience/4aa2856cf64e412e812fda2a893291d7",
     "where": "Date_Issued >= DATE '2025-01-01' AND Permit_Type_Description='Building Residential - New' AND Contact IS NOT NULL AND Address IS NOT NULL"
   },
   "summary": {
-    "permitRowsSampled": 4928,
-    "uniqueBuilders": 78,
+    "permitRowsSampled": 4972,
+    "uniqueBuilders": 80,
     "minimumUniqueBuilders": 20,
-    "totalRecentBuildSignals": 2413,
-    "filter": "Metro Nashville Building Residential - New permits issued since 2025-01-01; builder-like contacts only; requires 3+ permit rows per builder signal.",
-    "callableBuilders": 0
+    "totalRecentBuildSignals": 2428,
+    "filter": "Metro Nashville Building Residential - New permits issued since 2025-01-01; builder-like contacts only; requires 3+ permit rows per builder signal."
   },
   "operatingRules": [
     "Contractor/contact data is a permit-backed active-builder signal, not validated buyer demand until buy-box outreach is complete.",
     "Only Metro Nashville Building Residential - New issued permits are counted; self-contractor, accessory, shed, pool, trade, roofing, and service contractor rows are excluded.",
     "No Davidson County seller sourcing until builder geography, lot size, max price, close speed, utilities/access, slope/flood/infill deal killers, and acquisitions recipient are captured."
-  ],
-  "builderCount": 78,
-  "callableCount": 0,
-  "dedupePolicy": "One row per normalized public builder name/profile inside the market; duplicate legal suffix variants are merged with provenance preserved.",
-  "dedupedFromRows": 80,
-  "duplicateGroupsMerged": 2
+  ]
 }

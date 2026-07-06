@@ -1408,8 +1408,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-ashton-nashville-residential",
-      "name": "ASHTON NASHVILLE RESIDENTIAL",
+      "buyerId": "nashville-builder-lennar-homes",
+      "name": "Lennar Homes",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1417,8 +1417,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-lennar-homes",
-      "name": "Lennar Homes",
+      "buyerId": "nashville-builder-ashton-nashville-residential",
+      "name": "ASHTON NASHVILLE RESIDENTIAL",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1480,6 +1480,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-weekley-homes-llc",
+      "name": "WEEKLEY HOMES LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-build-trust-homes-llc",
       "name": "BUILD TRUST HOMES LLC",
       "market": "nashville-edge-tn",
@@ -1500,15 +1509,6 @@
     {
       "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
       "name": "LENNAR HOMES OF TENNESSEE LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-weekley-homes-llc",
-      "name": "WEEKLEY HOMES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1750,6 +1750,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-jones-construction-dwayne-mark-jones",
+      "name": "JONES CONSTRUCTION, DWAYNE MARK JONES DBA",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-kcg-homes-llc",
       "name": "KCG HOMES LLC",
       "market": "nashville-edge-tn",
@@ -1788,15 +1797,6 @@
     {
       "buyerId": "nashville-builder-durante-companies-inc",
       "name": "DURANTE COMPANIES INC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-jones-construction-dwayne-mark-jones",
-      "name": "JONES CONSTRUCTION, DWAYNE MARK JONES DBA",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1940,7 +1940,7 @@
     },
     {
       "buyerId": "nashville-builder-c-h-properties-llc",
-      "name": "C&H Properties LLC",
+      "name": "C & H PROPERTIES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1977,6 +1977,15 @@
     {
       "buyerId": "nashville-builder-inspiration-builders-llc",
       "name": "INSPIRATION BUILDERS LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 94
+    },
+    {
+      "buyerId": "nashville-builder-space-construction-llc",
+      "name": "SPACE CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -2031,15 +2040,6 @@
     {
       "buyerId": "nashville-builder-offerplate-llc",
       "name": "OFFERPLATE LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
-      "buyerId": "nashville-builder-palmetto-construction-llc",
-      "name": "PALMETTO CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -2632,15 +2632,6 @@
       "confidence": 81
     },
     {
-      "buyerId": "raleigh-builder-haven-build-llc",
-      "name": "Haven Build, LLC",
-      "market": "raleigh-nc",
-      "phone": "2062653371",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 81
-    },
-    {
       "buyerId": "raleigh-builder-smith-douglas-homes",
       "name": "SMITH DOUGLAS HOMES",
       "market": "raleigh-nc",
@@ -2737,7 +2728,7 @@
       "phone": "(919) 302-8790",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 66
+      "confidence": 92
     },
     {
       "buyerId": "raleigh-builder-blue-heel-construction",
@@ -3127,7 +3118,7 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-rivendale-homes-texas-llc-pavillian-communities-texas-ll",
+      "buyerId": "austin-builder-rivendale-homes-texas-llc-pavillian-communities-texas-llc",
       "name": "Rivendale Homes Texas LLC/ Pavillian Communities Texas, LLC",
       "market": "austin-tx",
       "phone": "",
@@ -3165,15 +3156,6 @@
     {
       "buyerId": "austin-builder-atx-luxury-builders",
       "name": "ATX Luxury Builders",
-      "market": "austin-tx",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "austin-builder-nalle-custom-homes-inc",
-      "name": "Nalle Custom Homes Inc",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -6444,18 +6426,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-ashton-nashville-residential",
+      "buyerId": "nashville-builder-lennar-homes",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "ASHTON NASHVILLE RESIDENTIAL",
+      "buyerName": "Lennar Homes",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-lennar-homes",
+      "buyerId": "nashville-builder-ashton-nashville-residential",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Lennar Homes",
+      "buyerName": "ASHTON NASHVILLE RESIDENTIAL",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -6516,6 +6498,15 @@
     },
     {
       "parcelId": "118 17701",
+      "buyerId": "nashville-builder-weekley-homes-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "WEEKLEY HOMES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
       "buyerId": "nashville-builder-build-trust-homes-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "BUILD TRUST HOMES LLC",
@@ -6528,15 +6519,6 @@
       "buyerId": "nashville-builder-craighead-development-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "CRAIGHEAD DEVELOPMENT LLC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "LENNAR HOMES OF TENNESSEE LLC",
       "score": 100,
       "fit": "strong",
       "misses": []

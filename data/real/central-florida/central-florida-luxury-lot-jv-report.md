@@ -2,6 +2,8 @@
 
 Generated for the Land FL section of LandFlip OS.
 
+Augmented with expert pre-call intelligence and public web sale/listing context on 2026-07-06.
+
 ## Executive read
 
 This JV proposal is a luxury infill / waterfront / estate-lot buy box across Central Florida, not a commodity vacant-land campaign. The buyer claims strong appetite and past assignment closes, but the real underwriting will live in buildability, jurisdiction, lakefront proof, HOA/ARB constraints, and whether the owner values privacy/certainty over public-market exposure.
@@ -41,6 +43,265 @@ Practical read:
 
 Primary market source:
 - Orlando Regional REALTOR Association market reports: https://www.orlandorealtors.org/marketreports
+
+
+## Expert pre-call intelligence: what makes you sound local before you call
+
+Purpose: the first owner conversation is not to prove you know everything. It is to prove you know enough not to waste a sophisticated owner's time. In these markets, the fastest credibility signal is not saying "cash buyer". It is asking the questions that a good luxury realtor, land broker, builder, or land-use attorney would ask before pricing dirt.
+
+### The core expert frame
+
+Central Florida luxury lots do not price like rural acreage. A 0.25 acre teardown lot in the right Winter Park or College Park street can be more valuable than multiple acres on the wrong Clermont fringe. A lakefront lot without dockability, buildable envelope, access, or clean HOA/ARB path can be less useful than a non-waterfront estate lot with certainty.
+
+Use this mental model on every owner call:
+
+1. **Location tier** - Is this true luxury demand or just a nice mailing city?
+2. **Jurisdiction** - City, unincorporated Orange County, Lake County, or Seminole County?
+3. **Dirt value** - Is the structure secondary to the land, or is this really a retail house?
+4. **Waterfront reality** - Actual frontage, canal/lake access, dock/boathouse possibility, flood/wetland/shoreline rules.
+5. **Buildable envelope** - setbacks, lot coverage, trees, stormwater, septic/well or utility tie-in, HOA/ARB.
+6. **Owner sophistication** - private owner, estate/trust, builder/developer, realtor-advised owner, gated-community owner, or legacy land family.
+7. **Seller motivation** - privacy, timing, heirs, maintenance, taxes/insurance, no repairs/showings, or price-only.
+8. **Buyer fit** - will the buyer accept the risk profile, or are you creating a dead-end lead?
+
+### Recent vacant-lot and land-value sale/listing context found during web research
+
+These are **market-context signals**, not offer anchors. Listing portals and search snippets can misclassify land, scrape stale records, or show active/list prices instead of closed MLS prices. Before making a real offer, verify each comparable through MLS, the county property appraiser, deed records, or a local realtor/broker pull.
+
+What the public web context shows:
+
+- **Winter Park / 32789-32792**: public land-search snippets showed a wide land-price ladder from edge lots around **$150k-$400k**, infill lots around **$475k-$725k**, and premium/core positions around **$1.7M-$5.0M**. Examples surfaced in search context included 7449 Restful St at about $150k, 1809 Palmer Ave at about $400k, 1010 Garden Dr at about $485k, 1414 Bessmor Rd at about $475k, 770 W Webster Ave rear at about $725k, 1181 Via Capri at about $1.7M, and 503 N Interlachen Ave at about $4.999M. Treat this as the clearest proof that Winter Park dirt has multiple markets inside one city: edge/functional lots, normal infill lots, and trophy lake/park-core dirt.
+- **Maitland / 32751**: public land/home-sale context showed possible land-value or older-home positions from roughly **$235k-$600k**, with premium/lake or larger-lot positions reaching roughly **$730k-$1.15M+** in snippets. Examples surfaced included 1507 Grove St around $235k, 1241 Manchester Rd around $598k, 1741 Lyndale Blvd around $729,990, and 766 Terra Pl around $1.1499M. The lesson: Maitland is not only "cheap Winter Park". The right lake/quiet-family pocket can price like a serious luxury lot.
+- **Windermere / 34786**: public results confirmed active/sold land pages exist but several primary listing sites were blocked during collection. Use Windermere as a **scarcity-first** market, not a comp-table market from snippets. Butler Chain, Isleworth, Keene's Pointe and true lakefront positions can run far above ordinary vacant-lot logic. Assume owners are sophisticated until proven otherwise.
+- **Dr Phillips / Bay Hill / 32819-32836**: the search context was thin for clean vacant-lot solds, but it showed luxury context around Bay Hill and 32836, including high-end waterfront home references such as Bay Point/Butler-chain-adjacent luxury positioning. Treat this as teardown/luxury-home-land-value territory more than raw vacant-lot inventory. Ask about Bay Hill, Sand Lake/Butler access, HOA, golf-community rules and whether the structure is part of value or a demolition candidate.
+- **Winter Garden / 34787**: broad public search was noisy because of the word "Winter"; do not rely on generic snippets. Underwrite by submarket: downtown/old Winter Garden infill, Johns Lake, Horizon West, rural-edge acreage/grove land, and utility/entitlement path. Sold prices will vary wildly by entitlement and development optionality.
+- **College Park / 32804**: public search was noisy because of the word "College"; use local expertise instead of generic search. This is mainly urban infill/teardown math: street, lot width, zoning, tree canopy, proximity to Edgewater/Ivanhoe/AdventHealth/downtown, and whether the existing structure is obsolete.
+- **Clermont / 34711-34715**: public snippets showed land or land-like opportunities around **$325k-$480k** for examples such as Baybrook/Saint Ives/Sunrise Cove positions, with broader lake/custom acreage variation. Clermont is a value-plus luxury market: lake, view, acreage, hills, utility/septic, wetlands and county/city status matter more than the name Clermont alone.
+- **Longwood / 32779-32750**: public snippets showed lower-priced ordinary sold context around Land Ave/32750, but luxury context in 32779 around Markham Woods, Sweetwater, Alaqua/Lake Brantley/Sandy Lane-style estate pockets can be much higher. The lesson: 32779 estate pockets are the target; 32750 ordinary residential lots are usually not the same buyer.
+
+### Pricing expectations by pocket
+
+Use ranges as conversation calibration only. Do not quote them as appraisals.
+
+- **Trophy waterfront / chain-of-lakes dirt**: Winter Park Chain, Butler Chain/Windermere, Bay Hill/Butler access. Owners may expect seven figures before serious conversation. Discount opportunities usually require estate complexity, obsolete structure, privacy, or a problem the buyer can solve.
+- **Premium infill teardown lots**: Winter Park core, College Park, Maitland, Dr Phillips/Bay Hill. Pricing is driven by street, lot width, schools/lifestyle, and replacement-home resale value. Owners often understand builder demand.
+- **Gated estate/community lots**: Windermere, Longwood 32779, Dr Phillips, some Clermont/Winter Garden pockets. HOA/ARB and builder approval can create friction, but also protects luxury end value.
+- **Growth-edge acreage / estate lots**: Winter Garden, Clermont, Longwood fringe. Price is driven by usable acreage, access, utility/septic path, future land use, subdivision potential and environmental constraints.
+- **Ordinary non-waterfront lots in the same mailing city**: can be dramatically less valuable. Do not let a prestige ZIP make you overpay for an inferior lot.
+
+### Where the land owners are likely sophisticated
+
+Assume a sophisticated owner when any of these are true:
+
+- The property is in **Windermere 34786**, especially Butler Chain, Isleworth, Keene's Pointe, gated estate, or large-lot lakefront.
+- The property is **Winter Park 32789**, especially Park Avenue adjacency, Chain of Lakes, Via streets, Interlachen/Palmer/Genius/Park corridor, or old-money lakefront.
+- The property is **Dr Phillips/Bay Hill/32836**, especially Bay Hill, Butler access, Sand Lake chain, gated luxury, or golf-community context.
+- The owner is an LLC, trust, estate, family office, builder, attorney, realtor, or has bought/sold multiple properties.
+- The land is already listed, recently purchased, held by a developer, or in a gated community with known luxury builders.
+
+Less sophisticated or more conversation-open situations:
+
+- Longtime individual owner with a dated/obsolete home and no recent mortgage activity.
+- Estate/trust where heirs are out of area or property has maintenance friction.
+- Owner with a large lot but no clear plan to redevelop.
+- Legacy grove/acreage owner in Winter Garden/Clermont where entitlement is complex.
+- Absentee owner who may value privacy and certainty more than retail showings.
+
+### What a sharp Central Florida realtor would warn you about
+
+#### 1. Mailing city can lie
+
+A property can market as Windermere, Winter Park, Maitland or Orlando while being governed by a different city or unincorporated county. That changes zoning, setbacks, permitting, trees, utilities, and who can answer buildability questions.
+
+Owner-call language:
+> "Before I talk price, I want to confirm the jurisdiction because Winter Park/Windermere/Maitland mailing addresses can sit under different rules. Do you know whether the property is city or county?"
+
+#### 2. Waterfront is not one category
+
+There is a huge difference between:
+- direct lakefront;
+- canal frontage;
+- lake view;
+- deeded access;
+- across-the-street water;
+- retention pond frontage;
+- chain-of-lakes access;
+- dockable shoreline;
+- non-dockable or environmentally constrained shoreline.
+
+Owner-call language:
+> "Is it actual lake frontage, canal/access frontage, or more of a lake-view/deeded-access situation? Has there ever been a dock, boathouse, or shoreline permit?"
+
+#### 3. Lot size is not buildable area
+
+A one-acre lakefront parcel may have less usable dirt than a half-acre dry infill parcel if setbacks, floodplain, wetlands, conservation easements, stormwater, trees, or access consume the envelope.
+
+Owner-call language:
+> "Do you know whether the full lot is usable, or are there flood, conservation, wetland, drainage or easement areas that reduce the buildable envelope?"
+
+#### 4. Tree and stormwater rules can change the economics
+
+Winter Park, Maitland, Orlando/College Park and older established neighborhoods can have meaningful tree, drainage and lot-coverage constraints. A builder may love the street but discount heavily if tree removal or stormwater design is uncertain.
+
+Owner-call language:
+> "Has anyone ever looked at what can actually be built there under current setbacks, lot coverage, tree and stormwater rules?"
+
+#### 5. HOA/ARB can control the buyer pool
+
+In Windermere, Bay Hill, Isleworth, Keene's Pointe, Alaqua/Sweetwater-style Longwood and other gated or deed-restricted areas, the buyer may need HOA/ARB approval, approved-builder lists, design minimums, architectural restrictions, and private-road/easement verification.
+
+Owner-call language:
+> "Is there an HOA, architectural review board, minimum build size, approved-builder requirement, or private-road agreement that a buyer would need to understand?"
+
+#### 6. Septic/well vs utility tie-in matters
+
+Clermont, Winter Garden fringe, Longwood estate pockets and some lake/acreage parcels may involve septic/well, sewer availability, capacity letters, impact fees, utility extensions, or private lift stations. This can move a buyer from aggressive to cautious.
+
+Owner-call language:
+> "Are water/sewer already connected, or is it well/septic? If it is not connected, do you know how close public utilities are?"
+
+#### 7. Old homes can be better than vacant lots
+
+In mature luxury areas, the best "lot" is often an older home that is functionally obsolete. Owners may be offended by "teardown" language, so talk about "larger lot", "older home", "land value", or "as-is private sale".
+
+Owner-call language:
+> "Some buyers I work with are comfortable buying older homes as-is when the lot is what they are really after. Is the home something you see as long-term, or is the land the main value?"
+
+#### 8. Active-listing owners are not your best spread
+
+If a luxury lot is actively listed with a strong agent, the seller already has retail market exposure. Spread is more likely with off-market owners, stale listings, estate friction, privacy needs, or buildability complexity.
+
+Owner-call language:
+> "I am not trying to compete with a public listing process. The only reason to talk privately is if certainty, timing, or avoiding showings is useful to you."
+
+### Pocket-by-pocket expert warnings
+
+#### Winter Park
+
+- **Watch**: historic/character sensitivity, tree canopy, lot coverage, stormwater, narrow lots, old plats, lakefront/dock rules, and sophisticated owners.
+- **Owner psychology**: many owners know the dirt is valuable. Lead with privacy and competence, not speed or discount.
+- **Expert tells**: mention Chain of Lakes, actual frontage vs view/access, Park Avenue/core vs 32792 edge, and older-home land value.
+- **Kill line**: if the seller expects trophy retail pricing and there is no privacy/timing/estate pain, spread may be thin.
+
+#### Maitland
+
+- **Watch**: Orange vs Seminole boundary, lakefront rules, Dommerich/Winter Park adjacency, tree/stormwater, quiet-family neighborhood tone.
+- **Owner psychology**: lower-key than Windermere, but still educated. Many owners care about privacy, neighbors and timing.
+- **Expert tells**: ask whether it is Orange County side, which lake/pocket, whether there are deed/HOA constraints, and whether the home is obsolete.
+- **Kill line**: if it is ordinary non-waterfront Maitland with retail price expectations, the buyer may prefer stronger luxury pockets.
+
+#### Windermere
+
+- **Watch**: Butler Chain proof, gated-community ARB, HOA transfer/build rules, private roads/easements, lakefront/dockability, ultra-high seller expectations.
+- **Owner psychology**: sophisticated, privacy-sensitive, likely realtor/advisor aware. Bad investor language will burn trust.
+- **Expert tells**: ask whether it is Town of Windermere vs unincorporated Orange County, Butler Chain vs retention/lake-view, and whether HOA/ARB or approved builders apply.
+- **Kill line**: no clear waterfront/estate attribute plus trophy seller price equals low spread.
+
+#### Dr Phillips / Bay Hill
+
+- **Watch**: Bay Hill/golf community rules, Butler/Sand Lake waterbody distinction, HOA/ARB, traffic/road adjacency, luxury-home-vs-land-value confusion.
+- **Owner psychology**: often affluent and agent-advised. They may not think of the property as "land" unless the home is dated.
+- **Expert tells**: reference Bay Hill, Butler/Sand Lake access, golf/HOA constraints, and ask whether the improvement or the dirt drives value.
+- **Kill line**: if the structure is truly luxury-renovated and priced as a home, it may not be a land play.
+
+#### College Park
+
+- **Watch**: Orlando city zoning, lot width/depth, tree canopy, drainage, old bungalows, proximity to Edgewater/Ivanhoe/AdventHealth/downtown, neighbor sensitivity.
+- **Owner psychology**: urban neighborhood pride. "Tear down" can sound hostile; say "older home as-is" or "larger lot".
+- **Expert tells**: ask about lot width, alley/access, large trees, prior additions, historic/neighborhood constraints and whether the home needs major updates.
+- **Kill line**: small narrow lots with protected trees and retail owner expectations can kill builder margin.
+
+#### Winter Garden
+
+- **Watch**: Horizon West planning, future land use, utilities/concurrency/impact fees, rural-edge septic/well, wetlands/conservation, Lake Apopka/Johns Lake distinction, assemblage complexity.
+- **Owner psychology**: split market. Legacy acreage owners may be less retail-polished but more emotionally attached; developers are very sophisticated.
+- **Expert tells**: ask whether it is city or county, whether utilities are at the road, any prior development inquiries, and whether the family has considered subdividing.
+- **Kill line**: acreage with no utility path, wetlands, access issues or entitlement dependency can be too slow for an ASAP luxury-lot buyer.
+
+#### Clermont
+
+- **Watch**: Lake County vs city, hills/slope, septic/well, lake access vs view, road/access, wetlands/conservation, impact fees, rural-luxury buyer depth.
+- **Owner psychology**: more value-sensitive; sellers may compare to acreage and lake-view comps rather than Windermere/Winter Park pricing.
+- **Expert tells**: ask about lakefront vs view/access, usable acreage, utilities, driveway/access, slope, and whether any builder or survey has reviewed it.
+- **Kill line**: nice land but too far from buyer's preferred prestige pocket, or land that needs too much entitlement before closing.
+
+#### Longwood
+
+- **Watch**: 32779 vs 32750 distinction, Seminole County/town rules, Markham Woods/Lake Brantley/Alaqua/Sweetwater estate pockets, private roads, HOA/ARB, septic/well, flood/wetlands.
+- **Owner psychology**: estate-pocket owners can be sophisticated and privacy-sensitive; ordinary 32750 owners may be more price-driven but less relevant to luxury buyer.
+- **Expert tells**: ask which pocket, whether it is lake/estate/gated, whether HOA/ARB applies, utilities/septic, and whether the lot supports a modern custom home.
+- **Kill line**: broad Longwood address without 32779/estate/lake/gated attributes may not match the buyer.
+
+### Pre-call property research checklist
+
+Before contacting an owner, spend 5-10 minutes and fill these blanks:
+
+- Parcel ID / APN:
+- Property address / nearest street:
+- Owner name and mailing city:
+- Human owner, estate/trust, LLC, builder, or institution:
+- Years held:
+- Last sale date/price:
+- Assessed land value vs building value:
+- Lot size and dimensions:
+- Jurisdiction:
+- Zoning / future land use:
+- Waterfront type:
+- Flood/wetland/conservation risk:
+- Utilities or septic/well clue:
+- HOA/ARB/deed restriction clue:
+- Likely buyer use: vacant lot, teardown, estate lot, acreage, assemblage:
+- Conversation reason: privacy, timing, as-is, estate, no showings, land-value home:
+
+### First-call qualification questions that make you sound like an expert
+
+Use only a few at a time; do not interrogate the owner.
+
+1. "Is the property currently vacant land, or is there an older home/improvement on it?"
+2. "Do you know whether the property is inside the city limits or unincorporated county?"
+3. "Is it actual lakefront, lake-view, canal-access, or deeded access?"
+4. "Has there ever been a dock, boathouse, shoreline permit, survey, or builder review?"
+5. "Are utilities connected, or is it well/septic?"
+6. "Are there HOA, deed restriction, architectural review, or private-road rules?"
+7. "Do you know the approximate lot size and whether all of it is usable?"
+8. "Is the home something you value as a finished home, or would an as-is land-value buyer make sense?"
+9. "If you ever sold privately, what would matter most: price, timing, privacy, no repairs/showings, or certainty?"
+10. "Have you had a number in mind, or should we verify the lot/buildability first and then talk through a serious range?"
+
+### Offer posture by owner type
+
+- **Sophisticated luxury owner**: never lowball first. Ask permission to verify facts, then frame a private, qualified-buyer conversation. They need competence and discretion.
+- **Estate/trust/heirs**: lead with simplicity, certainty, as-is sale, and flexible timing. Avoid pressure. Ask who has authority.
+- **Legacy acreage owner**: ask history and future plans. They may know developers have called. Focus on clean due diligence and not wasting time.
+- **Builder/developer owner**: assume they know market value. Only pursue if stale, residual, problem parcel, or they want speed/cleanup.
+- **Absentee/second-home owner**: lead with remote/private closing, no repairs, no showings, and certainty.
+- **Retail listed owner**: only pursue if stale, price-reduced, unusual terms, or buyer has a specific reason to outperform normal buyers.
+
+### Sources and verification paths for this deeper-dive section
+
+- Orlando Regional REALTOR Association market reports: https://www.orlandorealtors.org/marketreports
+- Orange County Property Appraiser: https://www.ocpafl.org/
+- Lake County Property Appraiser: https://www.lakecopropappr.com/
+- Seminole County Property Appraiser: https://www.scpafl.org/
+- Orange County zoning: https://www.orangecountyfl.net/PlanningDevelopment/Zoning.aspx
+- FEMA Flood Map Service Center: https://msc.fema.gov/portal/home
+- Florida DEP Map Direct / environmental context: https://ca.dep.state.fl.us/mapdirect/
+- St. Johns River Water Management District permitting: https://www.sjrwmd.com/permitting/
+- South Florida Water Management District ePermitting / Orlando west-side overlap checks: https://www.sfwmd.gov/doing-business-with-us/epermitting
+- City of Winter Park planning/building/lakes pages listed in the Winter Park section below.
+- City of Maitland planning/zoning and code links listed in the Maitland section below.
+- City of Winter Garden planning/development review links listed in the Winter Garden section below.
+- City of Orlando planning/zoning links listed in the College Park and Dr Phillips sections below.
+- City of Clermont and Lake County links listed in the Clermont section below.
+- City of Longwood and Seminole County links listed in the Longwood section below.
+- Public listing-context pages used for sale/listing snippets; treat as market context only and verify via MLS/county before pricing:
+  - Movoto Winter Park land page: https://www.movoto.com/winter-park-fl/land/
+  - LandWatch Windermere sold/under-contract land search result: https://www.landwatch.com/florida-land-for-sale/windermere/available/under-contract/sold
+  - Homes.com Windermere 34786 sold context: https://www.homes.com/windermere-fl/34786/sold/
+  - Homes.com Maitland 32751 sold context: https://www.homes.com/maitland-fl/32751/sold/
+  - Redfin Clermont land context: https://www.redfin.com/city/3362/FL/Clermont/land
+  - Homes.com Clermont 34711 sold context: https://www.homes.com/clermont-fl/34711/sold/
+  - Homes.com Longwood sold context: https://www.homes.com/longwood-fl/sold/
 
 ## Target ZIP map
 
@@ -793,3 +1054,172 @@ Use manual outreach only unless a compliant SMS platform, DNC workflow, opt-out 
 ## Bottom line
 
 This is a real luxury-lot opportunity lane if the buyer is genuine, but seller approach must match the neighborhoods. The winning tone is discreet, private, qualified, and low-pressure. The biggest risk is not finding owners; it is overvaluing parcels before proving waterfront/buildability/jurisdiction/HOA constraints. Treat every parcel as proof-gated until official sources confirm the dirt is actually buildable and buyer-fit.
+
+## Public lot-sale and active-asking context by target pocket
+
+Research date: 2026-07-06 UTC. This is directional deal-prep context, not an appraisal or broker price opinion.
+
+Important caveats:
+- Listing portals can be stale, duplicated, rounded, re-syndicated, or wrong on lot size/status. Treat Compass/Zillow/Realtor/Redfin/Homes.com/LandSearch snippets as market context only; verify any comp through MLS, deed records, the county property appraiser, survey, title, and zoning before underwriting.
+- “Sold, last 90 days” below is from Compass public pages unless otherwise noted. Where Compass returned “nearby” results rather than an exact zip count, I did not treat those as hard zip comps.
+- Active land pages mix true vacant lots with teardown/redevelopment parcels and commercial/mixed-use land. Waterfront, chain-of-lakes access, subdivision rights, frontage, tree/flood/wetland constraints, and HOA/ARB rules can dominate price more than acreage.
+
+### Current asking context from public listing pages
+
+- **Winter Park 32789** — Compass showed **16** land listings. Examples/range:
+  - $695,000 / 0.18 ac = $3,861,111/ac ($88.64/sf).
+  - $1,595,000 / 0.41 ac = $3,890,244/ac ($89.31/sf).
+  - $4,200,000 / 0.34 ac = $12,352,941/ac ($283.58/sf).
+  - $4,500,000 / 0.48 ac = $9,375,000/ac ($215.22/sf).
+  - Source: https://www.compass.com/homes-for-sale/winter-park-fl-32789/land/
+  - Additional Realtor snippets: 503 N Interlachen Ave, Winter Park 32789 listed **$4,500,000**, **0.48 ac**, MLS O6331207, snippet dated Aug. 2, 2025: https://www.realtor.com/realestateandhomes-detail/503-N-Interlachen-Ave_Winter-Park_FL_32789_M94043-13234 ; 1298 Beachview Ave listed **$4,200,000**, **0.34 ac**, MLS O6405064: https://www.realtor.com/realestateandhomes-detail/1298-Beachview-Ave_Winter-Park_FL_32789_M99645-03414
+
+- **Winter Park 32792** — Compass showed one active land result found in this search:
+  - $499,000 / 0.62 ac = $804,839/ac ($18.48/sf).
+  - Source: https://www.compass.com/homes-for-sale/winter-park-fl-32792/land/
+  - Other public snippets also surfaced Winter Park 32792 commercial/redevelopment land, e.g. TotalCommercial snippet for a **6.74 ac** Dodd Rd LDR site approved up to 4 units/ac: https://totalcommercial.com/listings/57366 ; LoopNet snippets for 2231 Nairn Dr and 230 Strathy Ln were redevelopment/office-oriented, not pure luxury residential lot comps.
+
+- **Maitland 32751** — Compass showed **3** active land listings:
+  - $245,000 / 0.27 ac = $907,407/ac ($20.83/sf).
+  - $265,000 / 0.27 ac = $981,481/ac ($22.53/sf).
+  - $3,990,900 / 7.82 ac = $510,345/ac ($11.72/sf).
+  - Source: https://www.compass.com/homes-for-sale/maitland-fl-32751/land/
+
+- **Winter Garden 34787** — Compass showed **21** active land listings; this is a wide market with both infill lots and multi-acre estate/development tracts:
+  - $798,800 / 1.79 ac = $446,257/ac ($10.24/sf).
+  - $1,000,000 / 0.85 ac = $1,176,471/ac ($27.01/sf).
+  - $1,800,000 / 7.01 ac = $256,776/ac ($5.89/sf).
+  - $1,299,000 / 5.11 ac = $254,207/ac ($5.84/sf).
+  - Smaller/non-luxury examples in the same zip were as low as roughly **$59k-$200k** for 0.10-0.54 ac.
+  - Source: https://www.compass.com/homes-for-sale/winter-garden-fl-34787/land/
+
+- **Windermere 34786** — Compass showed **14** active land listings; upper end is driven by lakefront/Butler-chain/gated-estate positioning:
+  - $600,000 / 0.39 ac = $1,538,462/ac ($35.32/sf).
+  - $1,650,000 / 0.32 ac = $5,156,250/ac ($118.37/sf).
+  - $4,395,000 / 1 ac = $4,395,000/ac ($100.90/sf).
+  - $8,695,000 / 2.19 ac = $3,970,320/ac ($91.15/sf).
+  - $10,500,000 / 9.03 ac = $1,162,791/ac ($26.69/sf).
+  - Source: https://www.compass.com/homes-for-sale/windermere-fl-34786/land/
+
+- **Dr Phillips / Bay Hill 32819** — Compass showed **4** active land listings in 32819:
+  - $795,000 / 0.97 ac = $819,588/ac ($18.82/sf).
+  - $849,000 / 0.26 ac = $3,265,385/ac ($74.96/sf).
+  - $1,675,000 / 1.2 ac = $1,395,833/ac ($32.04/sf).
+  - $5,000,000 / 1.41 ac = $3,546,099/ac ($81.41/sf).
+  - Source: https://www.compass.com/homes-for-sale/orlando-fl-32819/land/
+
+- **Dr Phillips / Lake Buena Vista-side 32836** — Compass showed **2** active land listings:
+  - $2,300,000 / 1.52 ac = $1,513,158/ac ($34.74/sf).
+  - $15,000,000 / 4.81 ac = $3,118,503/ac ($71.59/sf).
+  - Source: https://www.compass.com/homes-for-sale/orlando-fl-32836/land/
+
+- **College Park 32804** — Compass showed **5** active land listings:
+  - Helen Avenue: $250,000 / 0.1 ac = $2,500,000/ac ($57.39/sf).
+  - 1014 Meadows Avenue: $322,500 / 0.17 ac = $1,897,059/ac ($43.55/sf).
+  - 726 Cordova Drive: $235,000 / 0.21 ac = $1,119,048/ac ($25.69/sf).
+  - 307 Harvard Street: $950,000 / 0.28 ac = $3,392,857/ac ($77.89/sf).
+  - 4171 N Orange Blossom Trail: $3,300,000 / 6.52 ac = $506,135/ac ($11.62/sf); likely more commercial/corridor than core luxury infill.
+  - Source: https://www.compass.com/homes-for-sale/orlando-fl-32804/land/
+
+- **Clermont 34711** — Compass showed **39** active land listings, with large variance between lake/estate tracts and ordinary lots:
+  - $675,000 / 0.46 ac = $1,467,391/ac ($33.69/sf).
+  - $650,000 / 0.31 ac = $2,096,774/ac ($48.14/sf).
+  - $875,000 / 4.94 ac = $177,126/ac ($4.07/sf).
+  - $1,300,000 / 9.52 ac = $136,555/ac ($3.13/sf).
+  - $850,000 / 10 ac = $85,000/ac ($1.95/sf).
+  - Source: https://www.compass.com/homes-for-sale/clermont-fl-34711/land/
+
+- **Clermont 34715** — Compass showed **14** active land listings:
+  - $399,000 / 5 ac = $79,800/ac ($1.83/sf).
+  - $339,900 / 5.47 ac = $62,139/ac ($1.43/sf).
+  - $474,900 / 5 ac = $94,980/ac ($2.18/sf).
+  - $659,000 / 10 ac = $65,900/ac ($1.51/sf).
+  - $695,000 / 1.57 ac = $442,675/ac ($10.16/sf).
+  - Source: https://www.compass.com/homes-for-sale/clermont-fl-34715/land/
+
+- **Longwood 32779** — Compass showed **2** active land listings:
+  - $675,000 / 5.13 ac = $131,579/ac ($3.02/sf).
+  - $319,990 / 0.25 ac = $1,279,960/ac ($29.38/sf).
+  - Source: https://www.compass.com/homes-for-sale/longwood-fl-32779/land/
+
+- **Longwood 32750** — Compass showed **5** active land listings:
+  - Lazy Acres Lane: $850,000 / 4.95 ac = $171,717/ac ($3.94/sf).
+  - Hill Top Dr Lake: $295,000 / 6.18 ac = $47,735/ac ($1.10/sf).
+  - 700 W Church Avenue: $2,394,000 / 4.73 ac = $506,131/ac ($11.62/sf).
+  - 1501 Pearl Street: $2,200,000 / 3.16 ac = $696,203/ac ($15.98/sf).
+  - Marjorie Boulevard: $48,000 / 0.33 ac = $145,455/ac ($3.34/sf).
+  - Source: https://www.compass.com/homes-for-sale/longwood-fl-32750/land/
+
+### Recent sold context from public listing pages
+
+- **Winter Park 32789** — Compass “land recently sold” page showed **11** sold land results in the last 90 days. Examples/range:
+  - $610,000 / 0.31 ac = $1,967,742/ac ($45.17/sf).
+  - $2,280,000 / 0.26 ac = $8,769,231/ac ($201.31/sf).
+  - $1,295,100 / 0.25 ac = $5,180,400/ac ($118.93/sf).
+  - $1,700,000 / 0.3 ac = $5,666,667/ac ($130.09/sf).
+  - $2,050,000 / 0.55 ac = $3,727,273/ac ($85.57/sf).
+  - Source: https://www.compass.com/homes-for-sale/winter-park-fl-32789/sold/land/
+
+- **Winter Park 32792** — Compass returned one sold land result in the fetched page:
+  - $360,000 / 0.24 ac = $1,500,000/ac ($34.44/sf).
+  - Source: https://www.compass.com/homes-for-sale/winter-park-fl-32792/sold/land/
+
+- **Maitland 32751** — Compass showed **4** sold land results in the last 90 days:
+  - $90,000 / 0.23 ac = $391,304/ac ($8.98/sf).
+  - $3,000,000 / 0.56 ac = $5,357,143/ac ($122.98/sf).
+  - $2,550,000 / 0.42 ac = $6,071,429/ac ($139.38/sf).
+  - $255,000 / 0.43 ac = $593,023/ac ($13.61/sf).
+  - Source: https://www.compass.com/homes-for-sale/maitland-fl-32751/sold/land/
+
+- **Winter Garden 34787** — Compass showed **8** sold land results in the last 90 days:
+  - $2,400,000 / 5.02 ac = $478,088/ac ($10.98/sf).
+  - $1,440,000 / 5.45 ac = $264,220/ac ($6.07/sf).
+  - $715,500 / 5 ac = $143,100/ac ($3.29/sf).
+  - $875,000 / 4.47 ac = $195,749/ac ($4.49/sf).
+  - $420,000 / 0.28 ac = $1,500,000/ac ($34.44/sf).
+  - Source: https://www.compass.com/homes-for-sale/winter-garden-fl-34787/sold/land/
+
+- **Windermere 34786** — Compass showed **1** sold land result in the last 90 days:
+  - $830,000 / 1.55 ac = $535,484/ac ($12.29/sf).
+  - Source: https://www.compass.com/homes-for-sale/windermere-fl-34786/sold/land/
+
+- **College Park 32804** — Compass fetched page showed one sold 32804 land result:
+  - $320,000 / 0.14 ac = $2,285,714/ac ($52.47/sf).
+  - Source: https://www.compass.com/homes-for-sale/orlando-fl-32804/sold/land/
+
+- **Clermont 34711** — Compass showed **7** sold land results in the last 90 days:
+  - $250,000 / 0.26 ac = $961,538/ac ($22.07/sf).
+  - $535,000 / 0.47 ac = $1,138,298/ac ($26.13/sf).
+  - $700,000 / 10 ac = $70,000/ac ($1.61/sf).
+  - $1,100,000 / 7.99 ac = $137,672/ac ($3.16/sf).
+  - Source: https://www.compass.com/homes-for-sale/clermont-fl-34711/sold/land/
+
+- **Clermont 34715** — Compass showed **8** sold land results in the last 90 days:
+  - $189,000 / 1.46 ac = $129,452/ac ($2.97/sf).
+  - $485,000 / 5.59 ac = $86,762/ac ($1.99/sf).
+  - $580,000 / 14.5 ac = $40,000/ac ($0.92/sf).
+  - $230,000 / 1.28 ac = $179,688/ac ($4.13/sf).
+  - Source: https://www.compass.com/homes-for-sale/clermont-fl-34715/sold/land/
+
+- **Longwood 32779** — Compass showed **1** sold land result in the last 90 days:
+  - $420,000 / 2.48 ac = $169,355/ac ($3.89/sf).
+  - Source: https://www.compass.com/homes-for-sale/longwood-fl-32779/sold/land/
+
+- **Longwood 32750** — Compass sold page returned nearby/recent land examples; verify exact zip before treating as comp. Examples visible in fetched public context included:
+  - $180,000 / 0.36 ac = $500,000/ac ($11.48/sf).
+  - $61,000 / 0.19 ac = $321,053/ac ($7.37/sf).
+  - $410,000 / 3.44 ac = $119,186/ac ($2.74/sf).
+  - $158,000 / 1.15 ac = $137,391/ac ($3.15/sf).
+  - Source: https://www.compass.com/homes-for-sale/longwood-fl-32750/sold/land/
+
+- **Dr Phillips/Bay Hill 32819 and 32836** — Compass sold-land pages fetched but primarily displayed “explore nearby” style results instead of a clean exact-zip count. Use active ask context above and verify sold land through Orange County records/MLS before relying on a comp.
+  - 32819 sold search URL: https://www.compass.com/homes-for-sale/orlando-fl-32819/sold/land/
+  - 32836 sold search URL: https://www.compass.com/homes-for-sale/orlando-fl-32836/sold/land/
+
+### Takeaways for owner conversations
+
+- Winter Park 32789 and Windermere 34786 have the clearest luxury-lot signal: small infill/waterfront lots can show seven-figure asks, and the very best locations can imply several hundred dollars per square foot of dirt.
+- Maitland has a split market: ordinary infill can look like sub-$1M land, while lakefront/estate teardowns can print $2.5M-$3.0M+ on under 0.6 ac.
+- Dr Phillips/Bay Hill active supply is thin; even a small sample showed 32819 active asks from roughly $795k to $5M and 32836 from $2.3M to $15M. Verify waterfront/frontage and whether the parcel is actually buildable residential land.
+- College Park core infill lots cluster far below Winter Park/Windermere luxury waterfront, but premium addresses or assemblage/corridor parcels can still break materially higher.
+- Clermont/Winter Garden/Longwood are less uniform: acreage/estate lots can be compelling, but price per acre often looks lower because acreage, zoning, utilities, access, and development potential drive value.

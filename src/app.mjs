@@ -285,7 +285,7 @@ const texasLandReports = [
     market: 'Winter Park · Windermere · Dr Phillips · Maitland · College Park · Winter Garden · Clermont · Longwood',
     updatedAt: '2026-07-06',
     assetUrl: 'data/real/central-florida/central-florida-luxury-lot-jv-report.md',
-    subtitle: 'Luxury lots + waterfront appetite · Orange/Lake/Seminole proof gates · seller SMS scripts',
+    subtitle: 'Luxury lots + waterfront appetite · owner-expert prep · comp context · seller SMS scripts',
     buyBox: [
       'Target areas: Winter Park, Maitland Orange County side, Winter Garden, Windermere, Dr Phillips, College Park, Clermont, Longwood, and credible surrounding luxury-lot spillover.',
       'Buyer prefers waterfront, but will consider non-waterfront if it is a true luxury lot, larger homesite, estate parcel, or teardown/infill dirt.',
@@ -311,6 +311,9 @@ const texasLandReports = [
     ],
     trendNotes: [
       'Central Florida is more balanced than the 2021-2022 frenzy, but prime waterfront and estate lots remain scarcity assets.',
+      'Public listing/snippet research shows Winter Park land context ranging from roughly $150k-$725k for edge/infill lots and up to $1.7M-$5M for premium/core positions; verify through MLS/county before using as offer anchors.',
+      'Maitland and Clermont public context shows possible land-value examples in the mid-six figures, while Windermere, Bay Hill and Winter Park trophy waterfront should be treated as scarcity-first seven-figure conversations.',
+      'Sophisticated owners cluster in Windermere 34786, Winter Park 32789, Bay Hill/Dr Phillips 32836, gated/HOA luxury pockets, LLC/trust/estate ownership, and already-listed or builder/developer-held parcels.',
       'Spread is most likely from off-market timing, estate complexity, obsolete improvements, privacy motivation, or entitlement complexity the buyer can absorb.',
       'Mailing city is not enough: verify city vs unincorporated Orange, Lake or Seminole County before pricing.',
       'Waterfront value requires proof of actual frontage, waterbody identity, chain access if claimed, dockability, flood/wetlands and shoreline approval path.',
@@ -352,6 +355,7 @@ const texasLandReports = [
     ],
     proofGates: [
       'Public owner records are not call-ready; verify parcel/owner first, then enrich contact provenance before outreach.',
+      'Before owner contact, complete the expert checklist: last sale price/date, years held, assessed land vs building value, lot dimensions, jurisdiction, zoning/future land use, waterfront type, utilities/septic/well, HOA/ARB and likely buyer use.',
       'Verify parcel ID, acreage, legal description, owner, municipality/tax district and assessed values from Orange/Lake/Seminole property appraiser records.',
       'Verify city vs unincorporated jurisdiction, zoning, future land use, setbacks, lot coverage, tree/stormwater and subdivision limits before pricing.',
       'Verify waterfront: exact waterbody, actual frontage, chain access if claimed, dock/boathouse eligibility, shoreline rules and WMD/FDEP/local approvals.',

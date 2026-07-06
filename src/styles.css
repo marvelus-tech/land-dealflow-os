@@ -34501,6 +34501,23 @@ body[data-active-view="builders"] #builder-list-panel .builder-market-hero-art s
   transform: translateY(-8px);
 }
 
+body[data-active-view="builders"] #builder-list-panel .builder-state-silhouette {
+  width: min(96%, 330px);
+  max-height: 86%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 22px 34px rgba(15,77,53,.14));
+  transform: translateY(-6px);
+}
+
+body[data-active-view="builders"] #builder-list-panel .builder-state-silhouette path {
+  fill: rgba(15,77,53,.16);
+  stroke: rgba(15,77,53,.74);
+  stroke-width: .22;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 body[data-active-view="builders"] #builder-list-panel .builder-market-hero-art i {
   position: absolute;
   inset: auto 22px 28px 22px;
@@ -36258,6 +36275,316 @@ body[data-active-view="deals"] #parcels .phase253-land-market-command-rail .land
   body[data-active-view="deals"] #parcels .phase253-land-market-command-rail .land-market-command-scroll,
   body[data-active-view="deals"] #parcels .phase218-builder-style-workbench.phase213-harmonized-command .phase253-land-market-command-rail .land-market-command-scroll,
   body[data-active-view="deals"] #parcels .phase219-calm-scan-hierarchy.phase215-award-command .phase253-land-market-command-rail .land-market-command-scroll {
+    grid-auto-columns: minmax(210px, 78vw) !important;
+  }
+}
+
+/* v1.95.1 - Phase 254 Land IA reset: market index first, selected workspace second */
+body[data-active-view="deals"] #parcels .phase254-land-market-index {
+  --phase254-land-ia-reset: market-index-first-selected-workspace-second;
+  display: grid !important;
+  grid-template-columns: minmax(220px, .32fr) minmax(0, .68fr) !important;
+  grid-template-areas: "hero filter" "hero grid" !important;
+  grid-template-rows: auto 1fr !important;
+  gap: 18px !important;
+  align-items: start !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: clamp(14px, 2.4vw, 28px) 0 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-index .land-market-index-hero {
+  position: sticky !important;
+  grid-area: hero !important;
+  top: 96px !important;
+  display: grid !important;
+  gap: 14px !important;
+  padding: 0 18px 0 0 !important;
+  border-right: 1px solid rgba(10,20,16,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-index h2 {
+  margin: 0 !important;
+  max-width: 9ch !important;
+  color: #101813 !important;
+  font-size: clamp(38px, 5vw, 86px) !important;
+  line-height: .82 !important;
+  letter-spacing: -.07em !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-index p {
+  margin: 0 !important;
+  max-width: 36ch !important;
+  color: rgba(15,23,42,.62) !important;
+  font-size: 14px !important;
+  line-height: 1.45 !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-stats {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid rgba(10,20,16,.12) !important;
+  border-bottom: 1px solid rgba(10,20,16,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-stats div {
+  display: grid !important;
+  gap: 2px !important;
+  padding: 11px 10px !important;
+  border-right: 1px solid rgba(10,20,16,.08) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-stats b {
+  color: #101813 !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-stats span {
+  color: rgba(15,23,42,.55) !important;
+  font-size: 10px !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-filter {
+  grid-area: filter !important;
+  grid-column: 2 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0 !important;
+  border-top: 1px solid rgba(10,20,16,.12) !important;
+  border-bottom: 1px solid rgba(10,20,16,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-index-state-filter {
+  padding: 8px 11px !important;
+  border-right: 1px solid rgba(10,20,16,.09) !important;
+  color: rgba(15,23,42,.58) !important;
+  font-size: 11px !important;
+  font-weight: 760 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  cursor: pointer !important;
+}
+
+body[data-active-view="deals"] #parcels .land-index-state-filter.active {
+  color: #0b5a43 !important;
+  background: rgba(11,90,67,.06) !important;
+  box-shadow: inset 0 -2px 0 #0b5a43 !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-grid {
+  grid-area: grid !important;
+  grid-column: 2 !important;
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid rgba(10,20,16,.12) !important;
+  border-left: 1px solid rgba(10,20,16,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card {
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  min-height: 172px !important;
+  padding: 16px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(10,20,16,.12) !important;
+  border-bottom: 1px solid rgba(10,20,16,.12) !important;
+  border-radius: 0 !important;
+  background: rgba(255,255,251,.56) !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card:hover {
+  background: rgba(11,90,67,.045) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card > span {
+  display: inline-grid !important;
+  place-items: center !important;
+  width: 34px !important;
+  height: 34px !important;
+  border: 1px solid rgba(11,90,67,.2) !important;
+  color: #0b5a43 !important;
+  font-size: 10px !important;
+  font-weight: 900 !important;
+  letter-spacing: .08em !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card h3 {
+  margin: 0 !important;
+  color: #101813 !important;
+  font-size: clamp(20px, 2vw, 30px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.045em !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card p {
+  margin-top: 8px !important;
+  max-width: 34ch !important;
+  font-size: 12.5px !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card dl {
+  grid-column: 2 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  border-top: 1px solid rgba(10,20,16,.1) !important;
+  border-bottom: 1px solid rgba(10,20,16,.1) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card dl div {
+  padding: 9px 0 !important;
+  border-right: 1px solid rgba(10,20,16,.08) !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card dt {
+  color: rgba(15,23,42,.52) !important;
+  font-size: 9px !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card dd {
+  margin: 2px 0 0 !important;
+  color: #101813 !important;
+  font-size: 18px !important;
+  font-weight: 760 !important;
+}
+
+body[data-active-view="deals"] #parcels .land-market-index-card > em {
+  grid-column: 2 !important;
+  color: rgba(15,23,42,.55) !important;
+  font-size: 11px !important;
+  font-style: normal !important;
+  text-transform: uppercase !important;
+  letter-spacing: .06em !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-selected-workspace {
+  --phase254-land-selected-workspace: market-menu-before-selected-content-no-state-workbench;
+  display: grid !important;
+  gap: 14px !important;
+  margin: 0 0 14px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+  width: 100% !important;
+  margin: 8px 0 0 !important;
+  padding: 10px 0 12px !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(10,20,16,.12) !important;
+  border-bottom: 1px solid rgba(10,20,16,.12) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-head {
+  display: grid !important;
+  grid-template-columns: minmax(140px, .22fr) minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: end !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-head :where(.eyebrow,h3) {
+  grid-column: 1 !important;
+  margin: 0 !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-head h3 {
+  color: #101813 !important;
+  font-size: clamp(18px, 1.7vw, 25px) !important;
+  line-height: .95 !important;
+  letter-spacing: -.045em !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-head p {
+  grid-column: 2 !important;
+  margin: 0 !important;
+  max-width: 58ch !important;
+  color: rgba(15,23,42,.6) !important;
+  font-size: 12.5px !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-scroll {
+  display: grid !important;
+  grid-auto-flow: column !important;
+  grid-auto-columns: minmax(260px, 320px) !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding: 0 0 4px !important;
+  border-top: 1px solid rgba(10,20,16,.1) !important;
+  scroll-snap-type: x proximity !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-command-market {
+  min-height: 68px !important;
+  padding: 10px 12px !important;
+  border: 0 !important;
+  border-right: 1px solid rgba(10,20,16,.1) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  scroll-snap-align: start !important;
+}
+
+body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-command-market.active {
+  background: rgba(11,90,67,.06) !important;
+  box-shadow: inset 0 2px 0 #0b5a43 !important;
+}
+
+body[data-active-view="deals"] #parcels .land-selected-market-summary {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels .phase254-land-market-index {
+    grid-template-columns: 1fr !important;
+    grid-template-areas: "hero" "filter" "grid" !important;
+    grid-template-rows: auto !important;
+  }
+  body[data-active-view="deals"] #parcels .phase254-land-market-index .land-market-index-hero,
+  body[data-active-view="deals"] #parcels .land-market-index-filter,
+  body[data-active-view="deals"] #parcels .land-market-index-grid {
+    grid-column: 1 !important;
+  }
+  body[data-active-view="deals"] #parcels .phase254-land-market-index .land-market-index-hero {
+    position: static !important;
+    padding: 0 !important;
+    border-right: 0 !important;
+  }
+  body[data-active-view="deals"] #parcels .land-market-index-grid {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-head {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-head :where(.eyebrow,h3,p) {
+    grid-column: 1 !important;
+  }
+  body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-scroll {
     grid-auto-columns: minmax(210px, 78vw) !important;
   }
 }

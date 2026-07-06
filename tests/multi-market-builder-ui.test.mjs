@@ -44,6 +44,8 @@ assert.match(app, /renderBuilderMarketHero/, 'Builders page must render a dedica
 assert.match(app, /<summary><span>Markets<\/span>/, 'Selected market page should expose a visible but unobtrusive Markets button');
 assert.match(app, /buybox-capture-sheet/, 'Builder buy-box form should be moved into a compact capture sheet');
 assert.match(app, /builder-source-depth-drawer/, 'Permit portal landscape should be optional source depth, not default page mass');
+assert.match(app, /builderPanelRenderSequence/, 'Builders market page should guard against redundant async rerenders');
+assert.match(app, /target\.dataset\.builderRenderKey/, 'Builders market page should memoize the current render key to prevent click/load flicker');
 assert.match(app, /seller sourcing stays parked until a buy box is captured/, 'Selected market copy should keep the buyer-first proof gate clear');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
@@ -163,7 +165,10 @@ assert.match(css, /v1\.93\.1 - Builders critical second pass/, 'Phase 248 critic
 assert.match(css, /v1\.93\.2 - Builders mobile score-card repair/, 'Phase 248 mobile score-card repair layer missing');
 assert.match(css, /v1\.93\.3 - Builders mobile text-wrap repair/, 'Phase 248 mobile text-wrap repair layer missing');
 assert.match(css, /v1\.93\.4 - Builders mobile action-status slot repair/, 'Phase 248 mobile action-status slot repair layer missing');
+assert.match(css, /v1\.93\.5 - Builders anti-flicker transition repair/, 'Phase 249 anti-flicker transition repair layer missing');
 assert.match(css, /--phase248-builders-rule: lower-command-surface-queue-detail-cockpit/, 'Phase 248 queue-detail cockpit token missing');
+assert.match(css, /--phase249-builders-rule: anti-flicker-stable-market-navigation/, 'Phase 249 stable Builders navigation token missing');
+assert.match(css, /\.builders-market-page-shell[\s\S]{0,180}animation: none !important/, 'Selected Builders market shell should not fade out/in during navigation');
 assert.match(css, /#buyer-validation-command \.operator-flow-pulse,[\s\S]{0,180}display: none !important/, 'Global product-flow diagram should be removed from selected Builders work surface');
 assert.match(css, /\.validation-email-status:empty[\s\S]{0,80}display: none !important/, 'Empty validation status cell should not create an orphan action slot');
 assert.match(css, /\.validation-focus-head[\s\S]{0,90}grid-template-columns: 1fr !important/, 'Mobile selected-builder header should not clip the score card');

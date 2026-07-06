@@ -304,6 +304,7 @@ let cachedScoredParcels = null;
 let cachedDealsMarketEntries = null;
 let cachedLandStateOptions = null;
 let cachedBuilderSwitchboardEntries = null;
+let builderPanelRenderSequence = 0;
 const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
 
 function invalidateLandPerformanceCaches() {
@@ -3065,6 +3066,7 @@ function renderBuilderMarketIndex(stateSummaries = []) {
 function renderBuilderListEnginePanel(options = {}) {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
+  const renderSequence = options.force ? ++builderPanelRenderSequence : builderPanelRenderSequence;
   const preservedViewport = options.preserveViewport ? captureBuilderInteractionViewport() : null;
   const callSheetRows = asArray(knoxvilleBuyerCallSheet?.rows);
   const callSheetSummary = knoxvilleBuyerCallSheet?.summary || {};
@@ -3079,6 +3081,9 @@ function renderBuilderListEnginePanel(options = {}) {
   stateSummaries = stateSummaries.map(state => ({ ...state, isActive: state.stateCode === selectedBuilderMarketState }));
   activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
   if (isBuildersIndexRoute()) {
+    const renderKey = ['index', location.hash, selectedBuilderMarketState, selectedBuilderMarketKey, renderSequence].join('|');
+    if (!options.force && !options.preserveViewport && target.dataset.builderRenderKey === renderKey) return;
+    target.dataset.builderRenderKey = renderKey;
     target.innerHTML = renderBuilderMarketIndex(stateSummaries);
     if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
     return;
@@ -3091,6 +3096,20 @@ function renderBuilderListEnginePanel(options = {}) {
   const selectedMarket = selectedBuilderMarketKey ? asArray(activeState.markets).find(market => market.key === selectedBuilderMarketKey) : null;
   const activeBuilders = selectedMarket ? asArray(selectedMarket.rows) : asArray(activeState.rows);
   const activeSummary = selectedMarket?.summary || activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
+  const renderKey = [
+    'market',
+    location.hash,
+    selectedBuilderMarketState,
+    selectedBuilderMarketKey || '',
+    activeBuilders.length,
+    activeSummary.callable ?? '',
+    activeSummary.totalRecentBuildSignals ?? '',
+    selectedValidationBuilderId || '',
+    asArray(workspace.buyerValidations).length,
+    renderSequence,
+  ].join('|');
+  if (!options.force && !options.preserveViewport && target.dataset.builderRenderKey === renderKey) return;
+  target.dataset.builderRenderKey = renderKey;
   const activeLaneLabel = selectedMarket ? selectedMarket.label : activeState.label;
   const marketWorld = builderMarketWorldTheme(activeState, selectedMarket, activeBuilders);
   const marketHero = renderBuilderMarketHero(marketWorld, activeState, selectedMarket, activeBuilders);

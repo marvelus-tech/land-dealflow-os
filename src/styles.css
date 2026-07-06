@@ -35624,3 +35624,24 @@ body[data-active-view="builders"] #buyer-validation-command .validation-actions 
 body[data-active-view="builders"] #buyer-validation-command .validation-actions {
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
 }
+
+/* v1.93.5 - Builders anti-flicker transition repair */
+body[data-active-view="builders"] #builder-list-panel .builders-market-index-shell,
+body[data-active-view="builders"] #builder-list-panel .builders-market-page-shell {
+  --phase249-builders-rule: anti-flicker-stable-market-navigation;
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+body[data-active-view="builders"] #builder-list-panel .builder-market-switcher[open] {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body[data-active-view="builders"] #builder-list-panel .builders-market-page-shell[data-market-page-key],
+  body[data-active-view="builders"] #builder-list-panel .builders-market-index-shell {
+    transition: none !important;
+  }
+}

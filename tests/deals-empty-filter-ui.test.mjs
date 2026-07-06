@@ -98,6 +98,13 @@ assert.match(app, /phase257-market-operating-brief/, 'Selected market route must
 assert.match(app, /Seller outreach block/, 'Selected market brief must state why seller outreach is blocked or allowed.');
 assert.match(app, /Quiet lanes/, 'Selected state route must distinguish populated lanes from quiet zero-count lanes.');
 assert.match(app, /seller queue opens only after market selection/, 'Selected state route must keep seller queues closed until a submarket lane is chosen.');
+assert.match(app, /const texasLandReports = \[/, 'TX Land section must store report metadata in the project.');
+assert.match(app, /Dallas JV infill land \/ teardown seller report/, 'TX Land reports must include the Dallas JV seller research report.');
+assert.match(app, /function renderTexasLandReports/, 'TX state route must render the Texas report dock.');
+assert.match(app, /phase261-land-report-dock/, 'TX reports must have a dedicated report button/panel surface.');
+assert.match(app, /Download full markdown/, 'TX report panel must expose the full markdown report file.');
+assert.match(css, /--phase261-tx-reports: dallas-jv-infill-seller-intelligence/, 'TX report CSS must encode the Dallas JV report surface.');
+assert.match(css, /\.land-report-card summary[\s\S]{0,240}cursor: pointer !important/, 'TX report card must behave like a reports button.');
 assert.match(app, /phase254-land-selected-workspace/, 'Selected Land market must render a dedicated workspace shell.');
 assert.match(css, /--phase254-land-ia-reset: market-index-first-selected-workspace-second/, 'Land CSS must encode the Phase 254 IA reset.');
 assert.match(css, /--phase254-land-selected-workspace: market-menu-before-selected-content-no-state-workbench/, 'Selected Land market must keep the market menu before selected content without the state workbench.');

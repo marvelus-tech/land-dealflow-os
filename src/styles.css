@@ -37494,3 +37494,163 @@ body[data-active-view="deals"] #parcels .phase215-queue-rail .phase258-mission-r
     overflow: visible !important;
   }
 }
+
+
+/* v1.96 - Phase 261 TX Land reports: Dallas JV research lives inside selected TX state. */
+body[data-active-view="deals"] #parcels .phase261-land-report-dock {
+  --phase261-tx-reports: dallas-jv-infill-seller-intelligence;
+  grid-column: 1 !important;
+  display: grid !important;
+  gap: 18px !important;
+  padding: clamp(22px, 3vw, 34px) 0 !important;
+  border-top: 1px solid rgba(10,20,16,.13) !important;
+  border-bottom: 1px solid rgba(10,20,16,.13) !important;
+}
+body[data-active-view="deals"] #parcels .land-report-dock-head {
+  display: grid !important;
+  gap: 6px !important;
+  max-width: 760px !important;
+}
+body[data-active-view="deals"] #parcels .land-report-dock-head h3 {
+  margin: 0 !important;
+  color: #101813 !important;
+  font-size: clamp(30px, 4vw, 58px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.055em !important;
+}
+body[data-active-view="deals"] #parcels .land-report-dock-head p {
+  margin: 0 !important;
+  max-width: 62ch !important;
+  color: rgba(15,23,42,.62) !important;
+  font-size: 14px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="deals"] #parcels .land-report-list,
+body[data-active-view="deals"] #parcels .land-report-card,
+body[data-active-view="deals"] #parcels .land-report-body {
+  display: grid !important;
+  min-width: 0 !important;
+}
+body[data-active-view="deals"] #parcels .land-report-card {
+  border: 1px solid rgba(10,20,16,.14) !important;
+  background: rgba(255,255,251,.86) !important;
+  box-shadow: 0 22px 60px rgba(10,20,16,.06) !important;
+}
+body[data-active-view="deals"] #parcels .land-report-card summary {
+  display: grid !important;
+  grid-template-columns: minmax(110px,.18fr) minmax(0,1fr) minmax(220px,.34fr) !important;
+  gap: 18px !important;
+  align-items: center !important;
+  padding: 22px !important;
+  cursor: pointer !important;
+  list-style: none !important;
+}
+body[data-active-view="deals"] #parcels .land-report-card summary::-webkit-details-marker { display: none !important; }
+body[data-active-view="deals"] #parcels .land-report-card summary span {
+  display: inline-grid !important;
+  place-items: center !important;
+  width: max-content !important;
+  min-height: 34px !important;
+  padding: 0 14px !important;
+  border: 1px solid rgba(166,120,35,.35) !important;
+  color: #8a5f18 !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .land-report-card summary strong {
+  color: #101813 !important;
+  font-size: clamp(18px, 2vw, 26px) !important;
+  letter-spacing: -.035em !important;
+}
+body[data-active-view="deals"] #parcels .land-report-card summary em {
+  color: rgba(15,23,42,.6) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+  text-align: right !important;
+}
+body[data-active-view="deals"] #parcels .land-report-body {
+  gap: 24px !important;
+  padding: 0 22px 26px !important;
+}
+body[data-active-view="deals"] #parcels .land-report-body section {
+  display: grid !important;
+  gap: 10px !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(10,20,16,.1) !important;
+}
+body[data-active-view="deals"] #parcels .land-report-body h4 {
+  margin: 0 !important;
+  color: #0f172a !important;
+  font-size: 12px !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .land-report-body p,
+body[data-active-view="deals"] #parcels .land-report-body li {
+  color: rgba(15,23,42,.72) !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+body[data-active-view="deals"] #parcels .land-report-body ul {
+  margin: 0 !important;
+  padding-left: 18px !important;
+}
+body[data-active-view="deals"] #parcels .land-report-meta {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+body[data-active-view="deals"] #parcels .land-report-meta > * {
+  padding: 8px 10px !important;
+  border: 1px solid rgba(10,20,16,.12) !important;
+  color: rgba(15,23,42,.66) !important;
+  font-size: 11px !important;
+  text-decoration: none !important;
+}
+body[data-active-view="deals"] #parcels .land-report-market-stack,
+body[data-active-view="deals"] #parcels .land-report-scripts {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+  gap: 10px !important;
+}
+body[data-active-view="deals"] #parcels .land-report-market-stack article,
+body[data-active-view="deals"] #parcels .land-report-scripts article {
+  display: grid !important;
+  gap: 6px !important;
+  padding: 14px !important;
+  border: 1px solid rgba(10,20,16,.1) !important;
+  background: rgba(250,248,240,.62) !important;
+}
+body[data-active-view="deals"] #parcels .land-report-market-stack span,
+body[data-active-view="deals"] #parcels .land-report-scripts span {
+  color: #a67823 !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .land-report-market-stack strong {
+  color: #101813 !important;
+  font-size: 15px !important;
+}
+body[data-active-view="deals"] #parcels .land-report-warning {
+  padding: 12px !important;
+  border-left: 3px solid #a67823 !important;
+  background: rgba(166,120,35,.08) !important;
+}
+
+@media (max-width: 860px) {
+  body[data-active-view="deals"] #parcels .land-report-card summary {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  body[data-active-view="deals"] #parcels .land-report-card summary em {
+    text-align: left !important;
+  }
+  body[data-active-view="deals"] #parcels .land-report-body,
+  body[data-active-view="deals"] #parcels .land-report-card summary {
+    padding-inline: 16px !important;
+  }
+}

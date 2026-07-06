@@ -200,6 +200,74 @@ const northCarolinaWakeProofPackets = [
   },
 ];
 
+const texasLandReports = [
+  {
+    id: 'dallas-jv-infill-land',
+    title: 'Dallas JV infill land / teardown seller report',
+    state: 'TX',
+    market: 'Dallas infill pockets',
+    updatedAt: '2026-07-06',
+    assetUrl: 'data/real/dallas-tx/dallas-jv-infill-land-report.md',
+    subtitle: '$300k-$470k all-in buyer box · 8k+ sf lots · East/North Dallas teardown logic',
+    buyBox: [
+      'Target ZIPs: 75218 Little Forest Hills, 75214 Lakewood, 75228 Casa View, 75229 Midway Hollow, 75220 Preston Hollow fringe, 75209 Bluffview.',
+      'All-in buyer price is $300k-$470k including combined JV / assignment fees; seller contract target is roughly $270k-$450k after $20k-$30k total fees.',
+      'Minimum 8,000 sf lots; strongest fit is 9,000-12,000 sf / 0.20-0.27 ac with 60-70+ ft frontage.',
+      'This is infill teardown / lot-value acquisition, not rural vacant land. The best targets are old houses where the dirt drives value.'
+    ],
+    rankedMarkets: [
+      { name: 'Casa View / 75228', tier: 'Tier 1', verdict: 'Best volume lane. Older 1950s housing, investor activity, more realistic pricing, absentee landlords and tired rentals.' },
+      { name: 'Little Forest Hills / 75218', tier: 'Tier 1', verdict: 'Strong East Dallas lifestyle demand and larger-lot older cottages; use neighborhood-aware low-pressure outreach.' },
+      { name: 'Midway Hollow / 75229', tier: 'Tier 1', verdict: 'Strong builder teardown demand and wide lots; price discipline required on prime streets.' },
+      { name: 'Preston Hollow fringe / 75220', tier: 'Tier 2', verdict: 'High variance. Works only on fringe, defect, estate, busy-road, or privacy-motivated sellers.' },
+      { name: 'Lakewood / 75214', tier: 'Tier 2', verdict: 'Prestige pocket with strong luxury rebuild demand; buyer cap is tight for clean obvious dirt.' },
+      { name: 'Bluffview / 75209', tier: 'Tier 3', verdict: 'Scarce prestige land; least likely at this basis unless fringe/defect/estate/topography discount.' }
+    ],
+    ownerTargets: [
+      'Absentee owners with old houses and different mailing addresses.',
+      'Estate / inherited owners with family transition or cleanout burden.',
+      'Long-term 20+ year owners with high land-to-improvement value ratio.',
+      'Tired landlords and small LLC owners with repair, tenant, tax, or insurance fatigue.',
+      'High-equity owner occupants with poor-condition homes; approach softly and respectfully.'
+    ],
+    trendNotes: [
+      'Premium Dallas infill still has builder demand, but buyers are disciplined under higher-rate conditions.',
+      'Spread is usually in problem houses, not clean vacant lots; clean obvious lots are efficiently priced.',
+      'Lot width, shape, frontage, flood, zoning, utilities, and recorded-plat/legal-lot confidence matter as much as square footage.',
+      'Casa View is the highest-probability volume campaign; Lakewood/Bluffview/Preston Hollow require curated premium outreach.',
+      'Dallas utility/plat proof is a hard gate: DCAD, City parcel geometry, zoning, FEMA flood, DWU/Oncor/Atmos, and official record checks.'
+    ],
+    outreach: {
+      positioning: 'Private as-is purchase for older homes on larger lots - no repairs, no showings, flexible close.',
+      avoid: 'Avoid cash buyer ready, ugly houses, distress shame, teardown-first language, or implying you are the end buyer if the deal is an assignment/JV.',
+      landlord: 'Hi [Name], I am reaching out about [Address]. I work with local Dallas buyers looking for older homes on larger lots in [Neighborhood], especially properties that may need repairs or updating. If you would ever consider selling it as-is - without repairs, showings, or tenant disruption - I would be happy to make a simple private offer. No pressure either way. Would you consider an as-is sale if the price and timing worked?',
+      estate: 'Hi [Name], I’m reaching out regarding [Address]. I’m not sure if your family has ever considered selling, but I work with buyers who purchase older Dallas homes as-is, including properties that need repairs or cleanout. If a private sale would ever be helpful, we can work around your timeline and avoid repairs, prep, and public showings. Would it be okay if I sent over a simple no-obligation offer range?',
+      premium: 'Hi [Name], I’m reaching out privately about [Address]. I work with qualified buyers looking for older homes in established Dallas neighborhoods where the property may be more valuable as a lot or rebuild opportunity. If you’ve ever considered a quiet as-is sale without public marketing, I’d be glad to give you a straightforward offer. No obligation either way.'
+    },
+    filters: [
+      'ZIPs 75218, 75214, 75228, 75229, 75220, 75209.',
+      'Lot size minimum 8,000 sf; ideal 9,000-12,000 sf.',
+      'Pre-1980 homes, ideally pre-1970, with low improvement value relative to land value.',
+      'Small house on large lot, 10-20+ year ownership, absentee or estate/trust signals.',
+      'Exclude new construction, recent purchases, builder-owned lots, institutional owners, active listings unless stale, and lots below 8,000 sf.'
+    ],
+    jvQuestions: [
+      'Is $470k truly all-in including both assignment fees?',
+      'What is max all-in by ZIP/neighborhood?',
+      'Are occupied properties acceptable, or is vacant delivery required?',
+      'What frontage is a hard no, and are busy streets acceptable at a discount?',
+      'Are utilities required active, available, or merely serviceable?',
+      'Will buyer close by assignment or double close, and can they show proof of funds / recent similar Dallas closes?'
+    ],
+    proofGates: [
+      'Public owner records are not call-ready; keep owner contact locked until contact provenance is verified.',
+      'Verify DCAD parcel/owner proof, City parcel geometry, lot size/frontage, zoning, FEMA flood, and buyer-fit economics.',
+      'Treat Dallas Water Utilities request-ready as not service-proven; do not infer water/sewer from nearby homes or old improvements.',
+      'Do not send mass SMS; use manual compliant outreach and respect DNC/opt-outs.'
+    ]
+  }
+];
+
 const stages = [
   { id: 'market', name: 'Market Finder', desc: 'Where to hunt first.', sourceType: 'market' },
   { id: 'buyer', name: 'Buyer Finder', desc: 'Who is actively building.', sourceType: 'buyer' },
@@ -1725,6 +1793,37 @@ function renderNorthCarolinaWakeProofPackets() {
   </section>`;
 }
 
+function renderBulletList(items, className = '') {
+  return `<ul${className ? ` class="${h(className)}"` : ''}>${(items || []).map(item => `<li>${h(item)}</li>`).join('')}</ul>`;
+}
+
+function renderTexasLandReports() {
+  if (selectedLandStateFilter !== 'TX') return '';
+  const reports = texasLandReports.filter(report => report.state === 'TX');
+  if (!reports.length) return '';
+  return `<section class="land-state-report-dock phase261-land-report-dock" aria-label="Texas Land reports">
+    <div class="land-report-dock-head">
+      <span class="eyebrow">TX reports</span>
+      <h3>Dallas seller approach intelligence</h3>
+      <p>Buyer-backed teardown / lot-value research stored in this project and surfaced only inside the TX Land section.</p>
+    </div>
+    <div class="land-report-list">${reports.map(report => `<details class="land-report-card" id="${h(report.id)}">
+      <summary><span>Reports</span><strong>${h(report.title)}</strong><em>${h(report.subtitle)}</em></summary>
+      <div class="land-report-body">
+        <div class="land-report-meta"><span>${h(report.market)}</span><span>Updated ${h(report.updatedAt)}</span><a href="${h(report.assetUrl)}" download>Download full markdown</a></div>
+        <section><h4>Buy box decoded</h4>${renderBulletList(report.buyBox)}</section>
+        <section><h4>Market priority</h4><div class="land-report-market-stack">${report.rankedMarkets.map(market => `<article><span>${h(market.tier)}</span><strong>${h(market.name)}</strong><p>${h(market.verdict)}</p></article>`).join('')}</div></section>
+        <section><h4>Owner targets</h4>${renderBulletList(report.ownerTargets)}</section>
+        <section><h4>Current trend read</h4>${renderBulletList(report.trendNotes)}</section>
+        <section><h4>Outreach positioning</h4><p>${h(report.outreach.positioning)}</p><p class="land-report-warning">${h(report.outreach.avoid)}</p><div class="land-report-scripts"><article><span>Landlord / absentee</span><p>${h(report.outreach.landlord)}</p></article><article><span>Estate / inherited</span><p>${h(report.outreach.estate)}</p></article><article><span>Premium pocket</span><p>${h(report.outreach.premium)}</p></article></div></section>
+        <section><h4>Lead-list filters</h4>${renderBulletList(report.filters)}</section>
+        <section><h4>JV verification questions</h4>${renderBulletList(report.jvQuestions)}</section>
+        <section><h4>Dallas proof gates</h4>${renderBulletList(report.proofGates)}</section>
+      </div>
+    </details>`).join('')}</div>
+  </section>`;
+}
+
 function renderLandMarketIndex() {
   const entries = dealsMarketCoverageEntries().filter(market => market.key !== 'all');
   const stateOptions = getLandStateOptions();
@@ -1798,6 +1897,7 @@ function renderLandMarketIndex() {
       <div class="land-state-detail-copy"><span class="eyebrow">State selected</span><h3>${h(activeStateSummary.label)} market lanes</h3><p>${h(activeStateSummary.scope)}. Pick one lane; the seller queue opens only after market selection.</p>${recommendedStrip}</div>
       <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Open lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Quiet lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
     </div>`;
+  const stateReports = renderTexasLandReports();
   return `<section class="land-market-index phase254-land-market-index phase260-land-ia ${showingStateIndex ? 'phase255-land-state-index phase260-land-state-index' : 'phase255-land-submarket-index phase260-land-lane-index'}" aria-label="Land market index">
     <div class="land-market-index-hero">
       <span class="eyebrow">Land · ${showingStateIndex ? 'market index' : `${selectedLandStateFilter} lane index`}</span>
@@ -1807,6 +1907,7 @@ function renderLandMarketIndex() {
     </div>
     <div class="land-market-index-filter" aria-label="Filter Land markets by state">${stateFilters}</div>
     ${stateDetailSummary}
+    ${stateReports}
     <div class="land-market-index-grid">${showingStateIndex ? stateCards : marketCards}</div>
   </section>`;
 }

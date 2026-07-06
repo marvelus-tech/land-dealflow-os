@@ -1732,10 +1732,14 @@ function renderLandMarketIndex() {
   const stateMarketSummaries = stateOptions.filter(state => state !== 'all').map((state) => {
     const stateMarkets = allMarketEntries.filter(market => (market.stateCode || market.state) === state);
     const stateParcels = scoredParcels().filter(parcel => rowState(parcel) === state);
+    const thesis = builderStateTheses[state] || {};
+    const liveLaneCount = stateMarkets.filter(market => Number(market.dealCount || 0) > 0).length;
     return {
       state,
-      label: landStateSelectorAbbreviations[state] || state,
+      label: thesis.label || landStateSelectorAbbreviations[state] || state,
+      thesis: thesis.thesis || describeLandStateRecordScope(state, stateParcels),
       marketCount: stateMarkets.length,
+      liveLaneCount,
       dealCount: stateParcels.length,
       builderCount: stateMarkets.reduce((sum, market) => sum + Number(market.builderCount || 0), 0),
       scope: describeLandStateRecordScope(state, stateParcels),
@@ -1754,21 +1758,21 @@ function renderLandMarketIndex() {
     const label = state === 'all' ? 'All' : state;
     return `<div role="button" tabindex="0" class="land-index-state-filter ${isActive ? 'active' : ''}" data-land-state="${h(state)}" aria-pressed="${isActive ? 'true' : 'false'}">${h(label)}</div>`;
   }).join('');
-  const stateCards = stateMarketSummaries.map(state => `<article role="button" tabindex="0" class="land-market-index-card land-state-index-card ${h(state.tone)}" data-land-state="${h(state.state)}" aria-label="${h(`${state.state}. ${state.dealCount} seller records across ${state.marketCount} market lanes.`)}">
+  const stateCards = stateMarketSummaries.map(state => `<article role="button" tabindex="0" class="land-market-index-card land-state-index-card phase260-land-ledger-row ${h(state.tone)}" data-land-state="${h(state.state)}" aria-label="${h(`${state.state}. ${state.dealCount} seller records across ${state.marketCount} market lanes.`)}">
       <span>${h(state.state)}</span>
-      <div><h3>${h(state.label)}</h3><p>${h(state.scope)}. Select the state before opening its submarket lanes.</p></div>
+      <div><h3>${h(state.label)}</h3><p>${h(state.thesis)}</p></div>
       <dl><div><dt>seller records</dt><dd>${h(state.dealCount || 0)}</dd></div><div><dt>market lanes</dt><dd>${h(state.marketCount || 0)}</dd></div></dl>
-      <em>${h(state.builderCount || 0)} builder signals · state-first selector</em>
+      <em>${h(state.liveLaneCount || 0)} live lanes · ${h(state.builderCount || 0)} builder signals</em>
     </article>`).join('');
   const marketCards = rankedLandLaneEntries(entries).map((market, index) => {
     const marketState = market.stateCode || market.state || '';
     const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : 'needs-work';
     const telemetry = landLaneTelemetry(market, index);
-    return `<article role="button" tabindex="0" class="land-market-index-card phase257-ranked-lane ${toneClass} is-${h(telemetry.tone)}" data-deals-market-key="${h(market.key)}" data-land-market-state="${h(marketState)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records. ${telemetry.rankLabel}.`)}">
+    return `<article role="button" tabindex="0" class="land-market-index-card phase257-ranked-lane phase260-land-ledger-row ${toneClass} is-${h(telemetry.tone)}" data-deals-market-key="${h(market.key)}" data-land-market-state="${h(marketState)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records. ${telemetry.rankLabel}.`)}">
       <span>${h(landLaneAbbrev(market))}</span>
-      <div><h3>${h(market.marketLabel || market.label)}</h3><p>${h(telemetry.reason)}</p></div>
+      <div><h3>${h(market.marketLabel || market.label)}</h3><p>${h(telemetry.bestAction)}</p></div>
       <dl><div><dt>seller records</dt><dd>${h(market.dealCount || 0)}</dd></div><div><dt>builders</dt><dd>${h(market.builderCount || 0)}</dd></div><div><dt>score</dt><dd>${h(telemetry.score)}</dd></div></dl>
-      <em><b>${h(telemetry.rankLabel)}</b> · ${h(telemetry.posture)} · ${h(telemetry.bestAction)}</em>
+      <em>${h(telemetry.posture)} · ${h(telemetry.reason)}</em>
     </article>`;
   }).join('');
   const showingStateIndex = selectedLandStateFilter === 'all';
@@ -1791,22 +1795,21 @@ function renderLandMarketIndex() {
         <em>${h(recommendedTelemetry.posture)} · telemetry score ${h(recommendedTelemetry.score)}</em>
       </div>` : '';
   const stateDetailSummary = showingStateIndex ? '' : `<div class="land-state-detail-summary phase256-land-state-detail-summary phase257-state-telemetry" aria-label="Selected Land state summary">
-      <div class="land-state-detail-copy"><span class="eyebrow">State telemetry</span><h3>${h(activeStateSummary.label)} operating lanes</h3><p>${h(activeStateSummary.scope)}. Rank the lane first; seller queues stay closed until one lane earns the next action.</p>${recommendedStrip}</div>
-      <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Populated lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Ready zero lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
+      <div class="land-state-detail-copy"><span class="eyebrow">State selected</span><h3>${h(activeStateSummary.label)} market lanes</h3><p>${h(activeStateSummary.scope)}. Pick one lane; the seller queue opens only after market selection.</p>${recommendedStrip}</div>
+      <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Open lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Quiet lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
     </div>`;
-  return `<section class="land-market-index phase254-land-market-index ${showingStateIndex ? 'phase255-land-state-index' : 'phase255-land-submarket-index'}" aria-label="Land market index">
+  return `<section class="land-market-index phase254-land-market-index phase260-land-ia ${showingStateIndex ? 'phase255-land-state-index phase260-land-state-index' : 'phase255-land-submarket-index phase260-land-lane-index'}" aria-label="Land market index">
     <div class="land-market-index-hero">
-      <span class="eyebrow">Land · ${showingStateIndex ? 'state index' : `${selectedLandStateFilter} market lanes`}</span>
-      <h2>${showingStateIndex ? 'Choose a state.' : 'Choose a lane.'}</h2>
-      <p>${showingStateIndex ? 'Start by state only. Submarket lanes stay hidden until a state is selected, so this does not become an endless market wall.' : 'Now choose a submarket lane inside the selected state. The queue, proof sheet, and parcel detail stay offscreen until one market is selected.'}</p>
-      <div class="land-market-index-stats"><div><b>${h(marketCount)}</b><span>${showingStateIndex ? 'states' : 'markets'}</span></div><div><b>${h(liveSellerCount)}</b><span>seller records</span></div><div><b>${h(liveBuilderCount)}</b><span>builder signals</span></div></div>
+      <span class="eyebrow">Land · ${showingStateIndex ? 'market index' : `${selectedLandStateFilter} lane index`}</span>
+      <h2>${showingStateIndex ? 'Choose one land market.' : 'Choose one lane.'}</h2>
+      <p>${showingStateIndex ? 'Select a state first. Parcels, proof, and owner motion stay hidden until a real market lane is chosen.' : 'Select the exact buyer-backed lane. Seller records open only inside that chosen lane.'}</p>
+      <div class="land-market-index-stats"><div><b>${h(marketCount)}</b><span>${showingStateIndex ? 'states' : 'lanes'}</span></div><div><b>${h(liveSellerCount)}</b><span>seller records</span></div><div><b>${h(liveBuilderCount)}</b><span>builder signals</span></div></div>
     </div>
     <div class="land-market-index-filter" aria-label="Filter Land markets by state">${stateFilters}</div>
     ${stateDetailSummary}
     <div class="land-market-index-grid">${showingStateIndex ? stateCards : marketCards}</div>
   </section>`;
 }
-
 function renderDealsMarketCoverage() {
   const entries = dealsMarketCoverageEntries().filter(market => market.key !== 'all');
   const selected = entries.find(market => market.isDealsActive) || entries[0];

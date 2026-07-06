@@ -25,7 +25,7 @@ assert.match(app, /function actualLandRecordMatchesMarket/, 'Land market lane co
 assert.match(app, /const dealCount = landRecordCountForMarket\(allDeals, market\)/, 'Market lane counts must not leak Dallas/TX records into Austin or other text-matched lanes.');
 assert.match(app, /actualLandRecordMatchesMarket\(parcel, activeMarket\)/, 'Selected market filtering must use exact seller market identity.');
 assert.match(app, /land-state-index-card/, 'Land default market index must render state cards first, not expose every submarket lane.');
-assert.match(app, /Submarket lanes stay hidden until a state is selected/, 'Land default route must hide submarket lanes until state selection.');
+assert.match(app, /Parcels, proof, and owner motion stay hidden until a real market lane is chosen/, 'Land default route must hide parcel/proof/owner motion until market selection.');
 assert.doesNotMatch(app, /<em>\$\{h\(activeState\.dealCount\)\} records · \$\{h\(activeState\.countyCount \|\| 0\)\} market lanes<\/em>/, 'Operating-state kicker must not return above Land market content.');
 assert.doesNotMatch(app, /All markets/, 'Land UI should no longer say All markets.');
 assert.doesNotMatch(app, /const label = state === 'all' \? 'All states' : state;/, 'Land state toggle should not use the longer All states label.');
@@ -96,8 +96,8 @@ assert.match(app, /Start here/, 'Selected state route must identify the recommen
 assert.match(app, /Telemetry score/, 'Selected market brief must expose lane score as operator telemetry.');
 assert.match(app, /phase257-market-operating-brief/, 'Selected market route must render a market operating brief.');
 assert.match(app, /Seller outreach block/, 'Selected market brief must state why seller outreach is blocked or allowed.');
-assert.match(app, /Ready zero lanes/, 'Selected state route must distinguish populated lanes from ready zero-count lanes.');
-assert.match(app, /seller queues stay closed until one lane earns the next action/, 'Selected state route must keep seller queues closed until a submarket lane is chosen.');
+assert.match(app, /Quiet lanes/, 'Selected state route must distinguish populated lanes from quiet zero-count lanes.');
+assert.match(app, /seller queue opens only after market selection/, 'Selected state route must keep seller queues closed until a submarket lane is chosen.');
 assert.match(app, /phase254-land-selected-workspace/, 'Selected Land market must render a dedicated workspace shell.');
 assert.match(css, /--phase254-land-ia-reset: market-index-first-selected-workspace-second/, 'Land CSS must encode the Phase 254 IA reset.');
 assert.match(css, /--phase254-land-selected-workspace: market-menu-before-selected-content-no-state-workbench/, 'Selected Land market must keep the market menu before selected content without the state workbench.');

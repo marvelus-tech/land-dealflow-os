@@ -102,7 +102,8 @@ assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard 
 assert.match(html, /One calm queue for owner motion\./, 'Land page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer-first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
-assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details class="builder-market-switcher"[\s\S]{0,220}<summary><span>Markets<\/span>/, 'Builders should expose a clear market-change action via progressive disclosure before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<section class="builder-market-command-rail"/, 'Builders should expose market switching as a top command rail before selected-market evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /builder-command-market-scroll/, 'Builders top command rail should include the market lane strip');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip[\s\S]{0,80}\$\{productIcon\('[^']+'\)\} Do first|>Start queue /, 'Primary action strips should not use vague Do first timeline-icon labeling');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
@@ -330,15 +331,15 @@ assert.match(css, /grid-template-areas:\s*\n\s*"title market"\s*\n\s*"jump jump"
 assert.match(css, /grid-template-areas:\s*\n\s*"code name count"\s*\n\s*"rail meta meta" !important/, 'Phase 33 market rows must preserve market-name information scent');
 assert.match(css, /body\[data-active-view="builders"\] \.brand \{ display: none !important; \}/, 'Builders mobile nav should remove the brand label to prevent clipped route tabs');
 assert.match(appSource, /builders-index-hero/, 'Builders header should enter through a clean market index before selection, not a poster-scale state chooser');
-assert.match(appSource, /<details class="builder-market-switcher"[\s\S]{0,220}<summary><span>Markets<\/span>/, 'Builders action copy should stay short and calm behind a market-change disclosure');
+assert.match(appSource, /<section class="builder-market-command-rail"/, 'Builders market choice should sit in the top command rail, not behind a mid-page disclosure');
 assert.doesNotMatch(appSource, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>|class="builders-primary-action"/, 'Phase 87 removes the redundant Next action label/action strip from Builders');
 assert.match(css, /v1\.65\.2 - Phase 33 final polish: action instruction must read as a sentence, not a stacked poster/, 'Phase 33 final action-strip polish marker required');
 assert.match(css, /\.builders-primary-action \{[\s\S]{0,160}grid-template-areas:\s*\n\s*"label action"\s*\n\s*"\. link" !important/, 'Builders action instruction should read horizontally before the link on desktop');
 assert.match(css, /v1\.66 - Phase 34 Builders: numerals are data, progress is the scan spine/, 'Phase 34 marker required for market metric/progress correction');
 assert.match(css, /--phase34-builders-rule: builders-market-metrics-progress-spine/, 'Phase 34 route-scoped rule token required');
-assert.match(appSource, /data-state-market-selector/, 'Builders selector should expose state-level choices instead of county-card soup');
-assert.match(appSource, /class="state-market-code">\$\{h\(state\.stateCode\)\}<\/span>/, 'Builders state selector should separate state code from descriptive copy');
-assert.match(appSource, /state-market-copy[\s\S]{0,120}state-market-name[\s\S]{0,120}state-market-thesis/, 'Builders state selector should expose state name and demoted market thesis without hiding low-count markets');
+assert.match(appSource, /builder-command-state-strip/, 'Builders selector should expose state-level choices in the top command rail instead of county-card soup');
+assert.match(appSource, /class="builder-command-state/, 'Builders state command rail should separate state code from market lane navigation');
+assert.match(appSource, /class="builder-command-market-name">\$\{h\(market\.label\)\}<\/span>/, 'Builders market command rail should expose full market names without hiding low-count markets');
 assert.match(css, /\.market-builder-total b \{[\s\S]{0,220}font-variant-numeric: tabular-nums lining-nums !important/, 'Builders metric numerals should use tabular lining numerals');
 assert.match(css, /v1\.66\.1 - Phase 34 second pass: open inventory rail must be prominent even at 0 reached/, 'Phase 34 progress prominence correction marker required');
 assert.match(css, /v1\.66\.11 - Phase 34 no-span row anatomy: market row avoids legacy \.market-toggle span collapse/, 'Phase 34 final no-span market row repair marker required');
@@ -463,8 +464,8 @@ assert.match(css, /v1\.93 - Builders top-half calm ledger: reduce filled blocks,
 assert.match(css, /--phase93-builders-rule: top-half-flat-ledger-selected-detail-continuation/, 'Phase 93 should encode the flat-ledger selected-detail rule');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-workbench-kicker \{[\s\S]{0,80}display: none !important/, 'Builders top half should hide redundant operating-state kicker');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-market-grid \{[\s\S]{0,220}background: transparent !important;[\s\S]{0,80}box-shadow: none !important/, 'State selector should be a transparent ledger, not a filled card');
-assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-market-toggle \{[\s\S]{0,520}border-bottom: 1px solid rgba\(8, 16, 12, \.09\) !important;[\s\S]{0,220}background: transparent !important/, 'State rows should use hairlines instead of filled boxes');
-assert.match(css, /state-market-copy small span:last-child \{[\s\S]{0,80}display: none !important/, 'State rows should conceal redundant status copy in the dense top half');
+assert.match(css, /builder-command-state[\s\S]{0,520}border-bottom: 1px solid rgba\(10, 20, 16, \.08\) !important;[\s\S]{0,220}background: transparent !important/, 'State command rail should use hairlines instead of filled boxes');
+assert.match(css, /builder-command-market small[\s\S]{0,180}text-transform: uppercase/, 'Market command rail should compress status/count copy in the dense top half');
 assert.match(css, /active-market-summary\.state-focus-summary \{[\s\S]{0,220}border-left: 1px solid rgba\(8, 16, 12, \.12\) !important;[\s\S]{0,120}background: transparent !important/, 'Selected-state detail should continue the ledger, not render as a separate filled card');
 assert.match(css, /body\[data-active-view="builders"\] #builder-list-section \.state-focus-summary > ul li \{[\s\S]{0,260}background: transparent !important;[\s\S]{0,80}box-shadow: none !important/, 'Selected-state metrics should be inline facts, not metric tiles');
 

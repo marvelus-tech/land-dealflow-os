@@ -136,9 +136,9 @@ assert.doesNotMatch(appSource, />Next money action<|NEXT MONEY ACTION/, 'Builder
 assert.doesNotMatch(appSource, /validation-next-card/, 'redundant next-action card component should stay removed');
 assert.doesNotMatch(appSource, /Call queue first\. Seller search second\./, 'second hero headline should stay removed; the page needs one top command header');
 assert.match(appSource, /state-first-ops-header/, 'top Builders IA should be an isolated state-first workbench, not a static metric strip');
-assert.match(appSource, /data-state-market-selector/, 'priority states should be exposed as top-level state choices');
+assert.match(appSource, /builder-command-state-strip/, 'priority states should be exposed in the top command rail');
 assert.match(appSource, /const builderMarketRegistry = \[/, 'market toggles should be driven by a market registry, not a state-only rail');
-assert.match(appSource, /<details class="builder-market-switcher"/, 'Builders header should hide the market list behind progressive disclosure');
+assert.match(appSource, /builder-market-command-rail/, 'Builders header should expose market navigation at the top of the page');
 assert.match(appSource, /data-builder-market-key/, 'market toggles should be interactive controls that swap the displayed market data');
 assert.match(appSource, /selectedBuilderMarketKey = marketKey/, 'clicking a market toggle should change the selected Builders market');
 assert.match(appSource, /\[activeState\]\.map\(state =>/, 'the state detail panel should render only the selected state below the toggles');
@@ -159,9 +159,9 @@ assert.doesNotMatch(appSource, /const isLive = stateCode === 'TN'/, 'the UI must
 assert.doesNotMatch(appSource, /builder-empty-evidence/, 'legacy duplicate evidence section should not render after the command center');
 assert.doesNotMatch(appSource, /id="builder-evidence-desk"/, 'legacy evidence desk anchor should not remain in the page flow');
 assert.match(appSource, /<summary><span>Relationship email<\/span>\$\{solidIndustryIcon\('chevron'\)\}<\/summary>/, 'relationship email draft should be retained as a compact drawer inside the command center');
-assert.match(stylesSource, /v1\.32 - Builders mobile resource-well selector and empty states/, 'final mobile selector override should live after global button styles');
-assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}border-radius: 13px/, 'market toggles should be compact rounded rectangles, not circular pucks');
-assert.match(stylesSource, /\.builder-ops-header \.market-toggle[\s\S]{0,260}aspect-ratio: auto/, 'market toggles must not use square/circular aspect ratios on mobile');
+assert.match(stylesSource, /v1\.95 - Builders top-of-page market command rail/, 'final Builders selector override should live after global button styles');
+assert.match(stylesSource, /\.builder-command-market[\s\S]{0,360}border-radius: 0 !important/, 'market command rail controls should stay crisp, not circular pucks');
+assert.match(stylesSource, /\.builder-command-market-scroll[\s\S]{0,220}grid-auto-flow: column/, 'market command rail should scroll horizontally on constrained viewports');
 assert.match(stylesSource, /\.builder-empty-state/, 'empty builder states need first-class styling');
 assert.doesNotMatch(appSource, /top-10 demo list|top 10 Knoxville/, 'Builders pipeline must not frame itself as a top-10 pull');
 
@@ -187,9 +187,9 @@ assert.match(stylesSource, /v1\.37 - Phase 7 award-grade seller call-to-close co
 assert.match(appSource, /data-builder-market-key/, 'Builders market selector should keep market-specific queue switching');
 assert.match(appSource, /function builderContactLedgerForRows\(rows = \[\]\)/, 'Builders state cards need a contact ledger helper');
 assert.match(appSource, /const reached = center\.items\.filter[\s\S]{0,360}outreach\.phone \|\| outreach\.email \|\| row\.lastContacted/, 'contact ledger should count any logged call, email, or last-contact attempt as reached');
-assert.match(appSource, /data-state-market-selector/, 'state-first selector should replace v34 county market cards');
-assert.match(appSource, /class="state-market-code">\$\{h\(state\.stateCode\)\}<\/span>/, 'state card should separate state code from market thesis');
-assert.match(appSource, /\$\{h\(state\.statusCopy\)\}/, 'state card should expose live/thin/needs-source status copy');
+assert.match(appSource, /builder-command-state-strip/, 'top command rail should replace v34 county market cards');
+assert.match(appSource, /class="builder-command-state/, 'state command rail should separate state code from market lane selection');
+assert.match(appSource, /class="builder-command-market market-status-\$\{h\(market\.status \|\| 'staged'\)\}/, 'market command rail should preserve live/thin/needs-source status hooks');
 assert.match(appSource, /active-market-summary state-focus-summary/, 'selected state summary should expose readiness metrics without per-county progress rails');
 assert.match(appSource, /class="state-county-ledger"/, 'selected state should expose county coverage as subordinate evidence');
 assert.match(appSource, /Next action/, 'Today page should surface the operator sprint as a clear next-action command without implementation-phase residue');

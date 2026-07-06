@@ -11,7 +11,7 @@ assert.match(html, /id="source-priority-board"/, 'Sources page must reserve a pr
 assert.match(appSource, /function renderSourcePriorityBoard/, 'Sources page must render the priority market board from permit landscape data');
 assert.match(appSource, /New ZIP sprints are live: FL, AZ, HI, NV, CA\./, 'Sources page must reflect the expanded target-state priority stack');
 assert.match(appSource, /const builderMarketRegistry = \[/, 'Builders rail must come from a selectable market registry, not a hardcoded state path');
-assert.match(appSource, /<details class="builder-market-switcher"/, 'Builders copy must not present the Sources priority stack as a forced path');
+assert.match(appSource, /builder-market-command-rail/, 'Builders copy must present market navigation as an operator command rail, not a forced Sources priority path');
 assert.match(appSource, /getPermitPortalLandscape\(\)/, 'Sources priority board must render from tested permit landscape data');
 for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.match(appSource, new RegExp(`key: '${key}'`), `Sources/Builders shared market registry must keep ${key} visible.`);

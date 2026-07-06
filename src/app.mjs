@@ -3062,6 +3062,28 @@ function builderMarketWorldTheme(activeState = {}, selectedMarket = null, active
   };
 }
 
+function renderBuilderMarketCommandRail(stateSummaries = [], activeState = {}, selectedMarket = null) {
+  const stateRows = asArray(stateSummaries).map((state) => `<button type="button" class="builder-command-state ${state.stateCode === activeState.stateCode ? 'active is-active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-pressed="${state.stateCode === activeState.stateCode ? 'true' : 'false'}" title="${h(state.label)}">
+    <span>${h(state.stateCode)}</span>
+    <b>${h(state.builderCount || 0)}</b>
+  </button>`).join('');
+  const marketRows = asArray(activeState.markets).map((market) => {
+    const summary = market.summary || marketSummaryForRows(asArray(market.rows), activeState.minimumUniqueBuilders || 20);
+    const isActive = selectedMarket ? market.key === selectedMarket.key : false;
+    return `<button type="button" class="builder-command-market market-status-${h(market.status || 'staged')} ${isActive ? 'active is-active' : ''}" data-builder-market-key="${h(market.key)}" aria-pressed="${isActive ? 'true' : 'false'}" title="Open ${h(market.label)}">
+      <span class="builder-command-market-name">${h(market.label)}</span>
+      <small><b>${h(asArray(market.rows).length || 0)}</b> builders · <b>${h(summary.callable ?? 0)}</b> callable · <b>${h(summary.totalRecentBuildSignals ?? 0)}</b> proofs</small>
+    </button>`;
+  }).join('');
+  return `<section class="builder-market-command-rail" aria-label="Builder market command rail">
+    <div class="builder-command-state-strip" aria-label="Builder states">${stateRows}</div>
+    <div class="builder-command-market-strip" aria-label="Markets in ${h(activeState.label || activeState.stateCode)}">
+      <div class="builder-command-rail-label"><span>Markets</span><b>${h(activeState.stateCode || '')}</b></div>
+      <div class="builder-command-market-scroll">${marketRows || '<span class="builder-command-empty">No market lanes yet</span>'}</div>
+    </div>
+  </section>`;
+}
+
 function renderBuilderMarketHero(theme = {}, activeState = {}, selectedMarket = null, activeBuilders = []) {
   const marketCount = selectedMarket ? 1 : asArray(activeState.markets).length;
   return `<section class="builder-market-hero market-world-${h(theme.accent)}" data-builder-market-world="${h(theme.stateCode)}" aria-label="${h(theme.label)} builder market world">
@@ -3152,11 +3174,6 @@ function renderBuilderListEnginePanel(options = {}) {
     if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
     return;
   }
-  const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-label="Open ${h(state.label)} builder market" aria-pressed="${state.isActive ? 'true' : 'false'}">
-    <span class="state-market-code">${h(state.stateCode)}</span>
-    <span class="state-market-copy"><strong><span class="state-market-name">${h(state.label)}</span><span class="state-market-thesis">${h(state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'county lane' : 'county lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
-    <em><b>${h(state.builderCount)}</b><span>builders</span></em>
-  </div>`).join('');
   const selectedMarket = selectedBuilderMarketKey ? asArray(activeState.markets).find(market => market.key === selectedBuilderMarketKey) : null;
   const activeBuilders = selectedMarket ? asArray(selectedMarket.rows) : asArray(activeState.rows);
   const activeSummary = selectedMarket?.summary || activeState.summary || marketSummaryForRows(activeBuilders, activeState.minimumUniqueBuilders || 20);
@@ -3176,6 +3193,7 @@ function renderBuilderListEnginePanel(options = {}) {
   target.dataset.builderRenderKey = renderKey;
   const activeLaneLabel = selectedMarket ? selectedMarket.label : activeState.label;
   const marketWorld = builderMarketWorldTheme(activeState, selectedMarket, activeBuilders);
+  const marketCommandRail = renderBuilderMarketCommandRail(stateSummaries, activeState, selectedMarket);
   const marketHero = renderBuilderMarketHero(marketWorld, activeState, selectedMarket, activeBuilders);
   const marketSummary = `<div class="active-market-summary state-focus-summary">
     <span>${selectedMarket ? 'Selected market lane' : 'Selected market state'}</span>
@@ -3231,14 +3249,11 @@ function renderBuilderListEnginePanel(options = {}) {
   </article>`).join('');
   target.innerHTML = `<div class="builder-engine-shell builders-market-page-shell" data-market-page-key="${h(selectedMarket?.key || activeState.key || activeState.stateCode)}">
     <section class="state-first-ops-header builders-phase83-workbench builders-market-page" aria-label="Builder market page">
+      ${marketCommandRail}
       ${marketHero}
-      <div class="state-first-workbench state-data-workbench builder-market-stage" aria-label="Selected market content and market switcher">
+      <div class="state-first-workbench state-data-workbench builder-market-stage" aria-label="Selected market content">
         <div class="state-workbench-layout builder-market-page-layout">
           ${marketSummary}
-          <details class="builder-market-switcher" data-market-switcher>
-            <summary><span>Markets</span><b>${h(activeState.stateCode)}</b><em>${h(stateSummaries.length)} available</em></summary>
-            <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
-          </details>
         </div>
       </div>
     </section>

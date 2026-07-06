@@ -2855,9 +2855,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       outreach.mail ? 'is-mailed' : 'needs-mail',
       item.validation.sellerEligible ? 'is-done' : 'needs-buybox',
     ].filter(Boolean).join(' ');
-    return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}">
+    const searchText = [item.name, item.marketName, item.phone, item.email, item.contactStatus, item.sourceType, item.contactConfidence].filter(Boolean).join(' ').toLowerCase();
+    return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}" data-builder-search="${h(searchText)}" data-builder-score="${h(item.validation.score || 0)}" data-builder-permits="${h(item.recentBuilds || 0)}" data-builder-completion="${h(itemCompletion.complete || 0)}" data-builder-callable="${item.phone || item.email ? 'true' : 'false'}" data-builder-seller-open="${item.validation.sellerEligible ? 'true' : 'false'}" data-builder-needs-buybox="${item.validation.sellerEligible ? 'false' : 'true'}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
-        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
+        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small>${item.phone ? `<small class="queue-phone"><span>p:</span> ${h(item.phone)}</small>` : '<small class="queue-phone is-missing"><span>p:</span> unresolved</small>'}</span>
         <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
       </button>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
@@ -2897,11 +2898,33 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const nextActionCopy = selected.sellerSearch?.eligible
     ? 'Buy box captured. Find parcels matching this builder before seller outreach starts.'
     : `Call once. Capture the exact buy box. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
+  const queueStats = center.items.reduce((acc, item) => {
+    const outreach = validationOutreach(item);
+    if (item.phone || item.email) acc.callable += 1;
+    if (item.validation?.sellerEligible) acc.sellerOpen += 1;
+    if (!item.validation?.sellerEligible) acc.needsBuybox += 1;
+    if (outreach.phone || outreach.email || outreach.mail) acc.touched += 1;
+    return acc;
+  }, { total: center.items.length, callable: 0, sellerOpen: 0, needsBuybox: 0, touched: 0 });
   return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger" aria-label="Buyer Validation Command Center">
     <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
-      <aside class="validation-queue"><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div><div class="queue-filter-row" aria-label="Queue filters"><button type="button" disabled>Callable</button><button type="button" disabled>Buy box</button><button type="button" disabled>Permits</button></div>${queue}</aside>
+      <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
+        <div class="builder-queue-intel" aria-label="Builder queue controls">
+          <label class="builder-queue-search"><span>Find</span><input type="search" data-builder-queue-search placeholder="builder, email, market" autocomplete="off"></label>
+          <div class="builder-queue-filter-row" aria-label="Queue filters">
+            <button type="button" class="is-active" data-builder-queue-filter="all" aria-pressed="true">All <b>${h(queueStats.total)}</b></button>
+            <button type="button" data-builder-queue-filter="callable">Callable <b>${h(queueStats.callable)}</b></button>
+            <button type="button" data-builder-queue-filter="needs-buybox">Needs buy box <b>${h(queueStats.needsBuybox)}</b></button>
+            <button type="button" data-builder-queue-filter="seller-open">Seller gate <b>${h(queueStats.sellerOpen)}</b></button>
+            <button type="button" data-builder-queue-filter="touched">Touched <b>${h(queueStats.touched)}</b></button>
+          </div>
+          <label class="builder-queue-sort"><span>Sort</span><select data-builder-queue-sort><option value="rank">Ranked</option><option value="score">Score</option><option value="permits">Permits</option><option value="buybox">Buy box</option></select></label>
+          <output class="builder-queue-result-count" data-builder-queue-count>${h(queueStats.total)} shown</output>
+        </div>
+        <div class="builder-queue-results" data-builder-queue-results>${queue}</div>
+      </aside>
       <article class="validation-focus-card" id="selected-builder-card">
         <div class="validation-focus-head">
           <div><span class="eyebrow">Builder</span><h3>${h(selected.name || 'Select builder')}</h3><p title="Regional headquarters and operating-market contact paths may differ; verify the public business path before marking outreach done."><b>${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} permit proofs. ${contact}</p></div>
@@ -2968,6 +2991,40 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   </section>`;
 }
 
+function applyBuilderQueueControls(surface = document.querySelector('[data-builder-queue-surface]')) {
+  if (!surface) return;
+  const resultRoot = surface.querySelector('[data-builder-queue-results]') || surface;
+  const rows = [...resultRoot.querySelectorAll('.validation-queue-item')];
+  if (!rows.length) return;
+  const activeFilter = surface.querySelector('[data-builder-queue-filter].is-active')?.dataset.builderQueueFilter || 'all';
+  const searchTerm = String(surface.querySelector('[data-builder-queue-search]')?.value || '').trim().toLowerCase();
+  const sortMode = surface.querySelector('[data-builder-queue-sort]')?.value || 'rank';
+  const rankMap = new Map(rows.map((row, index) => [row, index]));
+  const filterMatch = (row) => {
+    if (activeFilter === 'callable') return row.dataset.builderCallable === 'true';
+    if (activeFilter === 'needs-buybox') return row.dataset.builderNeedsBuybox === 'true';
+    if (activeFilter === 'seller-open') return row.dataset.builderSellerOpen === 'true';
+    if (activeFilter === 'touched') return ['email', 'call', 'mail'].some(channel => row.dataset[`${channel}State`] === 'done');
+    return true;
+  };
+  const sorted = rows.slice().sort((a, b) => {
+    if (sortMode === 'score') return Number(b.dataset.builderScore || 0) - Number(a.dataset.builderScore || 0) || rankMap.get(a) - rankMap.get(b);
+    if (sortMode === 'permits') return Number(b.dataset.builderPermits || 0) - Number(a.dataset.builderPermits || 0) || rankMap.get(a) - rankMap.get(b);
+    if (sortMode === 'buybox') return Number(b.dataset.builderCompletion || 0) - Number(a.dataset.builderCompletion || 0) || rankMap.get(a) - rankMap.get(b);
+    return rankMap.get(a) - rankMap.get(b);
+  });
+  let visibleCount = 0;
+  sorted.forEach(row => {
+    resultRoot.appendChild(row);
+    const matchesSearch = !searchTerm || String(row.dataset.builderSearch || '').includes(searchTerm);
+    const visible = matchesSearch && filterMatch(row);
+    row.hidden = !visible;
+    row.classList.toggle('is-filtered-out', !visible);
+    if (visible) visibleCount += 1;
+  });
+  const count = surface.querySelector('[data-builder-queue-count]');
+  if (count) count.textContent = `${visibleCount} shown`;
+}
 
 function builderMarketWorldTheme(activeState = {}, selectedMarket = null, activeBuilders = []) {
   const stateCode = String(activeState.stateCode || activeState.state || selectedMarket?.state || 'FL').toUpperCase();
@@ -3197,6 +3254,7 @@ function renderBuilderListEnginePanel(options = {}) {
       </section>
     </details>
   </div>`;
+  applyBuilderQueueControls(target.querySelector('[data-builder-queue-surface]'));
   if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
 }
 
@@ -4375,6 +4433,19 @@ function bindEvents() {
       return;
     }
 
+    const builderQueueFilter = event.target.closest('[data-builder-queue-filter]');
+    if (builderQueueFilter) {
+      event.preventDefault();
+      const surface = builderQueueFilter.closest('[data-builder-queue-surface]');
+      surface?.querySelectorAll('[data-builder-queue-filter]').forEach(button => {
+        const isActive = button === builderQueueFilter;
+        button.classList.toggle('is-active', isActive);
+        button.setAttribute('aria-pressed', String(isActive));
+      });
+      applyBuilderQueueControls(surface);
+      return;
+    }
+
     const stateButton = event.target.closest('[data-lead-state]');
     if (stateButton) {
       leadEngineStateFilter = stateButton.dataset.leadState || 'all';
@@ -5085,6 +5156,18 @@ ${body}`;
       selectedParcelId = event.target.dataset.selectParcel;
       renderParcels();
     }
+  });
+
+  document.addEventListener('input', (event) => {
+    const queueSearch = event.target.closest?.('[data-builder-queue-search]');
+    if (!queueSearch) return;
+    applyBuilderQueueControls(queueSearch.closest('[data-builder-queue-surface]'));
+  });
+
+  document.addEventListener('change', (event) => {
+    const queueSort = event.target.closest?.('[data-builder-queue-sort]');
+    if (!queueSort) return;
+    applyBuilderQueueControls(queueSort.closest('[data-builder-queue-surface]'));
   });
 
   document.addEventListener('keydown', (event) => {

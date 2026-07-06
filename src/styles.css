@@ -35645,3 +35645,222 @@ body[data-active-view="builders"] #builder-list-panel .builder-market-switcher[o
     transition: none !important;
   }
 }
+
+/* v1.94 - Builders intelligent queue rail: search, filters, and sort without dashboard clutter */
+body[data-active-view="builders"] #buyer-validation-command .validation-queue {
+  --phase250-builders-rule: intelligent-queue-rail-compact-filter-sort;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-intel {
+  display: grid;
+  gap: 9px;
+  padding: 2px 0 8px;
+  border-bottom: 1px solid rgba(31, 46, 39, .10);
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-search,
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-sort {
+  display: grid;
+  gap: 4px;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-search span,
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-sort span {
+  color: rgba(37, 48, 43, .58);
+  font: 820 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-search input,
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-sort select {
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  border: 0;
+  border-bottom: 1px solid rgba(31, 46, 39, .20);
+  border-radius: 0;
+  background: rgba(255, 255, 255, .28);
+  color: #17211c;
+  font: 760 13px/1.2 var(--font-sans, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  letter-spacing: -.015em;
+  outline: none;
+  box-shadow: none;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-search input:focus,
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-sort select:focus {
+  border-color: rgba(15, 77, 53, .58);
+  background: rgba(255, 255, 255, .64);
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 1px solid rgba(31, 46, 39, .12);
+  border-radius: 0 !important;
+  background: transparent;
+  color: rgba(31, 46, 39, .68);
+  box-shadow: none;
+  font: 780 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button b {
+  color: #9f7538;
+  font: 850 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button.is-active {
+  border-color: rgba(15, 77, 53, .24);
+  background: rgba(15, 77, 53, .07);
+  color: #123a28;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-result-count {
+  justify-self: start;
+  color: rgba(37, 48, 43, .56);
+  font: 780 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-results {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-results .validation-queue-item[hidden] {
+  display: none !important;
+}
+
+@media (min-width: 980px) {
+  body[data-active-view="builders"] #buyer-validation-command .builder-queue-intel {
+    position: sticky;
+    top: 8px;
+    z-index: 2;
+    background: rgba(250, 248, 241, .94);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #buyer-validation-command .builder-queue-intel {
+    gap: 8px;
+  }
+  body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button {
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+/* v1.94.1 - Builders queue controls second pass: quieter chips, less cockpit noise */
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-intel {
+  gap: 7px !important;
+  padding-bottom: 6px !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-search input,
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-sort select {
+  height: 31px !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(31, 46, 39, .18) !important;
+  color: #17211c !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 4px !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button {
+  min-height: 24px !important;
+  width: 100% !important;
+  justify-content: space-between !important;
+  padding: 4px 5px !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(31, 46, 39, .12) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: rgba(31, 46, 39, .66) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  font-size: 9px !important;
+  letter-spacing: .035em !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button:hover {
+  background: rgba(15, 77, 53, .035) !important;
+  border-color: rgba(15, 77, 53, .18) !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button.is-active {
+  background: rgba(15, 77, 53, .055) !important;
+  color: #0f4d35 !important;
+  box-shadow: inset 2px 0 0 #0f4d35 !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button b {
+  color: #9f7538 !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button:first-child:last-child,
+body[data-active-view="builders"] #buyer-validation-command .builder-queue-filter-row button:nth-child(5) {
+  grid-column: span 2;
+}
+
+/* v1.94.2 - Builders mobile queue viewport: show a real scrollable list, not a single-row trap */
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #buyer-validation-command .validation-queue {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command .builder-queue-results {
+    max-height: 360px !important;
+    overflow: auto !important;
+    border-bottom: 1px solid rgba(31, 46, 39, .12) !important;
+    scrollbar-width: thin;
+  }
+  body[data-active-view="builders"] #buyer-validation-command .builder-queue-results .validation-queue-item {
+    min-height: 78px !important;
+  }
+}
+
+/* v1.94.3 - Builders queue phone line: visible p: context without adding CTA noise */
+body[data-active-view="builders"] #buyer-validation-command .validation-queue-item .queue-phone {
+  display: block !important;
+  margin-top: 2px !important;
+  color: rgba(31, 46, 39, .72) !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  letter-spacing: -.01em !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .validation-queue-item .queue-phone span {
+  color: #0f4d35 !important;
+  font: 850 10px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .validation-queue-item .queue-phone.is-missing {
+  color: rgba(31, 46, 39, .38) !important;
+}

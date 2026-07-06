@@ -46,6 +46,13 @@ assert.match(app, /buybox-capture-sheet/, 'Builder buy-box form should be moved 
 assert.match(app, /builder-source-depth-drawer/, 'Permit portal landscape should be optional source depth, not default page mass');
 assert.match(app, /builderPanelRenderSequence/, 'Builders market page should guard against redundant async rerenders');
 assert.match(app, /target\.dataset\.builderRenderKey/, 'Builders market page should memoize the current render key to prevent click/load flicker');
+assert.match(app, /data-builder-queue-search/, 'Builders selected-market queue should expose compact search without leaving the cockpit');
+assert.match(app, /data-builder-queue-filter="callable"/, 'Builders queue should have callable filter chip');
+assert.match(app, /data-builder-queue-filter="needs-buybox"/, 'Builders queue should have buy-box-needed filter chip');
+assert.match(app, /data-builder-queue-filter="seller-open"/, 'Builders queue should have seller-gate-open filter chip');
+assert.match(app, /data-builder-queue-sort/, 'Builders queue should sort by rank, score, permits, and buy-box capture');
+assert.match(app, /function applyBuilderQueueControls/, 'Builders queue controls should filter/sort client-side without rerendering the market page');
+assert.match(app, /class="queue-phone"/, 'Builders queue rows should show a compact p: phone line for faster call scanning');
 assert.match(app, /seller sourcing stays parked until a buy box is captured/, 'Selected market copy should keep the buyer-first proof gate clear');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
@@ -166,8 +173,13 @@ assert.match(css, /v1\.93\.2 - Builders mobile score-card repair/, 'Phase 248 mo
 assert.match(css, /v1\.93\.3 - Builders mobile text-wrap repair/, 'Phase 248 mobile text-wrap repair layer missing');
 assert.match(css, /v1\.93\.4 - Builders mobile action-status slot repair/, 'Phase 248 mobile action-status slot repair layer missing');
 assert.match(css, /v1\.93\.5 - Builders anti-flicker transition repair/, 'Phase 249 anti-flicker transition repair layer missing');
+assert.match(css, /v1\.94 - Builders intelligent queue rail/, 'Phase 250 intelligent builder queue rail layer missing');
+assert.match(css, /v1\.94\.1 - Builders queue controls second pass/, 'Phase 250 queue controls second-pass layer missing');
+assert.match(css, /v1\.94\.2 - Builders mobile queue viewport/, 'Phase 250 mobile queue viewport repair layer missing');
+assert.match(css, /v1\.94\.3 - Builders queue phone line/, 'Phase 250 queue phone-line layer missing');
 assert.match(css, /--phase248-builders-rule: lower-command-surface-queue-detail-cockpit/, 'Phase 248 queue-detail cockpit token missing');
 assert.match(css, /--phase249-builders-rule: anti-flicker-stable-market-navigation/, 'Phase 249 stable Builders navigation token missing');
+assert.match(css, /--phase250-builders-rule: intelligent-queue-rail-compact-filter-sort/, 'Phase 250 compact queue filter/sort token missing');
 assert.match(css, /\.builders-market-page-shell[\s\S]{0,180}animation: none !important/, 'Selected Builders market shell should not fade out/in during navigation');
 assert.match(css, /#buyer-validation-command \.operator-flow-pulse,[\s\S]{0,180}display: none !important/, 'Global product-flow diagram should be removed from selected Builders work surface');
 assert.match(css, /\.validation-email-status:empty[\s\S]{0,80}display: none !important/, 'Empty validation status cell should not create an orphan action slot');

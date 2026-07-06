@@ -24,8 +24,8 @@ assert.match(app, /function actualLandRecordMarkets/, 'Land state counts must de
 assert.match(app, /function actualLandRecordMatchesMarket/, 'Land market lane counts must use exact seller market identity instead of loose text matching.');
 assert.match(app, /const dealCount = landRecordCountForMarket\(allDeals, market\)/, 'Market lane counts must not leak Dallas/TX records into Austin or other text-matched lanes.');
 assert.match(app, /actualLandRecordMatchesMarket\(parcel, activeMarket\)/, 'Selected market filtering must use exact seller market identity.');
-assert.match(app, /land-market-index-card/, 'Land default market index must render market cards directly rather than state-lane bookkeeping.');
-assert.match(app, /The queue, proof sheet, and parcel detail stay offscreen until one market is selected\./, 'Land default route must keep parcel content hidden until market selection.');
+assert.match(app, /land-state-index-card/, 'Land default market index must render state cards first, not expose every submarket lane.');
+assert.match(app, /Submarket lanes stay hidden until a state is selected/, 'Land default route must hide submarket lanes until state selection.');
 assert.doesNotMatch(app, /<em>\$\{h\(activeState\.dealCount\)\} records · \$\{h\(activeState\.countyCount \|\| 0\)\} market lanes<\/em>/, 'Operating-state kicker must not return above Land market content.');
 assert.doesNotMatch(app, /All markets/, 'Land UI should no longer say All markets.');
 assert.doesNotMatch(app, /const label = state === 'all' \? 'All states' : state;/, 'Land state toggle should not use the longer All states label.');
@@ -77,11 +77,16 @@ assert.match(css, /--land-brand-primary: #0b5a43/, 'Land palette must define a f
 assert.match(css, /--land-brand-gold: #a97622/, 'Land palette must reserve gold for metrics and value emphasis.');
 assert.doesNotMatch(css, /--land-phase20[0-9]/, 'Stale Land phase custom-property markers must be removed from the final stylesheet.');
 assert.doesNotMatch(css, /\/\* v2\.0[0-9]/, 'Stale Land phase comment blocks must be removed from the final stylesheet.');
-assert.match(app, /function renderLandMarketIndex/, 'Land default route must render a clear market index instead of the old state workbench.');
+assert.match(app, /function renderLandMarketIndex/, 'Land default route must render a clear state-gated market index instead of the old state workbench.');
 assert.match(app, /phase254-land-market-index/, 'Land market index must be a first-class render surface.');
+assert.match(app, /phase255-land-state-index/, 'Land default selector must show states first before submarket lanes.');
+assert.match(app, /phase255-land-submarket-index/, 'Land state routes must reveal submarket lanes only after a state is selected.');
 assert.match(app, /phase254-land-selected-workspace/, 'Selected Land market must render a dedicated workspace shell.');
 assert.match(css, /--phase254-land-ia-reset: market-index-first-selected-workspace-second/, 'Land CSS must encode the Phase 254 IA reset.');
 assert.match(css, /--phase254-land-selected-workspace: market-menu-before-selected-content-no-state-workbench/, 'Selected Land market must keep the market menu before selected content without the state workbench.');
+assert.match(css, /--phase255-land-selector: states-first-submarket-lanes-after-state/, 'Land CSS must encode the state-first selector rule.');
+assert.match(app, /land-selected-state-switcher/, 'Selected Land market view must provide a state switcher so operators can change states without returning to the root.');
+assert.match(app, /land-back-to-state-index/, 'Selected Land market view must provide an obvious back affordance to the main state index.');
 assert.match(app, /data-land-market-state/, 'Land market cards must carry state so selecting a market swaps the state-scoped content underneath.');
 assert.match(app, /function landMarketRouteHash/, 'Land market selections must be route-addressable like Builders market selections.');
 assert.match(app, /#deals\/market\//, 'Land market route should support direct market URLs.');

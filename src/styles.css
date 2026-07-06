@@ -36676,6 +36676,174 @@ body[data-active-view="deals"] #parcels .land-selected-market-summary {
   box-shadow: none !important;
 }
 
+body[data-active-view="deals"] #parcels .phase257-state-telemetry {
+  --phase257-spacex-land-command: ranked-lane-telemetry-operating-briefs;
+}
+
+body[data-active-view="deals"] #parcels .phase257-lane-command-strip {
+  display: grid !important;
+  grid-template-columns: minmax(74px, auto) minmax(0, 1fr) !important;
+  gap: 4px 12px !important;
+  align-items: baseline !important;
+  margin: 12px 0 0 !important;
+  padding: 12px 0 0 !important;
+  border-top: 1px solid rgba(7, 20, 18, .14) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-lane-command-strip span,
+body[data-active-view="deals"] #parcels .phase257-ranked-lane em b,
+body[data-active-view="deals"] #parcels .phase257-operating-reasons span {
+  color: #0b5a43 !important;
+  font-size: 9px !important;
+  font-weight: 820 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-lane-command-strip strong {
+  color: #0c1512 !important;
+  font-size: 13px !important;
+  letter-spacing: -.025em !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-lane-command-strip p,
+body[data-active-view="deals"] #parcels .phase257-lane-command-strip em {
+  grid-column: 2 !important;
+  margin: 0 !important;
+  color: rgba(15,23,42,.58) !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-ranked-lane {
+  position: relative !important;
+  border-left: 2px solid rgba(15,23,42,.1) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-ranked-lane.is-live { border-left-color: #0b5a43 !important; }
+body[data-active-view="deals"] #parcels .phase257-ranked-lane.is-proof { border-left-color: #a16207 !important; }
+body[data-active-view="deals"] #parcels .phase257-ranked-lane.is-builder { border-left-color: #4b6f62 !important; }
+
+body[data-active-view="deals"] #parcels .phase257-ranked-lane dl {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-ranked-lane em {
+  color: rgba(15,23,42,.62) !important;
+  line-height: 1.35 !important;
+}
+
+body[data-active-view="deals"] #parcels .phase256-selected-market-nav .land-command-market small {
+  align-items: start !important;
+}
+
+body[data-active-view="deals"] #parcels .phase256-selected-market-nav .land-command-market small strong {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  line-height: 1.15 !important;
+}
+
+body[data-active-view="deals"] #parcels .phase256-selected-market-nav .land-command-market {
+  min-height: 84px !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-market-operating-brief {
+  --phase257-market-operating-brief: spacex-telemetry-decision-ledger;
+  display: grid !important;
+  grid-template-columns: minmax(220px, .32fr) minmax(0, .68fr) !important;
+  gap: 14px 18px !important;
+  align-items: start !important;
+  padding: 16px 0 !important;
+  border-top: 1px solid rgba(7,20,18,.16) !important;
+  border-bottom: 1px solid rgba(7,20,18,.16) !important;
+  background: linear-gradient(90deg, rgba(11,90,67,.045), transparent 34%) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-market-brief-head {
+  display: grid !important;
+  gap: 7px !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-market-brief-head > span {
+  color: #0b5a43 !important;
+  font-size: 10px !important;
+  font-weight: 840 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-market-brief-head strong {
+  color: #0b1210 !important;
+  font-size: clamp(23px, 2.6vw, 38px) !important;
+  line-height: .93 !important;
+  letter-spacing: -.055em !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-market-brief-head p {
+  margin: 0 !important;
+  color: rgba(15,23,42,.64) !important;
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-telemetry-ledger {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-left: 1px solid rgba(7,20,18,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-telemetry-ledger div {
+  min-height: 64px !important;
+  padding: 4px 12px !important;
+  border-right: 1px solid rgba(7,20,18,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-telemetry-ledger span {
+  display: block !important;
+  color: rgba(15,23,42,.48) !important;
+  font-size: 9px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-telemetry-ledger b {
+  display: block !important;
+  margin-top: 8px !important;
+  color: #0b1210 !important;
+  font-size: clamp(14px, 1.25vw, 20px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.035em !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-operating-reasons {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  border-top: 1px solid rgba(7,20,18,.12) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-operating-reasons article {
+  padding: 12px 14px 0 0 !important;
+  border-right: 1px solid rgba(7,20,18,.1) !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-operating-reasons p {
+  margin: 6px 0 0 !important;
+  color: rgba(15,23,42,.64) !important;
+  font-size: 12.5px !important;
+  line-height: 1.42 !important;
+}
+
+body[data-active-view="deals"] #parcels .phase257-market-operating-brief > ul,
+body[data-active-view="deals"] #parcels .phase257-market-operating-brief > .nc-proof-packets,
+body[data-active-view="deals"] #parcels .phase257-market-operating-brief > .land-refined-sort,
+body[data-active-view="deals"] #parcels .phase257-market-operating-brief > .land-control-note {
+  grid-column: 1 / -1 !important;
+}
+
 @media (max-width: 760px) {
   body[data-active-view="deals"] #parcels .phase254-land-market-index {
     grid-template-columns: 1fr !important;
@@ -36714,5 +36882,23 @@ body[data-active-view="deals"] #parcels .land-selected-market-summary {
   }
   body[data-active-view="deals"] #parcels .phase254-land-market-command-rail .land-market-command-scroll {
     grid-auto-columns: minmax(210px, 78vw) !important;
+  }
+  body[data-active-view="deals"] #parcels .phase257-lane-command-strip,
+  body[data-active-view="deals"] #parcels .phase257-market-operating-brief,
+  body[data-active-view="deals"] #parcels .phase257-operating-reasons {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="deals"] #parcels .phase257-lane-command-strip p,
+  body[data-active-view="deals"] #parcels .phase257-lane-command-strip em {
+    grid-column: 1 !important;
+  }
+  body[data-active-view="deals"] #parcels .phase257-telemetry-ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    border-left: 0 !important;
+    border-top: 1px solid rgba(7,20,18,.12) !important;
+  }
+  body[data-active-view="deals"] #parcels .phase257-operating-reasons article {
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(7,20,18,.1) !important;
   }
 }

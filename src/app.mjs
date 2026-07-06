@@ -1421,12 +1421,31 @@ function renderLandControls() {
   const marketDetail = activeMarket
     ? `${visibleCount} seller records. ${Number(activeMarket.builderCount || 0)} builder signals. ${activeMarket.statusCopy || 'Market source lane ready.'}`
     : `${visibleCount} seller records.`;
+  const marketTelemetry = activeMarket ? landLaneTelemetry({ ...activeMarket, dealCount: visibleCount }, 0) : null;
+  const sellerBlocker = visibleCount > 0
+    ? 'Seller queue exists; contact still waits on proof/contact/buildability checks.'
+    : 'No seller queue is exposed until public owner records match the buyer lane.';
+  const buyerProofStatus = marketTelemetry?.tone === 'proof' ? 'Proof packet staged' : Number(activeMarket?.builderCount || 0) > 0 ? 'Builder demand signal staged' : 'Buyer proof needed';
+  const sellerQueueStatus = visibleCount > 0 ? `${visibleCount} records staged` : 'Closed / sourcing pending';
   return `<section class="land-selected-market-shell phase254-land-selected-workspace" aria-label="Selected Land market workspace">
     ${renderDealsMarketCoverage()}
-    <article class="active-market-summary land-selected-market-summary">
-      <span>Selected land market</span>
-      <strong>${h(selectedMarketLabel)}</strong>
-      <p><b>${h(selectedState)}.</b> ${h(marketDetail)}</p>
+    <article class="active-market-summary land-selected-market-summary phase257-market-operating-brief" aria-label="Market operating brief">
+      <div class="phase257-market-brief-head">
+        <span>Market operating brief</span>
+        <strong>${h(selectedMarketLabel)}</strong>
+        <p><b>${h(selectedState)}.</b> ${h(marketTelemetry?.bestAction || 'Choose the next defensible operator move.')}</p>
+      </div>
+      <div class="phase257-telemetry-ledger" aria-label="Market telemetry ledger">
+        <div><span>Lane posture</span><b>${h(marketTelemetry?.posture || 'Selected lane')}</b></div>
+        <div><span>Buyer proof</span><b>${h(buyerProofStatus)}</b></div>
+        <div><span>Seller queue</span><b>${h(sellerQueueStatus)}</b></div>
+        <div><span>Telemetry score</span><b>${h(marketTelemetry?.score || 0)}</b></div>
+      </div>
+      <div class="phase257-operating-reasons">
+        <article><span>Why open</span><p>${h(marketTelemetry?.reason || marketDetail)}</p></article>
+        <article><span>Seller outreach block</span><p>${h(sellerBlocker)}</p></article>
+        <article><span>Next human action</span><p>${h(marketTelemetry?.bestAction || 'Select a state and lane before operator work begins.')}</p></article>
+      </div>
       <ul>
         <li title="Seller/source records visible in this market."><b>${h(visibleCount)}</b><span>records</span></li>
         <li title="Rows backed by public proof."><b>${h(sourceBacked)}</b><span>proofed</span></li>
@@ -1435,7 +1454,7 @@ function renderLandControls() {
       </ul>
       ${renderNorthCarolinaWakeProofPackets()}
       ${sortControl}
-      <p class="land-control-note">Market workspace active. The menu stays above; parcel content swaps below.</p>
+      <p class="land-control-note">Market workspace active. Telemetry decides the next move; parcel content swaps below.</p>
     </article>
   </section>`;
 }
@@ -1526,6 +1545,49 @@ function landLaneAbbrev(market = {}) {
   return String(market.stateCode || market.state || 'LN').slice(0, 3).toUpperCase();
 }
 
+function landLaneTelemetry(market = {}, index = 0) {
+  const dealCount = Number(market.dealCount || 0);
+  const builderCount = Number(market.builderCount || 0);
+  const state = market.stateCode || market.state || '';
+  const key = String(market.key || '');
+  const hasProofPackets = state === 'NC' && /raleigh|wake/i.test(`${key} ${market.marketLabel || market.label || ''}`);
+  const hasProofSprint = market.isDallasProofLane || key === 'dallas-tx';
+  const score = (dealCount ? 42 : 0) + Math.min(32, builderCount) + (hasProofPackets || hasProofSprint ? 18 : 0) + (market.sourceState === 'live' ? 8 : 0);
+  const posture = dealCount > 0
+    ? 'Live seller queue'
+    : hasProofPackets || hasProofSprint
+      ? 'Buyer-proof only'
+      : builderCount > 0
+        ? 'Builder demand proven'
+        : 'Needs sourcing';
+  const bestAction = dealCount > 0
+    ? 'Open the seller queue and verify buildability before contact.'
+    : hasProofPackets || hasProofSprint
+      ? 'Open proof packets, then import matching vacant-owner records.'
+      : builderCount > 0
+        ? 'Call 3 builders first, then source owners against the buy box.'
+        : 'Hold until buyer signal exists.';
+  const reason = dealCount > 0
+    ? `${dealCount} public seller records are already staged with ${builderCount} builder signals.`
+    : hasProofPackets || hasProofSprint
+      ? 'Proof artifacts exist, but owner inventory is intentionally gated.'
+      : builderCount > 0
+        ? `${builderCount} builder signals exist; seller sourcing should wait for buyer confirmation.`
+        : 'No live sellers or proven buyer pull yet; keep it visible, not active.';
+  return {
+    score,
+    posture,
+    bestAction,
+    reason,
+    rankLabel: index === 0 ? 'Start here' : score >= 42 ? 'Next' : builderCount > 0 ? 'Source owners' : 'Hold',
+    tone: dealCount > 0 ? 'live' : hasProofPackets || hasProofSprint ? 'proof' : builderCount > 0 ? 'builder' : 'hold',
+  };
+}
+
+function rankedLandLaneEntries(entries = []) {
+  return [...entries].sort((a, b) => landLaneTelemetry(b).score - landLaneTelemetry(a).score || String(a.marketLabel || a.label || '').localeCompare(String(b.marketLabel || b.label || '')));
+}
+
 function downloadLink(url, label, className = '') {
   return `<a ${className ? `class="${h(className)}" ` : ''}href="${h(url)}" download>${h(label)}</a>`;
 }
@@ -1597,19 +1659,15 @@ function renderLandMarketIndex() {
       <dl><div><dt>seller records</dt><dd>${h(state.dealCount || 0)}</dd></div><div><dt>market lanes</dt><dd>${h(state.marketCount || 0)}</dd></div></dl>
       <em>${h(state.builderCount || 0)} builder signals · state-first selector</em>
     </article>`).join('');
-  const marketCards = entries.map(market => {
+  const marketCards = rankedLandLaneEntries(entries).map((market, index) => {
     const marketState = market.stateCode || market.state || '';
     const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : 'needs-work';
-    const nextAction = Number(market.dealCount || 0) > 0
-      ? 'Open seller queue and verify buildability before contact.'
-      : Number(market.builderCount || 0) > 0
-        ? 'Source public owner records after buyer demand is validated.'
-        : 'Keep market stored; collect buyer proof before seller sourcing.';
-    return `<article role="button" tabindex="0" class="land-market-index-card ${toneClass}" data-deals-market-key="${h(market.key)}" data-land-market-state="${h(marketState)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records.`)}">
-      <span>${h(marketState || 'MKT')}</span>
-      <div><h3>${h(market.marketLabel || market.label)}</h3><p>${h(nextAction)}</p></div>
-      <dl><div><dt>seller records</dt><dd>${h(market.dealCount || 0)}</dd></div><div><dt>builders</dt><dd>${h(market.builderCount || 0)}</dd></div></dl>
-      <em>${h(market.sourceStatusCopy || market.statusCopy || 'source lane')}</em>
+    const telemetry = landLaneTelemetry(market, index);
+    return `<article role="button" tabindex="0" class="land-market-index-card phase257-ranked-lane ${toneClass} is-${h(telemetry.tone)}" data-deals-market-key="${h(market.key)}" data-land-market-state="${h(marketState)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records. ${telemetry.rankLabel}.`)}">
+      <span>${h(landLaneAbbrev(market))}</span>
+      <div><h3>${h(market.marketLabel || market.label)}</h3><p>${h(telemetry.reason)}</p></div>
+      <dl><div><dt>seller records</dt><dd>${h(market.dealCount || 0)}</dd></div><div><dt>builders</dt><dd>${h(market.builderCount || 0)}</dd></div><div><dt>score</dt><dd>${h(telemetry.score)}</dd></div></dl>
+      <em><b>${h(telemetry.rankLabel)}</b> · ${h(telemetry.posture)} · ${h(telemetry.bestAction)}</em>
     </article>`;
   }).join('');
   const showingStateIndex = selectedLandStateFilter === 'all';
@@ -1623,8 +1681,16 @@ function renderLandMarketIndex() {
   };
   const populatedMarkets = entries.filter(market => Number(market.dealCount || 0) > 0).length;
   const zeroMarkets = Math.max(0, entries.length - populatedMarkets);
-  const stateDetailSummary = showingStateIndex ? '' : `<div class="land-state-detail-summary phase256-land-state-detail-summary" aria-label="Selected Land state summary">
-      <div class="land-state-detail-copy"><span class="eyebrow">State detail</span><h3>${h(activeStateSummary.label)} operating lanes</h3><p>${h(activeStateSummary.scope)}. Choose one submarket lane next; seller queues stay closed until a lane is selected.</p></div>
+  const recommendedLane = rankedLandLaneEntries(entries)[0];
+  const recommendedTelemetry = recommendedLane ? landLaneTelemetry(recommendedLane, 0) : null;
+  const recommendedStrip = (!showingStateIndex && recommendedLane && recommendedTelemetry) ? `<div class="phase257-lane-command-strip" aria-label="Recommended Land lane">
+        <span>Start here</span>
+        <strong>${h(recommendedLane.marketLabel || recommendedLane.label)}</strong>
+        <p>${h(recommendedTelemetry.bestAction)}</p>
+        <em>${h(recommendedTelemetry.posture)} · telemetry score ${h(recommendedTelemetry.score)}</em>
+      </div>` : '';
+  const stateDetailSummary = showingStateIndex ? '' : `<div class="land-state-detail-summary phase256-land-state-detail-summary phase257-state-telemetry" aria-label="Selected Land state summary">
+      <div class="land-state-detail-copy"><span class="eyebrow">State telemetry</span><h3>${h(activeStateSummary.label)} operating lanes</h3><p>${h(activeStateSummary.scope)}. Rank the lane first; seller queues stay closed until one lane earns the next action.</p>${recommendedStrip}</div>
       <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Populated lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Ready zero lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
     </div>`;
   return `<section class="land-market-index phase254-land-market-index ${showingStateIndex ? 'phase255-land-state-index' : 'phase255-land-submarket-index'}" aria-label="Land market index">

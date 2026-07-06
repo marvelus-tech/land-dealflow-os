@@ -102,7 +102,7 @@ assert.match(css, /#app \.app-panel\[hidden\]/, 'Phase 16 route isolation guard 
 assert.match(html, /One calm queue for owner motion\./, 'Land page copy should be compressed into one-action hierarchy');
 assert.match(html, /Buyer-first\./, 'Builder page copy should make the hierarchy buyer-first');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /function productIcon\(kind\)[\s\S]{0,1400}class="product-icon"/, 'Phase 17 product icon helper should be present in app source');
-assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details class="builder-market-switcher"[\s\S]{0,220}Explore markets/, 'Builders should expose a clear market-change action via progressive disclosure before secondary evidence');
+assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /<details class="builder-market-switcher"[\s\S]{0,220}<summary><span>Markets<\/span>/, 'Builders should expose a clear market-change action via progressive disclosure before secondary evidence');
 assert.doesNotMatch(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /primary-action-strip[\s\S]{0,80}\$\{productIcon\('[^']+'\)\} Do first|>Start queue /, 'Primary action strips should not use vague Do first timeline-icon labeling');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /is-emailed[\s\S]{0,160}needs-email/, 'Builder queue rows should add emailed/todo completion classes for visual scanning');
 assert.match(readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8'), /data-email-state="\$\{outreach\.email \? 'done' : 'todo'\}"/, 'Builder queue rows should expose machine-readable email completion state');
@@ -329,8 +329,8 @@ assert.match(css, /v1\.65\.1 - Phase 33 pass 2 self-review correction: use deskt
 assert.match(css, /grid-template-areas:\s*\n\s*"title market"\s*\n\s*"jump jump" !important/, 'Phase 33 desktop workbench should use the right-side canvas instead of stacking everything left');
 assert.match(css, /grid-template-areas:\s*\n\s*"code name count"\s*\n\s*"rail meta meta" !important/, 'Phase 33 market rows must preserve market-name information scent');
 assert.match(css, /body\[data-active-view="builders"\] \.brand \{ display: none !important; \}/, 'Builders mobile nav should remove the brand label to prevent clipped route tabs');
-assert.match(appSource, /builder-market-hero/, 'Builders header should enter through a dedicated market world, not a poster-scale state chooser');
-assert.match(appSource, /<details class="builder-market-switcher"[\s\S]{0,220}Explore markets/, 'Builders action copy should stay short and calm behind a market-change disclosure');
+assert.match(appSource, /builders-index-hero/, 'Builders header should enter through a clean market index before selection, not a poster-scale state chooser');
+assert.match(appSource, /<details class="builder-market-switcher"[\s\S]{0,220}<summary><span>Markets<\/span>/, 'Builders action copy should stay short and calm behind a market-change disclosure');
 assert.doesNotMatch(appSource, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>|class="builders-primary-action"/, 'Phase 87 removes the redundant Next action label/action strip from Builders');
 assert.match(css, /v1\.65\.2 - Phase 33 final polish: action instruction must read as a sentence, not a stacked poster/, 'Phase 33 final action-strip polish marker required');
 assert.match(css, /\.builders-primary-action \{[\s\S]{0,160}grid-template-areas:\s*\n\s*"label action"\s*\n\s*"\. link" !important/, 'Builders action instruction should read horizontally before the link on desktop');

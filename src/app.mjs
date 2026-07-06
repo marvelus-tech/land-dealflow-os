@@ -334,6 +334,11 @@ function builderRouteSelectionFromHash(hash = location.hash) {
   return null;
 }
 
+function isBuildersIndexRoute(hash = location.hash) {
+  const [view, scope] = hashToParts(hash);
+  return view === 'builders' && !scope;
+}
+
 let activeView = hashToView() || 'today';
 
 function loadWorkspace() {
@@ -3006,6 +3011,54 @@ function renderBuilderMarketHero(theme = {}, activeState = {}, selectedMarket = 
   </section>`;
 }
 
+
+function renderBuilderMarketIndex(stateSummaries = []) {
+  const totals = stateSummaries.reduce((acc, state) => {
+    acc.builders += Number(state.builderCount || 0);
+    acc.lanes += Number(asArray(state.markets).length || state.countyCount || 0);
+    acc.callable += Number(state.summary?.callable || 0);
+    return acc;
+  }, { builders: 0, lanes: 0, callable: 0 });
+  const stateRows = stateSummaries.map((state) => `<article class="builder-index-state-row market-status-${h(state.status)}" data-builder-market-state="${h(state.stateCode)}" role="button" tabindex="0" aria-label="Open ${h(state.label)} builder state page">
+    <span class="builder-index-code">${h(state.stateCode)}</span>
+    <div class="builder-index-copy">
+      <strong>${h(state.label)}</strong>
+      <p>${h(state.thesis || state.note || 'Buyer demand lane')}</p>
+    </div>
+    <div class="builder-index-facts"><b>${h(state.builderCount)}</b><span>builders</span><em>${h(asArray(state.markets).length || state.countyCount || 0)} lanes</em></div>
+  </article>`).join('');
+  const marketRows = stateSummaries
+    .flatMap(state => asArray(state.markets).map(market => ({ ...market, stateCode: state.stateCode, stateLabel: state.label })))
+    .map((market) => `<article class="builder-index-market-row" data-builder-market-key="${h(market.key)}" role="button" tabindex="0" aria-label="Open ${h(market.label)} market page">
+      <span>${h(market.stateCode)}</span>
+      <div><strong>${h(market.label)}</strong><p>${h(market.note || market.statusCopy || market.reason || market.stateLabel || '')}</p></div>
+      <em>${h(asArray(market.rows).length || 0)} builders</em>
+    </article>`).join('');
+  return `<div class="builder-engine-shell builders-market-index-shell" data-market-page-key="index">
+    <section class="builders-index-hero" aria-label="Builders market index">
+      <div>
+        <span class="eyebrow">Builders · market index</span>
+        <h3>Choose one market. Then call builders.</h3>
+        <p>A clean starting surface: select the state or exact market lane first. The queue, hero, and proof surface swap into that market only after selection.</p>
+      </div>
+      <dl class="builders-index-stats" aria-label="Builder market coverage">
+        <div><dt>States</dt><dd>${h(stateSummaries.length)}</dd></div>
+        <div><dt>Lanes</dt><dd>${h(totals.lanes)}</dd></div>
+        <div><dt>Builders</dt><dd>${h(totals.builders)}</dd></div>
+        <div><dt>Callable</dt><dd>${h(totals.callable)}</dd></div>
+      </dl>
+    </section>
+    <section class="builders-index-ledger" aria-label="Select builder market">
+      <div class="builders-index-section-head"><span>States</span><b>Start broad</b></div>
+      <div class="builders-index-state-list">${stateRows}</div>
+      <details class="builders-index-market-drawer">
+        <summary><span>Markets</span><b>Open exact lane list</b></summary>
+        <div class="builders-index-market-list">${marketRows}</div>
+      </details>
+    </section>
+  </div>`;
+}
+
 function renderBuilderListEnginePanel(options = {}) {
   const target = document.querySelector('#builder-list-panel');
   if (!target) return;
@@ -3022,6 +3075,11 @@ function renderBuilderListEnginePanel(options = {}) {
   if (selectedBuilderMarketKey && !activeMarketKeys.has(selectedBuilderMarketKey)) selectedBuilderMarketKey = '';
   stateSummaries = stateSummaries.map(state => ({ ...state, isActive: state.stateCode === selectedBuilderMarketState }));
   activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0];
+  if (isBuildersIndexRoute()) {
+    target.innerHTML = renderBuilderMarketIndex(stateSummaries);
+    if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
+    return;
+  }
   const stateSwitcher = stateSummaries.map((state) => `<div role="button" tabindex="0" class="state-market-toggle market-status-${h(state.status)} ${state.isActive ? 'active is-active' : ''}" data-builder-market-state="${h(state.stateCode)}" aria-label="Open ${h(state.label)} builder market" aria-pressed="${state.isActive ? 'true' : 'false'}">
     <span class="state-market-code">${h(state.stateCode)}</span>
     <span class="state-market-copy"><strong><span class="state-market-name">${h(state.label)}</span><span class="state-market-thesis">${h(state.thesis)}</span></strong><small><span>${h(state.countyCount)} ${state.countyCount === 1 ? 'county lane' : 'county lanes'}</span><span>${h(state.statusCopy)}</span></small></span>
@@ -3092,7 +3150,7 @@ function renderBuilderListEnginePanel(options = {}) {
         <div class="state-workbench-layout builder-market-page-layout">
           ${marketSummary}
           <details class="builder-market-switcher" data-market-switcher>
-            <summary><span>Explore markets</span><b>${h(activeState.stateCode)}</b><em>${h(stateSummaries.length)} available</em></summary>
+            <summary><span>Markets</span><b>${h(activeState.stateCode)}</b><em>${h(stateSummaries.length)} available</em></summary>
             <div class="state-market-grid" data-state-market-selector>${stateSwitcher}</div>
           </details>
         </div>

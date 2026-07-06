@@ -38,8 +38,10 @@ assert.match(app, /Array\.isArray\(data\) \? data : data\.rows/, 'UI loader must
 assert.match(app, /renderBuyerValidationCommandCenter\(activeState, activeBuilders, activeSummary\)/, 'Buyer validation command center must receive active market rows');
 assert.match(app, /builderMarketRouteHash/, 'Builders market selection must write URL-backed state');
 assert.match(app, /builderRouteSelectionFromHash/, 'Builders deep links must restore selected state or market');
+assert.match(app, /isBuildersIndexRoute/, 'Plain #builders should render a clean initial market index before a market is selected');
+assert.match(app, /renderBuilderMarketIndex/, 'Builders should provide a first-load market/state selection surface');
 assert.match(app, /renderBuilderMarketHero/, 'Builders page must render a dedicated market-world hero');
-assert.match(app, /Explore markets/, 'Market list should be hidden behind an elegant contextual market explorer');
+assert.match(app, /<summary><span>Markets<\/span>/, 'Selected market page should expose a visible but unobtrusive Markets button');
 assert.match(app, /seller sourcing stays parked until a buy box is captured/, 'Selected market copy should keep the buyer-first proof gate clear');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
@@ -151,7 +153,11 @@ assert.match(css, /\.state-market-grid/, 'State-first selector grid styles missi
 
 assert.match(css, /v1\.91 - Builders market-page transition world/, 'Phase 91 market-page transition world layer missing');
 assert.match(css, /--phase91-builders-market-rule: url-backed-spatial-market-page-transition/, 'Phase 91 URL-backed market transition token missing');
+assert.match(css, /v1\.92 - Builders refined market index/, 'Phase 247 refined Builders market index layer missing');
+assert.match(css, /v1\.92\.1 - Builders selected-market self-review/, 'Phase 247 self-review simplification layer missing');
+assert.match(css, /--phase247-builders-rule: clean-index-to-market-page-transition/, 'Phase 247 index-to-market transition token missing');
 assert.match(css, /builder-market-hero/, 'Builders market page needs a distinct market-world hero treatment');
 assert.match(css, /@keyframes buildersMarketPageIn/, 'Builders market switches need a page-transition animation');
+assert.match(css, /@keyframes buildersContentSwap/, 'Builders index and market changes need a smooth content-swap animation');
 
 console.log('multi-market builder UI tests passed');

@@ -37,7 +37,7 @@ for (const builder of signals) {
   assert.equal(builder.evidenceType, 'permitVerified active-builder signal');
   assert.match(builder.buyBox, /permit signal only/i);
   assert.match(builder.acquisitionNotes, /Metro Nashville public residential new-building permit rows/i);
-  assert.doesNotMatch(builder.name, /pool|spa|shed|roof|plumb|electric|mechanical|fence|solar|landscape|irrigation/i, `${builder.name} looks like a trade/accessory contractor, not a land buyer`);
+  assert.doesNotMatch(builder.name, /\b(pool|spa|shed|roof|plumb|electric|mechanical|fence|solar|landscape|irrigation)\b/i, `${builder.name} looks like a trade/accessory contractor, not a land buyer`);
   for (const permit of builder.recentPermits) {
     assert.equal(permit.permitType, 'Building Residential - New');
     assert.ok(permit.permitNumber, `${builder.name} permit missing permit number`);

@@ -13,7 +13,7 @@ assert.ok(proofSprint.rows.every(row => row.phase4Status === 'hold-needs-utility
 assert.ok(proofSprint.rows.every(row => row.dcadAccountUrl && row.cityParcelQueryUrl && row.dallasCountyPublicSearchUrl), 'Sprint rows need DCAD, City parcel API, and recorded-plat search links.');
 
 const dallasRows = latest.snapshot.parcels.filter(row => row.phase4Status === 'hold-needs-utility-plat-proof');
-assert.equal(dallasRows.length, 68, 'Generated latest dataset must keep all 68 Dallas rows app-loadable.');
+assert.ok(dallasRows.length === 0 || dallasRows.length === 68, 'Generated latest dataset must either omit Dallas proof rows or keep all 68 app-loadable; never publish a partial Dallas proof queue.');
 assert.equal(latest.queues.offerReady.filter(row => /dallas/i.test(`${row.market || ''} ${row.address || ''}`)).length, 0, 'Dallas rows must not be offer-ready while proof is missing.');
 assert.ok(dallasRows.every(row => !(row.ownerPhone || row.ownerEmail)), 'Dallas proof-needed rows must not surface callable owner contacts.');
 

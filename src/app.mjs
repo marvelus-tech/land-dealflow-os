@@ -277,6 +277,86 @@ const texasLandReports = [
       'Treat Dallas Water Utilities request-ready as not service-proven; do not infer water/sewer from nearby homes or old improvements.',
       'Do not send mass SMS; use manual compliant outreach and respect DNC/opt-outs.'
     ]
+  },
+  {
+    id: 'central-florida-luxury-lots',
+    title: 'Central Florida luxury lot / waterfront JV report',
+    state: 'FL',
+    market: 'Winter Park · Windermere · Dr Phillips · Maitland · College Park · Winter Garden · Clermont · Longwood',
+    updatedAt: '2026-07-06',
+    assetUrl: 'data/real/central-florida/central-florida-luxury-lot-jv-report.md',
+    subtitle: 'Luxury lots + waterfront appetite · Orange/Lake/Seminole proof gates · seller SMS scripts',
+    buyBox: [
+      'Target areas: Winter Park, Maitland Orange County side, Winter Garden, Windermere, Dr Phillips, College Park, Clermont, Longwood, and credible surrounding luxury-lot spillover.',
+      'Buyer prefers waterfront, but will consider non-waterfront if it is a true luxury lot, larger homesite, estate parcel, or teardown/infill dirt.',
+      'Best interpretation: Central Florida luxury infill / waterfront / estate-lot acquisition, not commodity vacant land.',
+      'Primary underwriting gates: jurisdiction, waterfront proof, dockability, zoning, FEMA flood, wetlands, utilities/septic, HOA/ARB, tree/stormwater rules, and buildable envelope.'
+    ],
+    rankedMarkets: [
+      { name: 'Windermere / 34786', tier: 'Tier 1', verdict: 'Scarce prime luxury. Butler Chain, gated estate lots, lakefront and custom-home dirt; use ultra-discreet qualified-buyer language.' },
+      { name: 'Winter Park / 32789', tier: 'Tier 1', verdict: 'High-value lake/infill dirt. Older homes on oversized lots and Chain of Lakes parcels are strongest; seller expectations are sophisticated.' },
+      { name: 'Dr Phillips / Bay Hill / 32819-32836', tier: 'Tier 1', verdict: 'Lake/golf/southwest Orlando luxury demand; strong for older luxury homes, Bay Hill, Butler Chain and Sand Lake/Tibet corridors.' },
+      { name: 'Maitland / 32751', tier: 'Tier 2', verdict: 'Quiet luxury and family-executive demand; prioritize Orange County side and lake/large-lot homes.' },
+      { name: 'College Park / 32804', tier: 'Tier 2', verdict: 'Urban infill and teardown demand near downtown/Ivanhoe/AdventHealth; use neighborhood-respectful older-home language.' },
+      { name: 'Longwood / 32779', tier: 'Tier 2', verdict: 'Estate/privacy/lake demand around Markham Woods, Lake Brantley and gated pockets; 32750 is broader Tier 3.' },
+      { name: 'Winter Garden / 34787', tier: 'Tier 3', verdict: 'Growth/value/custom estate lane; larger lots, Johns Lake and rural-edge parcels need entitlement and utility discipline.' },
+      { name: 'Clermont / 34711-34715', tier: 'Tier 3', verdict: 'Value-plus lake/custom acreage market; hills, lake access, septic/well, wetlands and jurisdiction drive economics.' }
+    ],
+    ownerTargets: [
+      'Lakefront long-term owners with older homes, high land-to-improvement value, or maintenance/insurance/tax fatigue.',
+      'Estate, trust, inherited and multi-heir owners who value liquidity, privacy and no public listing.',
+      'Owners of obsolete homes on premium dirt where the structure is secondary to land value.',
+      'Absentee, second-home and out-of-area luxury owners who may value remote/private closing convenience.',
+      'Legacy acreage/grove/family landowners in Winter Garden, Clermont and Longwood fringe with estate-lot or assemblage potential.'
+    ],
+    trendNotes: [
+      'Central Florida is more balanced than the 2021-2022 frenzy, but prime waterfront and estate lots remain scarcity assets.',
+      'Spread is most likely from off-market timing, estate complexity, obsolete improvements, privacy motivation, or entitlement complexity the buyer can absorb.',
+      'Mailing city is not enough: verify city vs unincorporated Orange, Lake or Seminole County before pricing.',
+      'Waterfront value requires proof of actual frontage, waterbody identity, chain access if claimed, dockability, flood/wetlands and shoreline approval path.',
+      'Luxury sellers respond better to confidential qualified-buyer language than generic cash-buyer pressure.'
+    ],
+    outreach: {
+      positioning: 'Qualified private buyer for luxury lots, lakefront, larger homesites and older homes where land value matters - no public listing, no repairs, flexible timing.',
+      avoid: 'Avoid hungry buyer, cash buyer ASAP, investor, ugly houses, teardown-first language, distress framing, or pretending to be the end buyer if this is a JV/assignment.',
+      landlord: 'Hi [Name], I am reaching out privately about [Address]. I work with a qualified buyer looking for luxury lots and larger properties in [Area]. If you would ever consider a private as-is sale without listing or showings, would you be open to a simple conversation?',
+      estate: 'Hi [Name], I am reaching out regarding [Address]. I am not sure if the family has ever considered selling, but I work with qualified buyers who purchase Central Florida luxury lots and older homes as-is. If a private sale would ever be helpful, would you be open to a simple conversation?',
+      premium: 'Hi [Name], I am reaching out discreetly about your property at/near [Address]. I have a qualified buyer looking for select larger-lot or lake-area properties in [Area]. If you would ever consider a quiet private sale, would it be okay to ask a few quick questions?'
+    },
+    sms: {
+      principle: 'Central Florida luxury-lot SMS goal: test appetite with a discreet, qualified-buyer posture. Keep it manual, property-specific, low-pressure and compliant.',
+      blanket: 'Hi [Name], this is Okeito. I am reaching out privately about your property at/near [Address]. I work with a qualified buyer looking for luxury lots and larger properties in [Area]. Would you consider a private as-is sale if the price and timing made sense? No pressure either way.',
+      waterfront: 'Hi [Name], this is Okeito. I am reaching out privately about your lakefront property at/near [Address]. I am working with a qualified buyer looking for waterfront or larger-lot properties in [Area]. Would you ever consider selling privately if the timing and number made sense? No pressure either way.',
+      premium: 'Hi [Name], this is Okeito. I am reaching out discreetly about your property at/near [Address]. I have a qualified buyer looking for select larger-lot or lake-area properties in [Winter Park/Windermere]. If you would ever consider a quiet private sale, would it be okay to ask a few quick questions?',
+      acreage: 'Hi [Name], this is Okeito. I am reaching out about your land at/near [Address]. I work with a buyer looking for larger homesites and estate-lot opportunities in Central Florida. Would you consider selling if the price, timing, and due diligence period worked for you?',
+      unknownOwner: 'Hi, this is Okeito. I am reaching out privately about the property at/near [Address]. I work with a qualified buyer looking for luxury lots and larger homesites in [Area]. Would the owner consider selling privately if the price and timing made sense?',
+      maybeReply: 'Totally fair. What would matter most for you - price, timing, privacy, or keeping the process simple without listing/showings?',
+      offerReply: 'I would want to verify the lot size, frontage, zoning, utilities, and any lakefront/buildability items first so I do not waste your time. Have you had a number in mind that would make selling worth considering?',
+      makeOfferReply: 'Happy to. Can I confirm a few things first - is the property vacant land or is there a home on it, do you know if utilities are available, and are there any HOA, lakefront, access, or title issues I should know about?',
+      notInterested: 'No problem at all. Thanks for getting back to me. If anything changes later, feel free to keep my number.'
+    },
+    filters: [
+      'ZIPs: 32789, 32792, 32751, 34787, 34786, 32819, 32836, 32804, 34711, 34715, 32779, 32750.',
+      'Prioritize waterfront/lakefront, Butler Chain/Winter Park chain/Bay Hill/lake pockets, large lots, estate homesites, old luxury homes and obsolete improvements on valuable dirt.',
+      'Owner signals: 10-30+ year hold, estate/trust, absentee/second-home, high land-to-improvement value, older home, acreage/grove/family-held parcel.',
+      'Exclude or hold: newly purchased lots, builder/developer-owned lots, active luxury listings unless stale, floodway/wetland-heavy parcels, unproven dockability, unresolved private-road/easement issues.',
+      'Proof sources: Orange/Lake/Seminole property appraisers, city/county zoning, FEMA, FDEP/NWI, WMD permitting, Water Atlas, Municode and HOA/ARB/deed restrictions.'
+    ],
+    jvQuestions: [
+      'What is max all-in price by area and by waterfront vs non-waterfront?',
+      'Is buyer buying vacant dirt only, teardown homes, lakefront homes, estate acreage, or all of the above?',
+      'Minimum lot size, frontage, depth, chain access and dockability requirements?',
+      'Are canal-access, lake-view or across-the-street lake parcels acceptable?',
+      'Are HOA/ARB communities, septic/well, wetlands/flood review, slope or private roads acceptable with discount?',
+      'Will buyer close by assignment or double close, and can they show proof of funds / recent similar Central Florida closes?'
+    ],
+    proofGates: [
+      'Public owner records are not call-ready; verify parcel/owner first, then enrich contact provenance before outreach.',
+      'Verify parcel ID, acreage, legal description, owner, municipality/tax district and assessed values from Orange/Lake/Seminole property appraiser records.',
+      'Verify city vs unincorporated jurisdiction, zoning, future land use, setbacks, lot coverage, tree/stormwater and subdivision limits before pricing.',
+      'Verify waterfront: exact waterbody, actual frontage, chain access if claimed, dock/boathouse eligibility, shoreline rules and WMD/FDEP/local approvals.',
+      'Screen FEMA flood, FDEP/NWI wetlands, conservation easements, utilities/septic/well, private-road/easement rights, HOA/ARB and deed restrictions.'
+    ]
   }
 ];
 
@@ -1809,15 +1889,24 @@ function renderBulletList(items, className = '') {
   return `<ul${className ? ` class="${h(className)}"` : ''}>${(items || []).map(item => `<li>${h(item)}</li>`).join('')}</ul>`;
 }
 
-function renderTexasLandReports() {
-  if (selectedLandStateFilter !== 'TX') return '';
-  const reports = texasLandReports.filter(report => report.state === 'TX');
+function renderStateLandReports() {
+  if (selectedLandStateFilter === 'all') return '';
+  const reports = texasLandReports.filter(report => report.state === selectedLandStateFilter);
   if (!reports.length) return '';
-  return `<section class="land-state-report-dock phase261-land-report-dock" aria-label="Texas Land reports">
+  const stateLabel = landStateSelectorAbbreviations[selectedLandStateFilter] || selectedLandStateFilter;
+  const dockTitle = selectedLandStateFilter === 'FL'
+    ? 'Central Florida luxury-lot intelligence'
+    : selectedLandStateFilter === 'TX'
+      ? 'Dallas seller approach intelligence'
+      : `${stateLabel} seller approach intelligence`;
+  const dockCopy = selectedLandStateFilter === 'FL'
+    ? 'Buyer-backed luxury lot / waterfront research stored in this project and surfaced only inside the FL Land section.'
+    : 'Buyer-backed teardown / lot-value research stored in this project and surfaced only inside the selected Land state section.';
+  return `<section class="land-state-report-dock phase261-land-report-dock" aria-label="${h(stateLabel)} Land reports">
     <div class="land-report-dock-head">
-      <span class="eyebrow">TX reports</span>
-      <h3>Dallas seller approach intelligence</h3>
-      <p>Buyer-backed teardown / lot-value research stored in this project and surfaced only inside the TX Land section.</p>
+      <span class="eyebrow">${h(selectedLandStateFilter)} reports</span>
+      <h3>${h(dockTitle)}</h3>
+      <p>${h(dockCopy)}</p>
     </div>
     <div class="land-report-list">${reports.map(report => `<details class="land-report-card" id="${h(report.id)}">
       <summary><span>Reports</span><strong>${h(report.title)}</strong><em>${h(report.subtitle)}</em></summary>
@@ -1827,11 +1916,11 @@ function renderTexasLandReports() {
         <section><h4>Market priority</h4><div class="land-report-market-stack">${report.rankedMarkets.map(market => `<article><span>${h(market.tier)}</span><strong>${h(market.name)}</strong><p>${h(market.verdict)}</p></article>`).join('')}</div></section>
         <section><h4>Owner targets</h4>${renderBulletList(report.ownerTargets)}</section>
         <section><h4>Current trend read</h4>${renderBulletList(report.trendNotes)}</section>
-        <section><h4>Outreach positioning</h4><p>${h(report.outreach.positioning)}</p><p class="land-report-warning">${h(report.outreach.avoid)}</p><div class="land-report-scripts"><article><span>Landlord / absentee</span><p>${h(report.outreach.landlord)}</p></article><article><span>Estate / inherited</span><p>${h(report.outreach.estate)}</p></article><article><span>Premium pocket</span><p>${h(report.outreach.premium)}</p></article></div></section>
-        ${report.sms ? `<section><h4>Blanket vacant-lot SMS</h4><p>${h(report.sms.principle)}</p><div class="land-report-scripts land-report-sms-scripts"><article><span>Best blanket SMS</span><p>${h(report.sms.blanket)}</p></article><article><span>Warmer owner version</span><p>${h(report.sms.warm)}</p></article><article><span>Absentee / investor owner</span><p>${h(report.sms.absentee)}</p></article><article><span>Dallas infill / larger-lot</span><p>${h(report.sms.infill)}</p></article><article><span>Unknown owner name</span><p>${h(report.sms.unknownOwner)}</p></article><article><span>Maybe / depends reply</span><p>${h(report.sms.maybeReply)}</p></article><article><span>What are you offering?</span><p>${h(report.sms.offerReply)}</p></article><article><span>Make me an offer</span><p>${h(report.sms.makeOfferReply)}</p></article><article><span>Not interested</span><p>${h(report.sms.notInterested)}</p></article></div></section>` : ''}
+        <section><h4>Outreach positioning</h4><p>${h(report.outreach.positioning)}</p><p class="land-report-warning">${h(report.outreach.avoid)}</p><div class="land-report-scripts"><article><span>General / absentee</span><p>${h(report.outreach.landlord)}</p></article><article><span>Estate / inherited</span><p>${h(report.outreach.estate)}</p></article><article><span>Premium pocket</span><p>${h(report.outreach.premium)}</p></article></div></section>
+        ${report.sms ? `<section><h4>${selectedLandStateFilter === 'FL' ? 'Luxury-lot SMS scripts' : 'Blanket vacant-lot SMS'}</h4><p>${h(report.sms.principle)}</p><div class="land-report-scripts land-report-sms-scripts"><article><span>Best blanket SMS</span><p>${h(report.sms.blanket)}</p></article>${report.sms.waterfront ? `<article><span>Waterfront / lakefront</span><p>${h(report.sms.waterfront)}</p></article>` : ''}${report.sms.warm ? `<article><span>Warmer owner version</span><p>${h(report.sms.warm)}</p></article>` : ''}<article><span>Premium / discreet</span><p>${h(report.sms.premium || report.sms.infill || '')}</p></article>${report.sms.acreage ? `<article><span>Acreage / estate-lot</span><p>${h(report.sms.acreage)}</p></article>` : ''}${report.sms.absentee ? `<article><span>Absentee / investor owner</span><p>${h(report.sms.absentee)}</p></article>` : ''}<article><span>Unknown owner name</span><p>${h(report.sms.unknownOwner)}</p></article><article><span>Maybe / depends reply</span><p>${h(report.sms.maybeReply)}</p></article><article><span>What are you offering?</span><p>${h(report.sms.offerReply)}</p></article><article><span>Make me an offer</span><p>${h(report.sms.makeOfferReply)}</p></article><article><span>Not interested</span><p>${h(report.sms.notInterested)}</p></article></div></section>` : ''}
         <section><h4>Lead-list filters</h4>${renderBulletList(report.filters)}</section>
         <section><h4>JV verification questions</h4>${renderBulletList(report.jvQuestions)}</section>
-        <section><h4>Dallas proof gates</h4>${renderBulletList(report.proofGates)}</section>
+        <section><h4>${selectedLandStateFilter === 'FL' ? 'Central Florida proof gates' : 'Dallas proof gates'}</h4>${renderBulletList(report.proofGates)}</section>
       </div>
     </details>`).join('')}</div>
   </section>`;
@@ -1910,7 +1999,7 @@ function renderLandMarketIndex() {
       <div class="land-state-detail-copy"><span class="eyebrow">State selected</span><h3>${h(activeStateSummary.label)} market lanes</h3><p>${h(activeStateSummary.scope)}. Pick one lane; the seller queue opens only after market selection.</p>${recommendedStrip}</div>
       <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Open lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Quiet lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
     </div>`;
-  const stateReports = renderTexasLandReports();
+  const stateReports = renderStateLandReports();
   return `<section class="land-market-index phase254-land-market-index phase260-land-ia ${showingStateIndex ? 'phase255-land-state-index phase260-land-state-index' : 'phase255-land-submarket-index phase260-land-lane-index'}" aria-label="Land market index">
     <div class="land-market-index-hero">
       <span class="eyebrow">Land · ${showingStateIndex ? 'market index' : `${selectedLandStateFilter} lane index`}</span>

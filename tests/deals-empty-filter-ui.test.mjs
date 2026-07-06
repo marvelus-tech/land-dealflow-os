@@ -42,7 +42,7 @@ assert.match(app, /\.\.\.expansionEntries, \.\.\.otherEntries/, 'Deals market co
 for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'indianapolis-in', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.match(app, new RegExp(`key: '${key}'`), `Deals market coverage must include ${key} through the shared registry.`);
 }
-assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/, 'Deals empty copy must explain visible zero-deal markets.');
+assert.match(app, /this market is visible, but no public seller record currently clears buyer demand/i, 'Deals empty copy must explain visible zero-deal markets.');
 assert.match(app, /Attach public proof before contact or money review\./, 'Land primary instruction must expose the proof-first operator action before money review.');
 assert.match(app, /function parcelListingState/, 'Deals must classify listing state instead of hiding records.');
 assert.match(app, /if \(cachedScoredParcels\) return cachedScoredParcels;/, 'Land performance must cache expensive scored parcel generation across render cycles.');
@@ -77,6 +77,14 @@ assert.match(css, /--land-brand-primary: #0b5a43/, 'Land palette must define a f
 assert.match(css, /--land-brand-gold: #a97622/, 'Land palette must reserve gold for metrics and value emphasis.');
 assert.doesNotMatch(css, /--land-phase20[0-9]/, 'Stale Land phase custom-property markers must be removed from the final stylesheet.');
 assert.doesNotMatch(css, /\/\* v2\.0[0-9]/, 'Stale Land phase comment blocks must be removed from the final stylesheet.');
+assert.match(app, /function landParcelMissionTelemetry/, 'Phase 258 must derive parcel-level mission telemetry.');
+assert.match(app, /phase258-mission-row/, 'Phase 258 must turn parcel rows into mission-control scan rows.');
+assert.match(app, /phase258-readiness-stack/, 'Phase 258 must render proof/buildability/contact/buyer/money readiness stacks.');
+assert.match(app, /phase258-selected-mission-sheet/, 'Phase 258 must render a selected parcel mission sheet.');
+assert.match(app, /Lane mission control/, 'Phase 258 must make zero-count lanes explain the buyer-first sourcing gate.');
+assert.match(app, /do not send anything automatically/, 'Phase 258 must preserve copy-paste/manual action safety.');
+assert.match(css, /--phase258-parcel-mission-control: readiness-stack-next-action-selected-mission-sheet/, 'CSS must encode the Phase 258 parcel mission-control rule.');
+assert.match(css, /--phase258-empty-lane-state: buyer-proof-before-owner-sourcing/, 'CSS must encode the Phase 258 empty lane buyer-proof rule.');
 assert.match(app, /function renderLandMarketIndex/, 'Land default route must render a clear state-gated market index instead of the old state workbench.');
 assert.match(app, /phase254-land-market-index/, 'Land market index must be a first-class render surface.');
 assert.match(app, /phase255-land-state-index/, 'Land default selector must show states first before submarket lanes.');

@@ -1175,6 +1175,107 @@ function landLotFactChips(parcel = {}, { compact = false } = {}) {
   return `<div class="${className}" aria-label="${compact ? 'Compact enriched lot facts' : 'Selected enriched lot facts'}">${rows.map(([label, value]) => `<span class="${compact ? 'land-row-lot-fact' : 'land-selected-lot-fact'}"><b>${h(label)}</b><em>${h(value)}</em></span>`).join('')}</div>`;
 }
 
+function landParcelMissionTelemetry(parcel = {}, buyer = getBuyer(parcel)) {
+  const listingState = parcel._listingState || parcelListingState(parcel);
+  const enrichment = parcel._landLotEnrichment || deriveLandLotEnrichment(parcel, listingState);
+  const math = parcel._landOfferMath || calculateLandOfferMath(parcel);
+  const visual = parcelVisualProof(parcelSelectionKey(parcel));
+  const visualRating = visual?.aerial || parcel.aerialRating || parcel.buildabilityRating || '';
+  const proofReady = Boolean(listingState.sourceBacked && !listingState.needsProof && !listingState.rawFinding);
+  const contactReady = Boolean(listingState.enriched);
+  const buyerReady = Boolean(listingState.builderMatched);
+  const moneyReady = Boolean(listingState.offerReady || (buyerReady && Number(math.projectedAssignmentFee || parcel.metrics?.spread || 0) > 0));
+  const buildabilityReady = /^green$/i.test(visualRating) || /pass|clean|green/i.test(String(parcel.risk?.status || parcel.buildabilityStatus || ''));
+  const buildabilityBlocked = /^red$/i.test(visualRating) || /kill|red|blocked/i.test(String(parcel.risk?.status || parcel.buildabilityStatus || ''));
+  const buildabilityLabel = buildabilityBlocked ? 'Red / blocked' : buildabilityReady ? 'Green first pass' : /^yellow$/i.test(visualRating) ? 'Yellow review' : 'Aerial unchecked';
+  const proofLabel = proofReady ? 'Public proof present' : listingState.needsProof || listingState.rawFinding ? 'Attach public proof' : 'Proof unclear';
+  const contactLabel = contactReady ? 'Verified contact' : listingState.contactCandidate ? 'Candidate only' : 'Skip-trace needed';
+  const buyerLabel = buyerReady ? 'Builder demand aligned' : 'Buyer fit unknown';
+  const moneyLabel = moneyReady ? `${formatMoney(math.projectedAssignmentFee || parcel.metrics?.spread || 0)} spread signal` : 'Money parked';
+  const gates = [
+    { key: 'proof', label: 'Proof', value: proofLabel, state: proofReady ? 'ready' : 'next' },
+    { key: 'buildability', label: 'Build', value: buildabilityLabel, state: buildabilityBlocked ? 'blocked' : buildabilityReady ? 'ready' : 'next' },
+    { key: 'contact', label: 'Contact', value: contactLabel, state: contactReady ? 'ready' : listingState.contactCandidate ? 'candidate' : 'next' },
+    { key: 'buyer', label: 'Buyer', value: buyerLabel, state: buyerReady ? 'ready' : 'next' },
+    { key: 'money', label: 'Money', value: moneyLabel, state: moneyReady ? 'ready' : 'parked' },
+  ];
+  let nextAction = 'Ready for human review';
+  let actionFamily = 'Review';
+  let reason = 'Ranked because proof, contact, buyer fit, and money are aligned enough for human review.';
+  let blocker = 'Human judgment remains required before any seller motion.';
+  if (!proofReady) {
+    nextAction = 'Open proof';
+    actionFamily = 'Proof';
+    reason = 'Ranked here because the parcel is retained, but public proof is not clean enough for contact or pricing.';
+    blocker = 'Public/county source proof is missing or still on hold.';
+  } else if (buildabilityBlocked) {
+    nextAction = 'Blocked';
+    actionFamily = 'Block';
+    reason = 'Blocked because buildability risk is red or kill-coded.';
+    blocker = 'Buildability risk must be resolved before any owner work.';
+  } else if (!buildabilityReady) {
+    nextAction = 'Verify aerial';
+    actionFamily = 'Aerial';
+    reason = 'Ranked here because public proof exists, but buildability has not been visually cleared.';
+    blocker = 'Aerial/buildability status is not green.';
+  } else if (!contactReady) {
+    nextAction = 'Skip-trace owner';
+    actionFamily = 'Trace';
+    reason = 'Ranked high because public proof and buildability are usable, but verified owner contact is missing.';
+    blocker = 'No verified phone/email is allowed into seller motion.';
+  } else if (!buyerReady) {
+    nextAction = 'Check buyer fit';
+    actionFamily = 'Fit';
+    reason = 'Ranked here because owner contact exists, but buyer demand is not attached.';
+    blocker = 'Buyer-fit signal is missing.';
+  } else if (!moneyReady) {
+    nextAction = 'Run offer math';
+    actionFamily = 'Money';
+    reason = 'Ranked here because proof, contact, and buyer fit exist, but the money gate is parked.';
+    blocker = 'Spread/offer confidence is not ready.';
+  }
+  const readinessScore = gates.reduce((sum, gate) => sum + (gate.state === 'ready' ? 20 : gate.state === 'candidate' ? 9 : gate.state === 'parked' ? 4 : 0), 0);
+  return {
+    gates,
+    nextAction,
+    actionFamily,
+    reason,
+    blocker,
+    readinessScore,
+    objective: `Move ${parcel.address || parcel.parcelId || 'this parcel'} from source-backed inventory to a buyer-safe seller decision.`,
+    requiredVerification: !proofReady ? enrichment.sourceProofLabel : !buildabilityReady ? 'Aerial road/access/slope/utility check' : !contactReady ? 'Lawful owner contact enrichment' : !buyerReady ? 'Builder buy-box confirmation' : !moneyReady ? 'Offer spread review' : 'Final human review',
+    allowedAction: nextAction === 'Blocked' ? 'Hold. Do not call.' : `${nextAction}; do not send anything automatically.`,
+    buyerSnapshot: buyer?.name || parcel.buyerId || 'No buyer attached yet',
+    moneySnapshot: moneyReady ? `${formatMoney(math.smsPriceToSend || parcel.offer?.initialSellerOffer || 0)} SMS / ${formatMoney(math.projectedAssignmentFee || parcel.metrics?.spread || 0)} fee` : 'Parked until proof/contact/buyer fit are clean',
+  };
+}
+
+function renderParcelMissionStack(mission = {}, { compact = false } = {}) {
+  const gates = asArray(mission.gates);
+  return `<div class="phase258-readiness-stack ${compact ? 'is-compact' : 'is-selected'}" aria-label="Parcel readiness stack">
+    ${gates.map(gate => `<span class="phase258-gate gate-${h(gate.key)} is-${h(gate.state)}"><b>${h(gate.label)}</b><em>${h(gate.value)}</em></span>`).join('')}
+  </div>`;
+}
+
+function renderSelectedParcelMissionSheet(parcel = {}, buyer = getBuyer(parcel), mission = landParcelMissionTelemetry(parcel, buyer)) {
+  return `<section class="phase258-selected-mission-sheet" aria-label="Selected parcel mission sheet">
+    <div class="phase258-mission-head">
+      <span class="eyebrow">Parcel mission control</span>
+      <h3>${h(mission.nextAction)}</h3>
+      <p>${h(mission.objective)}</p>
+    </div>
+    <div class="phase258-mission-ledger">
+      <article><span>Current blocker</span><b>${h(mission.blocker)}</b></article>
+      <article><span>Required verification</span><b>${h(mission.requiredVerification)}</b></article>
+      <article><span>Allowed next action</span><b>${h(mission.allowedAction)}</b></article>
+      <article><span>Buyer fit</span><b>${h(mission.buyerSnapshot)}</b></article>
+      <article><span>Money snapshot</span><b>${h(mission.moneySnapshot)}</b></article>
+      <article><span>Readiness</span><b>${h(mission.readinessScore)} / 100</b></article>
+    </div>
+    ${renderParcelMissionStack(mission, { compact: false })}
+  </section>`;
+}
+
 function renderLandOfferMathChips(parcel = {}) {
   const math = parcel._landOfferMath || calculateLandOfferMath(parcel);
   if (!math.smsPriceToSend && !math.projectedAssignmentFee) return '';
@@ -3593,20 +3694,9 @@ function renderLandQueue(visible = [], selected = null) {
       const dallasAggregate = dallasProofRow ? dallasProofAggregateStatus(dallasProofRow) : null;
       const dallasSprintChip = dallasProofRow ? `<mark class="dallas-sprint-chip">Sprint #${h(dallasProofRow.sprintRank || dallasProofRow.rank)}</mark><mark class="dallas-proof-row-chip is-${h(dallasAggregate.tone)}">${h(dallasAggregate.label)}</mark>` : '';
       const tone = parcel.action === 'Call now' ? 'good' : parcel.action === 'Kill' ? 'bad' : parcel.risk.status === 'Review' ? 'warn' : 'neutral';
-      const queueReason = listingState.needsProof || listingState.rawFinding
-        ? 'Public proof needed'
-        : !listingState.enriched
-          ? 'Verified contact needed'
-          : !listingState.builderMatched
-            ? 'Buyer fit needed'
-            : listingState.offerReady ? 'Offer review ready' : 'Review seller action';
-      const queueActionCode = listingState.needsProof || listingState.rawFinding
-        ? 'Proof'
-        : !listingState.enriched
-          ? listingState.sourceBacked ? 'Trace' : 'Call'
-          : !listingState.builderMatched
-            ? 'Fit'
-            : listingState.offerReady ? 'Offer' : 'Next';
+      const mission = landParcelMissionTelemetry(parcel);
+      const queueReason = mission.nextAction;
+      const queueActionCode = mission.actionFamily;
       const queueActionClass = queueActionCode.toLowerCase();
       const queueMarketLabel = `${rowState(parcel) || 'state unknown'} · ${parcel.landMarketKey || 'market unknown'}`;
       const queueStateScent = parcel.selectedMarketMatch ? 'In lane' : 'Adjacent';
@@ -3624,14 +3714,15 @@ function renderLandQueue(visible = [], selected = null) {
         className: 'land-activity-toggle',
       })).join('');
       const visualChecklist = renderParcelVisualChecklist(parcel, { compact: true });
-      return `<article class="queue-item land-listing-row phase209-scan-rail-row phase225-action-rail-row action-${h(queueActionClass)} ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(listingState.detail)}" data-land-activity-row="${h(parcelKey)}">
+      return `<article class="queue-item land-listing-row phase209-scan-rail-row phase225-action-rail-row phase258-mission-row action-${h(queueActionClass)} ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(mission.reason)}" data-land-activity-row="${h(parcelKey)}">
         <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" aria-label="Select ${h(itemName)} - ${h(queueReason)}">
           <span class="land-row-action-rail"><b>${h(queueActionCode)}</b><i>${String(index + 1).padStart(2, '0')}</i></span>
           <b>${h(itemName)}</b>
           <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
           ${landLotFactChips(parcel, { compact: true })}
           ${renderLandOfferMathChips(parcel)}
-          <em><strong>${h(queueReason)}</strong><i>${h(listingState.confidence)} conf · ${h(parcel.score)} score</i></em>
+          ${renderParcelMissionStack(mission, { compact: true })}
+          <em><strong>${h(queueReason)}</strong><i>${h(mission.reason)}</i></em>
           <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
             <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>
             <mark class="contact-${h(contactState)}">${contactState === 'ready' ? 'Contact' : contactState === 'candidate' ? 'Candidate' : 'Contact needed'}</mark>
@@ -3685,10 +3776,15 @@ function renderParcels() {
       </div>${landSupportDrawer}`;
       return;
     }
-    target.innerHTML = `${landControls}${landSupportDrawer}<article class="deals-empty-state phase38-deals-empty" aria-label="Deals empty state">
-      <span class="eyebrow">No ready deals</span>
-      <h3>${h(selectedMarket ? `${selectedMarket.marketLabel || selectedMarket.label} is intentionally quiet.` : 'This lane is intentionally quiet.')}</h3>
-      <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'this market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness.' : 'no public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
+    const emptyLaneLabel = selectedMarket ? (selectedMarket.marketLabel || selectedMarket.label) : 'This lane';
+    const emptyLaneAction = selectedMarket && Number(selectedMarket.builderCount || 0) > 0
+      ? 'Call three builders and capture the buy-box before importing public owner rows.'
+      : 'Hold seller sourcing until a buyer signal or proof packet exists.';
+    target.innerHTML = `${landControls}${landSupportDrawer}<article class="deals-empty-state phase38-deals-empty phase258-lane-empty-mission" aria-label="Lane empty mission state">
+      <span class="eyebrow">Lane mission control</span>
+      <h3>${h(`${emptyLaneLabel} is intentionally quiet.`)}</h3>
+      <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'This lane is intentionally quiet. This market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness. Zero rows is a control state, not a missing-data failure.' : 'This lane is intentionally quiet. No public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
+      <div class="phase258-empty-ledger"><span>Buyer proof</span><b>${h(Number(selectedMarket?.builderCount || 0) > 0 ? `${selectedMarket.builderCount} builder signals staged` : 'Needed')}</b><span>Seller queue</span><b>Closed until public owner records match the lane</b><span>Allowed action</span><b>${h(emptyLaneAction)}</b></div>
       <a class="deals-empty-next" href="#builders" data-view="builders">Validate one buyer first ${productIcon('arrow')}</a>
     </article>`;
     return;
@@ -3703,6 +3799,7 @@ function renderParcels() {
   const operatorChecklist = buildOperatorChecklist(selected, buyer);
   const buyerMemo = generateBuyerSendMemo(selected, buyer, generateOfferPacket(selected, buyer));
   const selectedListingState = parcelListingState(selected);
+  const selectedMission = landParcelMissionTelemetry(selected, buyer);
   const selectedDallasProofRow = dallasProofRowForParcel(selected);
   const selectedDallasProofAggregate = selectedDallasProofRow ? dallasProofAggregateStatus(selectedDallasProofRow) : null;
   const selectedDallasProofPanel = selectedDallasProofRow ? `<details class="selected-dallas-proof-panel phase212-proof-depth" aria-label="Selected Dallas proof sprint detail">
@@ -3786,7 +3883,7 @@ function renderParcels() {
   </section>`;
 
   target.innerHTML = `${landControls}${stateWorkbenchBrief}<div class="deal-workbench phase206-selected-state-workbench">
-    <div class="primary-action-strip deals-primary-action phase208-operator-action"><span>Next action</span><b>${h(selectedListingState.needsProof || selectedListingState.rawFinding ? 'Attach public proof before contact or money review.' : selectedListingState.contactCandidate ? 'Verify one contact, then reopen seller action.' : selectedListingState.enriched && !selectedListingState.builderMatched ? 'Match this owner to a buyer before pricing.' : getNextAction(selected))}</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
+    <div class="primary-action-strip deals-primary-action phase208-operator-action phase258-primary-action"><span>Next action</span><b>${h(selectedMission.allowedAction)}</b><a class="${selectedCallable ? '' : 'is-disabled'}" aria-disabled="${selectedCallable ? 'false' : 'true'}" href="${selectedCallable && selected.ownerPhone ? `tel:${h(selected.ownerPhone)}` : '#'}">${h(selectedPrimaryAction)} ${productIcon('arrow')}</a></div>
     ${renderLandQueue(visible, selected)}
 
     <article class="deal-detail land-calm-operator-sheet phase208-calm-operator-sheet ${selectedMoneyReady ? 'is-money-ready' : 'is-money-parked'}" aria-label="Selected parcel calm operator sheet">
@@ -3798,6 +3895,7 @@ function renderParcels() {
         ${duplicateNotice}
         <div class="badge-stack">${badge(`${selected.score} deal score`, actionTone)}${badge(selected.action, actionTone)}${badge(selected.risk.status, riskTone)}</div>
       </div>
+      ${renderSelectedParcelMissionSheet(selected, buyer, selectedMission)}
       ${selectedNeighborhoodContext}
       ${selectedGateSummary}
       ${renderParcelVisualChecklist(selected, { compact: false })}

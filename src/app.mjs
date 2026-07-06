@@ -2924,10 +2924,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           ${contactProofLink ? `<a class="validation-call-button secondary website-link" href="${h(contactProofLink)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
-        ${renderBuyBoxCompletion(selected)}
-        ${renderAskNext(selected)}
-        <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
-          <label class="form-field field-status">Status <select class="validation-status">${statusOptions}</select></label>
+        <details class="buybox-capture-sheet">
+          <summary><span>Capture buy box</span><b>${h(completion.complete)}/${h(completion.total)}</b></summary>
+          ${renderBuyBoxCompletion(selected)}
+          ${renderAskNext(selected)}
+          <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
+            <label class="form-field field-status">Status <select class="validation-status">${statusOptions}</select></label>
           <label class="form-field field-last">Last touch <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
           <label class="form-field field-callback">Callback <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
           <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
@@ -2939,8 +2941,9 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           <label class="form-field field-product">Product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
           <label class="form-field field-killers ${fieldStateClass(selected, 'dealKillers')}">${fieldLabel('Killers', selected, 'dealKillers')}<input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
           <label class="form-field field-notes wide">Exact language <textarea class="validation-notes" placeholder="Paste what they said. No interpretation.">${h(selected.callNotes || '')}</textarea></label>
-          <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status" aria-live="polite"></span></div>
-        </div>
+            <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status" aria-live="polite"></span></div>
+          </div>
+        </details>
       </article>
       <aside class="seller-unlock-card ${selected.sellerSearch?.eligible ? 'unlocked' : ''}">
         <div class="panel-kicker"><span>Seller gate</span><b>${selected.sellerSearch?.eligible ? 'open' : `${completion.complete}/${completion.total}`}</b></div>
@@ -3159,7 +3162,9 @@ function renderBuilderListEnginePanel(options = {}) {
 
     ${renderBuyerValidationCommandCenter(activeState, activeBuilders, activeSummary)}
 
-    <section class="builder-two-col">
+    <details class="builder-source-depth-drawer">
+      <summary><span>Source depth</span><b>Permit portal landscape, adapters, normalization</b></summary>
+      <section class="builder-two-col">
       <article id="permit-landscape" class="builder-adapter-panel wide-permit-panel">
         <div class="panel-kicker"><span>Permit portal landscape</span><b>market switchboard · buyer-first lanes</b></div>
         <p class="permit-landscape-summary">${h(permitLandscape.summary)}</p>
@@ -3170,7 +3175,8 @@ function renderBuilderListEnginePanel(options = {}) {
         <h4>Normalization playbook</h4>
         <div class="normalization-grid">${tierRows}</div>
       </article>
-    </section>
+      </section>
+    </details>
   </div>`;
   if (preservedViewport) restoreBuilderInteractionViewport(preservedViewport);
 }

@@ -35864,3 +35864,68 @@ body[data-active-view="builders"] #buyer-validation-command .validation-queue-it
 body[data-active-view="builders"] #buyer-validation-command .validation-queue-item .queue-phone.is-missing {
   color: rgba(31, 46, 39, .38) !important;
 }
+
+/* v1.94.4 - Builders selected-detail contact ledger: phone belongs in detail, not queue */
+body[data-active-view="builders"] #buyer-validation-command .validation-queue-item .queue-phone {
+  display: none !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin: 8px 0 10px !important;
+  border-top: 1px solid rgba(31, 46, 39, .14) !important;
+  border-bottom: 1px solid rgba(31, 46, 39, .14) !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger > div {
+  display: grid !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+  padding: 10px 12px !important;
+  border-right: 1px solid rgba(31, 46, 39, .10) !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger > div:last-child {
+  border-right: 0 !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger span:first-child {
+  color: rgba(31, 46, 39, .52) !important;
+  font: 800 9px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-value,
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger strong {
+  overflow-wrap: anywhere !important;
+  color: #17211c !important;
+  font: 760 14px/1.18 var(--font-readable, system-ui, sans-serif) !important;
+  text-decoration: none !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-value span {
+  color: #0f4d35 !important;
+  font: 850 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+
+body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-value.is-missing {
+  color: rgba(31, 46, 39, .42) !important;
+}
+
+@media (max-width: 720px) {
+  body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger > div {
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(31, 46, 39, .10) !important;
+  }
+  body[data-active-view="builders"] #buyer-validation-command .builder-detail-contact-ledger > div:last-child {
+    border-bottom: 0 !important;
+  }
+}

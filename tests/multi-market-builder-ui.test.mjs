@@ -52,7 +52,9 @@ assert.match(app, /data-builder-queue-filter="needs-buybox"/, 'Builders queue sh
 assert.match(app, /data-builder-queue-filter="seller-open"/, 'Builders queue should have seller-gate-open filter chip');
 assert.match(app, /data-builder-queue-sort/, 'Builders queue should sort by rank, score, permits, and buy-box capture');
 assert.match(app, /function applyBuilderQueueControls/, 'Builders queue controls should filter/sort client-side without rerendering the market page');
-assert.match(app, /class="queue-phone"/, 'Builders queue rows should show a compact p: phone line for faster call scanning');
+assert.doesNotMatch(app, /class="queue-phone"/, 'Builders queue rows should stay compact; phone detail belongs in the selected builder detail section');
+assert.match(app, /builder-detail-contact-ledger/, 'Selected builder detail should expose the organized phone/email contact ledger');
+assert.match(app, /<span>p:<\/span>/, 'Selected builder detail should show a compact p: phone prefix');
 assert.match(app, /seller sourcing stays parked until a buy box is captured/, 'Selected market copy should keep the buyer-first proof gate clear');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
@@ -177,6 +179,7 @@ assert.match(css, /v1\.94 - Builders intelligent queue rail/, 'Phase 250 intelli
 assert.match(css, /v1\.94\.1 - Builders queue controls second pass/, 'Phase 250 queue controls second-pass layer missing');
 assert.match(css, /v1\.94\.2 - Builders mobile queue viewport/, 'Phase 250 mobile queue viewport repair layer missing');
 assert.match(css, /v1\.94\.3 - Builders queue phone line/, 'Phase 250 queue phone-line layer missing');
+assert.match(css, /v1\.94\.4 - Builders selected-detail contact ledger/, 'Phase 250 selected detail contact ledger layer missing');
 assert.match(css, /--phase248-builders-rule: lower-command-surface-queue-detail-cockpit/, 'Phase 248 queue-detail cockpit token missing');
 assert.match(css, /--phase249-builders-rule: anti-flicker-stable-market-navigation/, 'Phase 249 stable Builders navigation token missing');
 assert.match(css, /--phase250-builders-rule: intelligent-queue-rail-compact-filter-sort/, 'Phase 250 compact queue filter/sort token missing');

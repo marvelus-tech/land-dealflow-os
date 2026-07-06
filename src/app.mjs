@@ -2858,7 +2858,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     const searchText = [item.name, item.marketName, item.phone, item.email, item.contactStatus, item.sourceType, item.contactConfidence].filter(Boolean).join(' ').toLowerCase();
     return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}" data-builder-search="${h(searchText)}" data-builder-score="${h(item.validation.score || 0)}" data-builder-permits="${h(item.recentBuilds || 0)}" data-builder-completion="${h(itemCompletion.complete || 0)}" data-builder-callable="${item.phone || item.email ? 'true' : 'false'}" data-builder-seller-open="${item.validation.sellerEligible ? 'true' : 'false'}" data-builder-needs-buybox="${item.validation.sellerEligible ? 'false' : 'true'}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
-        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small>${item.phone ? `<small class="queue-phone"><span>p:</span> ${h(item.phone)}</small>` : '<small class="queue-phone is-missing"><span>p:</span> unresolved</small>'}</span>
+        <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
       </button>
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
@@ -2888,6 +2888,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     <div><span>Top permit</span><strong>${h(selected.topPermit || '-')}</strong></div>
   </div>`;
   const phoneHref = selected.phone ? `tel:${h(String(selected.phone).replace(/[^0-9+]/g, ''))}` : '#';
+  const detailPhone = selected.phone ? `<a class="builder-detail-contact-value" href="${phoneHref}"><span>p:</span> ${h(selected.phone)}</a>` : '<span class="builder-detail-contact-value is-missing"><span>p:</span> unresolved</span>';
   const marketLabel = selected.marketName || activeState.marketLabel || activeState.label || 'your market';
   const marketingEmail = generateBuilderMarketingEmailTemplate(selected);
   const validationEmail = selected.emailDraft || {};
@@ -2895,6 +2896,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const validationEmailSubject = validationEmail.subject || fallbackEmail.subject;
   const validationEmailBody = fallbackEmail.body;
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
+  const detailEmail = selected.email ? `<a class="builder-detail-contact-value" href="${mailHref}"><span>e:</span> ${h(selected.email)}</a>` : '<span class="builder-detail-contact-value is-missing"><span>e:</span> unresolved</span>';
   const nextActionCopy = selected.sellerSearch?.eligible
     ? 'Buy box captured. Find parcels matching this builder before seller outreach starts.'
     : `Call once. Capture the exact buy box. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
@@ -2932,6 +2934,11 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
             <summary>${solidIndustryIcon('score')}<strong>${h(selected.validation?.score || 0)}</strong><span>score detail</span></summary>
             <div class="score-breakdown">${selectedScoreRows}</div>
           </details>
+        </div>
+        <div class="builder-detail-contact-ledger" aria-label="Builder contact detail">
+          <div><span>Phone</span>${detailPhone}</div>
+          <div><span>Email</span>${detailEmail}</div>
+          <div><span>Proof path</span><strong>${h(selected.contactConfidence || selected.confidence || 'verify public path')}</strong></div>
         </div>
         <div class="next-best-action"><span>Next</span><strong>${h(nextActionCopy)}</strong></div>
         ${sourceProof}

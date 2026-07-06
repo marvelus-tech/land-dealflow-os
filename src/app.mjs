@@ -296,7 +296,43 @@ function builderMarketRouteHash({ stateCode = selectedBuilderMarketState, market
   return `#builders/state/${encodeURIComponent(stateCode || 'FL')}`;
 }
 
+function landMarketRouteHash({ stateCode = selectedLandStateFilter, marketKey = selectedDealsMarketKey } = {}) {
+  if (marketKey && marketKey !== 'all') return `#deals/market/${encodeURIComponent(marketKey)}`;
+  if (stateCode && stateCode !== 'all') return `#deals/state/${encodeURIComponent(stateCode)}`;
+  return '#deals';
+}
+
+function landRouteSelectionFromHash(hash = location.hash) {
+  const [view, scope, value] = hashToParts(hash);
+  if (view !== 'deals') return null;
+  if (scope === 'market' && value) return { type: 'market', value };
+  if (scope === 'state' && value) return { type: 'state', value: value.toUpperCase() };
+  return null;
+}
+
+function syncLandSelectionFromRoute(hash = location.hash) {
+  const route = landRouteSelectionFromHash(hash);
+  if (!route) return;
+  if (route.type === 'market') {
+    if (route.value === 'all') {
+      selectedDealsMarketKey = 'all';
+      return;
+    }
+    const market = route.value === 'dallas-tx' ? { state: 'TX' } : builderMarketRegistryByKey.get(route.value);
+    if (!market) return;
+    selectedDealsMarketKey = route.value;
+    selectedLandStateFilter = market.state || market.stateCode || selectedLandStateFilter;
+    return;
+  }
+  if (route.type === 'state') {
+    selectedLandStateFilter = route.value;
+    const activeMarket = getSelectedDealsMarket();
+    if (activeMarket && (activeMarket.stateCode || activeMarket.state) !== selectedLandStateFilter) selectedDealsMarketKey = 'all';
+  }
+}
+
 syncBuilderSelectionFromRoute();
+syncLandSelectionFromRoute();
 let lastBuilderSkipTraceImportStatus = '';
 let lastLandReconImportStatus = '';
 let openMachinePanel = '';
@@ -1441,7 +1477,6 @@ function renderLandControls() {
       <li title="Source-backed rows safe for next evidence work."><b>${h(activeState.sourceBacked || 0)}</b><span>proofed</span></li>
       <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(activeState.offerReady || 0)}</b><span>offer-ready</span></li>
     </ul>
-    ${renderDealsMarketCoverage()}
     ${renderNorthCarolinaWakeProofPackets()}
     ${sortControl}
     <p class="land-control-note">${h(stateNote)}</p>
@@ -1459,10 +1494,11 @@ function renderLandControls() {
         <strong>${h(activeState.label)}</strong>
         <em>${h(activeState.dealCount)} records · ${h(activeState.populatedSellerLaneCount || 0)} populated / ${h(activeState.countyCount || 0)} market lanes</em>
       </div>
-      <div class="state-workbench-layout">
+      <div class="state-workbench-layout land-market-first-layout">
         <div class="state-market-grid land-state-market-grid" data-land-state-selector>${stateSwitcher}</div>
-        ${marketSummary}
       </div>
+      ${renderDealsMarketCoverage()}
+      ${marketSummary}
     </div>
   </section>`;
 }
@@ -1594,25 +1630,26 @@ function renderDealsMarketCoverage() {
   const selected = entries.find(market => market.isDealsActive) || entries[0];
   const visibleEntries = entries.filter(market => market.key !== 'all');
   const liveCount = visibleEntries.filter(market => market.builderCount > 0).length;
-  const marketButtons = selectedLandStateFilter === 'all' ? `<p class="land-market-empty-note">Pick a state to unlock market lanes.</p>` : entries.map(market => {
+  const marketButtons = entries.map(market => {
     const toneClass = market.sourceState === 'live' ? 'is-live' : market.sourceState === 'thin' ? 'is-thin' : market.sourceState === 'all' ? 'is-all' : 'needs-work';
     const laneAbbrev = landLaneAbbrev(market);
-    return `<div role="button" tabindex="0" class="deals-market-card ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records.`)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
+    const marketState = market.stateCode || market.state || '';
+    return `<div role="button" tabindex="0" class="deals-market-card land-command-market ${toneClass} ${market.isDealsActive ? 'active' : ''}" data-deals-market-key="${h(market.key)}" data-land-market-state="${h(marketState)}" aria-label="${h(`${market.marketLabel || market.label}. ${market.dealCount} seller records.`)}" aria-pressed="${market.isDealsActive ? 'true' : 'false'}">
       <small><kbd>${h(laneAbbrev)}</kbd><strong>${h(market.marketLabel || market.label)}</strong></small>
       <span><b>${h(market.dealCount)}</b> records</span>
       <em>${h(market.sourceStatusCopy)} · ${h(market.dealStatusCopy)}</em>
     </div>`;
   }).join('');
   const scopeCopy = selectedLandStateFilter === 'all'
-    ? 'State first. Lanes stay parked until geography is explicit.'
-    : `${selectedLandStateFilter} lanes. Dallas proof stays in Dallas; low-signal markets stay visible but quiet.`;
-  return `<section class="deals-market-coverage land-market-lane-selector ${selectedLandStateFilter === 'all' ? 'is-state-required' : ''}" aria-label="Deals market lane selector">
-    <div class="deals-market-head">
-      <span class="eyebrow">Lane</span>
-      <h3>${h(selectedLandStateFilter === 'all' ? 'Parked.' : selected.key === 'all' ? 'All lanes.' : `${selected.marketLabel || selected.label}`)}</h3>
-      <p>${h(selectedLandStateFilter === 'all' ? scopeCopy : selected.key === 'all' ? scopeCopy : `${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
+    ? `${h(visibleEntries.length)} markets available. Pick one market and Land swaps the queue, proof sheet, and parcel detail underneath.`
+    : `${selectedLandStateFilter} lanes. Market selection owns the content below; low-signal markets stay visible but quiet.`;
+  return `<section class="deals-market-coverage land-market-lane-selector land-market-command-rail phase253-land-market-command-rail ${selectedLandStateFilter === 'all' ? 'is-market-index' : ''}" aria-label="Land market command rail">
+    <div class="deals-market-head land-market-command-head">
+      <span class="eyebrow">Land · market rail</span>
+      <h3>${h(selectedLandStateFilter === 'all' ? 'Choose market.' : selected.key === 'all' ? 'All market lanes.' : `${selected.marketLabel || selected.label}`)}</h3>
+      <p>${h(selected.key === 'all' ? scopeCopy : `${selected.dealStatusCopy}. ${selected.sourceStatusCopy}.`)}</p>
     </div>
-    <div class="deals-market-grid" role="listbox" aria-label="Select Deals market">${marketButtons}</div>
+    <div class="deals-market-grid land-market-command-scroll" role="listbox" aria-label="Select Land market">${marketButtons}</div>
   </section>`;
 }
 
@@ -5114,18 +5151,26 @@ ${body}`;
 
     const dealsMarketButton = event.target.closest('[data-deals-market-key]');
     if (dealsMarketButton) {
+      event.preventDefault();
       selectedDealsMarketKey = dealsMarketButton.dataset.dealsMarketKey || 'all';
+      const marketState = dealsMarketButton.dataset.landMarketState || '';
+      if (selectedDealsMarketKey !== 'all' && marketState) selectedLandStateFilter = marketState;
       selectedParcelId = '';
+      history.pushState(null, '', landMarketRouteHash({ marketKey: selectedDealsMarketKey, stateCode: selectedLandStateFilter }));
+      setActiveView('deals', { scrollToTop: true });
       renderParcels();
     }
 
     const landStateButton = event.target.closest('[data-land-state]');
     if (landStateButton) {
+      event.preventDefault();
       selectedLandStateFilter = landStateButton.dataset.landState || 'all';
       const activeMarket = getSelectedDealsMarket();
       if (selectedLandStateFilter === 'all') selectedDealsMarketKey = 'all';
       if (activeMarket && selectedLandStateFilter !== 'all' && (activeMarket.stateCode || activeMarket.state) !== selectedLandStateFilter) selectedDealsMarketKey = 'all';
       selectedParcelId = '';
+      history.pushState(null, '', landMarketRouteHash({ stateCode: selectedLandStateFilter, marketKey: selectedDealsMarketKey }));
+      setActiveView('deals', { scrollToTop: true });
       renderParcels();
     }
 
@@ -5204,7 +5249,11 @@ ${body}`;
     if (dealsMarketButton && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
       selectedDealsMarketKey = dealsMarketButton.dataset.dealsMarketKey || 'all';
+      const marketState = dealsMarketButton.dataset.landMarketState || '';
+      if (selectedDealsMarketKey !== 'all' && marketState) selectedLandStateFilter = marketState;
       selectedParcelId = '';
+      history.pushState(null, '', landMarketRouteHash({ marketKey: selectedDealsMarketKey, stateCode: selectedLandStateFilter }));
+      setActiveView('deals', { scrollToTop: true });
       renderParcels();
       return;
     }
@@ -5220,6 +5269,8 @@ ${body}`;
       }
       if (landKeyboardButton.dataset.landSort) selectedLandSort = landKeyboardButton.dataset.landSort || 'priority';
       selectedParcelId = '';
+      history.pushState(null, '', landMarketRouteHash({ stateCode: selectedLandStateFilter, marketKey: selectedDealsMarketKey }));
+      setActiveView('deals', { scrollToTop: true });
       renderParcels();
       return;
     }
@@ -5267,6 +5318,13 @@ ${body}`;
       syncBuilderSelectionFromRoute();
       setActiveView(view, { scrollToTop: true });
       renderBuilderListEnginePanel();
+      return;
+    }
+    if (view === 'deals') {
+      syncLandSelectionFromRoute();
+      setActiveView(view, { scrollToTop: true });
+      renderFilters();
+      renderParcels();
       return;
     }
     setActiveView(view, { scrollToTop: true });

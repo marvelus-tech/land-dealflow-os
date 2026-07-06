@@ -90,8 +90,10 @@ assert.match(css, /\.phase213-state-rail>div[\s\S]{0,140}grid-template-columns:r
 assert.match(css, /\.phase213-support-drawer:not\(\[open\]\) \.land-support-drawer-body \{ display:none !important; \}/, 'Support modules must be collapsed by default.');
 assert.match(css, /\.phase211-single-state-switcher>div[\s\S]{0,180}grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/, 'Single state switcher must be a readable ledger, not a pill soup.');
 assert.match(css, /@media \(max-width:560px\)[\s\S]*\.phase211-single-state-switcher>div \{ grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/, 'Mobile single state switcher must stay compact without becoming a one-column wall.');
-assert.match(css, /\.land-market-lane-selector:not\(\.is-state-required\)[\s\S]{0,260}display:block !important/, 'Selected-state market lanes must be a compact control.');
-assert.match(css, /\.land-market-lane-selector\.is-state-required \{ display:none !important; \}/, 'All-states should hide market lanes until the single state switcher picks a state.');
+assert.match(css, /phase253-land-market-command-rail: market-index-above-swapped-market-content/, 'Land market selector must become a top market command rail mirroring Builders IA.');
+assert.match(app, /data-land-market-state/, 'Land market cards must carry state so selecting a market swaps the state-scoped content underneath.');
+assert.match(app, /function landMarketRouteHash/, 'Land market selections must be route-addressable like Builders market selections.');
+assert.match(app, /#deals\/market\//, 'Land market route should support direct market URLs.');
 assert.match(css, /--land-phase216-self-review: command-demoted-workbench-raised-row-noise-reduced/, 'Land page must encode the second-pass Apple self-review corrections.');
 assert.match(css, /--land-phase217-selected-polish: compact-state-brief-no-duplicate-action-rail/, 'Selected parcel view must encode the compact selected-state polish pass.');
 assert.match(css, /--land-phase218-workbench: builder-style-state-ledger/, 'Land top workbench must encode the Builders-style state-ledger hero rule.');

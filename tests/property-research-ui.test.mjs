@@ -26,6 +26,7 @@ const expectedAssets = [
   ['data/real/property-research/600-midway-osman-pineda-comp-2026-07-07.md', '3402-605-0094-000-5'],
   ['data/real/property-research/2520-s-ocean-blaine-meehan-comp-2026-07-07.md', '2413-501-0122-000-3'],
   ['data/real/property-research/603-dark-hammock-clint-hughes-comp-2026-07-07.md', '2408-702-0011-000-3'],
+  ['data/real/property-research/1185-sw-gastador-dallas-black-comp-2026-07-07.md', '3420-535-2212-000-5'],
   ['data/real/property-research/2992-se-buccaneer-robert-riley-comp-2026-07-07.md', '3420-695-0776-000-5'],
   ['data/real/property-research/11-se-rio-angelica-john-joyce-comp-2026-07-07.md', '442180001350006'],
   ['data/real/property-research/3831-van-ness-jorge-reynosa-comp-2026-07-07.md', '00000530488000000'],

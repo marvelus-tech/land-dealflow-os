@@ -463,6 +463,21 @@ const propertyResearchReports = [
     nextAction: 'Confirm whether seller means house+land or a legal excess-land split; do not call it vacant land.'
   },
   {
+    id: 'port-st-lucie-gastador-dallas-black',
+    state: 'FL',
+    marketKey: 'port-st-lucie-fl',
+    market: 'Port St. Lucie / Gatlin-Gastador pocket',
+    title: '1185/1193 SW Gastador Ave - Dallas Black',
+    updatedAt: '2026-07-07',
+    status: 'Identity conflict · not clean vacant',
+    parcelId: '3420-535-2212-000-5',
+    assetUrl: 'data/real/property-research/1185-sw-gastador-dallas-black-comp-2026-07-07.md',
+    verdict: 'Seller-provided 1185 SW Gastador did not resolve as a separate clean vacant parcel; owner-matching official parcel is improved 1193 SW Gastador.',
+    offer: 'If separate buildable vacant lot is proven: $80k-$90k open; $100k-$110k walk-up; $115k-$120k max only buyer-backed.',
+    proof: ['PASLC account 52146', 'DOR use 001 / improved homestead', '1,132 sf living area', 'RS-2 / Zone X context'],
+    nextAction: 'Ask Dallas for parcel ID/tax bill and confirm whether this is full house parcel, separate vacant lot, or side-yard split.'
+  },
+  {
     id: 'port-st-lucie-buccaneer-robert-riley',
     state: 'FL',
     marketKey: 'port-st-lucie-fl',
@@ -526,7 +541,7 @@ const propertyResearchReports = [
 
 const propertyResearchMarketEntries = [
   { key: 'fort-pierce-fl', state: 'FL', stateCode: 'FL', label: 'Fort Pierce', marketLabel: 'Fort Pierce property comps', builderCount: 0, isThin: true, statusCopy: '3 source-backed comp packets' },
-  { key: 'port-st-lucie-fl', state: 'FL', stateCode: 'FL', label: 'Port St. Lucie', marketLabel: 'Port St. Lucie property comps', builderCount: 0, isThin: true, statusCopy: '2 source-backed comp packets' },
+  { key: 'port-st-lucie-fl', state: 'FL', stateCode: 'FL', label: 'Port St. Lucie', marketLabel: 'Port St. Lucie property comps', builderCount: 0, isThin: true, statusCopy: '3 source-backed comp packets' },
 ];
 
 const stages = [

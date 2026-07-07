@@ -37757,3 +37757,153 @@ body[data-active-view="deals"] #parcels .land-report-warning {
     padding-inline: 16px !important;
   }
 }
+
+/* v1.97 - Phase 262: source-backed property research packets are visible inside Land queues. */
+body[data-active-view="deals"] #parcels .phase262-property-research {
+  --phase262-property-research: elegant-public-comp-packets-in-land-queue;
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  display: grid !important;
+  gap: 16px !important;
+  margin-top: 18px !important;
+  padding: clamp(18px, 2.4vw, 26px) !important;
+  border: 1px solid rgba(10,20,16,.12) !important;
+  background: linear-gradient(135deg, rgba(250,248,240,.9), rgba(255,255,251,.72)) !important;
+  box-shadow: 0 20px 58px rgba(10,20,16,.055) !important;
+}
+body[data-active-view="deals"] #parcels .property-research-head {
+  display: grid !important;
+  gap: 5px !important;
+  max-width: 760px !important;
+}
+body[data-active-view="deals"] #parcels .property-research-head h3 {
+  margin: 0 !important;
+  color: #0f1712 !important;
+  font-size: clamp(24px, 3vw, 42px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.052em !important;
+}
+body[data-active-view="deals"] #parcels .property-research-head p {
+  margin: 0 !important;
+  color: rgba(15,23,42,.62) !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="deals"] #parcels .property-research-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+  gap: 12px !important;
+  min-width: 0 !important;
+}
+body[data-active-view="deals"] #parcels .property-research-grid.state {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)) !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card {
+  display: grid !important;
+  align-content: start !important;
+  gap: 12px !important;
+  min-width: 0 !important;
+  padding: 17px !important;
+  border: 1px solid rgba(10,20,16,.12) !important;
+  background: rgba(255,255,251,.88) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.72) !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card-head {
+  display: grid !important;
+  gap: 6px !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card-head span {
+  width: max-content !important;
+  max-width: 100% !important;
+  padding: 5px 8px !important;
+  border: 1px solid rgba(166,120,35,.28) !important;
+  color: #8a5f18 !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card-head strong {
+  color: #101813 !important;
+  font-size: clamp(17px, 1.5vw, 22px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.034em !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card-head em,
+body[data-active-view="deals"] #parcels .property-research-card p,
+body[data-active-view="deals"] #parcels .property-research-card li,
+body[data-active-view="deals"] #parcels .property-research-next p {
+  color: rgba(15,23,42,.66) !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card p { margin: 0 !important; }
+body[data-active-view="deals"] #parcels .property-research-card dl {
+  display: grid !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 11px 0 !important;
+  border-top: 1px solid rgba(10,20,16,.1) !important;
+  border-bottom: 1px solid rgba(10,20,16,.1) !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card dl div {
+  display: grid !important;
+  grid-template-columns: 74px minmax(0,1fr) !important;
+  gap: 10px !important;
+  align-items: start !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card dt,
+body[data-active-view="deals"] #parcels .property-research-next span {
+  color: #9b6a1a !important;
+  font-size: 9px !important;
+  font-weight: 900 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card dd {
+  margin: 0 !important;
+  color: #111827 !important;
+  font-size: 12px !important;
+  line-height: 1.38 !important;
+}
+body[data-active-view="deals"] #parcels .property-research-card ul {
+  display: grid !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  padding-left: 17px !important;
+}
+body[data-active-view="deals"] #parcels .property-research-next {
+  display: grid !important;
+  gap: 5px !important;
+  padding-top: 2px !important;
+}
+body[data-active-view="deals"] #parcels .property-research-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  margin-top: 2px !important;
+}
+body[data-active-view="deals"] #parcels .property-research-download {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 34px !important;
+  padding: 0 11px !important;
+  border: 1px solid rgba(15,23,42,.16) !important;
+  color: #18221c !important;
+  background: rgba(255,255,255,.62) !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  text-decoration: none !important;
+}
+body[data-active-view="deals"] #parcels .property-research-download.primary {
+  border-color: #1f5e45 !important;
+  color: #fff !important;
+  background: #1f5e45 !important;
+}
+@media (max-width: 700px) {
+  body[data-active-view="deals"] #parcels .phase262-property-research { padding: 16px !important; }
+  body[data-active-view="deals"] #parcels .property-research-card { padding: 14px !important; }
+  body[data-active-view="deals"] #parcels .property-research-card dl div { grid-template-columns: 1fr !important; gap: 3px !important; }
+  body[data-active-view="deals"] #parcels .property-research-actions { display: grid !important; grid-template-columns: 1fr 1fr !important; }
+}

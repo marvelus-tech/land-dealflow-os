@@ -414,6 +414,121 @@ const texasLandReports = [
   }
 ];
 
+
+
+const propertyResearchReports = [
+  {
+    id: 'fort-pierce-midway-osman-pineda',
+    state: 'FL',
+    marketKey: 'fort-pierce-fl',
+    market: 'Fort Pierce / St. Lucie County',
+    title: '600/602 E Midway Rd - Osman Pineda',
+    updatedAt: '2026-07-07',
+    status: 'Manual review · not vacant',
+    parcelId: '3402-605-0094-000-5',
+    assetUrl: 'data/real/property-research/600-midway-osman-pineda-comp-2026-07-07.md',
+    verdict: 'Official PASLC record is an improved 1.01 ac SFR parcel, not a clean vacant-land lead.',
+    offer: 'Land-only fallback: $55k-$65k anchor; $75k-$90k walk-up; buyer-backed $105k-$120k ceiling only if legal split/buildability are clean.',
+    proof: ['PASLC account 36845', '1,293 sf SFR + detached garage', 'Zone X / minimal flood', 'RS-2 residential context'],
+    nextAction: 'Ask whether seller means whole improved property, teardown, or legal split/excess land before any land offer.'
+  },
+  {
+    id: 'fort-pierce-s-ocean-blaine-meehan',
+    state: 'FL',
+    marketKey: 'fort-pierce-fl',
+    market: 'Fort Pierce / Hutchinson Island',
+    title: '2520 S Ocean Dr - Blaine Meehan',
+    updatedAt: '2026-07-07',
+    status: 'Source-backed · buyer-first',
+    parcelId: '2413-501-0122-000-3',
+    assetUrl: 'data/real/property-research/2520-s-ocean-blaine-meehan-comp-2026-07-07.md',
+    verdict: 'Tiny vacant C-3 island lot with beach/Intracoastal proximity; value depends on commercial use envelope and flood/parking feasibility.',
+    offer: '$180k recommended cash offer; pause above $205k without buyer proof; $225k-$230k ceiling only with $275k+ appetite.',
+    proof: ['PASLC account 151711', '0.17 ac / 7,512 sf vacant land', 'C-3 General Commercial', 'FEMA AE coastal floodplain'],
+    nextAction: 'Capture buyer/end-user appetite first, then verify C-3 use, parking, utilities, flood elevation, and title.'
+  },
+  {
+    id: 'fort-pierce-dark-hammock-clint-hughes',
+    state: 'FL',
+    marketKey: 'fort-pierce-fl',
+    market: 'Fort Pierce / St. Lucie County',
+    title: '603/601 Dark Hammock Rd - Clint Hughes',
+    updatedAt: '2026-07-07',
+    status: 'Manual review · not vacant',
+    parcelId: '2408-702-0011-000-3',
+    assetUrl: 'data/real/property-research/603-dark-hammock-clint-hughes-comp-2026-07-07.md',
+    verdict: 'Official parcel match is an improved 0.91 ac homestead with a 3,600 sf residence, not a standalone vacant-lot comp.',
+    offer: 'Land/teardown fallback: $65k-$95k initial/mid; $110k max only if buyer-backed and split/buildability are proven.',
+    proof: ['PASLC account 20712', '3,600 sf SFR + pool features', 'R-1 / low-density residential', 'Zone X / minimal flood'],
+    nextAction: 'Confirm whether seller means house+land or a legal excess-land split; do not call it vacant land.'
+  },
+  {
+    id: 'port-st-lucie-buccaneer-robert-riley',
+    state: 'FL',
+    marketKey: 'port-st-lucie-fl',
+    market: 'Port St. Lucie / St. Lucie County',
+    title: '2992 SE Buccaneer Cir - Robert Riley',
+    updatedAt: '2026-07-07',
+    status: 'Reject at ask',
+    parcelId: '3420-695-0776-000-5',
+    assetUrl: 'data/real/property-research/2992-se-buccaneer-robert-riley-comp-2026-07-07.md',
+    verdict: '$850k ask is not a wholesale land buy; official vacant parcel value/nearby public sales support low-to-mid $100k context.',
+    offer: '$95k-$105k initial; $125k-$135k walk-up; $140k-$150k only if buyer-backed.',
+    proof: ['Vacant residential land', '9,880 sf / 0.2268 ac', '2025 public value $119,500', 'Zone X / minimal flood'],
+    nextAction: 'Reject or ask if $850k includes another parcel; verify he means 2992 vacant lot only, not adjacent improved property.'
+  },
+  {
+    id: 'port-st-lucie-rio-angelica-john-joyce',
+    state: 'FL',
+    marketKey: 'port-st-lucie-fl',
+    market: 'Port St. Lucie / Tesoro Club',
+    title: '11 SE Rio Angelica - John Joyce',
+    updatedAt: '2026-07-07',
+    status: 'Due diligence · no spread at ask',
+    parcelId: '442180001350006',
+    assetUrl: 'data/real/property-research/11-se-rio-angelica-john-joyce-comp-2026-07-07.md',
+    verdict: 'Real Tesoro Club vacant homesite, but $450k seller ask is near retail and leaves no wholesale spread without a locked buyer above $500k.',
+    offer: '$330k-$350k initial; $370k-$390k practical walk-up; $395k-$415k only with validated buyer takeout.',
+    proof: ['0.2387 ac / ~10,397 sf', 'same-street March 2026 comp around $410k', 'vacant residential parcel', 'HOA/membership friction unresolved'],
+    nextAction: 'Verify HOA/membership transfer, view/frontage, buildability, and buyer demand before contracting.'
+  },
+  {
+    id: 'dallas-van-ness-jorge-reynosa',
+    state: 'TX',
+    marketKey: 'dallas-tx',
+    market: 'Dallas / Preston Hollow fringe / 75220',
+    title: '3831 Van Ness Pl - Jorge Reynosa',
+    updatedAt: '2026-07-07',
+    status: 'Buyer-first only',
+    parcelId: '00000530488000000',
+    assetUrl: 'data/real/property-research/3831-van-ness-jorge-reynosa-comp-2026-07-07.md',
+    verdict: 'Valid Dallas infill vacant-lot / teardown-lot play, but $750k no-less seller ask is above conservative buyer-first wholesale posture.',
+    offer: 'Avoid hard contract at $750k without locked buyer; prefer option/JV or buyer confirmation before moving.',
+    proof: ['DCAD vacant lot / no improvements', '10,141 sf / 0.233 ac', 'R-7.5(A)', 'Zone X / minimal flood'],
+    nextAction: 'Use buyer-first Dallas proof sprint and portal manual checks before offer-ready status.'
+  },
+  {
+    id: 'clermont-e-minneola-ahmad-alyahya',
+    state: 'FL',
+    marketKey: 'clermont-fl',
+    market: 'Clermont / Lake County',
+    title: 'E Minneola Ave - Ahmad Alyahya',
+    updatedAt: '2026-07-07',
+    status: 'Due diligence · contingent contract',
+    parcelId: '24-22-25-0150-00O-00208',
+    assetUrl: 'data/real/property-research/e-minneola-ahmad-alyahya-comp-2026-07-07.md',
+    verdict: '$110k can work only if access, frontage, zoning/buildability, utilities, drainage, and title are clean.',
+    offer: '$95k-$100k ideal; $110k walk-up with assignability + full due diligence; safe exit low around $140k if usable/buildable.',
+    proof: ['0.9378 ac / 40,850 sf', 'DOR 010 vacant commercial-style land', '2025 public value $32,623', 'low official value signals hidden-constraint risk'],
+    nextAction: 'Make only a contingent contract and immediately verify parcel mechanics with Lake County/Clermont sources.'
+  }
+];
+
+const propertyResearchMarketEntries = [
+  { key: 'fort-pierce-fl', state: 'FL', stateCode: 'FL', label: 'Fort Pierce', marketLabel: 'Fort Pierce property comps', builderCount: 0, isThin: true, statusCopy: '3 source-backed comp packets' },
+  { key: 'port-st-lucie-fl', state: 'FL', stateCode: 'FL', label: 'Port St. Lucie', marketLabel: 'Port St. Lucie property comps', builderCount: 0, isThin: true, statusCopy: '2 source-backed comp packets' },
+];
+
 const stages = [
   { id: 'market', name: 'Market Finder', desc: 'Where to hunt first.', sourceType: 'market' },
   { id: 'buyer', name: 'Buyer Finder', desc: 'Who is actively building.', sourceType: 'buyer' },
@@ -532,7 +647,7 @@ function syncLandSelectionFromRoute(hash = location.hash) {
       selectedDealsMarketKey = 'all';
       return;
     }
-    const market = route.value === 'dallas-tx' ? { state: 'TX' } : builderMarketRegistryByKey.get(route.value);
+    const market = route.value === 'dallas-tx' ? { state: 'TX' } : builderMarketRegistryByKey.get(route.value) || propertyResearchMarketEntries.find(entry => entry.key === route.value);
     if (!market) return;
     selectedDealsMarketKey = route.value;
     selectedLandStateFilter = market.state || market.stateCode || selectedLandStateFilter;
@@ -1075,7 +1190,7 @@ function dallasVirtualMarketEntry() {
 function getSelectedDealsMarket() {
   if (selectedDealsMarketKey === 'all') return null;
   if (selectedDealsMarketKey === 'dallas-tx') return dallasVirtualMarketEntry();
-  return builderMarketSwitchboardEntries().find(market => market.key === selectedDealsMarketKey) || builderMarketRegistryByKey.get(selectedDealsMarketKey) || null;
+  return builderMarketSwitchboardEntries().find(market => market.key === selectedDealsMarketKey) || builderMarketRegistryByKey.get(selectedDealsMarketKey) || propertyResearchMarketEntries.find(entry => entry.key === selectedDealsMarketKey) || null;
 }
 
 function getLandRowMarketKey(parcel = {}) {
@@ -1667,7 +1782,7 @@ function dealsMarketCoverageEntries() {
   const cacheKey = `${selectedLandStateFilter}|${selectedDealsMarketKey}`;
   if (cachedDealsMarketEntries?.key === cacheKey) return cachedDealsMarketEntries.entries;
   const allDeals = scoredParcels();
-  const entries = builderMarketSwitchboardEntries().map(market => {
+  const entries = [...builderMarketSwitchboardEntries(), ...propertyResearchMarketEntries].map(market => {
     const dealCount = landRecordCountForMarket(allDeals, market);
     const sourceState = market.isLive ? 'live' : market.isThin ? 'thin' : 'needs-work';
     return {
@@ -1767,6 +1882,7 @@ function renderLandControls() {
         <li title="Rows with enriched owner contact."><b>${h(enriched)}</b><span>enriched</span></li>
         <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(offerReady)}</b><span>offer-ready</span></li>
       </ul>
+      ${renderSelectedMarketPropertyResearch()}
       ${renderNorthCarolinaWakeProofPackets()}
       ${sortControl}
       <p class="land-control-note">Market workspace active. Telemetry decides the next move; parcel content swaps below.</p>
@@ -1943,10 +2059,58 @@ function renderBulletList(items, className = '') {
   return `<ul${className ? ` class="${h(className)}"` : ''}>${(items || []).map(item => `<li>${h(item)}</li>`).join('')}</ul>`;
 }
 
+
+function propertyReportsForState(state = selectedLandStateFilter) {
+  if (!state || state === 'all') return propertyResearchReports;
+  return propertyResearchReports.filter(report => report.state === state);
+}
+
+function propertyReportsForSelectedMarket() {
+  if (!selectedDealsMarketKey || selectedDealsMarketKey === 'all') return [];
+  return propertyResearchReports.filter(report => report.marketKey === selectedDealsMarketKey);
+}
+
+function renderPropertyResearchCards(reports = [], mode = 'state') {
+  if (!reports.length) return '';
+  return reports.map(report => `<article class="property-research-card phase262-property-research-card" data-property-research-id="${h(report.id)}" data-property-research-market="${h(report.marketKey)}">
+    <div class="property-research-card-head">
+      <span>${h(report.status)}</span>
+      <strong>${h(report.title)}</strong>
+      <em>${h(report.market)} · updated ${h(report.updatedAt)}</em>
+    </div>
+    <p>${h(report.verdict)}</p>
+    <dl>
+      <div><dt>Parcel</dt><dd>${h(report.parcelId)}</dd></div>
+      <div><dt>Offer posture</dt><dd>${h(report.offer)}</dd></div>
+    </dl>
+    <ul>${asArray(report.proof).map(item => `<li>${h(item)}</li>`).join('')}</ul>
+    <div class="property-research-next"><span>Next action</span><p>${h(report.nextAction)}</p></div>
+    <div class="property-research-actions">
+      <a class="property-research-download primary" href="${h(report.assetUrl)}" download>Download research</a>
+      <a class="property-research-download" href="${h(report.assetUrl)}" target="_blank" rel="noopener">Open markdown</a>
+    </div>
+  </article>`).join('');
+}
+
+function renderSelectedMarketPropertyResearch() {
+  const reports = propertyReportsForSelectedMarket();
+  if (!reports.length) return '';
+  const liveCount = reports.length;
+  return `<section class="selected-market-property-research phase262-property-research" aria-label="Selected market property research">
+    <div class="property-research-head">
+      <span class="eyebrow">Property research</span>
+      <h3>${h(liveCount)} comp packet${liveCount === 1 ? '' : 's'} attached to this queue.</h3>
+      <p>Source-backed property research now lives inside the same market workspace as the queue. Public GitHub assets redact operator-supplied phones/emails; full parcel facts and source links remain in the downloadable markdown.</p>
+    </div>
+    <div class="property-research-grid">${renderPropertyResearchCards(reports, 'market')}</div>
+  </section>`;
+}
+
 function renderStateLandReports() {
   if (selectedLandStateFilter === 'all') return '';
   const reports = texasLandReports.filter(report => report.state === selectedLandStateFilter);
-  if (!reports.length) return '';
+  const propertyReports = propertyReportsForState(selectedLandStateFilter);
+  if (!reports.length && !propertyReports.length) return '';
   const stateLabel = landStateSelectorAbbreviations[selectedLandStateFilter] || selectedLandStateFilter;
   const dockTitle = selectedLandStateFilter === 'FL'
     ? 'Central Florida luxury-lot intelligence'
@@ -1954,7 +2118,7 @@ function renderStateLandReports() {
       ? 'Dallas seller approach intelligence'
       : `${stateLabel} seller approach intelligence`;
   const dockCopy = selectedLandStateFilter === 'FL'
-    ? 'Buyer-backed luxury lot / waterfront research stored in this project and surfaced only inside the FL Land section.'
+    ? 'Buyer-backed luxury lot / waterfront research plus individual property comp packets are stored in this project and surfaced inside the FL Land section.'
     : 'Buyer-backed teardown / lot-value research stored in this project and surfaced only inside the selected Land state section.';
   return `<section class="land-state-report-dock phase261-land-report-dock" aria-label="${h(stateLabel)} Land reports">
     <div class="land-report-dock-head">
@@ -1962,6 +2126,7 @@ function renderStateLandReports() {
       <h3>${h(dockTitle)}</h3>
       <p>${h(dockCopy)}</p>
     </div>
+    ${propertyReports.length ? `<div class="property-research-grid state">${renderPropertyResearchCards(propertyReports, 'state')}</div>` : ''}
     <div class="land-report-list">${reports.map(report => `<details class="land-report-card" id="${h(report.id)}">
       <summary><span>Reports</span><strong>${h(report.title)}</strong><em>${h(report.subtitle)}</em></summary>
       <div class="land-report-body">

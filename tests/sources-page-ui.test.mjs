@@ -22,7 +22,15 @@ assert.match(coreSource, /Buildchek|PermitVector/, 'Permit landscape data must p
 assert.match(appSource, /renderSourcePriorityBoard\(\)/, 'Sources priority board must be part of the render loop');
 assert.match(appSource, /Market Radar · placeholder/, 'Sources page must reserve the hot-land market radar workflow placeholder');
 assert.match(appSource, /Raw candidate != validated market/, 'Market Radar placeholder must keep raw candidates separate from validated markets');
-assert.match(appSource, /Land.com sold\/pending/, 'Market Radar placeholder must preserve the 15-minute market scan method');
+assert.match(appSource, /Land\.com sold\/pending/, 'Market Radar placeholder must preserve the 15-minute market scan method');
+assert.match(appSource, /const parcelPropertySearchResources = \[/, 'Parcel/property search resources must be stored in the app registry');
+assert.match(appSource, /renderParcelPropertySearchBoard\(\)/, 'Sources page must render the parcel/property search board');
+for (const marker of ['Knox County property search', 'Polk County property appraiser', 'Maricopa County assessor maps', 'Wake County real estate search', 'Travis CAD property search', 'Forsyth County qPublic search', 'Dorchester County property records']) {
+  assert.match(appSource, new RegExp(marker.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')), `Parcel/property search board must include ${marker}.`);
+}
+assert.match(appSource, /parcelPropertyResourceForMarketKey\(market\.key\)/, 'Builder market county ledger must attach the matching parcel/property search link');
+assert.match(css, /\.parcel-property-search-board/, 'Parcel/property search board must have a dedicated visual surface');
+assert.match(css, /\.parcel-property-grid[\s\S]{0,120}repeat\(7,/, 'Parcel/property search board should group the seven active market states');
 assert.match(css, /#weekly-market-scout:has\(\.market-radar-placeholder\)[\s\S]{0,180}max-height: none !important/, 'Market Radar placeholder must not inherit the collapsed weekly scout shell');
 assert.match(css, /#sources-hub \.source-popover[\s\S]{0,420}position: absolute !important/, 'Desktop source inspector must float instead of consuming card layout');
 assert.match(css, /bottom: calc\(100% \+ 12px\) !important/, 'Desktop source inspector must appear above the source control');

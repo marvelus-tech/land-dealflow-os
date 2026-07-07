@@ -158,6 +158,53 @@ const builderMarketRegistry = [
 
 const builderMarketRegistryByKey = new Map(builderMarketRegistry.map(market => [market.key, market]));
 
+const parcelPropertySearchResources = [
+  { marketKey: 'knoxville', state: 'TN', market: 'Knoxville / Knox County', county: 'Knox County', label: 'Knox County property search', url: 'https://propertyinfo.knoxcountytn.gov/Search/Disclaimer.aspx?FromUrl=../search/commonsearch.aspx?mode=realprop' },
+  { marketKey: 'nashville-edge-tn', state: 'TN', market: 'Nashville / Davidson County', county: 'Davidson County', label: 'Davidson County property search', url: 'https://portal.padctn.org/OFS/WP/Home' },
+  { marketKey: 'chattanooga-tn', state: 'TN', market: 'Chattanooga / Hamilton County', county: 'Hamilton County', label: 'Hamilton County assessor search', url: 'https://assessor.hamiltontn.gov/search' },
+  { marketKey: 'murfreesboro-tn', state: 'TN', market: 'Murfreesboro / Rutherford County', county: 'Rutherford County', label: 'Rutherford County property search', url: 'https://secured.rutherfordcountytn.gov/OFS/WP/Home' },
+  { marketKey: 'franklin-tn', state: 'TN', market: 'Franklin / Williamson County', county: 'Williamson County', label: 'Williamson County property search', url: 'https://inigo.williamson-tn.org/property_search/' },
+  { marketKey: 'polk', state: 'FL', market: 'Polk County / Lakeland', county: 'Polk County', label: 'Polk County property appraiser', url: 'https://www.polkflpa.gov/CamaDisplay.aspx' },
+  { marketKey: 'ocala-fl', state: 'FL', market: 'Ocala / Marion County', county: 'Marion County', label: 'Marion County property search', url: 'https://www.pa.marion.fl.us/SearchAgree.aspx' },
+  { marketKey: 'clermont-fl', state: 'FL', market: 'Clermont / Lake County', county: 'Lake County', label: 'Lake County property search', url: 'https://lakecopropappr.com/property-search.aspx' },
+  { marketKey: 'alachua-fl', state: 'FL', market: 'Gainesville / Alachua County', county: 'Alachua County', label: 'Alachua County qPublic search', url: 'https://qpublic.schneidercorp.com/Application.aspx?AppID=1081&LayerID=26490&PageTypeID=2&PageID=10768' },
+  { marketKey: 'maricopa', state: 'AZ', market: 'Phoenix-Mesa / Maricopa County', county: 'Maricopa County', label: 'Maricopa County assessor maps', url: 'https://maps.mcassessor.maricopa.gov/' },
+  { marketKey: 'tucson-az', state: 'AZ', market: 'Tucson / Pima County', county: 'Pima County', label: 'Pima County parcel search', url: 'https://www.asr.pima.gov/ParcelSearch' },
+  { marketKey: 'buckeye-az', state: 'AZ', market: 'Buckeye / Maricopa County', county: 'Maricopa County', label: 'Maricopa County assessor maps', url: 'https://maps.mcassessor.maricopa.gov/' },
+  { marketKey: 'raleigh', state: 'NC', market: 'Raleigh / Wake County', county: 'Wake County', label: 'Wake County real estate search', url: 'https://services.wake.gov/realestate/' },
+  { marketKey: 'charlotte-nc', state: 'NC', market: 'Charlotte / Mecklenburg County', county: 'Mecklenburg County', label: 'Mecklenburg County property search', url: 'https://property.spatialest.com/nc/mecklenburg/#/' },
+  { marketKey: 'greensboro-nc', state: 'NC', market: 'Greensboro / Guilford County', county: 'Guilford County', label: 'Guilford County tax CAMA', url: 'https://taxcama.guilfordcountync.gov/camapwa/' },
+  { marketKey: 'cabarrus-nc', state: 'NC', market: 'Concord / Cabarrus County', county: 'Cabarrus County', label: 'Cabarrus County GIS/property map', url: 'https://location.cabarruscounty.us/mapcabarrus/' },
+  { marketKey: 'austin', state: 'TX', market: 'Austin / Travis County', county: 'Travis County', label: 'Travis CAD property search', url: 'https://travis.prodigycad.com/property-search' },
+  { marketKey: 'san-antonio', state: 'TX', market: 'San Antonio / Bexar County', county: 'Bexar County', label: 'Bexar CAD property search', url: 'https://bexar.trueautomation.com/clientdb/propertysearch.aspx?cid=110' },
+  { marketKey: 'plano-tx', state: 'TX', market: 'Plano / Collin County', county: 'Collin County', label: 'Collin CAD property search', url: 'https://www.collincad.org/propertysearch' },
+  { marketKey: 'mcallen-tx', state: 'TX', market: 'McAllen / Hidalgo County', county: 'Hidalgo County', label: 'Hidalgo CAD property search', url: 'https://hidalgoad.org/property-search' },
+  { marketKey: 'forsyth-ga', state: 'GA', market: 'Forsyth County', county: 'Forsyth County', label: 'Forsyth County qPublic search', url: 'https://qpublic.schneidercorp.com/Application.aspx?App=ForsythCountyGA&PageType=Search' },
+  { marketKey: 'hall-ga', state: 'GA', market: 'Hall County / Gainesville', county: 'Hall County', label: 'Hall County qPublic search', url: 'https://qpublic.schneidercorp.com/Application.aspx?App=HallCountyGA&Layer=Parcels&PageType=Search' },
+  { marketKey: 'jackson-ga', state: 'GA', market: 'Jackson County', county: 'Jackson County', label: 'Jackson County qPublic search', url: 'https://qpublic.schneidercorp.com/Application.aspx?App=JacksonCountyGA&Layer=Parcels&PageType=Search' },
+  { marketKey: 'douglas-ga', state: 'GA', market: 'Douglas County', county: 'Douglas County', label: 'Douglas County qPublic search', url: 'https://qpublic.schneidercorp.com/Application.aspx?AppID=988&LayerID=20162&PageTypeID=2&PageID=8760' },
+  { marketKey: 'dorchester-sc', state: 'SC', market: 'Dorchester County', county: 'Dorchester County', label: 'Dorchester County property records', url: 'https://www.dorchestercountysc.gov/government/property-records-search' },
+  { marketKey: 'berkeley-sc', state: 'SC', market: 'Berkeley County', county: 'Berkeley County', label: 'Berkeley County property cards', url: 'https://www.berkeleycountysc.gov/propcards/' },
+  { marketKey: 'greenville-sc', state: 'SC', market: 'Greenville County', county: 'Greenville County', label: 'Greenville County real property search', url: 'https://www.greenvillecounty.org/appsAS400/RealProperty/' },
+];
+
+const parcelPropertySearchByMarketKey = new Map(parcelPropertySearchResources.map(resource => [resource.marketKey, resource]));
+const parcelPropertySearchByState = parcelPropertySearchResources.reduce((acc, resource) => {
+  const stateResources = acc.get(resource.state) || [];
+  stateResources.push(resource);
+  acc.set(resource.state, stateResources);
+  return acc;
+}, new Map());
+
+function parcelPropertyResourceForMarketKey(marketKey) {
+  return parcelPropertySearchByMarketKey.get(marketKey) || null;
+}
+
+function parcelPropertyResourcesForState(stateCode) {
+  return parcelPropertySearchByState.get(stateCode) || [];
+}
+
+
 const northCarolinaWakeProofPackets = [
   {
     zip: '27604',
@@ -2796,6 +2843,7 @@ function builderMarketSwitchboardEntries(permitLandscape = getPermitPortalLandsc
       isActive,
       sequence: stateMeta.sequence || {},
       markets: landscapeMarket ? [landscapeMarket] : [],
+      parcelPropertySearch: parcelPropertyResourceForMarketKey(registry.key),
       statusCopy: rows.length >= minimumUniqueBuilders ? `${rows.length} live builders` : rows.length > 0 ? `${rows.length}/${minimumUniqueBuilders} builders · needs more work` : '0 builders · needs source work',
     };
   });
@@ -2826,6 +2874,7 @@ function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntr
     const markets = marketEntries.filter(market => market.stateCode === stateCode || market.state === stateCode);
     if (!markets.length) return null;
     const rows = mergeDuplicateBuilderRows(markets.flatMap(market => asArray(market.rows)));
+    const parcelPropertySearches = parcelPropertyResourcesForState(stateCode);
     const stateMeta = asArray(permitLandscape.states).find(item => item.id === String(stateCode).toLowerCase()) || markets[0]?.stateMeta || {};
     const minimumUniqueBuilders = markets.reduce((sum, market) => sum + Number(market.minimumUniqueBuilders || 20), 0) || 20;
     const builderCount = rows.length;
@@ -2852,6 +2901,7 @@ function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntr
       marketLabel: thesis.thesis,
       rows,
       markets,
+      parcelPropertySearches,
       stateMeta,
       summary,
       builderCount,
@@ -2873,10 +2923,14 @@ function builderStateSummaryEntries(marketEntries = builderMarketSwitchboardEntr
 }
 
 function renderBuilderCountyLedger(activeState = {}) {
-  const rows = asArray(activeState.markets).map(market => `<li role="button" tabindex="0" class="state-county-row market-status-${h(market.status)} ${market.key === selectedBuilderMarketKey ? 'active is-active' : ''}" data-builder-market-key="${h(market.key)}" aria-pressed="${market.key === selectedBuilderMarketKey ? 'true' : 'false'}">
-    <span><b>${h(market.label)}</b><small>${h(market.note || 'source lane')}</small></span>
-    <em>${h(market.statusCopy)}</em>
-  </li>`).join('');
+  const rows = asArray(activeState.markets).map(market => {
+    const propertySearch = market.parcelPropertySearch || parcelPropertyResourceForMarketKey(market.key);
+    const propertyLink = propertySearch ? `<a class="parcel-property-source-link" href="${h(propertySearch.url)}" target="_blank" rel="noreferrer" aria-label="Open ${h(propertySearch.label)}">Parcel search</a>` : '';
+    return `<li role="button" tabindex="0" class="state-county-row market-status-${h(market.status)} ${market.key === selectedBuilderMarketKey ? 'active is-active' : ''}" data-builder-market-key="${h(market.key)}" aria-pressed="${market.key === selectedBuilderMarketKey ? 'true' : 'false'}">
+      <span><b>${h(market.label)}</b><small>${h(market.note || 'source lane')}</small>${propertyLink}</span>
+      <em>${h(market.statusCopy)}</em>
+    </li>`;
+  }).join('');
   return `<details class="state-county-ledger">
     <summary><span>Counties included</span><b>${h(activeState.countyCount || 0)} lanes</b></summary>
     <ul>${rows}</ul>
@@ -4167,6 +4221,24 @@ function renderParcels() {
   </div>${landSupportDrawer}`;
 }
 
+function renderParcelPropertySearchBoard() {
+  const parcelSearchStateSequence = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC'];
+  const stateSections = parcelSearchStateSequence.map(stateCode => {
+    const resources = parcelPropertyResourcesForState(stateCode);
+    if (!resources.length) return '';
+    const links = resources.map(resource => `<a class="parcel-property-market-link" href="${h(resource.url)}" target="_blank" rel="noreferrer"><span>${h(resource.market)}</span><b>${h(resource.label)}</b><em>${h(resource.county)}</em></a>`).join('');
+    return `<article class="parcel-property-state"><div><span>${h(stateCode)}</span><b>${h(resources.length)} county property sources</b></div><div>${links}</div></article>`;
+  }).join('');
+  return `<section class="parcel-property-search-board" aria-label="Parcel and property search resources">
+    <div class="parcel-property-head">
+      <span class="eyebrow">Parcel/property search · seller-source prep</span>
+      <h3>County owner-record links now sit with each active market.</h3>
+      <p>Use these after buyer demand is captured: verify APN, owner, mailing address, acreage, assessed values and land-use before any skip-trace or seller call.</p>
+    </div>
+    <div class="parcel-property-grid">${stateSections}</div>
+  </section>`;
+}
+
 function renderFreeGovOwnerSourceBoard() {
   if (!freeGovOwnerSources) return '<section class="free-gov-owner-board"><p>Loading free-government owner source matrix…</p></section>';
   if (freeGovOwnerSources.error) return `<section class="free-gov-owner-board"><p>Free-government owner source matrix not loaded: ${h(freeGovOwnerSources.error)}.</p></section>`;
@@ -4243,7 +4315,7 @@ function renderSourcePriorityBoard() {
       <summary>Normalize with source adapters</summary>
       <div class="priority-stack-content">${tierRows}</div>
     </details>
-  </section>${renderFreeGovOwnerSourceBoard()}`;
+  </section>${renderParcelPropertySearchBoard()}${renderFreeGovOwnerSourceBoard()}`;
 }
 
 function renderPipeline() {

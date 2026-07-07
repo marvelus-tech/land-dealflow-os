@@ -283,9 +283,9 @@ const texasLandReports = [
     title: 'Central Florida luxury lot / waterfront JV report',
     state: 'FL',
     market: 'Winter Park · Windermere · Dr Phillips · Maitland · College Park · Winter Garden · Clermont · Longwood',
-    updatedAt: '2026-07-06',
+    updatedAt: '2026-07-07',
     assetUrl: 'data/real/central-florida/central-florida-luxury-lot-jv-report.md',
-    subtitle: 'Luxury lots + waterfront appetite · owner-expert prep · comp context · seller SMS scripts',
+    subtitle: 'Luxury lots + waterfront appetite · 2026 owner-archetype playbook · county GIS/flood/utilities stack · seller authorization scripts',
     buyBox: [
       'Target areas: Winter Park, Maitland Orange County side, Winter Garden, Windermere, Dr Phillips, College Park, Clermont, Longwood, and credible surrounding luxury-lot spillover.',
       'Buyer prefers waterfront, but will consider non-waterfront if it is a true luxury lot, larger homesite, estate parcel, or teardown/infill dirt.',
@@ -310,11 +310,14 @@ const texasLandReports = [
       'Legacy acreage/grove/family landowners in Winter Garden, Clermont and Longwood fringe with estate-lot or assemblage potential.'
     ],
     trendNotes: [
-      'Central Florida is more balanced than the 2021-2022 frenzy, but prime waterfront and estate lots remain scarcity assets.',
+      '2026 read: Orlando/Central Florida is more balanced than the 2021-2022 frenzy, but prime waterfront, chain-of-lakes, walkable-core infill and gated estate dirt remain scarcity assets.',
+      'The expanded report now includes a 2026 owner-archetype playbook: prestige-aware luxury owners, estates/trustees, aging downsizers, obsolete-home owners, legacy acreage families, absentee owners, builders/developers, realtor-advised sellers and privacy-sensitive HNW owners.',
       'Public listing/snippet research shows Winter Park land context ranging from roughly $150k-$725k for edge/infill lots and up to $1.7M-$5M for premium/core positions; verify through MLS/county before using as offer anchors.',
       'Maitland and Clermont public context shows possible land-value examples in the mid-six figures, while Windermere, Bay Hill and Winter Park trophy waterfront should be treated as scarcity-first seven-figure conversations.',
+      'County/city diligence stack is now explicit: Orange/Lake/Seminole appraiser, clerk, tax, GIS, zoning, permits, utilities, FEMA/NFHL, NWI, FDEP, WMD, USDA soils, Water Atlas, Sunbiz, municipal tree/stormwater/lake rules.',
+      'Agreement path is now explicit: do not package a seller property to buyers without seller permission/control and written buyer/JV authorization; choose PSA, assignable PSA, option, consent-to-present, JV/introduction or double close deliberately.',
       'Sophisticated owners cluster in Windermere 34786, Winter Park 32789, Bay Hill/Dr Phillips 32836, gated/HOA luxury pockets, LLC/trust/estate ownership, and already-listed or builder/developer-held parcels.',
-      'Spread is most likely from off-market timing, estate complexity, obsolete improvements, privacy motivation, or entitlement complexity the buyer can absorb.',
+      'Spread is most likely from off-market timing, estate complexity, obsolete improvements, privacy motivation, stale public listing, or entitlement complexity the buyer can absorb.',
       'Mailing city is not enough: verify city vs unincorporated Orange, Lake or Seminole County before pricing.',
       'Waterfront value requires proof of actual frontage, waterbody identity, chain access if claimed, dockability, flood/wetlands and shoreline approval path.',
       'Luxury sellers respond better to confidential qualified-buyer language than generic cash-buyer pressure.'

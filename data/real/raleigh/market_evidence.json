@@ -2,7 +2,7 @@
   "market": "Raleigh / Wake County, NC",
   "marketId": "raleigh-nc",
   "state": "NC",
-  "generatedAt": "2026-07-08T21:33:39.306Z",
+  "generatedAt": "2026-07-08T23:01:17.757Z",
   "source": {
     "name": "Raleigh Open Data — Building Permits Issued Past 180 Days",
     "serviceUrl": "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Building_Permits_Issued_Past_180_Days/FeatureServer/0",
@@ -11,7 +11,7 @@
   },
   "summary": {
     "permitRowsSampled": 610,
-    "uniqueBuilders": 37,
+    "uniqueBuilders": 36,
     "minimumUniqueBuilders": 20,
     "totalRecentBuildSignals": 465,
     "filter": "Residential building permits, new/townhouse work classes, detached SFR / townhouse / duplex land-use classes, past 180 days."

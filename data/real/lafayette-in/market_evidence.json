@@ -1,0 +1,28 @@
+{
+  "market": "lafayette-in",
+  "marketLabel": "Lafayette / Tippecanoe County, IN",
+  "state": "IN",
+  "generatedAt": "2026-07-08",
+  "sourcePath": {
+    "name": "Tippecanoe County GIS BuildingPermits_Adr ArcGIS FeatureServer",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0"
+    ],
+    "conversionMethod": "GET FeatureServer/0/query where=date >= DATE '2024-01-01' and description contains new single/new resid/new build; group by owner/developer because contractor fields are not exposed in the public layer; emit buyer-validation candidates with explicit owner/developer caveat.",
+    "caveat": "The public layer exposes owner, permit, address, parcel, date, city, and description but not contractor/builder contact fields. These are official permit-backed buyer/developer/source-discovery signals, not validated buyers; company/contact/buy-box enrichment is required before seller sourcing."
+  },
+  "recordCount": 28,
+  "rawPermitCount": 59,
+  "fieldsUsed": [
+    "owner",
+    "permit",
+    "address",
+    "city",
+    "description",
+    "parcel",
+    "date",
+    "year"
+  ],
+  "minimumUniqueSignals": 20
+}

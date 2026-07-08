@@ -2,7 +2,7 @@
   "market": "Austin, TX",
   "marketId": "austin-tx",
   "state": "TX",
-  "generatedAt": "2026-07-08T21:33:41.159Z",
+  "generatedAt": "2026-07-08T23:00:33.964Z",
   "source": {
     "name": "City of Austin Open Data — Issued Construction Permits",
     "datasetId": "hw8f-smxh",
@@ -14,7 +14,7 @@
     "permitRowsSampled": 3613,
     "uniqueBuilders": 50,
     "minimumUniqueBuilders": 20,
-    "totalRecentBuildSignals": 2203,
+    "totalRecentBuildSignals": 2214,
     "filter": "Residential building permits, New work class, one or more housing units, SFR / two-family / secondary apartment classes, issued since 2025-01-01."
   },
   "operatingRules": [

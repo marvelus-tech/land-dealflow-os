@@ -1,0 +1,1272 @@
+[
+  {
+    "id": "lafayette-tippecanoe-purdue-research-foundation",
+    "name": "Purdue Research Foundation",
+    "builderName": "Purdue Research Foundation",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 15,
+    "qualifyingPermitCount": 15,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 86,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2716%2C2717%2C2718%2C2719%2C2720)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27233",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-11-19",
+        "status": "2025",
+        "address": "132 PARKERWOOD LN",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-053.000-029",
+        "sourceObjectId": 2716
+      },
+      {
+        "permitNumber": "27230",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-11-19",
+        "status": "2025",
+        "address": "138 PARKERWOOD LN",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-053.000-029",
+        "sourceObjectId": 2717
+      },
+      {
+        "permitNumber": "27232",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-11-19",
+        "status": "2025",
+        "address": "134 PARKERWOOD LN",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-053.000-029",
+        "sourceObjectId": 2718
+      },
+      {
+        "permitNumber": "27231",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-11-19",
+        "status": "2025",
+        "address": "136 PARKERWOOD LN",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-053.000-029",
+        "sourceObjectId": 2719
+      },
+      {
+        "permitNumber": "27255",
+        "permitType": "New single family residential",
+        "issueDate": "2024-11-19",
+        "status": "2025",
+        "address": "107 PARKERWOOD LN",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-055.000-029",
+        "sourceObjectId": 2720
+      }
+    ],
+    "sourceEvidence": "Purdue Research Foundation appears as owner/developer on 15 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Purdue Research Foundation.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-snowy-owl-commons-lp",
+    "name": "Snowy Owl Commons Lp",
+    "builderName": "Snowy Owl Commons Lp",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 11,
+    "qualifyingPermitCount": 11,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 86,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(212%2C213%2C214%2C215%2C216)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27960",
+        "permitType": "SNOWY OWL COMMONS - NEW RESIDENTIAL DUPLEX BUILDING #4",
+        "issueDate": "2024-06-10",
+        "status": "2025",
+        "address": "295 BARN OWL WAY",
+        "city": "Lafayette",
+        "parcel": "79-11-05-100-018.000-033",
+        "sourceObjectId": 212
+      },
+      {
+        "permitNumber": "27958",
+        "permitType": "SNOWY OWL COMMONS - NEW RESIDENTIAL DUPLEX BUILDING #11",
+        "issueDate": "2024-06-10",
+        "status": "2025",
+        "address": "2925 BURROWING OWL LN",
+        "city": "Lafayette",
+        "parcel": "79-11-05-100-018.000-033",
+        "sourceObjectId": 213
+      },
+      {
+        "permitNumber": "27956",
+        "permitType": "SNOWY OWL COMMONS - NEW SINGLE STORY SIX PLEX BLDG #10",
+        "issueDate": "2024-06-10",
+        "status": "2025",
+        "address": "2901 BURROWING OWL LN",
+        "city": "Lafayette",
+        "parcel": "79-11-05-100-018.000-033",
+        "sourceObjectId": 214
+      },
+      {
+        "permitNumber": "27968",
+        "permitType": "SNOWY OWL COMMONS - NEW SINGLE STORY SIX PLEX BLDG #1",
+        "issueDate": "2024-06-10",
+        "status": "2025",
+        "address": "2900 BURROWING OWL LN",
+        "city": "Lafayette",
+        "parcel": "79-11-05-100-018.000-033",
+        "sourceObjectId": 215
+      },
+      {
+        "permitNumber": "27964",
+        "permitType": "SNOWY OWL COMMONS - NEW SINGLE STORY SIX PLEX BLDG #2",
+        "issueDate": "2024-06-10",
+        "status": "2025",
+        "address": "215 BARN OWL WAY",
+        "city": "Lafayette",
+        "parcel": "79-11-05-100-018.000-033",
+        "sourceObjectId": 216
+      }
+    ],
+    "sourceEvidence": "Snowy Owl Commons Lp appears as owner/developer on 11 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: SNOWY OWL COMMONS LP.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-habitat-for-humanity-of-laf-inc",
+    "name": "Habitat For Humanity Of Laf Inc.",
+    "builderName": "Habitat For Humanity Of Laf Inc.",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 5,
+    "qualifyingPermitCount": 5,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 81,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2655%2C2656%2C2657%2C2613%2C174)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "29269",
+        "permitType": "HABITAT FOR HUMANITY - NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-09-24",
+        "status": "2025",
+        "address": "1002 N 7TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-20-263-020.000-004",
+        "sourceObjectId": 2655
+      },
+      {
+        "permitNumber": "29265",
+        "permitType": "HABITAT FOR HUMANITY - NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-09-24",
+        "status": "2025",
+        "address": "1006 N 7TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-20-263-019.000-004",
+        "sourceObjectId": 2656
+      },
+      {
+        "permitNumber": "29273",
+        "permitType": "HABITAT FOR HUMANITY - NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-09-24",
+        "status": "2025",
+        "address": "1010 N 7TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-20-263-018.000-004",
+        "sourceObjectId": 2657
+      },
+      {
+        "permitNumber": "28858",
+        "permitType": "NEW SINGLE FAMILY RESIDENCE FOR HABITAT - COOPERS BUILD",
+        "issueDate": "2024-08-19",
+        "status": "2025",
+        "address": "2205 POWDER HOUSE LN",
+        "city": "Lafayette",
+        "parcel": "79-07-31-430-003.000-005",
+        "sourceObjectId": 2613
+      },
+      {
+        "permitNumber": "28104",
+        "permitType": "HABITAT FOR HUMANITY - NEW SINGLE FAMILY - WOMAN'S BUILD",
+        "issueDate": "2024-06-24",
+        "status": "2025",
+        "address": "450 S 5TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-29-257-018.000-004",
+        "sourceObjectId": 174
+      }
+    ],
+    "sourceEvidence": "Habitat For Humanity Of Laf Inc. appears as owner/developer on 5 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: HABITAT FOR HUMANITY OF LAF INC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-sagamore-commons-llc",
+    "name": "Sagamore Commons LLC",
+    "builderName": "Sagamore Commons LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 2,
+    "qualifyingPermitCount": 2,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 78,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(318%2C71)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26789",
+        "permitType": "New build - Starbucks",
+        "issueDate": "2024-07-23",
+        "status": "2025",
+        "address": "1625 SACHEM BLVD",
+        "city": "West Laf.",
+        "parcel": "79-06-01-053-004.003-034",
+        "sourceObjectId": 318
+      },
+      {
+        "permitNumber": "26425",
+        "permitType": "New Build - Panda Express",
+        "issueDate": "2024-03-26",
+        "status": "2025",
+        "address": "3015 SACHEM CT S",
+        "city": "West Laf.",
+        "parcel": "79-06-01-053-004.003-034",
+        "sourceObjectId": 71
+      }
+    ],
+    "sourceEvidence": "Sagamore Commons LLC appears as owner/developer on 2 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Sagamore Commons LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-tippecanoe-land-holding-inc",
+    "name": "Tippecanoe Land Holding Inc.",
+    "builderName": "Tippecanoe Land Holding Inc.",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 2,
+    "qualifyingPermitCount": 2,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 78,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(236%2C252)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26631",
+        "permitType": "HABITAT FOR HUMANITY - NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-02-05",
+        "status": "2025",
+        "address": "960 S 2ND ST",
+        "city": "Lafayette",
+        "parcel": "79-07-29-401-013.000-004",
+        "sourceObjectId": 236
+      },
+      {
+        "permitNumber": "26396",
+        "permitType": "HABITAT FOR HUMANITY - NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-01-11",
+        "status": "2025",
+        "address": "214 ELLSWORTH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-29-189-010.000-004",
+        "sourceObjectId": 252
+      }
+    ],
+    "sourceEvidence": "Tippecanoe Land Holding Inc. appears as owner/developer on 2 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: TIPPECANOE LAND HOLDING INC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-triple-r-llc",
+    "name": "Triple R LLC",
+    "builderName": "Triple R LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 2,
+    "qualifyingPermitCount": 2,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 78,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(345%2C237)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "28240",
+        "permitType": "NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-07-05",
+        "status": "2025",
+        "address": "285 S 8TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-29-233-019.000-004",
+        "sourceObjectId": 345
+      },
+      {
+        "permitNumber": "26728",
+        "permitType": "NEW SINGLE-FAMILY RESIDENCE",
+        "issueDate": "2024-02-15",
+        "status": "2025",
+        "address": "106 S 8TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-29-234-007.000-004",
+        "sourceObjectId": 237
+      }
+    ],
+    "sourceEvidence": "Triple R LLC appears as owner/developer on 2 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: TRIPLE R LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-300-brown-llc",
+    "name": "300 Brown, LLC",
+    "builderName": "300 Brown, LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(4096)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26655",
+        "permitType": "New build - Levee Landmark Bldg B",
+        "issueDate": "2025-01-03",
+        "status": "2026",
+        "address": "300 BROWN ST",
+        "city": "West Laf.",
+        "parcel": "79-07-20-300-002.000-026",
+        "sourceObjectId": 4096
+      }
+    ],
+    "sourceEvidence": "300 Brown, LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: 300 Brown, LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-brookhaven-homes-llc",
+    "name": "Brookhaven Homes LLC",
+    "builderName": "Brookhaven Homes LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2596)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27025",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-08-06",
+        "status": "2025",
+        "address": "4037 WESTMORELAND DR",
+        "city": "West Laf.",
+        "parcel": "79-03-32-351-009.000-039",
+        "sourceObjectId": 2596
+      }
+    ],
+    "sourceEvidence": "Brookhaven Homes LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Brookhaven Homes LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-bruno-s-swiss-inn-inc",
+    "name": "Bruno'S Swiss Inn Inc..",
+    "builderName": "Bruno'S Swiss Inn Inc..",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(4069)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26654",
+        "permitType": "New build - Levee Landmark Bldg A",
+        "issueDate": "2025-01-03",
+        "status": "2026",
+        "address": "224 E STATE ST",
+        "city": "West Laf.",
+        "parcel": "79-07-20-306-004.000-026",
+        "sourceObjectId": 4069
+      }
+    ],
+    "sourceEvidence": "Bruno'S Swiss Inn Inc.. appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Bruno's Swiss Inn Inc..",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-castle-street-investments-llc",
+    "name": "Castle Street Investments LLC",
+    "builderName": "Castle Street Investments LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(201)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26980",
+        "permitType": "NEW BUILDING - RAISING CANES RESTAURANT",
+        "issueDate": "2024-03-14",
+        "status": "2025",
+        "address": "5 N CREASY LN",
+        "city": "Lafayette",
+        "parcel": "79-07-23-453-001.000-004",
+        "sourceObjectId": 201
+      }
+    ],
+    "sourceEvidence": "Castle Street Investments LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: CASTLE STREET INVESTMENTS LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-cm-home-builders",
+    "name": "Cm Home Builders",
+    "builderName": "Cm Home Builders",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2648)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "29017",
+        "permitType": "NEW SINGLE FAMILY RESIDENCE",
+        "issueDate": "2024-09-04",
+        "status": "2025",
+        "address": "336 PLATEAU DR",
+        "city": "Lafayette",
+        "parcel": "79-07-32-404-017.000-004",
+        "sourceObjectId": 2648
+      }
+    ],
+    "sourceEvidence": "Cm Home Builders appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: CM HOME BUILDERS.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-franciscan-alliance-inc",
+    "name": "Franciscan Alliance Inc..",
+    "builderName": "Franciscan Alliance Inc..",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 76,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2645)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26844",
+        "permitType": "New build - OrthoIndy",
+        "issueDate": "2024-09-18",
+        "status": "2025",
+        "address": "2546 CUMBERLAND AVE",
+        "city": "West Laf.",
+        "parcel": "79-06-11-200-013.000-029",
+        "sourceObjectId": 2645
+      }
+    ],
+    "sourceEvidence": "Franciscan Alliance Inc.. appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Franciscan Alliance Inc..",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-jordan-custom-homes-llc",
+    "name": "Jordan Custom Homes, LLC",
+    "builderName": "Jordan Custom Homes, LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(28)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26615",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-02-06",
+        "status": "2025",
+        "address": "471 GOOSE CREEK WAY",
+        "city": "West Laf.",
+        "parcel": "79-03-32-126-006.000-039",
+        "sourceObjectId": 28
+      }
+    ],
+    "sourceEvidence": "Jordan Custom Homes, LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Jordan Custom Homes, LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-keating-homes-llc",
+    "name": "Keating Homes LLC",
+    "builderName": "Keating Homes LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(234)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27272",
+        "permitType": "NEW SINGLE-STORY DUPLEX",
+        "issueDate": "2024-04-14",
+        "status": "2025",
+        "address": "422 BOMBERDING AVE",
+        "city": "Lafayette",
+        "parcel": "79-07-29-406-014.000-004",
+        "sourceObjectId": 234
+      }
+    ],
+    "sourceEvidence": "Keating Homes LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: KEATING HOMES LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-majestic-custom-homes-of-lafayette-inc",
+    "name": "Majestic Custom Homes Of Lafayette, Inc..",
+    "builderName": "Majestic Custom Homes Of Lafayette, Inc..",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2873)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27269",
+        "permitType": "New single family residence",
+        "issueDate": "2024-12-05",
+        "status": "2025",
+        "address": "616 ROBINSON ST",
+        "city": "West Laf.",
+        "parcel": "79-07-17-351-016.000-026",
+        "sourceObjectId": 2873
+      }
+    ],
+    "sourceEvidence": "Majestic Custom Homes Of Lafayette, Inc.. appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Majestic Custom Homes of Lafayette, Inc..",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-menard-inc",
+    "name": "Menard Inc..",
+    "builderName": "Menard Inc..",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2752)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27033",
+        "permitType": "New build - AutoZone",
+        "issueDate": "2024-11-20",
+        "status": "2025",
+        "address": "2926 US HWY 52 W",
+        "city": "West Laf.",
+        "parcel": "79-06-02-151-012.000-029",
+        "sourceObjectId": 2752
+      }
+    ],
+    "sourceEvidence": "Menard Inc.. appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Menard Inc..",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-old-town-north-llc",
+    "name": "Old Town North LLC",
+    "builderName": "Old Town North LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(69)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26841",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-05-13",
+        "status": "2025",
+        "address": "1620 TREELINE DR",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-021.000-029",
+        "sourceObjectId": 69
+      }
+    ],
+    "sourceEvidence": "Old Town North LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Old Town North LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-shri-hari-2-inc-prashant-patel",
+    "name": "Shri Hari 2 Inc. (Prashant Patel)",
+    "builderName": "Shri Hari 2 Inc. (Prashant Patel)",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 75,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(341)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "28229",
+        "permitType": "NEW PENGUIN LIQUORS - NEW BUILDING",
+        "issueDate": "2024-07-03",
+        "status": "2025",
+        "address": "2114 VETERANS MEMORIAL PKWY S",
+        "city": "Lafayette",
+        "parcel": "79-11-09-277-007.000-032",
+        "sourceObjectId": 341
+      }
+    ],
+    "sourceEvidence": "Shri Hari 2 Inc. (Prashant Patel) appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: SHRI HARI 2 INC (PRASHANT PATEL).",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-stanfield-wl-land-llc",
+    "name": "Stanfield Wl Land LLC",
+    "builderName": "Stanfield Wl Land LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 74,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(126)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26593",
+        "permitType": "New build - McDonald's",
+        "issueDate": "2024-06-17",
+        "status": "2025",
+        "address": "2616 US HWY 52 W",
+        "city": "West Laf.",
+        "parcel": "79-06-02-177-002.000-029",
+        "sourceObjectId": 126
+      }
+    ],
+    "sourceEvidence": "Stanfield Wl Land LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Stanfield WL Land LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-tecspan-concrete-structures-llc",
+    "name": "Tecspan Concrete Structures LLC",
+    "builderName": "Tecspan Concrete Structures LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 74,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2616)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "28917",
+        "permitType": "NEW BUILDING - WAREHOUSE/SHOP/OFFICE/MEZZANINE",
+        "issueDate": "2024-08-23",
+        "status": "2025",
+        "address": "242 BOATMAN CT",
+        "city": "Lafayette",
+        "parcel": "79-07-31-276-018.000-005",
+        "sourceObjectId": 2616
+      }
+    ],
+    "sourceEvidence": "Tecspan Concrete Structures LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: TECSPAN CONCRETE STRUCTURES LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-tippecanoe-development-llc",
+    "name": "Tippecanoe Development LLC",
+    "builderName": "Tippecanoe Development LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 74,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(150)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26860",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-05-30",
+        "status": "2025",
+        "address": "4060 WESTMORELAND DR",
+        "city": "West Laf.",
+        "parcel": "79-03-32-351-018.000-039",
+        "sourceObjectId": 150
+      }
+    ],
+    "sourceEvidence": "Tippecanoe Development LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Tippecanoe Development LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-waldron-and-third-llc",
+    "name": "Waldron And Third LLC",
+    "builderName": "Waldron And Third LLC",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-developer-signal-needs-contact-enrichment",
+    "status": "buyer-validation-candidate",
+    "confidence": 74,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(245)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26670",
+        "permitType": "New build - 70 units",
+        "issueDate": "2024-05-17",
+        "status": "2025",
+        "address": "221 WALDRON ST",
+        "city": "West Laf.",
+        "parcel": "79-07-19-176-054.000-026",
+        "sourceObjectId": 245
+      }
+    ],
+    "sourceEvidence": "Waldron And Third LLC appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Waldron and Third LLC.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner/developer name on official new-build permit rows; enrich company/contact and confirm buy box before seller sourcing."
+  },
+  {
+    "id": "lafayette-tippecanoe-chadd-s-gibson",
+    "name": "Chadd S Gibson",
+    "builderName": "Chadd S Gibson",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-signal-needs-builder-confirmation",
+    "status": "buyer-validation-candidate",
+    "confidence": 60,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(3)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27420",
+        "permitType": "GIBSON PAINTING GROUP - NEW BUILD FOR OFFICE/WAREHOUSE",
+        "issueDate": "2024-04-25",
+        "status": "2025",
+        "address": "105 N 36TH ST",
+        "city": "Lafayette",
+        "parcel": "79-07-22-477-006.000-004",
+        "sourceObjectId": 3
+      }
+    ],
+    "sourceEvidence": "Chadd S Gibson appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: CHADD S GIBSON.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner name on official new-build permit rows; may be end-owner rather than builder. Use only as buyer-validation/source-discovery lead until contractor/company identity is confirmed."
+  },
+  {
+    "id": "lafayette-tippecanoe-jacquier-sarah-matthew",
+    "name": "Jacquier, Sarah & Matthew",
+    "builderName": "Jacquier, Sarah & Matthew",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-signal-needs-builder-confirmation",
+    "status": "buyer-validation-candidate",
+    "confidence": 60,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(232)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "26561",
+        "permitType": "New single family residence",
+        "issueDate": "2024-01-09",
+        "status": "2025",
+        "address": "809 KENT AVE",
+        "city": "West Laf.",
+        "parcel": "79-07-07-252-007.000-026",
+        "sourceObjectId": 232
+      }
+    ],
+    "sourceEvidence": "Jacquier, Sarah & Matthew appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Jacquier, Sarah & Matthew.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner name on official new-build permit rows; may be end-owner rather than builder. Use only as buyer-validation/source-discovery lead until contractor/company identity is confirmed."
+  },
+  {
+    "id": "lafayette-tippecanoe-jung-byung-hoo-ku-jeeyeon",
+    "name": "Jung, Byung-Hoo & Ku, Jeeyeon",
+    "builderName": "Jung, Byung-Hoo & Ku, Jeeyeon",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-signal-needs-builder-confirmation",
+    "status": "buyer-validation-candidate",
+    "confidence": 59,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2604)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27054",
+        "permitType": "New single-family residence",
+        "issueDate": "2024-08-29",
+        "status": "2025",
+        "address": "311 PAWNEE PL",
+        "city": "West Laf.",
+        "parcel": "79-07-08-355-011.000-026",
+        "sourceObjectId": 2604
+      }
+    ],
+    "sourceEvidence": "Jung, Byung-Hoo & Ku, Jeeyeon appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Jung, Byung-hoo & Ku, Jeeyeon.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner name on official new-build permit rows; may be end-owner rather than builder. Use only as buyer-validation/source-discovery lead until contractor/company identity is confirmed."
+  },
+  {
+    "id": "lafayette-tippecanoe-lu-vivian-chan-stanley",
+    "name": "Lu, Vivian & Chan, Stanley",
+    "builderName": "Lu, Vivian & Chan, Stanley",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-signal-needs-builder-confirmation",
+    "status": "buyer-validation-candidate",
+    "confidence": 59,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2698)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27096",
+        "permitType": "New single family residence",
+        "issueDate": "2024-10-17",
+        "status": "2025",
+        "address": "2207 HAPPY HOLLOW RD",
+        "city": "West Laf.",
+        "parcel": "79-07-08-380-002.000-026",
+        "sourceObjectId": 2698
+      }
+    ],
+    "sourceEvidence": "Lu, Vivian & Chan, Stanley appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Lu, Vivian & Chan, Stanley.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner name on official new-build permit rows; may be end-owner rather than builder. Use only as buyer-validation/source-discovery lead until contractor/company identity is confirmed."
+  },
+  {
+    "id": "lafayette-tippecanoe-rice-douglas-e-mary-e",
+    "name": "Rice, Douglas E. & Mary E.",
+    "builderName": "Rice, Douglas E. & Mary E.",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-signal-needs-builder-confirmation",
+    "status": "buyer-validation-candidate",
+    "confidence": 59,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2848)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27288",
+        "permitType": "New single family residence",
+        "issueDate": "2024-12-06",
+        "status": "2025",
+        "address": "1573 MITCH DANIELS BLVD",
+        "city": "West Laf.",
+        "parcel": "79-06-24-427-010.000-029",
+        "sourceObjectId": 2848
+      }
+    ],
+    "sourceEvidence": "Rice, Douglas E. & Mary E. appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Rice, Douglas E. & Mary E..",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner name on official new-build permit rows; may be end-owner rather than builder. Use only as buyer-validation/source-discovery lead until contractor/company identity is confirmed."
+  },
+  {
+    "id": "lafayette-tippecanoe-stoddart-james-a-m-alison",
+    "name": "Stoddart, James A & M Alison",
+    "builderName": "Stoddart, James A & M Alison",
+    "market": "lafayette-in",
+    "marketLabel": "Lafayette / Tippecanoe County, IN",
+    "state": "IN",
+    "website": "",
+    "contactPage": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "phone": "",
+    "email": "",
+    "acquisitionContactStatus": "official permit owner/developer signal found; contractor/acquisition contact unknown; no outreach performed",
+    "recentBuilds": 1,
+    "qualifyingPermitCount": 1,
+    "validationStatus": "permit-owner-signal-needs-builder-confirmation",
+    "status": "buyer-validation-candidate",
+    "confidence": 59,
+    "sourceUrl": "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+    "sourceUrls": [
+      "https://maps.tippecanoe.in.gov/portal/home/item.html?id=58e527cb3a8840c4a1303c7c3ae7df69",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0",
+      "https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0/query?f=json&where=objectid%20in%20(2845)&outFields=*&returnGeometry=false"
+    ],
+    "evidenceType": "Tippecanoe County GIS official BuildingPermits_Adr ArcGIS layer; owner/developer field on new residential/new-build permit rows",
+    "permitEvidence": [
+      {
+        "permitNumber": "27302",
+        "permitType": "New single family residence",
+        "issueDate": "2024-12-11",
+        "status": "2025",
+        "address": "690 SUGAR HILL DR",
+        "city": "West Laf.",
+        "parcel": "79-06-24-100-002.000-029",
+        "sourceObjectId": 2845
+      }
+    ],
+    "sourceEvidence": "Stoddart, James A & M Alison appears as owner/developer on 1 public Lafayette/Tippecanoe new residential/new-build permit record(s). Raw owner aliases: Stoddart, James A & M Alison.",
+    "evidenceFreshness": "2026-07-08",
+    "notes": "Owner name on official new-build permit rows; may be end-owner rather than builder. Use only as buyer-validation/source-discovery lead until contractor/company identity is confirmed."
+  }
+]

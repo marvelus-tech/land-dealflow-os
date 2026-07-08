@@ -2614,6 +2614,7 @@ export function getPermitPortalLandscape() {
       { rank: 16, state: 'PA', market: 'Pittsburgh / Allegheny County', reason: 'WPRDC PLI permit data now exposes residential new-construction contractors for a thin buyer-validation queue.', zillowUrl: 'https://www.zillow.com/pittsburgh-pa/' },
       { rank: 17, state: 'GA', market: 'Hall County / Gainesville', reason: 'Official Hall County issued-permit PDFs expose contractor/contact names and are the fastest Georgia builder lane.', zillowUrl: 'https://www.zillow.com/hall-county-ga/' },
       { rank: 18, state: 'ID', market: 'Boise / Ada County', reason: 'Boise public builder candidates are loaded; keep source status thin until contractor-bearing permits are recovered.', zillowUrl: 'https://www.zillow.com/boise-id/' },
+      { rank: 19, state: 'IN', market: 'Lafayette / Tippecanoe County', reason: 'Official Tippecanoe GIS permit layer exposes owner/developer signals on new residential/new-build permits; enrich contact/company before seller sourcing.', zillowUrl: 'https://www.zillow.com/lafayette-in/' },
     ],
     states: [
       {
@@ -2810,6 +2811,25 @@ export function getPermitPortalLandscape() {
           { step: '02', title: 'Reconcile public builders', source: 'Official/public builder sites', action: 'Keep candidate rows clearly marked as non-permit-verified until matched to public records.', output: 'Boise thin queue with no fabricated proof.' },
           { step: '03', title: 'Attach public contact path', source: 'Official builder contact pages', action: 'Use only public business phones/emails/contact URLs.', output: 'Callable Boise candidates for later validation.' },
           { step: '04', title: 'Capture Idaho buy boxes', source: 'Builder calls/emails after proof gate', action: 'Validate Treasure Valley submarkets, lot constraints, pricing, close speed, and deal killers.', output: 'Idaho seller search remains gated behind buyer validation and source proof.' }
+        ]
+
+      },
+      {
+        id: 'in',
+        state: 'Indiana',
+        reality: 'No statewide public building-permit database. Lafayette/Tippecanoe exposes a public ArcGIS permit layer with owner/developer fields; contractor contact still needs enrichment.',
+        platforms: ['ArcGIS REST', 'Munis / Tyler self-service', 'County/city permit portals'],
+        portals: [
+          { market: 'Lafayette', jurisdiction: 'Tippecanoe County / Lafayette area', system: 'Tippecanoe BuildingPermits_Adr ArcGIS FeatureServer', url: 'https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0' },
+          { market: 'Lafayette self-service', jurisdiction: 'City of Lafayette', system: 'MUNIS Self Services / permits', url: 'https://selfservice.lafayette.in.gov/MSS/default.aspx' }
+        ],
+        strategy: 'Use Lafayette as the Indiana proof lane: refresh ArcGIS new-residential/new-build rows, group owner/developer names, then enrich company/contact and call-confirm actual land buy boxes before seller sourcing.',
+        sequence: { status: 'thin', label: 'Lafayette owner/developer permit lane', unlock: '28 Lafayette/Tippecanoe owner-developer source rows are visible; enrich buyer identity/contact before seller matching.' },
+        pipeline: [
+          { step: '01', title: 'Refresh Tippecanoe ArcGIS permits', source: 'BuildingPermits_Adr FeatureServer', action: 'Query recent new residential/new-build rows and retain owner, permit, parcel, address, city, date, and description.', output: 'Lafayette owner/developer permit-signal rows.' },
+          { step: '02', title: 'Separate builders from end-owners', source: 'Owner/developer names + permit descriptions + public business records', action: 'Flag company-like owner/developers first; route individual/end-owner rows to human review.', output: 'Indiana buyer-validation candidates without fabricated builder identity.' },
+          { step: '03', title: 'Attach public contact path', source: 'Official company websites and public business pages', action: 'Enrich lawful phone/email/contact URLs only after company identity is confirmed.', output: 'Callable Lafayette buyer-validation queue.' },
+          { step: '04', title: 'Capture Indiana buy boxes', source: 'Builder/developer calls/emails', action: 'Confirm target zip/county, lot size, max price, utilities/access, close speed, and deal killers.', output: 'Indiana seller sourcing unlocks only after real buyer demand is confirmed.' }
         ]
       }
     ],

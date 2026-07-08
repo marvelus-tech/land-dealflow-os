@@ -12,13 +12,17 @@ case "$MODE" in
     PULL_ARGS=()
     MODE_LABEL="all priority permit markets"
     ;;
-  monday-tn|tn)
-    PULL_ARGS=(--state TN)
-    MODE_LABEL="Monday TN direct pulls + buyer validation"
+  monday-core|monday-tn|tn)
+    PULL_ARGS=(--states TN,IN,HI)
+    MODE_LABEL="Monday TN/IN/HI permit-signal refresh"
     ;;
-  wednesday-secondary|secondary)
-    PULL_ARGS=(--states FL,AZ,NC,TX)
-    MODE_LABEL="Wednesday FL/AZ/NC/TX direct pulls"
+  wednesday-growth|wednesday-secondary|secondary)
+    PULL_ARGS=(--states FL,AZ,CA,ID)
+    MODE_LABEL="Wednesday FL/AZ/CA/ID permit-signal refresh"
+    ;;
+  friday-west|friday-secondary)
+    PULL_ARGS=(--states NC,TX,NV)
+    MODE_LABEL="Friday NC/TX/NV permit-signal refresh"
     ;;
   discover|source-discovery)
     PULL_ARGS=()
@@ -27,7 +31,7 @@ case "$MODE" in
     ;;
   *)
     printf 'Unknown publish mode: %s\n' "$MODE" >&2
-    printf 'Usage: %s [all|monday-tn|wednesday-secondary|discover]\n' "$0" >&2
+    printf 'Usage: %s [all|monday-core|wednesday-growth|friday-west|discover]\n' "$0" >&2
     exit 2
     ;;
 esac

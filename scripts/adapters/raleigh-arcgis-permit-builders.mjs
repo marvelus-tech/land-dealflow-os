@@ -48,6 +48,13 @@ const MANUAL_BUY_BOX_OVERRIDES = {
 
 function compact(value) { return String(value || '').replace(/[\u0000-\u001f\u007f]+/g, ' ').replace(/\s+/g, ' ').trim(); }
 function slug(value) { return compact(value).toLowerCase().replace(/t\/a|aka:|dba/gi, ' ').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unknown'; }
+function builderKey(value) {
+  return cleanName(value)
+    .toLowerCase()
+    .replace(/\b(limited liability company|llc|l l c|incorporated|inc|corporation|corp|company|co|ltd|limited)\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim() || slug(value);
+}
 function cleanName(value) { return compact(value).replace(/\s+T\/A\s+.*$/i, '').replace(/\s+AKA:\s+.*$/i, '').replace(/\s+DBA\s+.*$/i, '').trim(); }
 function dateFromMs(value) { const n = Number(value || 0); return n ? new Date(n).toISOString().slice(0, 10) : ''; }
 function money(value) { return Number(value || 0) || 0; }
@@ -127,7 +134,7 @@ export async function buildRaleighPermitBuilders({ rowLimit = 2000, minimumUniqu
   for (const row of rows) {
     const name = cleanName(row.contractorcompanyname);
     if (!isBuilderName(name)) continue;
-    const key = slug(name);
+    const key = builderKey(name);
     if (!groups.has(key)) groups.set(key, { name, rows: [] });
     groups.get(key).rows.push(row);
   }

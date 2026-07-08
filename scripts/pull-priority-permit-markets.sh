@@ -11,12 +11,13 @@ DRY_RUN=0
 
 usage() {
   cat >&2 <<'EOF'
-Usage: scripts/pull-priority-permit-markets.sh [--state TN|--states TN,FL] [--dry-run]
+Usage: scripts/pull-priority-permit-markets.sh [--state TN|--states TN,FL,IN] [--dry-run]
 
 Default pulls all direct priority permit adapters in stack order.
 Examples:
   scripts/pull-priority-permit-markets.sh --state TN
   scripts/pull-priority-permit-markets.sh --states FL,AZ,NC,TX
+  scripts/pull-priority-permit-markets.sh --states TN,IN,HI
 EOF
 }
 
@@ -76,7 +77,9 @@ run_pull() {
   return 0
 }
 
-# Pull order follows Okeito's permit priority stack: TN → inland FL → AZ → NC → TX.
+# Pull order follows Okeito's permit priority stack plus active buyer-signal sprints.
+# States with loaded static/source-review lanes (CA/HI/ID/NV) are included by the lead engine;
+# only states with direct adapters perform network refreshes here.
 run_pull "TN" "TN Knoxville KGIS permits/parcels" node scripts/adapters/knoxville-kgis-public-leads.mjs
 run_pull "TN" "TN Nashville/Davidson ArcGIS builders" node scripts/adapters/nashville-arcgis-permit-builders.mjs
 run_pull "FL" "FL inland Polk Accela builders" python3 scripts/adapters/polk-accela-permit-builders.py
@@ -84,5 +87,6 @@ run_pull "AZ" "AZ Maricopa weekly permit builders" python3 scripts/adapters/mari
 run_pull "NC" "NC Raleigh/Wake ArcGIS builders" node scripts/adapters/raleigh-arcgis-permit-builders.mjs
 run_pull "TX" "TX Austin Socrata builders" node scripts/adapters/austin-socrata-permit-builders.mjs
 run_pull "TX" "TX San Antonio CKAN builders" node scripts/adapters/san-antonio-ckan-permit-builders.mjs
+run_pull "IN" "IN Lafayette/Tippecanoe ArcGIS owner-developer permit signals" node scripts/adapters/lafayette-tippecanoe-arcgis-permit-builders.mjs
 
 printf 'Priority permit pull log: %s\n' "$LOG" >&2

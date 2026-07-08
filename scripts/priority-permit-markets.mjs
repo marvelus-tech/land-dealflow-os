@@ -8,13 +8,18 @@ function readJson(path, fallback = null) {
   catch { return fallback; }
 }
 
-export const PERMIT_STATE_PRIORITY = ['TN', 'FL', 'AZ', 'NC', 'TX', 'GA', 'SC'];
+export const PERMIT_STATE_PRIORITY = ['TN', 'FL', 'AZ', 'NC', 'TX', 'CA', 'HI', 'ID', 'NV', 'IN', 'GA', 'SC'];
 export const PERMIT_STATE_LABELS = {
   TN: 'Tennessee',
   FL: 'Inland Florida',
   AZ: 'Arizona',
   NC: 'North Carolina',
   TX: 'Texas',
+  CA: 'California high-desert ZIP sprint',
+  HI: 'Hawaii / Puna ZIP sprint',
+  ID: 'Idaho growth-market lane',
+  NV: 'Nevada desert-lot ZIP sprint',
+  IN: 'Indiana permit-source lane',
   GA: 'Georgia secondary',
   SC: 'South Carolina secondary',
 };
@@ -42,6 +47,12 @@ export const PRIORITY_PERMIT_MARKETS = [
   { id: 'maricopa-az', name: 'Maricopa County / Phoenix-Mesa, AZ', city: 'Phoenix', county: 'Maricopa County', state: 'AZ', buyerType: 'production-builder', priority: 70, directAdapter: 'maricopa-xlsx-permit-builders', realDir: 'maricopa', platform: 'Maricopa weekly permit reports + Accela cities', portalUrl: 'https://www.maricopa.gov/Archive.aspx?AMID=128', thesis: 'AZ goldmine: weekly permit activity reports normalize Phoenix-metro builder velocity.' },
   { id: 'tucson-az', name: 'Tucson / Pima County, AZ', city: 'Tucson', county: 'Pima County', state: 'AZ', buyerType: 'custom-builder', priority: 66, platform: 'Accela / Tucson Development Services', portalUrl: 'https://pro.tucsonaz.gov/', thesis: 'Secondary AZ permit well; Accela-style builder evidence before seller sourcing.' },
   { id: 'buckeye-az', name: 'Buckeye, AZ', city: 'Buckeye', county: 'Maricopa County', state: 'AZ', buyerType: 'production-builder', priority: 64, platform: 'City custom permit portal', portalUrl: 'https://www.buckeyeaz.gov/', thesis: 'Fast-growth Phoenix-edge market; source review and portal monitoring.' },
+
+  { id: 'joshua-tree-ca-92252', refreshCadence: 'wednesday', name: 'Joshua Tree 92252 / San Bernardino County, CA', city: 'Joshua Tree', county: 'San Bernardino County', state: 'CA', buyerType: 'custom-builder', priority: 63, realDir: 'joshua-tree-ca-92252', platform: 'BuildZoom public profiles + San Bernardino County permit follow-up', portalUrl: 'https://www.buildzoom.com/joshua-tree-ca/home-builders', thesis: 'High-desert custom-builder ZIP sprint. Buyer-validation lane is loaded; water/access/desert-build/STR constraints must be captured before seller sourcing.' },
+  { id: 'pahoa-keaau-hi', refreshCadence: 'monday', name: 'Puna / East Hawaii ZIPs 96749, 96778, 96771', city: 'Mountain View / Pahoa / Keaau', county: 'Hawaii County', state: 'HI', buyerType: 'custom-builder', priority: 62, realDir: 'pahoa-keaau-hi', platform: 'BuildZoom public profiles + Hawaii County permit follow-up', portalUrl: 'https://www.buildzoom.com/mountain-view-hi/home-builders', thesis: 'Big Island/Puna builder-call lane. Keep lava zone, flood, access, and off-grid utility deal killers explicit before seller sourcing.' },
+  { id: 'pahrump-nv-89048', refreshCadence: 'friday', name: 'Pahrump 89048 / Nye County, NV', city: 'Pahrump', county: 'Nye County', state: 'NV', buyerType: 'custom-builder', priority: 61, realDir: 'pahrump-nv-89048', platform: 'BuildZoom public profiles + Nye County permit follow-up', portalUrl: 'https://www.buildzoom.com/pahrump-nv/home-builders', thesis: 'Desert-lot builder-call lane. Capture well/septic/power/road thresholds before seller sourcing.' },
+  { id: 'boise-id', refreshCadence: 'wednesday', name: 'Boise / Ada County, ID', city: 'Boise', county: 'Ada County', state: 'ID', buyerType: 'growth-market-builder', priority: 59, realDir: 'boise-id', platform: 'City of Boise ArcGIS activity + BCA SW Idaho builder directory', portalUrl: 'https://services1.arcgis.com/WHM6qC35aMtyAAlN/arcgis/rest/services/PDS_BuildingPermits_HighImpact/FeatureServer/0', thesis: 'Idaho growth-market lane. Current public permit layer lacks contractor fields, so BCA builder candidates stay buyer-validation until permit/contact enrichment.' },
+  { id: 'lafayette-in', refreshCadence: 'monday', name: 'Lafayette / Tippecanoe County, IN', city: 'Lafayette', county: 'Tippecanoe County', state: 'IN', buyerType: 'owner-builder-developer', priority: 58, directAdapter: 'lafayette-tippecanoe-arcgis-permit-builders', realDir: 'lafayette-in', platform: 'Tippecanoe County GIS BuildingPermits_Adr ArcGIS', portalUrl: 'https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0', thesis: 'Indiana official-permit lane. Public layer exposes owner/developer on new residential/new-build permits but not contractor contact; enrich company/contact/buy box before seller sourcing.' },
 
   { id: 'raleigh-nc', name: 'Raleigh / Wake County, NC', city: 'Raleigh', county: 'Wake County', state: 'NC', buyerType: 'infill-builder', priority: 60, directAdapter: 'raleigh-arcgis-permit-builders', realDir: 'raleigh', platform: 'Wake/Raleigh ArcGIS + Power BI', portalUrl: 'https://data.wake.gov/', thesis: 'NC Piedmont corridor source well with direct ArcGIS permit data.' },
   { id: 'charlotte-nc', name: 'Charlotte / Mecklenburg County, NC', city: 'Charlotte', county: 'Mecklenburg County', state: 'NC', buyerType: 'production-builder', priority: 56, platform: 'Accela + Power BI Daily Building Permits', portalUrl: 'https://www.mecknc.gov/', thesis: 'Large NC buyer market; use direct permit dashboards and Buildchek coverage.' },
@@ -88,7 +99,7 @@ function sourceForBuilderSignals(market, rows) {
     market: market.id,
     state: market.state,
     type: 'public-permit-builder-signal',
-    cadence: market.state === 'TN' ? 'daily' : 'priority-refresh',
+    cadence: market.refreshCadence || (market.state === 'TN' ? 'monday' : 'priority-refresh'),
     sourceUrl: market.portalUrl,
     portalUrl: market.portalUrl,
     description: `${market.name} public permit-builder signals from ${market.platform}. Buyer-validation only until buy box/contact proof is captured.`,
@@ -102,7 +113,7 @@ function watchlistForMarket(market) {
     market: market.id,
     state: market.state,
     type: 'public-source-watchlist',
-    cadence: market.state === 'TN' ? 'daily-discovery' : 'priority-discovery',
+    cadence: market.refreshCadence ? `${market.refreshCadence}-discovery` : (market.state === 'TN' ? 'monday-discovery' : 'priority-discovery'),
     portalUrl: market.portalUrl,
     description: `${market.name} priority permit-source watchlist (${market.platform}). No buyer records are promoted until verified public permit/builder rows are ingested.`,
     records: [],

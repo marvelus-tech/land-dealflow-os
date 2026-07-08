@@ -13,6 +13,13 @@ const HUMAN_URL = `https://data.austintexas.gov/d/${DATASET_ID}`;
 function qs(params) { return new URLSearchParams(params).toString(); }
 function compact(value) { return String(value || '').replace(/[\u0000-\u001f\u007f]+/g, ' ').replace(/\s+/g, ' ').trim(); }
 function slug(value) { return compact(value).toLowerCase().replace(/\*+main\*+/gi, '').replace(/\(main\)/gi, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'unknown'; }
+function builderKey(value) {
+  return cleanCompany(value)
+    .toLowerCase()
+    .replace(/\b(limited liability company|llc|l l c|incorporated|inc|corporation|corp|company|co|ltd|limited)\b/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim() || slug(value);
+}
 function money(value) { return Number(value || 0); }
 function isoDate(value) { return compact(value).slice(0, 10); }
 function cleanCompany(value) {
@@ -114,7 +121,7 @@ export async function buildAustinPermitBuilders({ rowLimit = 5000, since = '2025
   for (const row of rows) {
     const name = cleanCompany(row.contractor_company_name || row.contractor_full_name);
     if (!isUsableBuilderName(name)) continue;
-    const key = slug(name);
+    const key = builderKey(name);
     if (!groups.has(key)) groups.set(key, { name, rows: [] });
     groups.get(key).rows.push(row);
   }

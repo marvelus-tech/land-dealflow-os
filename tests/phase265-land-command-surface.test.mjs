@@ -9,7 +9,7 @@ const marker = 'Phase 265 W+K Phase 3 Land';
 assert.ok(css.includes(marker), 'Phase 265 Land command marker must exist.');
 const phase = css.slice(css.indexOf(marker));
 
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-sources-operating-map/, 'index.html must cache-bust Phase 267 Closing trust CSS while preserving previous phase markers.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-machine-console/, 'index.html must cache-bust Phase 267 Closing trust CSS while preserving previous phase markers.');
 assert.match(phase, /body\[data-active-view="deals"\] #parcels \.land-market-index[\s\S]{0,420}border-radius: 0 !important[\s\S]{0,220}box-shadow: none !important/, 'Land index must become a flat operating ledger, not a card cloud.');
 assert.match(phase, /land-market-index-hero[\s\S]{0,520}grid-template-columns: minmax\(0, 1fr\) minmax\(260px, 36%\) !important/, 'Land index hero must be a concise memo plus stats rail.');
 assert.match(phase, /land-market-index-grid[\s\S]{0,180}display: block !important/, 'State and lane cards must collapse into a scan ledger.');

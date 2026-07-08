@@ -21,6 +21,6 @@ assert.match(phase, /#app #workspace\[hidden\][\s\S]{0,80}display: none !importa
 assert.match(css, /v1\.98\.1 - Phase 263 self-review: no pseudo hero cards/, 'Phase 263 screenshot self-review marker missing.');
 assert.match(css, /--phase263-self-review-rule: route-headers-are-open-memos-not-pseudo-card-heroes/, 'Route header pseudo-card self-review token missing.');
 assert.match(css, /section-heading\.compact-heading::before,[\s\S]{0,260}section-heading\.compact-heading::after[\s\S]{0,180}content: none !important/, 'Route header pseudo cards must be killed after screenshot QA.');
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-sources-operating-map/, 'index.html must preserve Phase 263/264 compatibility while cache-busting the later Closing trust CSS.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-machine-console/, 'index.html must preserve Phase 263/264 compatibility while cache-busting the later Closing trust CSS.');
 
 console.log('phase263 W+K global shell guard passed');

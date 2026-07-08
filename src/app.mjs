@@ -4700,12 +4700,22 @@ function machineOpenAttr(panelId) {
 function renderWorkspaceTools() {
   const existing = document.querySelector('#workspace');
   if (!existing) return;
-  existing.innerHTML = `<div class="section-heading compact-heading machine-heading">
+  const machineFacts = [
+    ['Buyer proof', 'Import first', 'Builder contact and buy-box evidence comes before seller work.'],
+    ['Seller contact', 'Held gate', 'Skip-trace positives only promote when source confidence is real.'],
+    ['Workspace', 'Local only', 'Backup/restore stays quiet until moving browser state.'],
+    ['Files out', 'Action exports', 'CSV and memo exports are downstream of filters and proof.'],
+  ].map(([label, value, detail]) => `<article><span>${h(label)}</span><b>${h(value)}</b><p>${h(detail)}</p></article>`).join('');
+  existing.innerHTML = `<div class="section-heading compact-heading machine-heading phase269-machine-console">
       <span class="eyebrow">Machine room</span>
-      <h2>Hidden operational controls.</h2>
-      <p>The conveyor stays quiet by default. Open one tool, run it, then tuck it back away.</p>
+      <h2>Run the machine without making noise.</h2>
+      <p>Admin tools stay behind the operator path: validate buyer demand, enrich seller contact, move local data, then export only what is ready.</p>
     </div>
-    <div class="machine-stack" aria-label="Machine operational tools">
+    <section class="machine-command-ledger" aria-label="Machine command ledger">
+      <div class="machine-next-action"><span class="eyebrow">Next machine action</span><b>Open one gate, run the import/export, then close it.</b><p>No fabricated contacts. No seller promotion before buyer proof. No reset unless you intend to restore seed state.</p></div>
+      <div class="machine-fact-ledger">${machineFacts}</div>
+    </section>
+    <div class="machine-stack phase269-machine-stack" aria-label="Machine operational tools">
       <details class="machine-panel" data-machine-panel="lead-output"${machineOpenAttr('lead-output')}>
         <summary><span>01</span><strong>Generated lead output</strong><em>Health check</em></summary>
         <div class="machine-tool-body" id="lead-engine-panel"></div>

@@ -40246,3 +40246,452 @@ body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
     grid-row: auto !important;
   }
 }
+
+
+/* v1.102 - Phase 267 W+K Phase 5 Closing trust ledger: one close path, title safety first, reference depth last. */
+:root {
+  --phase267-paper: #f7f4ec;
+  --phase267-panel: #fffdf8;
+  --phase267-ink: #101513;
+  --phase267-muted: #68736f;
+  --phase267-line: rgba(16, 21, 19, .13);
+  --phase267-line-strong: rgba(16, 21, 19, .25);
+  --phase267-green: #075c45;
+  --phase267-gold: #a87413;
+  --phase267-red: #9c4436;
+}
+body[data-active-view="closing"] #closing-section {
+  --phase267-rule-token: one-clean-close-path;
+  background: var(--phase267-paper) !important;
+}
+body[data-active-view="closing"] #closing-section > .section-heading {
+  margin: clamp(34px, 6vw, 76px) 0 clamp(22px, 3.4vw, 42px) !important;
+  padding: 0 0 clamp(18px, 3vw, 32px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-line-strong) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .58fr) minmax(260px, .42fr) !important;
+  gap: clamp(26px, 6vw, 88px) !important;
+  align-items: end !important;
+}
+body[data-active-view="closing"] #closing-section > .section-heading h2 {
+  max-width: 9ch !important;
+  color: var(--phase267-ink) !important;
+  font-size: clamp(50px, 7.2vw, 96px) !important;
+  line-height: .9 !important;
+  letter-spacing: -.08em !important;
+}
+body[data-active-view="closing"] #closing-section > .section-heading p {
+  max-width: 38ch !important;
+  color: #48534f !important;
+  font-size: clamp(14px, 1.08vw, 17px) !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="closing"] .closing-page-stack {
+  display: block !important;
+}
+body[data-active-view="closing"] .closing-primary-action.primary-action-strip {
+  margin: 0 0 clamp(24px, 4vw, 48px) !important;
+  padding: 15px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase267-line-strong) !important;
+  border-bottom: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: 110px minmax(0, 1fr) auto !important;
+  gap: clamp(16px, 3vw, 34px) !important;
+  align-items: center !important;
+}
+body[data-active-view="closing"] .closing-primary-action span,
+body[data-active-view="closing"] :where(.eyebrow, .card-kicker span, .closing-metric-strip span, .email-subject span) {
+  color: var(--phase267-green) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="closing"] .closing-primary-action b {
+  color: var(--phase267-ink) !important;
+  font-size: clamp(16px, 1.45vw, 22px) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.03em !important;
+}
+body[data-active-view="closing"] .closing-primary-action a {
+  justify-self: end !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-green) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase267-green) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #contract-composer.contract-composer-panel {
+  margin: 0 0 clamp(24px, 4vw, 50px) !important;
+  padding: clamp(22px, 3.8vw, 46px) 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase267-line-strong) !important;
+  border-bottom: 1px solid var(--phase267-line-strong) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-hero {
+  padding: 0 0 24px !important;
+  border: 0 !important;
+  background: transparent !important;
+  display: grid !important;
+  grid-template-columns: minmax(250px, .36fr) minmax(0, .42fr) auto !important;
+  align-items: end !important;
+  gap: clamp(20px, 4vw, 58px) !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-hero h2 {
+  max-width: 9ch !important;
+  margin: 0 !important;
+  color: var(--phase267-ink) !important;
+  font-size: clamp(36px, 4.9vw, 68px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.07em !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-hero p {
+  max-width: 34ch !important;
+  color: #56605c !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-actions {
+  justify-self: end !important;
+  display: flex !important;
+  gap: 12px !important;
+  align-items: center !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-actions :where(button, a) {
+  min-height: 38px !important;
+  padding: 0 0 7px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-green) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase267-green) !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-actions button:first-child {
+  padding: 0 16px !important;
+  border-bottom: 0 !important;
+  background: var(--phase267-green) !important;
+  color: #fffdf7 !important;
+}
+body[data-active-view="closing"] #contract-composer .closing-timeline-ledger {
+  margin-top: 0 !important;
+  border-top: 1px solid var(--phase267-line) !important;
+}
+body[data-active-view="closing"] #contract-composer .closing-ledger-row {
+  min-height: 70px !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  grid-template-columns: 56px minmax(0, 1fr) minmax(160px, auto) !important;
+}
+body[data-active-view="closing"] #contract-composer .closing-ledger-row.waiting {
+  opacity: .58 !important;
+}
+body[data-active-view="closing"] #contract-composer .contract-disclosure-experience,
+body[data-active-view="closing"] #contract-composer .title-packet-experience {
+  margin: 14px 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] #contract-composer .contract-disclosure-summary {
+  min-height: 72px !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="closing"] #contract-composer .title-packet-experience {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 18px !important;
+  align-items: center !important;
+  padding: 18px 0 0 !important;
+}
+body[data-active-view="closing"] .closing-os-disclosure.closing-intelligence-deck {
+  margin: 0 0 clamp(24px, 4vw, 50px) !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase267-line-strong) !important;
+  border-bottom: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] .closing-os-disclosure > summary {
+  min-height: 58px !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  display: grid !important;
+  grid-template-columns: 170px minmax(0, 1fr) auto !important;
+  gap: 24px !important;
+  align-items: center !important;
+}
+body[data-active-view="closing"] .closing-os-disclosure .closing-intel-hero {
+  padding: 28px 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase267-line) !important;
+  background: transparent !important;
+}
+body[data-active-view="closing"] .closing-os-disclosure .closing-intel-hero h2 {
+  max-width: 14ch !important;
+  font-size: clamp(34px, 4vw, 56px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.065em !important;
+}
+body[data-active-view="closing"] .closing-layout {
+  display: grid !important;
+  grid-template-columns: minmax(250px, .31fr) minmax(0, .69fr) !important;
+  gap: clamp(26px, 5vw, 70px) !important;
+  align-items: start !important;
+  margin-top: 0 !important;
+}
+body[data-active-view="closing"] .closing-queue.deal-queue {
+  position: sticky !important;
+  top: 104px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  max-height: calc(100vh - 130px) !important;
+  overflow: auto !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-header {
+  padding: 0 0 14px !important;
+  border-bottom: 1px solid var(--phase267-line-strong) !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item {
+  min-height: 82px !important;
+  padding: 16px 0 16px 28px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-align: left !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item.active {
+  background: linear-gradient(90deg, rgba(7, 92, 69, .065), transparent 82%) !important;
+  border-bottom-color: rgba(7, 92, 69, .25) !important;
+}
+body[data-active-view="closing"] .closing-queue .queue-item > span {
+  position: absolute !important;
+  left: 0 !important;
+  top: 18px !important;
+  color: var(--phase267-gold) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+}
+body[data-active-view="closing"] .closing-desk {
+  display: block !important;
+  min-width: 0 !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-hero {
+  margin: 0 !important;
+  min-height: 0 !important;
+  padding: 0 0 clamp(20px, 3vw, 34px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-line-strong) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .58fr) minmax(260px, .42fr) !important;
+  gap: clamp(22px, 4vw, 58px) !important;
+  align-items: stretch !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-hero::before,
+body[data-active-view="closing"] .closing-desk .closing-hero::after { display: none !important; content: none !important; }
+body[data-active-view="closing"] .closing-desk .closing-hero-copy h2 {
+  max-width: 11ch !important;
+  color: var(--phase267-ink) !important;
+  font-size: clamp(38px, 4.8vw, 66px) !important;
+  line-height: .9 !important;
+  letter-spacing: -.075em !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-hero-copy p {
+  max-width: 43ch !important;
+  color: #47524e !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-command-card {
+  min-height: 0 !important;
+  padding: 18px !important;
+  border: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: var(--phase267-panel) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-command-card strong {
+  color: var(--phase267-ink) !important;
+  font-size: clamp(22px, 2.5vw, 34px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.055em !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-command-card p {
+  color: var(--phase267-muted) !important;
+  font-size: 12px !important;
+}
+body[data-active-view="closing"] .closing-metric-strip {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  margin: 0 !important;
+  border-bottom: 1px solid var(--phase267-line-strong) !important;
+}
+body[data-active-view="closing"] .closing-metric-strip article {
+  min-height: 106px !important;
+  padding: 18px 20px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] .closing-metric-strip article:last-child { border-right: 0 !important; }
+body[data-active-view="closing"] .closing-metric-strip b {
+  color: var(--phase267-ink) !important;
+  font-size: clamp(24px, 2.8vw, 40px) !important;
+  line-height: .95 !important;
+  letter-spacing: -.065em !important;
+}
+body[data-active-view="closing"] .closing-metric-strip em {
+  color: #47524e !important;
+  font-size: 11px !important;
+  line-height: 1.35 !important;
+}
+body[data-active-view="closing"] .closing-desk-grid,
+body[data-active-view="closing"] .closing-desk-grid.lower {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .92fr) !important;
+  gap: clamp(18px, 3vw, 34px) !important;
+  border-bottom: 1px solid var(--phase267-line-strong) !important;
+}
+body[data-active-view="closing"] .closing-card {
+  padding: 24px 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] .closing-check,
+body[data-active-view="closing"] .timeline-node {
+  min-height: 66px !important;
+  padding: 14px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="closing"] .closing-check > span {
+  border-radius: 0 !important;
+  background: rgba(7, 92, 69, .07) !important;
+  color: var(--phase267-green) !important;
+}
+body[data-active-view="closing"] .closing-principles-card blockquote {
+  max-width: 13ch !important;
+  color: #315f4c !important;
+  font-size: clamp(32px, 4.1vw, 62px) !important;
+  line-height: .98 !important;
+  letter-spacing: -.07em !important;
+}
+body[data-active-view="closing"] .email-card pre,
+body[data-active-view="closing"] .closing-email-template-card pre {
+  max-height: 340px !important;
+  overflow: auto !important;
+  border: 1px solid var(--phase267-line) !important;
+  border-radius: 0 !important;
+  background: rgba(255, 253, 248, .72) !important;
+  color: #38433f !important;
+  box-shadow: none !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="closing"] #closing-section > .section-heading,
+  body[data-active-view="closing"] .closing-primary-action.primary-action-strip,
+  body[data-active-view="closing"] #contract-composer .legal-packet-hero,
+  body[data-active-view="closing"] .closing-layout,
+  body[data-active-view="closing"] .closing-desk .closing-hero,
+  body[data-active-view="closing"] .closing-desk-grid,
+  body[data-active-view="closing"] .closing-desk-grid.lower {
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    gap: 18px !important;
+  }
+  body[data-active-view="closing"] #closing-section > .section-heading h2 { font-size: clamp(42px, 15vw, 66px) !important; }
+  body[data-active-view="closing"] .closing-primary-action a,
+  body[data-active-view="closing"] #contract-composer .legal-packet-actions { justify-self: start !important; }
+  body[data-active-view="closing"] .closing-primary-action.primary-action-strip { padding: 14px 0 !important; }
+  body[data-active-view="closing"] #contract-composer .legal-packet-actions { flex-wrap: wrap !important; }
+  body[data-active-view="closing"] #contract-composer .closing-ledger-row { grid-template-columns: 42px minmax(0, 1fr) !important; }
+  body[data-active-view="closing"] #contract-composer .closing-ledger-row .quiet-status-chip { grid-column: 2 !important; justify-self: start !important; }
+  body[data-active-view="closing"] #contract-composer .title-packet-experience { grid-template-columns: minmax(0, 1fr) !important; }
+  body[data-active-view="closing"] .closing-os-disclosure > summary { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; }
+  body[data-active-view="closing"] .closing-queue.deal-queue { position: static !important; max-height: 420px !important; overflow: auto !important; }
+  body[data-active-view="closing"] .closing-metric-strip { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  body[data-active-view="closing"] .closing-metric-strip article { min-height: 94px !important; border-bottom: 1px solid var(--phase267-line) !important; }
+  body[data-active-view="closing"] .closing-principles-card blockquote { max-width: 11ch !important; font-size: clamp(32px, 12vw, 48px) !important; }
+}
+
+
+/* v1.102.1 - Phase 267 screenshot correction: compact packet command and title memo scale. */
+body[data-active-view="closing"] #contract-composer .legal-packet-hero {
+  grid-template-columns: minmax(180px, .24fr) minmax(240px, .34fr) minmax(260px, .42fr) !important;
+  align-items: center !important;
+  row-gap: 8px !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-hero > .eyebrow {
+  grid-column: 1 / 2 !important;
+  grid-row: 1 / 2 !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-hero > h2 {
+  grid-column: 2 / 3 !important;
+  grid-row: 1 / 3 !important;
+  font-size: clamp(32px, 4.1vw, 58px) !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-hero > p {
+  grid-column: 1 / 2 !important;
+  grid-row: 2 / 3 !important;
+  margin: 0 !important;
+}
+body[data-active-view="closing"] #contract-composer .legal-packet-actions {
+  grid-column: 3 / 4 !important;
+  grid-row: 1 / 3 !important;
+  justify-self: end !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-hero-copy h2 {
+  font-size: clamp(34px, 4.1vw, 56px) !important;
+  max-width: 10.5ch !important;
+}
+body[data-active-view="closing"] .closing-desk .closing-command-card strong {
+  font-size: clamp(20px, 2.1vw, 30px) !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="closing"] #contract-composer .legal-packet-hero > .eyebrow,
+  body[data-active-view="closing"] #contract-composer .legal-packet-hero > h2,
+  body[data-active-view="closing"] #contract-composer .legal-packet-hero > p,
+  body[data-active-view="closing"] #contract-composer .legal-packet-actions {
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+    justify-self: start !important;
+  }
+}

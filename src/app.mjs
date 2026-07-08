@@ -96,6 +96,7 @@ const builderMarketSources = [
   { key: 'mohave-valley-az-86440', state: 'AZ', marketName: 'Mohave Valley / Fort Mohave 86440, AZ', csvUrl: 'data/real/mohave-valley-az-86440/builder_validation_queue.csv', signalsUrl: 'data/real/mohave-valley-az-86440/builder_signals.json', evidenceUrl: 'data/real/mohave-valley-az-86440/market_evidence.json' },
   { key: 'maricopa-ak-chin-az-85139', state: 'AZ', marketName: 'Maricopa / Ak-Chin edge 85139, AZ', csvUrl: 'data/real/maricopa-ak-chin-az-85139/builder_validation_queue.csv', signalsUrl: 'data/real/maricopa-ak-chin-az-85139/builder_signals.json', evidenceUrl: 'data/real/maricopa-ak-chin-az-85139/market_evidence.json' },
   { key: 'pahoa-keaau-hi', state: 'HI', marketName: 'Puna / East Hawaii ZIPs 96749, 96778, 96771', csvUrl: 'data/real/pahoa-keaau-hi/builder_validation_queue.csv', signalsUrl: 'data/real/pahoa-keaau-hi/builder_signals.json', evidenceUrl: 'data/real/pahoa-keaau-hi/market_evidence.json' },
+  { key: 'hawaii-builders', state: 'HI', marketName: 'Hawaii statewide builder validation', csvUrl: 'data/real/hawaii-builders/builder_validation_queue.csv', signalsUrl: 'data/real/hawaii-builders/builder_signals.json', evidenceUrl: 'data/real/hawaii-builders/market_evidence.json' },
   { key: 'pahrump-nv-89048', state: 'NV', marketName: 'Pahrump 89048 / Nye County, NV', csvUrl: 'data/real/pahrump-nv-89048/builder_validation_queue.csv', signalsUrl: 'data/real/pahrump-nv-89048/builder_signals.json', evidenceUrl: 'data/real/pahrump-nv-89048/market_evidence.json' },
   { key: 'joshua-tree-ca-92252', state: 'CA', marketName: 'Joshua Tree 92252 / San Bernardino County, CA', csvUrl: 'data/real/joshua-tree-ca-92252/builder_validation_queue.csv', signalsUrl: 'data/real/joshua-tree-ca-92252/builder_signals.json', evidenceUrl: 'data/real/joshua-tree-ca-92252/market_evidence.json' },
   { key: 'dorchester-sc', state: 'SC', marketName: 'Dorchester County / Charleston edge, SC', csvUrl: 'data/real/dorchester-sc/builder_validation_queue.csv', signalsUrl: 'data/real/dorchester-sc/builder_signals.json', evidenceUrl: 'data/real/dorchester-sc/market_evidence.json' },
@@ -128,6 +129,7 @@ const builderMarketRegistry = [
   { key: 'mohave-valley-az-86440', state: 'AZ', label: 'Mohave Valley / Fort Mohave 86440', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Mohave County follow-up', suggestedRank: 10.1, sourceWork: 'Call regional builders for scattered-lot appetite and utility/access constraints.' },
   { key: 'maricopa-ak-chin-az-85139', state: 'AZ', label: 'Maricopa / Ak-Chin edge 85139', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Pinal/Maricopa follow-up', suggestedRank: 10.2, sourceWork: 'Use Casa Grande/Queen Creek/Chandler spillover buyers; confirm 85139 lot appetite.' },
   { key: 'pahoa-keaau-hi', state: 'HI', label: 'Puna / East Hawaii ZIPs 96749, 96778, 96771', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Hawaii County follow-up', suggestedRank: 10.3, sourceWork: 'Validate Big Island lot demand and lava/flood/access deal killers before seller sourcing.' },
+  { key: 'hawaii-builders', state: 'HI', label: 'Hawaii statewide builder validation', note: 'BIA + county/license + business-profile phase 2 lane', platform: 'BIA Hawaii directory + DCCA PVL + county permit portals + official profiles', suggestedRank: 10.35, sourceWork: 'Call through top Hawaii builders and capture island-specific buy boxes before any seller sourcing.' },
   { key: 'pahrump-nv-89048', state: 'NV', label: 'Pahrump 89048 / Nye County', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + Nye County follow-up', suggestedRank: 10.4, sourceWork: 'Capture well/septic/power/road thresholds before land sourcing.' },
   { key: 'joshua-tree-ca-92252', state: 'CA', label: 'Joshua Tree 92252 / San Bernardino County', note: 'specific ZIP builder-call lane', platform: 'BuildZoom public profiles + San Bernardino County follow-up', suggestedRank: 10.5, sourceWork: 'Validate water, access, desert-build, and STR-sensitive deal killers before seller sourcing.' },
   { key: 'tucson-az', state: 'AZ', label: 'Tucson / Pima County', note: 'secondary AZ permit lane', platform: 'Accela / Tucson DSD', suggestedRank: 11, sourceWork: 'Probe Accela-style details for contractor rows.' },
@@ -3790,7 +3792,7 @@ function renderBuilderMarketHero(theme = {}, activeState = {}, selectedMarket = 
     <div class="builder-market-hero-copy">
       <span class="eyebrow">${h(theme.route)} · ${h(theme.mood)}</span>
       <h3>${h(theme.label)}</h3>
-      <p><b>${h(activeBuilders.length)} permit-backed builders.</b> ${h(theme.tone)} ${h(theme.action)} seller sourcing stays parked until a buy box is captured.</p>
+      <p><b>${h(activeBuilders.length)} source-backed builder candidates.</b> ${h(theme.tone)} ${h(theme.action)} seller sourcing stays parked until a buy box is captured.</p>
       <div class="builder-market-context-pills" aria-label="Current market context">
         <span>${h(theme.stateCode)}</span>
         <span>${h(marketCount)} ${marketCount === 1 ? 'lane' : 'lanes'}</span>
@@ -3900,7 +3902,7 @@ function renderBuilderListEnginePanel(options = {}) {
     <strong>${h(activeLaneLabel)}</strong>
     <p><b>${h(selectedMarket?.marketName || activeState.detail || activeState.thesis)}.</b> ${h(selectedMarket?.note || activeState.note || '')}</p>
     <ul>
-      <li title="Permit-backed builder rows under this state."><b>${h(activeBuilders.length)}</b><span>builders</span></li>
+      <li title="Source-backed builder rows under this state."><b>${h(activeBuilders.length)}</b><span>builders</span></li>
       <li title="County/source lanes grouped under the state decision."><b>${h(activeState.countyCount || 0)}</b><span>counties</span></li>
       <li title="Rows with public phone/email/contact path ready for operator outreach."><b>${h(activeSummary.callable ?? 0)}</b><span>callable</span></li>
       <li title="Recent permit rows attached as public proof."><b>${h(activeSummary.totalRecentBuildSignals ?? 0)}</b><span>proofs</span></li>

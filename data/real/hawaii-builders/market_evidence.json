@@ -1,0 +1,53 @@
+{
+  "key": "hawaii-builders",
+  "state": "HI",
+  "marketName": "Hawaii statewide builder validation",
+  "county": "Honolulu / Hawaii / Maui / Kauai Counties",
+  "zips": [],
+  "source": "Phase 1 Hawaii builder prospects + Phase 2 BIA Hawaii directory + business-profile/manual pass",
+  "sourceCaveat": "Rows are source-backed buyer-validation candidates, not validated land buyers. Call/email required to capture buy box before seller sourcing.",
+  "builderCount": 149,
+  "callableCount": 149,
+  "biaPhase2Rows": 40,
+  "businessProfileAnnotationRows": 30,
+  "generatedAt": "2026-07-08T00:21:50Z",
+  "generatedFrom": [
+    "data/real/hawaii-builders/hawaii-home-builder-prospects-phase1-2026-07-07.csv",
+    "data/real/hawaii-builders/hawaii-builder-signals-bia-phase2-2026-07-08.json",
+    "data/real/hawaii-builders/hawaii-home-builder-business-profile-annotations-phase2-2026-07-08.csv"
+  ],
+  "dedupePolicy": "Normalized company name; merge BIA/profile annotations into existing Phase 1 rows; preserve all unique source-backed builder candidates.",
+  "permitVerificationResources": [
+    {
+      "name": "State of Hawaii DCCA PVL contractor license search",
+      "url": "https://mypvl.dcca.hawaii.gov/public-license-search/",
+      "use": "Search company/qualifying responsible managing employee/license number; automation returned 403, so operator/manual verification required."
+    },
+    {
+      "name": "Honolulu DPP building permit search",
+      "url": "https://dppweb.honolulu.gov/DPPWeb/default.aspx?PossePresentation=BuildingPermitSearch",
+      "use": "Search Oahu/Honolulu permits by contractor, address, TMK, or permit number where available."
+    },
+    {
+      "name": "Hawaii County EPIC / building permits",
+      "url": "https://hawaiicounty.ehawaii.gov/epic/",
+      "use": "Search Big Island permits manually; automation returned 403."
+    },
+    {
+      "name": "County of Hawaii Building Division permits page",
+      "url": "https://www.hawaiicounty.gov/departments/public-works/building-division/building-permits",
+      "use": "Big Island building permit entry point; automation returned 403."
+    },
+    {
+      "name": "Maui MAPPS permitting portal",
+      "url": "https://www.mauicounty.gov/2479/MAPPS",
+      "use": "Search Maui County permit/license/project records; HTTP 200 verified 2026-07-08."
+    },
+    {
+      "name": "Kauai Building Division / permitting",
+      "url": "https://www.kauai.gov/Government/Departments-Agencies/Public-Works/Building-Division",
+      "use": "Kauai permit entry point; automation returned 403."
+    }
+  ],
+  "nextOperatorGate": "Capture buy box: geography, lot size, max lot price, close speed, road/access/utilities, flood/lava/wetland/slope/tree/zoning deal killers, package recipient."
+}

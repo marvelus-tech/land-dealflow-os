@@ -16,6 +16,7 @@ const markets = [
   ['mohave-valley-az-86440', 'AZ', 'data/real/mohave-valley-az-86440/builder_signals.json', 17],
   ['maricopa-ak-chin-az-85139', 'AZ', 'data/real/maricopa-ak-chin-az-85139/builder_signals.json', 20],
   ['pahoa-keaau-hi', 'HI', 'data/real/pahoa-keaau-hi/builder_signals.json', 20],
+  ['hawaii-builders', 'HI', 'data/real/hawaii-builders/builder_signals.json', 100],
   ['pahrump-nv-89048', 'NV', 'data/real/pahrump-nv-89048/builder_signals.json', 20],
   ['joshua-tree-ca-92252', 'CA', 'data/real/joshua-tree-ca-92252/builder_signals.json', 20],
   ['dorchester-sc', 'SC', 'data/real/dorchester-sc/builder_signals.json', 20],
@@ -79,7 +80,7 @@ assert.doesNotMatch(app, /builder-market-workbench state-first-workbench/, 'Stat
 assert.match(app, /builder-command-market-name/, 'Market command rail should keep market names structurally readable');
 assert.match(app, /asArray\(market\.rows\)\.length[\s\S]{0,120}callable[\s\S]{0,120}proofs/, 'Market command rail should expose builders/callable/proof facts per market');
 assert.doesNotMatch(app, /class="builders-primary-action"/, 'Top-of-page utility jump should not compete with the selected-market page');
-assert.match(app, /<li title="Permit-backed builder rows under this state\."\s*><b>\$\{h\(activeBuilders\.length\)\}<\/b><span>builders<\/span><\/li>/, 'Selected-state summary metrics should split numerals from labels');
+assert.match(app, /<li title="Source-backed builder rows under this state\."\s*><b>\$\{h\(activeBuilders\.length\)\}<\/b><span>builders<\/span><\/li>/, 'Selected-state summary metrics should split numerals from labels');
 assert.doesNotMatch(app, /<button type="button" class="state-market-toggle/, 'State selector controls must not be native buttons with inherited dark slabs');
 assert.match(app, /<button type="button" class="builder-command-market/, 'Market selection should be a first-class top rail control, not mid-page progressive disclosure');
 assert.match(app, /function renderBuilderCountyLedger/, 'County lanes must move into selected-state evidence detail');
@@ -87,7 +88,7 @@ assert.match(app, /<details class="state-county-ledger">/, 'County lane detail s
 assert.doesNotMatch(app, /<details class="state-county-ledger" open>/, 'County lane detail must not overwhelm the selected-state summary by default');
 assert.match(app, /data-builder-market-key/, 'Builders switchboard must switch individual markets on demand');
 assert.match(app, /0 builders · needs source work/, 'Low/no-count markets must remain visible with source-work copy');
-for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa']) {
+for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'hawaii-builders', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa']) {
   assert.match(app, new RegExp(`key: '${key}'`), `New ZIP sprint or queued market must remain visible on Builders: ${key}`);
 }
 for (const key of ['forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga']) {
@@ -130,7 +131,7 @@ for (const [key, state, url, minRows] of markets) {
   assert.equal(new Set(duplicateKeys).size, duplicateKeys.length, `${key} must not contain duplicate public builder profile/name rows`);
 }
 
-for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
+for (const key of ['port-charlotte-fl-33948', 'punta-gorda-fl-33983', 'port-charlotte-fl-33953', 'mohave-valley-az-86440', 'maricopa-ak-chin-az-85139', 'pahoa-keaau-hi', 'hawaii-builders', 'pahrump-nv-89048', 'joshua-tree-ca-92252', 'columbus-oh', 'boise-id', 'evansville-in', 'indianapolis-in', 'philadelphia-pa', 'pittsburgh-pa', 'forsyth-ga', 'hall-ga', 'jackson-ga', 'douglas-ga', 'dorchester-sc', 'berkeley-sc', 'greenville-sc']) {
   assert.ok(app.includes(`key: '${key}'`), `missing visible market key ${key}`);
 }
 

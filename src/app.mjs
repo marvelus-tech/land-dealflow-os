@@ -4139,10 +4139,14 @@ function renderClosingDeskPanel() {
 
 function renderLandQueue(visible = [], selected = null) {
   const selectedKey = selected ? parcelSelectionKey(selected) : '';
-  return `<aside class="deal-queue land-ledger-queue phase215-queue-rail" aria-label="Land parcel queue">
-    <div class="queue-header"><span class="eyebrow">Queue</span><strong>${visible.length} parcels</strong></div>
+  const queueLimit = 80;
+  const queueRows = visible.slice(0, queueLimit);
+  const hiddenCount = Math.max(0, visible.length - queueRows.length);
+  const queueLimitNotice = hiddenCount ? `<p class="phase265-queue-window-note">Showing top ${h(queueRows.length)} of ${h(visible.length)} ranked parcels. Narrow the lane or sort mode before expanding lower-priority owner work.</p>` : '';
+  return `<aside class="deal-queue land-ledger-queue phase215-queue-rail phase265-windowed-queue" aria-label="Land parcel queue">
+    <div class="queue-header"><span class="eyebrow">Queue</span><strong>${visible.length} parcels</strong>${queueLimitNotice}</div>
     <div class="land-ledger-legend" aria-label="Land listing state legend"><span class="state-offer-ready">offer-ready</span><span class="state-matched-enriched">matched + enriched</span><span class="state-builder-match">builder match</span><span class="state-enriched">enriched</span><span class="state-contact-candidate">contact candidate</span><span class="state-visible-source">source</span><span class="state-needs-proof">needs proof</span><span class="state-raw-finding">raw</span></div>
-    <div class="queue-list">${visible.map((parcel, index) => {
+    <div class="queue-list">${queueRows.map((parcel, index) => {
       const parcelKey = parcelSelectionKey(parcel);
       const isActive = parcelKey === selectedKey;
       const listingState = parcel._listingState || parcelListingState(parcel);

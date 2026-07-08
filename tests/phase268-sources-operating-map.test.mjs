@@ -10,7 +10,7 @@ const marker = 'Phase 268 W+K Phase 6 Sources operating map';
 assert.ok(css.includes(marker), 'Phase 268 Sources marker must exist.');
 const phase = css.slice(css.indexOf(marker));
 
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-machine-console/, 'index.html must cache-bust Phase 268 Sources CSS while preserving prior phase markers.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-route-hero-system/, 'index.html must cache-bust Phase 268 Sources CSS while preserving prior phase markers.');
 assert.ok(html.indexOf('id="source-priority-board"') < html.indexOf('id="weekly-market-scout"'), 'Sources priority board must render before Market Radar scout.');
 assert.match(pkg, /phase268-sources-operating-map\.test\.mjs/, 'npm test must include Phase 268 guard.');
 assert.match(phase, /--phase268-sources-rule-token: source-priority-operating-map-first/, 'Sources phase token must encode source-priority-first rule.');

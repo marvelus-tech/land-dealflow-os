@@ -37979,3 +37979,347 @@ body[data-active-view="builders"] #builder-list-panel .builder-state-silhouette 
   }
 }
 
+
+
+/* v1.98 - Phase 263 W+K Phase 1 global shell normalization: one calm product frame, route rhythm, visible mobile tabs. */
+:root {
+  --phase263-shell-rule: wk-phase1-global-shell-navigation-rhythm-only;
+  --phase263-canvas: #f7f5ee;
+  --phase263-paper: #fffdf7;
+  --phase263-ink: #0f1712;
+  --phase263-muted: #667267;
+  --phase263-subtle: #899187;
+  --phase263-forest: #0b5138;
+  --phase263-gold: #a67419;
+  --phase263-hairline: rgba(15, 23, 18, .112);
+  --phase263-hairline-soft: rgba(15, 23, 18, .072);
+  --phase263-radius: 14px;
+  --phase263-max: 1320px;
+  --phase263-gutter: clamp(14px, 3.1vw, 38px);
+  --bg: var(--phase263-canvas);
+  --page: var(--phase263-paper);
+  --panel: var(--phase263-paper);
+  --ink: var(--phase263-ink);
+  --muted: var(--phase263-muted);
+  --soft: var(--phase263-subtle);
+  --line: var(--phase263-hairline);
+  --line-soft: var(--phase263-hairline-soft);
+  --brand: var(--phase263-forest);
+  --green: var(--phase263-forest);
+  --money: var(--phase263-gold);
+}
+
+html {
+  background: var(--phase263-canvas) !important;
+}
+
+body {
+  min-width: 0 !important;
+  background:
+    linear-gradient(180deg, rgba(255,253,247,.92) 0%, var(--phase263-canvas) 440px, var(--phase263-canvas) 100%) !important;
+  color: var(--phase263-ink) !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-image: linear-gradient(rgba(15,23,18,.025) 1px, transparent 1px);
+  background-size: 100% 8px;
+  opacity: .42;
+}
+
+header.nav,
+html body > header.nav,
+html body > header.nav.nav {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+  display: grid !important;
+  grid-template-columns: minmax(122px, 1fr) auto minmax(122px, 1fr) !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 52px !important;
+  margin: 0 !important;
+  padding: 0 var(--phase263-gutter) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase263-hairline-soft) !important;
+  border-radius: 0 !important;
+  background: rgba(247,245,238,.82) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(20px) saturate(150%) !important;
+}
+
+header.nav .brand,
+html body > header.nav .brand {
+  grid-column: 1 !important;
+  justify-self: start !important;
+  color: var(--phase263-ink) !important;
+  font-size: clamp(11px, .86vw, 13px) !important;
+  font-weight: 760 !important;
+  letter-spacing: .015em !important;
+  text-transform: none !important;
+}
+
+header.nav .app-tabs,
+html body > header.nav .app-tabs,
+html body nav.nav .app-tabs {
+  grid-column: 2 !important;
+  justify-self: center !important;
+  display: inline-grid !important;
+  grid-auto-flow: column !important;
+  grid-auto-columns: max-content !important;
+  align-items: center !important;
+  gap: 2px !important;
+  max-width: min(100%, 720px) !important;
+  padding: 3px !important;
+  border: 1px solid rgba(15,23,18,.085) !important;
+  border-radius: 999px !important;
+  background: rgba(255,253,247,.74) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.74) !important;
+  overflow: visible !important;
+  white-space: nowrap !important;
+}
+
+header.nav .tab-button,
+html body > header.nav .tab-button {
+  min-width: 0 !important;
+  min-height: 29px !important;
+  height: 29px !important;
+  padding: 0 clamp(8px, 1.02vw, 14px) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgba(15,23,18,.62) !important;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif !important;
+  font-size: clamp(10.5px, .8vw, 12px) !important;
+  font-weight: 720 !important;
+  letter-spacing: .006em !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  transition: color .22s cubic-bezier(.16,1,.3,1), background .22s cubic-bezier(.16,1,.3,1), box-shadow .22s cubic-bezier(.16,1,.3,1) !important;
+}
+
+header.nav .tab-button:hover,
+html body > header.nav .tab-button:hover {
+  transform: none !important;
+  color: var(--phase263-ink) !important;
+  background: rgba(11,81,56,.055) !important;
+}
+
+header.nav .tab-button.active,
+html body > header.nav .tab-button.active {
+  color: var(--phase263-ink) !important;
+  background: rgba(255,255,255,.86) !important;
+  box-shadow: 0 1px 0 rgba(15,23,18,.06), 0 8px 22px rgba(15,23,18,.065) !important;
+}
+
+main#app {
+  width: min(100%, var(--phase263-max)) !important;
+  max-width: var(--phase263-max) !important;
+  margin: 0 auto !important;
+  padding: clamp(22px, 3.2vw, 46px) var(--phase263-gutter) clamp(56px, 7vw, 96px) !important;
+}
+
+main#app > .app-panel,
+main#app > .section,
+main#app > .command {
+  min-width: 0 !important;
+}
+
+.section-heading.compact-heading,
+main#app > .section > .section-heading.compact-heading {
+  display: grid !important;
+  grid-template-columns: minmax(0, .7fr) minmax(260px, .3fr) !important;
+  gap: clamp(14px, 3vw, 42px) !important;
+  align-items: end !important;
+  margin: 0 0 clamp(18px, 2.8vw, 34px) !important;
+  padding: 0 0 clamp(16px, 2.2vw, 24px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase263-hairline) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.section-heading.compact-heading .eyebrow {
+  grid-column: 1 / -1 !important;
+  color: var(--phase263-forest) !important;
+  font-size: clamp(10px, .78vw, 12px) !important;
+  font-weight: 850 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+}
+
+.section-heading.compact-heading h2 {
+  grid-column: 1 !important;
+  max-width: 760px !important;
+  margin: 0 !important;
+  color: var(--phase263-ink) !important;
+  font-size: clamp(34px, 5vw, 76px) !important;
+  line-height: .9 !important;
+  letter-spacing: -.066em !important;
+  font-weight: 900 !important;
+}
+
+.section-heading.compact-heading p {
+  grid-column: 2 !important;
+  max-width: 390px !important;
+  margin: 0 0 4px !important;
+  color: rgba(15,23,18,.66) !important;
+  font-size: clamp(14px, 1.2vw, 17px) !important;
+  line-height: 1.42 !important;
+  letter-spacing: -.018em !important;
+}
+
+body :where(.daily-heading, .call-tile-grid, .side-panel, .card, .stage, .money-queue-panel, .call-script-panel, .outcome-panel, .intake-card, .hero-deal-card, .builder-market-page-shell, .builder-market-command-rail, .validation-focus-card, .seller-gate-card, .source-page-section, .pipeline, .weekly-market-scout, .source-priority-board) {
+  border-color: var(--phase263-hairline) !important;
+  border-radius: var(--phase263-radius) !important;
+  box-shadow: none !important;
+}
+
+body :where(.brand-hero, .cashflow-hero) {
+  border-radius: calc(var(--phase263-radius) + 4px) !important;
+  border-color: var(--phase263-hairline) !important;
+  box-shadow: none !important;
+}
+
+body :where(button, .hero-actions a, .nav-cta) {
+  border-radius: 0 !important;
+  transition: transform .22s cubic-bezier(.16,1,.3,1), background .22s cubic-bezier(.16,1,.3,1), border-color .22s cubic-bezier(.16,1,.3,1), color .22s cubic-bezier(.16,1,.3,1) !important;
+}
+
+body :where(button, .hero-actions a, .nav-cta):hover {
+  transform: translateY(-1px) !important;
+}
+
+footer {
+  width: min(100%, var(--phase263-max)) !important;
+  margin: 0 auto !important;
+  padding: 0 var(--phase263-gutter) 34px !important;
+  border: 0 !important;
+  color: rgba(15,23,18,.48) !important;
+  font-size: 11px !important;
+}
+footer p {
+  padding-top: 18px !important;
+  border-top: 1px solid var(--phase263-hairline-soft) !important;
+}
+footer a {
+  color: var(--phase263-forest) !important;
+  text-decoration: none !important;
+}
+
+.app-panel[hidden],
+main#app .app-panel[hidden],
+main#app > section[hidden],
+#app #command[hidden],
+#app #parcels-section[hidden],
+#app #builder-list-section[hidden],
+#app #closing-section[hidden],
+#app #sources-hub[hidden],
+#app #workspace[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .section-heading.compact-heading,
+  main#app > .section > .section-heading.compact-heading {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .section-heading.compact-heading .eyebrow,
+  .section-heading.compact-heading h2,
+  .section-heading.compact-heading p {
+    grid-column: 1 !important;
+  }
+  .section-heading.compact-heading h2 {
+    font-size: clamp(34px, 10vw, 62px) !important;
+  }
+  .section-heading.compact-heading p {
+    max-width: 640px !important;
+    font-size: clamp(14px, 3.6vw, 16px) !important;
+  }
+}
+
+@media (max-width: 760px) {
+  header.nav,
+  html body > header.nav,
+  html body > header.nav.nav {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+    padding: 8px max(8px, env(safe-area-inset-left)) 8px max(8px, env(safe-area-inset-right)) !important;
+  }
+  header.nav .brand,
+  html body > header.nav .brand {
+    display: none !important;
+  }
+  header.nav .app-tabs,
+  html body > header.nav .app-tabs,
+  html body nav.nav .app-tabs {
+    grid-column: 1 !important;
+    width: 100% !important;
+    max-width: none !important;
+    display: grid !important;
+    grid-auto-flow: row !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    gap: 2px !important;
+    padding: 2px !important;
+    overflow: visible !important;
+  }
+  header.nav .tab-button,
+  html body > header.nav .tab-button {
+    width: 100% !important;
+    min-height: 29px !important;
+    height: 29px !important;
+    padding: 0 2px !important;
+    font-size: clamp(8.6px, 2.35vw, 10.2px) !important;
+    letter-spacing: -.01em !important;
+    white-space: nowrap !important;
+  }
+  main#app {
+    padding-top: 18px !important;
+  }
+}
+
+
+/* v1.98.1 - Phase 263 self-review: no pseudo hero cards, no shaded split-panel residue in route headers. */
+main#app > .section > .section-heading.compact-heading,
+body main#app > .section > .section-heading.compact-heading {
+  --phase263-self-review-rule: route-headers-are-open-memos-not-pseudo-card-heroes;
+  position: relative !important;
+  padding: clamp(24px, 4.2vw, 52px) 0 clamp(16px, 2.2vw, 24px) !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+
+main#app > .section > .section-heading.compact-heading::before,
+main#app > .section > .section-heading.compact-heading::after,
+body main#app > .section > .section-heading.compact-heading::before,
+body main#app > .section > .section-heading.compact-heading::after {
+  content: none !important;
+  display: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+main#app > .section > .section-heading.compact-heading p {
+  align-self: end !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}

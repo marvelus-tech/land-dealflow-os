@@ -39798,3 +39798,451 @@ body[data-active-view="deals"] #parcels .land-command-market > span b {
 body[data-active-view="deals"] #parcels .land-command-market em {
   display: none !important;
 }
+
+
+/* v1.101 - Phase 266 W+K Phase 4 Today command center: one daily action, proof ledger, sprint-first rhythm. */
+:root {
+  --phase266-paper: #f7f4ec;
+  --phase266-panel: #fffdf7;
+  --phase266-ink: #101513;
+  --phase266-muted: #6d7672;
+  --phase266-rule: rgba(16, 21, 19, .13);
+  --phase266-rule-strong: rgba(16, 21, 19, .25);
+  --phase266-green: #075c45;
+  --phase266-gold: #a87413;
+}
+body[data-active-view="today"] #command {
+  --phase266-rule-token: today-is-one-defensible-action;
+  background: var(--phase266-paper) !important;
+}
+body[data-active-view="today"] #command .wk-hero {
+  min-height: 0 !important;
+  margin: clamp(34px, 6vw, 78px) 0 clamp(18px, 3vw, 34px) !important;
+  padding: 0 0 clamp(18px, 3vw, 32px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase266-rule-strong) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, .54fr) minmax(340px, .46fr) !important;
+  align-items: end !important;
+  gap: clamp(28px, 6vw, 96px) !important;
+}
+body[data-active-view="today"] #command .wk-hero::before,
+body[data-active-view="today"] #command .wk-hero::after { display: none !important; content: none !important; }
+body[data-active-view="today"] #command .wk-hero-copy { max-width: 620px !important; }
+body[data-active-view="today"] #command .wk-hero h1 {
+  max-width: 8.8ch !important;
+  margin: 0 !important;
+  color: var(--phase266-ink) !important;
+  font-size: clamp(50px, 8vw, 104px) !important;
+  line-height: .88 !important;
+  letter-spacing: -.08em !important;
+}
+body[data-active-view="today"] #command .wk-hero p {
+  max-width: 42ch !important;
+  margin: clamp(18px, 2.2vw, 26px) 0 0 !important;
+  color: #46514d !important;
+  font-size: clamp(14px, 1.08vw, 17px) !important;
+  line-height: 1.46 !important;
+}
+body[data-active-view="today"] #command .wk-actions {
+  margin-top: clamp(20px, 2.6vw, 32px) !important;
+  border-top: 1px solid var(--phase266-rule-strong) !important;
+  border-bottom: 1px solid var(--phase266-rule) !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+body[data-active-view="today"] #command .wk-actions a {
+  min-height: 48px !important;
+  padding: 15px 18px !important;
+  border: 0 !important;
+  border-right: 1px solid var(--phase266-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase266-muted) !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .wk-actions a.primary-command {
+  color: var(--phase266-green) !important;
+  background: rgba(7, 92, 69, .045) !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot {
+  align-self: end !important;
+  border: 1px solid var(--phase266-rule) !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: block !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div {
+  min-height: 62px !important;
+  padding: 13px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase266-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  display: grid !important;
+  grid-template-columns: minmax(120px, .32fr) minmax(0, 1fr) minmax(92px, auto) !important;
+  align-items: baseline !important;
+  gap: 18px !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot div:last-child { border-bottom: 0 !important; }
+body[data-active-view="today"] #command .phase24-snapshot span {
+  color: var(--phase266-muted) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .09em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot b {
+  color: var(--phase266-ink) !important;
+  font-size: clamp(22px, 2.5vw, 36px) !important;
+  line-height: 1 !important;
+  letter-spacing: -.045em !important;
+}
+body[data-active-view="today"] #command .phase24-snapshot em {
+  justify-self: end !important;
+  color: var(--phase266-gold) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #operator-session-mode.os8-session {
+  margin: 0 0 clamp(28px, 5vw, 68px) !important;
+  padding: clamp(22px, 3.6vw, 44px) 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase266-rule-strong) !important;
+  border-bottom: 1px solid var(--phase266-rule-strong) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(280px, .34fr) minmax(0, .66fr) !important;
+  grid-template-areas: none !important;
+  align-items: start !important;
+  gap: clamp(26px, 5vw, 76px) !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero {
+  position: sticky !important;
+  top: 104px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero h2 {
+  max-width: 9ch !important;
+  margin: 12px 0 0 !important;
+  color: var(--phase266-ink) !important;
+  font-size: clamp(34px, 4.5vw, 64px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.065em !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero p {
+  max-width: 34ch !important;
+  margin-top: 18px !important;
+  color: #46514d !important;
+  font-size: 14px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="today"] #operator-session-mode .today-command-link {
+  display: inline-flex !important;
+  width: auto !important;
+  min-height: 0 !important;
+  margin-top: 24px !important;
+  padding: 0 0 10px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase266-green) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase266-green) !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
+  padding: 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase266-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-card-head {
+  min-height: 42px !important;
+  padding: 0 0 14px !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase266-rule) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 18px !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-card-head span,
+body[data-active-view="today"] #operator-session-mode .os8-card-head b {
+  color: var(--phase266-green) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step {
+  min-height: 66px !important;
+  padding: 18px 10px 18px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase266-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: 42px minmax(0, 1fr) 86px !important;
+  gap: 16px !important;
+  align-items: center !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step.active {
+  background: linear-gradient(90deg, rgba(7, 92, 69, .06), transparent 76%) !important;
+  border-bottom-color: rgba(7, 92, 69, .2) !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step > span {
+  width: 28px !important;
+  height: 28px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: rgba(168, 116, 19, .10) !important;
+  color: var(--phase266-gold) !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step b {
+  color: var(--phase266-ink) !important;
+  font-size: clamp(15px, 1.45vw, 20px) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -.025em !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-step strong,
+body[data-active-view="today"] #operator-session-mode .os8-step p { display: none !important; }
+body[data-active-view="today"] #operator-session-mode .os8-step em {
+  justify-self: end !important;
+  color: #6d8d80 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="today"] #today-offers-review.today-offers-review {
+  margin: 0 !important;
+  padding: clamp(24px, 4vw, 50px) 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid var(--phase266-rule-strong) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(260px, .28fr) minmax(0, .72fr) !important;
+  gap: clamp(24px, 5vw, 74px) !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offers-head {
+  position: sticky !important;
+  top: 104px !important;
+  align-self: start !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offers-head h2 {
+  max-width: 10ch !important;
+  color: var(--phase266-ink) !important;
+  font-size: clamp(28px, 3.6vw, 48px) !important;
+  line-height: .96 !important;
+  letter-spacing: -.06em !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offers-head p {
+  max-width: 34ch !important;
+  color: #46514d !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offers-metrics {
+  margin-top: 22px !important;
+  border-top: 1px solid var(--phase266-rule) !important;
+  border-bottom: 1px solid var(--phase266-rule) !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offers-metrics div {
+  padding: 12px 0 !important;
+  border-right: 1px solid var(--phase266-rule) !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offers-metrics div:last-child { border-right: 0 !important; padding-left: 18px !important; }
+body[data-active-view="today"] #today-offers-review .today-offers-list {
+  display: block !important;
+  border-top: 1px solid var(--phase266-rule) !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-row {
+  min-height: 78px !important;
+  margin: 0 !important;
+  padding: 16px 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase266-rule) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 8px !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-main {
+  width: 100% !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: grid !important;
+  grid-template-columns: 38px minmax(0, 1fr) minmax(100px, auto) !important;
+  gap: 16px !important;
+  align-items: start !important;
+  text-align: left !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-rank {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 0 !important;
+  background: rgba(168, 116, 19, .09) !important;
+  color: var(--phase266-gold) !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-title {
+  color: var(--phase266-ink) !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -.025em !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-meta,
+body[data-active-view="today"] #today-offers-review .today-offer-warnings {
+  color: var(--phase266-muted) !important;
+  font-size: 11px !important;
+  line-height: 1.38 !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-money {
+  justify-self: end !important;
+  text-align: right !important;
+}
+body[data-active-view="today"] #today-offers-review .today-offer-money strong { font-size: 18px !important; color: var(--phase266-ink) !important; }
+body[data-active-view="today"] #today-offers-review .today-offer-warning {
+  margin: 0 10px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--phase266-gold) !important;
+  box-shadow: none !important;
+}
+@media (max-width: 860px) {
+  body[data-active-view="today"] #command .wk-hero,
+  body[data-active-view="today"] #operator-session-mode.os8-session,
+  body[data-active-view="today"] #today-offers-review.today-offers-review {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-areas: none !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    gap: 22px !important;
+  }
+  body[data-active-view="today"] #command .wk-hero { margin-top: 26px !important; }
+  body[data-active-view="today"] #command .wk-hero h1 { font-size: clamp(42px, 16vw, 66px) !important; max-width: 8ch !important; }
+  body[data-active-view="today"] #command .phase24-snapshot div {
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 8px 14px !important;
+  }
+  body[data-active-view="today"] #command .phase24-snapshot span { grid-column: 1 / -1 !important; }
+  body[data-active-view="today"] #operator-session-mode .os8-hero,
+  body[data-active-view="today"] #today-offers-review .today-offers-head {
+    position: static !important;
+    top: auto !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    transform: none !important;
+  }
+  body[data-active-view="today"] #operator-session-mode .os8-step {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  body[data-active-view="today"] #operator-session-mode .os8-step em { grid-column: 2 !important; justify-self: start !important; }
+  body[data-active-view="today"] #today-offers-review .today-offer-main {
+    grid-template-columns: 36px minmax(0, 1fr) !important;
+  }
+  body[data-active-view="today"] #today-offers-review .today-offer-money { grid-column: 2 !important; justify-self: start !important; text-align: left !important; }
+}
+
+
+/* v1.101.1 - Phase 266 screenshot correction: lock Today session grid ownership. */
+body[data-active-view="today"] #operator-session-mode.os8-session {
+  align-items: start !important;
+  grid-auto-flow: column !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-hero {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  grid-area: auto !important;
+  position: static !important;
+  top: auto !important;
+  align-self: start !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  grid-area: auto !important;
+  align-self: start !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+@media (max-width: 860px) {
+  body[data-active-view="today"] #operator-session-mode.os8-session {
+    grid-auto-flow: row !important;
+  }
+  body[data-active-view="today"] #operator-session-mode .os8-hero,
+  body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+
+
+/* v1.101.2 - Phase 266 grid-area order correction: set explicit columns after area reset. */
+body[data-active-view="today"] #operator-session-mode .os8-hero {
+  grid-area: auto !important;
+  grid-column: 1 / 2 !important;
+  grid-row: 1 / 2 !important;
+}
+body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
+  grid-area: auto !important;
+  grid-column: 2 / 3 !important;
+  grid-row: 1 / 2 !important;
+}
+@media (max-width: 860px) {
+  body[data-active-view="today"] #operator-session-mode .os8-hero,
+  body[data-active-view="today"] #operator-session-mode .os8-sprint-card {
+    grid-area: auto !important;
+    grid-column: 1 / 2 !important;
+    grid-row: auto !important;
+  }
+}

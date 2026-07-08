@@ -2,29 +2,23 @@
   "market": "Raleigh / Wake County, NC",
   "marketId": "raleigh-nc",
   "state": "NC",
-  "generatedAt": "2026-06-24T21:33:39.617Z",
+  "generatedAt": "2026-07-08T21:33:39.306Z",
   "source": {
-    "name": "Raleigh Open Data \u2014 Building Permits Issued Past 180 Days",
+    "name": "Raleigh Open Data — Building Permits Issued Past 180 Days",
     "serviceUrl": "https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/Building_Permits_Issued_Past_180_Days/FeatureServer/0",
     "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
     "where": "permittypemapped='Building' AND permitclassmapped='Residential' AND (workclassmapped='New' OR workclass LIKE '%New%' OR workclass='Townhouse') AND contractorcompanyname IS NOT NULL AND originaladdress1 IS NOT NULL AND (censuslanduse LIKE '%DETACHED SINGLE FAMILY DWELLING%' OR censuslanduse LIKE '%RESIDENTIAL TOWNHOUSE%' OR censuslanduse LIKE '%TWO FAMILY BUILDING%')"
   },
   "summary": {
-    "permitRowsSampled": 553,
-    "uniqueBuilders": 38,
+    "permitRowsSampled": 610,
+    "uniqueBuilders": 37,
     "minimumUniqueBuilders": 20,
-    "totalRecentBuildSignals": 405,
-    "filter": "Residential building permits, new/townhouse work classes, detached SFR / townhouse / duplex land-use classes, past 180 days.",
-    "callableBuilders": 38
+    "totalRecentBuildSignals": 465,
+    "filter": "Residential building permits, new/townhouse work classes, detached SFR / townhouse / duplex land-use classes, past 180 days."
   },
   "operatingRules": [
     "Contractor data is a permit-backed builder signal, not validated buyer demand until buy-box outreach is complete.",
     "Only residential new dwelling/townhouse/duplex land-use classes are included; additions, repairs, pools, trade permits, and retaining walls are excluded.",
     "No NC seller sourcing until builder geography, max price, parcel criteria, close speed, and deal killers are captured."
-  ],
-  "builderCount": 38,
-  "callableCount": 38,
-  "dedupePolicy": "One row per normalized public builder name/profile inside the market; duplicate legal suffix variants are merged with provenance preserved.",
-  "dedupedFromRows": 39,
-  "duplicateGroupsMerged": 1
+  ]
 }

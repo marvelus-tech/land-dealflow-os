@@ -290,6 +290,27 @@ Useful if they are small landlords. Deprioritize if builder/developer-owned.
 5. Casa View is likely the highest-volume acquisition lane inside this box.
 6. Dallas proof gates matter: DCAD, City parcel geometry, zoning, FEMA flood, utilities, recorded plat/legal lot, frontage, and title.
 
+## Live property comp: 3831 Van Ness Pl / 75220 / Preston Hollow fringe
+
+Detailed comp packet stored at `data/real/dallas-tx/3831-van-ness-pl-comp-2026-07-07.md`.
+
+Operator conclusion from 2026-07-07 public-record review:
+
+- Seller / owner intake: Jorge Reynosa; seller stated **$750,000 no less**. DCAD owner record shows **Jorge A Reynosa & Rocio A Reynosa**.
+- Subject: **3831 Van Ness Pl, Dallas TX 75220**, DCAD account **00000530488000000**, 10,141 sf vacant residential lot, R-7.5(A), FEMA Zone X / not SFHA at centroid.
+- Official value: DCAD 2026 proposed land/market value **$475,000** / **$46.84/sf**; no improvements.
+- Tight public land-value anchors near the subject: 3990 Rochelle Dr at **$500k / $64.34/sf**, 3954 Beechwood Ln at **$500k / $66.48/sf**, 3758 Cortez Dr at **$380k / $45.61/sf**, and 3770 Bolivar Dr at **$400k / $37.45/sf**.
+- Nearby builder demand is real: multiple sub-0.25 mi parcels show 2026 DCAD new-build/renovation market values around **$1.4M-$1.94M**, including 3845 Van Ness Ln, 9826 Mixon Dr, 3935 Rochelle Dr, and 3763 Park Ln.
+- Underwriting: safe exit **$600k-$650k**, expected exit **$625k-$700k**, stretch **$725k-$750k** only with a specific builder and clean utility/plat/title proof.
+- Offer stance: **do not contract at $750k** unless a buyer first locks above the seller basis. Without buyer validation, initial offer should be **$525k-$575k** and walk-up should stay around **$600k-$625k**; **$650k max** only with validated builder appetite.
+
+Primary proof links:
+
+- DCAD: https://www.dallascad.org/AcctDetailRes.aspx?ID=00000530488000000
+- DCAD map: https://maps.dcad.org/prd/dpm/?parcelid=00000530488000000
+- City parcel query: https://gis.dallascityhall.com/arcgis/rest/services/Basemap/DallasTaxParcels/FeatureServer/0/query?f=json&where=ACCT%3D%2700000530488000000%27&outFields=%2A&returnGeometry=true&outSR=4326
+- FEMA NFHL: https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer
+
 ## Deal math
 
 Buyer all-in range includes assignment/JV fees.

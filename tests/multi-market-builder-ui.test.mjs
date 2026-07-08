@@ -41,6 +41,9 @@ assert.match(app, /builderRouteSelectionFromHash/, 'Builders deep links must res
 assert.match(app, /isBuildersIndexRoute/, 'Plain #builders should render a clean initial market index before a market is selected');
 assert.match(app, /renderBuilderMarketIndex/, 'Builders should provide a first-load market/state selection surface');
 assert.match(app, /renderBuilderMarketHero/, 'Builders page must render a dedicated market-world hero');
+assert.match(app, /function flippedGeoViewBox/, 'Builder state SVGs must flip geographic y-coordinates into SVG space');
+assert.match(app, /viewBox=\"\$\{h\(flippedGeoViewBox\(shape\.viewBox\)\)\}\"/, 'Builder state SVG viewBox must be inverted with the path so states render upright');
+assert.match(app, /transform=\"scale\(1 -1\)\"/, 'Builder state silhouette path must invert latitude coordinates instead of rendering upside down');
 assert.match(app, /function renderBuilderMarketCommandRail/, 'Builders should render a top-of-page market command rail before the selected market world');
 assert.match(app, /builder-market-command-rail/, 'Selected Builders market page should place market selection at the top of the page');
 assert.match(app, /buybox-capture-sheet/, 'Builder buy-box form should be moved into a compact capture sheet');
@@ -180,6 +183,9 @@ assert.match(css, /v1\.94\.2 - Builders mobile queue viewport/, 'Phase 250 mobil
 assert.match(css, /v1\.94\.3 - Builders queue phone line/, 'Phase 250 queue phone-line layer missing');
 assert.match(css, /v1\.94\.4 - Builders selected-detail contact ledger/, 'Phase 250 selected detail contact ledger layer missing');
 assert.match(css, /v1\.95 - Builders top-of-page market command rail/, 'Phase 252 top market command rail layer missing');
+assert.match(css, /v1\.96 - Builders upright state silhouettes/, 'Phase 253 upright silhouette art layer missing');
+assert.match(css, /--phase253-builders-rule: upright-cartographic-state-silhouettes/, 'Phase 253 upright silhouette rule token missing');
+assert.match(css, /\.builder-state-silhouette path \{[\s\S]{0,260}stroke-width: \.16 !important/, 'Upright state shapes should use crisp map-like strokes');
 assert.match(css, /--phase252-builders-rule: top-market-command-rail-before-market-world/, 'Phase 252 command-rail philosophy token missing');
 assert.match(css, /--phase248-builders-rule: lower-command-surface-queue-detail-cockpit/, 'Phase 248 queue-detail cockpit token missing');
 assert.match(css, /--phase249-builders-rule: anti-flicker-stable-market-navigation/, 'Phase 249 stable Builders navigation token missing');

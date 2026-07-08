@@ -3720,10 +3720,17 @@ const BUILDER_STATE_SILHOUETTES = Object.freeze({
   IN: { viewBox: '-88.24 37.63 3.59 4.27', path: 'M-87.52 41.71L-87.47 41.67L-87.43 41.69L-87.4 41.68L-87.42 41.64L-87.33 41.62L-87.22 41.62L-87.12 41.65L-86.93 41.71L-86.82 41.76L-86.5 41.76L-85.79 41.76L-85.12 41.76L-84.81 41.76L-84.81 41.7L-84.8 41.49L-84.8 40.3L-84.81 39.93L-84.81 39.55L-84.82 39.31L-84.82 39.11L-84.89 39.07L-84.9 39.05L-84.84 38.99L-84.83 38.96L-84.87 38.93L-84.86 38.9L-84.8 38.89L-84.78 38.87L-84.83 38.83L-84.81 38.79L-84.89 38.8L-84.95 38.78L-84.98 38.78L-85.1 38.73L-85.15 38.69L-85.22 38.7L-85.26 38.74L-85.35 38.73L-85.41 38.74L-85.45 38.71L-85.44 38.6L-85.42 38.54L-85.47 38.51L-85.5 38.47L-85.61 38.44L-85.67 38.3L-85.74 38.27L-85.79 38.29L-85.83 38.28L-85.85 38.22L-85.91 38.16L-85.9 38.09L-85.92 38.03L-85.95 38.01L-86.03 37.99L-86.05 37.96L-86.09 38.01L-86.17 38.01L-86.27 38.06L-86.27 38.14L-86.35 38.2L-86.37 38.19L-86.37 38.16L-86.32 38.15L-86.33 38.13L-86.37 38.13L-86.4 38.11L-86.43 38.13L-86.46 38.1L-86.43 38.09L-86.45 38.05L-86.52 38.04L-86.53 37.96L-86.51 37.93L-86.59 37.92L-86.6 37.87L-86.64 37.84L-86.66 37.86L-86.64 37.91L-86.68 37.92L-86.72 37.89L-86.75 37.91L-86.79 37.99L-86.86 37.99L-86.91 37.94L-87.01 37.92L-87.05 37.89L-87.06 37.81L-87.09 37.79L-87.13 37.78L-87.16 37.84L-87.22 37.85L-87.3 37.9L-87.38 37.94L-87.45 37.94L-87.5 37.91L-87.55 37.93L-87.57 37.97L-87.6 37.97L-87.63 37.92L-87.59 37.86L-87.63 37.83L-87.67 37.83L-87.66 37.88L-87.68 37.9L-87.83 37.88L-87.87 37.92L-87.9 37.92L-87.94 37.89L-87.9 37.81L-87.95 37.77L-88.03 37.8L-88.07 37.8L-88.08 37.83L-88.04 37.82L-88.1 37.9L-88.01 37.89L-88.07 37.92L-88.01 37.98L-88.01 38.03L-88.04 38.05L-87.97 38.07L-87.96 38.1L-88 38.08L-87.93 38.15L-87.98 38.2L-87.99 38.25L-87.96 38.24L-87.93 38.3L-87.91 38.27L-87.88 38.3L-87.85 38.28L-87.81 38.36L-87.78 38.37L-87.73 38.44L-87.74 38.48L-87.65 38.51L-87.65 38.57L-87.62 38.64L-87.6 38.67L-87.54 38.68L-87.49 38.74L-87.5 38.78L-87.55 38.86L-87.51 38.95L-87.58 38.99L-87.57 39.06L-87.63 39.1L-87.64 39.17L-87.57 39.22L-87.61 39.26L-87.6 39.31L-87.58 39.34L-87.53 39.35L-87.53 39.65L-87.53 39.99L-87.53 40L-87.53 40.25L-87.53 40.46L-87.53 41.49L-87.52 41.71Z' },
 });
 
+function flippedGeoViewBox(viewBox = '') {
+  const [minX, minY, width, height] = String(viewBox).split(/\s+/).map(Number);
+  if (![minX, minY, width, height].every(Number.isFinite)) return viewBox;
+  const flippedMinY = -(minY + height);
+  return [minX, flippedMinY, width, height].map(value => Number(value.toFixed(3))).join(' ');
+}
+
 function renderBuilderStateSilhouette(stateCode = '') {
   const shape = BUILDER_STATE_SILHOUETTES[String(stateCode || '').toUpperCase()];
   if (!shape) return '';
-  return `<svg class="builder-state-silhouette" viewBox="${h(shape.viewBox)}" role="img" aria-label="${h(String(stateCode).toUpperCase())} state outline" focusable="false" preserveAspectRatio="xMidYMid meet"><path d="${h(shape.path)}" vector-effect="non-scaling-stroke"></path></svg>`;
+  return `<svg class="builder-state-silhouette" viewBox="${h(flippedGeoViewBox(shape.viewBox))}" role="img" aria-label="${h(String(stateCode).toUpperCase())} state outline" focusable="false" preserveAspectRatio="xMidYMid meet"><path d="${h(shape.path)}" transform="scale(1 -1)" vector-effect="non-scaling-stroke"></path></svg>`;
 }
 
 function builderMarketWorldTheme(activeState = {}, selectedMarket = null, activeBuilders = []) {

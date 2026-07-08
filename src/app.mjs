@@ -839,6 +839,11 @@ function setActiveView(view, options = {}) {
     const isActive = button.dataset.view === activeView;
     button.classList.toggle('active', isActive);
     button.setAttribute('aria-selected', String(isActive));
+    if (isActive) {
+      button.setAttribute('aria-current', 'page');
+    } else {
+      button.removeAttribute('aria-current');
+    }
   });
   if (options.scrollToTop) scrollToPageTop();
 }

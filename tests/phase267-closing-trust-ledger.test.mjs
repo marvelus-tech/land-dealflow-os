@@ -9,7 +9,7 @@ const marker = 'Phase 267 W+K Phase 5 Closing trust ledger';
 assert.ok(css.includes(marker), 'Phase 267 Closing marker must exist.');
 const phase = css.slice(css.indexOf(marker));
 
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-route-hero-system/, 'index.html must cache-bust Phase 267 Closing CSS while preserving prior phase markers.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-phase271-orientation-spine-v3/, 'index.html must cache-bust Phase 267 Closing CSS while preserving prior phase markers.');
 assert.match(pkg, /phase267-closing-trust-ledger\.test\.mjs/, 'npm test must include Phase 267 guard.');
 assert.match(phase, /--phase267-rule-token: one-clean-close-path/, 'Closing phase token must encode the single close path rule.');
 assert.match(phase, /#contract-composer\.contract-composer-panel[\s\S]{0,420}border-top: 1px solid var\(--phase267-line-strong\) !important[\s\S]{0,280}background: transparent !important/, 'Contract composer must become an open trust ledger, not a card slab.');

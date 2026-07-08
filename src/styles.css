@@ -41489,3 +41489,198 @@ body[data-active-view="builders"] #builder-list-section #builder-list-panel .bui
   max-width: none !important;
   margin: 0 !important;
 }
+
+
+/* v1.106 - Phase 271 W+K Phase 9 global orientation spine: quieter nav, clear active route, faster entry. */
+body {
+  --phase271-orientation-token: global-route-spine-entry-compression;
+  --phase271-nav-line: rgba(8, 16, 12, .12);
+  --phase271-nav-muted: #66736c;
+}
+header.nav {
+  min-height: 46px !important;
+  max-width: min(1120px, calc(100vw - 56px)) !important;
+  margin: 8px auto 0 !important;
+  padding: 0 14px !important;
+  border-radius: 999px !important;
+  border: 1px solid var(--phase271-nav-line) !important;
+  background: rgba(252, 250, 244, .92) !important;
+  box-shadow: 0 8px 28px rgba(8, 16, 12, .045) !important;
+  display: grid !important;
+  grid-template-columns: minmax(120px, .34fr) auto minmax(190px, .34fr) !important;
+  align-items: center !important;
+  gap: 16px !important;
+}
+header.nav::after {
+  content: 'Buyer proof before seller motion' !important;
+  justify-self: end !important;
+  color: var(--phase271-nav-muted) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  line-height: 1 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+header.nav .brand {
+  color: #0b110d !important;
+  font-size: 13px !important;
+  letter-spacing: -.02em !important;
+  font-weight: 760 !important;
+  white-space: nowrap !important;
+}
+header.nav .app-tabs {
+  justify-self: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+header.nav .tab-button,
+header.nav button.tab-button {
+  min-height: 34px !important;
+  padding: 0 13px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #5d6862 !important;
+  box-shadow: none !important;
+  font-size: 12px !important;
+  font-weight: 720 !important;
+  letter-spacing: .01em !important;
+  position: relative !important;
+}
+header.nav .tab-button::after,
+header.nav button.tab-button::after {
+  content: '' !important;
+  position: absolute !important;
+  left: 12px !important;
+  right: 12px !important;
+  bottom: 4px !important;
+  height: 1px !important;
+  background: transparent !important;
+}
+header.nav .tab-button.active,
+header.nav .tab-button[aria-current="page"],
+header.nav button.tab-button.active,
+header.nav button.tab-button[aria-current="page"] {
+  color: #08100c !important;
+  font-weight: 820 !important;
+}
+header.nav .tab-button.active::after,
+header.nav .tab-button[aria-current="page"]::after,
+header.nav button.tab-button.active::after,
+header.nav button.tab-button[aria-current="page"]::after {
+  background: var(--phase270-forest, #0f4a35) !important;
+  height: 2px !important;
+}
+body:not([data-active-view="today"]) main#app > :where(#parcels-section, #builder-list-section, #closing-section, #sources-hub, #workspace).app-panel > .section-heading.compact-heading,
+body:not([data-active-view="today"]) main#app > #workspace.app-panel > .machine-heading.phase269-machine-console {
+  margin-top: clamp(16px, 3.2vw, 38px) !important;
+}
+body:not([data-active-view="today"]) main#app > :where(#parcels-section, #builder-list-section, #closing-section, #sources-hub, #workspace).app-panel,
+body:not([data-active-view="today"]) main#app > #workspace.app-panel {
+  padding-top: clamp(22px, 4vw, 54px) !important;
+}
+@media (max-width: 760px) {
+  header.nav {
+    max-width: calc(100vw - 48px) !important;
+    margin-top: 8px !important;
+    padding: 10px 12px !important;
+    border-radius: 26px !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+  }
+  header.nav .brand,
+  header.nav::after { display: none !important; }
+  header.nav .app-tabs {
+    justify-self: stretch !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 6px 8px !important;
+  }
+  header.nav .tab-button,
+  header.nav button.tab-button {
+    min-height: 34px !important;
+    padding: 0 4px !important;
+    font-size: 11px !important;
+    letter-spacing: .12em !important;
+  }
+  body:not([data-active-view="today"]) main#app > :where(#parcels-section, #builder-list-section, #closing-section, #sources-hub, #workspace).app-panel,
+  body:not([data-active-view="today"]) main#app > #workspace.app-panel {
+    padding-top: 18px !important;
+  }
+}
+
+
+/* v1.106.1 - Phase 271 screenshot correction: tighter desktop entry and contained nav spine. */
+header.nav {
+  width: min(1120px, calc(100vw - 56px)) !important;
+}
+body:not([data-active-view="today"]) main#app > :where(#parcels-section, #builder-list-section, #closing-section, #sources-hub, #workspace).app-panel,
+body:not([data-active-view="today"]) main#app > #workspace.app-panel {
+  padding-top: clamp(12px, 2.4vw, 30px) !important;
+}
+body:not([data-active-view="today"]) main#app > :where(#parcels-section, #builder-list-section, #closing-section, #sources-hub, #workspace).app-panel > .section-heading.compact-heading,
+body:not([data-active-view="today"]) main#app > #workspace.app-panel > .machine-heading.phase269-machine-console {
+  margin-top: clamp(8px, 1.8vw, 22px) !important;
+}
+@media (max-width: 760px) {
+  header.nav {
+    width: auto !important;
+  }
+}
+
+
+/* v1.106.2 - Phase 271 screenshot correction: remove remaining Land index box seam. */
+body[data-active-view="deals"] #parcels-section #parcels .land-market-index {
+  padding: clamp(22px, 3vw, 36px) 0 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body[data-active-view="deals"] #parcels-section #parcels .land-market-index-hero {
+  width: 100% !important;
+  margin-bottom: clamp(18px, 2.6vw, 28px) !important;
+}
+body[data-active-view="deals"] #parcels-section #parcels .land-market-index-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: 100% !important;
+}
+body[data-active-view="deals"] #parcels-section #parcels .land-market-index-stats > * {
+  min-height: 84px !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view="deals"] #parcels-section #parcels .land-market-index-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+
+/* v1.106.3 - Phase 271 specificity correction: contain route-specific sticky nav rails. */
+body[data-active-view] header.nav {
+  width: min(1120px, calc(100vw - 56px)) !important;
+  max-width: min(1120px, calc(100vw - 56px)) !important;
+  margin: 8px auto 0 !important;
+}
+@media (max-width: 760px) {
+  body[data-active-view] header.nav {
+    width: auto !important;
+    max-width: calc(100vw - 48px) !important;
+  }
+}
+
+
+/* v1.106.4 - Phase 271 final nav containment: beat legacy html body > header.nav.nav width reset. */
+html body[data-active-view] > header.nav.nav {
+  width: min(1120px, calc(100vw - 56px)) !important;
+  max-width: min(1120px, calc(100vw - 56px)) !important;
+  margin: 8px auto 0 !important;
+}
+@media (max-width: 760px) {
+  html body[data-active-view] > header.nav.nav {
+    width: auto !important;
+    max-width: calc(100vw - 48px) !important;
+  }
+}

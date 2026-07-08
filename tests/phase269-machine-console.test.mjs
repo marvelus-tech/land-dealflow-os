@@ -10,7 +10,7 @@ const marker = 'Phase 269 W+K Phase 7 Machine console';
 assert.ok(css.includes(marker), 'Phase 269 Machine marker must exist.');
 const phase = css.slice(css.indexOf(marker));
 
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-route-hero-system/, 'index.html must cache-bust Phase 269 Machine CSS while preserving prior phase markers.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-phase271-orientation-spine-v3/, 'index.html must cache-bust Phase 269 Machine CSS while preserving prior phase markers.');
 assert.match(pkg, /phase269-machine-console\.test\.mjs/, 'npm test must include Phase 269 guard.');
 assert.match(app, /section-heading compact-heading machine-heading phase269-machine-console/, 'Machine heading must carry the Phase 269 console class.');
 assert.match(app, /machine-command-ledger/, 'Machine route must render the command ledger before admin gates.');

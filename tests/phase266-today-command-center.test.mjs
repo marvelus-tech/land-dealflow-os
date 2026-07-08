@@ -9,7 +9,7 @@ const marker = 'Phase 266 W+K Phase 4 Today command center';
 assert.ok(css.includes(marker), 'Phase 266 Today marker must exist.');
 const phase = css.slice(css.indexOf(marker));
 
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-route-hero-system/, 'index.html must cache-bust Phase 267 Closing trust CSS while preserving prior phase markers.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-phase271-orientation-spine-v3/, 'index.html must cache-bust Phase 267 Closing trust CSS while preserving prior phase markers.');
 assert.match(pkg, /phase266-today-command-center\.test\.mjs/, 'npm test must include Phase 266 guard.');
 assert.match(phase, /--phase266-rule-token: today-is-one-defensible-action/, 'Today phase token must encode the one-action rule.');
 assert.match(phase, /body\[data-active-view="today"\] #command \.wk-hero[\s\S]{0,620}grid-template-columns: minmax\(0, \.54fr\) minmax\(340px, \.46fr\) !important/, 'Today hero must become compact command + proof ledger split.');

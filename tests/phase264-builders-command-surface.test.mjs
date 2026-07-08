@@ -24,7 +24,7 @@ assert.match(css, /v1\.99\.2 - Phase 264 mobile correction: cap rendered queue r
 assert.match(css, /data-builder-queue-results\][\s\S]{0,110}max-height: 390px !important/, 'Mobile queue cap must target the rendered data hook.');
 assert.match(css, /active-market-summary\.state-focus-summary \{[\s\S]{0,80}display: none !important/, 'Duplicate active market summary must be removed from Builders Phase 2.');
 assert.match(css, /--phase264-correction: no-duplicate-market-summary-compact-hero/, 'Compact single-hero correction token missing.');
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-route-hero-system/, 'index.html must cache-bust Phase 267 CSS while preserving older phase guard compatibility.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-phase271-orientation-spine-v3/, 'index.html must cache-bust Phase 267 CSS while preserving older phase guard compatibility.');
 assert.match(app, /id="buyer-validation-command" class="validation-command phase85-builder-ledger"/, 'Buyer validation command center renderer must still mount.');
 
 console.log('phase264 Builders command surface guard passed');

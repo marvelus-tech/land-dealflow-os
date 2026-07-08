@@ -9,7 +9,7 @@ const marker = 'Phase 270 W+K Phase 8 route hero system';
 assert.ok(css.includes(marker), 'Phase 270 route hero marker must exist.');
 const phase = css.slice(css.indexOf(marker));
 
-assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-route-hero-system/, 'index.html must cache-bust Phase 270 while preserving prior phase markers.');
+assert.match(html, /styles\.css\?v=phase244-phase263-phase264-phase265-phase266-phase267-phase268-phase269-phase270-phase271-orientation-spine-v3/, 'index.html must cache-bust Phase 270 while preserving prior phase markers.');
 assert.match(pkg, /phase270-route-hero-system\.test\.mjs/, 'npm test must include Phase 270 guard.');
 assert.match(phase, /--phase270-route-hero-token: sources-mode-work-route-headers/, 'Phase 270 must expose the Sources-mode route header token.');
 assert.match(phase, /body:not\(\[data-active-view="today"\]\) main#app > :where\(#parcels-section, #builder-list-section, #closing-section, #sources-hub, #workspace\)\.app-panel > \.section-heading\.compact-heading/, 'Phase 270 must scope shared headers to non-Today work routes.');

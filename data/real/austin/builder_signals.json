@@ -127,18 +127,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13543519"
       },
       {
-        "permitNumber": "2025-120585 BP",
-        "projectId": "13586138",
-        "address": "9309 CORVALLIS DR",
-        "issuedAt": "2025-09-26",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Freestone S353 D Right New - 1 Story SFR w/ 4 bedrooms 2 bathrooms attached 2 car garage covered entry porch and patio required parking: 2.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13586138"
-      },
-      {
         "permitNumber": "2025-120792 BP",
         "projectId": "13586375",
         "address": "9224 FURMAN DR",
@@ -149,6 +137,18 @@
         "housingUnits": 1,
         "description": "Harrison S356 C Left New - 2 Story SFR w/ 5 bedrooms 3 bathrooms attached 2 car garage covered entry porch and patio required parking: 2.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13586375"
+      },
+      {
+        "permitNumber": "2025-120585 BP",
+        "projectId": "13586138",
+        "address": "9309 CORVALLIS DR",
+        "issuedAt": "2025-09-26",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "Freestone S353 D Right New - 1 Story SFR w/ 4 bedrooms 2 bathrooms attached 2 car garage covered entry porch and patio required parking: 2.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13586138"
       },
       {
         "permitNumber": "2025-118984 BP",
@@ -210,18 +210,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13719288"
       },
       {
-        "permitNumber": "2026-073411 BP",
-        "projectId": "13718207",
-        "address": "7207 EAGLE ROSE RD",
-        "issuedAt": "2026-06-09",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "PB- New construction. 1 story 4 bed 3 bath with attached garage covered porch and patio PUD",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13718207"
-      },
-      {
         "permitNumber": "2026-072288 BP",
         "projectId": "13716945",
         "address": "8904 BINNEWATER WAY",
@@ -234,16 +222,28 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13716945"
       },
       {
-        "permitNumber": "2026-071909 BP",
-        "projectId": "13716538",
-        "address": "7212 EAGLE ROSE RD",
+        "permitNumber": "2026-071406 BP",
+        "projectId": "13715943",
+        "address": "8100 ELIJAH CRAIG WAY",
         "issuedAt": "2026-06-09",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "PB -New Construction 2 story 5 bed 4.5 bath with attached garage and covered porch",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13716538"
+        "description": "New construction single-family residential 2-story 4 bedroom 3.5 bath with attached 2-car garage covered front porch and covered rear patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13715943"
+      },
+      {
+        "permitNumber": "2026-073411 BP",
+        "projectId": "13718207",
+        "address": "7207 EAGLE ROSE RD",
+        "issuedAt": "2026-06-09",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "PB- New construction. 1 story 4 bed 3 bath with attached garage covered porch and patio PUD",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13718207"
       }
     ],
     "acquisitionNotes": "Appears on 145 Austin public residential new-construction permit rows since 2025. Latest sample 2026-083167 BP at 9009 DINGO DR issued 2026-06-30."
@@ -258,7 +258,7 @@
     "email": "",
     "contactName": "Sondra Allison",
     "contactPhone": "5126518100",
-    "recentBuilds": 137,
+    "recentBuilds": 138,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -268,6 +268,18 @@
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "2026-087479 BP",
+        "projectId": "13733978",
+        "address": "13336 KINCANE DR",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "1655BL NEW 1 STORY 3 BEDROOM 2 BATH SINGLE FAMILY RESIDENTIAL HOME WITH ATTACHED GARAGE COVERED FRONT PORCH AND REAR PATIO",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13733978"
+      },
       {
         "permitNumber": "2026-086079 BP",
         "projectId": "13732418",
@@ -305,18 +317,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13728454"
       },
       {
-        "permitNumber": "2026-080136 BP",
-        "projectId": "13725673",
-        "address": "12909 STAYWELL WAY",
-        "issuedAt": "2026-06-26",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "1702BR NEW 1 STORY 4 BEDROOM 2 BATH SINGLE FAMILY RESIDENTIAL HOME WITH ATTACHED GARAGE COVERED FRONT PORCH AND REAR PATIO",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13725673"
-      },
-      {
         "permitNumber": "2026-080148 BP",
         "projectId": "13725688",
         "address": "12012 SAGRADA ST",
@@ -329,7 +329,7 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13725688"
       }
     ],
-    "acquisitionNotes": "Appears on 137 Austin public residential new-construction permit rows since 2025. Latest sample 2026-086079 BP at 13300 RIVERSDALE RD issued 2026-07-07."
+    "acquisitionNotes": "Appears on 138 Austin public residential new-construction permit rows since 2025. Latest sample 2026-087479 BP at 13336 KINCANE DR issued 2026-07-08."
   },
   {
     "id": "austin-builder-icb-construction-llc",
@@ -364,52 +364,52 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13611332"
       },
       {
-        "permitNumber": "2025-141694 BP",
-        "projectId": "13609540",
-        "address": "8013 WILDER RD UNIT 201",
+        "permitNumber": "2025-141705 BP",
+        "projectId": "13609551",
+        "address": "8717 COSMICO ST UNIT 101",
         "issuedAt": "2025-11-03",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - SITE PLAN APPROVED: PHASE A - Greystar Plan A581 New 2 story attached unit with 3 bedrooms 2.5 bathrooms and a 2 car garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609540"
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609551"
       },
       {
-        "permitNumber": "2025-141696 BP",
-        "projectId": "13609542",
-        "address": "8113 WILDER RD UNIT 101",
+        "permitNumber": "2025-141703 BP",
+        "projectId": "13609549",
+        "address": "8709 COSMICO ST UNIT 101",
         "issuedAt": "2025-11-03",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - SITE PLAN APPROVED: PHASE A - Greystar Plan A581 New 2 story attached unit with 3 bedrooms 2.5 bathrooms and a 2 car garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609542"
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609549"
       },
       {
-        "permitNumber": "2025-141702 BP",
-        "projectId": "13609548",
-        "address": "8703 COSMICO ST UNIT 104",
+        "permitNumber": "2025-141701 BP",
+        "projectId": "13609547",
+        "address": "8703 COSMICO ST UNIT 101",
         "issuedAt": "2025-11-03",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - SITE PLAN APPROVED: PHASE A - Greystar Plan A581 New 2 story attached unit with 3 bedrooms 2.5 bathrooms and a 2 car garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609548"
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609547"
       },
       {
-        "permitNumber": "2025-141695 BP",
-        "projectId": "13609541",
-        "address": "8013 WILDER RD UNIT 203",
+        "permitNumber": "2025-141704 BP",
+        "projectId": "13609550",
+        "address": "8709 COSMICO ST UNIT 104",
         "issuedAt": "2025-11-03",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - SITE PLAN APPROVED: PHASE A - Greystar Plan A581 New 2 story attached unit with 3 bedrooms 2.5 bathrooms and a 2 car garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609541"
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609550"
       }
     ],
     "acquisitionNotes": "Appears on 133 Austin public residential new-construction permit rows since 2025. Latest sample 2025-143284 BP at 8508 COSMICO ST issued 2025-11-06."
@@ -424,7 +424,7 @@
     "email": "",
     "contactName": "Marla Lamb",
     "contactPhone": "5123288866",
-    "recentBuilds": 119,
+    "recentBuilds": 120,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -434,6 +434,18 @@
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "2026-086717 BP",
+        "projectId": "13733126",
+        "address": "9517 BREEZE HILL DR",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 2-story single-family residence with 4 bedrooms 4 1/2 bathrooms attached 2-car garage covered entry porch and patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13733126"
+      },
       {
         "permitNumber": "2026-067049 BP",
         "projectId": "13711015",
@@ -481,21 +493,9 @@
         "housingUnits": 1,
         "description": "New construction of 2 story sfr with 3 beds 2.5 baths attached 2 car garage covered entry porch and patio PUD",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13718110"
-      },
-      {
-        "permitNumber": "2026-068716 BP",
-        "projectId": "13712889",
-        "address": "9205 CALVERT WAY",
-        "issuedAt": "2026-06-02",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New 1-story SFR 4 bedroom 3 bath with attached 2 car garage covered entry porch and patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13712889"
       }
     ],
-    "acquisitionNotes": "Appears on 119 Austin public residential new-construction permit rows since 2025. Latest sample 2026-067049 BP at 8621 PEAFOWL ST issued 2026-06-30."
+    "acquisitionNotes": "Appears on 120 Austin public residential new-construction permit rows since 2025. Latest sample 2026-086717 BP at 9517 BREEZE HILL DR issued 2026-07-08."
   },
   {
     "id": "austin-builder-d-r-horton-homes",
@@ -517,6 +517,18 @@
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "2026-078078 BP",
+        "projectId": "13723442",
+        "address": "9428 BUCKSTITCH SADDLE DR",
+        "issuedAt": "2026-06-23",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of 1 story sfr with 4 beds 2 baths attached garage covered porch and patio PUD",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13723442"
+      },
       {
         "permitNumber": "2026-078602 BP",
         "projectId": "13724048",
@@ -540,18 +552,6 @@
         "housingUnits": 1,
         "description": "New 1 story SFR attached garage covered porch and patio 4/3",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13723880"
-      },
-      {
-        "permitNumber": "2026-078078 BP",
-        "projectId": "13723442",
-        "address": "9428 BUCKSTITCH SADDLE DR",
-        "issuedAt": "2026-06-23",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of 1 story sfr with 4 beds 2 baths attached garage covered porch and patio PUD",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13723442"
       },
       {
         "permitNumber": "2026-077267 BP",
@@ -578,7 +578,90 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13719780"
       }
     ],
-    "acquisitionNotes": "Appears on 112 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078602 BP at 7000 FROG POND BND issued 2026-06-23."
+    "acquisitionNotes": "Appears on 112 Austin public residential new-construction permit rows since 2025. Latest sample 2026-078078 BP at 9428 BUCKSTITCH SADDLE DR issued 2026-06-23."
+  },
+  {
+    "id": "austin-builder-david-weekley-homes",
+    "name": "David Weekley Homes",
+    "market": "austin-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Robin Campbell",
+    "contactPhone": "5128218885",
+    "recentBuilds": 104,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
+    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "2026-081431 BP",
+        "projectId": "13727144",
+        "address": "1012 LUCINDA WILLIAMS DR",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New detached 2-story condominium residence with 3 bedrooms 2.5 bathrooms and an attached 2 car garage covered porch. SP-2021-0233C",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13727144"
+      },
+      {
+        "permitNumber": "2026-084613 BP",
+        "projectId": "13730762",
+        "address": "1500 PASADENA DR",
+        "issuedAt": "2026-07-06",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 3-story 3 bedroom 4.5 bathroom dwelling unit with attached carport covered front porch rear covered patio and covered balconies.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730762"
+      },
+      {
+        "permitNumber": "2026-084614 BP",
+        "projectId": "13730763",
+        "address": "7408 WOODROW AVE",
+        "issuedAt": "2026-07-06",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 2-story 2 bedroom 2.5 bathroom dwelling unit with attached carport covered front porch and rear covered patio. main plans are with address 1500 Pasadena",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730763"
+      },
+      {
+        "permitNumber": "2026-072799 BP",
+        "projectId": "13717508",
+        "address": "6405 LAUTNER LN",
+        "issuedAt": "2026-07-01",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "PB: New construction of 2 story SFR",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13717508"
+      },
+      {
+        "permitNumber": "2026-076952 BP",
+        "projectId": "13722199",
+        "address": "6404 LAUTNER LN",
+        "issuedAt": "2026-07-01",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New Construction SP Condo - 2-story SFR 3 bed 2.5 bath attached garage w/ covered porch",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13722199"
+      }
+    ],
+    "acquisitionNotes": "Appears on 104 Austin public residential new-construction permit rows since 2025. Latest sample 2026-081431 BP at 1012 LUCINDA WILLIAMS DR issued 2026-07-08."
   },
   {
     "id": "austin-builder-milestone-community-builders-llc",
@@ -662,89 +745,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 104 Austin public residential new-construction permit rows since 2025. Latest sample 2026-086465 BP at 11224 ZIP COCHISE WAY issued 2026-07-07."
-  },
-  {
-    "id": "austin-builder-david-weekley-homes",
-    "name": "David Weekley Homes",
-    "market": "austin-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "Robin Campbell",
-    "contactPhone": "5128218885",
-    "recentBuilds": 103,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
-    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "2026-084614 BP",
-        "projectId": "13730763",
-        "address": "7408 WOODROW AVE",
-        "issuedAt": "2026-07-06",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New 2-story 2 bedroom 2.5 bathroom dwelling unit with attached carport covered front porch and rear covered patio. main plans are with address 1500 Pasadena",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730763"
-      },
-      {
-        "permitNumber": "2026-084613 BP",
-        "projectId": "13730762",
-        "address": "1500 PASADENA DR",
-        "issuedAt": "2026-07-06",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New 3-story 3 bedroom 4.5 bathroom dwelling unit with attached carport covered front porch rear covered patio and covered balconies.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730762"
-      },
-      {
-        "permitNumber": "2026-072799 BP",
-        "projectId": "13717508",
-        "address": "6405 LAUTNER LN",
-        "issuedAt": "2026-07-01",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "PB: New construction of 2 story SFR",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13717508"
-      },
-      {
-        "permitNumber": "2026-076952 BP",
-        "projectId": "13722199",
-        "address": "6404 LAUTNER LN",
-        "issuedAt": "2026-07-01",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New Construction SP Condo - 2-story SFR 3 bed 2.5 bath attached garage w/ covered porch",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13722199"
-      },
-      {
-        "permitNumber": "2026-083670 BP",
-        "projectId": "13729686",
-        "address": "1010 LUCINDA WILLIAMS DR",
-        "issuedAt": "2026-07-01",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction single-family residential condo 2-story 3 bedroom 2.5 bath with attached 2-car garage covered front porch and covered rear patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729686"
-      }
-    ],
-    "acquisitionNotes": "Appears on 103 Austin public residential new-construction permit rows since 2025. Latest sample 2026-084614 BP at 7408 WOODROW AVE issued 2026-07-06."
   },
   {
     "id": "austin-builder-new-home-co",
@@ -862,6 +862,18 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13711496"
       },
       {
+        "permitNumber": "2026-066134 BP",
+        "projectId": "13709991",
+        "address": "12409 SAINT THOMAS DR",
+        "issuedAt": "2026-05-27",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "Callahan 830-P-L Is a New one-story single-family residence with (4) bedrooms (2) bathrooms an attached two-car garage garage and a covered entry porch and patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13709991"
+      },
+      {
         "permitNumber": "2026-064730 BP",
         "projectId": "13708450",
         "address": "12316 SAINT THOMAS DR",
@@ -896,18 +908,6 @@
         "housingUnits": 1,
         "description": "Matador 870-O-R Is a New two-story single-family residence with (4) bedrooms (2.5) bathrooms an attached two-car garage and a covered entry porch and patio.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708523"
-      },
-      {
-        "permitNumber": "2026-066134 BP",
-        "projectId": "13709991",
-        "address": "12409 SAINT THOMAS DR",
-        "issuedAt": "2026-05-27",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Callahan 830-P-L Is a New one-story single-family residence with (4) bedrooms (2) bathrooms an attached two-car garage garage and a covered entry porch and patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13709991"
       }
     ],
     "acquisitionNotes": "Appears on 74 Austin public residential new-construction permit rows since 2025. Latest sample 2026-067478 BP at 4900 EASTON LN issued 2026-06-02."
@@ -1005,7 +1005,7 @@
     "email": "",
     "contactName": "Wayne Woodward",
     "contactPhone": "9727893500",
-    "recentBuilds": 57,
+    "recentBuilds": 59,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -1015,6 +1015,30 @@
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "2026-086272 BP",
+        "projectId": "13732616",
+        "address": "6412 PACKHORSE LN",
+        "issuedAt": "2026-07-09",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "*SMART Housing* *Green Building* New 2-story 4 bedroom 3.5 bathroom single family residence with attached garage covered front porch and rear covered patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13732616"
+      },
+      {
+        "permitNumber": "2026-086977 BP",
+        "projectId": "13733428",
+        "address": "9608 GOLDEN LION DR",
+        "issuedAt": "2026-07-09",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "*Green Building* New 2-story 4 bedroom 4.5 bathroom single family residence with attached garage covered front porch and rear covered patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13733428"
+      },
       {
         "permitNumber": "2026-082342 BP",
         "projectId": "13728177",
@@ -1050,33 +1074,9 @@
         "housingUnits": 1,
         "description": "New construction single-family residential 2-story 4 bedroom 4.5 bath with attached 2-car garage covered front porch and covered rear patio.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13726875"
-      },
-      {
-        "permitNumber": "2026-076919 BP",
-        "projectId": "13722162",
-        "address": "8908 GOLDEN LION DR",
-        "issuedAt": "2026-06-24",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of a 2-story single family residence. With attached garage covered porch and patio 4/5.5 *Please reference approved PUD C8J-2020-0148.1B. Please note that ROW permits shall be obtained through Travis County.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13722162"
-      },
-      {
-        "permitNumber": "2026-076605 BP",
-        "projectId": "13721818",
-        "address": "6320 MC MURTRY ST",
-        "issuedAt": "2026-06-16",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction single-family residential 2-story 5 bedroom 4.5 bath with study flex room attached 2-car garage covered front porch and covered rear patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13721818"
       }
     ],
-    "acquisitionNotes": "Appears on 57 Austin public residential new-construction permit rows since 2025. Latest sample 2026-082342 BP at 9309 BREEZE HILL DR issued 2026-06-29."
+    "acquisitionNotes": "Appears on 59 Austin public residential new-construction permit rows since 2025. Latest sample 2026-086272 BP at 6412 PACKHORSE LN issued 2026-07-09."
   },
   {
     "id": "austin-builder-joseph-design-build",
@@ -1099,18 +1099,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2026-043777 BP",
-        "projectId": "13684440",
-        "address": "4404 JINX AVE BLDG 3",
-        "issuedAt": "2026-04-15",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "BLDG 3: New construction of a 3-Story Single Family Res. [3bed 3.5bath] with Carport",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13684440"
-      },
-      {
         "permitNumber": "2026-043776 BP",
         "projectId": "13684439",
         "address": "4404 JINX AVE BLDG 2",
@@ -1121,6 +1109,18 @@
         "housingUnits": 1,
         "description": "BLDG 2: New construction of a 3-Story Single Fam. Res. [3bed 3.5bath] with Carport.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13684439"
+      },
+      {
+        "permitNumber": "2026-043777 BP",
+        "projectId": "13684440",
+        "address": "4404 JINX AVE BLDG 3",
+        "issuedAt": "2026-04-15",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "BLDG 3: New construction of a 3-Story Single Family Res. [3bed 3.5bath] with Carport",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13684440"
       },
       {
         "permitNumber": "2026-043775 BP",
@@ -1135,18 +1135,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13684438"
       },
       {
-        "permitNumber": "2026-031023 BP",
-        "projectId": "13669911",
-        "address": "919 TILLERY ST--BLDG 1",
-        "issuedAt": "2026-03-24",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [4bed 3.5bath] with Attached Carport. Bldg 1",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13669911"
-      },
-      {
         "permitNumber": "2026-031024 BP",
         "projectId": "13669912",
         "address": "919 TILLERY ST--BLDG 2",
@@ -1157,9 +1145,21 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [4bed 3.5bath] with Attached Carport. Bldg 2",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13669912"
+      },
+      {
+        "permitNumber": "2026-031023 BP",
+        "projectId": "13669911",
+        "address": "919 TILLERY ST--BLDG 1",
+        "issuedAt": "2026-03-24",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [4bed 3.5bath] with Attached Carport. Bldg 1",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13669911"
       }
     ],
-    "acquisitionNotes": "Appears on 53 Austin public residential new-construction permit rows since 2025. Latest sample 2026-043777 BP at 4404 JINX AVE BLDG 3 issued 2026-04-15."
+    "acquisitionNotes": "Appears on 53 Austin public residential new-construction permit rows since 2025. Latest sample 2026-043776 BP at 4404 JINX AVE BLDG 2 issued 2026-04-15."
   },
   {
     "id": "austin-builder-eastside-construction-company-llc",
@@ -1206,6 +1206,18 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13535494"
       },
       {
+        "permitNumber": "2025-028681 BP",
+        "projectId": "13481587",
+        "address": "808 SUSANA ALMANZA ST",
+        "issuedAt": "2026-01-02",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 2 story condo 3 Bed/3 bath attached covered porch and patio Green/Smart housing",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13481587"
+      },
+      {
         "permitNumber": "2025-027856 BP",
         "projectId": "13480647",
         "address": "816 SUSANA ALMANZA ST",
@@ -1218,28 +1230,16 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13480647"
       },
       {
-        "permitNumber": "2025-029873 BP",
-        "projectId": "13482927",
-        "address": "814 SUSANA ALMANZA ST",
+        "permitNumber": "2025-027857 BP",
+        "projectId": "13480648",
+        "address": "818 SUSANA ALMANZA ST",
         "issuedAt": "2026-01-02",
         "permitValue": 0,
         "permitClass": "R- 103 Two Family Bldgs",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "New three-story condo duplex 4 bed 2.5 Bath with attached covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13482927"
-      },
-      {
-        "permitNumber": "2025-024854 BP",
-        "projectId": "13477097",
-        "address": "5907 JORGE GUERRA ST",
-        "issuedAt": "2026-01-02",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Building 5907 Jorge Guerra St New construction of a 3-story duplex as part of a larger development of 15 total buildings on a single lot. 3/3",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13477097"
+        "description": "Duplex Unit#818 3-story 4 bed/2.5 bath with attached covered porch and patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13480648"
       }
     ],
     "acquisitionNotes": "Appears on 44 Austin public residential new-construction permit rows since 2025. Latest sample 2025-075326 BP at 806 VARGAS RD issued 2026-01-26."
@@ -1455,18 +1455,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13576837"
       },
       {
-        "permitNumber": "2026-068218 BP",
-        "projectId": "13712340",
-        "address": "2113 HASKELL ST BLDG 3",
-        "issuedAt": "2026-06-03",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - Three Unit - Bldg 3 New Construction of 2-Story SF Res [3bed 2.5bath] w/ attached carport",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13712340"
-      },
-      {
         "permitNumber": "2026-068217 BP",
         "projectId": "13712339",
         "address": "2113 HASKELL ST BLDG 2",
@@ -1489,6 +1477,18 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - Three Unit - Bldg 1 New Construction of 2-Story SF Res [5bed 4bath] w/ attached garage",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13712338"
+      },
+      {
+        "permitNumber": "2026-068218 BP",
+        "projectId": "13712340",
+        "address": "2113 HASKELL ST BLDG 3",
+        "issuedAt": "2026-06-03",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - Three Unit - Bldg 3 New Construction of 2-Story SF Res [3bed 2.5bath] w/ attached carport",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13712340"
       }
     ],
     "acquisitionNotes": "Appears on 35 Austin public residential new-construction permit rows since 2025. Latest sample 2025-112221 BP at 1904 CULLEN AVE BLDG 2 issued 2026-06-11."
@@ -1514,40 +1514,16 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2025-147446 BP",
-        "projectId": "13615956",
-        "address": "17220 RADIANT DR",
-        "issuedAt": "2026-05-08",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of 1 story SFR 4 beds 2 baths PUD",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13615956"
-      },
-      {
-        "permitNumber": "2025-149862 BP",
-        "projectId": "13618697",
-        "address": "9404 GAMBOL DR",
-        "issuedAt": "2026-05-08",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction single-family residential 1-story 4 bedroom 2 bath with covered front porch covered rear patio and covered exterior storage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13618697"
-      },
-      {
-        "permitNumber": "2025-147743 BP",
-        "projectId": "13616275",
-        "address": "9404 LILT DR BLDG 7",
+        "permitNumber": "2025-150581 BP",
+        "projectId": "13619538",
+        "address": "17244 RADIANT DR",
         "issuedAt": "2026-05-08",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
         "description": "*SMART Housing* *Green Building* New 1-story 4 bedroom 2 bathroom single family residence with covered front porch and rear covered patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13616275"
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13619538"
       },
       {
         "permitNumber": "2025-146573 BP",
@@ -1562,19 +1538,43 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13614971"
       },
       {
-        "permitNumber": "2025-150581 BP",
-        "projectId": "13619538",
-        "address": "17244 RADIANT DR",
+        "permitNumber": "2025-156611 BP",
+        "projectId": "13626458",
+        "address": "9404 LILT DR BLDG 1",
+        "issuedAt": "2026-05-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 1-story single family residence 4 bed/2 bath with covered porch and patio Smart Housing Green building",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13626458"
+      },
+      {
+        "permitNumber": "2025-147446 BP",
+        "projectId": "13615956",
+        "address": "17220 RADIANT DR",
+        "issuedAt": "2026-05-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of 1 story SFR 4 beds 2 baths PUD",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13615956"
+      },
+      {
+        "permitNumber": "2025-147743 BP",
+        "projectId": "13616275",
+        "address": "9404 LILT DR BLDG 7",
         "issuedAt": "2026-05-08",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
         "description": "*SMART Housing* *Green Building* New 1-story 4 bedroom 2 bathroom single family residence with covered front porch and rear covered patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13619538"
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13616275"
       }
     ],
-    "acquisitionNotes": "Appears on 33 Austin public residential new-construction permit rows since 2025. Latest sample 2025-147446 BP at 17220 RADIANT DR issued 2026-05-08."
+    "acquisitionNotes": "Appears on 33 Austin public residential new-construction permit rows since 2025. Latest sample 2025-150581 BP at 17244 RADIANT DR issued 2026-05-08."
   },
   {
     "id": "austin-builder-nalle-custom-homes",
@@ -1586,7 +1586,7 @@
     "email": "",
     "contactName": "Owen Nalle",
     "contactPhone": "5129856825",
-    "recentBuilds": 29,
+    "recentBuilds": 33,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -1596,6 +1596,54 @@
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "2026-084824 BP",
+        "projectId": "13730991",
+        "address": "2603 OAKDALE CT UNIT B",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "UNIT B: New smaller unit of a duplex 2-story includes the 3-car garage garage apartment with 1 bedroom 1 bath. Part of duplex use.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730991"
+      },
+      {
+        "permitNumber": "2026-084823 BP",
+        "projectId": "13730990",
+        "address": "2603 OAKDALE CT UNIT A",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - UNIT A: New primary unit of a duplex 2-story 5+ bedroom 7 bathroom covered patio. Part of duplex use.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730990"
+      },
+      {
+        "permitNumber": "2026-083780 BP",
+        "projectId": "13729805",
+        "address": "3001 VILLAGE DR UNIT A",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [4bed 4.5bath]. UNIT A",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729805"
+      },
+      {
+        "permitNumber": "2026-083781 BP",
+        "projectId": "13729806",
+        "address": "3001 VILLAGE DR UNIT B",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [1bed 1bath] with attached Garage. UNIT B",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729806"
+      },
       {
         "permitNumber": "2026-039489 BP",
         "projectId": "13679609",
@@ -1607,57 +1655,9 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New Duplex Unit A New construction of a 2-Story Single Family Res. [4bed 4.5bath]",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13679609"
-      },
-      {
-        "permitNumber": "2026-039490 BP",
-        "projectId": "13679610",
-        "address": "1508 PEASE RD UNIT B",
-        "issuedAt": "2026-06-23",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New Duplex Unit B New construction of a 2-Story SF Res [1bed 2bath] with attached Garage",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13679610"
-      },
-      {
-        "permitNumber": "2026-027066 BP",
-        "projectId": "13665380",
-        "address": "4111 SHOAL CREEK BLVD",
-        "issuedAt": "2026-04-21",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4 bed 5.5 bath].",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13665380"
-      },
-      {
-        "permitNumber": "2026-028929 BP",
-        "projectId": "13667488",
-        "address": "1905 ROBINHOOD TRL UNIT B",
-        "issuedAt": "2026-03-30",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New Duplex Unit 2 New construction of a 2-Story SF Res [1bed bath] with attached Garage",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13667488"
-      },
-      {
-        "permitNumber": "2026-028928 BP",
-        "projectId": "13667487",
-        "address": "1905 ROBINHOOD TRL Unit A",
-        "issuedAt": "2026-03-30",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New Duplex Unit 1 New construction of a 2-Story Single Family Res. [4bed 4.5bath]",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13667487"
       }
     ],
-    "acquisitionNotes": "Appears on 29 Austin public residential new-construction permit rows since 2025. Latest sample 2026-039489 BP at 1508 PEASE RD issued 2026-06-23."
+    "acquisitionNotes": "Appears on 33 Austin public residential new-construction permit rows since 2025. Latest sample 2026-084824 BP at 2603 OAKDALE CT UNIT B issued 2026-07-08."
   },
   {
     "id": "austin-builder-pulte-homes-of-texas-l-p-dba-pulte-group",
@@ -1704,18 +1704,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13720666"
       },
       {
-        "permitNumber": "2026-064798 BP",
-        "projectId": "13708535",
-        "address": "5211 MONARDA MINT DR",
-        "issuedAt": "2026-05-28",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Coolidge 1027-W-L New 2-Story Single Family Residence with (4) bedrooms (3) bathrooms Attached Garage Covered Patio & Porch Cafe & Loft",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708535"
-      },
-      {
         "permitNumber": "2026-064808 BP",
         "projectId": "13708551",
         "address": "5222 RAGWEED DR",
@@ -1726,6 +1714,18 @@
         "housingUnits": 1,
         "description": "Coolidge 1027-W-R New 2-Story Single Family Residence with (4) bedrooms (3) bathrooms Attached Garage Covered Patio & Porch Cafe & Loft",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708551"
+      },
+      {
+        "permitNumber": "2026-064798 BP",
+        "projectId": "13708535",
+        "address": "5211 MONARDA MINT DR",
+        "issuedAt": "2026-05-28",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "Coolidge 1027-W-L New 2-Story Single Family Residence with (4) bedrooms (3) bathrooms Attached Garage Covered Patio & Porch Cafe & Loft",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708535"
       },
       {
         "permitNumber": "2026-053977 BP",
@@ -1775,18 +1775,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13645339"
       },
       {
-        "permitNumber": "2025-162930 BP",
-        "projectId": "13633800",
-        "address": "8609 CHALGRIN PL",
-        "issuedAt": "2026-01-12",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "*Green Building* New 2-story 5 bedroom 4 bathroom single family residence with covered front porch and rear covered patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13633800"
-      },
-      {
         "permitNumber": "2025-161568 BP",
         "projectId": "13632297",
         "address": "8607 CHALGRIN PL",
@@ -1797,6 +1785,18 @@
         "housingUnits": 1,
         "description": "*GREEN BUILDING* New construction single-family residential 1-story 3 bedroom 3.5 bath with attached 2-car garage covered front porch and covered rear patio.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13632297"
+      },
+      {
+        "permitNumber": "2025-162930 BP",
+        "projectId": "13633800",
+        "address": "8609 CHALGRIN PL",
+        "issuedAt": "2026-01-12",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "*Green Building* New 2-story 5 bedroom 4 bathroom single family residence with covered front porch and rear covered patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13633800"
       },
       {
         "permitNumber": "2026-000726 BP",
@@ -2012,16 +2012,16 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2025-132813 BP",
-        "projectId": "13599453",
-        "address": "2406 DREW LN BLDG 1",
+        "permitNumber": "2025-132815 BP",
+        "projectId": "13599455",
+        "address": "2406 DREW LN BLDG 3",
         "issuedAt": "2025-10-14",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - Bldg 1: New construction of 2-Story residence [2.5 bed 2.5 bath] with attached Garage. Part of 3-unit use.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13599453"
+        "description": "Bldg 3: New construction of 3-Story residence [2.5 bed 2.5 bath]. Part of 3-unit use.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13599455"
       },
       {
         "permitNumber": "2025-132814 BP",
@@ -2036,16 +2036,16 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13599454"
       },
       {
-        "permitNumber": "2025-132815 BP",
-        "projectId": "13599455",
-        "address": "2406 DREW LN BLDG 3",
+        "permitNumber": "2025-132813 BP",
+        "projectId": "13599453",
+        "address": "2406 DREW LN BLDG 1",
         "issuedAt": "2025-10-14",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Bldg 3: New construction of 3-Story residence [2.5 bed 2.5 bath]. Part of 3-unit use.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13599455"
+        "description": "ePlan: Residential Expedited Review - Bldg 1: New construction of 2-Story residence [2.5 bed 2.5 bath] with attached Garage. Part of 3-unit use.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13599453"
       },
       {
         "permitNumber": "2025-132027 BP",
@@ -2060,19 +2060,19 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13598590"
       },
       {
-        "permitNumber": "2025-132029 BP",
-        "projectId": "13598592",
-        "address": "2410 DREW LN BLDG 6",
+        "permitNumber": "2025-132028 BP",
+        "projectId": "13598591",
+        "address": "2410 DREW LN BLDG 5",
         "issuedAt": "2025-10-13",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Bldg 6: New 3-Story [2 bed 2.5 bath]. Part of THREE-UNIT RES. (six units sharing 1 address number & shared driveway)",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13598592"
+        "description": "Bldg 5: New 3-Story [2 bed 2.5 bath]. Part of THREE-UNIT RES. (six units sharing 1 address number & shared driveway) Revision 1: REMOVAL OF FIRE SUPPRESSION FOR BUILDINGS 4 AND 5. REPLACEMENT PAGES LOCATED AT THE END OF THE SET",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13598591"
       }
     ],
-    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2025-132813 BP at 2406 DREW LN BLDG 1 issued 2025-10-14."
+    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2025-132815 BP at 2406 DREW LN BLDG 3 issued 2025-10-14."
   },
   {
     "id": "austin-builder-newmark-homes-austin-llc",
@@ -2095,16 +2095,16 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2026-011679 BP",
-        "projectId": "13648007",
-        "address": "8607 DONGAN DR",
+        "permitNumber": "2026-011801 BP",
+        "projectId": "13648163",
+        "address": "8611 DONGAN DR",
         "issuedAt": "2026-06-08",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "*Green Building* New 1-story 3 bedroom 2.5 bathroom single family residence with attached garage covered front porch and side covered patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13648007"
+        "description": "*Green Building* New 2-story 4 bedroom 3.5 bathroom single family residence with attached garage covered front porch and side covered patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13648163"
       },
       {
         "permitNumber": "2026-011672 BP",
@@ -2119,16 +2119,16 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13647997"
       },
       {
-        "permitNumber": "2026-011801 BP",
-        "projectId": "13648163",
-        "address": "8611 DONGAN DR",
+        "permitNumber": "2026-011679 BP",
+        "projectId": "13648007",
+        "address": "8607 DONGAN DR",
         "issuedAt": "2026-06-08",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "*Green Building* New 2-story 4 bedroom 3.5 bathroom single family residence with attached garage covered front porch and side covered patio.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13648163"
+        "description": "*Green Building* New 1-story 3 bedroom 2.5 bathroom single family residence with attached garage covered front porch and side covered patio.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13648007"
       },
       {
         "permitNumber": "2026-069856 BP",
@@ -2155,7 +2155,7 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13711620"
       }
     ],
-    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2026-011679 BP at 8607 DONGAN DR issued 2026-06-08."
+    "acquisitionNotes": "Appears on 25 Austin public residential new-construction permit rows since 2025. Latest sample 2026-011801 BP at 8611 DONGAN DR issued 2026-06-08."
   },
   {
     "id": "austin-builder-precise-custom-homes-inc",
@@ -2190,18 +2190,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13731324"
       },
       {
-        "permitNumber": "2026-085079 BP",
-        "projectId": "13731325",
-        "address": "7303 CARVER AVE BLDG 3",
-        "issuedAt": "2026-07-06",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 3.5bath] with Attached Garage. Bldg 3",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13731325"
-      },
-      {
         "permitNumber": "2026-085077 BP",
         "projectId": "13731323",
         "address": "7303 CARVER AVE BLDG 1",
@@ -2214,16 +2202,28 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13731323"
       },
       {
-        "permitNumber": "2026-083448 BP",
-        "projectId": "13729445",
-        "address": "7100 BETHUNE AVE BLDG 3",
+        "permitNumber": "2026-085079 BP",
+        "projectId": "13731325",
+        "address": "7303 CARVER AVE BLDG 3",
+        "issuedAt": "2026-07-06",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 3.5bath] with Attached Garage. Bldg 3",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13731325"
+      },
+      {
+        "permitNumber": "2026-083446 BP",
+        "projectId": "13729443",
+        "address": "7100 BETHUNE AVE BLDG 1",
         "issuedAt": "2026-07-01",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath] with Attached Carport. Bldg 3",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729445"
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath] with Attached Garage Bldg 1.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729443"
       },
       {
         "permitNumber": "2026-083447 BP",
@@ -2261,18 +2261,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2026-055439 BP",
-        "projectId": "13697876",
-        "address": "9803 RIBELIN RANCH CT BLDG 8",
-        "issuedAt": "2026-06-02",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of single building based on Volume Builder Approved (2024-067871 VB) Plan 6-BA-R. This is a 2 Story building with height of 33-4 and 3139 square feet.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13697876"
-      },
-      {
         "permitNumber": "2026-055448 BP",
         "projectId": "13697888",
         "address": "9803 RIBELIN RANCH CT BLDG 3",
@@ -2283,6 +2271,18 @@
         "housingUnits": 1,
         "description": "New construction of single building based on Volume Builder Approved (2024-067871 VB) Plan 9-CB-L. This is a 2 Story building with height of 31-7 and 3129 square feet.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13697888"
+      },
+      {
+        "permitNumber": "2026-055439 BP",
+        "projectId": "13697876",
+        "address": "9803 RIBELIN RANCH CT BLDG 8",
+        "issuedAt": "2026-06-02",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of single building based on Volume Builder Approved (2024-067871 VB) Plan 6-BA-R. This is a 2 Story building with height of 33-4 and 3139 square feet.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13697876"
       },
       {
         "permitNumber": "2026-029569 BP",
@@ -2297,18 +2297,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13668234"
       },
       {
-        "permitNumber": "2026-028695 BP",
-        "projectId": "13667179",
-        "address": "9803 RIBELIN RANCH CT BLDG 29",
-        "issuedAt": "2026-03-12",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of single building based on Volume Builder Approved (2024-067871 VB 2025-097666 PR) Plan 14-EB-R. This is a 2 Story building with height of 31-7 and 2983.90 square feet.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13667179"
-      },
-      {
         "permitNumber": "2026-028687 BP",
         "projectId": "13667168",
         "address": "9803 RIBELIN RANCH CT BLDG 25",
@@ -2319,9 +2307,21 @@
         "housingUnits": 1,
         "description": "New construction of single building based on Volume Builder Approved (2024-067871 VB 2025-097666 PR) Plan 14-EB-R. This is a 2 Story building with height of 31-7 and 2983.90 square feet.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13667168"
+      },
+      {
+        "permitNumber": "2026-028695 BP",
+        "projectId": "13667179",
+        "address": "9803 RIBELIN RANCH CT BLDG 29",
+        "issuedAt": "2026-03-12",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of single building based on Volume Builder Approved (2024-067871 VB 2025-097666 PR) Plan 14-EB-R. This is a 2 Story building with height of 31-7 and 2983.90 square feet.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13667179"
       }
     ],
-    "acquisitionNotes": "Appears on 22 Austin public residential new-construction permit rows since 2025. Latest sample 2026-055439 BP at 9803 RIBELIN RANCH CT BLDG 8 issued 2026-06-02."
+    "acquisitionNotes": "Appears on 22 Austin public residential new-construction permit rows since 2025. Latest sample 2026-055448 BP at 9803 RIBELIN RANCH CT BLDG 3 issued 2026-06-02."
   },
   {
     "id": "austin-builder-st-stephens-build-llc",
@@ -2407,8 +2407,91 @@
     "acquisitionNotes": "Appears on 20 Austin public residential new-construction permit rows since 2025. Latest sample 2026-072729 BP at 5001 PECAN SPRINGS RD BLDG 24 issued 2026-06-11."
   },
   {
-    "id": "austin-builder-awhiddon-construction-llc",
-    "name": "AWhiddon Construction, LLC",
+    "id": "austin-builder-trophy-signature-homes",
+    "name": "Trophy Signature Homes",
+    "market": "austin-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Susan Lightfoot",
+    "contactPhone": "5129212974",
+    "recentBuilds": 18,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
+    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "2026-084793 BP",
+        "projectId": "13730956",
+        "address": "10912 MYSTIC TIMBER DR",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "PB: New construction of 2 story sfr - 4 beds 2.5 baths 2 car garage and covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730956"
+      },
+      {
+        "permitNumber": "2026-084487 BP",
+        "projectId": "13730623",
+        "address": "11008 MYSTIC TIMBER DR",
+        "issuedAt": "2026-07-07",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of 2 story sfr with 4 beds 3.5 baths attached 2 car garage covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730623"
+      },
+      {
+        "permitNumber": "2026-084494 BP",
+        "projectId": "13730635",
+        "address": "4725 BRIDWELL LN",
+        "issuedAt": "2026-07-07",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of 2 story sfr with 4 beds 3 baths 2 car garage and covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730635"
+      },
+      {
+        "permitNumber": "2026-084059 BP",
+        "projectId": "13730121",
+        "address": "4709 NATIVE PEARL LN",
+        "issuedAt": "2026-07-02",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 1-story single family residence 3 bed/2 bath with attached garage covered porch and covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730121"
+      },
+      {
+        "permitNumber": "2026-083466 BP",
+        "projectId": "13729464",
+        "address": "10910 MYSTIC TIMBER DR",
+        "issuedAt": "2026-07-01",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New construction of 2 story sfr with 4 beds 3.5 baths with 2 car garage and covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729464"
+      }
+    ],
+    "acquisitionNotes": "Appears on 18 Austin public residential new-construction permit rows since 2025. Latest sample 2026-084793 BP at 10912 MYSTIC TIMBER DR issued 2026-07-08."
+  },
+  {
+    "id": "austin-builder-awhiddon-construction",
+    "name": "AWhiddon Construction",
     "market": "austin-tx",
     "state": "TX",
     "website": "",
@@ -2522,18 +2605,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13604317"
       },
       {
-        "permitNumber": "2025-137065 BP",
-        "projectId": "13604315",
-        "address": "409 CROCKETT ST BLDG 2",
-        "issuedAt": "2025-10-23",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New Construction 4 MODULAR 3-Story Residences. Bldg 2 New 3-story SF Res [3bed 2.5bath]",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13604315"
-      },
-      {
         "permitNumber": "2025-137066 BP",
         "projectId": "13604316",
         "address": "409 CROCKETT ST BLDG 3",
@@ -2558,6 +2629,18 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13604314"
       },
       {
+        "permitNumber": "2025-137065 BP",
+        "projectId": "13604315",
+        "address": "409 CROCKETT ST BLDG 2",
+        "issuedAt": "2025-10-23",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New Construction 4 MODULAR 3-Story Residences. Bldg 2 New 3-story SF Res [3bed 2.5bath]",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13604315"
+      },
+      {
         "permitNumber": "2025-123494 BP",
         "projectId": "13589357",
         "address": "408 W LIVE OAK STREET Bldg 2",
@@ -2571,89 +2654,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2025-137067 BP at 407 CROCKETT ST issued 2025-10-23."
-  },
-  {
-    "id": "austin-builder-trophy-signature-homes",
-    "name": "Trophy Signature Homes",
-    "market": "austin-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "Susan Lightfoot",
-    "contactPhone": "5129212974",
-    "recentBuilds": 17,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
-    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "2026-084487 BP",
-        "projectId": "13730623",
-        "address": "11008 MYSTIC TIMBER DR",
-        "issuedAt": "2026-07-07",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of 2 story sfr with 4 beds 3.5 baths attached 2 car garage covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730623"
-      },
-      {
-        "permitNumber": "2026-084494 BP",
-        "projectId": "13730635",
-        "address": "4725 BRIDWELL LN",
-        "issuedAt": "2026-07-07",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of 2 story sfr with 4 beds 3 baths 2 car garage and covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730635"
-      },
-      {
-        "permitNumber": "2026-084059 BP",
-        "projectId": "13730121",
-        "address": "4709 NATIVE PEARL LN",
-        "issuedAt": "2026-07-02",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New 1-story single family residence 3 bed/2 bath with attached garage covered porch and covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13730121"
-      },
-      {
-        "permitNumber": "2026-083437 BP",
-        "projectId": "13729420",
-        "address": "11012 MYSTIC TIMBER DR",
-        "issuedAt": "2026-07-01",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New 1-story single family residence 4 bed/3 bath attached garage covered porch and covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729420"
-      },
-      {
-        "permitNumber": "2026-083466 BP",
-        "projectId": "13729464",
-        "address": "10910 MYSTIC TIMBER DR",
-        "issuedAt": "2026-07-01",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New construction of 2 story sfr with 4 beds 3.5 baths with 2 car garage and covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729464"
-      }
-    ],
-    "acquisitionNotes": "Appears on 17 Austin public residential new-construction permit rows since 2025. Latest sample 2026-084487 BP at 11008 MYSTIC TIMBER DR issued 2026-07-07."
   },
   {
     "id": "austin-builder-rivendale-homes-texas-llc-pavillian-communities-texas-ll",
@@ -2676,18 +2676,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2026-010876 BP",
-        "projectId": "13647116",
-        "address": "2519 HARRIS BLVD",
-        "issuedAt": "2026-06-15",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New TWO UNIT RES. New construction of a 2-Story Single Family Res. [3bed 3.5bath]",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13647116"
-      },
-      {
         "permitNumber": "2026-010877 BP",
         "projectId": "13647117",
         "address": "2519 HARRIS BLVD BLDG 2",
@@ -2698,6 +2686,18 @@
         "housingUnits": 1,
         "description": "New construction of a 2-Story Single Family Res. [1bed 1bath] with Attached Garage",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13647117"
+      },
+      {
+        "permitNumber": "2026-010876 BP",
+        "projectId": "13647116",
+        "address": "2519 HARRIS BLVD",
+        "issuedAt": "2026-06-15",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New TWO UNIT RES. New construction of a 2-Story Single Family Res. [3bed 3.5bath]",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13647116"
       },
       {
         "permitNumber": "2026-056508 BP",
@@ -2712,18 +2712,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13699076"
       },
       {
-        "permitNumber": "2026-045063 BP",
-        "projectId": "13685879",
-        "address": "6410 WILBUR DR",
-        "issuedAt": "2026-04-15",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 1-Story Single Family Res. [5bed 5bath] with Office Attached Garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13685879"
-      },
-      {
         "permitNumber": "2026-045074 BP",
         "projectId": "13685896",
         "address": "1400 FOXWOOD CV",
@@ -2734,9 +2722,21 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 3.5bath] with Attached Garage.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13685896"
+      },
+      {
+        "permitNumber": "2026-045063 BP",
+        "projectId": "13685879",
+        "address": "6410 WILBUR DR",
+        "issuedAt": "2026-04-15",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 1-Story Single Family Res. [5bed 5bath] with Office Attached Garage.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13685879"
       }
     ],
-    "acquisitionNotes": "Appears on 15 Austin public residential new-construction permit rows since 2025. Latest sample 2026-010876 BP at 2519 HARRIS BLVD issued 2026-06-15."
+    "acquisitionNotes": "Appears on 15 Austin public residential new-construction permit rows since 2025. Latest sample 2026-010877 BP at 2519 HARRIS BLVD BLDG 2 issued 2026-06-15."
   },
   {
     "id": "austin-builder-redbud-development-group-llc",
@@ -2795,28 +2795,28 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13383840"
       },
       {
-        "permitNumber": "2024-109377 BP",
-        "projectId": "13383877",
-        "address": "5519 JACKIE ROBINSON ST BLDG 61",
+        "permitNumber": "2024-109350 BP",
+        "projectId": "13383821",
+        "address": "5519 JACKIE ROBINSON ST BLDG 13",
         "issuedAt": "2025-09-09",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Unit 61 - New two-story detached single family residence. (3) bedroom (2.5) bathrooms attached 1 car garage. Floor plan type: The Roosevelt C-R-Elevation Option 1. Building Height 25ft-9 3/4in. Maximum Height 30ft. Site Plan #: SP-2020-0393CSH. Expiration Date: 04-13-2025",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13383877"
+        "description": "Unit 13 - New three-story detached single family residence. (3) bedroom (2.5) bathrooms attached 1 car garage. Floor plan type: The Roosevelt D-L-Elevation Option 1. Building Height 31ft-4 7/8in. Maximum Height 40ft. Site Plan #: SP-2020-0393CSH. Expiration Date: 04-13-2025",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13383821"
       },
       {
-        "permitNumber": "2024-109373 BP",
-        "projectId": "13383867",
-        "address": "5519 JACKIE ROBINSON ST BLDG 19",
+        "permitNumber": "2024-109368 BP",
+        "projectId": "13383854",
+        "address": "5519 JACKIE ROBINSON ST BLDG 17",
         "issuedAt": "2025-09-09",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Unit 19 - New two-story detached single family residence. (3) bedroom (2.5) bathrooms attached 1 car garage. Floor plan type: The Roosevelt C-L-Elevation Option 2. Building Height 24ft-8 5/8in. Maximum Height 30ft. Site Plan #: SP-2020-0393CSH. Expiration Date: 04-13-2025",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13383867"
+        "description": "Unit 17 - New two-story detached single family residence. (2) bedroom (2.5) bathrooms attached 1 car garage. Floor plan type: The Roosevelt A-L-Elevation Option 1. Building Height 25ft-1/4in. Maximum Height 30ft. Site Plan #: SP-2020-0393CSH. Expiration Date: 04-13-2025",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13383854"
       }
     ],
     "acquisitionNotes": "Appears on 14 Austin public residential new-construction permit rows since 2025. Latest sample 2024-109382 BP at 5519 JACKIE ROBINSON ST BLDG 62 issued 2025-09-11."
@@ -2878,18 +2878,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13237386"
       },
       {
-        "permitNumber": "2025-156463 BP",
-        "projectId": "13626280",
-        "address": "11628 LADERA VISTA DR UNIT A",
-        "issuedAt": "2025-12-11",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "11628 Ladera Vista Dr Unit A: New 2-story duplex unit 3 bedroom 2.5 bath 1-car garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13626280"
-      },
-      {
         "permitNumber": "2025-156464 BP",
         "projectId": "13626281",
         "address": "11628 LADERA VISTA DR UNIT B",
@@ -2900,6 +2888,18 @@
         "housingUnits": 1,
         "description": "11628 Ladera Vista Dr Unit B: New 2-story duplex unit 3 bedroom 2.5 bath 1-car garage.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13626281"
+      },
+      {
+        "permitNumber": "2025-156462 BP",
+        "projectId": "13626279",
+        "address": "11628 LADERA VISTA DR",
+        "issuedAt": "2025-12-11",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "11626 Ladera Vista Dr: New 2-story detached residence 3 bedroom 2.5 bath 1-car garage.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13626279"
       }
     ],
     "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2025-096019 BP at 1902 WESTRIDGE DR issued 2026-07-07."
@@ -2925,6 +2925,18 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
+        "permitNumber": "2026-060895 BP",
+        "projectId": "13704071",
+        "address": "1704 MIRIAM AVE UNIT 1A",
+        "issuedAt": "2026-05-20",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "Unit 1A: New construction three-unit use duplex residential: Unit 1A: 2-story 3 bedroom 3 bath.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13704071"
+      },
+      {
         "permitNumber": "2026-060896 BP",
         "projectId": "13704072",
         "address": "1704 MIRIAM AVE UNIT 1B",
@@ -2947,18 +2959,6 @@
         "housingUnits": 1,
         "description": "Bldg 2: New construction three-unit use single-family residential 2-story 3 bedroom 3 bath with attached 1-car carport covered front porch covered rear patio and 2nd story balcony.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13704073"
-      },
-      {
-        "permitNumber": "2026-060895 BP",
-        "projectId": "13704071",
-        "address": "1704 MIRIAM AVE UNIT 1A",
-        "issuedAt": "2026-05-20",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Unit 1A: New construction three-unit use duplex residential: Unit 1A: 2-story 3 bedroom 3 bath.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13704071"
       },
       {
         "permitNumber": "2026-017366 BP",
@@ -2985,7 +2985,7 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13654621"
       }
     ],
-    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060896 BP at 1704 MIRIAM AVE UNIT 1B issued 2026-05-20."
+    "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060895 BP at 1704 MIRIAM AVE UNIT 1A issued 2026-05-20."
   },
   {
     "id": "austin-builder-urban-intown-homes-llc",
@@ -3020,18 +3020,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13627723"
       },
       {
-        "permitNumber": "2025-156197 BP",
-        "projectId": "13625919",
-        "address": "2710 ESTONIA PATH",
-        "issuedAt": "2025-12-11",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Site Plan Condo: Proposed construction of a 2446 sq foot single family residence with 3 bedrooms 3 1/2 bathrooms 2 car garage",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13625919"
-      },
-      {
         "permitNumber": "2025-156222 BP",
         "projectId": "13625956",
         "address": "2708 ESTONIA PATH",
@@ -3044,16 +3032,16 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13625956"
       },
       {
-        "permitNumber": "2024-061914 BP",
-        "projectId": "13330555",
-        "address": "4907 STELLA LINK PATH",
-        "issuedAt": "2025-07-07",
+        "permitNumber": "2025-156197 BP",
+        "projectId": "13625919",
+        "address": "2710 ESTONIA PATH",
+        "issuedAt": "2025-12-11",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "New 3 story condo - 3 bedrooms 3.5 bathrooms 2 car garage and balcony",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13330555"
+        "description": "Site Plan Condo: Proposed construction of a 2446 sq foot single family residence with 3 bedrooms 3 1/2 bathrooms 2 car garage",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13625919"
       },
       {
         "permitNumber": "2024-062463 BP",
@@ -3066,9 +3054,104 @@
         "housingUnits": 1,
         "description": "New 3 Story SF detached condo with attached garage 3/3.5",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13331169"
+      },
+      {
+        "permitNumber": "2024-063684 BP",
+        "projectId": "13332560",
+        "address": "2802 SALEK VW",
+        "issuedAt": "2025-07-07",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "new SF detached condo 3 bed 3.5 bath with attached garage and covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13332560"
       }
     ],
     "acquisitionNotes": "Appears on 13 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157679 BP at 2706 ESTONIA PATH issued 2025-12-15."
+  },
+  {
+    "id": "austin-builder-patriot-builders",
+    "name": "Patriot Builders",
+    "market": "austin-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Robert M Worrall",
+    "contactPhone": "5124135567",
+    "recentBuilds": 12,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
+    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "2026-083436 BP",
+        "projectId": "13729419",
+        "address": "2712 BRISTOL DR BLDG 2",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath]. BLDG 2",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729419"
+      },
+      {
+        "permitNumber": "2026-083435 BP",
+        "projectId": "13729418",
+        "address": "2712 BRISTOL DR BLDG 1",
+        "issuedAt": "2026-07-08",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 3bath] with Attached Carport. BLDG 1",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13729418"
+      },
+      {
+        "permitNumber": "2026-064741 BP",
+        "projectId": "13708461",
+        "address": "2716 BRISTOL DR BLDG 2",
+        "issuedAt": "2026-05-26",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath]. Bldg 2",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708461"
+      },
+      {
+        "permitNumber": "2026-064740 BP",
+        "projectId": "13708460",
+        "address": "2716 BRISTOL DR BLDG 1",
+        "issuedAt": "2026-05-26",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 3bath] with Attached Carport. Bldg 1",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708460"
+      },
+      {
+        "permitNumber": "2025-152801 BP",
+        "projectId": "13621983",
+        "address": "1818 W ST JOHNS AVE BLDG 1",
+        "issuedAt": "2025-12-15",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 4bath]",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13621983"
+      }
+    ],
+    "acquisitionNotes": "Appears on 12 Austin public residential new-construction permit rows since 2025. Latest sample 2026-083436 BP at 2712 BRISTOL DR BLDG 2 issued 2026-07-08."
   },
   {
     "id": "austin-builder-blue-wizard-homes-llc",
@@ -3091,18 +3174,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2026-046788 BP",
-        "projectId": "13687882",
-        "address": "1801 W ST JOHNS AVE UNIT A",
-        "issuedAt": "2026-04-20",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [3bed 3.5bath] with Autofill Pool. Unit A",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13687882"
-      },
-      {
         "permitNumber": "2026-046790 BP",
         "projectId": "13687884",
         "address": "7012 YATES AVE",
@@ -3113,6 +3184,18 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 4.5bath] with Attached Carport and Autofill Pool. 7012 YATES AVE",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13687884"
+      },
+      {
+        "permitNumber": "2026-046788 BP",
+        "projectId": "13687882",
+        "address": "1801 W ST JOHNS AVE UNIT A",
+        "issuedAt": "2026-04-20",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Duplex [3bed 3.5bath] with Autofill Pool. Unit A",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13687882"
       },
       {
         "permitNumber": "2026-046789 BP",
@@ -3151,7 +3234,7 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13609429"
       }
     ],
-    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2026-046788 BP at 1801 W ST JOHNS AVE UNIT A issued 2026-04-20."
+    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2026-046790 BP at 7012 YATES AVE issued 2026-04-20."
   },
   {
     "id": "austin-builder-tawi-tawi-properties-llc",
@@ -3173,18 +3256,6 @@
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
-      {
-        "permitNumber": "2025-157251 BP",
-        "projectId": "13627206",
-        "address": "4703 SANTA ANNA ST BLDG 3",
-        "issuedAt": "2026-01-06",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [3bed 3.5bath] with Attached Garage. BLDG 3",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13627206"
-      },
       {
         "permitNumber": "2025-157249 BP",
         "projectId": "13627204",
@@ -3210,16 +3281,16 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13627205"
       },
       {
-        "permitNumber": "2025-145996 BP",
-        "projectId": "13614301",
-        "address": "2303 E 2ND ST--BLDG 2",
-        "issuedAt": "2025-11-17",
+        "permitNumber": "2025-157251 BP",
+        "projectId": "13627206",
+        "address": "4703 SANTA ANNA ST BLDG 3",
+        "issuedAt": "2026-01-06",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "2303 E 2nd St Building 2: (rearmost on Mildred side): New construction of a 3-Story Single Family Res. [3 bed 3.5bath] with Attached 1-car Garage and 3rd floor balcony. Part of 4-unit use 8 detached units total in development across 2 lots.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13614301"
+        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [3bed 3.5bath] with Attached Garage. BLDG 3",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13627206"
       },
       {
         "permitNumber": "2025-145994 BP",
@@ -3232,9 +3303,21 @@
         "housingUnits": 1,
         "description": "111 Mildred St Bldg 2 (middle front on Mildred side): New construction of a 3-Story Single Family Res. [3 bed 3.5bath] with Attached 1-car Garage and 3rd floor balcony. Part of 4-unit use 8 detached units total in development across 2 lots.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13614299"
+      },
+      {
+        "permitNumber": "2025-145993 BP",
+        "projectId": "13614298",
+        "address": "111 MILDRED ST--BLDG 1 (CORNER-BEHIND BLDG 3)",
+        "issuedAt": "2025-11-17",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "111 Mildred St BUILDING 1 (corner of Mildred & E 2nd St): New construction of a 3-Story Single Family Res. [3 bed 3.5bath] with Attached 1-car Garage and 3rd floor balcony. Part of 4-unit use 8 detached units total in development across 2 lots.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13614298"
       }
     ],
-    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157251 BP at 4703 SANTA ANNA ST BLDG 3 issued 2026-01-06."
+    "acquisitionNotes": "Appears on 11 Austin public residential new-construction permit rows since 2025. Latest sample 2025-157249 BP at 4703 SANTA ANNA ST BLDG 1 issued 2026-01-06."
   },
   {
     "id": "austin-builder-thurman-homes",
@@ -3376,6 +3459,18 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13637459"
       },
       {
+        "permitNumber": "2025-097808 BP",
+        "projectId": "13560949",
+        "address": "5108 HARMON AVE UNIT A",
+        "issuedAt": "2025-08-07",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 3 story SFR with 3 bed 2.5 bath attached carport and front covered porch/rear covered patio",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13560949"
+      },
+      {
         "permitNumber": "2025-097809 BP",
         "projectId": "13560950",
         "address": "5108 HARMON AVE UNIT B",
@@ -3386,104 +3481,9 @@
         "housingUnits": 1,
         "description": "New 3 story SFR with 3 bed 2.5 bath attached carport and front covered porch/rear covered patio",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13560950"
-      },
-      {
-        "permitNumber": "2025-097807 BP",
-        "projectId": "13560948",
-        "address": "943 E 52ND ST",
-        "issuedAt": "2025-08-07",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "New 3 story SFR with 3 bed 2.5 bath attached carport and front covered porch/rear covered patio",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13560948"
       }
     ],
     "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2026-060271 BP at 4709 MENCHACA RD issued 2026-05-15."
-  },
-  {
-    "id": "austin-builder-patriot-builders",
-    "name": "Patriot Builders",
-    "market": "austin-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "Robert M Worrall",
-    "contactPhone": "5124135567",
-    "recentBuilds": 10,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
-    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "2026-064740 BP",
-        "projectId": "13708460",
-        "address": "2716 BRISTOL DR BLDG 1",
-        "issuedAt": "2026-05-26",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 3bath] with Attached Carport. Bldg 1",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708460"
-      },
-      {
-        "permitNumber": "2026-064741 BP",
-        "projectId": "13708461",
-        "address": "2716 BRISTOL DR BLDG 2",
-        "issuedAt": "2026-05-26",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath]. Bldg 2",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13708461"
-      },
-      {
-        "permitNumber": "2025-152801 BP",
-        "projectId": "13621983",
-        "address": "1818 W ST JOHNS AVE BLDG 1",
-        "issuedAt": "2025-12-15",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 4bath]",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13621983"
-      },
-      {
-        "permitNumber": "2025-152802 BP",
-        "projectId": "13621984",
-        "address": "1818 W ST JOHNS AVE BLDG 2",
-        "issuedAt": "2025-12-15",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 1-Story Single Family Res. [1bed 1bath]. BLDG 2",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13621984"
-      },
-      {
-        "permitNumber": "2025-004610 BP",
-        "projectId": "13454443",
-        "address": "6300 BRISTOL CIR",
-        "issuedAt": "2025-11-16",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of an 2-Story Single-Family Res. [4bed 4bath] with attached Garage",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13454443"
-      }
-    ],
-    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2026-064740 BP at 2716 BRISTOL DR BLDG 1 issued 2026-05-26."
   },
   {
     "id": "austin-builder-real-international-construction-llc",
@@ -3506,28 +3506,28 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2025-131930 BP",
-        "projectId": "13598482",
-        "address": "1928 WEBBERVILLE RD BLDG 1",
+        "permitNumber": "2025-129768 BP",
+        "projectId": "13596050",
+        "address": "1936 WEBBERVILLE RD BLDG 2",
         "issuedAt": "2026-02-27",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "BLDG #1 New 3-story dwelling unit 2 bed/3.5 bath attached garage covered front porch covered patio balcony and driveway approach",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13598482"
+        "description": "New construction 2-unit use single-family residential 2-story 3 bedroom 2.5 bath with attached 2-car garage covered front porch and 2nd story balcony.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13596050"
       },
       {
-        "permitNumber": "2025-069668 BP",
-        "projectId": "13529016",
-        "address": "1942 WEBBERVILLE RD BLDG 2",
+        "permitNumber": "2025-131931 BP",
+        "projectId": "13598483",
+        "address": "1928 WEBBERVILLE RD BLDG 2",
         "issuedAt": "2026-02-27",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Bldg #2 New 2-story dwelling unit 3 bed/3 bath with attached garage covered porch and balcony",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13529016"
+        "description": "BLDG #2 New 2 story dwelling unit 2 bed/3 bath with attached garage covered front porch covered patio and balcony",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13598483"
       },
       {
         "permitNumber": "2025-062855 BP",
@@ -3542,114 +3542,31 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13521236"
       },
       {
-        "permitNumber": "2025-120268 BP",
-        "projectId": "13585788",
-        "address": "1932 WEBBERVILLE RD BLDG 2",
+        "permitNumber": "2025-069668 BP",
+        "projectId": "13529016",
+        "address": "1942 WEBBERVILLE RD BLDG 2",
         "issuedAt": "2026-02-27",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Bldg #2 New 2-story dwelling unit 3 bed/3 bath covered porches and balcony",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13585788"
+        "description": "Bldg #2 New 2-story dwelling unit 3 bed/3 bath with attached garage covered porch and balcony",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13529016"
       },
       {
-        "permitNumber": "2025-062856 BP",
-        "projectId": "13521237",
-        "address": "1940 WEBBERVILLE RD BLDG 2",
+        "permitNumber": "2025-069667 BP",
+        "projectId": "13529015",
+        "address": "1942 WEBBERVILLE RD BLDG 1",
         "issuedAt": "2026-02-27",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "Bldg #2 New 2-story dwelling unit 3 bed/3 bath attached garage covered porch and balcony",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13521237"
+        "description": "Bldg #1 New 3-story dwelling unit 4 bed/4 bath with attached garage covered porch and balcony",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13529015"
       }
     ],
-    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2025-131930 BP at 1928 WEBBERVILLE RD BLDG 1 issued 2026-02-27."
-  },
-  {
-    "id": "austin-builder-paragon-home-builder",
-    "name": "Paragon Home Builder",
-    "market": "austin-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "Pete Conklin",
-    "contactPhone": "7373338838",
-    "recentBuilds": 9,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 93,
-    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
-    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "2025-072774 BP",
-        "projectId": "13532603",
-        "address": "1204 MARCY ST BLDG 2",
-        "issuedAt": "2025-07-28",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [1bed 1.5bath] with attached Garage. Bldg 2",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532603"
-      },
-      {
-        "permitNumber": "2025-072773 BP",
-        "projectId": "13532602",
-        "address": "1204 MARCY ST BLDG 1B",
-        "issuedAt": "2025-07-28",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 2,
-        "description": "ePlan: Residential Expedited Review - ePlan: Residential Expedited Review - New construction of a 3-Story Duplex [3bed 3.5bath] with attached Carport. 1B",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532602"
-      },
-      {
-        "permitNumber": "2025-054585 BP",
-        "projectId": "13511579",
-        "address": "1301 WEBBERVILLE RD BLDG 1",
-        "issuedAt": "2025-07-28",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [2bed 2.5bath] Bldg 3",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511579"
-      },
-      {
-        "permitNumber": "2025-054586 BP",
-        "projectId": "13511580",
-        "address": "1301 WEBBERVILLE RD BLDG 2",
-        "issuedAt": "2025-07-28",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [1bed 1.5bath] with attached Carport. Bldg 2",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511580"
-      },
-      {
-        "permitNumber": "2025-072772 BP",
-        "projectId": "13532601",
-        "address": "1204 MARCY ST BLDG 1A",
-        "issuedAt": "2025-06-23",
-        "permitValue": 0,
-        "permitClass": "R- 103 Two Family Bldgs",
-        "workClass": "New",
-        "housingUnits": 2,
-        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Duplex [3bed 3.5bath] with attached Carport. 1A",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532601"
-      }
-    ],
-    "acquisitionNotes": "Appears on 9 Austin public residential new-construction permit rows since 2025. Latest sample 2025-072774 BP at 1204 MARCY ST BLDG 2 issued 2025-07-28."
+    "acquisitionNotes": "Appears on 10 Austin public residential new-construction permit rows since 2025. Latest sample 2025-129768 BP at 1936 WEBBERVILLE RD BLDG 2 issued 2026-02-27."
   },
   {
     "id": "austin-builder-habitat-haus-llc",
@@ -3661,16 +3578,28 @@
     "email": "",
     "contactName": "Jorge Alzaga Bermudez",
     "contactPhone": "2102376328",
-    "recentBuilds": 8,
+    "recentBuilds": 9,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
     "validationStatus": "needs-call-confirmation",
-    "confidence": 96,
+    "confidence": 100,
     "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
     "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "2022-015006 BP",
+        "projectId": "12870664",
+        "address": "2109 DORIS DR",
+        "issuedAt": "2026-07-09",
+        "permitValue": 1,
+        "permitClass": "R- 102 Secondary Apartment",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "New 2 Story Secondary Dwelling with covered porch 1/1",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12870664"
+      },
       {
         "permitNumber": "2026-065346 BP",
         "projectId": "13709157",
@@ -3696,16 +3625,16 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13661826"
       },
       {
-        "permitNumber": "2025-079933 BP",
-        "projectId": "13540628",
-        "address": "5505 WILLIAM HOLLAND AVE BLDG 3",
+        "permitNumber": "2025-079932 BP",
+        "projectId": "13540627",
+        "address": "5505 WILLIAM HOLLAND AVE BLDG 2",
         "issuedAt": "2025-11-11",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a THREE UNIT RES. Bldg 3 New construction of a 3-Story Single Family Res. [3bed 3bath] with attached Garage",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540628"
+        "description": "ePlan: Residential Expedited Review - New construction of a THREE UNIT RES. Bldg 2 New construction of a 3-Story Single Family Res. [3bed 3bath] with attached Garage",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540627"
       },
       {
         "permitNumber": "2025-079931 BP",
@@ -3718,21 +3647,92 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New construction of a THREE UNIT RES. Bldg 1 New construction of a 3-Story Single Family Res. [3bed 3bath] with attached Garage.",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540626"
+      }
+    ],
+    "acquisitionNotes": "Appears on 9 Austin public residential new-construction permit rows since 2025. Latest sample 2022-015006 BP at 2109 DORIS DR issued 2026-07-09."
+  },
+  {
+    "id": "austin-builder-paragon-home-builder",
+    "name": "Paragon Home Builder",
+    "market": "austin-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Pete Conklin",
+    "contactPhone": "7373338838",
+    "recentBuilds": 9,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Austin Socrata permit signal only. Call builder to capture exact Austin-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 93,
+    "sourceUrl": "https://data.austintexas.gov/d/hw8f-smxh",
+    "publicSource": "City of Austin Open Data / Socrata Issued Construction Permits dataset. Filtered to recent residential new construction building permits.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "2025-072773 BP",
+        "projectId": "13532602",
+        "address": "1204 MARCY ST BLDG 1B",
+        "issuedAt": "2025-07-28",
+        "permitValue": 0,
+        "permitClass": "R- 103 Two Family Bldgs",
+        "workClass": "New",
+        "housingUnits": 2,
+        "description": "ePlan: Residential Expedited Review - ePlan: Residential Expedited Review - New construction of a 3-Story Duplex [3bed 3.5bath] with attached Carport. 1B",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532602"
       },
       {
-        "permitNumber": "2025-079932 BP",
-        "projectId": "13540627",
-        "address": "5505 WILLIAM HOLLAND AVE BLDG 2",
-        "issuedAt": "2025-11-11",
+        "permitNumber": "2025-072774 BP",
+        "projectId": "13532603",
+        "address": "1204 MARCY ST BLDG 2",
+        "issuedAt": "2025-07-28",
         "permitValue": 0,
         "permitClass": "R- 101 Single Family Houses",
         "workClass": "New",
         "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a THREE UNIT RES. Bldg 2 New construction of a 3-Story Single Family Res. [3bed 3bath] with attached Garage",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540627"
+        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [1bed 1.5bath] with attached Garage. Bldg 2",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532603"
+      },
+      {
+        "permitNumber": "2025-054586 BP",
+        "projectId": "13511580",
+        "address": "1301 WEBBERVILLE RD BLDG 2",
+        "issuedAt": "2025-07-28",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [1bed 1.5bath] with attached Carport. Bldg 2",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511580"
+      },
+      {
+        "permitNumber": "2025-054585 BP",
+        "projectId": "13511579",
+        "address": "1301 WEBBERVILLE RD BLDG 1",
+        "issuedAt": "2025-07-28",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [2bed 2.5bath] Bldg 3",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511579"
+      },
+      {
+        "permitNumber": "2025-072694 BP",
+        "projectId": "13532493",
+        "address": "1202 MARCY ST BLDG 2",
+        "issuedAt": "2025-06-23",
+        "permitValue": 1,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - THREE UNIT RES. Bldg 2 New construction of a 3-Story Single Family Res. [1bed 1.5bath] with Attached Garage",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13532493"
       }
     ],
-    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-065346 BP at 1508 MADISON AVE issued 2026-05-22."
+    "acquisitionNotes": "Appears on 9 Austin public residential new-construction permit rows since 2025. Latest sample 2025-072773 BP at 1204 MARCY ST BLDG 1B issued 2025-07-28."
   },
   {
     "id": "austin-builder-new-vision-construction",
@@ -3791,18 +3791,6 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13644681"
       },
       {
-        "permitNumber": "2022-181953 BP",
-        "projectId": "13066573",
-        "address": "1807 ROMERIA DR",
-        "issuedAt": "2025-04-03",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "Expedited Review - New Construction of a 2-Story Single Family Res. [3bed 4.5bath] with Habitable Attic and attached 2-car Garage.",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13066573"
-      },
-      {
         "permitNumber": "2022-081404 BP",
         "projectId": "12949827",
         "address": "1176 OAK GROVE AVE",
@@ -3813,6 +3801,18 @@
         "housingUnits": 1,
         "description": "Expedited Review - New Construction of a 2-Story Single Family Res. [3bed 2.5bath] with attached 1-car Garage",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12949827"
+      },
+      {
+        "permitNumber": "2022-181953 BP",
+        "projectId": "13066573",
+        "address": "1807 ROMERIA DR",
+        "issuedAt": "2025-04-03",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "Expedited Review - New Construction of a 2-Story Single Family Res. [3bed 4.5bath] with Habitable Attic and attached 2-car Garage.",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13066573"
       }
     ],
     "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2025-125488 BP at 2805 OAK HAVEN DR issued 2026-02-24."
@@ -3838,30 +3838,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2026-063271 BP",
-        "projectId": "13706725",
-        "address": "3006 FRUTH ST BLDG 1",
-        "issuedAt": "2026-05-22",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction TWO Unit; Bldg 1 New construction 2-story SF Res [6bed 6bath]",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13706725"
-      },
-      {
-        "permitNumber": "2026-063272 BP",
-        "projectId": "13706726",
-        "address": "3006 FRUTH ST BLDG 2",
-        "issuedAt": "2026-05-22",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction TWO Unit; Bldg 2 New construction 2-story SF Res [2bed 2bath]with attached carport",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13706726"
-      },
-      {
         "permitNumber": "2026-049353 BP",
         "projectId": "13690838",
         "address": "1608 PEASE RD UNIT B",
@@ -3886,6 +3862,30 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13690837"
       },
       {
+        "permitNumber": "2026-063272 BP",
+        "projectId": "13706726",
+        "address": "3006 FRUTH ST BLDG 2",
+        "issuedAt": "2026-05-22",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction TWO Unit; Bldg 2 New construction 2-story SF Res [2bed 2bath]with attached carport",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13706726"
+      },
+      {
+        "permitNumber": "2026-063271 BP",
+        "projectId": "13706725",
+        "address": "3006 FRUTH ST BLDG 1",
+        "issuedAt": "2026-05-22",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction TWO Unit; Bldg 1 New construction 2-story SF Res [6bed 6bath]",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13706725"
+      },
+      {
         "permitNumber": "2025-163520 BP",
         "projectId": "13634514",
         "address": "2821 SALADO ST",
@@ -3898,7 +3898,7 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13634514"
       }
     ],
-    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-063271 BP at 3006 FRUTH ST BLDG 1 issued 2026-05-22."
+    "acquisitionNotes": "Appears on 8 Austin public residential new-construction permit rows since 2025. Latest sample 2026-049353 BP at 1608 PEASE RD UNIT B issued 2026-05-22."
   },
   {
     "id": "austin-builder-drew-homes",
@@ -4004,18 +4004,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "2025-163500 BP",
-        "projectId": "13634483",
-        "address": "1207 PEREZ ST BLDG 1",
-        "issuedAt": "2026-03-06",
-        "permitValue": 0,
-        "permitClass": "R- 101 Single Family Houses",
-        "workClass": "New",
-        "housingUnits": 1,
-        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath] with Attached Garage. Bldg 1",
-        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13634483"
-      },
-      {
         "permitNumber": "2025-163501 BP",
         "projectId": "13634484",
         "address": "1207 PEREZ ST BLDG 2",
@@ -4026,6 +4014,18 @@
         "housingUnits": 1,
         "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath] with Attached Carport. Bldg 2",
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13634484"
+      },
+      {
+        "permitNumber": "2025-163500 BP",
+        "projectId": "13634483",
+        "address": "1207 PEREZ ST BLDG 1",
+        "issuedAt": "2026-03-06",
+        "permitValue": 0,
+        "permitClass": "R- 101 Single Family Houses",
+        "workClass": "New",
+        "housingUnits": 1,
+        "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [3bed 2.5bath] with Attached Garage. Bldg 1",
+        "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13634483"
       },
       {
         "permitNumber": "2026-016856 BP",
@@ -4064,7 +4064,7 @@
         "sourceUrl": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13643686"
       }
     ],
-    "acquisitionNotes": "Appears on 6 Austin public residential new-construction permit rows since 2025. Latest sample 2025-163500 BP at 1207 PEREZ ST BLDG 1 issued 2026-03-06."
+    "acquisitionNotes": "Appears on 6 Austin public residential new-construction permit rows since 2025. Latest sample 2025-163501 BP at 1207 PEREZ ST BLDG 2 issued 2026-03-06."
   },
   {
     "id": "austin-builder-co-sci-construction-llc",

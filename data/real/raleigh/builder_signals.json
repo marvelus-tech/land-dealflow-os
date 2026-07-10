@@ -8,7 +8,7 @@
     "phone": "9194663318",
     "email": "LennarPermits@lennar.com",
     "contactName": "LENNAR CAROLINAS, LLC",
-    "recentBuilds": 75,
+    "recentBuilds": 81,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -84,7 +84,7 @@
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-018757-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 75 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025610-2026 at 4325 Gray Alder Ln issued 2026-07-02."
+    "acquisitionNotes": "Appears on 81 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025610-2026 at 4325 Gray Alder Ln issued 2026-07-02."
   },
   {
     "id": "raleigh-builder-d-r-horton-inc",
@@ -193,6 +193,19 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
+        "permitNumber": "BLDR-025777-2026",
+        "address": "2800 Springtooth Dr, Raleigh, NC 27616",
+        "issuedAt": "2026-07-07",
+        "permitValue": 460058.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Tucker Place Lot 91 2800 Springtooth Dr 2764 sqft New Single Family Residential Monoslab Rear Stoop",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025777-2026"
+      },
+      {
         "permitNumber": "BLDR-024331-2026",
         "address": "2700 Springtooth Dr, Raleigh, NC 27616",
         "issuedAt": "2026-06-30",
@@ -243,22 +256,9 @@
         "housingUnits": 0,
         "description": "Townhomes, 4 units, Lots 18-21, 2 stories, VB Construction, R3 Occupancy, SPR-0100-2021; BLDR- 01911",
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020001-2026"
-      },
-      {
-        "permitNumber": "BLDR-020002-2026",
-        "address": "726 Sao Miguel Ln, Raleigh, NC 27610",
-        "issuedAt": "2026-06-15",
-        "permitValue": 209813.2,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 4 units, Lots 18-21, 2 stories, VB Construction, R3 Occupancy, SPR-0100-2021; BLDR- 01911",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-020002-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 44 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-024331-2026 at 2700 Springtooth Dr issued 2026-06-30."
+    "acquisitionNotes": "Appears on 44 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025777-2026 at 2800 Springtooth Dr issued 2026-07-07."
   },
   {
     "id": "raleigh-builder-stanley-martin-homes-llc",
@@ -269,7 +269,7 @@
     "phone": "9199778760",
     "email": "georgew@stanleymartin.com",
     "contactName": "Stanley Martin Homes, LLC",
-    "recentBuilds": 35,
+    "recentBuilds": 40,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -280,72 +280,72 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BLDR-024085-2026",
-        "address": "3201 Goldney Rd, Raleigh, NC 27610",
-        "issuedAt": "2026-07-02",
+        "permitNumber": "BLDR-024269-2026",
+        "address": "3224 Goldney Rd, Raleigh, NC 27610",
+        "issuedAt": "2026-07-08",
         "permitValue": 346560,
         "permitClass": "Residential",
         "workClass": "Townhouse",
         "workClassMapped": "New",
         "landUse": "RESIDENTIAL TOWNHOUSE",
         "housingUnits": 0,
-        "description": "Townhomes, 8 units, Lots 151-158, 3 stories, VB Const, R3 Occupancy, SPR-0026-2022; BLDR-024085-2026",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-024085-2026"
+        "description": "Townhomes, 5 units, Lots 136-140, 3 stories, VB Const, R3 Occ, SPR-0026-2022; BLDR- 022676-2026 Lot",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-024269-2026"
       },
       {
-        "permitNumber": "BLDR-025215-2026",
-        "address": "3215 Goldney Rd, Raleigh, NC 27610",
-        "issuedAt": "2026-07-01",
+        "permitNumber": "BLDR-024268-2026",
+        "address": "3222 Goldney Rd, Raleigh, NC 27610",
+        "issuedAt": "2026-07-08",
+        "permitValue": 289088.8,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 136-140, 3 stories, VB Const, R3 Occ, SPR-0026-2022; BLDR- 022676-2026 Lot",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-024268-2026"
+      },
+      {
+        "permitNumber": "BLDR-024267-2026",
+        "address": "3220 Goldney Rd, Raleigh, NC 27610",
+        "issuedAt": "2026-07-08",
+        "permitValue": 289088.8,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 136-140, 3 stories, VB Const, R3 Occ, SPR-0026-2022; BLDR- 022676-2026 Lot",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-024267-2026"
+      },
+      {
+        "permitNumber": "BLDR-024266-2026",
+        "address": "3218 Goldney Rd, Raleigh, NC 27610",
+        "issuedAt": "2026-07-08",
+        "permitValue": 289088.8,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 136-140, 3 stories, VB Const, R3 Occ, SPR-0026-2022; BLDR- 022676-2026 Lot",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-024266-2026"
+      },
+      {
+        "permitNumber": "BLDR-022676-2026",
+        "address": "3216 Goldney Rd, Raleigh, NC 27610",
+        "issuedAt": "2026-07-08",
         "permitValue": 346560,
         "permitClass": "Residential",
         "workClass": "Townhouse",
         "workClassMapped": "New",
         "landUse": "RESIDENTIAL TOWNHOUSE",
         "housingUnits": 0,
-        "description": "Townhomes, 8 units, Lots 151-158, 3 stories, VB Const, R3 Occupancy, SPR-0026-2022; BLDR-024085-2026",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025215-2026"
-      },
-      {
-        "permitNumber": "BLDR-025214-2026",
-        "address": "3213 Goldney Rd, Raleigh, NC 27610",
-        "issuedAt": "2026-07-01",
-        "permitValue": 289088.8,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 8 units, Lots 151-158, 3 stories, VB Const, R3 Occupancy, SPR-0026-2022; BLDR-024085-2026",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025214-2026"
-      },
-      {
-        "permitNumber": "BLDR-025213-2026",
-        "address": "3211 Goldney Rd, Raleigh, NC 27610",
-        "issuedAt": "2026-07-01",
-        "permitValue": 290677.2,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 8 units, Lots 151-158, 3 stories, VB Const, R3 Occupancy, SPR-0026-2022; BLDR-024085-2026",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025213-2026"
-      },
-      {
-        "permitNumber": "BLDR-025212-2026",
-        "address": "3209 Goldney Rd, Raleigh, NC 27610",
-        "issuedAt": "2026-07-01",
-        "permitValue": 289088.8,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 8 units, Lots 151-158, 3 stories, VB Const, R3 Occupancy, SPR-0026-2022; BLDR-024085-2026",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025212-2026"
+        "description": "Townhomes, 5 units, Lots 136-140, 3 stories, VB Const, R3 Occ, SPR-0026-2022; BLDR- 022676-2026 Lot",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-022676-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 35 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-024085-2026 at 3201 Goldney Rd issued 2026-07-02."
+    "acquisitionNotes": "Appears on 40 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-024269-2026 at 3224 Goldney Rd issued 2026-07-08."
   },
   {
     "id": "raleigh-builder-toll-brothers",
@@ -433,6 +433,93 @@
       }
     ],
     "acquisitionNotes": "Appears on 35 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025543-2026 at 2432 Gracemount Dr issued 2026-06-29."
+  },
+  {
+    "id": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
+    "name": "Meritage Homes of the Carolinas, Inc.",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "9199957469",
+    "email": "raleigh.permits@meritagehomes.com",
+    "contactName": "Meritage Homes of the Carolinas, Inc.",
+    "recentBuilds": 31,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-025191-2026",
+        "address": "6077 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-08",
+        "permitValue": 337751.6,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 1-5, 2 stories, VB Construction, R3 Occupancy, SPR-0081-2023; BLDR- 021941",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025191-2026"
+      },
+      {
+        "permitNumber": "BLDR-025190-2026",
+        "address": "6079 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-08",
+        "permitValue": 314070,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 1-5, 2 stories, VB Construction, R3 Occupancy, SPR-0081-2023; BLDR- 021941",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025190-2026"
+      },
+      {
+        "permitNumber": "BLDR-025189-2026",
+        "address": "6081 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-08",
+        "permitValue": 338906.8,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 1-5, 2 stories, VB Construction, R3 Occupancy, SPR-0081-2023; BLDR- 021941",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025189-2026"
+      },
+      {
+        "permitNumber": "BLDR-025188-2026",
+        "address": "6083 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-08",
+        "permitValue": 281435.6,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 1-5, 2 stories, VB Construction, R3 Occupancy, SPR-0081-2023; BLDR- 021941",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025188-2026"
+      },
+      {
+        "permitNumber": "BLDR-021941-2026",
+        "address": "6085 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-08",
+        "permitValue": 311759.6,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 5 units, Lots 1-5, 2 stories, VB Construction, R3 Occupancy, SPR-0081-2023; BLDR- 021941",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021941-2026"
+      }
+    ],
+    "acquisitionNotes": "Appears on 31 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025191-2026 at 6077 Spring Forest Rd issued 2026-07-08."
   },
   {
     "id": "raleigh-builder-front-street-construction-services-llc",
@@ -607,93 +694,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 30 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-027272-2026 at 4801 Salamander Ct issued 2026-07-01."
-  },
-  {
-    "id": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
-    "name": "Meritage Homes of the Carolinas, Inc.",
-    "market": "raleigh-nc",
-    "state": "NC",
-    "website": "",
-    "phone": "9199957469",
-    "email": "raleigh.permits@meritagehomes.com",
-    "contactName": "Meritage Homes of the Carolinas, Inc.",
-    "recentBuilds": 26,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
-    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BLDR-027576-2026",
-        "address": "5954 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-07-06",
-        "permitValue": 441575.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe Reserve SFD Lot 245 Monolithic Slab on Grade Rear Screen Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027576-2026"
-      },
-      {
-        "permitNumber": "BLDR-027258-2026",
-        "address": "5922 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-07-02",
-        "permitValue": 441575.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe Reserve SFD Lot 251",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027258-2026"
-      },
-      {
-        "permitNumber": "BLDR-027185-2026",
-        "address": "5930 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-07-02",
-        "permitValue": 377461.6,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe SFD Lot 249 Slab on Grade Rear Screen Porch No Fireplace",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027185-2026"
-      },
-      {
-        "permitNumber": "BLDR-027155-2026",
-        "address": "5934 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-07-02",
-        "permitValue": 437965.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe SFD Lot 248 Monoslab Rear Screened Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027155-2026"
-      },
-      {
-        "permitNumber": "BLDR-027257-2026",
-        "address": "5926 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-07-02",
-        "permitValue": 426413.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe Reserve SFD Lot 250 356 Wilson Model Monoslab Rear Screened Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027257-2026"
-      }
-    ],
-    "acquisitionNotes": "Appears on 26 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-027576-2026 at 5954 Fallowfield Ln issued 2026-07-06."
   },
   {
     "id": "raleigh-builder-eastwood-homes-of-raleigh-llc",

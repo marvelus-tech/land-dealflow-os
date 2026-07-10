@@ -1,20 +1,20 @@
-# Lead Engine Briefing — 2026-07-08
+# Lead Engine Briefing — 2026-07-10
 
-Run: lead-engine-2026-07-08T21-33-42-622Z
+Run: lead-engine-2026-07-10T21-30-39-315Z
 
-- Markets watched: 27
-- Buyer leads: 387
+- Markets watched: 32
+- Buyer leads: 577
 - Parcel leads: 81
 - Top seller calls: 0
 - Real skip-trace leads: 81
-- Buyer validation tasks: 387
+- Buyer validation tasks: 577
 - Offer-ready deals: 0
 - New-area buyer discovery tasks: 18
-- New-area seller discovery tasks: 26
-- Source candidates found: 27
+- New-area seller discovery tasks: 31
+- Source candidates found: 32
 - Missing-data blockers: 81
-- Priority permit markets judged: 27
-- Permit priority stack: TN → FL → AZ → NC → TX → GA → SC
+- Priority permit markets judged: 32
+- Permit priority stack: TN → FL → AZ → NC → TX → CA → HI → ID → NV → IN → GA → SC
 
 ## Priority permit market judgement
 1. Knoxville / Knox County, TN — pulled; 30 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Knoxville / Knox County, TN to capture buy box before seller sourcing.

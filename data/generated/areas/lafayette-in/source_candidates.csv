@@ -1,0 +1,2 @@
+market,areaName,platform,sourceType,title,url,confidence,suggestedUse,query
+lafayette-in,"Lafayette / Tippecanoe County, IN",Tippecanoe County GIS BuildingPermits_Adr ArcGIS,permit,"Lafayette / Tippecanoe County, IN — Tippecanoe County GIS BuildingPermits_Adr ArcGIS",https://maps.tippecanoe.in.gov/server/rest/services/Hosted/BuildingPermits_Adr/FeatureServer/0,96,run_direct_permit_builder_adapter,"Lafayette / Tippecanoe County, IN Tippecanoe County GIS BuildingPermits_Adr ArcGIS building permits"

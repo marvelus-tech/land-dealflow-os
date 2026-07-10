@@ -380,19 +380,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602190"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602142",
-        "address": "1102 THIELE ST, City of San Antonio, TX 78224",
-        "issuedAt": "2026-06-29",
-        "submittedAt": "2026-06-11",
-        "permitValue": 0,
-        "areaSqft": 3185,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 1102; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602142"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36602159",
         "address": "2710 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
         "issuedAt": "2026-06-29",
@@ -404,6 +391,19 @@
         "projectName": "Building No: 2710; Unit No: N/A",
         "councilDistrict": "0",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602159"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602142",
+        "address": "1102 THIELE ST, City of San Antonio, TX 78224",
+        "issuedAt": "2026-06-29",
+        "submittedAt": "2026-06-11",
+        "permitValue": 0,
+        "areaSqft": 3185,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 1102; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602142"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36602143",
@@ -480,19 +480,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602158"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602157",
-        "address": "14815 MYSTIC MANE, City of San Antonio, TX 78247",
-        "issuedAt": "2026-06-26",
-        "submittedAt": "2026-06-18",
-        "permitValue": 0,
-        "areaSqft": 2257,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602157"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36602155",
         "address": "942 TRANCHET TRAIL, City of San Antonio, TX 78221",
         "issuedAt": "2026-06-26",
@@ -504,6 +491,19 @@
         "projectName": "Building No: 942; Unit No: N/A",
         "councilDistrict": "",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602155"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602157",
+        "address": "14815 MYSTIC MANE, City of San Antonio, TX 78247",
+        "issuedAt": "2026-06-26",
+        "submittedAt": "2026-06-18",
+        "permitValue": 0,
+        "areaSqft": 2257,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602157"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36602149",
@@ -976,19 +976,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT26-36601894",
-        "address": "20675 HUEBNER RD, City of San Antonio, TX 78258",
-        "issuedAt": "2026-06-08",
-        "submittedAt": "2026-06-01",
-        "permitValue": 0,
-        "areaSqft": 2180,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "9",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601894"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36601891",
         "address": "20675 HUEBNER RD, City of San Antonio, TX 78258",
         "issuedAt": "2026-06-08",
@@ -1000,6 +987,19 @@
         "projectName": "Building No: 110; Unit No: N/A",
         "councilDistrict": "9",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601891"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36601894",
+        "address": "20675 HUEBNER RD, City of San Antonio, TX 78258",
+        "issuedAt": "2026-06-08",
+        "submittedAt": "2026-06-01",
+        "permitValue": 0,
+        "areaSqft": 2180,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "9",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601894"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36601887",
@@ -1041,7 +1041,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601878"
       }
     ],
-    "acquisitionNotes": "Appears on 102 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601894 at 20675 HUEBNER RD, City of San Antonio, TX 78258 issued 2026-06-08."
+    "acquisitionNotes": "Appears on 102 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601891 at 20675 HUEBNER RD, City of San Antonio, TX 78258 issued 2026-06-08."
   },
   {
     "id": "san-antonio-builder-meritage-homes",
@@ -1759,6 +1759,19 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
+        "permitNumber": "RES-RBP-PMT25-36603228",
+        "address": "11307 CLEARMINE ST, City of San Antonio, TX 78224",
+        "issuedAt": "2025-10-08",
+        "submittedAt": "2025-08-22",
+        "permitValue": 0,
+        "areaSqft": 6848,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: 102",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603228"
+      },
+      {
         "permitNumber": "RES-RBP-PMT25-36603245",
         "address": "11311 CLEARMINE ST, City of San Antonio, TX 78224",
         "issuedAt": "2025-10-08",
@@ -1809,22 +1822,9 @@
         "projectName": "Building No: ; Unit No: 104",
         "councilDistrict": "4",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603237"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36603236",
-        "address": "11315 CLEARMINE ST, City of San Antonio, TX 78224",
-        "issuedAt": "2025-10-08",
-        "submittedAt": "2025-08-22",
-        "permitValue": 0,
-        "areaSqft": 6848,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 103",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603236"
       }
     ],
-    "acquisitionNotes": "Appears on 30 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603245 at 11311 CLEARMINE ST, City of San Antonio, TX 78224 issued 2025-10-08."
+    "acquisitionNotes": "Appears on 30 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603228 at 11307 CLEARMINE ST, City of San Antonio, TX 78224 issued 2025-10-08."
   },
   {
     "id": "san-antonio-builder-rj-b-construction-service",
@@ -1872,32 +1872,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600875"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36600449",
-        "address": "7039 ASKEATON, City of San Antonio, TX 78209",
-        "issuedAt": "2026-02-23",
-        "submittedAt": "2026-01-25",
-        "permitValue": 0,
-        "areaSqft": 1543,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: NA",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600449"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36600399",
-        "address": "7022 ASKEATON, City of San Antonio, TX 78209",
-        "issuedAt": "2026-02-23",
-        "submittedAt": "2026-01-25",
-        "permitValue": 0,
-        "areaSqft": 1543,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: N/A",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600399"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36600600",
         "address": "7031 ASKEATON, City of San Antonio, TX 78209",
         "issuedAt": "2026-02-23",
@@ -1909,6 +1883,32 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "10",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600600"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36600577",
+        "address": "7035 ASKEATON, City of San Antonio, TX 78209",
+        "issuedAt": "2026-02-23",
+        "submittedAt": "2026-01-25",
+        "permitValue": 0,
+        "areaSqft": 1543,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: n/a",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600577"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36600573",
+        "address": "7011 ASKEATON, City of San Antonio, TX 78209",
+        "issuedAt": "2026-02-23",
+        "submittedAt": "2026-01-21",
+        "permitValue": 0,
+        "areaSqft": 1543,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: n/a",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600573"
       }
     ],
     "acquisitionNotes": "Appears on 30 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601198 at 106 FIELD CREST, City of San Antonio, TX 78209 issued 2026-04-15."
@@ -2233,19 +2233,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602169"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602025",
-        "address": "6275 CAMP BULLIS RD, City of San Antonio, TX 78257",
-        "issuedAt": "2026-06-25",
-        "submittedAt": "2026-06-08",
-        "permitValue": 0,
-        "areaSqft": 11320,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: 4405/4406",
-        "councilDistrict": "8",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602025"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36602027",
         "address": "6275 CAMP BULLIS RD, City of San Antonio, TX 78257",
         "issuedAt": "2026-06-25",
@@ -2257,6 +2244,19 @@
         "projectName": "Building No: NA; Unit No: 4409 / 4410",
         "councilDistrict": "8",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602027"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602026",
+        "address": "6275 CAMP BULLIS RD, City of San Antonio, TX 78257",
+        "issuedAt": "2026-06-25",
+        "submittedAt": "2026-06-08",
+        "permitValue": 0,
+        "areaSqft": 11320,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: NA; Unit No: 4407/4408",
+        "councilDistrict": "8",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602026"
       }
     ],
     "acquisitionNotes": "Appears on 25 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602213 at 6275 CAMP BULLIS RD, City of San Antonio, TX 78257 issued 2026-07-02."
@@ -2394,19 +2394,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603516"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36601645",
-        "address": "2677 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
-        "issuedAt": "2025-04-28",
-        "submittedAt": "2025-04-10",
-        "permitValue": 0,
-        "areaSqft": 3439,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: n/a; Unit No: n/a",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601645"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36601615",
         "address": "2718 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
         "issuedAt": "2025-04-28",
@@ -2418,6 +2405,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "0",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601615"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36601645",
+        "address": "2677 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
+        "issuedAt": "2025-04-28",
+        "submittedAt": "2025-04-10",
+        "permitValue": 0,
+        "areaSqft": 3439,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: n/a; Unit No: n/a",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601645"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36601515",
@@ -2742,6 +2742,19 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603095"
       },
       {
+        "permitNumber": "RES-RBP-PMT25-36603092",
+        "address": "5151 NORTHWEST TRAILS, City of San Antonio, TX 78250",
+        "issuedAt": "2025-09-10",
+        "submittedAt": "2025-07-09",
+        "permitValue": 0,
+        "areaSqft": 6084,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: 101",
+        "councilDistrict": "6",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603092"
+      },
+      {
         "permitNumber": "RES-RBP-PMT25-36603094",
         "address": "5151 NORTHWEST TRAILS, City of San Antonio, TX 78250",
         "issuedAt": "2025-09-10",
@@ -2766,19 +2779,6 @@
         "projectName": "Building No: ; Unit No: 102",
         "councilDistrict": "6",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603093"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36603092",
-        "address": "5151 NORTHWEST TRAILS, City of San Antonio, TX 78250",
-        "issuedAt": "2025-09-10",
-        "submittedAt": "2025-07-09",
-        "permitValue": 0,
-        "areaSqft": 6084,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101",
-        "councilDistrict": "6",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603092"
       }
     ],
     "acquisitionNotes": "Appears on 13 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601296 at 510 BOOKER ALLEY, City of San Antonio, TX 78202 issued 2026-04-23."
@@ -2814,19 +2814,6 @@
         "projectName": "Building No: 319; Unit No: 101 & 102",
         "councilDistrict": "5",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603643"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36603252",
-        "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
-        "issuedAt": "2025-11-24",
-        "submittedAt": "2025-08-01",
-        "permitValue": 0,
-        "areaSqft": 7878,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 1; Unit No: 101 & 102",
-        "councilDistrict": "7",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603252"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36603266",
@@ -2866,6 +2853,19 @@
         "projectName": "Building No: 5318; Unit No: 801&802",
         "councilDistrict": "7",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603264"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36603263",
+        "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
+        "issuedAt": "2025-11-24",
+        "submittedAt": "2025-08-01",
+        "permitValue": 0,
+        "areaSqft": 18060,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 5318; Unit No: 701&702",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603263"
       }
     ],
     "acquisitionNotes": "Appears on 13 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603643 at 319 S SAN MARCOS, City of San Antonio, TX 78207 issued 2025-12-01."
@@ -3451,19 +3451,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600074"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36603149",
-        "address": "315 ORPHAN ST, City of San Antonio, TX 78202",
-        "issuedAt": "2025-10-09",
-        "submittedAt": "2025-09-01",
-        "permitValue": 0,
-        "areaSqft": 1550,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: NA",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603149"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36603163",
         "address": "307 ORPHAN ST, City of San Antonio, TX 78202",
         "issuedAt": "2025-10-09",
@@ -3475,6 +3462,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603163"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36603149",
+        "address": "315 ORPHAN ST, City of San Antonio, TX 78202",
+        "issuedAt": "2025-10-09",
+        "submittedAt": "2025-09-01",
+        "permitValue": 0,
+        "areaSqft": 1550,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: NA",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603149"
       }
     ],
     "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36600696 at 319 ORPHAN ST, City of San Antonio, TX 78202 issued 2026-03-03."
@@ -3586,19 +3586,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT25-36601669",
-        "address": "314 CORLISS, City of San Antonio, TX 78220",
-        "issuedAt": "2025-04-29",
-        "submittedAt": "2025-04-14",
-        "permitValue": 0,
-        "areaSqft": 1418,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601669"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36601649",
         "address": "318 CORLISS, City of San Antonio, TX 78220",
         "issuedAt": "2025-04-29",
@@ -3610,6 +3597,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601649"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36601669",
+        "address": "314 CORLISS, City of San Antonio, TX 78220",
+        "issuedAt": "2025-04-29",
+        "submittedAt": "2025-04-14",
+        "permitValue": 0,
+        "areaSqft": 1418,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601669"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36601478",
@@ -3651,7 +3651,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601399"
       }
     ],
-    "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601669 at 314 CORLISS, City of San Antonio, TX 78220 issued 2025-04-29."
+    "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601649 at 318 CORLISS, City of San Antonio, TX 78220 issued 2025-04-29."
   },
   {
     "id": "san-antonio-builder-twoten-construction-llc",
@@ -3673,19 +3673,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT25-36601713",
-        "address": "13338 ROWDY CV, City of San Antonio, TX 78249",
-        "issuedAt": "2025-07-30",
-        "submittedAt": "2025-04-30",
-        "permitValue": 0,
-        "areaSqft": 3105,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101&102",
-        "councilDistrict": "8",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601713"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36601719",
         "address": "13346 ROWDY CV, City of San Antonio, TX 78249",
         "issuedAt": "2025-07-30",
@@ -3697,6 +3684,19 @@
         "projectName": "Building No: 13346; Unit No: 101&102",
         "councilDistrict": "8",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601719"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36601713",
+        "address": "13338 ROWDY CV, City of San Antonio, TX 78249",
+        "issuedAt": "2025-07-30",
+        "submittedAt": "2025-04-30",
+        "permitValue": 0,
+        "areaSqft": 3105,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: 101&102",
+        "councilDistrict": "8",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601713"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36600501",
@@ -3738,7 +3738,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36600697"
       }
     ],
-    "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601713 at 13338 ROWDY CV, City of San Antonio, TX 78249 issued 2025-07-30."
+    "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601719 at 13346 ROWDY CV, City of San Antonio, TX 78249 issued 2025-07-30."
   },
   {
     "id": "san-antonio-builder-multifamily-investment-builders-llc",
@@ -4073,17 +4073,17 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602493"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36601407",
-        "address": "26058 WHITE EAGLE DR, City of San Antonio ETJ, TX 78260",
+        "permitNumber": "RES-RBP-PMT25-36601633",
+        "address": "26227 NEEDLE POINT ST, City of San Antonio ETJ, TX 78260",
         "issuedAt": "2025-04-29",
         "submittedAt": "2025-03-27",
         "permitValue": 0,
-        "areaSqft": 3550,
+        "areaSqft": 3392,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
+        "projectName": "Building No: 1; Unit No: 1",
         "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601407"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601633"
       }
     ],
     "acquisitionNotes": "Appears on 6 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601940 at 739 DEER CROSS LANE, City of San Antonio ETJ, TX 78260 issued 2026-06-10."
@@ -4195,19 +4195,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT25-36602125",
-        "address": "7107 COMANCHE STAR, City of San Antonio, TX 78247",
-        "issuedAt": "2025-10-07",
-        "submittedAt": "2025-05-19",
-        "permitValue": 0,
-        "areaSqft": 2499,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 7107; Unit No: N/A",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602125"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36601875",
         "address": "7110 COMANCHE STAR, City of San Antonio, TX 78247",
         "issuedAt": "2025-10-07",
@@ -4219,6 +4206,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "10",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601875"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36602125",
+        "address": "7107 COMANCHE STAR, City of San Antonio, TX 78247",
+        "issuedAt": "2025-10-07",
+        "submittedAt": "2025-05-19",
+        "permitValue": 0,
+        "areaSqft": 2499,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 7107; Unit No: N/A",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602125"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36602021",
@@ -4260,7 +4260,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601430"
       }
     ],
-    "acquisitionNotes": "Appears on 6 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36602125 at 7107 COMANCHE STAR, City of San Antonio, TX 78247 issued 2025-10-07."
+    "acquisitionNotes": "Appears on 6 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601875 at 7110 COMANCHE STAR, City of San Antonio, TX 78247 issued 2025-10-07."
   },
   {
     "id": "san-antonio-builder-texas-ascending-homes-llc",

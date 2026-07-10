@@ -1,0 +1,31 @@
+leadId,market,name,phone,email,website,contactName,buyBox,confidence
+buyer:boise-id:berkeley-building-co,boise-id,Berkeley Building Co.,(208) 995-2885,,https://www.berkeleybuildingco.com/,,,86
+buyer:boise-id:biltmore-company,boise-id,Biltmore Company,(208) 895-0500,,https://www.biltmoreco.com/,,,84
+buyer:boise-id:kb-home,boise-id,KB Home,(208) 250-6161,,https://www.kbhome.com/new-homes-idaho,,,86
+buyer:boise-id:tresidio-homes,boise-id,Tresidio Homes,(208) 917-7500,,https://www.tresidio.com/,,,84
+buyer:boise-id:alturas-homes-llc,boise-id,"Alturas Homes, LLC",(208) 391-4445,,,,,78
+buyer:boise-id:amyx-homes,boise-id,Amyx Homes,(208) 939-5665,,,,,78
+buyer:boise-id:blackrock-homes,boise-id,Blackrock Homes,208-297-5940,,,,,76
+buyer:boise-id:boise-hunter-homes,boise-id,Boise Hunter Homes,(208) 577-5501,,https://boisehunterhomes.com/,,,82
+buyer:boise-id:capstone-homes-idaho,boise-id,Capstone Homes Idaho,(208) 999-7640,,,,,76
+buyer:boise-id:cbh-homes,boise-id,CBH Homes,(208) 288-5560,,https://cbhhomes.com,,,88
+buyer:boise-id:clark-co-homes,boise-id,Clark & Co Homes,(208) 991-4010,,,,,78
+buyer:boise-id:conger-group,boise-id,Conger Group,(208) 336-5355,,,,,78
+buyer:boise-id:element-design-build-llc,boise-id,Element Design Build LLC,(208) 274-8000,,,,,84
+buyer:boise-id:gardner-homes-idaho,boise-id,Gardner Homes Idaho,(208) 917-9029,,,,,78
+buyer:boise-id:hallmark-homes,boise-id,Hallmark Homes,(208) 887-9090,,,,,78
+buyer:boise-id:hayden-homes-llc,boise-id,"Hayden Homes, LLC",(800) 971-4691,,,,,80
+buyer:boise-id:highland-homes-llc,boise-id,Highland Homes LLC,(208) 288-2722,,,,,78
+buyer:boise-id:hubble-homes-llc,boise-id,"Hubble Homes, LLC",(208) 433-8800,,https://www.hubblehomes.com,,,86
+buyer:boise-id:james-clyde-homes,boise-id,James Clyde Homes,(208) 297-5822,,,,,78
+buyer:boise-id:legacy-homes,boise-id,Legacy Homes,(208) 860-8235,,,,,78
+buyer:boise-id:lennar-homes-of-idaho-llc,boise-id,"Lennar Homes of Idaho, LLC",(208) 314-6730,,,,,84
+buyer:boise-id:pacific-lifestyle-homes,boise-id,Pacific Lifestyle Homes,(360) 304-9901,,,,,80
+buyer:boise-id:rennison-companies,boise-id,Rennison Companies,(208) 938-2440,,,,,82
+buyer:boise-id:richmond-american-homes,boise-id,Richmond American Homes,208-713-7237,,,,,82
+buyer:boise-id:riverwood-homes-inc,boise-id,"Riverwood Homes, Inc.",(208) 850-2983,,,,,78
+buyer:boise-id:schell-brothers,boise-id,Schell Brothers,(208) 609-5011,,,,,80
+buyer:boise-id:shea-homes-inc,boise-id,Shea Homes Inc.,(425) 450-7161,,,,,80
+buyer:boise-id:toll-brothers-idaho-division,boise-id,Toll Brothers Idaho Division,(208) 424-0020,,,,,84
+buyer:boise-id:williams-homes-inc,boise-id,Williams Homes Inc,(661) 222-9207,,,,,80
+buyer:boise-id:woodbridge-pacific-group,boise-id,Woodbridge Pacific Group,(208) 889-9112,,,,,80

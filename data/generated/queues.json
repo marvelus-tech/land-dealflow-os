@@ -2062,16 +2062,16 @@
       "phone": "4073029871",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 100
+      "confidence": 98
     },
     {
-      "buyerId": "polk-builder-d-r-horton-inc",
-      "name": "D. R. HORTON, INC.",
+      "buyerId": "polk-builder-ryan-homes",
+      "name": "RYAN HOMES",
       "market": "polk-fl",
-      "phone": "4078505200",
+      "phone": "8137397425",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 100
+      "confidence": 98
     },
     {
       "buyerId": "polk-builder-kb-home-orlando-llc",
@@ -2080,22 +2080,13 @@
       "phone": "4075924187",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 100
+      "confidence": 80
     },
     {
       "buyerId": "polk-builder-stanley-martin-homes-llc",
       "name": "STANLEY MARTIN HOMES LLC",
       "market": "polk-fl",
       "phone": "8669094458",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 80
-    },
-    {
-      "buyerId": "polk-builder-tpg-ehc-e-len-multi-state-1-llc",
-      "name": "TPG EHC E LEN MULTI STATE 1 LLC",
-      "market": "polk-fl",
-      "phone": "4072344336",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 80
@@ -2110,13 +2101,49 @@
       "confidence": 74
     },
     {
-      "buyerId": "polk-builder-ryan-homes",
-      "name": "RYAN HOMES",
+      "buyerId": "polk-builder-d-r-horton-inc",
+      "name": "D. R. HORTON, INC.",
       "market": "polk-fl",
-      "phone": "8137397425",
+      "phone": "4078505200",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 74
+    },
+    {
+      "buyerId": "polk-builder-applied-building-development-company-oakhills-inc",
+      "name": "APPLIED BUILDING DEVELOPMENT COMPANY - OAKHILLS INC",
+      "market": "polk-fl",
+      "phone": "8634202100",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-mitchell-custom-homes-llc",
+      "name": "MITCHELL CUSTOM HOMES, LLC",
+      "market": "polk-fl",
+      "phone": "8635217700",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-rbmgb-llc",
+      "name": "RBMGB LLC",
+      "market": "polk-fl",
+      "phone": "4079671524",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-tpg-ehc-e-len-multi-state-1-llc",
+      "name": "TPG EHC E LEN MULTI STATE 1 LLC",
+      "market": "polk-fl",
+      "phone": "4072344336",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
     },
     {
       "buyerId": "polk-builder-wjhfl-llc",
@@ -2125,67 +2152,22 @@
       "phone": "2828109352",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 74
-    },
-    {
-      "buyerId": "polk-builder-cw-mt-olive-llc",
-      "name": "CW MT OLIVE LLC",
-      "market": "polk-fl",
-      "phone": "3214416108",
-      "website": "",
-      "task": "capture exact buy box",
       "confidence": 68
     },
     {
-      "buyerId": "polk-builder-danny-sadler-inc",
-      "name": "DANNY SADLER INC",
+      "buyerId": "polk-builder-a-squared-construction-company-llc",
+      "name": "A SQUARED CONSTRUCTION COMPANY, LLC",
       "market": "polk-fl",
-      "phone": "8639674235",
+      "phone": "8632155827",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 68
+      "confidence": 62
     },
     {
-      "buyerId": "polk-builder-highland-homes",
-      "name": "HIGHLAND HOMES",
+      "buyerId": "polk-builder-built-by-waters-inc",
+      "name": "BUILT BY WATERS, INC.",
       "market": "polk-fl",
-      "phone": "2466197103",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 68
-    },
-    {
-      "buyerId": "polk-builder-lgi-homes-florida-llc",
-      "name": "LGI HOMES - FLORIDA, LLC",
-      "market": "polk-fl",
-      "phone": "3214433640",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 68
-    },
-    {
-      "buyerId": "polk-builder-mrp-hawb-llc",
-      "name": "MRP HAWB LLC",
-      "market": "polk-fl",
-      "phone": "3214416108",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 68
-    },
-    {
-      "buyerId": "polk-builder-ram-general-contracting-development-inc",
-      "name": "RAM GENERAL CONTRACTING & DEVELOPMENT, INC.",
-      "market": "polk-fl",
-      "phone": "2526152948",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 68
-    },
-    {
-      "buyerId": "polk-builder-applied-building-development-company-oakhills-inc",
-      "name": "APPLIED BUILDING DEVELOPMENT COMPANY - OAKHILLS INC",
-      "market": "polk-fl",
-      "phone": "8634202100",
+      "phone": "2529110000",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2195,6 +2177,15 @@
       "name": "Brandon James Shelley Shelley Construction Group, Inc.",
       "market": "polk-fl",
       "phone": "8636081437",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-d-s-hibbert-homes-llc",
+      "name": "D S HIBBERT HOMES, LLC",
+      "market": "polk-fl",
+      "phone": "8635832563",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2218,19 +2209,19 @@
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-hulbert-homes-inc-p-o-box",
-      "name": "HULBERT HOMES, INC. P O BOX",
+      "buyerId": "polk-builder-highland-homes",
+      "name": "HIGHLAND HOMES",
       "market": "polk-fl",
-      "phone": "8636475815",
+      "phone": "2466197103",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-legendary-construction-llc",
-      "name": "LEGENDARY CONSTRUCTION, LLC",
+      "buyerId": "polk-builder-hulbert-homes-inc-p-o-box",
+      "name": "HULBERT HOMES, INC. P O BOX",
       "market": "polk-fl",
-      "phone": "8636989253",
+      "phone": "8636475815",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2254,10 +2245,37 @@
       "confidence": 62
     },
     {
+      "buyerId": "polk-builder-my-florida-investment-group-llc",
+      "name": "MY FLORIDA INVESTMENT GROUP LLC",
+      "market": "polk-fl",
+      "phone": "4077585944",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
       "buyerId": "polk-builder-southern-oaks-homes-inc",
       "name": "SOUTHERN OAKS HOMES INC",
       "market": "polk-fl",
       "phone": "8136616799",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-tom-plante-construction-inc",
+      "name": "TOM PLANTE CONSTRUCTION INC",
+      "market": "polk-fl",
+      "phone": "8632054790",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-whitmore-builders-inc",
+      "name": "WHITMORE BUILDERS INC",
+      "market": "polk-fl",
+      "phone": "8634392700",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2288,6 +2306,15 @@
       "website": "",
       "task": "capture exact buy box",
       "confidence": 68
+    },
+    {
+      "buyerId": "maricopa-builder-americas-dwelling-llc",
+      "name": "Americas Dwelling LLC",
+      "market": "maricopa-az",
+      "phone": "818-903-5410",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 70
     },
     {
       "buyerId": "maricopa-builder-better-builders-llc",
@@ -2362,15 +2389,6 @@
       "confidence": 64
     },
     {
-      "buyerId": "maricopa-builder-americas-dwelling-llc",
-      "name": "Americas Dwelling LLC",
-      "market": "maricopa-az",
-      "phone": "818-903-5410",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 64
-    },
-    {
       "buyerId": "maricopa-builder-avigo-development-llc",
       "name": "Avigo Development LLC",
       "market": "maricopa-az",
@@ -2398,15 +2416,6 @@
       "confidence": 64
     },
     {
-      "buyerId": "maricopa-builder-cb-remodeling-llc",
-      "name": "CB Remodeling LLC",
-      "market": "maricopa-az",
-      "phone": "602-809-1690",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 64
-    },
-    {
       "buyerId": "maricopa-builder-courtland-communities",
       "name": "Courtland Communities",
       "market": "maricopa-az",
@@ -2429,15 +2438,6 @@
       "name": "Elliott Homes Inc",
       "market": "maricopa-az",
       "phone": "480-831-5691",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 64
-    },
-    {
-      "buyerId": "maricopa-builder-hoza-construction-llc",
-      "name": "Hoza Construction LLC",
-      "market": "maricopa-az",
-      "phone": "480-233-9590 480-233-9590 480-233-9590",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64

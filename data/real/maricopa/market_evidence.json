@@ -2,7 +2,7 @@
   "market": "Phoenix / Maricopa County, AZ",
   "marketId": "phoenix-maricopa-az",
   "state": "AZ",
-  "generatedAt": "2026-07-08T21:33:38Z",
+  "generatedAt": "2026-07-15T21:33:22Z",
   "source": {
     "name": "Maricopa County Planning & Development \u2014 Weekly Permit Activity Reports",
     "sourceUrl": "https://www.maricopa.gov/Archive.aspx?AMID=128",
@@ -10,14 +10,20 @@
     "sourceFormat": "XLSX workbooks from Archive Center"
   },
   "summary": {
-    "permitRowsSampled": 5543,
-    "targetPermitRows": 62,
-    "uniqueBuilders": 28,
+    "permitRowsSampled": 5479,
+    "targetPermitRows": 61,
+    "uniqueBuilders": 26,
     "minimumUniqueBuilders": 20,
-    "totalRecentBuildSignals": 62,
+    "totalRecentBuildSignals": 61,
     "filter": "Building (Residential) BLDR permit rows from Maricopa weekly XLSX reports with single-family/new residence descriptions; trade/accessory work excluded."
   },
   "reports": [
+    {
+      "label": "Weekly Permit Activity Report July 13, 2026",
+      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6541",
+      "rows": 165,
+      "targetRows": 1
+    },
     {
       "label": "Weekly Permit Activity Report July 6, 2026",
       "url": "https://www.maricopa.gov/Archive.aspx?ADID=6540",
@@ -190,12 +196,6 @@
       "label": "Weekly Permit Activity Report December 22, 2025",
       "url": "https://www.maricopa.gov/Archive.aspx?ADID=6358",
       "rows": 212,
-      "targetRows": 2
-    },
-    {
-      "label": "Weekly Permit Activity Report December 15, 2025",
-      "url": "https://www.maricopa.gov/Archive.aspx?ADID=6355",
-      "rows": 229,
       "targetRows": 2
     }
   ],

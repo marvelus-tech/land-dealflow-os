@@ -1931,8 +1931,6 @@ function renderLandControls() {
         <li title="Rows with enriched owner contact."><b>${h(enriched)}</b><span>enriched</span></li>
         <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(offerReady)}</b><span>offer-ready</span></li>
       </ul>
-      ${renderSelectedMarketPropertyResearch()}
-      ${renderNorthCarolinaWakeProofPackets()}
       ${sortControl}
       <p class="land-control-note">Market workspace active. Telemetry decides the next move; parcel content swaps below.</p>
     </article>
@@ -2267,7 +2265,6 @@ function renderLandMarketIndex() {
       <div class="land-state-detail-copy"><span class="eyebrow">State selected</span><h3>${h(activeStateSummary.label)} market lanes</h3><p>${h(activeStateSummary.scope)}. Pick one lane; the seller queue opens only after market selection.</p>${recommendedStrip}</div>
       <dl><div><dt>Seller records</dt><dd>${h(activeStateSummary.dealCount || 0)}</dd></div><div><dt>Builder signals</dt><dd>${h(activeStateSummary.builderCount || 0)}</dd></div><div><dt>Open lanes</dt><dd>${h(populatedMarkets)}</dd></div><div><dt>Quiet lanes</dt><dd>${h(zeroMarkets)}</dd></div></dl>
     </div>`;
-  const stateReports = renderStateLandReports();
   return `<section class="land-market-index phase254-land-market-index phase260-land-ia ${showingStateIndex ? 'phase255-land-state-index phase260-land-state-index' : 'phase255-land-submarket-index phase260-land-lane-index'}" aria-label="Land market index">
     <div class="land-market-index-hero">
       <span class="eyebrow">Land · ${showingStateIndex ? 'market index' : `${selectedLandStateFilter} lane index`}</span>
@@ -2277,7 +2274,6 @@ function renderLandMarketIndex() {
     </div>
     <div class="land-market-index-filter" aria-label="Filter Land markets by state">${stateFilters}</div>
     ${stateDetailSummary}
-    ${stateReports}
     <div class="land-market-index-grid">${showingStateIndex ? stateCards : marketCards}</div>
   </section>`;
 }
@@ -2313,12 +2309,34 @@ function renderDealsMarketCoverage() {
   </section>`;
 }
 
+function renderPhase4SecondaryProofDock({ selectedMarketResearch = '', ncProofPackets = '', stateReports = '' } = {}) {
+  const modules = [
+    selectedMarketResearch ? `<details class="phase277-secondary-proof-module" data-secondary-system="property-research"><summary><span>Property research</span><strong>Open packets only when proofing the selected lane</strong></summary>${selectedMarketResearch}</details>` : '',
+    ncProofPackets ? `<details class="phase277-secondary-proof-module" data-secondary-system="zip-proof-packets"><summary><span>ZIP proof packets</span><strong>Download Wake packets outside the money queue</strong></summary>${ncProofPackets}</details>` : '',
+    stateReports ? `<details class="phase277-secondary-proof-module" data-secondary-system="state-report-depth"><summary><span>State reports</span><strong>Deep research stays collapsed until needed</strong></summary>${stateReports}</details>` : '',
+  ].filter(Boolean).join('');
+  if (!modules) return '';
+  return `<section class="phase277-secondary-proof-dock" aria-label="Secondary research and proof systems">
+    <div class="phase277-secondary-proof-head">
+      <span class="eyebrow">Phase 4 · secondary systems</span>
+      <h3>Research is parked. Execution stays primary.</h3>
+      <p>Proof packets, reports, and deep source context remain available, but the top flow stays one action: choose lane, select parcel, clear the next gate.</p>
+    </div>
+    <div class="phase277-secondary-proof-stack">${modules}</div>
+  </section>`;
+}
+
 function renderLandSupportDrawer(agentIntakeGate = '', dallasProofSurface = '', landReconImportPath = '') {
-  const hasDallasProof = Boolean(dallasProofSurface);
-  return `<details class="land-support-drawer phase213-support-drawer" aria-label="Land support tools">
-    <summary><span><em class="eyebrow">Support tools</em><b>Proof rules, Dallas sprint, and packet import</b></span><strong>${hasDallasProof ? 'Lane proof ready' : 'Closed'}</strong></summary>
+  const selectedMarketResearch = renderSelectedMarketPropertyResearch();
+  const ncProofPackets = renderNorthCarolinaWakeProofPackets();
+  const stateReports = renderStateLandReports();
+  const secondaryProofDock = renderPhase4SecondaryProofDock({ selectedMarketResearch, ncProofPackets, stateReports });
+  const proofModuleCount = [dallasProofSurface, selectedMarketResearch, ncProofPackets, stateReports].filter(Boolean).length;
+  return `<details class="land-support-drawer phase213-support-drawer phase277-secondary-systems-drawer" aria-label="Land support tools and secondary proof systems">
+    <summary><span><em class="eyebrow">Secondary systems</em><b>Proof rules, packets, reports, and import live below the line</b></span><strong>${proofModuleCount ? `${proofModuleCount} support module${proofModuleCount === 1 ? '' : 's'}` : 'Closed'}</strong></summary>
     <div class="land-support-drawer-body">
       ${agentIntakeGate}
+      ${secondaryProofDock}
       ${dallasProofSurface}
       ${landReconImportPath}
     </div>

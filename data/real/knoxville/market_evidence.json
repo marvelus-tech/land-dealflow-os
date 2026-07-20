@@ -1,6 +1,6 @@
 {
   "market": "Knoxville, TN",
-  "generatedAt": "2026-07-13T21:30:06.864Z",
+  "generatedAt": "2026-07-20T21:30:05.336Z",
   "sources": {
     "buildingPermits": "https://services8.arcgis.com/Ty9G85JMF2cDHlRt/arcgis/rest/services/BuildingPermits/FeatureServer/0",
     "developmentProjects": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",

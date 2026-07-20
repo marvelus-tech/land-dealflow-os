@@ -1516,8 +1516,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-southern-edge-construction-llc",
-      "name": "SOUTHERN EDGE CONSTRUCTION LLC",
+      "buyerId": "nashville-builder-paragon-group-llc",
+      "name": "PARAGON GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1534,8 +1534,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-harpeth-valley-homes-llc",
-      "name": "HARPETH VALLEY HOMES LLC",
+      "buyerId": "nashville-builder-may-construction-tn-llc",
+      "name": "MAY CONSTRUCTION TN LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1543,8 +1543,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-may-construction-tn-llc",
-      "name": "MAY CONSTRUCTION TN LLC",
+      "buyerId": "nashville-builder-southern-edge-construction-llc",
+      "name": "SOUTHERN EDGE CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1563,15 +1563,6 @@
     {
       "buyerId": "nashville-builder-epg-construction-inc",
       "name": "EPG CONSTRUCTION INC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-paragon-group-llc",
-      "name": "PARAGON GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1608,6 +1599,15 @@
     {
       "buyerId": "nashville-builder-century-communities-of-tn",
       "name": "Century Communities of TN",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-harpeth-valley-homes-llc",
+      "name": "HARPETH VALLEY HOMES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1679,7 +1679,7 @@
     },
     {
       "buyerId": "nashville-builder-superior-capital-llc",
-      "name": "Superior Capital LLc",
+      "name": "Superior Capital LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1698,15 +1698,6 @@
     {
       "buyerId": "nashville-builder-haven-builders-llc",
       "name": "HAVEN BUILDERS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-affordable-building-concepts",
-      "name": "Affordable Building Concepts",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1743,6 +1734,15 @@
     {
       "buyerId": "nashville-builder-vastland-northcrest-development-llc",
       "name": "VASTLAND NORTHCREST DEVELOPMENT LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-affordable-building-concepts",
+      "name": "Affordable Building Concepts",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1939,15 +1939,6 @@
       "confidence": 98
     },
     {
-      "buyerId": "nashville-builder-c-h-properties-llc",
-      "name": "C&H Properties LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 94
-    },
-    {
       "buyerId": "nashville-builder-canaan-builders",
       "name": "CANAAN BUILDERS",
       "market": "nashville-edge-tn",
@@ -2022,6 +2013,15 @@
     {
       "buyerId": "nashville-builder-j-core-properties-llc-phillips-builders-llc",
       "name": "J CORE PROPERTIES LLC DBA PHILLIPS BUILDERS LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-mch-construction-of-tn-llc",
+      "name": "MCH CONSTRUCTION OF TN LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",

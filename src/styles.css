@@ -42150,3 +42150,82 @@ body[data-active-view="builders"] #builder-list-panel .validation-save-row butto
 #buyer-validation-command .phase3-call-row button em {
   color: inherit !important;
 }
+
+
+/* v1.99.7 - Phase 3 shared Builders/Land row interaction model */
+:root { --phase276-shared-row-model: builders-land-proof-contact-fit-status-progress; }
+
+.shared-work-row[data-shared-row] {
+  position: relative !important;
+}
+
+.shared-work-row[data-shared-row]::before {
+  content: attr(data-shared-row) " · " attr(data-shared-row-status) !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 10px !important;
+  max-width: 44% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-size: .58rem !important;
+  line-height: 1 !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+  color: rgba(15, 23, 42, .5) !important;
+  pointer-events: none !important;
+}
+
+.shared-row-progress {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-width: 0 !important;
+  padding: 6px 8px !important;
+  border-top: 1px solid rgba(15, 23, 42, .07) !important;
+  color: var(--muted) !important;
+}
+
+.shared-row-progress > b {
+  flex: 0 0 auto !important;
+  font-size: .68rem !important;
+  color: var(--ink) !important;
+}
+
+.shared-row-progress > div {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 4px !important;
+  min-width: 0 !important;
+}
+
+.shared-row-step {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 3px !important;
+  padding: 3px 6px !important;
+  border: 1px solid rgba(15, 23, 42, .08) !important;
+  border-radius: 999px !important;
+  font-size: .62rem !important;
+  line-height: 1.1 !important;
+  background: rgba(255, 255, 255, .72) !important;
+  color: rgba(15, 23, 42, .64) !important;
+}
+
+.shared-row-step.done {
+  border-color: rgba(18, 63, 46, .22) !important;
+  background: rgba(18, 63, 46, .07) !important;
+  color: #123f2e !important;
+}
+
+body[data-active-view="builders"] .validation-queue-item.shared-work-row .shared-row-progress {
+  grid-column: 1 / -1 !important;
+  margin: 0 12px 6px !important;
+}
+
+body[data-active-view="deals"] .land-listing-row.shared-work-row .shared-row-progress {
+  width: 100% !important;
+  margin: 2px 0 !important;
+  padding-left: 0 !important;
+  background: transparent !important;
+}

@@ -3515,6 +3515,69 @@ function upsertBuyerValidation(row) {
   workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== row.builderId), row] };
 }
 
+function sharedRowInteractionModel({ kind = 'land', row = {}, index = 0, active = false, listingState = null, mission = null, activeState = {} } = {}) {
+  if (kind === 'builder') {
+    const builderId = row.builderId || row.id || row.buyerId || '';
+    const outreach = validationOutreach(row);
+    const completion = buyBoxCompletion(row);
+    const sellerOpen = Boolean(row.validation?.sellerEligible);
+    const marketKey = row.marketKey || activeState.marketKey || selectedBuilderMarketKey || '';
+    return {
+      kind: 'builder',
+      id: builderId,
+      index,
+      active,
+      selectAttr: `data-select-validation-builder="${h(builderId)}"`,
+      routeHash: builderMarketRouteHash({ stateCode: activeState.stateCode || selectedBuilderMarketState, marketKey }),
+      title: row.name || 'Builder',
+      subtitle: `${row.marketName || activeState.label || 'market'} · ${row.recentBuilds || 0} permit proofs`,
+      status: sellerOpen ? 'seller-ready' : row.callStatus || 'not_called',
+      nextAction: row.validation?.nextAction || 'Call and capture the buy box.',
+      progress: [
+        { id: 'phone', label: 'Call', done: Boolean(outreach.phone) },
+        { id: 'email', label: 'Email', done: Boolean(outreach.email) },
+        { id: 'mail', label: 'Mail', done: Boolean(outreach.mail) },
+        { id: 'buybox', label: `Buy box ${completion.complete}/${completion.total}`, done: completion.complete === completion.total },
+        { id: 'seller', label: 'Seller unlock', done: sellerOpen },
+      ],
+    };
+  }
+  const parcelKey = parcelSelectionKey(row);
+  const state = listingState || row._listingState || parcelListingState(row);
+  const landMission = mission || landParcelMissionTelemetry(row);
+  const buyerFit = Boolean(state.builderMatched);
+  return {
+    kind: 'land',
+    id: parcelKey,
+    index,
+    active,
+    selectAttr: `data-select-parcel="${h(parcelKey)}"`,
+    routeHash: landMarketRouteHash({ stateCode: rowState(row), marketKey: row.landMarketKey || selectedDealsMarketKey }),
+    title: row.address || row.parcelId || 'Land row',
+    subtitle: `${rowState(row) || 'state unknown'} · ${row.landMarketKey || row.market || 'market unknown'}`,
+    status: state.offerReady ? 'offer-ready' : state.enriched ? 'contact-ready' : state.sourceBacked ? 'proofed' : 'needs-proof',
+    nextAction: landMission.nextAction || 'Proof, contact, buyer-fit, then price.',
+    progress: [
+      { id: 'proof', label: 'Proof', done: Boolean(state.sourceBacked) },
+      { id: 'contact', label: state.contactCandidate && !state.enriched ? 'Candidate contact' : 'Owner contact', done: Boolean(state.enriched) },
+      { id: 'fit', label: 'Buyer fit', done: buyerFit },
+      { id: 'price', label: 'Price', done: Boolean(row.offer || row._landOfferMath) },
+      { id: 'call', label: 'Seller call', done: String(row.crmStatus || '').match(/Contacted|Negotiating|Under Contract|Sent to Buyer|Assigned|Sold/i) },
+    ],
+  };
+}
+
+function sharedRowDataAttributes(model = {}) {
+  return `data-shared-row="${h(model.kind)}" data-shared-row-id="${h(model.id)}" data-shared-row-status="${h(model.status)}" data-shared-row-active="${model.active ? 'true' : 'false'}"`;
+}
+
+function renderSharedRowProgress(model = {}) {
+  const done = asArray(model.progress).filter(step => step.done).length;
+  const total = asArray(model.progress).length || 1;
+  const chips = asArray(model.progress).map(step => `<span class="shared-row-step ${step.done ? 'done' : 'todo'}" data-shared-row-step="${h(step.id)}"><i aria-hidden="true">${step.done ? '✓' : '○'}</i>${h(step.label)}</span>`).join('');
+  return `<div class="shared-row-progress" aria-label="${h(model.kind)} row progress"><b>${h(done)}/${h(total)}</b><div>${chips}</div></div>`;
+}
+
 
 function renderBuilderPhase3CallConsole(center = {}, activeState = {}) {
   const execution = buildBuilderCallExecutionConsole(center.items || [], [], { limit: 25 });
@@ -3584,11 +3647,13 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       item.validation.sellerEligible ? 'is-done' : 'needs-buybox',
     ].filter(Boolean).join(' ');
     const searchText = [item.name, item.marketName, item.phone, item.email, item.contactStatus, item.sourceType, item.contactConfidence].filter(Boolean).join(' ').toLowerCase();
-    return `<article class="validation-queue-item ${completionStateClass}" data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}" data-builder-search="${h(searchText)}" data-builder-score="${h(item.validation.score || 0)}" data-builder-permits="${h(item.recentBuilds || 0)}" data-builder-completion="${h(itemCompletion.complete || 0)}" data-builder-callable="${item.phone || item.email ? 'true' : 'false'}" data-builder-seller-open="${item.validation.sellerEligible ? 'true' : 'false'}" data-builder-needs-buybox="${item.validation.sellerEligible ? 'false' : 'true'}">
-      <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
+    const sharedRow = sharedRowInteractionModel({ kind: 'builder', row: item, index, active, activeState });
+    return `<article class="validation-queue-item shared-work-row ${completionStateClass}" ${sharedRowDataAttributes(sharedRow)} data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}" data-builder-search="${h(searchText)}" data-builder-score="${h(item.validation.score || 0)}" data-builder-permits="${h(item.recentBuilds || 0)}" data-builder-completion="${h(itemCompletion.complete || 0)}" data-builder-callable="${item.phone || item.email ? 'true' : 'false'}" data-builder-seller-open="${item.validation.sellerEligible ? 'true' : 'false'}" data-builder-needs-buybox="${item.validation.sellerEligible ? 'false' : 'true'}">
+      <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" data-shared-row-select="builder" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
       </button>
+      ${renderSharedRowProgress(sharedRow)}
       <div class="queue-state-row" aria-label="Outreach state for ${h(item.name)}">
         <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button>
         <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Email open'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button>
@@ -4231,6 +4296,7 @@ function renderLandQueue(visible = [], selected = null) {
       const fitState = listingState.builderMatched ? 'ready' : 'needed';
       const landActivity = itemActivity('land', parcelKey);
       const itemName = parcel.address || parcel.parcelId || 'land item';
+      const sharedRow = sharedRowInteractionModel({ kind: 'land', row: parcel, index, active: isActive, listingState, mission });
       const activityButtons = ACTIVITY_CHANNELS.map(channel => activityToggleButton({
         scope: 'land',
         itemId: parcelKey,
@@ -4240,14 +4306,15 @@ function renderLandQueue(visible = [], selected = null) {
         className: 'land-activity-toggle',
       })).join('');
       const visualChecklist = renderParcelVisualChecklist(parcel, { compact: true });
-      return `<article class="queue-item land-listing-row phase209-scan-rail-row phase225-action-rail-row phase258-mission-row action-${h(queueActionClass)} ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" title="${h(mission.reason)}" data-land-activity-row="${h(parcelKey)}">
-        <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" aria-label="Select ${h(itemName)} - ${h(queueReason)}">
+      return `<article class="queue-item land-listing-row shared-work-row phase209-scan-rail-row phase225-action-rail-row phase258-mission-row action-${h(queueActionClass)} ${isActive ? 'active' : ''} listing-${h(listingState.stage)} ${dallasProofRow ? 'in-dallas-proof-sprint' : ''} ${parcel.selectedMarketMatch ? 'in-selected-market' : 'outside-selected-market'} ${parcel.selectedStateMatch ? 'in-selected-state' : 'outside-selected-state'}" ${sharedRowDataAttributes(sharedRow)} title="${h(mission.reason)}" data-land-activity-row="${h(parcelKey)}">
+        <button type="button" class="land-row-select" data-select-parcel="${h(parcelKey)}" data-shared-row-select="land" aria-label="Select ${h(itemName)} - ${h(queueReason)}">
           <span class="land-row-action-rail"><b>${h(queueActionCode)}</b><i>${String(index + 1).padStart(2, '0')}</i></span>
           <b>${h(itemName)}</b>
           <small><strong>${h(queueStateScent)}</strong><i>${h(queueMarketLabel)}</i></small>
           ${landLotFactChips(parcel, { compact: true })}
           ${renderLandOfferMathChips(parcel)}
           ${renderParcelMissionStack(mission, { compact: true })}
+          ${renderSharedRowProgress(sharedRow)}
           <em><strong>${h(queueReason)}</strong><i>${h(mission.reason)}</i></em>
           <div class="land-row-signals phase209-proof-contact-fit" aria-label="Proof contact buyer-fit state">
             <mark class="proof-${h(proofState)}">${proofState === 'ready' ? 'Proof' : proofState === 'needed' ? 'Proof needed' : 'Raw'}</mark>

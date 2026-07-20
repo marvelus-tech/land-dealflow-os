@@ -41684,3 +41684,331 @@ html body[data-active-view] > header.nav.nav {
     max-width: calc(100vw - 48px) !important;
   }
 }
+
+
+
+/* v1.99.3 - Builders Phase 1: spreadsheet-first contact ledger. */
+body[data-active-view="builders"] #builder-list-panel {
+  --phase273-builder-phase1: spreadsheet-contact-progress-notes;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-market-hero,
+body[data-active-view="builders"] #builder-list-panel .active-market-summary.state-focus-summary,
+body[data-active-view="builders"] #builder-list-panel .operator-flow-pulse,
+body[data-active-view="builders"] #builder-list-panel .completion-state-legend,
+body[data-active-view="builders"] #builder-list-panel .seller-unlock-card,
+body[data-active-view="builders"] #builder-list-panel .validation-script-drawer,
+body[data-active-view="builders"] #builder-list-panel .builder-source-depth-drawer,
+body[data-active-view="builders"] #builder-list-panel .selected-builder-dock,
+body[data-active-view="builders"] #builder-list-panel .validation-score,
+body[data-active-view="builders"] #builder-list-panel .validation-source-proof,
+body[data-active-view="builders"] #builder-list-panel .evidence-stack,
+body[data-active-view="builders"] #builder-list-panel .buybox-completion,
+body[data-active-view="builders"] #builder-list-panel .ask-next-card {
+  display: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builders-market-page-shell,
+body[data-active-view="builders"] #builder-list-panel .validation-command,
+body[data-active-view="builders"] #builder-list-panel .state-first-ops-header,
+body[data-active-view="builders"] #builder-list-panel .state-first-workbench,
+body[data-active-view="builders"] #builder-list-panel .builder-market-stage,
+body[data-active-view="builders"] #builder-list-panel .builder-market-page-layout {
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-market-command-rail {
+  margin: 0 0 18px !important;
+  border: 1px solid rgba(18, 32, 24, .1) !important;
+  background: rgba(255,255,250,.72) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-grid-main {
+  display: grid !important;
+  grid-template-columns: minmax(420px, 1.08fr) minmax(360px, .92fr) !important;
+  gap: 20px !important;
+  align-items: start !important;
+  margin-top: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-queue,
+body[data-active-view="builders"] #builder-list-panel .validation-focus-card {
+  border: 1px solid rgba(18, 32, 24, .1) !important;
+  background: rgba(255,255,250,.82) !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  overflow: clip !important;
+}
+body[data-active-view="builders"] #builder-list-panel .panel-kicker {
+  min-height: 44px !important;
+  padding: 12px 14px !important;
+  border-bottom: 1px solid rgba(18, 32, 24, .1) !important;
+  background: rgba(248,247,240,.82) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto auto !important;
+  gap: 12px !important;
+  align-items: center !important;
+}
+body[data-active-view="builders"] #builder-list-panel .panel-kicker span,
+body[data-active-view="builders"] #builder-list-panel .panel-kicker b {
+  font-size: 10px !important;
+  letter-spacing: .11em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-queue-intel {
+  display: grid !important;
+  grid-template-columns: minmax(190px, 1fr) minmax(0, 1.6fr) 128px 72px !important;
+  gap: 8px !important;
+  padding: 10px 12px !important;
+  border-bottom: 1px solid rgba(18, 32, 24, .1) !important;
+  background: #fffefa !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-queue-filter-row {
+  display: flex !important;
+  gap: 6px !important;
+  overflow-x: auto !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-queue-filter-row button,
+body[data-active-view="builders"] #builder-list-panel .builder-queue-sort select,
+body[data-active-view="builders"] #builder-list-panel .builder-queue-search input {
+  min-height: 32px !important;
+  border-radius: 0 !important;
+  border: 1px solid rgba(18, 32, 24, .12) !important;
+  background: #fff !important;
+  color: #122018 !important;
+  box-shadow: none !important;
+  font-size: 11px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-queue-filter-row button.is-active {
+  border-color: rgba(31,94,69,.42) !important;
+  background: rgba(31,94,69,.07) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-queue-results {
+  display: block !important;
+  max-height: min(72vh, 760px) !important;
+  overflow: auto !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 184px !important;
+  gap: 0 !important;
+  min-height: 58px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(18, 32, 24, .085) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-queue-item.active {
+  background: rgba(31,94,69,.055) !important;
+  box-shadow: inset 3px 0 0 #1f5e45 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-row-main {
+  padding: 11px 12px 11px 16px !important;
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) 54px !important;
+  gap: 10px !important;
+  align-items: center !important;
+  border: 0 !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-copy b {
+  font-size: 13px !important;
+  font-weight: 760 !important;
+  letter-spacing: -.015em !important;
+  color: #101914 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-copy small {
+  margin-top: 3px !important;
+  font-size: 11px !important;
+  line-height: 1.25 !important;
+  color: rgba(16,25,20,.62) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-score {
+  display: grid !important;
+  place-items: center !important;
+  justify-self: end !important;
+  width: 42px !important;
+  height: 28px !important;
+  border: 1px solid rgba(18, 32, 24, .1) !important;
+  background: rgba(250,248,240,.82) !important;
+  color: #1f5e45 !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-score svg { display: none !important; }
+body[data-active-view="builders"] #builder-list-panel .queue-state-row {
+  display: grid !important;
+  grid-template-columns: repeat(3, 28px) minmax(0, 1fr) !important;
+  gap: 5px !important;
+  align-items: center !important;
+  padding: 12px 12px 12px 4px !important;
+  border-left: 1px solid rgba(18, 32, 24, .06) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .contact-icon-toggle,
+body[data-active-view="builders"] #builder-list-panel .contact-state-toggle {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  border-radius: 0 !important;
+  border: 1px solid rgba(18, 32, 24, .13) !important;
+  background: #fff !important;
+  color: rgba(18,32,24,.44) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .contact-icon-toggle.is-on,
+body[data-active-view="builders"] #builder-list-panel .contact-state-toggle.is-on {
+  background: rgba(31,94,69,.08) !important;
+  color: #1f5e45 !important;
+  border-color: rgba(31,94,69,.35) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .queue-state-row .badge {
+  justify-self: stretch !important;
+  border-radius: 0 !important;
+  border: 1px solid rgba(18, 32, 24, .1) !important;
+  background: rgba(250,248,240,.7) !important;
+  color: rgba(18,32,24,.62) !important;
+  font-size: 9px !important;
+  letter-spacing: .08em !important;
+  text-align: center !important;
+  padding: 6px 7px !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-focus-card {
+  display: grid !important;
+  gap: 0 !important;
+  position: sticky !important;
+  top: 86px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-focus-head,
+body[data-active-view="builders"] #builder-list-panel .builder-detail-contact-ledger,
+body[data-active-view="builders"] #builder-list-panel .next-best-action,
+body[data-active-view="builders"] #builder-list-panel .selected-outreach-state,
+body[data-active-view="builders"] #builder-list-panel .validation-actions,
+body[data-active-view="builders"] #builder-list-panel .buybox-capture-sheet {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid rgba(18, 32, 24, .085) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-focus-head {
+  display: block !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-focus-head h3 {
+  margin: 3px 0 4px !important;
+  font-size: clamp(22px, 2.25vw, 34px) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-detail-contact-ledger {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-detail-contact-ledger > div {
+  display: grid !important;
+  grid-template-columns: 80px minmax(0,1fr) !important;
+  gap: 10px !important;
+  padding: 11px 16px !important;
+  border-bottom: 1px solid rgba(18, 32, 24, .06) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .builder-detail-contact-ledger span,
+body[data-active-view="builders"] #builder-list-panel .next-best-action span,
+body[data-active-view="builders"] #builder-list-panel .buybox-capture-sheet summary span {
+  font-size: 10px !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  color: rgba(18,32,24,.52) !important;
+}
+body[data-active-view="builders"] #builder-list-panel .next-best-action {
+  display: grid !important;
+  grid-template-columns: 80px minmax(0,1fr) !important;
+  gap: 10px !important;
+  align-items: start !important;
+  border-left: 0 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .next-best-action strong {
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .selected-outreach-state {
+  display: flex !important;
+  gap: 8px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-actions {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0,1fr)) !important;
+  gap: 8px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-call-button {
+  min-height: 38px !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  border: 1px solid rgba(18, 32, 24, .13) !important;
+  color: #122018 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .buybox-capture-sheet summary {
+  display: grid !important;
+  grid-template-columns: minmax(0,1fr) auto !important;
+  gap: 10px !important;
+  padding: 0 0 12px !important;
+  cursor: pointer !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-buybox-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-buybox-grid .wide,
+body[data-active-view="builders"] #builder-list-panel .validation-save-row {
+  grid-column: 1 / -1 !important;
+}
+body[data-active-view="builders"] #builder-list-panel .form-field {
+  border-radius: 0 !important;
+  border: 1px solid rgba(18, 32, 24, .1) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #builder-list-panel .form-field input,
+body[data-active-view="builders"] #builder-list-panel .form-field select,
+body[data-active-view="builders"] #builder-list-panel .form-field textarea {
+  border-radius: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  font-size: 12px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .field-notes textarea {
+  min-height: 88px !important;
+}
+body[data-active-view="builders"] #builder-list-panel .validation-save-row button {
+  border-radius: 0 !important;
+  min-height: 38px !important;
+}
+@media (max-width: 980px) {
+  body[data-active-view="builders"] #builder-list-panel .validation-grid-main {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-focus-card {
+    position: relative !important;
+    top: auto !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .builder-queue-intel {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 640px) {
+  body[data-active-view="builders"] #builder-list-panel .validation-queue-item {
+    grid-template-columns: 1fr !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .queue-state-row {
+    border-left: 0 !important;
+    padding: 0 12px 12px 16px !important;
+  }
+  body[data-active-view="builders"] #builder-list-panel .validation-buybox-grid,
+  body[data-active-view="builders"] #builder-list-panel .validation-actions {
+    grid-template-columns: 1fr !important;
+  }
+}

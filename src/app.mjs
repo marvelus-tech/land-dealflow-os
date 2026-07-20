@@ -3519,7 +3519,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const unlockedList = BUYBOX_UNLOCK_FIELDS.map(field => `<li><span aria-hidden="true">✓</span>${h(field.label)}</li>`).join('');
   const sellerCriteria = selected.sellerSearch?.eligible
     ? (selected.sellerSearch.criteria.map(item => `<li><span aria-hidden="true">✓</span>${h(item)}</li>`).join('') || unlockedList)
-    : (missingList || '<li><span aria-hidden="true">○</span>Complete buy-box fields to unlock seller search.</li>');
+    : (missingList || '<li><span aria-hidden="true">○</span>Capture buy-box fields before parcel work.</li>');
   const statusOptions = BUYER_VALIDATION_STATUSES.map(status => `<option value="${h(status)}" ${selected.callStatus === status ? 'selected' : ''}>${h(callStatusLabel(status))}</option>`).join('');
   const queue = center.items.map((item, index) => {
     const active = item.builderId === selected.builderId;
@@ -3544,7 +3544,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         <button type="button" class="contact-icon-toggle contact-call ${outreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.phone ? 'true' : 'false'}" aria-label="${outreach.phone ? 'Called' : 'Call not logged'}: ${h(item.name)}" title="${outreach.phone ? `Called ${h(outreach.phoneAt || '')}` : 'Tap to mark called'}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button>
         <button type="button" class="contact-icon-toggle contact-email ${outreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.email ? 'true' : 'false'}" aria-label="${outreach.email ? 'Email sent' : 'Email open'}: ${h(item.name)}" title="${outreach.email ? `Email sent ${h(outreach.emailAt || '')}` : 'Tap to mark emailed'}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button>
         <button type="button" class="contact-icon-toggle contact-mail ${outreach.mail ? 'is-on' : ''}" data-toggle-validation-contact="mail" data-builder-id="${h(item.builderId)}" aria-pressed="${outreach.mail ? 'true' : 'false'}" aria-label="${outreach.mail ? 'Mail sent' : 'Mail open'}: ${h(item.name)}" title="${outreach.mail ? `Mail sent ${h(outreach.mailAt || '')}` : 'Tap to mark mailed'}"><span aria-hidden="true">${solidIndustryIcon('mail')}</span></button>
-        ${badge(item.validation.sellerEligible ? 'seller search unlocked' : 'needs buy box', tone)}
+        ${badge(item.validation.sellerEligible ? 'parcel-ready' : 'buy box open', tone)}
       </div>
     </article>`;
   }).join('');
@@ -3577,8 +3577,8 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   const detailEmail = selected.email ? `<a class="builder-detail-contact-value" href="${mailHref}"><span>e:</span> ${h(selected.email)}</a>` : '<span class="builder-detail-contact-value is-missing"><span>e:</span> unresolved</span>';
   const nextActionCopy = selected.sellerSearch?.eligible
-    ? 'Buy box captured. Find parcels matching this builder before seller outreach starts.'
-    : `Call once. Capture the exact buy box. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
+    ? 'Buy box captured. Start matching land profiles to this builder.'
+    : `Contact once. Capture progress and notes. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
   const queueStats = center.items.reduce((acc, item) => {
     const outreach = validationOutreach(item);
     if (item.phone || item.email) acc.callable += 1;
@@ -3591,14 +3591,14 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
-      <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
+      <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm. Phase 1 turns this into a spreadsheet-like list: contact, progress, notes, proof count.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
         <div class="builder-queue-intel" aria-label="Builder queue controls">
           <label class="builder-queue-search"><span>Find</span><input type="search" data-builder-queue-search placeholder="builder, email, market" autocomplete="off"></label>
           <div class="builder-queue-filter-row" aria-label="Queue filters">
             <button type="button" class="is-active" data-builder-queue-filter="all" aria-pressed="true">All <b>${h(queueStats.total)}</b></button>
             <button type="button" data-builder-queue-filter="callable">Callable <b>${h(queueStats.callable)}</b></button>
             <button type="button" data-builder-queue-filter="needs-buybox">Needs buy box <b>${h(queueStats.needsBuybox)}</b></button>
-            <button type="button" data-builder-queue-filter="seller-open">Seller gate <b>${h(queueStats.sellerOpen)}</b></button>
+            <button type="button" data-builder-queue-filter="seller-open">Parcel-ready <b>${h(queueStats.sellerOpen)}</b></button>
             <button type="button" data-builder-queue-filter="touched">Touched <b>${h(queueStats.touched)}</b></button>
           </div>
           <label class="builder-queue-sort"><span>Sort</span><select data-builder-queue-sort><option value="rank">Ranked</option><option value="score">Score</option><option value="permits">Permits</option><option value="buybox">Buy box</option></select></label>
@@ -3634,8 +3634,8 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           ${contactProofLink ? `<a class="validation-call-button secondary website-link" href="${h(contactProofLink)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
-        <details class="buybox-capture-sheet">
-          <summary><span>Capture buy box</span><b>${h(completion.complete)}/${h(completion.total)}</b></summary>
+        <details class="buybox-capture-sheet" open>
+          <summary><span>Progress + notes</span><b>${h(completion.complete)}/${h(completion.total)} buy box</b></summary>
           ${renderBuyBoxCompletion(selected)}
           ${renderAskNext(selected)}
           <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
@@ -6048,6 +6048,11 @@ function renderFilters() {
 }
 
 function renderAll() {
+  if (activeView === 'builders') {
+    renderBuilderListEnginePanel();
+    renderAppShell();
+    return;
+  }
   if (activeView === 'deals') {
     renderFilters();
     renderParcels();

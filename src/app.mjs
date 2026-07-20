@@ -59,6 +59,9 @@ import {
   renderContractDocumentText,
   buildPermitVerifiedBuilders,
   buildBuyerValidationCommandCenter,
+  buildBuilderCallExecutionConsole,
+  exportBuilderCallQueueCsv,
+  exportBuilderCallQueueJson,
   BUYER_VALIDATION_STATUSES,
   generateBuilderCallScript,
   generateBuilderEmail,
@@ -3512,6 +3515,29 @@ function upsertBuyerValidation(row) {
   workspace = { ...workspace, buyerValidations: [...asArray(workspace.buyerValidations).filter(item => item.builderId !== row.builderId), row] };
 }
 
+
+function renderBuilderPhase3CallConsole(center = {}, activeState = {}) {
+  const execution = buildBuilderCallExecutionConsole(center.items || [], [], { limit: 25 });
+  const rows = execution.queue.slice(0, 25).map(row => `<article class="phase3-call-row" data-phase3-builder-row="${h(row.builderId)}">
+    <button type="button" data-select-validation-builder="${h(row.builderId)}" aria-label="Open ${h(row.name)} in builder detail">
+      <span class="phase3-rank">${String(row.rank).padStart(2, '0')}</span>
+      <span><b>${h(row.name)}</b><small>${h(row.marketName || activeState.label || '')} · ${h(row.permits)} proofs · ${h(row.buyBoxComplete)}/${h(row.buyBoxTotal)} buy box</small></span>
+      <em>${h(callStatusLabel(row.callStatus))}</em>
+    </button>
+    <div class="phase3-call-meta"><span>${h(row.phone || row.email || 'contact path unresolved')}</span><span>${h(row.nextFollowUp ? `follow ${row.nextFollowUp}` : row.lastTouch ? `last ${row.lastTouch}` : 'touch open')}</span></div>
+  </article>`).join('');
+  const outcomeButtons = execution.outcomes.map(outcome => `<button type="button" data-phase3-call-outcome="${h(outcome.id)}">${h(outcome.label)}</button>`).join('');
+  return `<section class="phase3-builder-call-console" aria-label="Phase 3 builder call execution console">
+    <div class="phase3-console-head">
+      <div><span class="eyebrow">Phase 3 · today's call queue</span><h4>Call, capture, unlock seller sourcing.</h4><p>Top 25 callable builders ranked by follow-up urgency, untouched status, permit proof, and buy-box score.</p></div>
+      <div class="phase3-console-actions"><button type="button" id="export-builder-call-queue-csv">Export CSV</button><button type="button" id="export-builder-call-queue-json" class="secondary">JSON</button><span id="builder-call-export-status" aria-live="polite"></span></div>
+    </div>
+    <dl class="phase3-call-stats"><div><dt>Queue</dt><dd>${h(execution.stats.today)}</dd></div><div><dt>Untouched</dt><dd>${h(execution.stats.notCalled)}</dd></div><div><dt>Touched</dt><dd>${h(execution.stats.touched)}</dd></div><div><dt>Validated</dt><dd>${h(execution.stats.validated)}</dd></div></dl>
+    <div class="phase3-outcome-capture" aria-label="One-click call outcome capture"><span>Selected-builder outcome</span>${outcomeButtons}</div>
+    <div class="phase3-call-sheet">${rows || '<p>No callable builders in this scope yet.</p>'}</div>
+  </section>`;
+}
+
 function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', label: 'Tennessee', isLive: true, markets: [], stateMeta: {} }, rows = [], summary = {}) {
   if (!rows.length) {
     const portals = asArray(activeState.stateMeta?.portals).slice(0, 3).map(portal => `<li><b>${h(portal.market)}</b><span>${h(portal.system)} · ${h(portal.jurisdiction)}</span></li>`).join('');
@@ -3534,6 +3560,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     </section>`;
   }
   const center = buildBuyerValidationCommandCenter(rows, workspace.buyerValidations || []);
+  const phase3Console = renderBuilderPhase3CallConsole(center, activeState);
   const selected = center.items.find(item => item.builderId === selectedValidationBuilderId) || center.next || center.items[0] || {};
   selectedValidationBuilderId = selected.builderId || selectedValidationBuilderId;
   const completion = buyBoxCompletion(selected);
@@ -3610,6 +3637,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     return acc;
   }, { total: center.items.length, callable: 0, sellerOpen: 0, needsBuybox: 0, touched: 0 });
   return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger" aria-label="Buyer Validation Command Center">
+    ${phase3Console}
     <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
@@ -3878,6 +3906,15 @@ function renderBuilderMarketIndex(stateSummaries = []) {
       </details>
     </section>
   </div>`;
+}
+
+
+function currentBuilderScopeRows() {
+  const marketSummaries = builderMarketSwitchboardEntries(getPermitPortalLandscape());
+  const stateSummaries = builderStateSummaryEntries(marketSummaries, getPermitPortalLandscape());
+  const activeState = stateSummaries.find(state => state.stateCode === selectedBuilderMarketState) || stateSummaries[0] || {};
+  const selectedMarket = selectedBuilderMarketKey ? asArray(activeState.markets).find(market => market.key === selectedBuilderMarketKey) : null;
+  return selectedMarket ? asArray(selectedMarket.rows) : asArray(activeState.rows);
 }
 
 function renderBuilderListEnginePanel(options = {}) {
@@ -5407,6 +5444,29 @@ function bindEvents() {
       return;
     }
 
+    const phase3OutcomeButton = event.target.closest('[data-phase3-call-outcome]');
+    if (phase3OutcomeButton) {
+      event.preventDefault();
+      const builderId = selectedValidationBuilderId;
+      if (!builderId) return;
+      const status = phase3OutcomeButton.dataset.phase3CallOutcome;
+      const today = todayIsoDate();
+      const updated = mergeBuyerValidationPatch(builderId, {
+        callStatus: status,
+        lastContacted: status === 'not_called' ? '' : today,
+        callbackDate: status === 'follow_up' ? today : '',
+        outreach: {
+          ...((asArray(workspace.buyerValidations).find(item => item.builderId === builderId) || {}).outreach || {}),
+          phone: { contacted: status !== 'not_called', at: status === 'not_called' ? '' : today },
+        },
+      });
+      upsertBuyerValidation(updated);
+      rememberBuilderSelection({ selectedValidationBuilderId: builderId }, { write: false });
+      persistWorkspace();
+      renderBuilderListEnginePanel({ preserveViewport: true });
+      return;
+    }
+
     const validationBuilderButton = event.target.closest('[data-select-validation-builder]');
     if (validationBuilderButton) {
       event.preventDefault();
@@ -5590,6 +5650,24 @@ function bindEvents() {
     if (event.target.matches('#export-top20-csv')) {
       const calls = buildTopCallList({ parcels: workspace.parcels, buyers: workspace.buyers, limit: 20 });
       downloadText(`land-dealflow-top20-call-list-${new Date().toISOString().slice(0, 10)}.csv`, exportParcelsCsv(calls));
+    }
+
+    if (event.target.matches('#export-builder-call-queue-csv')) {
+      const activeRows = currentBuilderScopeRows();
+      const queue = buildBuilderCallExecutionConsole(activeRows, workspace.buyerValidations || [], { limit: 25 });
+      downloadText(`landflip-builder-call-queue-${slugify(selectedBuilderMarketKey || selectedBuilderMarketState || 'market')}-${new Date().toISOString().slice(0, 10)}.csv`, exportBuilderCallQueueCsv(queue.queue));
+      const status = document.querySelector('#builder-call-export-status');
+      if (status) status.textContent = `Exported ${queue.queue.length} builders.`;
+      return;
+    }
+
+    if (event.target.matches('#export-builder-call-queue-json')) {
+      const activeRows = currentBuilderScopeRows();
+      const queue = buildBuilderCallExecutionConsole(activeRows, workspace.buyerValidations || [], { limit: 25 });
+      downloadText(`landflip-builder-call-queue-${slugify(selectedBuilderMarketKey || selectedBuilderMarketState || 'market')}-${new Date().toISOString().slice(0, 10)}.json`, exportBuilderCallQueueJson(queue.queue), 'application/json');
+      const status = document.querySelector('#builder-call-export-status');
+      if (status) status.textContent = `Exported ${queue.queue.length} builders as JSON.`;
+      return;
     }
 
     if (event.target.matches('#export-matched-seller-batch')) {

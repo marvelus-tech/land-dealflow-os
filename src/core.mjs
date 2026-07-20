@@ -798,6 +798,76 @@ export function buildBuyerValidationCommandCenter(rows = [], savedRows = []) {
   return { summary, items, next };
 }
 
+
+export const BUILDER_CALL_OUTCOMES = [
+  { id: 'not_called', label: 'Not called' },
+  { id: 'called', label: 'Called' },
+  { id: 'left_voicemail', label: 'Left VM' },
+  { id: 'validated_buy_box', label: 'Validated' },
+  { id: 'not_a_buyer', label: 'Dead' },
+  { id: 'follow_up', label: 'Follow-up' },
+];
+
+function daysUntil(dateValue = '') {
+  if (!dateValue) return Number.POSITIVE_INFINITY;
+  const target = Date.parse(`${dateValue}T00:00:00Z`);
+  if (!Number.isFinite(target)) return Number.POSITIVE_INFINITY;
+  const today = new Date();
+  const todayUtc = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
+  return Math.round((target - todayUtc) / 86400000);
+}
+
+export function buildBuilderCallExecutionConsole(rows = [], savedRows = [], { limit = 25 } = {}) {
+  const center = buildBuyerValidationCommandCenter(rows, savedRows);
+  const queue = center.items
+    .filter(item => item.callable && item.route !== 'humanReview' && item.callStatus !== 'not_a_buyer')
+    .sort((a, b) => {
+      const followDelta = daysUntil(a.callbackDate) - daysUntil(b.callbackDate);
+      if (followDelta !== 0) return followDelta;
+      const aTouched = Boolean(a.lastContacted || a.outreach?.phone?.contacted || a.outreach?.email?.contacted || a.outreach?.mail?.contacted);
+      const bTouched = Boolean(b.lastContacted || b.outreach?.phone?.contacted || b.outreach?.email?.contacted || b.outreach?.mail?.contacted);
+      if (aTouched !== bTouched) return aTouched ? 1 : -1;
+      return b.validation.score - a.validation.score || Number(b.recentBuilds || 0) - Number(a.recentBuilds || 0);
+    })
+    .slice(0, limit)
+    .map((item, index) => ({
+      rank: index + 1,
+      builderId: item.builderId,
+      name: item.name,
+      marketName: item.marketName || item.market || '',
+      phone: item.phone || '',
+      email: item.email || '',
+      callStatus: item.callStatus || 'not_called',
+      lastTouch: item.lastContacted || '',
+      nextFollowUp: item.callbackDate || '',
+      score: item.validation.score,
+      permits: Number(item.recentBuilds || 0),
+      buyBoxComplete: item.validation.buyBox.met,
+      buyBoxTotal: item.validation.buyBox.total,
+      sellerUnlocked: Boolean(item.validation.sellerEligible),
+      nextAction: item.validation.nextAction,
+    }));
+  const stats = {
+    total: center.summary.total,
+    today: queue.length,
+    notCalled: center.items.filter(item => (item.callStatus || 'not_called') === 'not_called').length,
+    touched: center.items.filter(item => item.lastContacted || item.outreach?.phone?.contacted || item.outreach?.email?.contacted || item.outreach?.mail?.contacted).length,
+    validated: center.summary.validated,
+    sellerLocked: center.summary.locked,
+  };
+  return { stats, queue, outcomes: BUILDER_CALL_OUTCOMES };
+}
+
+export function exportBuilderCallQueueCsv(rows = []) {
+  const headers = ['rank', 'builderId', 'name', 'marketName', 'phone', 'email', 'callStatus', 'lastTouch', 'nextFollowUp', 'score', 'permits', 'buyBoxComplete', 'buyBoxTotal', 'sellerUnlocked', 'nextAction'];
+  const esc = value => `"${String(value ?? '').replace(/"/g, '""')}"`;
+  return [headers.join(','), ...rows.map(row => headers.map(header => esc(row[header])).join(','))].join('\n');
+}
+
+export function exportBuilderCallQueueJson(rows = []) {
+  return JSON.stringify(rows, null, 2);
+}
+
 export function exportWorkspace(workspace) {
   return JSON.stringify({ version: 2, exportedAt: new Date().toISOString(), ...workspace }, null, 2);
 }

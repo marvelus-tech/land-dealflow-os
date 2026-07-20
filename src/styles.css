@@ -42322,3 +42322,421 @@ body[data-active-view="deals"] #parcels .phase277-secondary-proof-module :where(
     gap: 4px !important;
   }
 }
+
+
+/* v1.99.9 - Phase 5 visual simplification pass: quiet shell, open ledgers, no admin chrome */
+:root {
+  --phase278-visual-simplification: quiet-shell-open-ledger-system;
+  --phase278-page: #fbfaf6;
+  --phase278-ink: #111611;
+  --phase278-muted: #687168;
+  --phase278-hairline: rgba(17, 22, 17, .115);
+  --phase278-forest: #0e4f3a;
+  --phase278-gold: #9b782e;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--phase278-page) !important;
+}
+
+body::before {
+  display: none !important;
+}
+
+[hidden],
+.app-panel[hidden],
+section[hidden] {
+  display: none !important;
+}
+
+.nav {
+  max-width: min(1120px, calc(100vw - 32px)) !important;
+  min-height: 52px !important;
+  margin: 10px auto 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase278-hairline) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.brand {
+  color: var(--phase278-ink) !important;
+  font-weight: 760 !important;
+  letter-spacing: -.025em !important;
+}
+
+.app-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  width: min(680px, 100%) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tab-button,
+.tab-button:hover,
+.tab-button.active {
+  min-width: 0 !important;
+  min-height: 48px !important;
+  padding: 0 8px !important;
+  border: 0 !important;
+  border-bottom: 1px solid transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  color: var(--phase278-muted) !important;
+  font-family: var(--font-sans, Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif) !important;
+  font-size: 11px !important;
+  font-weight: 720 !important;
+  letter-spacing: .08em !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+.tab-button.active {
+  border-bottom-color: var(--phase278-forest) !important;
+  color: var(--phase278-ink) !important;
+}
+
+#app,
+.section,
+.command {
+  max-width: min(1120px, calc(100vw - 32px)) !important;
+}
+
+.section,
+.command {
+  padding-top: clamp(18px, 4vw, 42px) !important;
+}
+
+.section-heading,
+.compact-heading,
+.cashflow-hero,
+.builders-index-hero,
+.builder-market-hero,
+.land-market-index,
+.state-first-workbench,
+.today-command-hero,
+.closing-trust-hero,
+.source-priority-board,
+.machine-console-shell {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.section-heading,
+.compact-heading {
+  margin: 0 0 clamp(14px, 2.6vw, 28px) !important;
+  padding: 0 0 clamp(16px, 2.6vw, 26px) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase278-hairline) !important;
+  background: transparent !important;
+}
+
+.section-heading h2,
+.compact-heading h2,
+.cashflow-hero h1,
+.builders-index-hero h3,
+.builder-market-hero h3,
+.closing-trust-hero h3,
+.machine-console-hero h3,
+.source-priority-board h3 {
+  max-width: 12ch !important;
+  color: var(--phase278-ink) !important;
+  font-size: clamp(38px, 7vw, 72px) !important;
+  line-height: .94 !important;
+  letter-spacing: -.07em !important;
+}
+
+.eyebrow,
+.panel-kicker,
+.metric-label,
+.badge,
+.phase277-secondary-systems-drawer summary span,
+.source-page-section > summary span,
+.machine-panel > summary span {
+  color: var(--phase278-forest) !important;
+  letter-spacing: .12em !important;
+}
+
+.card,
+.deal-queue,
+.deal-detail,
+.deal-action,
+.money-queue-panel,
+.call-script-panel,
+.outcome-panel,
+.buyer-first-lane,
+.source-page-section,
+.machine-panel,
+.phase277-secondary-systems-drawer,
+.phase277-secondary-proof-module,
+.closing-trust-panel,
+.trust-ledger-card,
+.title-packet-card,
+.hud-card,
+.builder-phase3-console,
+.validation-focus-card,
+.seller-unlock-card,
+.validation-queue {
+  border-color: var(--phase278-hairline) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.mini-grid div,
+.deal-strip div,
+.detail-grid div,
+.next-action-card,
+.fit-card,
+.quality-grid div,
+.check-item,
+.scorecard-list,
+.fit-matrix,
+.feedback-loop,
+.call-notes,
+.followup-list,
+.script-box,
+.packet-economics,
+.risk-checklist,
+.memo-preview,
+.buyer-send-memo,
+.feedback-summary div,
+.next-call-guidance div,
+.operator-step,
+.guard-stats,
+.engine-column,
+.phase-detail-card,
+.seller-net-script-card,
+.phase277-secondary-proof-card,
+.secondary-system-link {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.state-filter,
+.filter,
+.outcome-chip,
+button.secondary,
+.hero-actions .secondary,
+.button-link,
+.nav-cta,
+.hero-actions a,
+.hero-actions button {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.queue-item,
+.money-call,
+.validation-queue-item,
+.builder-index-state-row,
+.builder-index-market-row,
+.phase277-secondary-proof-card {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.queue-item.active,
+.money-call.active,
+.validation-queue-item.active,
+.builder-index-state-row.active,
+.builder-index-market-row.active,
+[data-shared-row-active="true"] {
+  box-shadow: none !important;
+  background: linear-gradient(90deg, rgba(14, 79, 58, .07), transparent 70%) !important;
+}
+
+.meter,
+.shared-row-progress-rail,
+.builder-shared-progress-rail,
+.land-shared-progress-rail {
+  height: 3px !important;
+  border-radius: 0 !important;
+  background: rgba(17, 22, 17, .095) !important;
+}
+
+footer {
+  border-top: 1px solid var(--phase278-hairline) !important;
+  color: var(--phase278-muted) !important;
+  background: transparent !important;
+}
+
+@media (max-width: 760px) {
+  .nav {
+    max-width: calc(100vw - 28px) !important;
+    min-height: 104px !important;
+    align-items: stretch !important;
+    justify-content: center !important;
+  }
+
+  .brand {
+    display: none !important;
+  }
+
+  .app-tabs {
+    width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-rows: 48px !important;
+    border: 1px solid var(--phase278-hairline) !important;
+    border-width: 0 0 1px !important;
+  }
+
+  .tab-button,
+  .tab-button:hover,
+  .tab-button.active {
+    min-height: 48px !important;
+    font-size: 11px !important;
+    letter-spacing: .11em !important;
+  }
+
+  #app,
+  .section,
+  .command {
+    max-width: calc(100vw - 28px) !important;
+  }
+
+  .section,
+  .command {
+    padding-top: 18px !important;
+  }
+
+  .section-heading h2,
+  .compact-heading h2,
+  .cashflow-hero h1,
+  .builders-index-hero h3,
+  .builder-market-hero h3,
+  .closing-trust-hero h3,
+  .machine-console-hero h3,
+  .source-priority-board h3 {
+    max-width: 11ch !important;
+    font-size: clamp(34px, 11vw, 48px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.075em !important;
+  }
+
+  .cashflow-hero,
+  .builders-index-hero,
+  .builder-market-hero,
+  .land-market-index,
+  .closing-trust-hero,
+  .source-priority-board,
+  .machine-console-shell {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .mini-grid,
+  .money-stats,
+  .builder-index-stats,
+  .deal-strip,
+  .detail-grid {
+    gap: 0 !important;
+  }
+
+  .mini-grid div,
+  .money-stats div,
+  .builder-index-stats div,
+  .deal-strip div,
+  .detail-grid div {
+    border-radius: 0 !important;
+  }
+}
+
+
+/* v1.99.9.1 - Phase 5 QA correction: high-specificity quiet shell locks */
+html body,
+html body[data-active-view] {
+  background: var(--phase278-page) !important;
+}
+
+html body header.nav,
+html body .nav {
+  max-width: min(1120px, calc(100vw - 32px)) !important;
+  min-height: 52px !important;
+  margin: 10px auto 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--phase278-hairline) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body header.nav .app-tabs,
+html body .nav .app-tabs {
+  display: grid !important;
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: 0 !important;
+  width: min(680px, 100%) !important;
+  max-width: min(680px, 100%) !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html body header.nav .app-tabs .tab-button,
+html body header.nav .app-tabs .tab-button:hover,
+html body header.nav .app-tabs .tab-button.active,
+html body .nav .app-tabs .tab-button,
+html body .nav .app-tabs .tab-button:hover,
+html body .nav .app-tabs .tab-button.active {
+  min-width: 0 !important;
+  min-height: 48px !important;
+  padding: 0 8px !important;
+  border: 0 !important;
+  border-bottom: 1px solid transparent !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
+  color: var(--phase278-muted) !important;
+}
+
+html body header.nav .app-tabs .tab-button.active,
+html body .nav .app-tabs .tab-button.active {
+  border-bottom-color: var(--phase278-forest) !important;
+  color: var(--phase278-ink) !important;
+}
+
+@media (max-width: 760px) {
+  html body header.nav,
+  html body .nav {
+    max-width: calc(100vw - 28px) !important;
+    min-height: 104px !important;
+  }
+
+  html body header.nav .brand,
+  html body .nav .brand {
+    display: none !important;
+  }
+
+  html body header.nav .app-tabs,
+  html body .nav .app-tabs {
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-rows: 48px !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--phase278-hairline) !important;
+  }
+}

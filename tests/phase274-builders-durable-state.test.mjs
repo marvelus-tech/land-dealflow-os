@@ -69,5 +69,7 @@ assert.match(app, /function persistBuyerValidationFormDraft\(form, \{ render = f
 assert.match(app, /document\.addEventListener\('input'[\s\S]{0,620}persistBuyerValidationFormDraft\(validationForm, \{ render: false, promote: false \}\)/, 'typing notes or buy-box fields must auto-save drafts without row reselection');
 assert.match(app, /document\.addEventListener\('change'[\s\S]{0,620}persistBuyerValidationFormDraft\(validationForm, \{ render: false, promote: false \}\)/, 'status/date/select changes must auto-save drafts without waiting for the save button');
 assert.match(app, /persistBuyerValidationFormDraft\(form, \{ render: false, promote: true \}\)/, 'Save validation must reuse the durable form draft path and only then promote eligible buyer rows');
+assert.match(app, /async function loadKnoxvilleBuyerCallSheet\(\)[\s\S]{0,420}cachedBuilderSwitchboardEntries = null;[\s\S]{0,80}builderPanelRenderSequence \+= 1;/, 'Knoxville builder data load must invalidate cached state/index cards and force a Builders rerender');
+assert.match(app, /async function loadBuilderMarketData\(\)[\s\S]{0,900}cachedBuilderSwitchboardEntries = null;[\s\S]{0,120}builderPanelRenderSequence \+= 1;/, 'Async market data load must force the Builders index to repaint populated counts instead of freezing zero-count cards');
 
 console.log('phase274 Builders durable state guard passed');

@@ -4910,6 +4910,8 @@ async function loadKnoxvilleBuyerCallSheet() {
   } catch (error) {
     knoxvilleBuyerCallSheet = { error: error.message, rows: [] };
   }
+  cachedBuilderSwitchboardEntries = null;
+  builderPanelRenderSequence += 1;
 }
 
 async function loadBuilderMarketData() {
@@ -4930,6 +4932,7 @@ async function loadBuilderMarketData() {
   builderMarketData = { loaded: true, error: '', markets: Object.fromEntries(entries) };
   cachedBuilderSwitchboardEntries = null;
   cachedDealsMarketEntries = null;
+  builderPanelRenderSequence += 1;
 }
 
 async function loadWeeklyMarketScout() {

@@ -71,5 +71,6 @@ assert.match(app, /document\.addEventListener\('change'[\s\S]{0,620}persistBuyer
 assert.match(app, /persistBuyerValidationFormDraft\(form, \{ render: false, promote: true \}\)/, 'Save validation must reuse the durable form draft path and only then promote eligible buyer rows');
 assert.match(app, /async function loadKnoxvilleBuyerCallSheet\(\)[\s\S]{0,420}cachedBuilderSwitchboardEntries = null;[\s\S]{0,80}builderPanelRenderSequence \+= 1;/, 'Knoxville builder data load must invalidate cached state/index cards and force a Builders rerender');
 assert.match(app, /async function loadBuilderMarketData\(\)[\s\S]{0,900}cachedBuilderSwitchboardEntries = null;[\s\S]{0,120}builderPanelRenderSequence \+= 1;/, 'Async market data load must force the Builders index to repaint populated counts instead of freezing zero-count cards');
+assert.match(readFileSync('index.html', 'utf8'), /app\.mjs\?v=phase254-land-market-index-reset-phase274-builders-data-repaint/, 'index.html must cache-bust the app module so live Pages loads the populated Builders repaint code');
 
 console.log('phase274 Builders durable state guard passed');

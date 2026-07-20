@@ -678,6 +678,7 @@ function syncLandSelectionFromRoute(hash = location.hash) {
   }
 }
 
+hydrateBuilderUiState();
 syncBuilderSelectionFromRoute();
 syncLandSelectionFromRoute();
 let lastBuilderSkipTraceImportStatus = '';
@@ -732,12 +733,33 @@ function loadWorkspace() {
   } catch (error) {
     console.warn('Could not load workspace', error);
   }
-  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [] };
+  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [], builderUi: {} };
 }
 
 function persistWorkspace() {
   invalidateLandPerformanceCaches();
   localStorage.setItem(STORAGE_KEY, exportWorkspace(workspace));
+}
+
+function persistBuilderUiPatch(patch = {}, { write = true } = {}) {
+  workspace = { ...workspace, builderUi: { ...(workspace.builderUi || {}), ...patch, updatedAt: new Date().toISOString() } };
+  if (write) persistWorkspace();
+}
+
+function rememberBuilderSelection(patch = {}, options = {}) {
+  persistBuilderUiPatch({
+    selectedBuilderMarketState,
+    selectedBuilderMarketKey,
+    selectedValidationBuilderId,
+    ...patch,
+  }, options);
+}
+
+function hydrateBuilderUiState() {
+  const ui = workspace.builderUi || {};
+  if (ui.selectedBuilderMarketState) selectedBuilderMarketState = ui.selectedBuilderMarketState;
+  if (ui.selectedBuilderMarketKey) selectedBuilderMarketKey = ui.selectedBuilderMarketKey;
+  if (ui.selectedValidationBuilderId) selectedValidationBuilderId = ui.selectedValidationBuilderId;
 }
 
 function h(value) {
@@ -5161,6 +5183,41 @@ function renderOfferPacketPanel() {
   </div>`;
 }
 
+function readBuyerValidationForm(form) {
+  if (!form) return null;
+  return {
+    callStatus: form.querySelector('.validation-status')?.value || 'not_called',
+    lastContacted: form.querySelector('.validation-last')?.value || '',
+    callbackDate: form.querySelector('.validation-callback')?.value || '',
+    callNotes: form.querySelector('.validation-notes')?.value || '',
+    buyBox: {
+      geography: form.querySelector('.validation-geography')?.value || '',
+      lotSize: form.querySelector('.validation-lot')?.value || '',
+      maxPrice: Number(form.querySelector('.validation-price')?.value || 0) || '',
+      closeSpeed: form.querySelector('.validation-speed')?.value || '',
+      packageRecipient: form.querySelector('.validation-recipient')?.value || '',
+      utilitiesAccess: form.querySelector('.validation-utilities')?.value || '',
+      productType: form.querySelector('.validation-product')?.value || '',
+      dealKillers: parseListInput(form.querySelector('.validation-killers')?.value || ''),
+    },
+  };
+}
+
+function persistBuyerValidationFormDraft(form, { render = false, promote = false } = {}) {
+  const builderId = form?.dataset.validationForm;
+  if (!builderId) return null;
+  const patch = readBuyerValidationForm(form);
+  const sourceRow = findLoadedBuilderRow(builderId);
+  const updated = mergeBuyerValidationPatch(builderId, patch);
+  const centerRow = buildBuyerValidationCommandCenter([sourceRow], [updated]).items[0] || updated;
+  upsertBuyerValidation(updated);
+  rememberBuilderSelection({ selectedValidationBuilderId: builderId }, { write: false });
+  const promotedBuyer = promote && centerRow.validation?.sellerEligible ? upsertBuyerFromValidation(centerRow) : null;
+  persistWorkspace();
+  if (render) renderBuilderListEnginePanel({ preserveViewport: true });
+  return { updated, centerRow, promotedBuyer };
+}
+
 function bindEvents() {
   document.addEventListener('click', (event) => {
     const viewButton = event.target.closest('[data-view]');
@@ -5184,6 +5241,7 @@ function bindEvents() {
         selectedBuilderMarketState = registryMarket?.state || selectedBuilderMarketState;
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
+        rememberBuilderSelection({ selectedBuilderMarketKey: marketKey, selectedBuilderMarketState, selectedValidationBuilderId: '' });
         history.pushState(null, '', builderMarketRouteHash({ marketKey, stateCode: selectedBuilderMarketState }));
         setActiveView('builders', { scrollToTop: true });
         renderBuilderListEnginePanel();
@@ -5192,6 +5250,7 @@ function bindEvents() {
         selectedBuilderMarketKey = '';
         selectedBuilderId = '';
         selectedValidationBuilderId = '';
+        rememberBuilderSelection({ selectedBuilderMarketState: stateCode, selectedBuilderMarketKey: '', selectedValidationBuilderId: '' });
         history.pushState(null, '', builderMarketRouteHash({ stateCode, marketKey: '' }));
         setActiveView('builders', { scrollToTop: true });
         renderBuilderListEnginePanel();
@@ -5332,6 +5391,7 @@ function bindEvents() {
       });
       upsertBuyerValidation(updated);
       selectedValidationBuilderId = builderId;
+      rememberBuilderSelection({ selectedValidationBuilderId: builderId }, { write: false });
       persistWorkspace();
       renderBuilderListEnginePanel({ preserveViewport: true });
       return;
@@ -5348,6 +5408,7 @@ function bindEvents() {
     if (validationBuilderButton) {
       event.preventDefault();
       selectedValidationBuilderId = validationBuilderButton.dataset.selectValidationBuilder;
+      rememberBuilderSelection({ selectedValidationBuilderId });
       renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }
@@ -5714,31 +5775,10 @@ ${body}`;
     if (event.target.matches('[data-save-buyer-validation]')) {
       event.preventDefault();
       const form = event.target.closest('[data-validation-form]');
-      const builderId = form?.dataset.validationForm;
-      const sourceRow = findLoadedBuilderRow(builderId);
-      if (!builderId) return;
-      const updated = mergeBuyerValidationPatch(builderId, {
-        callStatus: form.querySelector('.validation-status')?.value || 'not_called',
-        lastContacted: form.querySelector('.validation-last')?.value || '',
-        callbackDate: form.querySelector('.validation-callback')?.value || '',
-        callNotes: form.querySelector('.validation-notes')?.value || '',
-        buyBox: {
-          geography: form.querySelector('.validation-geography')?.value || '',
-          lotSize: form.querySelector('.validation-lot')?.value || '',
-          maxPrice: Number(form.querySelector('.validation-price')?.value || 0) || '',
-          closeSpeed: form.querySelector('.validation-speed')?.value || '',
-          packageRecipient: form.querySelector('.validation-recipient')?.value || '',
-          utilitiesAccess: form.querySelector('.validation-utilities')?.value || '',
-          productType: form.querySelector('.validation-product')?.value || '',
-          dealKillers: parseListInput(form.querySelector('.validation-killers')?.value || ''),
-        },
-      });
-      const centerRow = buildBuyerValidationCommandCenter([sourceRow], [updated]).items[0] || updated;
-      upsertBuyerValidation(updated);
-      const promotedBuyer = centerRow.validation?.sellerEligible ? upsertBuyerFromValidation(centerRow) : null;
-      persistWorkspace();
+      const result = persistBuyerValidationFormDraft(form, { render: false, promote: true });
+      if (!result) return;
       const status = form.querySelector('.validation-save-status');
-      if (status) status.textContent = promotedBuyer ? 'Validation saved; selected builder is now the buyer object for seller matching and CSV export.' : 'Validation saved. Complete the six-field buy box and set validated status to unlock seller matching.';
+      if (status) status.textContent = result.promotedBuyer ? 'Validation saved; selected builder is now the buyer object for seller matching and CSV export.' : 'Validation saved. Complete the six-field buy box and set validated status to unlock seller matching.';
       renderBuilderListEnginePanel({ preserveViewport: true });
       return;
     }
@@ -5934,14 +5974,28 @@ ${body}`;
 
   document.addEventListener('input', (event) => {
     const queueSearch = event.target.closest?.('[data-builder-queue-search]');
-    if (!queueSearch) return;
-    applyBuilderQueueControls(queueSearch.closest('[data-builder-queue-surface]'));
+    if (queueSearch) {
+      applyBuilderQueueControls(queueSearch.closest('[data-builder-queue-surface]'));
+      return;
+    }
+    const validationForm = event.target.closest?.('[data-validation-form]');
+    if (!validationForm || !event.target.matches('input, textarea')) return;
+    persistBuyerValidationFormDraft(validationForm, { render: false, promote: false });
+    const status = validationForm.querySelector('.validation-save-status');
+    if (status) status.textContent = 'Draft saved locally.';
   });
 
   document.addEventListener('change', (event) => {
     const queueSort = event.target.closest?.('[data-builder-queue-sort]');
-    if (!queueSort) return;
-    applyBuilderQueueControls(queueSort.closest('[data-builder-queue-surface]'));
+    if (queueSort) {
+      applyBuilderQueueControls(queueSort.closest('[data-builder-queue-surface]'));
+      return;
+    }
+    const validationForm = event.target.closest?.('[data-validation-form]');
+    if (!validationForm || !event.target.matches('input, textarea, select')) return;
+    persistBuyerValidationFormDraft(validationForm, { render: false, promote: false });
+    const status = validationForm.querySelector('.validation-save-status');
+    if (status) status.textContent = 'Draft saved locally.';
   });
 
   document.addEventListener('keydown', (event) => {
@@ -5994,6 +6048,7 @@ ${body}`;
     const nextId = rows[nextIndex]?.dataset.selectValidationBuilder;
     if (!nextId || nextId === selectedValidationBuilderId) return;
     selectedValidationBuilderId = nextId;
+    rememberBuilderSelection({ selectedValidationBuilderId: nextId });
     renderBuilderListEnginePanel({ preserveViewport: true });
   });
 

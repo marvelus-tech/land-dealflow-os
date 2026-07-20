@@ -812,6 +812,7 @@ export function importWorkspace(serialized) {
     permitBuilders: Array.isArray(parsed.permitBuilders) ? parsed.permitBuilders : [],
     buyerValidations: Array.isArray(parsed.buyerValidations) ? parsed.buyerValidations : [],
     activity: parsed.activity && typeof parsed.activity === 'object' ? parsed.activity : {},
+    builderUi: parsed.builderUi && typeof parsed.builderUi === 'object' ? parsed.builderUi : {},
   };
 }
 

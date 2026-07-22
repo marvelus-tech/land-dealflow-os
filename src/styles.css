@@ -42919,3 +42919,22 @@ footer a[data-view] { color: var(--brand-dark); font-weight: 750; }
 .agent-touch-cell { text-align: center; }
 .agent-touch-cell .solid-industry-icon,
 .agent-table-icon-head .solid-industry-icon { width: 14px; height: 14px; }
+
+
+/* Phase 283: Buyers becomes a first-class top-nav lane beside Builders/Agents. */
+html body header.nav .app-tabs {
+  grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+}
+@media (max-width: 760px) {
+  html body header.nav .app-tabs {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    grid-auto-rows: 48px !important;
+  }
+}
+.buyer-validation-board .agent-summary-strip {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.buyer-airtable th:nth-child(4),
+.buyer-airtable td:nth-child(4) { min-width: 126px; }
+.buyer-airtable th:nth-child(12),
+.buyer-airtable td:nth-child(12) { min-width: 280px; }

@@ -71,6 +71,7 @@ import {
   formatMoney,
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
+import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -693,7 +694,7 @@ let cachedDealsMarketEntries = null;
 let cachedLandStateOptions = null;
 let cachedBuilderSwitchboardEntries = null;
 let builderPanelRenderSequence = 0;
-const validViews = new Set(['today', 'deals', 'builders', 'agents', 'closing', 'sources', 'machine']);
+const validViews = new Set(['today', 'deals', 'builders', 'buyers', 'agents', 'closing', 'sources', 'machine']);
 const AGENT_STATUS_OPTIONS = [
   { value: 'not_started', label: 'Not started' },
   { value: 'called', label: 'Called' },
@@ -794,6 +795,41 @@ function agentLocation(agent = {}) {
   const county = agent.county || 'Lee County, FL';
   const state = county.includes(',') ? county.split(',').pop().trim() : 'FL';
   return { county, state };
+}
+
+function buyerRecordId(buyer = {}) {
+  return slugify(buyer.leadId || [buyer.buyerName, buyer.county, buyer.state].filter(Boolean).join('-'));
+}
+
+function buyerLocation(buyer = {}) {
+  const countyName = buyer.county ? `${buyer.county} County, ${buyer.state || 'FL'}` : 'Lee County, FL';
+  return { county: countyName, state: buyer.state || 'FL' };
+}
+
+function buyerTracking(buyerId) {
+  const saved = workspace.taxDeedBuyerTracking?.[buyerId] || {};
+  return {
+    status: saved.status || 'not_started',
+    called: Boolean(saved.called),
+    emailed: Boolean(saved.emailed),
+    smsSent: Boolean(saved.smsSent),
+    mailSent: Boolean(saved.mailSent),
+    notes: saved.notes || '',
+    updatedAt: saved.updatedAt || '',
+  };
+}
+
+function updateBuyerTracking(buyerId, patch = {}) {
+  if (!buyerId) return;
+  const current = buyerTracking(buyerId);
+  workspace = {
+    ...workspace,
+    taxDeedBuyerTracking: {
+      ...(workspace.taxDeedBuyerTracking || {}),
+      [buyerId]: { ...current, ...patch, updatedAt: new Date().toISOString() },
+    },
+  };
+  persistWorkspace();
 }
 
 function agentTracking(agentId) {
@@ -4300,6 +4336,81 @@ function renderExecutionConveyor(conveyor = {}) {
   </section>`;
 }
 
+function renderTaxDeedBuyerPanel() {
+  const target = document.querySelector('#tax-deed-buyer-panel');
+  if (!target) return;
+  const buyers = asArray(leeCountyTaxDeedBuyers);
+  const phones = buyers.filter(buyer => buyer.phone).length;
+  const emails = buyers.filter(buyer => buyer.email).length;
+  const states = [...new Set(buyers.map(buyer => buyerLocation(buyer).state).filter(Boolean))];
+  const touched = buyers.filter(buyer => {
+    const tracking = buyerTracking(buyerRecordId(buyer));
+    return AGENT_TOUCH_CHANNELS.some(channel => tracking[channel]) || tracking.status !== 'not_started';
+  }).length;
+  const statusOptions = selected => AGENT_STATUS_OPTIONS
+    .map(option => `<option value="${h(option.value)}" ${selected === option.value ? 'selected' : ''}>${h(option.label)}</option>`)
+    .join('');
+  const touchToggle = (buyerId, channel, iconKind, label, active) => `<button type="button" class="contact-icon-toggle agent-icon-toggle buyer-icon-toggle contact-${h(channel)} ${active ? 'is-on' : ''}" data-buyer-touch="${h(channel)}" data-buyer-id="${h(buyerId)}" aria-pressed="${active ? 'true' : 'false'}" aria-label="${h(active ? `${label} logged` : `${label} not logged`)}" title="${h(active ? `${label} logged` : `Mark ${label.toLowerCase()}`)}"><span aria-hidden="true">${solidIndustryIcon(iconKind)}</span></button>`;
+  const touchHeader = (iconKind, label) => `<span class="agent-table-icon-head" aria-label="${h(label)}" title="${h(label)}">${solidIndustryIcon(iconKind)}</span>`;
+  const rows = buyers.map((buyer, index) => {
+    const buyerId = buyerRecordId(buyer);
+    const tracking = buyerTracking(buyerId);
+    const location = buyerLocation(buyer);
+    const cleanPhone = String(buyer.phone || '').replace(/[^0-9+]/g, '');
+    const sourceUrls = String(buyer.sourceUrls || '').split(';').map(url => url.trim()).filter(Boolean);
+    const contactUrl = String(buyer.contactUrl || buyer.website || '').trim();
+    const bid = buyer.winningBid || 'bid proof pending';
+    return `<tr data-tax-deed-buyer-row="${h(buyerId)}">
+      <td class="agent-table-rank">${h(index + 1)}</td>
+      <td class="agent-table-person"><b>${h(buyer.buyerName)}</b><span>${h(buyer.buyerType || 'tax deed buyer')}</span></td>
+      <td><span class="agent-location-pill">${h(location.state)}</span><small>${h(location.county)}</small></td>
+      <td class="agent-proof-cell"><span>${h(buyer.repeatBuyerCount || 1)} buys</span><small>${h(bid)}</small></td>
+      <td>${cleanPhone ? `<a href="tel:${h(cleanPhone)}">${h(buyer.phone)}</a>` : '<span class="muted">verify</span>'}</td>
+      <td>${buyer.email ? `<a href="mailto:${h(buyer.email)}">${h(buyer.email)}</a>` : '<span class="muted">verify</span>'}</td>
+      <td class="agent-touch-cell">${touchToggle(buyerId, 'called', 'phone', 'Call', tracking.called)}</td>
+      <td class="agent-touch-cell">${touchToggle(buyerId, 'emailed', 'email', 'Email', tracking.emailed)}</td>
+      <td class="agent-touch-cell">${touchToggle(buyerId, 'smsSent', 'phone', 'SMS', tracking.smsSent)}</td>
+      <td class="agent-touch-cell">${touchToggle(buyerId, 'mailSent', 'mail', 'Mail', tracking.mailSent)}</td>
+      <td><select class="agent-status-select" data-buyer-status="${h(buyerId)}">${statusOptions(tracking.status)}</select></td>
+      <td class="agent-proof-cell"><span>${h(buyer.route || 'buyerValidation')}</span><small>${h(buyer.notes || buyer.nextAction || 'Contact details remain unverified until public business source confirms them.')}</small></td>
+      <td class="agent-link-cell">
+        ${contactUrl ? safeLink(contactUrl, contactUrl.includes('sunbiz') ? 'Sunbiz/search' : 'Search', 'agent-source-link') : ''}
+        ${sourceUrls[0] ? safeLink('https://lee.realtdm.com/public/cases/list', 'RealTDM', 'agent-source-link') : ''}
+      </td>
+    </tr>`;
+  }).join('');
+
+  target.innerHTML = `<section class="agent-referral-board buyer-validation-board phase283-tax-deed-buyer-page" aria-label="Lee County tax deed buyer tracker">
+    <div class="agent-hero">
+      <span class="eyebrow">Buyers · Tax deed · Lee County, FL</span>
+      <h2>Tax deed buyer validation table.</h2>
+      <p><b>${h(buyers.length)} prior tax deed buyers.</b> Track call, email, SMS, mail, and validation status before treating any row as an active buyer. This lane is built to expand by state and county.</p>
+      <div class="agent-summary-strip">
+        <div><b>${h(buyers.length)}</b><span>buyer candidates</span></div>
+        <div><b>${h(phones)}</b><span>verified phones</span></div>
+        <div><b>${h(emails)}</b><span>verified emails</span></div>
+        <div><b>${h(touched)}</b><span>touched locally</span></div>
+        <div><b>${h(states.join(', ') || 'FL')}</b><span>state filter seed</span></div>
+      </div>
+      <div class="agent-filter-bar" aria-label="Tax deed buyer market filters">
+        <button type="button" class="is-active">All states</button>
+        ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
+        <span>Florida tax deed buyers now; later: Marion, Polk, Charlotte, Citrus, then other states.</span>
+      </div>
+    </div>
+    <div class="agent-call-script">
+      <strong>Opener</strong>
+      <p>Hey {{buyerName}}, I saw your Lee County tax deed activity. I source vacant land and tax-deed-adjacent deals. Are you still buying Lee County lots, and what price/area rules should I know before sending anything?</p>
+    </div>
+    <div class="agent-table-shell" role="region" aria-label="Tax deed buyer outreach tracking table" tabindex="0">
+      <table class="agent-airtable buyer-airtable">
+        <thead><tr><th>#</th><th>Buyer / type</th><th>Location</th><th>Bid proof</th><th>Phone</th><th>Email</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  </section>`;
+}
+
 function renderAgentReferralPanel() {
   const target = document.querySelector('#agent-referral-panel');
   if (!target) return;
@@ -5532,6 +5643,19 @@ function bindEvents() {
       return;
     }
 
+    const buyerTouch = event.target.closest('[data-buyer-touch]');
+    if (buyerTouch) {
+      event.preventDefault();
+      const buyerId = buyerTouch.dataset.buyerId || '';
+      const channel = buyerTouch.dataset.buyerTouch || '';
+      if (AGENT_TOUCH_CHANNELS.includes(channel)) {
+        const current = buyerTracking(buyerId);
+        updateBuyerTracking(buyerId, { [channel]: !current[channel] });
+        renderTaxDeedBuyerPanel();
+      }
+      return;
+    }
+
     const stateButton = event.target.closest('[data-lead-state]');
     if (stateButton) {
       leadEngineStateFilter = stateButton.dataset.leadState || 'all';
@@ -6299,6 +6423,12 @@ ${body}`;
       renderAgentReferralPanel();
       return;
     }
+    const buyerStatus = event.target.closest?.('[data-buyer-status]');
+    if (buyerStatus) {
+      updateBuyerTracking(buyerStatus.dataset.buyerStatus || '', { status: buyerStatus.value || 'not_started' });
+      renderTaxDeedBuyerPanel();
+      return;
+    }
     const validationForm = event.target.closest?.('[data-validation-form]');
     if (!validationForm || !event.target.matches('input, textarea, select')) return;
     persistBuyerValidationFormDraft(validationForm, { render: false, promote: false });
@@ -6416,6 +6546,11 @@ function renderAll() {
     renderAppShell();
     return;
   }
+  if (activeView === 'buyers') {
+    renderTaxDeedBuyerPanel();
+    renderAppShell();
+    return;
+  }
   if (activeView === 'agents') {
     renderAgentReferralPanel();
     renderAppShell();
@@ -6438,6 +6573,7 @@ function renderAll() {
   renderFilters();
   renderParcels();
   renderClosingDeskPanel();
+  renderTaxDeedBuyerPanel();
   renderAgentReferralPanel();
   renderBuilderListEnginePanel();
   renderTopCallList();

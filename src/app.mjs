@@ -71,7 +71,7 @@ import {
   formatMoney,
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
-import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence';
+import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint';
 import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
@@ -4403,7 +4403,9 @@ function renderTaxDeedBuyerPanel() {
     const location = buyerLocation(buyer);
     const cleanPhone = String(buyer.phone || '').replace(/[^0-9+]/g, '');
     const sourceUrls = String(buyer.sourceUrls || '').split(';').map(url => url.trim()).filter(Boolean);
-    const contactUrl = String(buyer.contactUrl || buyer.website || '').trim();
+    const contactUrl = String(buyer.contactUrl || '').trim();
+    const websiteUrl = String(buyer.website || '').trim();
+    const contactLinkLabel = contactUrl.includes('sunbiz') ? 'Sunbiz' : (contactUrl.includes('sellstate') || buyer.contactRole ? 'Profile' : 'Search');
     const lotSize = buyer.lotSize || 'GIS lot size pending';
     const lotSizeSource = buyer.lotSizeSource || 'Lee County parcel/GIS verification pending';
     const bid = buyer.winningBid || 'bid proof pending';
@@ -4422,7 +4424,8 @@ function renderTaxDeedBuyerPanel() {
       <td><select class="agent-status-select" data-buyer-status="${h(buyerId)}">${statusOptions(tracking.status)}</select></td>
       <td class="agent-proof-cell"><span>${h(buyer.route || 'buyerValidation')}</span><small>${h(buyer.notes || buyer.nextAction || 'Contact details remain unverified until public business source confirms them.')}</small></td>
       <td class="agent-link-cell">
-        ${contactUrl ? safeLink(contactUrl, contactUrl.includes('sunbiz') ? 'Sunbiz/search' : 'Search', 'agent-source-link') : ''}
+        ${contactUrl ? safeLink(contactUrl, contactLinkLabel, 'agent-source-link') : ''}
+        ${websiteUrl && websiteUrl !== contactUrl ? safeLink(websiteUrl, 'Website', 'agent-source-link') : ''}
         ${sourceUrls[0] ? safeLink('https://lee.realtdm.com/public/cases/list', 'RealTDM', 'agent-source-link') : ''}
       </td>
     </tr>`;

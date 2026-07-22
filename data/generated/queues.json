@@ -2326,15 +2326,6 @@
       "confidence": 70
     },
     {
-      "buyerId": "maricopa-builder-fulton-homes-corporation",
-      "name": "Fulton Homes Corporation",
-      "market": "maricopa-az",
-      "phone": "480-753-6789 480-753-6789 480-753-6789",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 70
-    },
-    {
       "buyerId": "maricopa-builder-galaxy-construction-and-remodeling-llc",
       "name": "Galaxy Construction And Remodeling LLC",
       "market": "maricopa-az",
@@ -2362,15 +2353,6 @@
       "confidence": 70
     },
     {
-      "buyerId": "maricopa-builder-lennar-arizona-llc",
-      "name": "Lennar Arizona LLC",
-      "market": "maricopa-az",
-      "phone": "480-201-3748 480-201-3748",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 70
-    },
-    {
       "buyerId": "maricopa-builder-silver-homes-construction-llc",
       "name": "Silver Homes Construction LLC",
       "market": "maricopa-az",
@@ -2393,6 +2375,15 @@
       "name": "Avigo Development LLC",
       "market": "maricopa-az",
       "phone": "480-235-6800",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
+      "buyerId": "maricopa-builder-bespoke-homes-2",
+      "name": "Bespoke Homes 2",
+      "market": "maricopa-az",
+      "phone": "602-284-9338",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64
@@ -2438,6 +2429,33 @@
       "name": "Elliott Homes Inc",
       "market": "maricopa-az",
       "phone": "480-831-5691",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
+      "buyerId": "maricopa-builder-fulton-homes-corporation",
+      "name": "Fulton Homes Corporation",
+      "market": "maricopa-az",
+      "phone": "480-753-6789 480-753-6789 480-753-6789",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
+      "buyerId": "maricopa-builder-hk-homes-dba-lexar-homes-of-cave-creek",
+      "name": "Hk Homes Dba Lexar Homes Of Cave Creek",
+      "market": "maricopa-az",
+      "phone": "623-306-0373 623-306-0373 623-306-0373",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
+      "buyerId": "maricopa-builder-lennar-arizona-llc",
+      "name": "Lennar Arizona LLC",
+      "market": "maricopa-az",
+      "phone": "480-201-3748 480-201-3748",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64
@@ -2492,6 +2510,15 @@
       "name": "TLD Builders",
       "market": "maricopa-az",
       "phone": "623-772-0075 602-910-4484 623-772-0075",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
+      "buyerId": "maricopa-builder-trinity-homes-of-the-rim",
+      "name": "Trinity Homes Of The Rim",
+      "market": "maricopa-az",
+      "phone": "480-220-3229 480-220-3229",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64

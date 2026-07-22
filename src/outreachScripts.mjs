@@ -1,6 +1,6 @@
-// Scripts extracted from YouTube video W0ERIegAd38. Source: https://youtu.be/W0ERIegAd38
+// Source-backed buyer/agent call script bank.
 // Stored as operator copy with timestamps; do not fabricate missing claims.
-export const videoScriptPacks = [
+export const outreachScriptPacks = [
   {
     "id": "buyer-simple-prior-purchase-opener",
     "scope": "buyers",

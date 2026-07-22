@@ -71,8 +71,8 @@ import {
   formatMoney,
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
-import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page';
-import { videoScriptPacks } from './videoScripts.mjs?v=phase284-video-script-drawer';
+import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence';
+import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -1008,7 +1008,7 @@ function scriptScopeLabel(scope = '') {
 
 function scriptsForScope(scope = activeView) {
   const mappedScope = scope === 'builders' ? 'buyers' : scope;
-  return asArray(videoScriptPacks).filter(script => script.scope === mappedScope);
+  return asArray(outreachScriptPacks).filter(script => script.scope === mappedScope);
 }
 
 function scriptButton(scope = activeView, label = 'Scripts') {
@@ -1028,18 +1028,18 @@ function renderScriptDrawer() {
   drawer.innerHTML = `<div class="script-drawer-backdrop" data-close-script-panel></div>
     <aside class="script-drawer-shell" role="dialog" aria-modal="true" aria-label="${h(scriptScopeLabel(scope))}">
       <div class="script-drawer-head">
-        <span class="eyebrow">Video scripts · W0ERIegAd38</span>
+        <span class="eyebrow">Call scripts · W0ERIegAd38</span>
         <h3>${h(scriptScopeLabel(scope))}</h3>
         <button type="button" class="script-drawer-close" data-close-script-panel aria-label="Close scripts">×</button>
       </div>
-      <p class="script-drawer-source">Extracted from <a href="https://youtu.be/W0ERIegAd38" target="_blank" rel="noopener noreferrer">Joe McCall land buyer video</a>. Use only where the row has real proof; do not claim a deal/contact/relationship that does not exist.</p>
+      <p class="script-drawer-source">Source-backed call language for buyer and agent validation. Use only where the row has real proof; do not claim a deal/contact/relationship that does not exist.</p>
       <div class="script-drawer-list">${hasScripts ? scripts.map(script => `<article class="script-card" data-script-id="${h(script.id)}">
         <div class="script-card-head"><span>${h(script.channel)}</span><a href="${h(script.sourceUrl)}" target="_blank" rel="noopener noreferrer">${h(script.sourceTime)}</a></div>
         <h4>${h(script.title)}</h4>
         <small>${h(script.when)}</small>
         <pre>${h(script.body)}</pre>
         <ul>${asArray(script.notes).map(note => `<li>${h(note)}</li>`).join('')}</ul>
-      </article>`).join('') : '<article class="script-card"><h4>No scripts mapped to this page yet.</h4><p>Buyer and agent scripts are active from this video.</p></article>'}</div>
+      </article>`).join('') : '<article class="script-card"><h4>No scripts mapped to this page yet.</h4><p>Buyer and agent scripts are active in the call bank.</p></article>'}</div>
     </aside>`;
 }
 
@@ -4404,12 +4404,15 @@ function renderTaxDeedBuyerPanel() {
     const cleanPhone = String(buyer.phone || '').replace(/[^0-9+]/g, '');
     const sourceUrls = String(buyer.sourceUrls || '').split(';').map(url => url.trim()).filter(Boolean);
     const contactUrl = String(buyer.contactUrl || buyer.website || '').trim();
+    const lotSize = buyer.lotSize || 'GIS lot size pending';
+    const lotSizeSource = buyer.lotSizeSource || 'Lee County parcel/GIS verification pending';
     const bid = buyer.winningBid || 'bid proof pending';
     return `<tr data-tax-deed-buyer-row="${h(buyerId)}">
       <td class="agent-table-rank">${h(index + 1)}</td>
       <td class="agent-table-person"><b>${h(buyer.buyerName)}</b><span>${h(buyer.buyerType || 'tax deed buyer')}</span></td>
       <td><span class="agent-location-pill">${h(location.state)}</span><small>${h(location.county)}</small></td>
       <td class="agent-proof-cell"><span>${h(buyer.repeatBuyerCount || 1)} buys</span><small>${h(bid)}</small></td>
+      <td class="agent-proof-cell buyer-lot-size-cell"><span>${h(lotSize)}</span><small>${h(lotSizeSource)}</small></td>
       <td>${cleanPhone ? `<a href="tel:${h(cleanPhone)}">${h(buyer.phone)}</a>` : '<span class="muted">verify</span>'}</td>
       <td>${buyer.email ? `<a href="mailto:${h(buyer.email)}">${h(buyer.email)}</a>` : '<span class="muted">verify</span>'}</td>
       <td class="agent-touch-cell">${touchToggle(buyerId, 'called', 'phone', 'Call', tracking.called)}</td>
@@ -4450,7 +4453,7 @@ function renderTaxDeedBuyerPanel() {
     </div>
     <div class="agent-table-shell" role="region" aria-label="Tax deed buyer outreach tracking table" tabindex="0">
       <table class="agent-airtable buyer-airtable">
-        <thead><tr><th>#</th><th>Buyer / type</th><th>Location</th><th>Bid proof</th><th>Phone</th><th>Email</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
+        <thead><tr><th>#</th><th>Buyer / type</th><th>Location</th><th>Bid proof</th><th>Lot size</th><th>Phone</th><th>Email</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>

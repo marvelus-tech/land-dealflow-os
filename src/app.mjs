@@ -70,7 +70,7 @@ import {
   getPermitPortalLandscape,
   formatMoney,
 } from './core.mjs?v=arcadia-buybox';
-import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page';
+import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -694,6 +694,18 @@ let cachedLandStateOptions = null;
 let cachedBuilderSwitchboardEntries = null;
 let builderPanelRenderSequence = 0;
 const validViews = new Set(['today', 'deals', 'builders', 'agents', 'closing', 'sources', 'machine']);
+const AGENT_STATUS_OPTIONS = [
+  { value: 'not_started', label: 'Not started' },
+  { value: 'called', label: 'Called' },
+  { value: 'emailed', label: 'Emailed' },
+  { value: 'sms_sent', label: 'SMS sent' },
+  { value: 'mail_sent', label: 'Mail sent' },
+  { value: 'agreed', label: 'Agreed / has builders' },
+  { value: 'no_response', label: 'No response' },
+  { value: 'not_fit', label: 'Not a fit' },
+  { value: 'follow_up', label: 'Follow up' },
+];
+const AGENT_TOUCH_CHANNELS = ['called', 'emailed', 'smsSent', 'mailSent'];
 
 function invalidateLandPerformanceCaches() {
   cachedScoredParcels = null;
@@ -772,6 +784,42 @@ function h(value) {
 
 function slugify(value) {
   return String(value || 'item').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'item';
+}
+
+function agentRecordId(agent = {}) {
+  return slugify([agent.agentName, agent.brokerageName, agent.county].filter(Boolean).join('-'));
+}
+
+function agentLocation(agent = {}) {
+  const county = agent.county || 'Lee County, FL';
+  const state = county.includes(',') ? county.split(',').pop().trim() : 'FL';
+  return { county, state };
+}
+
+function agentTracking(agentId) {
+  const saved = workspace.agentTracking?.[agentId] || {};
+  return {
+    status: saved.status || 'not_started',
+    called: Boolean(saved.called),
+    emailed: Boolean(saved.emailed),
+    smsSent: Boolean(saved.smsSent),
+    mailSent: Boolean(saved.mailSent),
+    notes: saved.notes || '',
+    updatedAt: saved.updatedAt || '',
+  };
+}
+
+function updateAgentTracking(agentId, patch = {}) {
+  if (!agentId) return;
+  const current = agentTracking(agentId);
+  workspace = {
+    ...workspace,
+    agentTracking: {
+      ...(workspace.agentTracking || {}),
+      [agentId]: { ...current, ...patch, updatedAt: new Date().toISOString() },
+    },
+  };
+  persistWorkspace();
 }
 
 function safeLink(url, label, className = '') {
@@ -4257,55 +4305,70 @@ function renderAgentReferralPanel() {
   if (!target) return;
   const agents = asArray(leeCountyResaleBuilderAgents);
   const phones = agents.filter(agent => agent.agentPhone).length;
-  const highActivity = agents.filter(agent => Number(agent.confidence || 0) >= 65).length;
-  const cards = agents.map((agent, index) => {
-    const sourceLinks = String(agent.sourceUrls || '')
+  const states = [...new Set(agents.map(agent => agentLocation(agent).state).filter(Boolean))];
+  const touched = agents.filter(agent => {
+    const tracking = agentTracking(agentRecordId(agent));
+    return AGENT_TOUCH_CHANNELS.some(channel => tracking[channel]) || tracking.status !== 'not_started';
+  }).length;
+  const statusOptions = selected => AGENT_STATUS_OPTIONS
+    .map(option => `<option value="${h(option.value)}" ${selected === option.value ? 'selected' : ''}>${h(option.label)}</option>`)
+    .join('');
+  const rows = agents.map((agent, index) => {
+    const agentId = agentRecordId(agent);
+    const tracking = agentTracking(agentId);
+    const location = agentLocation(agent);
+    const cleanPhone = String(agent.agentPhone || '').replace(/[^0-9+]/g, '');
+    const profileUrl = String(agent.agentProfileUrl || '').trim();
+    const sourceUrls = String(agent.sourceUrls || '')
       .split(';')
       .map(url => url.trim())
-      .filter(Boolean)
-      .slice(0, 3)
-      .map((url, sourceIndex) => safeLink(url, sourceIndex === 0 ? 'Agent profile' : `Source ${sourceIndex + 1}`, 'agent-source-link'))
-      .join('');
-    const cleanPhone = String(agent.agentPhone || '').replace(/[^0-9+]/g, '');
-    return `<article class="agent-card" data-agent-route="${h(agent.route || 'manual_review')}">
-      <div class="agent-card-head">
-        <span class="agent-rank">${h(index + 1)}</span>
-        <div>
-          <h3>${h(agent.agentName)}</h3>
-          <p>${h(agent.brokerageName || 'Brokerage not shown')}</p>
-        </div>
-      </div>
-      <div class="agent-card-meta">
-        <span>${h(agent.county || 'Lee County, FL')}</span>
-        <span>${h(agent.route || 'manual_review')}</span>
-        <span>${h(agent.confidence || 'review')} confidence</span>
-      </div>
-      <p class="agent-evidence">${h(agent.specBuilderEvidence || 'Public Lee County agent candidate; builder connection needs property-level proof before outreach claim.')}</p>
-      <div class="agent-actions">
-        ${cleanPhone ? `<a href="tel:${h(cleanPhone)}">Call ${h(agent.agentPhone)}</a>` : ''}
-        ${sourceLinks}
-      </div>
-      <small>${h(agent.nextAction || 'Verify builder/infill-lot relationship before claiming buyer fit.')}</small>
-    </article>`;
+      .filter(Boolean);
+    return `<tr data-agent-row="${h(agentId)}">
+      <td class="agent-table-rank">${h(index + 1)}</td>
+      <td class="agent-table-person"><b>${h(agent.agentName)}</b><span>${h(agent.brokerageName || 'Brokerage not shown')}</span></td>
+      <td><span class="agent-location-pill">${h(location.state)}</span><small>${h(location.county)}</small></td>
+      <td>${cleanPhone ? `<a href="tel:${h(cleanPhone)}">${h(agent.agentPhone)}</a>` : '<span class="muted">missing</span>'}</td>
+      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="called" data-agent-id="${h(agentId)}" ${tracking.called ? 'checked' : ''}> Call</label></td>
+      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="emailed" data-agent-id="${h(agentId)}" ${tracking.emailed ? 'checked' : ''}> Email</label></td>
+      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="smsSent" data-agent-id="${h(agentId)}" ${tracking.smsSent ? 'checked' : ''}> SMS</label></td>
+      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="mailSent" data-agent-id="${h(agentId)}" ${tracking.mailSent ? 'checked' : ''}> Mail</label></td>
+      <td><select class="agent-status-select" data-agent-status="${h(agentId)}">${statusOptions(tracking.status)}</select></td>
+      <td class="agent-proof-cell"><span>${h(agent.route || 'manual_review')}</span><small>${h(agent.specBuilderEvidence || 'Verify builder/infill-lot relationship before claiming buyer fit.')}</small></td>
+      <td class="agent-link-cell">
+        ${profileUrl ? safeLink(profileUrl, 'Profile', 'agent-source-link') : ''}
+        ${sourceUrls[1] ? safeLink(sourceUrls[1], 'Directory', 'agent-source-link') : ''}
+        ${sourceUrls[2] ? safeLink(sourceUrls[2], 'New homes', 'agent-source-link') : ''}
+      </td>
+    </tr>`;
   }).join('');
 
-  target.innerHTML = `<section class="agent-referral-board phase280-agent-referral-page" aria-label="Lee County realtor agent candidates">
+  target.innerHTML = `<section class="agent-referral-board phase281-agent-airtable-page" aria-label="Lee County realtor agent tracker">
     <div class="agent-hero">
       <span class="eyebrow">Agents · Lee County, FL</span>
-      <h2>Realtor agent bridge to builders.</h2>
-      <p><b>${h(agents.length)} public agent candidates.</b> Use this lane to find agents who may already sit between sellers, builders, and new-construction inventory. Keep rows in manual review until an exact sold-property, deed, or permit proof ties the agent to builder activity.</p>
+      <h2>Agent outreach table.</h2>
+      <p><b>${h(agents.length)} public agent candidates.</b> Track calls, emails, SMS, physical mail, and status from one Airtable-style grid. These stay manual-review until an exact sold-property, deed, or permit proof ties the agent to builder activity.</p>
       <div class="agent-summary-strip">
         <div><b>${h(agents.length)}</b><span>agent candidates</span></div>
         <div><b>${h(phones)}</b><span>public phones</span></div>
-        <div><b>${h(highActivity)}</b><span>highest activity</span></div>
-        <div><b>manual review</b><span>no fabricated builder claim</span></div>
+        <div><b>${h(touched)}</b><span>touched locally</span></div>
+        <div><b>${h(states.join(', ') || 'FL')}</b><span>state filter seed</span></div>
+      </div>
+      <div class="agent-filter-bar" aria-label="Agent market filters">
+        <button type="button" class="is-active">All states</button>
+        ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
+        <span>Future-ready for county/state filters as the agent list expands.</span>
       </div>
     </div>
     <div class="agent-call-script">
       <strong>Opener</strong>
       <p>Hey {{agentFirstName}}, I saw you sell a lot of homes in Lee County. I source vacant land deals for builders and land buyers. Are you connected with any builders or investors looking for lots there?</p>
     </div>
-    <div class="agent-grid">${cards}</div>
+    <div class="agent-table-shell" role="region" aria-label="Agent outreach tracking table" tabindex="0">
+      <table class="agent-airtable">
+        <thead><tr><th>#</th><th>Agent / brokerage</th><th>Location</th><th>Phone</th><th>Called</th><th>Emailed</th><th>SMS</th><th>Mail</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
   </section>`;
 }
 
@@ -6213,6 +6276,22 @@ ${body}`;
     const queueSort = event.target.closest?.('[data-builder-queue-sort]');
     if (queueSort) {
       applyBuilderQueueControls(queueSort.closest('[data-builder-queue-surface]'));
+      return;
+    }
+    const agentTouch = event.target.closest?.('[data-agent-touch]');
+    if (agentTouch) {
+      const agentId = agentTouch.dataset.agentId || '';
+      const channel = agentTouch.dataset.agentTouch || '';
+      if (AGENT_TOUCH_CHANNELS.includes(channel)) {
+        updateAgentTracking(agentId, { [channel]: Boolean(agentTouch.checked) });
+        renderAgentReferralPanel();
+      }
+      return;
+    }
+    const agentStatus = event.target.closest?.('[data-agent-status]');
+    if (agentStatus) {
+      updateAgentTracking(agentStatus.dataset.agentStatus || '', { status: agentStatus.value || 'not_started' });
+      renderAgentReferralPanel();
       return;
     }
     const validationForm = event.target.closest?.('[data-validation-form]');

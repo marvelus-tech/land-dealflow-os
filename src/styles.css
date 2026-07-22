@@ -42843,3 +42843,34 @@ footer a[data-view] { color: var(--brand-dark); font-weight: 750; }
   .agent-summary-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .agent-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+
+/* Phase 281: Airtable-style agent tracker with outreach persistence controls. */
+.phase281-agent-airtable-page .agent-hero { border-radius: 22px; }
+.agent-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 14px; }
+.agent-filter-bar button { min-height: 32px; padding: 7px 11px; border-radius: 999px; border: 1px solid var(--line-soft); background: #fff; color: var(--muted); font-size: 12px; box-shadow: none; }
+.agent-filter-bar button.is-active { background: var(--black); color: #fff; }
+.agent-filter-bar button[disabled] { opacity: .78; cursor: not-allowed; }
+.agent-filter-bar span { color: var(--muted); font-size: 12px; }
+.agent-table-shell { overflow: auto; border: 1px solid var(--line-soft); border-radius: 22px; background: rgba(255,255,255,.88); box-shadow: var(--shadow-soft); }
+.agent-airtable { width: 100%; min-width: 1180px; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+.agent-airtable th { position: sticky; top: 0; z-index: 1; padding: 12px 11px; background: #f8fafc; color: var(--muted); border-bottom: 1px solid var(--line-soft); text-align: left; font-size: 11px; letter-spacing: .055em; text-transform: uppercase; }
+.agent-airtable td { padding: 12px 11px; border-bottom: 1px solid var(--line-soft); vertical-align: top; color: var(--ink); }
+.agent-airtable tbody tr:hover td { background: rgba(238,245,233,.62); }
+.agent-table-rank { width: 44px; color: var(--soft); font-weight: 800; }
+.agent-table-person { min-width: 220px; }
+.agent-table-person b, .agent-proof-cell span { display: block; color: var(--black); font-weight: 800; }
+.agent-table-person span, .agent-airtable small, .agent-proof-cell small { display: block; margin-top: 3px; color: var(--muted); line-height: 1.35; }
+.agent-location-pill { display: inline-grid; place-items: center; min-width: 34px; height: 25px; padding: 0 8px; border-radius: 999px; background: var(--panel-green); color: var(--brand-dark); font-size: 11px; font-weight: 850; }
+.agent-touch-cell label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; font-weight: 760; white-space: nowrap; }
+.agent-touch-cell input { width: 16px; height: 16px; accent-color: var(--brand); }
+.agent-status-select { min-width: 154px; min-height: 34px; padding: 6px 9px; border-radius: 10px; border: 1px solid var(--line-soft); background: #fff; color: var(--ink); font: inherit; font-size: 12px; font-weight: 720; }
+.agent-proof-cell { min-width: 250px; max-width: 340px; }
+.agent-link-cell { min-width: 190px; }
+.agent-link-cell a { display: inline-flex; margin: 0 6px 6px 0; padding: 6px 9px; border-radius: 999px; border: 1px solid var(--line-soft); color: var(--brand-dark); background: #fff; font-size: 12px; font-weight: 760; }
+
+@media (max-width: 760px) {
+  .agent-table-shell { border-radius: 18px; }
+  .agent-airtable { min-width: 1040px; font-size: 12px; }
+  .agent-airtable th, .agent-airtable td { padding: 10px 9px; }
+}

@@ -42874,3 +42874,48 @@ footer a[data-view] { color: var(--brand-dark); font-weight: 750; }
   .agent-airtable { min-width: 1040px; font-size: 12px; }
   .agent-airtable th, .agent-airtable td { padding: 10px 9px; }
 }
+
+
+/* Phase 282: icon-only agent outreach toggles reuse the builder queue contact icon language. */
+.agent-airtable button.contact-icon-toggle.agent-icon-toggle,
+.agent-table-icon-head {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  min-height: 26px !important;
+  display: inline-grid !important;
+  place-items: center !important;
+  padding: 0 !important;
+  border: 1px solid rgba(16,18,20,.12) !important;
+  background: #fff !important;
+  background-color: #fff !important;
+  background-image: none !important;
+  color: #8b949f !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.agent-airtable button.contact-icon-toggle.agent-icon-toggle { cursor: pointer !important; }
+.agent-airtable button.contact-icon-toggle.agent-icon-toggle:hover {
+  transform: none !important;
+  color: #1f5bff !important;
+  border-color: rgba(31,91,255,.42) !important;
+}
+.agent-airtable button.contact-icon-toggle.agent-icon-toggle:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(31,91,255,.14) !important;
+}
+.agent-airtable button.contact-icon-toggle.agent-icon-toggle.is-on {
+  background: #1f5bff !important;
+  background-color: #1f5bff !important;
+  background-image: none !important;
+  border-color: #1f5bff !important;
+  color: #fff !important;
+}
+.agent-table-icon-head { margin-inline: auto; }
+.agent-touch-cell { text-align: center; }
+.agent-touch-cell .solid-industry-icon,
+.agent-table-icon-head .solid-industry-icon { width: 14px; height: 14px; }

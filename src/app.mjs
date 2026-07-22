@@ -70,7 +70,7 @@ import {
   getPermitPortalLandscape,
   formatMoney,
 } from './core.mjs?v=arcadia-buybox';
-import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker';
+import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -4313,6 +4313,8 @@ function renderAgentReferralPanel() {
   const statusOptions = selected => AGENT_STATUS_OPTIONS
     .map(option => `<option value="${h(option.value)}" ${selected === option.value ? 'selected' : ''}>${h(option.label)}</option>`)
     .join('');
+  const touchToggle = (agentId, channel, iconKind, label, active) => `<button type="button" class="contact-icon-toggle agent-icon-toggle contact-${h(channel)} ${active ? 'is-on' : ''}" data-agent-touch="${h(channel)}" data-agent-id="${h(agentId)}" aria-pressed="${active ? 'true' : 'false'}" aria-label="${h(active ? `${label} logged` : `${label} not logged`)}" title="${h(active ? `${label} logged` : `Mark ${label.toLowerCase()}`)}"><span aria-hidden="true">${solidIndustryIcon(iconKind)}</span></button>`;
+  const touchHeader = (iconKind, label) => `<span class="agent-table-icon-head" aria-label="${h(label)}" title="${h(label)}">${solidIndustryIcon(iconKind)}</span>`;
   const rows = agents.map((agent, index) => {
     const agentId = agentRecordId(agent);
     const tracking = agentTracking(agentId);
@@ -4328,10 +4330,10 @@ function renderAgentReferralPanel() {
       <td class="agent-table-person"><b>${h(agent.agentName)}</b><span>${h(agent.brokerageName || 'Brokerage not shown')}</span></td>
       <td><span class="agent-location-pill">${h(location.state)}</span><small>${h(location.county)}</small></td>
       <td>${cleanPhone ? `<a href="tel:${h(cleanPhone)}">${h(agent.agentPhone)}</a>` : '<span class="muted">missing</span>'}</td>
-      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="called" data-agent-id="${h(agentId)}" ${tracking.called ? 'checked' : ''}> Call</label></td>
-      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="emailed" data-agent-id="${h(agentId)}" ${tracking.emailed ? 'checked' : ''}> Email</label></td>
-      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="smsSent" data-agent-id="${h(agentId)}" ${tracking.smsSent ? 'checked' : ''}> SMS</label></td>
-      <td class="agent-touch-cell"><label><input type="checkbox" data-agent-touch="mailSent" data-agent-id="${h(agentId)}" ${tracking.mailSent ? 'checked' : ''}> Mail</label></td>
+      <td class="agent-touch-cell">${touchToggle(agentId, 'called', 'phone', 'Call', tracking.called)}</td>
+      <td class="agent-touch-cell">${touchToggle(agentId, 'emailed', 'email', 'Email', tracking.emailed)}</td>
+      <td class="agent-touch-cell">${touchToggle(agentId, 'smsSent', 'phone', 'SMS', tracking.smsSent)}</td>
+      <td class="agent-touch-cell">${touchToggle(agentId, 'mailSent', 'mail', 'Mail', tracking.mailSent)}</td>
       <td><select class="agent-status-select" data-agent-status="${h(agentId)}">${statusOptions(tracking.status)}</select></td>
       <td class="agent-proof-cell"><span>${h(agent.route || 'manual_review')}</span><small>${h(agent.specBuilderEvidence || 'Verify builder/infill-lot relationship before claiming buyer fit.')}</small></td>
       <td class="agent-link-cell">
@@ -4365,7 +4367,7 @@ function renderAgentReferralPanel() {
     </div>
     <div class="agent-table-shell" role="region" aria-label="Agent outreach tracking table" tabindex="0">
       <table class="agent-airtable">
-        <thead><tr><th>#</th><th>Agent / brokerage</th><th>Location</th><th>Phone</th><th>Called</th><th>Emailed</th><th>SMS</th><th>Mail</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
+        <thead><tr><th>#</th><th>Agent / brokerage</th><th>Location</th><th>Phone</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     </div>
@@ -5517,6 +5519,19 @@ function bindEvents() {
       return;
     }
 
+    const agentTouch = event.target.closest('[data-agent-touch]');
+    if (agentTouch) {
+      event.preventDefault();
+      const agentId = agentTouch.dataset.agentId || '';
+      const channel = agentTouch.dataset.agentTouch || '';
+      if (AGENT_TOUCH_CHANNELS.includes(channel)) {
+        const current = agentTracking(agentId);
+        updateAgentTracking(agentId, { [channel]: !current[channel] });
+        renderAgentReferralPanel();
+      }
+      return;
+    }
+
     const stateButton = event.target.closest('[data-lead-state]');
     if (stateButton) {
       leadEngineStateFilter = stateButton.dataset.leadState || 'all';
@@ -6276,16 +6291,6 @@ ${body}`;
     const queueSort = event.target.closest?.('[data-builder-queue-sort]');
     if (queueSort) {
       applyBuilderQueueControls(queueSort.closest('[data-builder-queue-surface]'));
-      return;
-    }
-    const agentTouch = event.target.closest?.('[data-agent-touch]');
-    if (agentTouch) {
-      const agentId = agentTouch.dataset.agentId || '';
-      const channel = agentTouch.dataset.agentTouch || '';
-      if (AGENT_TOUCH_CHANNELS.includes(channel)) {
-        updateAgentTracking(agentId, { [channel]: Boolean(agentTouch.checked) });
-        renderAgentReferralPanel();
-      }
       return;
     }
     const agentStatus = event.target.closest?.('[data-agent-status]');

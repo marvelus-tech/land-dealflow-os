@@ -72,6 +72,7 @@ import {
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page';
+import { videoScriptPacks } from './videoScripts.mjs?v=phase284-video-script-drawer';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -627,6 +628,7 @@ let selectedBuilderMarketKey = '';
 let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
+let openScriptScope = '';
 
 function syncBuilderSelectionFromRoute(hash = location.hash) {
   const route = builderRouteSelectionFromHash(hash);
@@ -962,6 +964,7 @@ function setActiveView(view, options = {}) {
 
 function navigateToView(view) {
   if (!validViews.has(view)) return;
+  openScriptScope = '';
   history.replaceState(null, '', `#${view}`);
   setActiveView(view, { scrollToTop: true });
   renderAll();
@@ -996,6 +999,48 @@ function restoreBuilderInteractionViewport(viewport = {}) {
 
 function renderAppShell() {
   setActiveView(activeView);
+  renderScriptDrawer();
+}
+
+function scriptScopeLabel(scope = '') {
+  return ({ buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts' }[scope] || 'Scripts');
+}
+
+function scriptsForScope(scope = activeView) {
+  const mappedScope = scope === 'builders' ? 'buyers' : scope;
+  return asArray(videoScriptPacks).filter(script => script.scope === mappedScope);
+}
+
+function scriptButton(scope = activeView, label = 'Scripts') {
+  const count = scriptsForScope(scope).length;
+  if (!count) return '';
+  return `<button type="button" class="script-panel-button" data-open-script-panel="${h(scope)}">${solidIndustryIcon('document')} <span>${h(label)}</span><em>${h(count)}</em></button>`;
+}
+
+function renderScriptDrawer() {
+  const drawer = document.querySelector('#script-side-panel');
+  if (!drawer) return;
+  const scope = openScriptScope || activeView;
+  const scripts = scriptsForScope(scope);
+  const hasScripts = scripts.length > 0;
+  drawer.hidden = !openScriptScope;
+  drawer.setAttribute('aria-hidden', openScriptScope ? 'false' : 'true');
+  drawer.innerHTML = `<div class="script-drawer-backdrop" data-close-script-panel></div>
+    <aside class="script-drawer-shell" role="dialog" aria-modal="true" aria-label="${h(scriptScopeLabel(scope))}">
+      <div class="script-drawer-head">
+        <span class="eyebrow">Video scripts · W0ERIegAd38</span>
+        <h3>${h(scriptScopeLabel(scope))}</h3>
+        <button type="button" class="script-drawer-close" data-close-script-panel aria-label="Close scripts">×</button>
+      </div>
+      <p class="script-drawer-source">Extracted from <a href="https://youtu.be/W0ERIegAd38" target="_blank" rel="noopener noreferrer">Joe McCall land buyer video</a>. Use only where the row has real proof; do not claim a deal/contact/relationship that does not exist.</p>
+      <div class="script-drawer-list">${hasScripts ? scripts.map(script => `<article class="script-card" data-script-id="${h(script.id)}">
+        <div class="script-card-head"><span>${h(script.channel)}</span><a href="${h(script.sourceUrl)}" target="_blank" rel="noopener noreferrer">${h(script.sourceTime)}</a></div>
+        <h4>${h(script.title)}</h4>
+        <small>${h(script.when)}</small>
+        <pre>${h(script.body)}</pre>
+        <ul>${asArray(script.notes).map(note => `<li>${h(note)}</li>`).join('')}</ul>
+      </article>`).join('') : '<article class="script-card"><h4>No scripts mapped to this page yet.</h4><p>Buyer and agent scripts are active from this video.</p></article>'}</div>
+    </aside>`;
 }
 
 function badge(text, tone = 'neutral') {
@@ -4397,6 +4442,7 @@ function renderTaxDeedBuyerPanel() {
         ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
         <span>Florida tax deed buyers now; later: Marion, Polk, Charlotte, Citrus, then other states.</span>
       </div>
+      ${scriptButton('buyers', 'Scripts')}
     </div>
     <div class="agent-call-script">
       <strong>Opener</strong>
@@ -4471,6 +4517,7 @@ function renderAgentReferralPanel() {
         ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
         <span>Future-ready for county/state filters as the agent list expands.</span>
       </div>
+      ${scriptButton('agents', 'Scripts')}
     </div>
     <div class="agent-call-script">
       <strong>Opener</strong>
@@ -5579,6 +5626,21 @@ function persistBuyerValidationFormDraft(form, { render = false, promote = false
 
 function bindEvents() {
   document.addEventListener('click', (event) => {
+    const openScripts = event.target.closest('[data-open-script-panel]');
+    if (openScripts) {
+      event.preventDefault();
+      openScriptScope = openScripts.dataset.openScriptPanel || activeView;
+      renderScriptDrawer();
+      return;
+    }
+    const closeScripts = event.target.closest('[data-close-script-panel]');
+    if (closeScripts) {
+      event.preventDefault();
+      openScriptScope = '';
+      renderScriptDrawer();
+      return;
+    }
+
     const viewButton = event.target.closest('[data-view]');
     if (viewButton) {
       const view = viewButton.dataset.view;
@@ -6437,6 +6499,11 @@ ${body}`;
   });
 
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && openScriptScope) {
+      openScriptScope = '';
+      renderScriptDrawer();
+      return;
+    }
     const stateMarketButton = event.target.closest?.('[data-builder-market-state].state-market-toggle');
     if (stateMarketButton && (event.key === 'Enter' || event.key === ' ')) {
       event.preventDefault();
@@ -6514,6 +6581,8 @@ ${body}`;
   window.addEventListener('hashchange', () => {
     const view = hashToView();
     if (!view) return;
+    openScriptScope = '';
+    renderScriptDrawer();
     if (view === 'builders') {
       syncBuilderSelectionFromRoute();
       setActiveView(view, { scrollToTop: true });
@@ -6525,6 +6594,18 @@ ${body}`;
       setActiveView(view, { scrollToTop: true });
       renderFilters();
       renderParcels();
+      return;
+    }
+    if (view === 'buyers') {
+      setActiveView(view, { scrollToTop: true });
+      renderTaxDeedBuyerPanel();
+      renderScriptDrawer();
+      return;
+    }
+    if (view === 'agents') {
+      setActiveView(view, { scrollToTop: true });
+      renderAgentReferralPanel();
+      renderScriptDrawer();
       return;
     }
     setActiveView(view, { scrollToTop: true });

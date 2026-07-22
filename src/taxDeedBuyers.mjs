@@ -1,6 +1,7 @@
 // Generated from artifacts/buyer-lists/florida-tax-deed/lee/buyers.csv.
 // Zero-fabrication: phone/email stay blank unless a verified public source supplies them.
 // Lot size evidence comes from Lee County Parcels ArcGIS GISACRES/STATEDAREA and remains parcel-record proof, not seller-contact proof.
+
 export const leeCountyTaxDeedBuyers = [
   {
     "leadId": "lee-fl-taxdeed-buyer-001",
@@ -29,10 +30,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$16,018.50; $16,318.50; $20,518.50",
     "repeatBuyerCount": 3,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 3 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 3 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-002",
@@ -61,10 +62,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$21,118.50; $165,118.50",
     "repeatBuyerCount": 2,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-003",
@@ -93,10 +94,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$4,418.50; $7,218.50",
     "repeatBuyerCount": 2,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-004",
@@ -125,9 +126,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$130,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: Florida entity registry/mirror sources confirm VVV Investments LLC, but no public business-facing phone/email/website found. Do not use attorney/clerk/platform/support or people-search contacts.",
+    "notes": "Public-business OSINT 2026-07-22: Florida entity registry/mirror sources confirm VVV Investments LLC, but no public business-facing phone/email/website found. Do not use attorney/clerk/platform/support or people-search contacts. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter; call only after a public/provider contact candidate is verified."
   },
   {
@@ -157,9 +158,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$116,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: Florida corporation registry/mirror sources confirm Pines Investment Inc, but no public business-facing phone/email/website found. Similar food/business results excluded as unrelated.",
+    "notes": "Public-business OSINT 2026-07-22: Florida corporation registry/mirror sources confirm Pines Investment Inc, but no public business-facing phone/email/website found. Similar food/business results excluded as unrelated. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter; do not guess email/phone."
   },
   {
@@ -189,9 +190,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$62,318.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: entity registry/mirror sources confirm Lady Magica Capital Investment LLC; no public business-facing phone/email/website found.",
+    "notes": "Public-business OSINT 2026-07-22: entity registry/mirror sources confirm Lady Magica Capital Investment LLC; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter; do not use social snippets without stronger identity/contact proof."
   },
   {
@@ -221,10 +222,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$55,318.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-008",
@@ -253,10 +254,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$55,118.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-009",
@@ -317,10 +318,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$23,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-011",
@@ -349,9 +350,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$22,018.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: accessible registry mirror matched JAJ Dong Real Estate Funding LLC/mailing address; no public business-facing phone/email/website found.",
+    "notes": "Public-business OSINT 2026-07-22: accessible registry mirror matched JAJ Dong Real Estate Funding LLC/mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -381,9 +382,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -398,10 +399,10 @@ export const leeCountyTaxDeedBuyers = [
     "phone": "",
     "email": "",
     "website": "",
-    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/EMF%20OPERATIONS%20LLC",
+    "contactUrl": "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/emf-operations-llc-fl",
     "mailingAddress": "7420 NW 114 PATH DORAL, FL 33178",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/EMF%20OPERATIONS%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025001975, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/EMF%20OPERATIONS%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025001975, doc View Recorded Tax Deed); https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/emf-operations-llc-fl; https://www.bizapedia.com/fl/emf-operations-llc.html; https://www.bizprofile.net/fl/doral/emf-operations-llc",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "11-45-26-08-00080.0010",
@@ -413,9 +414,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -430,10 +431,10 @@ export const leeCountyTaxDeedBuyers = [
     "phone": "",
     "email": "",
     "website": "",
-    "contactUrl": "https://florida.intercreditreport.com/company/ld-development-llc",
+    "contactUrl": "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/ld-development-llc-fl",
     "mailingAddress": "9172 COLLINS AVE APT 16 SURFSIDE , FL 33154",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://florida.intercreditreport.com/company/ld-development-llc; https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/LD%20DEVELOPMENT%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025002017, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://florida.intercreditreport.com/company/ld-development-llc; https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/LD%20DEVELOPMENT%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025002017, doc View Recorded Tax Deed); https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/ld-development-llc-fl; https://www.bizprofile.net/fl/surfside/ld-development-llc; http://fieldcards.leepa.org/CurrentCostCard/Folio/10236895",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "25-43-24-03-00069.003A",
@@ -445,9 +446,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: registry mirror exists but address differs from captured Surfside mailing address; no public business-facing phone/email/website found.",
+    "notes": "Public-business OSINT 2026-07-22: registry mirror exists but address differs from captured Surfside mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Human review identity/address before outreach; then manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -465,7 +466,7 @@ export const leeCountyTaxDeedBuyers = [
     "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/ARJPR%20CONSULTING%20LLC",
     "mailingAddress": "1081 LAKE WELDONA DRIVE ORLANDO, FL 32806",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/ARJPR%20CONSULTING%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025000674, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/ARJPR%20CONSULTING%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025000674, doc View Recorded Tax Deed); https://www.bizprofile.net/fl/orlando/arjpr-consulting-llc; https://floridaparcels.com/property/18/402204130010",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "36-44-26-12-00112.0020",
@@ -477,9 +478,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,218.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -494,10 +495,10 @@ export const leeCountyTaxDeedBuyers = [
     "phone": "",
     "email": "",
     "website": "",
-    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/DEALS%20ON%20LANDS%20LLC",
+    "contactUrl": "https://sfranalytics.com/investors/fl/ocala-fl/deals-on-lands-llc-fl",
     "mailingAddress": "10312 MARCHMONT CT TAMPA, FL 33626",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/DEALS%20ON%20LANDS%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025002009, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/DEALS%20ON%20LANDS%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025002009, doc View Recorded Tax Deed); https://sfranalytics.com/investors/fl/ocala-fl/deals-on-lands-llc-fl; https://propertyonion.com/property_search/properties/Ridge-Manor-Blvd-Dade-City-FL-33523/410798",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "18-44-25-P4-00707.0080",
@@ -509,9 +510,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,118.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; direct domain dealsonlands.com did not resolve; exact Sunbiz fetch hit Cloudflare challenge, not bypassed.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; direct domain dealsonlands.com did not resolve; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -526,10 +527,10 @@ export const leeCountyTaxDeedBuyers = [
     "phone": "",
     "email": "",
     "website": "",
-    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/CENK%20HOLDINGS%20LLC",
+    "contactUrl": "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/cenk-holdings-llc-fl",
     "mailingAddress": "8369 NORTHWEST 37TH PLACE SUNRISE, FL 33351",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/CENK%20HOLDINGS%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025001977, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/CENK%20HOLDINGS%20LLC; https://dos.fl.gov/sunbiz/other-services/data-downloads/; https://lee.realtdm.com/public/cases/list (case 2025001977, doc View Recorded Tax Deed); https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/cenk-holdings-llc-fl; https://bisprofiles.com/fl/cenk-holdings-l25000337556; https://legals.businessobserverfl.com/news/2026/mar/13/26-00992l/",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "13-45-26-03-00027.0150",
@@ -541,9 +542,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$18,418.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; unrelated/direct cenkholdings.com result not used; exact Sunbiz fetch hit Cloudflare challenge, not bypassed.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; unrelated/direct cenkholdings.com result not used; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -558,10 +559,10 @@ export const leeCountyTaxDeedBuyers = [
     "phone": "",
     "email": "",
     "website": "",
-    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=MVPHUBLLC",
+    "contactUrl": "https://sfranalytics.com/investors/fl/punta-gorda-fl/mvp-hub-llc-fl",
     "mailingAddress": "5561 NW 82 AVE NA DORAL, FL 33166",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=MVPHUBLLC; https://www.bing.com/search?q=%22MVP%20HUB%20LLC%22; https://lee.realtdm.com/public/cases/list (case 2025001903, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=MVPHUBLLC; https://www.bing.com/search?q=%22MVP%20HUB%20LLC%22; https://lee.realtdm.com/public/cases/list (case 2025001903, doc View Recorded Tax Deed); https://sfranalytics.com/investors/fl/punta-gorda-fl/mvp-hub-llc-fl; https://bisprofiles.com/fl/mvp-hub-l25000011643; https://www.manateepao.gov/parcel/?parid=4456423153",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "06-46-24-05-00000.3260",
@@ -573,9 +574,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$16,418.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; similarly named MVP businesses excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; similarly named MVP businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -593,7 +594,7 @@ export const leeCountyTaxDeedBuyers = [
     "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=ALIINVESTMENTANDMANAGEMENTGROUPLLC",
     "mailingAddress": "4201 WEST BLUE HERON BOULEVARD UNIT 1 RIVERA BEACH, FL 33404",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=ALIINVESTMENTANDMANAGEMENTGROUPLLC; https://www.bing.com/search?q=%22ALI%20INVESTMENT%20AND%20MANAGEMENT%20GROUP%20LLC%22; https://lee.realtdm.com/public/cases/list (case 2025001688, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=ALIINVESTMENTANDMANAGEMENTGROUPLLC; https://www.bing.com/search?q=%22ALI%20INVESTMENT%20AND%20MANAGEMENT%20GROUP%20LLC%22; https://lee.realtdm.com/public/cases/list (case 2025001688, doc View Recorded Tax Deed); https://bisprofiles.com/fl/ali-investment-and-management-group-l25000545297; https://www.flcompanyregistry.com/companies/ali-investment-and-management-group-llc/",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "02-44-26-12-00118.0140",
@@ -605,9 +606,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$16,118.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Ali/marketplace results excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Ali/marketplace results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -625,7 +626,7 @@ export const leeCountyTaxDeedBuyers = [
     "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=FLORIDABROTHERSLLC",
     "mailingAddress": "9800 MERLE DRIVE NORTH FORT MYERS, FL 33917",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=FLORIDABROTHERSLLC; https://www.bing.com/search?q=%22FLORIDA%20BROTHERS%20LLC%22%20%229800%20MERLE%22; https://lee.realtdm.com/public/cases/list (case 2025002018, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=FLORIDABROTHERSLLC; https://www.bing.com/search?q=%22FLORIDA%20BROTHERS%20LLC%22%20%229800%20MERLE%22; https://lee.realtdm.com/public/cases/list (case 2025002018, doc View Recorded Tax Deed); https://search.sunbiz.org/Inquiry/corporationsearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=FLORIDABROTHERS%20L120000428120&aggregateId=flal-l12000042812-bbd77bc6-1b9c-49c5-a039-f74eac0c4721; https://bisprofiles.com/fl/florida-brothers-l12000042812; https://www.flcompanyregistry.com/companies/florida-brothers-llc/; https://florida.intercreditreport.com/company/florida-brothers-llc-l12000042812; https://www.mapquest.com/us/florida/florida-brothers-llc-809000185",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "34-43-24-01-00021.0100",
@@ -637,9 +638,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$14,818.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; generic same-name businesses excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; generic same-name businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -669,10 +670,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$6,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-022",
@@ -689,7 +690,7 @@ export const leeCountyTaxDeedBuyers = [
     "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=CITYFLORIDALANDINC",
     "mailingAddress": "address 5401 COLLINS AVENUE APT. 208 MIAMI BEACH, FL 33140,",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=CITYFLORIDALANDINC; https://www.bing.com/search?q=%22CITY%20FLORIDA%20LAND%20INC%22; https://lee.realtdm.com/public/cases/list (case 2025002032, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=CITYFLORIDALANDINC; https://www.bing.com/search?q=%22CITY%20FLORIDA%20LAND%20INC%22; https://lee.realtdm.com/public/cases/list (case 2025002032, doc View Recorded Tax Deed); https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=CITYFLORIDALAND%20P210000419720&aggregateId=domp-p21000041972-6b0e2a38-c2a5-4133-8549-19c5c9c5f965; https://deedauction.broward.org/Deeds/48783_504026-00-0015.pdf; https://www.hawkinscre.com/mailing_address/5401+COLLINS+AVE/MIAMI+BEACH/FL/33140",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Feb 10, 2026",
     "parcelId": "02-44-23-C1-02654.A340",
@@ -701,9 +702,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$5,239.31",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated city/land results excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated city/land results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -733,9 +734,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$5,218.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Daybreak Game/Foods/etc. results excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Daybreak Game/Foods/etc. results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Human review entity identity, then manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -765,9 +766,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$4,018.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated JU/Jacksonville University results excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated JU/Jacksonville University results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -797,9 +798,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$3,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Matias product/apparel sites excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Matias product/apparel sites excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -829,10 +830,10 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$3,218.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels.",
-    "nextAction": "Verify Sunbiz/website contact, call/email to confirm current Lee County land/tax-deed buy box."
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
     "leadId": "lee-fl-taxdeed-buyer-027",
@@ -861,9 +862,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$2,018.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Aristocrat gaming/motor/luggage results excluded.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Aristocrat gaming/motor/luggage results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
     "nextAction": "Human review entity identity, then manual/provider skip-trace or mailed buyer-validation letter."
   }
 ];

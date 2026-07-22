@@ -1,0 +1,78 @@
+# Lee County tax deed buyer contact OSINT — Phase 287
+
+Date: 2026-07-22
+
+## Purpose
+
+Exhaust public web, registry, business-profile, auction, property-record, and Google-dork-style search routes for phone/email enrichment on the Lee County Buyers page.
+
+## Guardrail
+
+Zero-fabrication mode stayed active. Contacts were only accepted when the source matched the buyer identity strongly enough to be used as a business-facing outreach path. The pass rejected:
+
+- people-search snippets and unverified directory aggregators
+- unrelated same-name businesses
+- platform/support emails from auction sites, clerks, or title systems
+- broker emails that belonged to a third-party listing broker rather than the buyer
+- social profiles that did not expose a buyer-facing phone/email
+- registry addresses without an explicit phone/email
+
+## Accepted contact results
+
+Only one row still has a verified public phone/email after the exhaustive public pass:
+
+- Row 9 — MAGALY CRUZ PINEIRO
+  - Phone: +1 407-692-1401
+  - Email: magalycrealty@gmail.com
+  - Website: https://magalycruz.sellstate5starrealty.com/
+  - Profile: https://www.sellstate5starrealty.com/agents/1800431/Magaly+Cruz
+  - Action: call/SMS/email and validate whether she personally buys Lee County tax deed/vacant lots or routes investor/builders.
+
+## Public-contact-exhausted rows
+
+The other 26 buyer rows now carry `public_contact_osint_exhausted` in the data module/CSV because no verified public business-facing phone/email was found from exact-name/address public searches and source review.
+
+Rows covered:
+
+- ESMER MACEDO
+- EDITA COSNOTTI
+- MOHAMED J. YASIN & FEROZA YASSEN-APPADOO
+- VVV INVESTMENTS LLC
+- PINES INVESTMENT INC
+- LADY MAGICA CAPITAL INVESTMENT LLC
+- FINANCE ALL LLC
+- WILSON MIAMI PROPERTIES LLC
+- CROSS COUNTRY DEVELOPMENTS LLC
+- EMF OPERATIONS LLC
+- LD DEVELOPMENT LLC
+- ARJPR CONSULTING LLC
+- DEALS ON LANDS LLC
+- CENK HOLDINGS LLC
+- MVP HUB LLC
+- ALI INVESTMENT AND MANAGEMENT GROUP LLC
+- FLORIDA BROTHERS LLC
+- SHALOM HOLDING LLC
+- CITY FLORIDA LAND INC.
+- JU INVESTMENT PROPERTIES LLC
+- BDB HOLDING PROPERTIES LLC
+- MATIAS INTERNATIONAL DEVELOPMENT,LLC
+- EDITH ROBERTSON
+- ARISTOCRAT ASSETS ENTERPRISES LLC
+- MG40 US LLC
+- EKKO HOUSE BUYERS LLC
+
+## Examples of extra source paths added to evidence trail
+
+- SFR Analytics investor pages for EMF Operations, LD Development, Deals on Lands, Cenk Holdings, and MVP Hub when available.
+- Sunbiz detail/document paths for City Florida Land, Florida Brothers, and Cenk Holdings.
+- BizProfile/BisProfiles/FLCompanyRegistry mirrors when they confirmed exact entity/name/address but did not expose phone/email.
+- Property or auction proof pages where they confirmed buyer/entity participation but contained no buyer-owned contact.
+
+## Recommended next move
+
+For rows marked `public_contact_osint_exhausted`, do not keep burning time on generic Google searches. Use one of these paths:
+
+1. mailed buyer-validation letter to the registry/mailing address;
+2. compliant skip-trace/provider enrichment;
+3. RealTDM/GovEase/auction-platform account-level export if the county/platform exposes bidder registration contacts lawfully;
+4. call only when a source-backed buyer-owned phone is found.

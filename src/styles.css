@@ -42807,3 +42807,39 @@ body[data-active-view="builders"] #builder-list-section {
     line-height: 1.25 !important;
   }
 }
+
+
+/* Phase 280: realtor-agent bridge page. Sources/Machine move to footer; Agents becomes primary. */
+.agent-referral-board { display: grid; gap: 18px; }
+.agent-hero, .agent-call-script, .agent-card {
+  border: 1px solid var(--line-soft);
+  background: rgba(255,255,255,.82);
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+.agent-hero { padding: clamp(22px, 4vw, 34px); }
+.agent-hero p { max-width: 860px; margin-top: 12px; color: var(--muted); font-size: 16px; line-height: 1.55; }
+.agent-summary-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+.agent-summary-strip div { padding: 14px; border-radius: 18px; border: 1px solid var(--line-soft); background: var(--panel-soft); }
+.agent-summary-strip b { display: block; color: var(--black); font-size: 18px; letter-spacing: -.03em; }
+.agent-summary-strip span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
+.agent-call-script { padding: 18px 20px; }
+.agent-call-script strong { color: var(--brand-dark); font-size: 12px; text-transform: uppercase; letter-spacing: .075em; }
+.agent-call-script p { margin-top: 6px; color: var(--ink); line-height: 1.5; }
+.agent-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(292px, 1fr)); gap: 14px; }
+.agent-card { display: grid; gap: 12px; padding: 18px; }
+.agent-card-head { display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+.agent-rank { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 999px; background: var(--panel-green); color: var(--brand-dark); font-size: 12px; font-weight: 850; }
+.agent-card h3 { margin: 0; font-size: 18px; }
+.agent-card-head p, .agent-evidence, .agent-card small { color: var(--muted); line-height: 1.45; }
+.agent-card-meta { display: flex; flex-wrap: wrap; gap: 7px; }
+.agent-card-meta span { padding: 5px 8px; border-radius: 999px; background: var(--panel-soft); color: var(--muted); font-size: 11px; font-weight: 700; }
+.agent-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.agent-actions a { min-height: 34px; display: inline-flex; align-items: center; padding: 7px 10px; border-radius: 999px; border: 1px solid var(--line-soft); background: var(--black); color: #fff; font-size: 12px; font-weight: 750; }
+.agent-actions .agent-source-link { background: transparent; color: var(--brand-dark); }
+footer a[data-view] { color: var(--brand-dark); font-weight: 750; }
+
+@media (max-width: 760px) {
+  .agent-summary-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agent-grid { grid-template-columns: minmax(0, 1fr); }
+}

@@ -70,6 +70,7 @@ import {
   getPermitPortalLandscape,
   formatMoney,
 } from './core.mjs?v=arcadia-buybox';
+import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -692,7 +693,7 @@ let cachedDealsMarketEntries = null;
 let cachedLandStateOptions = null;
 let cachedBuilderSwitchboardEntries = null;
 let builderPanelRenderSequence = 0;
-const validViews = new Set(['today', 'deals', 'builders', 'closing', 'sources', 'machine']);
+const validViews = new Set(['today', 'deals', 'builders', 'agents', 'closing', 'sources', 'machine']);
 
 function invalidateLandPerformanceCaches() {
   cachedScoredParcels = null;
@@ -4251,6 +4252,63 @@ function renderExecutionConveyor(conveyor = {}) {
   </section>`;
 }
 
+function renderAgentReferralPanel() {
+  const target = document.querySelector('#agent-referral-panel');
+  if (!target) return;
+  const agents = asArray(leeCountyResaleBuilderAgents);
+  const phones = agents.filter(agent => agent.agentPhone).length;
+  const highActivity = agents.filter(agent => Number(agent.confidence || 0) >= 65).length;
+  const cards = agents.map((agent, index) => {
+    const sourceLinks = String(agent.sourceUrls || '')
+      .split(';')
+      .map(url => url.trim())
+      .filter(Boolean)
+      .slice(0, 3)
+      .map((url, sourceIndex) => safeLink(url, sourceIndex === 0 ? 'Agent profile' : `Source ${sourceIndex + 1}`, 'agent-source-link'))
+      .join('');
+    const cleanPhone = String(agent.agentPhone || '').replace(/[^0-9+]/g, '');
+    return `<article class="agent-card" data-agent-route="${h(agent.route || 'manual_review')}">
+      <div class="agent-card-head">
+        <span class="agent-rank">${h(index + 1)}</span>
+        <div>
+          <h3>${h(agent.agentName)}</h3>
+          <p>${h(agent.brokerageName || 'Brokerage not shown')}</p>
+        </div>
+      </div>
+      <div class="agent-card-meta">
+        <span>${h(agent.county || 'Lee County, FL')}</span>
+        <span>${h(agent.route || 'manual_review')}</span>
+        <span>${h(agent.confidence || 'review')} confidence</span>
+      </div>
+      <p class="agent-evidence">${h(agent.specBuilderEvidence || 'Public Lee County agent candidate; builder connection needs property-level proof before outreach claim.')}</p>
+      <div class="agent-actions">
+        ${cleanPhone ? `<a href="tel:${h(cleanPhone)}">Call ${h(agent.agentPhone)}</a>` : ''}
+        ${sourceLinks}
+      </div>
+      <small>${h(agent.nextAction || 'Verify builder/infill-lot relationship before claiming buyer fit.')}</small>
+    </article>`;
+  }).join('');
+
+  target.innerHTML = `<section class="agent-referral-board phase280-agent-referral-page" aria-label="Lee County realtor agent candidates">
+    <div class="agent-hero">
+      <span class="eyebrow">Agents · Lee County, FL</span>
+      <h2>Realtor agent bridge to builders.</h2>
+      <p><b>${h(agents.length)} public agent candidates.</b> Use this lane to find agents who may already sit between sellers, builders, and new-construction inventory. Keep rows in manual review until an exact sold-property, deed, or permit proof ties the agent to builder activity.</p>
+      <div class="agent-summary-strip">
+        <div><b>${h(agents.length)}</b><span>agent candidates</span></div>
+        <div><b>${h(phones)}</b><span>public phones</span></div>
+        <div><b>${h(highActivity)}</b><span>highest activity</span></div>
+        <div><b>manual review</b><span>no fabricated builder claim</span></div>
+      </div>
+    </div>
+    <div class="agent-call-script">
+      <strong>Opener</strong>
+      <p>Hey {{agentFirstName}}, I saw you sell a lot of homes in Lee County. I source vacant land deals for builders and land buyers. Are you connected with any builders or investors looking for lots there?</p>
+    </div>
+    <div class="agent-grid">${cards}</div>
+  </section>`;
+}
+
 function renderClosingDeskPanel() {
   const target = document.querySelector('#title-closing-panel');
   if (!target) return;
@@ -6274,6 +6332,11 @@ function renderAll() {
     renderAppShell();
     return;
   }
+  if (activeView === 'agents') {
+    renderAgentReferralPanel();
+    renderAppShell();
+    return;
+  }
   if (activeView === 'deals') {
     renderFilters();
     renderParcels();
@@ -6291,6 +6354,7 @@ function renderAll() {
   renderFilters();
   renderParcels();
   renderClosingDeskPanel();
+  renderAgentReferralPanel();
   renderBuilderListEnginePanel();
   renderTopCallList();
   renderWeeklyMarketScout();

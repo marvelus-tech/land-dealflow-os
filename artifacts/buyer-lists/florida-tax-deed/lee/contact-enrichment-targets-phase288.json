@@ -1,0 +1,542 @@
+[
+  {
+    "leadId": "lee-fl-taxdeed-buyer-001",
+    "name": "ESMER MACEDO",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "514 THOMAS AVE FORT MYERS, FL 33905",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22ESMER+MACEDO%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025002006",
+      "2025002010",
+      "2025002011"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025002006, doc View Recorded Tax Deed)",
+      "https://lee.realtdm.com/public/cases/list (case 2025002010, doc View Recorded Tax Deed)",
+      "https://lee.realtdm.com/public/cases/list (case 2025002011, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 3 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-002",
+    "name": "EDITA COSNOTTI",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "5733 SANDPIPER PLACE FORT MYERS, FL 33919",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22EDITA+COSNOTTI%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025001899",
+      "2025001962"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025001899, doc View Recorded Tax Deed)",
+      "https://lee.realtdm.com/public/cases/list (case 2025001962, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-003",
+    "name": "MOHAMED J. YASIN & FEROZA YASSEN-APPADOO",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "3312 14TH ST. W LEHIGH ACRES, FL 33971",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22MOHAMED+J.+YASIN+%26+FEROZA+YASSEN-APPADOO%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025002022",
+      "2025002072"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025002022, doc View Recorded Tax Deed)",
+      "https://lee.realtdm.com/public/cases/list (case 2025002072, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-004",
+    "name": "VVV INVESTMENTS LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "165 10TH AVE NE NAPLES, FL 34120",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=VVVINVESTMENTS%20L250002077650&aggregateId=flal-l25000207765-4fca03e",
+    "website": "",
+    "cases": [
+      "2025001944"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=VVVINVESTMENTS%20L250002077650&aggregateId=flal-l25000207765-4fca03e",
+      "https://www.bizprofile.net/fl/naples/vvv-investments-llc",
+      "https://bisprofiles.com/fl/vvv-investments-l25000207765",
+      "https://lee.realtdm.com/public/cases/list (case 2025001944, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: Florida entity registry/mirror sources confirm VVV Investments LLC, but no public business-facing phone/email/website found. Do not use attorney/clerk/platform/support or people-search contacts. Phase287 contact OSINT 2026-07-22: exact-name/address web search, regis"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-005",
+    "name": "PINES INVESTMENT INC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "12460 GREEN STONE CT FORT MYERS, FL 33913",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=PINESINVESTMENT%20P190000414880&aggregateId=domp-p19000041488-a0be34",
+    "website": "",
+    "cases": [
+      "2025001963"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=PINESINVESTMENT%20P190000414880&aggregateId=domp-p19000041488-a0be34",
+      "https://www.bizprofile.net/fl/fort-myers/pines-investment-inc",
+      "https://bisprofiles.com/fl/pines-investment-p19000041488",
+      "https://www.corporationwiki.com/p/34rl4s/pines-investment-inc",
+      "https://lee.realtdm.com/public/cases/list (case 2025001963, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: Florida corporation registry/mirror sources confirm Pines Investment Inc, but no public business-facing phone/email/website found. Similar food/business results excluded as unrelated. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-006",
+    "name": "LADY MAGICA CAPITAL INVESTMENT LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "3098 BEAVER CREEK DR KISSIMMEE, FL 34746",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=ForwardList&searchNameOrder=LADYMAGICA%20L210002248650&aggregateId=flal-l21000224865-4cbe3e1",
+    "website": "",
+    "cases": [
+      "2025001936"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=ForwardList&searchNameOrder=LADYMAGICA%20L210002248650&aggregateId=flal-l21000224865-4cbe3e1",
+      "https://www.bizprofile.net/fl/kissimmee/lady-magica-capital-investment",
+      "https://bisprofiles.com/fl/lady-magica-l21000224865",
+      "https://www.bizapedia.com/fl/lady-magica-capital-investment-llc.html",
+      "https://lee.realtdm.com/public/cases/list (case 2025001936, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: entity registry/mirror sources confirm Lady Magica Capital Investment LLC; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction trac"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-007",
+    "name": "KIEU GOINS",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "2466 W BAYSHORE RD #9 PALO ALTO, CA 94303",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22KIEU+GOINS%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025001885"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025001885, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-008",
+    "name": "KENNETH GASTON CAGAN",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "4821 SW 201ST TERRACE SOUTHWEST RANCHES, FL 33332",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22KENNETH+GASTON+CAGAN%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025001939"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025001939, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-009",
+    "name": "MAGALY CRUZ PINEIRO",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "207 ABBOTT AVE LEHIGH ACRES, FL 33936",
+    "phone": "+1 407-692-1401",
+    "email": "magalycrealty@gmail.com",
+    "contactUrl": "https://www.sellstate5starrealty.com/agents/1800431/Magaly+Cruz",
+    "website": "https://magalycruz.sellstate5starrealty.com/",
+    "cases": [
+      "2025002023"
+    ],
+    "urls": [
+      "https://www.sellstate5starrealty.com/agents/1800431/Magaly+Cruz",
+      "https://www.realestate.com.kh/international/us/567-barranger-avenue-s-lehigh-acres-fl-110104060178/",
+      "https://www.facebook.com/magaly.realtorflorida/",
+      "https://www.chamberofcommerce.com/business-directory/florida/fort-myers/industrial-real-estate-agency/2030419722-magaly-cruz",
+      "https://lee.realtdm.com/public/cases/list (case 2025002023, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: public realtor/listing sources tie Magaly Cruz Pineiro/Magaly Cruz to Sellstate 5 Star Realty. Verified professional cell +1 407-692-1401; prior public listing exposes magalycrealty@gmail.com. Keep in buyerValidation until Lee County land buy box is confirmed."
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-010",
+    "name": "DUNG TRUONG",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "2437 W CHAIN AVE ANAHEIM, CA 92804",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22DUNG+TRUONG%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025001978"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025001978, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-011",
+    "name": "JAJ DONG REAL ESTATE FUNDING LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "9950 VIA SAN MARCO LOOP , FL 33905",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://florida.intercreditreport.com/company/jaj-dong-real-estate-funding-llc",
+    "website": "",
+    "cases": [
+      "2025001973"
+    ],
+    "urls": [
+      "https://florida.intercreditreport.com/company/jaj-dong-real-estate-funding-llc",
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/JAJ%20DONG%20REAL%20ESTATE%20FUNDING%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025001973, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: accessible registry mirror matched JAJ Dong Real Estate Funding LLC/mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/au"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-012",
+    "name": "CROSS COUNTRY DEVELOPMENTS LLC",
+    "buyerType": "small_builder_or_developer_prior_tax_deed_buyer",
+    "mailing": "7950 NW 53RD ST SUITE 324 DORAL, FL 33166",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/CROSS%20COUNTRY%20DEVELOPMENTS%20LLC",
+    "website": "",
+    "cases": [
+      "2025001976"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/CROSS%20COUNTRY%20DEVELOPMENTS%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025001976, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public b"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-013",
+    "name": "EMF OPERATIONS LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "7420 NW 114 PATH DORAL, FL 33178",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/emf-operations-llc-fl",
+    "website": "",
+    "cases": [
+      "2025001975"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/EMF%20OPERATIONS%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025001975, doc View Recorded Tax Deed)",
+      "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/emf-operations-llc-fl",
+      "https://www.bizapedia.com/fl/emf-operations-llc.html",
+      "https://www.bizprofile.net/fl/doral/emf-operations-llc"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public b"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-014",
+    "name": "LD DEVELOPMENT LLC",
+    "buyerType": "small_builder_or_developer_prior_tax_deed_buyer",
+    "mailing": "9172 COLLINS AVE APT 16 SURFSIDE , FL 33154",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/ld-development-llc-fl",
+    "website": "",
+    "cases": [
+      "2025002017"
+    ],
+    "urls": [
+      "https://florida.intercreditreport.com/company/ld-development-llc",
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/LD%20DEVELOPMENT%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025002017, doc View Recorded Tax Deed)",
+      "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/ld-development-llc-fl",
+      "https://www.bizprofile.net/fl/surfside/ld-development-llc",
+      "http://fieldcards.leepa.org/CurrentCostCard/Folio/10236895"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: registry mirror exists but address differs from captured Surfside mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auct"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-015",
+    "name": "ARJPR CONSULTING LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "1081 LAKE WELDONA DRIVE ORLANDO, FL 32806",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/ARJPR%20CONSULTING%20LLC",
+    "website": "",
+    "cases": [
+      "2025000674"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/ARJPR%20CONSULTING%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025000674, doc View Recorded Tax Deed)",
+      "https://www.bizprofile.net/fl/orlando/arjpr-consulting-llc",
+      "https://floridaparcels.com/property/18/402204130010"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public b"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-016",
+    "name": "DEALS ON LANDS LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "10312 MARCHMONT CT TAMPA, FL 33626",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://sfranalytics.com/investors/fl/ocala-fl/deals-on-lands-llc-fl",
+    "website": "",
+    "cases": [
+      "2025002009"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/DEALS%20ON%20LANDS%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025002009, doc View Recorded Tax Deed)",
+      "https://sfranalytics.com/investors/fl/ocala-fl/deals-on-lands-llc-fl",
+      "https://propertyonion.com/property_search/properties/Ridge-Manor-Blvd-Dade-City-FL-33523/410798"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; direct domain dealsonlands.com did not resolve; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where acces"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-017",
+    "name": "CENK HOLDINGS LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "8369 NORTHWEST 37TH PLACE SUNRISE, FL 33351",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/cenk-holdings-llc-fl",
+    "website": "",
+    "cases": [
+      "2025001977"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults/EntityName/CENK%20HOLDINGS%20LLC",
+      "https://dos.fl.gov/sunbiz/other-services/data-downloads/",
+      "https://lee.realtdm.com/public/cases/list (case 2025001977, doc View Recorded Tax Deed)",
+      "https://sfranalytics.com/investors/fl/cape-coral-fort-myers-fl/cenk-holdings-llc-fl",
+      "https://bisprofiles.com/fl/cenk-holdings-l25000337556",
+      "https://legals.businessobserverfl.com/news/2026/mar/13/26-00992l/"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; unrelated/direct cenkholdings.com result not used; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where ac"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-018",
+    "name": "MVP HUB LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "5561 NW 82 AVE NA DORAL, FL 33166",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://sfranalytics.com/investors/fl/punta-gorda-fl/mvp-hub-llc-fl",
+    "website": "",
+    "cases": [
+      "2025001903"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=MVPHUBLLC",
+      "https://www.bing.com/search?q=%22MVP%20HUB%20LLC%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025001903, doc View Recorded Tax Deed)",
+      "https://sfranalytics.com/investors/fl/punta-gorda-fl/mvp-hub-llc-fl",
+      "https://bisprofiles.com/fl/mvp-hub-l25000011643",
+      "https://www.manateepao.gov/parcel/?parid=4456423153"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; similarly named MVP businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public busine"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-019",
+    "name": "ALI INVESTMENT AND MANAGEMENT GROUP LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "4201 WEST BLUE HERON BOULEVARD UNIT 1 RIVERA BEACH, FL 33404",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=ALIINVESTMENTANDMANAGEMENTGROUPLLC",
+    "website": "",
+    "cases": [
+      "2025001688"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=ALIINVESTMENTANDMANAGEMENTGROUPLLC",
+      "https://www.bing.com/search?q=%22ALI%20INVESTMENT%20AND%20MANAGEMENT%20GROUP%20LLC%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025001688, doc View Recorded Tax Deed)",
+      "https://bisprofiles.com/fl/ali-investment-and-management-group-l25000545297",
+      "https://www.flcompanyregistry.com/companies/ali-investment-and-management-group-llc/"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Ali/marketplace results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public bus"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-020",
+    "name": "FLORIDA BROTHERS LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "9800 MERLE DRIVE NORTH FORT MYERS, FL 33917",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=FLORIDABROTHERSLLC",
+    "website": "",
+    "cases": [
+      "2025002018"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=FLORIDABROTHERSLLC",
+      "https://www.bing.com/search?q=%22FLORIDA%20BROTHERS%20LLC%22%20%229800%20MERLE%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025002018, doc View Recorded Tax Deed)",
+      "https://search.sunbiz.org/Inquiry/corporationsearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=FLORIDABROTHERS%20L120000428120&aggregateId=flal-l12000042812-bbd77bc6-1b9c-49c5-a039-f74eac0c4721",
+      "https://bisprofiles.com/fl/florida-brothers-l12000042812",
+      "https://www.flcompanyregistry.com/companies/florida-brothers-llc/",
+      "https://florida.intercreditreport.com/company/florida-brothers-llc-l12000042812",
+      "https://www.mapquest.com/us/florida/florida-brothers-llc-809000185"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; generic same-name businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-021",
+    "name": "JAVIER BALZA",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "6001 SW 70TH ST APT 201 SOUTH MIAMI, FL 33143",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22JAVIER+BALZA%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025001673"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025001673, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-022",
+    "name": "CITY FLORIDA LAND INC.",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "address 5401 COLLINS AVENUE APT. 208 MIAMI BEACH, FL 33140,",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=CITYFLORIDALANDINC",
+    "website": "",
+    "cases": [
+      "2025002032"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=CITYFLORIDALANDINC",
+      "https://www.bing.com/search?q=%22CITY%20FLORIDA%20LAND%20INC%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025002032, doc View Recorded Tax Deed)",
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResultDetail?inquirytype=EntityName&directionType=Initial&searchNameOrder=CITYFLORIDALAND%20P210000419720&aggregateId=domp-p21000041972-6b0e2a38-c2a5-4133-8549-19c5c9c5f965",
+      "https://deedauction.broward.org/Deeds/48783_504026-00-0015.pdf",
+      "https://www.hawkinscre.com/mailing_address/5401+COLLINS+AVE/MIAMI+BEACH/FL/33140"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated city/land results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-023",
+    "name": "DAYBREAK INVESTMENTS",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "1172 PEACHCREEK RD DAYTON, OH 45458-3202",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://businesssearch.ohiosos.gov/",
+    "website": "",
+    "cases": [
+      "2025001484"
+    ],
+    "urls": [
+      "https://businesssearch.ohiosos.gov/",
+      "https://www.bing.com/search?q=%22DAYBREAK%20INVESTMENTS%22%20%221172%20PEACHCREEK%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025001484, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Daybreak Game/Foods/etc. results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and p"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-024",
+    "name": "JU INVESTMENT PROPERTIES LLC",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "156 LONG POND DR DRACUT MA 01826 DRACUT, MA 01826",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://corp.sec.state.ma.us/CorpWeb/CorpSearch/CorpSearch.aspx",
+    "website": "",
+    "cases": [
+      "2025002031"
+    ],
+    "urls": [
+      "https://corp.sec.state.ma.us/CorpWeb/CorpSearch/CorpSearch.aspx",
+      "https://www.bing.com/search?q=%22JU%20INVESTMENT%20PROPERTIES%20LLC%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025002031, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated JU/Jacksonville University results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-025",
+    "name": "MATIAS INTERNATIONAL DEVELOPMENT,LLC",
+    "buyerType": "small_builder_or_developer_prior_tax_deed_buyer",
+    "mailing": "4700 NW BOCA RATON BLVD STE 202 BOCA RATON, FL 33431",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=MATIASINTERNATIONALDEVELOPMENTLLC",
+    "website": "",
+    "cases": [
+      "2025001697"
+    ],
+    "urls": [
+      "https://search.sunbiz.org/Inquiry/CorporationSearch/SearchResults?inquiryType=EntityName&searchNameOrder=MATIASINTERNATIONALDEVELOPMENTLLC",
+      "https://www.bing.com/search?q=%22MATIAS%20INTERNATIONAL%20DEVELOPMENT%20LLC%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025001697, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Matias product/apparel sites excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and publi"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-026",
+    "name": "WAYNE ZALESKI & WARREN DENNIS",
+    "buyerType": "individual_prior_tax_deed_buyer",
+    "mailing": "3590 EDGEWOOD AVENUE FORT MYERS, FL 33916",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://www.google.com/search?q=%22WAYNE+ZALESKI+%26+WARREN+DENNIS%22+Lee+County+Florida+tax+deed+buyer",
+    "website": "",
+    "cases": [
+      "2025002013"
+    ],
+    "urls": [
+      "https://lee.realtdm.com/public/cases/list (case 2025002013, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phas"
+  },
+  {
+    "leadId": "lee-fl-taxdeed-buyer-027",
+    "name": "ARISTOCRAT ASSETS ENTERPRISE",
+    "buyerType": "land_investor_or_prior_tax_deed_buyer_entity",
+    "mailing": "975 N SILVERBELL RD #85073 TUCSON, AZ 85745",
+    "phone": "",
+    "email": "",
+    "contactUrl": "https://ecorp.azcc.gov/EntitySearch/Index",
+    "website": "",
+    "cases": [
+      "2025002005"
+    ],
+    "urls": [
+      "https://ecorp.azcc.gov/EntitySearch/Index",
+      "https://www.bing.com/search?q=%22ARISTOCRAT%20ASSETS%20ENTERPRISE%22",
+      "https://lee.realtdm.com/public/cases/list (case 2025002005, doc View Recorded Tax Deed)"
+    ],
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Aristocrat gaming/motor/luggage results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces"
+  }
+]

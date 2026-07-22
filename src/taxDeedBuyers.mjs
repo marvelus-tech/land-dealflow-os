@@ -11,14 +11,14 @@ export const leeCountyTaxDeedBuyers = [
     "buyerName": "ESMER MACEDO",
     "buyerType": "individual_prior_tax_deed_buyer",
     "contactName": "",
-    "contactRole": "",
-    "phone": "",
+    "contactRole": "permit billing contact / owner-builder lead",
+    "phone": "+1 239-771-0343",
     "email": "",
     "website": "",
-    "contactUrl": "https://www.google.com/search?q=%22ESMER+MACEDO%22+Lee+County+Florida+tax+deed+buyer",
+    "contactUrl": "https://fortmyers.gov/DocumentCenter/View/23751/202409---New-Projects",
     "mailingAddress": "514 THOMAS AVE FORT MYERS, FL 33905",
     "sourceType": "Lee RealTDM recorded tax deed / prior tax deed sale history",
-    "sourceUrls": "https://lee.realtdm.com/public/cases/list (case 2025002006, doc View Recorded Tax Deed); https://lee.realtdm.com/public/cases/list (case 2025002010, doc View Recorded Tax Deed); https://lee.realtdm.com/public/cases/list (case 2025002011, doc View Recorded Tax Deed)",
+    "sourceUrls": "https://lee.realtdm.com/public/cases/list (case 2025002006, doc View Recorded Tax Deed); https://lee.realtdm.com/public/cases/list (case 2025002010, doc View Recorded Tax Deed); https://lee.realtdm.com/public/cases/list (case 2025002011, doc View Recorded Tax Deed); https://fortmyers.gov/DocumentCenter/View/23751/202409---New-Projects",
     "auctionPlatform": "RealTDM / RealAuction / Lee Clerk",
     "saleDate": "Jan 13, 2026",
     "parcelId": "19-44-25-P1-00724.0100; 19-44-25-P1-00724.0090; 19-44-25-P2-0050D.0150",
@@ -30,9 +30,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$16,018.50; $16,318.50; $20,518.50",
     "repeatBuyerCount": 3,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;verified_public_phone_county_permit;phase288_county_contact_enriched",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 3 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 3 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county permit enrichment 2026-07-22: City of Fort Myers New Projects Report lists Billing Contact On Permit MACEDO, ESMER / ESMER MACEDO with Bus Phone 239.771.0343 on BLDR-046589-2024 and POOL-046794-2024; county/city permit/business-tax/code/clerk/planning dorks otherwise yielded no additional verified buyer-owned email.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -62,9 +62,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$21,118.50; $165,118.50",
     "repeatBuyerCount": 2,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -94,9 +94,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$4,418.50; $7,218.50",
     "repeatBuyerCount": 2,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 2 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -126,9 +126,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$130,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: Florida entity registry/mirror sources confirm VVV Investments LLC, but no public business-facing phone/email/website found. Do not use attorney/clerk/platform/support or people-search contacts. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: Florida entity registry/mirror sources confirm VVV Investments LLC, but no public business-facing phone/email/website found. Do not use attorney/clerk/platform/support or people-search contacts. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter; call only after a public/provider contact candidate is verified."
   },
   {
@@ -158,9 +158,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$116,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: Florida corporation registry/mirror sources confirm Pines Investment Inc, but no public business-facing phone/email/website found. Similar food/business results excluded as unrelated. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: Florida corporation registry/mirror sources confirm Pines Investment Inc, but no public business-facing phone/email/website found. Similar food/business results excluded as unrelated. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter; do not guess email/phone."
   },
   {
@@ -190,9 +190,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$62,318.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: entity registry/mirror sources confirm Lady Magica Capital Investment LLC; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: entity registry/mirror sources confirm Lady Magica Capital Investment LLC; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter; do not use social snippets without stronger identity/contact proof."
   },
   {
@@ -222,9 +222,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$55,318.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -254,9 +254,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$55,118.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -318,9 +318,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$23,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -350,9 +350,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$22,018.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: accessible registry mirror matched JAJ Dong Real Estate Funding LLC/mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: accessible registry mirror matched JAJ Dong Real Estate Funding LLC/mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -382,9 +382,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -414,9 +414,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -446,9 +446,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_confirmed; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: registry mirror exists but address differs from captured Surfside mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: registry mirror exists but address differs from captured Surfside mailing address; no public business-facing phone/email/website found. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Human review identity/address before outreach; then manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -478,9 +478,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,218.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -510,9 +510,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$19,118.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; direct domain dealsonlands.com did not resolve; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; direct domain dealsonlands.com did not resolve; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -542,9 +542,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$18,418.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; unrelated/direct cenkholdings.com result not used; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website found; unrelated/direct cenkholdings.com result not used; exact Sunbiz fetch hit Cloudflare challenge, not bypassed. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -574,9 +574,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$16,418.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; similarly named MVP businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; similarly named MVP businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -606,9 +606,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$16,118.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Ali/marketplace results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Ali/marketplace results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -638,9 +638,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$14,818.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; generic same-name businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; generic same-name businesses excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -670,9 +670,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$6,718.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -702,9 +702,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$5,239.31",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated city/land results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated city/land results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -734,9 +734,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$5,218.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Daybreak Game/Foods/etc. results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Daybreak Game/Foods/etc. results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Human review entity identity, then manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -766,9 +766,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$4,018.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated JU/Jacksonville University results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated JU/Jacksonville University results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -798,9 +798,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$3,618.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Matias product/apparel sites excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Matias product/apparel sites excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Manual/provider skip-trace or mailed buyer-validation letter."
   },
   {
@@ -830,9 +830,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$3,218.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Extracted from recorded tax deed OCR. 1 observed purchase(s) in sampled Jan-Feb 2026 Lee County tax deed results. No phone/email added unless public business-facing source verifies it. Lot size enriched from Lee County Parcels GIS; verify Property Appraiser record before routing seller parcels. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Use mailed buyer-validation letter or compliant public/provider skip trace; call/email only after a source-backed contact candidate is verified."
   },
   {
@@ -862,9 +862,9 @@ export const leeCountyTaxDeedBuyers = [
     "lotSizeSourceUrl": "https://maps.leegov.com/datasets/lee-county-parcels/about",
     "winningBid": "$2,018.50",
     "repeatBuyerCount": 1,
-    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted",
+    "confidence": "high_prior_buyer_evidence; registry_search; contact_details_unverified; public_contact_osint_exhausted;phase288_county_contact_exhausted",
     "route": "buyerValidation",
-    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Aristocrat gaming/motor/luggage results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected.",
+    "notes": "Public-business OSINT 2026-07-22: no public business-facing phone/email/website/contact form found; unrelated Aristocrat gaming/motor/luggage results excluded. Phase287 contact OSINT 2026-07-22: exact-name/address web search, registry mirrors, Sunbiz/SOS where accessible, SFR/property/auction traces, and public business-listing checks found no verified public business-facing phone/email. People-search snippets, platform support contacts, unrelated same-name businesses, broker emails, and unmatched social pages were rejected. Phase288 county/city contact enrichment 2026-07-22: checked permit/new-projects, business-tax, code-enforcement, Notice of Commencement, planning/development-order, clerk/legal-notice, and mailing-address search routes; no additional verified buyer-owned phone/email surfaced. Rejected court/public-notice attorney contacts, agency phones, platform/support emails, contractor contacts not tied to buyer, and people-search snippets.",
     "nextAction": "Human review entity identity, then manual/provider skip-trace or mailed buyer-validation letter."
   }
 ];

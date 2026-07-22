@@ -72,7 +72,7 @@ import {
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint';
-import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence';
+import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -1003,12 +1003,11 @@ function renderAppShell() {
 }
 
 function scriptScopeLabel(scope = '') {
-  return ({ buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts' }[scope] || 'Scripts');
+  return ({ buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts', deals: 'Land owner scripts' }[scope] || 'Scripts');
 }
 
 function scriptsForScope(scope = activeView) {
-  const mappedScope = scope === 'builders' ? 'buyers' : scope;
-  return asArray(outreachScriptPacks).filter(script => script.scope === mappedScope);
+  return asArray(outreachScriptPacks).filter(script => script.scope === scope);
 }
 
 function scriptButton(scope = activeView, label = 'Scripts') {
@@ -1028,11 +1027,11 @@ function renderScriptDrawer() {
   drawer.innerHTML = `<div class="script-drawer-backdrop" data-close-script-panel></div>
     <aside class="script-drawer-shell" role="dialog" aria-modal="true" aria-label="${h(scriptScopeLabel(scope))}">
       <div class="script-drawer-head">
-        <span class="eyebrow">Call scripts · W0ERIegAd38</span>
+        <span class="eyebrow">Source-backed outreach scripts</span>
         <h3>${h(scriptScopeLabel(scope))}</h3>
         <button type="button" class="script-drawer-close" data-close-script-panel aria-label="Close scripts">×</button>
       </div>
-      <p class="script-drawer-source">Source-backed call language for buyer and agent validation. Use only where the row has real proof; do not claim a deal/contact/relationship that does not exist.</p>
+      <p class="script-drawer-source">Source-backed call language for land owners, buyers, and agents. Use only where the row has real proof; do not claim a deal, contact, relationship, or parcel condition that does not exist.</p>
       <div class="script-drawer-list">${hasScripts ? scripts.map(script => `<article class="script-card" data-script-id="${h(script.id)}">
         <div class="script-card-head"><span>${h(script.channel)}</span><a href="${h(script.sourceUrl)}" target="_blank" rel="noopener noreferrer">${h(script.sourceTime)}</a></div>
         <h4>${h(script.title)}</h4>
@@ -2062,6 +2061,7 @@ function renderLandControls() {
         <li title="Rows with proof, contact, buyer fit, and money aligned."><b>${h(offerReady)}</b><span>offer-ready</span></li>
       </ul>
       ${sortControl}
+      ${scriptButton('deals', 'Scripts')}
       <p class="land-control-note">Market workspace active. Telemetry decides the next move; parcel content swaps below.</p>
     </article>
   </section>`;
@@ -2400,6 +2400,7 @@ function renderLandMarketIndex() {
       <span class="eyebrow">Land · ${showingStateIndex ? 'market index' : `${selectedLandStateFilter} lane index`}</span>
       <h2>${showingStateIndex ? 'Choose one land market.' : 'Choose one lane.'}</h2>
       <p>${showingStateIndex ? 'Select a state first. Parcels, proof, and owner motion stay hidden until a real market lane is chosen.' : 'Select the exact buyer-backed lane. Seller records open only inside that chosen lane.'}</p>
+      ${scriptButton('deals', 'Scripts')}
       <div class="land-market-index-stats"><div><b>${h(marketCount)}</b><span>${showingStateIndex ? 'states' : 'lanes'}</span></div><div><b>${h(liveSellerCount)}</b><span>seller records</span></div><div><b>${h(liveBuilderCount)}</b><span>builder signals</span></div></div>
     </div>
     <div class="land-market-index-filter" aria-label="Filter Land markets by state">${stateFilters}</div>

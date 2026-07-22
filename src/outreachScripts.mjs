@@ -136,4 +136,170 @@ export const outreachScriptPacks = [
       "Capture title company, buyer names, seller leads, and area warnings."
     ]
   }
+,
+  {
+    "id": "land-owner-permission-agenda-opener",
+    "scope": "deals",
+    "label": "Owner permission opener",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 03:10-04:51 / 11:50-11:57",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=190",
+    "title": "Open the owner call with a reluctant-buyer diagnostic frame",
+    "when": "Use after a land owner replies or answers, before asking property and price questions.",
+    "body": "Hey {{ownerFirstName}}, thanks for getting back to me. I am looking at land around {{market}}. Do you mind if I ask a few quick questions about the lot so I can verify the parcel and see if it is something my buyer side may be able to make a clean offer on?\n\nI will check the county/GIS records, title basics, access, and buyer fit. If it is not a fit, no pressure at all.",
+    "notes": [
+      "Source video stresses asking questions instead of pitching.",
+      "Do not claim buyer certainty, clean title, utilities, access, or buildability until verified."
+    ]
+  },
+  {
+    "id": "land-owner-still-available-sms",
+    "scope": "deals",
+    "label": "Still available check",
+    "channel": "SMS",
+    "sourceTime": "YPqUHvSAZrU 06:10-06:30 / 08:00-08:12",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=370",
+    "title": "Check if the vacant lot is still available without over-pitching",
+    "when": "Use on warm owner responses, expired listings, or old owner leads before spending research time.",
+    "body": "Hey {{ownerFirstName}}, I am checking back on the vacant lot near {{roadOrArea}}. Is that still something you would consider selling?",
+    "notes": [
+      "Keep it short and owner-safe.",
+      "If the row is public-owner-only with no phone/email proof, keep it skip-trace/manual review."
+    ]
+  },
+  {
+    "id": "land-owner-parcel-identity-check",
+    "scope": "deals",
+    "label": "Parcel truth questions",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 12:00-14:10",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=720",
+    "title": "Confirm APN, owner authority, listing status, and land facts",
+    "when": "Use before pricing any owner conversation or writing an offer.",
+    "body": "To make sure I am looking at the right lot, can you confirm the APN or tax parcel number? Address or nearest road works too if you do not have it handy.\n\nIs this one parcel or multiple? Are you the owner on title, or is it family, LLC, trust, or estate? Is it currently listed with an agent anywhere? Any known access, utility, flood, wetland, easement, HOA, title, or buildability issues?",
+    "notes": [
+      "Do not make the seller do public-record homework we can do ourselves.",
+      "Ask for private or clarifying facts; verify county/GIS/title facts independently."
+    ]
+  },
+  {
+    "id": "land-owner-motivation-route-questions",
+    "scope": "deals",
+    "label": "Motivation and route",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 14:30-16:40",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=870",
+    "title": "Find whether the owner wants retail price or clean certainty",
+    "when": "Use after parcel identity is confirmed enough to keep the conversation alive.",
+    "body": "What has you open to selling it now instead of holding onto it?\n\nWhat matters more to you right now: trying for the highest possible retail price with a listing, or getting a cleaner cash sale without the wait, agent fees, and back-and-forth?\n\nIf the number made sense, are you looking to close soon, or just testing the waters?",
+    "notes": [
+      "The goal is diagnosis, not pressure.",
+      "If the owner wants full retail, route them toward listing or nurture instead of forcing a low cash pitch."
+    ]
+  },
+  {
+    "id": "land-owner-net-price-discovery",
+    "scope": "deals",
+    "label": "Best net price",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 17:00-19:20",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=1020",
+    "title": "Ask for the best net number after framing cash versus retail",
+    "when": "Use only after APN/address and basic owner authority/listing status are known.",
+    "body": "If I could make this clean for you, cash, close in 2 to 3 weeks if title can support it, cover normal closing costs, and keep it simple, what is the best net number you would seriously consider?\n\nHow did you arrive at that number: nearby sold lots, active listings, what you paid, tax value, or what you need to net?",
+    "notes": [
+      "Do not promise a seven-day close unless title/escrow can actually support it.",
+      "Every number remains subject to correct parcel identity, clean title, access, and buyer/buildability review."
+    ]
+  },
+  {
+    "id": "land-owner-low-offer-objection",
+    "scope": "deals",
+    "label": "Low offer objection",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 21:54-24:38",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=1314",
+    "title": "Answer why the cash number is lower without overexplaining",
+    "when": "Use when an owner says the cash offer is too low or asks why it is lower than retail comps.",
+    "body": "That is a fair question. You are asking why the cash number is lower than the retail numbers you have seen, right?\n\nMy cash number has to leave room for closing costs, title work, due diligence, access/buildability risk, buyer margin, and resale uncertainty. If you want top retail, listing may be the better route. If you want cleaner certainty and less hassle, that is where my number fits.\n\nAre you looking more for top price, or certainty and speed?",
+    "notes": [
+      "Name the concern, validate it, then turn it into a question.",
+      "If you do not know the answer to a concern, say you will verify it instead of making one up."
+    ]
+  },
+  {
+    "id": "land-owner-terms-pivot",
+    "scope": "deals",
+    "label": "Terms/payment pivot",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 19:30-21:40",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=1170",
+    "title": "Offer a higher headline number only if payments make sense",
+    "when": "Use when cash is too low for the owner but the parcel may support a terms structure.",
+    "body": "If your main goal is the highest number, cash may not be the best structure because cash buyers need a discount. Would you consider a higher price paid over time if the paperwork protected both sides?\n\nIn plain English, you would be the bank. I would make payments to you over time instead of paying one lower cash number today. Is that something you would even consider, or do you only want cash?",
+    "notes": [
+      "Use only after legal/title structure and buyer demand make sense.",
+      "Do not use terms to hide weak cash math or bad parcel risk."
+    ]
+  },
+  {
+    "id": "land-owner-written-offer-followup",
+    "scope": "deals",
+    "label": "Written offer follow-up",
+    "channel": "SMS / Email / Mail",
+    "sourceTime": "YPqUHvSAZrU 26:28-29:40",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=1588",
+    "title": "Send a written offer and keep the 30-day follow-up alive",
+    "when": "Use after a qualified owner conversation where APN/owner/parcel facts are known enough to price.",
+    "body": "{{ownerFirstName}}, I reviewed the parcel and public records. Assuming clean title, correct APN, legal access, and my buyer side is comfortable after normal review, I could be around {{offerAmount}} net to you.\n\nI would cover normal closing costs, no agent fees if it is off-market, and we can close through title/escrow. If there is a number close enough around there, let us hop on a quick call and talk it through.",
+    "notes": [
+      "The source video says every seller conversation should get an offer or follow-up.",
+      "If the row is not qualified, send an APN/authority/proof clarification instead of a fake offer."
+    ]
+  },
+  {
+    "id": "land-tax-deed-auction-owner-opener",
+    "scope": "deals",
+    "label": "Tax auction owner opener",
+    "channel": "SMS / Call",
+    "sourceTime": "7u4FpBF6ao8 transcript lines 431-451",
+    "sourceUrl": "https://youtu.be/7u4FpBF6ao8",
+    "title": "Open with the upcoming auction pressure without sounding predatory",
+    "when": "Use only on source-backed tax deed / delinquent auction rows where the upcoming auction status is verified.",
+    "body": "Hello {{ownerFirstName}}, I noticed your land is scheduled for the upcoming {{county}} tax auction. What were your plans with it?\n\nIf you are open to selling before it goes that far, I may be able to pay the back taxes, cover normal closing costs, and put some cash in your pocket, subject to title, parcel, and buyer review.",
+    "notes": [
+      "The tax deed video stresses a separate CRM campaign for these owners.",
+      "Use only when auction status, county, parcel, and owner identity are verified from public sources."
+    ]
+  },
+  {
+    "id": "land-tax-deed-urgency-title-study",
+    "scope": "deals",
+    "label": "Auction urgency frame",
+    "channel": "Call / SMS",
+    "sourceTime": "7u4FpBF6ao8 transcript lines 388-418 / 580-597",
+    "sourceUrl": "https://youtu.be/7u4FpBF6ao8",
+    "title": "Explain why you need time before the auction date",
+    "when": "Use when an auction is less than a few weeks away and the owner asks why speed matters.",
+    "body": "Because the auction date is coming up, I need enough time for title/escrow to check the file, confirm the taxes and liens, and let my buyer side review the parcel. If we wait too close to the auction, there may not be enough time to close safely before the deadline.\n\nIf you want me to look at it, I need the APN or parcel link and your best net number today.",
+    "notes": [
+      "The source video recommends giving yourself at least two weeks where possible.",
+      "Do not promise to stop an auction unless closing logistics, title, and tax payoff timing are verified."
+    ]
+  },
+  {
+    "id": "land-owner-complete-call-skeleton",
+    "scope": "deals",
+    "label": "Complete owner call",
+    "channel": "Call",
+    "sourceTime": "YPqUHvSAZrU compiled from 03:10-29:40",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=190",
+    "title": "Full seller call skeleton for land owners",
+    "when": "Use as the full phone path once a land owner is live and willing to talk.",
+    "body": "Hey {{ownerFirstName}}, this is {{yourName}}. Thanks for getting back to me.\n\nSounds like I may have caught you in the middle of something. Is now okay for a few quick questions, or should I text you?\n\nI am looking at land around {{market}}, and I work with builders/investors who buy clean lots when the numbers make sense. I want to verify the parcel, understand what you are hoping to do, then check county/GIS records and see if there is a real number I can stand behind. If it is not a fit, no pressure.\n\n1. What is the APN or address/nearest road?\n2. Is this one parcel or multiple parcels?\n3. About how big is it?\n4. Are you the owner on title, or is it family, LLC, trust, or estate?\n5. Is it currently listed with an agent anywhere?\n6. Any known access, utility, flood, wetland, easement, HOA, or title issues?\n7. Any improvements like clearing, driveway, culvert, survey, perc, septic, well, water meter, electric, or plans?\n8. What has you open to selling now instead of holding it?\n9. Are you looking for top retail, or would a cleaner cash sale with less hassle matter more?\n10. If the number made sense, how soon would you want to close?\n11. If I could do cash, close in 2 to 3 weeks, cover normal closing costs, and keep it simple, what is the best net number you would seriously consider?\n12. How did you arrive at that number?\n\nGot it. I will verify the parcel and public records. If it fits, I will send you a real number. If we are close enough, let us hop on a quick call and talk it through.",
+    "notes": [
+      "This is the LandFlip-normalized version of the Joe McCall seller-call script bank.",
+      "Every offer is conditional on parcel identity, title, legal access, buyer fit, and buildability review."
+    ]
+  }
 ];

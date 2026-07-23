@@ -1029,7 +1029,7 @@ export function buildTopCallList({ parcels = [], buyers = [], limit = 20 } = {})
 
 export const TAX_DEED_OWNER_RUNWAY_HEADERS = [
   'leadId', 'state', 'county', 'market', 'ownerName', 'ownerPhone', 'ownerEmail', 'ownerMailingAddress',
-  'parcelId', 'propertyAddress', 'propertyUse', 'auctionDate', 'daysUntilAuction', 'runwayStage', 'priority',
+  'parcelId', 'propertyAddress', 'propertyUse', 'lotSize', 'auctionDate', 'daysUntilAuction', 'runwayStage', 'priority',
   'estimatedOpeningBid', 'taxDelinquencyAmount', 'sourceType', 'sourceUrl', 'countyPageUrl', 'sourceName', 'buyerFit', 'notes', 'nextAction'
 ];
 
@@ -1110,6 +1110,7 @@ export function buildTaxDeedOwnerRunway(rows = [], { today = new Date().toISOStr
       parcelId: row.parcelId || row.apn || '',
       propertyAddress: row.propertyAddress || row.address || '',
       propertyUse: row.propertyUse || row.landUse || row.useCode || 'vacant land pending proof',
+      lotSize: row.lotSize || row.acres || row.acreage || row.lotSizeAcres || '',
       auctionDate,
       daysUntilAuction,
       runwayStage,

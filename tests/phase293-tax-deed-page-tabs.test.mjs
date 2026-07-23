@@ -15,7 +15,7 @@ assert.match(app, /if \(view === 'buyers'\) return 'tax-deed'/, 'legacy #buyers 
 assert.match(app, /data-tax-deed-tab="buyers">Buyers<\/(?:button|a)>/, 'Tax deed page must expose a Buyers tab controller.');
 assert.match(app, /data-tax-deed-tab="owners">Owners<\/(?:button|a)>/, 'Tax deed page must expose an Owners tab controller.');
 assert.match(app, /data-tax-deed-tab-panel="buyers"[\s\S]{0,500}agent-airtable buyer-airtable/, 'Existing buyer list must live inside the Buyers tab panel.');
-assert.match(app, /data-tax-deed-tab-panel="owners"[\s\S]{0,260}No owner rows loaded yet/, 'Owners tab must be prepared but empty.');
+assert.match(app, /data-tax-deed-tab-panel="owners"[\s\S]{0,260}renderTaxDeedOwnerRunwayTable\(ownerRows\)/, 'Owners tab must render the loaded owner runway table.');
 assert.match(app, /scriptButton\('tax-deed', 'Scripts'\)/, 'Tax deed page must open the script drawer from its Scripts button.');
 assert.match(app, /'tax-deed': 'Tax deed scripts'/, 'Script drawer must label the new tax-deed scope.');
 assert.match(app, /startsWith\('land-tax-deed'\)/, 'Tax deed script drawer must include prior tax-deed owner scripts from Land-page research.');

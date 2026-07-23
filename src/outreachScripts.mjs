@@ -380,6 +380,38 @@ export const outreachScriptPacks = [
     ]
   },
   {
+    "id": "pa-upset-sale-owner-sms-straightforward-risk-aware",
+    "scope": "tax-deed",
+    "label": "PA upset-sale SMS",
+    "channel": "SMS",
+    "sourceTime": "PA/York upset-sale owner runway 2026-07-23",
+    "sourceUrl": "local://pennsylvania-upset-sale-vacant-owner-sourcing",
+    "title": "Straight PA upset-sale owner opener with risk-aware wording",
+    "when": "Use only after the York/PA tax-claim row, owner, parcel/APN, lot size, delinquent status, and lawful contact path are verified; do not use on raw public-owner rows without skip-trace/contact provenance.",
+    "body": "Hi {{ownerFirstName}}, I’m looking at the public tax-claim/parcel records for your vacant lot at {{propertyAddressOrApn}} in {{county}} County. Were you planning to catch up the taxes, sell it, or just let the county process run?\n\nIf selling is worth discussing, I can review the payoff, title/liens, lot access/utilities, and buyer fit and see if there’s a simple cash number that still leaves you better than letting it go. Open to a quick call?",
+    "notes": [
+      "Pennsylvania upset sales can be subject to mortgages, municipal claims, judgments, liens, and other encumbrances; do not say clean title or guarantee payoff solves everything.",
+      "Do not present tax-claim/vacant-screen candidates as scheduled auction lots until Tax Claim confirms sale eligibility and date.",
+      "Keep phone/email blank in the owner runway until verified by skip trace, public business/contact source, or owner response."
+    ]
+  },
+  {
+    "id": "pa-upset-sale-owner-email-simple-review",
+    "scope": "tax-deed",
+    "label": "PA upset-sale email",
+    "channel": "Email",
+    "sourceTime": "PA/York upset-sale owner runway 2026-07-23",
+    "sourceUrl": "local://pennsylvania-upset-sale-vacant-owner-sourcing",
+    "title": "Short PA upset-sale email: taxes, title risk, and simple sale",
+    "when": "Use after owner email is verified and the PA tax-claim/parcel facts have been checked against official county sources.",
+    "body": "Subject: {{propertyAddressOrApn}} - vacant lot question\n\nHi {{ownerFirstName}},\n\nI’m reaching out about the vacant lot tied to {{propertyAddressOrApn}} in {{county}} County. I saw it in public tax-claim/parcel records and wanted to ask directly: are you planning to catch up the taxes, sell the lot, or let the county process continue?\n\nIf you are open to selling, I can look at the tax payoff, title/liens, access/utilities, and buyer fit before giving you any number. Pennsylvania upset-sale files can have extra risks, so I would keep it straightforward and only move forward if the records check out.\n\nIf you want me to review it, reply with the best number to reach you and whether you are the person authorized to sell.\n\nThanks,\n{{yourName}}",
+    "notes": [
+      "Use verified email only; do not enrich or invent seller contacts inside active owner queues.",
+      "This copy is intentionally not foreclosure-rescue/legal-advice language; it asks for plans and offers a conditional review.",
+      "Require APN/property, authority to sell, payoff, title/liens, and buyer fit before any offer."
+    ]
+  },
+  {
     "id": "closing-feasibility-termination-email-clean",
     "scope": "closing",
     "label": "Clean feasibility termination",

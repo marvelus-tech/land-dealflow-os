@@ -76,7 +76,8 @@ import {
 } from './core.mjs?v=phase292-tax-deed-owner-runway';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint-phase287-contact-exhaustive-osint-phase288-county-permit-contact-phase293-tax-deed-page-tabs';
-import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts-phase290-closing-termination-drafts-phase293-tax-deed-page-tabs';
+import { pennsylvaniaYorkUpsetSaleOwnerRunway } from './taxDeedOwnerRunwayRows.mjs?v=phase294-pa-upset-sale-owner-runway-lot-size';
+import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts-phase290-closing-termination-drafts-phase293-tax-deed-page-tabs-phase294-pa-upset-sale-scripts';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -4526,13 +4527,64 @@ function renderExecutionConveyor(conveyor = {}) {
   </section>`;
 }
 
+function renderTaxDeedOwnerRunwayTable(runwayRows = []) {
+  const runway = buildTaxDeedOwnerRunway(runwayRows, { limit: 50 });
+  const rows = runway.rows.map((row, index) => {
+    const days = row.daysUntilAuction === null || row.daysUntilAuction === undefined ? 'Date needed' : `${row.daysUntilAuction}d`;
+    const sourceUrls = String(row.sourceUrls || '').split(';').map(url => url.trim()).filter(Boolean);
+    const proofLinks = [
+      row.sourceUrl ? safeLink(row.sourceUrl, 'Tax Claim', 'agent-source-link') : '',
+      row.countyPageUrl ? safeLink(row.countyPageUrl, 'Parcel/GIS', 'agent-source-link') : '',
+      sourceUrls.find(url => url.includes('DocumentCenter')) ? safeLink(sourceUrls.find(url => url.includes('DocumentCenter')), 'Claim PDF', 'agent-source-link') : '',
+    ].filter(Boolean).join(' ');
+    return `<tr data-tax-deed-owner-row="${h(row.leadId || row.parcelId || index)}">
+      <td class="agent-table-rank">${h(index + 1)}</td>
+      <td class="agent-table-person"><b>${h(row.ownerName || 'Owner pending')}</b><span>${h(row.ownerMailingAddress || 'mailing address pending')}</span></td>
+      <td><span class="agent-location-pill">${h(row.state || 'PA')}</span><small>${h(row.county || 'York')}</small></td>
+      <td class="agent-proof-cell"><span>${h(row.propertyAddress || 'Address pending')}</span><small>${h(row.parcelId || 'parcel pending')}</small></td>
+      <td class="agent-proof-cell buyer-lot-size-cell"><span>${h(row.lotSize || 'lot size pending')}</span><small>${h(row.propertyUse || 'vacant land proof pending')}</small></td>
+      <td class="agent-proof-cell"><span>${h(row.auctionDate || 'Confirm date')}</span><small>${h(days)} · ${h(row.runwayStage || 'date-needed')}</small></td>
+      <td><span class="muted">skip-trace</span></td>
+      <td><span class="muted">skip-trace</span></td>
+      <td class="agent-proof-cell"><span>${h(row.sourceType || 'official source')}</span><small>${h(row.buyerFit || row.nextAction || 'buyer fit pending')}</small></td>
+      <td class="agent-proof-cell"><span>${h(row.nextAction || 'Confirm sale status before outreach.')}</span><small>${h(row.notes || '')}</small></td>
+      <td class="agent-link-cell">${proofLinks || '<span class="muted">source needed</span>'}</td>
+    </tr>`;
+  }).join('');
+  return `<div class="tax-deed-owner-loaded phase294-pa-upset-sale-owner-runway" data-phase294-pa-upset-sale-owner-runway="lot-size-skiptrace-risk-script">
+    <div class="agent-summary-strip">
+      <div><b>${h(runway.stats.total)}</b><span>owner candidates</span></div>
+      <div><b>${h(runway.rows.filter(row => row.lotSize).length)}</b><span>lot sizes</span></div>
+      <div><b>${h(runway.stats.enrichNow)}</b><span>skip-trace/mail</span></div>
+      <div><b>${h(runway.stats.sourceBlocked)}</b><span>source blocked</span></div>
+    </div>
+    <div class="agent-call-script">
+      <strong>PA upset-sale caution</strong>
+      <p>York rows are tax-claim + vacant/no-building candidates. Before outreach, verify delinquent years, payoff, notices, sale eligibility, and sale date with Tax Claim. Pennsylvania upset-sale properties may remain subject to mortgages, municipal claims, judgments, liens, and other encumbrances.</p>
+    </div>
+    <div class="agent-table-shell" role="region" aria-label="Pennsylvania upset sale owner runway table" tabindex="0">
+      <table class="agent-airtable tax-deed-owner-airtable">
+        <thead><tr><th>#</th><th>Owner / mailing</th><th>Market</th><th>Parcel</th><th>Lot size / use</th><th>Auction runway</th><th>Phone</th><th>Email</th><th>Fit / source</th><th>Next / risk</th><th>Links</th></tr></thead>
+        <tbody>${rows || '<tr><td colspan="11">No owner rows loaded yet.</td></tr>'}</tbody>
+      </table>
+    </div>
+  </div>`;
+}
+
 function renderTaxDeedBuyerPanel() {
   const target = document.querySelector('#tax-deed-buyer-panel');
   if (!target) return;
   const buyers = asArray(leeCountyTaxDeedBuyers);
+  const ownerRows = buildTaxDeedOwnerRunway([
+    ...asArray(pennsylvaniaYorkUpsetSaleOwnerRunway),
+    ...asArray(workspace.taxDeedOwnerRunwayRows),
+  ], { limit: 100 }).allRows;
   const phones = buyers.filter(buyer => buyer.phone).length;
   const emails = buyers.filter(buyer => buyer.email).length;
-  const states = [...new Set(buyers.map(buyer => buyerLocation(buyer).state).filter(Boolean))];
+  const states = [...new Set([
+    ...buyers.map(buyer => buyerLocation(buyer).state),
+    ...ownerRows.map(row => row.state),
+  ].filter(Boolean))];
   const touched = buyers.filter(buyer => {
     const tracking = buyerTracking(buyerRecordId(buyer));
     return AGENT_TOUCH_CHANNELS.some(channel => tracking[channel]) || tracking.status !== 'not_started';
@@ -4579,12 +4631,12 @@ function renderTaxDeedBuyerPanel() {
 
   target.innerHTML = `<section class="agent-referral-board buyer-validation-board tax-deed-redesign-board phase283-tax-deed-buyer-page phase293-tax-deed-page-tabs" aria-label="Tax deed operating tracker">
     <div class="agent-hero">
-      <span class="eyebrow">Tax deed · Lee County, FL</span>
+      <span class="eyebrow">Tax deed · FL buyers + PA upset-sale owners</span>
       <h2>Tax deed command table.</h2>
-      <p><b>${h(buyers.length)} prior tax deed buyers.</b> Validate buyers now, then add source-backed delinquent owners only after auction, owner, parcel, county, and contact proof are verified.</p>
+      <p><b>${h(buyers.length)} prior tax deed buyers.</b> Validate buyers now, then work source-backed delinquent/upset-sale owner candidates with state-specific risk checks and verified contact provenance.</p>
       <div class="agent-summary-strip">
         <div><b>${h(buyers.length)}</b><span>buyer candidates</span></div>
-        <div><b>0</b><span>owners loaded</span></div>
+        <div><b>${h(ownerRows.length)}</b><span>owners loaded</span></div>
         <div><b>${h(phones)}</b><span>verified phones</span></div>
         <div><b>${h(emails)}</b><span>verified emails</span></div>
         <div><b>${h(touched)}</b><span>touched locally</span></div>
@@ -4596,7 +4648,7 @@ function renderTaxDeedBuyerPanel() {
       <div class="agent-filter-bar" aria-label="Tax deed market filters">
         <button type="button" class="is-active">All states</button>
         ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
-        <span>Florida tax deed buyers now; Owners is prepared for verified delinquent/tax-auction rows later.</span>
+        <span>Florida tax deed buyers plus Pennsylvania upset-sale owner candidates. Owner phone/email stays skip-trace until verified.</span>
       </div>
       ${scriptButton('tax-deed', 'Scripts')}
     </div>
@@ -4614,11 +4666,7 @@ function renderTaxDeedBuyerPanel() {
       </div>
     </div>
     <div class="tax-deed-tab-panel tax-deed-owner-empty" data-tax-deed-tab-panel="owners" ${ownersActive ? '' : 'hidden'}>
-      <div class="empty-state compact-empty-state">
-        <span class="eyebrow">Owners · prepared lane</span>
-        <h3>No owner rows loaded yet.</h3>
-        <p>This tab is intentionally empty until a verified tax deed owner source is imported. Required proof: county auction status, parcel/APN, owner identity, payoff timing, source URL, and contact provenance. Public owner records stay skip-trace/manual-review until phone or email is enriched.</p>
-      </div>
+      ${renderTaxDeedOwnerRunwayTable(ownerRows)}
     </div>
   </section>`;
 }

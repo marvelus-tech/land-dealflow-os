@@ -69,8 +69,11 @@ import {
   generateBuilderMarketingEmailTemplate,
   getSourceAdapterChecklist,
   getPermitPortalLandscape,
+  buildTaxDeedOwnerRunway,
+  parseTaxDeedOwnerRunwayImport,
+  exportTaxDeedOwnerRunwayCsv,
   formatMoney,
-} from './core.mjs?v=arcadia-buybox';
+} from './core.mjs?v=phase292-tax-deed-owner-runway';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint-phase287-contact-exhaustive-osint-phase288-county-permit-contact';
 import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts-phase290-closing-termination-drafts';
@@ -691,6 +694,7 @@ syncBuilderSelectionFromRoute();
 syncLandSelectionFromRoute();
 let lastBuilderSkipTraceImportStatus = '';
 let lastLandReconImportStatus = '';
+let lastTaxDeedOwnerRunwayStatus = '';
 let openMachinePanel = '';
 let cachedScoredParcels = null;
 let cachedDealsMarketEntries = null;
@@ -753,7 +757,7 @@ function loadWorkspace() {
   } catch (error) {
     console.warn('Could not load workspace', error);
   }
-  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [], builderUi: {} };
+  return { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [], builderUi: {}, taxDeedOwnerRunwayRows: [] };
 }
 
 function persistWorkspace() {
@@ -2134,6 +2138,54 @@ function renderLandReconImportPath() {
         <button type="button" id="import-land-recon-packet">Validate + append to Land</button>
         <span id="land-recon-import-status">${h(lastLandReconImportStatus || 'Waiting for a packet from a Land Recon subagent.')}</span>
       </div>
+    </div>
+  </section>`;
+}
+
+function renderTaxDeedOwnerRunwayConsole() {
+  const runway = buildTaxDeedOwnerRunway(workspace.taxDeedOwnerRunwayRows || [], { limit: 25 });
+  const rows = runway.rows.map((row, index) => {
+    const tone = row.runwayStage === 'work-now' ? 'good' : row.runwayStage === 'short-runway' || row.runwayStage === 'emergency' ? 'warn' : row.runwayStage === 'auction-passed' ? 'bad' : 'neutral';
+    const contact = row.ownerPhone || row.ownerEmail || row.ownerMailingAddress || 'contact enrichment needed';
+    const days = row.daysUntilAuction === null || row.daysUntilAuction === undefined ? 'date needed' : `${row.daysUntilAuction}d`;
+    return `<tr data-tax-deed-owner-runway-row="${h(row.leadId)}" class="is-${h(tone)}">
+      <td><b>${h(index + 1)}</b><span>${h(row.priority)}</span></td>
+      <td><strong>${h(row.ownerName || 'Owner pending')}</strong><small>${h(contact)}</small></td>
+      <td><b>${h(row.propertyAddress || row.parcelId || 'Parcel pending')}</b><small>${h([row.county, row.state].filter(Boolean).join(', '))}</small></td>
+      <td><strong>${h(days)}</strong><small>${h(row.auctionDate || 'auction date missing')} · ${h(row.runwayStage)}</small></td>
+      <td><span>${h(row.buyerFit || 'buyer fit pending')}</span><small>${h(row.nextAction)}</small></td>
+      <td>${row.sourceUrl ? safeLink(row.sourceUrl, 'Source', 'proof-inline-link') : '<span class="tax-deed-source-blocked">source needed</span>'}</td>
+    </tr>`;
+  }).join('');
+  const sampleCsv = [
+    'state,county,market,ownerName,ownerPhone,ownerEmail,ownerMailingAddress,parcelId,propertyAddress,propertyUse,auctionDate,estimatedOpeningBid,taxDelinquencyAmount,sourceType,sourceUrl,sourceName,buyerFit,notes',
+    'TN,Knox,Knoxville / Knox County,, , , ,PARCEL-ID-HERE,Vacant lot address here,vacant land,2026-09-15,,,,official auction calendar URL,County tax sale calendar,buyer box still pending,Replace this template row with verified public owner data'
+  ].join('\n');
+  return `<section class="tax-deed-owner-runway phase292-tax-deed-owner-runway" aria-label="Forward-looking tax deed owner runway console">
+    <div class="tax-deed-runway-head">
+      <span class="eyebrow">Land · pre-auction owner runway</span>
+      <h3>Build owner leads before the auction clock kills the deal.</h3>
+      <p>Paste future auction/calendar owner rows here. The console calculates days until auction, separates call-now from enrich-now, and keeps rows source-backed before outreach.</p>
+    </div>
+    <div class="tax-deed-runway-metrics">
+      <div><span>Owner rows</span><b>${h(runway.stats.total)}</b></div>
+      <div><span>Enough runway</span><b>${h(runway.stats.enoughRunway)}</b></div>
+      <div><span>Call now</span><b>${h(runway.stats.callNow)}</b></div>
+      <div><span>Enrich now</span><b>${h(runway.stats.enrichNow)}</b></div>
+      <div><span>Source blocked</span><b>${h(runway.stats.sourceBlocked)}</b></div>
+    </div>
+    <details class="tax-deed-runway-import" ${runway.stats.total ? '' : 'open'}>
+      <summary><span><b>Import future tax deed owner rows</b><em>JSON or CSV; no fabricated contacts</em></span><strong>Import</strong></summary>
+      <textarea id="tax-deed-owner-runway-input" rows="7" spellcheck="false" placeholder="${h(sampleCsv)}"></textarea>
+      <div class="tax-deed-runway-actions">
+        <button type="button" id="load-tax-deed-owner-runway-template">Load CSV template</button>
+        <button type="button" id="import-tax-deed-owner-runway">Store + rank owner runway</button>
+        <button type="button" id="export-tax-deed-owner-runway">Export call/enrichment sheet</button>
+        <span id="tax-deed-owner-runway-status">${h(lastTaxDeedOwnerRunwayStatus || 'Waiting for future auction owner rows.')}</span>
+      </div>
+    </details>
+    <div class="tax-deed-runway-table-shell" role="region" aria-label="Ranked future tax deed owner leads" tabindex="0">
+      <table><thead><tr><th>Rank</th><th>Owner/contact</th><th>Parcel</th><th>Auction runway</th><th>Buyer fit / next</th><th>Proof</th></tr></thead><tbody>${rows || '<tr><td colspan="6">No future auction-owner rows imported yet. Trigger the skill for a county, then paste/export the CSV here.</td></tr>'}</tbody></table>
     </div>
   </section>`;
 }
@@ -4728,18 +4780,19 @@ function renderParcels() {
   const landControls = renderLandControls();
   const agentIntakeGate = renderLandAgentIntakeGate();
   const landReconImportPath = renderLandReconImportPath();
+  const taxDeedOwnerRunwayConsole = renderTaxDeedOwnerRunwayConsole();
   const dallasProofSurface = renderDallasProofSprintSurface();
   const landSupportDrawer = renderLandSupportDrawer(agentIntakeGate, dallasProofSurface, landReconImportPath);
 
   if (selectedDealsMarketKey === 'all') {
     selectedParcelId = '';
-    target.innerHTML = landControls;
+    target.innerHTML = `${landControls}${taxDeedOwnerRunwayConsole}`;
     return;
   }
 
   if (selectedLandStateFilter === 'all') {
     selectedParcelId = '';
-    target.innerHTML = landControls;
+    target.innerHTML = `${landControls}${taxDeedOwnerRunwayConsole}`;
     return;
   }
 
@@ -4755,14 +4808,14 @@ function renderParcels() {
           <p class="deals-empty-why">The sheet opens only when you ask for it. Until then, the queue stays fast and scan-first.</p>
           <p class="deals-empty-next">${h(visible.length)} ${h(selectedLandStateFilter)} records · next: proof, contact, or buyer fit.</p>
         </article>
-      </div>${landSupportDrawer}`;
+      </div>${taxDeedOwnerRunwayConsole}${landSupportDrawer}`;
       return;
     }
     const emptyLaneLabel = selectedMarket ? (selectedMarket.marketLabel || selectedMarket.label) : 'This lane';
     const emptyLaneAction = selectedMarket && Number(selectedMarket.builderCount || 0) > 0
       ? 'Call three builders and capture the buy-box before importing public owner rows.'
       : 'Hold seller sourcing until a buyer signal or proof packet exists.';
-    target.innerHTML = `${landControls}${landSupportDrawer}<article class="deals-empty-state phase38-deals-empty phase258-lane-empty-mission" aria-label="Lane empty mission state">
+    target.innerHTML = `${landControls}${taxDeedOwnerRunwayConsole}${landSupportDrawer}<article class="deals-empty-state phase38-deals-empty phase258-lane-empty-mission" aria-label="Lane empty mission state">
       <span class="eyebrow">Lane mission control</span>
       <h3>${h(`${emptyLaneLabel} is intentionally quiet.`)}</h3>
       <p class="deals-empty-why"><b>Why empty:</b> ${h(selectedMarket ? 'This lane is intentionally quiet. This market is visible, but no public seller record currently clears buyer demand, reachable owner contact, and offer readiness. Zero rows is a control state, not a missing-data failure.' : 'This lane is intentionally quiet. No public seller record currently has buyer demand, reachable owner contact, and offer readiness at the same time.')}</p>
@@ -4933,7 +4986,7 @@ function renderParcels() {
       <div class="fit-stack">${fitRows.map(([label, title, detail]) => `<div class="fit-card"><span>${h(label)}</span><b>${h(title)}</b><p>${h(detail)}</p></div>`).join('')}</div>
       <div class="tags">${selected.reasons.map(r => badge(r, 'good')).join('')}${selected.flags.length ? selected.flags.map(f => badge(f, riskTone)).join('') : badge('clean first pass', 'good')}</div>
     </aside>
-  </div>${landSupportDrawer}`;
+  </div>${taxDeedOwnerRunwayConsole}${landSupportDrawer}`;
 }
 
 function renderParcelPropertySearchBoard() {
@@ -5877,6 +5930,50 @@ function bindEvents() {
       return;
     }
 
+    if (event.target.matches('#load-tax-deed-owner-runway-template')) {
+      event.preventDefault();
+      const input = document.querySelector('#tax-deed-owner-runway-input');
+      if (input) input.value = [
+        'state,county,market,ownerName,ownerPhone,ownerEmail,ownerMailingAddress,parcelId,propertyAddress,propertyUse,auctionDate,estimatedOpeningBid,taxDelinquencyAmount,sourceType,sourceUrl,sourceName,buyerFit,notes',
+        'TN,Knox,Knoxville / Knox County,,,,,PARCEL-ID-HERE,Vacant lot address here,vacant land,2026-09-15,,,,official auction calendar URL,County tax sale calendar,buyer box still pending,Replace this template row with verified public owner data'
+      ].join('\n');
+      return;
+    }
+
+    if (event.target.matches('#import-tax-deed-owner-runway')) {
+      event.preventDefault();
+      const input = document.querySelector('#tax-deed-owner-runway-input');
+      const status = document.querySelector('#tax-deed-owner-runway-status');
+      try {
+        const imported = parseTaxDeedOwnerRunwayImport(input?.value || '');
+        const existing = Array.isArray(workspace.taxDeedOwnerRunwayRows) ? workspace.taxDeedOwnerRunwayRows : [];
+        const byId = new Map(existing.map(row => [String(row.leadId || row.id || row.parcelId || row.propertyAddress || '').toLowerCase(), row]));
+        imported.forEach((row, index) => {
+          const key = String(row.leadId || row.id || row.parcelId || row.propertyAddress || `new-${Date.now()}-${index}`).toLowerCase();
+          byId.set(key, { ...(byId.get(key) || {}), ...row, leadId: row.leadId || row.id || row.parcelId || key });
+        });
+        workspace = { ...workspace, taxDeedOwnerRunwayRows: [...byId.values()] };
+        const runway = buildTaxDeedOwnerRunway(workspace.taxDeedOwnerRunwayRows || [], { limit: 25 });
+        lastTaxDeedOwnerRunwayStatus = `Stored ${imported.length} owner row${imported.length === 1 ? '' : 's'}; ${runway.stats.callNow} call-now, ${runway.stats.enrichNow} enrich-now, ${runway.stats.enoughRunway} with 21-75 day runway.`;
+        persistWorkspace();
+        if (status) status.textContent = lastTaxDeedOwnerRunwayStatus;
+        renderParcels();
+      } catch (error) {
+        lastTaxDeedOwnerRunwayStatus = `Owner runway import blocked: ${error.message}`;
+        if (status) status.textContent = lastTaxDeedOwnerRunwayStatus;
+      }
+      return;
+    }
+
+    if (event.target.matches('#export-tax-deed-owner-runway')) {
+      event.preventDefault();
+      const runway = buildTaxDeedOwnerRunway(workspace.taxDeedOwnerRunwayRows || [], { limit: 500 });
+      downloadText(`landflip-tax-deed-owner-runway-${todayIsoDate()}.csv`, exportTaxDeedOwnerRunwayCsv(runway.allRows));
+      lastTaxDeedOwnerRunwayStatus = `Exported ${runway.allRows.length} ranked owner runway row${runway.allRows.length === 1 ? '' : 's'}.`;
+      renderParcels();
+      return;
+    }
+
     if (event.target.matches('#import-land-recon-packet')) {
       event.preventDefault();
       const input = document.querySelector('#land-recon-packet-input');
@@ -6446,7 +6543,7 @@ ${body}`;
     }
 
     if (event.target.matches('#reset-workspace')) {
-      workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [] };
+      workspace = { markets: seedMarkets, buyers: seedBuyers, parcels: seedParcels, permitRecords: seedPermitRecords, permitBuilders: [], buyerValidations: [], taxDeedOwnerRunwayRows: [] };
       persistWorkspace();
       renderAll();
     }

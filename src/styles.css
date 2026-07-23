@@ -43114,3 +43114,32 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
   body[data-active-view="closing"] .deadline-entry-grid .deadline-notes { grid-column: auto; }
   body[data-active-view="closing"] .deadline-facts { grid-template-columns: 1fr; }
 }
+
+/* Phase 292 tax deed owner runway */
+.tax-deed-owner-runway { --phase292-tax-deed-owner-runway-rule: forward-looking-owner-list-before-auction; margin: 18px 0; padding: 18px; border: 1px solid rgba(17,22,17,.12); background: #fffef9; box-shadow: 0 10px 32px rgba(17,22,17,.07); }
+.tax-deed-runway-head { display: grid; gap: 6px; max-width: 980px; }
+.tax-deed-runway-head h3 { margin: 0; font-size: clamp(1.35rem, 2vw, 2rem); }
+.tax-deed-runway-head p { margin: 0; color: rgba(17,22,17,.68); }
+.tax-deed-runway-metrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; margin: 16px 0; border: 1px solid rgba(17,22,17,.1); background: rgba(17,22,17,.1); }
+.tax-deed-runway-metrics div { background: #fff; padding: 12px; display: grid; gap: 4px; }
+.tax-deed-runway-metrics span { color: rgba(17,22,17,.58); font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; }
+.tax-deed-runway-metrics b { font-size: 1.35rem; }
+.tax-deed-runway-import { border-top: 1px solid rgba(17,22,17,.12); border-bottom: 1px solid rgba(17,22,17,.12); padding: 12px 0; }
+.tax-deed-runway-import summary { cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tax-deed-runway-import summary span { display: grid; gap: 2px; }
+.tax-deed-runway-import summary em { color: rgba(17,22,17,.58); font-style: normal; }
+.tax-deed-runway-import textarea { width: 100%; margin-top: 12px; padding: 12px; border: 1px solid rgba(17,22,17,.16); background: #fff; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.tax-deed-runway-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; }
+.tax-deed-runway-actions span { color: rgba(17,22,17,.68); }
+.tax-deed-runway-table-shell { overflow-x: auto; margin-top: 14px; border: 1px solid rgba(17,22,17,.1); }
+.tax-deed-runway-table-shell table { width: 100%; border-collapse: collapse; min-width: 980px; background: #fff; }
+.tax-deed-runway-table-shell th, .tax-deed-runway-table-shell td { text-align: left; padding: 10px; border-bottom: 1px solid rgba(17,22,17,.08); vertical-align: top; }
+.tax-deed-runway-table-shell th { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(17,22,17,.58); background: #f7f4ec; }
+.tax-deed-runway-table-shell td { font-size: .9rem; }
+.tax-deed-runway-table-shell td strong, .tax-deed-runway-table-shell td b { display: block; }
+.tax-deed-runway-table-shell td small, .tax-deed-runway-table-shell td span { display: block; color: rgba(17,22,17,.62); }
+.tax-deed-runway-table-shell tr.is-good td:first-child { border-left: 4px solid #1f8a55; }
+.tax-deed-runway-table-shell tr.is-warn td:first-child { border-left: 4px solid #c77700; }
+.tax-deed-runway-table-shell tr.is-bad td:first-child { border-left: 4px solid #b42318; }
+.tax-deed-source-blocked { color: #b42318 !important; font-weight: 700; }
+@media (max-width: 780px) { .tax-deed-owner-runway { padding: 12px; } .tax-deed-runway-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tax-deed-runway-actions button { width: 100%; } }

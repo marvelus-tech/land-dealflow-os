@@ -353,6 +353,24 @@ function normalizeHeader(header) {
     crmstatus: 'crmStatus',
     next_follow_up: 'nextFollowUp',
     nextfollowup: 'nextFollowUp',
+    auction_date: 'auctionDate',
+    auctiondate: 'auctionDate',
+    sale_date: 'saleDate',
+    saledate: 'saleDate',
+    tax_sale_date: 'taxSaleDate',
+    taxsaledate: 'taxSaleDate',
+    deadline_date: 'deadlineDate',
+    deadlinedate: 'deadlineDate',
+    estimated_opening_bid: 'estimatedOpeningBid',
+    estimatedopeningbid: 'estimatedOpeningBid',
+    opening_bid: 'openingBid',
+    openingbid: 'openingBid',
+    property_address: 'propertyAddress',
+    propertyaddress: 'propertyAddress',
+    property_use: 'propertyUse',
+    propertyuse: 'propertyUse',
+    buyer_fit: 'buyerFit',
+    buyerfit: 'buyerFit',
     buyer_id: 'buyerId',
     buyerid: 'buyerId',
     lot_size: 'lotSize',
@@ -950,6 +968,7 @@ export function importWorkspace(serialized) {
     contractPackets: Array.isArray(parsed.contractPackets) ? parsed.contractPackets : [],
     contractStageStatus: parsed.contractStageStatus && typeof parsed.contractStageStatus === 'object' ? parsed.contractStageStatus : {},
     contractDeadlineLog: Array.isArray(parsed.contractDeadlineLog) ? parsed.contractDeadlineLog : [],
+    taxDeedOwnerRunwayRows: Array.isArray(parsed.taxDeedOwnerRunwayRows) ? parsed.taxDeedOwnerRunwayRows : [],
   };
 }
 
@@ -994,6 +1013,114 @@ export function buildTopCallList({ parcels = [], buyers = [], limit = 20 } = {})
     .sort((a, b) => b.score - a.score || b.metrics.spread - a.metrics.spread)
     .slice(0, limit)
     .map((parcel, index) => ({ ...parcel, callPriority: index + 1 }));
+}
+
+export const TAX_DEED_OWNER_RUNWAY_HEADERS = [
+  'leadId', 'state', 'county', 'market', 'ownerName', 'ownerPhone', 'ownerEmail', 'ownerMailingAddress',
+  'parcelId', 'propertyAddress', 'propertyUse', 'auctionDate', 'daysUntilAuction', 'runwayStage', 'priority',
+  'estimatedOpeningBid', 'taxDelinquencyAmount', 'sourceType', 'sourceUrl', 'sourceName', 'buyerFit', 'notes', 'nextAction'
+];
+
+function daysBetweenIso(startIso, endIso) {
+  if (!endIso) return null;
+  const start = new Date(`${String(startIso || new Date().toISOString()).slice(0, 10)}T00:00:00Z`);
+  const end = new Date(`${String(endIso).slice(0, 10)}T00:00:00Z`);
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) return null;
+  return Math.ceil((end.getTime() - start.getTime()) / 86400000);
+}
+
+export function buildTaxDeedOwnerRunway(rows = [], { today = new Date().toISOString(), minRunwayDays = 21, limit = 50 } = {}) {
+  const todayIso = String(today || new Date().toISOString()).slice(0, 10);
+  const normalized = (Array.isArray(rows) ? rows : []).map((row, index) => {
+    const auctionDate = row.auctionDate || row.saleDate || row.taxSaleDate || row.deadlineDate || '';
+    const daysUntilAuction = daysBetweenIso(todayIso, auctionDate);
+    const hasDirectContact = Boolean(row.ownerPhone || row.ownerEmail);
+    const sourceUrl = row.sourceUrl || row.sourceUrls || row.publicSource || row.contactSourceUrl || '';
+    const leadId = row.leadId || row.id || row.parcelId || `tax-deed-owner-${index + 1}`;
+    let runwayStage = 'date-needed';
+    let priority = 40;
+    let nextAction = 'Attach auction date and public source before outreach.';
+    if (daysUntilAuction !== null) {
+      if (daysUntilAuction < 0) {
+        runwayStage = 'auction-passed';
+        priority = 5;
+        nextAction = 'Archive from forward-looking owner queue; mine buyer history instead.';
+      } else if (daysUntilAuction < 7) {
+        runwayStage = 'emergency';
+        priority = hasDirectContact ? 92 : 58;
+        nextAction = hasDirectContact ? 'Call today; ask whether they want to stop the auction or sell cleanly.' : 'Too short for cold lead unless a lawful verified contact is already available.';
+      } else if (daysUntilAuction < minRunwayDays) {
+        runwayStage = 'short-runway';
+        priority = hasDirectContact ? 84 : 66;
+        nextAction = hasDirectContact ? 'Call now; confirm motivation, payoff timeline, and title risk.' : 'Enrich contact immediately; runway is short.';
+      } else if (daysUntilAuction <= 75) {
+        runwayStage = 'work-now';
+        priority = hasDirectContact ? 95 : 78;
+        nextAction = hasDirectContact ? 'Call now with buyer-backed pre-auction script.' : 'Skip trace or mail now; enough runway remains to negotiate before sale.';
+      } else {
+        runwayStage = 'watchlist';
+        priority = hasDirectContact ? 70 : 54;
+        nextAction = hasDirectContact ? 'Warm call after buyer box confirmation.' : 'Park for enrichment after nearer auctions.';
+      }
+    }
+    if (!sourceUrl) {
+      priority = Math.max(0, priority - 18);
+      nextAction = 'Attach official auction/parcel source URL before owner contact.';
+    }
+    return {
+      leadId,
+      state: row.state || row.marketState || '',
+      county: row.county || '',
+      market: row.market || row.marketName || '',
+      ownerName: row.ownerName || row.owner || '',
+      ownerPhone: row.ownerPhone || row.phone || '',
+      ownerEmail: row.ownerEmail || row.email || '',
+      ownerMailingAddress: row.ownerMailingAddress || row.mailingAddress || '',
+      parcelId: row.parcelId || row.apn || '',
+      propertyAddress: row.propertyAddress || row.address || '',
+      propertyUse: row.propertyUse || row.landUse || row.useCode || 'vacant land pending proof',
+      auctionDate,
+      daysUntilAuction,
+      runwayStage,
+      priority,
+      estimatedOpeningBid: row.estimatedOpeningBid || row.openingBid || row.winningBid || '',
+      taxDelinquencyAmount: row.taxDelinquencyAmount || row.delinquentAmount || row.amountDue || '',
+      sourceType: row.sourceType || 'auction-calendar-owner-record',
+      sourceUrl,
+      sourceName: row.sourceName || '',
+      buyerFit: row.buyerFit || row.buyerMatchReason || row.buyBox || '',
+      notes: row.notes || row.provenanceNotes || '',
+      nextAction,
+    };
+  });
+  const ranked = normalized.sort((a, b) => b.priority - a.priority || (a.daysUntilAuction ?? 9999) - (b.daysUntilAuction ?? 9999));
+  return {
+    rows: ranked.slice(0, limit),
+    allRows: ranked,
+    stats: {
+      total: normalized.length,
+      callNow: normalized.filter(row => row.nextAction.toLowerCase().includes('call')).length,
+      enrichNow: normalized.filter(row => /enrich|skip trace|mail/i.test(row.nextAction)).length,
+      enoughRunway: normalized.filter(row => Number(row.daysUntilAuction) >= minRunwayDays && Number(row.daysUntilAuction) <= 75).length,
+      sourceBlocked: normalized.filter(row => !row.sourceUrl).length,
+    },
+    generatedAt: todayIso,
+  };
+}
+
+export function parseTaxDeedOwnerRunwayImport(serialized) {
+  const text = String(serialized || '').trim();
+  if (!text) return [];
+  if (text.startsWith('{') || text.startsWith('[')) {
+    const parsed = JSON.parse(text);
+    if (Array.isArray(parsed)) return parsed;
+    return parsed.ownerRows || parsed.taxDeedOwnerRunwayRows || parsed.sellerRows || parsed.rows || [];
+  }
+  return parseCsvRecords(text);
+}
+
+export function exportTaxDeedOwnerRunwayCsv(rows = []) {
+  return [TAX_DEED_OWNER_RUNWAY_HEADERS.join(','), ...(rows || []).map(row => TAX_DEED_OWNER_RUNWAY_HEADERS.map(header => csvEscape(row[header])).join(','))].join('\n');
 }
 
 function addDays(dateValue, days) {

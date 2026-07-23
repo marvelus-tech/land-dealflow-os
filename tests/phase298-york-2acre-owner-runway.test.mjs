@@ -14,14 +14,17 @@ const acreNumber = row => {
   return match ? Number(match[1]) : 0;
 };
 
-assert.equal(pennsylvaniaYorkUpsetSaleOwnerRunway.length, 10, 'York PA public Tax-Deed owner runway must use the 10 qualifying 2+ acre rows, not the older sub-acre shortlist.');
-assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.every(row => row.state === 'PA' && row.county === 'York'), 'Every York 2+ acre row must be PA / York.');
-assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.every(row => acreNumber(row) >= 2), 'Every York row displayed in this public dataset must be at least 2 acres.');
+assert.equal(pennsylvaniaYorkUpsetSaleOwnerRunway.length, 30, 'York PA public Tax-Deed owner runway must show every collected lead, not hide the older sub-2-acre shortlist.');
+assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.every(row => row.state === 'PA' && row.county === 'York'), 'Every York row must be PA / York.');
+assert.equal(pennsylvaniaYorkUpsetSaleOwnerRunway.filter(row => acreNumber(row) < 2).length, 20, 'York row display must restore the 20 collected sub-2-acre leads.');
+assert.equal(pennsylvaniaYorkUpsetSaleOwnerRunway.filter(row => acreNumber(row) >= 2).length, 10, 'York row display must also preserve the 10 collected 2+ acre additions.');
 assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.every(row => row.ownerPhone === '' && row.ownerEmail === ''), 'York phones/emails must stay blank until verified; no skip-trace placeholder strings in app data.');
 assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.some(row => row.ownerName === 'U S HOME LLC' && acreNumber(row) >= 30), 'Large-acre York row must be visible.');
 assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.some(row => row.ownerName === 'MOWERY DANIEL B & HAILEY' && row.parcelId === '38-000-04-0013.00-00000'), 'Mowery 4.7 acre York row must be visible.');
+assert.ok(pennsylvaniaYorkUpsetSaleOwnerRunway.some(row => row.ownerName === 'LIPTAK NEAL R & CHRISTA W' && acreNumber(row) < 2), 'Original sub-2-acre York lead must be visible.');
 assert.doesNotMatch(app, /let activeTaxDeedTab = 'buyers'/, 'Tax-Deed route should not default to Buyers when the operator is looking for owner leads.');
 assert.match(app, /let activeTaxDeedTab = 'owners'/, 'Tax-Deed route should default to Owners so leads display without hunting.');
+assert.match(app, /all-collected owner candidates/, 'Tax-Deed hero must disclose that all collected owner rows remain visible, not only 2+ acre leads.');
 assert.match(app, /visible 2\+ acre leads/, 'Tax-Deed hero must expose the 2+ acre lead count.');
 assert.match(app, /phase298-york-2acre-owner-runway/, 'App module must carry the Phase 298 marker.');
 assert.match(css, /--phase298-york-2acre-owner-runway: pa-2acre-leads-visible-default-owners-tab/, 'CSS must include the Phase 298 marker.');

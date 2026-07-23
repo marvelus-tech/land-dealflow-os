@@ -4677,7 +4677,7 @@ function renderTaxDeedBuyerPanel() {
         <div class="tax-deed-mission-copy">
           <span class="eyebrow">Tax deed · auction telemetry</span>
           <h2>Tax deed mission control.</h2>
-          <p><b>${h(buyers.length)} proven buyer signals. ${h(ownerRows.length)} all-collected owner candidates. ${h(taxDeedRequiredPaymentCount(ownerRows))} posted amount-to-pay signals. ${h(twoAcreOwnerRows.length)} visible 2+ acre leads.</b> Work the page like a launch sequence: validate demand, verify every collected owner row, clear legal/risk gates, then contact only with provenance.</p>
+          <p><b>${h(buyers.length)} proven buyer signals. ${h(ownerRows.length)} all-collected owner candidates. ${h(taxDeedRequiredPaymentCount(ownerRows))} posted amount-to-pay signals. ${h(twoAcreOwnerRows.length)} visible 2+ acre leads.</b> Work the page like a launch sequence: validate demand, verify owner runway, clear legal/risk gates, then contact only with provenance; every collected owner row stays visible.</p>
         </div>
         <div class="tax-deed-countdown" aria-label="Tax deed operating sequence">
           <b>Sequence</b>

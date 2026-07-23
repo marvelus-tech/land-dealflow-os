@@ -2163,12 +2163,12 @@ function renderTaxDeedOwnerRunwayConsole() {
       <td><b>${h(row.propertyAddress || row.parcelId || 'Parcel pending')}</b><small>${h([row.county, row.state].filter(Boolean).join(', '))}</small></td>
       <td><strong>${h(days)}</strong><small>${h(row.auctionDate || 'auction date missing')} · ${h(row.runwayStage)}</small></td>
       <td><span>${h(row.buyerFit || 'buyer fit pending')}</span><small>${h(row.nextAction)}</small></td>
-      <td>${row.sourceUrl ? safeLink(row.sourceUrl, 'Source', 'proof-inline-link') : '<span class="tax-deed-source-blocked">source needed</span>'}</td>
+      <td>${[row.countyPageUrl ? safeLink(row.countyPageUrl, 'County page', 'proof-inline-link') : '', row.sourceUrl ? safeLink(row.sourceUrl, 'Auction source', 'proof-inline-link') : ''].filter(Boolean).join(' ') || '<span class="tax-deed-source-blocked">source needed</span>'}</td>
     </tr>`;
   }).join('');
   const sampleCsv = [
-    'state,county,market,ownerName,ownerPhone,ownerEmail,ownerMailingAddress,parcelId,propertyAddress,propertyUse,auctionDate,estimatedOpeningBid,taxDelinquencyAmount,sourceType,sourceUrl,sourceName,buyerFit,notes',
-    'TN,Knox,Knoxville / Knox County,, , , ,PARCEL-ID-HERE,Vacant lot address here,vacant land,2026-09-15,,,,official auction calendar URL,County tax sale calendar,buyer box still pending,Replace this template row with verified public owner data'
+    'state,county,market,ownerName,ownerPhone,ownerEmail,ownerMailingAddress,parcelId,propertyAddress,propertyUse,auctionDate,estimatedOpeningBid,taxDelinquencyAmount,sourceType,sourceUrl,countyPageUrl,sourceName,buyerFit,notes',
+    'TN,Knox,Knoxville / Knox County,, , , ,PARCEL-ID-HERE,Vacant lot address here,vacant land,2026-09-15,,,,official auction calendar URL,official county parcel/GIS URL,County tax sale calendar,buyer box still pending,Replace this template row with verified public owner data'
   ].join('\n');
   return `<section class="tax-deed-owner-runway phase292-tax-deed-owner-runway" aria-label="Forward-looking tax deed owner runway console">
     <div class="tax-deed-runway-head">
@@ -5966,8 +5966,8 @@ function bindEvents() {
       event.preventDefault();
       const input = document.querySelector('#tax-deed-owner-runway-input');
       if (input) input.value = [
-        'state,county,market,ownerName,ownerPhone,ownerEmail,ownerMailingAddress,parcelId,propertyAddress,propertyUse,auctionDate,estimatedOpeningBid,taxDelinquencyAmount,sourceType,sourceUrl,sourceName,buyerFit,notes',
-        'TN,Knox,Knoxville / Knox County,,,,,PARCEL-ID-HERE,Vacant lot address here,vacant land,2026-09-15,,,,official auction calendar URL,County tax sale calendar,buyer box still pending,Replace this template row with verified public owner data'
+        'state,county,market,ownerName,ownerPhone,ownerEmail,ownerMailingAddress,parcelId,propertyAddress,propertyUse,auctionDate,estimatedOpeningBid,taxDelinquencyAmount,sourceType,sourceUrl,countyPageUrl,sourceName,buyerFit,notes',
+        'TN,Knox,Knoxville / Knox County,,,,,PARCEL-ID-HERE,Vacant lot address here,vacant land,2026-09-15,,,,official auction calendar URL,official county parcel/GIS URL,County tax sale calendar,buyer box still pending,Replace this template row with verified public owner data'
       ].join('\n');
       return;
     }

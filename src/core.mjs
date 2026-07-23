@@ -434,6 +434,18 @@ function normalizeHeader(header) {
     sourceurls: 'sourceUrls',
     public_source: 'publicSource',
     publicsource: 'publicSource',
+    county_page_url: 'countyPageUrl',
+    countypageurl: 'countyPageUrl',
+    parcel_url: 'parcelUrl',
+    parcelurl: 'parcelUrl',
+    parcel_detail_url: 'parcelDetailUrl',
+    parceldetailurl: 'parcelDetailUrl',
+    assessor_url: 'assessorUrl',
+    assessorurl: 'assessorUrl',
+    gis_url: 'gisUrl',
+    gisurl: 'gisUrl',
+    official_parcel_url: 'officialParcelUrl',
+    officialparcelurl: 'officialParcelUrl',
     source_name: 'sourceName',
     sourcename: 'sourceName',
     source_type: 'sourceType',
@@ -1018,7 +1030,7 @@ export function buildTopCallList({ parcels = [], buyers = [], limit = 20 } = {})
 export const TAX_DEED_OWNER_RUNWAY_HEADERS = [
   'leadId', 'state', 'county', 'market', 'ownerName', 'ownerPhone', 'ownerEmail', 'ownerMailingAddress',
   'parcelId', 'propertyAddress', 'propertyUse', 'auctionDate', 'daysUntilAuction', 'runwayStage', 'priority',
-  'estimatedOpeningBid', 'taxDelinquencyAmount', 'sourceType', 'sourceUrl', 'sourceName', 'buyerFit', 'notes', 'nextAction'
+  'estimatedOpeningBid', 'taxDelinquencyAmount', 'sourceType', 'sourceUrl', 'countyPageUrl', 'sourceName', 'buyerFit', 'notes', 'nextAction'
 ];
 
 function daysBetweenIso(startIso, endIso) {
@@ -1054,6 +1066,7 @@ export function buildTaxDeedOwnerRunway(rows = [], { today = new Date().toISOStr
     const daysUntilAuction = daysBetweenIso(todayIso, auctionDate);
     const hasDirectContact = Boolean(row.ownerPhone || row.ownerEmail);
     const sourceUrl = row.sourceUrl || row.sourceUrls || row.publicSource || row.contactSourceUrl || '';
+    const countyPageUrl = row.countyPageUrl || row.parcelUrl || row.parcelDetailUrl || row.officialParcelUrl || row.assessorUrl || row.gisUrl || row.taxUrl || row.publicParcelUrl || '';
     const leadId = row.leadId || row.id || row.parcelId || `tax-deed-owner-${index + 1}`;
     let runwayStage = 'date-needed';
     let priority = 40;
@@ -1105,6 +1118,7 @@ export function buildTaxDeedOwnerRunway(rows = [], { today = new Date().toISOStr
       taxDelinquencyAmount: row.taxDelinquencyAmount || row.delinquentAmount || row.amountDue || '',
       sourceType: row.sourceType || 'auction-calendar-owner-record',
       sourceUrl,
+      countyPageUrl,
       sourceName: row.sourceName || '',
       buyerFit: row.buyerFit || row.buyerMatchReason || row.buyBox || '',
       notes: row.notes || row.provenanceNotes || '',

@@ -72,7 +72,7 @@ import {
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint-phase287-contact-exhaustive-osint-phase288-county-permit-contact';
-import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts';
+import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 

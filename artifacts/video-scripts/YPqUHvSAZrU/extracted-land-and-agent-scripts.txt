@@ -1,0 +1,88 @@
+# Extracted land + realtor-agent scripts — YPqUHvSAZrU
+
+Source video: https://youtu.be/YPqUHvSAZrU
+Transcript artifacts:
+- transcript.clean.timestamped.txt
+- transcript.clean.json
+
+Extraction rules:
+- Exclude seller-finance scripts for now.
+- Exclude scripts related only to homes/houses.
+- Include realtor/agent scripts under the Agents page scope.
+- Include land-owner/seller scripts under the Land page scope.
+- Normalize transcript language into LandFlip-safe templates: no fake buyer certainty, no hidden buy-box disclosure, no unverified title/access/buildability claims.
+
+## Agent page scripts
+
+### Resale price reality check
+- Scope: agents
+- Channel: Call
+- Source time: 16:21-16:58
+- Use when: a land Realtor is defending a high listed/agent-presented lot price and we need local resale truth without insulting the seller.
+
+Script:
+I am looking for an agent who can help me buy land in {{market}} and then sell it again cleanly. If you were helping me buy this lot and then relist it, what price would I need to buy it at so you could realistically sell it again?
+
+I am open to paying a strong land commission if you can help me move it, but I need the buy price to make sense for the current market.
+
+### Fair price check
+- Scope: agents
+- Channel: Call
+- Source time: 16:00-16:28
+- Use when: an agent is defending a land listing price and we need market-based pushback without sounding combative.
+
+Script:
+Do you think that is a fair price for this market right now?
+
+If I bought it there, what would you expect we could realistically resell it for, and how long do you think that would take? I am not trying to beat anyone up; I just need the project math to be real.
+
+### Would seller entertain it?
+- Scope: agents
+- Channel: Call / Email
+- Source time: 10:44-11:22
+- Use when: internal comping produces a specific land offer and the property is listed or agent-controlled.
+
+Script:
+I may be off, and I do not want to waste your time. Based on the land comps and what I would need to make the project work, I would probably be around {{offerAmount}}.
+
+Do you think the seller would entertain something in that neighborhood, or is that too far away to even put in front of them?
+
+## Land page scripts
+
+### Why not retail?
+- Scope: deals
+- Channel: Call / SMS
+- Source time: 07:30-07:57 / 15:58-16:08
+- Use when: an owner says the lot is worth retail or gives a high number, before arguing comps.
+
+Script:
+It sounds like a nice lot. Help me understand: why not list it with a Realtor and try for the highest retail price?
+
+If speed, privacy, or a simpler off-market sale matters more, I can look at it through that lens. If top retail is the main goal, listing may honestly be the better path.
+
+### Other lots + hidden facts
+- Scope: deals
+- Channel: Call / SMS
+- Source time: 14:12-14:30
+- Use when: near the end of land-owner discovery before pricing or follow-up.
+
+Script:
+Is it currently listed with a Realtor anywhere? If it is, I want to handle it the right way.
+
+Do you have any other lots you are thinking about selling? And is there anything about this property I should know before I price it: access, utilities, flood, wetlands, HOA, liens, title, or anything unusual?
+
+## Existing YPqUHvSAZrU Land page scripts preserved
+
+The app already carried these YPqUHvSAZrU land-owner scripts and they remain in the Land page drawer:
+- land-owner-permission-agenda-opener
+- land-owner-still-available-sms
+- land-owner-parcel-identity-check
+- land-owner-motivation-route-questions
+- land-owner-net-price-discovery
+- land-owner-low-offer-objection
+- land-owner-written-offer-followup
+- land-owner-complete-call-skeleton
+
+Excluded now:
+- land-owner-terms-pivot / seller-finance pitch from the video.
+- Any home/house-only script language.

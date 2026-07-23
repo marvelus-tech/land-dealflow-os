@@ -137,6 +137,52 @@ export const outreachScriptPacks = [
     ]
   }
 ,
+
+  {
+    "id": "agent-land-resale-price-reality-check",
+    "scope": "agents",
+    "label": "Resale price reality check",
+    "channel": "Call",
+    "sourceTime": "YPqUHvSAZrU 16:21-16:58",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=981",
+    "title": "Ask the agent what buy price would let them resell the land",
+    "when": "Use with land Realtors when a listed/agent-presented lot is priced high and you need the local resale truth without insulting the seller.",
+    "body": "I am looking for an agent who can help me buy land in {{market}} and then sell it again cleanly. If you were helping me buy this lot and then relist it, what price would I need to buy it at so you could realistically sell it again?\n\nI am open to paying a strong land commission if you can help me move it, but I need the buy price to make sense for the current market.",
+    "notes": [
+      "Use only for land/lots, not houses.",
+      "The transcript frames this as getting the Realtor to tell the truth about resale price instead of arguing their list price."
+    ]
+  },
+  {
+    "id": "agent-is-price-fair-market-check",
+    "scope": "agents",
+    "label": "Fair price check",
+    "channel": "Call",
+    "sourceTime": "YPqUHvSAZrU 16:00-16:28",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=960",
+    "title": "Ask if the listed land price is fair in this market",
+    "when": "Use when an agent is defending a land listing price and you need market-based pushback without sounding combative.",
+    "body": "Do you think that is a fair price for this market right now?\n\nIf I bought it there, what would you expect we could realistically resell it for, and how long do you think that would take? I am not trying to beat anyone up; I just need the project math to be real.",
+    "notes": [
+      "Works best after you have recent land sales or active listing context.",
+      "Keep it consultative; do not expose buyer max or assignment spread."
+    ]
+  },
+  {
+    "id": "agent-offer-presentation-check",
+    "scope": "agents",
+    "label": "Would seller entertain it?",
+    "channel": "Call / Email",
+    "sourceTime": "YPqUHvSAZrU 10:44-11:22",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=644",
+    "title": "Ask the agent whether a land offer is worth presenting",
+    "when": "Use after internal comping produces a specific land offer and the property is listed or agent-controlled.",
+    "body": "I may be off, and I do not want to waste your time. Based on the land comps and what I would need to make the project work, I would probably be around {{offerAmount}}.\n\nDo you think the seller would entertain something in that neighborhood, or is that too far away to even put in front of them?",
+    "notes": [
+      "The transcript uses a deliberately humble frame before naming a lower offer.",
+      "Do not use this as a luxury-property lowball. On premium lots, the number should be slightly under realistic retail, not commodity wholesale."
+    ]
+  },
   {
     "id": "land-owner-permission-agenda-opener",
     "scope": "deals",
@@ -227,19 +273,35 @@ export const outreachScriptPacks = [
       "If you do not know the answer to a concern, say you will verify it instead of making one up."
     ]
   },
+
   {
-    "id": "land-owner-terms-pivot",
+    "id": "land-owner-why-not-retail-route",
     "scope": "deals",
-    "label": "Terms/payment pivot",
+    "label": "Why not retail?",
     "channel": "Call / SMS",
-    "sourceTime": "YPqUHvSAZrU 19:30-21:40",
-    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=1170",
-    "title": "Offer a higher headline number only if payments make sense",
-    "when": "Use when cash is too low for the owner but the parcel may support a terms structure.",
-    "body": "If your main goal is the highest number, cash may not be the best structure because cash buyers need a discount. Would you consider a higher price paid over time if the paperwork protected both sides?\n\nIn plain English, you would be the bank. I would make payments to you over time instead of paying one lower cash number today. Is that something you would even consider, or do you only want cash?",
+    "sourceTime": "YPqUHvSAZrU 07:30-07:57 / 15:58-16:08",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=450",
+    "title": "Ask why the owner wants a direct sale instead of listing for retail",
+    "when": "Use when the owner says the lot is worth retail or gives a high number, before arguing comps.",
+    "body": "It sounds like a nice lot. Help me understand: why not list it with a Realtor and try for the highest retail price?\n\nIf speed, privacy, or a simpler off-market sale matters more, I can look at it through that lens. If top retail is the main goal, listing may honestly be the better path.",
     "notes": [
-      "Use only after legal/title structure and buyer demand make sense.",
-      "Do not use terms to hide weak cash math or bad parcel risk."
+      "The video frames seller calls as diagnosis, not pitch pressure.",
+      "This supports premium/luxury posture: do not punish high numbers; discover whether the seller wants retail or simplicity."
+    ]
+  },
+  {
+    "id": "land-owner-other-lots-and-facts",
+    "scope": "deals",
+    "label": "Other lots + hidden facts",
+    "channel": "Call / SMS",
+    "sourceTime": "YPqUHvSAZrU 14:12-14:30",
+    "sourceUrl": "https://youtu.be/YPqUHvSAZrU?t=852",
+    "title": "Ask for listing status, other lots, and undisclosed land facts",
+    "when": "Use near the end of land-owner discovery before pricing or follow-up.",
+    "body": "Is it currently listed with a Realtor anywhere? If it is, I want to handle it the right way.\n\nDo you have any other lots you are thinking about selling? And is there anything about this property I should know before I price it: access, utilities, flood, wetlands, HOA, liens, title, or anything unusual?",
+    "notes": [
+      "Source video specifically calls out asking whether it is listed, whether they have other lots, and what else the operator needs to know.",
+      "Do not bypass an active listing relationship."
     ]
   },
   {

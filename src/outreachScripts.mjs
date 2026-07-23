@@ -365,6 +365,21 @@ export const outreachScriptPacks = [
     ]
   },
   {
+    "id": "tax-deed-owner-redeem-sell-let-go-opener",
+    "scope": "tax-deed",
+    "label": "Owner redeem/sell opener",
+    "channel": "Call / SMS",
+    "sourceTime": "User-supplied tax deed owner script 2026-07-23",
+    "sourceUrl": "local://user-provided-tax-deed-page-redesign",
+    "title": "Ask the owner whether they plan to redeem, sell, or let the auction happen",
+    "when": "Use only on verified tax deed auction owner rows with source-backed county, parcel/APN, owner identity, auction date/status, and payoff/title review pending.",
+    "body": "Hey [Name], I saw your lot is scheduled for an upcoming tax deed auction in [County]. Were you planning to redeem it, sell it, or let it go?\n\nI may be able to pay the back taxes through closing and put some cash in your pocket before the auction date. I’d just need to verify the payoff, title, and whether my buyer side is comfortable with the lot. Are you open to a quick call?",
+    "notes": [
+      "Do not claim the auction can be stopped until payoff, title, closing timing, and county process are verified.",
+      "Do not start seller outreach from public owner records until contact provenance is enriched."
+    ]
+  },
+  {
     "id": "closing-feasibility-termination-email-clean",
     "scope": "closing",
     "label": "Clean feasibility termination",

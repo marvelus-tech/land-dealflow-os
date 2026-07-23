@@ -43143,3 +43143,43 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
 .tax-deed-runway-table-shell tr.is-bad td:first-child { border-left: 4px solid #b42318; }
 .tax-deed-source-blocked { color: #b42318 !important; font-weight: 700; }
 @media (max-width: 780px) { .tax-deed-owner-runway { padding: 12px; } .tax-deed-runway-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tax-deed-runway-actions button { width: 100%; } }
+
+
+:root { --phase293-tax-deed-page-tabs: tax-deed-buyers-owners-script-drawer; }
+.tax-deed-tab-controller {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(17, 22, 17, .12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .72);
+  margin: 12px 0;
+}
+.tax-deed-tab-controller [role="tab"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0 !important;
+  background: transparent;
+  color: #394238;
+  font-weight: 760;
+  min-height: 38px;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+.tax-deed-tab-controller [role="tab"].is-active {
+  background: #111611;
+  color: #fff;
+}
+.tax-deed-tab-panel[hidden] { display: none !important; }
+.tax-deed-owner-empty .empty-state {
+  border: 1px solid rgba(17, 22, 17, .12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .82);
+  padding: clamp(20px, 4vw, 34px);
+}
+@media (max-width: 640px) {
+  .tax-deed-tab-controller { width: 100%; }
+}

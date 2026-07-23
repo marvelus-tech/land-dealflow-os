@@ -75,8 +75,8 @@ import {
   formatMoney,
 } from './core.mjs?v=phase292-tax-deed-owner-runway';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
-import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint-phase287-contact-exhaustive-osint-phase288-county-permit-contact';
-import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts-phase290-closing-termination-drafts';
+import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint-phase287-contact-exhaustive-osint-phase288-county-permit-contact-phase293-tax-deed-page-tabs';
+import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts-phase290-closing-termination-drafts-phase293-tax-deed-page-tabs';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -633,6 +633,7 @@ let selectedDealsMarketKey = 'all';
 let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
 let openScriptScope = '';
+let activeTaxDeedTab = 'buyers';
 
 function syncBuilderSelectionFromRoute(hash = location.hash) {
   const route = builderRouteSelectionFromHash(hash);
@@ -701,7 +702,7 @@ let cachedDealsMarketEntries = null;
 let cachedLandStateOptions = null;
 let cachedBuilderSwitchboardEntries = null;
 let builderPanelRenderSequence = 0;
-const validViews = new Set(['today', 'deals', 'builders', 'buyers', 'agents', 'closing', 'sources', 'machine']);
+const validViews = new Set(['today', 'deals', 'builders', 'tax-deed', 'agents', 'closing', 'sources', 'machine']);
 const AGENT_STATUS_OPTIONS = [
   { value: 'not_started', label: 'Not started' },
   { value: 'called', label: 'Called' },
@@ -732,6 +733,7 @@ function hashToParts(hash = location.hash) {
 
 function hashToView(hash = location.hash) {
   const view = hashToParts(hash)[0] || 'today';
+  if (view === 'buyers') return 'tax-deed';
   return validViews.has(view) ? view : '';
 }
 
@@ -1008,11 +1010,18 @@ function renderAppShell() {
 }
 
 function scriptScopeLabel(scope = '') {
-  return ({ buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts', deals: 'Land owner scripts', closing: 'Closing termination drafts' }[scope] || 'Scripts');
+  return ({ 'tax-deed': 'Tax deed scripts', buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts', deals: 'Land owner scripts', closing: 'Closing termination drafts' }[scope] || 'Scripts');
 }
 
 function scriptsForScope(scope = activeView) {
-  return asArray(outreachScriptPacks).filter(script => script.scope === scope);
+  const normalizedScope = scope === 'buyers' ? 'tax-deed' : scope;
+  if (normalizedScope === 'tax-deed') {
+    const scopeRank = { 'tax-deed': 0, deals: 1, buyers: 2, agents: 3 };
+    return asArray(outreachScriptPacks)
+      .filter(script => ['tax-deed', 'buyers', 'agents'].includes(script.scope) || (script.scope === 'deals' && String(script.id || '').startsWith('land-tax-deed')))
+      .sort((a, b) => (scopeRank[a.scope] ?? 9) - (scopeRank[b.scope] ?? 9));
+  }
+  return asArray(outreachScriptPacks).filter(script => script.scope === normalizedScope);
 }
 
 function scriptButton(scope = activeView, label = 'Scripts') {
@@ -4565,39 +4574,53 @@ function renderTaxDeedBuyerPanel() {
       </td>
     </tr>`;
   }).join('');
+  const ownersActive = activeTaxDeedTab === 'owners';
 
-  target.innerHTML = `<section class="agent-referral-board buyer-validation-board phase283-tax-deed-buyer-page" aria-label="Lee County tax deed buyer tracker">
+  target.innerHTML = `<section class="agent-referral-board buyer-validation-board tax-deed-redesign-board phase283-tax-deed-buyer-page phase293-tax-deed-page-tabs" aria-label="Tax deed operating tracker">
     <div class="agent-hero">
-      <span class="eyebrow">Buyers · Tax deed · Lee County, FL</span>
-      <h2>Tax deed buyer validation table.</h2>
-      <p><b>${h(buyers.length)} prior tax deed buyers.</b> Track call, email, SMS, mail, and validation status before treating any row as an active buyer. This lane is built to expand by state and county.</p>
+      <span class="eyebrow">Tax deed · Lee County, FL</span>
+      <h2>Tax deed command table.</h2>
+      <p><b>${h(buyers.length)} prior tax deed buyers.</b> Validate buyers now, then add source-backed delinquent owners only after auction, owner, parcel, county, and contact proof are verified.</p>
       <div class="agent-summary-strip">
         <div><b>${h(buyers.length)}</b><span>buyer candidates</span></div>
+        <div><b>0</b><span>owners loaded</span></div>
         <div><b>${h(phones)}</b><span>verified phones</span></div>
         <div><b>${h(emails)}</b><span>verified emails</span></div>
         <div><b>${h(touched)}</b><span>touched locally</span></div>
-        <div><b>${h(states.join(', ') || 'FL')}</b><span>state filter seed</span></div>
       </div>
-      <div class="agent-filter-bar" aria-label="Tax deed buyer market filters">
+      <div class="tax-deed-tab-controller" role="tablist" aria-label="Tax deed lanes">
+        <a href="#tax-deed" role="tab" class="${ownersActive ? '' : 'is-active'}" aria-selected="${ownersActive ? 'false' : 'true'}" data-tax-deed-tab="buyers">Buyers</a>
+        <a href="#tax-deed" role="tab" class="${ownersActive ? 'is-active' : ''}" aria-selected="${ownersActive ? 'true' : 'false'}" data-tax-deed-tab="owners">Owners</a>
+      </div>
+      <div class="agent-filter-bar" aria-label="Tax deed market filters">
         <button type="button" class="is-active">All states</button>
         ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
-        <span>Florida tax deed buyers now; later: Marion, Polk, Charlotte, Citrus, then other states.</span>
+        <span>Florida tax deed buyers now; Owners is prepared for verified delinquent/tax-auction rows later.</span>
       </div>
-      ${scriptButton('buyers', 'Scripts')}
+      ${scriptButton('tax-deed', 'Scripts')}
     </div>
     <div class="agent-call-script">
-      <strong>Opener</strong>
-      <p>Hey {{buyerName}}, I saw your Lee County tax deed activity. I source vacant land and tax-deed-adjacent deals. Are you still buying Lee County lots, and what price/area rules should I know before sending anything?</p>
+      <strong>Owner opener</strong>
+      <p>Hey [Name], I saw your lot is scheduled for an upcoming tax deed auction in [County]. Were you planning to redeem it, sell it, or let it go?</p>
+      <p>I may be able to pay the back taxes through closing and put some cash in your pocket before the auction date. I’d just need to verify the payoff, title, and whether my buyer side is comfortable with the lot. Are you open to a quick call?</p>
     </div>
-    <div class="agent-table-shell" role="region" aria-label="Tax deed buyer outreach tracking table" tabindex="0">
-      <table class="agent-airtable buyer-airtable">
-        <thead><tr><th>#</th><th>Buyer / type</th><th>Location</th><th>Bid proof</th><th>Lot size</th><th>Phone</th><th>Email</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
+    <div class="tax-deed-tab-panel" data-tax-deed-tab-panel="buyers" ${ownersActive ? 'hidden' : ''}>
+      <div class="agent-table-shell" role="region" aria-label="Tax deed buyer outreach tracking table" tabindex="0">
+        <table class="agent-airtable buyer-airtable">
+          <thead><tr><th>#</th><th>Buyer / type</th><th>Location</th><th>Bid proof</th><th>Lot size</th><th>Phone</th><th>Email</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="tax-deed-tab-panel tax-deed-owner-empty" data-tax-deed-tab-panel="owners" ${ownersActive ? '' : 'hidden'}>
+      <div class="empty-state compact-empty-state">
+        <span class="eyebrow">Owners · prepared lane</span>
+        <h3>No owner rows loaded yet.</h3>
+        <p>This tab is intentionally empty until a verified tax deed owner source is imported. Required proof: county auction status, parcel/APN, owner identity, payoff timing, source URL, and contact provenance. Public owner records stay skip-trace/manual-review until phone or email is enriched.</p>
+      </div>
     </div>
   </section>`;
 }
-
 function renderAgentReferralPanel() {
   const target = document.querySelector('#agent-referral-panel');
   if (!target) return;
@@ -5784,6 +5807,14 @@ function bindEvents() {
       return;
     }
 
+    const taxDeedTab = event.target.closest('[data-tax-deed-tab]');
+    if (taxDeedTab) {
+      event.preventDefault();
+      activeTaxDeedTab = taxDeedTab.dataset.taxDeedTab === 'owners' ? 'owners' : 'buyers';
+      renderTaxDeedBuyerPanel();
+      return;
+    }
+
     const viewButton = event.target.closest('[data-view]');
     if (viewButton) {
       const view = viewButton.dataset.view;
@@ -6808,7 +6839,7 @@ ${body}`;
       renderParcels();
       return;
     }
-    if (view === 'buyers') {
+    if (view === 'tax-deed') {
       setActiveView(view, { scrollToTop: true });
       renderTaxDeedBuyerPanel();
       renderScriptDrawer();
@@ -6839,7 +6870,7 @@ function renderAll() {
     renderAppShell();
     return;
   }
-  if (activeView === 'buyers') {
+  if (activeView === 'tax-deed') {
     renderTaxDeedBuyerPanel();
     renderAppShell();
     return;

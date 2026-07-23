@@ -43164,6 +43164,13 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
   border-radius: 0 !important;
   background: transparent;
   color: #394238;
+  -webkit-text-fill-color: #394238;
+  font-size: 14px !important;
+  line-height: 1.1 !important;
+  text-indent: 0 !important;
+  letter-spacing: .02em !important;
+  text-transform: none !important;
+  overflow: visible !important;
   font-weight: 760;
   min-height: 38px;
   padding: 8px 16px;
@@ -43171,7 +43178,12 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
 }
 .tax-deed-tab-controller [role="tab"].is-active {
   background: #111611;
-  color: #fff;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+.tax-deed-tab-controller [role="tab"]:not(.is-active) {
+  color: #394238 !important;
+  -webkit-text-fill-color: #394238 !important;
 }
 .tax-deed-tab-panel[hidden] { display: none !important; }
 .tax-deed-owner-empty .empty-state {

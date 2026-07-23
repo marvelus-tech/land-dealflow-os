@@ -635,6 +635,7 @@ let selectedLandStateFilter = 'all';
 let selectedLandSort = 'priority';
 let openScriptScope = '';
 let activeTaxDeedTab = 'buyers';
+let activeTaxDeedMarket = 'all';
 
 function syncBuilderSelectionFromRoute(hash = location.hash) {
   const route = builderRouteSelectionFromHash(hash);
@@ -4575,17 +4576,21 @@ function renderTaxDeedOwnerRunwayTable(runwayRows = []) {
 function renderTaxDeedBuyerPanel() {
   const target = document.querySelector('#tax-deed-buyer-panel');
   if (!target) return;
-  const buyers = asArray(leeCountyTaxDeedBuyers);
-  const ownerRows = buildTaxDeedOwnerRunway([
+  const allBuyers = asArray(leeCountyTaxDeedBuyers);
+  const allOwnerRows = buildTaxDeedOwnerRunway([
     ...asArray(pennsylvaniaYorkUpsetSaleOwnerRunway),
     ...asArray(workspace.taxDeedOwnerRunwayRows),
   ], { limit: 100 }).allRows;
+  const states = [...new Set([
+    ...allBuyers.map(buyer => buyerLocation(buyer).state),
+    ...allOwnerRows.map(row => row.state),
+  ].filter(Boolean))].sort();
+  if (activeTaxDeedMarket !== 'all' && !states.includes(activeTaxDeedMarket)) activeTaxDeedMarket = 'all';
+  const filterState = rowState => activeTaxDeedMarket === 'all' || rowState === activeTaxDeedMarket;
+  const buyers = allBuyers.filter(buyer => filterState(buyerLocation(buyer).state));
+  const ownerRows = allOwnerRows.filter(row => filterState(row.state));
   const phones = buyers.filter(buyer => buyer.phone).length;
   const emails = buyers.filter(buyer => buyer.email).length;
-  const states = [...new Set([
-    ...buyers.map(buyer => buyerLocation(buyer).state),
-    ...ownerRows.map(row => row.state),
-  ].filter(Boolean))];
   const touched = buyers.filter(buyer => {
     const tracking = buyerTracking(buyerRecordId(buyer));
     return AGENT_TOUCH_CHANNELS.some(channel => tracking[channel]) || tracking.status !== 'not_started';
@@ -4661,9 +4666,9 @@ function renderTaxDeedBuyerPanel() {
           <a href="#tax-deed" role="tab" class="${ownersActive ? 'is-active' : ''}" aria-selected="${ownersActive ? 'true' : 'false'}" data-tax-deed-tab="owners"><b>Owners</b><span>${h(ownerRows.length)} PA runway · skip-trace hold</span></a>
         </div>
         <div class="agent-filter-bar tax-deed-state-rail" aria-label="Tax deed market filters">
-          <button type="button" class="is-active">All</button>
-          ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
-          <span>Seller motion unlocks only after official source + contact provenance.</span>
+          <button type="button" class="${activeTaxDeedMarket === 'all' ? 'is-active' : ''}" aria-pressed="${activeTaxDeedMarket === 'all' ? 'true' : 'false'}" data-tax-deed-market="all">All</button>
+          ${states.map(state => `<button type="button" class="${activeTaxDeedMarket === state ? 'is-active' : ''}" aria-pressed="${activeTaxDeedMarket === state ? 'true' : 'false'}" data-tax-deed-market="${h(state)}">${h(state)}</button>`).join('')}
+          <span>${h(activeTaxDeedMarket === 'all' ? 'Every market visible.' : `${activeTaxDeedMarket} market filter active.`)} Seller motion unlocks only after official source + contact provenance.</span>
         </div>
         ${scriptButton('tax-deed', 'Scripts')}
       </div>
@@ -4677,7 +4682,7 @@ function renderTaxDeedBuyerPanel() {
       <div class="agent-table-shell" role="region" aria-label="Tax deed buyer outreach tracking table" tabindex="0">
         <table class="agent-airtable buyer-airtable">
           <thead><tr><th>#</th><th>Buyer / type</th><th>Location</th><th>Bid proof</th><th>Lot size</th><th>Phone</th><th>Email</th><th>${touchHeader('phone', 'Called')}</th><th>${touchHeader('email', 'Emailed')}</th><th>${touchHeader('phone', 'SMS')}</th><th>${touchHeader('mail', 'Mail')}</th><th>Status</th><th>Proof / route</th><th>Links</th></tr></thead>
-          <tbody>${rows}</tbody>
+          <tbody>${rows || '<tr><td colspan="14">No buyer rows match this market filter.</td></tr>'}</tbody>
         </table>
       </div>
     </div>
@@ -5876,6 +5881,14 @@ function bindEvents() {
     if (taxDeedTab) {
       event.preventDefault();
       activeTaxDeedTab = taxDeedTab.dataset.taxDeedTab === 'owners' ? 'owners' : 'buyers';
+      renderTaxDeedBuyerPanel();
+      return;
+    }
+
+    const taxDeedMarket = event.target.closest('[data-tax-deed-market]');
+    if (taxDeedMarket) {
+      event.preventDefault();
+      activeTaxDeedMarket = taxDeedMarket.dataset.taxDeedMarket || 'all';
       renderTaxDeedBuyerPanel();
       return;
     }

@@ -43201,6 +43201,7 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
 :root { --phase295-tax-deed-mission-control: spacex-telemetry-risk-gated-owner-buyer-workspace; }
 :root { --phase296-tax-deed-market-filters: functional-pa-fl-owner-buyer-market-toggle; }
 :root { --phase297-okaloosa-tax-deed-owner-runway: official-okaloosa-owner-lots-displayed; }
+:root { --phase298-york-2acre-owner-runway: pa-2acre-leads-visible-default-owners-tab; }
 body[data-active-view="tax-deed"] .compact-heading {
   display: grid;
   grid-template-columns: minmax(0, .8fr) minmax(280px, .9fr);

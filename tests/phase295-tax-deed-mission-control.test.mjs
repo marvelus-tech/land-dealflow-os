@@ -13,7 +13,7 @@ assert.match(app, /<li><span>01<\/span>Buyer proof<\/li>/, 'Mission sequence mus
 assert.match(app, /<li><span>03<\/span>Risk clear<\/li>/, 'Mission sequence must expose risk clearance before outreach.');
 assert.match(app, /0<\/b><span>fabricated fields/, 'Telemetry strip must encode zero-fabrication.');
 assert.match(app, /prior bids · call validation/, 'Buyer lane tab must explain the operator job.');
-assert.match(app, /PA runway · skip-trace hold/, 'Owner lane tab must show skip-trace posture.');
+assert.match(app, /PA runway · [^`]*skip-trace hold/, 'Owner lane tab must show skip-trace posture while allowing acreage-count telemetry.');
 assert.match(app, /class="agent-proof-cell tax-deed-evidence-cell"/, 'Buyer long proof notes must move into a controlled evidence cell.');
 assert.match(app, /<details class="tax-proof-detail"><summary>Evidence note<\/summary>/, 'Buyer evidence detail must be progressive disclosure.');
 assert.match(app, /<details class="tax-proof-detail"><summary>Risk proof<\/summary>/, 'Owner risk proof must be progressive disclosure.');

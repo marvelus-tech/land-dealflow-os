@@ -43202,6 +43202,7 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
 :root { --phase296-tax-deed-market-filters: functional-pa-fl-owner-buyer-market-toggle; }
 :root { --phase297-okaloosa-tax-deed-owner-runway: official-okaloosa-owner-lots-displayed; }
 :root { --phase298-york-2acre-owner-runway: pa-2acre-leads-visible-default-owners-tab; }
+:root { --phase299-tax-deed-payment-visibility: amount-to-pay-column-all-owner-markets; }
 body[data-active-view="tax-deed"] .compact-heading {
   display: grid;
   grid-template-columns: minmax(0, .8fr) minmax(280px, .9fr);
@@ -43222,9 +43223,16 @@ body[data-active-view="tax-deed"] .compact-heading p {
 }
 body[data-active-view="tax-deed"] .tax-deed-redesign-board {
   gap: 12px;
+  min-width: 0;
+  max-width: 100%;
   --tax-signal: #163f2a;
   --tax-amber: #a46b14;
   --tax-line: rgba(17,22,17,.105);
+}
+body[data-active-view="tax-deed"] #tax-deed-buyer-panel,
+body[data-active-view="tax-deed"] .tax-deed-tab-panel {
+  min-width: 0;
+  max-width: 100%;
 }
 body[data-active-view="tax-deed"] .tax-deed-mission-hero {
   position: relative;
@@ -43501,8 +43509,18 @@ body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(2),
 body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(2) { width: 230px; }
 body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(5),
 body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(5) { width: 170px; }
-body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(10),
-body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(10) { width: 240px; }
+body[data-active-view="tax-deed"] .tax-deed-payment-cell span {
+  color: #101510 !important;
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 13px !important;
+  letter-spacing: -.02em;
+}
+body[data-active-view="tax-deed"] .tax-deed-payment-cell.is-known span { color: #0f5a35 !important; }
+body[data-active-view="tax-deed"] .tax-deed-payment-cell.is-missing span { color: #a46b14 !important; }
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(7),
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(7) { width: 145px; }
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(11),
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(11) { width: 240px; }
 @media (max-width: 900px) {
   body[data-active-view="tax-deed"] .compact-heading,
   .tax-deed-mission-grid,
@@ -43517,5 +43535,5 @@ body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(10) { wi
 @media (max-width: 640px) {
   body[data-active-view="tax-deed"] .tax-deed-tab-controller { grid-template-columns: 1fr; }
   body[data-active-view="tax-deed"] .tax-deed-state-rail span { flex-basis: 100%; }
-  body[data-active-view="tax-deed"] .agent-airtable { min-width: 1080px; }
+  body[data-active-view="tax-deed"] .agent-airtable { min-width: 1180px; }
 }

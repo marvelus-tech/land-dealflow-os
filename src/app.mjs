@@ -4547,7 +4547,7 @@ function renderTaxDeedOwnerRunwayTable(runwayRows = []) {
       <td><span class="muted">skip-trace</span></td>
       <td><span class="muted">skip-trace</span></td>
       <td class="agent-proof-cell"><span>${h(row.sourceType || 'official source')}</span><small>${h(row.buyerFit || row.nextAction || 'buyer fit pending')}</small></td>
-      <td class="agent-proof-cell"><span>${h(row.nextAction || 'Confirm sale status before outreach.')}</span><small>${h(row.notes || '')}</small></td>
+      <td class="agent-proof-cell tax-deed-risk-cell"><span>${h(row.nextAction || 'Confirm sale status before outreach.')}</span><details class="tax-proof-detail"><summary>Risk proof</summary><small>${h(row.notes || '')}</small></details></td>
       <td class="agent-link-cell">${proofLinks || '<span class="muted">source needed</span>'}</td>
     </tr>`;
   }).join('');
@@ -4558,9 +4558,10 @@ function renderTaxDeedOwnerRunwayTable(runwayRows = []) {
       <div><b>${h(runway.stats.enrichNow)}</b><span>skip-trace/mail</span></div>
       <div><b>${h(runway.stats.sourceBlocked)}</b><span>source blocked</span></div>
     </div>
-    <div class="agent-call-script">
+    <div class="agent-call-script tax-deed-caution-strip">
       <strong>PA upset-sale caution</strong>
-      <p>York rows are tax-claim + vacant/no-building candidates. Before outreach, verify delinquent years, payoff, notices, sale eligibility, and sale date with Tax Claim. Pennsylvania upset-sale properties may remain subject to mortgages, municipal claims, judgments, liens, and other encumbrances.</p>
+      <p>Tax-claim + vacant/no-building candidate ≠ clean scheduled sale. Verify delinquent years, payoff, statutory notices, sale eligibility, sale date, and lien/title exposure before outreach or offer language.</p>
+      <span>Upset-sale risk: mortgages, municipal claims, judgments, liens, and other encumbrances may survive.</span>
     </div>
     <div class="agent-table-shell" role="region" aria-label="Pennsylvania upset sale owner runway table" tabindex="0">
       <table class="agent-airtable tax-deed-owner-airtable">
@@ -4619,7 +4620,7 @@ function renderTaxDeedBuyerPanel() {
       <td class="agent-touch-cell">${touchToggle(buyerId, 'smsSent', 'phone', 'SMS', tracking.smsSent)}</td>
       <td class="agent-touch-cell">${touchToggle(buyerId, 'mailSent', 'mail', 'Mail', tracking.mailSent)}</td>
       <td><select class="agent-status-select" data-buyer-status="${h(buyerId)}">${statusOptions(tracking.status)}</select></td>
-      <td class="agent-proof-cell"><span>${h(buyer.route || 'buyerValidation')}</span><small>${h(buyer.notes || buyer.nextAction || 'Contact details remain unverified until public business source confirms them.')}</small></td>
+      <td class="agent-proof-cell tax-deed-evidence-cell"><span>${h(buyer.route || 'buyerValidation')}</span><details class="tax-proof-detail"><summary>Evidence note</summary><small>${h(buyer.notes || buyer.nextAction || 'Contact details remain unverified until public business source confirms them.')}</small></details></td>
       <td class="agent-link-cell">
         ${contactUrl ? safeLink(contactUrl, contactLinkLabel, 'agent-source-link') : ''}
         ${websiteUrl && websiteUrl !== contactUrl ? safeLink(websiteUrl, 'Website', 'agent-source-link') : ''}
@@ -4629,28 +4630,43 @@ function renderTaxDeedBuyerPanel() {
   }).join('');
   const ownersActive = activeTaxDeedTab === 'owners';
 
-  target.innerHTML = `<section class="agent-referral-board buyer-validation-board tax-deed-redesign-board phase283-tax-deed-buyer-page phase293-tax-deed-page-tabs" aria-label="Tax deed operating tracker">
-    <div class="agent-hero">
-      <span class="eyebrow">Tax deed · FL buyers + PA upset-sale owners</span>
-      <h2>Tax deed command table.</h2>
-      <p><b>${h(buyers.length)} prior tax deed buyers.</b> Validate buyers now, then work source-backed delinquent/upset-sale owner candidates with state-specific risk checks and verified contact provenance.</p>
-      <div class="agent-summary-strip">
-        <div><b>${h(buyers.length)}</b><span>buyer candidates</span></div>
-        <div><b>${h(ownerRows.length)}</b><span>owners loaded</span></div>
-        <div><b>${h(phones)}</b><span>verified phones</span></div>
-        <div><b>${h(emails)}</b><span>verified emails</span></div>
-        <div><b>${h(touched)}</b><span>touched locally</span></div>
+  target.innerHTML = `<section class="agent-referral-board buyer-validation-board tax-deed-redesign-board phase283-tax-deed-buyer-page phase293-tax-deed-page-tabs phase295-tax-deed-mission-control" aria-label="Tax deed operating tracker">
+    <div class="agent-hero tax-deed-mission-hero">
+      <div class="tax-deed-mission-grid">
+        <div class="tax-deed-mission-copy">
+          <span class="eyebrow">Tax deed · auction telemetry</span>
+          <h2>Tax deed mission control.</h2>
+          <p><b>${h(buyers.length)} proven buyer signals. ${h(ownerRows.length)} owner candidates.</b> Work the page like a launch sequence: validate demand, verify owner runway, clear legal/risk gates, then contact only with provenance.</p>
+        </div>
+        <div class="tax-deed-countdown" aria-label="Tax deed operating sequence">
+          <b>Sequence</b>
+          <ol>
+            <li><span>01</span>Buyer proof</li>
+            <li><span>02</span>Owner source</li>
+            <li><span>03</span>Risk clear</li>
+            <li><span>04</span>Outreach</li>
+          </ol>
+        </div>
       </div>
-      <div class="tax-deed-tab-controller" role="tablist" aria-label="Tax deed lanes">
-        <a href="#tax-deed" role="tab" class="${ownersActive ? '' : 'is-active'}" aria-selected="${ownersActive ? 'false' : 'true'}" data-tax-deed-tab="buyers">Buyers</a>
-        <a href="#tax-deed" role="tab" class="${ownersActive ? 'is-active' : ''}" aria-selected="${ownersActive ? 'true' : 'false'}" data-tax-deed-tab="owners">Owners</a>
+      <div class="agent-summary-strip tax-deed-telemetry-strip">
+        <div><b>${h(buyers.length)}</b><span>buyer signals</span></div>
+        <div><b>${h(ownerRows.length)}</b><span>owner runway</span></div>
+        <div><b>${h(phones + emails)}</b><span>verified contacts</span></div>
+        <div><b>${h(touched)}</b><span>worked</span></div>
+        <div><b>0</b><span>fabricated fields</span></div>
       </div>
-      <div class="agent-filter-bar" aria-label="Tax deed market filters">
-        <button type="button" class="is-active">All states</button>
-        ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
-        <span>Florida tax deed buyers plus Pennsylvania upset-sale owner candidates. Owner phone/email stays skip-trace until verified.</span>
+      <div class="tax-deed-lane-command" aria-label="Tax deed mission lanes">
+        <div class="tax-deed-tab-controller" role="tablist" aria-label="Tax deed lanes">
+          <a href="#tax-deed" role="tab" class="${ownersActive ? '' : 'is-active'}" aria-selected="${ownersActive ? 'false' : 'true'}" data-tax-deed-tab="buyers"><b>Buyers</b><span>${h(buyers.length)} prior bids · call validation</span></a>
+          <a href="#tax-deed" role="tab" class="${ownersActive ? 'is-active' : ''}" aria-selected="${ownersActive ? 'true' : 'false'}" data-tax-deed-tab="owners"><b>Owners</b><span>${h(ownerRows.length)} PA runway · skip-trace hold</span></a>
+        </div>
+        <div class="agent-filter-bar tax-deed-state-rail" aria-label="Tax deed market filters">
+          <button type="button" class="is-active">All</button>
+          ${states.map(state => `<button type="button" disabled>${h(state)}</button>`).join('')}
+          <span>Seller motion unlocks only after official source + contact provenance.</span>
+        </div>
+        ${scriptButton('tax-deed', 'Scripts')}
       </div>
-      ${scriptButton('tax-deed', 'Scripts')}
     </div>
     <div class="agent-call-script">
       <strong>Owner opener</strong>

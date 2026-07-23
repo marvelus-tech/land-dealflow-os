@@ -12,8 +12,8 @@ assert.doesNotMatch(html, /data-view="buyers">Buyers<\/button>/, 'Old primary Bu
 assert.match(html, /data-panel="tax-deed"/, 'Tax deed page must own the tax-deed route panel.');
 assert.match(app, /const validViews = new Set\(\['today', 'deals', 'builders', 'tax-deed'/, 'tax-deed must be a valid route.');
 assert.match(app, /if \(view === 'buyers'\) return 'tax-deed'/, 'legacy #buyers hash must map to the renamed route.');
-assert.match(app, /data-tax-deed-tab="buyers">Buyers<\/(?:button|a)>/, 'Tax deed page must expose a Buyers tab controller.');
-assert.match(app, /data-tax-deed-tab="owners">Owners<\/(?:button|a)>/, 'Tax deed page must expose an Owners tab controller.');
+assert.match(app, /data-tax-deed-tab="buyers">[\s\S]{0,80}<b>Buyers<\/b>/, 'Tax deed page must expose a Buyers tab controller.');
+assert.match(app, /data-tax-deed-tab="owners">[\s\S]{0,80}<b>Owners<\/b>/, 'Tax deed page must expose an Owners tab controller.');
 assert.match(app, /data-tax-deed-tab-panel="buyers"[\s\S]{0,500}agent-airtable buyer-airtable/, 'Existing buyer list must live inside the Buyers tab panel.');
 assert.match(app, /data-tax-deed-tab-panel="owners"[\s\S]{0,260}renderTaxDeedOwnerRunwayTable\(ownerRows\)/, 'Owners tab must render the loaded owner runway table.');
 assert.match(app, /scriptButton\('tax-deed', 'Scripts'\)/, 'Tax deed page must open the script drawer from its Scripts button.');

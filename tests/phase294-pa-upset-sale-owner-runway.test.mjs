@@ -24,7 +24,7 @@ assert.match(exportTaxDeedOwnerRunwayCsv(runway.rows).split('\n')[0], /propertyU
 assert.match(app, /pennsylvaniaYorkUpsetSaleOwnerRunway/, 'Tax-Deed page must import the PA/York owner runway.');
 assert.match(app, /Lot size \/ use/, 'Tax-Deed Owners table must expose lot size.');
 assert.match(app, /skip-trace/, 'Tax-Deed Owners table must show skip-trace status for unverified contacts.');
-assert.match(app, /Pennsylvania upset-sale properties may remain subject to mortgages, municipal claims, judgments, liens/, 'Tax-Deed page must show PA-specific upset-sale risk language.');
+assert.match(app, /Upset-sale risk: mortgages, municipal claims, judgments, liens/, 'Tax-Deed page must show PA-specific upset-sale risk language.');
 assert.match(scripts, /pa-upset-sale-owner-sms-straightforward-risk-aware/, 'Script drawer must include PA upset-sale SMS copy.');
 assert.match(scripts, /pa-upset-sale-owner-email-simple-review/, 'Script drawer must include PA upset-sale email copy.');
 assert.match(scripts, /subject to mortgages, municipal claims, judgments, liens/, 'PA scripts must warn about upset-sale encumbrance risk.');

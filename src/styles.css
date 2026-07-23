@@ -43196,3 +43196,323 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
 @media (max-width: 640px) {
   .tax-deed-tab-controller { width: 100%; }
 }
+
+/* Phase 295: Tax-Deed mission-control UX - SpaceX-grade route pass. */
+:root { --phase295-tax-deed-mission-control: spacex-telemetry-risk-gated-owner-buyer-workspace; }
+body[data-active-view="tax-deed"] .compact-heading {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(280px, .9fr);
+  align-items: end;
+  gap: clamp(18px, 5vw, 72px);
+  padding-block: clamp(22px, 5vw, 54px) 18px;
+  border-bottom: 1px solid rgba(17,22,17,.10);
+}
+body[data-active-view="tax-deed"] .compact-heading h2 {
+  letter-spacing: -.065em;
+  line-height: .92;
+}
+body[data-active-view="tax-deed"] .compact-heading p {
+  max-width: 680px;
+  color: rgba(17,22,17,.66);
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.5;
+}
+body[data-active-view="tax-deed"] .tax-deed-redesign-board {
+  gap: 12px;
+  --tax-signal: #163f2a;
+  --tax-amber: #a46b14;
+  --tax-line: rgba(17,22,17,.105);
+}
+body[data-active-view="tax-deed"] .tax-deed-mission-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(20px, 3.4vw, 38px) !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--tax-line) !important;
+  background:
+    linear-gradient(90deg, rgba(22,63,42,.055), transparent 42%),
+    repeating-linear-gradient(90deg, rgba(17,22,17,.035) 0 1px, transparent 1px 64px),
+    #fffdf7 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="tax-deed"] .tax-deed-mission-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #163f2a, #c9982e 58%, rgba(22,63,42,.18));
+}
+.tax-deed-mission-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(16px, 2.6vw, 28px);
+  align-items: start;
+}
+.tax-deed-mission-copy h2 {
+  margin: 6px 0 0;
+  max-width: 820px;
+  font-size: clamp(2rem, 4.8vw, 4.7rem);
+  line-height: .88;
+  letter-spacing: -.075em;
+}
+.tax-deed-mission-copy p {
+  max-width: 780px !important;
+  color: rgba(17,22,17,.68) !important;
+  font-size: clamp(14px, 1.2vw, 17px) !important;
+}
+.tax-deed-countdown {
+  border-left: 1px solid rgba(17,22,17,.14);
+  padding-left: 18px;
+  color: #111611;
+}
+.tax-deed-countdown > b {
+  display: block;
+  margin-bottom: 12px;
+  color: rgba(17,22,17,.52);
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.tax-deed-countdown ol { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tax-deed-countdown li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(17,22,17,.10);
+  color: rgba(17,22,17,.78);
+  font-size: 13px;
+  font-weight: 760;
+  overflow: hidden;
+}
+.tax-deed-countdown li span {
+  color: var(--tax-amber);
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+body[data-active-view="tax-deed"] .tax-deed-telemetry-strip {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 1px !important;
+  margin-top: clamp(18px, 3vw, 28px) !important;
+  border: 1px solid var(--tax-line);
+  background: var(--tax-line);
+}
+body[data-active-view="tax-deed"] .tax-deed-telemetry-strip div {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: rgba(255,255,255,.88) !important;
+  box-shadow: none !important;
+}
+body[data-active-view="tax-deed"] .tax-deed-telemetry-strip b {
+  color: #101510;
+  font-size: clamp(18px, 2vw, 26px);
+}
+.tax-deed-lane-command {
+  display: grid;
+  grid-template-columns: minmax(320px, .8fr) minmax(220px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(17,22,17,.10);
+}
+body[data-active-view="tax-deed"] .tax-deed-tab-controller {
+  width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 1px solid var(--tax-line) !important;
+  border-radius: 0 !important;
+  background: rgba(255,255,255,.72) !important;
+}
+body[data-active-view="tax-deed"] .tax-deed-tab-controller [role="tab"] {
+  min-height: 62px !important;
+  flex-direction: column;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  gap: 4px;
+  padding: 12px 14px !important;
+  border-left: 1px solid transparent;
+  text-align: left;
+}
+body[data-active-view="tax-deed"] .tax-deed-tab-controller [role="tab"] b {
+  color: inherit;
+  font-size: 14px;
+  letter-spacing: -.01em;
+}
+body[data-active-view="tax-deed"] .tax-deed-tab-controller [role="tab"] span {
+  display: block;
+  color: inherit;
+  opacity: .64;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+body[data-active-view="tax-deed"] .tax-deed-tab-controller [role="tab"].is-active {
+  background: #101510 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+body[data-active-view="tax-deed"] .tax-deed-state-rail {
+  margin: 0 !important;
+  min-width: 0;
+}
+body[data-active-view="tax-deed"] .tax-deed-state-rail button {
+  border-radius: 0 !important;
+  background: rgba(255,255,255,.88) !important;
+}
+body[data-active-view="tax-deed"] .tax-deed-state-rail .is-active {
+  background: #e7efe3 !important;
+  color: var(--tax-signal) !important;
+}
+body[data-active-view="tax-deed"] .agent-call-script {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="tax-deed"] .agent-call-script:not(.tax-deed-caution-strip) {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 14px 16px !important;
+  border-color: rgba(17,22,17,.10) !important;
+  background: #fbfaf5 !important;
+}
+body[data-active-view="tax-deed"] .agent-call-script:not(.tax-deed-caution-strip) strong {
+  color: var(--tax-signal);
+}
+body[data-active-view="tax-deed"] .agent-call-script:not(.tax-deed-caution-strip) p {
+  margin: 0 !important;
+  color: rgba(17,22,17,.70) !important;
+  font-size: 13px !important;
+  line-height: 1.42 !important;
+}
+.tax-deed-caution-strip {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) minmax(220px, .45fr);
+  gap: 14px;
+  align-items: center;
+  padding: 14px 16px !important;
+  border-color: rgba(164,107,20,.28) !important;
+  background: linear-gradient(90deg, rgba(164,107,20,.075), rgba(255,255,255,.88)) !important;
+}
+.tax-deed-caution-strip p,
+.tax-deed-caution-strip span {
+  margin: 0;
+  color: rgba(17,22,17,.70);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.tax-deed-caution-strip span { color: rgba(110,69,10,.90); font-weight: 760; }
+body[data-active-view="tax-deed"] .agent-table-shell {
+  border-radius: 0 !important;
+  border: 1px solid rgba(17,22,17,.10) !important;
+  box-shadow: none !important;
+  background: #fffef9 !important;
+}
+body[data-active-view="tax-deed"] .agent-airtable {
+  table-layout: fixed;
+  min-width: 1500px;
+  font-size: 12px;
+}
+body[data-active-view="tax-deed"] .agent-airtable th {
+  background: #f5f6f1 !important;
+  color: rgba(17,22,17,.52) !important;
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 10px !important;
+  letter-spacing: .11em !important;
+}
+body[data-active-view="tax-deed"] .agent-airtable td {
+  padding: 10px 9px !important;
+  vertical-align: middle !important;
+}
+body[data-active-view="tax-deed"] .agent-airtable tbody tr {
+  min-height: 58px;
+}
+body[data-active-view="tax-deed"] .agent-airtable tbody tr:hover td {
+  background: rgba(231,239,227,.52) !important;
+}
+body[data-active-view="tax-deed"] .agent-table-person b,
+body[data-active-view="tax-deed"] .agent-proof-cell span {
+  font-size: 12px;
+  line-height: 1.2;
+}
+body[data-active-view="tax-deed"] .agent-table-person span,
+body[data-active-view="tax-deed"] .agent-airtable small,
+body[data-active-view="tax-deed"] .agent-proof-cell small {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 10.5px;
+  line-height: 1.25;
+}
+body[data-active-view="tax-deed"] .agent-location-pill {
+  border-radius: 0 !important;
+  height: 22px !important;
+  background: #e7efe3 !important;
+}
+.tax-proof-detail {
+  margin-top: 4px;
+}
+.tax-proof-detail summary {
+  cursor: pointer;
+  color: var(--tax-signal);
+  font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+  font-size: 10px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.tax-proof-detail[open] small {
+  display: block !important;
+  max-width: 420px;
+  margin-top: 6px;
+  -webkit-line-clamp: unset !important;
+  overflow: visible !important;
+}
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(1),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(1) { width: 44px; }
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(2),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(2) { width: 210px; }
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(4),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(4) { width: 150px; }
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(5),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(5) { width: 170px; }
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(12),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(12) { width: 138px; }
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(13),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(13) { width: 190px; }
+body[data-active-view="tax-deed"] .buyer-airtable th:nth-child(14),
+body[data-active-view="tax-deed"] .buyer-airtable td:nth-child(14) { width: 110px; }
+body[data-active-view="tax-deed"] .agent-status-select {
+  width: 124px !important;
+  min-width: 0 !important;
+  padding: 8px 22px 8px 10px !important;
+  font-size: 11px !important;
+  line-height: 1.1 !important;
+}
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(2),
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(2) { width: 230px; }
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(5),
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(5) { width: 170px; }
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable th:nth-child(10),
+body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(10) { width: 240px; }
+@media (max-width: 900px) {
+  body[data-active-view="tax-deed"] .compact-heading,
+  .tax-deed-mission-grid,
+  .tax-deed-lane-command,
+  body[data-active-view="tax-deed"] .agent-call-script:not(.tax-deed-caution-strip),
+  .tax-deed-caution-strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body[data-active-view="tax-deed"] .tax-deed-telemetry-strip { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  body[data-active-view="tax-deed"] .tax-deed-mission-copy h2 { font-size: clamp(2.2rem, 13vw, 3.6rem); }
+}
+@media (max-width: 640px) {
+  body[data-active-view="tax-deed"] .tax-deed-tab-controller { grid-template-columns: 1fr; }
+  body[data-active-view="tax-deed"] .tax-deed-state-rail span { flex-basis: 100%; }
+  body[data-active-view="tax-deed"] .agent-airtable { min-width: 1080px; }
+}

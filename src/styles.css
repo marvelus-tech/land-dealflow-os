@@ -43055,3 +43055,62 @@ html body header.nav .app-tabs {
   .script-drawer-shell { width: 100vw; padding: 18px; }
   .script-card { border-radius: 18px; }
 }
+
+
+/* v1.100.1 - Phase 291 Closing contract deadline cockpit: seller agreement countdown persisted in workspace */
+:root { --phase291-contract-clock-rule: seller-agreement-deadline-countdown-extend-or-terminate; }
+body[data-active-view="closing"] .contract-deadline-cockpit {
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid rgba(17,24,39,.10);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(247,250,244,.92));
+  box-shadow: rgba(24,29,38,.07) 0 12px 34px;
+}
+body[data-active-view="closing"] .deadline-hero {
+  min-height: 100%;
+  padding: 22px;
+  border-radius: 20px;
+  background: #10251d;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+body[data-active-view="closing"] .deadline-hero.warning,
+body[data-active-view="closing"] .deadline-hero.urgent { background: #6f4d12; }
+body[data-active-view="closing"] .deadline-hero.due-today,
+body[data-active-view="closing"] .deadline-hero.expired { background: #7d241d; }
+body[data-active-view="closing"] .deadline-hero.closed { background: #0f4d35; }
+body[data-active-view="closing"] .deadline-hero.terminated { background: #2f3742; }
+body[data-active-view="closing"] .deadline-hero .eyebrow,
+body[data-active-view="closing"] .deadline-hero h3,
+body[data-active-view="closing"] .deadline-hero p { color: inherit; }
+body[data-active-view="closing"] .deadline-hero h3 { font-size: clamp(30px, 3.3vw, 48px); line-height: .96; letter-spacing: -.055em; }
+body[data-active-view="closing"] .deadline-hero p { color: rgba(255,255,255,.82); line-height: 1.42; }
+body[data-active-view="closing"] .deadline-facts { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 8px; }
+body[data-active-view="closing"] .deadline-facts div { padding: 10px; border-radius: 14px; background: rgba(255,255,255,.10); }
+body[data-active-view="closing"] .deadline-facts span { display:block; color: rgba(255,255,255,.64); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+body[data-active-view="closing"] .deadline-facts b { display:block; margin-top: 5px; font-size: 14px; color: #fff; }
+body[data-active-view="closing"] .deadline-entry-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+body[data-active-view="closing"] .deadline-entry-grid label { display: grid; gap: 7px; padding: 12px; border: 1px solid rgba(17,24,39,.09); border-radius: 16px; background: rgba(255,255,255,.74); }
+body[data-active-view="closing"] .deadline-entry-grid label span { color: rgba(17,24,39,.66); font-size: 12px; font-weight: 760; }
+body[data-active-view="closing"] .deadline-entry-grid input,
+body[data-active-view="closing"] .deadline-entry-grid select,
+body[data-active-view="closing"] .deadline-entry-grid textarea { width: 100%; border: 0; outline: 0; background: transparent; color: #111827; font: 720 14px/1.25 var(--font-grotesk, Inter, system-ui, sans-serif); }
+body[data-active-view="closing"] .deadline-entry-grid .deadline-notes { grid-column: span 2; }
+body[data-active-view="closing"] .deadline-action-row { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-top: 2px; }
+body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto; color: rgba(17,24,39,.60); font-size: 12px; }
+@media (max-width: 900px) {
+  body[data-active-view="closing"] .contract-deadline-cockpit { grid-template-columns: 1fr; }
+  body[data-active-view="closing"] .deadline-entry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  body[data-active-view="closing"] .deadline-entry-grid { grid-template-columns: 1fr; }
+  body[data-active-view="closing"] .deadline-entry-grid .deadline-notes { grid-column: auto; }
+  body[data-active-view="closing"] .deadline-facts { grid-template-columns: 1fr; }
+}

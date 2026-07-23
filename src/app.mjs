@@ -55,6 +55,7 @@ import {
   calculateLandOfferMath,
   normalizeLandOfferBuyBoxes,
   buildContractPacketDraft,
+  calculateContractDeadline,
   exportContractPacketMarkdown,
   renderContractDocumentText,
   buildPermitVerifiedBuilders,
@@ -2639,7 +2640,10 @@ function currentContractDraftInputs(parcel = {}) {
     legalDescription: saved.legalDescription || parcel.legalDescription || '',
     includedRights: saved.includedRights || 'all appurtenant rights stated in the state approved contract',
     purchasePrice: saved.purchasePrice || parcel.sellerAskingPrice || parcel.askingPrice || parcel.offer?.initialSellerOffer || '',
-    earnestMoney: saved.earnestMoney || '10.00',
+    earnestMoney: saved.earnestMoney || '250.00',
+    contractTermDays: saved.contractTermDays || parcel.contractTermDays || '45',
+    contractDecisionStatus: saved.contractDecisionStatus || 'active',
+    deadlineNotes: saved.deadlineNotes || '',
     earnestMoneyHolder: saved.earnestMoneyHolder || parcel.titleCompany?.name || '',
     closingAgent: saved.closingAgent || parcel.titleCompany?.name || '',
     feasibilityDeadline: saved.feasibilityDeadline || 'through closing unless state counsel changes this term',
@@ -2667,6 +2671,83 @@ function currentContractDraftInputs(parcel = {}) {
     attorneyReviewer: saved.attorneyReviewer || '',
     attorneyReviewDate: saved.attorneyReviewDate || '',
   };
+}
+
+
+function readContractDraftForm(form = document.querySelector('#contract-packet-form')) {
+  if (!form) return { ...(workspace.contractDraft || {}) };
+  syncContractFieldMirrors(form);
+  const values = Object.fromEntries(new FormData(form).entries());
+  form.querySelectorAll('[data-contract-clock-field][name]').forEach(field => {
+    values[field.name] = field.value;
+  });
+  return values;
+}
+
+function syncContractFieldMirrors(form = document.querySelector('#contract-packet-form')) {
+  if (!form) return;
+  const active = document.activeElement;
+  if (!active?.name) return;
+  const value = active.value;
+  form.querySelectorAll(`[name="${CSS.escape(active.name)}"]`).forEach(field => {
+    if (field !== active && 'value' in field) field.value = value;
+  });
+}
+
+function persistContractDeadlineDraft({ render = false, statusText = 'Contract clock saved locally.' } = {}) {
+  const form = document.querySelector('#contract-packet-form');
+  const values = readContractDraftForm(form);
+  const deadline = calculateContractDeadline(values, todayIsoDate());
+  workspace = {
+    ...workspace,
+    contractDraft: { ...values, closingDate: values.closingDate || deadline.deadlineDate },
+    contractDeadlineLog: [
+      { at: new Date().toISOString(), deadlineDate: deadline.deadlineDate, daysLeft: deadline.daysLeft, state: deadline.state, decisionStatus: deadline.decisionStatus },
+      ...asArray(workspace.contractDeadlineLog),
+    ].slice(0, 20),
+  };
+  persistWorkspace();
+  const status = document.querySelector('#contract-deadline-status');
+  if (status) status.textContent = statusText;
+  if (render) renderClosingDeskPanel();
+  return { values, deadline };
+}
+
+function renderContractDeadlineCockpit(inputs = {}) {
+  const deadline = calculateContractDeadline(inputs, todayIsoDate());
+  const stateTone = ({ active: 'good', warning: 'warn', urgent: 'warn', 'due-today': 'bad', expired: 'bad', missing: 'warn', closed: 'good', terminated: 'neutral' }[deadline.state] || 'neutral');
+  const decisionOptions = ['active', 'extended', 'terminate-review', 'terminated', 'closed'].map(status => `<option value="${h(status)}" ${deadline.decisionStatus === status ? 'selected' : ''}>${h(status.replace(/-/g, ' '))}</option>`).join('');
+  const deadlineDisplay = deadline.deadlineDate || 'No deadline yet';
+  return `<section class="contract-deadline-cockpit" data-contract-deadline-cockpit aria-label="Seller contract deadline cockpit">
+    <div class="deadline-hero ${h(deadline.state)}">
+      <span class="eyebrow">Seller contract clock</span>
+      <h3>${h(deadline.label)}</h3>
+      <p>${h(deadline.nextAction)}</p>
+      <div class="deadline-facts">
+        <div><span>Deadline</span><b>${h(deadlineDisplay)}</b></div>
+        <div><span>Decision</span><b>${h(deadline.decisionStatus.replace(/-/g, ' '))}</b></div>
+        <div><span>Clock state</span><b>${h(deadline.state.replace(/-/g, ' '))}</b></div>
+      </div>
+    </div>
+    <div class="deadline-entry-grid">
+      <label><span>Seller name</span><input name="sellerName" data-contract-clock-field value="${h(inputs.sellerName || '')}" placeholder="Seller full name"></label>
+      <label><span>Property / location</span><input name="propertyAddress" data-contract-clock-field value="${h(inputs.propertyAddress || '')}" placeholder="Address, APN, city/state"></label>
+      <label><span>Agreement date</span><input type="date" name="effectiveDate" data-contract-clock-field value="${h(inputs.effectiveDate || '')}"></label>
+      <label><span>Earnest money</span><input name="earnestMoney" data-contract-clock-field value="${h(inputs.earnestMoney || '')}" placeholder="250.00"></label>
+      <label><span>Purchase amount</span><input name="purchasePrice" data-contract-clock-field value="${h(inputs.purchasePrice || '')}" placeholder="50000"></label>
+      <label><span>Days to close</span><input type="number" min="1" step="1" name="contractTermDays" data-contract-clock-field value="${h(inputs.contractTermDays || '')}" placeholder="45"></label>
+      <label><span>Close / termination deadline</span><input type="date" name="closingDate" data-contract-clock-field value="${h(inputs.closingDate || deadline.deadlineDate || '')}"></label>
+      <label><span>Decision status</span><select name="contractDecisionStatus" data-contract-clock-field>${decisionOptions}</select></label>
+      <label class="deadline-notes"><span>Deadline notes</span><textarea name="deadlineNotes" data-contract-clock-field rows="2" placeholder="Extension ask, title blocker, buyer status, termination trigger...">${h(inputs.deadlineNotes || '')}</textarea></label>
+    </div>
+    <div class="deadline-action-row">
+      ${badge(deadline.state.replace(/-/g, ' '), stateTone)}
+      <button type="button" id="save-contract-deadline">Save clock</button>
+      <button type="button" class="secondary" data-contract-deadline-status="extended">Mark extended</button>
+      <button type="button" class="secondary" data-contract-deadline-status="terminate-review">Flag terminate/extend decision</button>
+      <strong id="contract-deadline-status">Stored in this browser workspace. Reload-safe after save or field edit.</strong>
+    </div>
+  </section>`;
 }
 
 function renderContractComposer(parcel = {}) {
@@ -2710,6 +2791,7 @@ function renderContractComposer(parcel = {}) {
     <div class="closing-flow-pipeline closing-timeline-ledger" aria-label="Closing packet timeline ledger">${pipeline}</div>
     <form id="contract-packet-form" class="contract-send-form contract-separated-form">
       ${hiddenCarry}
+      ${renderContractDeadlineCockpit(inputs)}
       <div class="print-packet-cover print-only" aria-hidden="true">
         <span>LandFlip OS</span>
         <h1>Closing Contract Packet</h1>
@@ -5996,9 +6078,24 @@ function bindEvents() {
       return;
     }
 
+    if (event.target.matches('#save-contract-deadline')) {
+      event.preventDefault();
+      persistContractDeadlineDraft({ render: true, statusText: 'Contract deadline clock saved.' });
+      return;
+    }
+
+    const deadlineStatusButton = event.target.closest('[data-contract-deadline-status]');
+    if (deadlineStatusButton) {
+      event.preventDefault();
+      const form = document.querySelector('#contract-packet-form');
+      if (form?.elements?.contractDecisionStatus) form.elements.contractDecisionStatus.value = deadlineStatusButton.dataset.contractDeadlineStatus;
+      persistContractDeadlineDraft({ render: true, statusText: `Contract decision marked ${deadlineStatusButton.dataset.contractDeadlineStatus.replace(/-/g, ' ')}.` });
+      return;
+    }
+
     if (event.target.matches('[data-contract-status]')) {
       const form = document.querySelector('#contract-packet-form');
-      const values = form ? Object.fromEntries(new FormData(form).entries()) : (workspace.contractDraft || {});
+      const values = form ? readContractDraftForm(form) : (workspace.contractDraft || {});
       const action = event.target.dataset.contractStatus;
       const nextStatus = { ...(workspace.contractStageStatus || {}) };
       if (action === 'seller-ready') nextStatus.sellerAgreement = 'ready';
@@ -6014,9 +6111,10 @@ function bindEvents() {
 
     if (event.target.matches('#save-contract-packet')) {
       const form = document.querySelector('#contract-packet-form');
-      const values = Object.fromEntries(new FormData(form).entries());
-      const packet = buildContractPacketDraft(values);
-      workspace = { ...workspace, contractDraft: values, contractPackets: [packet, ...asArray(workspace.contractPackets).filter(item => item.id !== packet.id)].slice(0, 12) };
+      const values = readContractDraftForm(form);
+      const deadline = calculateContractDeadline(values, todayIsoDate());
+      const packet = buildContractPacketDraft({ ...values, closingDate: values.closingDate || deadline.deadlineDate });
+      workspace = { ...workspace, contractDraft: { ...values, closingDate: values.closingDate || deadline.deadlineDate }, contractPackets: [packet, ...asArray(workspace.contractPackets).filter(item => item.id !== packet.id)].slice(0, 12) };
       persistWorkspace();
       const status = document.querySelector('#contract-packet-status');
       if (status) status.textContent = `${packet.status}; draft stored locally.`;
@@ -6026,7 +6124,7 @@ function bindEvents() {
 
     if (event.target.matches('#print-contract-packet, [data-print-contract-packet]')) {
       const form = document.querySelector('#contract-packet-form');
-      if (form) workspace = { ...workspace, contractDraft: Object.fromEntries(new FormData(form).entries()) };
+      if (form) workspace = { ...workspace, contractDraft: readContractDraftForm(form) };
       persistWorkspace();
       triggerContractPrint(event.target.dataset.printContractPacket || 'packet');
       return;
@@ -6034,7 +6132,7 @@ function bindEvents() {
 
     if (event.target.matches('#export-seller-contract')) {
       const form = document.querySelector('#contract-packet-form');
-      const values = Object.fromEntries(new FormData(form).entries());
+      const values = readContractDraftForm(form);
       const packet = buildContractPacketDraft(values);
       downloadText(`land-dealflow-seller-agreement-${slugify(values.propertyAddress || values.parcelId || 'draft')}-${new Date().toISOString().slice(0, 10)}.md`, `# Seller Land Sale Agreement\n\n${renderContractDocumentText(packet.sellerAgreement, packet.inputs)}\n\n## Legal guardrail\n\n${packet.legalGuardrail}`, 'text/markdown');
       return;
@@ -6042,7 +6140,7 @@ function bindEvents() {
 
     if (event.target.matches('#export-assignment-contract')) {
       const form = document.querySelector('#contract-packet-form');
-      const values = Object.fromEntries(new FormData(form).entries());
+      const values = readContractDraftForm(form);
       const packet = buildContractPacketDraft(values);
       downloadText(`land-dealflow-assignment-agreement-${slugify(values.propertyAddress || values.parcelId || 'draft')}-${new Date().toISOString().slice(0, 10)}.md`, `# Assignment Agreement\n\n${renderContractDocumentText(packet.buyerAssignment, packet.inputs)}\n\n## Legal guardrail\n\n${packet.legalGuardrail}`, 'text/markdown');
       return;
@@ -6050,7 +6148,7 @@ function bindEvents() {
 
     if (event.target.matches('#export-contract-packet')) {
       const form = document.querySelector('#contract-packet-form');
-      const values = Object.fromEntries(new FormData(form).entries());
+      const values = readContractDraftForm(form);
       const packet = buildContractPacketDraft(values);
       downloadText(`land-dealflow-title-packet-${slugify(values.propertyAddress || values.parcelId || 'draft')}-${new Date().toISOString().slice(0, 10)}.md`, exportContractPacketMarkdown(packet), 'text/markdown');
       const status = document.querySelector('#contract-packet-status');
@@ -6469,6 +6567,10 @@ ${body}`;
   });
 
   document.addEventListener('input', (event) => {
+    if (event.target.closest?.('[data-contract-clock-field]')) {
+      persistContractDeadlineDraft({ render: false });
+      return;
+    }
     const queueSearch = event.target.closest?.('[data-builder-queue-search]');
     if (queueSearch) {
       applyBuilderQueueControls(queueSearch.closest('[data-builder-queue-surface]'));
@@ -6482,6 +6584,10 @@ ${body}`;
   });
 
   document.addEventListener('change', (event) => {
+    if (event.target.closest?.('[data-contract-clock-field]')) {
+      persistContractDeadlineDraft({ render: true });
+      return;
+    }
     const validationForm = event.target.closest?.('[data-validation-form]');
     if (validationForm && event.target.matches('input, textarea, select')) {
       persistBuyerValidationFormDraft(validationForm, { render: false, promote: false });

@@ -868,6 +868,69 @@ export function exportBuilderCallQueueJson(rows = []) {
   return JSON.stringify(rows, null, 2);
 }
 
+
+export function calculateContractDeadline(inputs = {}, todayValue = new Date().toISOString().slice(0, 10)) {
+  const parseDate = (value) => {
+    if (!value) return null;
+    const date = new Date(`${String(value).slice(0, 10)}T12:00:00Z`);
+    return Number.isNaN(date.getTime()) ? null : date;
+  };
+  const addDays = (date, days) => {
+    const next = new Date(date.getTime());
+    next.setUTCDate(next.getUTCDate() + Number(days || 0));
+    return next;
+  };
+  const today = parseDate(todayValue) || parseDate(new Date().toISOString().slice(0, 10));
+  const effectiveDate = parseDate(inputs.effectiveDate || inputs.sellerAgreementDate || inputs.contractDate);
+  const enteredClosingDate = parseDate(inputs.closingDate || inputs.deadlineDate);
+  const rawDays = Number.parseInt(String(inputs.contractTermDays || inputs.daysToClose || '').replace(/[^0-9-]/g, ''), 10);
+  const termDays = Number.isFinite(rawDays) && rawDays > 0 ? rawDays : null;
+  const deadlineDate = effectiveDate && termDays ? addDays(effectiveDate, termDays) : enteredClosingDate;
+  const deadlineIso = deadlineDate ? deadlineDate.toISOString().slice(0, 10) : '';
+  const daysLeft = deadlineDate ? Math.ceil((deadlineDate.getTime() - today.getTime()) / 86400000) : null;
+  const decisionStatus = inputs.contractDecisionStatus || 'active';
+  let state = 'missing';
+  let label = 'enter agreement date + close days';
+  let nextAction = 'Enter seller agreement date and days-to-close so the deadline clock can start.';
+  if (deadlineDate) {
+    if (['closed', 'terminated'].includes(decisionStatus)) {
+      state = decisionStatus;
+      label = decisionStatus === 'closed' ? 'closed' : 'terminated';
+      nextAction = decisionStatus === 'closed' ? 'Archive the funded file and keep settlement proof.' : 'Keep written termination proof in the closing file.';
+    } else if (daysLeft < 0) {
+      state = 'expired';
+      label = `${Math.abs(daysLeft)} day${Math.abs(daysLeft) === 1 ? '' : 's'} overdue`;
+      nextAction = 'Do not keep operating blind: confirm extension in writing or send termination notice now.';
+    } else if (daysLeft === 0) {
+      state = 'due-today';
+      label = 'due today';
+      nextAction = 'Today is the decision gate: close, extend in writing, or terminate under the agreement.';
+    } else if (daysLeft <= 3) {
+      state = 'urgent';
+      label = `${daysLeft} day${daysLeft === 1 ? '' : 's'} left`;
+      nextAction = 'Decision window is tight: line up buyer/title now or prepare extension/termination notice.';
+    } else if (daysLeft <= 7) {
+      state = 'warning';
+      label = `${daysLeft} days left`;
+      nextAction = 'Pressure-check title, buyer acceptance, and feasibility before the deadline gets inside 72 hours.';
+    } else {
+      state = 'active';
+      label = `${daysLeft} days left`;
+      nextAction = 'Contract clock is active. Keep buyer, title, and feasibility gates moving before deadline pressure hits.';
+    }
+  }
+  return {
+    effectiveDate: effectiveDate ? effectiveDate.toISOString().slice(0, 10) : '',
+    contractTermDays: termDays || '',
+    deadlineDate: deadlineIso,
+    daysLeft,
+    state,
+    label,
+    nextAction,
+    decisionStatus,
+  };
+}
+
 export function exportWorkspace(workspace) {
   return JSON.stringify({ version: 2, exportedAt: new Date().toISOString(), ...workspace }, null, 2);
 }
@@ -883,6 +946,10 @@ export function importWorkspace(serialized) {
     buyerValidations: Array.isArray(parsed.buyerValidations) ? parsed.buyerValidations : [],
     activity: parsed.activity && typeof parsed.activity === 'object' ? parsed.activity : {},
     builderUi: parsed.builderUi && typeof parsed.builderUi === 'object' ? parsed.builderUi : {},
+    contractDraft: parsed.contractDraft && typeof parsed.contractDraft === 'object' ? parsed.contractDraft : {},
+    contractPackets: Array.isArray(parsed.contractPackets) ? parsed.contractPackets : [],
+    contractStageStatus: parsed.contractStageStatus && typeof parsed.contractStageStatus === 'object' ? parsed.contractStageStatus : {},
+    contractDeadlineLog: Array.isArray(parsed.contractDeadlineLog) ? parsed.contractDeadlineLog : [],
   };
 }
 

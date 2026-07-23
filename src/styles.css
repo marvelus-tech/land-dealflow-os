@@ -43200,6 +43200,7 @@ body[data-active-view="closing"] .deadline-action-row strong { margin-left: auto
 /* Phase 295: Tax-Deed mission-control UX - SpaceX-grade route pass. */
 :root { --phase295-tax-deed-mission-control: spacex-telemetry-risk-gated-owner-buyer-workspace; }
 :root { --phase296-tax-deed-market-filters: functional-pa-fl-owner-buyer-market-toggle; }
+:root { --phase297-okaloosa-tax-deed-owner-runway: official-okaloosa-owner-lots-displayed; }
 body[data-active-view="tax-deed"] .compact-heading {
   display: grid;
   grid-template-columns: minmax(0, .8fr) minmax(280px, .9fr);

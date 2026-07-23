@@ -43048,7 +43048,7 @@ html body header.nav .app-tabs {
   border-radius: 16px;
   background: rgba(15,77,53,.06);
   color: #10251d;
-  font: 650 14px/1.45 Archivo, system-ui, sans-serif;
+  font: 650 14px/1.45 var(--font-grotesk, Inter, system-ui, sans-serif);
 }
 .script-card ul { margin: 0; padding-left: 18px; color: rgba(17,24,39,.72); font-size: 13px; line-height: 1.45; }
 @media (max-width: 760px) {

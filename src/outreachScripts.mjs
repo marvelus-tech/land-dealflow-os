@@ -363,5 +363,37 @@ export const outreachScriptPacks = [
       "This is the LandFlip-normalized version of the Joe McCall seller-call script bank.",
       "Every offer is conditional on parcel identity, title, legal access, buyer fit, and buildability review."
     ]
+  },
+  {
+    "id": "closing-feasibility-termination-email-clean",
+    "scope": "closing",
+    "label": "Clean feasibility termination",
+    "channel": "Email",
+    "sourceTime": "_1DziIwKyGk transcript notes: risk control / feasibility period",
+    "sourceUrl": "https://youtu.be/_1DziIwKyGk",
+    "title": "Terminate under feasibility review without saying buyer search failed",
+    "when": "Use on Closing when a seller agreement must be terminated during the attorney/title-approved feasibility or due-diligence window.",
+    "body": "Subject: {{propertyAddressOrApn}} - Feasibility review update\n\nHi {{sellerFirstName}},\n\nAfter completing our feasibility review on {{propertyAddressOrApn}}, we are not going to be able to move forward with the purchase. Per the feasibility/due-diligence provision in our agreement, this email serves as written notice that we are terminating the contract.\n\nI appreciate your time and the opportunity to review the property. I am sorry we could not make this one work.\n\nThank you,\n{{yourName}}",
+    "notes": [
+      "Use the contract's feasibility/due-diligence provision, not the phrase 'we could not find a buyer.'",
+      "Send only within the valid notice window and keep a copy in the closing file.",
+      "Attorney/title review controls final legal wording."
+    ]
+  },
+  {
+    "id": "closing-feasibility-termination-email-warm",
+    "scope": "closing",
+    "label": "Warm feasibility termination",
+    "channel": "Email",
+    "sourceTime": "_1DziIwKyGk transcript notes: risk control / termination email",
+    "sourceUrl": "https://youtu.be/_1DziIwKyGk",
+    "title": "Warmer termination when seller relationship matters",
+    "when": "Use on Closing for premium, relationship-sensitive, or future-nurture sellers when the deal fails feasibility/title/buildability/buyer-fit review.",
+    "body": "Subject: {{propertyAddressOrApn}} - Update on our review\n\nHi {{sellerFirstName}},\n\nI wanted to follow up after reviewing {{propertyAddressOrApn}}. Unfortunately, after our feasibility review, we are not going to be able to move forward with the purchase. There are a few items on our side that keep it from being a fit, so under the due-diligence/feasibility period in our agreement, we will need to terminate the contract.\n\nI appreciate you working with us, and I am sorry we could not get this one across the line.\n\nThank you,\n{{yourName}}",
+    "notes": [
+      "Best for sellers where tone matters: respectful, early, and not over-explained.",
+      "Do not cite unverified defects or expose buyer boxes, buyer max, or assignment spread.",
+      "Use only when the seller agreement actually contains a termination right that still applies."
+    ]
   }
 ];

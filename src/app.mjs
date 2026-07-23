@@ -72,7 +72,7 @@ import {
 } from './core.mjs?v=arcadia-buybox';
 import { leeCountyResaleBuilderAgents } from './agentCandidates.mjs?v=phase280-agent-referral-page-phase281-agent-airtable-tracker-phase282-agent-icon-toggles';
 import { leeCountyTaxDeedBuyers } from './taxDeedBuyers.mjs?v=phase283-tax-deed-buyers-page-phase285-lot-size-evidence-phase286-contact-osint-phase287-contact-exhaustive-osint-phase288-county-permit-contact';
-import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts';
+import { outreachScriptPacks } from './outreachScripts.mjs?v=phase284-script-drawer-phase285-lot-size-evidence-phase288-land-owner-scripts-phase289-yp-land-agent-scripts-phase290-closing-termination-drafts';
 
 const STORAGE_KEY = 'land-dealflow-os-v3-zero-fabrication-workspace';
 
@@ -1003,7 +1003,7 @@ function renderAppShell() {
 }
 
 function scriptScopeLabel(scope = '') {
-  return ({ buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts', deals: 'Land owner scripts' }[scope] || 'Scripts');
+  return ({ buyers: 'Tax deed buyer scripts', agents: 'Agent scripts', builders: 'Builder/buyer scripts', deals: 'Land owner scripts', closing: 'Closing termination drafts' }[scope] || 'Scripts');
 }
 
 function scriptsForScope(scope = activeView) {
@@ -1031,7 +1031,7 @@ function renderScriptDrawer() {
         <h3>${h(scriptScopeLabel(scope))}</h3>
         <button type="button" class="script-drawer-close" data-close-script-panel aria-label="Close scripts">×</button>
       </div>
-      <p class="script-drawer-source">Source-backed call language for land owners, buyers, and agents. Use only where the row has real proof; do not claim a deal, contact, relationship, or parcel condition that does not exist.</p>
+      <p class="script-drawer-source">Source-backed operator language for land owners, buyers, agents, and closing files. Use only where the row has real proof; do not claim a deal, contact, relationship, parcel condition, or contract right that does not exist.</p>
       <div class="script-drawer-list">${hasScripts ? scripts.map(script => `<article class="script-card" data-script-id="${h(script.id)}">
         <div class="script-card-head"><span>${h(script.channel)}</span><a href="${h(script.sourceUrl)}" target="_blank" rel="noopener noreferrer">${h(script.sourceTime)}</a></div>
         <h4>${h(script.title)}</h4>
@@ -4545,7 +4545,7 @@ function renderClosingDeskPanel() {
   const visible = getVisibleParcels();
   const selected = getSelectedParcel(visible);
   if (!selected) {
-    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>Next action</span><b>Select one buyer-backed deal before escrow or title work.</b><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></div>${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="closing-empty-state designed-empty-state" aria-label="Closing desk empty state"><div class="empty-state-icon">${solidIndustryIcon('empty')}</div><span class="eyebrow">Closing waits for a real file</span><h3>Select a buyer-backed deal to open escrow work.</h3><p>The desk stays intentionally quiet until a seller record has buyer demand, public provenance, and contract/title readiness.</p><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></article></div>`;
+    target.innerHTML = `<div class="closing-page-stack"><div class="primary-action-strip closing-primary-action"><span>Next action</span><b>Select one buyer-backed deal before escrow or title work.</b><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></div>${scriptButton('closing', 'Termination drafts')}${renderContractComposer()}${renderClosingDeskResearchDeck()}<article class="closing-empty-state designed-empty-state" aria-label="Closing desk empty state"><div class="empty-state-icon">${solidIndustryIcon('empty')}</div><span class="eyebrow">Closing waits for a real file</span><h3>Select a buyer-backed deal to open escrow work.</h3><p>The desk stays intentionally quiet until a seller record has buyer demand, public provenance, and contract/title readiness.</p><a href="#deals" data-view="deals">Open deals ${productIcon('arrow')}</a></article></div>`;
     return;
   }
   const buyer = getBuyer(selected);
@@ -4562,6 +4562,7 @@ function renderClosingDeskPanel() {
   }).join('');
   target.innerHTML = `<div class="closing-page-stack">
     <div class="primary-action-strip closing-primary-action"><span>Next action</span><b>Clear the title packet for ${h(selected.address || selected.parcelId || 'the selected deal')}.</b><a href="#contract-document-live">Review packet ${productIcon('arrow')}</a></div>
+    ${scriptButton('closing', 'Termination drafts')}
     ${renderContractComposer(selected)}
     ${renderClosingDeskResearchDeck()}
     <div class="closing-layout">
@@ -6481,6 +6482,13 @@ ${body}`;
   });
 
   document.addEventListener('change', (event) => {
+    const validationForm = event.target.closest?.('[data-validation-form]');
+    if (validationForm && event.target.matches('input, textarea, select')) {
+      persistBuyerValidationFormDraft(validationForm, { render: false, promote: false });
+      const status = validationForm.querySelector('.validation-save-status');
+      if (status) status.textContent = 'Draft saved locally.';
+      return;
+    }
     const queueSort = event.target.closest?.('[data-builder-queue-sort]');
     if (queueSort) {
       applyBuilderQueueControls(queueSort.closest('[data-builder-queue-surface]'));
@@ -6496,13 +6504,7 @@ ${body}`;
     if (buyerStatus) {
       updateBuyerTracking(buyerStatus.dataset.buyerStatus || '', { status: buyerStatus.value || 'not_started' });
       renderTaxDeedBuyerPanel();
-      return;
     }
-    const validationForm = event.target.closest?.('[data-validation-form]');
-    if (!validationForm || !event.target.matches('input, textarea, select')) return;
-    persistBuyerValidationFormDraft(validationForm, { render: false, promote: false });
-    const status = validationForm.querySelector('.validation-save-status');
-    if (status) status.textContent = 'Draft saved locally.';
   });
 
   document.addEventListener('keydown', (event) => {

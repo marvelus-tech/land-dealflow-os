@@ -2182,6 +2182,7 @@ function renderTaxDeedOwnerRunwayConsole() {
       <div><span>Call now</span><b>${h(runway.stats.callNow)}</b></div>
       <div><span>Enrich now</span><b>${h(runway.stats.enrichNow)}</b></div>
       <div><span>Source blocked</span><b>${h(runway.stats.sourceBlocked)}</b></div>
+      <div><span>Rejected non-land</span><b>${h(runway.stats.rejectedNonLand || 0)}</b></div>
     </div>
     <details class="tax-deed-runway-import" ${runway.stats.total ? '' : 'open'}>
       <summary><span><b>Import future tax deed owner rows</b><em>JSON or CSV; no fabricated contacts</em></span><strong>Import</strong></summary>
@@ -5985,7 +5986,7 @@ function bindEvents() {
         });
         workspace = { ...workspace, taxDeedOwnerRunwayRows: [...byId.values()] };
         const runway = buildTaxDeedOwnerRunway(workspace.taxDeedOwnerRunwayRows || [], { limit: 25 });
-        lastTaxDeedOwnerRunwayStatus = `Stored ${imported.length} owner row${imported.length === 1 ? '' : 's'}; ${runway.stats.callNow} call-now, ${runway.stats.enrichNow} enrich-now, ${runway.stats.enoughRunway} with 21-75 day runway.`;
+        lastTaxDeedOwnerRunwayStatus = `Stored ${imported.length} owner row${imported.length === 1 ? '' : 's'}; ${runway.stats.callNow} call-now, ${runway.stats.enrichNow} enrich-now, ${runway.stats.enoughRunway} with 21-75 day runway, ${runway.stats.rejectedNonLand || 0} rejected as non-land.`;
         persistWorkspace();
         if (status) status.textContent = lastTaxDeedOwnerRunwayStatus;
         renderParcels();

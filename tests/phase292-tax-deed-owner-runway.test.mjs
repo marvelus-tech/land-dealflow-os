@@ -5,6 +5,7 @@ import {
   parseTaxDeedOwnerRunwayImport,
   exportTaxDeedOwnerRunwayCsv,
   importWorkspace,
+  isTaxDeedVacantLandCandidate,
 } from '../src/core.mjs';
 
 const app = readFileSync(new URL('../src/app.mjs', import.meta.url), 'utf8');
@@ -12,13 +13,17 @@ const css = readFileSync(new URL('../src/styles.css', import.meta.url), 'utf8');
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const pkg = readFileSync(new URL('../package.json', import.meta.url), 'utf8');
 
-const rows = parseTaxDeedOwnerRunwayImport(`state,county,ownerName,ownerPhone,parcelId,propertyAddress,auctionDate,sourceUrl,buyerFit
-TN,Knox,Avery Owner,865-555-0101,KGIS-1,"123 Future Auction Rd",2026-08-15,https://county.example/taxsale,Knox builder lot fit
-TN,Knox,No Contact,,KGIS-2,"456 Mail First Rd",2026-09-10,https://county.example/taxsale,Buyer fit pending`);
+const rows = parseTaxDeedOwnerRunwayImport(`state,county,ownerName,ownerPhone,parcelId,propertyAddress,propertyUse,auctionDate,sourceUrl,buyerFit
+TN,Knox,Avery Owner,865-555-0101,KGIS-1,"123 Future Auction Rd",vacant residential lot,2026-08-15,https://county.example/taxsale,Knox builder lot fit
+TN,Knox,No Contact,,KGIS-2,"456 Mail First Rd",vacant land,2026-09-10,https://county.example/taxsale,Buyer fit pending
+TN,Knox,Improved Owner,865-555-0199,KGIS-3,"789 House Rd",Single family dwelling,2026-09-12,https://county.example/taxsale,Buyer fit pending`);
 const runway = buildTaxDeedOwnerRunway(rows, { today: '2026-07-23', minRunwayDays: 21 });
 
-assert.equal(rows.length, 2, 'CSV import must parse future owner rows.');
-assert.equal(runway.stats.total, 2, 'Runway must count imported owner rows.');
+assert.equal(rows.length, 3, 'CSV import must parse future owner rows.');
+assert.equal(runway.stats.total, 2, 'Runway must count only vacant/residential land owner rows.');
+assert.equal(runway.stats.rejectedNonLand, 1, 'Runway must reject obvious improved/non-land rows.');
+assert.equal(isTaxDeedVacantLandCandidate({ propertyUse: 'Vacant residential lot' }), true, 'Vacant lot rows must pass the land filter.');
+assert.equal(isTaxDeedVacantLandCandidate({ propertyUse: 'Single family dwelling' }), false, 'Improved residential structures must not enter the land-owner runway.');
 assert.equal(runway.rows[0].daysUntilAuction, 23, 'Runway must calculate days until auction.');
 assert.equal(runway.rows[0].runwayStage, 'work-now', '21-75 day source-backed rows should be work-now.');
 assert.match(runway.rows[0].nextAction, /Call now/, 'Verified contact with enough runway must become call-now.');

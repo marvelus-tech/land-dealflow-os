@@ -1023,15 +1023,33 @@ export const TAX_DEED_OWNER_RUNWAY_HEADERS = [
 
 function daysBetweenIso(startIso, endIso) {
   if (!endIso) return null;
-  const start = new Date(`${String(startIso || new Date().toISOString()).slice(0, 10)}T00:00:00Z`);
+  const start = new Date(`${String(startIso).slice(0, 10)}T00:00:00Z`);
   const end = new Date(`${String(endIso).slice(0, 10)}T00:00:00Z`);
   if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) return null;
   return Math.ceil((end.getTime() - start.getTime()) / 86400000);
 }
 
+export function isTaxDeedVacantLandCandidate(row = {}) {
+  const text = [
+    row.propertyUse,
+    row.landUse,
+    row.useCode,
+    row.propertyType,
+    row.zoning,
+    row.notes,
+  ].filter(Boolean).join(' ').toLowerCase();
+  if (!text.trim()) return true;
+  const landSignals = /\b(vacant|land|lot|residential\s+lot|residential\s+vacant|acreage|agricultural|unimproved|dor\s*0*00|\b000\b)\b/.test(text);
+  const improvedSignals = /\b(single\s*family|sfr|house|home|dwelling|condo|townhome|townhouse|duplex|triplex|multi[-\s]?family|apartment|mobile\s*home|manufactured\s*home|commercial|office|retail|warehouse|industrial|improved|building\s+value|structure)\b/.test(text);
+  if (improvedSignals && !landSignals) return false;
+  return landSignals || !improvedSignals;
+}
+
 export function buildTaxDeedOwnerRunway(rows = [], { today = new Date().toISOString(), minRunwayDays = 21, limit = 50 } = {}) {
   const todayIso = String(today || new Date().toISOString()).slice(0, 10);
-  const normalized = (Array.isArray(rows) ? rows : []).map((row, index) => {
+  const inputRows = Array.isArray(rows) ? rows : [];
+  const rejectedNonLand = inputRows.filter(row => !isTaxDeedVacantLandCandidate(row));
+  const normalized = inputRows.filter(row => isTaxDeedVacantLandCandidate(row)).map((row, index) => {
     const auctionDate = row.auctionDate || row.saleDate || row.taxSaleDate || row.deadlineDate || '';
     const daysUntilAuction = daysBetweenIso(todayIso, auctionDate);
     const hasDirectContact = Boolean(row.ownerPhone || row.ownerEmail);
@@ -1103,7 +1121,9 @@ export function buildTaxDeedOwnerRunway(rows = [], { today = new Date().toISOStr
       enrichNow: normalized.filter(row => /enrich|skip trace|mail/i.test(row.nextAction)).length,
       enoughRunway: normalized.filter(row => Number(row.daysUntilAuction) >= minRunwayDays && Number(row.daysUntilAuction) <= 75).length,
       sourceBlocked: normalized.filter(row => !row.sourceUrl).length,
+      rejectedNonLand: rejectedNonLand.length,
     },
+    rejectedNonLand,
     generatedAt: todayIso,
   };
 }

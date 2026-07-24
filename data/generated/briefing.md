@@ -1,13 +1,13 @@
-# Lead Engine Briefing — 2026-07-22
+# Lead Engine Briefing — 2026-07-24
 
-Run: lead-engine-2026-07-22T21-31-37-862Z
+Run: lead-engine-2026-07-24T21-30-12-277Z
 
 - Markets watched: 32
-- Buyer leads: 578
+- Buyer leads: 577
 - Parcel leads: 81
 - Top seller calls: 0
 - Real skip-trace leads: 81
-- Buyer validation tasks: 578
+- Buyer validation tasks: 577
 - Offer-ready deals: 0
 - New-area buyer discovery tasks: 18
 - New-area seller discovery tasks: 31

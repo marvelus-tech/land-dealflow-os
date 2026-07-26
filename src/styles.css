@@ -43571,3 +43571,137 @@ body[data-active-view="tax-deed"] .tax-deed-owner-airtable td:nth-child(11) { wi
   body[data-active-view="tax-deed"] .tax-deed-state-rail span { flex-basis: 100%; }
   body[data-active-view="tax-deed"] .agent-airtable { min-width: 1180px; }
 }
+
+/* phase301-buybox-contrast-hierarchy: SpaceX-grade readable PropWire filters */
+body[data-active-view="builders"] .buybox-propwire-stack {
+  --propwire-ink: #0b1411;
+  --propwire-muted: #35443f;
+  --propwire-label: #154b32;
+  --propwire-line: rgba(15, 23, 42, .14);
+  --propwire-surface: #ffffff;
+  --propwire-accent: #b7f36a;
+  margin-top: 18px !important;
+  gap: 14px !important;
+  color: var(--propwire-ink) !important;
+}
+body[data-active-view="builders"] .buybox-propwire-stack h4 {
+  margin: 0 0 2px !important;
+  color: var(--propwire-ink) !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  font-weight: 900 !important;
+  letter-spacing: .10em !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+}
+body[data-active-view="builders"] .buybox-propwire-note {
+  margin: 0 !important;
+  padding: 12px 14px !important;
+  border-radius: 10px !important;
+  background: #f2f7ef !important;
+  border: 1px solid rgba(21, 75, 50, .18) !important;
+  color: var(--propwire-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  box-shadow: none !important;
+}
+body[data-active-view="builders"] #app #builder-list-section .buybox-propwire-card,
+body[data-active-view="builders"] .buybox-propwire-card {
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: 48px minmax(0, 1fr) !important;
+  column-gap: 18px !important;
+  row-gap: 16px !important;
+  padding: 20px 20px 18px !important;
+  border-radius: 12px !important;
+  background: var(--propwire-surface) !important;
+  border: 1px solid var(--propwire-line) !important;
+  border-left: 4px solid #173d2d !important;
+  color: var(--propwire-ink) !important;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, .06), 0 18px 44px rgba(15, 23, 42, .08) !important;
+}
+body[data-active-view="builders"] #app #builder-list-section .buybox-propwire-card > span,
+body[data-active-view="builders"] .buybox-propwire-card > span {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 8px !important;
+  background: #c8ff7d !important;
+  color: #08110d !important;
+  border: 1px solid rgba(15, 23, 42, .12) !important;
+  font-size: 19px !important;
+  font-weight: 950 !important;
+  letter-spacing: .02em !important;
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, .10) !important;
+}
+body[data-active-view="builders"] .buybox-propwire-card b {
+  color: var(--propwire-ink) !important;
+  font-size: clamp(20px, 2.5vw, 27px) !important;
+  line-height: 1.05 !important;
+  font-weight: 900 !important;
+  letter-spacing: -.035em !important;
+}
+body[data-active-view="builders"] .buybox-propwire-card p {
+  margin-top: 8px !important;
+  max-width: 58ch !important;
+  color: var(--propwire-muted) !important;
+  font-size: 15px !important;
+  line-height: 1.52 !important;
+  font-weight: 560 !important;
+}
+body[data-active-view="builders"] .buybox-propwire-card dl {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  gap: 0 !important;
+  margin: 4px 0 0 !important;
+  border-top: 1px solid var(--propwire-line) !important;
+}
+body[data-active-view="builders"] .buybox-propwire-card dl > div {
+  display: grid !important;
+  grid-template-columns: minmax(112px, .28fr) minmax(0, 1fr) !important;
+  gap: 18px !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid rgba(15, 23, 42, .09) !important;
+}
+body[data-active-view="builders"] .buybox-propwire-card dt {
+  margin: 0 !important;
+  color: var(--propwire-label) !important;
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+  font-weight: 950 !important;
+  letter-spacing: .105em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="builders"] .buybox-propwire-card dd {
+  margin: 0 !important;
+  color: #1f2d29 !important;
+  font-size: 14.5px !important;
+  line-height: 1.52 !important;
+  font-weight: 650 !important;
+  letter-spacing: -.01em !important;
+}
+body[data-active-view="builders"] .buybox-propwire-stack .propwire-next {
+  margin-top: 4px !important;
+  border-radius: 12px !important;
+  background: #f4f8f1 !important;
+  border-color: rgba(21, 75, 50, .18) !important;
+  color: var(--propwire-ink) !important;
+}
+body[data-active-view="builders"] .buybox-propwire-stack .propwire-next span {
+  color: var(--propwire-label) !important;
+  opacity: 1 !important;
+}
+body[data-active-view="builders"] .buybox-propwire-stack .propwire-next b { color: var(--propwire-ink) !important; }
+@media (max-width: 640px) {
+  body[data-active-view="builders"] .buybox-propwire-card {
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+  }
+  body[data-active-view="builders"] #app #builder-list-section .buybox-propwire-card > span,
+body[data-active-view="builders"] .buybox-propwire-card > span { width: 42px !important; height: 42px !important; font-size: 17px !important; }
+  body[data-active-view="builders"] .buybox-propwire-card b { font-size: 20px !important; }
+  body[data-active-view="builders"] .buybox-propwire-card dl > div {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+}

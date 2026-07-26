@@ -1008,13 +1008,21 @@ h3, h4 { letter-spacing: -.035em; }
 .buybox-story-block, .buybox-source-proof, .buybox-next-move { padding: 18px; border-radius: 24px; background: rgba(255,255,255,.95); border: 1px solid rgba(15,23,42,.08); box-shadow: var(--shadow-soft); }
 .buybox-story-block h4, .buybox-lane-stack h4, .buybox-source-proof h4 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--brand-dark); }
 .buybox-story-block p, .buybox-source-proof li { color: var(--muted); font-size: 14px; line-height: 1.58; }
-.buybox-lane-stack { display: grid; gap: 12px; }
-.buybox-lane-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; padding: 16px; border-radius: 24px; background: linear-gradient(180deg, #fff 0%, #f7f8fb 100%); border: 1px solid rgba(15,23,42,.08); box-shadow: 0 18px 42px rgba(15,23,42,.08); }
-.buybox-lane-card > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 16px; background: #0f172a; color: #bdff93; font-weight: 900; }
-.buybox-lane-card b { display: block; font-size: 18px; letter-spacing: -.03em; color: var(--black); }
-.buybox-lane-card p, .buybox-lane-card dd { margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
-.buybox-lane-card dl { grid-column: 1 / -1; display: grid; gap: 8px; margin: 0; }
-.buybox-lane-card dt { font-size: 11px; text-transform: uppercase; letter-spacing: .10em; color: rgba(15,23,42,.48); font-weight: 900; }
+.buybox-lane-stack, .buybox-propwire-stack { display: grid; gap: 12px; }
+.buybox-propwire-stack { margin-top: 16px; color: var(--ink); }
+.buybox-propwire-stack h4 { margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: #bdff93; }
+.buybox-propwire-note { margin: 0; padding: 14px 16px; border-radius: 18px; background: rgba(189,255,147,.13); color: rgba(248,250,252,.78); font-size: 13px; line-height: 1.45; border: 1px solid rgba(189,255,147,.22); }
+.buybox-lane-card, .buybox-propwire-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; padding: 16px; border-radius: 24px; background: linear-gradient(180deg, #fff 0%, #f7f8fb 100%); border: 1px solid rgba(15,23,42,.08); box-shadow: 0 18px 42px rgba(15,23,42,.08); }
+.buybox-propwire-card { background: linear-gradient(180deg, #101827 0%, #172235 100%); border-color: rgba(189,255,147,.18); color: #f8fafc; }
+.buybox-lane-card > span, .buybox-propwire-card > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 16px; background: #0f172a; color: #bdff93; font-weight: 900; }
+.buybox-propwire-card > span { background: #bdff93; color: #0f172a; }
+.buybox-lane-card b, .buybox-propwire-card b { display: block; font-size: 18px; letter-spacing: -.03em; color: var(--black); }
+.buybox-propwire-card b { color: #fff; }
+.buybox-lane-card p, .buybox-lane-card dd, .buybox-propwire-card p, .buybox-propwire-card dd { margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.buybox-propwire-card p, .buybox-propwire-card dd { color: rgba(248,250,252,.72); }
+.buybox-lane-card dl, .buybox-propwire-card dl { grid-column: 1 / -1; display: grid; gap: 8px; margin: 0; }
+.buybox-lane-card dt, .buybox-propwire-card dt { font-size: 11px; text-transform: uppercase; letter-spacing: .10em; color: rgba(15,23,42,.48); font-weight: 900; }
+.buybox-propwire-card dt { color: rgba(189,255,147,.76); }
 .buybox-price-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
 .buybox-price-grid div { padding: 14px; border-radius: 20px; background: var(--money); color: var(--money-ink); }
 .buybox-price-grid span, .buybox-next-move span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .10em; font-weight: 900; opacity: .72; }

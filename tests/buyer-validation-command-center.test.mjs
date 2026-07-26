@@ -93,6 +93,8 @@ assert.match(appSource, /data-buybox-details-panel/, 'buy-box detail panel must 
 assert.match(appSource, /data-buybox-details-close/, 'buy-box detail panel must support an explicit close action');
 assert.match(stylesSource, /\.buybox-slideout-panel[\s\S]{0,260}position: fixed;[\s\S]{0,220}right: 0;/, 'buy-box details must display as a right-side slideout panel');
 assert.match(stylesSource, /\.buybox-lane-card/, 'buy-box slideout must preserve detailed lane cards for seller sourcing filters');
+assert.match(appSource, /Recommended PropWire filters/, 'buy-box slideout must render recommended PropWire saved-list filters when present');
+assert.match(appSource, /buybox-propwire-card/, 'PropWire filters must render as dedicated cards inside the buy-box slideout');
 assert.match(appSource, /<a href="#" class="copy-builder-email-address"/, 'selected builder email copy control must render as an inline anchor, not a button');
 assert.doesNotMatch(appSource, /<button[^>]+class="copy-builder-email-address"/, 'selected builder email copy control must not be a button because global button CSS adds pill chrome');
 assert.match(appSource, /event\.preventDefault\(\);[\s\S]{0,180}dataset\.copyBuilderEmailAddress/, 'copyable email anchor should not jump the page when clicked');

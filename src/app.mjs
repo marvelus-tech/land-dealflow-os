@@ -3766,7 +3766,7 @@ function renderAskNext(row = {}) {
 function renderBuyBoxDetailPanel(row = {}) {
   const details = row.buyBoxDetails || {};
   const buyBox = row.buyBox || {};
-  if (!details.story && !details.lanes && !row.buyBoxStory && !buyBox.maxPriceNotes && !asArray(buyBox.preferences).length) return '';
+  if (!details.story && !details.lanes && !details.propWireFilters && !row.buyBoxStory && !buyBox.maxPriceNotes && !asArray(buyBox.preferences).length) return '';
   const storyRows = asArray(details.story || (row.buyBoxStory ? [row.buyBoxStory] : [])).map(item => `<p>${h(item)}</p>`).join('');
   const laneRows = asArray(details.lanes).map((lane, index) => `<article class="buybox-lane-card">
     <span>${String(index + 1).padStart(2, '0')}</span>
@@ -3776,6 +3776,18 @@ function renderBuyBoxDetailPanel(row = {}) {
       <div><dt>Basis</dt><dd>${h(lane.basis || 'confirm')}</dd></div>
       <div><dt>Seller filters</dt><dd>${h(lane.sellerFilters || '')}</dd></div>
       <div><dt>Call angle</dt><dd>${h(lane.angle || '')}</dd></div>
+    </dl>
+  </article>`).join('');
+  const propWireRows = asArray(details.propWireFilters).map((filter, index) => `<article class="buybox-propwire-card">
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <div><b>${h(filter.name || 'PropWire filter')}</b><p>${h(filter.location || '')}</p></div>
+    <dl>
+      <div><dt>Property type</dt><dd>${h(filter.propertyType || 'confirm')}</dd></div>
+      <div><dt>Lot size</dt><dd>${h(filter.lotSize || 'confirm')}</dd></div>
+      <div><dt>Owner filters</dt><dd>${h(filter.ownerFilters || '')}</dd></div>
+      <div><dt>Value filters</dt><dd>${h(filter.valueFilters || '')}</dd></div>
+      <div><dt>Exclude</dt><dd>${h(filter.exclude || '')}</dd></div>
+      <div><dt>Sort</dt><dd>${h(filter.sort || '')}</dd></div>
     </dl>
   </article>`).join('');
   const sourceRows = asArray(details.sourceClues).map(item => `<li>${h(item)}</li>`).join('');
@@ -3792,6 +3804,7 @@ function renderBuyBoxDetailPanel(row = {}) {
       </div>
       <section class="buybox-story-block"><h4>Story</h4>${storyRows || `<p>${h(row.buyBoxStory || row.demandSignal || 'No story saved yet.')}</p>`}</section>
       <section class="buybox-lane-stack"><h4>Buyer lanes</h4>${laneRows || '<p>No lane cards stored yet.</p>'}</section>
+      ${propWireRows ? `<section class="buybox-propwire-stack"><h4>Recommended PropWire filters</h4><p class="buybox-propwire-note">Use these as saved list presets. Seller identity stays hidden until John confirms lane fit and max basis.</p>${propWireRows}<div class="buybox-next-move propwire-next"><span>PropWire next move</span><b>${h(details.propWireNextMove || 'Export a small blind-fit parcel sample before any seller outreach.')}</b></div></section>` : ''}
       <section class="buybox-price-grid" aria-label="Price bands">${priceRows || `<div><span>Max basis</span><b>${h(buyBox.maxPriceNotes || buyBox.maxPrice || 'confirm')}</b><em>${h(buyBox.geography || '')}</em></div>`}</section>
       <section class="buybox-source-proof"><h4>Source clues</h4><ul>${sourceRows || `<li>${h(row.sourceEvidence || row.publicSource || 'Public proof pending.')}</li>`}</ul></section>
       <section class="buybox-source-proof"><h4>Validation questions</h4><ul>${questionRows || preferenceRows || '<li>Confirm max price, close speed, recipient, utilities/access tolerance, and deal killers.</li>'}</ul></section>

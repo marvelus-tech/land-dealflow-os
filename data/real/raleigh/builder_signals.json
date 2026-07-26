@@ -114,7 +114,40 @@
         "What is your max lot basis by lane: Raleigh infill, Wake/Youngsville/Wendell estate, and Johnston/Franklin/Selma/Louisburg?",
         "Minimum acreage? Deal killers: flood/wetlands, no sewer, septic-only, no road frontage, HOA, slope, zoning?"
       ],
-      "nextMove": "Build 15-25 blind-fit parcel profiles first; no seller identity exposed; package exact parcels only after John confirms lane fit."
+      "nextMove": "Build 15-25 blind-fit parcel profiles first; no seller identity exposed; package exact parcels only after John confirms lane fit.",
+      "propWireFilters": [
+        {
+          "name": "Tier A \u2014 Raleigh premium infill / teardown",
+          "location": "Wake County, NC; city Raleigh; ZIPs 27609, 27612, 27614 first, then Brixley/Carriage Farm/North Ridge-adjacent pockets.",
+          "propertyType": "Vacant Land OR SFR with weak/old improvement. For teardown: SFR built before 1985, low improvement-to-land ratio, larger/older lots in premium pockets.",
+          "lotSize": "0.25-0.75 ac primary; allow 0.18-1.0 ac if pocket economics are strong.",
+          "ownerFilters": "Individual/trust/estate/LLC owners; absentee or mailing address different from situs; long-held 10+ years; high equity/free-and-clear preferred.",
+          "valueFilters": "Land assessed value roughly $150k-$500k; improvement value low vs land value for teardown; exclude finished luxury homes where seller will price retail.",
+          "exclude": "Government, utility, HOA, church, bank/REO, railroad, conservation, nonbuildable strips, severe flood/wetland overlays, no road frontage.",
+          "sort": "Sort by land value desc, years owned desc, absentee/estate/trust flags, and largest buildable lot inside premium ZIPs."
+        },
+        {
+          "name": "Tier B \u2014 East/North Wake estate/spec lots",
+          "location": "Wake Forest edge, Youngsville edge, Wendell/Rosslare, Raleigh outskirts, Fuquay edge; keep Wake County first before Franklin/Johnston spillover.",
+          "propertyType": "Vacant Land, residential acreage, estate-lot SFR candidates, minor-subdivision/split-potential parcels.",
+          "lotSize": "0.7-3.5 ac primary; 2-5 ac if road frontage/split potential is visible.",
+          "ownerFilters": "Absentee/long-held individual, family trust, estate, small LLC; high equity; low/no mortgage if PropWire shows lien/equity signals.",
+          "valueFilters": "Assessed/estimated lot basis roughly $75k-$225k unless comps support more; avoid cheap rural dirt without custom-home economics.",
+          "exclude": "Landlocked, flag-only without usable frontage, floodway/wetlands-heavy, major slope/sitework, septic-impossible, HOA constraints that block custom/spec product.",
+          "sort": "Sort by road frontage/buildable shape, acreage fit, high equity, years owned, and proximity to Ken Harvey community clues."
+        },
+        {
+          "name": "Tier C \u2014 farther-out optional lane after John confirms",
+          "location": "Selma, Louisburg, Lake Royale, Johnston/Franklin spillover only after John Cook confirms appetite.",
+          "propertyType": "Vacant residential lots, lake/community lots, small residential acreage with clear access/utilities.",
+          "lotSize": "0.75-5 ac only if finished-home economics work; do not bulk-source random rural acreage.",
+          "ownerFilters": "Long-held/absentee/high-equity owners; avoid investor-to-investor retail listings unless priced below builder basis.",
+          "valueFilters": "Unknown until confirmed; cap initial scan to low-basis parcels and mark as buyer-validation only.",
+          "exclude": "Cheap rural dirt with no premium buyer story, poor access, utility burden, flood/wetland, unclear buildability, or no evidence Ken Harvey wants that lane.",
+          "sort": "Run only as a small validation sample; do not unlock seller outreach until John confirms max basis and product lane."
+        }
+      ],
+      "propWireNextMove": "In PropWire, save three separate lists by tier. Export only 15-25 blind-fit parcel profiles for John first; seller identity stays hidden until he confirms the lane and max basis."
     },
     "buyBoxCapture": {
       "priority": "Do you want Raleigh infill/teardown first, estate subdivision lots first, raw acreage splits, build-on-your-land referrals, or any lane if the numbers work?",

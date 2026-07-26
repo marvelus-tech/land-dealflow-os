@@ -3763,6 +3763,42 @@ function renderAskNext(row = {}) {
   </aside>`;
 }
 
+function renderBuyBoxDetailPanel(row = {}) {
+  const details = row.buyBoxDetails || {};
+  const buyBox = row.buyBox || {};
+  if (!details.story && !details.lanes && !row.buyBoxStory && !buyBox.maxPriceNotes && !asArray(buyBox.preferences).length) return '';
+  const storyRows = asArray(details.story || (row.buyBoxStory ? [row.buyBoxStory] : [])).map(item => `<p>${h(item)}</p>`).join('');
+  const laneRows = asArray(details.lanes).map((lane, index) => `<article class="buybox-lane-card">
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <div><b>${h(lane.name || 'Buyer lane')}</b><p>${h(lane.locations || '')}</p></div>
+    <dl>
+      <div><dt>Lot</dt><dd>${h(lane.lot || 'confirm')}</dd></div>
+      <div><dt>Basis</dt><dd>${h(lane.basis || 'confirm')}</dd></div>
+      <div><dt>Seller filters</dt><dd>${h(lane.sellerFilters || '')}</dd></div>
+      <div><dt>Call angle</dt><dd>${h(lane.angle || '')}</dd></div>
+    </dl>
+  </article>`).join('');
+  const sourceRows = asArray(details.sourceClues).map(item => `<li>${h(item)}</li>`).join('');
+  const questionRows = asArray(details.validationQuestions).map(item => `<li>${h(item)}</li>`).join('');
+  const preferenceRows = asArray(buyBox.preferences).map(item => `<li>${h(item)}</li>`).join('');
+  const priceRows = asArray(buyBox.priceByZip).map(item => `<div><span>${h(item.zip || 'market')}</span><b>${h(item.submarket || '')}</b><em>${h(item.targetLotCost || '')}</em></div>`).join('');
+  return `<div class="buybox-slideout-backdrop" data-buybox-details-close hidden></div>
+    <aside class="buybox-slideout-panel" data-buybox-details-panel hidden aria-label="Buy box details for ${h(row.name || 'selected buyer')}">
+      <div class="buybox-slideout-head">
+        <span class="eyebrow">Buy box details · story mode</span>
+        <button type="button" class="buybox-slideout-close" data-buybox-details-close aria-label="Close buy box details">×</button>
+        <h3>${h(row.name || 'Selected buyer')}</h3>
+        <p>${h(details.status || 'Use this as the operator brief before seller sourcing.')}</p>
+      </div>
+      <section class="buybox-story-block"><h4>Story</h4>${storyRows || `<p>${h(row.buyBoxStory || row.demandSignal || 'No story saved yet.')}</p>`}</section>
+      <section class="buybox-lane-stack"><h4>Buyer lanes</h4>${laneRows || '<p>No lane cards stored yet.</p>'}</section>
+      <section class="buybox-price-grid" aria-label="Price bands">${priceRows || `<div><span>Max basis</span><b>${h(buyBox.maxPriceNotes || buyBox.maxPrice || 'confirm')}</b><em>${h(buyBox.geography || '')}</em></div>`}</section>
+      <section class="buybox-source-proof"><h4>Source clues</h4><ul>${sourceRows || `<li>${h(row.sourceEvidence || row.publicSource || 'Public proof pending.')}</li>`}</ul></section>
+      <section class="buybox-source-proof"><h4>Validation questions</h4><ul>${questionRows || preferenceRows || '<li>Confirm max price, close speed, recipient, utilities/access tolerance, and deal killers.</li>'}</ul></section>
+      <div class="buybox-next-move"><span>Next move</span><b>${h(details.nextMove || 'Capture direct confirmation before seller outreach.')}</b></div>
+    </aside>`;
+}
+
 function renderEvidenceStack(row = {}) {
   const permits = asArray(row.permitEvidence || row.recentPermits).slice(0, 3);
   const proofRows = permits.map((permit, index) => `<li>
@@ -4001,6 +4037,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger" aria-label="Buyer Validation Command Center">
     ${phase3Console}
     <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
+    ${renderBuyBoxDetailPanel(selected)}
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
       <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm. Phase 1 turns this into a spreadsheet-like list: contact, progress, notes, proof count.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
@@ -4043,6 +4080,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
           <a class="validation-call-button icon-only ${selected.email ? '' : 'disabled'}" href="${mailHref}" aria-label="Draft email" title="Draft email">${actionIcon('email')}</a>
           <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>${actionIcon('copy')}<span>Draft</span></button>
+          <button type="button" class="validation-call-button secondary buybox-detail-trigger" data-buybox-details-toggle>${solidIndustryIcon('disclosure')}<span>Buy box details</span></button>
           ${contactProofLink ? `<a class="validation-call-button secondary website-link" href="${h(contactProofLink)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
           <span class="validation-email-status" aria-live="polite"></span>
         </div>
@@ -5982,6 +6020,36 @@ function bindEvents() {
       return;
     }
 
+    const buyBoxDetailsToggle = event.target.closest('[data-buybox-details-toggle]');
+    if (buyBoxDetailsToggle) {
+      event.preventDefault();
+      const panel = document.querySelector('[data-buybox-details-panel]');
+      const backdrop = document.querySelector('.buybox-slideout-backdrop');
+      if (panel) {
+        panel.hidden = false;
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-modal', 'true');
+        backdrop?.removeAttribute('hidden');
+        panel.querySelector('[data-buybox-details-close]')?.focus?.({ preventScroll: true });
+      }
+      return;
+    }
+
+    const buyBoxDetailsClose = event.target.closest('[data-buybox-details-close]');
+    if (buyBoxDetailsClose) {
+      event.preventDefault();
+      const panel = document.querySelector('[data-buybox-details-panel]');
+      const backdrop = document.querySelector('.buybox-slideout-backdrop');
+      if (panel) {
+        panel.classList.remove('is-open');
+        panel.hidden = true;
+        panel.removeAttribute('aria-modal');
+      }
+      backdrop?.setAttribute('hidden', '');
+      document.querySelector('[data-buybox-details-toggle]')?.focus?.({ preventScroll: true });
+      return;
+    }
+
     const agentTouch = event.target.closest('[data-agent-touch]');
     if (agentTouch) {
       event.preventDefault();
@@ -6858,6 +6926,17 @@ ${body}`;
   });
 
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      const panel = document.querySelector('[data-buybox-details-panel]:not([hidden])');
+      if (panel) {
+        panel.classList.remove('is-open');
+        panel.hidden = true;
+        panel.removeAttribute('aria-modal');
+        document.querySelector('.buybox-slideout-backdrop')?.setAttribute('hidden', '');
+        document.querySelector('[data-buybox-details-toggle]')?.focus?.({ preventScroll: true });
+        return;
+      }
+    }
     if (event.key === 'Escape' && openScriptScope) {
       openScriptScope = '';
       renderScriptDrawer();

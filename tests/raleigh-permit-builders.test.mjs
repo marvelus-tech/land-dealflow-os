@@ -5,12 +5,15 @@ const signals = JSON.parse(fs.readFileSync('data/real/raleigh/builder_signals.js
 const evidence = JSON.parse(fs.readFileSync('data/real/raleigh/market_evidence.json', 'utf8'));
 const adapterSource = fs.readFileSync('scripts/adapters/raleigh-arcgis-permit-builders.mjs', 'utf8');
 
-assert.ok(signals.length >= 20, 'Raleigh/Wake permit-builder pull must never regress below 20 unique builders');
+const permitSignals = signals.filter(row => row.evidenceType === 'permitVerified active-builder signal');
+const buyerOsintSignals = signals.filter(row => row.evidenceType === 'buyerOSINT public website + Wake parcel/permit fit packet');
+assert.ok(permitSignals.length >= 20, 'Raleigh/Wake permit-builder pull must never regress below 20 unique builders');
 assert.equal(evidence.summary.minimumUniqueBuilders, 20);
 assert.ok(evidence.summary.uniqueBuilders >= 20);
-assert.equal(evidence.summary.uniqueBuilders, signals.length);
-assert.equal(new Set(signals.map(row => row.id)).size, signals.length, 'Raleigh builders must be deduped by stable ID');
-assert.equal(new Set(signals.map(row => row.name.toLowerCase())).size, signals.length, 'Raleigh builders must be deduped by normalized name');
+assert.equal(evidence.summary.uniqueBuilders, permitSignals.length);
+assert.equal(new Set(signals.map(row => row.id)).size, signals.length, 'Raleigh builders/buyers must be deduped by stable ID');
+assert.equal(new Set(signals.map(row => row.name.toLowerCase())).size, signals.length, 'Raleigh builders/buyers must be deduped by normalized name');
+assert.ok(buyerOsintSignals.some(row => row.name === 'Ken Harvey Homes'), 'Ken Harvey Homes buyer OSINT row should stay loaded beside Raleigh permit builders');
 assert.ok(evidence.summary.permitRowsSampled >= 500, 'Raleigh pull should sample enough public permit rows to avoid a thin queue');
 assert.ok(evidence.summary.totalRecentBuildSignals >= 300, 'Raleigh pull should represent real permit-backed volume');
 assert.match(evidence.source.sourceUrl, /data\.wake\.gov\/maps\/ral::building-permits/);
@@ -21,7 +24,7 @@ assert.doesNotMatch(evidence.source.where, /ADDITION\/ALTERATION|MISCELLANEOUS|R
 assert.match(adapterSource, /groups\.has\(key\)/, 'Raleigh adapter must group by normalized builder key before applying the floor');
 assert.match(adapterSource, /builderSignals\.length < minimumUniqueBuilders/, 'Raleigh adapter must fail loudly below the batch floor');
 
-for (const builder of signals) {
+for (const builder of permitSignals) {
   assert.equal(builder.market, 'raleigh-nc');
   assert.equal(builder.state, 'NC');
   assert.ok(builder.id.startsWith('raleigh-builder-'));

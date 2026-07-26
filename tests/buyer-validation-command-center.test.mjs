@@ -87,6 +87,12 @@ assert.match(appSource, /renderBuilderListEnginePanel\(\{ preserveViewport: true
 assert.match(appSource, /event\.preventDefault\(\);[\s\S]{0,120}selectedValidationBuilderId = validationBuilderButton\.dataset\.selectValidationBuilder/, 'builder row selection should be an in-place state update, not browser navigation');
 assert.doesNotMatch(appSource, /class="validation-queue-item[\s\S]{0,220}data-select-builder=/, 'validation rows must not use the permit-builder selector or they reset to the top row');
 assert.match(appSource, /data-copy-validation-email/, 'validation focus card must expose a Copy email action next to Draft email');
+assert.match(appSource, /data-buybox-details-toggle/, 'validation focus card must expose a buy-box details button');
+assert.match(appSource, /function renderBuyBoxDetailPanel/, 'story-first buy box details should render as a reusable slideout panel');
+assert.match(appSource, /data-buybox-details-panel/, 'buy-box detail panel must mount as a slideout target');
+assert.match(appSource, /data-buybox-details-close/, 'buy-box detail panel must support an explicit close action');
+assert.match(stylesSource, /\.buybox-slideout-panel[\s\S]{0,260}position: fixed;[\s\S]{0,220}right: 0;/, 'buy-box details must display as a right-side slideout panel');
+assert.match(stylesSource, /\.buybox-lane-card/, 'buy-box slideout must preserve detailed lane cards for seller sourcing filters');
 assert.match(appSource, /<a href="#" class="copy-builder-email-address"/, 'selected builder email copy control must render as an inline anchor, not a button');
 assert.doesNotMatch(appSource, /<button[^>]+class="copy-builder-email-address"/, 'selected builder email copy control must not be a button because global button CSS adds pill chrome');
 assert.match(appSource, /event\.preventDefault\(\);[\s\S]{0,180}dataset\.copyBuilderEmailAddress/, 'copyable email anchor should not jump the page when clicked');

@@ -997,6 +997,32 @@ h3, h4 { letter-spacing: -.035em; }
 .validation-script-drawer { margin-top: 14px; padding: 16px; border-radius: 22px; background: rgba(255,255,255,.70); border: 1px solid var(--line-soft); }
 .validation-script-drawer summary { cursor: pointer; color: var(--brand-dark); font-size: 13px; font-weight: 860; }
 .validation-script-drawer pre { max-height: 360px; overflow: auto; padding: 16px; border-radius: 16px; background: #0f172a; color: #e5eefc; white-space: pre-wrap; font-size: 12px; line-height: 1.55; }
+.buybox-slideout-backdrop { position: fixed; inset: 0; z-index: 80; background: rgba(5, 10, 18, .42); backdrop-filter: blur(8px); }
+.buybox-slideout-panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 81; width: min(640px, calc(100vw - 18px)); overflow: auto; padding: clamp(22px, 3vw, 40px); background: radial-gradient(circle at 18% 0%, rgba(189, 255, 147, .18), transparent 30%), linear-gradient(180deg, #070b12 0%, #111827 56%, #f8fafc 56%, #fff 100%); color: #f8fafc; border-left: 1px solid rgba(255,255,255,.22); box-shadow: -30px 0 90px rgba(0,0,0,.34); transform: translateX(0); }
+.buybox-slideout-panel[hidden], .buybox-slideout-backdrop[hidden] { display: none !important; }
+.buybox-slideout-head { position: relative; padding: 18px 18px 22px; border-radius: 26px; background: linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.16); }
+.buybox-slideout-head h3 { margin: 8px 0; font-size: clamp(34px, 6vw, 64px); line-height: .86; letter-spacing: -.07em; }
+.buybox-slideout-head p { max-width: 52ch; margin: 0; color: rgba(248,250,252,.74); font-size: 14px; line-height: 1.55; }
+.buybox-slideout-close { position: absolute; top: 14px; right: 14px; width: 38px; height: 38px; border-radius: 999px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.12); color: #fff; font-size: 22px; line-height: 1; }
+.buybox-story-block, .buybox-lane-stack, .buybox-source-proof, .buybox-next-move, .buybox-price-grid { margin-top: 16px; color: var(--ink); }
+.buybox-story-block, .buybox-source-proof, .buybox-next-move { padding: 18px; border-radius: 24px; background: rgba(255,255,255,.95); border: 1px solid rgba(15,23,42,.08); box-shadow: var(--shadow-soft); }
+.buybox-story-block h4, .buybox-lane-stack h4, .buybox-source-proof h4 { margin: 0 0 10px; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--brand-dark); }
+.buybox-story-block p, .buybox-source-proof li { color: var(--muted); font-size: 14px; line-height: 1.58; }
+.buybox-lane-stack { display: grid; gap: 12px; }
+.buybox-lane-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 12px; padding: 16px; border-radius: 24px; background: linear-gradient(180deg, #fff 0%, #f7f8fb 100%); border: 1px solid rgba(15,23,42,.08); box-shadow: 0 18px 42px rgba(15,23,42,.08); }
+.buybox-lane-card > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 16px; background: #0f172a; color: #bdff93; font-weight: 900; }
+.buybox-lane-card b { display: block; font-size: 18px; letter-spacing: -.03em; color: var(--black); }
+.buybox-lane-card p, .buybox-lane-card dd { margin: 4px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+.buybox-lane-card dl { grid-column: 1 / -1; display: grid; gap: 8px; margin: 0; }
+.buybox-lane-card dt { font-size: 11px; text-transform: uppercase; letter-spacing: .10em; color: rgba(15,23,42,.48); font-weight: 900; }
+.buybox-price-grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.buybox-price-grid div { padding: 14px; border-radius: 20px; background: var(--money); color: var(--money-ink); }
+.buybox-price-grid span, .buybox-next-move span { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .10em; font-weight: 900; opacity: .72; }
+.buybox-price-grid b { display: block; margin: 5px 0; line-height: 1.1; }
+.buybox-price-grid em { display: block; font-size: 12px; font-style: normal; opacity: .74; }
+.buybox-next-move { border-color: rgba(31,122,59,.18); background: linear-gradient(135deg, #efffe6, #fff); }
+.buybox-next-move b { display: block; margin-top: 8px; font-size: 18px; line-height: 1.24; letter-spacing: -.03em; }
+.buybox-detail-trigger .solid-industry-icon { width: 16px; height: 16px; }
 @media (max-width: 1000px) {
   .validation-hero, .validation-grid-main { grid-template-columns: 1fr; }
   .validation-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }

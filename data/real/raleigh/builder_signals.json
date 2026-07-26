@@ -1,5 +1,155 @@
 [
   {
+    "id": "raleigh-buyer-ken-harvey-homes",
+    "builderId": "raleigh-buyer-ken-harvey-homes",
+    "name": "Ken Harvey Homes",
+    "companyName": "Ken Harvey Homes",
+    "market": "raleigh-nc",
+    "marketName": "Raleigh / Wake County, NC",
+    "state": "NC",
+    "primaryCity": "Raleigh",
+    "website": "https://www.kenharveyhomes.com/",
+    "phone": "",
+    "email": "john.cook@kenharveyhomes.com",
+    "contactName": "John Cook",
+    "contactRole": "buyer-validation contact provided by Okeito",
+    "contactStatus": "direct email provided by operator; phone still unresolved",
+    "contactConfidence": "operator-provided contact path; public website/community evidence supports buyer thesis",
+    "callable": true,
+    "route": "buyerValidation",
+    "recentBuilds": 19,
+    "closeSpeedDays": "",
+    "maxPrice": "500000",
+    "validationStatus": "needs-call-confirmation",
+    "callStatus": "follow_up",
+    "sourceUrl": "https://www.kenharveyhomes.com/communities/",
+    "contactUrl": "https://www.kenharveyhomes.com/contact/",
+    "publicSource": "Ken Harvey Homes public website/community footprint + Wake County parcel/permit OSINT packet; contact email provided by Okeito.",
+    "sourceEvidence": "Public site markets luxury communities, custom floorplans, and build-on-your-land. Wake OSINT found Ken Harvey-owned parcels and permit patterns in Carriage Farm, Brixley, Rosslare, Serenity Reserve, Waterstone, Raleigh infill/North Ridge-type pockets.",
+    "demandSignal": "Strongest demand hypothesis: Raleigh premium infill/teardown lots and Wake/Youngsville/Wendell estate lots where a $700k-$1.5M+ custom/spec home is realistic. Confirm exact max lot basis with John Cook before seller outreach.",
+    "evidenceType": "buyerOSINT public website + Wake parcel/permit fit packet",
+    "buyBoxStory": "Ken Harvey Homes is a premium custom/spec builder signal, not a cheap rural-land flipper. Their public footprint points to Raleigh luxury infill, North/East Wake estate-lot product, and build-on-your-land capability. Treat their '45-mile Raleigh radius' as lane-specific demand: premium infill first, estate lots second, farther-out lake/Franklin/Johnston product only after John confirms appetite.",
+    "buyBox": {
+      "geography": "Raleigh premium infill; North Hills/Midtown; North Ridge; Six Forks/Falls of Neuse; Carriage Farm/Brixley-adjacent; Wake Forest/Youngsville; Wendell/Rosslare; Fuquay edge; optional Selma/Louisburg/Lake Royale only after confirmation.",
+      "lotSize": "Tier A: 0.25-0.75 ac infill/teardown. Tier B: 0.7-3.5 ac estate/subdivision lots. Tier C: 0.75-5 ac raw/split candidates only if utilities and buyer appetite clear.",
+      "maxPrice": "500000",
+      "maxPriceNotes": "Hypothesis only: Raleigh infill/high-value lots under roughly $250k-$500k depending on finished-home ceiling; Wake/Youngsville/Wendell estate lots around $100k-$225k; Johnston/Franklin/Selma/Louisburg requires John confirmation.",
+      "closeSpeed": "Ask John Cook. Public evidence supports premium custom/spec demand but not confirmed close speed or lot absorption.",
+      "packageRecipient": "John Cook \u2014 john.cook@kenharveyhomes.com. Send blind-fit profiles first; do not expose seller identity until lane fit is confirmed.",
+      "utilitiesAccess": "Road access and clean title required. Sewer preferred for Raleigh infill; well/septic may be workable for estate/build-on-your-land lanes because their site discusses well, septic, power, access, and sitework costs.",
+      "productType": "Luxury/custom/spec SFR; 3,400-4,800 sf common estate lane; 5,800+ sf premium Brixley/North Hills-type lane; build-on-your-land support.",
+      "dealKillers": [
+        "severe flood/wetlands",
+        "no road frontage",
+        "unclear title",
+        "unbuildable strips",
+        "utility/sitework burden that kills finished-home economics",
+        "far-rural/cheap dirt without John confirmation"
+      ],
+      "preferences": [
+        "Raleigh luxury infill / teardown first",
+        "Wendell/Rosslare-style 0.75-3.5 ac estate lots second",
+        "Youngsville/Wake Forest 0.7-2 ac estate lots third",
+        "Fuquay/Angier only after utility/septic tolerance is confirmed",
+        "Johnston/Franklin/Louisburg/Selma only after John confirms farther-out lanes"
+      ],
+      "priceByZip": [
+        {
+          "submarket": "Raleigh premium infill / North Ridge / North Hills",
+          "targetLotCost": "<$250k-$500k hypothesis",
+          "zip": "27609/27612/27614"
+        },
+        {
+          "submarket": "Wendell / east Wake estate",
+          "targetLotCost": "<$100k-$200k unless comps support more",
+          "zip": "27591"
+        },
+        {
+          "submarket": "Wake Forest / Youngsville estate edge",
+          "targetLotCost": "~$125k-$225k ordinary estate lots",
+          "zip": "27587/27596"
+        }
+      ]
+    },
+    "buyBoxDetails": {
+      "status": "Hypothesis to validate \u2014 not a confirmed max-basis buy box yet.",
+      "story": [
+        "Public footprint shows luxury communities, custom floorplans, build-on-your-land, and large custom/spec product around Wake/Franklin/Johnston edges.",
+        "Wake parcel/permit evidence points to owned lots from 0.28-3.49 ac, with Raleigh infill land values up to roughly $470k and community permit valuations often $686k-$1.7M.",
+        "The operating move is not random Raleigh-radius dirt; it is a lane-specific blind-fit parcel package for John Cook."
+      ],
+      "lanes": [
+        {
+          "name": "Tier A \u2014 Raleigh premium infill / teardown",
+          "locations": "Raleigh, North Hills, North Ridge, Six Forks, Falls of Neuse, Brixley/Carriage Farm-adjacent",
+          "lot": "0.25-0.75 ac",
+          "basis": "~$250k-$500k hypothesis",
+          "sellerFilters": "Wake County; vacant OR old SFR/weak improvement; individual/absentee/long-held; exclude government/utility/HOA/church/bank/nonbuildable strips",
+          "angle": "Custom builder looking for a clean high-end homesite in this pocket."
+        },
+        {
+          "name": "Tier B \u2014 East/North Wake estate/spec",
+          "locations": "Wendell, Wake Forest edge, Youngsville edge, Raleigh outskirts, Fuquay edge",
+          "lot": "0.7-3.5 ac primary; 2-5 ac if split potential",
+          "basis": "~$100k-$225k ordinary estate lot hypothesis",
+          "sellerFilters": "Road-front estate lots, minor subdivision candidates, large-lot residential; verify frontage/flood/wetlands/septic/well/zoning",
+          "angle": "Premium custom/spec estate lot where a $700k-$1.2M+ finished home is realistic."
+        },
+        {
+          "name": "Tier C \u2014 farther-out optional lane",
+          "locations": "Selma, Louisburg, Lake Royale, Johnston/Franklin spillover",
+          "lot": "clarify with John before sourcing heavy",
+          "basis": "Unknown until confirmed",
+          "sellerFilters": "Run only if John confirms farther-out/lower-ticket appetite",
+          "angle": "Only send if the numbers work and buyer confirms the lane."
+        }
+      ],
+      "sourceClues": [
+        "Brixley, North Hills Midtown, North Ridge, Carriage Farm, Waterstone, Cotton Farms, Rosslare Manor, Serenity Reserve and other public community pages.",
+        "Wake owner query packet found 19 Ken Harvey Homes LLC parcels; median acreage ~0.77 ac; average ~0.90 ac; observed land assessed values ~$100k-$470k.",
+        "Permit evidence packet showed Carriage Farm/Rosslare/Serenity/Brixley/Waterstone valuation clusters, including Brixley median around ~$1.536M permit valuation."
+      ],
+      "validationQuestions": [
+        "Should I prioritize infill/teardown Raleigh lots, estate/subdivision lots, raw acreage splits, build-on-your-land referrals, or any of the above if numbers work?",
+        "What is your max lot basis by lane: Raleigh infill, Wake/Youngsville/Wendell estate, and Johnston/Franklin/Selma/Louisburg?",
+        "Minimum acreage? Deal killers: flood/wetlands, no sewer, septic-only, no road frontage, HOA, slope, zoning?"
+      ],
+      "nextMove": "Build 15-25 blind-fit parcel profiles first; no seller identity exposed; package exact parcels only after John confirms lane fit."
+    },
+    "buyBoxCapture": {
+      "priority": "Do you want Raleigh infill/teardown first, estate subdivision lots first, raw acreage splits, build-on-your-land referrals, or any lane if the numbers work?",
+      "price": "What is your rough max lot basis for Raleigh infill, Wake/Youngsville/Wendell estate lots, and Johnston/Franklin/Selma/Louisburg?",
+      "constraints": "What kills a parcel immediately: flood/wetlands, septic-only, no sewer, no road frontage, HOA, slope, zoning, sitework, title?"
+    },
+    "recentPermits": [
+      {
+        "permitNumber": "WAKE-KHH-CARRIAGE-FARM-PACKET",
+        "address": "Carriage Farm / Raleigh",
+        "issuedAt": "OSINT packet",
+        "permitValue": 757000,
+        "description": "21 SFR permit hits in packet; median valuation approx $757k; product read luxury/spec/custom subdivision lot.",
+        "sourceUrl": "artifacts/research/raleigh-ken-harvey/ken-harvey-homes-raleigh-buybox-osint.md"
+      },
+      {
+        "permitNumber": "WAKE-KHH-BRIXLEY-PACKET",
+        "address": "Brixley / Raleigh",
+        "issuedAt": "OSINT packet",
+        "permitValue": 1536000,
+        "description": "7 SFR hits in packet; median valuation approx $1.536M; premium Raleigh luxury lane.",
+        "sourceUrl": "artifacts/research/raleigh-ken-harvey/ken-harvey-homes-raleigh-buybox-osint.md"
+      },
+      {
+        "permitNumber": "WAKE-KHH-ROSSLARE-PACKET",
+        "address": "Rosslare / Wendell",
+        "issuedAt": "OSINT packet",
+        "permitValue": 686000,
+        "description": "30 SFR hits in packet; median valuation approx $686k; large-lot eastern Wake custom/spec lane.",
+        "sourceUrl": "artifacts/research/raleigh-ken-harvey/ken-harvey-homes-raleigh-buybox-osint.md"
+      }
+    ],
+    "acquisitionNotes": "Central thesis: add as a buyer-validation contact with a story-first buy box drawer. This row is source-backed but still requires John Cook confirmation before seller identity, skip-trace, or outreach."
+  },
+  {
     "id": "raleigh-builder-lennar-carolinas-llc",
     "name": "LENNAR CAROLINAS, LLC",
     "market": "raleigh-nc",

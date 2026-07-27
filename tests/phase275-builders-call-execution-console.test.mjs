@@ -45,9 +45,9 @@ assert.equal(json.length, consoleModel.queue.length, 'Phase 3 JSON export must s
 assert.ok(json[0].nextAction, 'Phase 3 JSON rows need the operator next action');
 
 assert.match(app, /function renderBuilderPhase3CallConsole/, 'Builders route must keep the call execution console renderer wired.');
-assert.match(app, /Today's call queue/, 'Call console needs product-facing Today queue copy.');
-assert.doesNotMatch(app, /Phase 3 · today's call queue|Phase 3 builder call execution console/, 'Call console must not expose implementation-phase labels in visible/accessible product copy.');
-assert.match(app, /Top 25 callable builders ranked by follow-up urgency/, 'Call queue order must be explained to operators');
+assert.match(app, /One workbench/, 'Call console needs product-facing one-workbench copy.');
+assert.doesNotMatch(app, /Phase 3 · today's call queue|Phase 3 builder call execution console|Today's call queue/, 'Call console must not expose implementation-phase labels or duplicate-queue copy in visible/accessible product copy.');
+assert.match(app, /One selected builder, one work list, one detail panel/, 'Unified workbench copy must explain there is one queue/detail flow.');
 assert.match(app, /data-phase3-call-outcome/, 'Call console must expose one-click selected-builder outcome controls');
 assert.match(app, /id="export-builder-call-queue-csv"/, 'Phase 3 console must export CSV from the Builders route');
 assert.match(app, /id="export-builder-call-queue-json"/, 'Phase 3 console must export JSON from the Builders route');

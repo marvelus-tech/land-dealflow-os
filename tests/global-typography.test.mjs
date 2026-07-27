@@ -164,7 +164,7 @@ assert.match(css, /v1\.58 - Phase 26 Apple HIG refinement: short labels, tooltip
 assert.match(css, /--phase26-review-rule: short-visible-labels-secondary-detail-lives-in-tooltip/, 'Phase 26 should encode short labels and tooltip-depth rule');
 assert.match(css, /--phase26-forest: #104b33/, 'Phase 26 should define accessible forest primary accent');
 assert.match(css, /--phase26-gold: #866014/, 'Phase 26 should define contrast-safe gold metric accent');
-assert.match(appSource, /<span>Queue <button[\s\S]{0,280}<b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips/, 'Queue header should use short visible labels with tooltip depth');
+assert.match(appSource, /<span>Work list <button[\s\S]{0,300}<b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips/, 'Builder work-list header should use short visible labels with tooltip depth');
 assert.match(appSource, /<span class="eyebrow">Builder<\/span>/, 'Selected builder label should be shortened to Builder');
 assert.match(appSource, /<div class="next-best-action"><span>Next<\/span>/, 'Next best action label should be shortened to Next');
 assert.match(appSource, /<span>Seller gate<\/span><b>\$\{selected\.sellerSearch\?\.eligible \? 'open'/, 'Seller gate label/status should be short');

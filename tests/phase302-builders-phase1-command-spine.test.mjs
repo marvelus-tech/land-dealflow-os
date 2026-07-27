@@ -13,8 +13,8 @@ const phase = css.slice(start);
 
 assert.match(app, /class="builder-phase1-spine" aria-label="Builder page flow"/, 'Builders route must render a clear page-spine flow above the market rail.');
 assert.match(app, /Choose market<\/span><span>Call builders<\/span><span>Capture buy box<\/span><span>Unlock sellers/, 'Builder page spine must explain the operator sequence.');
-assert.match(app, /aria-label="Builder call queue"/, 'Call console must use product-facing aria copy, not implementation-phase labels.');
-assert.match(app, /<span class="eyebrow">Today's call queue<\/span>/, 'Visible call-queue eyebrow must remove implementation-phase residue.');
+assert.match(app, /aria-label="Unified builder workbench"/, 'Command surface must use product-facing unified-workbench aria copy.');
+assert.match(app, /<span class="eyebrow">One workbench<\/span>/, 'Visible command eyebrow must describe the unified workbench.');
 assert.doesNotMatch(app, /Phase 3 · today's call queue|Phase 3 builder call execution console|Selected-builder outcome/, 'Builders visible copy must not expose implementation labels in the primary UX.');
 assert.match(app, /Outcome for selected builder/, 'Outcome capture should remain attached to the selected-builder concept in human copy.');
 

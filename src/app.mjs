@@ -3927,23 +3927,14 @@ function renderSharedRowProgress(model = {}) {
 
 function renderBuilderPhase3CallConsole(center = {}, activeState = {}) {
   const execution = buildBuilderCallExecutionConsole(center.items || [], [], { limit: 25 });
-  const rows = execution.queue.slice(0, 25).map(row => `<article class="phase3-call-row" data-phase3-builder-row="${h(row.builderId)}">
-    <button type="button" data-select-validation-builder="${h(row.builderId)}" aria-label="Open ${h(row.name)} in builder detail">
-      <span class="phase3-rank">${String(row.rank).padStart(2, '0')}</span>
-      <span><b>${h(row.name)}</b><small>${h(row.marketName || activeState.label || '')} · ${h(row.permits)} proofs · ${h(row.buyBoxComplete)}/${h(row.buyBoxTotal)} buy box</small></span>
-      <em>${h(callStatusLabel(row.callStatus))}</em>
-    </button>
-    <div class="phase3-call-meta"><span>${h(row.phone || row.email || 'contact path unresolved')}</span><span>${h(row.nextFollowUp ? `follow ${row.nextFollowUp}` : row.lastTouch ? `last ${row.lastTouch}` : 'touch open')}</span></div>
-  </article>`).join('');
   const outcomeButtons = execution.outcomes.map(outcome => `<button type="button" data-phase3-call-outcome="${h(outcome.id)}">${h(outcome.label)}</button>`).join('');
-  return `<section class="phase3-builder-call-console" aria-label="Builder call queue">
+  return `<section class="phase3-builder-call-console builder-unified-workbench-command" aria-label="Unified builder workbench">
     <div class="phase3-console-head">
-      <div><span class="eyebrow">Today's call queue</span><h4>Call builders. Capture buy boxes.</h4><p>Top 25 callable builders ranked by follow-up urgency, untouched status, permit proof, and buy-box score.</p></div>
+      <div><span class="eyebrow">One workbench</span><h4>Call builders from the list below.</h4><p>One selected builder, one work list, one detail panel. Ranked by follow-up urgency, untouched status, permit proof, and buy-box score.</p></div>
       <div class="phase3-console-actions"><button type="button" id="export-builder-call-queue-csv">Export CSV</button><button type="button" id="export-builder-call-queue-json" class="secondary">JSON</button><span id="builder-call-export-status" aria-live="polite"></span></div>
     </div>
-    <dl class="phase3-call-stats"><div><dt>Call queue</dt><dd>${h(execution.stats.today)}</dd></div><div><dt>Untouched</dt><dd>${h(execution.stats.notCalled)}</dd></div><div><dt>Touched</dt><dd>${h(execution.stats.touched)}</dd></div><div><dt>Validated</dt><dd>${h(execution.stats.validated)}</dd></div></dl>
+    <dl class="phase3-call-stats"><div><dt>Work list</dt><dd>${h(execution.stats.today)}</dd></div><div><dt>Untouched</dt><dd>${h(execution.stats.notCalled)}</dd></div><div><dt>Touched</dt><dd>${h(execution.stats.touched)}</dd></div><div><dt>Validated</dt><dd>${h(execution.stats.validated)}</dd></div></dl>
     <div class="phase3-outcome-capture" aria-label="One-click call outcome capture"><span>Outcome for selected builder</span>${outcomeButtons}</div>
-    <div class="phase3-call-sheet">${rows || '<p>No callable builders in this scope yet.</p>'}</div>
   </section>`;
 }
 
@@ -4053,10 +4044,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     ${renderBuyBoxDetailPanel(selected)}
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
-      <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Queue <button type="button" class="info-dot" aria-label="Why this queue order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm. Phase 1 turns this into a spreadsheet-like list: contact, progress, notes, proof count.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
+      <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Work list <button type="button" class="info-dot" aria-label="Why this work list order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm. This is the single builder workbench: contact, progress, notes, proof count.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
         <div class="builder-queue-intel" aria-label="Builder queue controls">
           <label class="builder-queue-search"><span>Find</span><input type="search" data-builder-queue-search placeholder="builder, email, market" autocomplete="off"></label>
-          <div class="builder-queue-filter-row" aria-label="Queue filters">
+          <div class="builder-queue-filter-row" aria-label="Work-list filters">
             <button type="button" class="is-active" data-builder-queue-filter="all" aria-pressed="true">All <b>${h(queueStats.total)}</b></button>
             <button type="button" data-builder-queue-filter="callable">Callable <b>${h(queueStats.callable)}</b></button>
             <button type="button" data-builder-queue-filter="needs-buybox">Needs buy box <b>${h(queueStats.needsBuybox)}</b></button>

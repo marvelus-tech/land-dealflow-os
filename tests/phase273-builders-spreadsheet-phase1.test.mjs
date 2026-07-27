@@ -16,7 +16,7 @@ assert.match(phase, /validation-grid-main[\s\S]{0,220}grid-template-columns: min
 assert.match(phase, /validation-queue-item[\s\S]{0,240}grid-template-columns: minmax\(0, 1fr\) 184px !important/, 'Builder rows must read like a compact contact ledger.');
 assert.match(phase, /queue-state-row[\s\S]{0,180}grid-template-columns: repeat\(3, 28px\) minmax\(0, 1fr\) !important/, 'Rows must expose call/email/mail progress controls inline.');
 assert.match(phase, /buybox-capture-sheet summary[\s\S]{0,220}grid-template-columns: minmax\(0,1fr\) auto !important/, 'Phase 1 must style progress and notes as the selected-record sheet.');
-assert.match(app, /Phase 1 turns this into a spreadsheet-like list: contact, progress, notes, proof count\./, 'Builder queue copy must be spreadsheet-first.');
+assert.match(app, /This is the single builder workbench: contact, progress, notes, proof count\./, 'Builder work-list copy must be spreadsheet-first and single-workbench clear.');
 assert.match(app, /<details class="buybox-capture-sheet" open>/, 'Progress/notes sheet must be open by default.');
 assert.match(app, /parcel-ready/, 'Builder status should say parcel-ready instead of seller gate unlock ceremony.');
 assert.match(app, /if \(activeView === 'builders'\) \{[\s\S]{0,180}renderBuilderListEnginePanel\(\);[\s\S]{0,120}return;/, 'Builders route must render only the builder workspace instead of hydrating every hidden panel.');

@@ -44,10 +44,11 @@ const json = JSON.parse(exportBuilderCallQueueJson(consoleModel.queue));
 assert.equal(json.length, consoleModel.queue.length, 'Phase 3 JSON export must serialize the same call queue');
 assert.ok(json[0].nextAction, 'Phase 3 JSON rows need the operator next action');
 
-assert.match(app, /function renderBuilderPhase3CallConsole/, 'Builders route must render a Phase 3 call execution console');
-assert.match(app, /Phase 3 · today's call queue/, 'Phase 3 console needs visible Today queue copy');
-assert.match(app, /Top 25 callable builders ranked by follow-up urgency/, 'Phase 3 queue order must be explained to operators');
-assert.match(app, /data-phase3-call-outcome/, 'Phase 3 console must expose one-click selected-builder outcome controls');
+assert.match(app, /function renderBuilderPhase3CallConsole/, 'Builders route must keep the call execution console renderer wired.');
+assert.match(app, /Today's call queue/, 'Call console needs product-facing Today queue copy.');
+assert.doesNotMatch(app, /Phase 3 · today's call queue|Phase 3 builder call execution console/, 'Call console must not expose implementation-phase labels in visible/accessible product copy.');
+assert.match(app, /Top 25 callable builders ranked by follow-up urgency/, 'Call queue order must be explained to operators');
+assert.match(app, /data-phase3-call-outcome/, 'Call console must expose one-click selected-builder outcome controls');
 assert.match(app, /id="export-builder-call-queue-csv"/, 'Phase 3 console must export CSV from the Builders route');
 assert.match(app, /id="export-builder-call-queue-json"/, 'Phase 3 console must export JSON from the Builders route');
 assert.match(app, /buildBuilderCallExecutionConsole\(activeRows, workspace\.buyerValidations \|\| \[\], \{ limit: 25 \}\)/, 'download handlers must export the active Builders scope, not a stale fixture');

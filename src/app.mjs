@@ -3936,13 +3936,13 @@ function renderBuilderPhase3CallConsole(center = {}, activeState = {}) {
     <div class="phase3-call-meta"><span>${h(row.phone || row.email || 'contact path unresolved')}</span><span>${h(row.nextFollowUp ? `follow ${row.nextFollowUp}` : row.lastTouch ? `last ${row.lastTouch}` : 'touch open')}</span></div>
   </article>`).join('');
   const outcomeButtons = execution.outcomes.map(outcome => `<button type="button" data-phase3-call-outcome="${h(outcome.id)}">${h(outcome.label)}</button>`).join('');
-  return `<section class="phase3-builder-call-console" aria-label="Phase 3 builder call execution console">
+  return `<section class="phase3-builder-call-console" aria-label="Builder call queue">
     <div class="phase3-console-head">
-      <div><span class="eyebrow">Phase 3 · today's call queue</span><h4>Call, capture, unlock seller sourcing.</h4><p>Top 25 callable builders ranked by follow-up urgency, untouched status, permit proof, and buy-box score.</p></div>
+      <div><span class="eyebrow">Today's call queue</span><h4>Call builders. Capture buy boxes.</h4><p>Top 25 callable builders ranked by follow-up urgency, untouched status, permit proof, and buy-box score.</p></div>
       <div class="phase3-console-actions"><button type="button" id="export-builder-call-queue-csv">Export CSV</button><button type="button" id="export-builder-call-queue-json" class="secondary">JSON</button><span id="builder-call-export-status" aria-live="polite"></span></div>
     </div>
-    <dl class="phase3-call-stats"><div><dt>Queue</dt><dd>${h(execution.stats.today)}</dd></div><div><dt>Untouched</dt><dd>${h(execution.stats.notCalled)}</dd></div><div><dt>Touched</dt><dd>${h(execution.stats.touched)}</dd></div><div><dt>Validated</dt><dd>${h(execution.stats.validated)}</dd></div></dl>
-    <div class="phase3-outcome-capture" aria-label="One-click call outcome capture"><span>Selected-builder outcome</span>${outcomeButtons}</div>
+    <dl class="phase3-call-stats"><div><dt>Call queue</dt><dd>${h(execution.stats.today)}</dd></div><div><dt>Untouched</dt><dd>${h(execution.stats.notCalled)}</dd></div><div><dt>Touched</dt><dd>${h(execution.stats.touched)}</dd></div><div><dt>Validated</dt><dd>${h(execution.stats.validated)}</dd></div></dl>
+    <div class="phase3-outcome-capture" aria-label="One-click call outcome capture"><span>Outcome for selected builder</span>${outcomeButtons}</div>
     <div class="phase3-call-sheet">${rows || '<p>No callable builders in this scope yet.</p>'}</div>
   </section>`;
 }
@@ -4248,9 +4248,10 @@ function renderBuilderMarketCommandRail(stateSummaries = [], activeState = {}, s
     </button>`;
   }).join('');
   return `<section class="builder-market-command-rail" aria-label="Builder market command rail">
+    <div class="builder-phase1-spine" aria-label="Builder page flow"><span>Choose market</span><span>Call builders</span><span>Capture buy box</span><span>Unlock sellers</span></div>
     <div class="builder-command-state-strip" aria-label="Builder states">${stateRows}</div>
     <div class="builder-command-market-strip" aria-label="Markets in ${h(activeState.label || activeState.stateCode)}">
-      <div class="builder-command-rail-label"><span>Markets</span><b>${h(activeState.stateCode || '')}</b></div>
+      <div class="builder-command-rail-label"><span>Active state</span><b>${h(activeState.stateCode || '')}</b></div>
       <div class="builder-command-market-scroll">${marketRows || '<span class="builder-command-empty">No market lanes yet</span>'}</div>
     </div>
   </section>`;

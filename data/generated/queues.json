@@ -1372,8 +1372,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-horton-d-r-inc",
-      "name": "HORTON, D R INC",
+      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
+      "name": "Meritage Homes Becky Gilmore",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1381,8 +1381,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
-      "name": "Meritage Homes Becky Gilmore",
+      "buyerId": "nashville-builder-horton-d-r-inc",
+      "name": "HORTON, D R INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1462,6 +1462,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-build-trust-homes-llc",
+      "name": "BUILD TRUST HOMES LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-fineman-construction-inc",
       "name": "FINEMAN CONSTRUCTION INC",
       "market": "nashville-edge-tn",
@@ -1473,15 +1482,6 @@
     {
       "buyerId": "nashville-builder-pulte-homes-tn-lp",
       "name": "PULTE HOMES TN LP",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-build-trust-homes-llc",
-      "name": "BUILD TRUST HOMES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1552,6 +1552,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-steadfast-group-llc",
+      "name": "STEADFAST GROUP LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-david-weekley-homes",
       "name": "David Weekley Homes",
       "market": "nashville-edge-tn",
@@ -1570,8 +1579,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-steadfast-group-llc",
-      "name": "STEADFAST GROUP LLC",
+      "buyerId": "nashville-builder-m-y-construction-llc",
+      "name": "M & Y CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1581,15 +1590,6 @@
     {
       "buyerId": "nashville-builder-build-nashville-llc",
       "name": "BUILD NASHVILLE LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-m-y-construction-llc",
-      "name": "M & Y CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1615,6 +1615,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-premier-construction",
+      "name": "PREMIER CONSTRUCTION",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-paros-group-llc",
       "name": "PAROS GROUP LLC",
       "market": "nashville-edge-tn",
@@ -1626,15 +1635,6 @@
     {
       "buyerId": "nashville-builder-patterson-company-llc",
       "name": "PATTERSON COMPANY LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-premier-construction",
-      "name": "Premier construction",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1660,15 +1660,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-clear-creek-holdings-llc",
-      "name": "CLEAR CREEK HOLDINGS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-mi-homes-of-nashville",
       "name": "MI Homes of Nashville",
       "market": "nashville-edge-tn",
@@ -1678,8 +1669,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-superior-capital-llc",
-      "name": "Superior Capital LLC",
+      "buyerId": "nashville-builder-clear-creek-holdings-llc",
+      "name": "CLEAR CREEK HOLDINGS LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1698,6 +1689,15 @@
     {
       "buyerId": "nashville-builder-haven-builders-llc",
       "name": "HAVEN BUILDERS LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-superior-capital-llc",
+      "name": "Superior Capital LLc",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1885,15 +1885,6 @@
       "confidence": 98
     },
     {
-      "buyerId": "nashville-builder-dignity-llc",
-      "name": "DIGNITY LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 98
-    },
-    {
       "buyerId": "nashville-builder-elite-constructors-inc",
       "name": "ELITE CONSTRUCTORS INC",
       "market": "nashville-edge-tn",
@@ -1937,6 +1928,15 @@
       "website": "",
       "task": "capture exact buy box",
       "confidence": 98
+    },
+    {
+      "buyerId": "nashville-builder-artisan-build-construct-llc",
+      "name": "ARTISAN BUILD CONSTRUCT LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 94
     },
     {
       "buyerId": "nashville-builder-canaan-builders",
@@ -1993,15 +1993,6 @@
       "confidence": 94
     },
     {
-      "buyerId": "nashville-builder-artisan-build-construct-llc",
-      "name": "ARTISAN BUILD CONSTRUCT LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
       "buyerId": "nashville-builder-hometown-construction-j-core-properties-llc",
       "name": "HOMETOWN CONSTRUCTION, J CORE PROPERTIES LLC DBA",
       "market": "nashville-edge-tn",
@@ -2040,6 +2031,15 @@
     {
       "buyerId": "nashville-builder-offerplate-llc",
       "name": "OFFERPLATE LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-palmetto-construction-llc",
+      "name": "PALMETTO CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -4259,6 +4259,15 @@
       "website": "",
       "task": "capture exact buy box",
       "confidence": 59
+    },
+    {
+      "buyerId": "raleigh-buyer-ken-harvey-homes",
+      "name": "Ken Harvey Homes",
+      "market": "raleigh-nc",
+      "phone": "",
+      "website": "https://www.kenharveyhomes.com/",
+      "task": "capture exact buy box",
+      "confidence": 64
     },
     {
       "buyerId": "raleigh-builder-lennar-carolinas-llc",
@@ -8153,18 +8162,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-horton-d-r-inc",
+      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "HORTON, D R INC",
+      "buyerName": "Meritage Homes Becky Gilmore",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
+      "buyerId": "nashville-builder-horton-d-r-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Meritage Homes Becky Gilmore",
+      "buyerName": "HORTON, D R INC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8243,6 +8252,15 @@
     },
     {
       "parcelId": "118 17701",
+      "buyerId": "nashville-builder-build-trust-homes-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "BUILD TRUST HOMES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
       "buyerId": "nashville-builder-fineman-construction-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "FINEMAN CONSTRUCTION INC",
@@ -8255,15 +8273,6 @@
       "buyerId": "nashville-builder-pulte-homes-tn-lp",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "PULTE HOMES TN LP",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "nashville-builder-build-trust-homes-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "BUILD TRUST HOMES LLC",
       "score": 100,
       "fit": "strong",
       "misses": []

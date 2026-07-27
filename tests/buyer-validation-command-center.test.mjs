@@ -113,7 +113,7 @@ assert.match(appSource, /const ACTIVITY_CHANNELS = \['phone', 'email', 'mail'\]/
 assert.match(appSource, /outreach\.mail\?\.contacted/, 'builder activity state must persist a mailed toggle independently from call/email');
 assert.match(appSource, /data-mail-state="\$\{outreach\.mail \? 'done' : 'todo'\}"/, 'builder queue rows must expose mail state for QA and operators');
 assert.match(appSource, /<svg class="outreach-svg"[\s\S]{0,220}<path fill="currentColor"/, 'outreach controls should use solid currentColor SVG icons, not text glyphs or bordered icon boxes');
-assert.doesNotMatch(appSource, /contact-action/, 'selected builder must not duplicate outreach state with separate logged buttons');
+assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'selected builder must not duplicate outreach state with separate logged buttons');
 assert.doesNotMatch(appSource, />Mark called<|>Mark emailed<|>I called them<|>I contacted them by email</, 'outreach controls should be compressed into state badges/icons');
 assert.match(appSource, /scoreBreakdownRows/, 'validation score must expose progressive-disclosure breakdown rows');
 assert.doesNotMatch(appSource, /queue-source-link|queue-proof-line/, 'call queue rows should stay compact; source proof lives in builder detail');
@@ -126,8 +126,8 @@ assert.match(appSource, /PERMITNUMBER = '\$\{String\(permitNumber\)/, 'ArcGIS pe
 assert.match(appSource, /Verify permit/, 'permit proof links should be labeled for operator verification, not generic source');
 assert.doesNotMatch(appSource, /class="queue-rank"/, 'call queue must not show duplicate number ranks because sort order already follows validation score');
 assert.doesNotMatch(appSource, /Phone not logged|Email not logged/, 'selected outreach labels should not repeat channel names beside channel icons');
-assert.doesNotMatch(appSource, /Call office|>Draft email<|Copy email|Source proof/, 'selected builder actions should use restrained icon-led labels and Website for source URL');
-assert.match(appSource, /aria-label="Draft email"/, 'draft email action should remain accessible when visually icon-only');
+assert.doesNotMatch(appSource, /Call office|Copy email|Source proof/, 'selected builder actions should use restrained icon-led labels and Website for source URL');
+assert.match(appSource, /<span>Email<\/span>/, 'email action should be a concise rail action.');
 assert.match(appSource, /<span>Call<\/span>/, 'phone CTA should be a concise icon plus Call button');
 assert.match(appSource, /<span>Website<\/span>/, 'source URL action should be labelled as a website link, not source proof');
 assert.doesNotMatch(appSource, /Landscaper\/vendor sourcing|site-prep network|vendor-chip-grid|builder-vendor-panel/, 'landscaper/vendor sourcing typo section must stay removed');

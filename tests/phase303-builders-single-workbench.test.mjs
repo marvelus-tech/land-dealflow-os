@@ -16,7 +16,7 @@ assert.doesNotMatch(app, /<div class="phase3-call-sheet">/, 'Phase 2 must remove
 assert.doesNotMatch(app, /data-phase3-builder-row/, 'Phase 2 must not render a second set of builder rows above the workbench.');
 assert.doesNotMatch(app, /Today's call queue|Top 25 callable builders/, 'Phase 2 must remove duplicate call-queue headline/copy.');
 assert.match(app, /data-builder-queue-surface/, 'Phase 2 must keep the single primary interactive builder work list.');
-assert.match(app, /validation-focus-card" id="selected-builder-card"/, 'Phase 2 must keep the selected-builder detail panel attached to the single list.');
+assert.match(app, /validation-focus-card builder-inspector-v3" id="selected-builder-card"/, 'Phase 2 must keep the selected-builder detail panel attached to the single list.');
 assert.match(app, /phase3-outcome-capture/, 'Phase 2 must keep one-click outcomes attached to the selected-builder model.');
 assert.match(app, /id="export-builder-call-queue-csv"/, 'Phase 2 must preserve export affordance after removing the duplicate queue.');
 

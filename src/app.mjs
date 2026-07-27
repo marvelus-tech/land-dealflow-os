@@ -3927,14 +3927,12 @@ function renderSharedRowProgress(model = {}) {
 
 function renderBuilderPhase3CallConsole(center = {}, activeState = {}) {
   const execution = buildBuilderCallExecutionConsole(center.items || [], [], { limit: 25 });
-  const outcomeButtons = execution.outcomes.map(outcome => `<button type="button" data-phase3-call-outcome="${h(outcome.id)}">${h(outcome.label)}</button>`).join('');
   return `<section class="phase3-builder-call-console builder-unified-workbench-command" aria-label="Unified builder workbench">
     <div class="phase3-console-head">
       <div><span class="eyebrow">One workbench</span><h4>Call builders from the list below.</h4><p>One selected builder, one work list, one detail panel. Ranked by follow-up urgency, untouched status, permit proof, and buy-box score.</p></div>
       <div class="phase3-console-actions"><button type="button" id="export-builder-call-queue-csv">Export CSV</button><button type="button" id="export-builder-call-queue-json" class="secondary">JSON</button><span id="builder-call-export-status" aria-live="polite"></span></div>
     </div>
     <dl class="phase3-call-stats"><div><dt>Work list</dt><dd>${h(execution.stats.today)}</dd></div><div><dt>Untouched</dt><dd>${h(execution.stats.notCalled)}</dd></div><div><dt>Touched</dt><dd>${h(execution.stats.touched)}</dd></div><div><dt>Validated</dt><dd>${h(execution.stats.validated)}</dd></div></dl>
-    <div class="phase3-outcome-capture" aria-label="One-click call outcome capture"><span>Outcome for selected builder</span>${outcomeButtons}</div>
   </section>`;
 }
 
@@ -4007,6 +4005,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const selectedOutreach = validationOutreach(selected);
   const selectedScoreTitle = scoreBreakdownText(selected);
   const selectedScoreRows = scoreBreakdownRows(selected);
+  const inspectorOutcomeButtons = buildBuilderCallExecutionConsole(center.items || [], [], { limit: 25 }).outcomes.map(outcome => `<button type="button" data-phase3-call-outcome="${h(outcome.id)}" data-builder-id="${h(selected.builderId || '')}">${h(outcome.label)}</button>`).join('');
   const scriptQuestions = Object.values(selected.buyBoxCapture || {}).map(item => `<li>${h(item)}</li>`).join('');
   const selectedPermitProof = asArray(selected.permitEvidence || selected.recentPermits).slice(0, 3).map(permit => `<li><b>${h(permit.permitNumber || 'permit')}</b><span>${h(permit.address || permit.siteAddress || 'address pending')} · ${h(permit.issuedAt || permit.issueDate || 'date pending')} · ${formatMoney(permit.permitValue || permit.valuation || 0)}</span>${permitVerificationLink(permit)}</li>`).join('');
   const contactProofLink = selected.contactUrl || selected.website || '';
@@ -4059,35 +4058,42 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         </div>
         <div class="builder-queue-results" data-builder-queue-results>${queue}</div>
       </aside>
-      <article class="validation-focus-card" id="selected-builder-card">
-        <div class="validation-focus-head">
-          <div><span class="eyebrow">Builder</span><h3>${h(selected.name || 'Select builder')}</h3><p title="Regional headquarters and operating-market contact paths may differ; verify the public business path before marking outreach done."><b>${h(marketLabel)}.</b> ${h(selected.recentBuilds || 0)} permit proofs. ${contact}</p></div>
-          <details class="validation-score" title="${h(selectedScoreTitle)}">
-            <summary>${solidIndustryIcon('score')}<strong>${h(selected.validation?.score || 0)}</strong><span>score detail</span></summary>
+      <article class="validation-focus-card builder-inspector-v3" id="selected-builder-card" aria-label="Selected builder inspector">
+        <section class="builder-inspector-section inspector-identity" aria-label="Identity and market">
+          <div class="inspector-identity-copy"><span class="eyebrow">Builder</span><h3>${h(selected.name || 'Select builder')}</h3><p title="Regional headquarters and operating-market contact paths may differ; verify the public business path before marking outreach done."><b>${h(marketLabel)}</b><span>${h(selected.recentBuilds || 0)} permit proofs</span><span>${h(selected.contactConfidence || selected.confidence || 'verify public path')}</span></p></div>
+          <details class="validation-score inspector-rank-score" title="${h(selectedScoreTitle)}">
+            <summary>${solidIndustryIcon('score')}<strong>${h(selected.validation?.score || 0)}</strong><span>rank</span></summary>
             <div class="score-breakdown">${selectedScoreRows}</div>
           </details>
-        </div>
-        <div class="builder-detail-contact-ledger" aria-label="Builder contact detail">
-          <div><span>Phone</span>${detailPhone}</div>
-          <div><span>Email</span>${detailEmail}</div>
-          <div><span>Proof path</span><strong>${h(selected.contactConfidence || selected.confidence || 'verify public path')}</strong></div>
-        </div>
-        <div class="next-best-action"><span>Next</span><strong>${h(nextActionCopy)}</strong></div>
-        ${sourceProof}
-        ${renderEvidenceStack(selected)}
-        <div class="selected-outreach-state" aria-label="Builder outreach state">
-          <button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}" title="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button>
-          <button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}" title="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button>
-          <button type="button" class="contact-state-toggle ${selectedOutreach.mail ? 'is-on' : ''}" data-toggle-validation-contact="mail" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.mail ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}" title="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}"><span aria-hidden="true">${solidIndustryIcon('mail')}</span></button>
-        </div>
-        <div class="validation-actions">
-          <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
-          <a class="validation-call-button icon-only ${selected.email ? '' : 'disabled'}" href="${mailHref}" aria-label="Draft email" title="Draft email">${actionIcon('email')}</a>
-          <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>${actionIcon('copy')}<span>Draft</span></button>
-          <button type="button" class="validation-call-button secondary buybox-detail-trigger" data-buybox-details-toggle>${solidIndustryIcon('disclosure')}<span>Buy box details</span></button>
-          ${contactProofLink ? `<a class="validation-call-button secondary website-link" href="${h(contactProofLink)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : ''}
-          <span class="validation-email-status" aria-live="polite"></span>
-        </div>
+        </section>
+        <section class="builder-inspector-section inspector-contact" aria-label="Contact actions">
+          <div class="inspector-section-head"><span>Contact actions</span><b>Use now</b></div>
+          <div class="builder-contact-action-rail">
+            <a class="validation-call-button ${selected.phone ? '' : 'disabled'}" href="${phoneHref}">${actionIcon('phone')}<span>Call</span></a>
+            <a class="validation-call-button secondary ${selected.email ? '' : 'disabled'}" href="${mailHref}">${actionIcon('email')}<span>Email</span></a>
+            <button type="button" class="validation-call-button secondary copy-email-button" data-copy-validation-email>${actionIcon('copy')}<span>Draft</span></button>
+            ${contactProofLink ? `<a class="validation-call-button secondary website-link" href="${h(contactProofLink)}" target="_blank" rel="noopener noreferrer">${actionIcon('website')}<span>Website</span></a>` : `<span class="validation-call-button secondary disabled">${actionIcon('website')}<span>Website</span></span>`}
+            <span class="validation-email-status" aria-live="polite"></span>
+          </div>
+          <div class="inspector-inline-next next-best-action" aria-label="Next call prompt"><span>Next</span><strong>${h(nextActionCopy)}</strong></div>
+          <div class="builder-detail-contact-ledger compact" aria-label="Builder contact detail">
+            <div><span>Phone</span>${detailPhone}</div>
+            <div><span>Email</span>${detailEmail}</div>
+            <div><span>Proof path</span><strong>${contactProofLink ? safeLink(contactProofLink, selected.contactRole || 'Public path') : h(selected.contactStatus || 'contact pending')}</strong></div>
+          </div>
+        </section>
+        <section class="builder-inspector-section inspector-readiness" aria-label="Buyer validation readiness stack">
+          <div class="inspector-section-head"><span>Readiness stack</span><b>${h(completion.complete)}/${h(completion.total)}</b></div>
+          <div class="buyer-readiness-stack"><span class="${selectedOutreach.phone ? 'is-done' : 'is-open'}">Call ${selectedOutreach.phone ? 'logged' : 'open'}</span><span class="${selectedOutreach.email ? 'is-done' : 'is-open'}">Email ${selectedOutreach.email ? 'sent' : 'open'}</span><span class="${completion.complete ? 'is-done' : 'is-open'}">Buy box ${h(completion.complete)}/${h(completion.total)}</span><span class="${selected.validation?.sellerEligible ? 'is-done' : 'is-open'}">Seller unlock ${selected.validation?.sellerEligible ? 'ready' : 'locked'}</span></div>
+        </section>
+        <section class="builder-inspector-section inspector-ranking" aria-label="Why ranked here"><div class="inspector-section-head"><span>Why ranked here</span><b>${h(selected.validation?.score || 0)}</b></div><div class="score-breakdown compact">${selectedScoreRows}</div></section>
+        <section class="builder-inspector-section inspector-proof" aria-label="Proof summary"><div class="inspector-section-head"><span>Proof summary</span><b>${h(selected.recentBuilds || 0)} proofs</b></div>${sourceProof}${renderEvidenceStack(selected)}</section>
+        <section class="builder-inspector-section inspector-missing" aria-label="Missing buy-box fields"><div class="inspector-section-head"><span>Missing buy-box fields</span><b>${h(completion.missing.length)}</b></div><ul class="inspector-missing-list">${missingList || '<li><span aria-hidden="true">✓</span>Buy box complete.</li>'}</ul></section>
+        <section class="builder-inspector-section inspector-outcomes" aria-label="Status update for selected builder">
+          <div class="inspector-section-head"><span>Status update applies to</span><b>${h(selected.name || 'selected builder')}</b></div>
+          <div class="selected-outreach-state" aria-label="Builder outreach state"><button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}" title="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button><button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}" title="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button><button type="button" class="contact-state-toggle ${selectedOutreach.mail ? 'is-on' : ''}" data-toggle-validation-contact="mail" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.mail ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}" title="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}"><span aria-hidden="true">${solidIndustryIcon('mail')}</span></button></div>
+          <div class="phase3-outcome-capture inspector-outcome-capture" aria-label="Status outcomes for selected builder"><span>Outcome for selected builder</span>${inspectorOutcomeButtons}</div>
+        </section>
         <details class="buybox-capture-sheet" open>
           <summary><span>Progress + notes</span><b>${h(completion.complete)}/${h(completion.total)} buy box</b></summary>
           ${renderBuyBoxCompletion(selected)}

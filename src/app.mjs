@@ -4087,12 +4087,12 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
     if (outreach.phone || outreach.email || outreach.mail) acc.touched += 1;
     return acc;
   }, { total: center.items.length, callable: 0, sellerSpecific: 0, generalSourcing: 0, touched: 0 });
-  return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger" aria-label="Buyer Validation Command Center">
+  return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger phase7-builders-hierarchy-lock" data-builder-hierarchy="single-queue-selected-inspector" aria-label="Buyer Validation Command Center">
     ${phase3Console}
-    <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : 'active'}">Seller sourcing</span><span>Offer</span></div>
+    <div class="operator-flow-pulse phase7-builder-flow-marker" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : 'active'}">Seller sourcing</span><span>Offer</span></div>
     ${renderBuyBoxDetailPanel(selected)}
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
-    <div class="validation-grid-main">
+    <div class="validation-grid-main" data-phase7-grid-lock style="grid-template-columns:var(--phase7-builder-grid-columns,minmax(250px,.72fr) minmax(420px,1.2fr) minmax(360px,1fr)) !important;align-items:start !important;">
       <aside class="validation-queue" data-builder-queue-surface><div class="panel-kicker"><span>Work list <button type="button" class="info-dot" aria-label="Why this work list order?" title="Ranked by permit proof, callable public contact, buy-box capture, decision-maker progress, outreach logged, and review holds.">?</button></span><b title="Source URLs, permit counts, confidence, and score detail sit in row tooltips to keep scanning calm. This is the single builder workbench: contact, progress, notes, proof count.">Proof</b>${activeState.summary?.entries?.[0]?.csvUrl ? `<a class="queue-csv-link" href="${h(activeState.summary.entries[0].csvUrl)}">CSV</a>` : ''}</div>
         <div class="builder-queue-intel" aria-label="Builder queue controls">
           <label class="builder-queue-search"><span>Find</span><input type="search" data-builder-queue-search placeholder="builder, email, market" autocomplete="off"></label>

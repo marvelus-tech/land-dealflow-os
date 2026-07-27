@@ -44464,6 +44464,9 @@ body[data-active-view="builders"] .phase5-source-links a { color:#1b5b95; font-s
 body[data-active-view="builders"] {
   --phase6-builders-mobile-field-interface: single-column-queue-accessible-drawer;
 }
+body[data-active-view="builders"] {
+  --phase7-builders-hierarchy-lock: single-work-list-attached-inspector-compact-market-rail;
+}
 body[data-active-view="builders"] #buyer-validation-command :where(button, a, input, select, textarea, summary):focus-visible {
   outline: 3px solid #1b5b95;
   outline-offset: 3px;
@@ -44638,5 +44641,148 @@ body[data-active-view="builders"] #buyer-validation-command .validation-call-but
     grid-column: 2 !important;
     min-height: 32px;
     align-items: center;
+  }
+}
+
+/* v1.99.15 - Phase 7 Builders hierarchy regression lock */
+body[data-active-view="builders"] #builder-list-section {
+  max-width: 1320px !important;
+}
+body[data-active-view="builders"] #builder-list-panel,
+body[data-active-view="builders"] .builder-engine-shell {
+  width: 100% !important;
+  max-width: 1220px !important;
+  margin-inline: auto !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase7-builders-hierarchy-lock {
+  --phase7-builders-hierarchy-lock: single-work-list-attached-inspector-compact-market-rail;
+  --phase7-builders-single-queue: one-work-list-one-selected-inspector-no-secondary-hero;
+  --phase7-builder-grid-columns: minmax(250px, .72fr) minmax(420px, 1.2fr) minmax(360px, 1fr);
+  width: min(100%, 1220px) !important;
+  max-width: 1220px !important;
+  margin-inline: auto !important;
+}
+body[data-active-view="builders"] .builder-market-hero,
+body[data-active-view="builders"] .builders-index-hero > :not(.builders-index-stats) {
+  display: none !important;
+}
+body[data-active-view="builders"] .builder-ops-header {
+  min-height: clamp(260px, 30vh, 340px) !important;
+}
+body[data-active-view="builders"] .builder-market-command-rail,
+body[data-active-view="builders"] .builder-command-market-strip,
+body[data-active-view="builders"] .builder-command-market-scroll,
+body[data-active-view="builders"] .builder-command-market {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+body[data-active-view="builders"] .builder-command-market-scroll {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scrollbar-width: thin;
+}
+body[data-active-view="builders"] .builder-command-market {
+  flex: 0 0 clamp(170px, 22vw, 260px) !important;
+  align-content: start !important;
+  white-space: normal !important;
+}
+body[data-active-view="builders"] .builder-command-market-name,
+body[data-active-view="builders"] .active-market-summary strong,
+body[data-active-view="builders"] .queue-copy b,
+body[data-active-view="builders"] .queue-copy small {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  overflow-wrap: anywhere !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase7-builders-hierarchy-lock .validation-grid-main,
+body[data-active-view="builders"] .phase7-builders-hierarchy-lock .validation-grid-main,
+body[data-active-view="builders"] .validation-grid-main {
+  grid-template-columns: minmax(250px, .72fr) minmax(420px, 1.2fr) minmax(360px, 1fr) !important;
+  align-items: start !important;
+}
+body[data-active-view="builders"] #buyer-validation-command.phase7-builders-hierarchy-lock .seller-unlock-card { order: 0; }
+body[data-active-view="builders"] #buyer-validation-command.phase7-builders-hierarchy-lock .validation-queue[data-builder-queue-surface] { order: 1; }
+body[data-active-view="builders"] #buyer-validation-command.phase7-builders-hierarchy-lock .validation-focus-card.builder-inspector-v3 {
+  order: 2;
+  overflow: visible !important;
+  min-width: 0 !important;
+}
+body[data-active-view="builders"] .next-best-action strong,
+body[data-active-view="builders"] .inspector-inline-next strong {
+  font-size: clamp(18px, 2vw, 26px) !important;
+  line-height: 1.05 !important;
+  overflow-wrap: anywhere !important;
+  hyphens: auto;
+}
+body[data-active-view="builders"] .phase3-outcome-capture.inspector-outcome-capture,
+body[data-active-view="builders"] .selected-outreach-state {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  align-items: stretch !important;
+}
+body[data-active-view="builders"] .inspector-outcomes {
+  margin-top: 0 !important;
+  border-top: 1px solid var(--os-line) !important;
+}
+body[data-active-view="builders"] .validation-form.validation-buybox-grid {
+  max-height: none !important;
+  overflow: visible !important;
+  align-items: start !important;
+}
+body[data-active-view="builders"] .buybox-form-section {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  align-items: start !important;
+}
+body[data-active-view="builders"] .buybox-form-section-head,
+body[data-active-view="builders"] .buybox-form-section .field-notes,
+body[data-active-view="builders"] .buybox-form-section .validation-save-row {
+  grid-column: 1 / -1 !important;
+}
+body[data-active-view="builders"] .buybox-required-fields .field-geography,
+body[data-active-view="builders"] .buybox-required-fields .field-killers,
+body[data-active-view="builders"] .buybox-optional-fields .field-utilities,
+body[data-active-view="builders"] .buybox-optional-fields .field-product { grid-column: span 6 !important; }
+body[data-active-view="builders"] .buybox-required-fields .field-lot,
+body[data-active-view="builders"] .buybox-required-fields .field-price,
+body[data-active-view="builders"] .buybox-required-fields .field-speed,
+body[data-active-view="builders"] .buybox-required-fields .field-recipient,
+body[data-active-view="builders"] .buybox-optional-fields .field-status,
+body[data-active-view="builders"] .buybox-optional-fields .field-last,
+body[data-active-view="builders"] .buybox-optional-fields .field-callback { grid-column: span 3 !important; }
+@media (max-width: 900px) {
+  body[data-active-view="builders"] #buyer-validation-command.phase7-builders-hierarchy-lock {
+    --phase7-builder-grid-columns: minmax(0, 1fr);
+  }
+  body[data-active-view="builders"] .validation-grid-main {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  body[data-active-view="builders"] .builder-command-market {
+    flex-basis: clamp(156px, 44vw, 220px) !important;
+  }
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] .builder-ops-header {
+    min-height: auto !important;
+  }
+  body[data-active-view="builders"] .builder-command-market-name {
+    display: block !important;
+    font-size: 12px !important;
+    line-height: 1.18 !important;
+  }
+  body[data-active-view="builders"] .phase3-outcome-capture.inspector-outcome-capture,
+  body[data-active-view="builders"] .selected-outreach-state,
+  body[data-active-view="builders"] .buybox-form-section {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  body[data-active-view="builders"] .buybox-required-fields :where(.field-geography,.field-lot,.field-price,.field-speed,.field-recipient,.field-killers),
+  body[data-active-view="builders"] .buybox-optional-fields :where(.field-status,.field-last,.field-callback,.field-utilities,.field-product) {
+    grid-column: 1 / -1 !important;
   }
 }

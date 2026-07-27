@@ -4728,6 +4728,13 @@ function renderTaxDeedBuyerPanel() {
   const buyers = allBuyers.filter(buyer => filterState(buyerLocation(buyer).state));
   const ownerRows = allOwnerRows.filter(row => filterState(row.state));
   const twoAcreOwnerRows = ownerRows.filter(row => taxDeedLotAcres(row) >= 2);
+  const buyerCountForState = state => state === 'all' ? allBuyers.length : allBuyers.filter(buyer => buyerLocation(buyer).state === state).length;
+  const ownerCountForState = state => state === 'all' ? allOwnerRows.length : allOwnerRows.filter(row => row.state === state).length;
+  const marketLabelForState = state => state === 'all' ? 'Every Tax-Deed market' : `${state} market`;
+  const marketButtons = `<button type="button" class="tax-deed-market-option ${activeTaxDeedMarket === 'all' ? 'is-active' : ''}" aria-pressed="${activeTaxDeedMarket === 'all' ? 'true' : 'false'}" data-tax-deed-market="all"><b>${h(marketLabelForState('all'))}</b><span>${h(buyerCountForState('all'))} buyers · ${h(ownerCountForState('all'))} owners</span></button>` + states.map(state => {
+    const isActive = activeTaxDeedMarket === state;
+    return `<button type="button" class="tax-deed-market-option ${isActive ? 'is-active' : ''}" aria-pressed="${isActive ? 'true' : 'false'}" data-tax-deed-market="${h(state)}"><b>${h(marketLabelForState(state))}</b><span>${h(buyerCountForState(state))} buyers · ${h(ownerCountForState(state))} owners</span></button>`;
+  }).join('');
   const phones = buyers.filter(buyer => buyer.phone).length;
   const emails = buyers.filter(buyer => buyer.email).length;
   const touched = buyers.filter(buyer => {
@@ -4774,7 +4781,7 @@ function renderTaxDeedBuyerPanel() {
   }).join('');
   const ownersActive = activeTaxDeedTab === 'owners';
 
-  target.innerHTML = `<section class="agent-referral-board buyer-validation-board tax-deed-redesign-board phase283-tax-deed-buyer-page phase293-tax-deed-page-tabs phase295-tax-deed-mission-control phase297-okaloosa-tax-deed-owner-runway phase298-york-2acre-owner-runway phase299-tax-deed-payment-visibility" aria-label="Tax deed operating tracker">
+  target.innerHTML = `<section class="agent-referral-board buyer-validation-board tax-deed-redesign-board phase283-tax-deed-buyer-page phase293-tax-deed-page-tabs phase295-tax-deed-mission-control phase297-okaloosa-tax-deed-owner-runway phase298-york-2acre-owner-runway phase299-tax-deed-payment-visibility phase309-tax-deed-ia-clarity" data-phase309-tax-deed-ia="lane-first-market-matrix" aria-label="Tax deed operating tracker">
     <div class="agent-hero tax-deed-mission-hero">
       <div class="tax-deed-mission-grid">
         <div class="tax-deed-mission-copy">
@@ -4802,16 +4809,24 @@ function renderTaxDeedBuyerPanel() {
         <div><b>0</b><span>fabricated fields</span></div>
       </div>
       <div class="tax-deed-lane-command" aria-label="Tax deed mission lanes">
-        <div class="tax-deed-tab-controller" role="tablist" aria-label="Tax deed lanes">
-          <a href="#tax-deed" role="tab" class="${ownersActive ? '' : 'is-active'}" aria-selected="${ownersActive ? 'false' : 'true'}" data-tax-deed-tab="buyers"><b>Buyers</b><span>${h(buyers.length)} prior bids · call validation</span></a>
-          <a href="#tax-deed" role="tab" class="${ownersActive ? 'is-active' : ''}" aria-selected="${ownersActive ? 'true' : 'false'}" data-tax-deed-tab="owners"><b>Owners</b><span>${h(ownerRows.length)} FL/PA runway · ${h(taxDeedRequiredPaymentCount(ownerRows))}/${h(ownerRows.length)} amounts · ${h(twoAcreOwnerRows.length)} 2+ acre · skip-trace hold</span></a>
+        <div class="tax-deed-lane-choice" data-tax-deed-ia-step="1">
+          <div class="tax-deed-ia-label"><span>Step 1</span><b>Choose work lane</b></div>
+          <div class="tax-deed-tab-controller" role="tablist" aria-label="Tax deed Buyers and Owners lanes">
+            <a href="#tax-deed" role="tab" class="${ownersActive ? '' : 'is-active'}" aria-selected="${ownersActive ? 'false' : 'true'}" data-tax-deed-tab="buyers"><b>Buyers</b><span>Validate demand · ${h(buyers.length)} shown · prior bids · call validation</span></a>
+            <a href="#tax-deed" role="tab" class="${ownersActive ? 'is-active' : ''}" aria-selected="${ownersActive ? 'true' : 'false'}" data-tax-deed-tab="owners"><b>Owners</b><span>Source runway · ${h(ownerRows.length)} FL/PA runway · ${h(taxDeedRequiredPaymentCount(ownerRows))}/${h(ownerRows.length)} amounts · ${h(twoAcreOwnerRows.length)} 2+ acre · skip-trace hold</span></a>
+          </div>
         </div>
-        <div class="agent-filter-bar tax-deed-state-rail" aria-label="Tax deed market filters">
-          <button type="button" class="${activeTaxDeedMarket === 'all' ? 'is-active' : ''}" aria-pressed="${activeTaxDeedMarket === 'all' ? 'true' : 'false'}" data-tax-deed-market="all">All</button>
-          ${states.map(state => `<button type="button" class="${activeTaxDeedMarket === state ? 'is-active' : ''}" aria-pressed="${activeTaxDeedMarket === state ? 'true' : 'false'}" data-tax-deed-market="${h(state)}">${h(state)}</button>`).join('')}
-          <span>${h(activeTaxDeedMarket === 'all' ? 'Every market visible.' : `${activeTaxDeedMarket} market filter active.`)} Seller motion unlocks only after official source + contact provenance.</span>
+        <div class="tax-deed-market-choice" data-tax-deed-ia-step="2">
+          <div class="tax-deed-ia-label"><span>Step 2</span><b>Filter market after lane</b></div>
+          <div class="agent-filter-bar tax-deed-state-rail" aria-label="Tax deed market filters" data-tax-deed-market-matrix="buyers-owners-market-counts">
+            ${marketButtons}
+          </div>
+          <p>${h(activeTaxDeedMarket === 'all' ? 'All Tax-Deed market rows are visible in the selected lane.' : `${activeTaxDeedMarket} market filter active; rows only in the selected lane.`)} Buyers validate demand first; Owners stay source/runway work until payoff and contact provenance clear.</p>
         </div>
-        ${scriptButton('tax-deed', 'Scripts')}
+        <div class="tax-deed-command-tools">
+          <div class="tax-deed-ia-label"><span>Tools</span><b>Scripts</b></div>
+          ${scriptButton('tax-deed', 'Scripts')}
+        </div>
       </div>
     </div>
     <div class="agent-call-script">

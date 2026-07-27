@@ -44380,3 +44380,82 @@ body[data-active-view="builders"] #buyer-validation-command .sticky-save-row but
   body[data-active-view="builders"] #buyer-validation-command .sticky-save-row { bottom: 0 !important; }
   body[data-active-view="builders"] #buyer-validation-command .sticky-save-row button { width: 100% !important; }
 }
+
+/* v1.99.13 - Phase 5 proof ledger + out-of-order seller sourcing */
+body[data-active-view="builders"] {
+  --phase5-proof-seller-flow: proof-ledger-seller-sourcing-no-locks;
+}
+body[data-active-view="builders"] .validation-grid-main {
+  grid-template-columns: minmax(420px, 1.02fr) minmax(420px, 1fr) minmax(300px, .72fr) !important;
+}
+body[data-active-view="builders"] .seller-sourcing-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--os-line);
+  background: rgba(255,255,255,.88);
+  box-shadow: var(--os-shadow-soft);
+}
+body[data-active-view="builders"] .seller-sourcing-card.is-specific {
+  border-color: rgba(49,95,64,.42) !important;
+  background: linear-gradient(180deg, rgba(247,255,238,.86), rgba(255,255,255,.78)) !important;
+}
+body[data-active-view="builders"] .seller-sourcing-card.is-general {
+  border-color: rgba(185,129,22,.22) !important;
+  background: linear-gradient(180deg, rgba(255,251,237,.82), rgba(255,255,255,.78)) !important;
+}
+body[data-active-view="builders"] .seller-sourcing-card h4 { margin: 10px 0 8px; color: var(--os-ink); font-size: 22px; line-height: 1.16; letter-spacing: -.035em; }
+body[data-active-view="builders"] .seller-sourcing-card p { color: var(--os-muted); font-size: 13px; line-height: 1.48; }
+body[data-active-view="builders"] .seller-sourcing-card ul { margin: 12px 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+body[data-active-view="builders"] .seller-sourcing-card li { display: flex; gap: 8px; align-items: baseline; color: var(--os-muted); font-size: 12px; line-height: 1.38; }
+body[data-active-view="builders"] .seller-sourcing-card li span { color: #315f40; font-weight: 900; }
+body[data-active-view="builders"] .sourcing-price { margin: 14px 0; padding: 14px; background: var(--money); color: var(--money-ink); }
+body[data-active-view="builders"] .sourcing-price span { display:block; color: rgba(22,51,0,.66); font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .075em; }
+body[data-active-view="builders"] .sourcing-price strong { display:block; margin-top: 6px; font-size: 28px; line-height:1; letter-spacing: -.055em; }
+body[data-active-view="builders"] .seller-sourcing-actions { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+body[data-active-view="builders"] .seller-sourcing-cta,
+body[data-active-view="builders"] .seller-sourcing-secondary {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 13px;
+  color: white !important;
+  background: var(--os-ink);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+body[data-active-view="builders"] .seller-sourcing-secondary { background: transparent; color: var(--os-ink) !important; border: 1px solid var(--os-line); }
+body[data-active-view="builders"] .phase5-proof-ledger {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid rgba(49,95,64,.16);
+  background: linear-gradient(180deg, rgba(248,252,246,.92), rgba(255,255,255,.78));
+}
+body[data-active-view="builders"] .phase5-proof-ledger-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+body[data-active-view="builders"] .phase5-proof-ledger-head span,
+body[data-active-view="builders"] .phase5-source-links summary { color: var(--os-muted); font-size: 10px; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+body[data-active-view="builders"] .phase5-proof-ledger-head b { color: var(--os-ink); font-size: 13px; }
+body[data-active-view="builders"] .phase5-proof-ledger-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 8px; }
+body[data-active-view="builders"] .proof-ledger-item { display: grid; grid-template-columns: 18px minmax(0,1fr) auto; gap: 8px; align-items: center; min-width: 0; padding: 10px; border: 1px solid var(--os-line); background: rgba(255,255,255,.7); }
+body[data-active-view="builders"] .proof-ledger-item.is-done { border-color: rgba(49,95,64,.24); background: rgba(184,255,106,.12); }
+body[data-active-view="builders"] .proof-ledger-item > span { color: #315f40; }
+body[data-active-view="builders"] .proof-ledger-item b { display:block; color: var(--os-ink); font-size: 12px; }
+body[data-active-view="builders"] .proof-ledger-item small { display:block; color: var(--os-muted); font-size: 11px; line-height:1.32; }
+body[data-active-view="builders"] .proof-ledger-item a,
+body[data-active-view="builders"] .proof-ledger-item em { color:#1b5b95; font-size:10px; font-weight:900; font-style:normal; text-transform:uppercase; letter-spacing:.06em; }
+body[data-active-view="builders"] .phase5-source-links > div { display:flex; flex-wrap:wrap; gap:8px; padding-top:8px; }
+body[data-active-view="builders"] .phase5-source-links a { color:#1b5b95; font-size:11px; font-weight:850; }
+@media (max-width: 1180px) {
+  body[data-active-view="builders"] .validation-grid-main { grid-template-columns: minmax(0,1fr) !important; }
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] .phase5-proof-ledger-grid { grid-template-columns: 1fr; }
+  body[data-active-view="builders"] .proof-ledger-item { grid-template-columns: 18px minmax(0,1fr); }
+  body[data-active-view="builders"] .proof-ledger-item a,
+  body[data-active-view="builders"] .proof-ledger-item em { grid-column: 2; }
+}

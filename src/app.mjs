@@ -3706,7 +3706,7 @@ function scoreBreakdownRows(row = {}) {
 }
 
 
-const BUYBOX_UNLOCK_FIELDS = [
+const BUYBOX_REQUIRED_FIELDS = [
   { key: 'geography', label: 'Geography', selector: '.validation-geography', question: 'Which submarkets are you actively buying in?' },
   { key: 'lotSize', label: 'Lot band', selector: '.validation-lot', question: 'What lot-size band is worth reviewing?' },
   { key: 'maxPrice', label: 'Max price', selector: '.validation-price', question: 'What is your maximum acquisition price before feasibility?' },
@@ -3729,7 +3729,7 @@ function isBuyBoxFieldComplete(buyBox = {}, key = '') {
 
 function buyBoxCompletion(row = {}) {
   const buyBox = row.buyBox || {};
-  const fields = BUYBOX_UNLOCK_FIELDS.map(field => ({ ...field, complete: isBuyBoxFieldComplete(buyBox, field.key) }));
+  const fields = BUYBOX_REQUIRED_FIELDS.map(field => ({ ...field, complete: isBuyBoxFieldComplete(buyBox, field.key) }));
   const complete = fields.filter(field => field.complete).length;
   const missing = fields.filter(field => !field.complete);
   return { fields, complete, total: fields.length, percent: fields.length ? Math.round((complete / fields.length) * 100) : 0, missing, next: missing[0] || fields[0] };
@@ -3764,11 +3764,11 @@ function fieldLabel(label, row = {}, key = '') {
 
 function renderAskNext(row = {}) {
   const state = buyBoxCompletion(row);
-  const next = state.next || BUYBOX_UNLOCK_FIELDS[0];
+  const next = state.next || BUYBOX_REQUIRED_FIELDS[0];
   return `<aside class="ask-next-card" aria-label="Next buy-box question">
     <span>Ask this next</span>
     <strong>${h(next.question)}</strong>
-    <small>${state.complete}/${state.total} captured · seller search unlocks when the buying rules are specific enough to protect outreach.</small>
+    <small>${state.complete}/${state.total} captured · seller sourcing gets sharper as the buying rules become specific enough to protect outreach.</small>
   </aside>`;
 }
 
@@ -3809,15 +3809,15 @@ function renderBuyBoxDetailPanel(row = {}) {
         <span class="eyebrow">Buy box details · story mode</span>
         <button type="button" class="buybox-slideout-close" data-buybox-details-close aria-label="Close buy box details">×</button>
         <h3>${h(row.name || 'Selected buyer')}</h3>
-        <p>${h(details.status || 'Use this as the operator brief before seller sourcing.')}</p>
+        <p>${h(details.status || 'Use this as the operator brief while buyer and seller work can run in parallel.')}</p>
       </div>
       <section class="buybox-story-block"><h4>Story</h4>${storyRows || `<p>${h(row.buyBoxStory || row.demandSignal || 'No story saved yet.')}</p>`}</section>
       <section class="buybox-lane-stack"><h4>Buyer lanes</h4>${laneRows || '<p>No lane cards stored yet.</p>'}</section>
-      ${propWireRows ? `<section class="buybox-propwire-stack"><h4>Recommended PropWire filters</h4><p class="buybox-propwire-note">Use these as saved list presets. Seller identity stays hidden until John confirms lane fit and max basis.</p>${propWireRows}<div class="buybox-next-move propwire-next"><span>PropWire next move</span><b>${h(details.propWireNextMove || 'Export a small blind-fit parcel sample before any seller outreach.')}</b></div></section>` : ''}
+      ${propWireRows ? `<section class="buybox-propwire-stack"><h4>Recommended PropWire filters</h4><p class="buybox-propwire-note">Use these as saved list presets. Seller identity work can run in parallel; label it general until John confirms lane fit and max basis.</p>${propWireRows}<div class="buybox-next-move propwire-next"><span>PropWire next move</span><b>${h(details.propWireNextMove || 'Export a small blind-fit parcel sample and keep seller work labeled by confidence.')}</b></div></section>` : ''}
       <section class="buybox-price-grid" aria-label="Price bands">${priceRows || `<div><span>Max basis</span><b>${h(buyBox.maxPriceNotes || buyBox.maxPrice || 'confirm')}</b><em>${h(buyBox.geography || '')}</em></div>`}</section>
       <section class="buybox-source-proof"><h4>Source clues</h4><ul>${sourceRows || `<li>${h(row.sourceEvidence || row.publicSource || 'Public proof pending.')}</li>`}</ul></section>
       <section class="buybox-source-proof"><h4>Validation questions</h4><ul>${questionRows || preferenceRows || '<li>Confirm max price, close speed, recipient, utilities/access tolerance, and deal killers.</li>'}</ul></section>
-      <div class="buybox-next-move"><span>Next move</span><b>${h(details.nextMove || 'Capture direct confirmation before seller outreach.')}</b></div>
+      <div class="buybox-next-move"><span>Next move</span><b>${h(details.nextMove || 'Capture direct confirmation to sharpen seller outreach.')}</b></div>
     </aside>`;
 }
 
@@ -3832,6 +3832,47 @@ function renderEvidenceStack(row = {}) {
     <div class="evidence-stack-head"><span>Top permit evidence</span><b>${h(permits.length || row.recentBuilds || 0)} proofs</b></div>
     <ul>${proofRows || '<li><div><b>No permit proof rows loaded.</b><small>Open the source drawer for public evidence context.</small></div></li>'}</ul>
   </section>`;
+}
+
+function renderPhase5ProofLedger(row = {}, completion = buyBoxCompletion(row)) {
+  const permits = asArray(row.permitEvidence || row.recentPermits);
+  const topPermit = permits[0] || {};
+  const contactProofLink = row.contactUrl || row.website || row.sourceUrl || '';
+  const decisionMaker = row.buyBox?.packageRecipient || row.contactRole || row.contactName || row.email || '';
+  const ledger = [
+    { key: 'permit', label: 'Permit proof', done: Boolean(permits.length || row.recentBuilds || row.topPermit), detail: permits.length ? `${permits.length} permit rows loaded` : `${row.recentBuilds || 0} permit proofs`, link: topPermit.verificationUrl || topPermit.url || row.sourceUrl || '' },
+    { key: 'contact', label: 'Contact proof', done: Boolean(contactProofLink || row.phone || row.email), detail: row.contactStatus || row.contactConfidence || 'public path pending', link: contactProofLink },
+    { key: 'buybox', label: 'Buy-box proof', done: completion.complete === completion.total, detail: `${completion.complete}/${completion.total} required fields captured`, link: '' },
+    { key: 'decision', label: 'Decision-maker proof', done: Boolean(decisionMaker), detail: decisionMaker || 'capture name/direct recipient when found', link: row.contactUrl || row.website || '' },
+  ];
+  const rows = ledger.map(item => `<article class="proof-ledger-item ${item.done ? 'is-done' : 'is-open'}" data-proof-ledger-item="${h(item.key)}">
+    <span aria-hidden="true">${item.done ? solidIndustryIcon('check') : solidIndustryIcon('pending')}</span>
+    <div><b>${h(item.label)}</b><small>${h(item.detail)}</small></div>
+    ${item.link ? safeLink(item.link, 'Source') : '<em>Capture</em>'}
+  </article>`).join('');
+  const sourceLinks = [
+    row.sourceUrl ? safeLink(row.sourceUrl, row.sourceType || 'Builder source') : '',
+    contactProofLink && contactProofLink !== row.sourceUrl ? safeLink(contactProofLink, row.contactRole || 'Contact path') : '',
+    topPermit.verificationUrl || topPermit.url ? safeLink(topPermit.verificationUrl || topPermit.url, topPermit.permitNumber || 'Top permit') : '',
+  ].filter(Boolean).join('');
+  return `<section class="phase5-proof-ledger" aria-label="Compact proof ledger">
+    <div class="phase5-proof-ledger-head"><span>Proof ledger</span><b>Why validated</b></div>
+    <div class="phase5-proof-ledger-grid">${rows}</div>
+    <details class="phase5-source-links"><summary>Source links</summary><div>${sourceLinks || '<span>No source links loaded yet.</span>'}</div></details>
+  </section>`;
+}
+
+function renderPhase5SellerSourcingState(row = {}, completion = buyBoxCompletion(row), criteriaHtml = '') {
+  const specific = completion.complete === completion.total || Boolean(row.sellerSearch?.eligible);
+  const criteria = criteriaHtml || completion.fields.map(field => `<li><span aria-hidden="true">${field.complete ? '✓' : '○'}</span>${h(field.label)}</li>`).join('');
+  return `<aside class="seller-sourcing-card phase5-seller-sourcing ${specific ? 'is-specific' : 'is-general'}" aria-label="Seller sourcing state">
+    <div class="panel-kicker"><span>Seller sourcing</span><b>${specific ? 'buyer-specific' : 'general + parallel'}</b></div>
+    <h4>${specific ? h(row.sellerSearch?.headline || 'Buyer-specific seller sourcing ready.') : 'Seller sourcing can run now; buy-box detail sharpens the target.'}</h4>
+    <p>${specific ? h(row.sellerSearch?.sellerAngle || 'Use the captured buyer rules to match parcels and owner lists.') : 'Everything stays available. Work out of order, but label general seller work until the buyer rules are specific.'}</p>
+    <ul>${criteria}</ul>
+    ${row.sellerSearch?.offerCeiling ? `<div class="sourcing-price"><span>Offer ceiling</span><strong>${formatMoney(row.sellerSearch.offerCeiling)}</strong></div>` : ''}
+    <div class="seller-sourcing-actions"><a class="seller-sourcing-cta" href="#deals">Open seller lanes</a><a class="seller-sourcing-secondary" href="#sources">Source links</a></div>
+  </aside>`;
 }
 
 function renderSelectedBuilderDock(row = {}) {
@@ -3875,7 +3916,7 @@ function sharedRowInteractionModel({ kind = 'land', row = {}, index = 0, active 
     const builderId = row.builderId || row.id || row.buyerId || '';
     const outreach = validationOutreach(row);
     const completion = buyBoxCompletion(row);
-    const sellerOpen = Boolean(row.validation?.sellerEligible);
+    const sellerSpecific = Boolean(row.validation?.sellerEligible);
     const marketKey = row.marketKey || activeState.marketKey || selectedBuilderMarketKey || '';
     return {
       kind: 'builder',
@@ -3886,14 +3927,14 @@ function sharedRowInteractionModel({ kind = 'land', row = {}, index = 0, active 
       routeHash: builderMarketRouteHash({ stateCode: activeState.stateCode || selectedBuilderMarketState, marketKey }),
       title: row.name || 'Builder',
       subtitle: `${row.marketName || activeState.label || 'market'} · ${row.recentBuilds || 0} permit proofs`,
-      status: sellerOpen ? 'seller-ready' : row.callStatus || 'not_called',
+      status: sellerSpecific ? 'seller-specific' : row.callStatus || 'not_called',
       nextAction: row.validation?.nextAction || 'Call and capture the buy box.',
       progress: [
         { id: 'phone', label: 'Call', done: Boolean(outreach.phone) },
         { id: 'email', label: 'Email', done: Boolean(outreach.email) },
         { id: 'mail', label: 'Mail', done: Boolean(outreach.mail) },
         { id: 'buybox', label: `Buy box ${completion.complete}/${completion.total}`, done: completion.complete === completion.total },
-        { id: 'seller', label: 'Seller unlock', done: sellerOpen },
+        { id: 'seller', label: 'Seller sourcing', done: sellerSpecific },
       ],
     };
   }
@@ -3972,10 +4013,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   selectedValidationBuilderId = selected.builderId || selectedValidationBuilderId;
   const completion = buyBoxCompletion(selected);
   const missingList = completion.missing.map(field => `<li><span aria-hidden="true">○</span>${h(field.label)}</li>`).join('');
-  const unlockedList = BUYBOX_UNLOCK_FIELDS.map(field => `<li><span aria-hidden="true">✓</span>${h(field.label)}</li>`).join('');
+  const specificList = BUYBOX_REQUIRED_FIELDS.map(field => `<li><span aria-hidden="true">✓</span>${h(field.label)}</li>`).join('');
   const sellerCriteria = selected.sellerSearch?.eligible
-    ? (selected.sellerSearch.criteria.map(item => `<li><span aria-hidden="true">✓</span>${h(item)}</li>`).join('') || unlockedList)
-    : (missingList || '<li><span aria-hidden="true">○</span>Capture buy-box fields before parcel work.</li>');
+    ? (selected.sellerSearch.criteria.map(item => `<li><span aria-hidden="true">✓</span>${h(item)}</li>`).join('') || specificList)
+    : (missingList || '<li><span aria-hidden="true">○</span>Seller work can run now; buy-box fields sharpen parcel targeting.</li>');
   const statusOptions = BUYER_VALIDATION_STATUSES.map(status => `<option value="${h(status)}" ${selected.callStatus === status ? 'selected' : ''}>${h(callStatusLabel(status))}</option>`).join('');
   const queue = center.items.map((item, index) => {
     const active = item.builderId === selected.builderId;
@@ -3988,11 +4029,11 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
       outreach.email ? 'is-emailed' : 'needs-email',
       outreach.phone ? 'is-called' : 'needs-call',
       outreach.mail ? 'is-mailed' : 'needs-mail',
-      item.validation.sellerEligible ? 'is-done' : 'needs-buybox',
+      item.validation.sellerEligible ? 'is-done' : 'general-sourcing',
     ].filter(Boolean).join(' ');
     const searchText = [item.name, item.marketName, item.phone, item.email, item.contactStatus, item.sourceType, item.contactConfidence].filter(Boolean).join(' ').toLowerCase();
     const sharedRow = sharedRowInteractionModel({ kind: 'builder', row: item, index, active, activeState });
-    return `<article class="validation-queue-item shared-work-row ${completionStateClass}" ${sharedRowDataAttributes(sharedRow)} data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}" data-builder-search="${h(searchText)}" data-builder-score="${h(item.validation.score || 0)}" data-builder-permits="${h(item.recentBuilds || 0)}" data-builder-completion="${h(itemCompletion.complete || 0)}" data-builder-callable="${item.phone || item.email ? 'true' : 'false'}" data-builder-seller-open="${item.validation.sellerEligible ? 'true' : 'false'}" data-builder-needs-buybox="${item.validation.sellerEligible ? 'false' : 'true'}">
+    return `<article class="validation-queue-item shared-work-row ${completionStateClass}" ${sharedRowDataAttributes(sharedRow)} data-validation-row="${h(item.builderId)}" data-email-state="${outreach.email ? 'done' : 'todo'}" data-call-state="${outreach.phone ? 'done' : 'todo'}" data-mail-state="${outreach.mail ? 'done' : 'todo'}" data-builder-search="${h(searchText)}" data-builder-score="${h(item.validation.score || 0)}" data-builder-permits="${h(item.recentBuilds || 0)}" data-builder-completion="${h(itemCompletion.complete || 0)}" data-builder-callable="${item.phone || item.email ? 'true' : 'false'}" data-builder-seller-specific="${item.validation.sellerEligible ? 'true' : 'false'}" data-builder-general-sourcing="${item.validation.sellerEligible ? 'false' : 'true'}">
       <button type="button" class="validation-row-main" data-select-validation-builder="${h(item.builderId)}" data-shared-row-select="builder" aria-label="Select ${h(item.name)}" aria-pressed="${active ? 'true' : 'false'}">
         <span class="queue-copy"><b>${h(item.name)}</b><small>${h(validationOutreachLabel(item))} · ${h(item.recentBuilds)} permits · ${h(itemCompletion.complete)}/${h(itemCompletion.total)} buy box</small></span>
         <span class="queue-score" title="${h(scoreTitle)}" aria-label="Validation score ${h(item.validation.score)}">${solidIndustryIcon('score')}<b>${h(item.validation.score)}</b></span>
@@ -4036,19 +4077,19 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
   const mailHref = selected.email ? `mailto:${h(selected.email)}?subject=${encodeURIComponent(validationEmailSubject)}&body=${encodeURIComponent(validationEmailBody)}` : '#';
   const detailEmail = selected.email ? `<a class="builder-detail-contact-value" href="${mailHref}"><span>e:</span> ${h(selected.email)}</a>` : '<span class="builder-detail-contact-value is-missing"><span>e:</span> unresolved</span>';
   const nextActionCopy = selected.sellerSearch?.eligible
-    ? 'Buy box captured. Start matching land profiles to this builder.'
-    : `Contact once. Capture progress and notes. Next missing field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
+    ? 'Buy box captured. Match land profiles to this builder now.'
+    : `Contact now. Capture progress and notes. Next useful field: ${completion.next ? completion.next.label : 'buy box proof'}.`;
   const queueStats = center.items.reduce((acc, item) => {
     const outreach = validationOutreach(item);
     if (item.phone || item.email) acc.callable += 1;
-    if (item.validation?.sellerEligible) acc.sellerOpen += 1;
-    if (!item.validation?.sellerEligible) acc.needsBuybox += 1;
+    if (item.validation?.sellerEligible) acc.sellerSpecific += 1;
+    if (!item.validation?.sellerEligible) acc.generalSourcing += 1;
     if (outreach.phone || outreach.email || outreach.mail) acc.touched += 1;
     return acc;
-  }, { total: center.items.length, callable: 0, sellerOpen: 0, needsBuybox: 0, touched: 0 });
+  }, { total: center.items.length, callable: 0, sellerSpecific: 0, generalSourcing: 0, touched: 0 });
   return `<section id="buyer-validation-command" class="validation-command phase85-builder-ledger" aria-label="Buyer Validation Command Center">
     ${phase3Console}
-    <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : ''}">Seller search</span><span>Offer</span></div>
+    <div class="operator-flow-pulse" aria-label="Builder validation flow"><span class="done">Market</span><span class="done">Builder</span><span class="${completion.complete ? 'active' : ''}">Buy box</span><span class="${selected.sellerSearch?.eligible ? 'done' : 'active'}">Seller sourcing</span><span>Offer</span></div>
     ${renderBuyBoxDetailPanel(selected)}
     <div class="completion-state-legend" aria-label="Operational state legend"><span class="legend-done">Done</span><span class="legend-working">In progress</span><span class="legend-todo">Todo</span></div>
     <div class="validation-grid-main">
@@ -4058,8 +4099,8 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           <div class="builder-queue-filter-row" aria-label="Work-list filters">
             <button type="button" class="is-active" data-builder-queue-filter="all" aria-pressed="true">All <b>${h(queueStats.total)}</b></button>
             <button type="button" data-builder-queue-filter="callable">Callable <b>${h(queueStats.callable)}</b></button>
-            <button type="button" data-builder-queue-filter="needs-buybox">Needs buy box <b>${h(queueStats.needsBuybox)}</b></button>
-            <button type="button" data-builder-queue-filter="seller-open">Parcel-ready <b>${h(queueStats.sellerOpen)}</b></button>
+            <button type="button" data-builder-queue-filter="general-sourcing">General sourcing <b>${h(queueStats.generalSourcing)}</b></button>
+            <button type="button" data-builder-queue-filter="seller-specific">Buyer-specific <b>${h(queueStats.sellerSpecific)}</b></button>
             <button type="button" data-builder-queue-filter="touched">Touched <b>${h(queueStats.touched)}</b></button>
           </div>
           <label class="builder-queue-sort"><span>Sort</span><select data-builder-queue-sort><option value="rank">Ranked</option><option value="score">Score</option><option value="permits">Permits</option><option value="buybox">Buy box</option></select></label>
@@ -4093,10 +4134,10 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
         </section>
         <section class="builder-inspector-section inspector-readiness" aria-label="Buyer validation readiness stack">
           <div class="inspector-section-head"><span>Readiness stack</span><b>${h(completion.complete)}/${h(completion.total)}</b></div>
-          <div class="buyer-readiness-stack"><span class="${selectedOutreach.phone ? 'is-done' : 'is-open'}">Call ${selectedOutreach.phone ? 'logged' : 'open'}</span><span class="${selectedOutreach.email ? 'is-done' : 'is-open'}">Email ${selectedOutreach.email ? 'sent' : 'open'}</span><span class="${completion.complete ? 'is-done' : 'is-open'}">Buy box ${h(completion.complete)}/${h(completion.total)}</span><span class="${selected.validation?.sellerEligible ? 'is-done' : 'is-open'}">Seller unlock ${selected.validation?.sellerEligible ? 'ready' : 'locked'}</span></div>
+          <div class="buyer-readiness-stack"><span class="${selectedOutreach.phone ? 'is-done' : 'is-open'}">Call ${selectedOutreach.phone ? 'logged' : 'open'}</span><span class="${selectedOutreach.email ? 'is-done' : 'is-open'}">Email ${selectedOutreach.email ? 'sent' : 'open'}</span><span class="${completion.complete ? 'is-done' : 'is-open'}">Buy box ${h(completion.complete)}/${h(completion.total)}</span><span class="${selected.validation?.sellerEligible ? 'is-done' : 'is-open'}">Seller sourcing ${selected.validation?.sellerEligible ? 'buyer-specific' : 'general'}</span></div>
         </section>
         <section class="builder-inspector-section inspector-ranking" aria-label="Why ranked here"><div class="inspector-section-head"><span>Why ranked here</span><b>${h(selected.validation?.score || 0)}</b></div><div class="score-breakdown compact">${selectedScoreRows}</div></section>
-        <section class="builder-inspector-section inspector-proof" aria-label="Proof summary"><div class="inspector-section-head"><span>Proof summary</span><b>${h(selected.recentBuilds || 0)} proofs</b></div>${sourceProof}${renderEvidenceStack(selected)}</section>
+        <section class="builder-inspector-section inspector-proof" aria-label="Proof summary"><div class="inspector-section-head"><span>Proof summary</span><b>${h(selected.recentBuilds || 0)} proofs</b></div>${renderPhase5ProofLedger(selected, completion)}${sourceProof}${renderEvidenceStack(selected)}</section>
         <section class="builder-inspector-section inspector-missing" aria-label="Missing buy-box fields"><div class="inspector-section-head"><span>Missing buy-box fields</span><b>${h(completion.missing.length)}</b></div><ul class="inspector-missing-list">${missingList || '<li><span aria-hidden="true">✓</span>Buy box complete.</li>'}</ul></section>
         <section class="builder-inspector-section inspector-outcomes" aria-label="Status update for selected builder">
           <div class="inspector-section-head"><span>Status update applies to</span><b>${h(selected.name || 'selected builder')}</b></div>
@@ -4133,12 +4174,7 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           </div>
         </details>
       </article>
-      <aside class="seller-unlock-card ${selected.sellerSearch?.eligible ? 'unlocked' : ''}">
-        <div class="panel-kicker"><span>Seller gate</span><b>${selected.sellerSearch?.eligible ? 'open' : `${completion.complete}/${completion.total}`}</b></div>
-        <h4>${selected.sellerSearch?.eligible ? h(selected.sellerSearch?.headline || 'Seller search open.') : `<span class="seller-gate-lock" aria-label="Seller search locked until buy box is specific" title="Seller search locked until buy box is specific">${solidIndustryIcon('lock')}</span>Specific buy box required.`}</h4>
-        <ul>${sellerCriteria}</ul>
-        ${selected.sellerSearch?.eligible ? `<div class="unlock-price"><span>Offer ceiling</span><strong>${formatMoney(selected.sellerSearch.offerCeiling)}</strong></div><p>${h(selected.sellerSearch.sellerAngle)}</p><a class="seller-unlock-cta" href="#top-calls">Find parcels</a>` : '<p title="Permit proof shows demand, but buyer criteria protect the seller call.">Capture the buy box first; seller calls must match real demand.</p>'}
-      </aside>
+      ${renderPhase5SellerSourcingState(selected, completion, sellerCriteria)}
     </div>
     ${renderSelectedBuilderDock(selected)}
     <details class="validation-script-drawer">
@@ -4166,8 +4202,8 @@ function applyBuilderQueueControls(surface = document.querySelector('[data-build
   const rankMap = new Map(rows.map((row, index) => [row, index]));
   const filterMatch = (row) => {
     if (activeFilter === 'callable') return row.dataset.builderCallable === 'true';
-    if (activeFilter === 'needs-buybox') return row.dataset.builderNeedsBuybox === 'true';
-    if (activeFilter === 'seller-open') return row.dataset.builderSellerOpen === 'true';
+    if (activeFilter === 'general-sourcing') return row.dataset.builderGeneralSourcing === 'true';
+    if (activeFilter === 'seller-specific') return row.dataset.builderSellerSpecific === 'true';
     if (activeFilter === 'touched') return ['email', 'call', 'mail'].some(channel => row.dataset[`${channel}State`] === 'done');
     return true;
   };
@@ -4263,7 +4299,7 @@ function renderBuilderMarketCommandRail(stateSummaries = [], activeState = {}, s
     </button>`;
   }).join('');
   return `<section class="builder-market-command-rail" aria-label="Builder market command rail">
-    <div class="builder-phase1-spine" aria-label="Builder page flow"><span>Choose market</span><span>Call builders</span><span>Capture buy box</span><span>Unlock sellers</span></div>
+    <div class="builder-phase1-spine" aria-label="Builder page flow"><span>Choose market</span><span>Call builders</span><span>Capture buy box</span><span>Source sellers</span></div>
     <div class="builder-command-state-strip" aria-label="Builder states">${stateRows}</div>
     <div class="builder-command-market-strip" aria-label="Markets in ${h(activeState.label || activeState.stateCode)}">
       <div class="builder-command-rail-label"><span>Active state</span><b>${h(activeState.stateCode || '')}</b></div>

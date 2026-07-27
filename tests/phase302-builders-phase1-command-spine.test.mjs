@@ -12,7 +12,7 @@ assert.ok(start > -1, 'Builders Phase 1 command-spine CSS marker missing.');
 const phase = css.slice(start);
 
 assert.match(app, /class="builder-phase1-spine" aria-label="Builder page flow"/, 'Builders route must render a clear page-spine flow above the market rail.');
-assert.match(app, /Choose market<\/span><span>Call builders<\/span><span>Capture buy box<\/span><span>Unlock sellers/, 'Builder page spine must explain the operator sequence.');
+assert.match(app, /Choose market<\/span><span>Call builders<\/span><span>Capture buy box<\/span><span>Source sellers/, 'Builder page spine must explain the operator sequence without lock/unlock copy.');
 assert.match(app, /aria-label="Unified builder workbench"/, 'Command surface must use product-facing unified-workbench aria copy.');
 assert.match(app, /<span class="eyebrow">One workbench<\/span>/, 'Visible command eyebrow must describe the unified workbench.');
 assert.doesNotMatch(app, /Phase 3 · today's call queue|Phase 3 builder call execution console|Selected-builder outcome/, 'Builders visible copy must not expose implementation labels in the primary UX.');

@@ -54,14 +54,14 @@ assert.match(app, /builderPanelRenderSequence/, 'Builders market page should gua
 assert.match(app, /target\.dataset\.builderRenderKey/, 'Builders market page should memoize the current render key to prevent click/load flicker');
 assert.match(app, /data-builder-queue-search/, 'Builders selected-market queue should expose compact search without leaving the cockpit');
 assert.match(app, /data-builder-queue-filter="callable"/, 'Builders queue should have callable filter chip');
-assert.match(app, /data-builder-queue-filter="needs-buybox"/, 'Builders queue should have buy-box-needed filter chip');
-assert.match(app, /data-builder-queue-filter="seller-open"/, 'Builders queue should have seller-gate-open filter chip');
+assert.match(app, /data-builder-queue-filter="general-sourcing"/, 'Builders queue should have general seller-sourcing filter chip');
+assert.match(app, /data-builder-queue-filter="seller-specific"/, 'Builders queue should have buyer-specific seller-sourcing filter chip');
 assert.match(app, /data-builder-queue-sort/, 'Builders queue should sort by rank, score, permits, and buy-box capture');
 assert.match(app, /function applyBuilderQueueControls/, 'Builders queue controls should filter/sort client-side without rerendering the market page');
 assert.doesNotMatch(app, /class="queue-phone"/, 'Builders queue rows should stay compact; phone detail belongs in the selected builder detail section');
 assert.match(app, /builder-detail-contact-ledger/, 'Selected builder detail should expose the organized phone/email contact ledger');
 assert.match(app, /<span>p:<\/span>/, 'Selected builder detail should show a compact p: phone prefix');
-assert.match(app, /seller sourcing stays parked until a buy box is captured/, 'Selected market copy should keep the buyer-first proof gate clear');
+assert.match(app, /Seller sourcing stays accessible and labeled by confidence|seller sourcing gets sharper as the buying rules become specific/, 'Selected market copy should keep seller sourcing accessible while buyer specificity improves targeting');
 assert.doesNotMatch(app, /Pick the state\. Read the queue\./, 'Rejected Builders poster headline must not return');
 assert.doesNotMatch(app, /builders-primary-action[\s\S]{0,80}<span>Next action<\/span>/, 'Builders primary action should not waste hierarchy with a redundant Next action label');
 assert.match(app, /const builderMarketRegistry = \[/, 'Builders page must expose a market registry, not only a state rail');

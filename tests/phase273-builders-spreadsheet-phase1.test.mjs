@@ -17,7 +17,7 @@ assert.match(phase, /validation-queue-item[\s\S]{0,240}grid-template-columns: mi
 assert.match(phase, /queue-state-row[\s\S]{0,180}grid-template-columns: repeat\(3, 28px\) minmax\(0, 1fr\) !important/, 'Rows must expose call/email/mail progress controls inline.');
 assert.match(phase, /buybox-capture-sheet summary[\s\S]{0,220}grid-template-columns: minmax\(0,1fr\) auto !important/, 'Phase 1 must style progress and notes as the selected-record sheet.');
 assert.match(app, /This is the single builder workbench: contact, progress, notes, proof count\./, 'Builder work-list copy must be spreadsheet-first and single-workbench clear.');
-assert.match(app, /<details class="buybox-capture-sheet" open>/, 'Progress/notes sheet must be open by default.');
+assert.match(app, /<details class="buybox-capture-sheet [^"]*phase4-buybox-capture[^"]*" open>/, 'Progress/notes sheet must be open by default.');
 assert.match(app, /parcel-ready/, 'Builder status should say parcel-ready instead of seller gate unlock ceremony.');
 assert.match(app, /if \(activeView === 'builders'\) \{[\s\S]{0,180}renderBuilderListEnginePanel\(\);[\s\S]{0,120}return;/, 'Builders route must render only the builder workspace instead of hydrating every hidden panel.');
 assert.match(html, /orientation-spine-v3-builders-phase1/, 'index.html must cache-bust Builders Phase 1 CSS.');

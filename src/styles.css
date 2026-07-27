@@ -44215,3 +44215,168 @@ body[data-active-view="builders"] #buyer-validation-command .inspector-outcome-c
   body[data-active-view="builders"] #buyer-validation-command .inspector-missing-list { grid-template-columns: 1fr !important; }
   body[data-active-view="builders"] #buyer-validation-command .builder-contact-action-rail { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
 }
+
+
+/* v1.105 - Builders Phase 4 buy-box capture redesign: fast call capture */
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-capture {
+  overflow: visible !important;
+  border: 1px solid rgba(9,18,14,.11) !important;
+  background: linear-gradient(180deg, rgba(255,255,255,.9), rgba(247,250,246,.86)) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-capture summary {
+  min-height: 46px !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-required-command {
+  display: grid !important;
+  grid-template-columns: minmax(150px,.42fr) minmax(0,1fr) !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-progress-meter {
+  display: grid !important;
+  gap: 7px !important;
+  padding: 12px !important;
+  border: 1px solid rgba(9,18,14,.09) !important;
+  background: #111811 !important;
+  color: #fff !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-progress-meter strong {
+  color: #fff !important;
+  font-size: clamp(24px, 3vw, 38px) !important;
+  line-height: .92 !important;
+  letter-spacing: -.055em !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-progress-meter span {
+  height: 7px !important;
+  overflow: hidden !important;
+  background: rgba(255,255,255,.16) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-progress-meter i {
+  display: block !important;
+  height: 100% !important;
+  background: #77f0c1 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-progress-meter em {
+  color: rgba(255,255,255,.66) !important;
+  font-style: normal !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-missing-command-list {
+  display: flex !important;
+  align-content: start !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 7px !important;
+  padding: 12px !important;
+  border: 1px solid rgba(9,18,14,.09) !important;
+  background: rgba(255,255,255,.76) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-missing-command-list > span {
+  width: 100% !important;
+  color: rgba(21,30,24,.54) !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-missing-pill {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 30px !important;
+  padding: 7px 9px !important;
+  border: 1px solid rgba(175,92,22,.22) !important;
+  background: rgba(255,232,199,.74) !important;
+  color: #8b4612 !important;
+  font-size: 11px !important;
+  font-weight: 850 !important;
+  line-height: 1.1 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid,
+body[data-active-view="builders"] #buyer-validation-command .validation-form.validation-buybox-grid.phase4-buybox-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 10px !important;
+  align-items: start !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-form-section {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+  padding: 12px !important;
+  border: 1px solid rgba(9,18,14,.09) !important;
+  background: rgba(255,255,255,.74) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .buybox-required-fields,
+body[data-active-view="builders"] #buyer-validation-command .buybox-optional-fields,
+body[data-active-view="builders"] #buyer-validation-command .buybox-quote-fields { grid-column: 1 / -1 !important; grid-template-columns: minmax(0, 1fr) !important; }
+body[data-active-view="builders"] #buyer-validation-command .buybox-form-section-head {
+  grid-column: 1 / -1 !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  padding-bottom: 4px !important;
+  border-bottom: 1px solid rgba(9,18,14,.08) !important;
+  color: rgba(21,30,24,.56) !important;
+  font-size: 10px !important;
+  font-weight: 850 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-geography,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-speed,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-recipient,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-killers,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-lot,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-price { grid-column: 1 / -1 !important; }
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid input,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid select,
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid textarea {
+  width: 100% !important;
+  min-width: 0 !important;
+  overflow: visible !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid textarea {
+  min-height: 140px !important;
+  white-space: normal !important;
+  overflow: auto !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .is-required input {
+  border-color: rgba(175,92,22,.42) !important;
+  background: #fffaf2 !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .is-complete input {
+  border-color: rgba(24,128,82,.26) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .sticky-save-row {
+  position: sticky !important;
+  bottom: 10px !important;
+  z-index: 4 !important;
+  margin-top: 2px !important;
+  padding: 9px !important;
+  border: 1px solid rgba(9,18,14,.11) !important;
+  background: rgba(255,255,255,.94) !important;
+  backdrop-filter: blur(10px) !important;
+}
+body[data-active-view="builders"] #buyer-validation-command .sticky-save-row button {
+  flex: 0 0 auto !important;
+  min-width: 150px !important;
+}
+@media (max-width: 1180px) {
+  body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid,
+  body[data-active-view="builders"] #buyer-validation-command .buybox-required-command { grid-template-columns: 1fr !important; }
+  body[data-active-view="builders"] #buyer-validation-command .buybox-required-fields,
+  body[data-active-view="builders"] #buyer-validation-command .buybox-optional-fields,
+  body[data-active-view="builders"] #buyer-validation-command .buybox-quote-fields { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 760px) {
+  body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-capture[open] > :not(summary) { margin-left: 10px !important; margin-right: 10px !important; }
+  body[data-active-view="builders"] #buyer-validation-command .buybox-form-section { grid-template-columns: 1fr !important; padding: 10px !important; }
+  body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-lot,
+  body[data-active-view="builders"] #buyer-validation-command .phase4-buybox-grid .field-price { grid-column: 1 / -1 !important; }
+  body[data-active-view="builders"] #buyer-validation-command .sticky-save-row { bottom: 0 !important; }
+  body[data-active-view="builders"] #buyer-validation-command .sticky-save-row button { width: 100% !important; }
+}

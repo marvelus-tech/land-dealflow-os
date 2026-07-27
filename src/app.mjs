@@ -3708,11 +3708,11 @@ function scoreBreakdownRows(row = {}) {
 
 const BUYBOX_UNLOCK_FIELDS = [
   { key: 'geography', label: 'Geography', selector: '.validation-geography', question: 'Which submarkets are you actively buying in?' },
-  { key: 'lotSize', label: 'Lot size', selector: '.validation-lot', question: 'What lot-size band is worth reviewing?' },
+  { key: 'lotSize', label: 'Lot band', selector: '.validation-lot', question: 'What lot-size band is worth reviewing?' },
   { key: 'maxPrice', label: 'Max price', selector: '.validation-price', question: 'What is your maximum acquisition price before feasibility?' },
-  { key: 'closeSpeed', label: 'Close speed', selector: '.validation-speed', question: 'How quickly can you close, and how many lots per month can you absorb?' },
-  { key: 'packageRecipient', label: 'Recipient', selector: '.validation-recipient', question: 'Who should receive parcel packages and at what direct email?' },
-  { key: 'dealKillers', label: 'Deal killers', selector: '.validation-killers', question: 'What kills a parcel immediately: slope, flood, wetlands, frontage, utilities, title?' },
+  { key: 'closeSpeed', label: 'Speed/appetite', selector: '.validation-speed', question: 'How quickly can you close, and how many lots per month can you absorb?' },
+  { key: 'packageRecipient', label: 'Recipient/contact', selector: '.validation-recipient', question: 'Who should receive parcel packages and at what direct email?' },
+  { key: 'dealKillers', label: 'Killers', selector: '.validation-killers', question: 'What kills a parcel immediately: slope, flood, wetlands, frontage, utilities, title?' },
 ];
 
 function buyBoxFieldValue(buyBox = {}, key = '') {
@@ -3742,6 +3742,15 @@ function renderBuyBoxCompletion(row = {}) {
     <div class="completion-head"><span>Buy box completion</span><strong>${h(state.complete)}/${h(state.total)}</strong></div>
     <div class="completion-rail" aria-hidden="true"><span style="width:${h(state.percent)}%"></span></div>
     <div class="completion-chips">${chips}</div>
+  </section>`;
+}
+
+function renderBuyBoxMissingCommand(row = {}) {
+  const state = buyBoxCompletion(row);
+  const missing = state.missing.map(field => `<span class="buybox-missing-pill" data-missing-buybox-field="${h(field.key)}">${h(field.label)}</span>`).join('');
+  return `<section class="buybox-required-command" aria-label="Missing required buy-box fields">
+    <div class="buybox-progress-meter" aria-label="Buy-box capture ${h(state.percent)} percent complete"><strong>${h(state.percent)}%</strong><span><i style="width:${h(state.percent)}%"></i></span><em>${h(state.complete)}/${h(state.total)} required</em></div>
+    <div class="buybox-missing-command-list"><span>Missing now</span>${missing || '<b>All required fields captured.</b>'}</div>
   </section>`;
 }
 
@@ -4094,24 +4103,33 @@ function renderBuyerValidationCommandCenter(activeState = { stateCode: 'TN', lab
           <div class="selected-outreach-state" aria-label="Builder outreach state"><button type="button" class="contact-state-toggle ${selectedOutreach.phone ? 'is-on' : ''}" data-toggle-validation-contact="phone" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.phone ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}" title="${h(outreachToggleLabel('phone', selectedOutreach.phone, selectedOutreach.phoneAt))}"><span aria-hidden="true">${solidIndustryIcon('phone')}</span></button><button type="button" class="contact-state-toggle ${selectedOutreach.email ? 'is-on' : ''}" data-toggle-validation-contact="email" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.email ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}" title="${h(outreachToggleLabel('email', selectedOutreach.email, selectedOutreach.emailAt))}"><span aria-hidden="true">${solidIndustryIcon('email')}</span></button><button type="button" class="contact-state-toggle ${selectedOutreach.mail ? 'is-on' : ''}" data-toggle-validation-contact="mail" data-builder-id="${h(selected.builderId || '')}" aria-pressed="${selectedOutreach.mail ? 'true' : 'false'}" aria-label="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}" title="${h(outreachToggleLabel('mail', selectedOutreach.mail, selectedOutreach.mailAt))}"><span aria-hidden="true">${solidIndustryIcon('mail')}</span></button></div>
           <div class="phase3-outcome-capture inspector-outcome-capture" aria-label="Status outcomes for selected builder"><span>Outcome for selected builder</span>${inspectorOutcomeButtons}</div>
         </section>
-        <details class="buybox-capture-sheet" open>
-          <summary><span>Progress + notes</span><b>${h(completion.complete)}/${h(completion.total)} buy box</b></summary>
-          ${renderBuyBoxCompletion(selected)}
+        <details class="buybox-capture-sheet phase4-buybox-capture" open>
+          <summary><span>Buy-box capture</span><b>${h(completion.complete)}/${h(completion.total)} required</b></summary>
+          ${renderBuyBoxMissingCommand(selected)}
           ${renderAskNext(selected)}
-          <div class="validation-form validation-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
-            <label class="form-field field-status">Status <select class="validation-status">${statusOptions}</select></label>
-          <label class="form-field field-last">Last touch <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
-          <label class="form-field field-callback">Callback <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
-          <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="West Knoxville, Karns, Hardin Valley..." /></label>
-          <label class="form-field field-lot ${fieldStateClass(selected, 'lotSize')}">${fieldLabel('Lot band', selected, 'lotSize')}<input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.25-1.0 ac, infill/subdivision lots" /></label>
-          <label class="form-field field-price ${fieldStateClass(selected, 'maxPrice')}">${fieldLabel('Max price', selected, 'maxPrice')}<input class="validation-price" inputmode="numeric" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="65000" /></label>
-          <label class="form-field field-speed ${fieldStateClass(selected, 'closeSpeed')}">${fieldLabel('Speed / appetite', selected, 'closeSpeed')}<input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="14-30 days / 2 lots per month" /></label>
-          <label class="form-field field-recipient ${fieldStateClass(selected, 'packageRecipient')}">${fieldLabel('Recipient', selected, 'packageRecipient')}<input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email for parcel packages" /></label>
-          <label class="form-field field-utilities">Utilities <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="paved road, sewer nearby, water/electric at street" /></label>
-          <label class="form-field field-product">Product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="entry-level SFR, infill spec, move-up homes" /></label>
-          <label class="form-field field-killers ${fieldStateClass(selected, 'dealKillers')}">${fieldLabel('Killers', selected, 'dealKillers')}<input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="steep slope, flood, wetlands, no frontage, title issue" /></label>
-          <label class="form-field field-notes wide">Exact language <textarea class="validation-notes" placeholder="Paste what they said. No interpretation.">${h(selected.callNotes || '')}</textarea></label>
-            <div class="validation-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status" aria-live="polite"></span></div>
+          <div class="validation-form validation-buybox-grid phase4-buybox-grid" data-validation-form="${h(selected.builderId || '')}">
+            <section class="buybox-form-section buybox-required-fields" aria-label="Required validation fields">
+              <div class="buybox-form-section-head"><span>Required validation fields</span><b>${h(completion.missing.length)} missing</b></div>
+              <label class="form-field field-geography ${fieldStateClass(selected, 'geography')}">${fieldLabel('Geography', selected, 'geography')}<input class="validation-geography" value="${h(selected.buyBox?.geography || '')}" placeholder="Winter Park, Maitland" /></label>
+              <label class="form-field field-lot ${fieldStateClass(selected, 'lotSize')}">${fieldLabel('Lot band', selected, 'lotSize')}<input class="validation-lot" value="${h(selected.buyBox?.lotSize || '')}" placeholder="0.15-0.35 ac" /></label>
+              <label class="form-field field-price ${fieldStateClass(selected, 'maxPrice')}">${fieldLabel('Max price', selected, 'maxPrice')}<input class="validation-price" inputmode="numeric" value="${h(selected.buyBox?.maxPrice || '')}" placeholder="250000" /></label>
+              <label class="form-field field-speed ${fieldStateClass(selected, 'closeSpeed')}">${fieldLabel('Speed/appetite', selected, 'closeSpeed')}<input class="validation-speed" value="${h(selected.buyBox?.closeSpeed || '')}" placeholder="7-21 days / 1-2 lots" /></label>
+              <label class="form-field field-recipient ${fieldStateClass(selected, 'packageRecipient')}">${fieldLabel('Recipient/contact', selected, 'packageRecipient')}<input class="validation-recipient" value="${h(selected.buyBox?.packageRecipient || '')}" placeholder="Name + direct email" /></label>
+              <label class="form-field field-killers ${fieldStateClass(selected, 'dealKillers')}">${fieldLabel('Killers', selected, 'dealKillers')}<input class="validation-killers" value="${h(asArray(selected.buyBox?.dealKillers).join(', ') || selected.buyBox?.dealKillers || '')}" placeholder="flood, wetlands, no frontage" /></label>
+              <div class="validation-save-row sticky-save-row"><button type="button" data-save-buyer-validation>Save validation</button><span class="validation-save-status" aria-live="polite"></span></div>
+            </section>
+            <section class="buybox-form-section buybox-optional-fields" aria-label="Optional qualifiers">
+              <div class="buybox-form-section-head"><span>Optional qualifiers</span><b>helpful, not a blocker</b></div>
+              <label class="form-field field-status">Status <select class="validation-status">${statusOptions}</select></label>
+              <label class="form-field field-last">Last touch <input type="date" class="validation-last" value="${h(selected.lastContacted || '')}" /></label>
+              <label class="form-field field-callback">Callback <input type="date" class="validation-callback" value="${h(selected.callbackDate || '')}" /></label>
+              <label class="form-field field-utilities">Utilities/access <input class="validation-utilities" value="${h(selected.buyBox?.utilitiesAccess || '')}" placeholder="sewer, power, water" /></label>
+              <label class="form-field field-product">Product <input class="validation-product" value="${h(selected.buyBox?.productType || '')}" placeholder="custom/spec/infill" /></label>
+            </section>
+            <section class="buybox-form-section buybox-quote-fields" aria-label="Exact quote and notes">
+              <div class="buybox-form-section-head"><span>Exact quote / notes</span><b>paste raw language</b></div>
+              <label class="form-field field-notes wide">Exact quote / notes <textarea class="validation-notes" placeholder="Verbatim quote. No interpretation.">${h(selected.callNotes || '')}</textarea></label>
+            </section>
           </div>
         </details>
       </article>

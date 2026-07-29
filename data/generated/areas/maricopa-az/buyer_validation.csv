@@ -1,7 +1,7 @@
 buyerId,name,market,phone,website,task,confidence
 maricopa-builder-shalc-gc-shea-homes,SHALC GC / Shea Homes,maricopa-az,602-505-9961 602-505-9961 480-454-2225,,capture exact buy box,100
 maricopa-builder-soundbuilt-homes-arizona-llc,Soundbuilt Homes Arizona LLC,maricopa-az,253-377-4947 253-848-0820,,capture exact buy box,88
-maricopa-builder-mattamy-arizona-llc,Mattamy Arizona LLC,maricopa-az,,,capture exact buy box,68
+maricopa-builder-mattamy-arizona-llc,Mattamy Arizona LLC,maricopa-az,", 480-993-4351 480-993-4351",,capture exact buy box,82
 maricopa-builder-americas-dwelling-llc,Americas Dwelling LLC,maricopa-az,818-903-5410,,capture exact buy box,70
 maricopa-builder-better-builders-llc,Better Builders LLC,maricopa-az,602-819-0653,,capture exact buy box,70
 maricopa-builder-galaxy-construction-and-remodeling-llc,Galaxy Construction And Remodeling LLC,maricopa-az,623-776-5954 623-776-5954,,capture exact buy box,70
@@ -20,9 +20,11 @@ maricopa-builder-fulton-homes-corporation,Fulton Homes Corporation,maricopa-az,4
 maricopa-builder-hk-homes-dba-lexar-homes-of-cave-creek,Hk Homes Dba Lexar Homes Of Cave Creek,maricopa-az,623-306-0373 623-306-0373 623-306-0373,,capture exact buy box,64
 maricopa-builder-lennar-arizona-llc,Lennar Arizona LLC,maricopa-az,480-201-3748 480-201-3748,,capture exact buy box,64
 maricopa-builder-nailed-it-construction-consulting-llc,Nailed It Construction Consulting LLC,maricopa-az,602-550-6907 602-550-6907 602-550-6907,,capture exact buy box,64
+maricopa-builder-nexstar-homes,Nexstar Homes,maricopa-az,480-770-2222 480-316-1468,,capture exact buy box,64
 maricopa-builder-platinum-builders-group,Platinum Builders Group,maricopa-az,623-826-9791 602-579-9943,,capture exact buy box,64
 maricopa-builder-probuilds-llc,Probuilds LLC,maricopa-az,623-298-8799 801-687-7732,,capture exact buy box,64
 maricopa-builder-rc-opat-construction,RC Opat Construction,maricopa-az,623-695-1666 623-695-1666,,capture exact buy box,64
+maricopa-builder-richmond-american-homes-of-arizona-inc,Richmond American Homes Of Arizona Inc,maricopa-az,480-392-5091,,capture exact buy box,64
 maricopa-builder-shangri-la-custom-homes,Shangri La Custom Homes,maricopa-az,602-738-0264,,capture exact buy box,64
 maricopa-builder-tld-builders,TLD Builders,maricopa-az,623-772-0075 602-910-4484 623-772-0075,,capture exact buy box,64
 maricopa-builder-trinity-homes-of-the-rim,Trinity Homes Of The Rim,maricopa-az,480-220-3229 480-220-3229,,capture exact buy box,64

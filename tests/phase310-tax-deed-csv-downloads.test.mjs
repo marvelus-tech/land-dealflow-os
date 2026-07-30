@@ -11,7 +11,7 @@ const registryMatch = app.match(/const taxDeedCsvDownloads = (\[[\s\S]*?\]);\n\n
 assert.ok(registryMatch, 'Tax-Deed page must define a static CSV download registry before rendering.');
 const downloads = JSON.parse(registryMatch[1]);
 
-assert.equal(downloads.length, 10, 'Tax-Deed CSV deck must stay pruned to the latest non-duplicate operating exports.');
+assert.equal(downloads.length, 11, 'Tax-Deed CSV deck must stay pruned to the latest non-duplicate operating exports, including the clearly labeled Lee owner queue.');
 assert.match(app, /function renderTaxDeedCsvDownloads\(\)/, 'Tax-Deed page must render a CSV download section.');
 assert.match(app, /renderTaxDeedCsvDownloads\(\)/, 'Tax-Deed panel must mount the CSV download section.');
 assert.match(app, /data-phase310-tax-deed-csv-downloads="latest-nonduplicate-static-csv-links"/, 'Tax-Deed CSV downloads need a durable latest-only Phase 310 marker.');
@@ -22,6 +22,7 @@ assert.match(app, /activeTaxDeedMarket === 'all' \|\| String\(item\.market \|\| 
 const requiredUrls = [
   './artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/central-fl-premium-infill-buyer-validation-queue.csv',
   './artifacts/buyer-lists/florida-tax-deed/lee/buyers.csv',
+  './artifacts/seller-lists/fl-tax-deed/lee/lee-county-fl-tax-deed-owner-skiptrace-queue.csv',
   './artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv',
   './artifacts/seller-lists/fl-tax-deed/florida-tax-deed-owner-leads-simplified-property-address-skiptrace.csv',
   './artifacts/seller-lists/florida-tax-deed/contact-enrichment/free-public-crossref/florida-tax-deed-free-public-crossref-results.csv',

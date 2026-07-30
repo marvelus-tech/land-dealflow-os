@@ -2289,6 +2289,16 @@ const taxDeedCsvDownloads = [
     "status": "latest buyer proof list"
   },
   {
+    "title": "Lee County owners - tax-deed auction skiptrace queue",
+    "url": "./artifacts/seller-lists/fl-tax-deed/lee/lee-county-fl-tax-deed-owner-skiptrace-queue.csv",
+    "file": "artifacts/seller-lists/fl-tax-deed/lee/lee-county-fl-tax-deed-owner-skiptrace-queue.csv",
+    "lane": "owner",
+    "market": "FL / Lee",
+    "rows": 50,
+    "size": 5692,
+    "status": "latest Lee owner skiptrace queue"
+  },
+  {
     "title": "Florida tax-deed buyers — enriched skiptrace",
     "url": "./artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv",
     "file": "artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv",

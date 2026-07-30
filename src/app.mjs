@@ -2269,394 +2269,104 @@ function downloadLink(url, label, className = '') {
 
 const taxDeedCsvDownloads = [
   {
-    "title": "Buy Box Validation By Submarket",
-    "url": "./artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/buy-box-validation-by-submarket.csv",
-    "file": "artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/buy-box-validation-by-submarket.csv",
-    "lane": "buyer",
-    "market": "FL / Central premium",
-    "rows": 8,
-    "size": 4491,
-    "status": "buyer validation"
-  },
-  {
-    "title": "Central Fl Premium Infill Buyer Validation Queue",
+    "title": "Central FL premium buyer validation queue",
     "url": "./artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/central-fl-premium-infill-buyer-validation-queue.csv",
     "file": "artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/central-fl-premium-infill-buyer-validation-queue.csv",
     "lane": "buyer",
     "market": "FL / Central premium",
     "rows": 50,
     "size": 49171,
-    "status": "buyer validation"
+    "status": "latest buyer validation queue"
   },
   {
-    "title": "Source Ledger",
-    "url": "./artifacts/buyer-lists/florida-tax-deed/central-fl-core/source-ledger.csv",
-    "file": "artifacts/buyer-lists/florida-tax-deed/central-fl-core/source-ledger.csv",
-    "lane": "buyer",
-    "market": "FL / Central premium",
-    "rows": 55,
-    "size": 8789,
-    "status": "buyer validation"
-  },
-  {
-    "title": "Source Ledger",
-    "url": "./artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/source-ledger.csv",
-    "file": "artifacts/buyer-lists/florida-tax-deed/central-fl-premium-infill-buyers/source-ledger.csv",
-    "lane": "buyer",
-    "market": "FL / Central premium",
-    "rows": 24,
-    "size": 5374,
-    "status": "buyer validation"
-  },
-  {
-    "title": "Source Ledger",
-    "url": "./artifacts/seller-lists/fl-tax-deed/central-fl-premium-step2/source-ledger.csv",
-    "file": "artifacts/seller-lists/fl-tax-deed/central-fl-premium-step2/source-ledger.csv",
-    "lane": "owner",
-    "market": "FL / Central premium",
-    "rows": 21,
-    "size": 7071,
-    "status": "CSV export"
-  },
-  {
-    "title": "Charlotte County Fl Human Vacant Land Owner Runway 2026 07 23",
-    "url": "./artifacts/tax-deed-owner-runway/charlotte-county-fl-human-vacant-land-owner-runway-2026-07-23.csv",
-    "file": "artifacts/tax-deed-owner-runway/charlotte-county-fl-human-vacant-land-owner-runway-2026-07-23.csv",
-    "lane": "owner",
-    "market": "FL / Charlotte",
-    "rows": 20,
-    "size": 20813,
-    "status": "owner runway import"
-  },
-  {
-    "title": "Charlotte County Fl Owner Runway 2026 07 23",
-    "url": "./artifacts/tax-deed-owner-runway/charlotte-county-fl-owner-runway-2026-07-23.csv",
-    "file": "artifacts/tax-deed-owner-runway/charlotte-county-fl-owner-runway-2026-07-23.csv",
-    "lane": "owner",
-    "market": "FL / Charlotte",
-    "rows": 21,
-    "size": 17903,
-    "status": "owner runway import"
-  },
-  {
-    "title": "Buyers",
+    "title": "Lee County proven tax-deed buyers",
     "url": "./artifacts/buyer-lists/florida-tax-deed/lee/buyers.csv",
     "file": "artifacts/buyer-lists/florida-tax-deed/lee/buyers.csv",
     "lane": "buyer",
     "market": "FL / Lee",
     "rows": 27,
     "size": 60246,
-    "status": "buyer validation"
+    "status": "latest buyer proof list"
   },
   {
-    "title": "Purchase Evidence",
-    "url": "./artifacts/buyer-lists/florida-tax-deed/lee/purchase-evidence.csv",
-    "file": "artifacts/buyer-lists/florida-tax-deed/lee/purchase-evidence.csv",
-    "lane": "buyer",
-    "market": "FL / Lee",
-    "rows": 31,
-    "size": 6207,
-    "status": "buyer validation"
-  },
-  {
-    "title": "Okaloosa Fl Tax Deed Auction Screen Audit",
-    "url": "./artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-fl-tax-deed-auction-screen-audit.csv",
-    "file": "artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-fl-tax-deed-auction-screen-audit.csv",
-    "lane": "owner",
-    "market": "FL / Okaloosa",
-    "rows": 12,
-    "size": 15840,
-    "status": "audit / proof ledger"
-  },
-  {
-    "title": "Okaloosa Fl Tax Deed Land Owner Runway",
-    "url": "./artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-fl-tax-deed-land-owner-runway.csv",
-    "file": "artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-fl-tax-deed-land-owner-runway.csv",
-    "lane": "owner",
-    "market": "FL / Okaloosa",
-    "rows": 3,
-    "size": 3701,
-    "status": "owner runway import"
-  },
-  {
-    "title": "Okaloosa Tax Deed Expanded Seller Hit List 2026 07 24",
-    "url": "./artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-tax-deed-expanded-seller-hit-list-2026-07-24.csv",
-    "file": "artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-tax-deed-expanded-seller-hit-list-2026-07-24.csv",
-    "lane": "owner",
-    "market": "FL / Okaloosa",
-    "rows": 32,
-    "size": 41984,
-    "status": "CSV export"
-  },
-  {
-    "title": "Okaloosa Tax Deed Seller Hit List 2026 07 24",
-    "url": "./artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-tax-deed-seller-hit-list-2026-07-24.csv",
-    "file": "artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-tax-deed-seller-hit-list-2026-07-24.csv",
-    "lane": "owner",
-    "market": "FL / Okaloosa",
-    "rows": 10,
-    "size": 12682,
-    "status": "CSV export"
-  },
-  {
-    "title": "Florida Tax Deed Buyer Leads Simplified Skiptrace",
-    "url": "./artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-simplified-skiptrace.csv",
-    "file": "artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-simplified-skiptrace.csv",
-    "lane": "buyer",
-    "market": "FL / multi-county tax deed",
-    "rows": 27,
-    "size": 3084,
-    "status": "skip-trace queue"
-  },
-  {
-    "title": "Florida Tax Deed Buyer Leads Skiptrace Enriched",
+    "title": "Florida tax-deed buyers — enriched skiptrace",
     "url": "./artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv",
     "file": "artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv",
     "lane": "buyer",
     "market": "FL / multi-county tax deed",
     "rows": 27,
     "size": 55882,
-    "status": "skip-trace queue"
+    "status": "latest enriched buyer CSV"
   },
   {
-    "title": "Source Ledger",
-    "url": "./artifacts/buyer-lists/florida-tax-deed/panhandle-core/source-ledger.csv",
-    "file": "artifacts/buyer-lists/florida-tax-deed/panhandle-core/source-ledger.csv",
-    "lane": "buyer",
-    "market": "FL / multi-county tax deed",
-    "rows": 18,
-    "size": 2382,
-    "status": "buyer validation"
-  },
-  {
-    "title": "Florida Tax Deed Free Public Crossref Results",
-    "url": "./artifacts/seller-lists/florida-tax-deed/contact-enrichment/free-public-crossref/florida-tax-deed-free-public-crossref-results.csv",
-    "file": "artifacts/seller-lists/florida-tax-deed/contact-enrichment/free-public-crossref/florida-tax-deed-free-public-crossref-results.csv",
-    "lane": "owner",
-    "market": "FL / multi-county tax deed",
-    "rows": 23,
-    "size": 60679,
-    "status": "contact enrichment review"
-  },
-  {
-    "title": "Florida Tax Deed Owner Contact Enrichment Queue",
-    "url": "./artifacts/seller-lists/florida-tax-deed/contact-enrichment/florida-tax-deed-owner-contact-enrichment-queue.csv",
-    "file": "artifacts/seller-lists/florida-tax-deed/contact-enrichment/florida-tax-deed-owner-contact-enrichment-queue.csv",
-    "lane": "owner",
-    "market": "FL / multi-county tax deed",
-    "rows": 23,
-    "size": 36585,
-    "status": "contact enrichment review"
-  },
-  {
-    "title": "Florida Tax Deed Owner Leads Simplified Property Address Skiptrace",
+    "title": "Florida tax-deed owners — property-address skiptrace",
     "url": "./artifacts/seller-lists/fl-tax-deed/florida-tax-deed-owner-leads-simplified-property-address-skiptrace.csv",
     "file": "artifacts/seller-lists/fl-tax-deed/florida-tax-deed-owner-leads-simplified-property-address-skiptrace.csv",
     "lane": "owner",
     "market": "FL / multi-county tax deed",
     "rows": 32,
     "size": 2911,
-    "status": "skip-trace queue"
+    "status": "latest owner skiptrace template"
   },
   {
-    "title": "Florida Tax Deed Seller Owner Leads Simplified Skiptrace",
-    "url": "./artifacts/seller-lists/fl-tax-deed/florida-tax-deed-seller-owner-leads-simplified-skiptrace.csv",
-    "file": "artifacts/seller-lists/fl-tax-deed/florida-tax-deed-seller-owner-leads-simplified-skiptrace.csv",
+    "title": "Florida owner contact enrichment results",
+    "url": "./artifacts/seller-lists/florida-tax-deed/contact-enrichment/free-public-crossref/florida-tax-deed-free-public-crossref-results.csv",
+    "file": "artifacts/seller-lists/florida-tax-deed/contact-enrichment/free-public-crossref/florida-tax-deed-free-public-crossref-results.csv",
     "lane": "owner",
     "market": "FL / multi-county tax deed",
+    "rows": 23,
+    "size": 60679,
+    "status": "latest public cross-reference result"
+  },
+  {
+    "title": "Okaloosa expanded seller hit list",
+    "url": "./artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-tax-deed-expanded-seller-hit-list-2026-07-24.csv",
+    "file": "artifacts/seller-lists/fl-tax-deed/okaloosa/okaloosa-tax-deed-expanded-seller-hit-list-2026-07-24.csv",
+    "lane": "owner",
+    "market": "FL / Okaloosa",
     "rows": 32,
-    "size": 3087,
-    "status": "skip-trace queue"
+    "size": 41984,
+    "status": "latest expanded owner list"
   },
   {
-    "title": "Builder Validation Queue",
-    "url": "./data/real/lehigh/builder_validation_queue.csv",
-    "file": "data/real/lehigh/builder_validation_queue.csv",
-    "lane": "buyer",
-    "market": "Lehigh County operating CSVs",
-    "rows": 25,
-    "size": 10052,
-    "status": "buyer validation"
-  },
-  {
-    "title": "Seller Skiptrace Queue",
-    "url": "./data/real/lehigh/seller_skiptrace_queue.csv",
-    "file": "data/real/lehigh/seller_skiptrace_queue.csv",
-    "lane": "owner",
-    "market": "Lehigh County operating CSVs",
-    "rows": 50,
-    "size": 16429,
-    "status": "skip-trace queue"
-  },
-  {
-    "title": "Pa Tax Deed Leads Simplified Skiptrace",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/pa-tax-deed-leads-simplified-skiptrace.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/pa-tax-deed-leads-simplified-skiptrace.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 31,
-    "size": 3145,
-    "status": "skip-trace queue"
-  },
-  {
-    "title": "Pa Tax Deed Leads Simplified Skiptrace With Property Address",
-    "url": "./artifacts/seller-lists/pa-upset-sale/pa-tax-deed-leads-simplified-skiptrace-with-property-address.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/pa-tax-deed-leads-simplified-skiptrace-with-property-address.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 322,
-    "size": 23475,
-    "status": "skip-trace queue"
-  },
-  {
-    "title": "York Pa 2Acre Plus Human Owner Candidates",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-human-owner-candidates.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-human-owner-candidates.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 3,
-    "size": 4557,
-    "status": "CSV export"
-  },
-  {
-    "title": "York Pa 2Acre Plus Human Owner Rejected Business Entity Audit",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-human-owner-rejected-business-entity-audit.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-human-owner-rejected-business-entity-audit.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 8,
-    "size": 1482,
-    "status": "audit / proof ledger"
-  },
-  {
-    "title": "York Pa 2Acre Plus Human Owner Tax Deed Page Owner Runway Import",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-human-owner-tax-deed-page-owner-runway-import.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-human-owner-tax-deed-page-owner-runway-import.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 3,
-    "size": 3476,
-    "status": "owner runway import"
-  },
-  {
-    "title": "York Pa 2Acre Plus Tax Deed Page Owner Runway Import",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-tax-deed-page-owner-runway-import.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-tax-deed-page-owner-runway-import.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 10,
-    "size": 11605,
-    "status": "owner runway import"
-  },
-  {
-    "title": "York Pa 2Acre Plus Vacant Owner Candidates",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-vacant-owner-candidates.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-2acre-plus-vacant-owner-candidates.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 10,
-    "size": 11391,
-    "status": "CSV export"
-  },
-  {
-    "title": "York Pa Delinquent Vacant Owner Candidates",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-delinquent-vacant-owner-candidates.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-delinquent-vacant-owner-candidates.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 60,
-    "size": 54603,
-    "status": "CSV export"
-  },
-  {
-    "title": "York Pa Entity Owner Vacant Lot Human Review Audit",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-entity-owner-vacant-lot-human-review-audit.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-entity-owner-vacant-lot-human-review-audit.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 66,
-    "size": 55186,
-    "status": "audit / proof ledger"
-  },
-  {
-    "title": "York Pa Free Public Crossref Results",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/free-public-crossref/york-pa-free-public-crossref-results.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/free-public-crossref/york-pa-free-public-crossref-results.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 25,
-    "size": 21013,
-    "status": "contact enrichment review"
-  },
-  {
-    "title": "York Pa Human Owner Vacant Lot Skiptrace Queue",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-human-owner-vacant-lot-skiptrace-queue.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-human-owner-vacant-lot-skiptrace-queue.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 177,
-    "size": 138296,
-    "status": "skip-trace queue"
-  },
-  {
-    "title": "York Pa Owner Contact Enrichment Queue",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/york-pa-owner-contact-enrichment-queue.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/york-pa-owner-contact-enrichment-queue.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 177,
-    "size": 266751,
-    "status": "contact enrichment review"
-  },
-  {
-    "title": "York Pa Owner Contact Provider Pilot 25",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/york-pa-owner-contact-provider-pilot-25.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/york-pa-owner-contact-provider-pilot-25.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 25,
-    "size": 6522,
-    "status": "contact enrichment review"
-  },
-  {
-    "title": "York Pa Tax Deed Page Owner Runway Import",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-tax-deed-page-owner-runway-import.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-tax-deed-page-owner-runway-import.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 20,
-    "size": 27339,
-    "status": "owner runway import"
-  },
-  {
-    "title": "York Pa Unique Owner Vacant Lot Candidates",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-unique-owner-vacant-lot-candidates.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-unique-owner-vacant-lot-candidates.csv",
-    "lane": "owner",
-    "market": "PA / York upset-sale",
-    "rows": 20,
-    "size": 18415,
-    "status": "CSV export"
-  },
-  {
-    "title": "York Pa Unique Owner Vacant Lot Skiptrace Queue",
+    "title": "York PA unique-owner skiptrace queue",
     "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-unique-owner-vacant-lot-skiptrace-queue.csv",
     "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-unique-owner-vacant-lot-skiptrace-queue.csv",
     "lane": "owner",
     "market": "PA / York upset-sale",
     "rows": 243,
     "size": 188634,
-    "status": "skip-trace queue"
+    "status": "latest unique-owner skiptrace queue"
   },
   {
-    "title": "York Pa Vacant Lot Taxclaim Candidates",
-    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/york-pa-vacant-lot-taxclaim-candidates.csv",
-    "file": "artifacts/seller-lists/pa-upset-sale/york-county/york-pa-vacant-lot-taxclaim-candidates.csv",
+    "title": "York PA owner contact enrichment queue",
+    "url": "./artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/york-pa-owner-contact-enrichment-queue.csv",
+    "file": "artifacts/seller-lists/pa-upset-sale/york-county/contact-enrichment/york-pa-owner-contact-enrichment-queue.csv",
     "lane": "owner",
     "market": "PA / York upset-sale",
-    "rows": 313,
-    "size": 242817,
-    "status": "CSV export"
+    "rows": 177,
+    "size": 266751,
+    "status": "latest owner enrichment queue"
+  },
+  {
+    "title": "Lehigh builders — validation queue",
+    "url": "./data/real/lehigh/builder_validation_queue.csv",
+    "file": "data/real/lehigh/builder_validation_queue.csv",
+    "lane": "buyer",
+    "market": "Lehigh County operating CSVs",
+    "rows": 25,
+    "size": 10052,
+    "status": "latest builder validation queue"
+  },
+  {
+    "title": "Lehigh sellers — skiptrace queue",
+    "url": "./data/real/lehigh/seller_skiptrace_queue.csv",
+    "file": "data/real/lehigh/seller_skiptrace_queue.csv",
+    "lane": "owner",
+    "market": "Lehigh County operating CSVs",
+    "rows": 50,
+    "size": 16429,
+    "status": "latest seller skiptrace queue"
   }
 ];
 
@@ -5071,11 +4781,11 @@ function renderTaxDeedCsvDownloads() {
     </div>
     <small>${h(item.file)}</small>
   </article>`).join('');
-  return `<section class="tax-deed-csv-downloads phase310-tax-deed-csv-downloads" data-phase310-tax-deed-csv-downloads="public-static-tax-deed-csv-links" aria-label="Tax deed CSV downloads">
+  return `<section class="tax-deed-csv-downloads phase310-tax-deed-csv-downloads" data-phase310-tax-deed-csv-downloads="latest-nonduplicate-static-csv-links" aria-label="Tax deed CSV downloads">
     <div class="tax-deed-csv-head">
       <span class="eyebrow">Downloads · CSV exports</span>
-      <h3>Download the new Tax-Deed CSVs.</h3>
-      <p>Direct static CSV links for buyer validation, owner runway, skip-trace, and enrichment review. These are downloadable from GitHub Pages; phone/email fields still follow zero-fabrication provenance rules.</p>
+      <h3>Download the latest Tax-Deed CSVs.</h3>
+      <p>Only the latest non-duplicate operating CSVs are shown here: buyer validation, owner skip-trace, and enrichment queues. Older audits, source ledgers, raw candidates, and superseded templates stay off the page.</p>
       <div class="tax-deed-csv-metrics">
         <div><b>${h(visibleDownloads.length)}</b><span>CSV files</span></div>
         <div><b>${h(totalRows)}</b><span>visible rows</span></div>

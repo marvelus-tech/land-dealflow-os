@@ -44900,7 +44900,7 @@ body[data-active-view="builders"] .buybox-optional-fields .field-callback { grid
 
 
 /* Phase 310: Tax-Deed CSV downloads are first-class GitHub Pages assets. */
-:root { --phase310-tax-deed-csv-downloads: public-static-tax-deed-csv-links; }
+:root { --phase310-tax-deed-csv-downloads: latest-nonduplicate-static-csv-links; }
 body[data-active-view="tax-deed"] .tax-deed-csv-downloads {
   margin: 14px 0 18px;
   padding: 16px;

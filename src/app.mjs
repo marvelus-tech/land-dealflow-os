@@ -2299,7 +2299,7 @@ const taxDeedCsvDownloads = [
     "status": "latest Lee owner skiptrace queue"
   },
   {
-    "title": "Florida tax-deed buyers — enriched skiptrace",
+    "title": "Florida tax-deed buyers - enriched skiptrace",
     "url": "./artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv",
     "file": "artifacts/buyer-lists/florida-tax-deed/florida-tax-deed-buyer-leads-skiptrace-enriched.csv",
     "lane": "buyer",
@@ -2309,7 +2309,7 @@ const taxDeedCsvDownloads = [
     "status": "latest enriched buyer CSV"
   },
   {
-    "title": "Florida tax-deed owners — property-address skiptrace",
+    "title": "Florida tax-deed owners - property-address skiptrace",
     "url": "./artifacts/seller-lists/fl-tax-deed/florida-tax-deed-owner-leads-simplified-property-address-skiptrace.csv",
     "file": "artifacts/seller-lists/fl-tax-deed/florida-tax-deed-owner-leads-simplified-property-address-skiptrace.csv",
     "lane": "owner",
@@ -2359,7 +2359,7 @@ const taxDeedCsvDownloads = [
     "status": "latest owner enrichment queue"
   },
   {
-    "title": "Lehigh builders — validation queue",
+    "title": "Lehigh builders - validation queue",
     "url": "./data/real/lehigh/builder_validation_queue.csv",
     "file": "data/real/lehigh/builder_validation_queue.csv",
     "lane": "buyer",
@@ -2369,7 +2369,7 @@ const taxDeedCsvDownloads = [
     "status": "latest builder validation queue"
   },
   {
-    "title": "Lehigh sellers — skiptrace queue",
+    "title": "Lehigh sellers - skiptrace queue",
     "url": "./data/real/lehigh/seller_skiptrace_queue.csv",
     "file": "data/real/lehigh/seller_skiptrace_queue.csv",
     "lane": "owner",
@@ -2968,6 +2968,16 @@ function renderContractComposer(parcel = {}) {
       <div class="contract-flow-actions legal-packet-actions"><button type="button" id="load-selected-contract-deal">Load selected deal</button><a href="#contract-composer" class="text-action" id="save-contract-packet" role="button">Save draft</a><a href="#contract-composer" class="text-action" id="print-contract-packet" data-print-contract-packet="packet" role="button">Preview packet</a></div>
     </div>
     <div class="closing-flow-pipeline closing-timeline-ledger" aria-label="Closing packet timeline ledger">${pipeline}</div>
+    <section class="closing-card legal-form-downloads phase311-legal-form-downloads" aria-label="Downloadable legal form templates">
+      <div class="card-kicker"><span>Downloadable form</span><b>JV / marketing fee addendum</b></div>
+      <h3>Marketing Fee / JV Partner Addendum</h3>
+      <p>Clean one-page template for partner/referral fee tracking. Use as a drafting aid only; attorney/title/broker review is still required before signature or repeated use.</p>
+      <div class="button-row legal-form-download-actions">
+        ${downloadLink('./data/legal-forms/marketing-fee-jv-partner-addendum-clean.pdf', 'Download PDF', 'proof-packet-download primary')}
+        ${downloadLink('./data/legal-forms/marketing-fee-jv-partner-addendum-clean.txt', 'Download TXT', 'proof-packet-download')}
+        <a class="proof-packet-download" href="./data/legal-forms/marketing-fee-jv-partner-addendum-clean.pdf" target="_blank" rel="noopener">Open PDF</a>
+      </div>
+    </section>
     <form id="contract-packet-form" class="contract-send-form contract-separated-form">
       ${hiddenCarry}
       ${renderContractDeadlineCockpit(inputs)}

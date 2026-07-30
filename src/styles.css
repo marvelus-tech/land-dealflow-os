@@ -45006,3 +45006,20 @@ body[data-active-view="tax-deed"] .tax-deed-csv-download.primary {
   body[data-active-view="tax-deed"] .tax-deed-csv-grid,
   body[data-active-view="tax-deed"] .tax-deed-csv-metrics { grid-template-columns: 1fr; }
 }
+
+
+/* Phase 311: downloadable Closing legal form assets */
+:root { --phase311-legal-form-downloads: closing-marketing-fee-jv-addendum-downloads; }
+.legal-form-downloads {
+  margin: 18px 0;
+  border-style: solid;
+}
+.legal-form-download-actions {
+  align-items: center;
+  flex-wrap: wrap;
+}
+.legal-form-download-actions .proof-packet-download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+}

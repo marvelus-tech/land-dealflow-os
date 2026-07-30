@@ -44897,3 +44897,112 @@ body[data-active-view="builders"] .buybox-optional-fields .field-callback { grid
     grid-column: 1 / -1 !important;
   }
 }
+
+
+/* Phase 310: Tax-Deed CSV downloads are first-class GitHub Pages assets. */
+:root { --phase310-tax-deed-csv-downloads: public-static-tax-deed-csv-links; }
+body[data-active-view="tax-deed"] .tax-deed-csv-downloads {
+  margin: 14px 0 18px;
+  padding: 16px;
+  border: 1px solid rgba(17,22,17,.12);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(238,244,235,.84));
+  box-shadow: 0 18px 50px rgba(17, 22, 17, .08);
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-head h3 {
+  margin: 4px 0 6px;
+  font-size: clamp(24px, 3vw, 38px);
+  letter-spacing: -.055em;
+  line-height: .95;
+  color: #111611;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-head p {
+  max-width: 920px;
+  color: rgba(17,22,17,.72);
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-metrics div,
+body[data-active-view="tax-deed"] .tax-deed-csv-card {
+  border: 1px solid rgba(17,22,17,.1);
+  border-radius: 18px;
+  background: rgba(255,255,255,.74);
+  padding: 12px;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-metrics b {
+  display: block;
+  font-size: 24px;
+  color: #111611;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-metrics span,
+body[data-active-view="tax-deed"] .tax-deed-csv-card small,
+body[data-active-view="tax-deed"] .tax-deed-csv-card em {
+  color: rgba(17,22,17,.62);
+  font-size: 12px;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  max-height: 560px;
+  overflow: auto;
+  padding-right: 4px;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-card-top span {
+  display: inline-flex;
+  margin-bottom: 6px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(56,106,78,.1);
+  color: #254f37;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-card-top b {
+  display: block;
+  color: #111611;
+  line-height: 1.05;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-card dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-card dt {
+  color: rgba(17,22,17,.52);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-card dd { margin: 0; font-weight: 800; color: #111611; }
+body[data-active-view="tax-deed"] .tax-deed-csv-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+body[data-active-view="tax-deed"] .tax-deed-csv-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(17,22,17,.14);
+  border-radius: 999px;
+  color: #111611;
+  text-decoration: none;
+  font-weight: 850;
+  font-size: 12px;
+}
+body[data-active-view="tax-deed"] .tax-deed-csv-download.primary {
+  background: #244f37;
+  border-color: #244f37;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+@media (max-width: 900px) {
+  body[data-active-view="tax-deed"] .tax-deed-csv-grid,
+  body[data-active-view="tax-deed"] .tax-deed-csv-metrics { grid-template-columns: 1fr; }
+}

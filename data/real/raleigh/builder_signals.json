@@ -1,188 +1,5 @@
 [
   {
-    "id": "raleigh-buyer-ken-harvey-homes",
-    "builderId": "raleigh-buyer-ken-harvey-homes",
-    "name": "Ken Harvey Homes",
-    "companyName": "Ken Harvey Homes",
-    "market": "raleigh-nc",
-    "marketName": "Raleigh / Wake County, NC",
-    "state": "NC",
-    "primaryCity": "Raleigh",
-    "website": "https://www.kenharveyhomes.com/",
-    "phone": "",
-    "email": "john.cook@kenharveyhomes.com",
-    "contactName": "John Cook",
-    "contactRole": "buyer-validation contact provided by Okeito",
-    "contactStatus": "direct email provided by operator; phone still unresolved",
-    "contactConfidence": "operator-provided contact path; public website/community evidence supports buyer thesis",
-    "callable": true,
-    "route": "buyerValidation",
-    "recentBuilds": 19,
-    "closeSpeedDays": "",
-    "maxPrice": "500000",
-    "validationStatus": "needs-call-confirmation",
-    "callStatus": "follow_up",
-    "sourceUrl": "https://www.kenharveyhomes.com/communities/",
-    "contactUrl": "https://www.kenharveyhomes.com/contact/",
-    "publicSource": "Ken Harvey Homes public website/community footprint + Wake County parcel/permit OSINT packet; contact email provided by Okeito.",
-    "sourceEvidence": "Public site markets luxury communities, custom floorplans, and build-on-your-land. Wake OSINT found Ken Harvey-owned parcels and permit patterns in Carriage Farm, Brixley, Rosslare, Serenity Reserve, Waterstone, Raleigh infill/North Ridge-type pockets.",
-    "demandSignal": "Strongest demand hypothesis: Raleigh premium infill/teardown lots and Wake/Youngsville/Wendell estate lots where a $700k-$1.5M+ custom/spec home is realistic. Confirm exact max lot basis with John Cook before seller outreach.",
-    "evidenceType": "buyerOSINT public website + Wake parcel/permit fit packet",
-    "buyBoxStory": "Ken Harvey Homes is a premium custom/spec builder signal, not a cheap rural-land flipper. Their public footprint points to Raleigh luxury infill, North/East Wake estate-lot product, and build-on-your-land capability. Treat their '45-mile Raleigh radius' as lane-specific demand: premium infill first, estate lots second, farther-out lake/Franklin/Johnston product only after John confirms appetite.",
-    "buyBox": {
-      "geography": "Raleigh premium infill; North Hills/Midtown; North Ridge; Six Forks/Falls of Neuse; Carriage Farm/Brixley-adjacent; Wake Forest/Youngsville; Wendell/Rosslare; Fuquay edge; optional Selma/Louisburg/Lake Royale only after confirmation.",
-      "lotSize": "Tier A: 0.25-0.75 ac infill/teardown. Tier B: 0.7-3.5 ac estate/subdivision lots. Tier C: 0.75-5 ac raw/split candidates only if utilities and buyer appetite clear.",
-      "maxPrice": "500000",
-      "maxPriceNotes": "Hypothesis only: Raleigh infill/high-value lots under roughly $250k-$500k depending on finished-home ceiling; Wake/Youngsville/Wendell estate lots around $100k-$225k; Johnston/Franklin/Selma/Louisburg requires John confirmation.",
-      "closeSpeed": "Ask John Cook. Public evidence supports premium custom/spec demand but not confirmed close speed or lot absorption.",
-      "packageRecipient": "John Cook \u2014 john.cook@kenharveyhomes.com. Send blind-fit profiles first; do not expose seller identity until lane fit is confirmed.",
-      "utilitiesAccess": "Road access and clean title required. Sewer preferred for Raleigh infill; well/septic may be workable for estate/build-on-your-land lanes because their site discusses well, septic, power, access, and sitework costs.",
-      "productType": "Luxury/custom/spec SFR; 3,400-4,800 sf common estate lane; 5,800+ sf premium Brixley/North Hills-type lane; build-on-your-land support.",
-      "dealKillers": [
-        "severe flood/wetlands",
-        "no road frontage",
-        "unclear title",
-        "unbuildable strips",
-        "utility/sitework burden that kills finished-home economics",
-        "far-rural/cheap dirt without John confirmation"
-      ],
-      "preferences": [
-        "Raleigh luxury infill / teardown first",
-        "Wendell/Rosslare-style 0.75-3.5 ac estate lots second",
-        "Youngsville/Wake Forest 0.7-2 ac estate lots third",
-        "Fuquay/Angier only after utility/septic tolerance is confirmed",
-        "Johnston/Franklin/Louisburg/Selma only after John confirms farther-out lanes"
-      ],
-      "priceByZip": [
-        {
-          "submarket": "Raleigh premium infill / North Ridge / North Hills",
-          "targetLotCost": "<$250k-$500k hypothesis",
-          "zip": "27609/27612/27614"
-        },
-        {
-          "submarket": "Wendell / east Wake estate",
-          "targetLotCost": "<$100k-$200k unless comps support more",
-          "zip": "27591"
-        },
-        {
-          "submarket": "Wake Forest / Youngsville estate edge",
-          "targetLotCost": "~$125k-$225k ordinary estate lots",
-          "zip": "27587/27596"
-        }
-      ]
-    },
-    "buyBoxDetails": {
-      "status": "Hypothesis to validate \u2014 not a confirmed max-basis buy box yet.",
-      "story": [
-        "Public footprint shows luxury communities, custom floorplans, build-on-your-land, and large custom/spec product around Wake/Franklin/Johnston edges.",
-        "Wake parcel/permit evidence points to owned lots from 0.28-3.49 ac, with Raleigh infill land values up to roughly $470k and community permit valuations often $686k-$1.7M.",
-        "The operating move is not random Raleigh-radius dirt; it is a lane-specific blind-fit parcel package for John Cook."
-      ],
-      "lanes": [
-        {
-          "name": "Tier A \u2014 Raleigh premium infill / teardown",
-          "locations": "Raleigh, North Hills, North Ridge, Six Forks, Falls of Neuse, Brixley/Carriage Farm-adjacent",
-          "lot": "0.25-0.75 ac",
-          "basis": "~$250k-$500k hypothesis",
-          "sellerFilters": "Wake County; vacant OR old SFR/weak improvement; individual/absentee/long-held; exclude government/utility/HOA/church/bank/nonbuildable strips",
-          "angle": "Custom builder looking for a clean high-end homesite in this pocket."
-        },
-        {
-          "name": "Tier B \u2014 East/North Wake estate/spec",
-          "locations": "Wendell, Wake Forest edge, Youngsville edge, Raleigh outskirts, Fuquay edge",
-          "lot": "0.7-3.5 ac primary; 2-5 ac if split potential",
-          "basis": "~$100k-$225k ordinary estate lot hypothesis",
-          "sellerFilters": "Road-front estate lots, minor subdivision candidates, large-lot residential; verify frontage/flood/wetlands/septic/well/zoning",
-          "angle": "Premium custom/spec estate lot where a $700k-$1.2M+ finished home is realistic."
-        },
-        {
-          "name": "Tier C \u2014 farther-out optional lane",
-          "locations": "Selma, Louisburg, Lake Royale, Johnston/Franklin spillover",
-          "lot": "clarify with John before sourcing heavy",
-          "basis": "Unknown until confirmed",
-          "sellerFilters": "Run only if John confirms farther-out/lower-ticket appetite",
-          "angle": "Only send if the numbers work and buyer confirms the lane."
-        }
-      ],
-      "sourceClues": [
-        "Brixley, North Hills Midtown, North Ridge, Carriage Farm, Waterstone, Cotton Farms, Rosslare Manor, Serenity Reserve and other public community pages.",
-        "Wake owner query packet found 19 Ken Harvey Homes LLC parcels; median acreage ~0.77 ac; average ~0.90 ac; observed land assessed values ~$100k-$470k.",
-        "Permit evidence packet showed Carriage Farm/Rosslare/Serenity/Brixley/Waterstone valuation clusters, including Brixley median around ~$1.536M permit valuation."
-      ],
-      "validationQuestions": [
-        "Should I prioritize infill/teardown Raleigh lots, estate/subdivision lots, raw acreage splits, build-on-your-land referrals, or any of the above if numbers work?",
-        "What is your max lot basis by lane: Raleigh infill, Wake/Youngsville/Wendell estate, and Johnston/Franklin/Selma/Louisburg?",
-        "Minimum acreage? Deal killers: flood/wetlands, no sewer, septic-only, no road frontage, HOA, slope, zoning?"
-      ],
-      "nextMove": "Build 15-25 blind-fit parcel profiles first; no seller identity exposed; package exact parcels only after John confirms lane fit.",
-      "propWireFilters": [
-        {
-          "name": "Tier A \u2014 Raleigh premium infill / teardown",
-          "location": "Wake County, NC; city Raleigh; ZIPs 27609, 27612, 27614 first, then Brixley/Carriage Farm/North Ridge-adjacent pockets.",
-          "propertyType": "Vacant Land OR SFR with weak/old improvement. For teardown: SFR built before 1985, low improvement-to-land ratio, larger/older lots in premium pockets.",
-          "lotSize": "0.25-0.75 ac primary; allow 0.18-1.0 ac if pocket economics are strong.",
-          "ownerFilters": "Individual/trust/estate/LLC owners; absentee or mailing address different from situs; long-held 10+ years; high equity/free-and-clear preferred.",
-          "valueFilters": "Land assessed value roughly $150k-$500k; improvement value low vs land value for teardown; exclude finished luxury homes where seller will price retail.",
-          "exclude": "Government, utility, HOA, church, bank/REO, railroad, conservation, nonbuildable strips, severe flood/wetland overlays, no road frontage.",
-          "sort": "Sort by land value desc, years owned desc, absentee/estate/trust flags, and largest buildable lot inside premium ZIPs."
-        },
-        {
-          "name": "Tier B \u2014 East/North Wake estate/spec lots",
-          "location": "Wake Forest edge, Youngsville edge, Wendell/Rosslare, Raleigh outskirts, Fuquay edge; keep Wake County first before Franklin/Johnston spillover.",
-          "propertyType": "Vacant Land, residential acreage, estate-lot SFR candidates, minor-subdivision/split-potential parcels.",
-          "lotSize": "0.7-3.5 ac primary; 2-5 ac if road frontage/split potential is visible.",
-          "ownerFilters": "Absentee/long-held individual, family trust, estate, small LLC; high equity; low/no mortgage if PropWire shows lien/equity signals.",
-          "valueFilters": "Assessed/estimated lot basis roughly $75k-$225k unless comps support more; avoid cheap rural dirt without custom-home economics.",
-          "exclude": "Landlocked, flag-only without usable frontage, floodway/wetlands-heavy, major slope/sitework, septic-impossible, HOA constraints that block custom/spec product.",
-          "sort": "Sort by road frontage/buildable shape, acreage fit, high equity, years owned, and proximity to Ken Harvey community clues."
-        },
-        {
-          "name": "Tier C \u2014 farther-out optional lane after John confirms",
-          "location": "Selma, Louisburg, Lake Royale, Johnston/Franklin spillover only after John Cook confirms appetite.",
-          "propertyType": "Vacant residential lots, lake/community lots, small residential acreage with clear access/utilities.",
-          "lotSize": "0.75-5 ac only if finished-home economics work; do not bulk-source random rural acreage.",
-          "ownerFilters": "Long-held/absentee/high-equity owners; avoid investor-to-investor retail listings unless priced below builder basis.",
-          "valueFilters": "Unknown until confirmed; cap initial scan to low-basis parcels and mark as buyer-validation only.",
-          "exclude": "Cheap rural dirt with no premium buyer story, poor access, utility burden, flood/wetland, unclear buildability, or no evidence Ken Harvey wants that lane.",
-          "sort": "Run only as a small validation sample; do not unlock seller outreach until John confirms max basis and product lane."
-        }
-      ],
-      "propWireNextMove": "In PropWire, save three separate lists by tier. Export only 15-25 blind-fit parcel profiles for John first; seller identity stays hidden until he confirms the lane and max basis."
-    },
-    "buyBoxCapture": {
-      "priority": "Do you want Raleigh infill/teardown first, estate subdivision lots first, raw acreage splits, build-on-your-land referrals, or any lane if the numbers work?",
-      "price": "What is your rough max lot basis for Raleigh infill, Wake/Youngsville/Wendell estate lots, and Johnston/Franklin/Selma/Louisburg?",
-      "constraints": "What kills a parcel immediately: flood/wetlands, septic-only, no sewer, no road frontage, HOA, slope, zoning, sitework, title?"
-    },
-    "recentPermits": [
-      {
-        "permitNumber": "WAKE-KHH-CARRIAGE-FARM-PACKET",
-        "address": "Carriage Farm / Raleigh",
-        "issuedAt": "OSINT packet",
-        "permitValue": 757000,
-        "description": "21 SFR permit hits in packet; median valuation approx $757k; product read luxury/spec/custom subdivision lot.",
-        "sourceUrl": "artifacts/research/raleigh-ken-harvey/ken-harvey-homes-raleigh-buybox-osint.md"
-      },
-      {
-        "permitNumber": "WAKE-KHH-BRIXLEY-PACKET",
-        "address": "Brixley / Raleigh",
-        "issuedAt": "OSINT packet",
-        "permitValue": 1536000,
-        "description": "7 SFR hits in packet; median valuation approx $1.536M; premium Raleigh luxury lane.",
-        "sourceUrl": "artifacts/research/raleigh-ken-harvey/ken-harvey-homes-raleigh-buybox-osint.md"
-      },
-      {
-        "permitNumber": "WAKE-KHH-ROSSLARE-PACKET",
-        "address": "Rosslare / Wendell",
-        "issuedAt": "OSINT packet",
-        "permitValue": 686000,
-        "description": "30 SFR hits in packet; median valuation approx $686k; large-lot eastern Wake custom/spec lane.",
-        "sourceUrl": "artifacts/research/raleigh-ken-harvey/ken-harvey-homes-raleigh-buybox-osint.md"
-      }
-    ],
-    "acquisitionNotes": "Central thesis: add as a buyer-validation contact with a story-first buy box drawer. This row is source-backed but still requires John Cook confirmation before seller identity, skip-trace, or outreach."
-  },
-  {
     "id": "raleigh-builder-lennar-carolinas-llc",
     "name": "LENNAR CAROLINAS, LLC",
     "market": "raleigh-nc",
@@ -278,7 +95,7 @@
     "phone": "9194602933",
     "email": "aaerving@drhorton.com",
     "contactName": "D.R. Horton, Inc.",
-    "recentBuilds": 51,
+    "recentBuilds": 47,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -354,7 +171,7 @@
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025832-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 51 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025830-2026 at 7015 Dolmen Dr issued 2026-07-20."
+    "acquisitionNotes": "Appears on 47 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025830-2026 at 7015 Dolmen Dr issued 2026-07-20."
   },
   {
     "id": "raleigh-builder-kb-home-raleigh-durham-inc",
@@ -365,7 +182,7 @@
     "phone": "9197687986",
     "email": "rcavalear@kbhome.com",
     "contactName": "KB Home Raleigh-Durham Inc.",
-    "recentBuilds": 46,
+    "recentBuilds": 47,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -375,6 +192,19 @@
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BLDR-031376-2026",
+        "address": "2841 Springtooth Dr, Raleigh, NC 27616",
+        "issuedAt": "2026-07-27",
+        "permitValue": 293854,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Tucker Place Lot 159 2841 Springtooth Drive 1501 sqft New Single Family Residential",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-031376-2026"
+      },
       {
         "permitNumber": "BLDR-029510-2026",
         "address": "8216 Zinger Hill Ln, Raleigh, NC 27616",
@@ -426,22 +256,9 @@
         "housingUnits": 0,
         "description": "Tucker Place Lot 132 8218 Feldwig Pl 1501 sqft New Single Family Residential Monoslab Rear Screened",
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027625-2026"
-      },
-      {
-        "permitNumber": "BLDR-012860-2026",
-        "address": "10513 Brookside Reserve Rd, Wake Forest, NC 27587",
-        "issuedAt": "2026-07-09",
-        "permitValue": 0,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Replacing expired permits (BLDR-033123-2025, 034018, 034019, 034020) NEW TH LOTS 31-34, SPR-0154-20",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-012860-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 46 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-029510-2026 at 8216 Zinger Hill Ln issued 2026-07-20."
+    "acquisitionNotes": "Appears on 47 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-031376-2026 at 2841 Springtooth Dr issued 2026-07-27."
   },
   {
     "id": "raleigh-builder-stanley-martin-homes-llc",
@@ -539,7 +356,7 @@
     "phone": "9199957469",
     "email": "raleigh.permits@meritagehomes.com",
     "contactName": "Meritage Homes of the Carolinas, Inc.",
-    "recentBuilds": 40,
+    "recentBuilds": 43,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -549,6 +366,58 @@
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BLDR-026732-2026",
+        "address": "6025 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-29",
+        "permitValue": 338906.8,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 6 units, lots 22-27, 2 stories, VB Const, R3 Occupancy, SPR-0081-2023; BLDR-024181-2026 L",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-026732-2026"
+      },
+      {
+        "permitNumber": "BLDR-024181-2026",
+        "address": "6031 Spring Forest Rd, Raleigh, NC 27616",
+        "issuedAt": "2026-07-29",
+        "permitValue": 337751.6,
+        "permitClass": "Residential",
+        "workClass": "Townhouse",
+        "workClassMapped": "New",
+        "landUse": "RESIDENTIAL TOWNHOUSE",
+        "housingUnits": 0,
+        "description": "Townhomes, 6 units, lots 22-27, 2 stories, VB Const, R3 Occupancy, SPR-0081-2023; BLDR-024181-2026 L",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-024181-2026"
+      },
+      {
+        "permitNumber": "BLDR-030267-2026",
+        "address": "5929 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-07-23",
+        "permitValue": 441575.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe SFD Lot 255 Monoslab Rear Screened Porch",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-030267-2026"
+      },
+      {
+        "permitNumber": "BLDR-030134-2026",
+        "address": "5914 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-07-23",
+        "permitValue": 377461.6,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe SFD Lot 253 Monoslab Rear Screened Porch",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-030134-2026"
+      },
       {
         "permitNumber": "BLDR-025183-2026",
         "address": "6065 Spring Forest Rd, Raleigh, NC 27616",
@@ -561,61 +430,9 @@
         "housingUnits": 0,
         "description": "Townhomes, 6 units, Lots 6-11, 2 stories, VB Const, R3 Occupancy, SPR-0081-2023; BLDR-021137-2026 Lo",
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025183-2026"
-      },
-      {
-        "permitNumber": "BLDR-025180-2026",
-        "address": "6071 Spring Forest Rd, Raleigh, NC 27616",
-        "issuedAt": "2026-07-16",
-        "permitValue": 338906.8,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 6 units, Lots 6-11, 2 stories, VB Const, R3 Occupancy, SPR-0081-2023; BLDR-021137-2026 Lo",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025180-2026"
-      },
-      {
-        "permitNumber": "BLDR-025182-2026",
-        "address": "6067 Spring Forest Rd, Raleigh, NC 27616",
-        "issuedAt": "2026-07-16",
-        "permitValue": 338906.8,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 6 units, Lots 6-11, 2 stories, VB Const, R3 Occupancy, SPR-0081-2023; BLDR-021137-2026 Lo",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025182-2026"
-      },
-      {
-        "permitNumber": "BLDR-025184-2026",
-        "address": "6063 Spring Forest Rd, Raleigh, NC 27616",
-        "issuedAt": "2026-07-16",
-        "permitValue": 337751.6,
-        "permitClass": "Residential",
-        "workClass": "Townhouse",
-        "workClassMapped": "New",
-        "landUse": "RESIDENTIAL TOWNHOUSE",
-        "housingUnits": 0,
-        "description": "Townhomes, 6 units, Lots 6-11, 2 stories, VB Const, R3 Occupancy, SPR-0081-2023; BLDR-021137-2026 Lo",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-025184-2026"
-      },
-      {
-        "permitNumber": "BLDR-027140-2026",
-        "address": "5938 Fallowfield Ln, Raleigh, NC 27616",
-        "issuedAt": "2026-07-14",
-        "permitValue": 413128.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Buffaloe Reserve SFD Lot 247 Monoslab Rear Screened Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-027140-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 40 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025183-2026 at 6065 Spring Forest Rd issued 2026-07-16."
+    "acquisitionNotes": "Appears on 43 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-026732-2026 at 6025 Spring Forest Rd issued 2026-07-29."
   },
   {
     "id": "raleigh-builder-toll-brothers",
@@ -1488,6 +1305,93 @@
     "acquisitionNotes": "Appears on 8 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-007646-2026 at 2406 Grant Ave issued 2026-05-28."
   },
   {
+    "id": "raleigh-builder-caruso-homes",
+    "name": "Caruso Homes",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "",
+    "email": "ncpermits@carusohomes.com",
+    "contactName": "Caruso Homes",
+    "recentBuilds": 7,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 91,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-023993-2026",
+        "address": "5009 Abyss Ct, Raleigh, NC 27604",
+        "issuedAt": "2026-06-26",
+        "permitValue": 574856.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD, Blue Run Lot 15, water/sewer taps are already installed Fantana Model Monoslab Rear Screene",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-023993-2026"
+      },
+      {
+        "permitNumber": "BLDR-010941-2026",
+        "address": "7300 Valleycross Cir, Raleigh, NC 27615",
+        "issuedAt": "2026-06-05",
+        "permitValue": 644746,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD, public water and sewer DEMO-009084-2026",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-010941-2026"
+      },
+      {
+        "permitNumber": "BLDR-007106-2026",
+        "address": "7213 Blue Run Ln, Raleigh, NC 27604",
+        "issuedAt": "2026-03-23",
+        "permitValue": 505833.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD, Blue Run Lot 13, public water & sewer with taps already installed",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-007106-2026"
+      },
+      {
+        "permitNumber": "BLDR-007095-2026",
+        "address": "7209 Blue Run Ln, Raleigh, NC 27604",
+        "issuedAt": "2026-03-23",
+        "permitValue": 468000.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD, Blue Run Lot 12, Public water & sewer with taps already installed",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-007095-2026"
+      },
+      {
+        "permitNumber": "BLDR-004359-2026",
+        "address": "7193 Blue Run Ln, Raleigh, NC 27604",
+        "issuedAt": "2026-03-09",
+        "permitValue": 495436.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New Single Family Dwelling, Lot 8 in the newly recorded Blue Run subdivision, public water/sewer new",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-004359-2026"
+      }
+    ],
+    "acquisitionNotes": "Appears on 7 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-023993-2026 at 5009 Abyss Ct issued 2026-06-26."
+  },
+  {
     "id": "raleigh-builder-avellino-builders",
     "name": "Avellino Builders",
     "market": "raleigh-nc",
@@ -1573,93 +1477,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 6 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-017647-2026 at 936 Method Rd issued 2026-07-22."
-  },
-  {
-    "id": "raleigh-builder-caruso-homes",
-    "name": "Caruso Homes",
-    "market": "raleigh-nc",
-    "state": "NC",
-    "website": "",
-    "phone": "",
-    "email": "ncpermits@carusohomes.com",
-    "contactName": "Caruso Homes",
-    "recentBuilds": 6,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 86,
-    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
-    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BLDR-010941-2026",
-        "address": "7300 Valleycross Cir, Raleigh, NC 27615",
-        "issuedAt": "2026-06-05",
-        "permitValue": 644746,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD, public water and sewer DEMO-009084-2026",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-010941-2026"
-      },
-      {
-        "permitNumber": "BLDR-007106-2026",
-        "address": "7213 Blue Run Ln, Raleigh, NC 27604",
-        "issuedAt": "2026-03-23",
-        "permitValue": 505833.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD, Blue Run Lot 13, public water & sewer with taps already installed",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-007106-2026"
-      },
-      {
-        "permitNumber": "BLDR-007095-2026",
-        "address": "7209 Blue Run Ln, Raleigh, NC 27604",
-        "issuedAt": "2026-03-23",
-        "permitValue": 468000.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD, Blue Run Lot 12, Public water & sewer with taps already installed",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-007095-2026"
-      },
-      {
-        "permitNumber": "BLDR-004359-2026",
-        "address": "7193 Blue Run Ln, Raleigh, NC 27604",
-        "issuedAt": "2026-03-09",
-        "permitValue": 495436.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New Single Family Dwelling, Lot 8 in the newly recorded Blue Run subdivision, public water/sewer new",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-004359-2026"
-      },
-      {
-        "permitNumber": "BLDR-004316-2026",
-        "address": "7205 Blue Run Ln, Raleigh, NC 27604",
-        "issuedAt": "2026-03-09",
-        "permitValue": 582654,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New Single Family Dwelling, Blue Run Lot 11, Public Water/Sewer Monoslab Rear Covered Porch",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-004316-2026"
-      }
-    ],
-    "acquisitionNotes": "Appears on 6 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-010941-2026 at 7300 Valleycross Cir issued 2026-06-05."
   },
   {
     "id": "raleigh-builder-djf-builders-inc",
@@ -1844,16 +1661,29 @@
     "phone": "9197270392",
     "email": "ashley.joyner@meritagehomes.com",
     "contactName": "Meritage Homes",
-    "recentBuilds": 4,
+    "recentBuilds": 5,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
     "validationStatus": "needs-call-confirmation",
-    "confidence": 76,
+    "confidence": 81,
     "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BLDR-021494-2026",
+        "address": "5978 Fallowfield Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-06-25",
+        "permitValue": 416016.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Buffaloe Reserve SFD Lot 239",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021494-2026"
+      },
       {
         "permitNumber": "BLDR-021597-2026",
         "address": "5974 Fallowfield Ln, Raleigh, NC 27616",
@@ -1907,7 +1737,81 @@
         "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-021906-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 4 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-021597-2026 at 5974 Fallowfield Ln issued 2026-06-25."
+    "acquisitionNotes": "Appears on 5 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-021494-2026 at 5978 Fallowfield Ln issued 2026-06-25."
+  },
+  {
+    "id": "raleigh-builder-blue-heel-construction",
+    "name": "Blue Heel Construction",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "(919) 337-3608",
+    "email": "matt@blueheelconstruction.com",
+    "contactName": "Blue Heel Construction",
+    "recentBuilds": 4,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 76,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-018798-2026",
+        "address": "3011 Farrior Rd, Raleigh, NC 27607",
+        "issuedAt": "2026-07-23",
+        "permitValue": 523738.8,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Lot 61 Sunset Hills. New SF home. 3224 sqft. Crawlspace, new drive, with garage DEMO-013325-202",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-018798-2026"
+      },
+      {
+        "permitNumber": "BLDR-018793-2026",
+        "address": "3009 Farrior Rd, Raleigh, NC 27607",
+        "issuedAt": "2026-07-22",
+        "permitValue": 536879.2,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Lot 60 Sunset Hills. New SF home. 3275 sqft. Crawlspace, new drive, with garage DEMO-013325-20",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-018793-2026"
+      },
+      {
+        "permitNumber": "BLDR-000545-2026",
+        "address": "3004 1/2 Ruffin St, Raleigh, NC 27607",
+        "issuedAt": "2026-04-15",
+        "permitValue": 428290.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD Lot 234 Wilmont. 2996sft, crawlspace, no garage Sealed Crawl Rear Covered Porch Fireplace i",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-000545-2026"
+      },
+      {
+        "permitNumber": "BLDR-000525-2026",
+        "address": "3004 Ruffin St, Raleigh, NC 27607",
+        "issuedAt": "2026-03-16",
+        "permitValue": 432622.4,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "New SFD 235 Wilmont. SF 2996 sqft with crawlspace, no garage. Wilmont Lot 235 Sealed Crawl Rear Cov",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-000525-2026"
+      }
+    ],
+    "acquisitionNotes": "Appears on 4 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-018798-2026 at 3011 Farrior Rd issued 2026-07-23."
   },
   {
     "id": "raleigh-builder-raleigh-custom-homes",
@@ -2130,67 +2034,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 4 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-023768-2026 at 8120 Andrea Ln issued 2026-06-26."
-  },
-  {
-    "id": "raleigh-builder-blue-heel-construction",
-    "name": "Blue Heel Construction",
-    "market": "raleigh-nc",
-    "state": "NC",
-    "website": "",
-    "phone": "(919) 337-3608",
-    "email": "matt@blueheelconstruction.com",
-    "contactName": "Blue Heel Construction",
-    "recentBuilds": 3,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 71,
-    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
-    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BLDR-018793-2026",
-        "address": "3009 Farrior Rd, Raleigh, NC 27607",
-        "issuedAt": "2026-07-22",
-        "permitValue": 536879.2,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "Lot 60 Sunset Hills. New SF home. 3275 sqft. Crawlspace, new drive, with garage DEMO-013325-20",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-018793-2026"
-      },
-      {
-        "permitNumber": "BLDR-000545-2026",
-        "address": "3004 1/2 Ruffin St, Raleigh, NC 27607",
-        "issuedAt": "2026-04-15",
-        "permitValue": 428290.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD Lot 234 Wilmont. 2996sft, crawlspace, no garage Sealed Crawl Rear Covered Porch Fireplace i",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-000545-2026"
-      },
-      {
-        "permitNumber": "BLDR-000525-2026",
-        "address": "3004 Ruffin St, Raleigh, NC 27607",
-        "issuedAt": "2026-03-16",
-        "permitValue": 432622.4,
-        "permitClass": "Residential",
-        "workClass": "New Residential Dwelling",
-        "workClassMapped": "Existing",
-        "landUse": "DETACHED SINGLE FAMILY DWELLING",
-        "housingUnits": 0,
-        "description": "New SFD 235 Wilmont. SF 2996 sqft with crawlspace, no garage. Wilmont Lot 235 Sealed Crawl Rear Cov",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-000525-2026"
-      }
-    ],
-    "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-018793-2026 at 3009 Farrior Rd issued 2026-07-22."
   },
   {
     "id": "raleigh-builder-boyd-builders-consulting",
@@ -2437,106 +2280,52 @@
     "acquisitionNotes": "Appears on 3 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-025448-2026 at 1408 Pony Run Rd issued 2026-06-30."
   },
   {
-    "id": "raleigh-builder-arcadia-construction-company",
-    "name": "Arcadia Construction Company",
+    "id": "raleigh-builder-beazer-homes-corp",
+    "name": "BEAZER HOMES CORP, T/A",
     "market": "raleigh-nc",
     "state": "NC",
     "website": "",
-    "phone": "(919) 302-8790",
-    "email": "paul@arcadiaconstructionco.com",
-    "contactName": "Paul Tanner",
+    "phone": "9198819350",
+    "email": "rmorris@beazer.com",
+    "contactName": "BEAZER HOMES CORP, T/A",
     "recentBuilds": 2,
     "closeSpeedDays": "",
-    "maxPrice": 550000,
-    "buyBox": {
-      "geography": "Raleigh / Wake County, NC: 27607 inside the beltline Raleigh; 27604 Mordecai and Belvedere Park Raleigh; 27502 Downtown Apex",
-      "lotSize": "0.18-0.33 acres",
-      "lotSizeRange": "0.18-0.33 acres",
-      "maxPrice": 550000,
-      "maxPriceNotes": "27607: target lot cost < $550,000 per 0.25 acres; 27604: depending on location, target lot cost $350,000-$500,000 per 0.25 acres; 27502 Downtown Apex: target lot cost $400,000 per 0.25 acres",
-      "priceByZip": [
-        {
-          "zip": "27607",
-          "submarket": "Inside the beltline Raleigh",
-          "targetLotCost": "< $550,000 per 0.25 acres"
-        },
-        {
-          "zip": "27604",
-          "submarket": "Mordecai and Belvedere Park Raleigh",
-          "targetLotCost": "$350,000-$500,000 per 0.25 acres depending on location"
-        },
-        {
-          "zip": "27502",
-          "submarket": "Downtown Apex",
-          "targetLotCost": "$400,000 per 0.25 acres"
-        }
-      ],
-      "closeSpeed": "unknown",
-      "closeSpeedDays": "",
-      "packageRecipient": "Paul Tanner <paul@arcadiaconstructionco.com>",
-      "utilitiesAccess": "Avoid lots with utility easements or stream buffers; utility access details still need confirmation.",
-      "productType": "Infill/custom builder lots; recent Rankin St lot purchase signal.",
-      "dealKillers": [
-        "flood zones",
-        "significant slope",
-        "utility easements",
-        "stream buffers",
-        "main or busy streets"
-      ],
-      "preferences": [
-        "Topography and easements are both important",
-        "Minimize slope",
-        "Ideally walking distance to a park",
-        "Lot cost depends on location"
-      ],
-      "zipCodes": [
-        "27607",
-        "27604",
-        "27502"
-      ],
-      "submissionMethod": "Email parcel packages to Paul Tanner",
-      "proofSource": "Direct email reply screenshot from Paul Tanner / Arcadia Construction Company provided by Okeito on 2026-07-04",
-      "buyerQuestion": "Where are you based out of?"
-    },
-    "validationStatus": "validated_buy_box",
-    "confidence": 92,
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 66,
     "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
     "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BLDR-008686-2026",
-        "address": "1807 Rankin St, Raleigh, NC 27604",
-        "issuedAt": "2026-05-21",
-        "permitValue": 636515.2,
+        "permitNumber": "BLDR-018681-2026",
+        "address": "4424 Stengel St, Raleigh, NC 27616",
+        "issuedAt": "2026-06-09",
+        "permitValue": 454138,
         "permitClass": "Residential",
         "workClass": "New Residential Dwelling",
         "workClassMapped": "Existing",
         "landUse": "DETACHED SINGLE FAMILY DWELLING",
         "housingUnits": 0,
-        "description": "New construction of a single family home and detached single car garage. DEMO-052657-2025",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-008686-2026"
+        "description": "New single family residential construction Watkins Grove Lot 52 Monoslab Rear Patio",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-018681-2026"
       },
       {
-        "permitNumber": "BLDR-053597-2025",
-        "address": "2702 N Mayview Rd, Raleigh, NC 27607",
-        "issuedAt": "2026-01-30",
-        "permitValue": 804741.2,
+        "permitNumber": "BLDR-014373-2026",
+        "address": "4425 Gehrig Ln, Raleigh, NC 27616",
+        "issuedAt": "2026-05-01",
+        "permitValue": 468578,
         "permitClass": "Residential",
         "workClass": "New Residential Dwelling",
         "workClassMapped": "Existing",
         "landUse": "DETACHED SINGLE FAMILY DWELLING",
         "housingUnits": 0,
-        "description": "New Single Family",
-        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-053597-2025"
+        "description": "New single family residential construction Watkins Grove Lot 16 Monoslab Rear Screened Porch",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-014373-2026"
       }
     ],
-    "acquisitionNotes": "Appears on 2 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-008686-2026 at 1807 Rankin St issued 2026-05-21. Direct written buy box captured from Paul Tanner: 0.18-0.33 acres; 27607 under $550k/0.25ac, 27604 $350k-$500k/0.25ac, 27502 $400k/0.25ac; avoid flood zones, slope, utility easements, stream buffers, main/busy streets; park proximity preferred.",
-    "maxPriceNotes": "$350,000-$550,000 per 0.25 acres by ZIP/submarket",
-    "buyBoxStatus": "captured",
-    "callStatus": "validated_buy_box",
-    "buyBoxCapturedAt": "2026-07-04",
-    "buyBoxProof": "Email screenshot supplied by Okeito; source text asks: 'Where are you based out of?' and lists lot criteria after recent Rankin St purchase."
+    "acquisitionNotes": "Appears on 2 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-018681-2026 at 4424 Stengel St issued 2026-06-09."
   },
   {
     "id": "raleigh-builder-cambridge-classic-homes-llc",
@@ -2729,5 +2518,53 @@
       }
     ],
     "acquisitionNotes": "Appears on 2 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-024003-2026 at 3331 Lillian Forest Ct issued 2026-07-09."
+  },
+  {
+    "id": "raleigh-builder-ltb-construction-llc",
+    "name": "LTB CONSTRUCTION LLC",
+    "market": "raleigh-nc",
+    "state": "NC",
+    "website": "",
+    "phone": "9195765571",
+    "email": "ltbleon@gmail.com",
+    "contactName": "LTB CONSTRUCTION LLC",
+    "recentBuilds": 2,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Raleigh/Wake permit signal only. Call builder to capture exact Raleigh-Durham land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 66,
+    "sourceUrl": "https://data.wake.gov/maps/ral::building-permits",
+    "publicSource": "City of Raleigh / Wake County Open Data ArcGIS Building Permits Issued Past 180 Days. Filtered to residential new building permits with dwelling/townhouse/duplex land-use classes.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BLDR-016097-2026",
+        "address": "224 Glascock St, Raleigh, NC 27604",
+        "issuedAt": "2026-07-23",
+        "permitValue": 560560.8,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "Build New Single Family Dwelling DEMO-026023-2026 Issued 06/29/2026",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-016097-2026"
+      },
+      {
+        "permitNumber": "BLDR-002420-2026",
+        "address": "703 Van Buren Rd, Raleigh, NC 27604",
+        "issuedAt": "2026-03-10",
+        "permitValue": 664240,
+        "permitClass": "Residential",
+        "workClass": "New Residential Dwelling",
+        "workClassMapped": "Existing",
+        "landUse": "DETACHED SINGLE FAMILY DWELLING",
+        "housingUnits": 0,
+        "description": "BUILD A NEW SINGLE FAMILY HOME. DEMO-046888-2025 / ISSUED 11/17/2025 Capitol Heights Lot 102 Custom",
+        "sourceUrl": "https://data.wake.gov/maps/ral::building-permits?q=BLDR-002420-2026"
+      }
+    ],
+    "acquisitionNotes": "Appears on 2 Raleigh/Wake public residential new-building permit rows in the past 180 days. Latest sample BLDR-016097-2026 at 224 Glascock St issued 2026-07-23."
   }
 ]

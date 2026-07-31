@@ -8,7 +8,7 @@
     "phone": "",
     "email": "",
     "contactName": "LENNAR HOMES",
-    "recentBuilds": 1858,
+    "recentBuilds": 1859,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -18,6 +18,45 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602449",
+        "address": "11806 GUESSING WAY, City of San Antonio, TX 78073",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-15",
+        "permitValue": 0,
+        "areaSqft": 1828,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602449"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602438",
+        "address": "6118 PULLING RUN, City of San Antonio, TX 78073",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-15",
+        "permitValue": 0,
+        "areaSqft": 2302,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 6118; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602438"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602433",
+        "address": "10823 MILAS PLACE, City of San Antonio, TX 78224",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-13",
+        "permitValue": 0,
+        "areaSqft": 2026,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602433"
+      },
       {
         "permitNumber": "RES-RBP-PMT26-36602412",
         "address": "10819 MILAS PLACE, City of San Antonio, TX 78224",
@@ -43,48 +82,9 @@
         "projectName": "Building No: 10815; Unit No: N/A",
         "councilDistrict": "",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602411"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602375",
-        "address": "10503 RED SHINER RUN, City of San Antonio, TX 78224",
-        "issuedAt": "2026-07-16",
-        "submittedAt": "2026-07-07",
-        "permitValue": 0,
-        "areaSqft": 2681,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602375"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602374",
-        "address": "10819 MAGONE BEND, City of San Antonio, TX 78224",
-        "issuedAt": "2026-07-16",
-        "submittedAt": "2026-07-08",
-        "permitValue": 0,
-        "areaSqft": 2016,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 10819; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602374"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602308",
-        "address": "10507 RED SHINER RUN, City of San Antonio, TX 78224",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-07",
-        "permitValue": 0,
-        "areaSqft": 2909,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602308"
       }
     ],
-    "acquisitionNotes": "Appears on 1858 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602412 at 10819 MILAS PLACE, City of San Antonio, TX 78224 issued 2026-07-17."
+    "acquisitionNotes": "Appears on 1859 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602449 at 11806 GUESSING WAY, City of San Antonio, TX 78073 issued 2026-07-22."
   },
   {
     "id": "san-antonio-builder-kb-home",
@@ -145,19 +145,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603787"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36603728",
-        "address": "4547 GATO CALICO DR, City of San Antonio, TX 78222",
-        "issuedAt": "2025-12-04",
-        "submittedAt": "2025-12-01",
-        "permitValue": 0,
-        "areaSqft": 2349,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603728"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36603739",
         "address": "13059 BONE DRY LANE, City of San Antonio, TX 78073",
         "issuedAt": "2025-12-04",
@@ -169,6 +156,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "4",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603739"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36603728",
+        "address": "4547 GATO CALICO DR, City of San Antonio, TX 78222",
+        "issuedAt": "2025-12-04",
+        "submittedAt": "2025-12-01",
+        "permitValue": 0,
+        "areaSqft": 2349,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603728"
       }
     ],
     "acquisitionNotes": "Appears on 394 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603822 at 950 BULL BOAT LN, City of San Antonio, TX 78221 issued 2025-12-17."
@@ -269,7 +269,7 @@
     "phone": "",
     "email": "",
     "contactName": "Century Communities",
-    "recentBuilds": 238,
+    "recentBuilds": 247,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -280,72 +280,159 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT26-36602381",
-        "address": "9970 CHAVANEAUX LNDG, City of San Antonio, TX 78221",
-        "issuedAt": "2026-07-16",
-        "submittedAt": "2026-07-10",
+        "permitNumber": "RES-RBP-PMT26-36602481",
+        "address": "10610 EAGLEWOOD BEND, City of San Antonio, TX 78254",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-17",
         "permitValue": 0,
-        "areaSqft": 2493,
+        "areaSqft": 2122,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602381"
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602481"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602378",
-        "address": "9971 CHAVANEAUX LNDG, City of San Antonio, TX 78221",
-        "issuedAt": "2026-07-16",
-        "submittedAt": "2026-07-10",
+        "permitNumber": "RES-RBP-PMT26-36602480",
+        "address": "10607 EAGLEWOOD BEND, City of San Antonio, TX 78254",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-17",
         "permitValue": 0,
-        "areaSqft": 2411,
+        "areaSqft": 2264,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602378"
+        "projectName": "Building No: 10607; Unit No: N/A",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602480"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602376",
-        "address": "5518 FRANKLIN HILLS, City of San Antonio, TX 78073",
-        "issuedAt": "2026-07-16",
-        "submittedAt": "2026-07-08",
+        "permitNumber": "RES-RBP-PMT26-36602463",
+        "address": "2347 CRISP GLN, City of San Antonio, TX 78224",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-17",
+        "permitValue": 0,
+        "areaSqft": 3132,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 2347; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602463"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602462",
+        "address": "2343 CRISP GLN, City of San Antonio, TX 78224",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-17",
+        "permitValue": 0,
+        "areaSqft": 29,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 2343; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602462"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602459",
+        "address": "2342 CRISP GLN, City of San Antonio, TX 78224",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-17",
         "permitValue": 0,
         "areaSqft": 1992,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602376"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602372",
-        "address": "2338 CRISP GLN, City of San Antonio, TX 78224",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-07",
-        "permitValue": 0,
-        "areaSqft": 2265,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 2338; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602372"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602355",
-        "address": "9967 CHAVANEAUX LNDG, City of San Antonio, TX 78221",
-        "issuedAt": "2026-07-14",
-        "submittedAt": "2026-07-10",
-        "permitValue": 0,
-        "areaSqft": 2165,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602355"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602459"
       }
     ],
-    "acquisitionNotes": "Appears on 238 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602381 at 9970 CHAVANEAUX LNDG, City of San Antonio, TX 78221 issued 2026-07-16."
+    "acquisitionNotes": "Appears on 247 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602481 at 10610 EAGLEWOOD BEND, City of San Antonio, TX 78254 issued 2026-07-24."
+  },
+  {
+    "id": "san-antonio-builder-kb-home-lone-star-inc",
+    "name": "KB HOME Lone Star Inc",
+    "market": "san-antonio-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "KB HOME Lone Star Inc",
+    "recentBuilds": 233,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
+    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602468",
+        "address": "14331 GAMEFISH RUN, City of San Antonio, TX 78112",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-20",
+        "permitValue": 0,
+        "areaSqft": 2655,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: n/a",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602468"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602446",
+        "address": "971 BULL BOAT LN, City of San Antonio, TX 78221",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-16",
+        "permitValue": 0,
+        "areaSqft": 2199,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 971; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602446"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602439",
+        "address": "14311 GAMEFISH RUN, City of San Antonio, TX 78112",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-16",
+        "permitValue": 0,
+        "areaSqft": 2286,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: NA",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602439"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602427",
+        "address": "9546 WINTER WILLOW, City of San Antonio, TX 78221",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-15",
+        "permitValue": 0,
+        "areaSqft": 2084,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: NA",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602427"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602421",
+        "address": "14346 GAMEFISH RUN, City of San Antonio, TX 78112",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-15",
+        "permitValue": 0,
+        "areaSqft": 2347,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: n/a",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602421"
+      }
+    ],
+    "acquisitionNotes": "Appears on 233 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602468 at 14331 GAMEFISH RUN, City of San Antonio, TX 78112 issued 2026-07-24."
   },
   {
     "id": "san-antonio-builder-perry-homes",
@@ -356,7 +443,7 @@
     "phone": "",
     "email": "",
     "contactName": "PERRY HOMES",
-    "recentBuilds": 226,
+    "recentBuilds": 227,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -366,6 +453,19 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602432",
+        "address": "1807 YARDZEN LANE, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-06-16",
+        "permitValue": 0,
+        "areaSqft": 4487,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602432"
+      },
       {
         "permitNumber": "RES-RBP-PMT26-36602336",
         "address": "1122 THIELE ST, City of San Antonio, TX 78224",
@@ -417,109 +517,9 @@
         "projectName": "Building No: 2710; Unit No: N/A",
         "councilDistrict": "0",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602159"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602142",
-        "address": "1102 THIELE ST, City of San Antonio, TX 78224",
-        "issuedAt": "2026-06-29",
-        "submittedAt": "2026-06-11",
-        "permitValue": 0,
-        "areaSqft": 3185,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 1102; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602142"
       }
     ],
-    "acquisitionNotes": "Appears on 226 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602336 at 1122 THIELE ST, City of San Antonio, TX 78224 issued 2026-07-14."
-  },
-  {
-    "id": "san-antonio-builder-kb-home-lone-star-inc",
-    "name": "KB HOME Lone Star Inc",
-    "market": "san-antonio-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "KB HOME Lone Star Inc",
-    "recentBuilds": 223,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
-    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "RES-RBP-PMT26-36602291",
-        "address": "14803 MYSTIC MANE, City of San Antonio, TX 78247",
-        "issuedAt": "2026-07-10",
-        "submittedAt": "2026-07-07",
-        "permitValue": 0,
-        "areaSqft": 2084,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 14803; Unit No: N/A",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602291"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602268",
-        "address": "4026 STALLION ST, City of San Antonio, TX 78247",
-        "issuedAt": "2026-07-09",
-        "submittedAt": "2026-07-06",
-        "permitValue": 0,
-        "areaSqft": 2790,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 4026; Unit No: N/A",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602268"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602251",
-        "address": "14350 GAMEFISH RUN, City of San Antonio, TX 78112",
-        "issuedAt": "2026-07-08",
-        "submittedAt": "2026-07-01",
-        "permitValue": 0,
-        "areaSqft": 2434,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: n/a",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602251"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602232",
-        "address": "13050 BONE DRY LANE, City of San Antonio, TX 78073",
-        "issuedAt": "2026-07-08",
-        "submittedAt": "2026-07-01",
-        "permitValue": 0,
-        "areaSqft": 1486,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: n/a",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602232"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602254",
-        "address": "13054 BONE DRY LANE, City of San Antonio, TX 78073",
-        "issuedAt": "2026-07-07",
-        "submittedAt": "2026-07-01",
-        "permitValue": 0,
-        "areaSqft": 1824,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: n/a",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602254"
-      }
-    ],
-    "acquisitionNotes": "Appears on 223 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602291 at 14803 MYSTIC MANE, City of San Antonio, TX 78247 issued 2026-07-10."
+    "acquisitionNotes": "Appears on 227 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602432 at 1807 YARDZEN LANE, City of San Antonio ETJ, TX 78260 issued 2026-07-21."
   },
   {
     "id": "san-antonio-builder-m-i-homes-of-san-antonio-llc",
@@ -530,7 +530,7 @@
     "phone": "",
     "email": "",
     "contactName": "M/I HOMES OF SAN ANTONIO, LLC",
-    "recentBuilds": 188,
+    "recentBuilds": 191,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -540,6 +540,45 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602360",
+        "address": "10438 HOTSPUR RD, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-19",
+        "submittedAt": "2026-06-03",
+        "permitValue": 0,
+        "areaSqft": 2842,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602360"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602405",
+        "address": "10214 TYNECASTLE RD, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-19",
+        "submittedAt": "2026-07-10",
+        "permitValue": 0,
+        "areaSqft": 2592,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602405"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602305",
+        "address": "10442 HOTSPUR RD, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-19",
+        "submittedAt": "2026-07-06",
+        "permitValue": 0,
+        "areaSqft": 2701,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602305"
+      },
       {
         "permitNumber": "RES-RBP-PMT26-36602398",
         "address": "3835 LONE RIDGE, City of San Antonio, TX 78264",
@@ -554,19 +593,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602398"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602279",
-        "address": "10483 WHITE HART LN, City of San Antonio, TX 78109",
-        "issuedAt": "2026-07-10",
-        "submittedAt": "2026-07-06",
-        "permitValue": 0,
-        "areaSqft": 1938,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602279"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36602278",
         "address": "10479 WHITE HART LN, City of San Antonio, TX 78109",
         "issuedAt": "2026-07-10",
@@ -578,35 +604,96 @@
         "projectName": "Building No: ; Unit No: NA",
         "councilDistrict": "2",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602278"
+      }
+    ],
+    "acquisitionNotes": "Appears on 191 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602360 at 10438 HOTSPUR RD, City of San Antonio, TX 78109 issued 2026-07-19."
+  },
+  {
+    "id": "san-antonio-builder-brightland-homes",
+    "name": "Brightland Homes",
+    "market": "san-antonio-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Brightland Homes",
+    "recentBuilds": 169,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
+    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602295",
+        "address": "11130 FRUIT DOVE TRL, City of San Antonio, TX 78249",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-02",
+        "permitValue": 0,
+        "areaSqft": 3451,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 11130; Unit No: N/A",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602295"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602275",
-        "address": "10443 HOTSPUR RD, City of San Antonio, TX 78109",
-        "issuedAt": "2026-07-10",
-        "submittedAt": "2026-05-27",
+        "permitNumber": "RES-RBP-PMT26-36602292",
+        "address": "8515 SILVERBIRD ST, City of San Antonio, TX 78249",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-06-15",
         "permitValue": 0,
-        "areaSqft": 2861,
+        "areaSqft": 4247,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602275"
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602292"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602266",
-        "address": "3839 LONE RIDGE, City of San Antonio, TX 78264",
-        "issuedAt": "2026-07-08",
-        "submittedAt": "2026-06-25",
+        "permitNumber": "RES-RBP-PMT26-36602430",
+        "address": "8551 SILVERBIRD ST, City of San Antonio, TX 78249",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-05",
         "permitValue": 0,
-        "areaSqft": 3320,
+        "areaSqft": 3854,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: NA; Unit No: NA",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602266"
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602430"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602343",
+        "address": "11146 FRUIT DOVE TRL, City of San Antonio, TX 78249",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-04",
+        "permitValue": 0,
+        "areaSqft": 3347,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602343"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602297",
+        "address": "8614 FLYROBIN ST, City of San Antonio, TX 78249",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-06-06",
+        "permitValue": 0,
+        "areaSqft": 3349,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602297"
       }
     ],
-    "acquisitionNotes": "Appears on 188 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602398 at 3835 LONE RIDGE, City of San Antonio, TX 78264 issued 2026-07-16."
+    "acquisitionNotes": "Appears on 169 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602295 at 11130 FRUIT DOVE TRL, City of San Antonio, TX 78249 issued 2026-07-22."
   },
   {
     "id": "san-antonio-builder-ahv-communities",
@@ -617,7 +704,7 @@
     "phone": "",
     "email": "",
     "contactName": "AHV Communities",
-    "recentBuilds": 164,
+    "recentBuilds": 167,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -627,6 +714,45 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602445",
+        "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-07",
+        "permitValue": 0,
+        "areaSqft": 1819,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 830; Unit No: N/A",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602445"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602441",
+        "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-08",
+        "permitValue": 0,
+        "areaSqft": 2089,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: 839",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602441"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602440",
+        "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-07",
+        "permitValue": 0,
+        "areaSqft": 2313,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 829; Unit No: NA",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602440"
+      },
       {
         "permitNumber": "RES-RBP-PMT26-36602363",
         "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
@@ -652,135 +778,9 @@
         "projectName": "Building No: 13003; Unit No: 828",
         "councilDistrict": "10",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602362"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602123",
-        "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
-        "issuedAt": "2026-06-23",
-        "submittedAt": "2026-05-12",
-        "permitValue": 0,
-        "areaSqft": 2185,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 827",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602123"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602074",
-        "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
-        "issuedAt": "2026-06-17",
-        "submittedAt": "2026-05-27",
-        "permitValue": 0,
-        "areaSqft": 2432,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 137",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602074"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602052",
-        "address": "13003 TOEPPERWEIN RD, City of San Antonio, TX 78233",
-        "issuedAt": "2026-06-17",
-        "submittedAt": "2026-05-27",
-        "permitValue": 0,
-        "areaSqft": 2043,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 135",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602052"
       }
     ],
-    "acquisitionNotes": "Appears on 164 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602363 at 13003 TOEPPERWEIN RD, City of San Antonio, TX 78233 issued 2026-07-15."
-  },
-  {
-    "id": "san-antonio-builder-brightland-homes",
-    "name": "Brightland Homes",
-    "market": "san-antonio-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "Brightland Homes",
-    "recentBuilds": 162,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
-    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "RES-RBP-PMT26-36602300",
-        "address": "8543 SILVERBIRD ST, City of San Antonio, TX 78249",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-04",
-        "permitValue": 0,
-        "areaSqft": 3648,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "7",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602300"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602314",
-        "address": "310 SEASCAPE DR, City of San Antonio, TX 78245",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-05",
-        "permitValue": 0,
-        "areaSqft": 1077,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 207; Unit No: NA",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602314"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602313",
-        "address": "310 SEASCAPE DR, City of San Antonio, TX 78245",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-05",
-        "permitValue": 0,
-        "areaSqft": 1975,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: na; Unit No: 214",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602313"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602294",
-        "address": "11130 SUNBIRD AVE, City of San Antonio, TX 78249",
-        "issuedAt": "2026-07-13",
-        "submittedAt": "2026-07-02",
-        "permitValue": 0,
-        "areaSqft": 4242,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "7",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602294"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36600672",
-        "address": "310 SEASCAPE DR, City of San Antonio, TX 78245",
-        "issuedAt": "2026-06-30",
-        "submittedAt": "2026-02-22",
-        "permitValue": 0,
-        "areaSqft": 22389,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 707",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600672"
-      }
-    ],
-    "acquisitionNotes": "Appears on 162 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602300 at 8543 SILVERBIRD ST, City of San Antonio, TX 78249 issued 2026-07-15."
+    "acquisitionNotes": "Appears on 167 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602445 at 13003 TOEPPERWEIN RD, City of San Antonio, TX 78233 issued 2026-07-22."
   },
   {
     "id": "san-antonio-builder-lgi-homes",
@@ -791,7 +791,7 @@
     "phone": "",
     "email": "",
     "contactName": "LGI HOMES",
-    "recentBuilds": 134,
+    "recentBuilds": 143,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -802,72 +802,72 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT26-36602136",
-        "address": "3506 DRUTHERS WAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-06-24",
-        "submittedAt": "2026-06-11",
+        "permitNumber": "RES-RBP-PMT26-36602477",
+        "address": "11515 GOLDEN EAGLES, City of San Antonio, TX 78223",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-20",
         "permitValue": 0,
-        "areaSqft": 2679,
+        "areaSqft": 1748,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: ; Unit No: na",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602136"
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602477"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602105",
-        "address": "3514 DRUTHERS WAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-06-22",
-        "submittedAt": "2026-06-11",
+        "permitNumber": "RES-RBP-PMT26-36602474",
+        "address": "4415 CARACARA CT, City of San Antonio, TX 78223",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-20",
         "permitValue": 0,
-        "areaSqft": 2679,
+        "areaSqft": 1344,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: ; Unit No: n/a",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602105"
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602474"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602087",
-        "address": "3502 DRUTHERS WAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-06-18",
-        "submittedAt": "2026-06-11",
+        "permitNumber": "RES-RBP-PMT26-36602473",
+        "address": "4411 CARACARA CT, City of San Antonio, TX 78223",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-20",
         "permitValue": 0,
-        "areaSqft": 2379,
+        "areaSqft": 2035,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 4411; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602473"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602454",
+        "address": "3418 DRUTHERS WAY, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-16",
+        "permitValue": 0,
+        "areaSqft": 1965,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602087"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602454"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602049",
-        "address": "3518 DRUTHERS WAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-06-17",
-        "submittedAt": "2026-06-11",
+        "permitNumber": "RES-RBP-PMT26-36602475",
+        "address": "3422 DRUTHERS WAY, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-15",
         "permitValue": 0,
-        "areaSqft": 2379,
+        "areaSqft": 1330,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: 3518; Unit No: N/A",
+        "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602049"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602042",
-        "address": "3438 DRUTHERS WAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-06-17",
-        "submittedAt": "2026-06-11",
-        "permitValue": 0,
-        "areaSqft": 2938,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: n/a",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602042"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602475"
       }
     ],
-    "acquisitionNotes": "Appears on 134 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602136 at 3506 DRUTHERS WAY, City of San Antonio, TX 78109 issued 2026-06-24."
+    "acquisitionNotes": "Appears on 143 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602477 at 11515 GOLDEN EAGLES, City of San Antonio, TX 78223 issued 2026-07-24."
   },
   {
     "id": "san-antonio-builder-starlight-homes-cw-bsbl-llc",
@@ -929,7 +929,7 @@
       },
       {
         "permitNumber": "RES-RBP-PMT26-36601751",
-        "address": "950 DANKWORTH, City of San Antonio, TX 78214",
+        "address": "950 DANKWORTH, City of San Antonio, TX 78221",
         "issuedAt": "2026-05-22",
         "submittedAt": "2026-04-30",
         "permitValue": 0,
@@ -942,7 +942,7 @@
       },
       {
         "permitNumber": "RES-RBP-PMT26-36601729",
-        "address": "942 DANKWORTH, City of San Antonio, TX 78214",
+        "address": "942 DANKWORTH, City of San Antonio, TX 78221",
         "issuedAt": "2026-05-19",
         "submittedAt": "2026-04-30",
         "permitValue": 0,
@@ -965,7 +965,7 @@
     "phone": "",
     "email": "",
     "contactName": "Meritage Homes",
-    "recentBuilds": 105,
+    "recentBuilds": 108,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -976,30 +976,43 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT26-36602302",
-        "address": "3042 JUNCTION BAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-08",
+        "permitNumber": "RES-RBP-PMT26-36602428",
+        "address": "3046 JUNCTION BAY, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-15",
         "permitValue": 0,
-        "areaSqft": 3056,
+        "areaSqft": 2537,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602302"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602428"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602316",
-        "address": "3045 JUNCTION BAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-07-15",
-        "submittedAt": "2026-07-08",
+        "permitNumber": "RES-RBP-PMT26-36602415",
+        "address": "3102 JUNCTION BAY, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-15",
         "permitValue": 0,
-        "areaSqft": 2956,
+        "areaSqft": 2677,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: 3045; Unit No: N/A",
+        "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602316"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602415"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602408",
+        "address": "3106 JUNCTION BAY, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-15",
+        "permitValue": 0,
+        "areaSqft": 3016,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602408"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36602303",
@@ -1015,33 +1028,20 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602303"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602256",
-        "address": "15835 COMANCHE OWL, City of San Antonio, TX 78247",
-        "issuedAt": "2026-07-08",
-        "submittedAt": "2026-07-02",
+        "permitNumber": "RES-RBP-PMT26-36602316",
+        "address": "3045 JUNCTION BAY, City of San Antonio, TX 78109",
+        "issuedAt": "2026-07-15",
+        "submittedAt": "2026-07-08",
         "permitValue": 0,
-        "areaSqft": 2463,
+        "areaSqft": 2956,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: 15835; Unit No: N/A",
-        "councilDistrict": "10",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602256"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602255",
-        "address": "2920 JUNCTION BAY, City of San Antonio, TX 78109",
-        "issuedAt": "2026-07-08",
-        "submittedAt": "2026-07-02",
-        "permitValue": 0,
-        "areaSqft": 3063,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
+        "projectName": "Building No: 3045; Unit No: N/A",
         "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602255"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602316"
       }
     ],
-    "acquisitionNotes": "Appears on 105 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602302 at 3042 JUNCTION BAY, City of San Antonio, TX 78109 issued 2026-07-15."
+    "acquisitionNotes": "Appears on 108 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602428 at 3046 JUNCTION BAY, City of San Antonio, TX 78109 issued 2026-07-21."
   },
   {
     "id": "san-antonio-builder-chesmar-homes",
@@ -1226,7 +1226,7 @@
     "phone": "",
     "email": "",
     "contactName": "Davidson Homes LLC",
-    "recentBuilds": 80,
+    "recentBuilds": 84,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -1236,6 +1236,58 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602483",
+        "address": "6902 COMANCHE CAVE, City of San Antonio, TX 78247",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-13",
+        "permitValue": 0,
+        "areaSqft": 2455,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602483"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602453",
+        "address": "7411 KOA CREST, City of San Antonio, TX 78227",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-10",
+        "permitValue": 0,
+        "areaSqft": 2686,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602453"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602448",
+        "address": "7407 KOA CREST, City of San Antonio, TX 78227",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-10",
+        "permitValue": 0,
+        "areaSqft": 2569,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602448"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602442",
+        "address": "13307 AUDREY HBR, City of San Antonio, TX 78073",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-06",
+        "permitValue": 0,
+        "areaSqft": 2648,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602442"
+      },
       {
         "permitNumber": "RES-RBP-PMT26-36602409",
         "address": "5343 POMARINE DR, City of San Antonio, TX 78073",
@@ -1248,61 +1300,9 @@
         "projectName": "Building No: 5343; Unit No: N/A",
         "councilDistrict": "4",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602409"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602298",
-        "address": "7410 BLOODWOOD BAY, City of San Antonio, TX 78227",
-        "issuedAt": "2026-07-13",
-        "submittedAt": "2026-07-06",
-        "permitValue": 0,
-        "areaSqft": 3373,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602298"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602281",
-        "address": "7414 BLOODWOOD BAY, City of San Antonio, TX 78227",
-        "issuedAt": "2026-07-10",
-        "submittedAt": "2026-07-06",
-        "permitValue": 0,
-        "areaSqft": 2609,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602281"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602280",
-        "address": "5339 POMARINE DR, City of San Antonio, TX 78073",
-        "issuedAt": "2026-07-10",
-        "submittedAt": "2026-07-06",
-        "permitValue": 0,
-        "areaSqft": 3015,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: NA",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602280"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602269",
-        "address": "2527 PINK PEARL DR, City of San Antonio, TX 78224",
-        "issuedAt": "2026-07-09",
-        "submittedAt": "2026-07-02",
-        "permitValue": 0,
-        "areaSqft": 3015,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: NA",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602269"
       }
     ],
-    "acquisitionNotes": "Appears on 80 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602409 at 5343 POMARINE DR, City of San Antonio, TX 78073 issued 2026-07-17."
+    "acquisitionNotes": "Appears on 84 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602483 at 6902 COMANCHE CAVE, City of San Antonio, TX 78247 issued 2026-07-24."
   },
   {
     "id": "san-antonio-builder-landmark-construction-management-llc",
@@ -1337,7 +1337,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602740"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36602735",
+        "permitNumber": "RES-RBP-PMT25-36602738",
         "address": "7431 INGRAM RD, City of San Antonio, TX 78251",
         "issuedAt": "2025-08-19",
         "submittedAt": "2025-03-25",
@@ -1345,9 +1345,9 @@
         "areaSqft": 37224,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: 406; Unit No: n/a",
+        "projectName": "Building No: 508; Unit No: n/a",
         "councilDistrict": "6",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602735"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602738"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36602764",
@@ -1411,19 +1411,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT26-36602286",
-        "address": "6110 QUIET OAK PLACE, City of San Antonio, TX 78219",
-        "issuedAt": "2026-07-10",
-        "submittedAt": "2026-07-06",
-        "permitValue": 0,
-        "areaSqft": 2753,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602286"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36602285",
         "address": "6115 QUIET OAK PLACE, City of San Antonio, TX 78219",
         "issuedAt": "2026-07-10",
@@ -1435,6 +1422,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "2",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602285"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602286",
+        "address": "6110 QUIET OAK PLACE, City of San Antonio, TX 78219",
+        "issuedAt": "2026-07-10",
+        "submittedAt": "2026-07-06",
+        "permitValue": 0,
+        "areaSqft": 2753,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602286"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36602272",
@@ -1476,7 +1476,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601998"
       }
     ],
-    "acquisitionNotes": "Appears on 58 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602286 at 6110 QUIET OAK PLACE, City of San Antonio, TX 78219 issued 2026-07-10."
+    "acquisitionNotes": "Appears on 58 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602285 at 6115 QUIET OAK PLACE, City of San Antonio, TX 78219 issued 2026-07-10."
   },
   {
     "id": "san-antonio-builder-scott-felder-homes",
@@ -1564,6 +1564,93 @@
       }
     ],
     "acquisitionNotes": "Appears on 35 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601971 at 15323 GOLDEN PRAIRIE, City of San Antonio, TX 78247 issued 2026-06-12."
+  },
+  {
+    "id": "san-antonio-builder-sitterle-homes",
+    "name": "SITTERLE HOMES",
+    "market": "san-antonio-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "SITTERLE HOMES",
+    "recentBuilds": 34,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
+    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602466",
+        "address": "243 COVINGTON RD, City of San Antonio, TX 78220",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-06-30",
+        "permitValue": 0,
+        "areaSqft": 2877,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "2",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602466"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602465",
+        "address": "1571 WORSHAM PASS, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-16",
+        "permitValue": 0,
+        "areaSqft": 2984,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602465"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602311",
+        "address": "1547 WORSHAM PASS, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-07-14",
+        "submittedAt": "2026-07-07",
+        "permitValue": 0,
+        "areaSqft": 2130,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602311"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602271",
+        "address": "26819 HIGHLAND CREST, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-07-09",
+        "submittedAt": "2026-06-24",
+        "permitValue": 0,
+        "areaSqft": 5200,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602271"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602078",
+        "address": "1563 WORSHAM PASS, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-06-18",
+        "submittedAt": "2026-06-11",
+        "permitValue": 0,
+        "areaSqft": 3076,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: NA; Unit No: NA",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602078"
+      }
+    ],
+    "acquisitionNotes": "Appears on 34 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602466 at 243 COVINGTON RD, City of San Antonio, TX 78220 issued 2026-07-23."
   },
   {
     "id": "san-antonio-builder-highland-homes",
@@ -1738,93 +1825,6 @@
       }
     ],
     "acquisitionNotes": "Appears on 32 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36600478 at 8415 VIA PISA, City of San Antonio, TX 78227 issued 2026-02-24."
-  },
-  {
-    "id": "san-antonio-builder-sitterle-homes",
-    "name": "SITTERLE HOMES",
-    "market": "san-antonio-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "SITTERLE HOMES",
-    "recentBuilds": 32,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
-    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "RES-RBP-PMT26-36602311",
-        "address": "1547 WORSHAM PASS, City of San Antonio ETJ, TX 78260",
-        "issuedAt": "2026-07-14",
-        "submittedAt": "2026-07-07",
-        "permitValue": 0,
-        "areaSqft": 2130,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602311"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602271",
-        "address": "26819 HIGHLAND CREST, City of San Antonio ETJ, TX 78260",
-        "issuedAt": "2026-07-09",
-        "submittedAt": "2026-06-24",
-        "permitValue": 0,
-        "areaSqft": 5200,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602271"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602078",
-        "address": "1563 WORSHAM PASS, City of San Antonio ETJ, TX 78260",
-        "issuedAt": "2026-06-18",
-        "submittedAt": "2026-06-11",
-        "permitValue": 0,
-        "areaSqft": 3076,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: NA",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602078"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36601986",
-        "address": "1567 WORSHAM PASS, City of San Antonio ETJ, TX 78260",
-        "issuedAt": "2026-06-10",
-        "submittedAt": "2026-06-01",
-        "permitValue": 0,
-        "areaSqft": 3231,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: NA",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601986"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36601808",
-        "address": "22 ARNOLD PALMER, City of San Antonio, TX 78257",
-        "issuedAt": "2026-05-29",
-        "submittedAt": "2026-05-20",
-        "permitValue": 0,
-        "areaSqft": 5659,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: na; Unit No: na",
-        "councilDistrict": "8",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601808"
-      }
-    ],
-    "acquisitionNotes": "Appears on 32 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602311 at 1547 WORSHAM PASS, City of San Antonio ETJ, TX 78260 issued 2026-07-14."
   },
   {
     "id": "san-antonio-builder-rj-b-construction-service",
@@ -2009,7 +2009,7 @@
     "phone": "",
     "email": "",
     "contactName": "IES RESIDENTIAL, Inc.",
-    "recentBuilds": 28,
+    "recentBuilds": 29,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -2019,6 +2019,19 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602467",
+        "address": "13026 CHANCE PKWY, City of San Antonio, TX 78073",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-16",
+        "permitValue": 0,
+        "areaSqft": 2230,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602467"
+      },
       {
         "permitNumber": "RES-RBP-PMT26-36602214",
         "address": "13010 CHANCE PKWY, City of San Antonio, TX 78073",
@@ -2070,22 +2083,9 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "3",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602038"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36601959",
-        "address": "3902 SENORA MEADOW, City of San Antonio, TX 78264",
-        "issuedAt": "2026-06-09",
-        "submittedAt": "2026-05-18",
-        "permitValue": 0,
-        "areaSqft": 2775,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601959"
       }
     ],
-    "acquisitionNotes": "Appears on 28 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602214 at 13010 CHANCE PKWY, City of San Antonio, TX 78073 issued 2026-07-02."
+    "acquisitionNotes": "Appears on 29 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602467 at 13026 CHANCE PKWY, City of San Antonio, TX 78073 issued 2026-07-23."
   },
   {
     "id": "san-antonio-builder-bella-vista-homes-legend-homes",
@@ -2320,19 +2320,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601303"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36601080",
-        "address": "10415 HUNTERS POND, City of San Antonio, TX 78224",
-        "issuedAt": "2026-04-30",
-        "submittedAt": "2026-02-23",
-        "permitValue": 0,
-        "areaSqft": 1695,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "4",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601080"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36601302",
         "address": "10403 HUNTERS POND, City of San Antonio, TX 78224",
         "issuedAt": "2026-04-30",
@@ -2344,6 +2331,19 @@
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "4",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601302"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36601080",
+        "address": "10415 HUNTERS POND, City of San Antonio, TX 78224",
+        "issuedAt": "2026-04-30",
+        "submittedAt": "2026-02-23",
+        "permitValue": 0,
+        "areaSqft": 1695,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "4",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601080"
       }
     ],
     "acquisitionNotes": "Appears on 25 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602126 at 120 KEARNEY ST, City of San Antonio, TX 78210 issued 2026-06-23."
@@ -2357,7 +2357,7 @@
     "phone": "",
     "email": "",
     "contactName": "Drees Custom Homes",
-    "recentBuilds": 21,
+    "recentBuilds": 23,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -2368,17 +2368,30 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT26-36602277",
-        "address": "2519 RAGGED ROCK, City of San Antonio ETJ, TX 78245",
-        "issuedAt": "2026-07-09",
-        "submittedAt": "2026-06-26",
+        "permitNumber": "RES-RBP-PMT26-36602484",
+        "address": "1815 YARDZEN LANE, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-07-08",
         "permitValue": 0,
-        "areaSqft": 3041,
+        "areaSqft": 5064,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: NA; Unit No: NA",
+        "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602277"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602484"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602426",
+        "address": "18627 POWDER MILL, City of San Antonio, TX 78257",
+        "issuedAt": "2026-07-21",
+        "submittedAt": "2026-07-10",
+        "permitValue": 0,
+        "areaSqft": 5314,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "9",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602426"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36602276",
@@ -2394,6 +2407,19 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602276"
       },
       {
+        "permitNumber": "RES-RBP-PMT26-36602277",
+        "address": "2519 RAGGED ROCK, City of San Antonio ETJ, TX 78245",
+        "issuedAt": "2026-07-09",
+        "submittedAt": "2026-06-26",
+        "permitValue": 0,
+        "areaSqft": 3041,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: NA; Unit No: NA",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602277"
+      },
+      {
         "permitNumber": "RES-RBP-PMT26-36602235",
         "address": "18543 POWDER MILL, City of San Antonio, TX 78257",
         "issuedAt": "2026-07-07",
@@ -2405,35 +2431,9 @@
         "projectName": "Building No: 18543; Unit No: N/A",
         "councilDistrict": "9",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602235"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602233",
-        "address": "18519 POWDER MILL, City of San Antonio, TX 78257",
-        "issuedAt": "2026-07-07",
-        "submittedAt": "2026-06-29",
-        "permitValue": 0,
-        "areaSqft": 5484,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: NA",
-        "councilDistrict": "9",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602233"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36602167",
-        "address": "3022 WILD SKIES, City of San Antonio ETJ, TX 78245",
-        "issuedAt": "2026-06-29",
-        "submittedAt": "2026-06-23",
-        "permitValue": 0,
-        "areaSqft": 4637,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602167"
       }
     ],
-    "acquisitionNotes": "Appears on 21 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602277 at 2519 RAGGED ROCK, City of San Antonio ETJ, TX 78245 issued 2026-07-09."
+    "acquisitionNotes": "Appears on 23 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602484 at 1815 YARDZEN LANE, City of San Antonio ETJ, TX 78260 issued 2026-07-24."
   },
   {
     "id": "san-antonio-builder-david-weekley-homes",
@@ -2444,7 +2444,7 @@
     "phone": "",
     "email": "",
     "contactName": "DAVID WEEKLEY HOMES",
-    "recentBuilds": 17,
+    "recentBuilds": 18,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
@@ -2454,6 +2454,19 @@
     "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602460",
+        "address": "27005 TRILL HILL, City of San Antonio ETJ, TX 78260",
+        "issuedAt": "2026-07-24",
+        "submittedAt": "2026-05-04",
+        "permitValue": 0,
+        "areaSqft": 4302,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: na",
+        "councilDistrict": "0",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602460"
+      },
       {
         "permitNumber": "RES-RBP-PMT25-36603605",
         "address": "110 SPACIOUS SKY, City of San Antonio ETJ, TX 78260",
@@ -2481,19 +2494,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603516"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36601645",
-        "address": "2677 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
-        "issuedAt": "2025-04-28",
-        "submittedAt": "2025-04-10",
-        "permitValue": 0,
-        "areaSqft": 3439,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: n/a; Unit No: n/a",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601645"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36601615",
         "address": "2718 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
         "issuedAt": "2025-04-28",
@@ -2507,20 +2507,20 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601615"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36601515",
-        "address": "2631 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
-        "issuedAt": "2025-04-22",
-        "submittedAt": "2025-04-06",
+        "permitNumber": "RES-RBP-PMT25-36601645",
+        "address": "2677 VISTABLUE LANE, City of San Antonio ETJ, TX 78245",
+        "issuedAt": "2025-04-28",
+        "submittedAt": "2025-04-10",
         "permitValue": 0,
-        "areaSqft": 3448,
+        "areaSqft": 3439,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "Building No: ; Unit No: n/a",
+        "projectName": "Building No: n/a; Unit No: n/a",
         "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601515"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601645"
       }
     ],
-    "acquisitionNotes": "Appears on 17 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603605 at 110 SPACIOUS SKY, City of San Antonio ETJ, TX 78260 issued 2025-11-19."
+    "acquisitionNotes": "Appears on 18 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602460 at 27005 TRILL HILL, City of San Antonio ETJ, TX 78260 issued 2026-07-24."
   },
   {
     "id": "san-antonio-builder-monticello-homes",
@@ -2681,17 +2681,17 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600285"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36600068",
-        "address": "413 MCMILLAN PLACE, City of San Antonio, TX 78210",
+        "permitNumber": "RES-RBP-PMT26-36600039",
+        "address": "417 MCMILLAN PLACE, City of San Antonio, TX 78210",
         "issuedAt": "2026-01-30",
-        "submittedAt": "2025-10-21",
+        "submittedAt": "2025-10-20",
         "permitValue": 0,
-        "areaSqft": 3117,
+        "areaSqft": 2509,
         "permitType": "Res New Building Permit",
         "workType": "New",
         "projectName": "Building No: ; Unit No: N/A",
         "councilDistrict": "1",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600068"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600039"
       }
     ],
     "acquisitionNotes": "Appears on 16 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602370 at 416 SANTA CLARA PLACE, City of San Antonio, TX 78210 issued 2026-07-15."
@@ -2782,6 +2782,93 @@
       }
     ],
     "acquisitionNotes": "Appears on 15 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602166 at 7022 HOSEK FOREST, City of San Antonio, TX 78256 issued 2026-06-26."
+  },
+  {
+    "id": "san-antonio-builder-joseph-creek-homes-llc",
+    "name": "Joseph Creek Homes LLC",
+    "market": "san-antonio-tx",
+    "state": "TX",
+    "website": "",
+    "phone": "",
+    "email": "",
+    "contactName": "Joseph Creek Homes LLC",
+    "recentBuilds": 14,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
+    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "RES-RBP-PMT26-36602464",
+        "address": "3754 ALAMAR CREST, City of San Antonio, TX 78259",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-16",
+        "permitValue": 0,
+        "areaSqft": 1979,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: NA; Unit No: NA",
+        "councilDistrict": "",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602464"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602451",
+        "address": "3758 ALAMAR CREST, City of San Antonio, TX 78259",
+        "issuedAt": "2026-07-23",
+        "submittedAt": "2026-07-13",
+        "permitValue": 0,
+        "areaSqft": 2062,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 3758; Unit No: N/A",
+        "councilDistrict": "",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602451"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602452",
+        "address": "3722 ALAMAR CREST, City of San Antonio, TX 78259",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-13",
+        "permitValue": 0,
+        "areaSqft": 2314,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 3722; Unit No: N/A",
+        "councilDistrict": "",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602452"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602447",
+        "address": "3738 ALAMAR CREST, City of San Antonio, TX 78259",
+        "issuedAt": "2026-07-22",
+        "submittedAt": "2026-07-13",
+        "permitValue": 0,
+        "areaSqft": 1979,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: NA; Unit No: NA",
+        "councilDistrict": "",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602447"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602423",
+        "address": "3755 ALAMAR CREST, City of San Antonio, TX 78259",
+        "issuedAt": "2026-07-20",
+        "submittedAt": "2026-06-26",
+        "permitValue": 0,
+        "areaSqft": 1978,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "10",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602423"
+      }
+    ],
+    "acquisitionNotes": "Appears on 14 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36602464 at 3754 ALAMAR CREST, City of San Antonio, TX 78259 issued 2026-07-23."
   },
   {
     "id": "san-antonio-builder-jrs-custom-homes-inc",
@@ -2903,6 +2990,32 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603643"
       },
       {
+        "permitNumber": "RES-RBP-PMT25-36603253",
+        "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
+        "issuedAt": "2025-11-24",
+        "submittedAt": "2025-08-01",
+        "permitValue": 0,
+        "areaSqft": 7878,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 3; Unit No: 301 & 302",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603253"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36603252",
+        "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
+        "issuedAt": "2025-11-24",
+        "submittedAt": "2025-08-01",
+        "permitValue": 0,
+        "areaSqft": 7878,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: 1; Unit No: 101 & 102",
+        "councilDistrict": "7",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603252"
+      },
+      {
         "permitNumber": "RES-RBP-PMT25-36603266",
         "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
         "issuedAt": "2025-11-24",
@@ -2927,32 +3040,6 @@
         "projectName": "Building No: 5318; Unit No: 901&902",
         "councilDistrict": "7",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603265"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36603264",
-        "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
-        "issuedAt": "2025-11-24",
-        "submittedAt": "2025-08-01",
-        "permitValue": 0,
-        "areaSqft": 18060,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 5318; Unit No: 801&802",
-        "councilDistrict": "7",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603264"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36603263",
-        "address": "5318 MEDICAL DR, City of San Antonio, TX 78240",
-        "issuedAt": "2025-11-24",
-        "submittedAt": "2025-08-01",
-        "permitValue": 0,
-        "areaSqft": 18060,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: 5318; Unit No: 701&702",
-        "councilDistrict": "7",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603263"
       }
     ],
     "acquisitionNotes": "Appears on 13 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603643 at 319 S SAN MARCOS, City of San Antonio, TX 78207 issued 2025-12-01."
@@ -2990,19 +3077,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601967"
       },
       {
-        "permitNumber": "RES-RBP-PMT26-36602050",
-        "address": "915 DANKWORTH, City of San Antonio, TX 78221",
-        "issuedAt": "2026-07-13",
-        "submittedAt": "2026-06-12",
-        "permitValue": 0,
-        "areaSqft": 2283,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: N/A",
-        "councilDistrict": "3",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602050"
-      },
-      {
         "permitNumber": "RES-RBP-PMT26-36602081",
         "address": "923 DANKWORTH, City of San Antonio, TX 78221",
         "issuedAt": "2026-07-13",
@@ -3014,6 +3088,19 @@
         "projectName": "Building No: 923; Unit No: N/A",
         "councilDistrict": "3",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602081"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT26-36602050",
+        "address": "915 DANKWORTH, City of San Antonio, TX 78221",
+        "issuedAt": "2026-07-13",
+        "submittedAt": "2026-06-12",
+        "permitValue": 0,
+        "areaSqft": 2283,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: N/A",
+        "councilDistrict": "3",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36602050"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36601972",
@@ -3673,19 +3760,6 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "RES-RBP-PMT25-36601713",
-        "address": "13338 ROWDY CV, City of San Antonio, TX 78249",
-        "issuedAt": "2025-07-30",
-        "submittedAt": "2025-04-30",
-        "permitValue": 0,
-        "areaSqft": 3105,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101&102",
-        "councilDistrict": "8",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601713"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36601719",
         "address": "13346 ROWDY CV, City of San Antonio, TX 78249",
         "issuedAt": "2025-07-30",
@@ -3697,6 +3771,19 @@
         "projectName": "Building No: 13346; Unit No: 101&102",
         "councilDistrict": "8",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601719"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36601713",
+        "address": "13338 ROWDY CV, City of San Antonio, TX 78249",
+        "issuedAt": "2025-07-30",
+        "submittedAt": "2025-04-30",
+        "permitValue": 0,
+        "areaSqft": 3105,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: 101&102",
+        "councilDistrict": "8",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601713"
       },
       {
         "permitNumber": "RES-RBP-PMT25-36600501",
@@ -3712,19 +3799,6 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36600501"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36600702",
-        "address": "13346 STADIUM CV, City of San Antonio, TX 78249",
-        "issuedAt": "2025-03-19",
-        "submittedAt": "2025-02-20",
-        "permitValue": 0,
-        "areaSqft": 3104,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101&102",
-        "councilDistrict": "8",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36600702"
-      },
-      {
         "permitNumber": "RES-RBP-PMT25-36600697",
         "address": "13342 STADIUM CV, City of San Antonio, TX 78249",
         "issuedAt": "2025-03-19",
@@ -3736,9 +3810,22 @@
         "projectName": "Building No: ; Unit No: 101 & 102",
         "councilDistrict": "8",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36600697"
+      },
+      {
+        "permitNumber": "RES-RBP-PMT25-36600702",
+        "address": "13346 STADIUM CV, City of San Antonio, TX 78249",
+        "issuedAt": "2025-03-19",
+        "submittedAt": "2025-02-20",
+        "permitValue": 0,
+        "areaSqft": 3104,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: 101&102",
+        "councilDistrict": "8",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36600702"
       }
     ],
-    "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601713 at 13338 ROWDY CV, City of San Antonio, TX 78249 issued 2025-07-30."
+    "acquisitionNotes": "Appears on 8 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36601719 at 13346 ROWDY CV, City of San Antonio, TX 78249 issued 2025-07-30."
   },
   {
     "id": "san-antonio-builder-continental-homes-dba-dr-horton",
@@ -3847,6 +3934,19 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
+        "permitNumber": "RES-RBP-PMT26-36600541",
+        "address": "331 MILLARD, City of San Antonio, TX 78212",
+        "issuedAt": "2026-04-06",
+        "submittedAt": "2025-10-27",
+        "permitValue": 0,
+        "areaSqft": 2124,
+        "permitType": "Res New Building Permit",
+        "workType": "New",
+        "projectName": "Building No: ; Unit No: NA",
+        "councilDistrict": "1",
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600541"
+      },
+      {
         "permitNumber": "RES-RBP-PMT26-36600790",
         "address": "325 MILLARD, City of San Antonio, TX 78212",
         "issuedAt": "2026-04-06",
@@ -3871,19 +3971,6 @@
         "projectName": "Building No: ; Unit No: NA",
         "councilDistrict": "1",
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600542"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT26-36600541",
-        "address": "331 MILLARD, City of San Antonio, TX 78212",
-        "issuedAt": "2026-04-06",
-        "submittedAt": "2025-10-27",
-        "permitValue": 0,
-        "areaSqft": 2124,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: NA",
-        "councilDistrict": "1",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36600541"
       },
       {
         "permitNumber": "RES-RBP-PMT26-36600539",
@@ -3912,94 +3999,7 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603734"
       }
     ],
-    "acquisitionNotes": "Appears on 7 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36600790 at 325 MILLARD, City of San Antonio, TX 78212 issued 2026-04-06."
-  },
-  {
-    "id": "san-antonio-builder-rendon-homes-llc",
-    "name": "RENDON HOMES LLC.",
-    "market": "san-antonio-tx",
-    "state": "TX",
-    "website": "",
-    "phone": "",
-    "email": "",
-    "contactName": "RENDON HOMES LLC.",
-    "recentBuilds": 7,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public San Antonio permit signal only. Call builder to capture exact San Antonio-area land buy box, max price, close speed, utility/access constraints, and kill criteria before treating as validated demand.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 83,
-    "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512",
-    "publicSource": "Open Data SA / City of San Antonio Building Permits — PERMITS ISSUED CKAN datastore. Filtered to Res New Building Permit + New work type.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "RES-RBP-PMT26-36601078",
-        "address": "311 QUIET EVE, City of San Antonio ETJ, TX 78260",
-        "issuedAt": "2026-04-02",
-        "submittedAt": "2026-02-24",
-        "permitValue": 0,
-        "areaSqft": 4597,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: NA; Unit No: NA",
-        "councilDistrict": "0",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT26-36601078"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36602408",
-        "address": "3535 GABY PATH, City of San Antonio, TX 78210",
-        "issuedAt": "2025-07-07",
-        "submittedAt": "2025-06-24",
-        "permitValue": 0,
-        "areaSqft": 2798,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101 & 102",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602408"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36602332",
-        "address": "3531 GABY PATH, City of San Antonio, TX 78210",
-        "issuedAt": "2025-06-26",
-        "submittedAt": "2025-05-18",
-        "permitValue": 0,
-        "areaSqft": 2798,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101 & 102",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602332"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36602282",
-        "address": "3527 GABY PATH, City of San Antonio, TX 78210",
-        "issuedAt": "2025-06-23",
-        "submittedAt": "2025-05-18",
-        "permitValue": 0,
-        "areaSqft": 2798,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101 & 102",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36602282"
-      },
-      {
-        "permitNumber": "RES-RBP-PMT25-36601983",
-        "address": "3523 GABY PATH, City of San Antonio, TX 78210",
-        "issuedAt": "2025-05-30",
-        "submittedAt": "2025-04-21",
-        "permitValue": 0,
-        "areaSqft": 2798,
-        "permitType": "Res New Building Permit",
-        "workType": "New",
-        "projectName": "Building No: ; Unit No: 101 & 102",
-        "councilDistrict": "2",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36601983"
-      }
-    ],
-    "acquisitionNotes": "Appears on 7 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36601078 at 311 QUIET EVE, City of San Antonio ETJ, TX 78260 issued 2026-04-02."
+    "acquisitionNotes": "Appears on 7 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT26-36600541 at 331 MILLARD, City of San Antonio, TX 78212 issued 2026-04-06."
   },
   {
     "id": "san-antonio-builder-a-t-home-builder",
@@ -4160,17 +4160,17 @@
         "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603296"
       },
       {
-        "permitNumber": "RES-RBP-PMT25-36603268",
-        "address": "614 VILLA LINDA, City of San Antonio, TX 78237",
+        "permitNumber": "RES-RBP-PMT25-36603269",
+        "address": "615 VILLA LINDA, City of San Antonio, TX 78237",
         "issuedAt": "2025-10-01",
         "submittedAt": "2025-09-08",
         "permitValue": 0,
-        "areaSqft": 1398,
+        "areaSqft": 1419,
         "permitType": "Res New Building Permit",
         "workType": "New",
-        "projectName": "AFF - 614 VILLA LINDA",
+        "projectName": "AFF - 615 VILLA LINDA",
         "councilDistrict": "5",
-        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603268"
+        "sourceUrl": "https://data.sanantonio.gov/dataset/building-permits/resource/c21106f9-3ef5-4f3a-8604-f992b4db7512?q=RES-RBP-PMT25-36603269"
       }
     ],
     "acquisitionNotes": "Appears on 6 San Antonio public residential new-building permit rows since 2025. Latest sample RES-RBP-PMT25-36603498 at 618 VILLA LINDA, City of San Antonio, TX 78237 issued 2025-11-13."

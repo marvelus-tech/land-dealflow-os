@@ -1,13 +1,13 @@
-# Lead Engine Briefing — 2026-08-03
+# Lead Engine Briefing — 2026-08-05
 
-Run: lead-engine-2026-08-03T21-30-28-348Z
+Run: lead-engine-2026-08-05T21-33-04-756Z
 
 - Markets watched: 32
-- Buyer leads: 583
+- Buyer leads: 584
 - Parcel leads: 81
 - Top seller calls: 0
 - Real skip-trace leads: 81
-- Buyer validation tasks: 583
+- Buyer validation tasks: 584
 - Offer-ready deals: 0
 - New-area buyer discovery tasks: 18
 - New-area seller discovery tasks: 31
@@ -22,7 +22,7 @@ Run: lead-engine-2026-08-03T21-30-28-348Z
 3. Chattanooga / Hamilton County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Buildchek + Hamilton County GIS and build a direct adapter for Chattanooga / Hamilton County, TN.
 4. Murfreesboro / Rutherford County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review CivicPlus / CivicGov Citizen Portal and build a direct adapter for Murfreesboro / Rutherford County, TN.
 5. Franklin / Williamson County, TN — source-review-needed; 0 builder signals; find-public-permit-source; next: Review IDT Plans + county permit records and build a direct adapter for Franklin / Williamson County, TN.
-6. Polk County / Lakeland, FL — pulled; 29 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Polk County / Lakeland, FL to capture buy box before seller sourcing.
+6. Polk County / Lakeland, FL — pulled; 30 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Polk County / Lakeland, FL to capture buy box before seller sourcing.
 7. Ocala / Marion County, FL — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Civic Access / CivicPlus and build a direct adapter for Ocala / Marion County, FL.
 8. Clermont / Lake County, FL — source-review-needed; 0 builder signals; find-public-permit-source; next: Review TRAKiT / CentralSquare migration and build a direct adapter for Clermont / Lake County, FL.
 9. Gainesville / Alachua County, FL — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Accela and build a direct adapter for Gainesville / Alachua County, FL.

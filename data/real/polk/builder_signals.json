@@ -8,7 +8,7 @@
     "phone": "2529133593",
     "email": "orlandpermitting@stanleymartin.com",
     "contactName": "STANLEY MARTIN HOMES LLC",
-    "recentBuilds": 14,
+    "recentBuilds": 15,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
@@ -37,15 +37,6 @@
         "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOT&agencyCode=POLKCO&IsToShowInspection="
       },
       {
-        "permitNumber": "BR-2026-6044",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOS&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "1302 Willow Crest, Eagle Lake FL 33839",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "orlandpermitting@stanleymartin.com",
-        "phone": "2529133593",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOS&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
         "permitNumber": "BR-2026-6046",
         "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOV&agencyCode=POLKCO&IsToShowInspection=",
         "address": "1290 Willow Crest, Eagle Lake FL 33839",
@@ -55,94 +46,36 @@
         "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOV&agencyCode=POLKCO&IsToShowInspection="
       },
       {
-        "permitNumber": "BR-2026-6043",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOR&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "1449 Chambord, Eagle Lake FL 33839",
+        "permitNumber": "BR-2026-6048",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOZ&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
         "recordType": "Residential New Permit - Ex: New House",
         "email": "orlandpermitting@stanleymartin.com",
-        "phone": "2529133593",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOR&agencyCode=POLKCO&IsToShowInspection="
+        "phone": "7704280857",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOZ&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6044",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOS&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "orlandpermitting@stanleymartin.com",
+        "phone": "7704280857",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UOS&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 14 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6042 at 1294 Willow Crest, Eagle Lake FL 33839."
-  },
-  {
-    "id": "polk-builder-lgi-homes-florida-llc",
-    "name": "LGI HOMES - FLORIDA, LLC",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "3214433640",
-    "email": "brandon.koehler@lgihomes.com",
-    "contactName": "LGI HOMES - FLORIDA, LLC",
-    "recentBuilds": 12,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 100,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BR-2026-5813",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TFD&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "brandon.koehler@lgihomes.com",
-        "phone": "3214433640",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TFD&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5741",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T1I&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "580 TANGELO TER, BABSON PARK FL 33827",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "brandon.koehler@lgihomes.com",
-        "phone": "3214433640",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T1I&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5739",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T1C&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "584 TANGELO TER, BABSON PARK FL 33827",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "brandon.koehler@lgihomes.com",
-        "phone": "3214433640",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T1C&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5738",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T16&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "brandon.koehler@lgihomes.com",
-        "phone": "3214433640",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T16&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5737",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T0Y&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "brandon.koehler@lgihomes.com",
-        "phone": "3214433640",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T0Y&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 12 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5813 at ."
+    "acquisitionNotes": "Appears on 15 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6042 at 1294 Willow Crest, Eagle Lake FL 33839."
   },
   {
     "id": "polk-builder-lennar-homes-llc",
-    "name": "LENNAR HOMES, LLC",
+    "name": "LENNAR HOMES LLC",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
     "phone": "4076644126",
     "email": "Permits@jbvexpediting.com",
-    "contactName": "LENNAR HOMES, LLC",
-    "recentBuilds": 11,
+    "contactName": "LENNAR HOMES LLC",
+    "recentBuilds": 14,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
@@ -153,52 +86,119 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-6034",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UN6&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "2407 BEVEL LN, DAVENPORT FL 33837",
+        "permitNumber": "BR-2026-6278",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W38&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "2626 LASSO LOOP, EAGLE LAKE FL 33839",
         "recordType": "Residential New Permit - Ex: New House",
         "email": "Permits@jbvexpediting.com",
         "phone": "4076644126",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UN6&agencyCode=POLKCO&IsToShowInspection="
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W38&agencyCode=POLKCO&IsToShowInspection="
       },
       {
-        "permitNumber": "BR-2026-5888",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TRN&agencyCode=POLKCO&IsToShowInspection=",
+        "permitNumber": "BR-2026-6277",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W35&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "2618 LASSO LOOP, EAGLE LAKE FL 33839",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "Permits@jbvexpediting.com",
+        "phone": "4076644126",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W35&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6276",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W30&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "2586 LASSO LOOP, EAGLE LAKE FL 33839",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "Permits@jbvexpediting.com",
+        "phone": "4076644126",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W30&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6178",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VHP&agencyCode=POLKCO&IsToShowInspection=",
         "address": "",
         "recordType": "Residential New Permit - Ex: New House",
         "email": "Permits@jbvexpediting.com",
         "phone": "4076644126",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TRN&agencyCode=POLKCO&IsToShowInspection="
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VHP&agencyCode=POLKCO&IsToShowInspection="
       },
       {
-        "permitNumber": "BR-2026-5862",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TLQ&agencyCode=POLKCO&IsToShowInspection=",
+        "permitNumber": "BR-2026-6176",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VHN&agencyCode=POLKCO&IsToShowInspection=",
         "address": "",
         "recordType": "Residential New Permit - Ex: New House",
         "email": "Permits@jbvexpediting.com",
         "phone": "4076644126",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TLQ&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5859",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TLK&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "Permits@jbvexpediting.com",
-        "phone": "4076644126",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TLK&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5791",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TAU&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "Permits@jbvexpediting.com",
-        "phone": "4076644126",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TAU&agencyCode=POLKCO&IsToShowInspection="
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VHN&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 11 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6034 at 2407 BEVEL LN, DAVENPORT FL 33837."
+    "acquisitionNotes": "Appears on 14 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6278 at 2626 LASSO LOOP, EAGLE LAKE FL 33839."
+  },
+  {
+    "id": "polk-builder-ryan-homes",
+    "name": "RYAN HOMES",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "4079794966",
+    "email": "bmacias@nvrinc.com",
+    "contactName": "RYAN HOMES",
+    "recentBuilds": 10,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 100,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6127",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V6J&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "bmacias@nvrinc.com",
+        "phone": "4079794966",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V6J&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6116",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V3S&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "bmacias@nvrinc.com",
+        "phone": "4079794966",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V3S&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6025",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UKC&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "aalden@nvrinc.com",
+        "phone": "8137397425",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UKC&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6009",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UH1&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "aalden@nvrinc.com",
+        "phone": "8137397425",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UH1&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-5981",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UBL&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "bmacias@nvrinc.com",
+        "phone": "4079794966",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UBL&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 10 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6127 at ."
   },
   {
     "id": "polk-builder-d-r-horton-inc",
@@ -207,9 +207,9 @@
     "state": "FL",
     "website": "",
     "phone": "4078505200",
-    "email": "earnold@drhorton.com",
+    "email": "orlandosouthpermittinggroup@drhorton.com",
     "contactName": "D. R. HORTON, INC.",
-    "recentBuilds": 9,
+    "recentBuilds": 8,
     "closeSpeedDays": "",
     "maxPrice": "",
     "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
@@ -219,6 +219,15 @@
     "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6260",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VYP&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "1946 MANATEE CT, POINCIANA FL 34759",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "orlandosouthpermittinggroup@drhorton.com",
+        "phone": "4078505200",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VYP&agencyCode=POLKCO&IsToShowInspection="
+      },
       {
         "permitNumber": "BR-2026-6000",
         "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UDS&agencyCode=POLKCO&IsToShowInspection=",
@@ -254,28 +263,19 @@
         "email": "earnold@drhorton.com",
         "phone": "4078505200",
         "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UCM&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5985",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UC8&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "earnold@drhorton.com",
-        "phone": "4078505200",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UC8&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 9 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6000 at ."
+    "acquisitionNotes": "Appears on 8 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6260 at 1946 MANATEE CT, POINCIANA FL 34759."
   },
   {
-    "id": "polk-builder-ryan-homes",
-    "name": "RYAN HOMES",
+    "id": "polk-builder-m-i-homes-3-easton-oval-columbus-oh",
+    "name": "M/I HOMES 3 EASTON OVAL COLUMBUS, OH",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
-    "phone": "8137397425",
-    "email": "aalden@nvrinc.com",
-    "contactName": "RYAN HOMES",
+    "phone": "8133166176",
+    "email": "tampalicense@mihomes.com",
+    "contactName": "M/I HOMES 3 EASTON OVAL COLUMBUS, OH",
     "recentBuilds": 8,
     "closeSpeedDays": "",
     "maxPrice": "",
@@ -287,72 +287,14 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-6025",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UKC&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "6932 SUNDIAL DR, LAKELAND FL 33813",
+        "permitNumber": "BR-2026-6239",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VV2&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "4321 LAKE FOX DR, LAKELAND FL 33810",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "aalden@nvrinc.com",
-        "phone": "8137397425",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UKC&agencyCode=POLKCO&IsToShowInspection="
+        "email": "tampalicense@mihomes.com",
+        "phone": "8133166176",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VV2&agencyCode=POLKCO&IsToShowInspection="
       },
-      {
-        "permitNumber": "BR-2026-5981",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UBL&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "511 CAMELOT WAY, DUNDEE FL 33838",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "bmacias@nvrinc.com",
-        "phone": "4079794966",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UBL&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-6009",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UH1&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "aalden@nvrinc.com",
-        "phone": "8137397425",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UH1&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5955",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00U48&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "386 BILTMORE BLVD, DUNDEE FL 33838",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "bmacias@nvrinc.com",
-        "phone": "4079794966",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00U48&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5854",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TL9&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "aalden@nvrinc.com",
-        "phone": "8137397425",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TL9&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 8 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6025 at 6932 SUNDIAL DR, LAKELAND FL 33813."
-  },
-  {
-    "id": "polk-builder-m-i-homes-3-easton-oval-columbus-oh",
-    "name": "M/I HOMES 3 EASTON OVAL COLUMBUS, OH",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "8133166176",
-    "email": "tampalicense@mihomes.com",
-    "contactName": "M/I HOMES 3 EASTON OVAL COLUMBUS, OH",
-    "recentBuilds": 7,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 98,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
       {
         "permitNumber": "BR-2026-5917",
         "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TWI&agencyCode=POLKCO&IsToShowInspection=",
@@ -388,18 +330,116 @@
         "email": "tampalicense@mihomes.com",
         "phone": "8133166176",
         "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TWG&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5895",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TSU&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "4381 LAKE FOX DR, LAKELAND FL 33810",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "tampalicense@mihomes.com",
-        "phone": "8133166176",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TSU&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 7 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5917 at 4368 LAKE FOX DR, LAKELAND FL 33810."
+    "acquisitionNotes": "Appears on 8 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6239 at 4321 LAKE FOX DR, LAKELAND FL 33810."
+  },
+  {
+    "id": "polk-builder-bricks-developments-llc",
+    "name": "BRICKS DEVELOPMENTS LLC",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "4078527777",
+    "email": "armando@4078527777.com",
+    "contactName": "BRICKS DEVELOPMENTS LLC",
+    "recentBuilds": 4,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 80,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6150",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCU&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "0 N HIGHWAY 547, DAVENPORT FL 33837",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "armando@4078527777.com",
+        "phone": "4078527777",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCU&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6152",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCW&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "0 N HIGHWAY 547, DAVENPORT FL 33837",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "armando@4078527777.com",
+        "phone": "4078527777",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCW&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6148",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCS&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "0 N HIGHWAY 547, DAVENPORT FL 33837",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "armando@4078527777.com",
+        "phone": "4078527777",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCS&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6153",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCY&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "0 N HIGHWAY 547, DAVENPORT FL 33837",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "armando@4078527777.com",
+        "phone": "4078527777",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VCY&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 4 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6150 at 0 N HIGHWAY 547, DAVENPORT FL 33837."
+  },
+  {
+    "id": "polk-builder-adams-homes-of-northwest-florida-inc",
+    "name": "ADAMS HOMES OF NORTHWEST FLORIDA, INC.",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "8636198120",
+    "email": "Lakelandwarranty@adamshomes.com",
+    "contactName": "ADAMS HOMES OF NORTHWEST FLORIDA, INC.",
+    "recentBuilds": 3,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 74,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6210",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VN3&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "5375 MIDWAY LN, LAKELAND FL 33810",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "Lakelandwarranty@adamshomes.com",
+        "phone": "8636198120",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VN3&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6208",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VMQ&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "5371 MIDWAY LN, LAKELAND FL 33810",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "Lakelandwarranty@adamshomes.com",
+        "phone": "8636198120",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VMQ&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
+        "permitNumber": "BR-2026-6206",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VM8&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "5367 MIDWAY LN, LAKELAND FL 33810",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "Lakelandwarranty@adamshomes.com",
+        "phone": "8636198120",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VM8&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 3 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6210 at 5375 MIDWAY LN, LAKELAND FL 33810."
   },
   {
     "id": "polk-builder-maronda-homes-llc-of-florida",
@@ -451,14 +491,14 @@
     "acquisitionNotes": "Appears on 3 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6015 at ."
   },
   {
-    "id": "polk-builder-custom-florida-renovations-llc",
-    "name": "CUSTOM FLORIDA RENOVATIONS LLC",
+    "id": "polk-builder-d-s-hibbert-homes-llc",
+    "name": "D S HIBBERT HOMES, LLC",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
-    "phone": "3862185455",
-    "email": "chuck@cflrenovations.com",
-    "contactName": "CUSTOM FLORIDA RENOVATIONS LLC",
+    "phone": "8635832563",
+    "email": "dshibberthomes@gmail.com",
+    "contactName": "D S HIBBERT HOMES, LLC",
     "recentBuilds": 2,
     "closeSpeedDays": "",
     "maxPrice": "",
@@ -470,25 +510,25 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-5750",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T4O&agencyCode=POLKCO&IsToShowInspection=",
+        "permitNumber": "BR-2026-6160",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VF9&agencyCode=POLKCO&IsToShowInspection=",
         "address": "",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "chuck@cflrenovations.com",
-        "phone": "3862185455",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T4O&agencyCode=POLKCO&IsToShowInspection="
+        "email": "dshibberthomes@gmail.com",
+        "phone": "8635832563",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VF9&agencyCode=POLKCO&IsToShowInspection="
       },
       {
-        "permitNumber": "BR-2026-5749",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T4N&agencyCode=POLKCO&IsToShowInspection=",
+        "permitNumber": "BR-2026-6008",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UGY&agencyCode=POLKCO&IsToShowInspection=",
         "address": "",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "chuck@cflrenovations.com",
-        "phone": "3862185455",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T4N&agencyCode=POLKCO&IsToShowInspection="
+        "email": "dshibberthomes@gmail.com",
+        "phone": "8635832563",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UGY&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5750 at ."
+    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6160 at ."
   },
   {
     "id": "polk-builder-highland-homes",
@@ -510,145 +550,25 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
+        "permitNumber": "BR-2026-6140",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VAB&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "permitting@highlandhomes.org",
+        "phone": "2466197103",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VAB&agencyCode=POLKCO&IsToShowInspection="
+      },
+      {
         "permitNumber": "BR-2026-5932",
         "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TYI&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "2916 KEENS GROVE WAY, LAKELAND FL 33810",
+        "address": "",
         "recordType": "Residential New Permit - Ex: New House",
         "email": "permitting@highlandhomes.org",
         "phone": "2466197103",
         "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TYI&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5691",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00SUX&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "6360 EVERGREEN MEADOWS DR, LAKELAND FL 33810",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "permitting@highlandhomes.org",
-        "phone": "2466197103",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00SUX&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5932 at 2916 KEENS GROVE WAY, LAKELAND FL 33810."
-  },
-  {
-    "id": "polk-builder-kb-home-orlando-llc",
-    "name": "KB HOME ORLANDO LLC",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "4075924187",
-    "email": "anthony@permitspermitspermits.com",
-    "contactName": "KB HOME ORLANDO LLC",
-    "recentBuilds": 2,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 68,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BR-2026-5777",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T9N&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "anthony@permitspermitspermits.com",
-        "phone": "4075924187",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T9N&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5775",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T9G&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "anthony@permitspermitspermits.com",
-        "phone": "4075924187",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T9G&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5777 at ."
-  },
-  {
-    "id": "polk-builder-southern-homes-of-polk-co-inc",
-    "name": "SOUTHERN HOMES OF POLK CO INC",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "8636872700",
-    "email": "Holly@mysouthernhome.com",
-    "contactName": "SOUTHERN HOMES OF POLK CO INC",
-    "recentBuilds": 2,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 68,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BR-2026-5757",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T5A&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "Holly@mysouthernhome.com",
-        "phone": "8636872700",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T5A&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5752",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T4S&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "Holly@mysouthernhome.com",
-        "phone": "8636872700",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T4S&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5757 at ."
-  },
-  {
-    "id": "polk-builder-tpg-ehc-e-len-multi-state-1-llc",
-    "name": "TPG EHC E LEN MULTI STATE 1 LLC",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "4072344336",
-    "email": "alison@permitspermitspermits.com",
-    "contactName": "TPG EHC E LEN MULTI STATE 1 LLC",
-    "recentBuilds": 2,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 68,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BR-2026-5792",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TB4&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "alison@permitspermitspermits.com",
-        "phone": "4072344336",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TB4&agencyCode=POLKCO&IsToShowInspection="
-      },
-      {
-        "permitNumber": "BR-2026-5787",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TAH&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "alison@permitspermitspermits.com",
-        "phone": "4072344336",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TAH&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5792 at ."
+    "acquisitionNotes": "Appears on 2 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6140 at ."
   },
   {
     "id": "polk-builder-4c-construction-consulting-corp",
@@ -713,68 +633,6 @@
     "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5845 at 3108 BRENTON DR, DAVENPORT FL 33837."
   },
   {
-    "id": "polk-builder-bryan-bradley-homes-llc",
-    "name": "BRYAN BRADLEY HOMES LLC",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "8632871864",
-    "email": "Bryanbradleyhomes@gmail.com",
-    "contactName": "BRYAN BRADLEY HOMES LLC",
-    "recentBuilds": 1,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 62,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BR-2026-5724",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00SZN&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "Bryanbradleyhomes@gmail.com",
-        "phone": "8632871864",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00SZN&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5724 at ."
-  },
-  {
-    "id": "polk-builder-brandon-betts-dbr-construction-llc",
-    "name": "Brandon Betts DBR Construction LLC",
-    "market": "polk-lakeland-fl",
-    "state": "FL",
-    "website": "",
-    "phone": "8636024200",
-    "email": "dbrconstructionllc@aol.com",
-    "contactName": "Brandon Betts DBR Construction LLC",
-    "recentBuilds": 1,
-    "closeSpeedDays": "",
-    "maxPrice": "",
-    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
-    "validationStatus": "needs-call-confirmation",
-    "confidence": 62,
-    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
-    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
-    "evidenceType": "permitVerified active-builder signal",
-    "recentPermits": [
-      {
-        "permitNumber": "BR-2026-6104",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V0I&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "6533 ANGUS DR, LAKELAND FL 33810",
-        "recordType": "Residential New Permit - Ex: New House",
-        "email": "dbrconstructionllc@aol.com",
-        "phone": "8636024200",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V0I&agencyCode=POLKCO&IsToShowInspection="
-      }
-    ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6104 at 6533 ANGUS DR, LAKELAND FL 33810."
-  },
-  {
     "id": "polk-builder-carolyn-keirnan-keirnan-construction-inc-20251-sw-50-pla",
     "name": "Carolyn Keirnan Keirnan Construction, Inc. 20251 SW 50 Place Southwest Ranches, FL, 33332",
     "market": "polk-lakeland-fl",
@@ -806,14 +664,14 @@
     "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5835 at ."
   },
   {
-    "id": "polk-builder-d-s-hibbert-homes-llc",
-    "name": "D S HIBBERT HOMES, LLC",
+    "id": "polk-builder-dbr-construction-llc",
+    "name": "DBR CONSTRUCTION, LLC",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
-    "phone": "8635832563",
-    "email": "dshibberthomes@gmail.com",
-    "contactName": "D S HIBBERT HOMES, LLC",
+    "phone": "8636024200",
+    "email": "dbrconstructionllc@aol.com",
+    "contactName": "DBR CONSTRUCTION, LLC",
     "recentBuilds": 1,
     "closeSpeedDays": "",
     "maxPrice": "",
@@ -825,16 +683,16 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-6008",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UGY&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "2736 GOLFVIEW ST, LAKELAND FL 33801",
+        "permitNumber": "BR-2026-6104",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V0I&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "dshibberthomes@gmail.com",
-        "phone": "8635832563",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00UGY&agencyCode=POLKCO&IsToShowInspection="
+        "email": "dbrconstructionllc@aol.com",
+        "phone": "8636024200",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V0I&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6008 at 2736 GOLFVIEW ST, LAKELAND FL 33801."
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6104 at ."
   },
   {
     "id": "polk-builder-duane-mcquillen-construction-inc",
@@ -868,14 +726,14 @@
     "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5958 at 5931 YATES RD, LAKELAND FL 33811."
   },
   {
-    "id": "polk-builder-eagle-building-contractors-llc",
-    "name": "EAGLE BUILDING CONTRACTORS, LLC",
+    "id": "polk-builder-elements-home-solutions-inc",
+    "name": "ELEMENTS HOME SOLUTIONS INC.",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
-    "phone": "8639650804",
-    "email": "dspainebc@aol.com",
-    "contactName": "EAGLE BUILDING CONTRACTORS, LLC",
+    "phone": "3374232582",
+    "email": "elementshomesolutions@GMAIL.COM",
+    "contactName": "ELEMENTS HOME SOLUTIONS INC.",
     "recentBuilds": 1,
     "closeSpeedDays": "",
     "maxPrice": "",
@@ -887,16 +745,16 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-5735",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T0L&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "",
+        "permitNumber": "BR-2026-6249",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VXH&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "114 MAGNOLIA DR, WINTER HAVEN FL 33881",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "dspainebc@aol.com",
-        "phone": "8639650804",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T0L&agencyCode=POLKCO&IsToShowInspection="
+        "email": "elementshomesolutions@GMAIL.COM",
+        "phone": "3374232582",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VXH&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5735 at ."
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6249 at 114 MAGNOLIA DR, WINTER HAVEN FL 33881."
   },
   {
     "id": "polk-builder-hodge-enterprises-inc",
@@ -992,14 +850,14 @@
     "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5913 at ."
   },
   {
-    "id": "polk-builder-jeffery-huebner-stanley-martin-homes-llc-11710-plaza-ame",
-    "name": "Jeffery Huebner Stanley Martin Homes, LLC 11710 Plaza America Dr. Suite 1100 Reston, VA, 20190",
+    "id": "polk-builder-lgi-homes-florida-llc",
+    "name": "LGI HOMES - FLORIDA, LLC",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
-    "phone": "2529133593",
-    "email": "orlandpermitting@stanleymartin.com",
-    "contactName": "Jeffery Huebner Stanley Martin Homes, LLC 11710 Plaza America Dr. Suite 1100 Reston, VA, 20190",
+    "phone": "3214433640",
+    "email": "brandon.koehler@lgihomes.com",
+    "contactName": "LGI HOMES - FLORIDA, LLC",
     "recentBuilds": 1,
     "closeSpeedDays": "",
     "maxPrice": "",
@@ -1011,16 +869,16 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-5804",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TE3&agencyCode=POLKCO&IsToShowInspection=",
+        "permitNumber": "BR-2026-5813",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TFD&agencyCode=POLKCO&IsToShowInspection=",
         "address": "",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "orlandpermitting@stanleymartin.com",
-        "phone": "2529133593",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TE3&agencyCode=POLKCO&IsToShowInspection="
+        "email": "brandon.koehler@lgihomes.com",
+        "phone": "3214433640",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00TFD&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5804 at ."
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5813 at ."
   },
   {
     "id": "polk-builder-lubin-investor-proterty-developer-inc",
@@ -1085,14 +943,14 @@
     "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5908 at ."
   },
   {
-    "id": "polk-builder-permil-construction-llc",
-    "name": "PERMIL CONSTRUCTION LLC",
+    "id": "polk-builder-nehme-river-ranch-llc",
+    "name": "NEHME RIVER RANCH LLC",
     "market": "polk-lakeland-fl",
     "state": "FL",
     "website": "",
-    "phone": "8635943710",
-    "email": "miltonpsmith03@gmail.com",
-    "contactName": "PERMIL CONSTRUCTION LLC",
+    "phone": "8639693722",
+    "email": "melanie@warrencm.com",
+    "contactName": "NEHME RIVER RANCH LLC",
     "recentBuilds": 1,
     "closeSpeedDays": "",
     "maxPrice": "",
@@ -1104,16 +962,47 @@
     "evidenceType": "permitVerified active-builder signal",
     "recentPermits": [
       {
-        "permitNumber": "BR-2026-5772",
-        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T9C&agencyCode=POLKCO&IsToShowInspection=",
+        "permitNumber": "BR-2026-6222",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VQC&agencyCode=POLKCO&IsToShowInspection=",
         "address": "",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "miltonpsmith03@gmail.com",
-        "phone": "8635943710",
-        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00T9C&agencyCode=POLKCO&IsToShowInspection="
+        "email": "melanie@warrencm.com",
+        "phone": "8639693722",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VQC&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5772 at ."
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6222 at ."
+  },
+  {
+    "id": "polk-builder-park-square-enterprises-llc",
+    "name": "PARK SQUARE ENTERPRISES LLC",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "4075293163",
+    "email": "gspitzerpermits@delair.com",
+    "contactName": "PARK SQUARE ENTERPRISES LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 62,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6271",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W29&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "1299 BUTTERFLY ORCHID RD, DAVENPORT FL 33837",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "gspitzerpermits@delair.com",
+        "phone": "4075293163",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W29&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6271 at 1299 BUTTERFLY ORCHID RD, DAVENPORT FL 33837."
   },
   {
     "id": "polk-builder-pss-constructions-llc",
@@ -1153,7 +1042,7 @@
     "state": "FL",
     "website": "",
     "phone": "8638605405",
-    "email": "joshraysin@yahoo.com",
+    "email": "planneroncall@polkfl.gov",
     "contactName": "RAYSIN CONSTRUCTION, INC.",
     "recentBuilds": 1,
     "closeSpeedDays": "",
@@ -1168,13 +1057,137 @@
       {
         "permitNumber": "BR-2026-5970",
         "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00U9L&agencyCode=POLKCO&IsToShowInspection=",
-        "address": "10001 WILDER RD, POLK CITY FL 33868",
+        "address": "",
         "recordType": "Residential New Permit - Ex: New House",
-        "email": "joshraysin@yahoo.com",
+        "email": "planneroncall@polkfl.gov",
         "phone": "8638605405",
         "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00U9L&agencyCode=POLKCO&IsToShowInspection="
       }
     ],
-    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5970 at 10001 WILDER RD, POLK CITY FL 33868."
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-5970 at ."
+  },
+  {
+    "id": "polk-builder-stone-bay-construction-llc",
+    "name": "STONE BAY CONSTRUCTION, LLC.",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "8132671977",
+    "email": "sanacha63@gmail.com",
+    "contactName": "STONE BAY CONSTRUCTION, LLC.",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 62,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6128",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V6T&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "sanacha63@gmail.com",
+        "phone": "8132671977",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V6T&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6128 at ."
+  },
+  {
+    "id": "polk-builder-synergy-properties-cfl-llc",
+    "name": "SYNERGY PROPERTIES CFL LLC",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "4079220921",
+    "email": "cesar.midfloridagc@yahoo.com",
+    "contactName": "SYNERGY PROPERTIES CFL LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 62,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6269",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W1D&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "TROUT WAY, POINCIANA FL 34759",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "cesar.midfloridagc@yahoo.com",
+        "phone": "4079220921",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00W1D&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6269 at TROUT WAY, POINCIANA FL 34759."
+  },
+  {
+    "id": "polk-builder-tapia-construction-llc",
+    "name": "TAPIA CONSTRUCTION LLC",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "8636445362",
+    "email": "yramos@tapiahomes.com",
+    "contactName": "TAPIA CONSTRUCTION LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 62,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6126",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V63&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "4245 HAVEN LAKE CT, LAKELAND FL 33813",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "yramos@tapiahomes.com",
+        "phone": "8636445362",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00V63&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6126 at 4245 HAVEN LAKE CT, LAKELAND FL 33813."
+  },
+  {
+    "id": "polk-builder-trotter-construction-llc",
+    "name": "TROTTER CONSTRUCTION LLC",
+    "market": "polk-lakeland-fl",
+    "state": "FL",
+    "website": "",
+    "phone": "8633811837",
+    "email": "btrotter.construction@gmail.com",
+    "contactName": "TROTTER CONSTRUCTION LLC",
+    "recentBuilds": 1,
+    "closeSpeedDays": "",
+    "maxPrice": "",
+    "buyBox": "Public Polk County Accela residential-new permit signal only. Call builder to capture exact Polk/Lakeland land buy box, max price, closing speed, parcel constraints, utility requirements, and deal killers.",
+    "validationStatus": "needs-call-confirmation",
+    "confidence": 62,
+    "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
+    "publicSource": "Polk County Accela Citizen Access public Building records. Filtered to Residential New Permit - Ex: New House records and verified from public detail pages.",
+    "evidenceType": "permitVerified active-builder signal",
+    "recentPermits": [
+      {
+        "permitNumber": "BR-2026-6251",
+        "detailUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VXQ&agencyCode=POLKCO&IsToShowInspection=",
+        "address": "4128 W TIMBERLAKE RD, LAKELAND FL 33810",
+        "recordType": "Residential New Permit - Ex: New House",
+        "email": "btrotter.construction@gmail.com",
+        "phone": "8633811837",
+        "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC26&capID2=00000&capID3=00VXQ&agencyCode=POLKCO&IsToShowInspection="
+      }
+    ],
+    "acquisitionNotes": "Appears on 1 Polk County public Accela Residential New permit record(s). Latest sample BR-2026-6251 at 4128 W TIMBERLAKE RD, LAKELAND FL 33810."
   }
 ]

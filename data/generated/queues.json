@@ -4288,24 +4288,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
-      "name": "Meritage Homes of the Carolinas, Inc.",
-      "market": "raleigh-nc",
-      "phone": "9199957469",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "raleigh-builder-d-r-horton-inc",
-      "name": "D.R. Horton, Inc.",
-      "market": "raleigh-nc",
-      "phone": "9194602933",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "raleigh-builder-kb-home-raleigh-durham-inc",
       "name": "KB Home Raleigh-Durham Inc.",
       "market": "raleigh-nc",
@@ -4315,10 +4297,28 @@
       "confidence": 100
     },
     {
+      "buyerId": "raleigh-builder-meritage-homes-of-the-carolinas-inc",
+      "name": "Meritage Homes of the Carolinas, Inc.",
+      "market": "raleigh-nc",
+      "phone": "9199957469",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "raleigh-builder-stanley-martin-homes-llc",
       "name": "Stanley Martin Homes, LLC",
       "market": "raleigh-nc",
       "phone": "9199778760",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "raleigh-builder-d-r-horton-inc",
+      "name": "D.R. Horton, Inc.",
+      "market": "raleigh-nc",
+      "phone": "9194602933",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 100
@@ -4396,10 +4396,10 @@
       "confidence": 100
     },
     {
-      "buyerId": "raleigh-builder-homes-by-dickerson-inc",
-      "name": "HOMES BY DICKERSON INC",
+      "buyerId": "raleigh-builder-legacy-custom-homes",
+      "name": "LEGACY CUSTOM HOMES",
       "market": "raleigh-nc",
-      "phone": "(919) 805-5902",
+      "phone": "9197813800",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 96
@@ -4414,10 +4414,10 @@
       "confidence": 91
     },
     {
-      "buyerId": "raleigh-builder-legacy-custom-homes",
-      "name": "LEGACY CUSTOM HOMES",
+      "buyerId": "raleigh-builder-sbm-homes-llc",
+      "name": "SBM HOMES LLC",
       "market": "raleigh-nc",
-      "phone": "9197813800",
+      "phone": "(919) 478-0965",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 91
@@ -4432,10 +4432,10 @@
       "confidence": 86
     },
     {
-      "buyerId": "raleigh-builder-homes-by-thadd",
-      "name": "HOMES BY THADD",
+      "buyerId": "raleigh-builder-homes-by-dickerson-inc",
+      "name": "HOMES BY DICKERSON INC",
       "market": "raleigh-nc",
-      "phone": "9196697875",
+      "phone": "(919) 805-5902",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 86
@@ -4459,6 +4459,15 @@
       "confidence": 81
     },
     {
+      "buyerId": "raleigh-builder-ravenscape-construction-llc",
+      "name": "Ravenscape Construction, LLC",
+      "market": "raleigh-nc",
+      "phone": "(919) 906-2208",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 81
+    },
+    {
       "buyerId": "raleigh-builder-blue-heel-construction",
       "name": "Blue Heel Construction",
       "market": "raleigh-nc",
@@ -4472,15 +4481,6 @@
       "name": "RALEIGH CUSTOM HOMES",
       "market": "raleigh-nc",
       "phone": "9193951529",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 76
-    },
-    {
-      "buyerId": "raleigh-builder-ravenscape-construction-llc",
-      "name": "Ravenscape Construction, LLC",
-      "market": "raleigh-nc",
-      "phone": "(919) 906-2208",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 76
@@ -4531,15 +4531,6 @@
       "confidence": 71
     },
     {
-      "buyerId": "raleigh-builder-midtown-custom-homes-llc",
-      "name": "MIDTOWN CUSTOM HOMES LLC",
-      "market": "raleigh-nc",
-      "phone": "9194105542",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 71
-    },
-    {
       "buyerId": "raleigh-builder-beazer-homes-corp",
       "name": "BEAZER HOMES CORP, T/A",
       "market": "raleigh-nc",
@@ -4567,6 +4558,15 @@
       "confidence": 66
     },
     {
+      "buyerId": "raleigh-builder-icg-homes-llc",
+      "name": "ICG HOMES, LLC",
+      "market": "raleigh-nc",
+      "phone": "(919) 876-5802",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 66
+    },
+    {
       "buyerId": "raleigh-builder-loyd-builders-llc",
       "name": "LOYD BUILDERS, LLC",
       "market": "raleigh-nc",
@@ -4580,6 +4580,15 @@
       "name": "LTB CONSTRUCTION LLC",
       "market": "raleigh-nc",
       "phone": "9195765571",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 66
+    },
+    {
+      "buyerId": "raleigh-builder-midtown-custom-homes-llc",
+      "name": "MIDTOWN CUSTOM HOMES LLC",
+      "market": "raleigh-nc",
+      "phone": "9194105542",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 66
@@ -4774,8 +4783,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-texas-home-redevelopment-llc",
-      "name": "Texas Home Redevelopment, LLC",
+      "buyerId": "austin-builder-pulte-homes-of-texas-l-p-dba-pulte-group",
+      "name": "Pulte Homes of Texas L.P. DBA Pulte Group",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -4783,8 +4792,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-pulte-homes-of-texas-l-p-dba-pulte-group",
-      "name": "Pulte Homes of Texas L.P. DBA Pulte Group",
+      "buyerId": "austin-builder-texas-home-redevelopment-llc",
+      "name": "Texas Home Redevelopment, LLC",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -4828,6 +4837,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "austin-builder-st-stephens-build-llc",
+      "name": "St. Stephens Build, LLC",
+      "market": "austin-tx",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "austin-builder-trophy-signature-homes",
       "name": "Trophy Signature Homes",
       "market": "austin-tx",
@@ -4855,15 +4873,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-st-stephens-build-llc",
-      "name": "St. Stephens Build, LLC",
-      "market": "austin-tx",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "austin-builder-awhiddon-construction",
       "name": "AWhiddon Construction",
       "market": "austin-tx",
@@ -4882,6 +4891,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "austin-builder-atx-luxury-builders",
+      "name": "ATX Luxury Builders",
+      "market": "austin-tx",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "austin-builder-redbud-development-group-llc",
       "name": "Redbud Development Group LLC",
       "market": "austin-tx",
@@ -4891,8 +4909,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-atx-luxury-builders",
-      "name": "ATX Luxury Builders",
+      "buyerId": "austin-builder-thurman-homes",
+      "name": "Thurman Homes",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -4920,15 +4938,6 @@
     {
       "buyerId": "austin-builder-patriot-builders",
       "name": "Patriot Builders",
-      "market": "austin-tx",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "austin-builder-thurman-homes",
-      "name": "Thurman Homes",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -4981,8 +4990,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-habitat-haus-llc",
-      "name": "Habitat Haus LLC",
+      "buyerId": "austin-builder-tri-pointe-homes",
+      "name": "Tri Pointe Homes",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -4990,8 +4999,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "austin-builder-tri-pointe-homes",
-      "name": "Tri Pointe Homes",
+      "buyerId": "austin-builder-habitat-haus-llc",
+      "name": "Habitat Haus LLC",
       "market": "austin-tx",
       "phone": "",
       "website": "",
@@ -5197,6 +5206,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "san-antonio-builder-leca-construction-llc",
+      "name": "LECA CONSTRUCTION, LLC",
+      "market": "san-antonio-tx",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "san-antonio-builder-scott-felder-homes",
       "name": "SCOTT FELDER HOMES",
       "market": "san-antonio-tx",
@@ -5224,8 +5242,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "san-antonio-builder-leca-construction-llc",
-      "name": "LECA CONSTRUCTION, LLC",
+      "buyerId": "san-antonio-builder-ies-residential-inc",
+      "name": "IES RESIDENTIAL, Inc.",
       "market": "san-antonio-tx",
       "phone": "",
       "website": "",
@@ -5251,8 +5269,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "san-antonio-builder-ies-residential-inc",
-      "name": "IES RESIDENTIAL, Inc.",
+      "buyerId": "san-antonio-builder-fulton-construction-services",
+      "name": "Fulton Construction Services",
       "market": "san-antonio-tx",
       "phone": "",
       "website": "",
@@ -5269,8 +5287,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "san-antonio-builder-bella-vista-homes-legend-homes",
-      "name": "Bella Vista Homes / Legend Homes",
+      "buyerId": "san-antonio-builder-joseph-creek-homes-llc",
+      "name": "Joseph Creek Homes LLC",
       "market": "san-antonio-tx",
       "phone": "",
       "website": "",
@@ -5278,8 +5296,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "san-antonio-builder-fulton-construction-services",
-      "name": "Fulton Construction Services",
+      "buyerId": "san-antonio-builder-bella-vista-homes-legend-homes",
+      "name": "Bella Vista Homes / Legend Homes",
       "market": "san-antonio-tx",
       "phone": "",
       "website": "",
@@ -5298,15 +5316,6 @@
     {
       "buyerId": "san-antonio-builder-david-weekley-homes",
       "name": "DAVID WEEKLEY HOMES",
-      "market": "san-antonio-tx",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "san-antonio-builder-joseph-creek-homes-llc",
-      "name": "Joseph Creek Homes LLC",
       "market": "san-antonio-tx",
       "phone": "",
       "website": "",

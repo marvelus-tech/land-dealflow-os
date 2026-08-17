@@ -1,5 +1,26 @@
 [
   {
+    "id": "knoxville-project-the-barn-at-timber-trails",
+    "project": "The Barn at Timber Trails",
+    "type": "Special Use",
+    "market": "knoxville-tn",
+    "state": "TN",
+    "address": "5752 Washington Pike",
+    "parcelId": "049 10501",
+    "owner": "",
+    "developer": "",
+    "contractor": "",
+    "contactName": "",
+    "contactPhone": "",
+    "units": "",
+    "parcelSize": 8.25,
+    "cost": "",
+    "status": "Use on Review approved July 9, 2026",
+    "stage": "1",
+    "sourceUrl": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
+    "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
+  },
+  {
     "id": "knoxville-project-riella-at-oakwood",
     "project": "Riella at Oakwood",
     "type": "Apartment",
@@ -1360,7 +1381,7 @@
     "parcelSize": "",
     "cost": 4300000,
     "status": "",
-    "stage": "3",
+    "stage": "5",
     "sourceUrl": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
     "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
   },
@@ -1821,7 +1842,7 @@
     "units": "",
     "parcelSize": 126.8,
     "cost": "",
-    "status": "To be heard by Planning Commission March 13, 2025",
+    "status": "Development Plan approved July 2026.",
     "stage": "1",
     "sourceUrl": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
     "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
@@ -2075,27 +2096,6 @@
     "cost": 5500000,
     "status": "",
     "stage": "3",
-    "sourceUrl": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
-    "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
-  },
-  {
-    "id": "knoxville-project-ywca-renovation",
-    "project": "YWCA Renovation",
-    "type": "Mixed Use",
-    "market": "knoxville-tn",
-    "state": "TN",
-    "address": "420 Clinch Ave",
-    "parcelId": "094LG010",
-    "owner": "Young Womens Christian Association",
-    "developer": "",
-    "contractor": "Denark Construction, Inc.",
-    "contactName": "",
-    "contactPhone": "",
-    "units": "",
-    "parcelSize": "",
-    "cost": 9604596,
-    "status": "Keys of Hope Capital Campaign, which is supporting the improvements to the YWCA building and expanstion of the Jenny Boyd Keys of Hope Program, received a state grant of $1.5 million in April 2025.",
-    "stage": "5",
     "sourceUrl": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
     "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
   }

@@ -1435,15 +1435,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-jcl-construction-llc",
-      "name": "JCL CONSTRUCTION LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-cobalt-ventures-llc",
       "name": "COBALT VENTURES LLC",
       "market": "nashville-edge-tn",
@@ -1453,8 +1444,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-meritage-homes",
-      "name": "Meritage Homes",
+      "buyerId": "nashville-builder-jcl-construction-llc",
+      "name": "JCL CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1471,8 +1462,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-fineman-construction-inc",
-      "name": "FINEMAN CONSTRUCTION INC",
+      "buyerId": "nashville-builder-meritage-homes",
+      "name": "Meritage Homes",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1480,8 +1471,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-weekley-homes-llc",
-      "name": "WEEKLEY HOMES LLC",
+      "buyerId": "nashville-builder-fineman-construction-inc",
+      "name": "FINEMAN CONSTRUCTION INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1500,6 +1491,15 @@
     {
       "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
       "name": "LENNAR HOMES OF TENNESSEE LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-weekley-homes-llc",
+      "name": "WEEKLEY HOMES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1552,8 +1552,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-southern-edge-construction-llc",
-      "name": "SOUTHERN EDGE CONSTRUCTION LLC",
+      "buyerId": "nashville-builder-steadfast-group-llc",
+      "name": "STEADFAST GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1561,8 +1561,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-steadfast-group-llc",
-      "name": "STEADFAST GROUP LLC",
+      "buyerId": "nashville-builder-southern-edge-construction-llc",
+      "name": "SOUTHERN EDGE CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1633,15 +1633,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-rutherford-contractors-group-llc",
-      "name": "RUTHERFORD CONTRACTORS GROUP LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-building-masters-llc",
       "name": "BUILDING MASTERS LLC",
       "market": "nashville-edge-tn",
@@ -1671,6 +1662,15 @@
     {
       "buyerId": "nashville-builder-clear-creek-holdings-llc",
       "name": "CLEAR CREEK HOLDINGS LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-rutherford-contractors-group-llc",
+      "name": "RUTHERFORD CONTRACTORS GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1750,8 +1750,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-paran-homes-llc",
-      "name": "PARAN HOMES LLC",
+      "buyerId": "nashville-builder-urban-development-group-llc",
+      "name": "URBAN DEVELOPMENT GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1795,15 +1795,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-urban-development-group-llc",
-      "name": "Urban Development Group LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-ashton-woods-homes",
       "name": "Ashton Woods Homes",
       "market": "nashville-edge-tn",
@@ -1833,6 +1824,15 @@
     {
       "buyerId": "nashville-builder-elliott-development-llc",
       "name": "ELLIOTT DEVELOPMENT LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-j-core-properties-llc-phillips-builders-llc",
+      "name": "J CORE PROPERTIES LLC DBA PHILLIPS BUILDERS LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1912,24 +1912,6 @@
       "confidence": 98
     },
     {
-      "buyerId": "nashville-builder-j-core-properties-llc-phillips-builders-llc",
-      "name": "J CORE PROPERTIES LLC DBA PHILLIPS BUILDERS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 98
-    },
-    {
-      "buyerId": "nashville-builder-jackson-builders-llc",
-      "name": "JACKSON BUILDERS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 98
-    },
-    {
       "buyerId": "nashville-builder-red-seal-construction-corp",
       "name": "RED SEAL CONSTRUCTION CORP",
       "market": "nashville-edge-tn",
@@ -1984,6 +1966,15 @@
       "confidence": 94
     },
     {
+      "buyerId": "nashville-builder-jackson-builders-llc",
+      "name": "JACKSON BUILDERS LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 94
+    },
+    {
       "buyerId": "nashville-builder-space-construction-llc",
       "name": "SPACE CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
@@ -2002,8 +1993,35 @@
       "confidence": 90
     },
     {
+      "buyerId": "nashville-builder-cherry-randell-construction-llc",
+      "name": "CHERRY, RANDELL CONSTRUCTION LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-eastend-contracting-llc",
+      "name": "EASTEND CONTRACTING LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
       "buyerId": "nashville-builder-hometown-construction-j-core-properties-llc",
       "name": "HOMETOWN CONSTRUCTION, J CORE PROPERTIES LLC DBA",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-lc-group",
+      "name": "LC GROUP",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -2022,24 +2040,6 @@
     {
       "buyerId": "nashville-builder-mclean-construction-company",
       "name": "MCLEAN CONSTRUCTION COMPANY",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
-      "buyerId": "nashville-builder-palmetto-construction-llc",
-      "name": "PALMETTO CONSTRUCTION LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
-      "buyerId": "nashville-builder-providence-builder-group-llc",
-      "name": "PROVIDENCE BUILDER GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -8261,15 +8261,6 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-jcl-construction-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "JCL CONSTRUCTION LLC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
       "buyerId": "nashville-builder-cobalt-ventures-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "COBALT VENTURES LLC",
@@ -8279,9 +8270,9 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-meritage-homes",
+      "buyerId": "nashville-builder-jcl-construction-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Meritage Homes",
+      "buyerName": "JCL CONSTRUCTION LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8297,18 +8288,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-fineman-construction-inc",
+      "buyerId": "nashville-builder-meritage-homes",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "FINEMAN CONSTRUCTION INC",
+      "buyerName": "Meritage Homes",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-weekley-homes-llc",
+      "buyerId": "nashville-builder-fineman-construction-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "WEEKLEY HOMES LLC",
+      "buyerName": "FINEMAN CONSTRUCTION INC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8327,6 +8318,15 @@
       "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "LENNAR HOMES OF TENNESSEE LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "nashville-builder-weekley-homes-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "WEEKLEY HOMES LLC",
       "score": 100,
       "fit": "strong",
       "misses": []

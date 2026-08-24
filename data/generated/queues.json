@@ -1381,8 +1381,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-horton-d-r-inc",
-      "name": "HORTON, D R INC",
+      "buyerId": "nashville-builder-unique-management-development-construction-llc",
+      "name": "UNIQUE MANAGEMENT DEVELOPMENT & CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1390,8 +1390,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-unique-management-development-construction-llc",
-      "name": "UNIQUE MANAGEMENT DEVELOPMENT & CONSTRUCTION LLC",
+      "buyerId": "nashville-builder-horton-d-r-inc",
+      "name": "HORTON, D R INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1435,8 +1435,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-cobalt-ventures-llc",
-      "name": "COBALT VENTURES LLC",
+      "buyerId": "nashville-builder-jcl-construction-llc",
+      "name": "JCL CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1444,8 +1444,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-jcl-construction-llc",
-      "name": "JCL CONSTRUCTION LLC",
+      "buyerId": "nashville-builder-cobalt-ventures-llc",
+      "name": "COBALT VENTURES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1462,15 +1462,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-meritage-homes",
-      "name": "Meritage Homes",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-fineman-construction-inc",
       "name": "FINEMAN CONSTRUCTION INC",
       "market": "nashville-edge-tn",
@@ -1480,8 +1471,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-craighead-development-llc",
-      "name": "CRAIGHEAD DEVELOPMENT LLC",
+      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
+      "name": "LENNAR HOMES OF TENNESSEE LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1489,8 +1480,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
-      "name": "LENNAR HOMES OF TENNESSEE LLC",
+      "buyerId": "nashville-builder-craighead-development-llc",
+      "name": "CRAIGHEAD DEVELOPMENT LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1534,8 +1525,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-david-weekley-homes",
-      "name": "David Weekley Homes",
+      "buyerId": "nashville-builder-century-communities-of-tn",
+      "name": "Century Communities of TN",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1543,8 +1534,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-epg-construction-inc",
-      "name": "EPG CONSTRUCTION INC",
+      "buyerId": "nashville-builder-david-weekley-homes",
+      "name": "David Weekley Homes",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1570,6 +1561,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-epg-construction-inc",
+      "name": "EPG CONSTRUCTION INC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-m-y-construction-llc",
       "name": "M & Y CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
@@ -1579,8 +1579,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-build-nashville-llc",
-      "name": "BUILD NASHVILLE LLC",
+      "buyerId": "nashville-builder-meritage-homes",
+      "name": "Meritage Homes",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1588,8 +1588,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-century-communities-of-tn",
-      "name": "Century Communities of TN",
+      "buyerId": "nashville-builder-build-nashville-llc",
+      "name": "BUILD NASHVILLE LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1660,6 +1660,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-bubis-building-company-llc",
+      "name": "BUBIS BUILDING COMPANY LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-clear-creek-holdings-llc",
       "name": "CLEAR CREEK HOLDINGS LLC",
       "market": "nashville-edge-tn",
@@ -1716,15 +1725,6 @@
     {
       "buyerId": "nashville-builder-superior-capital-llc",
       "name": "Superior Capital LLc",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-bubis-building-company-llc",
-      "name": "BUBIS BUILDING COMPANY LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1948,6 +1948,15 @@
       "confidence": 94
     },
     {
+      "buyerId": "nashville-builder-blue-chip-investments-llc",
+      "name": "BLUE CHIP INVESTMENTS, LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 94
+    },
+    {
       "buyerId": "nashville-builder-canaan-builders",
       "name": "CANAAN BUILDERS",
       "market": "nashville-edge-tn",
@@ -1968,6 +1977,15 @@
     {
       "buyerId": "nashville-builder-jackson-builders-llc",
       "name": "JACKSON BUILDERS LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 94
+    },
+    {
+      "buyerId": "nashville-builder-lc-group",
+      "name": "LC Group",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -2020,26 +2038,8 @@
       "confidence": 90
     },
     {
-      "buyerId": "nashville-builder-lc-group",
-      "name": "LC GROUP",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
       "buyerId": "nashville-builder-mch-construction-of-tn-llc",
       "name": "MCH CONSTRUCTION OF TN LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
-      "buyerId": "nashville-builder-mclean-construction-company",
-      "name": "MCLEAN CONSTRUCTION COMPANY",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -8162,18 +8162,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-horton-d-r-inc",
+      "buyerId": "nashville-builder-unique-management-development-construction-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "HORTON, D R INC",
+      "buyerName": "UNIQUE MANAGEMENT DEVELOPMENT & CONSTRUCTION LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-unique-management-development-construction-llc",
+      "buyerId": "nashville-builder-horton-d-r-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "UNIQUE MANAGEMENT DEVELOPMENT & CONSTRUCTION LLC",
+      "buyerName": "HORTON, D R INC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8216,18 +8216,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-cobalt-ventures-llc",
+      "buyerId": "nashville-builder-jcl-construction-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "COBALT VENTURES LLC",
+      "buyerName": "JCL CONSTRUCTION LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-jcl-construction-llc",
+      "buyerId": "nashville-builder-cobalt-ventures-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "JCL CONSTRUCTION LLC",
+      "buyerName": "COBALT VENTURES LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8243,27 +8243,9 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-meritage-homes",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Meritage Homes",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
       "buyerId": "nashville-builder-fineman-construction-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "FINEMAN CONSTRUCTION INC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "nashville-builder-craighead-development-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "CRAIGHEAD DEVELOPMENT LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8279,9 +8261,27 @@
     },
     {
       "parcelId": "118 17701",
+      "buyerId": "nashville-builder-craighead-development-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "CRAIGHEAD DEVELOPMENT LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
       "buyerId": "nashville-builder-weekley-homes-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "WEEKLEY HOMES LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "nashville-builder-paragon-group-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "PARAGON GROUP LLC",
       "score": 100,
       "fit": "strong",
       "misses": []

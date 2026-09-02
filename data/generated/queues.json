@@ -2269,16 +2269,7 @@
       "phone": "",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 80
-    },
-    {
-      "buyerId": "maricopa-builder-soundbuilt-homes-arizona-llc",
-      "name": "Soundbuilt Homes Arizona LLC",
-      "market": "maricopa-az",
-      "phone": "253-377-4947 253-848-0820",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 76
+      "confidence": 86
     },
     {
       "buyerId": "maricopa-builder-americas-dwelling-llc",
@@ -2294,6 +2285,15 @@
       "name": "Better Builders LLC",
       "market": "maricopa-az",
       "phone": "602-819-0653",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 70
+    },
+    {
+      "buyerId": "maricopa-builder-fulton-homes-corporation",
+      "name": "Fulton Homes Corporation",
+      "market": "maricopa-az",
+      "phone": "480-753-6789",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 70
@@ -2321,6 +2321,15 @@
       "name": "Interlachen Development",
       "market": "maricopa-az",
       "phone": "503-939-9195",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 70
+    },
+    {
+      "buyerId": "maricopa-builder-soundbuilt-homes-arizona-llc",
+      "name": "Soundbuilt Homes Arizona LLC",
+      "market": "maricopa-az",
+      "phone": "253-377-4947 253-848-0820",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 70
@@ -2402,15 +2411,6 @@
       "name": "Elliott Homes Inc",
       "market": "maricopa-az",
       "phone": "480-831-5691",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 64
-    },
-    {
-      "buyerId": "maricopa-builder-fulton-homes-corporation",
-      "name": "Fulton Homes Corporation",
-      "market": "maricopa-az",
-      "phone": "480-753-6789 480-753-6789 480-753-6789",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64
@@ -2510,6 +2510,15 @@
       "name": "Silver Homes Construction LLC",
       "market": "maricopa-az",
       "phone": "602-250-0589 602-817-8919",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
+      "buyerId": "maricopa-builder-sonoran-sunset-development-llc",
+      "name": "Sonoran Sunset Development LLC",
+      "market": "maricopa-az",
+      "phone": "602-503-6632 602-503-6632 602-503-6632",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 64

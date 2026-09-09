@@ -2048,7 +2048,7 @@
     },
     {
       "buyerId": "polk-builder-lennar-homes-llc",
-      "name": "LENNAR HOMES LLC",
+      "name": "LENNAR HOMES, LLC",
       "market": "polk-fl",
       "phone": "4076644126",
       "website": "",
@@ -2059,7 +2059,7 @@
       "buyerId": "polk-builder-stanley-martin-homes-llc",
       "name": "STANLEY MARTIN HOMES LLC",
       "market": "polk-fl",
-      "phone": "8669094458",
+      "phone": "2529133593",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 100
@@ -2068,109 +2068,10 @@
       "buyerId": "polk-builder-lgi-homes-florida-llc",
       "name": "LGI HOMES - FLORIDA, LLC",
       "market": "polk-fl",
-      "phone": "3214433640",
+      "phone": "8137315791",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 100
-    },
-    {
-      "buyerId": "polk-builder-highland-homes",
-      "name": "HIGHLAND HOMES",
-      "market": "polk-fl",
-      "phone": "2466197103",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 86
-    },
-    {
-      "buyerId": "polk-builder-kb-home-orlando-llc",
-      "name": "KB HOME ORLANDO LLC",
-      "market": "polk-fl",
-      "phone": "4075924187",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 86
-    },
-    {
-      "buyerId": "polk-builder-ryan-homes",
-      "name": "RYAN HOMES",
-      "market": "polk-fl",
-      "phone": "4079794966",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 86
-    },
-    {
-      "buyerId": "polk-builder-starlight-homes-florida-llc",
-      "name": "STARLIGHT HOMES FLORIDA LLC",
-      "market": "polk-fl",
-      "phone": "3214416108",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 80
-    },
-    {
-      "buyerId": "polk-builder-tpg-ehc-e-len-multi-state-1-llc",
-      "name": "TPG EHC E LEN MULTI STATE 1 LLC",
-      "market": "polk-fl",
-      "phone": "4072344336",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 80
-    },
-    {
-      "buyerId": "polk-builder-invertech-solutions-llc",
-      "name": "INVERTECH SOLUTIONS LLC",
-      "market": "polk-fl",
-      "phone": "1786280964",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 74
-    },
-    {
-      "buyerId": "polk-builder-hodge-enterprises-inc",
-      "name": "HODGE ENTERPRISES INC",
-      "market": "polk-fl",
-      "phone": "8634121007",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 68
-    },
-    {
-      "buyerId": "polk-builder-southern-homes-of-polk-co-inc",
-      "name": "SOUTHERN HOMES OF POLK CO INC",
-      "market": "polk-fl",
-      "phone": "8636872700",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 68
-    },
-    {
-      "buyerId": "polk-builder-averett-septic-tank-co-inc",
-      "name": "AVERETT SEPTIC TANK CO., INC.",
-      "market": "polk-fl",
-      "phone": "8633812413",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
-    },
-    {
-      "buyerId": "polk-builder-bryan-bradley-homes-llc",
-      "name": "BRYAN BRADLEY HOMES LLC",
-      "market": "polk-fl",
-      "phone": "8632871864",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
-    },
-    {
-      "buyerId": "polk-builder-builders-elite-llc",
-      "name": "BUILDERS ELITE LLC",
-      "market": "polk-fl",
-      "phone": "8632876564",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 62
     },
     {
       "buyerId": "polk-builder-d-r-horton-inc",
@@ -2179,22 +2080,112 @@
       "phone": "4078505200",
       "website": "",
       "task": "capture exact buy box",
-      "confidence": 62
+      "confidence": 100
     },
     {
-      "buyerId": "polk-builder-jasper-custom-homes",
-      "name": "JASPER CUSTOM HOMES",
+      "buyerId": "polk-builder-kb-home-orlando-llc",
+      "name": "KB HOME ORLANDO LLC",
       "market": "polk-fl",
-      "phone": "8632670007",
+      "phone": "4075924187",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "polk-builder-ryan-homes",
+      "name": "RYAN HOMES",
+      "market": "polk-fl",
+      "phone": "8137397425",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 86
+    },
+    {
+      "buyerId": "polk-builder-millenia-holding-group-llc",
+      "name": "MILLENIA HOLDING GROUP LLC",
+      "market": "polk-fl",
+      "phone": "3216623717",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 80
+    },
+    {
+      "buyerId": "polk-builder-kayleigh-daniels-williams-construction",
+      "name": "kayleigh daniels Williams Construction",
+      "market": "polk-fl",
+      "phone": "8632942808",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 80
+    },
+    {
+      "buyerId": "polk-builder-southern-homes-of-polk-co-inc",
+      "name": "SOUTHERN HOMES OF POLK CO INC",
+      "market": "polk-fl",
+      "phone": "8636872700",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 74
+    },
+    {
+      "buyerId": "polk-builder-highland-homes",
+      "name": "HIGHLAND HOMES",
+      "market": "polk-fl",
+      "phone": "2466197103",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-tpg-ehc-e-len-multi-state-1-llc",
+      "name": "TPG EHC E LEN MULTI STATE 1 LLC",
+      "market": "polk-fl",
+      "phone": "4072344336",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 68
+    },
+    {
+      "buyerId": "polk-builder-anspaugh-jackson-ryan",
+      "name": "ANSPAUGH JACKSON RYAN",
+      "market": "polk-fl",
+      "phone": "8638169414",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-littles-construction-of-central-florida-inc",
-      "name": "LITTLES CONSTRUCTION OF CENTRAL FLORIDA INC",
+      "buyerId": "polk-builder-dsw-homes-llc",
+      "name": "DSW HOMES, LLC",
       "market": "polk-fl",
-      "phone": "8638600167",
+      "phone": "4097443400",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-high-sources-inc",
+      "name": "HIGH SOURCES INC.",
+      "market": "polk-fl",
+      "phone": "7869729261",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-jeff-shenefield-troubadour-enterprise-group-inc",
+      "name": "Jeff Shenefield Troubadour Enterprise Group, Inc",
+      "market": "polk-fl",
+      "phone": "8639448749",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-klr-construction-group-llc",
+      "name": "KLR CONSTRUCTION GROUP, LLC",
+      "market": "polk-fl",
+      "phone": "8638520558",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2209,19 +2200,37 @@
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-mckittrick-construction-inc",
-      "name": "MCKITTRICK CONSTRUCTION INC",
+      "buyerId": "polk-builder-manning-master-builds-llc",
+      "name": "MANNING MASTER BUILDS LLC",
       "market": "polk-fl",
-      "phone": "8635573223",
+      "phone": "8638450009",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-orbe-construction-inc",
-      "name": "ORBE CONSTRUCTION INC",
+      "buyerId": "polk-builder-parrish-custom-construction-llc",
+      "name": "PARRISH CUSTOM CONSTRUCTION, LLC",
       "market": "polk-fl",
-      "phone": "8633985099",
+      "phone": "8632556098",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-progress-homes-of-central-florida-llc",
+      "name": "PROGRESS HOMES OF CENTRAL FLORIDA, LLC",
+      "market": "polk-fl",
+      "phone": "8638682557",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-richmond-american-homes-of-florida-lp",
+      "name": "RICHMOND AMERICAN HOMES OF FLORIDA LP",
+      "market": "polk-fl",
+      "phone": "4075867625",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2236,19 +2245,28 @@
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-whitmore-builders-inc",
-      "name": "WHITMORE BUILDERS INC",
+      "buyerId": "polk-builder-signature-homes-rss-enterprises-llc",
+      "name": "SIGNATURE HOMES RSS ENTERPRISES LLC",
       "market": "polk-fl",
-      "phone": "8634392700",
+      "phone": "8639678527",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
     },
     {
-      "buyerId": "polk-builder-wjhfl-llc",
-      "name": "WJHFL LLC",
+      "buyerId": "polk-builder-tapia-construction-llc",
+      "name": "TAPIA CONSTRUCTION LLC",
       "market": "polk-fl",
-      "phone": "4078149408",
+      "phone": "8636445362",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 62
+    },
+    {
+      "buyerId": "polk-builder-webb-homebuilders-group-inc",
+      "name": "WEBB HOMEBUILDERS GROUP, INC.",
+      "market": "polk-fl",
+      "phone": "8633540004",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 62
@@ -2312,15 +2330,6 @@
       "name": "Garcia Industries Inc",
       "market": "maricopa-az",
       "phone": "562-480-7019",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 70
-    },
-    {
-      "buyerId": "maricopa-builder-interlachen-development",
-      "name": "Interlachen Development",
-      "market": "maricopa-az",
-      "phone": "503-939-9195",
       "website": "",
       "task": "capture exact buy box",
       "confidence": 70

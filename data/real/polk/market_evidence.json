@@ -2,7 +2,7 @@
   "market": "Polk / Lakeland, FL",
   "marketId": "polk-lakeland-fl",
   "state": "FL",
-  "generatedAt": "2026-08-26T21:31:47Z",
+  "generatedAt": "2026-09-09T21:33:12Z",
   "source": {
     "name": "Polk County Accela Citizen Access \u2014 Building records",
     "sourceUrl": "https://aca-prod.accela.com/POLKCO/Cap/CapHome.aspx?module=Building",
@@ -10,11 +10,11 @@
     "searchWindowDays": 180
   },
   "summary": {
-    "permitRowsSampled": 98,
-    "detailPagesInspected": 98,
-    "uniqueBuilders": 23,
+    "permitRowsSampled": 97,
+    "detailPagesInspected": 97,
+    "uniqueBuilders": 25,
     "minimumUniqueBuilders": 20,
-    "totalRecentBuildSignals": 83,
+    "totalRecentBuildSignals": 91,
     "filter": "Public Accela Building module records with exact Residential New Permit - Ex: New House type; BR permit numbers only; trade/accessory contractor names excluded."
   },
   "operatingRules": [

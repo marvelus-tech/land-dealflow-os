@@ -1575,8 +1575,8 @@
     "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
   },
   {
-    "id": "knoxville-project-novare-knoxville",
-    "project": "Novare Knoxville",
+    "id": "knoxville-project-elmstead",
+    "project": "Elmstead",
     "type": "Apartment",
     "market": "knoxville-tn",
     "state": "TN",
@@ -1587,11 +1587,11 @@
     "contractor": "SUMMIT CONTRACTING GROUP INC.",
     "contactName": "",
     "contactPhone": "",
-    "units": "",
+    "units": 270,
     "parcelSize": "",
     "cost": 8632469,
     "status": "",
-    "stage": "1",
+    "stage": "5",
     "sourceUrl": "https://services1.arcgis.com/QWaOgwdmpqI9HUzf/arcgis/rest/services/DevelopmentProjects/FeatureServer/0",
     "publicSource": "KGIS Groundbreakers / DevelopmentProjects public layer. Buyer/developer demand evidence only; not a seller lead."
   },

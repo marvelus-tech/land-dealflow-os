@@ -1,6 +1,6 @@
-# Lead Engine Briefing — 2026-09-16
+# Lead Engine Briefing — 2026-09-21
 
-Run: lead-engine-2026-09-16T21-33-53-325Z
+Run: lead-engine-2026-09-21T21-30-11-410Z
 
 - Markets watched: 32
 - Buyer leads: 585

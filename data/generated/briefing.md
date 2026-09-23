@@ -1,13 +1,13 @@
-# Lead Engine Briefing — 2026-09-21
+# Lead Engine Briefing — 2026-09-23
 
-Run: lead-engine-2026-09-21T21-30-11-410Z
+Run: lead-engine-2026-09-23T21-33-33-943Z
 
 - Markets watched: 32
-- Buyer leads: 585
+- Buyer leads: 586
 - Parcel leads: 81
 - Top seller calls: 0
 - Real skip-trace leads: 81
-- Buyer validation tasks: 585
+- Buyer validation tasks: 586
 - Offer-ready deals: 0
 - New-area buyer discovery tasks: 18
 - New-area seller discovery tasks: 31
@@ -26,7 +26,7 @@ Run: lead-engine-2026-09-21T21-30-11-410Z
 7. Ocala / Marion County, FL — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Civic Access / CivicPlus and build a direct adapter for Ocala / Marion County, FL.
 8. Clermont / Lake County, FL — source-review-needed; 0 builder signals; find-public-permit-source; next: Review TRAKiT / CentralSquare migration and build a direct adapter for Clermont / Lake County, FL.
 9. Gainesville / Alachua County, FL — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Accela and build a direct adapter for Gainesville / Alachua County, FL.
-10. Maricopa County / Phoenix-Mesa, AZ — pulled; 34 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Maricopa County / Phoenix-Mesa, AZ to capture buy box before seller sourcing.
+10. Maricopa County / Phoenix-Mesa, AZ — pulled; 35 builder signals; ready-for-buyer-validation; next: Call/email top permit-active builders in Maricopa County / Phoenix-Mesa, AZ to capture buy box before seller sourcing.
 11. Tucson / Pima County, AZ — source-review-needed; 0 builder signals; find-public-permit-source; next: Review Accela / Tucson Development Services and build a direct adapter for Tucson / Pima County, AZ.
 12. Buckeye, AZ — source-review-needed; 0 builder signals; find-public-permit-source; next: Review City custom permit portal and build a direct adapter for Buckeye, AZ.
 

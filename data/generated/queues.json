@@ -2425,6 +2425,15 @@
       "confidence": 64
     },
     {
+      "buyerId": "maricopa-builder-conway-homes-construction",
+      "name": "Conway Homes & Construction",
+      "market": "maricopa-az",
+      "phone": "602-820-1422 602-820-1422 602-820-1422",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 64
+    },
+    {
       "buyerId": "maricopa-builder-courtland-communities",
       "name": "Courtland Communities",
       "market": "maricopa-az",

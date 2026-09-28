@@ -1354,8 +1354,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-beazer-homes-llc",
-      "name": "BEAZER HOMES LLC",
+      "buyerId": "nashville-builder-regent-homes",
+      "name": "REGENT HOMES",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1363,8 +1363,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-regent-homes",
-      "name": "REGENT HOMES",
+      "buyerId": "nashville-builder-beazer-homes-llc",
+      "name": "BEAZER HOMES LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1408,8 +1408,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-ashton-nashville-residential",
-      "name": "ASHTON NASHVILLE RESIDENTIAL",
+      "buyerId": "nashville-builder-century-communities-of-tn",
+      "name": "Century Communities of TN",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1426,17 +1426,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-century-communities-of-tn",
-      "name": "Century Communities of TN",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
-      "name": "LENNAR HOMES OF TENNESSEE LLC",
+      "buyerId": "nashville-builder-ashton-nashville-residential",
+      "name": "ASHTON NASHVILLE RESIDENTIAL",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1446,6 +1437,15 @@
     {
       "buyerId": "nashville-builder-jcl-construction-llc",
       "name": "JCL CONSTRUCTION LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
+      "name": "LENNAR HOMES OF TENNESSEE LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1480,6 +1480,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-ole-south-properties-inc",
+      "name": "OLE SOUTH PROPERTIES INC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-ahvtn-llc",
       "name": "AHVTN LLC",
       "market": "nashville-edge-tn",
@@ -1491,15 +1500,6 @@
     {
       "buyerId": "nashville-builder-build-trust-homes-llc",
       "name": "BUILD TRUST HOMES LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-ole-south-properties-inc",
-      "name": "OLE SOUTH PROPERTIES INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1543,8 +1543,17 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-craighead-development-llc",
-      "name": "CRAIGHEAD DEVELOPMENT LLC",
+      "buyerId": "nashville-builder-dfh-crescent-llc",
+      "name": "DFH CRESCENT LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-central-builders-llc",
+      "name": "CENTRAL BUILDERS LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1561,8 +1570,17 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-dfh-crescent-llc",
-      "name": "DFH CRESCENT LLC",
+      "buyerId": "nashville-builder-paragon-group-llc",
+      "name": "Paragon Group LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-craighead-development-llc",
+      "name": "CRAIGHEAD DEVELOPMENT LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1588,35 +1606,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-central-builders-llc",
-      "name": "CENTRAL BUILDERS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-m-y-construction-llc",
       "name": "M & Y CONSTRUCTION LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-paragon-group-llc",
-      "name": "Paragon Group LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-southern-edge-construction-llc",
-      "name": "SOUTHERN EDGE CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1633,8 +1624,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-build-nashville-llc",
-      "name": "BUILD NASHVILLE LLC",
+      "buyerId": "nashville-builder-united-veterans-construction-inc",
+      "name": "UNITED VETERANS CONSTRUCTION INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1669,6 +1660,24 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-southern-edge-construction-llc",
+      "name": "SOUTHERN EDGE CONSTRUCTION LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-build-nashville-llc",
+      "name": "BUILD NASHVILLE LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-jackson-builders-llc",
       "name": "JACKSON BUILDERS LLC",
       "market": "nashville-edge-tn",
@@ -1678,8 +1687,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-harpeth-valley-homes-llc",
-      "name": "HARPETH VALLEY HOMES LLC",
+      "buyerId": "nashville-builder-habitat-for-humanity-of-greater-nashville-inc",
+      "name": "HABITAT FOR HUMANITY OF GREATER NASHVILLE INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1732,15 +1741,6 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-dakota-capital-properties-llc",
-      "name": "DAKOTA CAPITAL PROPERTIES LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-j-core-properties-llc-phillips-builders-llc",
       "name": "J CORE PROPERTIES LLC DBA PHILLIPS BUILDERS LLC",
       "market": "nashville-edge-tn",
@@ -1752,15 +1752,6 @@
     {
       "buyerId": "nashville-builder-mi-homes-of-nashville-llc",
       "name": "MI Homes of Nashville, LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-paros-group-llc",
-      "name": "PAROS GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1804,6 +1795,15 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-paros-group-llc",
+      "name": "PAROS GROUP LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
       "buyerId": "nashville-builder-premier-construction",
       "name": "PREMIER CONSTRUCTION",
       "market": "nashville-edge-tn",
@@ -1813,26 +1813,17 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-building-masters-llc",
-      "name": "BUILDING MASTERS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
-      "buyerId": "nashville-builder-clear-creek-holdings-llc",
-      "name": "CLEAR CREEK HOLDINGS LLC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 100
-    },
-    {
       "buyerId": "nashville-builder-progressive-development-llc",
       "name": "PROGRESSIVE DEVELOPMENT LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 100
+    },
+    {
+      "buyerId": "nashville-builder-providence-builders-llc",
+      "name": "Providence Builders LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1894,6 +1885,24 @@
       "confidence": 100
     },
     {
+      "buyerId": "nashville-builder-durante-companies-inc",
+      "name": "DURANTE COMPANIES INC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 98
+    },
+    {
+      "buyerId": "nashville-builder-harpeth-valley-homes-llc",
+      "name": "HARPETH VALLEY HOMES LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 98
+    },
+    {
       "buyerId": "nashville-builder-m-i-homes-of-nashville",
       "name": "M/I Homes of Nashville",
       "market": "nashville-edge-tn",
@@ -1930,15 +1939,6 @@
       "confidence": 98
     },
     {
-      "buyerId": "nashville-builder-united-veterans-construction-inc",
-      "name": "UNITED VETERANS CONSTRUCTION INC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 98
-    },
-    {
       "buyerId": "nashville-builder-vastland-northcrest-development-llc",
       "name": "VASTLAND NORTHCREST DEVELOPMENT LLC",
       "market": "nashville-edge-tn",
@@ -1946,15 +1946,6 @@
       "website": "",
       "task": "capture exact buy box",
       "confidence": 98
-    },
-    {
-      "buyerId": "nashville-builder-durante-companies-inc",
-      "name": "DURANTE COMPANIES INC",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 94
     },
     {
       "buyerId": "nashville-builder-grayton-builders-llc",
@@ -1982,15 +1973,6 @@
       "website": "",
       "task": "capture exact buy box",
       "confidence": 94
-    },
-    {
-      "buyerId": "nashville-builder-aghabee-general-contractors",
-      "name": "Aghabee General Contractors",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
     },
     {
       "buyerId": "nashville-builder-blue-chip-investments-llc",
@@ -2040,6 +2022,24 @@
     {
       "buyerId": "nashville-builder-mch-construction-of-tn-llc",
       "name": "MCH CONSTRUCTION OF TN LLC",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-red-seal-homes",
+      "name": "Red Seal Homes",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-sain-construction-co",
+      "name": "SAIN CONSTRUCTION CO",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -8198,18 +8198,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-beazer-homes-llc",
+      "buyerId": "nashville-builder-regent-homes",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "BEAZER HOMES LLC",
+      "buyerName": "REGENT HOMES",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-regent-homes",
+      "buyerId": "nashville-builder-beazer-homes-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "REGENT HOMES",
+      "buyerName": "BEAZER HOMES LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8252,9 +8252,9 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-ashton-nashville-residential",
+      "buyerId": "nashville-builder-century-communities-of-tn",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "ASHTON NASHVILLE RESIDENTIAL",
+      "buyerName": "Century Communities of TN",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8270,18 +8270,9 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-century-communities-of-tn",
+      "buyerId": "nashville-builder-ashton-nashville-residential",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Century Communities of TN",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "LENNAR HOMES OF TENNESSEE LLC",
+      "buyerName": "ASHTON NASHVILLE RESIDENTIAL",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8291,6 +8282,15 @@
       "buyerId": "nashville-builder-jcl-construction-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "JCL CONSTRUCTION LLC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
+      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "LENNAR HOMES OF TENNESSEE LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8324,6 +8324,15 @@
     },
     {
       "parcelId": "118 17701",
+      "buyerId": "nashville-builder-ole-south-properties-inc",
+      "address": "KGIS parcel 118 17701, Knoxville, TN",
+      "buyerName": "OLE SOUTH PROPERTIES INC",
+      "score": 100,
+      "fit": "strong",
+      "misses": []
+    },
+    {
+      "parcelId": "118 17701",
       "buyerId": "nashville-builder-ahvtn-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "AHVTN LLC",
@@ -8336,15 +8345,6 @@
       "buyerId": "nashville-builder-build-trust-homes-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
       "buyerName": "BUILD TRUST HOMES LLC",
-      "score": 100,
-      "fit": "strong",
-      "misses": []
-    },
-    {
-      "parcelId": "118 17701",
-      "buyerId": "nashville-builder-ole-south-properties-inc",
-      "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "OLE SOUTH PROPERTIES INC",
       "score": 100,
       "fit": "strong",
       "misses": []

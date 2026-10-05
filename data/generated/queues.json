@@ -1381,8 +1381,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
-      "name": "Meritage Homes Becky Gilmore",
+      "buyerId": "nashville-builder-drees-premier-homes-inc",
+      "name": "DREES PREMIER HOMES INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1390,8 +1390,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-drees-premier-homes-inc",
-      "name": "DREES PREMIER HOMES INC",
+      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
+      "name": "Meritage Homes Becky Gilmore",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1435,8 +1435,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-jcl-construction-llc",
-      "name": "JCL CONSTRUCTION LLC",
+      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
+      "name": "LENNAR HOMES OF TENNESSEE LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1444,8 +1444,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
-      "name": "LENNAR HOMES OF TENNESSEE LLC",
+      "buyerId": "nashville-builder-jcl-construction-llc",
+      "name": "JCL CONSTRUCTION LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1570,8 +1570,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-paragon-group-llc",
-      "name": "Paragon Group LLC",
+      "buyerId": "nashville-builder-united-veterans-construction-inc",
+      "name": "UNITED VETERANS CONSTRUCTION INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1579,8 +1579,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-craighead-development-llc",
-      "name": "CRAIGHEAD DEVELOPMENT LLC",
+      "buyerId": "nashville-builder-paragon-group-llc",
+      "name": "Paragon Group LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1615,8 +1615,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-steadfast-group-llc",
-      "name": "STEADFAST GROUP LLC",
+      "buyerId": "nashville-builder-craighead-development-llc",
+      "name": "CRAIGHEAD DEVELOPMENT LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1624,8 +1624,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-united-veterans-construction-inc",
-      "name": "UNITED VETERANS CONSTRUCTION INC",
+      "buyerId": "nashville-builder-steadfast-group-llc",
+      "name": "STEADFAST GROUP LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1678,8 +1678,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-jackson-builders-llc",
-      "name": "JACKSON BUILDERS LLC",
+      "buyerId": "nashville-builder-habitat-for-humanity-of-greater-nashville-inc",
+      "name": "HABITAT FOR HUMANITY OF GREATER NASHVILLE INC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -1687,8 +1687,8 @@
       "confidence": 100
     },
     {
-      "buyerId": "nashville-builder-habitat-for-humanity-of-greater-nashville-inc",
-      "name": "HABITAT FOR HUMANITY OF GREATER NASHVILLE INC",
+      "buyerId": "nashville-builder-jackson-builders-llc",
+      "name": "JACKSON BUILDERS LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -2002,15 +2002,6 @@
       "confidence": 90
     },
     {
-      "buyerId": "nashville-builder-hometown-construction-j-core-properties-llc",
-      "name": "HOMETOWN CONSTRUCTION, J CORE PROPERTIES LLC DBA",
-      "market": "nashville-edge-tn",
-      "phone": "",
-      "website": "",
-      "task": "capture exact buy box",
-      "confidence": 90
-    },
-    {
       "buyerId": "nashville-builder-infinium-builders-llc",
       "name": "INFINIUM BUILDERS LLC",
       "market": "nashville-edge-tn",
@@ -2040,6 +2031,15 @@
     {
       "buyerId": "nashville-builder-sain-construction-co",
       "name": "SAIN CONSTRUCTION CO",
+      "market": "nashville-edge-tn",
+      "phone": "",
+      "website": "",
+      "task": "capture exact buy box",
+      "confidence": 90
+    },
+    {
+      "buyerId": "nashville-builder-timo6-llc",
+      "name": "TIMO6 LLC",
       "market": "nashville-edge-tn",
       "phone": "",
       "website": "",
@@ -8171,18 +8171,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
+      "buyerId": "nashville-builder-drees-premier-homes-inc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "Meritage Homes Becky Gilmore",
+      "buyerName": "DREES PREMIER HOMES INC",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-drees-premier-homes-inc",
+      "buyerId": "nashville-builder-meritage-homes-becky-gilmore",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "DREES PREMIER HOMES INC",
+      "buyerName": "Meritage Homes Becky Gilmore",
       "score": 100,
       "fit": "strong",
       "misses": []
@@ -8225,18 +8225,18 @@
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-jcl-construction-llc",
+      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "JCL CONSTRUCTION LLC",
+      "buyerName": "LENNAR HOMES OF TENNESSEE LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
     },
     {
       "parcelId": "118 17701",
-      "buyerId": "nashville-builder-lennar-homes-of-tennessee-llc",
+      "buyerId": "nashville-builder-jcl-construction-llc",
       "address": "KGIS parcel 118 17701, Knoxville, TN",
-      "buyerName": "LENNAR HOMES OF TENNESSEE LLC",
+      "buyerName": "JCL CONSTRUCTION LLC",
       "score": 100,
       "fit": "strong",
       "misses": []
